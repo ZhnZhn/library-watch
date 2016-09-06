@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="description" content="Library Watch" />
+  <meta name="application-name" content="Library Watch" />
+  <meta name="summary" content="Library Watch is a  RESTFul client. With it you can view information about libraries, repositories from GitHub, NPM api services." />
+  
+  <title>Library Watch v0.10.0</title>
+  <link rel="icon" href="/css/favicon.png" sizes="32x32" type="image/png" />
+  <base target="_blank">
+
+  <!--[if IE]>
+      <script src="lib/es6-shim.min.js"></script>
+      <script src="lib/es6-promise.min.js"></script>
+      <script src="lib/fetch.js"></script>
+  <![endif]-->
+
+  <script type="text/javascript">
+    (function(){
+      if (!Object.assign){
+        var js = document.createElement('script');
+        js.src = 'lib/es6-shim.min.js';
+        document.head.appendChild(js);
+
+        js = document.createElement('script');
+        js.src = 'lib/es6-promise.min.js';
+        document.head.appendChild(js);
+
+        js = document.createElement('script');
+        js.src = 'lib/fetch.js';
+        document.head.appendChild(js);
+      }
+
+      if (!Array.isArray) {
+        Array.isArray = function(arg) {
+           return Object.prototype.toString.call(arg) === '[object Array]';
+        };
+      }
+
+    })()
+  </script>
+
+  <style>
+  [data-loader='circle']
+  {
+    width: 2.5em;
+    height: 2.5em;
+   -webkit-animation: circle infinite 1.25s linear;
+      -moz-animation: circle infinite 0.75s linear;
+        -o-animation: circle infinite 1.25s linear;
+           animation: circle infinite 1.25s linear;
+   border: 3px solid rgba(164, 135, 212, 1);
+   border-top-color: transparent;
+   border-radius: 100%;
+ }
+@-webkit-keyframes circle
+{ 100% {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+} }
+@-moz-keyframes circle
+{ 100% { transform: rotate(360deg);}}
+@-o-keyframes circle
+{ 100% {
+  -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+} }
+@keyframes circle
+{ 100% {transform: rotate(360deg);}}
+
+.spinner__wrapper {
+  position: absolute;
+  top : 5%;
+  left: 40%;
+  background-color: rgb(77, 77, 77);
+  border: solid 2px #232F3B;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 6px;
+  z-index: 100;
+  width: 14em;
+  height: 8em;
+  margin: 0.5em;
+  padding: 2em;
+  padding-top: 1em;
+  text-align: center;
+}
+.spinner__wrapper > div {
+   margin: 0.5em auto;
+}
+.spinner__descr {
+   position: absolute;
+   bottom: 0.2em;
+   left: 2em;
+   font-family: "Roboto", "Arial", "Lato", sans-serif;
+   font-size: 1em;
+   font-weight: bold;   
+}
+  </style>
+
+  <link  href="css/app.css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+  <noscript>
+    <style type="text/css">
+     #spinner {
+       display: none;
+     }
+    </style>
+  </noscript>
+  <div id="spinner" class="spinner__wrapper">
+    <div data-loader="circle"></div>
+    <div class="spinner__descr">
+      <span style="color:#80c040;">
+        Library Watch&nbsp;
+      </span>
+      <span style="color:gray">
+        Loading...
+      </span>
+    </div>
+  </div>
+
+
+   <div id="app">
+   </div>
+
+   <noscript>
+      <div class="noscript__root">
+        <div class="noscript__header">
+           <h1 class="noscript__caption">Library Watch</h1>
+        </div>
+        <div class="noscript__msg">
+          <p>It seems JavaScript in your browser disabled or not supported.</p>
+          <p>To use <a class="noscript__link" href=".">Library Watch</a>, please, enable and reload page.</p>
+        </div>
+      </div>
+   </noscript>
+
+
+<script type="text/javascript" src="app/lib_32acce4125f0f9e32e01.js"></script><script type="text/javascript" src="app/app_4b8056ecc7db2804dc9e.js"></script></body>
+</html>

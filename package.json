@@ -1,0 +1,41 @@
+{
+  "name": "template2",
+  "version": "0.10.0",
+  "description": "Library Watch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "jspm bundle js/**/* - [js/**/*] dependency-bundle.js",
+    "build": "webpack --colors --progress",
+    "gulp": "gulp",
+    "start" : "http-server -p8080"
+  },
+  "author": "ZhnZhn",
+  "license": "MIT",
+  "jspm": {
+    "dependencies": {
+      "interact.js": "npm:interact.js@^1.2.6",
+      "localforage": "npm:localforage@^1.4.2",
+      "purify": "github:cure53/DOMPurify@^0.8.2",
+      "react": "npm:react@^15.3.1",
+      "react-dom": "npm:react-dom@^15.3.1",
+      "reflux": "npm:reflux@^0.4.1"
+    },
+    "devDependencies": {}
+  },
+  "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-eslint": "^6.1.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-2": "^6.11.0",
+    "eslint": "^2.13.1",
+    "eslint-plugin-react": "^5.2.2",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-concat": "^2.6.0",
+    "html-webpack-plugin": "^2.21.0",
+    "jspm": "^0.16.45",
+    "webpack": "^1.13.1"
+  }
+}

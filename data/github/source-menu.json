@@ -1,0 +1,120 @@
+{
+  "menu" : [
+    {
+      "caption" : "GitHub",
+      "items" : [
+        { "id" : "LW_GH_RELEASE"},
+        { "id" : "LW_GH_TAGS"},
+        { "id" : "LW_GH_SEARCH_INFO" },
+        { "id" : "LW_GH_COMMITS" },
+        { "id" : "LW_GH_ISSUES" },
+        { "id" : "LW_GH_PULL_REQUESTS" }
+      ]
+    },{
+      "caption" : "NPM",
+      "items" : [
+        { "id" : "LW_NPM_RECENT_MONTH" }
+      ]
+    }
+  ],
+
+  "items" : {
+    "LW_GH_RELEASE" : {
+      "type" : "LW_GH_RELEASE",
+      "menuTitle" : "Recent Release",
+      "dialogCaption" : "Recent Release",
+      "chartContainerCaption" : "GitHub Recent Release",
+      "dialogType" : "DialogType1",
+      "dialogProps" : {
+        "oneTitle" : "Owner/Repo:",
+        "onePlaceholder" : "owner/repository",
+        "requestType" : "GH_RELEASE_RECENT"
+      }
+    },
+    "LW_GH_TAGS" : {
+      "type" : "LW_GH_TAGS",
+      "menuTitle" : "Likely Recent Version Tag",
+      "dialogCaption" : "Likely Recent Version Tag",
+      "chartContainerCaption" : "GitHub Likely Recent Version Tag",
+      "dialogType" : "DialogType1",
+      "dialogProps" : {
+        "oneTitle" : "Owner/Repo:",
+        "onePlaceholder" : "owner/repository",
+        "requestType" : "GH_TAGS"
+      }
+    },
+    "LW_GH_SEARCH_INFO" : {
+      "type" : "LW_GH_SEARCH_INFO",
+      "menuTitle" : "Search Information",
+      "dialogCaption" : "Search Information",
+      "chartContainerCaption" : "GitHub Search Information",
+      "dialogType" : "DialogType1",
+      "dialogProps" : {
+        "oneTitle" : "Owner/Repo:",
+        "onePlaceholder" : "owner/repository",
+        "requestType" : "GH_SEARCH_INFO"
+      }
+    },
+    "LW_GH_PULL_REQUESTS" : {
+      "type" : "LW_GH_PULL_REQUESTS",
+      "menuTitle" : "Open Pull Requests",
+      "dialogCaption" : "Open Pull Requests (30)",
+      "chartContainerCaption" : "GitHub Open Pull Requests (Recent 30)",
+      "dialogType" : "DialogType1",
+      "dialogProps" : {
+        "oneTitle" : "Owner/Repo:",
+        "onePlaceholder" : "owner/repository",
+        "requestType" : "GH_PULL_REQUESTS"
+      }
+    },
+    "LW_GH_COMMITS" : {
+      "type" : "LW_GH_COMMITS",
+      "menuTitle" : "Commits",
+      "dialogCaption" : "Commits (30)",
+      "chartContainerCaption" : "GitHub Commits (Recent 30)",
+      "dialogType" : "DialogType1",
+      "dialogProps" : {
+        "oneTitle" : "Owner/Repo:",
+        "onePlaceholder" : "owner/repository",
+        "requestType" : "GH_COMMITS"
+      }
+    },
+    "LW_GH_ISSUES" : {
+      "type" : "LW_GH_ISSUES",
+      "menuTitle" : "Open Issues",
+      "dialogCaption" : "Open Issues (30)",
+      "chartContainerCaption" : "GitHub Open Issues (Recent 30)",
+      "dialogType" : "DialogType1",
+      "dialogProps" : {
+        "oneTitle" : "Owner/Repo:",
+        "onePlaceholder" : "owner/repository",
+        "requestType" : "GH_ISSUES"
+      }
+    },
+
+    "LW_NPM_RECENT_MONTH" : {
+      "type" : "LW_NPM_RECENT_MONTH",
+      "menuTitle" : "Recent Month Stats",
+      "dialogCaption" : "Recent Month Stats",
+      "chartContainerCaption" : "NPM Recent Month Stats Downloads",
+      "dialogType" : "DialogType1",
+      "dialogProps" : {
+        "oneTitle" : "Package:",
+        "onePlaceholder" : "package",
+        "requestType" : "NPM_RECENT_MONTH"
+      }
+    },
+    "LW_NPM_RECENT_VERSION" : {
+      "type" : "LW_NPM_RECENT_VERSION",
+      "menuTitle" : "Recent Version",
+      "dialogCaption" : "Recent Version",
+      "chartContainerCaption" : "NPM Recent Version",
+      "dialogType" : "DialogType1",
+      "dialogProps" : {
+        "oneTitle" : "Package:",
+        "requestType" : "NPM_RECENT_VERSION"
+      }
+    }
+  }
+
+}

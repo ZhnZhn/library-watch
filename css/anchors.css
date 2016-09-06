@@ -1,0 +1,10 @@
+
+.github-link {
+  color: #009ae5;
+  font-weight: bold;
+  border-bottom: thin solid;
+  text-decoration: none;
+}
+.github-link:hover {
+  border-bottom-width: medium;
+}

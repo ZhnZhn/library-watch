@@ -1,0 +1,9 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Template_2\\src\\components\\browser-container\\SourceBrowserDynamic.jsx",
+ "file": "D:\\_Dev\\_React\\_Template_2\\js\\components\\browser-container\\SourceBrowserDynamic.js",
+ "sourceRoot": "",
+ "names": [],
+ "mappings": ";;;;;;;;AAAA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAM,uBAAuB,gBAAM,WAAN,CAAkB;AAAA;AAC7C,uBAD6C,mCACtB;AACrB,WAAO,KAAP;AACD,GAH4C;AAK7C,QAL6C,oBAKrC;AACN,QAAM,QAAQ,KAAK,KAAnB;AACA,WACG;AACG,eAAQ,gBADX;AAEG,kBAAY,mCAAmB,oBAFlC;AAGG,2BAAqB,mCAAmB,8BAH3C;AAIG,oBAAc,mCAAmB,mBAJpC;AAKG,kBAAY,yBAAe;AAL9B,OAMO,KANP,EADH;AAUD;AAjB4C,CAAlB,CAA7B;;kBAoBe,oB"
+}
