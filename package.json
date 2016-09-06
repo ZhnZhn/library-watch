@@ -1,7 +1,7 @@
 {
-  "name": "template2",
+  "name": "library-watch",
   "version": "0.10.0",
-  "description": "Library Watch",
+  "description": "Library Watch is a RESTFul client. With it you can view information about libraries, repositories from GitHub, NPM api services.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,6 +12,10 @@
   },
   "author": "ZhnZhn",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZhnZhn/library-watch.git"
+  }
   "jspm": {
     "dependencies": {
       "interact.js": "npm:interact.js@^1.2.6",
