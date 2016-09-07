@@ -6,6 +6,7 @@ import { ChartActionTypes } from '../flux/actions/ChartActions';
 import { ComponentActionTypes } from '../flux/actions/ComponentActions';
 
 import HeaderBar from './header/HeaderBar';
+import About from './about/About';
 import BrowserContainer from './browser-container/BrowserContainer';
 import ComponentHrzContainer from './zhnContainers/ComponentHrzContainer';
 import DialogContainer from './zhnContainers/DialogContainer';
@@ -24,6 +25,10 @@ const AppGitHub = (props) => {
             updateWatchAction={BrowserActionTypes.UPDATE_WATCH_BROWSER}
             initDialogAction={ComponentActionTypes.INIT_AND_SHOW_DIALOG}
             showDialogAction={ComponentActionTypes.SHOW_DIALOG}
+         />
+         <About
+            store={GitHubStore}
+            isShow={true}
          />
          <ComponentHrzContainer
             store={GitHubStore}

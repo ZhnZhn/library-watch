@@ -22,6 +22,10 @@ var _HeaderBar = require('./header/HeaderBar');
 
 var _HeaderBar2 = _interopRequireDefault(_HeaderBar);
 
+var _About = require('./about/About');
+
+var _About2 = _interopRequireDefault(_About);
+
 var _BrowserContainer = require('./browser-container/BrowserContainer');
 
 var _BrowserContainer2 = _interopRequireDefault(_BrowserContainer);
@@ -56,6 +60,10 @@ var AppGitHub = function AppGitHub(props) {
             initDialogAction: _ComponentActions.ComponentActionTypes.INIT_AND_SHOW_DIALOG,
             showDialogAction: _ComponentActions.ComponentActionTypes.SHOW_DIALOG
          }),
+         _react2.default.createElement(_About2.default, {
+            store: _GitHubStore2.default,
+            isShow: true
+         }),
          _react2.default.createElement(_ComponentHrzContainer2.default, {
             store: _GitHubStore2.default,
             initShowAction: _ChartActions.ChartActionTypes.INIT_AND_SHOW_CHART
@@ -70,4 +78,4 @@ var AppGitHub = function AppGitHub(props) {
 };
 
 exports.default = AppGitHub;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\AppGitHub.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\AppGitHub.js.map

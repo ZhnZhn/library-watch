@@ -4,6 +4,10 @@ import Factory from '../logic/Factory';
 const ComponentSlice = {
   dialogInit : {},
 
+  onShowAbout(){
+    this.trigger(ComponentActionTypes.SHOW_ABOUT)
+  },
+
   onShowDialog(dialogType, browserType){
     if (this.dialogInit[dialogType]) {
       this.trigger(ComponentActionTypes.SHOW_DIALOG, dialogType);

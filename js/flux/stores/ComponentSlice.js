@@ -15,6 +15,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var ComponentSlice = {
   dialogInit: {},
 
+  onShowAbout: function onShowAbout() {
+    this.trigger(_ComponentActions.ComponentActionTypes.SHOW_ABOUT);
+  },
   onShowDialog: function onShowDialog(dialogType, browserType) {
     if (this.dialogInit[dialogType]) {
       this.trigger(_ComponentActions.ComponentActionTypes.SHOW_DIALOG, dialogType);
@@ -33,4 +36,4 @@ var ComponentSlice = {
 };
 
 exports.default = ComponentSlice;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\flux\stores\ComponentSlice.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\stores\ComponentSlice.js.map

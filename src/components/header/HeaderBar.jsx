@@ -1,6 +1,7 @@
 import React from 'react';
 
 import BrowserActions from '../../flux/actions/BrowserActions';
+import ComponentActions from '../../flux/actions/ComponentActions';
 import { BrowserType } from '../../constants/Type';
 
 import LoadingProgress from './LoadingProgress';
@@ -61,6 +62,14 @@ const HeaderBar = React.createClass({
             caption="Watch"
             title="Watch List Browser"
             onClick={this._handlerClickWatch}
+         />
+
+         <ToolBarButton
+            type="TypeA"
+            style={{ float: 'right', marginRight : '20px' }}
+            caption="About"
+            title="Description about Library Watch"
+            onClick={ComponentActions.showAbout}
          />
          <LimitRemainingLabel
               store={store}

@@ -1,7 +1,7 @@
 import Reflux from 'reflux';
 
 export const ComponentActionTypes = {
-  //SHOW_ABOUT : 'showAbout',
+  SHOW_ABOUT : 'showAbout',
 
   INIT_AND_SHOW_DIALOG : 'initAndShowDialog',
   SHOW_DIALOG : 'showDialog',
@@ -13,7 +13,7 @@ export const ComponentActionTypes = {
 }
 
 const ComponentActions = Reflux.createActions({
-  //[ComponentActionTypes.SHOW_ABOUT] : {},
+  [ComponentActionTypes.SHOW_ABOUT] : {},
 
   [ComponentActionTypes.INIT_AND_SHOW_DIALOG] : {},
   [ComponentActionTypes.SHOW_DIALOG] : {},

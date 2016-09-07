@@ -12,6 +12,10 @@ var _BrowserActions = require('../../flux/actions/BrowserActions');
 
 var _BrowserActions2 = _interopRequireDefault(_BrowserActions);
 
+var _ComponentActions = require('../../flux/actions/ComponentActions');
+
+var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
+
 var _Type = require('../../constants/Type');
 
 var _LoadingProgress = require('./LoadingProgress');
@@ -87,6 +91,13 @@ var HeaderBar = _react2.default.createClass({
         title: 'Watch List Browser',
         onClick: this._handlerClickWatch
       }),
+      _react2.default.createElement(_ToolBarButton2.default, {
+        type: 'TypeA',
+        style: { float: 'right', marginRight: '20px' },
+        caption: 'About',
+        title: 'Description about Library Watch',
+        onClick: _ComponentActions2.default.showAbout
+      }),
       _react2.default.createElement(_LimitRemainingLabel2.default, {
         store: store,
         style: { float: 'right', paddingTop: '5px' }
@@ -96,4 +107,4 @@ var HeaderBar = _react2.default.createClass({
 });
 
 exports.default = HeaderBar;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\header\HeaderBar.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\header\HeaderBar.js.map
