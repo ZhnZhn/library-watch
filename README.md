@@ -7,10 +7,11 @@ Information API providers : [GitHub](https://www.github.com/), [NPM](https://www
 **2.** **Choose an information menu item in a Browser.**   
 **3.** **Enter repository or package name in a draggable Dialog.**   
 **4.** **Click a button Load.**   
+
 The result will be shown in an Item component in a Container.  
 Also, you can add an item to Watch Browser and save to LocalStorage.  
 
-After clicking a button Show in a Dialog will be opened Container with Items or empty. 
+After clicking a button Show in a Dialog will be opened Container with Items or empty.  
 After closing a Container all Items remains.  
 In one-time max three Item Dialogs can be opened.  
 
