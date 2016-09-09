@@ -2,17 +2,19 @@
 const BASE = 'https://api.npmjs.org';
 const REQUEST_PACKAGE = 'Request Package';
 
+//https://api.npmjs.org/downloads/range/last-month
+
 const _fnFirstToUpperCase = (msg) => {
   return msg.charAt(0).toUpperCase() + msg.substring(1);
 }
 
 const _rRequestTypeToUrl = {
   NPM_RECENT_VERSION : (option) => {
-    return `https://registry.npmjs.org/-/package/${option.repo}/dist-tags`
+    return `https://registry.npmjs.org/-/package/${option.repo}/dist-tags`;
   },
 
-  NPM_RECENT_MONTH : (option) => {
-    return `${BASE}/downloads/point/last-month/${option.repo}`
+  NPM_DOWNLOADS_RECENT_MONTH : (option) => {
+    return `${BASE}/downloads/range/last-month/${option.repo}`;
   }
 }
 
@@ -26,11 +28,11 @@ const NpmApi = {
    },
 
    checkResponse(json={}, option){
-      const { error:msg='Empty error description.' } = json
-      if (msg){
+      const { error } = json
+      if (error){
         throw {
            errCaption : REQUEST_PACKAGE,
-           message : _fnFirstToUpperCase(msg)
+           message : _fnFirstToUpperCase(error)
          }
       }
       return true;

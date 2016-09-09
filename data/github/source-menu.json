@@ -13,7 +13,7 @@
     },{
       "caption" : "NPM",
       "items" : [
-        { "id" : "LW_NPM_RECENT_MONTH" }
+        { "id" : "LW_NPM_DOWNLOADS_RECENT_MONTH" }
       ]
     }
   ],
@@ -91,19 +91,7 @@
         "requestType" : "GH_ISSUES"
       }
     },
-
-    "LW_NPM_RECENT_MONTH" : {
-      "type" : "LW_NPM_RECENT_MONTH",
-      "menuTitle" : "Recent Month Stats",
-      "dialogCaption" : "Recent Month Stats",
-      "chartContainerCaption" : "NPM Recent Month Stats Downloads",
-      "dialogType" : "DialogType1",
-      "dialogProps" : {
-        "oneTitle" : "Package:",
-        "onePlaceholder" : "package",
-        "requestType" : "NPM_RECENT_MONTH"
-      }
-    },
+    
     "LW_NPM_RECENT_VERSION" : {
       "type" : "LW_NPM_RECENT_VERSION",
       "menuTitle" : "Recent Version",
@@ -114,7 +102,18 @@
         "oneTitle" : "Package:",
         "requestType" : "NPM_RECENT_VERSION"
       }
-    }
-  }
+    },
+    "LW_NPM_DOWNLOADS_RECENT_MONTH" : {
+      "type" : "LW_NPM_DOWNLOADS_RECENT_MONTH",
+      "menuTitle" : "Downloads Recent Month",
+      "dialogCaption" : "Downloads Recent Month",
+      "chartContainerCaption" : "NPM Downloads Recent Month",
+      "dialogType" : "DialogType1",
+      "dialogProps" : {
+        "oneTitle" : "Package:",
+        "requestType" : "NPM_DOWNLOADS_RECENT_MONTH"
+      }
+   }
 
+ }
 }

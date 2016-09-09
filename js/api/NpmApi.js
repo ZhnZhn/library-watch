@@ -7,6 +7,8 @@ Object.defineProperty(exports, "__esModule", {
 var BASE = 'https://api.npmjs.org';
 var REQUEST_PACKAGE = 'Request Package';
 
+//https://api.npmjs.org/downloads/range/last-month
+
 var _fnFirstToUpperCase = function _fnFirstToUpperCase(msg) {
   return msg.charAt(0).toUpperCase() + msg.substring(1);
 };
@@ -16,8 +18,8 @@ var _rRequestTypeToUrl = {
     return 'https://registry.npmjs.org/-/package/' + option.repo + '/dist-tags';
   },
 
-  NPM_RECENT_MONTH: function NPM_RECENT_MONTH(option) {
-    return BASE + '/downloads/point/last-month/' + option.repo;
+  NPM_DOWNLOADS_RECENT_MONTH: function NPM_DOWNLOADS_RECENT_MONTH(option) {
+    return BASE + '/downloads/range/last-month/' + option.repo;
   }
 };
 
@@ -32,13 +34,12 @@ var NpmApi = {
   checkResponse: function checkResponse() {
     var json = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
     var option = arguments[1];
-    var _json$error = json.error;
-    var msg = _json$error === undefined ? 'Empty error description.' : _json$error;
+    var error = json.error;
 
-    if (msg) {
+    if (error) {
       throw {
         errCaption: REQUEST_PACKAGE,
-        message: _fnFirstToUpperCase(msg)
+        message: _fnFirstToUpperCase(error)
       };
     }
     return true;
@@ -46,4 +47,4 @@ var NpmApi = {
 };
 
 exports.default = NpmApi;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\api\NpmApi.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\api\NpmApi.js.map

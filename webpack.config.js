@@ -7,7 +7,8 @@ module.exports = {
      app: "./js/index.js",
      lib: [ 
             "react", "react-dom", "reflux",
-            "interact.js", "localforage"
+            "interact.js", "localforage",
+            "chart.js" 
           ]
   },
   output: {
@@ -16,7 +17,7 @@ module.exports = {
       chunkFilename: "[chunkhash].js"
   },
   resolve: {
-    modulesDirectories: ['node_modules', 'local_modules']
+    modulesDirectories: ['local_modules', 'node_modules']
   },
   plugins : [
     new webpack.DefinePlugin({

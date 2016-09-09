@@ -28,9 +28,9 @@ var _fGitHubIssues = require('./fGitHubIssues');
 
 var _fGitHubIssues2 = _interopRequireDefault(_fGitHubIssues);
 
-var _fNpmRecentMonthDownload = require('./fNpmRecentMonthDownload');
+var _fNpmRecentDownloads = require('./fNpmRecentDownloads');
 
-var _fNpmRecentMonthDownload2 = _interopRequireDefault(_fNpmRecentMonthDownload);
+var _fNpmRecentDownloads2 = _interopRequireDefault(_fNpmRecentDownloads);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43,8 +43,8 @@ var RouterItem = {
   GH_ISSUES: _fGitHubIssues2.default,
   GH_PULL_REQUESTS: _fGitHubIssues2.default,
 
-  NPM_RECENT_MONTH: _fNpmRecentMonthDownload2.default
+  NPM_DOWNLOADS_RECENT_MONTH: _fNpmRecentDownloads2.default
 };
 
 exports.default = RouterItem;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\factories\RouterItem.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\factories\RouterItem.js.map

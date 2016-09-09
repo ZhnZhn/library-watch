@@ -6,7 +6,7 @@ import fGitHubSearchInfo from './fGitHubSearchInfo';
 import fGitHubCommits from './fGitHubCommits';
 import fGitHubIssues from './fGitHubIssues';
 
-import fNpmRecentMonthDownload from './fNpmRecentMonthDownload';
+import fNpmRecentDownloads from './fNpmRecentDownloads';
 
 const RouterItem = {
   DEFAULT : fItemTest,
@@ -16,8 +16,8 @@ const RouterItem = {
   GH_COMMITS : fGitHubCommits,
   GH_ISSUES : fGitHubIssues,
   GH_PULL_REQUESTS : fGitHubIssues,
-
-  NPM_RECENT_MONTH : fNpmRecentMonthDownload
+  
+  NPM_DOWNLOADS_RECENT_MONTH : fNpmRecentDownloads
 };
 
 export default RouterItem

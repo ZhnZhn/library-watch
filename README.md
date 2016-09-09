@@ -19,4 +19,4 @@ In that case of using [GitHub](https://developer.github.com/v3/#rate-limiting) A
 amount queries (60 calls per hour, 10 requests per minute for Search API).
 
 ## License
-This project is licensed under MIT.
+Library-Watch is available under [MIT license](https://opensource.org/licenses/MIT).
