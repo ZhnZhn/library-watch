@@ -40,6 +40,7 @@ var fNpmRecentDownloads = function fNpmRecentDownloads(_ref) {
     var json = _ref.json;
     var parentProps = _ref.parentProps;
     var onCloseItem = _ref.onCloseItem;
+    var onWatchItem = _ref.onWatchItem;
     var repo = option.repo;
     var requestType = option.requestType;
     var chartType = option.chartType;
@@ -58,13 +59,15 @@ var fNpmRecentDownloads = function fNpmRecentDownloads(_ref) {
     return factory.createElement(_NpmRecentMonthDownloads2.default, _extends({
         key: key,
         packageName: json.package,
+        requestType: requestType,
         caption: json.package,
         sumDownloads: sumDownloads,
         fromDate: fromDate,
         toDate: toDate,
         labels: labels,
         data: data,
-        onCloseItem: onCloseItem.bind(null, chartType, browserType, key)
+        onCloseItem: onCloseItem.bind(null, chartType, browserType, key),
+        onWatchItem: onWatchItem
     }, parentProps));
 };
 

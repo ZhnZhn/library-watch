@@ -73,6 +73,7 @@ var WatchItem = function WatchItem(props) {
   var onClick = props.onClick;
   var onClose = props.onClose;
   var onDragStart = props.onDragStart;
+  var onDragEnter = props.onDragEnter;
   var onDragOver = props.onDragOver;
   var onDrop = props.onDrop;
   var repo = item.repo;
@@ -96,6 +97,7 @@ var WatchItem = function WatchItem(props) {
       draggable: isModeEdit,
       onDragStart: isModeEdit && onDragStart.bind(null, option),
       onDrop: isModeEdit && onDrop.bind(null, option),
+      onDragEnter: isModeEdit && onDragEnter,
       onDragOver: isModeEdit && onDragOver
     },
     _react2.default.createElement(
@@ -113,4 +115,4 @@ var WatchItem = function WatchItem(props) {
 };
 
 exports.default = WatchItem;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\browser-watch\WatchItem.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\WatchItem.js.map

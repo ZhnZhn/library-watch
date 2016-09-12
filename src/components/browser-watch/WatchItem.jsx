@@ -50,7 +50,8 @@ const VersionDateRow = (props) => {
 const WatchItem = (props) => {
   const {
            item, className, isModeEdit, option,
-           onClick, onClose, onDragStart, onDragOver, onDrop
+           onClick, onClose,
+           onDragStart, onDragEnter, onDragOver, onDrop
          } = props
 
   const { repo, version, date } = item
@@ -79,6 +80,7 @@ const WatchItem = (props) => {
        draggable={isModeEdit}
        onDragStart={isModeEdit && onDragStart.bind(null, option)}
        onDrop={isModeEdit && onDrop.bind(null, option)}
+       onDragEnter={isModeEdit && onDragEnter}
        onDragOver={isModeEdit && onDragOver}
      >
        <div>

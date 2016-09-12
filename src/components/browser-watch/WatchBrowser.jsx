@@ -12,6 +12,9 @@ import ScrollPane from '../zhnAtoms/ScrollPane';
 import OpenClose2 from '../zhnAtoms/OpenClose2';
 import WatchItem from './WatchItem';
 
+const DRAG = {
+  ITEM : 'ItemType'
+}
 
 const styles = {
   browser : {
@@ -126,17 +129,28 @@ const WatchBrowser = React.createClass({
   },
 
   _handlerDragStart({groupCaption, listCaption, caption}, ev){
-    ev.dataTransfer.setData("text", `${groupCaption};${listCaption};${caption}`);
+    ev.dataTransfer.effectAllowed="move";
+    ev.dataTransfer.dropEffect="move";
+    //.setDragImage(img, 0, 0);
+    const _data = {
+      dragId : `${groupCaption};${listCaption};${caption}`,
+      xType : DRAG.ITEM
+    };
+    ev.dataTransfer.setData("text", JSON.stringify(_data));
+
   },
-  _handlerDrop({groupCaption, listCaption, caption}, ev){
-    ev.preventDefault();
-    WatchActions.dragDrop({
-       dragId : ev.dataTransfer.getData("text"),
-       dropId : `${groupCaption};${listCaption};${caption}`
-     });
+  _handlerDrop({ groupCaption, listCaption, caption }, ev){
+     const _data = JSON.parse(ev.dataTransfer.getData("text"));
+     if (_data.xType === DRAG.ITEM) {
+       ev.preventDefault();
+       WatchActions.dragDrop({
+         dragId : _data.dragId,
+         dropId : `${groupCaption};${listCaption};${caption}`
+      });
+    }
   },
   _handlerDragOver(ev){
-    ev.preventDefault();
+     ev.preventDefault();
   },
 
   _renderItems(items, groupCaption, listCaption) {
@@ -157,6 +171,7 @@ const WatchBrowser = React.createClass({
               onClose={this._handlerRemoveItem}
               onDragStart={this._handlerDragStart}
               onDragOver={this._handlerDragOver}
+              onDragEnter={this._handlerDragOver}
               onDrop={this._handlerDrop}
            />
         );

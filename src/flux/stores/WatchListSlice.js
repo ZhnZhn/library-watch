@@ -280,7 +280,7 @@ const WatchListSlice = {
        this.onShowModalDialog(ModalDialog.INFO, {
           caption : DIALOG_CAPTION,
           descr : Msg.WATCH_PREV
-       })       
+       })
     }
   },
 

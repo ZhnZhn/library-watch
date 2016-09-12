@@ -82,13 +82,13 @@ var HeaderBar = _react2.default.createClass({
       _react2.default.createElement(_ToolBarButton2.default, {
         type: 'TypeA',
         caption: 'GitHub',
-        title: 'GitHub Watch Browser',
+        title: 'GitHub Browser',
         onClick: this._handlerClickDynamic.bind(null, BrowserConfig.GITHUB)
       }),
       _react2.default.createElement(_ToolBarButton2.default, {
         type: 'TypeA',
         caption: 'Watch',
-        title: 'Watch List Browser',
+        title: 'Watch Browser',
         onClick: this._handlerClickWatch
       }),
       _react2.default.createElement(_ToolBarButton2.default, {

@@ -8,7 +8,8 @@ module.exports = {
      lib: [ 
             "react", "react-dom", "reflux",
             "interact.js", "localforage",
-            "chart.js" 
+            "chart.js",
+            "timeago.js"
           ]
   },
   output: {

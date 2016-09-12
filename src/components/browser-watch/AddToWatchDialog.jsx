@@ -49,11 +49,11 @@ const AddToWatchDialog = React.createClass({
   _onStore(actionType, data){
     if (actionType === actionCompleted && data.forActionType === forActionType){
        if (this.state.validationMessages.length>0){
-         this.setState({validationMessages:[]});
+         this.setState({ validationMessages:[] });
        }
        this.props.onClose();
     } else if (actionType === actionFailed && data.forActionType === forActionType){
-       this.setState({validationMessages:data.messages});
+       this.setState({ validationMessages:data.messages });
     }
   },
 
@@ -187,7 +187,7 @@ const AddToWatchDialog = React.createClass({
           </span>
         </div>
         <ValidationMessagesFragment
-           key="4"
+           key="5"
            validationMessages={validationMessages}
          />
       </ModalDialog>

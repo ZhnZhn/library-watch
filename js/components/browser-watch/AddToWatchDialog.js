@@ -245,7 +245,7 @@ var AddToWatchDialog = _react2.default.createClass(_extends({}, _WithValidation2
         )
       ),
       _react2.default.createElement(_ValidationMessagesFragment2.default, {
-        key: '4',
+        key: '5',
         validationMessages: validationMessages
       })
     );
@@ -253,4 +253,4 @@ var AddToWatchDialog = _react2.default.createClass(_extends({}, _WithValidation2
 }));
 
 exports.default = AddToWatchDialog;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\browser-watch\AddToWatchDialog.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\AddToWatchDialog.js.map

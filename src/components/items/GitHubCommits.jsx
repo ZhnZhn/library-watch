@@ -1,8 +1,10 @@
 import React from 'react';
+import timeago from 'timeago.js';
 
 import ButtonCircle from '../zhnAtoms/ButtonCircle';
 import SvgClose from '../zhnAtoms/SvgClose';
 import ShowHide from '../zhnAtoms/ShowHide';
+import DateAgo from '../zhnAtoms/DateAgo';
 
 const ITEM_DESCRIPTION = "GitHub Repository Commits"
 
@@ -71,28 +73,32 @@ const GitHubCommits = React.createClass({
   },
 
   _renderCommits(commits){
+     const _timeago = timeago(Date.now());
      return commits.map((item, index) => {
         const { commit={}, html_url } = item
             , { message='', committer={} } = commit
             , { date='', name='' } = committer
+            , _dateTime = date.replace('T', ' ').replace('Z', '')
+            , _dateAgo = _timeago.format(_dateTime)
             , className = (index % 2)
                      ? 'row-even not-selected'
                      : 'row-odd not-selected'
         return (
            <div key={index} className={className}>
-             <a href={html_url}>
-                <div style={{ paddingBottom: '8px' }}>
-                  <span style={{ paddingRight: '8px' }}>
-                    {name}
-                  </span>
-                  <span>
-                    {date.replace('T', ' ').replace('Z', '')}
-                  </span>
-                </div>
+              <a href={html_url}>
+              <div style={{ paddingBottom: '8px' }}>
+                <span style={{ paddingRight: '8px' }}>
+                  {name}
+                </span>
+                <DateAgo
+                   dateAgo={_dateAgo}
+                   date={_dateTime}
+                />
+              </div>              
                 <div>
                   {message}
                 </div>
-             </a>
+              </a>
            </div>
         );
      })

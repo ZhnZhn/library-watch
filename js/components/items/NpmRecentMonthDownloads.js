@@ -8,6 +8,14 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Chart = require('../charts/Chart');
+
+var _Chart2 = _interopRequireDefault(_Chart);
+
+var _ButtonCircle = require('../zhnAtoms/ButtonCircle');
+
+var _ButtonCircle2 = _interopRequireDefault(_ButtonCircle);
+
 var _SvgClose = require('../zhnAtoms/SvgClose');
 
 var _SvgClose2 = _interopRequireDefault(_SvgClose);
@@ -21,6 +29,8 @@ var _LineChart = require('../charts/LineChart');
 var _LineChart2 = _interopRequireDefault(_LineChart);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ITEM_DESCRIPTION = "Npm Recent Month Downloads";
 
 var styles = {
   rootDiv: {
@@ -61,35 +71,10 @@ var styles = {
   },
   SPAN_START: {
     paddingRight: '10px'
+  },
+  BTN_CIRCLE: {
+    marginLeft: '10px'
   }
-};
-
-var chartConfig = {
-  labels: ['1', '2'],
-  datasets: [{
-    label: 'Downloads',
-    fill: false,
-    lineTension: 0.1,
-    backgroundColor: 'rgba(128, 192, 64, 0.4)',
-    //rgba(128, 192, 64, 1)
-    //rgba(75,192,192,1)
-    borderColor: 'rgba(128, 192, 64, 1)',
-    borderCapStyle: 'butt',
-    borderDash: [],
-    borderDashOffset: 0.0,
-    borderJoinStyle: 'miter',
-    pointBorderColor: 'rgba(128, 192, 64, 1)',
-    //pointBackgroundColor: '#fff',
-    pointBackgroundColor: 'rgba(128, 192, 64, 1)',
-    pointBorderWidth: 1,
-    pointHoverRadius: 5,
-    pointHoverBackgroundColor: 'rgba(128, 192, 64, 1)',
-    pointHoverBorderColor: 'rgba(220,220,220,1)',
-    pointHoverBorderWidth: 2,
-    pointRadius: 5,
-    pointHitRadius: 10,
-    data: [0, 0]
-  }]
 };
 
 var NpmRecentDownloads = _react2.default.createClass({
@@ -102,23 +87,40 @@ var NpmRecentDownloads = _react2.default.createClass({
   _handlerToggleOpen: function _handlerToggleOpen() {
     this.setState({ isShow: !this.state.isShow });
   },
-  render: function render() {
+  _handlerClickWatch: function _handlerClickWatch() {
     var _props = this.props;
     var packageName = _props.packageName;
-    var caption = _props.caption;
+    var requestType = _props.requestType;
     var sumDownloads = _props.sumDownloads;
-    var fromDate = _props.fromDate;
     var toDate = _props.toDate;
-    var labels = _props.labels;
-    var data = _props.data;
-    var onCloseItem = _props.onCloseItem;
+    var onWatchItem = _props.onWatchItem;
+    var _caption = packageName + ' ' + sumDownloads;
+    var _descr = ITEM_DESCRIPTION;
+    onWatchItem({
+      caption: _caption,
+      config: {
+        requestType: requestType,
+        repo: packageName,
+        descr: _descr,
+        version: sumDownloads,
+        caption: _caption,
+        date: toDate
+      }
+    });
+  },
+  render: function render() {
+    var _props2 = this.props;
+    var packageName = _props2.packageName;
+    var caption = _props2.caption;
+    var sumDownloads = _props2.sumDownloads;
+    var fromDate = _props2.fromDate;
+    var toDate = _props2.toDate;
+    var labels = _props2.labels;
+    var data = _props2.data;
+    var onCloseItem = _props2.onCloseItem;
     var _styleCaption = styles.captionSpanOpen;
     var isShow = this.state.isShow;
-
-
-    chartConfig.labels = labels;
-    chartConfig.datasets[0].data = data;
-
+    var _lineChartConfig = _Chart2.default.fLineConfig({ labels: labels, data: data });
     return _react2.default.createElement(
       'div',
       { style: styles.rootDiv },
@@ -154,13 +156,19 @@ var NpmRecentDownloads = _react2.default.createClass({
             toDate
           )
         ),
+        _react2.default.createElement(_ButtonCircle2.default, {
+          caption: 'W',
+          title: 'Add to Watch',
+          style: styles.BTN_CIRCLE,
+          onClick: this._handlerClickWatch
+        }),
         _react2.default.createElement(_SvgClose2.default, { onClose: onCloseItem })
       ),
       _react2.default.createElement(
         _ShowHide2.default,
         { isShow: isShow },
         _react2.default.createElement(_LineChart2.default, {
-          data: chartConfig
+          data: _lineChartConfig
         })
       )
     );

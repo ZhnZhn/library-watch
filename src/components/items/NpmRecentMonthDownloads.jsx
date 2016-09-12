@@ -1,9 +1,13 @@
 import React from 'react'
 
+import Chart from '../charts/Chart';
+
+import ButtonCircle from '../zhnAtoms/ButtonCircle';
 import SvgClose from '../zhnAtoms/SvgClose';
 import ShowHide from '../zhnAtoms/ShowHide';
 import LineChart from '../charts/LineChart';
 
+const ITEM_DESCRIPTION = "Npm Recent Month Downloads";
 
 const styles = {
   rootDiv : {
@@ -44,38 +48,11 @@ const styles = {
   },
   SPAN_START : {
     paddingRight : '10px'
+  },
+  BTN_CIRCLE : {
+    marginLeft: '10px'
   }
 }
-
-const chartConfig = {
-  labels: ['1', '2'],
-  datasets: [
-    {
-      label: 'Downloads',
-      fill: false,
-      lineTension: 0.1,
-      backgroundColor: 'rgba(128, 192, 64, 0.4)',
-      //rgba(128, 192, 64, 1)
-      //rgba(75,192,192,1)
-      borderColor: 'rgba(128, 192, 64, 1)',
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: 'rgba(128, 192, 64, 1)',
-      //pointBackgroundColor: '#fff',
-      pointBackgroundColor : 'rgba(128, 192, 64, 1)',
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: 'rgba(128, 192, 64, 1)',
-      pointHoverBorderColor: 'rgba(220,220,220,1)',
-      pointHoverBorderWidth: 2,
-      pointRadius: 5,
-      pointHitRadius: 10,
-      data: [0, 0]
-    }
-  ]
-};
 
 
 const NpmRecentDownloads = React.createClass({
@@ -88,6 +65,22 @@ const NpmRecentDownloads = React.createClass({
   _handlerToggleOpen(){
     this.setState({ isShow : !this.state.isShow });
   },
+  _handlerClickWatch(){
+    const { packageName, requestType, sumDownloads, toDate, onWatchItem } = this.props
+        , _caption = `${packageName} ${sumDownloads}`
+        , _descr = ITEM_DESCRIPTION
+    onWatchItem({
+       caption : _caption,
+       config : {
+          requestType,
+          repo : packageName,
+          descr: _descr,
+          version : sumDownloads,
+          caption : _caption,
+          date : toDate
+        }
+    });
+  },
 
   render(){
     const {
@@ -97,10 +90,7 @@ const NpmRecentDownloads = React.createClass({
           } = this.props
         , _styleCaption = styles.captionSpanOpen
         , { isShow } = this.state
-
-    chartConfig.labels = labels;
-    chartConfig.datasets[0].data = data;
-
+        , _lineChartConfig = Chart.fLineConfig({ labels, data })    
     return (
       <div style={styles.rootDiv}>
         <div style={styles.headerDiv}>
@@ -123,11 +113,17 @@ const NpmRecentDownloads = React.createClass({
               {toDate}
             </span>
           </span>
+          <ButtonCircle
+             caption="W"
+             title="Add to Watch"
+             style={styles.BTN_CIRCLE}
+             onClick={this._handlerClickWatch}
+          />
           <SvgClose onClose={onCloseItem} />
         </div>
         <ShowHide isShow={isShow}>
           <LineChart
-             data={chartConfig}
+             data={_lineChartConfig}
           />
         </ShowHide>
       </div>

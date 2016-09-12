@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _timeago2 = require('timeago.js');
+
+var _timeago3 = _interopRequireDefault(_timeago2);
+
 var _ButtonCircle = require('../zhnAtoms/ButtonCircle');
 
 var _ButtonCircle2 = _interopRequireDefault(_ButtonCircle);
@@ -19,6 +23,10 @@ var _SvgClose2 = _interopRequireDefault(_SvgClose);
 var _ShowHide = require('../zhnAtoms/ShowHide');
 
 var _ShowHide2 = _interopRequireDefault(_ShowHide);
+
+var _DateAgo = require('../zhnAtoms/DateAgo');
+
+var _DateAgo2 = _interopRequireDefault(_DateAgo);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -89,6 +97,7 @@ var GitHubCommits = _react2.default.createClass({
     });
   },
   _renderCommits: function _renderCommits(commits) {
+    var _timeago = (0, _timeago3.default)(Date.now());
     return commits.map(function (item, index) {
       var _item$commit = item.commit;
       var commit = _item$commit === undefined ? {} : _item$commit;
@@ -101,6 +110,8 @@ var GitHubCommits = _react2.default.createClass({
       var date = _committer$date === undefined ? '' : _committer$date;
       var _committer$name = committer.name;
       var name = _committer$name === undefined ? '' : _committer$name;
+      var _dateTime = date.replace('T', ' ').replace('Z', '');
+      var _dateAgo = _timeago.format(_dateTime);
       var className = index % 2 ? 'row-even not-selected' : 'row-odd not-selected';
       return _react2.default.createElement(
         'div',
@@ -116,11 +127,10 @@ var GitHubCommits = _react2.default.createClass({
               { style: { paddingRight: '8px' } },
               name
             ),
-            _react2.default.createElement(
-              'span',
-              null,
-              date.replace('T', ' ').replace('Z', '')
-            )
+            _react2.default.createElement(_DateAgo2.default, {
+              dateAgo: _dateAgo,
+              date: _dateTime
+            })
           ),
           _react2.default.createElement(
             'div',
@@ -179,4 +189,4 @@ var GitHubCommits = _react2.default.createClass({
 });
 
 exports.default = GitHubCommits;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\items\GitHubCommits.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\items\GitHubCommits.js.map

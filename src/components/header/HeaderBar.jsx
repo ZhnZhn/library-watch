@@ -54,13 +54,13 @@ const HeaderBar = React.createClass({
          <ToolBarButton
             type="TypeA"
             caption="GitHub"
-            title="GitHub Watch Browser"
+            title="GitHub Browser"
             onClick={this._handlerClickDynamic.bind(null, BrowserConfig.GITHUB)}
          />
          <ToolBarButton
             type="TypeA"
             caption="Watch"
-            title="Watch List Browser"
+            title="Watch Browser"
             onClick={this._handlerClickWatch}
          />
 

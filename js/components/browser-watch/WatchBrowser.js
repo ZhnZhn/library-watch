@@ -44,6 +44,10 @@ var _WatchItem2 = _interopRequireDefault(_WatchItem);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var DRAG = {
+  ITEM: 'ItemType'
+};
+
 var styles = {
   browser: {
     paddingRight: '0px'
@@ -169,18 +173,28 @@ var WatchBrowser = _react2.default.createClass({
     var listCaption = _ref.listCaption;
     var caption = _ref.caption;
 
-    ev.dataTransfer.setData("text", groupCaption + ';' + listCaption + ';' + caption);
+    ev.dataTransfer.effectAllowed = "move";
+    ev.dataTransfer.dropEffect = "move";
+    //.setDragImage(img, 0, 0);
+    var _data = {
+      dragId: groupCaption + ';' + listCaption + ';' + caption,
+      xType: DRAG.ITEM
+    };
+    ev.dataTransfer.setData("text", JSON.stringify(_data));
   },
   _handlerDrop: function _handlerDrop(_ref2, ev) {
     var groupCaption = _ref2.groupCaption;
     var listCaption = _ref2.listCaption;
     var caption = _ref2.caption;
 
-    ev.preventDefault();
-    _WatchActions2.default.dragDrop({
-      dragId: ev.dataTransfer.getData("text"),
-      dropId: groupCaption + ';' + listCaption + ';' + caption
-    });
+    var _data = JSON.parse(ev.dataTransfer.getData("text"));
+    if (_data.xType === DRAG.ITEM) {
+      ev.preventDefault();
+      _WatchActions2.default.dragDrop({
+        dragId: _data.dragId,
+        dropId: groupCaption + ';' + listCaption + ';' + caption
+      });
+    }
   },
   _handlerDragOver: function _handlerDragOver(ev) {
     ev.preventDefault();
@@ -203,6 +217,7 @@ var WatchBrowser = _react2.default.createClass({
         onClose: _this3._handlerRemoveItem,
         onDragStart: _this3._handlerDragStart,
         onDragOver: _this3._handlerDragOver,
+        onDragEnter: _this3._handlerDragOver,
         onDrop: _this3._handlerDrop
       });
     });
@@ -273,4 +288,4 @@ var WatchBrowser = _react2.default.createClass({
 });
 
 exports.default = WatchBrowser;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\browser-watch\WatchBrowser.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\WatchBrowser.js.map
