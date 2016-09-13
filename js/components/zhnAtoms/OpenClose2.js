@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -62,8 +64,22 @@ var OpenClose2 = _react2.default.createClass({
     var styleNotSelected = _props.styleNotSelected;
     var styleCaption = _props.styleCaption;
     var caption = _props.caption;
+    var isDraggable = _props.isDraggable;
+    var option = _props.option;
+    var onDragStart = _props.onDragStart;
+    var onDragEnter = _props.onDragEnter;
+    var onDragOver = _props.onDragOver;
+    var onDragLeave = _props.onDragLeave;
+    var onDrop = _props.onDrop;
     var children = _props.children;
-
+    var _dragOption = isDraggable ? {
+      draggable: true,
+      onDragStart: onDragStart.bind(null, option),
+      onDrop: onDrop.bind(null, option),
+      onDragEnter: onDragEnter,
+      onDragOver: onDragOver,
+      onDragLeave: onDragLeave
+    } : undefined;
 
     var _pathV = void 0,
         _fillV = void 0,
@@ -89,11 +105,11 @@ var OpenClose2 = _react2.default.createClass({
       { style: Object.assign({}, styles.rootDiv, style) },
       _react2.default.createElement(
         'div',
-        {
+        _extends({
           className: 'not-selected',
           style: _styleNotSelected,
           onClick: this._handlerClickOpenClose
-        },
+        }, _dragOption),
         _react2.default.createElement(
           'div',
           { style: styles.divSvg },
@@ -130,4 +146,4 @@ var OpenClose2 = _react2.default.createClass({
 });
 
 exports.default = OpenClose2;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\zhnAtoms\OpenClose2.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\OpenClose2.js.map

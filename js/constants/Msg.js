@@ -53,9 +53,13 @@ var Msg = {
       caption: 'Double Load Meta Error',
       descr: 'Meta data for this code already have been loaded.'
     },
-    DRAG_DROP: {
-      caption: 'Drag Drop',
+    DRAG_DROP_ITEM: {
+      caption: 'Drag Drop Item',
       descr: 'Item in List already has been existed.'
+    },
+    DRAG_DROP_LIST: {
+      caption: 'Drag Drop List',
+      descr: 'List in Group already has been existed.'
     },
     RUNTIME_ERROR: {
       caption: 'Runtime Error'
@@ -72,4 +76,4 @@ var Msg = {
 };
 
 exports.default = Msg;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\constants\Msg.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\constants\Msg.js.map

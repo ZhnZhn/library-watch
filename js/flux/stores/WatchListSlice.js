@@ -4,9 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _localforage = require('localforage');
 
 var _localforage2 = _interopRequireDefault(_localforage);
+
+var _Im = require('../../utils/Im');
+
+var _Im2 = _interopRequireDefault(_Im);
 
 var _BrowserActions = require('../actions/BrowserActions');
 
@@ -42,11 +48,15 @@ var _fResultItemExisted = function _fResultItemExisted(caption, captionList) {
   return { isDone: false, message: _Msg2.default.ITEM_EXISTED(caption, captionList) };
 };
 
-var _fnFilter = function _fnFilter(arr, caption) {
-  return arr.filter(function (obj, index) {
-    return obj.caption !== caption;
+var _fnFilter = _Im2.default.filterArray.bind(null, 'caption');
+
+/*
+const _fnFilter = function(arr, caption){
+  return arr.filter((obj, index) =>{
+    return obj.caption !== caption
   });
-};
+}
+*/
 
 var _fnFindIndex = function _fnFindIndex(arr, caption) {
   return arr.findIndex(function (item, index) {
@@ -209,7 +219,7 @@ var _fnDeleteList = function _fnDeleteList(watchList, _ref7) {
   return { isDone: true };
 };
 
-var _fnDragDrop = function _fnDragDrop(watchList, _ref8) {
+var _fnDragDropItem = function _fnDragDropItem(watchList, _ref8) {
   var dragId = _ref8.dragId;
   var dropId = _ref8.dropId;
 
@@ -222,24 +232,56 @@ var _fnDragDrop = function _fnDragDrop(watchList, _ref8) {
   var dropArr = dropId.split(';'),
       dropGroup = _fnFindGroup(watchList, dropArr[0]),
       dropList = _fnFindList(dropGroup, dropArr[1]),
-      dropIndex = _fnFindIndex(dropList.items, dropArr[2]);
+      dropIndex = dropArr[2] ? _fnFindIndex(dropList.items, dropArr[2]) : 0;
 
-  if (dragList !== dropList && _fnCheckIsInArraySameCaption(dropList.items, dragArr[3])) {
+  if (dragList.caption !== dropList.caption && _fnCheckIsInArraySameCaption(dropList.items, dragArr[3])) {
     return {
       isDone: false,
       alertItemId: dropArr[1] + ':' + dragArr[2],
-      alertCaption: _Msg2.default.Alert.DRAG_DROP.caption,
-      alertDescr: _Msg2.default.Alert.DRAG_DROP.descr
+      alertCaption: _Msg2.default.Alert.DRAG_DROP_ITEM.caption,
+      alertDescr: _Msg2.default.Alert.DRAG_DROP_ITEM.descr
     };
   }
 
   dragList.items = _fnFilter(dragList.items, dragArr[2]);
+  dropList.items = _Im2.default.insertItemInArray(dragItem, dropIndex, dropList.items);
 
-  if (dropIndex !== 0) {
-    dropList.items = [].concat(_toConsumableArray(dropList.items.slice(0, dropIndex)), [Object.assign({}, dragItem)], _toConsumableArray(dropList.items.slice(dropIndex)));
-  } else {
-    dropList.items = [Object.assign({}, dragItem)].concat(_toConsumableArray(dropList.items));
+  return { isDone: true };
+};
+
+var _fnDragDropList = function _fnDragDropList(watchList, _ref9) {
+  var dragId = _ref9.dragId;
+  var dropId = _ref9.dropId;
+
+  var _dragId$split = dragId.split(';');
+
+  var _dragId$split2 = _slicedToArray(_dragId$split, 2);
+
+  var dragGroupCaption = _dragId$split2[0];
+  var dragListCaption = _dragId$split2[1];
+  var dragGroup = _fnFindGroup(watchList, dragGroupCaption);
+  var dragList = _fnFindList(dragGroup, dragListCaption);
+
+  var _dropId$split = dropId.split(';');
+
+  var _dropId$split2 = _slicedToArray(_dropId$split, 2);
+
+  var dropGroupCaption = _dropId$split2[0];
+  var dropListCaption = _dropId$split2[1];
+  var dropGroup = _fnFindGroup(watchList, dropGroupCaption);
+  var dropIndex = _fnFindIndex(dropGroup.lists, dropListCaption);
+
+  if (dragGroup.caption !== dropGroup.caption && _fnCheckIsInArraySameCaption(dropGroup.lists, dragListCaption)) {
+    return {
+      isDone: false,
+      alertItemId: dropGroupCaption + ':' + dragListCaption,
+      alertCaption: _Msg2.default.Alert.DRAG_DROP_LIST.caption,
+      alertDescr: _Msg2.default.Alert.DRAG_DROP_LIST.descr
+    };
   }
+
+  dragGroup.lists = _fnFilter(dragGroup.lists, dragListCaption);
+  dropGroup.lists = _Im2.default.insertItemInArray(dragList, dropIndex, dropGroup.lists);
 
   return { isDone: true };
 };
@@ -280,8 +322,17 @@ var WatchListSlice = {
     this.isWatchEdited = true;
     this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
   },
-  onDragDrop: function onDragDrop(option) {
-    var result = _fnDragDrop(this.watchList, option);
+  onDragDropItem: function onDragDropItem(option) {
+    var result = _fnDragDropItem(this.watchList, option);
+    if (result.isDone) {
+      this.isWatchEdited = true;
+      this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
+    } else {
+      this.showAlertDialog(result);
+    }
+  },
+  onDragDropList: function onDragDropList(option) {
+    var result = _fnDragDropList(this.watchList, option);
     if (result.isDone) {
       this.isWatchEdited = true;
       this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);

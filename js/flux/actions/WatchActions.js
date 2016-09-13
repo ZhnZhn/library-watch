@@ -20,7 +20,8 @@ var WatchActionTypes = exports.WatchActionTypes = {
   REMOVE_ITEM: 'removeItem',
   SAVE_WATCH: 'saveWatch',
 
-  DRAG_DROP: 'dragDrop',
+  DRAG_DROP_ITEM: 'dragDropItem',
+  DRAG_DROP_LIST: 'dragDropList',
 
   ADD_GROUP: 'addGroup',
   RENAME_GROUP: 'renameGroup',
@@ -32,7 +33,7 @@ var WatchActionTypes = exports.WatchActionTypes = {
   EDIT_WATCH_FAILED: 'editWatchFailed'
 };
 
-var WatchActions = _reflux2.default.createActions((_Reflux$createActions = {}, _defineProperty(_Reflux$createActions, WatchActionTypes.ADD_ITEM, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.REMOVE_ITEM, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.SAVE_WATCH, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.DRAG_DROP, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.ADD_GROUP, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.RENAME_GROUP, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.DELETE_GROUP, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.CREATE_LIST, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.RENAME_LIST, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.DELETE_LIST, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.EDIT_WATCH_COMPLETED, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.EDIT_WATCH_FAILED, {}), _Reflux$createActions));
+var WatchActions = _reflux2.default.createActions((_Reflux$createActions = {}, _defineProperty(_Reflux$createActions, WatchActionTypes.ADD_ITEM, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.REMOVE_ITEM, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.SAVE_WATCH, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.DRAG_DROP_ITEM, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.DRAG_DROP_LIST, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.ADD_GROUP, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.RENAME_GROUP, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.DELETE_GROUP, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.CREATE_LIST, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.RENAME_LIST, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.DELETE_LIST, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.EDIT_WATCH_COMPLETED, {}), _defineProperty(_Reflux$createActions, WatchActionTypes.EDIT_WATCH_FAILED, {}), _Reflux$createActions));
 
 exports.default = WatchActions;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\flux\actions\WatchActions.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\actions\WatchActions.js.map

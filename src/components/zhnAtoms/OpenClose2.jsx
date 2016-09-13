@@ -52,8 +52,21 @@ const OpenClose2 = React.createClass({
 
   render(){
 
-    const {style, styleNotSelected, styleCaption, caption, children} = this.props;
-
+    const {
+            style, styleNotSelected, styleCaption, caption,
+            isDraggable, option, onDragStart, onDragEnter, onDragOver, onDragLeave, onDrop,
+            children
+          } = this.props
+          , _dragOption = (isDraggable)
+               ? {
+                     draggable : true,
+                     onDragStart : onDragStart.bind(null, option),
+                     onDrop : onDrop.bind(null, option),
+                     onDragEnter : onDragEnter,
+                     onDragOver : onDragOver,
+                     onDragLeave : onDragLeave
+                 }
+              : undefined ;
 
     let _pathV, _fillV, _displayDivStyle, _classShow, _styleNotSelected;
     if (this.state.isOpen){
@@ -78,6 +91,7 @@ const OpenClose2 = React.createClass({
            className="not-selected"
            style={_styleNotSelected}
            onClick={this._handlerClickOpenClose}
+           {..._dragOption}
          >
           <div style={styles.divSvg}>
              <svg
@@ -99,7 +113,7 @@ const OpenClose2 = React.createClass({
        </div>
       <div
          className={_classShow}
-         style={{display: _displayDivStyle}}         
+         style={{display: _displayDivStyle}}
        >
         {children}
       </div>

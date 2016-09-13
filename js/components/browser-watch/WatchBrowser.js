@@ -45,6 +45,7 @@ var _WatchItem2 = _interopRequireDefault(_WatchItem);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var DRAG = {
+  LIST: 'ItemList',
   ITEM: 'ItemType'
 };
 
@@ -83,8 +84,6 @@ var WatchBrowser = _react2.default.createClass({
       watchList: store.getWatchList()
     };
   },
-
-
   componentWillMount: function componentWillMount() {
     this.unsubscribe = this.props.store.listen(this._onStore);
   },
@@ -103,7 +102,6 @@ var WatchBrowser = _react2.default.createClass({
       this.setState({ watchList: data });
     }
   },
-
   _handlerHide: function _handlerHide() {
     this.setState({ isShow: false });
   },
@@ -143,23 +141,73 @@ var WatchBrowser = _react2.default.createClass({
   _renderLists: function _renderLists(lists, groupCaption) {
     var _this2 = this;
 
-    return lists.map(function (list, index) {
+    var isModeEdit = this.state.isModeEdit;
+
+    return lists.map(function (list) {
       var caption = list.caption;
       var items = list.items;
 
       return _react2.default.createElement(
         _OpenClose2.default,
         {
-          key: index,
+          key: caption,
           fillOpen: '#80c040',
           style: styles.groupDiv,
           styleNotSelected: styles.itemNotSelected,
           caption: caption,
-          isClose: true
+          isClose: true,
+          isDraggable: isModeEdit,
+          option: { groupCaption: groupCaption, caption: caption },
+          onDragStart: _this2._handlerDragStartList,
+          onDragEnter: _this2._handlerDragEnterList,
+          onDragOver: _this2._handlerDragOverList,
+          onDragLeave: _this2._handlerDragLeaveList,
+          onDrop: _this2._handlerDropList
         },
         items && _this2._renderItems(items, groupCaption, caption)
       );
     });
+  },
+  _handlerDragStartList: function _handlerDragStartList(_ref, ev) {
+    var groupCaption = _ref.groupCaption;
+    var caption = _ref.caption;
+
+    ev.dataTransfer.effectAllowed = "move";
+    ev.dataTransfer.dropEffect = "move";
+    var _data = {
+      dragId: groupCaption + ';' + caption,
+      xType: DRAG.LIST
+    };
+    ev.dataTransfer.setData("text", JSON.stringify(_data));
+  },
+  _handlerDropList: function _handlerDropList(_ref2, ev) {
+    var groupCaption = _ref2.groupCaption;
+    var caption = _ref2.caption;
+
+    var _data = JSON.parse(ev.dataTransfer.getData("text"));
+    if (_data.xType === DRAG.LIST) {
+      ev.preventDefault();
+      _WatchActions2.default.dragDropList({
+        dragId: _data.dragId,
+        dropId: groupCaption + ';' + caption
+      });
+    } else if (_data.xType === DRAG.ITEM) {
+      ev.preventDefault();
+      _WatchActions2.default.dragDropItem({
+        dragId: _data.dragId,
+        dropId: groupCaption + ';' + caption + ';'
+      });
+    }
+  },
+  _handlerDragEnterList: function _handlerDragEnterList(ev) {
+    //ev.target.style.borderTop="3px solid yellow";
+    ev.preventDefault();
+  },
+  _handlerDragOverList: function _handlerDragOverList(ev) {
+    ev.preventDefault();
+  },
+  _handlerDragLeaveList: function _handlerDragLeaveList(ev) {
+    //ev.target.style.borderTop="";
   },
   _handlerClickItem: function _handlerClickItem(item) {
     _ComponentActions2.default.showModalDialog(_Type.ModalDialog.LOAD_WATCH_ITEM, item);
@@ -168,10 +216,10 @@ var WatchBrowser = _react2.default.createClass({
     event.stopPropagation();
     _WatchActions2.default.removeItem(option);
   },
-  _handlerDragStart: function _handlerDragStart(_ref, ev) {
-    var groupCaption = _ref.groupCaption;
-    var listCaption = _ref.listCaption;
-    var caption = _ref.caption;
+  _handlerDragStart: function _handlerDragStart(_ref3, ev) {
+    var groupCaption = _ref3.groupCaption;
+    var listCaption = _ref3.listCaption;
+    var caption = _ref3.caption;
 
     ev.dataTransfer.effectAllowed = "move";
     ev.dataTransfer.dropEffect = "move";
@@ -182,15 +230,15 @@ var WatchBrowser = _react2.default.createClass({
     };
     ev.dataTransfer.setData("text", JSON.stringify(_data));
   },
-  _handlerDrop: function _handlerDrop(_ref2, ev) {
-    var groupCaption = _ref2.groupCaption;
-    var listCaption = _ref2.listCaption;
-    var caption = _ref2.caption;
+  _handlerDrop: function _handlerDrop(_ref4, ev) {
+    var groupCaption = _ref4.groupCaption;
+    var listCaption = _ref4.listCaption;
+    var caption = _ref4.caption;
 
     var _data = JSON.parse(ev.dataTransfer.getData("text"));
     if (_data.xType === DRAG.ITEM) {
       ev.preventDefault();
-      _WatchActions2.default.dragDrop({
+      _WatchActions2.default.dragDropItem({
         dragId: _data.dragId,
         dropId: groupCaption + ';' + listCaption + ';' + caption
       });

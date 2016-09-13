@@ -1,9 +1,9 @@
 )]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_Template_2\\src\\flux\\actions\\WatchActions.js",
- "file": "D:\\_Dev\\_React\\_Template_2\\js\\flux\\actions\\WatchActions.js",
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\flux\\actions\\WatchActions.js",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\flux\\actions\\WatchActions.js",
  "sourceRoot": "",
  "names": [],
- "mappings": ";;;;;;;;;AAAA;;;;;;;;AAEO,IAAM,8CAAmB;AAC9B,YAAW,SADmB;AAE9B,eAAc,YAFgB;AAG9B,cAAa,WAHiB;;AAK9B,aAAY,UALkB;;AAO9B,aAAY,UAPkB;AAQ9B,gBAAe,aARe;AAS9B,gBAAe,aATe;AAU9B,eAAc,YAVgB;AAW9B,eAAc,YAXgB;AAY9B,eAAc,YAZgB;AAa5B,wBAAuB,oBAbK;AAc5B,qBAAoB;AAdQ,CAAzB;;AAiBP,IAAM,eAAe,iBAAO,aAAP,qEAClB,iBAAiB,QADC,EACW,EADX,0CAElB,iBAAiB,WAFC,EAEc,EAFd,0CAGlB,iBAAiB,UAHC,EAGa,EAHb,0CAKlB,iBAAiB,SALC,EAKY,EALZ,0CAOlB,iBAAiB,SAPC,EAOY,EAPZ,0CAQlB,iBAAiB,YARC,EAQe,EARf,0CASlB,iBAAiB,YATC,EASe,EATf,0CAUlB,iBAAiB,WAVC,EAUc,EAVd,0CAWlB,iBAAiB,WAXC,EAWc,EAXd,0CAYlB,iBAAiB,WAZC,EAYc,EAZd,0CAad,iBAAiB,oBAbH,EAa2B,EAb3B,0CAcd,iBAAiB,iBAdH,EAcwB,EAdxB,0BAArB;;kBAkBe,Y"
+ "mappings": ";;;;;;;;;AAAA;;;;;;;;AAEO,IAAM,8CAAmB;AAC9B,YAAW,SADmB;AAE9B,eAAc,YAFgB;AAG9B,cAAa,WAHiB;;AAK9B,kBAAiB,cALa;AAM9B,kBAAiB,cANa;;AAQ9B,aAAY,UARkB;AAS9B,gBAAe,aATe;AAU9B,gBAAe,aAVe;AAW9B,eAAc,YAXgB;AAY9B,eAAc,YAZgB;AAa9B,eAAc,YAbgB;AAc5B,wBAAuB,oBAdK;AAe5B,qBAAoB;AAfQ,CAAzB;;AAkBP,IAAM,eAAe,iBAAO,aAAP,qEAClB,iBAAiB,QADC,EACW,EADX,0CAElB,iBAAiB,WAFC,EAEc,EAFd,0CAGlB,iBAAiB,UAHC,EAGa,EAHb,0CAKlB,iBAAiB,cALC,EAKiB,EALjB,0CAMlB,iBAAiB,cANC,EAMiB,EANjB,0CAQlB,iBAAiB,SARC,EAQY,EARZ,0CASlB,iBAAiB,YATC,EASe,EATf,0CAUlB,iBAAiB,YAVC,EAUe,EAVf,0CAWlB,iBAAiB,WAXC,EAWc,EAXd,0CAYlB,iBAAiB,WAZC,EAYc,EAZd,0CAalB,iBAAiB,WAbC,EAac,EAbd,0CAcd,iBAAiB,oBAdH,EAc2B,EAd3B,0CAed,iBAAiB,iBAfH,EAewB,EAfxB,0BAArB;;kBAmBe,Y"
 }

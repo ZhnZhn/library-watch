@@ -13,6 +13,7 @@ import OpenClose2 from '../zhnAtoms/OpenClose2';
 import WatchItem from './WatchItem';
 
 const DRAG = {
+  LIST : 'ItemList',
   ITEM : 'ItemType'
 }
 
@@ -50,13 +51,13 @@ const WatchBrowser = React.createClass({
     }
   },
 
-  componentWillMount: function(){
+  componentWillMount(){
     this.unsubscribe = this.props.store.listen(this._onStore);
   },
-  componentWillUnmount: function(){
+  componentWillUnmount(){
     this.unsubscribe();
   },
-  _onStore: function(actionType, data){
+  _onStore(actionType, data){
      const { browserType, showAction, updateAction } = this.props;
      if (actionType === showAction && data === browserType ){
       this._handlerShow();
@@ -102,21 +103,65 @@ const WatchBrowser = React.createClass({
   },
 
   _renderLists(lists, groupCaption){
-    return lists.map((list, index) => {
-      const {caption, items} = list;
+    const { isModeEdit } = this.state;
+    return lists.map((list) => {
+      const { caption, items } = list;
       return (
         <OpenClose2
-           key={index}
+           key={caption}
            fillOpen={'#80c040'}
            style={styles.groupDiv}
            styleNotSelected={styles.itemNotSelected}
            caption={caption}
            isClose={true}
+           isDraggable={isModeEdit}
+           option={{ groupCaption, caption }}
+           onDragStart={this._handlerDragStartList}
+           onDragEnter={this._handlerDragEnterList}
+           onDragOver={this._handlerDragOverList}
+           onDragLeave={this._handlerDragLeaveList}
+           onDrop={this._handlerDropList}
         >
-         {items && this._renderItems(items, groupCaption, caption)}
+          {items && this._renderItems(items, groupCaption, caption)}
         </OpenClose2>
       )
     })
+  },
+
+  _handlerDragStartList({ groupCaption, caption}, ev){
+     ev.dataTransfer.effectAllowed="move";
+     ev.dataTransfer.dropEffect="move";
+     const _data = {
+       dragId : `${groupCaption};${caption}`,
+       xType : DRAG.LIST
+     };
+     ev.dataTransfer.setData("text", JSON.stringify(_data));
+  },
+  _handlerDropList({ groupCaption, caption }, ev){
+     const _data = JSON.parse(ev.dataTransfer.getData("text"));
+     if (_data.xType === DRAG.LIST) {
+       ev.preventDefault();
+       WatchActions.dragDropList({
+         dragId : _data.dragId,
+         dropId : `${groupCaption};${caption}`
+       });
+     } else if (_data.xType === DRAG.ITEM) {
+       ev.preventDefault();
+       WatchActions.dragDropItem({
+         dragId : _data.dragId,
+         dropId : `${groupCaption};${caption};`
+      });
+    }
+  },
+  _handlerDragEnterList(ev){
+     //ev.target.style.borderTop="3px solid yellow";
+     ev.preventDefault();
+  },
+  _handlerDragOverList(ev){
+     ev.preventDefault();
+  },
+  _handlerDragLeaveList(ev){
+    //ev.target.style.borderTop="";
   },
 
 
@@ -143,7 +188,7 @@ const WatchBrowser = React.createClass({
      const _data = JSON.parse(ev.dataTransfer.getData("text"));
      if (_data.xType === DRAG.ITEM) {
        ev.preventDefault();
-       WatchActions.dragDrop({
+       WatchActions.dragDropItem({
          dragId : _data.dragId,
          dropId : `${groupCaption};${listCaption};${caption}`
       });

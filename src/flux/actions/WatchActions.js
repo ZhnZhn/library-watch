@@ -5,7 +5,8 @@ export const WatchActionTypes = {
   REMOVE_ITEM : 'removeItem',
   SAVE_WATCH : 'saveWatch',
 
-  DRAG_DROP : 'dragDrop',
+  DRAG_DROP_ITEM : 'dragDropItem',
+  DRAG_DROP_LIST : 'dragDropList',
 
   ADD_GROUP : 'addGroup',
   RENAME_GROUP : 'renameGroup',
@@ -22,7 +23,8 @@ const WatchActions = Reflux.createActions({
   [WatchActionTypes.REMOVE_ITEM] : {},
   [WatchActionTypes.SAVE_WATCH] : {},
 
-  [WatchActionTypes.DRAG_DROP] : {},
+  [WatchActionTypes.DRAG_DROP_ITEM] : {},
+  [WatchActionTypes.DRAG_DROP_LIST] : {},
 
   [WatchActionTypes.ADD_GROUP] : {},
   [WatchActionTypes.RENAME_GROUP] : {},

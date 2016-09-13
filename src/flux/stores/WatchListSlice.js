@@ -1,6 +1,8 @@
 
 import LocalForage from 'localforage';
 
+import Im from '../../utils/Im';
+
 import { BrowserActionTypes } from '../actions/BrowserActions';
 import { WatchActionTypes } from '../actions/WatchActions';
 import WatchDefault from '../../constants/WatchDefault';
@@ -25,11 +27,15 @@ const _fResultItemExisted = function(caption, captionList){
   return {isDone : false, message : Msg.ITEM_EXISTED(caption, captionList)}
 }
 
+const _fnFilter = Im.filterArray.bind(null, 'caption');
+
+/*
 const _fnFilter = function(arr, caption){
   return arr.filter((obj, index) =>{
     return obj.caption !== caption
   });
 }
+*/
 
 const _fnFindIndex = function(arr, caption){
    return arr.findIndex((item, index) => {
@@ -173,46 +179,60 @@ const _fnDeleteList = function(watchList, {captionGroup, captionList}){
   return {isDone : true}
 }
 
-const _fnDragDrop = function(watchList, {dragId, dropId}){
+const _fnDragDropItem = function(watchList, {dragId, dropId}){
   const dragArr = dragId.split(';')
-       , dragGroup = _fnFindGroup(watchList, dragArr[0])
-       , dragList = _fnFindList(dragGroup, dragArr[1])
-       , dragIndex = _fnFindIndex(dragList.items, dragArr[2])
-       , dragItem = dragList.items[dragIndex];
+      , dragGroup = _fnFindGroup(watchList, dragArr[0])
+      , dragList = _fnFindList(dragGroup, dragArr[1])
+      , dragIndex = _fnFindIndex(dragList.items, dragArr[2])
+      , dragItem = dragList.items[dragIndex];
 
   const dropArr = dropId.split(';')
       , dropGroup = _fnFindGroup(watchList, dropArr[0])
       , dropList = _fnFindList(dropGroup, dropArr[1])
-      , dropIndex = _fnFindIndex(dropList.items, dropArr[2])
+      , dropIndex = (dropArr[2])
+           ? _fnFindIndex(dropList.items, dropArr[2])
+           : 0;
 
-  if ( dragList !== dropList &&
-      _fnCheckIsInArraySameCaption(dropList.items, dragArr[3]) ){
+  if ( dragList.caption !== dropList.caption &&
+       _fnCheckIsInArraySameCaption(dropList.items, dragArr[3]) ){
       return {
-               isDone : false,
-               alertItemId : `${dropArr[1]}:${dragArr[2]}`,
-               alertCaption : Msg.Alert.DRAG_DROP.caption,
-               alertDescr : Msg.Alert.DRAG_DROP.descr
-             };
+        isDone : false,
+        alertItemId : `${dropArr[1]}:${dragArr[2]}`,
+        alertCaption : Msg.Alert.DRAG_DROP_ITEM.caption,
+        alertDescr : Msg.Alert.DRAG_DROP_ITEM.descr
+     };
   }
 
   dragList.items = _fnFilter(dragList.items, dragArr[2])
-
-  if (dropIndex !== 0){
-  dropList.items = [
-        ...dropList.items.slice(0, dropIndex),
-        Object.assign({}, dragItem),
-        ...dropList.items.slice(dropIndex)
-      ]
-  } else {
-    dropList.items = [
-       Object.assign({}, dragItem),
-       ...dropList.items
-     ]
-  }
+  dropList.items = Im.insertItemInArray(dragItem, dropIndex, dropList.items);
 
   return { isDone : true }
 }
 
+const _fnDragDropList = function(watchList, {dragId, dropId}){
+  const [ dragGroupCaption, dragListCaption ] = dragId.split(';')
+      , dragGroup = _fnFindGroup(watchList, dragGroupCaption)
+      , dragList = _fnFindList(dragGroup, dragListCaption)
+
+  const [ dropGroupCaption, dropListCaption ] = dropId.split(';')
+      , dropGroup = _fnFindGroup(watchList, dropGroupCaption)
+      , dropIndex = _fnFindIndex(dropGroup.lists, dropListCaption)
+
+  if ( dragGroup.caption !== dropGroup.caption &&
+       _fnCheckIsInArraySameCaption(dropGroup.lists, dragListCaption) ){
+      return {
+         isDone : false,
+         alertItemId : `${dropGroupCaption}:${dragListCaption}`,
+         alertCaption : Msg.Alert.DRAG_DROP_LIST.caption,
+         alertDescr : Msg.Alert.DRAG_DROP_LIST.descr
+      };
+  }
+
+  dragGroup.lists = _fnFilter(dragGroup.lists, dragListCaption);
+  dropGroup.lists = Im.insertItemInArray(dragList, dropIndex, dropGroup.lists);
+
+  return { isDone : true };
+}
 
 const WatchListSlice = {
   watchList : WatchDefault,
@@ -251,11 +271,20 @@ const WatchListSlice = {
     this.trigger(BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
   },
 
-  onDragDrop(option){
-    const result = _fnDragDrop(this.watchList, option);
+  onDragDropItem(option){
+    const result = _fnDragDropItem(this.watchList, option);
     if (result.isDone){
        this.isWatchEdited = true;
        this.trigger(BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
+    } else {
+      this.showAlertDialog(result);
+    }
+  },
+  onDragDropList(option){
+    const result = _fnDragDropList(this.watchList, option);
+    if (result.isDone){
+      this.isWatchEdited = true;
+      this.trigger(BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
     } else {
       this.showAlertDialog(result);
     }
