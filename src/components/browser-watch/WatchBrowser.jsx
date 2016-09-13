@@ -138,18 +138,25 @@ const WatchBrowser = React.createClass({
      ev.dataTransfer.setData("text", JSON.stringify(_data));
   },
   _handlerDropList({ groupCaption, caption }, ev){
-     const _data = JSON.parse(ev.dataTransfer.getData("text"));
-     if (_data.xType === DRAG.LIST) {
-       ev.preventDefault();
-       WatchActions.dragDropList({
-         dragId : _data.dragId,
-         dropId : `${groupCaption};${caption}`
-       });
-     } else if (_data.xType === DRAG.ITEM) {
+     const data = JSON.parse(ev.dataTransfer.getData("text"))
+        ,  { xType, dragId } = data
+        ,  dropId =  `${groupCaption};${caption};`
+
+     if (xType === DRAG.LIST) {
+       if (dragId !== dropId) {
+         ev.preventDefault();
+         WatchActions.dragDropList({
+           dragId : dragId,
+           dropId : dropId
+         });
+       } else {
+         return undefined;
+       }
+     } else if (xType === DRAG.ITEM) {
        ev.preventDefault();
        WatchActions.dragDropItem({
-         dragId : _data.dragId,
-         dropId : `${groupCaption};${caption};`
+         dragId : dragId,
+         dropId : dropId
       });
     }
   },
@@ -173,7 +180,7 @@ const WatchBrowser = React.createClass({
     WatchActions.removeItem(option);
   },
 
-  _handlerDragStart({groupCaption, listCaption, caption}, ev){
+  _handlerDragStartItem({groupCaption, listCaption, caption}, ev){
     ev.dataTransfer.effectAllowed="move";
     ev.dataTransfer.dropEffect="move";
     //.setDragImage(img, 0, 0);
@@ -184,17 +191,24 @@ const WatchBrowser = React.createClass({
     ev.dataTransfer.setData("text", JSON.stringify(_data));
 
   },
-  _handlerDrop({ groupCaption, listCaption, caption }, ev){
-     const _data = JSON.parse(ev.dataTransfer.getData("text"));
-     if (_data.xType === DRAG.ITEM) {
-       ev.preventDefault();
-       WatchActions.dragDropItem({
-         dragId : _data.dragId,
-         dropId : `${groupCaption};${listCaption};${caption}`
-      });
+  _handlerDropItem({ groupCaption, listCaption, caption }, ev){
+     const data = JSON.parse(ev.dataTransfer.getData("text"))
+         , { xType, dragId } = data
+         , dropId = `${groupCaption};${listCaption};${caption}`
+
+     if (xType === DRAG.ITEM) {
+       if ( dragId !== dropId) {
+         ev.preventDefault();
+         WatchActions.dragDropItem({
+           dragId : dragId,
+           dropId : dropId
+         });
+      } else {
+        return undefined;
+      }
     }
   },
-  _handlerDragOver(ev){
+  _handlerDragOverItem(ev){
      ev.preventDefault();
   },
 
@@ -214,10 +228,10 @@ const WatchBrowser = React.createClass({
               option={{ groupCaption, listCaption, caption }}
               onClick={this._handlerClickItem}
               onClose={this._handlerRemoveItem}
-              onDragStart={this._handlerDragStart}
-              onDragOver={this._handlerDragOver}
-              onDragEnter={this._handlerDragOver}
-              onDrop={this._handlerDrop}
+              onDragStart={this._handlerDragStartItem}
+              onDragOver={this._handlerDragOverItem}
+              onDragEnter={this._handlerDragOverItem}
+              onDrop={this._handlerDropItem}
            />
         );
       })

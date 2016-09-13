@@ -183,19 +183,26 @@ var WatchBrowser = _react2.default.createClass({
   _handlerDropList: function _handlerDropList(_ref2, ev) {
     var groupCaption = _ref2.groupCaption;
     var caption = _ref2.caption;
+    var data = JSON.parse(ev.dataTransfer.getData("text"));
+    var xType = data.xType;
+    var dragId = data.dragId;
+    var dropId = groupCaption + ';' + caption + ';';
 
-    var _data = JSON.parse(ev.dataTransfer.getData("text"));
-    if (_data.xType === DRAG.LIST) {
-      ev.preventDefault();
-      _WatchActions2.default.dragDropList({
-        dragId: _data.dragId,
-        dropId: groupCaption + ';' + caption
-      });
-    } else if (_data.xType === DRAG.ITEM) {
+    if (xType === DRAG.LIST) {
+      if (dragId !== dropId) {
+        ev.preventDefault();
+        _WatchActions2.default.dragDropList({
+          dragId: dragId,
+          dropId: dropId
+        });
+      } else {
+        return undefined;
+      }
+    } else if (xType === DRAG.ITEM) {
       ev.preventDefault();
       _WatchActions2.default.dragDropItem({
-        dragId: _data.dragId,
-        dropId: groupCaption + ';' + caption + ';'
+        dragId: dragId,
+        dropId: dropId
       });
     }
   },
@@ -216,7 +223,7 @@ var WatchBrowser = _react2.default.createClass({
     event.stopPropagation();
     _WatchActions2.default.removeItem(option);
   },
-  _handlerDragStart: function _handlerDragStart(_ref3, ev) {
+  _handlerDragStartItem: function _handlerDragStartItem(_ref3, ev) {
     var groupCaption = _ref3.groupCaption;
     var listCaption = _ref3.listCaption;
     var caption = _ref3.caption;
@@ -230,21 +237,28 @@ var WatchBrowser = _react2.default.createClass({
     };
     ev.dataTransfer.setData("text", JSON.stringify(_data));
   },
-  _handlerDrop: function _handlerDrop(_ref4, ev) {
+  _handlerDropItem: function _handlerDropItem(_ref4, ev) {
     var groupCaption = _ref4.groupCaption;
     var listCaption = _ref4.listCaption;
     var caption = _ref4.caption;
+    var data = JSON.parse(ev.dataTransfer.getData("text"));
+    var xType = data.xType;
+    var dragId = data.dragId;
+    var dropId = groupCaption + ';' + listCaption + ';' + caption;
 
-    var _data = JSON.parse(ev.dataTransfer.getData("text"));
-    if (_data.xType === DRAG.ITEM) {
-      ev.preventDefault();
-      _WatchActions2.default.dragDropItem({
-        dragId: _data.dragId,
-        dropId: groupCaption + ';' + listCaption + ';' + caption
-      });
+    if (xType === DRAG.ITEM) {
+      if (dragId !== dropId) {
+        ev.preventDefault();
+        _WatchActions2.default.dragDropItem({
+          dragId: dragId,
+          dropId: dropId
+        });
+      } else {
+        return undefined;
+      }
     }
   },
-  _handlerDragOver: function _handlerDragOver(ev) {
+  _handlerDragOverItem: function _handlerDragOverItem(ev) {
     ev.preventDefault();
   },
   _renderItems: function _renderItems(items, groupCaption, listCaption) {
@@ -263,10 +277,10 @@ var WatchBrowser = _react2.default.createClass({
         option: { groupCaption: groupCaption, listCaption: listCaption, caption: caption },
         onClick: _this3._handlerClickItem,
         onClose: _this3._handlerRemoveItem,
-        onDragStart: _this3._handlerDragStart,
-        onDragOver: _this3._handlerDragOver,
-        onDragEnter: _this3._handlerDragOver,
-        onDrop: _this3._handlerDrop
+        onDragStart: _this3._handlerDragStartItem,
+        onDragOver: _this3._handlerDragOverItem,
+        onDragEnter: _this3._handlerDragOverItem,
+        onDrop: _this3._handlerDropItem
       });
     });
   },
