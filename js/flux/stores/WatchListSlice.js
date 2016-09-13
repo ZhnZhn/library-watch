@@ -261,7 +261,6 @@ var _fnDragDropList = function _fnDragDropList(watchList, _ref9) {
   var dragListCaption = _dragId$split2[1];
   var dragGroup = _fnFindGroup(watchList, dragGroupCaption);
   var dragList = _fnFindList(dragGroup, dragListCaption);
-
   var _dropId$split = dropId.split(';');
 
   var _dropId$split2 = _slicedToArray(_dropId$split, 2);
@@ -269,7 +268,7 @@ var _fnDragDropList = function _fnDragDropList(watchList, _ref9) {
   var dropGroupCaption = _dropId$split2[0];
   var dropListCaption = _dropId$split2[1];
   var dropGroup = _fnFindGroup(watchList, dropGroupCaption);
-  var dropIndex = _fnFindIndex(dropGroup.lists, dropListCaption);
+  var dropIndex = dropListCaption ? _fnFindIndex(dropGroup.lists, dropListCaption) : 0;
 
   if (dragGroup.caption !== dropGroup.caption && _fnCheckIsInArraySameCaption(dropGroup.lists, dragListCaption)) {
     return {
@@ -282,6 +281,30 @@ var _fnDragDropList = function _fnDragDropList(watchList, _ref9) {
 
   dragGroup.lists = _fnFilter(dragGroup.lists, dragListCaption);
   dropGroup.lists = _Im2.default.insertItemInArray(dragList, dropIndex, dropGroup.lists);
+
+  return { isDone: true };
+};
+
+var _fnDragDropGroup = function _fnDragDropGroup(watchList, _ref10) {
+  var dragId = _ref10.dragId;
+  var dropId = _ref10.dropId;
+
+  var _dragId$split3 = dragId.split(';');
+
+  var _dragId$split4 = _slicedToArray(_dragId$split3, 1);
+
+  var dragGroupCaption = _dragId$split4[0];
+  var dragGroup = _fnFindGroup(watchList, dragGroupCaption);
+
+  var _dropId$split3 = dropId.split(';');
+
+  var _dropId$split4 = _slicedToArray(_dropId$split3, 1);
+
+  var dropGroupCaption = _dropId$split4[0];
+  var dropIndex = dropGroupCaption ? _fnFindIndex(watchList.groups, dropGroupCaption) : 0;
+
+  watchList.groups = _fnFilter(watchList.groups, dragGroupCaption);
+  watchList.groups = _Im2.default.insertItemInArray(dragGroup, dropIndex, watchList.groups);
 
   return { isDone: true };
 };
@@ -333,6 +356,15 @@ var WatchListSlice = {
   },
   onDragDropList: function onDragDropList(option) {
     var result = _fnDragDropList(this.watchList, option);
+    if (result.isDone) {
+      this.isWatchEdited = true;
+      this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
+    } else {
+      this.showAlertDialog(result);
+    }
+  },
+  onDragDropGroup: function onDragDropGroup(option) {
+    var result = _fnDragDropGroup(this.watchList, option);
     if (result.isDone) {
       this.isWatchEdited = true;
       this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);

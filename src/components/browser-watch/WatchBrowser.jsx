@@ -1,7 +1,8 @@
 import React from 'react';
 
-import createHandlerDnDItem from './with/createHandlerDnDItem';
+import createHandlerDnDGroup from './with/createHandlerDnDGroup';
 import createHandlerDnDList from './with/createHandlerDnDList';
+import createHandlerDnDItem from './with/createHandlerDnDItem';
 
 import { ModalDialog } from '../../constants/Type';
 import ComponentActions from '../../flux/actions/ComponentActions';
@@ -15,8 +16,9 @@ import OpenClose2 from '../zhnAtoms/OpenClose2';
 import WatchItem from './WatchItem';
 
 const DRAG = {
-  LIST : 'ItemList',
-  ITEM : 'ItemType'
+  GROUP : 'GROUP',
+  LIST : 'LIST',
+  ITEM : 'ITEM'
 }
 
 const styles = {
@@ -44,8 +46,9 @@ const styles = {
 };
 
 const WatchBrowser = React.createClass({
-  ...createHandlerDnDItem(DRAG, WatchActions),
+  ...createHandlerDnDGroup(DRAG, WatchActions),
   ...createHandlerDnDList(DRAG, WatchActions),
+  ...createHandlerDnDItem(DRAG, WatchActions),
 
   getInitialState(){
     const { store } = this.props;
@@ -93,15 +96,23 @@ const WatchBrowser = React.createClass({
   },
 
   _renderWatchList(watchList){
+     const { isModeEdit } = this.state;
      return watchList.groups.map((group, index) => {
        const {caption, lists} = group;
        return (
                <OpenClose2
-                  key={index}
+                  key={caption}
                   caption={caption}
                   isClose={true}
+                  isDraggable={isModeEdit}
+                  option={{ caption }}
+                  onDragStart={this._handlerDragStartGroup}
+                  onDragEnter={this._handlerDragEnterGroup}
+                  onDragOver={this._handlerDragOverGroup}
+                  onDragLeave={this._handlerDragLeaveGroup}
+                  onDrop={this._handlerDropGroup}
                 >
-                {lists && this._renderLists(lists, caption)}
+                  {lists && this._renderLists(lists, caption)}
                 </OpenClose2>
               )
      })

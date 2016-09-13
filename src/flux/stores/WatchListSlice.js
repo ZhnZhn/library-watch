@@ -212,11 +212,13 @@ const _fnDragDropItem = function(watchList, {dragId, dropId}){
 const _fnDragDropList = function(watchList, {dragId, dropId}){
   const [ dragGroupCaption, dragListCaption ] = dragId.split(';')
       , dragGroup = _fnFindGroup(watchList, dragGroupCaption)
-      , dragList = _fnFindList(dragGroup, dragListCaption)
+      , dragList = _fnFindList(dragGroup, dragListCaption);
 
   const [ dropGroupCaption, dropListCaption ] = dropId.split(';')
       , dropGroup = _fnFindGroup(watchList, dropGroupCaption)
-      , dropIndex = _fnFindIndex(dropGroup.lists, dropListCaption)
+      , dropIndex = (dropListCaption)
+            ? _fnFindIndex(dropGroup.lists, dropListCaption)
+            : 0;
 
   if ( dragGroup.caption !== dropGroup.caption &&
        _fnCheckIsInArraySameCaption(dropGroup.lists, dragListCaption) ){
@@ -232,6 +234,21 @@ const _fnDragDropList = function(watchList, {dragId, dropId}){
   dropGroup.lists = Im.insertItemInArray(dragList, dropIndex, dropGroup.lists);
 
   return { isDone : true };
+}
+
+const _fnDragDropGroup = function(watchList, {dragId, dropId}){
+   const [ dragGroupCaption ] = dragId.split(';')
+       , dragGroup = _fnFindGroup(watchList, dragGroupCaption)
+
+       , [ dropGroupCaption ] = dropId.split(';')
+       , dropIndex = (dropGroupCaption)
+             ? _fnFindIndex(watchList.groups, dropGroupCaption)
+             : 0;
+
+    watchList.groups = _fnFilter(watchList.groups, dragGroupCaption);
+    watchList.groups = Im.insertItemInArray(dragGroup, dropIndex, watchList.groups)
+
+    return { isDone : true };
 }
 
 const WatchListSlice = {
@@ -282,6 +299,15 @@ const WatchListSlice = {
   },
   onDragDropList(option){
     const result = _fnDragDropList(this.watchList, option);
+    if (result.isDone){
+      this.isWatchEdited = true;
+      this.trigger(BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
+    } else {
+      this.showAlertDialog(result);
+    }
+  },
+  onDragDropGroup(option){
+    const result = _fnDragDropGroup(this.watchList, option);
     if (result.isDone){
       this.isWatchEdited = true;
       this.trigger(BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);

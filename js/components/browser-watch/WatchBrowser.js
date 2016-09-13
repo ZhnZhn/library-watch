@@ -10,13 +10,17 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _createHandlerDnDItem = require('./with/createHandlerDnDItem');
+var _createHandlerDnDGroup = require('./with/createHandlerDnDGroup');
 
-var _createHandlerDnDItem2 = _interopRequireDefault(_createHandlerDnDItem);
+var _createHandlerDnDGroup2 = _interopRequireDefault(_createHandlerDnDGroup);
 
 var _createHandlerDnDList = require('./with/createHandlerDnDList');
 
 var _createHandlerDnDList2 = _interopRequireDefault(_createHandlerDnDList);
+
+var _createHandlerDnDItem = require('./with/createHandlerDnDItem');
+
+var _createHandlerDnDItem2 = _interopRequireDefault(_createHandlerDnDItem);
 
 var _Type = require('../../constants/Type');
 
@@ -55,8 +59,9 @@ var _WatchItem2 = _interopRequireDefault(_WatchItem);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var DRAG = {
-  LIST: 'ItemList',
-  ITEM: 'ItemType'
+  GROUP: 'GROUP',
+  LIST: 'LIST',
+  ITEM: 'ITEM'
 };
 
 var styles = {
@@ -85,7 +90,7 @@ var styles = {
 
 var WatchBrowser = _react2.default.createClass(_extends({
   displayName: 'WatchBrowser'
-}, (0, _createHandlerDnDItem2.default)(DRAG, _WatchActions2.default), (0, _createHandlerDnDList2.default)(DRAG, _WatchActions2.default), {
+}, (0, _createHandlerDnDGroup2.default)(DRAG, _WatchActions2.default), (0, _createHandlerDnDList2.default)(DRAG, _WatchActions2.default), (0, _createHandlerDnDItem2.default)(DRAG, _WatchActions2.default), {
   getInitialState: function getInitialState() {
     var store = this.props.store;
 
@@ -134,6 +139,8 @@ var WatchBrowser = _react2.default.createClass(_extends({
   _renderWatchList: function _renderWatchList(watchList) {
     var _this = this;
 
+    var isModeEdit = this.state.isModeEdit;
+
     return watchList.groups.map(function (group, index) {
       var caption = group.caption;
       var lists = group.lists;
@@ -141,9 +148,16 @@ var WatchBrowser = _react2.default.createClass(_extends({
       return _react2.default.createElement(
         _OpenClose2.default,
         {
-          key: index,
+          key: caption,
           caption: caption,
-          isClose: true
+          isClose: true,
+          isDraggable: isModeEdit,
+          option: { caption: caption },
+          onDragStart: _this._handlerDragStartGroup,
+          onDragEnter: _this._handlerDragEnterGroup,
+          onDragOver: _this._handlerDragOverGroup,
+          onDragLeave: _this._handlerDragLeaveGroup,
+          onDrop: _this._handlerDropGroup
         },
         lists && _this._renderLists(lists, caption)
       );
