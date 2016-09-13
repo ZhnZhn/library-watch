@@ -4,9 +4,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _createHandlerDnDItem = require('./with/createHandlerDnDItem');
+
+var _createHandlerDnDItem2 = _interopRequireDefault(_createHandlerDnDItem);
+
+var _createHandlerDnDList = require('./with/createHandlerDnDList');
+
+var _createHandlerDnDList2 = _interopRequireDefault(_createHandlerDnDList);
 
 var _Type = require('../../constants/Type');
 
@@ -73,8 +83,9 @@ var styles = {
   }
 };
 
-var WatchBrowser = _react2.default.createClass({
-  displayName: 'WatchBrowser',
+var WatchBrowser = _react2.default.createClass(_extends({
+  displayName: 'WatchBrowser'
+}, (0, _createHandlerDnDItem2.default)(DRAG, _WatchActions2.default), (0, _createHandlerDnDList2.default)(DRAG, _WatchActions2.default), {
   getInitialState: function getInitialState() {
     var store = this.props.store;
 
@@ -168,98 +179,12 @@ var WatchBrowser = _react2.default.createClass({
       );
     });
   },
-  _handlerDragStartList: function _handlerDragStartList(_ref, ev) {
-    var groupCaption = _ref.groupCaption;
-    var caption = _ref.caption;
-
-    ev.dataTransfer.effectAllowed = "move";
-    ev.dataTransfer.dropEffect = "move";
-    var _data = {
-      dragId: groupCaption + ';' + caption,
-      xType: DRAG.LIST
-    };
-    ev.dataTransfer.setData("text", JSON.stringify(_data));
-  },
-  _handlerDropList: function _handlerDropList(_ref2, ev) {
-    var groupCaption = _ref2.groupCaption;
-    var caption = _ref2.caption;
-    var data = JSON.parse(ev.dataTransfer.getData("text"));
-    var xType = data.xType;
-    var dragId = data.dragId;
-    var dropId = groupCaption + ';' + caption + ';';
-
-    if (xType === DRAG.LIST) {
-      if (dragId !== dropId) {
-        ev.preventDefault();
-        _WatchActions2.default.dragDropList({
-          dragId: dragId,
-          dropId: dropId
-        });
-      } else {
-        return undefined;
-      }
-    } else if (xType === DRAG.ITEM) {
-      ev.preventDefault();
-      _WatchActions2.default.dragDropItem({
-        dragId: dragId,
-        dropId: dropId
-      });
-    }
-  },
-  _handlerDragEnterList: function _handlerDragEnterList(ev) {
-    //ev.target.style.borderTop="3px solid yellow";
-    ev.preventDefault();
-  },
-  _handlerDragOverList: function _handlerDragOverList(ev) {
-    ev.preventDefault();
-  },
-  _handlerDragLeaveList: function _handlerDragLeaveList(ev) {
-    //ev.target.style.borderTop="";
-  },
   _handlerClickItem: function _handlerClickItem(item) {
     _ComponentActions2.default.showModalDialog(_Type.ModalDialog.LOAD_WATCH_ITEM, item);
   },
   _handlerRemoveItem: function _handlerRemoveItem(option, event) {
     event.stopPropagation();
     _WatchActions2.default.removeItem(option);
-  },
-  _handlerDragStartItem: function _handlerDragStartItem(_ref3, ev) {
-    var groupCaption = _ref3.groupCaption;
-    var listCaption = _ref3.listCaption;
-    var caption = _ref3.caption;
-
-    ev.dataTransfer.effectAllowed = "move";
-    ev.dataTransfer.dropEffect = "move";
-    //.setDragImage(img, 0, 0);
-    var _data = {
-      dragId: groupCaption + ';' + listCaption + ';' + caption,
-      xType: DRAG.ITEM
-    };
-    ev.dataTransfer.setData("text", JSON.stringify(_data));
-  },
-  _handlerDropItem: function _handlerDropItem(_ref4, ev) {
-    var groupCaption = _ref4.groupCaption;
-    var listCaption = _ref4.listCaption;
-    var caption = _ref4.caption;
-    var data = JSON.parse(ev.dataTransfer.getData("text"));
-    var xType = data.xType;
-    var dragId = data.dragId;
-    var dropId = groupCaption + ';' + listCaption + ';' + caption;
-
-    if (xType === DRAG.ITEM) {
-      if (dragId !== dropId) {
-        ev.preventDefault();
-        _WatchActions2.default.dragDropItem({
-          dragId: dragId,
-          dropId: dropId
-        });
-      } else {
-        return undefined;
-      }
-    }
-  },
-  _handlerDragOverItem: function _handlerDragOverItem(ev) {
-    ev.preventDefault();
   },
   _renderItems: function _renderItems(items, groupCaption, listCaption) {
     var _this3 = this;
@@ -347,7 +272,7 @@ var WatchBrowser = _react2.default.createClass({
       )
     );
   }
-});
+}));
 
 exports.default = WatchBrowser;
 //# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\WatchBrowser.js.map

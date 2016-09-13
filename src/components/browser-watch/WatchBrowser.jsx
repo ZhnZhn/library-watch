@@ -1,9 +1,11 @@
 import React from 'react';
 
+import createHandlerDnDItem from './with/createHandlerDnDItem';
+import createHandlerDnDList from './with/createHandlerDnDList';
+
 import { ModalDialog } from '../../constants/Type';
 import ComponentActions from '../../flux/actions/ComponentActions';
 import WatchActions from '../../flux/actions/WatchActions';
-
 
 import Browser from '../zhnAtoms/Browser';
 import CaptionRow from '../zhnAtoms/CaptionRow';
@@ -42,6 +44,9 @@ const styles = {
 };
 
 const WatchBrowser = React.createClass({
+  ...createHandlerDnDItem(DRAG, WatchActions),
+  ...createHandlerDnDList(DRAG, WatchActions),
+
   getInitialState(){
     const { store } = this.props;
     return {
@@ -128,88 +133,12 @@ const WatchBrowser = React.createClass({
     })
   },
 
-  _handlerDragStartList({ groupCaption, caption}, ev){
-     ev.dataTransfer.effectAllowed="move";
-     ev.dataTransfer.dropEffect="move";
-     const _data = {
-       dragId : `${groupCaption};${caption}`,
-       xType : DRAG.LIST
-     };
-     ev.dataTransfer.setData("text", JSON.stringify(_data));
-  },
-  _handlerDropList({ groupCaption, caption }, ev){
-     const data = JSON.parse(ev.dataTransfer.getData("text"))
-        ,  { xType, dragId } = data
-        ,  dropId =  `${groupCaption};${caption};`
-
-     if (xType === DRAG.LIST) {
-       if (dragId !== dropId) {
-         ev.preventDefault();
-         WatchActions.dragDropList({
-           dragId : dragId,
-           dropId : dropId
-         });
-       } else {
-         return undefined;
-       }
-     } else if (xType === DRAG.ITEM) {
-       ev.preventDefault();
-       WatchActions.dragDropItem({
-         dragId : dragId,
-         dropId : dropId
-      });
-    }
-  },
-  _handlerDragEnterList(ev){
-     //ev.target.style.borderTop="3px solid yellow";
-     ev.preventDefault();
-  },
-  _handlerDragOverList(ev){
-     ev.preventDefault();
-  },
-  _handlerDragLeaveList(ev){
-    //ev.target.style.borderTop="";
-  },
-
-
   _handlerClickItem(item){
     ComponentActions.showModalDialog(ModalDialog.LOAD_WATCH_ITEM, item);
   },
   _handlerRemoveItem(option, event){
     event.stopPropagation();
     WatchActions.removeItem(option);
-  },
-
-  _handlerDragStartItem({groupCaption, listCaption, caption}, ev){
-    ev.dataTransfer.effectAllowed="move";
-    ev.dataTransfer.dropEffect="move";
-    //.setDragImage(img, 0, 0);
-    const _data = {
-      dragId : `${groupCaption};${listCaption};${caption}`,
-      xType : DRAG.ITEM
-    };
-    ev.dataTransfer.setData("text", JSON.stringify(_data));
-
-  },
-  _handlerDropItem({ groupCaption, listCaption, caption }, ev){
-     const data = JSON.parse(ev.dataTransfer.getData("text"))
-         , { xType, dragId } = data
-         , dropId = `${groupCaption};${listCaption};${caption}`
-
-     if (xType === DRAG.ITEM) {
-       if ( dragId !== dropId) {
-         ev.preventDefault();
-         WatchActions.dragDropItem({
-           dragId : dragId,
-           dropId : dropId
-         });
-      } else {
-        return undefined;
-      }
-    }
-  },
-  _handlerDragOverItem(ev){
-     ev.preventDefault();
   },
 
   _renderItems(items, groupCaption, listCaption) {
