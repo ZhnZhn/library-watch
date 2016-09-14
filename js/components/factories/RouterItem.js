@@ -32,6 +32,10 @@ var _fNpmRecentDownloads = require('./fNpmRecentDownloads');
 
 var _fNpmRecentDownloads2 = _interopRequireDefault(_fNpmRecentDownloads);
 
+var _fStackTaggedQuestions = require('./fStackTaggedQuestions');
+
+var _fStackTaggedQuestions2 = _interopRequireDefault(_fStackTaggedQuestions);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var RouterItem = {
@@ -43,7 +47,9 @@ var RouterItem = {
   GH_ISSUES: _fGitHubIssues2.default,
   GH_PULL_REQUESTS: _fGitHubIssues2.default,
 
-  NPM_DOWNLOADS_RECENT_MONTH: _fNpmRecentDownloads2.default
+  NPM_DOWNLOADS_RECENT_MONTH: _fNpmRecentDownloads2.default,
+
+  SE_QUESTIONS: _fStackTaggedQuestions2.default
 };
 
 exports.default = RouterItem;

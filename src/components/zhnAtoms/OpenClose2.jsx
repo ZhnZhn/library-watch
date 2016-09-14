@@ -28,30 +28,24 @@ const pathOpen = "M 2,14 L 14,14 14,2 2,14";
 const pathClose = "M 2,2 L 14,8 2,14 2,2";
 
 const OpenClose2 = React.createClass({
-   getInitialState: function(){
-      const isOpen = (this.props.isClose) ? false : true
-          , fillOpen = (this.props.fillOpen)
-              ? this.props.fillOpen
-              : 'yellow'
-          , fillClose = (this.props.fillClose)
-              ? this.props.fillClose
-              : '#4D4D4D';
+   getInitialState(){
+      const { isClose, fillOpen, fillClose } = this.props
+          , _isOpen = (isClose) ? false : true
+          , _fillOpen = (fillOpen) ? fillOpen : 'yellow'
+          , _fillClose = (fillClose) ? fillClose : '#4D4D4D';
 
       return {
-        isOpen: isOpen,
-        fillOpen: fillOpen,
-        fillClose: fillClose
+        isOpen: _isOpen,
+        fillOpen: _fillOpen,
+        fillClose: _fillClose
       };
    },
 
   _handlerClickOpenClose(){
-    this.state.isOpen = !this.state.isOpen;
-    this.setState(this.state);
+    this.setState({ isOpen : !this.state.isOpen} );
   },
 
-
   render(){
-
     const {
             style, styleNotSelected, styleCaption, caption,
             isDraggable, option, onDragStart, onDragEnter, onDragOver, onDragLeave, onDrop,

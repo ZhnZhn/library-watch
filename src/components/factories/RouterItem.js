@@ -8,6 +8,8 @@ import fGitHubIssues from './fGitHubIssues';
 
 import fNpmRecentDownloads from './fNpmRecentDownloads';
 
+import fStackTaggedQuestions from './fStackTaggedQuestions';
+
 const RouterItem = {
   DEFAULT : fItemTest,
   GH_RELEASE_RECENT : fGitHubRecentRelease,
@@ -16,8 +18,10 @@ const RouterItem = {
   GH_COMMITS : fGitHubCommits,
   GH_ISSUES : fGitHubIssues,
   GH_PULL_REQUESTS : fGitHubIssues,
-  
-  NPM_DOWNLOADS_RECENT_MONTH : fNpmRecentDownloads
+
+  NPM_DOWNLOADS_RECENT_MONTH : fNpmRecentDownloads,
+
+  SE_QUESTIONS : fStackTaggedQuestions
 };
 
 export default RouterItem

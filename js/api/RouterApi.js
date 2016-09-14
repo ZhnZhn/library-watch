@@ -12,12 +12,17 @@ var _NpmApi = require('./NpmApi');
 
 var _NpmApi2 = _interopRequireDefault(_NpmApi);
 
+var _StackExchangeApi = require('./StackExchangeApi');
+
+var _StackExchangeApi2 = _interopRequireDefault(_StackExchangeApi);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var RouterApi = {
   GH: _GitHubApi2.default,
-  NPM: _NpmApi2.default
+  NPM: _NpmApi2.default,
+  SE: _StackExchangeApi2.default
 };
 
 exports.default = RouterApi;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\api\RouterApi.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\api\RouterApi.js.map

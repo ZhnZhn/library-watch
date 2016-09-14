@@ -3,15 +3,24 @@ import React from 'react';
 import ZhDialog from '../zhnMoleculs/ZhDialog';
 import ToolBarButton from '../header/ToolBarButton';
 import RowInputText from './RowInputText';
+import RowInputSelect from './RowInputSelect';
 
-const DialogType1 = React.createClass({
 
+const _sortOptions = [
+  { caption: "Activity, Recent Day", value: "activity" },
+  { caption: "Creation Date", value: "creation"},
+  { caption: "Score", value: "votes" },
+  { caption: "Hot Tab", value: "hot" },
+  { caption: "Hot Week Tab", value: "week" },
+  { caption: "Hot Month Tab", value: "month" }
+]
 
-  displayName : 'DialogType1',
+const DialogType2 = React.createClass({
+  displayName : 'DialogType2',
 
   getInitialState(){
     this.stock = null;
-
+    this.sortByItem = {};
     return {};
   },
 
@@ -24,11 +33,19 @@ const DialogType1 = React.createClass({
     return true;
   },
 
+ _handlerSelectSortBy(item){
+   this.sortByItem = item;
+ },
 
  _handlerLoad(event){
    const repo = this.inputRepo.getValue()
-      ,  { requestType } = this.props;
-   this.props.onLoad({ repo, requestType });
+       , { requestType } = this.props
+       , { value } = this.sortByItem
+
+   this.props.onLoad({
+     repo, requestType,
+     sort : value
+   });
  },
 
   _handlerClose(){
@@ -62,9 +79,15 @@ const DialogType1 = React.createClass({
            caption={oneTitle}
            placeholder={onePlaceholder}
         />
+        <RowInputSelect
+           caption="Sort By:"
+           placeholder="Default: Hot Week Tab"
+           options={_sortOptions}
+           onSelect={this._handlerSelectSortBy}
+        />
       </ZhDialog>
     );
   }
 });
 
-export default DialogType1;
+export default DialogType2;

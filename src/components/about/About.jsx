@@ -86,7 +86,7 @@ const About = React.createClass({
            </p>
            <p>
              <Token color="gray">
-               With it, you can view information about GitHub's repositories, NPM's packages.
+               With it, you can view information about GitHub's repositories, NPM's packages, StackOverflows's questions.
             </Token>
             <br/>
             <Token color="gray">
@@ -110,6 +110,17 @@ const About = React.createClass({
                title="NPM"
             >
                NPM
+            </LinkToken>
+            <Token color="gray">
+              ,&nbsp;
+            </Token>
+            <LinkToken
+               href="https://stackexchange.com/"               
+               color="#3186C9"
+               isFirstBlank={true}
+               title="Stack Exchange"
+            >
+               Stack Exchange
             </LinkToken>
             <Token color="gray">
               .

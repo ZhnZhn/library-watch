@@ -124,7 +124,7 @@ var About = _react2.default.createClass({
             _react2.default.createElement(
               _Token2.default,
               { color: 'gray' },
-              'With it, you can view information about GitHub\'s repositories, NPM\'s packages.'
+              'With it, you can view information about GitHub\'s repositories, NPM\'s packages, StackOverflows\'s questions.'
             ),
             _react2.default.createElement('br', null),
             _react2.default.createElement(
@@ -156,6 +156,21 @@ var About = _react2.default.createClass({
                 title: 'NPM'
               },
               'NPM'
+            ),
+            _react2.default.createElement(
+              _Token2.default,
+              { color: 'gray' },
+              ', '
+            ),
+            _react2.default.createElement(
+              _LinkToken2.default,
+              {
+                href: 'https://stackexchange.com/',
+                color: '#3186C9',
+                isFirstBlank: true,
+                title: 'Stack Exchange'
+              },
+              'Stack Exchange'
             ),
             _react2.default.createElement(
               _Token2.default,

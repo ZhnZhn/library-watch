@@ -10,7 +10,7 @@ export const ModalDialog = {
 }
 
 export const BrowserType = {
-  GITHUB : 'LW',
+  LIBRARY : 'LW',
   WATCH_LIST : 'WL'
 }
 

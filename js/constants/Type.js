@@ -14,11 +14,11 @@ var ModalDialog = exports.ModalDialog = {
 };
 
 var BrowserType = exports.BrowserType = {
-  GITHUB: 'LW',
+  LIBRARY: 'LW',
   WATCH_LIST: 'WL'
 };
 
 var ChartType = exports.ChartType = {
   WATCH_LIST: 'WL_WATCH_LIST'
 };
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\constants\Type.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\constants\Type.js.map

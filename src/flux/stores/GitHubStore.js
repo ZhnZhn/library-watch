@@ -70,8 +70,8 @@ const GitHubStore = Reflux.createStore({
    this.triggerLoadingProgress(LoadingProgressActionTypes.LOADING)
  },
  onLoadStockCompleted(option, json){
-   //console.log(option);
-   //console.log(json);
+   console.log(option);
+   console.log(json);
 
    const { chartType, browserType, limitRemaining } = option
        , comp = Factory.createItem(option, json, { chartType, browserType});

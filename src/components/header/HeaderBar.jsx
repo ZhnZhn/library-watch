@@ -26,9 +26,9 @@ const STYLE = {
 }
 
 const BrowserConfig = {
-  GITHUB : {
-    browserType: BrowserType.GITHUB,
-    caption: 'GitHub',
+  LIBRARY : {
+    browserType: BrowserType.LIBRARY,
+    caption: 'Libary',
     sourceMenuUrl : './data/github/source-menu.json'
   }
 }
@@ -53,9 +53,9 @@ const HeaderBar = React.createClass({
          />
          <ToolBarButton
             type="TypeA"
-            caption="GitHub"
-            title="GitHub Browser"
-            onClick={this._handlerClickDynamic.bind(null, BrowserConfig.GITHUB)}
+            caption="Library"
+            title="Library Browser"
+            onClick={this._handlerClickDynamic.bind(null, BrowserConfig.LIBRARY)}
          />
          <ToolBarButton
             type="TypeA"

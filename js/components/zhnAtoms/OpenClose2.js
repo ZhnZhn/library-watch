@@ -41,37 +41,38 @@ var pathClose = "M 2,2 L 14,8 2,14 2,2";
 
 var OpenClose2 = _react2.default.createClass({
   displayName: 'OpenClose2',
-
   getInitialState: function getInitialState() {
-    var isOpen = this.props.isClose ? false : true,
-        fillOpen = this.props.fillOpen ? this.props.fillOpen : 'yellow',
-        fillClose = this.props.fillClose ? this.props.fillClose : '#4D4D4D';
+    var _props = this.props;
+    var isClose = _props.isClose;
+    var fillOpen = _props.fillOpen;
+    var fillClose = _props.fillClose;
+    var _isOpen = isClose ? false : true;
+    var _fillOpen = fillOpen ? fillOpen : 'yellow';
+    var _fillClose = fillClose ? fillClose : '#4D4D4D';
 
     return {
-      isOpen: isOpen,
-      fillOpen: fillOpen,
-      fillClose: fillClose
+      isOpen: _isOpen,
+      fillOpen: _fillOpen,
+      fillClose: _fillClose
     };
   },
-
   _handlerClickOpenClose: function _handlerClickOpenClose() {
-    this.state.isOpen = !this.state.isOpen;
-    this.setState(this.state);
+    this.setState({ isOpen: !this.state.isOpen });
   },
   render: function render() {
-    var _props = this.props;
-    var style = _props.style;
-    var styleNotSelected = _props.styleNotSelected;
-    var styleCaption = _props.styleCaption;
-    var caption = _props.caption;
-    var isDraggable = _props.isDraggable;
-    var option = _props.option;
-    var onDragStart = _props.onDragStart;
-    var onDragEnter = _props.onDragEnter;
-    var onDragOver = _props.onDragOver;
-    var onDragLeave = _props.onDragLeave;
-    var onDrop = _props.onDrop;
-    var children = _props.children;
+    var _props2 = this.props;
+    var style = _props2.style;
+    var styleNotSelected = _props2.styleNotSelected;
+    var styleCaption = _props2.styleCaption;
+    var caption = _props2.caption;
+    var isDraggable = _props2.isDraggable;
+    var option = _props2.option;
+    var onDragStart = _props2.onDragStart;
+    var onDragEnter = _props2.onDragEnter;
+    var onDragOver = _props2.onDragOver;
+    var onDragLeave = _props2.onDragLeave;
+    var onDrop = _props2.onDrop;
+    var children = _props2.children;
     var _dragOption = isDraggable ? {
       draggable: true,
       onDragStart: onDragStart.bind(null, option),

@@ -20,15 +20,20 @@ var _RowInputText = require('./RowInputText');
 
 var _RowInputText2 = _interopRequireDefault(_RowInputText);
 
+var _RowInputSelect = require('./RowInputSelect');
+
+var _RowInputSelect2 = _interopRequireDefault(_RowInputSelect);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var DialogType1 = _react2.default.createClass({
+var _sortOptions = [{ caption: "Activity, Recent Day", value: "activity" }, { caption: "Creation Date", value: "creation" }, { caption: "Score", value: "votes" }, { caption: "Hot Tab", value: "hot" }, { caption: "Hot Week Tab", value: "week" }, { caption: "Hot Month Tab", value: "month" }];
 
-  displayName: 'DialogType1',
+var DialogType2 = _react2.default.createClass({
+  displayName: 'DialogType2',
 
   getInitialState: function getInitialState() {
     this.stock = null;
-
+    this.sortByItem = {};
     return {};
   },
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
@@ -39,11 +44,19 @@ var DialogType1 = _react2.default.createClass({
     }
     return true;
   },
+  _handlerSelectSortBy: function _handlerSelectSortBy(item) {
+    this.sortByItem = item;
+  },
   _handlerLoad: function _handlerLoad(event) {
     var repo = this.inputRepo.getValue();
     var requestType = this.props.requestType;
+    var value = this.sortByItem.value;
 
-    this.props.onLoad({ repo: repo, requestType: requestType });
+
+    this.props.onLoad({
+      repo: repo, requestType: requestType,
+      sort: value
+    });
   },
   _handlerClose: function _handlerClose() {
     this.props.onClose();
@@ -79,10 +92,16 @@ var DialogType1 = _react2.default.createClass({
         },
         caption: oneTitle,
         placeholder: onePlaceholder
+      }),
+      _react2.default.createElement(_RowInputSelect2.default, {
+        caption: 'Sort By:',
+        placeholder: 'Default: Hot Week Tab',
+        options: _sortOptions,
+        onSelect: this._handlerSelectSortBy
       })
     );
   }
 });
 
-exports.default = DialogType1;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\DialogType1.js.map
+exports.default = DialogType2;
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\DialogType2.js.map

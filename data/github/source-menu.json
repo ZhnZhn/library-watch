@@ -15,6 +15,11 @@
       "items" : [
         { "id" : "LW_NPM_DOWNLOADS_RECENT_MONTH" }
       ]
+    },{
+      "caption" : "Stack Overflow",
+      "items" : [
+        { "id" : "LW_SE_QUESTIONS" }
+      ]
     }
   ],
 
@@ -91,7 +96,7 @@
         "requestType" : "GH_ISSUES"
       }
     },
-    
+
     "LW_NPM_RECENT_VERSION" : {
       "type" : "LW_NPM_RECENT_VERSION",
       "menuTitle" : "Recent Version",
@@ -113,7 +118,19 @@
         "oneTitle" : "Package:",
         "requestType" : "NPM_DOWNLOADS_RECENT_MONTH"
       }
-   }
+   },
+
+   "LW_SE_QUESTIONS" : {
+     "type" : "LW_SE_QUESTIONS",
+     "menuTitle" : "Tagged Questions",
+     "dialogCaption" : "Tagged Questions",
+     "chartContainerCaption" : "Stack Overflow Tagged Questions",
+     "dialogType" : "DialogType2",
+     "dialogProps" : {
+       "oneTitle" : "Tag:",
+       "requestType" : "SE_QUESTIONS"
+     }
+  }
 
  }
 }

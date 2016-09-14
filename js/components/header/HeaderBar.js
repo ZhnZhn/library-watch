@@ -53,9 +53,9 @@ var STYLE = {
 };
 
 var BrowserConfig = {
-  GITHUB: {
-    browserType: _Type.BrowserType.GITHUB,
-    caption: 'GitHub',
+  LIBRARY: {
+    browserType: _Type.BrowserType.LIBRARY,
+    caption: 'Libary',
     sourceMenuUrl: './data/github/source-menu.json'
   }
 };
@@ -81,9 +81,9 @@ var HeaderBar = _react2.default.createClass({
       }),
       _react2.default.createElement(_ToolBarButton2.default, {
         type: 'TypeA',
-        caption: 'GitHub',
-        title: 'GitHub Browser',
-        onClick: this._handlerClickDynamic.bind(null, BrowserConfig.GITHUB)
+        caption: 'Library',
+        title: 'Library Browser',
+        onClick: this._handlerClickDynamic.bind(null, BrowserConfig.LIBRARY)
       }),
       _react2.default.createElement(_ToolBarButton2.default, {
         type: 'TypeA',
