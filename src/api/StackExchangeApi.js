@@ -5,8 +5,8 @@ const BASE = "https://api.stackexchange.com/2.2";
 // /questions/{ids}/related Get the questions that are related to the questions identified by a set of ids.
 
 const _rRequestTypeToUrl = {
-  SE_QUESTIONS : ({ repo, sort='week' }) => {
-    return `${BASE}/questions?page=1&pagesize=50&order=desc&sort=${sort}&tagged=${repo}&site=stackoverflow`;
+  SE_QUESTIONS : ({ repo, sort='week', fromdate, todate }) => {
+    return `${BASE}/questions?page=1&pagesize=50&order=desc&fromdate=${fromdate}&todate=${todate}&sort=${sort}&tagged=${repo}&site=stackoverflow`;
   }
 }
 

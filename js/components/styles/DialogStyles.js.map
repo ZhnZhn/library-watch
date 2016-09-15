@@ -1,8 +1,8 @@
 )]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_Template_2\\src\\components\\styles\\DialogStyles.js",
- "file": "D:\\_Dev\\_React\\_Template_2\\js\\components\\styles\\DialogStyles.js",
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\styles\\DialogStyles.js",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\styles\\DialogStyles.js",
  "sourceRoot": "",
  "names": [],
  "mappings": ";;;;;AAAA,IAAM,eAAe;;AAEnB,UAAQ;AACN,YAAQ;AADF,GAFW;AAKnB,aAAY;AACV,WAAO,SADG;AAEV,aAAS,cAFC;;AAIV,eAAW,OAJD;AAKV,WAAO,OALG;AAMV,kBAAc,KANJ;AAOV,cAAU,MAPA;AAQV,gBAAY;AARF,GALO;;;AAiBnB,uBAAqB;AACnB,iBAAa,MADM;AAEnB,gBAAY,KAFO;AAGnB,WAAO;AAHY,GAjBF;AAsBnB,2BAA0B;AACxB,aAAS,cADe;AAExB,WAAO,MAFiB;AAGxB,YAAQ,MAHgB;AAIxB,YAAQ,mBAJgB;AAKxB,kBAAc,KALU;AAMxB,eAAW,QANa;AAOxB,iBAAa;AAPW;;AAtBP,CAArB;;kBAkCe,Y"

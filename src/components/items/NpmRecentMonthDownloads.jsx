@@ -7,6 +7,8 @@ import SvgClose from '../zhnAtoms/SvgClose';
 import ShowHide from '../zhnAtoms/ShowHide';
 import LineChart from '../charts/LineChart';
 
+const BASE_NODEICO = "https://nodei.co/npm/";
+const BASE_NPM = "https://www.npmjs.com/package/"
 const ITEM_DESCRIPTION = "Npm Recent Month Downloads";
 
 const styles = {
@@ -51,14 +53,27 @@ const styles = {
   },
   BTN_CIRCLE : {
     marginLeft: '10px'
+  },
+
+  DIV_NODEICO_BADGE : {
+     marginLeft: '32px'
+  },
+  SPAN_NODEICO : {
+    display: 'block',
+    fontWeight: 'bold' ,
+    color: '#3399FF',
+    cursor: 'pointer'
   }
+
 }
 
 
 const NpmRecentDownloads = React.createClass({
   getInitialState(){
     return {
-      isShow : true
+      isShow : true,
+      isLoadNodeICO : false,
+      isShowNodeICO : false
     }
   },
 
@@ -82,6 +97,28 @@ const NpmRecentDownloads = React.createClass({
     });
   },
 
+  _handlerClickNodeICO(){
+    this.setState({
+      isLoadNodeICO : true,
+      isShowNodeICO : !this.state.isShowNodeICO
+    });
+  },
+
+  _renderNodeICO(packageName){
+    const { isShowNodeICO } = this.state
+        , _style = (isShowNodeICO)
+             ? { display : 'block' }
+             : { display : 'none' };
+    return (
+      <a
+        style={_style}
+        href={BASE_NPM + packageName}
+      >
+         <img src={BASE_NODEICO + packageName + '.png?downloads=true&downloadRank=true&stars=true'} />
+      </a>
+    )
+  },
+
   render(){
     const {
             packageName, caption, sumDownloads, fromDate, toDate,
@@ -89,8 +126,8 @@ const NpmRecentDownloads = React.createClass({
             onCloseItem
           } = this.props
         , _styleCaption = styles.captionSpanOpen
-        , { isShow } = this.state
-        , _lineChartConfig = Chart.fLineConfig({ labels, data })    
+        , { isShow, isLoadNodeICO } = this.state
+        , _lineChartConfig = Chart.fLineConfig({ labels, data })
     return (
       <div style={styles.rootDiv}>
         <div style={styles.headerDiv}>
@@ -125,6 +162,17 @@ const NpmRecentDownloads = React.createClass({
           <LineChart
              data={_lineChartConfig}
           />
+
+          <div style={styles.DIV_NODEICO_BADGE}>
+            <span               
+               style={styles.SPAN_NODEICO}
+               onClick={this._handlerClickNodeICO}
+            >
+              NodeICO
+            </span>
+            {isLoadNodeICO && this._renderNodeICO(packageName)}
+          </div>
+
         </ShowHide>
       </div>
     );

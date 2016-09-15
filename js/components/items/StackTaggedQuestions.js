@@ -8,14 +8,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _timeago2 = require('timeago.js');
-
-var _timeago3 = _interopRequireDefault(_timeago2);
-
-var _ButtonCircle = require('../zhnAtoms/ButtonCircle');
-
-var _ButtonCircle2 = _interopRequireDefault(_ButtonCircle);
-
 var _SvgClose = require('../zhnAtoms/SvgClose');
 
 var _SvgClose2 = _interopRequireDefault(_SvgClose);
@@ -31,6 +23,9 @@ var _DateAgo2 = _interopRequireDefault(_DateAgo);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ITEM_DESCRIPTION = "GitHub Repository Commits";
+
+//import ButtonCircle from '../zhnAtoms/ButtonCircle';
+
 
 var styles = {
   rootDiv: {
@@ -85,6 +80,16 @@ var styles = {
     marginTop: '6px',
     marginBottom: '2px',
     borderRadius: '16px'
+  },
+
+  PURPLE_BADGE: {
+    color: '#a487d4', fontSize: '18px', paddingRight: '8px'
+  },
+  GREEN_BADGE: {
+    color: '#80c040', fontSize: '18px', paddingRight: '8px'
+  },
+  BLACK_BAGDE: {
+    color: 'black', fontSize: '18px', paddingRight: '8px'
   }
 };
 
@@ -113,21 +118,17 @@ var StackTaggedQuestions = _react2.default.createClass({
   _renderCommits: function _renderCommits(items) {
     var _this = this;
 
-    var _timeago = (0, _timeago3.default)(Date.now());
     return items.map(function (item, index) {
       var answer_count = item.answer_count;
       var score = item.score;
       var view_count = item.view_count;
       var title = item.title;
+      var dateAgo = item.dateAgo;
       var link = item.link;
-      var last_activity_date = item.last_activity_date;
       var owner = item.owner;
       var tags = item.tags;
       var reputation = owner.reputation;
       var display_name = owner.display_name;
-      var _millisUTC = last_activity_date + '' + '000';
-      var _dateAgo = _timeago.format(_millisUTC);
-      //, _date = new Date(_millisUTC)
       var className = index % 2 ? 'row-even not-selected' : 'row-odd not-selected';
 
       return _react2.default.createElement(
@@ -141,35 +142,35 @@ var StackTaggedQuestions = _react2.default.createClass({
             { style: { paddingBottom: '8px' } },
             _react2.default.createElement(
               'span',
-              { style: { color: '#a487d4', fontSize: '18px', paddingRight: '8px' } },
+              { style: styles.PURPLE_BADGE },
               '⚒ ',
               answer_count
             ),
             _react2.default.createElement(
               'span',
-              { style: { color: '#80c040', fontSize: '18px', paddingRight: '8px' } },
+              { style: styles.GREEN_BADGE },
               '⚾ ',
               score
             ),
             _react2.default.createElement(
               'span',
-              { style: { color: 'black', fontSize: '18px', paddingRight: '8px' } },
+              { style: styles.BLACK_BAGDE },
               '☸ ',
               view_count
             ),
             _react2.default.createElement(
               'span',
-              { style: { color: '#80c040', fontSize: '18px', paddingRight: '8px' } },
+              { style: styles.GREEN_BADGE },
               '☘ ',
               reputation
             ),
             _react2.default.createElement(
               'span',
-              { style: { color: 'black', fontSize: '18px', paddingRight: '8px' } },
+              { style: styles.BLACK_BAGDE },
               display_name
             ),
             _react2.default.createElement(_DateAgo2.default, {
-              dateAgo: _dateAgo,
+              dateAgo: dateAgo,
               date: ""
             })
           ),
@@ -225,8 +226,11 @@ var StackTaggedQuestions = _react2.default.createClass({
           _react2.default.createElement(
             'span',
             null,
-            repo,
-            ' ',
+            repo
+          ),
+          _react2.default.createElement(
+            'span',
+            { style: { color: '#a9a9a9', paddingLeft: '12px' } },
             _items_count
           )
         ),

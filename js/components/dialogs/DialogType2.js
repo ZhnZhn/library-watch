@@ -4,9 +4,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _DateUtils = require('../../utils/DateUtils');
+
+var _DateUtils2 = _interopRequireDefault(_DateUtils);
+
+var _WithValidation = require('./WithValidation');
+
+var _WithValidation2 = _interopRequireDefault(_WithValidation);
 
 var _ZhDialog = require('../zhnMoleculs/ZhDialog');
 
@@ -24,17 +34,32 @@ var _RowInputSelect = require('./RowInputSelect');
 
 var _RowInputSelect2 = _interopRequireDefault(_RowInputSelect);
 
+var _DatesFragment = require('./DatesFragment');
+
+var _DatesFragment2 = _interopRequireDefault(_DatesFragment);
+
+var _ValidationMessagesFragment = require('./ValidationMessagesFragment');
+
+var _ValidationMessagesFragment2 = _interopRequireDefault(_ValidationMessagesFragment);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _sortOptions = [{ caption: "Activity, Recent Day", value: "activity" }, { caption: "Creation Date", value: "creation" }, { caption: "Score", value: "votes" }, { caption: "Hot Tab", value: "hot" }, { caption: "Hot Week Tab", value: "week" }, { caption: "Hot Month Tab", value: "month" }];
 
-var DialogType2 = _react2.default.createClass({
+var _initFromDate = _DateUtils2.default.getFromDate(1),
+    _initToDate = _DateUtils2.default.getToDate(),
+    _onTestDate = _DateUtils2.default.isValidDate;
+
+var DialogType2 = _react2.default.createClass(_extends({}, _WithValidation2.default, {
+
   displayName: 'DialogType2',
 
   getInitialState: function getInitialState() {
     this.stock = null;
     this.sortByItem = {};
-    return {};
+    return {
+      validationMessages: []
+    };
   },
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
     if (this.props !== nextProps) {
@@ -47,19 +72,46 @@ var DialogType2 = _react2.default.createClass({
   _handlerSelectSortBy: function _handlerSelectSortBy(item) {
     this.sortByItem = item;
   },
-  _handlerLoad: function _handlerLoad(event) {
+  _handlerLoad: function _handlerLoad() {
+    this._handlerLoadWithValidation(this._createValidationMessages(), this._createLoadOption);
+  },
+  _createValidationMessages: function _createValidationMessages() {
+    var msg = [];
+
+    var _datesFragment$getVal = this.datesFragment.getValidation();
+
+    var isValid = _datesFragment$getVal.isValid;
+    var datesMsg = _datesFragment$getVal.datesMsg;
+
+    if (!isValid) {
+      msg = msg.concat(datesMsg);
+    }
+
+    msg.isValid = msg.length === 0 ? true : false;
+    return msg;
+  },
+  _createLoadOption: function _createLoadOption() {
     var repo = this.inputRepo.getValue();
+
+    var _datesFragment$getVal2 = this.datesFragment.getValues();
+
+    var fromDate = _datesFragment$getVal2.fromDate;
+    var toDate = _datesFragment$getVal2.toDate;
+    var _fromDate = _DateUtils2.default.toUTCMillis(fromDate) / 1000;
+    var _toDate = _DateUtils2.default.toUTCMillis(toDate) / 1000;
     var requestType = this.props.requestType;
     var value = this.sortByItem.value;
 
 
-    this.props.onLoad({
+    return {
       repo: repo, requestType: requestType,
-      sort: value
-    });
+      sort: value,
+      fromdate: _fromDate,
+      todate: _toDate
+    };
   },
   _handlerClose: function _handlerClose() {
-    this.props.onClose();
+    this._handlerCloseWithValidation(this._createValidationMessages);
   },
   render: function render() {
     var _this = this;
@@ -76,6 +128,8 @@ var DialogType2 = _react2.default.createClass({
       caption: 'Load',
       onClick: this._handlerLoad
     })];
+    var validationMessages = this.state.validationMessages;
+
 
     return _react2.default.createElement(
       _ZhDialog2.default,
@@ -98,10 +152,22 @@ var DialogType2 = _react2.default.createClass({
         placeholder: 'Default: Hot Week Tab',
         options: _sortOptions,
         onSelect: this._handlerSelectSortBy
+      }),
+      _react2.default.createElement(_DatesFragment2.default, {
+        ref: function ref(c) {
+          return _this.datesFragment = c;
+        },
+        initFromDate: _initFromDate,
+        initToDate: _initToDate
+        //msgOnNotValidFormat={msgOnNotValidFormat}
+        , onTestDate: _onTestDate
+      }),
+      _react2.default.createElement(_ValidationMessagesFragment2.default, {
+        validationMessages: validationMessages
       })
     );
   }
-});
+}));
 
 exports.default = DialogType2;
 //# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\DialogType2.js.map

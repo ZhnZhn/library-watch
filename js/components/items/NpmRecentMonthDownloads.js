@@ -30,6 +30,8 @@ var _LineChart2 = _interopRequireDefault(_LineChart);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var BASE_NODEICO = "https://nodei.co/npm/";
+var BASE_NPM = "https://www.npmjs.com/package/";
 var ITEM_DESCRIPTION = "Npm Recent Month Downloads";
 
 var styles = {
@@ -74,14 +76,27 @@ var styles = {
   },
   BTN_CIRCLE: {
     marginLeft: '10px'
+  },
+
+  DIV_NODEICO_BADGE: {
+    marginLeft: '32px'
+  },
+  SPAN_NODEICO: {
+    display: 'block',
+    fontWeight: 'bold',
+    color: '#3399FF',
+    cursor: 'pointer'
   }
+
 };
 
 var NpmRecentDownloads = _react2.default.createClass({
   displayName: 'NpmRecentDownloads',
   getInitialState: function getInitialState() {
     return {
-      isShow: true
+      isShow: true,
+      isLoadNodeICO: false,
+      isShowNodeICO: false
     };
   },
   _handlerToggleOpen: function _handlerToggleOpen() {
@@ -108,6 +123,24 @@ var NpmRecentDownloads = _react2.default.createClass({
       }
     });
   },
+  _handlerClickNodeICO: function _handlerClickNodeICO() {
+    this.setState({
+      isLoadNodeICO: true,
+      isShowNodeICO: !this.state.isShowNodeICO
+    });
+  },
+  _renderNodeICO: function _renderNodeICO(packageName) {
+    var isShowNodeICO = this.state.isShowNodeICO;
+    var _style = isShowNodeICO ? { display: 'block' } : { display: 'none' };
+    return _react2.default.createElement(
+      'a',
+      {
+        style: _style,
+        href: BASE_NPM + packageName
+      },
+      _react2.default.createElement('img', { src: BASE_NODEICO + packageName + '.png?downloads=true&downloadRank=true&stars=true' })
+    );
+  },
   render: function render() {
     var _props2 = this.props;
     var packageName = _props2.packageName;
@@ -119,7 +152,9 @@ var NpmRecentDownloads = _react2.default.createClass({
     var data = _props2.data;
     var onCloseItem = _props2.onCloseItem;
     var _styleCaption = styles.captionSpanOpen;
-    var isShow = this.state.isShow;
+    var _state = this.state;
+    var isShow = _state.isShow;
+    var isLoadNodeICO = _state.isLoadNodeICO;
     var _lineChartConfig = _Chart2.default.fLineConfig({ labels: labels, data: data });
     return _react2.default.createElement(
       'div',
@@ -169,7 +204,20 @@ var NpmRecentDownloads = _react2.default.createClass({
         { isShow: isShow },
         _react2.default.createElement(_LineChart2.default, {
           data: _lineChartConfig
-        })
+        }),
+        _react2.default.createElement(
+          'div',
+          { style: styles.DIV_NODEICO_BADGE },
+          _react2.default.createElement(
+            'span',
+            {
+              style: styles.SPAN_NODEICO,
+              onClick: this._handlerClickNodeICO
+            },
+            'NodeICO'
+          ),
+          isLoadNodeICO && this._renderNodeICO(packageName)
+        )
       )
     );
   }

@@ -14,8 +14,10 @@ var _rRequestTypeToUrl = {
     var repo = _ref.repo;
     var _ref$sort = _ref.sort;
     var sort = _ref$sort === undefined ? 'week' : _ref$sort;
+    var fromdate = _ref.fromdate;
+    var todate = _ref.todate;
 
-    return BASE + "/questions?page=1&pagesize=50&order=desc&sort=" + sort + "&tagged=" + repo + "&site=stackoverflow";
+    return BASE + "/questions?page=1&pagesize=50&order=desc&fromdate=" + fromdate + "&todate=" + todate + "&sort=" + sort + "&tagged=" + repo + "&site=stackoverflow";
   }
 };
 

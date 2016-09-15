@@ -13,7 +13,7 @@ var DialogStyles = {
     display: 'inline-block',
     //verticalAlign: 'top',
     textAlign: 'right',
-    width: '100px',
+    width: '120px',
     paddingRight: '5px',
     fontSize: '16px',
     fontWeight: 'bold'
@@ -38,4 +38,4 @@ var DialogStyles = {
 };
 
 exports.default = DialogStyles;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\styles\DialogStyles.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\styles\DialogStyles.js.map

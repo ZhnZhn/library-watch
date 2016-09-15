@@ -105,8 +105,8 @@ var GitHubStore = _reflux2.default.createStore(_extends({
     this.triggerLoadingProgress(_LoadingProgressActions.LoadingProgressActionTypes.LOADING);
   },
   onLoadStockCompleted: function onLoadStockCompleted(option, json) {
-    console.log(option);
-    console.log(json);
+    //console.log(option);
+    //console.log(json);
 
     var chartType = option.chartType;
     var browserType = option.browserType;

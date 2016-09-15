@@ -69,7 +69,7 @@ var InputText = _react2.default.createClass({
     });
   },
   getValue: function getValue() {
-    return this.state.value;
+    return this.state.value.trim();
   },
   setValue: function setValue(value) {
     this.setState({ value: value });
@@ -77,4 +77,4 @@ var InputText = _react2.default.createClass({
 });
 
 exports.default = InputText;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\zhnAtoms\InputText.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\InputText.js.map

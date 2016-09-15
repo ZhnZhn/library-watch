@@ -1,7 +1,6 @@
 import React from 'react';
-import timeago from 'timeago.js';
 
-import ButtonCircle from '../zhnAtoms/ButtonCircle';
+//import ButtonCircle from '../zhnAtoms/ButtonCircle';
 import SvgClose from '../zhnAtoms/SvgClose';
 import ShowHide from '../zhnAtoms/ShowHide';
 import DateAgo from '../zhnAtoms/DateAgo';
@@ -61,9 +60,18 @@ const styles = {
     marginTop: '6px',
     marginBottom: '2px',
     borderRadius: '16px'
+  },
+
+  PURPLE_BADGE : {
+    color: '#a487d4', fontSize: '18px', paddingRight: '8px'
+  },
+  GREEN_BADGE : {
+    color: '#80c040', fontSize: '18px', paddingRight: '8px'
+  },
+  BLACK_BAGDE : {
+    color: 'black', fontSize: '18px', paddingRight: '8px'
   }
 }
-
 
 const StackTaggedQuestions = React.createClass({
   getInitialState(){
@@ -87,43 +95,38 @@ const StackTaggedQuestions = React.createClass({
   },
 
   _renderCommits(items){
-     const _timeago = timeago(Date.now());
      return items.map((item, index) => {
         const {
                  answer_count, score, view_count,
-                 title, link, last_activity_date,
+                 title, dateAgo, link,
                  owner, tags
                } = item
             , { reputation, display_name } = owner
-            , _millisUTC = last_activity_date + '' + '000'
-            , _dateAgo = _timeago.format(_millisUTC)
-            //, _date = new Date(_millisUTC)
             , className = (index % 2)
                      ? 'row-even not-selected'
                      : 'row-odd not-selected'
-
 
         return (
            <div key={index} className={className}>
               <a href={link}>
               <div style={{ paddingBottom: '8px' }}>
-                <span style={{ color: '#a487d4', fontSize: '18px', paddingRight: '8px' }}>
+                <span style={styles.PURPLE_BADGE}>
                   &#9874;&nbsp;{answer_count}
                 </span>
-                <span style={{ color: '#80c040', fontSize: '18px', paddingRight: '8px' }}>
+                <span style={styles.GREEN_BADGE}>
                   &#9918;&nbsp;{score}
                 </span>
-                <span style={{ color: 'black', fontSize: '18px', paddingRight: '8px' }}>
+                <span style={styles.BLACK_BAGDE}>
                   &#9784;&nbsp;{view_count}
                 </span>
-                <span style={{ color: '#80c040', fontSize: '18px', paddingRight: '8px' }}>
+                <span style={styles.GREEN_BADGE}>
                   &#9752;&nbsp;{reputation}
                 </span>
-                <span style={{ color: 'black', fontSize: '18px', paddingRight: '8px' }}>
+                <span style={styles.BLACK_BAGDE}>
                   {display_name}
                 </span>
                 <DateAgo
-                   dateAgo={_dateAgo}
+                   dateAgo={dateAgo}
                    date={""}
                 />
               </div>
@@ -168,7 +171,10 @@ const StackTaggedQuestions = React.createClass({
               onClick={this._handlerToggleOpen}
            >
              <span>
-               {repo}&nbsp;{_items_count}
+               {repo}
+             </span>
+             <span style={{ color: '#a9a9a9', paddingLeft: '12px' }}>
+                {_items_count}
              </span>
            </span>
            {/*

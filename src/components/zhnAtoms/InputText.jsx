@@ -62,10 +62,10 @@ const InputText = React.createClass({
   },
 
   getValue(){
-    return this.state.value;
+    return this.state.value.trim();
   },
   setValue(value){
-    this.setState({ value })
+    this.setState({ value });
   }
 })
 
