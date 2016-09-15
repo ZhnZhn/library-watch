@@ -1,17 +1,12 @@
 import React from 'react';
 
-import WithValidation from '../dialogs/WithValidation';
-
-//import DateUtils from '../../utils/DateUtils';
-
 import ChartActions from '../../flux/actions/ChartActions';
 import { BrowserType, ChartType } from '../../constants/Type';
 //import ChartType from '../../constants/ChartType';
 
 import ModalDialog from '../zhnMoleculs/ModalDialog';
 import ToolBarButton from '../header/ToolBarButton';
-//import DatesFragment from '../DatesFragment';
-import ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment';
+
 
 import DialogStyles from '../styles/DialogStyles'
 
@@ -30,26 +25,11 @@ const STYLE = {
 }
 
 const LoadItemDialog = React.createClass({
-   ...WithValidation,
    propTypes : {
      isShow  : React.PropTypes.bool.isRequired,
      data    : React.PropTypes.object.isRequired,
      store   : React.PropTypes.object,
      onClose : React.PropTypes.func.isRequired
-   },
-
-   getInitialState(){
-     //const { fromDate, initToDate, onTestDate } = this.props.data
-         //, _initFromDate = (fromDate) ? fromDate : DateUtils.getFromDate(2)
-         //, _initToDate = (initToDate) ? initToDate : DateUtils.getToDate()
-         //, _onTestDate = (onTestDate) ? onTestDate : DateUtils.isValidDate
-
-    return {
-      //initFromDate : _initFromDate,
-      //initToDate : _initToDate,
-      //onTestDate : _onTestDate,
-      validationMessages : []
-      }
    },
 
    shouldComponentUpdate(nextProps, nextState){
@@ -60,35 +40,13 @@ const LoadItemDialog = React.createClass({
    },
 
   _handlerLoad(){
-    const validationMessages = this._getValidationMessages();
-    if (validationMessages.isValid){
-      const { data, onClose } = this.props
-          //, { title, subtitle, caption, columnName, dataColumn, seriaColumnNames } = data
-          //, { fromDate, toDate } = this.datesFragment.getValues()
-          //, option = {
-          //   title : title,
-          //   subtitle : subtitle,
-          //   value : caption,
-          //   stock: caption,
-          //   fromDate: fromDate,
-          //   toDate: toDate,
-          //   columnName,
-          //   dataColumn,
-          //   seriaColumnNames
-          //}
-      //ChartActions.loadStock(ChartType.WATCH_LIST, BrowserType.WATCH_LIST, option);
-      ChartActions.loadStock(ChartType.WATCH_LIST, BrowserType.WATCH_LIST, data);
-      onClose();
-    }
-    this._updateValidationMessages(validationMessages);
+     const { data, onClose } = this.props          
+     ChartActions.loadStock(ChartType.WATCH_LIST, BrowserType.WATCH_LIST, data);
+     onClose();
   },
 
-  _getValidationMessages(){
-    let   msg = [];
-    //const { isValid, datesMsg } = this.datesFragment.getValidation();
-    //if (!isValid) { msg = msg.concat(datesMsg); }
-    msg.isValid = (msg.length === 0) ? true : false;
-    return msg;
+  _handlerClose(){
+     this.props.onClose();
   },
 
   _renderDate(date){
@@ -107,10 +65,6 @@ const LoadItemDialog = React.createClass({
   render(){
     const { isShow, data } = this.props
         , { caption, descr, date } = data
-        , {
-           //initFromDate, initToDate, onTestDate,
-           validationMessages
-         } = this.state
         , _commandButtons = [
        <ToolBarButton
           key="a"
@@ -140,11 +94,6 @@ const LoadItemDialog = React.createClass({
           </span>
         </div>
         { date && this._renderDate(date) }
-
-        <ValidationMessagesFragment
-            key="4"
-            validationMessages={validationMessages}
-        />
 
       </ModalDialog>
     )

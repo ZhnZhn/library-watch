@@ -1,12 +1,10 @@
 
+import StringUtil from '../utils/StringUtil';
+
 const BASE = 'https://api.npmjs.org';
 const REQUEST_PACKAGE = 'Request Package';
 
 //https://api.npmjs.org/downloads/range/last-month
-
-const _fnFirstToUpperCase = (msg) => {
-  return msg.charAt(0).toUpperCase() + msg.substring(1);
-}
 
 const _rRequestTypeToUrl = {
   NPM_RECENT_VERSION : (option) => {
@@ -32,7 +30,7 @@ const NpmApi = {
       if (error){
         throw {
            errCaption : REQUEST_PACKAGE,
-           message : _fnFirstToUpperCase(error)
+           message : StringUtil.setFirstToUpperCase(error)
          }
       }
       return true;

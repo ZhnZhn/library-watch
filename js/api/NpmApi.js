@@ -4,14 +4,16 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _StringUtil = require('../utils/StringUtil');
+
+var _StringUtil2 = _interopRequireDefault(_StringUtil);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var BASE = 'https://api.npmjs.org';
 var REQUEST_PACKAGE = 'Request Package';
 
 //https://api.npmjs.org/downloads/range/last-month
-
-var _fnFirstToUpperCase = function _fnFirstToUpperCase(msg) {
-  return msg.charAt(0).toUpperCase() + msg.substring(1);
-};
 
 var _rRequestTypeToUrl = {
   NPM_RECENT_VERSION: function NPM_RECENT_VERSION(option) {
@@ -39,7 +41,7 @@ var NpmApi = {
     if (error) {
       throw {
         errCaption: REQUEST_PACKAGE,
-        message: _fnFirstToUpperCase(error)
+        message: _StringUtil2.default.setFirstToUpperCase(error)
       };
     }
     return true;

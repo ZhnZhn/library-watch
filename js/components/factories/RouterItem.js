@@ -49,7 +49,8 @@ var RouterItem = {
 
   NPM_DOWNLOADS_RECENT_MONTH: _fNpmRecentDownloads2.default,
 
-  SE_QUESTIONS: _fStackTaggedQuestions2.default
+  SE_QUESTIONS: _fStackTaggedQuestions2.default,
+  SE_SEARCH_QUESTIONS: _fStackTaggedQuestions2.default
 };
 
 exports.default = RouterItem;

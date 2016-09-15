@@ -21,7 +21,8 @@ const RouterItem = {
 
   NPM_DOWNLOADS_RECENT_MONTH : fNpmRecentDownloads,
 
-  SE_QUESTIONS : fStackTaggedQuestions
+  SE_QUESTIONS : fStackTaggedQuestions,
+  SE_SEARCH_QUESTIONS : fStackTaggedQuestions
 };
 
 export default RouterItem

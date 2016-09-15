@@ -18,7 +18,8 @@
     },{
       "caption" : "Stack Overflow",
       "items" : [
-        { "id" : "LW_SE_QUESTIONS" }
+        { "id" : "LW_SE_QUESTIONS" },
+        { "id" : "LW_SE_SEARCH_QUESTIONS" }
       ]
     }
   ],
@@ -130,6 +131,18 @@
        "oneTitle" : "Tag:",
        "requestType" : "SE_QUESTIONS"
      }
+  },
+  "LW_SE_SEARCH_QUESTIONS" : {
+    "type" : "LW_SE_SEARCH_QUESTIONS",
+    "menuTitle" : "Search Questions",
+    "dialogCaption" : "Search Questions",
+    "chartContainerCaption" : "Stack Overflow Search Questions",
+    "dialogType" : "DialogType3",
+    "dialogProps" : {
+      "oneTitle" : "Tagged:",      
+      "twoTitle" : "InTitle",
+      "requestType" : "SE_SEARCH_QUESTIONS"
+    }
   }
 
  }
