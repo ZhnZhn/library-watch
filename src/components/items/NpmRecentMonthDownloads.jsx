@@ -6,10 +6,13 @@ import ButtonCircle from '../zhnAtoms/ButtonCircle';
 import SvgClose from '../zhnAtoms/SvgClose';
 import ShowHide from '../zhnAtoms/ShowHide';
 import LineChart from '../charts/LineChart';
+import ButtonDownUp from '../zhnAtoms/ButtonDownUp';
+import LinkImg from '../zhnAtoms/LinkImg';
 
-const BASE_NODEICO = "https://nodei.co/npm/";
-const BASE_NPM = "https://www.npmjs.com/package/"
-const ITEM_DESCRIPTION = "Npm Recent Month Downloads";
+const BASE_NODEICO = "https://nodei.co/npm/"
+    , SUFFIX_NODEICO = ".png?downloads=true&downloadRank=true&stars=true"
+    , BASE_NPM = "https://www.npmjs.com/package/"
+    , ITEM_DESCRIPTION = "Npm Recent Month Downloads";
 
 const styles = {
   rootDiv : {
@@ -72,8 +75,8 @@ const NpmRecentDownloads = React.createClass({
   getInitialState(){
     return {
       isShow : true,
-      isLoadNodeICO : false,
-      isShowNodeICO : false
+      isLoadNodeIco : false,
+      isShowNodeIco : false
     }
   },
 
@@ -97,26 +100,23 @@ const NpmRecentDownloads = React.createClass({
     });
   },
 
-  _handlerClickNodeICO(){
+  _handlerClickNodeIco(){
     this.setState({
-      isLoadNodeICO : true,
-      isShowNodeICO : !this.state.isShowNodeICO
+      isLoadNodeIco : true,
+      isShowNodeIco : !this.state.isShowNodeIco
     });
   },
 
-  _renderNodeICO(packageName){
-    const { isShowNodeICO } = this.state
-        , _style = (isShowNodeICO)
-             ? { display : 'block' }
-             : { display : 'none' };
+  _renderNodeIcoBadge(packageName){
+    const _href = BASE_NPM + packageName
+        , _imgSrc = BASE_NODEICO + packageName + SUFFIX_NODEICO
     return (
-      <a
-        style={_style}
-        href={BASE_NPM + packageName}
-      >
-         <img src={BASE_NODEICO + packageName + '.png?downloads=true&downloadRank=true&stars=true'} />
-      </a>
-    )
+      <LinkImg
+         href={_href}
+         imgClass="node-ico"
+         imgSrc={_imgSrc}
+      />
+    );
   },
 
   render(){
@@ -126,7 +126,7 @@ const NpmRecentDownloads = React.createClass({
             onCloseItem
           } = this.props
         , _styleCaption = styles.captionSpanOpen
-        , { isShow, isLoadNodeICO } = this.state
+        , { isShow, isLoadNodeIco, isShowNodeIco } = this.state
         , _lineChartConfig = Chart.fLineConfig({ labels, data })
     return (
       <div style={styles.rootDiv}>
@@ -164,13 +164,16 @@ const NpmRecentDownloads = React.createClass({
           />
 
           <div style={styles.DIV_NODEICO_BADGE}>
-            <span               
-               style={styles.SPAN_NODEICO}
-               onClick={this._handlerClickNodeICO}
-            >
-              NodeICO
-            </span>
-            {isLoadNodeICO && this._renderNodeICO(packageName)}
+            <ButtonDownUp
+               caption="NodeICO"
+               title="Package badge from Nodei.co"
+               styleRoot={{ paddingTop : '4px', paddingBottom : '4px' }}
+               isUp={isShowNodeIco}
+               onClick={this._handlerClickNodeIco}
+            />
+            <ShowHide isShow={isShowNodeIco} style={{ marginTop: '16px' }}>
+              {isLoadNodeIco && this._renderNodeIcoBadge(packageName)}
+            </ShowHide>
           </div>
 
         </ShowHide>

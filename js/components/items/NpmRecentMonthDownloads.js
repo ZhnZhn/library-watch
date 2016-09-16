@@ -28,11 +28,20 @@ var _LineChart = require('../charts/LineChart');
 
 var _LineChart2 = _interopRequireDefault(_LineChart);
 
+var _ButtonDownUp = require('../zhnAtoms/ButtonDownUp');
+
+var _ButtonDownUp2 = _interopRequireDefault(_ButtonDownUp);
+
+var _LinkImg = require('../zhnAtoms/LinkImg');
+
+var _LinkImg2 = _interopRequireDefault(_LinkImg);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var BASE_NODEICO = "https://nodei.co/npm/";
-var BASE_NPM = "https://www.npmjs.com/package/";
-var ITEM_DESCRIPTION = "Npm Recent Month Downloads";
+var BASE_NODEICO = "https://nodei.co/npm/",
+    SUFFIX_NODEICO = ".png?downloads=true&downloadRank=true&stars=true",
+    BASE_NPM = "https://www.npmjs.com/package/",
+    ITEM_DESCRIPTION = "Npm Recent Month Downloads";
 
 var styles = {
   rootDiv: {
@@ -95,8 +104,8 @@ var NpmRecentDownloads = _react2.default.createClass({
   getInitialState: function getInitialState() {
     return {
       isShow: true,
-      isLoadNodeICO: false,
-      isShowNodeICO: false
+      isLoadNodeIco: false,
+      isShowNodeIco: false
     };
   },
   _handlerToggleOpen: function _handlerToggleOpen() {
@@ -123,23 +132,20 @@ var NpmRecentDownloads = _react2.default.createClass({
       }
     });
   },
-  _handlerClickNodeICO: function _handlerClickNodeICO() {
+  _handlerClickNodeIco: function _handlerClickNodeIco() {
     this.setState({
-      isLoadNodeICO: true,
-      isShowNodeICO: !this.state.isShowNodeICO
+      isLoadNodeIco: true,
+      isShowNodeIco: !this.state.isShowNodeIco
     });
   },
-  _renderNodeICO: function _renderNodeICO(packageName) {
-    var isShowNodeICO = this.state.isShowNodeICO;
-    var _style = isShowNodeICO ? { display: 'block' } : { display: 'none' };
-    return _react2.default.createElement(
-      'a',
-      {
-        style: _style,
-        href: BASE_NPM + packageName
-      },
-      _react2.default.createElement('img', { src: BASE_NODEICO + packageName + '.png?downloads=true&downloadRank=true&stars=true' })
-    );
+  _renderNodeIcoBadge: function _renderNodeIcoBadge(packageName) {
+    var _href = BASE_NPM + packageName,
+        _imgSrc = BASE_NODEICO + packageName + SUFFIX_NODEICO;
+    return _react2.default.createElement(_LinkImg2.default, {
+      href: _href,
+      imgClass: 'node-ico',
+      imgSrc: _imgSrc
+    });
   },
   render: function render() {
     var _props2 = this.props;
@@ -154,7 +160,8 @@ var NpmRecentDownloads = _react2.default.createClass({
     var _styleCaption = styles.captionSpanOpen;
     var _state = this.state;
     var isShow = _state.isShow;
-    var isLoadNodeICO = _state.isLoadNodeICO;
+    var isLoadNodeIco = _state.isLoadNodeIco;
+    var isShowNodeIco = _state.isShowNodeIco;
     var _lineChartConfig = _Chart2.default.fLineConfig({ labels: labels, data: data });
     return _react2.default.createElement(
       'div',
@@ -208,15 +215,18 @@ var NpmRecentDownloads = _react2.default.createClass({
         _react2.default.createElement(
           'div',
           { style: styles.DIV_NODEICO_BADGE },
+          _react2.default.createElement(_ButtonDownUp2.default, {
+            caption: 'NodeICO',
+            title: 'Package badge from Nodei.co',
+            styleRoot: { paddingTop: '4px', paddingBottom: '4px' },
+            isUp: isShowNodeIco,
+            onClick: this._handlerClickNodeIco
+          }),
           _react2.default.createElement(
-            'span',
-            {
-              style: styles.SPAN_NODEICO,
-              onClick: this._handlerClickNodeICO
-            },
-            'NodeICO'
-          ),
-          isLoadNodeICO && this._renderNodeICO(packageName)
+            _ShowHide2.default,
+            { isShow: isShowNodeIco, style: { marginTop: '16px' } },
+            isLoadNodeIco && this._renderNodeIcoBadge(packageName)
+          )
         )
       )
     );

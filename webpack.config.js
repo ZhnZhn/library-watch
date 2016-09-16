@@ -9,7 +9,8 @@ module.exports = {
             "react", "react-dom", "reflux",
             "interact.js", "localforage",
             "chart.js",
-            "timeago.js"
+            "timeago.js",
+            "raven-js"
           ]
   },
   output: {

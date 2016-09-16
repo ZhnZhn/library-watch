@@ -38,3 +38,8 @@
   stroke: yellow;
   stroke-width: 24;
 }
+
+.node-ico {
+  -webkit-filter: invert(90%) drop-shadow(2px 2px 6px #39f);  /* Chrome, Safari, Opera */
+  filter: invert(90%) drop-shadow(2px 2px 6px #39f);
+}

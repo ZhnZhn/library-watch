@@ -1,9 +1,9 @@
 )]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_Template_2\\src\\index.jsx",
- "file": "D:\\_Dev\\_React\\_Template_2\\js\\index.js",
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\index.jsx",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\index.js",
  "sourceRoot": "",
  "names": [],
- "mappings": ";;AAAA;;;;AACA;;AASA;;;;;;AAEA,IAAM,mBAAmB,SAAnB,gBAAmB,GAAU;AACjC,WAAS,IAAT,CAAc,WAAd,CAA0B,SAAS,cAAT,CAAwB,SAAxB,CAA1B;AACD,CAFD;;;;;;;;;;;AAKA,sBAAO,wDAAP,EAAsB,SAAS,cAAT,CAAwB,KAAxB,CAAtB,EAAsD,gBAAtD"
+ "mappings": ";;AAAA;;;;AACA;;AAEA;;;;AAEA;;;;;;;;;;;;;AASA,kBAAM,MAAN,CAAa,0DAAb,EAAyE,OAAzE;;AAEA,IAAM,mBAAmB,SAAnB,gBAAmB,GAAU;AACjC,YAAS,IAAT,CAAc,WAAd,CAA0B,SAAS,cAAT,CAAwB,SAAxB,CAA1B;AACD,CAFD;;AAKA,sBAAO,wDAAP,EAAsB,SAAS,cAAT,CAAwB,KAAxB,CAAtB,EAAsD,gBAAtD"
 }

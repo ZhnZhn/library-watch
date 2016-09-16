@@ -45,7 +45,7 @@ const Msg = {
      },
      NETWORK_ERROR : {
         caption : 'Network Error',
-        descr: 'Network error is encountered. Failed to fetch. It seems you offline or maybe a DNS lookup failure.'
+        descr: 'Network error is encountered. Failed to fetch. May be you are offline, a DNS lookup failure or a resource unreachable.'
      },
      SERVICE_UNAVAILABLE : {
        caption : 'Service Unavailable 503',
