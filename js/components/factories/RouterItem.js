@@ -32,6 +32,10 @@ var _fNpmRecentDownloads = require('./fNpmRecentDownloads');
 
 var _fNpmRecentDownloads2 = _interopRequireDefault(_fNpmRecentDownloads);
 
+var _fNpmDownloads = require('./fNpmDownloads');
+
+var _fNpmDownloads2 = _interopRequireDefault(_fNpmDownloads);
+
 var _fStackTaggedQuestions = require('./fStackTaggedQuestions');
 
 var _fStackTaggedQuestions2 = _interopRequireDefault(_fStackTaggedQuestions);
@@ -48,6 +52,7 @@ var RouterItem = {
   GH_PULL_REQUESTS: _fGitHubIssues2.default,
 
   NPM_DOWNLOADS_RECENT_MONTH: _fNpmRecentDownloads2.default,
+  NPM_DOWNLOADS: _fNpmDownloads2.default,
 
   SE_QUESTIONS: _fStackTaggedQuestions2.default,
   SE_SEARCH_QUESTIONS: _fStackTaggedQuestions2.default

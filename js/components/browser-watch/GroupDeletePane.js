@@ -127,4 +127,4 @@ var GroupDeletePane = _react2.default.createClass({
 });
 
 exports.default = GroupDeletePane;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\browser-watch\GroupDeletePane.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\GroupDeletePane.js.map

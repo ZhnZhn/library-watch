@@ -143,4 +143,4 @@ var ListDeletePane = _react2.default.createClass({
 });
 
 exports.default = ListDeletePane;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\browser-watch\ListDeletePane.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\ListDeletePane.js.map

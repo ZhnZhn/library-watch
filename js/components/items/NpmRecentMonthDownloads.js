@@ -138,6 +138,14 @@ var NpmRecentDownloads = _react2.default.createClass({
       isShowNodeIco: !this.state.isShowNodeIco
     });
   },
+  _renderButtonWatch: function _renderButtonWatch() {
+    return _react2.default.createElement(_ButtonCircle2.default, {
+      caption: 'W',
+      title: 'Add to Watch',
+      style: styles.BTN_CIRCLE,
+      onClick: this._handlerClickWatch
+    });
+  },
   _renderNodeIcoBadge: function _renderNodeIcoBadge(packageName) {
     var _href = BASE_NPM + packageName,
         _imgSrc = BASE_NODEICO + packageName + SUFFIX_NODEICO;
@@ -157,6 +165,8 @@ var NpmRecentDownloads = _react2.default.createClass({
     var labels = _props2.labels;
     var data = _props2.data;
     var onCloseItem = _props2.onCloseItem;
+    var onWatchItem = _props2.onWatchItem;
+    var _isButtonWatch = typeof onWatchItem === 'function' ? true : false;
     var _styleCaption = styles.captionSpanOpen;
     var _state = this.state;
     var isShow = _state.isShow;
@@ -198,12 +208,7 @@ var NpmRecentDownloads = _react2.default.createClass({
             toDate
           )
         ),
-        _react2.default.createElement(_ButtonCircle2.default, {
-          caption: 'W',
-          title: 'Add to Watch',
-          style: styles.BTN_CIRCLE,
-          onClick: this._handlerClickWatch
-        }),
+        _isButtonWatch && this._renderButtonWatch(),
         _react2.default.createElement(_SvgClose2.default, { onClose: onCloseItem })
       ),
       _react2.default.createElement(

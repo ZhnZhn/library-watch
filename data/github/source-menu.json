@@ -13,7 +13,8 @@
     },{
       "caption" : "NPM",
       "items" : [
-        { "id" : "LW_NPM_DOWNLOADS_RECENT_MONTH" }
+        { "id" : "LW_NPM_DOWNLOADS_RECENT_MONTH" },
+        { "id" : "LW_NPM_DOWNLOADS"}
       ]
     },{
       "caption" : "Stack Overflow",
@@ -109,6 +110,7 @@
         "requestType" : "NPM_RECENT_VERSION"
       }
     },
+
     "LW_NPM_DOWNLOADS_RECENT_MONTH" : {
       "type" : "LW_NPM_DOWNLOADS_RECENT_MONTH",
       "menuTitle" : "Downloads Recent Month",
@@ -120,6 +122,17 @@
         "requestType" : "NPM_DOWNLOADS_RECENT_MONTH"
       }
    },
+   "LW_NPM_DOWNLOADS" : {
+     "type" : "LW_NPM_DOWNLOADS",
+     "menuTitle" : "Package Downloads",
+     "dialogCaption" : "Npm Package Downloads",
+     "chartContainerCaption" : "NPM Package Downloads",
+     "dialogType" : "DialogType3A",
+     "dialogProps" : {
+       "oneTitle" : "Package:",
+       "requestType" : "NPM_DOWNLOADS"
+     }
+  },
 
    "LW_SE_QUESTIONS" : {
      "type" : "LW_SE_QUESTIONS",
@@ -139,7 +152,7 @@
     "chartContainerCaption" : "Stack Overflow Search Questions",
     "dialogType" : "DialogType3",
     "dialogProps" : {
-      "oneTitle" : "Tagged:",      
+      "oneTitle" : "Tagged:",
       "twoTitle" : "InTitle",
       "requestType" : "SE_SEARCH_QUESTIONS"
     }

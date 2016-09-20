@@ -16,6 +16,10 @@ var _DialogType5 = require('./DialogType3');
 
 var _DialogType6 = _interopRequireDefault(_DialogType5);
 
+var _DialogType3A = require('./DialogType3A');
+
+var _DialogType3A2 = _interopRequireDefault(_DialogType3A);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var RouterDialog = {
@@ -23,7 +27,8 @@ var RouterDialog = {
 
   DialogType1: _DialogType2.default,
   DialogType2: _DialogType4.default,
-  DialogType3: _DialogType6.default
+  DialogType3: _DialogType6.default,
+  DialogType3A: _DialogType3A2.default
 };
 
 exports.default = RouterDialog;

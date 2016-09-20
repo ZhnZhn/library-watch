@@ -5,14 +5,20 @@ import Raven from 'raven-js';
 
 import AppGitHub from './components/AppGitHub';
 
-/*
-window.onerror = function(message, source, lineno, colno, error) {
-   console.log(message);
-   return false;
+/* eslint-disable no-undef */
+if (process.env.NODE_ENV !== 'production'){
+/* eslint-disable no-undef */
+  console.log('Development Mode:');
+  window.onerror = function(message, source, lineno, colno, error) {
+     console.log('window.onerror:');
+     console.log(message);
+     return false;
+  }
 }
-*/
 
-Raven.config('https://59cd430997004591af3320a9875237d7@sentry.io/99461').install();
+if (process.env.NODE_ENV === 'production'){
+   Raven.config('https://59cd430997004591af3320a9875237d7@sentry.io/99461').install();
+}
 
 const _fnRemoveSpinner = function(){
   document.body.removeChild(document.getElementById('spinner'));

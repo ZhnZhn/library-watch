@@ -14,3 +14,13 @@ body {
 html {
   font-size: 100%;
 }
+
+a {
+  text-decoration: none;
+  color: black;  
+  outline: 0px none;
+}
+a:visited {
+  /*color : #551a8b;*/
+  color: gray;
+}

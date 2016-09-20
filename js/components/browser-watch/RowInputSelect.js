@@ -60,4 +60,4 @@ var RowInputSelect = _react2.default.createClass({
 });
 
 exports.default = RowInputSelect;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\browser-watch\RowInputSelect.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\RowInputSelect.js.map

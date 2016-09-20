@@ -99,17 +99,6 @@
   border-bottom: medium solid #1B75BB;
 }
 
-a {
-  text-decoration: none;
-  color: black;
-}
-a:visited {
-  /*color : #551a8b;*/
-  color: gray;
-}
-
-
-
 .item__quandl{
   color: #e05927;
   line-height: 2;

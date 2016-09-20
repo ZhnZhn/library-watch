@@ -90,6 +90,19 @@ var DateUtils = {
 	toUTCMillis: function toUTCMillis(strDate) {
 		var arr = strDate.split('-');
 		return Date.UTC(arr[0], parseInt(arr[1], 10) - 1, arr[2]);
+	},
+
+
+	/* 1970-01-01 */
+	isWeekend: function isWeekend(year, month, day) {
+		var date = new Date(Date.UTC(parseInt(year + '', 10), parseInt(month + '', 10) - 1, parseInt(day + '', 10))),
+		    weekday = date.getUTCDay();
+
+		if (weekday === 0 || weekday === 6) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 };
 

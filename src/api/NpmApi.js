@@ -13,6 +13,10 @@ const _rRequestTypeToUrl = {
 
   NPM_DOWNLOADS_RECENT_MONTH : (option) => {
     return `${BASE}/downloads/range/last-month/${option.repo}`;
+  },
+  NPM_DOWNLOADS : (option) => {
+    const { fromDate, toDate, repo } = option
+    return `${BASE}/downloads/range/${fromDate}:${toDate}/${repo}`;
   }
 }
 

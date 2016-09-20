@@ -10,8 +10,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var styles = {
-  rootSpan: {
+var STYLE = {
+  ROOT_SPAN: {
     display: 'inline-block',
     color: '#80c040',
     border: '2px solid #80c040',
@@ -31,7 +31,7 @@ var ButtonCircle = function ButtonCircle(props) {
   var isWithoutDefault = props.isWithoutDefault;
   var onClick = props.onClick;
   var _className = className ? className + ' not-selected' : 'not-selected';
-  var _style = isWithoutDefault ? style : Object.assign({}, styles.rootSpan, style);
+  var _style = isWithoutDefault ? style : Object.assign({}, STYLE.ROOT_SPAN, style);
   return _react2.default.createElement(
     'span',
     {
@@ -44,5 +44,14 @@ var ButtonCircle = function ButtonCircle(props) {
   );
 };
 
+ButtonCircle.propTypes = {
+  caption: _react.PropTypes.string,
+  title: _react.PropTypes.string,
+  className: _react.PropTypes.string,
+  style: _react.PropTypes.object,
+  isWithoutDefault: _react.PropTypes.bool,
+  onClick: _react.PropTypes.func
+};
+
 exports.default = ButtonCircle;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\zhnAtoms\ButtonCircle.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\ButtonCircle.js.map

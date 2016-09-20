@@ -7,6 +7,7 @@ import fGitHubCommits from './fGitHubCommits';
 import fGitHubIssues from './fGitHubIssues';
 
 import fNpmRecentDownloads from './fNpmRecentDownloads';
+import fNpmDownloads from './fNpmDownloads';
 
 import fStackTaggedQuestions from './fStackTaggedQuestions';
 
@@ -20,6 +21,7 @@ const RouterItem = {
   GH_PULL_REQUESTS : fGitHubIssues,
 
   NPM_DOWNLOADS_RECENT_MONTH : fNpmRecentDownloads,
+  NPM_DOWNLOADS : fNpmDownloads,
 
   SE_QUESTIONS : fStackTaggedQuestions,
   SE_SEARCH_QUESTIONS : fStackTaggedQuestions

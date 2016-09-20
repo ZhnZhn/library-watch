@@ -16,14 +16,20 @@ var _AppGitHub2 = _interopRequireDefault(_AppGitHub);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/*
-window.onerror = function(message, source, lineno, colno, error) {
-   console.log(message);
-   return false;
+/* eslint-disable no-undef */
+if (process.env.NODE_ENV !== 'production') {
+   /* eslint-disable no-undef */
+   console.log('Development Mode:');
+   window.onerror = function (message, source, lineno, colno, error) {
+      console.log('window.onerror:');
+      console.log(message);
+      return false;
+   };
 }
-*/
 
-_ravenJs2.default.config('https://59cd430997004591af3320a9875237d7@sentry.io/99461').install();
+if (process.env.NODE_ENV === 'production') {
+   _ravenJs2.default.config('https://59cd430997004591af3320a9875237d7@sentry.io/99461').install();
+}
 
 var _fnRemoveSpinner = function _fnRemoveSpinner() {
    document.body.removeChild(document.getElementById('spinner'));

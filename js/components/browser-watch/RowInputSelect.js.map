@@ -1,8 +1,8 @@
 )]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_Template_2\\src\\components\\browser-watch\\RowInputSelect.jsx",
- "file": "D:\\_Dev\\_React\\_Template_2\\js\\components\\browser-watch\\RowInputSelect.js",
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\browser-watch\\RowInputSelect.jsx",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\browser-watch\\RowInputSelect.js",
  "sourceRoot": "",
  "names": [],
  "mappings": ";;;;;;AAAA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAM,+BAAN;AACA,IAAM,SAAS;AACb,WAAU;AACR,WAAO;AADC;AADG,CAAf;;AAMA,IAAM,iBAAiB,gBAAM,WAAN,CAAkB;AACvC,eAAc,gBADyB;AAEvC,aAAY;AACV,aAAU,gBAAM,SAAN,CAAgB,MADhB;AAEV,aAAU,gBAAM,SAAN,CAAgB,KAFhB;AAGV,qBAAkB,gBAAM,SAAN,CAAgB,IAHxB;AAIV,cAAW,gBAAM,SAAN,CAAgB;AAJjB,GAF2B;AAQvC,QARuC,oBAQ/B;AAAA,iBACgD,KAAK,KADrD;AAAA,QACC,OADD,UACC,OADD;AAAA,QACU,OADV,UACU,OADV;AAAA,QACmB,eADnB,UACmB,eADnB;AAAA,QACoC,QADpC,UACoC,QADpC;;AAEN,WACE;AAAA;AAAA,QAAK,OAAO,OAAO,MAAP,CAAc,EAAd,EAAkB,OAAO,MAAzB,CAAZ;AACG;AAAA;AAAA,UAAM,OAAO,OAAO,MAAP,CAAc,EAAd,EAAkB,OAAO,SAAzB,EAAoC,OAAO,OAA3C,CAAb;AACG;AADH,OADH;AAIG;AACG,eAAM,KADT;AAEG,iBAAS,OAFZ;AAGG,yBAAiB,eAHpB;AAIG,kBAAU;;AAJb;AAJH,KADF;AAcD;AAxBsC,CAAlB,CAAvB;;kBA2Be,c"

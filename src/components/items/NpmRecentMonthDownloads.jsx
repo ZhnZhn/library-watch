@@ -107,6 +107,17 @@ const NpmRecentDownloads = React.createClass({
     });
   },
 
+  _renderButtonWatch(){
+    return (
+      <ButtonCircle
+         caption="W"
+         title="Add to Watch"
+         style={styles.BTN_CIRCLE}
+         onClick={this._handlerClickWatch}
+      />
+    )
+  },
+
   _renderNodeIcoBadge(packageName){
     const _href = BASE_NPM + packageName
         , _imgSrc = BASE_NODEICO + packageName + SUFFIX_NODEICO
@@ -123,8 +134,9 @@ const NpmRecentDownloads = React.createClass({
     const {
             packageName, caption, sumDownloads, fromDate, toDate,
             labels, data,
-            onCloseItem
+            onCloseItem, onWatchItem
           } = this.props
+        , _isButtonWatch = ( typeof onWatchItem === 'function' ) ? true : false
         , _styleCaption = styles.captionSpanOpen
         , { isShow, isLoadNodeIco, isShowNodeIco } = this.state
         , _lineChartConfig = Chart.fLineConfig({ labels, data })
@@ -150,12 +162,9 @@ const NpmRecentDownloads = React.createClass({
               {toDate}
             </span>
           </span>
-          <ButtonCircle
-             caption="W"
-             title="Add to Watch"
-             style={styles.BTN_CIRCLE}
-             onClick={this._handlerClickWatch}
-          />
+
+          { _isButtonWatch && this._renderButtonWatch() }
+
           <SvgClose onClose={onCloseItem} />
         </div>
         <ShowHide isShow={isShow}>
