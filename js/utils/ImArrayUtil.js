@@ -6,13 +6,16 @@ Object.defineProperty(exports, "__esModule", {
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-var Im = {
-  filterArray: function filterArray(prop, arr, value) {
+var ImArrayUtil = {
+  push: function push(arr, obj) {
+    return arr ? [].concat(_toConsumableArray(arr), [obj]) : [obj];
+  },
+  filterByProp: function filterByProp(prop, arr, value) {
     return arr.filter(function (obj, index) {
       return obj[prop] !== value;
     });
   },
-  insertItemInArray: function insertItemInArray(item, index) {
+  insertItem: function insertItem(item, index) {
     var arr = arguments.length <= 2 || arguments[2] === undefined ? [] : arguments[2];
 
     if (index !== 0) {
@@ -23,5 +26,5 @@ var Im = {
   }
 };
 
-exports.default = Im;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\utils\Im.js.map
+exports.default = ImArrayUtil;
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\utils\ImArrayUtil.js.map

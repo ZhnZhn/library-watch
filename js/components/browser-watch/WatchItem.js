@@ -75,6 +75,7 @@ var WatchItem = function WatchItem(props) {
   var onDragStart = props.onDragStart;
   var onDragEnter = props.onDragEnter;
   var onDragOver = props.onDragOver;
+  var onDragLeave = props.onDragLeave;
   var onDrop = props.onDrop;
   var repo = item.repo;
   var version = item.version;
@@ -97,8 +98,9 @@ var WatchItem = function WatchItem(props) {
       draggable: isModeEdit,
       onDragStart: isModeEdit && onDragStart.bind(null, option),
       onDrop: isModeEdit && onDrop.bind(null, option),
+      onDragOver: isModeEdit && onDragOver,
       onDragEnter: isModeEdit && onDragEnter,
-      onDragOver: isModeEdit && onDragOver
+      onDragLeave: isModeEdit && onDragLeave
     },
     _react2.default.createElement(
       'div',

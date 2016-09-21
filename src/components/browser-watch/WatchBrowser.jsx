@@ -1,5 +1,6 @@
 import React from 'react';
 
+import WithDnDStyle from './with/WithDnDStyle';
 import createHandlerDnDGroup from './with/createHandlerDnDGroup';
 import createHandlerDnDList from './with/createHandlerDnDList';
 import createHandlerDnDItem from './with/createHandlerDnDItem';
@@ -34,6 +35,9 @@ const styles = {
     paddingRight: '10px'
   },
   groupDiv : {
+    lineHeight : 2
+  },
+  listDiv : {
     marginLeft : '8px',
     paddingLeft : '12px',
     borderLeft : '1px solid yellow',
@@ -46,6 +50,7 @@ const styles = {
 };
 
 const WatchBrowser = React.createClass({
+  ...WithDnDStyle,
   ...createHandlerDnDGroup(DRAG, WatchActions),
   ...createHandlerDnDList(DRAG, WatchActions),
   ...createHandlerDnDItem(DRAG, WatchActions),
@@ -102,6 +107,7 @@ const WatchBrowser = React.createClass({
        return (
                <OpenClose2
                   key={caption}
+                  style={styles.groupDiv}
                   caption={caption}
                   isClose={true}
                   isDraggable={isModeEdit}
@@ -126,7 +132,7 @@ const WatchBrowser = React.createClass({
         <OpenClose2
            key={caption}
            fillOpen={'#80c040'}
-           style={styles.groupDiv}
+           style={styles.listDiv}
            styleNotSelected={styles.itemNotSelected}
            caption={caption}
            isClose={true}
@@ -170,7 +176,8 @@ const WatchBrowser = React.createClass({
               onClose={this._handlerRemoveItem}
               onDragStart={this._handlerDragStartItem}
               onDragOver={this._handlerDragOverItem}
-              onDragEnter={this._handlerDragOverItem}
+              onDragEnter={this._handlerDragEnterItem}
+              onDragLeave={this._handlerDragLeaveItem}
               onDrop={this._handlerDropItem}
            />
         );

@@ -11,6 +11,7 @@ var createHandlerDnDItem = function createHandlerDnDItem(DRAG, WatchActions) {
       var listCaption = _ref.listCaption;
       var caption = _ref.caption;
 
+      this.dragStartWithDnDStyle(ev, [DRAG.LIST, DRAG.ITEM]);
       ev.dataTransfer.effectAllowed = "move";
       ev.dataTransfer.dropEffect = "move";
       //.setDragImage(img, 0, 0);
@@ -24,6 +25,8 @@ var createHandlerDnDItem = function createHandlerDnDItem(DRAG, WatchActions) {
       var groupCaption = _ref2.groupCaption;
       var listCaption = _ref2.listCaption;
       var caption = _ref2.caption;
+
+      this.dropWithDnDStyle(ev);
       var data = JSON.parse(ev.dataTransfer.getData("text"));
       var xType = data.xType;
       var dragId = data.dragId;
@@ -41,8 +44,16 @@ var createHandlerDnDItem = function createHandlerDnDItem(DRAG, WatchActions) {
         }
       }
     },
+    _handlerDragEnterItem: function _handlerDragEnterItem(ev) {
+      ev.preventDefault();
+      this.dragEnterWithDnDStyle(ev, DRAG.ITEM);
+    },
     _handlerDragOverItem: function _handlerDragOverItem(ev) {
       ev.preventDefault();
+    },
+    _handlerDragLeaveItem: function _handlerDragLeaveItem(ev) {
+      ev.preventDefault();
+      this.dragLeaveWithDnDStyle(ev);
     }
   };
 };

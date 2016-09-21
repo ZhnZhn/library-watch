@@ -13,7 +13,7 @@ import Factory from '../logic/Factory';
 
 import BrowserSlice from './BrowserSlice';
 import ComponentSlice from './ComponentSlice';
-import WatchListSlice from './WatchListSlice';
+import WatchListSlice from '../watch-list/WatchListSlice';
 import WithLimitRemaining from './WithLimitRemaining';
 import WithLoadingProgress from './WithLoadingProgress';
 

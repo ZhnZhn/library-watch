@@ -9,6 +9,7 @@ var createHandlerDnDGroup = function createHandlerDnDGroup(DRAG, WatchActions) {
     _handlerDragStartGroup: function _handlerDragStartGroup(_ref, ev) {
       var caption = _ref.caption;
 
+      this.dragStartWithDnDStyle(ev, [DRAG.GROUP]);
       ev.dataTransfer.effectAllowed = "move";
       ev.dataTransfer.dropEffect = "move";
       var _data = {
@@ -19,6 +20,8 @@ var createHandlerDnDGroup = function createHandlerDnDGroup(DRAG, WatchActions) {
     },
     _handlerDropGroup: function _handlerDropGroup(_ref2, ev) {
       var caption = _ref2.caption;
+
+      this.dropWithDnDStyle(ev);
       var data = JSON.parse(ev.dataTransfer.getData("text"));
       var xType = data.xType;
       var dragId = data.dragId;
@@ -43,14 +46,15 @@ var createHandlerDnDGroup = function createHandlerDnDGroup(DRAG, WatchActions) {
       }
     },
     _handlerDragEnterGroup: function _handlerDragEnterGroup(ev) {
-      //ev.target.style.borderTop="3px solid yellow";
       ev.preventDefault();
+      this.dragEnterWithDnDStyle(ev, DRAG.GROUP);
     },
     _handlerDragOverGroup: function _handlerDragOverGroup(ev) {
       ev.preventDefault();
     },
     _handlerDragLeaveGroup: function _handlerDragLeaveGroup(ev) {
-      //ev.target.style.borderTop="";
+      ev.preventDefault();
+      this.dragLeaveWithDnDStyle(ev);
     }
   };
 };

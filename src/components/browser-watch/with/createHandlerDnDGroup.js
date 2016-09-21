@@ -3,6 +3,7 @@ const createHandlerDnDGroup = function(DRAG, WatchActions){
   return {
 
     _handlerDragStartGroup({ caption}, ev){
+       this.dragStartWithDnDStyle(ev, [DRAG.GROUP]);
        ev.dataTransfer.effectAllowed="move";
        ev.dataTransfer.dropEffect="move";
        const _data = {
@@ -13,6 +14,7 @@ const createHandlerDnDGroup = function(DRAG, WatchActions){
     },
 
     _handlerDropGroup({ caption }, ev){
+       this.dropWithDnDStyle(ev);
        const data = JSON.parse(ev.dataTransfer.getData("text"))
           ,  { xType, dragId } = data
           ,  dropId =  `${caption};`
@@ -36,9 +38,10 @@ const createHandlerDnDGroup = function(DRAG, WatchActions){
       }
     },
 
+
     _handlerDragEnterGroup(ev){
-       //ev.target.style.borderTop="3px solid yellow";
        ev.preventDefault();
+       this.dragEnterWithDnDStyle(ev, DRAG.GROUP);
     },
 
     _handlerDragOverGroup(ev){
@@ -46,8 +49,10 @@ const createHandlerDnDGroup = function(DRAG, WatchActions){
     },
 
     _handlerDragLeaveGroup(ev){
-      //ev.target.style.borderTop="";
+       ev.preventDefault();
+       this.dragLeaveWithDnDStyle(ev);
     }
+
   };
 };
 

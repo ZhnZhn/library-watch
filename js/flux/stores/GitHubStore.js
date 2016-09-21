@@ -42,7 +42,7 @@ var _ComponentSlice = require('./ComponentSlice');
 
 var _ComponentSlice2 = _interopRequireDefault(_ComponentSlice);
 
-var _WatchListSlice = require('./WatchListSlice');
+var _WatchListSlice = require('../watch-list/WatchListSlice');
 
 var _WatchListSlice2 = _interopRequireDefault(_WatchListSlice);
 

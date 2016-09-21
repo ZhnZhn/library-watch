@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _WithDnDStyle = require('./with/WithDnDStyle');
+
+var _WithDnDStyle2 = _interopRequireDefault(_WithDnDStyle);
+
 var _createHandlerDnDGroup = require('./with/createHandlerDnDGroup');
 
 var _createHandlerDnDGroup2 = _interopRequireDefault(_createHandlerDnDGroup);
@@ -77,6 +81,9 @@ var styles = {
     paddingRight: '10px'
   },
   groupDiv: {
+    lineHeight: 2
+  },
+  listDiv: {
     marginLeft: '8px',
     paddingLeft: '12px',
     borderLeft: '1px solid yellow',
@@ -90,7 +97,7 @@ var styles = {
 
 var WatchBrowser = _react2.default.createClass(_extends({
   displayName: 'WatchBrowser'
-}, (0, _createHandlerDnDGroup2.default)(DRAG, _WatchActions2.default), (0, _createHandlerDnDList2.default)(DRAG, _WatchActions2.default), (0, _createHandlerDnDItem2.default)(DRAG, _WatchActions2.default), {
+}, _WithDnDStyle2.default, (0, _createHandlerDnDGroup2.default)(DRAG, _WatchActions2.default), (0, _createHandlerDnDList2.default)(DRAG, _WatchActions2.default), (0, _createHandlerDnDItem2.default)(DRAG, _WatchActions2.default), {
   getInitialState: function getInitialState() {
     var store = this.props.store;
 
@@ -149,6 +156,7 @@ var WatchBrowser = _react2.default.createClass(_extends({
         _OpenClose2.default,
         {
           key: caption,
+          style: styles.groupDiv,
           caption: caption,
           isClose: true,
           isDraggable: isModeEdit,
@@ -177,7 +185,7 @@ var WatchBrowser = _react2.default.createClass(_extends({
         {
           key: caption,
           fillOpen: '#80c040',
-          style: styles.groupDiv,
+          style: styles.listDiv,
           styleNotSelected: styles.itemNotSelected,
           caption: caption,
           isClose: true,
@@ -218,7 +226,8 @@ var WatchBrowser = _react2.default.createClass(_extends({
         onClose: _this3._handlerRemoveItem,
         onDragStart: _this3._handlerDragStartItem,
         onDragOver: _this3._handlerDragOverItem,
-        onDragEnter: _this3._handlerDragOverItem,
+        onDragEnter: _this3._handlerDragEnterItem,
+        onDragLeave: _this3._handlerDragLeaveItem,
         onDrop: _this3._handlerDropItem
       });
     });
