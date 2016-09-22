@@ -19,6 +19,7 @@ const Fn = {
     return {isDone : false, message : Msg.ITEM_EXISTED(caption, captionList)}
   },
 
+  /* for DragDrop */
   fDragDropItemExisted(dropId, dragId){
     return {
       isDone : false,
@@ -35,6 +36,7 @@ const Fn = {
       alertDescr : Msg.Alert.DRAG_DROP_LIST.descr
    }
  },
+ /* for DragDrop */
 
   filter : ImArrayUtil.filterByProp.bind(null, 'caption'),
   getArrayWithObj : ImArrayUtil.push,
@@ -48,7 +50,7 @@ const Fn = {
   },
   /* for DragDrop */
   insertItemInArray : ImArrayUtil.insertItem,
-
+  /* for DragDrop */
 
   findGroup : ObjUtil.findInPropArrayByPropItem.bind(null, 'groups', 'caption'),
   findList : ObjUtil.findInPropArrayByPropItem.bind(null, 'lists', 'caption'),

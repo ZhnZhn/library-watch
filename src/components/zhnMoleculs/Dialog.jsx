@@ -23,6 +23,9 @@ const styles = {
     textAlign: 'center',
     fontSize: '18px'
   },
+  childrenDiv : {
+    cursor : 'default'
+  },
   commandDiv : {
      cursor: 'default',
      float: 'right',
@@ -33,19 +36,16 @@ const styles = {
 };
 
 
-const ZhDialog = React.createClass({
+const Dialog = React.createClass({
 
   componentDidMount(){
      Interact.makeDragable(this.domRootDiv);
   },
 
-  _renderCommandButton(){
-    const { commandButtons, onShowChart, onClose } = this.props;
+  _renderCommandButton(commandButtons, onShowChart, onClose){
     return (
       <div style={styles.commandDiv}>
-
         {commandButtons}
-
         <ToolBarButton
            type="TypeC"
            caption="Show"
@@ -61,27 +61,32 @@ const ZhDialog = React.createClass({
   },
 
   render(){
-    const { isShow, caption, children, onClose} = this.props
+    const {
+            isShow, caption, children, commandButtons,
+            onShowChart, onClose
+          } = this.props
         , _styleShow = isShow ? {display: 'block'} : {display: 'none'}
-        , _classShow = isShow ? 'show-popup' : null;
+        , _classShow = isShow ? 'show-popup' : undefined;
 
     return (
       <div
-           ref={c => this.domRootDiv = c}
+           ref={ c => this.domRootDiv = c }        
            className={_classShow}
            style={Object.assign({}, styles.rootDiv, _styleShow)}
       >
         <div style={styles.captionDiv}>
-          <span>{caption}</span>
+          <span className="not-selected">
+             {caption}
+          </span>
           <SvgClose onClose={onClose} />
         </div>
-        <div style={{cursor: 'default'}}>
+        <div style={styles.childrenDiv}>
            {children}
         </div>
-        {this._renderCommandButton()}
+        {this._renderCommandButton(commandButtons, onShowChart, onClose)}
       </div>
     );
   }
 });
 
-export default ZhDialog;
+export default Dialog;

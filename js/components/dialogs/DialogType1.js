@@ -8,9 +8,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ZhDialog = require('../zhnMoleculs/ZhDialog');
+var _Dialog = require('../zhnMoleculs/Dialog');
 
-var _ZhDialog2 = _interopRequireDefault(_ZhDialog);
+var _Dialog2 = _interopRequireDefault(_Dialog);
 
 var _ToolBarButton = require('../header/ToolBarButton');
 
@@ -65,7 +65,7 @@ var DialogType1 = _react2.default.createClass({
     })];
 
     return _react2.default.createElement(
-      _ZhDialog2.default,
+      _Dialog2.default,
       {
         caption: caption,
         isShow: isShow,

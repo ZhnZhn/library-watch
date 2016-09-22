@@ -75,8 +75,7 @@ const WatchListSlice = {
     if (this.isWatchEdited){
        LocalForage.setItem(STORAGE_KEY , this.watchList)
           .then(()=>{
-             this.isWatchEdited = false;
-             //_fnOpenInfoDialog(this, Msg.WATCH_SAVED)
+             this.isWatchEdited = false;             
              this.onShowModalDialog(ModalDialog.INFO, {
                 caption : DIALOG_CAPTION,
                 descr : Msg.WATCH_SAVED

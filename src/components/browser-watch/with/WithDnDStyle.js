@@ -34,7 +34,7 @@ const WithDnDStyle = {
    dragEnterWithDnDStyle(ev, sourceType){
       const style = ev.currentTarget.style
       borderLeftEnter = style.getPropertyValue(BORDER_LEFT);
-
+      
       /* eslint-disable no-unused-expressions */
       ( sourcePermissions.indexOf(sourceType) !== -1 )
          ? style.setProperty(BORDER_LEFT, ENTER_BORDER_LEFT_STYLE)

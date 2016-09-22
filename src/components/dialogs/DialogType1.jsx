@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ZhDialog from '../zhnMoleculs/ZhDialog';
+import Dialog from '../zhnMoleculs/Dialog';
 import ToolBarButton from '../header/ToolBarButton';
 import RowInputText from './RowInputText';
 
@@ -50,7 +50,7 @@ const DialogType1 = React.createClass({
     ];
 
     return (
-       <ZhDialog
+       <Dialog
            caption={caption}
            isShow={isShow}
            commandButtons={_commandButtons}
@@ -62,7 +62,7 @@ const DialogType1 = React.createClass({
            caption={oneTitle}
            placeholder={onePlaceholder}
         />
-      </ZhDialog>
+      </Dialog>
     );
   }
 });

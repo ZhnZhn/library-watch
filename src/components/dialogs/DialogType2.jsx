@@ -3,7 +3,7 @@ import React from 'react';
 import DateUtils from '../../utils/DateUtils';
 
 import WithValidation from './WithValidation';
-import ZhDialog from '../zhnMoleculs/ZhDialog';
+import Dialog from '../zhnMoleculs/Dialog';
 import ToolBarButton from '../header/ToolBarButton';
 import RowInputText from './RowInputText';
 import RowInputSelect from './RowInputSelect';
@@ -103,7 +103,7 @@ const DialogType2 = React.createClass({
         , { validationMessages } = this.state;
 
     return (
-       <ZhDialog
+       <Dialog
            caption={caption}
            isShow={isShow}
            commandButtons={_commandButtons}
@@ -131,7 +131,7 @@ const DialogType2 = React.createClass({
         <ValidationMessagesFragment
            validationMessages={validationMessages}
         />
-      </ZhDialog>
+      </Dialog>
     );
   }
 });

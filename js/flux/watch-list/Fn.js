@@ -37,6 +37,9 @@ var Fn = {
   fResultItemExisted: function fResultItemExisted(caption, captionList) {
     return { isDone: false, message: _Msg2.default.ITEM_EXISTED(caption, captionList) };
   },
+
+
+  /* for DragDrop */
   fDragDropItemExisted: function fDragDropItemExisted(dropId, dragId) {
     return {
       isDone: false,
@@ -54,6 +57,7 @@ var Fn = {
     };
   },
 
+  /* for DragDrop */
 
   filter: _ImArrayUtil2.default.filterByProp.bind(null, 'caption'),
   getArrayWithObj: _ImArrayUtil2.default.push,
@@ -64,6 +68,7 @@ var Fn = {
 
   /* for DragDrop */
   insertItemInArray: _ImArrayUtil2.default.insertItem,
+  /* for DragDrop */
 
   findGroup: _ObjUtil2.default.findInPropArrayByPropItem.bind(null, 'groups', 'caption'),
   findList: _ObjUtil2.default.findInPropArrayByPropItem.bind(null, 'lists', 'caption'),

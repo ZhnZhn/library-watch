@@ -91,7 +91,6 @@ var WatchListSlice = {
     if (this.isWatchEdited) {
       _localforage2.default.setItem(STORAGE_KEY, this.watchList).then(function () {
         _this2.isWatchEdited = false;
-        //_fnOpenInfoDialog(this, Msg.WATCH_SAVED)
         _this2.onShowModalDialog(_Type.ModalDialog.INFO, {
           caption: DIALOG_CAPTION,
           descr: _Msg2.default.WATCH_SAVED
