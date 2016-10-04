@@ -9,7 +9,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var DateUtils = {
 	isValidDate: function isValidDate(str) {
 		// STRING FORMAT yyyy-mm-dd
-		if (str == "" || str == null) {
+		if (!str) {
+			return false;
+		}
+
+		if (str.trim().length !== 10) {
 			return false;
 		}
 

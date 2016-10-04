@@ -24,26 +24,29 @@ const InputText = React.createClass({
     initValue : React.PropTypes.string,
     style : React.PropTypes.object
   },
-  getDefaultProps(){
-    return {
-      initValue : ''
-    }
-  },
 
   getInitialState(){
     return {
-      value : this.props.initValue
+      value : this.props.initValue || ''
     }
   },
 
   componentWillReceiveProps(nextProps){
-    if (nextProps !== this.props){
+    if ( nextProps !== this.props &&
+         typeof nextProps.initValue !== "undefined")
+    {
       this.setState({ value : nextProps.initValue });
     }
   },
 
   _handlerInputChange(event){
     this.setState({ value : event.target.value })
+  },
+
+  _handlerInputKeyDown(event){
+     if (event.keyCode === 27){
+       this.setState({ value : '' })
+     }
   },
 
   render(){
@@ -57,6 +60,7 @@ const InputText = React.createClass({
         translate={false}
         placeholder={placeholder}
         onChange={this._handlerInputChange}
+        onKeyDown={this._handlerInputKeyDown}
       />
     )
   },

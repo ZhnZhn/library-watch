@@ -49,9 +49,8 @@ var styles = {
 
 var InputDate = _react2.default.createClass({
   displayName: 'InputDate',
-
   getInitialState: function getInitialState() {
-    var initValue = this.props.initValue ? this.props.initValue : '';
+    var initValue = this.props.initValue || '';
 
     return {
       value: initValue,
@@ -59,31 +58,42 @@ var InputDate = _react2.default.createClass({
       isValid: true
     };
   },
-
-  _handlerChangeValue: function _handlerChangeValue(event) {
-    this.state.value = event.target.value;
-    if (!this.props.onTest(this.state.value)) {
-      this.state.isValid = false;
+  setValue: function setValue(value) {
+    if (!this.props.onTest(value)) {
+      this.setState({
+        value: value,
+        isValid: false
+      });
     } else {
-      this.state.isValid = true;
-      this.state.errorInput = null;
+      this.setState({
+        value: value,
+        isValid: true,
+        errorInput: null
+      });
     }
-    this.setState(this.state);
   },
-
+  _handlerChangeValue: function _handlerChangeValue(event) {
+    this.setValue(event.target.value);
+  },
   _handlerBlurValue: function _handlerBlurValue() {
     if (!this.props.onTest(this.state.value)) {
-      this.state.errorInput = this.props.errorMsg;
-      this.state.isValid = false;
+      this.setState({
+        isValid: false,
+        errorInput: this.props.errorMsg
+      });
     } else {
-      this.state.errorInput = null;
-      this.state.isValid = true;
+      this.setState({
+        isValid: true,
+        errorInput: null
+      });
     }
-    this.setState(this.state);
   },
-
   render: function render() {
-    var styleHr = this.state.isValid ? { borderColor: '#1B75BB' } : { borderColor: '#F44336' };
+    var _state = this.state;
+    var value = _state.value;
+    var isValid = _state.isValid;
+    var errorInput = _state.errorInput;
+    var styleHr = isValid ? { borderColor: '#1B75BB' } : { borderColor: '#F44336' };
 
     return _react2.default.createElement(
       'div',
@@ -94,7 +104,7 @@ var InputDate = _react2.default.createClass({
         style: styles.inputText,
         translate: false,
         placeholder: 'YYYY-MM-DD',
-        value: this.state.value,
+        value: value,
         onChange: this._handlerChangeValue,
         onBlur: this._handlerBlurValue
       }),
@@ -102,23 +112,19 @@ var InputDate = _react2.default.createClass({
       _react2.default.createElement(
         'div',
         { style: styles.errMsg },
-        this.state.errorInput
+        errorInput
       )
     );
   },
-
   getValue: function getValue() {
     return this.state.value;
   },
-
   isValid: function isValid() {
     return this.state.isValid;
   },
-
   focusInput: function focusInput() {
     this.refs.inputDate.focus();
   }
-
 });
 
 exports.default = InputDate;

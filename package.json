@@ -23,8 +23,8 @@
       "interact.js": "npm:interact.js@^1.2.6",
       "localforage": "npm:localforage@^1.4.2",
       "raven-js": "npm:raven-js@^3.7.0",
-      "react": "npm:react@^15.3.1",
-      "react-dom": "npm:react-dom@^15.3.1",
+      "react": "npm:react@^15.3.2",
+      "react-dom": "npm:react-dom@^15.3.2",
       "reflux": "npm:reflux@^0.4.1",
       "timeago.js": "npm:timeago.js@^1.1.0"
     },
@@ -33,7 +33,7 @@
   "devDependencies": {
     "ava": "^0.16.0",
     "babel-core": "^6.10.4",
-    "babel-eslint": "^6.1.0",
+    "babel-eslint": "^6.1.2",
     "babel-plugin-recharts": "^1.0.2",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
@@ -46,7 +46,7 @@
     "gulp-concat": "^2.6.0",
     "html-webpack-plugin": "^2.21.0",
     "jspm": "^0.16.45",
-    "react-addons-test-utils": "^15.3.1",
+    "react-addons-test-utils": "^15.3.2",
     "sinon": "^1.17.5",
     "webpack": "^1.13.1"
   },
@@ -59,13 +59,13 @@
       ]
     },
     "source": [
-       "!src/**/*",
-       "!js/**/*",
-       "!jspm_packages/**/*",
-       "!lib/**/*",
-       "!local_modules/**/*",
-       "!node_modules/**/*", 
-       "test/**/*" 
+      "!src/**/*",
+      "!js/**/*",
+      "!jspm_packages/**/*",
+      "!lib/**/*",
+      "!local_modules/**/*",
+      "!node_modules/**/*",
+      "test/**/*"
     ]
   }
 }

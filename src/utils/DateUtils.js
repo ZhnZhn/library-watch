@@ -3,7 +3,9 @@ const DateUtils = {
 
 isValidDate(str){
 	 // STRING FORMAT yyyy-mm-dd
-	 if (str=="" || str==null) { return false; }
+	 if (!str) { return false; }
+
+	 if (str.trim().length !== 10) { return false; }
 
 	 // m[1] is year 'YYYY' * m[2] is month 'MM' * m[3] is day 'DD'
 	 let m = str.match(/(\d{4})-(\d{2})-(\d{2})/);

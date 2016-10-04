@@ -34,23 +34,24 @@ var InputText = _react2.default.createClass({
     initValue: _react2.default.PropTypes.string,
     style: _react2.default.PropTypes.object
   },
-  getDefaultProps: function getDefaultProps() {
-    return {
-      initValue: ''
-    };
-  },
+
   getInitialState: function getInitialState() {
     return {
-      value: this.props.initValue
+      value: this.props.initValue || ''
     };
   },
   componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-    if (nextProps !== this.props) {
+    if (nextProps !== this.props && typeof nextProps.initValue !== "undefined") {
       this.setState({ value: nextProps.initValue });
     }
   },
   _handlerInputChange: function _handlerInputChange(event) {
     this.setState({ value: event.target.value });
+  },
+  _handlerInputKeyDown: function _handlerInputKeyDown(event) {
+    if (event.keyCode === 27) {
+      this.setState({ value: '' });
+    }
   },
   render: function render() {
     var _props = this.props;
@@ -65,7 +66,8 @@ var InputText = _react2.default.createClass({
       value: value,
       translate: false,
       placeholder: placeholder,
-      onChange: this._handlerInputChange
+      onChange: this._handlerInputChange,
+      onKeyDown: this._handlerInputKeyDown
     });
   },
   getValue: function getValue() {

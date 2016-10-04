@@ -4,8 +4,8 @@ import React from 'react';
 import GitHubStore from '../../flux/stores/GitHubStore';
 import { ChartActionTypes } from '../../flux/actions/ChartActions';
 import { ComponentActionTypes } from '../../flux/actions/ComponentActions';
-//import ComponentActions, {ComponentActionTypes} from '../flux/actions/ComponentActions';
-//import {ModalDialog} from '../constants/Type';
+
+
 
 import CaptionRow from '../zhnAtoms/CaptionRow';
 import SvgHrzResize from '../zhnMoleculs/SvgHrzResize';

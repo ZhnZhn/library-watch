@@ -49,6 +49,17 @@ const DialogType2 = React.createClass({
    this.sortByItem = item;
  },
 
+
+ _handlerDefault(){
+    this.datesFragment.setValues(_initFromDate, _initToDate);
+    this.setState({ validationMessages: [] });
+ },
+
+ _handlerClear(){
+    this.inputRepo.setValue('');
+    this.setState({ validationMessages: [] });
+ },
+
  _handlerLoad(){
     this._handlerLoadWithValidation(
       this._createValidationMessages(),
@@ -93,8 +104,20 @@ const DialogType2 = React.createClass({
             oneTitle, onePlaceholder
           } = this.props
         , _commandButtons = [
+            <ToolBarButton
+              key="a"
+              type="TypeC"
+              caption="Default"
+              onClick={this._handlerDefault}
+             />,
+            <ToolBarButton
+              key="b"
+              type="TypeC"
+              caption="Clear"
+              onClick={this._handlerClear}
+             />,
              <ToolBarButton
-               key="a"
+               key="c"
                type="TypeC"
                caption="Load"
                onClick={this._handlerLoad}

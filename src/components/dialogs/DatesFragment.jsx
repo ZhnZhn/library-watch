@@ -68,6 +68,11 @@ const DatesFragment = React.createClass({
     }
   },
 
+  setValues(fromDate, toDate){
+     this.fromDate.setValue(fromDate);
+     this.toDate.setValue(toDate);
+  },
+
   getValidation(){
     const {msgOnNotValidFormat} = this.props
         ,  datesMsg = [];

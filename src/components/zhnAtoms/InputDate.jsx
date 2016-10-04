@@ -39,8 +39,8 @@ const styles = {
 
 
 const InputDate = React.createClass({
-  getInitialState: function(){
-      let initValue = this.props.initValue ? this.props.initValue : '';
+  getInitialState(){
+      const initValue = this.props.initValue || '';
 
       return {
         value: initValue,
@@ -49,30 +49,44 @@ const InputDate = React.createClass({
       }
   },
 
-  _handlerChangeValue: function(event){
-    this.state.value = event.target.value;
-    if (!this.props.onTest(this.state.value)) {
-      this.state.isValid = false;
+  setValue(value){
+    if (!this.props.onTest(value)) {
+      this.setState({
+         value : value,
+         isValid : false
+      });
     } else {
-      this.state.isValid = true;
-      this.state.errorInput = null;
+      this.setState({
+        value: value,
+        isValid : true,
+        errorInput : null
+      });
     }
-    this.setState(this.state);
   },
 
-  _handlerBlurValue: function(){
-    if (!this.props.onTest(this.state.value)) {
-      this.state.errorInput = this.props.errorMsg;
-      this.state.isValid = false;
-    } else {
-      this.state.errorInput = null;
-      this.state.isValid = true;
-    }
-    this.setState(this.state);
+  _handlerChangeValue(event){
+    this.setValue(event.target.value);
   },
 
-  render: function(){
-    let styleHr = this.state.isValid ? {borderColor: '#1B75BB'} : {borderColor: '#F44336'};
+  _handlerBlurValue(){
+    if (!this.props.onTest(this.state.value)) {
+      this.setState({
+          isValid : false,
+          errorInput : this.props.errorMsg
+      });
+    } else {
+      this.setState({
+          isValid : true,
+          errorInput : null
+      });
+    }
+  },
+
+  render(){
+    const { value, isValid, errorInput } = this.state
+        , styleHr = isValid
+                    ? { borderColor: '#1B75BB' }
+                    : { borderColor: '#F44336' };
 
     return (
       <div style={styles.rootDiv}>
@@ -82,28 +96,28 @@ const InputDate = React.createClass({
            style={styles.inputText}
            translate={false}
            placeholder="YYYY-MM-DD"
-           value={this.state.value}
+           value={value}
            onChange={this._handlerChangeValue}
            onBlur={this._handlerBlurValue}
         >
         </input>
         <hr style={Object.assign({}, styles.inputHr, styleHr)}></hr>
         <div style={styles.errMsg}>
-          {this.state.errorInput}
+          {errorInput}
         </div>
       </div>
     );
   },
 
-  getValue: function(){
+  getValue(){
     return this.state.value;
   },
 
-  isValid: function(){
+  isValid(){
     return this.state.isValid;
   },
 
-  focusInput: function(){
+  focusInput(){
     this.refs.inputDate.focus();
   }
 

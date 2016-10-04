@@ -4,9 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _WithValidation = require('./WithValidation');
+
+var _WithValidation2 = _interopRequireDefault(_WithValidation);
 
 var _Dialog = require('../zhnMoleculs/Dialog');
 
@@ -20,16 +26,22 @@ var _RowInputText = require('./RowInputText');
 
 var _RowInputText2 = _interopRequireDefault(_RowInputText);
 
+var _ValidationMessagesFragment = require('./ValidationMessagesFragment');
+
+var _ValidationMessagesFragment2 = _interopRequireDefault(_ValidationMessagesFragment);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var DialogType1 = _react2.default.createClass({
+var DialogType1 = _react2.default.createClass(_extends({}, _WithValidation2.default, {
 
   displayName: 'DialogType1',
 
   getInitialState: function getInitialState() {
     this.stock = null;
 
-    return {};
+    return {
+      validationMessages: []
+    };
   },
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
     if (this.props !== nextProps) {
@@ -39,14 +51,34 @@ var DialogType1 = _react2.default.createClass({
     }
     return true;
   },
-  _handlerLoad: function _handlerLoad(event) {
-    var repo = this.inputRepo.getValue();
+  _handlerClear: function _handlerClear() {
+    this.inputRepo.setValue('');
+    this.setState({ validationMessages: [] });
+  },
+  _handlerLoad: function _handlerLoad() {
+    this._handlerLoadWithValidation(this._createValidationMessages(), this._createLoadOption);
+  },
+  _createValidationMessages: function _createValidationMessages() {
+    var msg = [];
+
+    var value = this.inputRepo.getValue();
+    if (!value) {
+      msg = msg.concat(this.props.oneTitle + ' is required');
+    }
+
+    msg.isValid = msg.length === 0 ? true : false;
+    return msg;
+  },
+  _createLoadOption: function _createLoadOption() {
     var requestType = this.props.requestType;
 
-    this.props.onLoad({ repo: repo, requestType: requestType });
+    return {
+      repo: this.inputRepo.getValue(),
+      requestType: requestType
+    };
   },
   _handlerClose: function _handlerClose() {
-    this.props.onClose();
+    this._handlerCloseWithValidation(this._createValidationMessages);
   },
   render: function render() {
     var _this = this;
@@ -57,8 +89,14 @@ var DialogType1 = _react2.default.createClass({
     var onShow = _props.onShow;
     var oneTitle = _props.oneTitle;
     var onePlaceholder = _props.onePlaceholder;
+    var validationMessages = this.state.validationMessages;
     var _commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
       key: 'a',
+      type: 'TypeC',
+      caption: 'Clear',
+      onClick: this._handlerClear
+    }), _react2.default.createElement(_ToolBarButton2.default, {
+      key: 'b',
       type: 'TypeC',
       caption: 'Load',
       onClick: this._handlerLoad
@@ -79,10 +117,13 @@ var DialogType1 = _react2.default.createClass({
         },
         caption: oneTitle,
         placeholder: onePlaceholder
+      }),
+      _react2.default.createElement(_ValidationMessagesFragment2.default, {
+        validationMessages: validationMessages
       })
     );
   }
-});
+}));
 
 exports.default = DialogType1;
 //# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\DialogType1.js.map

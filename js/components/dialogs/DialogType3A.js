@@ -63,11 +63,23 @@ var DialogType3A = _react2.default.createClass(_extends({}, _WithValidation2.def
     }
     return true;
   },
+  _handlerDefault: function _handlerDefault() {
+    this.datesFragment.setValues(_initFromDate, _initToDate);
+  },
+  _handlerClear: function _handlerClear() {
+    this.inputRepo.setValue('');
+    this.setState({ validationMessages: [] });
+  },
   _handlerLoad: function _handlerLoad() {
     this._handlerLoadWithValidation(this._createValidationMessages(), this._createLoadOption);
   },
   _createValidationMessages: function _createValidationMessages() {
     var msg = [];
+
+    var repo = this.inputRepo.getValue();
+    if (!repo) {
+      msg = msg.concat(this.props.oneTitle + ' is required');
+    }
 
     var _datesFragment$getVal = this.datesFragment.getValidation();
 
@@ -110,6 +122,16 @@ var DialogType3A = _react2.default.createClass(_extends({}, _WithValidation2.def
     var onePlaceholder = _props.onePlaceholder;
     var _commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
       key: 'a',
+      type: 'TypeC',
+      caption: 'Default',
+      onClick: this._handlerDefault
+    }), _react2.default.createElement(_ToolBarButton2.default, {
+      key: 'b',
+      type: 'TypeC',
+      caption: 'Clear',
+      onClick: this._handlerClear
+    }), _react2.default.createElement(_ToolBarButton2.default, {
+      key: 'c',
       type: 'TypeC',
       caption: 'Load',
       onClick: this._handlerLoad

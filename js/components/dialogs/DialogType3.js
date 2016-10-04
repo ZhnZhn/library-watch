@@ -72,6 +72,15 @@ var DialogType3 = _react2.default.createClass(_extends({}, _WithValidation2.defa
   _handlerSelectSortBy: function _handlerSelectSortBy(item) {
     this.sortByItem = item;
   },
+  _handlerDefault: function _handlerDefault() {
+    this.datesFragment.setValues(_initFromDate, _initToDate);
+    this.setState({ validationMessages: [] });
+  },
+  _handlerClear: function _handlerClear() {
+    this.inputRepo.setValue('');
+    this.inputTwo.setValue('');
+    this.setState({ validationMessages: [] });
+  },
   _handlerLoad: function _handlerLoad() {
     this._handlerLoadWithValidation(this._createValidationMessages(), this._createLoadOption);
   },
@@ -127,6 +136,16 @@ var DialogType3 = _react2.default.createClass(_extends({}, _WithValidation2.defa
     var twoPlaceholder = _props.twoPlaceholder;
     var _commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
       key: 'a',
+      type: 'TypeC',
+      caption: 'Default',
+      onClick: this._handlerDefault
+    }), _react2.default.createElement(_ToolBarButton2.default, {
+      key: 'b',
+      type: 'TypeC',
+      caption: 'Clear',
+      onClick: this._handlerClear
+    }), _react2.default.createElement(_ToolBarButton2.default, {
+      key: 'c',
       type: 'TypeC',
       caption: 'Load',
       onClick: this._handlerLoad
