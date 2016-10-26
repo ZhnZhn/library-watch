@@ -1,9 +1,9 @@
 )]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_Template_2\\src\\components\\zhnAtoms\\ScrollPane.jsx",
- "file": "D:\\_Dev\\_React\\_Template_2\\js\\components\\zhnAtoms\\ScrollPane.js",
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\zhnAtoms\\ScrollPane.jsx",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\zhnAtoms\\ScrollPane.js",
  "sourceRoot": "",
  "names": [],
- "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAM,aAAa,SAAb,UAAa,CAAC,KAAD,EAAW;AAAA,QAClB,KADkB,GACE,KADF,CAClB,KADkB;AAAA,QACX,QADW,GACE,KADF,CACX,QADW;;AAE1B,WACE;AAAA;AAAA,UAAK,WAAU,aAAf,EAA6B,OAAO,KAApC;AACI;AADJ,KADF;AAKH,CAPD;;kBASe,U"
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAM,aAAa,SAAb,UAAa,CAAC,KAAD,EAAW;AAAA,QAClB,KADkB,GACgB,KADhB,CAClB,KADkB;AAAA,2BACgB,KADhB,CACX,SADW;AAAA,QACX,SADW,oCACD,EADC;AAAA,QACG,QADH,GACgB,KADhB,CACG,QADH;;AAE1B,WACE;AAAA;AAAA,UAAK,4BAA0B,SAA/B,EAA4C,OAAO,KAAnD;AACI;AADJ,KADF;AAKH,CAPD;;kBASe,U"
 }

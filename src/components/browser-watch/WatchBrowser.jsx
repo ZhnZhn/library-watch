@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import WithDnDStyle from './with/WithDnDStyle';
 import createHandlerDnDGroup from './with/createHandlerDnDGroup';
@@ -12,9 +13,14 @@ import WatchActions from '../../flux/actions/WatchActions';
 import Browser from '../zhnAtoms/Browser';
 import CaptionRow from '../zhnAtoms/CaptionRow';
 import ButtonCircle from '../zhnAtoms/ButtonCircle';
+
+import ShowHide from '../zhnAtoms/ShowHide';
+import WrapperInputSearch from './WrapperInputSearch';
+
 import ScrollPane from '../zhnAtoms/ScrollPane';
 import OpenClose2 from '../zhnAtoms/OpenClose2';
 import WatchItem from './WatchItem';
+
 
 const DRAG = {
   GROUP : 'GROUP',
@@ -22,12 +28,31 @@ const DRAG = {
   ITEM : 'ITEM'
 }
 
+const CLASS = {
+  BROWSER_WATCH : "browser-watch",
+  BROWSER_WATCH__30 : "browser-watch--1r",
+  BROWSER_WATCH__60 : "browser-watch--2r"
+}
+
+
 const styles = {
   browser : {
-    paddingRight: '0px'
+    paddingRight: '0px',
+    maxWidth: '500px'
+  },
+  editBarDiv : {
+    marginBottom: '10px'
   },
   btCircle : {
     marginLeft: '20px'
+  },
+  btEditBarList : {
+    marginLeft: '20px'
+  },
+  wrapperSearch : {
+     paddingBottom: '8px',
+     width: '100%',
+     paddingRight: '24px'
   },
   scrollDiv : {
     overflowY: 'auto',
@@ -57,11 +82,24 @@ const WatchBrowser = React.createClass({
 
   getInitialState(){
     const { store } = this.props;
+
+    this.isShouldUpdateFind = false;
+
     return {
       isShow : false,
       isModeEdit : false,
+      isShowFind : false,
+      scrollClass : CLASS.BROWSER_WATCH,
       watchList : store.getWatchList()
     }
+  },
+
+  _calcScrollClass(isShowFind, isModeEdit){
+    return classNames({
+      [CLASS.BROWSER_WATCH] : !(isShowFind && isModeEdit),
+      [CLASS.BROWSER_WATCH__30] : (isShowFind && !isModeEdit) || (!isShowFind && isModeEdit),
+      [CLASS.BROWSER_WATCH__60] : (isShowFind && isModeEdit)
+    })
   },
 
   componentWillMount(){
@@ -73,9 +111,15 @@ const WatchBrowser = React.createClass({
   _onStore(actionType, data){
      const { browserType, showAction, updateAction } = this.props;
      if (actionType === showAction && data === browserType ){
-      this._handlerShow();
-    } else if (actionType === updateAction) {
-      this.setState({ watchList: data })
+       this._handlerShow();
+     } else if (actionType === updateAction) {
+       const { isModeEdit } = this.state
+       this.isShouldUpdateFind = true;
+       this.setState({
+         watchList: data,
+         isShowFind : false,
+         scrollClass : this._calcScrollClass(false, isModeEdit)
+      })
     }
   },
 
@@ -90,7 +134,21 @@ const WatchBrowser = React.createClass({
     WatchActions.saveWatch();
   },
   _handlerToggleEditMode(){
-    this.setState({ isModeEdit : !this.state.isModeEdit });
+    const { isShowFind, isModeEdit } = this.state
+         , _isModeEdit = !isModeEdit
+    this.setState({
+      isModeEdit : _isModeEdit,
+      scrollClass : this._calcScrollClass(isShowFind, _isModeEdit)
+    });
+  },
+
+  _handlerToggleFindInput(){
+    const { isShowFind, isModeEdit } = this.state
+         , _isShowFind = !isShowFind
+    this.setState({
+      isShowFind : _isShowFind,
+      scrollClass : this._calcScrollClass(_isShowFind, isModeEdit)
+    })
   },
 
   _handlerEditGroup(){
@@ -187,7 +245,7 @@ const WatchBrowser = React.createClass({
   _renderEditBar(isModeEdit){
     if (isModeEdit){
       return (
-        <div style={{marginBottom: '10px'}}>
+        <div style={styles.editBarDiv}>
            <ButtonCircle
              caption={'GROUP'}
              title="Edit Group"
@@ -200,7 +258,7 @@ const WatchBrowser = React.createClass({
              title="Edit Group List"
              className={'bt__watch__bar'}
              isWithoutDefault={true}
-             style={{marginLeft: '20px'}}
+             style={styles.btEditBarList}
              onClick={this._handlerEditList}
           />
         </div>
@@ -210,15 +268,40 @@ const WatchBrowser = React.createClass({
     }
   },
 
+  _renderFindInput(watchList){
+    const { isShowFind } = this.state
+    const _isShouldUpdate = (isShowFind && this.isShouldUpdateFind)
+             ? (()=>{ this.isShouldUpdateFind = false; return true; })
+             : false;
+
+    return (
+      <ShowHide isShow={isShowFind}>
+        <WrapperInputSearch
+            style={styles.wrapperSearch}
+            data={watchList}
+            isShouldUpdate={_isShouldUpdate}
+            onSelect={this._handlerClickItem}
+        />
+      </ShowHide>
+    );
+  },
+
   render(){
     const { caption } = this.props
-        , { isShow, isModeEdit, watchList } = this.state
+        , {
+            isShow, isModeEdit,
+            scrollClass, watchList
+          } = this.state
         , _captionEV = (isModeEdit) ? 'V' : 'E'
         , _titleEV = (isModeEdit)
               ? "Toggle to View Mode"
               : "Toggle to Edit Mode";
+
     return (
-       <Browser isShow={isShow} style={Object.assign({}, styles.browser, { maxWidth: '500px' })}>
+       <Browser
+          isShow={isShow}
+          style={styles.browser}
+        >
          <CaptionRow
             caption={caption}
             onClose={this._handlerHide}
@@ -235,9 +318,16 @@ const WatchBrowser = React.createClass({
               style={styles.btCircle}
               onClick={this._handlerToggleEditMode}
            />
+           <ButtonCircle
+             caption={'F'}
+             title="Show/Hide : Find Item Input"
+             style={styles.btCircle}
+             onClick={this._handlerToggleFindInput}
+           />
          </CaptionRow>
          {this._renderEditBar(isModeEdit)}
-         <ScrollPane style={styles.scrollDiv}>
+         { watchList && this._renderFindInput(watchList)}
+         <ScrollPane className={scrollClass}>
            {watchList && this._renderWatchList(watchList)}
          </ScrollPane>
       </Browser>

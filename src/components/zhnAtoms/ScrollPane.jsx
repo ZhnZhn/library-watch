@@ -1,9 +1,9 @@
 import React from 'react';
 
 const ScrollPane = (props) => {
-    const { style, children } = props;
+    const { style, className='', children } = props;
     return (
-      <div className="with-scroll" style={style}>
+      <div className={`with-scroll ${className}`} style={style}>
          {children}
       </div>
     )

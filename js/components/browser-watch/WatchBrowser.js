@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 var _WithDnDStyle = require('./with/WithDnDStyle');
 
 var _WithDnDStyle2 = _interopRequireDefault(_WithDnDStyle);
@@ -48,6 +52,14 @@ var _ButtonCircle = require('../zhnAtoms/ButtonCircle');
 
 var _ButtonCircle2 = _interopRequireDefault(_ButtonCircle);
 
+var _ShowHide = require('../zhnAtoms/ShowHide');
+
+var _ShowHide2 = _interopRequireDefault(_ShowHide);
+
+var _WrapperInputSearch = require('./WrapperInputSearch');
+
+var _WrapperInputSearch2 = _interopRequireDefault(_WrapperInputSearch);
+
 var _ScrollPane = require('../zhnAtoms/ScrollPane');
 
 var _ScrollPane2 = _interopRequireDefault(_ScrollPane);
@@ -62,18 +74,38 @@ var _WatchItem2 = _interopRequireDefault(_WatchItem);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var DRAG = {
   GROUP: 'GROUP',
   LIST: 'LIST',
   ITEM: 'ITEM'
 };
 
+var CLASS = {
+  BROWSER_WATCH: "browser-watch",
+  BROWSER_WATCH__30: "browser-watch--1r",
+  BROWSER_WATCH__60: "browser-watch--2r"
+};
+
 var styles = {
   browser: {
-    paddingRight: '0px'
+    paddingRight: '0px',
+    maxWidth: '500px'
+  },
+  editBarDiv: {
+    marginBottom: '10px'
   },
   btCircle: {
     marginLeft: '20px'
+  },
+  btEditBarList: {
+    marginLeft: '20px'
+  },
+  wrapperSearch: {
+    paddingBottom: '8px',
+    width: '100%',
+    paddingRight: '24px'
   },
   scrollDiv: {
     overflowY: 'auto',
@@ -101,11 +133,21 @@ var WatchBrowser = _react2.default.createClass(_extends({
   getInitialState: function getInitialState() {
     var store = this.props.store;
 
+
+    this.isShouldUpdateFind = false;
+
     return {
       isShow: false,
       isModeEdit: false,
+      isShowFind: false,
+      scrollClass: CLASS.BROWSER_WATCH,
       watchList: store.getWatchList()
     };
+  },
+  _calcScrollClass: function _calcScrollClass(isShowFind, isModeEdit) {
+    var _classNames;
+
+    return (0, _classnames2.default)((_classNames = {}, _defineProperty(_classNames, CLASS.BROWSER_WATCH, !(isShowFind && isModeEdit)), _defineProperty(_classNames, CLASS.BROWSER_WATCH__30, isShowFind && !isModeEdit || !isShowFind && isModeEdit), _defineProperty(_classNames, CLASS.BROWSER_WATCH__60, isShowFind && isModeEdit), _classNames));
   },
   componentWillMount: function componentWillMount() {
     this.unsubscribe = this.props.store.listen(this._onStore);
@@ -122,7 +164,14 @@ var WatchBrowser = _react2.default.createClass(_extends({
     if (actionType === showAction && data === browserType) {
       this._handlerShow();
     } else if (actionType === updateAction) {
-      this.setState({ watchList: data });
+      var isModeEdit = this.state.isModeEdit;
+
+      this.isShouldUpdateFind = true;
+      this.setState({
+        watchList: data,
+        isShowFind: false,
+        scrollClass: this._calcScrollClass(false, isModeEdit)
+      });
     }
   },
   _handlerHide: function _handlerHide() {
@@ -135,7 +184,24 @@ var WatchBrowser = _react2.default.createClass(_extends({
     _WatchActions2.default.saveWatch();
   },
   _handlerToggleEditMode: function _handlerToggleEditMode() {
-    this.setState({ isModeEdit: !this.state.isModeEdit });
+    var _state = this.state;
+    var isShowFind = _state.isShowFind;
+    var isModeEdit = _state.isModeEdit;
+    var _isModeEdit = !isModeEdit;
+    this.setState({
+      isModeEdit: _isModeEdit,
+      scrollClass: this._calcScrollClass(isShowFind, _isModeEdit)
+    });
+  },
+  _handlerToggleFindInput: function _handlerToggleFindInput() {
+    var _state2 = this.state;
+    var isShowFind = _state2.isShowFind;
+    var isModeEdit = _state2.isModeEdit;
+    var _isShowFind = !isShowFind;
+    this.setState({
+      isShowFind: _isShowFind,
+      scrollClass: this._calcScrollClass(_isShowFind, isModeEdit)
+    });
   },
   _handlerEditGroup: function _handlerEditGroup() {
     _ComponentActions2.default.showModalDialog(_Type.ModalDialog.EDIT_WATCH_GROUP);
@@ -236,7 +302,7 @@ var WatchBrowser = _react2.default.createClass(_extends({
     if (isModeEdit) {
       return _react2.default.createElement(
         'div',
-        { style: { marginBottom: '10px' } },
+        { style: styles.editBarDiv },
         _react2.default.createElement(_ButtonCircle2.default, {
           caption: 'GROUP',
           title: 'Edit Group',
@@ -249,7 +315,7 @@ var WatchBrowser = _react2.default.createClass(_extends({
           title: 'Edit Group List',
           className: 'bt__watch__bar',
           isWithoutDefault: true,
-          style: { marginLeft: '20px' },
+          style: styles.btEditBarList,
           onClick: this._handlerEditList
         })
       );
@@ -257,17 +323,42 @@ var WatchBrowser = _react2.default.createClass(_extends({
       return null;
     }
   },
+  _renderFindInput: function _renderFindInput(watchList) {
+    var _this4 = this;
+
+    var isShowFind = this.state.isShowFind;
+
+    var _isShouldUpdate = isShowFind && this.isShouldUpdateFind ? function () {
+      _this4.isShouldUpdateFind = false;return true;
+    } : false;
+
+    return _react2.default.createElement(
+      _ShowHide2.default,
+      { isShow: isShowFind },
+      _react2.default.createElement(_WrapperInputSearch2.default, {
+        style: styles.wrapperSearch,
+        data: watchList,
+        isShouldUpdate: _isShouldUpdate,
+        onSelect: this._handlerClickItem
+      })
+    );
+  },
   render: function render() {
     var caption = this.props.caption;
-    var _state = this.state;
-    var isShow = _state.isShow;
-    var isModeEdit = _state.isModeEdit;
-    var watchList = _state.watchList;
+    var _state3 = this.state;
+    var isShow = _state3.isShow;
+    var isModeEdit = _state3.isModeEdit;
+    var scrollClass = _state3.scrollClass;
+    var watchList = _state3.watchList;
     var _captionEV = isModeEdit ? 'V' : 'E';
     var _titleEV = isModeEdit ? "Toggle to View Mode" : "Toggle to Edit Mode";
+
     return _react2.default.createElement(
       _Browser2.default,
-      { isShow: isShow, style: Object.assign({}, styles.browser, { maxWidth: '500px' }) },
+      {
+        isShow: isShow,
+        style: styles.browser
+      },
       _react2.default.createElement(
         _CaptionRow2.default,
         {
@@ -285,12 +376,19 @@ var WatchBrowser = _react2.default.createClass(_extends({
           title: _titleEV,
           style: styles.btCircle,
           onClick: this._handlerToggleEditMode
+        }),
+        _react2.default.createElement(_ButtonCircle2.default, {
+          caption: 'F',
+          title: 'Show/Hide : Find Item Input',
+          style: styles.btCircle,
+          onClick: this._handlerToggleFindInput
         })
       ),
       this._renderEditBar(isModeEdit),
+      watchList && this._renderFindInput(watchList),
       _react2.default.createElement(
         _ScrollPane2.default,
-        { style: styles.scrollDiv },
+        { className: scrollClass },
         watchList && this._renderWatchList(watchList)
       )
     );

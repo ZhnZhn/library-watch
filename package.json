@@ -20,6 +20,7 @@
   "jspm": {
     "dependencies": {
       "chart.js": "npm:chart.js@^2.2.2",
+      "classnames": "npm:classnames@^2.2.5",
       "interact.js": "npm:interact.js@^1.2.6",
       "localforage": "npm:localforage@^1.4.2",
       "raven-js": "npm:raven-js@^3.7.0",

@@ -4,14 +4,15 @@ const webpack = require('webpack')
 
 module.exports = {
   entry: {
-     app: "./js/index.js",
-     lib: [ 
-            "react", "react-dom", "reflux",
-            "interact.js", "localforage",
-            "chart.js",
-            "timeago.js",
-            "raven-js"
-          ]
+    lib: [
+           "react", "react-dom", "reflux",
+           "interact.js", "localforage",
+           "chart.js",
+           "timeago.js",
+           "raven-js",
+           "classnames"  
+         ],
+     app: "./js/index.js"
   },
   output: {
       path: "./app",
@@ -28,8 +29,8 @@ module.exports = {
        }
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'lib'
-    }),    
+      names: ['lib', 'manifest']
+    }),
     new webpack.optimize.UglifyJsPlugin({
         compress: {
            warnings: false
@@ -39,9 +40,9 @@ module.exports = {
         }
     }),
     new HtmlWebpackPlugin({
-        filename: '../index.html', 
+        filename: '../index.html',
         template: './template/index.ejs',
-        inject: 'body' 
+        inject: 'body'
     })
   ]
 };
