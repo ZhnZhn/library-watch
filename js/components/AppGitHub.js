@@ -57,6 +57,7 @@ var AppGitHub = function AppGitHub(props) {
             showBrowserAction: _BrowserActions.BrowserActionTypes.SHOW_BROWSER,
             initBrowserAction: _BrowserActions.BrowserActionTypes.INIT_BROWSER_DYNAMIC,
             updateWatchAction: _BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER,
+            toggleWatchDbBrowserAction: _BrowserActions.BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER,
             initDialogAction: _ComponentActions.ComponentActionTypes.INIT_AND_SHOW_DIALOG,
             showDialogAction: _ComponentActions.ComponentActionTypes.SHOW_DIALOG
          }),

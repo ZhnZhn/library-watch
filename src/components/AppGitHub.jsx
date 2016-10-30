@@ -23,6 +23,7 @@ const AppGitHub = (props) => {
             showBrowserAction={BrowserActionTypes.SHOW_BROWSER}
             initBrowserAction={BrowserActionTypes.INIT_BROWSER_DYNAMIC}
             updateWatchAction={BrowserActionTypes.UPDATE_WATCH_BROWSER}
+            toggleWatchDbBrowserAction={BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER}
             initDialogAction={ComponentActionTypes.INIT_AND_SHOW_DIALOG}
             showDialogAction={ComponentActionTypes.SHOW_DIALOG}
          />

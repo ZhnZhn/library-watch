@@ -24,6 +24,7 @@ var BrowserContainer = _react2.default.createClass({
   displayName: 'BrowserContainer',
   getInitialState: function getInitialState() {
     return {
+      isDoubleWatch: false,
       elBrowsers: []
     };
   },
@@ -36,20 +37,39 @@ var BrowserContainer = _react2.default.createClass({
     this.unsubscribe();
   },
   _onStore: function _onStore(actionType, data) {
-    if (actionType === this.props.initBrowserAction) {
+    var _props = this.props;
+    var initBrowserAction = _props.initBrowserAction;
+    var toggleWatchDbBrowserAction = _props.toggleWatchDbBrowserAction;
+
+    if (actionType === initBrowserAction) {
       this.state.elBrowsers.unshift(data);
       this.setState(this.state);
+    } else if (actionType === toggleWatchDbBrowserAction) {
+      this.setState({ isDoubleWatch: !this.state.isDoubleWatch });
     }
   },
   render: function render() {
-    var _props = this.props;
-    var store = _props.store;
-    var showBrowserAction = _props.showBrowserAction;
-    var updateWatchAction = _props.updateWatchAction;
-    var initDialogAction = _props.initDialogAction;
-    var showDialogAction = _props.showDialogAction;
-    var elBrowsers = this.state.elBrowsers;
+    var _props2 = this.props;
+    var store = _props2.store;
+    var showBrowserAction = _props2.showBrowserAction;
+    var updateWatchAction = _props2.updateWatchAction;
+    var initDialogAction = _props2.initDialogAction;
+    var showDialogAction = _props2.showDialogAction;
+    var _state = this.state;
+    var isDoubleWatch = _state.isDoubleWatch;
+    var elBrowsers = _state.elBrowsers;
 
+
+    var _doubleWatch = isDoubleWatch ? _react2.default.createElement(_WatchBrowser2.default, {
+      isShow: true,
+      isEditMode: true,
+      isDoubleWatch: true,
+      browserType: _Type.BrowserType.WATCH_LIST,
+      caption: 'Watch DB',
+      store: store,
+      showAction: showBrowserAction,
+      updateAction: updateWatchAction
+    }) : undefined;
 
     return _react2.default.createElement(
       'div',
@@ -61,6 +81,7 @@ var BrowserContainer = _react2.default.createClass({
         showAction: showBrowserAction,
         updateAction: updateWatchAction
       }),
+      _doubleWatch,
       elBrowsers,
       _react2.default.createElement(_DialogContainer2.default, {
         maxDialog: 3,
@@ -73,4 +94,4 @@ var BrowserContainer = _react2.default.createClass({
 });
 
 exports.default = BrowserContainer;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\browser-container\BrowserContainer.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-container\BrowserContainer.js.map

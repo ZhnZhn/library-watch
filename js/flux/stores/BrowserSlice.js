@@ -97,8 +97,11 @@ var BrowserSlice = {
   onLoadBrowserDynamicFailed: function onLoadBrowserDynamicFailed(option) {
     option.alertItemId = option.alertItemId ? option.alertItemId : option.caption;
     this.showAlertDialog(option);
+  },
+  onToggleWatchDbBrowser: function onToggleWatchDbBrowser() {
+    this.trigger(_BrowserActions.BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER);
   }
 };
 
 exports.default = BrowserSlice;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\flux\stores\BrowserSlice.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\stores\BrowserSlice.js.map

@@ -8,6 +8,7 @@ import DialogContainer3 from '../zhnContainers/DialogContainer3';
 const BrowserContainer = React.createClass({
   getInitialState(){
     return {
+      isDoubleWatch : false,
       elBrowsers : []
     }
   },
@@ -20,9 +21,12 @@ const BrowserContainer = React.createClass({
     this.unsubscribe();
   },
   _onStore(actionType, data){
-     if (actionType === this.props.initBrowserAction){
+     const { initBrowserAction, toggleWatchDbBrowserAction } = this.props
+     if (actionType === initBrowserAction){
        this.state.elBrowsers.unshift(data);
        this.setState(this.state);
+     } else if (actionType === toggleWatchDbBrowserAction){       
+       this.setState({ isDoubleWatch : !this.state.isDoubleWatch })
      }
   },
 
@@ -35,7 +39,22 @@ const BrowserContainer = React.createClass({
            , initDialogAction, showDialogAction
           } = this.props
 
-    const  { elBrowsers } = this.state;
+    const  { isDoubleWatch, elBrowsers } = this.state;
+
+    const _doubleWatch = (isDoubleWatch)
+             ? (
+                 <WatchBrowser
+                   isShow={true}
+                   isEditMode={true}
+                   isDoubleWatch={true}
+                   browserType={BrowserType.WATCH_LIST}
+                   caption="Watch DB"
+                   store={store}
+                   showAction={showBrowserAction}
+                   updateAction={updateWatchAction}
+                 />
+               )
+             : undefined;
 
     return (
       <div className="hrz-container">
@@ -46,6 +65,7 @@ const BrowserContainer = React.createClass({
            showAction={showBrowserAction}
            updateAction={updateWatchAction}
         />
+        {_doubleWatch}
         {elBrowsers}
         <DialogContainer3
            maxDialog={3}

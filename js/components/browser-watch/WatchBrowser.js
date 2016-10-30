@@ -36,6 +36,10 @@ var _ComponentActions = require('../../flux/actions/ComponentActions');
 
 var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
 
+var _BrowserActions = require('../../flux/actions/BrowserActions');
+
+var _BrowserActions2 = _interopRequireDefault(_BrowserActions);
+
 var _WatchActions = require('../../flux/actions/WatchActions');
 
 var _WatchActions2 = _interopRequireDefault(_WatchActions);
@@ -131,16 +135,21 @@ var WatchBrowser = _react2.default.createClass(_extends({
   displayName: 'WatchBrowser'
 }, _WithDnDStyle2.default, (0, _createHandlerDnDGroup2.default)(DRAG, _WatchActions2.default), (0, _createHandlerDnDList2.default)(DRAG, _WatchActions2.default), (0, _createHandlerDnDItem2.default)(DRAG, _WatchActions2.default), {
   getInitialState: function getInitialState() {
-    var store = this.props.store;
+    var _props = this.props;
+    var _props$isShow = _props.isShow;
+    var isShow = _props$isShow === undefined ? false : _props$isShow;
+    var _props$isEditMode = _props.isEditMode;
+    var isEditMode = _props$isEditMode === undefined ? false : _props$isEditMode;
+    var store = _props.store;
 
 
     this.isShouldUpdateFind = false;
 
     return {
-      isShow: false,
-      isModeEdit: false,
+      isShow: isShow,
+      isModeEdit: isEditMode,
       isShowFind: false,
-      scrollClass: CLASS.BROWSER_WATCH,
+      scrollClass: this._calcScrollClass(false, isEditMode),
       watchList: store.getWatchList()
     };
   },
@@ -156,10 +165,10 @@ var WatchBrowser = _react2.default.createClass(_extends({
     this.unsubscribe();
   },
   _onStore: function _onStore(actionType, data) {
-    var _props = this.props;
-    var browserType = _props.browserType;
-    var showAction = _props.showAction;
-    var updateAction = _props.updateAction;
+    var _props2 = this.props;
+    var browserType = _props2.browserType;
+    var showAction = _props2.showAction;
+    var updateAction = _props2.updateAction;
 
     if (actionType === showAction && data === browserType) {
       this._handlerShow();
@@ -175,10 +184,16 @@ var WatchBrowser = _react2.default.createClass(_extends({
     }
   },
   _handlerHide: function _handlerHide() {
-    this.setState({ isShow: false });
+    if (!this.props.isDoubleWatch) {
+      this.setState({ isShow: false });
+    } else {
+      _BrowserActions2.default.toggleWatchDbBrowser();
+    }
   },
   _handlerShow: function _handlerShow() {
-    this.setState({ isShow: true });
+    if (!this.props.isDoubleWatch) {
+      this.setState({ isShow: true });
+    }
   },
   _handlerSaveWatch: function _handlerSaveWatch() {
     _WatchActions2.default.saveWatch();
@@ -208,6 +223,9 @@ var WatchBrowser = _react2.default.createClass(_extends({
   },
   _handlerEditList: function _handlerEditList() {
     _ComponentActions2.default.showModalDialog(_Type.ModalDialog.EDIT_WATCH_LIST);
+  },
+  _handlerDouble: function _handlerDouble() {
+    _BrowserActions2.default.toggleWatchDbBrowser();
   },
   _renderWatchList: function _renderWatchList(watchList) {
     var _this = this;
@@ -317,6 +335,14 @@ var WatchBrowser = _react2.default.createClass(_extends({
           isWithoutDefault: true,
           style: styles.btEditBarList,
           onClick: this._handlerEditList
+        }),
+        _react2.default.createElement(_ButtonCircle2.default, {
+          caption: 'DB',
+          title: 'Double Watch Browser',
+          className: 'bt__watch__bar',
+          isWithoutDefault: true,
+          style: styles.btEditBarList,
+          onClick: this._handlerDouble
         })
       );
     } else {
@@ -380,7 +406,7 @@ var WatchBrowser = _react2.default.createClass(_extends({
         _react2.default.createElement(_ButtonCircle2.default, {
           caption: 'F',
           title: 'Show/Hide : Find Item Input',
-          style: styles.btCircle,
+          style: Object.assign({}, styles.btCircle, { marginRight: '20px' }),
           onClick: this._handlerToggleFindInput
         })
       ),

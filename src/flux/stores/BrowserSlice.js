@@ -84,6 +84,10 @@ const BrowserSlice = {
               ? option.alertItemId
               : option.caption;
     this.showAlertDialog(option);
+  },
+
+  onToggleWatchDbBrowser(){    
+    this.trigger(BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER);
   }
 
 }

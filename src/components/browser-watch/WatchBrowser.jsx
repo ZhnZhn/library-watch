@@ -8,6 +8,7 @@ import createHandlerDnDItem from './with/createHandlerDnDItem';
 
 import { ModalDialog } from '../../constants/Type';
 import ComponentActions from '../../flux/actions/ComponentActions';
+import BrowserActions from '../../flux/actions/BrowserActions';
 import WatchActions from '../../flux/actions/WatchActions';
 
 import Browser from '../zhnAtoms/Browser';
@@ -81,15 +82,15 @@ const WatchBrowser = React.createClass({
   ...createHandlerDnDItem(DRAG, WatchActions),
 
   getInitialState(){
-    const { store } = this.props;
+    const { isShow=false, isEditMode=false, store } = this.props;
 
     this.isShouldUpdateFind = false;
 
     return {
-      isShow : false,
-      isModeEdit : false,
+      isShow : isShow,
+      isModeEdit : isEditMode,
       isShowFind : false,
-      scrollClass : CLASS.BROWSER_WATCH,
+      scrollClass : this._calcScrollClass(false, isEditMode),
       watchList : store.getWatchList()
     }
   },
@@ -124,10 +125,16 @@ const WatchBrowser = React.createClass({
   },
 
   _handlerHide(){
-     this.setState({ isShow : false })
+     if (!this.props.isDoubleWatch){
+       this.setState({ isShow : false });
+     } else {
+       BrowserActions.toggleWatchDbBrowser();
+     }
   },
   _handlerShow(){
-     this.setState({ isShow : true })
+    if (!this.props.isDoubleWatch){
+     this.setState({ isShow : true });
+    }
   },
 
   _handlerSaveWatch(){
@@ -156,6 +163,9 @@ const WatchBrowser = React.createClass({
   },
   _handlerEditList(){
     ComponentActions.showModalDialog(ModalDialog.EDIT_WATCH_LIST);
+  },
+  _handlerDouble(){
+    BrowserActions.toggleWatchDbBrowser();
   },
 
   _renderWatchList(watchList){
@@ -261,6 +271,14 @@ const WatchBrowser = React.createClass({
              style={styles.btEditBarList}
              onClick={this._handlerEditList}
           />
+          <ButtonCircle
+             caption={'DB'}
+             title="Double Watch Browser"
+             className={'bt__watch__bar'}
+             isWithoutDefault={true}
+             style={styles.btEditBarList}
+             onClick={this._handlerDouble}
+          />
         </div>
       )
     } else {
@@ -321,7 +339,7 @@ const WatchBrowser = React.createClass({
            <ButtonCircle
              caption={'F'}
              title="Show/Hide : Find Item Input"
-             style={styles.btCircle}
+             style={Object.assign({}, styles.btCircle, {marginRight: '20px'})}
              onClick={this._handlerToggleFindInput}
            />
          </CaptionRow>
