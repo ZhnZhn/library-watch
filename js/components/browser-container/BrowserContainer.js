@@ -65,7 +65,7 @@ var BrowserContainer = _react2.default.createClass({
       isEditMode: true,
       isDoubleWatch: true,
       browserType: _Type.BrowserType.WATCH_LIST,
-      caption: 'Watch DB',
+      caption: 'Watch 2',
       store: store,
       showAction: showBrowserAction,
       updateAction: updateWatchAction

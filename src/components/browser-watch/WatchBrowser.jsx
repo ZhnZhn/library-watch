@@ -41,6 +41,9 @@ const styles = {
     paddingRight: '0px',
     maxWidth: '500px'
   },
+  captionRoot : {
+     minWidth: '310px'
+  },
   editBarDiv : {
     marginBottom: '10px'
   },
@@ -321,12 +324,13 @@ const WatchBrowser = React.createClass({
           style={styles.browser}
         >
          <CaptionRow
+            styleRoot={styles.captionRoot}
             caption={caption}
             onClose={this._handlerHide}
          >
            <ButtonCircle
              caption={'S'}
-             title="Save Watch"
+             title="Save Watch Items to Locale Storage"
              style={styles.btCircle}
              onClick={this._handlerSaveWatch}
            />
@@ -339,8 +343,14 @@ const WatchBrowser = React.createClass({
            <ButtonCircle
              caption={'F'}
              title="Show/Hide : Find Item Input"
-             style={Object.assign({}, styles.btCircle, {marginRight: '20px'})}
+             style={styles.btCircle}
              onClick={this._handlerToggleFindInput}
+           />
+           <ButtonCircle
+             caption={'B'}
+             title="BackUp Watch Items to Zip File"
+             style={Object.assign({}, styles.btCircle, {marginRight: '20px'})}
+             onClick={WatchActions.exportToZip}
            />
          </CaptionRow>
          {this._renderEditBar(isModeEdit)}

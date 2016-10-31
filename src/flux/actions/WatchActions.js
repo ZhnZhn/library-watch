@@ -17,7 +17,9 @@ export const WatchActionTypes = {
   RENAME_LIST : 'renameList',
   DELETE_LIST : 'deleteList',
     EDIT_WATCH_COMPLETED : 'editWatchCompleted',
-    EDIT_WATCH_FAILED : 'editWatchFailed'
+    EDIT_WATCH_FAILED : 'editWatchFailed',
+
+  EXPORT_TO_ZIP : 'exportToZip'
 }
 
 const WatchActions = Reflux.createActions({
@@ -36,7 +38,9 @@ const WatchActions = Reflux.createActions({
   [WatchActionTypes.RENAME_LIST] : {},
   [WatchActionTypes.DELETE_LIST] : {},
       [WatchActionTypes.EDIT_WATCH_COMPLETED] : {},
-      [WatchActionTypes.EDIT_WATCH_FAILED] : {}
+      [WatchActionTypes.EDIT_WATCH_FAILED] : {},
+
+  [WatchActionTypes.EXPORT_TO_ZIP] : {}
 
 })
 

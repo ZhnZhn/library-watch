@@ -8,6 +8,22 @@ var _localforage = require('localforage');
 
 var _localforage2 = _interopRequireDefault(_localforage);
 
+var _jszip = require('jszip');
+
+var _jszip2 = _interopRequireDefault(_jszip);
+
+var _browserFilesaver = require('browser-filesaver');
+
+var _browserFilesaver2 = _interopRequireDefault(_browserFilesaver);
+
+var _DateUtils = require('../../utils/DateUtils');
+
+var _DateUtils2 = _interopRequireDefault(_DateUtils);
+
+var _ComponentActions = require('../actions/ComponentActions');
+
+var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
+
 var _BrowserActions = require('../actions/BrowserActions');
 
 var _WatchActions = require('../actions/WatchActions');
@@ -29,7 +45,9 @@ var _Logic2 = _interopRequireDefault(_Logic);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var STORAGE_KEY = 'WATCH_LIST_PACKAGE',
-    DIALOG_CAPTION = 'Watch List:';
+    CAPTION_WATCH_SAVE = 'Watch List:',
+    CAPTION_WATCH_EXPORT = "BackUp Watch Items:",
+    WATCH_FILE_NAME = "WatchItems";
 
 var WatchListSlice = {
 
@@ -92,7 +110,7 @@ var WatchListSlice = {
       _localforage2.default.setItem(STORAGE_KEY, this.watchList).then(function () {
         _this2.isWatchEdited = false;
         _this2.onShowModalDialog(_Type.ModalDialog.INFO, {
-          caption: DIALOG_CAPTION,
+          caption: CAPTION_WATCH_SAVE,
           descr: _Msg2.default.WATCH_SAVED
         });
         console.log(_Msg2.default.WATCH_SAVED);
@@ -101,7 +119,7 @@ var WatchListSlice = {
       });
     } else {
       this.onShowModalDialog(_Type.ModalDialog.INFO, {
-        caption: DIALOG_CAPTION,
+        caption: CAPTION_WATCH_SAVE,
         descr: _Msg2.default.WATCH_PREV
       });
     }
@@ -135,6 +153,26 @@ var WatchListSlice = {
   },
   onDeleteList: function onDeleteList(option) {
     this._onEditWatch(_Logic2.default.deleteList(this.watchList, option), _WatchActions.WatchActionTypes.DELETE_LIST);
+  },
+  onExportToZip: function onExportToZip() {
+    var zip = new _jszip2.default();
+    var yyyymmdd = _DateUtils2.default.formatToYYYYMMDD(Date.now());
+
+    zip.file(WATCH_FILE_NAME + '_' + yyyymmdd + '.json}', JSON.stringify(this.watchList));
+
+    zip.generateAsync({ type: "blob" }).then(function (content) {
+      var _zipName = WATCH_FILE_NAME + '_' + yyyymmdd + '.zip';
+      _browserFilesaver2.default.saveAs(content, _zipName);
+      _ComponentActions2.default.showModalDialog(_Type.ModalDialog.INFO, {
+        caption: CAPTION_WATCH_EXPORT,
+        descr: _Msg2.default.WATCH_BACKUP_ZIP(_zipName)
+      });
+    }).catch(function (err) {
+      _ComponentActions2.default.showModalDialog(_Type.ModalDialog.ALERT, {
+        caption: CAPTION_WATCH_EXPORT,
+        descr: _Msg2.default.WATCH_BACKUP_ZIP_FAILED
+      });
+    });
   }
 };
 

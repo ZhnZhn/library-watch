@@ -91,6 +91,10 @@ var DateUtils = {
 		var d = new Date(millisUTC);
 		return ("0" + d.getUTCDate()).slice(-2) + "-" + ("0" + (d.getUTCMonth() + 1)).slice(-2) + "-" + d.getUTCFullYear();
 	},
+	formatToYYYYMMDD: function formatToYYYYMMDD(millisUTC) {
+		var d = new Date(millisUTC);
+		return d.getUTCFullYear() + ("0" + (d.getUTCMonth() + 1)).slice(-2) + ("0" + d.getUTCDate()).slice(-2);
+	},
 	toUTCMillis: function toUTCMillis(strDate) {
 		var arr = strDate.split('-');
 		return Date.UTC(arr[0], parseInt(arr[1], 10) - 1, arr[2]);

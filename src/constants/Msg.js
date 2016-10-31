@@ -7,6 +7,8 @@ const Msg = {
 
   WATCH_SAVED : 'Watch List has been saved.',
   WATCH_PREV : 'Watch List has not been edited\nfrom previous save.',
+  WATCH_BACKUP_ZIP : (zipName) => `Watch Items have been saved to\n${zipName}`,
+  WATCH_BACKUP_ZIP_FAILED : 'Watch Items Saving was Failed.',
 
   NOT_FOUND_ITEM : (itemType, captionGroup) => `The ${itemType} witn name ${captionGroup} not found.`,
   GROUP_EXISTED : (caption) => `Group with name ${caption} is already existed.`,

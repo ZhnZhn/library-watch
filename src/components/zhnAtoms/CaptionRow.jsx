@@ -22,10 +22,10 @@ const styles = {
 };
 
 const CaptionRow = (props) => {
-    const {caption, children, onClose } = props;
+    const { caption, children, styleRoot, onClose } = props;
 
     return (
-      <div style={styles.captionDiv}>
+      <div style={Object.assign({}, styles.captionDiv, styleRoot)}>
          <span
             className="not-selected"
             style={styles.captionSpan}

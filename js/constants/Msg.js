@@ -14,6 +14,10 @@ var Msg = {
 
   WATCH_SAVED: 'Watch List has been saved.',
   WATCH_PREV: 'Watch List has not been edited\nfrom previous save.',
+  WATCH_BACKUP_ZIP: function WATCH_BACKUP_ZIP(zipName) {
+    return 'Watch Items have been saved to\n' + zipName;
+  },
+  WATCH_BACKUP_ZIP_FAILED: 'Watch Items Saving was Failed.',
 
   NOT_FOUND_ITEM: function NOT_FOUND_ITEM(itemType, captionGroup) {
     return 'The ' + itemType + ' witn name ' + captionGroup + ' not found.';

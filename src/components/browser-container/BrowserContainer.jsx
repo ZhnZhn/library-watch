@@ -25,7 +25,7 @@ const BrowserContainer = React.createClass({
      if (actionType === initBrowserAction){
        this.state.elBrowsers.unshift(data);
        this.setState(this.state);
-     } else if (actionType === toggleWatchDbBrowserAction){       
+     } else if (actionType === toggleWatchDbBrowserAction){
        this.setState({ isDoubleWatch : !this.state.isDoubleWatch })
      }
   },
@@ -48,7 +48,7 @@ const BrowserContainer = React.createClass({
                    isEditMode={true}
                    isDoubleWatch={true}
                    browserType={BrowserType.WATCH_LIST}
-                   caption="Watch DB"
+                   caption="Watch 2"
                    store={store}
                    showAction={showBrowserAction}
                    updateAction={updateWatchAction}

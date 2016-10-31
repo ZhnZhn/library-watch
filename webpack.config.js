@@ -10,7 +10,8 @@ module.exports = {
            "chart.js",
            "timeago.js",
            "raven-js",
-           "classnames"  
+           "classnames",
+           "jszip", "browser-filesaver"    
          ],
      app: "./js/index.js"
   },

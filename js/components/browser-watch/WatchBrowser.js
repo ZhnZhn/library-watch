@@ -97,6 +97,9 @@ var styles = {
     paddingRight: '0px',
     maxWidth: '500px'
   },
+  captionRoot: {
+    minWidth: '310px'
+  },
   editBarDiv: {
     marginBottom: '10px'
   },
@@ -388,12 +391,13 @@ var WatchBrowser = _react2.default.createClass(_extends({
       _react2.default.createElement(
         _CaptionRow2.default,
         {
+          styleRoot: styles.captionRoot,
           caption: caption,
           onClose: this._handlerHide
         },
         _react2.default.createElement(_ButtonCircle2.default, {
           caption: 'S',
-          title: 'Save Watch',
+          title: 'Save Watch Items to Locale Storage',
           style: styles.btCircle,
           onClick: this._handlerSaveWatch
         }),
@@ -406,8 +410,14 @@ var WatchBrowser = _react2.default.createClass(_extends({
         _react2.default.createElement(_ButtonCircle2.default, {
           caption: 'F',
           title: 'Show/Hide : Find Item Input',
-          style: Object.assign({}, styles.btCircle, { marginRight: '20px' }),
+          style: styles.btCircle,
           onClick: this._handlerToggleFindInput
+        }),
+        _react2.default.createElement(_ButtonCircle2.default, {
+          caption: 'B',
+          title: 'BackUp Watch Items to Zip File',
+          style: Object.assign({}, styles.btCircle, { marginRight: '20px' }),
+          onClick: _WatchActions2.default.exportToZip
         })
       ),
       this._renderEditBar(isModeEdit),

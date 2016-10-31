@@ -1,6 +1,11 @@
 
 import LocalForage from 'localforage';
+import JSZip from 'jszip';
+import FileSaver from 'browser-filesaver';
 
+import DateUtils from '../../utils/DateUtils';
+
+import ComponentActions from '../actions/ComponentActions';
 import { BrowserActionTypes } from '../actions/BrowserActions';
 import { WatchActionTypes } from '../actions/WatchActions';
 import WatchDefault from '../../constants/WatchDefault';
@@ -10,7 +15,9 @@ import Msg from '../../constants/Msg';
 import Logic from './Logic';
 
 const STORAGE_KEY = 'WATCH_LIST_PACKAGE'
-    , DIALOG_CAPTION ='Watch List:';
+    , CAPTION_WATCH_SAVE ='Watch List:'
+    , CAPTION_WATCH_EXPORT = "BackUp Watch Items:"
+    , WATCH_FILE_NAME = "WatchItems"
 
 const WatchListSlice = {
 
@@ -75,9 +82,9 @@ const WatchListSlice = {
     if (this.isWatchEdited){
        LocalForage.setItem(STORAGE_KEY , this.watchList)
           .then(()=>{
-             this.isWatchEdited = false;             
+             this.isWatchEdited = false;
              this.onShowModalDialog(ModalDialog.INFO, {
-                caption : DIALOG_CAPTION,
+                caption : CAPTION_WATCH_SAVE,
                 descr : Msg.WATCH_SAVED
              })
              console.log(Msg.WATCH_SAVED);
@@ -87,7 +94,7 @@ const WatchListSlice = {
           })
     } else {
        this.onShowModalDialog(ModalDialog.INFO, {
-          caption : DIALOG_CAPTION,
+          caption : CAPTION_WATCH_SAVE,
           descr : Msg.WATCH_PREV
        })
     }
@@ -141,6 +148,32 @@ const WatchListSlice = {
       Logic.deleteList(this.watchList, option),
       WatchActionTypes.DELETE_LIST
     );
+  },
+
+  onExportToZip(){
+    const zip = new JSZip();
+    const yyyymmdd = DateUtils.formatToYYYYMMDD(Date.now());
+
+    zip.file(
+       `${WATCH_FILE_NAME}_${yyyymmdd}.json}`,
+        JSON.stringify(this.watchList)
+     );
+
+    zip.generateAsync({ type:"blob" })
+       .then( (content) => {
+          const _zipName = `${WATCH_FILE_NAME}_${yyyymmdd}.zip`
+          FileSaver.saveAs(content, _zipName);
+          ComponentActions.showModalDialog(ModalDialog.INFO, {
+            caption : CAPTION_WATCH_EXPORT,
+            descr : Msg.WATCH_BACKUP_ZIP(_zipName)
+          })
+       })
+       .catch( (err) => {
+         ComponentActions.showModalDialog(ModalDialog.ALERT, {
+            caption : CAPTION_WATCH_EXPORT,
+            descr : Msg.WATCH_BACKUP_ZIP_FAILED
+         })
+       })
   }
 
 }

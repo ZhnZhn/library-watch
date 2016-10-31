@@ -78,6 +78,13 @@ formatTo(millisUTC){
          + "-" + d.getUTCFullYear() ;
 },
 
+formatToYYYYMMDD(millisUTC){
+	const d = new Date(millisUTC);
+	return d.getUTCFullYear()
+	     + ("0" + (d.getUTCMonth() + 1) ).slice(-2)
+			 + ("0" + d.getUTCDate()).slice(-2);
+},
+
 toUTCMillis(strDate){
   const arr = strDate.split('-')
   return Date.UTC(arr[0], parseInt(arr[1],10)-1, arr[2]);
