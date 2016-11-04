@@ -1,0 +1,70 @@
+
+._react-file-reader-input input {
+    width: 100%;
+    padding-left: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+  max-width: 90%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+  padding: 0.625rem 1.25rem;
+
+  /*color: #d3394c;*/
+  color: rgb(128, 192, 64);
+  border: 2px solid currentColor;
+
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display: block;
+}
+
+.inputfile + label * {
+	pointer-events: none;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    /*color: #722040;*/
+    color: green;
+}
+
+.inputfile:focus + label {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    margin-right: 16px;
+}
+
+/*
+.fa-download:before {
+    content: "\f019";
+}
+.fa-download:after {
+    box-sizing: border-box;
+}
+*/

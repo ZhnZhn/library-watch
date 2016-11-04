@@ -11,7 +11,7 @@ module.exports = {
            "timeago.js",
            "raven-js",
            "classnames",
-           "jszip", "browser-filesaver"    
+           "browser-filesaver", "lodash.merge"    
          ],
      app: "./js/index.js"
   },

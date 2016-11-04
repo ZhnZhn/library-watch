@@ -42,6 +42,9 @@ const styles = {
     maxWidth: '500px'
   },
   captionRoot : {
+     minWidth: '340px'
+  },
+  captionRootDouble : {
      minWidth: '310px'
   },
   editBarDiv : {
@@ -49,6 +52,10 @@ const styles = {
   },
   btCircle : {
     marginLeft: '20px'
+  },
+  btCircleRight : {
+    marginLeft: '20px',
+    marginRight: '20px'
   },
   btEditBarList : {
     marginLeft: '20px'
@@ -308,11 +315,14 @@ const WatchBrowser = React.createClass({
   },
 
   render(){
-    const { caption } = this.props
+    const { caption, isDoubleWatch } = this.props
         , {
             isShow, isModeEdit,
             scrollClass, watchList
           } = this.state
+        , _styleCaption = (isDoubleWatch)
+               ? styles.captionRootDouble
+               : styles.captionRoot
         , _captionEV = (isModeEdit) ? 'V' : 'E'
         , _titleEV = (isModeEdit)
               ? "Toggle to View Mode"
@@ -324,7 +334,7 @@ const WatchBrowser = React.createClass({
           style={styles.browser}
         >
          <CaptionRow
-            styleRoot={styles.captionRoot}
+            styleRoot={_styleCaption}
             caption={caption}
             onClose={this._handlerHide}
          >
@@ -346,12 +356,24 @@ const WatchBrowser = React.createClass({
              style={styles.btCircle}
              onClick={this._handlerToggleFindInput}
            />
-           <ButtonCircle
-             caption={'B'}
-             title="BackUp Watch Items to Zip File"
-             style={Object.assign({}, styles.btCircle, {marginRight: '20px'})}
-             onClick={WatchActions.exportToZip}
-           />
+           { !isDoubleWatch &&
+             <ButtonCircle
+                caption={'B'}
+                title="BackUp Watch Items to JSON File"
+                style={styles.btCircle}
+                onClick={WatchActions.backupToJson}
+              />
+           }
+           { !isDoubleWatch &&
+             <ButtonCircle
+                caption={'L'}
+                title="Load Watch Items from JSON File"
+                style={styles.btCircleRight}
+                onClick={ComponentActions.showModalDialog.bind(null, ModalDialog.LOAD_FILE, {
+                   onLoad : WatchActions.loadFromJson
+                })}
+              />
+           }
          </CaptionRow>
          {this._renderEditBar(isModeEdit)}
          { watchList && this._renderFindInput(watchList)}

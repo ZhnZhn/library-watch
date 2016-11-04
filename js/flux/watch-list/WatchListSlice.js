@@ -4,17 +4,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+//import JSZip from 'jszip';
+
+
 var _localforage = require('localforage');
 
 var _localforage2 = _interopRequireDefault(_localforage);
 
-var _jszip = require('jszip');
-
-var _jszip2 = _interopRequireDefault(_jszip);
-
 var _browserFilesaver = require('browser-filesaver');
 
 var _browserFilesaver2 = _interopRequireDefault(_browserFilesaver);
+
+var _lodash = require('lodash.merge');
+
+var _lodash2 = _interopRequireDefault(_lodash);
 
 var _DateUtils = require('../../utils/DateUtils');
 
@@ -154,25 +158,27 @@ var WatchListSlice = {
   onDeleteList: function onDeleteList(option) {
     this._onEditWatch(_Logic2.default.deleteList(this.watchList, option), _WatchActions.WatchActionTypes.DELETE_LIST);
   },
-  onExportToZip: function onExportToZip() {
-    var zip = new _jszip2.default();
-    var yyyymmdd = _DateUtils2.default.formatToYYYYMMDD(Date.now());
+  onBackupToJson: function onBackupToJson() {
+    var yyyymmdd = _DateUtils2.default.formatToYYYYMMDD(Date.now()),
+        _blob = new Blob([JSON.stringify(this.watchList)], { type: "application/json" }),
+        _fileName = WATCH_FILE_NAME + '_' + yyyymmdd + '.json';
 
-    zip.file(WATCH_FILE_NAME + '_' + yyyymmdd + '.json}', JSON.stringify(this.watchList));
-
-    zip.generateAsync({ type: "blob" }).then(function (content) {
-      var _zipName = WATCH_FILE_NAME + '_' + yyyymmdd + '.zip';
-      _browserFilesaver2.default.saveAs(content, _zipName);
-      _ComponentActions2.default.showModalDialog(_Type.ModalDialog.INFO, {
-        caption: CAPTION_WATCH_EXPORT,
-        descr: _Msg2.default.WATCH_BACKUP_ZIP(_zipName)
-      });
-    }).catch(function (err) {
-      _ComponentActions2.default.showModalDialog(_Type.ModalDialog.ALERT, {
-        caption: CAPTION_WATCH_EXPORT,
-        descr: _Msg2.default.WATCH_BACKUP_ZIP_FAILED
-      });
+    _browserFilesaver2.default.saveAs(_blob, _fileName);
+    _ComponentActions2.default.showModalDialog(_Type.ModalDialog.INFO, {
+      caption: CAPTION_WATCH_EXPORT,
+      descr: _Msg2.default.WATCH_BACKUP_ZIP(_fileName)
     });
+  },
+  onLoadFromJson: function onLoadFromJson(option) {
+    try {
+      var progressEvent = option.progressEvent;
+
+      (0, _lodash2.default)(this.watchList, JSON.parse(progressEvent.target.result));
+      this.isWatchEdited = true;
+      this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
+    } catch (exc) {
+      _ComponentActions2.default.showModalDialog(_Type.ModalDialog.ALERT, _extends({}, _Msg2.default.Alert.LOAD_FROM_JSON));
+    }
   }
 };
 

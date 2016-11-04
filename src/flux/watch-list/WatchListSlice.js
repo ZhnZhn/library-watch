@@ -1,7 +1,8 @@
 
 import LocalForage from 'localforage';
-import JSZip from 'jszip';
+//import JSZip from 'jszip';
 import FileSaver from 'browser-filesaver';
+import merge from 'lodash.merge';
 
 import DateUtils from '../../utils/DateUtils';
 
@@ -150,30 +151,27 @@ const WatchListSlice = {
     );
   },
 
-  onExportToZip(){
-    const zip = new JSZip();
-    const yyyymmdd = DateUtils.formatToYYYYMMDD(Date.now());
+  onBackupToJson(){
+    const yyyymmdd = DateUtils.formatToYYYYMMDD(Date.now())
+        , _blob = new Blob([JSON.stringify(this.watchList)], {type: "application/json"})
+        , _fileName = `${WATCH_FILE_NAME}_${yyyymmdd}.json`
 
-    zip.file(
-       `${WATCH_FILE_NAME}_${yyyymmdd}.json}`,
-        JSON.stringify(this.watchList)
-     );
+    FileSaver.saveAs(_blob, _fileName);
+    ComponentActions.showModalDialog(ModalDialog.INFO, {
+      caption : CAPTION_WATCH_EXPORT,
+      descr : Msg.WATCH_BACKUP_ZIP(_fileName)
+    })
+  },
 
-    zip.generateAsync({ type:"blob" })
-       .then( (content) => {
-          const _zipName = `${WATCH_FILE_NAME}_${yyyymmdd}.zip`
-          FileSaver.saveAs(content, _zipName);
-          ComponentActions.showModalDialog(ModalDialog.INFO, {
-            caption : CAPTION_WATCH_EXPORT,
-            descr : Msg.WATCH_BACKUP_ZIP(_zipName)
-          })
-       })
-       .catch( (err) => {
-         ComponentActions.showModalDialog(ModalDialog.ALERT, {
-            caption : CAPTION_WATCH_EXPORT,
-            descr : Msg.WATCH_BACKUP_ZIP_FAILED
-         })
-       })
+  onLoadFromJson(option){
+    try {
+      const { progressEvent } = option
+      merge(this.watchList, JSON.parse(progressEvent.target.result));
+      this.isWatchEdited = true;
+      this.trigger(BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
+    } catch(exc) {
+      ComponentActions.showModalDialog(ModalDialog.ALERT, {...Msg.Alert.LOAD_FROM_JSON })
+    }
   }
 
 }

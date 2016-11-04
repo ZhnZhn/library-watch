@@ -98,6 +98,9 @@ var styles = {
     maxWidth: '500px'
   },
   captionRoot: {
+    minWidth: '340px'
+  },
+  captionRootDouble: {
     minWidth: '310px'
   },
   editBarDiv: {
@@ -105,6 +108,10 @@ var styles = {
   },
   btCircle: {
     marginLeft: '20px'
+  },
+  btCircleRight: {
+    marginLeft: '20px',
+    marginRight: '20px'
   },
   btEditBarList: {
     marginLeft: '20px'
@@ -373,12 +380,15 @@ var WatchBrowser = _react2.default.createClass(_extends({
     );
   },
   render: function render() {
-    var caption = this.props.caption;
+    var _props3 = this.props;
+    var caption = _props3.caption;
+    var isDoubleWatch = _props3.isDoubleWatch;
     var _state3 = this.state;
     var isShow = _state3.isShow;
     var isModeEdit = _state3.isModeEdit;
     var scrollClass = _state3.scrollClass;
     var watchList = _state3.watchList;
+    var _styleCaption = isDoubleWatch ? styles.captionRootDouble : styles.captionRoot;
     var _captionEV = isModeEdit ? 'V' : 'E';
     var _titleEV = isModeEdit ? "Toggle to View Mode" : "Toggle to Edit Mode";
 
@@ -391,7 +401,7 @@ var WatchBrowser = _react2.default.createClass(_extends({
       _react2.default.createElement(
         _CaptionRow2.default,
         {
-          styleRoot: styles.captionRoot,
+          styleRoot: _styleCaption,
           caption: caption,
           onClose: this._handlerHide
         },
@@ -413,11 +423,19 @@ var WatchBrowser = _react2.default.createClass(_extends({
           style: styles.btCircle,
           onClick: this._handlerToggleFindInput
         }),
-        _react2.default.createElement(_ButtonCircle2.default, {
+        !isDoubleWatch && _react2.default.createElement(_ButtonCircle2.default, {
           caption: 'B',
-          title: 'BackUp Watch Items to Zip File',
-          style: Object.assign({}, styles.btCircle, { marginRight: '20px' }),
-          onClick: _WatchActions2.default.exportToZip
+          title: 'BackUp Watch Items to JSON File',
+          style: styles.btCircle,
+          onClick: _WatchActions2.default.backupToJson
+        }),
+        !isDoubleWatch && _react2.default.createElement(_ButtonCircle2.default, {
+          caption: 'L',
+          title: 'Load Watch Items from JSON File',
+          style: styles.btCircleRight,
+          onClick: _ComponentActions2.default.showModalDialog.bind(null, _Type.ModalDialog.LOAD_FILE, {
+            onLoad: _WatchActions2.default.loadFromJson
+          })
         })
       ),
       this._renderEditBar(isModeEdit),

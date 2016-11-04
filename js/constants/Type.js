@@ -10,7 +10,9 @@ var ModalDialog = exports.ModalDialog = {
   ADD_ITEM: 'addToWatch',
   LOAD_WATCH_ITEM: 'loadWatchItem',
   EDIT_WATCH_GROUP: 'editWatchGroup',
-  EDIT_WATCH_LIST: 'editWatchList'
+  EDIT_WATCH_LIST: 'editWatchList',
+
+  LOAD_FILE: 'loadFile'
 };
 
 var BrowserType = exports.BrowserType = {

@@ -19,7 +19,8 @@ export const WatchActionTypes = {
     EDIT_WATCH_COMPLETED : 'editWatchCompleted',
     EDIT_WATCH_FAILED : 'editWatchFailed',
 
-  EXPORT_TO_ZIP : 'exportToZip'
+  BACKUP_TO_JSON : 'backupToJson',
+  LOAD_FROM_JSON : 'loadFromJson'
 }
 
 const WatchActions = Reflux.createActions({
@@ -40,7 +41,8 @@ const WatchActions = Reflux.createActions({
       [WatchActionTypes.EDIT_WATCH_COMPLETED] : {},
       [WatchActionTypes.EDIT_WATCH_FAILED] : {},
 
-  [WatchActionTypes.EXPORT_TO_ZIP] : {}
+  [WatchActionTypes.BACKUP_TO_JSON] : {},
+  [WatchActionTypes.LOAD_FROM_JSON] : {}
 
 })
 

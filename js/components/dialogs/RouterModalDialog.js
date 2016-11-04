@@ -16,6 +16,10 @@ var _InfoDialog = require('./InfoDialog');
 
 var _InfoDialog2 = _interopRequireDefault(_InfoDialog);
 
+var _LoadFileDialog = require('./LoadFileDialog');
+
+var _LoadFileDialog2 = _interopRequireDefault(_LoadFileDialog);
+
 var _AddToWatchDialog = require('../browser-watch/AddToWatchDialog');
 
 var _AddToWatchDialog2 = _interopRequireDefault(_AddToWatchDialog);
@@ -36,7 +40,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var RouterModalDialog = (_RouterModalDialog = {}, _defineProperty(_RouterModalDialog, _Type.ModalDialog.ALERT, _AlertDialog2.default), _defineProperty(_RouterModalDialog, _Type.ModalDialog.INFO, _InfoDialog2.default), _defineProperty(_RouterModalDialog, _Type.ModalDialog.ADD_ITEM, _AddToWatchDialog2.default), _defineProperty(_RouterModalDialog, _Type.ModalDialog.LOAD_WATCH_ITEM, _LoadItemDialog2.default), _defineProperty(_RouterModalDialog, _Type.ModalDialog.EDIT_WATCH_GROUP, _EditGroupDialog2.default), _defineProperty(_RouterModalDialog, _Type.ModalDialog.EDIT_WATCH_LIST, _EditListDialog2.default), _RouterModalDialog);
+var RouterModalDialog = (_RouterModalDialog = {}, _defineProperty(_RouterModalDialog, _Type.ModalDialog.ALERT, _AlertDialog2.default), _defineProperty(_RouterModalDialog, _Type.ModalDialog.INFO, _InfoDialog2.default), _defineProperty(_RouterModalDialog, _Type.ModalDialog.LOAD_FILE, _LoadFileDialog2.default), _defineProperty(_RouterModalDialog, _Type.ModalDialog.ADD_ITEM, _AddToWatchDialog2.default), _defineProperty(_RouterModalDialog, _Type.ModalDialog.LOAD_WATCH_ITEM, _LoadItemDialog2.default), _defineProperty(_RouterModalDialog, _Type.ModalDialog.EDIT_WATCH_GROUP, _EditGroupDialog2.default), _defineProperty(_RouterModalDialog, _Type.ModalDialog.EDIT_WATCH_LIST, _EditListDialog2.default), _RouterModalDialog);
 
 exports.default = RouterModalDialog;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\dialogs\RouterModalDialog.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\RouterModalDialog.js.map

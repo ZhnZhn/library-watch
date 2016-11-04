@@ -42,6 +42,10 @@ const Msg = {
        caption : 'Drag Drop List',
        descr : 'List in Group already has been existed.'
      },
+     LOAD_FROM_JSON : {
+       caption : 'Load from JSON File',
+       descr : 'Can not Load Watch Items from JSON File'
+     },
      RUNTIME_ERROR : {
         caption : 'Runtime Error'
      },

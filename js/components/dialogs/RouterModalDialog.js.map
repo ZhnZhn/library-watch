@@ -1,9 +1,9 @@
 )]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_Template_2\\src\\components\\dialogs\\RouterModalDialog.js",
- "file": "D:\\_Dev\\_React\\_Template_2\\js\\components\\dialogs\\RouterModalDialog.js",
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\dialogs\\RouterModalDialog.js",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\dialogs\\RouterModalDialog.js",
  "sourceRoot": "",
  "names": [],
- "mappings": ";;;;;;;;AACA;;AAEA;;;;AACA;;;;AAEA;;;;AACA;;;;AACA;;;;AACA;;;;;;;;AAEA,IAAM,kFACH,kBAAY,KADT,8DAEH,kBAAY,IAFT,6DAIH,kBAAY,QAJT,mEAKH,kBAAY,eALT,iEAMH,kBAAY,gBANT,kEAOH,kBAAY,eAPT,gDAAN;;kBAUe,iB"
+ "mappings": ";;;;;;;;AACA;;AAEA;;;;AACA;;;;AACA;;;;AAEA;;;;AACA;;;;AACA;;;;AACA;;;;;;;;AAEA,IAAM,kFACH,kBAAY,KADT,8DAEH,kBAAY,IAFT,6DAIH,kBAAY,SAJT,iEAMH,kBAAY,QANT,mEAOH,kBAAY,eAPT,iEAQH,kBAAY,gBART,kEASH,kBAAY,eATT,gDAAN;;kBAYe,iB"
 }
