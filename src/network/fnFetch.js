@@ -1,30 +1,50 @@
-const LIMIT_REMAINING = 'X-RateLimit-Remaining'
-    , DONE = 'DONE';
+import LoadingProgressActions from '../flux/actions/LoadingProgressActions';
 
-/*
-const _defaultOption = {
-  method: 'GET',
-  headers : new Headers(),
-  mode : 'cors',
-  cache: 'default'
+const CLICK_TIME_INTERVAL = 300
+    , MIN_FREQUENCY = 3000
+    , LIMIT_REMAINING = 'X-RateLimit-Remaining'
+    , DONE = 'DONE'
+    , ALERT_FREQUENCY = {
+        errCaption : 'Load Frequency',
+        message : `Exceed item load frequency restriction of ${MIN_FREQUENCY/1000}s`
+    }
+    , ALERT_IN_PROGRESS = {
+         errCaption : 'Loading In Progress',
+         message : 'Loading data for this item in progress.\nIt seems several clicks on button Load repeatedly happend.'
+    };
+
+
+let _recentUri = DONE
+  , _recentTime = Date.now()
+  , _recentCall = _recentTime;
+
+const _fnSetRecentCall = function(uri, time){
+  _recentUri = uri;
+  _recentCall = time
 }
-*/
-
-let _recentUri = DONE;
+const _fnSetRecentDone = function(uri, time){
+  _recentUri = uri;
+  _recentTime = time;
+}
 
 export default ({
-   uri, option, onCheckResponse, onFetch, onCompleted, onFailed, onCatch
+   uri, option,
+   onCheckResponse, onFetch, onCompleted,
+   onFailed, onCatch
  }) => {
-  if (uri === _recentUri){
-    onCatch({
-      error : {
-        errCaption : 'Loading In Progress',
-        message : 'Loading data for this item in progress.\nIt seems several clicks on button Load repeatedly happend.'
-      },
-      option, onFailed
-    })
+  const _nowTime = Date.now()
+
+  if (_nowTime - _recentCall < CLICK_TIME_INTERVAL){
+    return undefined;
+  } else if (uri === _recentUri){
+    onCatch({ error : ALERT_IN_PROGRESS, option, onFailed });
+  } else if (_nowTime - _recentTime < MIN_FREQUENCY){
+    onCatch({ error : ALERT_FREQUENCY, option, onFailed });
   } else {
-    _recentUri = uri;
+
+    _fnSetRecentCall(uri, _nowTime);
+    LoadingProgressActions.loadingProgress();
+
     fetch(uri)
       .then((response) => {
         const { status, statusText, headers } = response;
@@ -41,11 +61,15 @@ export default ({
          if (onCheckResponse(json, option)){
            onFetch({ json, option, onCompleted });
          }
-         _recentUri = DONE;
+
+         _fnSetRecentDone(DONE, _nowTime);
+         LoadingProgressActions.loadingProgressComplete();
       })
       .catch((error) => {
          onCatch({ error, option, onFailed })
-         _recentUri = DONE;
+
+         _fnSetRecentDone(DONE, _nowTime);
+         LoadingProgressActions.loadingProgressFailed();
       })
   }
 }

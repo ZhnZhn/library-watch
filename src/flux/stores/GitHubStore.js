@@ -4,7 +4,7 @@ import ComponentActions, {ComponentActionTypes} from '../actions/ComponentAction
 import ChartActions from '../actions/ChartActions';
 import BrowserActions, { BrowserActionTypes } from '../actions/BrowserActions';
 import { ChartActionTypes } from '../actions/ChartActions';
-import { LoadingProgressActionTypes } from '../actions/LoadingProgressActions';
+import LoadingProgressActions from '../actions/LoadingProgressActions';
 import WatchActions from '../actions/WatchActions';
 
 import { BrowserType, ModalDialog } from '../../constants/Type';
@@ -26,7 +26,10 @@ const _fnLogLoadError = function({
 }
 
 const GitHubStore = Reflux.createStore({
-  listenables : [BrowserActions, ComponentActions, ChartActions, WatchActions],
+  listenables : [
+    BrowserActions, ComponentActions, ChartActions, WatchActions,
+    LoadingProgressActions
+  ],
   charts : {},
 
   init(){
@@ -67,7 +70,6 @@ const GitHubStore = Reflux.createStore({
  },
 
  onLoadStock(){
-   this.triggerLoadingProgress(LoadingProgressActionTypes.LOADING)
  },
  onLoadStockCompleted(option, json){
    /* eslint-disable no-undef */
@@ -95,7 +97,6 @@ const GitHubStore = Reflux.createStore({
      );
    }
 
-   this.triggerLoadingProgress(LoadingProgressActionTypes.LOADING_COMPLETE);
    this.triggerLimitRemaining(limitRemaining);
 
    if (browserType !== BrowserType.WATCH_LIST){
@@ -106,7 +107,6 @@ const GitHubStore = Reflux.createStore({
   onLoadStockFailed(option){
    const  { limitRemaining } = option;
 
-   this.triggerLoadingProgress(LoadingProgressActionTypes.LOADING_FAILED);
    this.triggerLimitRemaining(limitRemaining);
 
    this.showAlertDialog(option);

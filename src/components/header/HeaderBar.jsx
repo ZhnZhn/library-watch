@@ -49,7 +49,7 @@ const HeaderBar = React.createClass({
          <LoadingProgress store={store} />
          <AppLabel
            style={STYLE.APP_LABEL}
-           caption="Library Watch v. 0.10.0"
+           caption="Library Watch v0.11.0"
          />
          <ToolBarButton
             type="TypeA"

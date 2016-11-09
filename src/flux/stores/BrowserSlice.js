@@ -86,7 +86,7 @@ const BrowserSlice = {
     this.showAlertDialog(option);
   },
 
-  onToggleWatchDbBrowser(){    
+  onToggleWatchDbBrowser(){
     this.trigger(BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER);
   }
 

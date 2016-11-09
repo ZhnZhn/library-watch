@@ -77,7 +77,7 @@ var HeaderBar = _react2.default.createClass({
       _react2.default.createElement(_LoadingProgress2.default, { store: store }),
       _react2.default.createElement(_AppLabel2.default, {
         style: STYLE.APP_LABEL,
-        caption: 'Library Watch v. 0.10.0'
+        caption: 'Library Watch v0.11.0'
       }),
       _react2.default.createElement(_ToolBarButton2.default, {
         type: 'TypeA',

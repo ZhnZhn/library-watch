@@ -1,9 +1,9 @@
 )]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_Template_2\\src\\flux\\actions\\LoadingProgressActions.js",
- "file": "D:\\_Dev\\_React\\_Template_2\\js\\flux\\actions\\LoadingProgressActions.js",
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\flux\\actions\\LoadingProgressActions.js",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\flux\\actions\\LoadingProgressActions.js",
  "sourceRoot": "",
  "names": [],
- "mappings": ";;;;;AACO,IAAM,kEAA6B;AACxC,WAAU,SAD8B;AAExC,oBAAmB,iBAFqB;AAGxC,kBAAiB;AAHuB,CAAnC"
+ "mappings": ";;;;;;;;;AAAA;;;;;;;;AAEO,IAAM,kEAA6B;AACxC,WAAU,iBAD8B;AAExC,oBAAmB,yBAFqB;AAGxC,kBAAiB;AAHuB,CAAnC;;AAMP,IAAM,yBAAyB,iBAAO,aAAP,qEAC5B,2BAA2B,OADC,EACU,EADV,0CAE5B,2BAA2B,gBAFC,EAEmB,EAFnB,0CAG5B,2BAA2B,cAHC,EAGiB,EAHjB,0BAA/B;;kBAMe,sB"
 }

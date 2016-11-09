@@ -24,6 +24,8 @@ var _BrowserActions2 = _interopRequireDefault(_BrowserActions);
 
 var _LoadingProgressActions = require('../actions/LoadingProgressActions');
 
+var _LoadingProgressActions2 = _interopRequireDefault(_LoadingProgressActions);
+
 var _WatchActions = require('../actions/WatchActions');
 
 var _WatchActions2 = _interopRequireDefault(_WatchActions);
@@ -67,7 +69,7 @@ var _fnLogLoadError = function _fnLogLoadError(_ref) {
 };
 
 var GitHubStore = _reflux2.default.createStore(_extends({
-  listenables: [_BrowserActions2.default, _ComponentActions2.default, _ChartActions2.default, _WatchActions2.default],
+  listenables: [_BrowserActions2.default, _ComponentActions2.default, _ChartActions2.default, _WatchActions2.default, _LoadingProgressActions2.default],
   charts: {},
 
   init: function init() {
@@ -101,9 +103,7 @@ var GitHubStore = _reflux2.default.createStore(_extends({
       this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_BROWSER_MENU, browserType);
     }
   },
-  onLoadStock: function onLoadStock() {
-    this.triggerLoadingProgress(_LoadingProgressActions.LoadingProgressActionTypes.LOADING);
-  },
+  onLoadStock: function onLoadStock() {},
   onLoadStockCompleted: function onLoadStockCompleted(option, json) {
     /* eslint-disable no-undef */
     if (process.env.NODE_ENV !== 'production') {
@@ -128,7 +128,6 @@ var GitHubStore = _reflux2.default.createStore(_extends({
       this.trigger(_ChartActions.ChartActionTypes.INIT_AND_SHOW_CHART, _Factory2.default.createChartContainer(chartType, browserType));
     }
 
-    this.triggerLoadingProgress(_LoadingProgressActions.LoadingProgressActionTypes.LOADING_COMPLETE);
     this.triggerLimitRemaining(limitRemaining);
 
     if (browserType !== _Type.BrowserType.WATCH_LIST) {
@@ -140,7 +139,6 @@ var GitHubStore = _reflux2.default.createStore(_extends({
     var limitRemaining = option.limitRemaining;
 
 
-    this.triggerLoadingProgress(_LoadingProgressActions.LoadingProgressActionTypes.LOADING_FAILED);
     this.triggerLimitRemaining(limitRemaining);
 
     this.showAlertDialog(option);

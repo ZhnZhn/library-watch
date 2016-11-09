@@ -3,19 +3,38 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var LIMIT_REMAINING = 'X-RateLimit-Remaining',
-    DONE = 'DONE';
 
-/*
-const _defaultOption = {
-  method: 'GET',
-  headers : new Headers(),
-  mode : 'cors',
-  cache: 'default'
-}
-*/
+var _LoadingProgressActions = require('../flux/actions/LoadingProgressActions');
 
-var _recentUri = DONE;
+var _LoadingProgressActions2 = _interopRequireDefault(_LoadingProgressActions);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CLICK_TIME_INTERVAL = 300,
+    MIN_FREQUENCY = 3000,
+    LIMIT_REMAINING = 'X-RateLimit-Remaining',
+    DONE = 'DONE',
+    ALERT_FREQUENCY = {
+  errCaption: 'Load Frequency',
+  message: 'Exceed item load frequency restriction of ' + MIN_FREQUENCY / 1000 + 's'
+},
+    ALERT_IN_PROGRESS = {
+  errCaption: 'Loading In Progress',
+  message: 'Loading data for this item in progress.\nIt seems several clicks on button Load repeatedly happend.'
+};
+
+var _recentUri = DONE,
+    _recentTime = Date.now(),
+    _recentCall = _recentTime;
+
+var _fnSetRecentCall = function _fnSetRecentCall(uri, time) {
+  _recentUri = uri;
+  _recentCall = time;
+};
+var _fnSetRecentDone = function _fnSetRecentDone(uri, time) {
+  _recentUri = uri;
+  _recentTime = time;
+};
 
 exports.default = function (_ref) {
   var uri = _ref.uri;
@@ -26,16 +45,19 @@ exports.default = function (_ref) {
   var onFailed = _ref.onFailed;
   var onCatch = _ref.onCatch;
 
-  if (uri === _recentUri) {
-    onCatch({
-      error: {
-        errCaption: 'Loading In Progress',
-        message: 'Loading data for this item in progress.\nIt seems several clicks on button Load repeatedly happend.'
-      },
-      option: option, onFailed: onFailed
-    });
+  var _nowTime = Date.now();
+
+  if (_nowTime - _recentCall < CLICK_TIME_INTERVAL) {
+    return undefined;
+  } else if (uri === _recentUri) {
+    onCatch({ error: ALERT_IN_PROGRESS, option: option, onFailed: onFailed });
+  } else if (_nowTime - _recentTime < MIN_FREQUENCY) {
+    onCatch({ error: ALERT_FREQUENCY, option: option, onFailed: onFailed });
   } else {
-    _recentUri = uri;
+
+    _fnSetRecentCall(uri, _nowTime);
+    _LoadingProgressActions2.default.loadingProgress();
+
     fetch(uri).then(function (response) {
       var status = response.status;
       var statusText = response.statusText;
@@ -53,11 +75,15 @@ exports.default = function (_ref) {
       if (onCheckResponse(json, option)) {
         onFetch({ json: json, option: option, onCompleted: onCompleted });
       }
-      _recentUri = DONE;
+
+      _fnSetRecentDone(DONE, _nowTime);
+      _LoadingProgressActions2.default.loadingProgressComplete();
     }).catch(function (error) {
       onCatch({ error: error, option: option, onFailed: onFailed });
-      _recentUri = DONE;
+
+      _fnSetRecentDone(DONE, _nowTime);
+      _LoadingProgressActions2.default.loadingProgressFailed();
     });
   }
 };
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\network\fnFetch.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\network\fnFetch.js.map
