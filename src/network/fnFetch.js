@@ -15,7 +15,7 @@ const CLICK_TIME_INTERVAL = 300
 
 
 let _recentUri = DONE
-  , _recentTime = Date.now()
+  , _recentTime = Date.now() - MIN_FREQUENCY
   , _recentCall = _recentTime;
 
 const _fnSetRecentCall = function(uri, time){

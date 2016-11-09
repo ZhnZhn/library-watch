@@ -24,7 +24,7 @@ var CLICK_TIME_INTERVAL = 300,
 };
 
 var _recentUri = DONE,
-    _recentTime = Date.now(),
+    _recentTime = Date.now() - MIN_FREQUENCY,
     _recentCall = _recentTime;
 
 var _fnSetRecentCall = function _fnSetRecentCall(uri, time) {
