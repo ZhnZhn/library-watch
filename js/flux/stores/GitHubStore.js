@@ -56,7 +56,15 @@ var _WithLoadingProgress = require('./WithLoadingProgress');
 
 var _WithLoadingProgress2 = _interopRequireDefault(_WithLoadingProgress);
 
+var _AnalyticSlice = require('./AnalyticSlice');
+
+var _AnalyticSlice2 = _interopRequireDefault(_AnalyticSlice);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var EVENT_ACTION = {
+  LOAD: 'Load'
+};
 
 var CONSOLE_LOG_STYLE = 'color:rgb(237, 88, 19);';
 var _fnLogLoadError = function _fnLogLoadError(_ref) {
@@ -134,6 +142,10 @@ var GitHubStore = _reflux2.default.createStore(_extends({
       this.addMenuItemCounter(chartType, browserType);
       this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_BROWSER_MENU, browserType);
     }
+    this.analyticSendEvent({
+      eventAction: EVENT_ACTION.LOAD,
+      eventLabel: chartType
+    });
   },
   onLoadStockFailed: function onLoadStockFailed(option) {
     var limitRemaining = option.limitRemaining;
@@ -166,7 +178,7 @@ var GitHubStore = _reflux2.default.createStore(_extends({
   onCloseChartContainer2: function onCloseChartContainer2(chartType, browserType) {
     this.trigger(_ComponentActions.ComponentActionTypes.CLOSE_CHART_CONTAINER_2, chartType);
   }
-}, _BrowserSlice2.default, _ComponentSlice2.default, _WatchListSlice2.default, _WithLimitRemaining2.default, _WithLoadingProgress2.default));
+}, _BrowserSlice2.default, _ComponentSlice2.default, _WatchListSlice2.default, _WithLimitRemaining2.default, _WithLoadingProgress2.default, _AnalyticSlice2.default));
 
 exports.default = GitHubStore;
 //# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\stores\GitHubStore.js.map

@@ -16,6 +16,12 @@ import ComponentSlice from './ComponentSlice';
 import WatchListSlice from '../watch-list/WatchListSlice';
 import WithLimitRemaining from './WithLimitRemaining';
 import WithLoadingProgress from './WithLoadingProgress';
+import AnalyticSlice from './AnalyticSlice';
+
+const EVENT_ACTION = {
+  LOAD : 'Load'
+}
+
 
 const CONSOLE_LOG_STYLE = 'color:rgb(237, 88, 19);';
 const _fnLogLoadError = function({
@@ -103,6 +109,10 @@ const GitHubStore = Reflux.createStore({
      this.addMenuItemCounter(chartType, browserType);
      this.trigger(BrowserActionTypes.UPDATE_BROWSER_MENU, browserType);
    }
+   this.analyticSendEvent({
+       eventAction : EVENT_ACTION.LOAD,
+       eventLabel : chartType
+     });
   },
   onLoadStockFailed(option){
    const  { limitRemaining } = option;
@@ -142,7 +152,8 @@ const GitHubStore = Reflux.createStore({
  ...ComponentSlice,
  ...WatchListSlice,
  ...WithLimitRemaining,
- ...WithLoadingProgress
+ ...WithLoadingProgress,
+ ...AnalyticSlice
 });
 
 export default GitHubStore

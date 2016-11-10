@@ -11,6 +11,8 @@ import BrowserContainer from './browser-container/BrowserContainer';
 import ComponentHrzContainer from './zhnContainers/ComponentHrzContainer';
 import DialogContainer from './zhnContainers/DialogContainer';
 
+import ConsentCookiePopup from './zhnAtoms/ConsentCookiePopup';
+
 import RouterModalDialog from './dialogs/RouterModalDialog';
 
 const AppGitHub = (props) => {
@@ -41,6 +43,7 @@ const AppGitHub = (props) => {
          showAction={ComponentActionTypes.SHOW_MODAL_DIALOG}
          routerDialog={RouterModalDialog}
       />
+      <ConsentCookiePopup />
     </div>
   );
 };
