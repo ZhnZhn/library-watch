@@ -1,0 +1,9 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\zhnAtoms\\FormattedInteger.jsx",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\zhnAtoms\\FormattedInteger.js",
+ "sourceRoot": "",
+ "names": [],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAM,mBAAmB,mBAAzB;;AAEA,IAAM,mBAAmB,SAAnB,gBAAmB,OAAsB;AAAA,MAAnB,KAAmB,QAAnB,KAAmB;AAAA,MAAZ,KAAY,QAAZ,KAAY;;AAC7C,MAAI,SAAS,IAAb,EAAmB;AACjB,YAAQ,OAAO,KAAP,EAAc,OAAd,CAAsB,gBAAtB,EAAwC,KAAxC,CAAR;AACD;;AAED,SACE;AAAA;AAAA,MAAM,OAAO,KAAb;AACG;AADH,GADF;AAKD,CAVD;;AAYA,iBAAiB,SAAjB,GAA6B;AAC3B,SAAO,iBAAU,MAAV,CAAiB;AADG,CAA7B;;kBAIe,gB"
+}

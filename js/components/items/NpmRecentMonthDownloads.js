@@ -16,6 +16,10 @@ var _ButtonCircle = require('../zhnAtoms/ButtonCircle');
 
 var _ButtonCircle2 = _interopRequireDefault(_ButtonCircle);
 
+var _FormattedInteger = require('../zhnAtoms/FormattedInteger');
+
+var _FormattedInteger2 = _interopRequireDefault(_FormattedInteger);
+
 var _SvgClose = require('../zhnAtoms/SvgClose');
 
 var _SvgClose2 = _interopRequireDefault(_SvgClose);
@@ -95,6 +99,15 @@ var styles = {
     fontWeight: 'bold',
     color: '#3399FF',
     cursor: 'pointer'
+  },
+
+  BUTTON_DOWN_UP: {
+    paddingTop: '4px',
+    paddingBottom: '4px'
+  },
+
+  SHOW_HIDE_BADGE: {
+    marginTop: '16px'
   }
 
 };
@@ -159,7 +172,8 @@ var NpmRecentDownloads = _react2.default.createClass({
     var _props2 = this.props;
     var packageName = _props2.packageName;
     var caption = _props2.caption;
-    var sumDownloads = _props2.sumDownloads;
+    var _props2$sumDownloads = _props2.sumDownloads;
+    var sumDownloads = _props2$sumDownloads === undefined ? 0 : _props2$sumDownloads;
     var fromDate = _props2.fromDate;
     var toDate = _props2.toDate;
     var labels = _props2.labels;
@@ -192,11 +206,10 @@ var NpmRecentDownloads = _react2.default.createClass({
             null,
             packageName
           ),
-          _react2.default.createElement(
-            'span',
-            { style: styles.SPAN_SUM },
-            sumDownloads
-          ),
+          _react2.default.createElement(_FormattedInteger2.default, {
+            value: sumDownloads,
+            style: styles.SPAN_SUM
+          }),
           _react2.default.createElement(
             'span',
             { style: styles.SPAN_START },
@@ -223,13 +236,13 @@ var NpmRecentDownloads = _react2.default.createClass({
           _react2.default.createElement(_ButtonDownUp2.default, {
             caption: 'NodeICO',
             title: 'Package badge from Nodei.co',
-            styleRoot: { paddingTop: '4px', paddingBottom: '4px' },
+            styleRoot: styles.BUTTON_DOWN_UP,
             isUp: isShowNodeIco,
             onClick: this._handlerClickNodeIco
           }),
           _react2.default.createElement(
             _ShowHide2.default,
-            { isShow: isShowNodeIco, style: { marginTop: '16px' } },
+            { isShow: isShowNodeIco, style: styles.SHOW_HIDE_BADGE },
             isLoadNodeIco && this._renderNodeIcoBadge(packageName)
           )
         )

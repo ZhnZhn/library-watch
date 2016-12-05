@@ -20,16 +20,16 @@
   "jspm": {
     "dependencies": {
       "browser-filesaver": "npm:browser-filesaver@^1.1.1",
-      "chart.js": "npm:chart.js@^2.2.2",
+      "chart.js": "npm:chart.js@^2.4.0",
       "classnames": "npm:classnames@^2.2.5",
       "interact.js": "npm:interact.js@^1.2.6",
-      "localforage": "npm:localforage@^1.4.2",
+      "localforage": "npm:localforage@^1.4.3",
       "lodash.merge": "npm:lodash.merge@^4.6.0",
-      "raven-js": "npm:raven-js@^3.7.0",
-      "react": "npm:react@^15.3.2",
-      "react-dom": "npm:react-dom@^15.3.2",
-      "reflux": "npm:reflux@^0.4.1",
-      "timeago.js": "npm:timeago.js@^1.1.0"
+      "raven-js": "npm:raven-js@^3.8.1",
+      "react": "npm:react@^15.4.1",
+      "react-dom": "npm:react-dom@^15.4.1",
+      "reflux": "npm:reflux@^5.0.3",
+      "timeago.js": "npm:timeago.js@^2.0.4"
     },
     "devDependencies": {}
   },
@@ -54,9 +54,9 @@
     "gulp-rev": "^7.1.2",
     "html-webpack-plugin": "^2.21.0",
     "jspm": "^0.16.45",
-    "react-addons-test-utils": "^15.3.2",
+    "react-addons-test-utils": "^15.4.1",
     "sinon": "^1.17.5",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.3"
   },
   "ava": {
     "babel": {

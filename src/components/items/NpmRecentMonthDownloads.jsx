@@ -3,6 +3,7 @@ import React from 'react'
 import Chart from '../charts/Chart';
 
 import ButtonCircle from '../zhnAtoms/ButtonCircle';
+import FormattedInteger from '../zhnAtoms/FormattedInteger';
 import SvgClose from '../zhnAtoms/SvgClose';
 import ShowHide from '../zhnAtoms/ShowHide';
 import LineChart from '../charts/LineChart';
@@ -66,6 +67,15 @@ const styles = {
     fontWeight: 'bold' ,
     color: '#3399FF',
     cursor: 'pointer'
+  },
+
+  BUTTON_DOWN_UP : {
+    paddingTop : '4px',
+    paddingBottom : '4px'
+  },
+
+  SHOW_HIDE_BADGE : {
+     marginTop: '16px'
   }
 
 }
@@ -132,11 +142,13 @@ const NpmRecentDownloads = React.createClass({
 
   render(){
     const {
-            packageName, caption, sumDownloads, fromDate, toDate,
+            packageName, caption, sumDownloads=0, fromDate, toDate,
             labels, data,
             onCloseItem, onWatchItem
           } = this.props
-        , _isButtonWatch = ( typeof onWatchItem === 'function' ) ? true : false
+        , _isButtonWatch = ( typeof onWatchItem === 'function' )
+                ? true
+                : false
         , _styleCaption = styles.captionSpanOpen
         , { isShow, isLoadNodeIco, isShowNodeIco } = this.state
         , _lineChartConfig = Chart.fLineConfig({ labels, data })
@@ -152,9 +164,15 @@ const NpmRecentDownloads = React.createClass({
             <span>
               {packageName}
             </span>
+            <FormattedInteger
+               value={sumDownloads}
+               style={styles.SPAN_SUM}
+            />
+            {/*
             <span style={styles.SPAN_SUM}>
                {sumDownloads}
             </span>
+            */}
             <span style={styles.SPAN_START}>
               {fromDate}
             </span>
@@ -176,11 +194,11 @@ const NpmRecentDownloads = React.createClass({
             <ButtonDownUp
                caption="NodeICO"
                title="Package badge from Nodei.co"
-               styleRoot={{ paddingTop : '4px', paddingBottom : '4px' }}
+               styleRoot={styles.BUTTON_DOWN_UP}
                isUp={isShowNodeIco}
                onClick={this._handlerClickNodeIco}
             />
-            <ShowHide isShow={isShowNodeIco} style={{ marginTop: '16px' }}>
+            <ShowHide isShow={isShowNodeIco} style={styles.SHOW_HIDE_BADGE}>
               {isLoadNodeIco && this._renderNodeIcoBadge(packageName)}
             </ShowHide>
           </div>
