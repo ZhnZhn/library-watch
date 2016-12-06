@@ -31,6 +31,10 @@ var styles = {
         border: '2px solid gray',
         borderBottom: 'none'
         //borderTop : 'none'
+    },
+    selected: {
+        borderColor: 'rgba(164, 135, 212, 1)',
+        color: 'rgba(164, 135, 212, 1)'
     }
 };
 
@@ -38,13 +42,11 @@ var Tab = function Tab(props) {
     var title = props.title;
     var isSelected = props.isSelected;
     var onClick = props.onClick;
-    var selectedStyle = isSelected ?
-    //{backgroundColor : '#2C2828', color : 'rgba(164, 135, 212, 1)'}
-    { borderColor: 'rgba(164, 135, 212, 1)', color: 'rgba(164, 135, 212, 1)' } : null;
+    var _selectedStyle = isSelected ? styles.selected : null;
     return _react2.default.createElement(
         'li',
         {
-            style: Object.assign({}, styles.liStyle, selectedStyle),
+            style: Object.assign({}, styles.liStyle, _selectedStyle),
             onClick: onClick
         },
         _react2.default.createElement(
@@ -56,4 +58,4 @@ var Tab = function Tab(props) {
 };
 
 exports.default = Tab;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\zhnAtoms\Tab.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\Tab.js.map

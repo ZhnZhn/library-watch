@@ -21,19 +21,21 @@ const styles = {
     border: '2px solid gray',
     borderBottom : 'none'
     //borderTop : 'none'
+  },
+  selected : {
+    borderColor : 'rgba(164, 135, 212, 1)',
+    color : 'rgba(164, 135, 212, 1)'
   }
 }
 
 const Tab = (props) => {
     const { title, isSelected, onClick } = props
-        , selectedStyle = (isSelected)
-            ?
-             //{backgroundColor : '#2C2828', color : 'rgba(164, 135, 212, 1)'}
-             {borderColor : 'rgba(164, 135, 212, 1)', color : 'rgba(164, 135, 212, 1)'}
-            : null;
+        , _selectedStyle = (isSelected)
+             ? styles.selected
+             : null;
     return (
        <li
-          style={Object.assign({}, styles.liStyle, selectedStyle)}
+          style={Object.assign({}, styles.liStyle, _selectedStyle)}
           onClick={onClick}
        >
           <span>{title}</span>

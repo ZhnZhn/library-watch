@@ -10,11 +10,12 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var styles = {
-  show: {
+var SHOW_POPUP = "show-popup",
+    STYLES = {
+  SHOW: {
     display: 'block'
   },
-  hide: {
+  HIDE: {
     display: 'none'
   }
 };
@@ -23,8 +24,8 @@ var ShowHide = function ShowHide(props) {
   var isShow = props.isShow;
   var style = props.style;
   var children = props.children;
-  var _styleShow = isShow ? styles.show : styles.hide;
-  var _classShow = isShow ? 'show-popup' : null;
+  var _styleShow = isShow ? STYLES.SHOW : STYLES.HIDE;
+  var _classShow = isShow ? SHOW_POPUP : null;
 
   return _react2.default.createElement(
     'div',
@@ -34,4 +35,4 @@ var ShowHide = function ShowHide(props) {
 };
 
 exports.default = ShowHide;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\zhnAtoms\ShowHide.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\ShowHide.js.map

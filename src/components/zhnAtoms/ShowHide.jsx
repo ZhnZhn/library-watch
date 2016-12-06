@@ -1,18 +1,19 @@
 import React from 'react';
 
-const styles = {
-  show : {
-    display: 'block'
-  },
-  hide : {
-    display : 'none'
-  }
+const SHOW_POPUP = "show-popup"
+    , STYLES = {
+        SHOW : {
+          display: 'block'
+        },
+        HIDE : {
+          display : 'none'
+        }
 };
 
 const ShowHide = (props) => {
     const {isShow, style, children} = props
-        , _styleShow = isShow ? styles.show : styles.hide
-        , _classShow = isShow ? 'show-popup' : null;
+        , _styleShow = isShow ? STYLES.SHOW : STYLES.HIDE
+        , _classShow = isShow ? SHOW_POPUP : null;
 
     return (
       <div className={_classShow} style={Object.assign({}, style, _styleShow)}>
