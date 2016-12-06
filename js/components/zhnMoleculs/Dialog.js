@@ -77,15 +77,15 @@ var Dialog = _react2.default.createClass({
   render: function render() {
     var _this = this;
 
-    var _props = this.props;
-    var isShow = _props.isShow;
-    var caption = _props.caption;
-    var children = _props.children;
-    var commandButtons = _props.commandButtons;
-    var onShowChart = _props.onShowChart;
-    var onClose = _props.onClose;
-    var _styleShow = isShow ? { display: 'block' } : { display: 'none' };
-    var _classShow = isShow ? 'show-popup' : undefined;
+    var _props = this.props,
+        isShow = _props.isShow,
+        caption = _props.caption,
+        children = _props.children,
+        commandButtons = _props.commandButtons,
+        onShowChart = _props.onShowChart,
+        onClose = _props.onClose,
+        _styleShow = isShow ? { display: 'block' } : { display: 'none' },
+        _classShow = isShow ? 'show-popup' : undefined;
 
     return _react2.default.createElement(
       'div',
@@ -117,4 +117,4 @@ var Dialog = _react2.default.createClass({
 });
 
 exports.default = Dialog;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnMoleculs\Dialog.js.map
+//# sourceMappingURL=Dialog.js.map

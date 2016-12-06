@@ -68,9 +68,9 @@ var EVENT_ACTION = {
 
 var CONSOLE_LOG_STYLE = 'color:rgb(237, 88, 19);';
 var _fnLogLoadError = function _fnLogLoadError(_ref) {
-  var alertCaption = _ref.alertCaption;
-  var alertDescr = _ref.alertDescr;
-  var alertItemId = _ref.alertItemId;
+  var alertCaption = _ref.alertCaption,
+      alertDescr = _ref.alertDescr,
+      alertItemId = _ref.alertItemId;
 
   console.log('%c' + alertCaption + ':' + alertItemId, CONSOLE_LOG_STYLE);
   console.log('%c' + alertDescr, CONSOLE_LOG_STYLE);
@@ -90,7 +90,7 @@ var GitHubStore = _reflux2.default.createStore(_extends({
     return this.charts[chartType];
   },
   showAlertDialog: function showAlertDialog() {
-    var option = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+    var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
     option.modalDialogType = _Type.ModalDialog.ALERT;
     option.alertItemId = option.alertItemId ? option.alertItemId : option.repo;
@@ -120,10 +120,10 @@ var GitHubStore = _reflux2.default.createStore(_extends({
       console.log(json);
     }
 
-    var chartType = option.chartType;
-    var browserType = option.browserType;
-    var limitRemaining = option.limitRemaining;
-    var comp = _Factory2.default.createItem(option, json, { chartType: chartType, browserType: browserType });
+    var chartType = option.chartType,
+        browserType = option.browserType,
+        limitRemaining = option.limitRemaining,
+        comp = _Factory2.default.createItem(option, json, { chartType: chartType, browserType: browserType });
 
     var chartCont = this.charts[chartType];
     if (chartCont) {
@@ -181,4 +181,4 @@ var GitHubStore = _reflux2.default.createStore(_extends({
 }, _BrowserSlice2.default, _ComponentSlice2.default, _WatchListSlice2.default, _WithLimitRemaining2.default, _WithLoadingProgress2.default, _AnalyticSlice2.default));
 
 exports.default = GitHubStore;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\stores\GitHubStore.js.map
+//# sourceMappingURL=GitHubStore.js.map

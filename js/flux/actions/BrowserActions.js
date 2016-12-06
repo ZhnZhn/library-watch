@@ -39,12 +39,12 @@ var BrowserActionTypes = exports.BrowserActionTypes = {
 var BrowserActions = _reflux2.default.createActions((_Reflux$createActions = {}, _defineProperty(_Reflux$createActions, BrowserActionTypes.SHOW_BROWSER, {}), _defineProperty(_Reflux$createActions, BrowserActionTypes.UPDATE_BROWSER_MENU, {}), _defineProperty(_Reflux$createActions, BrowserActionTypes.SHOW_BROWSER_DYNAMIC, {}), _defineProperty(_Reflux$createActions, BrowserActionTypes.INIT_BROWSER_DYNAMIC, {}), _defineProperty(_Reflux$createActions, BrowserActionTypes.LOAD_BROWSER_DYNAMIC, { children: ['completed', 'failed'] }), _defineProperty(_Reflux$createActions, BrowserActionTypes.UPDATE_WATCH_BROWSER, {}), _defineProperty(_Reflux$createActions, BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER, {}), _Reflux$createActions));
 
 var _fnFetchSourceMenu = function _fnFetchSourceMenu(_ref) {
-  var json = _ref.json;
-  var option = _ref.option;
-  var onCompleted = _ref.onCompleted;
-  var menu = json.menu;
-  var items = json.items;
-  var browserType = option.browserType;
+  var json = _ref.json,
+      option = _ref.option,
+      onCompleted = _ref.onCompleted;
+  var menu = json.menu,
+      items = json.items,
+      browserType = option.browserType;
 
   onCompleted({ menu: menu, items: items, browserType: browserType });
 };
@@ -64,4 +64,4 @@ BrowserActions[BrowserActionTypes.LOAD_BROWSER_DYNAMIC].listen(function (option)
 });
 
 exports.default = BrowserActions;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\actions\BrowserActions.js.map
+//# sourceMappingURL=BrowserActions.js.map

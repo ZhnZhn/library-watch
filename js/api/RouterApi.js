@@ -25,4 +25,4 @@ var RouterApi = {
 };
 
 exports.default = RouterApi;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\api\RouterApi.js.map
+//# sourceMappingURL=RouterApi.js.map

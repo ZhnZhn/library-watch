@@ -83,14 +83,14 @@ var DialogType1 = _react2.default.createClass(_extends({}, _WithValidation2.defa
   render: function render() {
     var _this = this;
 
-    var _props = this.props;
-    var caption = _props.caption;
-    var isShow = _props.isShow;
-    var onShow = _props.onShow;
-    var oneTitle = _props.oneTitle;
-    var onePlaceholder = _props.onePlaceholder;
-    var validationMessages = this.state.validationMessages;
-    var _commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
+    var _props = this.props,
+        caption = _props.caption,
+        isShow = _props.isShow,
+        onShow = _props.onShow,
+        oneTitle = _props.oneTitle,
+        onePlaceholder = _props.onePlaceholder,
+        validationMessages = this.state.validationMessages,
+        _commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
       key: 'a',
       type: 'TypeC',
       caption: 'Clear',
@@ -101,6 +101,7 @@ var DialogType1 = _react2.default.createClass(_extends({}, _WithValidation2.defa
       caption: 'Load',
       onClick: this._handlerLoad
     })];
+
 
     return _react2.default.createElement(
       _Dialog2.default,
@@ -126,4 +127,4 @@ var DialogType1 = _react2.default.createClass(_extends({}, _WithValidation2.defa
 }));
 
 exports.default = DialogType1;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\DialogType1.js.map
+//# sourceMappingURL=DialogType1.js.map

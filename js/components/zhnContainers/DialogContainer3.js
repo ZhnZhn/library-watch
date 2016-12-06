@@ -67,9 +67,9 @@ var DialogContainer3 = _react2.default.createClass({
 
 
   _onStore: function _onStore(actionType, data) {
-    var _props = this.props;
-    var initAction = _props.initAction;
-    var showAction = _props.showAction;
+    var _props = this.props,
+        initAction = _props.initAction,
+        showAction = _props.showAction;
 
     if (actionType === showAction) {
 
@@ -103,9 +103,9 @@ var DialogContainer3 = _react2.default.createClass({
   _renderDialogs: function _renderDialogs() {
     var _this = this;
 
-    var _state = this.state;
-    var dialog = _state.dialog;
-    var compDialogs = _state.compDialogs;
+    var _state = this.state,
+        dialog = _state.dialog,
+        compDialogs = _state.compDialogs;
 
     return compDialogs.map(function (compDialog, index) {
       return _react2.default.cloneElement(compDialog, {
@@ -125,4 +125,4 @@ var DialogContainer3 = _react2.default.createClass({
 });
 
 exports.default = DialogContainer3;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\zhnContainers\DialogContainer3.js.map
+//# sourceMappingURL=DialogContainer3.js.map

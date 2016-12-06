@@ -5,8 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 var Msg = {
   setAlertMsg: function setAlertMsg(option, msg) {
-    var caption = msg.caption;
-    var descr = msg.descr;
+    var caption = msg.caption,
+        descr = msg.descr;
 
     option.alertCaption = caption;
     option.alertDescr = descr;
@@ -84,4 +84,4 @@ var Msg = {
 };
 
 exports.default = Msg;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\constants\Msg.js.map
+//# sourceMappingURL=Msg.js.map

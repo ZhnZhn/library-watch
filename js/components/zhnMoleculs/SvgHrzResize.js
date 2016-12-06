@@ -35,10 +35,10 @@ var SvgHrzResize = _react2.default.createClass({
     return {};
   },
   componentDidMount: function componentDidMount() {
-    var _props = this.props;
-    var comp = _props.comp;
-    var minWidth = _props.minWidth;
-    var maxWidth = _props.maxWidth;
+    var _props = this.props,
+        comp = _props.comp,
+        minWidth = _props.minWidth,
+        maxWidth = _props.maxWidth;
 
     this.domNode = _reactDom2.default.findDOMNode(comp);
     this.initWidth = this.domNode.getBoundingClientRect().width;
@@ -154,4 +154,4 @@ var SvgHrzResize = _react2.default.createClass({
 });
 
 exports.default = SvgHrzResize;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\zhnMoleculs\SvgHrzResize.js.map
+//# sourceMappingURL=SvgHrzResize.js.map

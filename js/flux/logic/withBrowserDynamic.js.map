@@ -1,9 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Template_2\\src\\flux\\logic\\WithBrowserDynamic.js",
- "file": "D:\\_Dev\\_React\\_Template_2\\js\\flux\\logic\\WithBrowserDynamic.js",
- "sourceRoot": "",
- "names": [],
- "mappings": ";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAM,qBAAqB;AACzB,uBADyB,sCACuC;AAAA,UAAzC,WAAyC,QAAzC,WAAyC;AAAA,8BAA5B,OAA4B;AAAA,UAA5B,OAA4B,gCAApB,EAAoB;AAAA,UAAf,aAAe,QAAf,aAAe;;AAC5D,aAAO,gBAAM,aAAN,iCAA2C;AAC/C,cAAM,WADyC;AAE/C,sBAAc,WAFiC;AAG/C,gBAAQ,KAAK,QAAL,EAHuC;AAI/C,qBAAa,IAJkC;AAK/C,kBAAU,OALqC;AAM/C,wBAAgB;AAN+B,OAA3C,CAAP;AAQH;AAVwB,CAA3B;;kBAae,kB"
-}
+{"version":3,"sources":["../../../src/flux/logic/WithBrowserDynamic.js"],"names":["WithBrowserDynamic","createBrowserDynamic","browserType","caption","sourceMenuUrl","createElement","key","store","getStore","isInitShow"],"mappings":";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,qBAAqB;AACzBC,uBADyB,sCACuC;AAAA,UAAzCC,WAAyC,QAAzCA,WAAyC;AAAA,8BAA5BC,OAA4B;AAAA,UAA5BA,OAA4B,gCAApB,EAAoB;AAAA,UAAfC,aAAe,QAAfA,aAAe;;AAC5D,aAAO,gBAAMC,aAAN,iCAA2C;AAC/CC,cAAMJ,WADyC;AAE/CA,sBAAcA,WAFiC;AAG/CK,gBAAQ,KAAKC,QAAL,EAHuC;AAI/CC,qBAAa,IAJkC;AAK/CN,kBAAUA,OALqC;AAM/CC,wBAAgBA;AAN+B,OAA3C,CAAP;AAQH;AAVwB,CAA3B;;kBAaeJ,kB","file":"WithBrowserDynamic.js","sourcesContent":["import React from 'react';\r\n\r\nimport SourceBrowserDynamic from '../../components/browser-container/SourceBrowserDynamic';\r\n\r\nconst WithBrowserDynamic = {\r\n  createBrowserDynamic({ browserType, caption='' , sourceMenuUrl}){\r\n      return React.createElement(SourceBrowserDynamic , {\r\n         key : browserType,\r\n         browserType : browserType,\r\n         store : this.getStore(),\r\n         isInitShow : true,\r\n         caption : caption,\r\n         sourceMenuUrl : sourceMenuUrl\r\n      })\r\n  }\r\n};\r\n\r\nexport default WithBrowserDynamic\r\n"]}

@@ -13,8 +13,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var REPLACER_PATTERN = /(.)(?=(\d{3})+$)/g;
 
 var FormattedInteger = function FormattedInteger(_ref) {
-  var value = _ref.value;
-  var style = _ref.style;
+  var value = _ref.value,
+      style = _ref.style;
 
   if (value >= 1000) {
     value = String(value).replace(REPLACER_PATTERN, '$1,');
@@ -32,4 +32,4 @@ FormattedInteger.propTypes = {
 };
 
 exports.default = FormattedInteger;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\FormattedInteger.js.map
+//# sourceMappingURL=FormattedInteger.js.map

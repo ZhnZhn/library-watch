@@ -39,4 +39,4 @@ var IconLogoBar = function IconLogoBar(props) {
 };
 
 exports.default = IconLogoBar;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\about\IconLogoBar.js.map
+//# sourceMappingURL=IconLogoBar.js.map

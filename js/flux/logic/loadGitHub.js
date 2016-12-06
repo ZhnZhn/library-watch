@@ -32,9 +32,9 @@ var _loadToChartComp = function _loadToChartComp(option, onCompleted, onFailed) 
 };
 
 var _fnFetchToChartComp = function _fnFetchToChartComp(_ref) {
-  var json = _ref.json;
-  var option = _ref.option;
-  var onCompleted = _ref.onCompleted;
+  var json = _ref.json,
+      option = _ref.option,
+      onCompleted = _ref.onCompleted;
 
   //const {config} = QuandlAdapter.toConfig(json, option);
   //onCompleted(option, config);
@@ -46,4 +46,4 @@ var loadGitHub = function loadGitHub(option, onCompleted, onFailed) {
 };
 
 exports.loadGitHub = loadGitHub;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\flux\logic\loadGitHub.js.map
+//# sourceMappingURL=loadGitHub.js.map

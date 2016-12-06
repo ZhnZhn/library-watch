@@ -125,14 +125,15 @@ var NpmRecentDownloads = _react2.default.createClass({
     this.setState({ isShow: !this.state.isShow });
   },
   _handlerClickWatch: function _handlerClickWatch() {
-    var _props = this.props;
-    var packageName = _props.packageName;
-    var requestType = _props.requestType;
-    var sumDownloads = _props.sumDownloads;
-    var toDate = _props.toDate;
-    var onWatchItem = _props.onWatchItem;
-    var _caption = packageName + ' ' + sumDownloads;
-    var _descr = ITEM_DESCRIPTION;
+    var _props = this.props,
+        packageName = _props.packageName,
+        requestType = _props.requestType,
+        sumDownloads = _props.sumDownloads,
+        toDate = _props.toDate,
+        onWatchItem = _props.onWatchItem,
+        _caption = packageName + ' ' + sumDownloads,
+        _descr = ITEM_DESCRIPTION;
+
     onWatchItem({
       caption: _caption,
       config: {
@@ -169,24 +170,25 @@ var NpmRecentDownloads = _react2.default.createClass({
     });
   },
   render: function render() {
-    var _props2 = this.props;
-    var packageName = _props2.packageName;
-    var caption = _props2.caption;
-    var _props2$sumDownloads = _props2.sumDownloads;
-    var sumDownloads = _props2$sumDownloads === undefined ? 0 : _props2$sumDownloads;
-    var fromDate = _props2.fromDate;
-    var toDate = _props2.toDate;
-    var labels = _props2.labels;
-    var data = _props2.data;
-    var onCloseItem = _props2.onCloseItem;
-    var onWatchItem = _props2.onWatchItem;
-    var _isButtonWatch = typeof onWatchItem === 'function' ? true : false;
-    var _styleCaption = styles.captionSpanOpen;
-    var _state = this.state;
-    var isShow = _state.isShow;
-    var isLoadNodeIco = _state.isLoadNodeIco;
-    var isShowNodeIco = _state.isShowNodeIco;
-    var _lineChartConfig = _Chart2.default.fLineConfig({ labels: labels, data: data });
+    var _props2 = this.props,
+        packageName = _props2.packageName,
+        caption = _props2.caption,
+        _props2$sumDownloads = _props2.sumDownloads,
+        sumDownloads = _props2$sumDownloads === undefined ? 0 : _props2$sumDownloads,
+        fromDate = _props2.fromDate,
+        toDate = _props2.toDate,
+        labels = _props2.labels,
+        data = _props2.data,
+        onCloseItem = _props2.onCloseItem,
+        onWatchItem = _props2.onWatchItem,
+        _isButtonWatch = typeof onWatchItem === 'function' ? true : false,
+        _styleCaption = styles.captionSpanOpen,
+        _state = this.state,
+        isShow = _state.isShow,
+        isLoadNodeIco = _state.isLoadNodeIco,
+        isShowNodeIco = _state.isShowNodeIco,
+        _lineChartConfig = _Chart2.default.fLineConfig({ labels: labels, data: data });
+
     return _react2.default.createElement(
       'div',
       { style: styles.rootDiv },
@@ -252,4 +254,4 @@ var NpmRecentDownloads = _react2.default.createClass({
 });
 
 exports.default = NpmRecentDownloads;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\items\NpmRecentMonthDownloads.js.map
+//# sourceMappingURL=NpmRecentMonthDownloads.js.map

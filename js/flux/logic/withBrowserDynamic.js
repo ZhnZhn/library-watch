@@ -16,10 +16,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var WithBrowserDynamic = {
    createBrowserDynamic: function createBrowserDynamic(_ref) {
-      var browserType = _ref.browserType;
-      var _ref$caption = _ref.caption;
-      var caption = _ref$caption === undefined ? '' : _ref$caption;
-      var sourceMenuUrl = _ref.sourceMenuUrl;
+      var browserType = _ref.browserType,
+          _ref$caption = _ref.caption,
+          caption = _ref$caption === undefined ? '' : _ref$caption,
+          sourceMenuUrl = _ref.sourceMenuUrl;
 
       return _react2.default.createElement(_SourceBrowserDynamic2.default, {
          key: browserType,
@@ -33,4 +33,4 @@ var WithBrowserDynamic = {
 };
 
 exports.default = WithBrowserDynamic;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\flux\logic\WithBrowserDynamic.js.map
+//# sourceMappingURL=WithBrowserDynamic.js.map

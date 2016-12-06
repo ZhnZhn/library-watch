@@ -84,4 +84,4 @@ var AppGitHub = function AppGitHub(props) {
 };
 
 exports.default = AppGitHub;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\AppGitHub.js.map
+//# sourceMappingURL=AppGitHub.js.map

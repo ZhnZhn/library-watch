@@ -13,4 +13,4 @@ var DataWL = {
 };
 
 exports.default = DataWL;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\constants\DataWL.js.map
+//# sourceMappingURL=DataWL.js.map

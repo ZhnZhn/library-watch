@@ -40,17 +40,17 @@ var DialogContainer = _react2.default.createClass({
     this.unsubscribe();
   },
   _onStore: function _onStore(actionType, option) {
-    var _props = this.props;
-    var showAction = _props.showAction;
-    var routerDialog = _props.routerDialog;
+    var _props = this.props,
+        showAction = _props.showAction,
+        routerDialog = _props.routerDialog;
 
     if (actionType === showAction) {
-      var type = option.modalDialogType;
-      var _state = this.state;
-      var inits = _state.inits;
-      var shows = _state.shows;
-      var data = _state.data;
-      var dialogs = _state.dialogs;
+      var type = option.modalDialogType,
+          _state = this.state,
+          inits = _state.inits,
+          shows = _state.shows,
+          data = _state.data,
+          dialogs = _state.dialogs;
 
 
       data[type] = option;
@@ -71,15 +71,15 @@ var DialogContainer = _react2.default.createClass({
   _renderDialogs: function _renderDialogs() {
     var _this = this;
 
-    var store = this.props.store;
-    var _state2 = this.state;
-    var shows = _state2.shows;
-    var data = _state2.data;
+    var store = this.props.store,
+        _state2 = this.state,
+        shows = _state2.shows,
+        data = _state2.data;
 
 
     return this.state.dialogs.map(function (dialog, index) {
-      var type = dialog.type;
-      var comp = dialog.comp;
+      var type = dialog.type,
+          comp = dialog.comp;
 
       return _react2.default.createElement(comp, {
         key: type,
@@ -90,9 +90,9 @@ var DialogContainer = _react2.default.createClass({
     });
   },
   render: function render() {
-    var _state3 = this.state;
-    var isShow = _state3.isShow;
-    var currentDialog = _state3.currentDialog;
+    var _state3 = this.state,
+        isShow = _state3.isShow,
+        currentDialog = _state3.currentDialog;
 
 
     return _react2.default.createElement(
@@ -107,4 +107,4 @@ var DialogContainer = _react2.default.createClass({
 });
 
 exports.default = DialogContainer;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\zhnContainers\DialogContainer.js.map
+//# sourceMappingURL=DialogContainer.js.map

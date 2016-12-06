@@ -35,4 +35,4 @@ var Logic = _extends({}, _WithLogicGroup2.default, _WithLogicList2.default, _Wit
 });
 
 exports.default = Logic;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\watch-list\Logic.js.map
+//# sourceMappingURL=Logic.js.map

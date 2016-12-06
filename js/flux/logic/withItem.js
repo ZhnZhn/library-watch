@@ -21,16 +21,15 @@ var _Type = require('../../constants/Type');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //import WatchActions from '../actions/WatchActions';
-
-
 var onCloseItem = _ChartActions2.default.closeChart,
     onWatchItem = _ComponentActions2.default.showModalDialog.bind(null, _Type.ModalDialog.ADD_ITEM);
 //, onWatchItem = WatchActions.addItem;
 
 var WithItem = {
   createItem: function createItem(option, json, parentProps) {
-    var requestType = option.requestType;
-    var _fnFactory = _RouterItem2.default[requestType] ? _RouterItem2.default[requestType] : _RouterItem2.default.DEFAULT;
+    var requestType = option.requestType,
+        _fnFactory = _RouterItem2.default[requestType] ? _RouterItem2.default[requestType] : _RouterItem2.default.DEFAULT;
+
     return _fnFactory({
       factory: this.getElementFactory(),
       option: option, json: json, parentProps: parentProps,
@@ -40,4 +39,4 @@ var WithItem = {
 };
 
 exports.default = WithItem;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\flux\logic\WithItem.js.map
+//# sourceMappingURL=WithItem.js.map

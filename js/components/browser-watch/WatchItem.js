@@ -42,9 +42,9 @@ var STYLE = {
 };
 
 var VersionDateRow = function VersionDateRow(props) {
-  var version = props.version;
-  var _props$date = props.date;
-  var date = _props$date === undefined ? '' : _props$date;
+  var version = props.version,
+      _props$date = props.date,
+      date = _props$date === undefined ? '' : _props$date;
 
   if (!version) {
     return undefined;
@@ -66,25 +66,26 @@ var VersionDateRow = function VersionDateRow(props) {
 };
 
 var WatchItem = function WatchItem(props) {
-  var item = props.item;
-  var className = props.className;
-  var isModeEdit = props.isModeEdit;
-  var option = props.option;
-  var onClick = props.onClick;
-  var onClose = props.onClose;
-  var onDragStart = props.onDragStart;
-  var onDragEnter = props.onDragEnter;
-  var onDragOver = props.onDragOver;
-  var onDragLeave = props.onDragLeave;
-  var onDrop = props.onDrop;
-  var repo = item.repo;
-  var version = item.version;
-  var date = item.date;
-  var _compBtClose = isModeEdit ? _react2.default.createElement(_SvgClose2.default, {
+  var item = props.item,
+      className = props.className,
+      isModeEdit = props.isModeEdit,
+      option = props.option,
+      onClick = props.onClick,
+      onClose = props.onClose,
+      onDragStart = props.onDragStart,
+      onDragEnter = props.onDragEnter,
+      onDragOver = props.onDragOver,
+      onDragLeave = props.onDragLeave,
+      onDrop = props.onDrop;
+
+  var repo = item.repo,
+      version = item.version,
+      date = item.date,
+      _compBtClose = isModeEdit ? _react2.default.createElement(_SvgClose2.default, {
     style: STYLE.SVG_CLOSE,
     onClose: onClose.bind(null, option)
-  }) : undefined;
-  var _compVersionDateRow = version ? _react2.default.createElement(VersionDateRow, {
+  }) : undefined,
+      _compVersionDateRow = version ? _react2.default.createElement(VersionDateRow, {
     version: version,
     date: date
   }) : undefined;
@@ -117,4 +118,4 @@ var WatchItem = function WatchItem(props) {
 };
 
 exports.default = WatchItem;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\WatchItem.js.map
+//# sourceMappingURL=WatchItem.js.map

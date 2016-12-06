@@ -32,4 +32,4 @@ var ContainerStyles = {
 };
 
 exports.default = ContainerStyles;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\styles\ContainerStyles.js.map
+//# sourceMappingURL=ContainerStyles.js.map

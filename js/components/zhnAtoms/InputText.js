@@ -54,11 +54,11 @@ var InputText = _react2.default.createClass({
     }
   },
   render: function render() {
-    var _props = this.props;
-    var style = _props.style;
-    var _props$placeholder = _props.placeholder;
-    var placeholder = _props$placeholder === undefined ? '' : _props$placeholder;
-    var value = this.state.value;
+    var _props = this.props,
+        style = _props.style,
+        _props$placeholder = _props.placeholder,
+        placeholder = _props$placeholder === undefined ? '' : _props$placeholder,
+        value = this.state.value;
 
     return _react2.default.createElement('input', {
       type: 'text',
@@ -79,4 +79,4 @@ var InputText = _react2.default.createClass({
 });
 
 exports.default = InputText;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\InputText.js.map
+//# sourceMappingURL=InputText.js.map

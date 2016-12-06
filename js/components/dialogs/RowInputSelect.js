@@ -36,11 +36,11 @@ var RowInputSelect = _react2.default.createClass({
     onSelect: PropTypes.func
   },
   render: function render() {
-    var _props = this.props;
-    var caption = _props.caption;
-    var placeholder = _props.placeholder;
-    var options = _props.options;
-    var onSelect = _props.onSelect;
+    var _props = this.props,
+        caption = _props.caption,
+        placeholder = _props.placeholder,
+        options = _props.options,
+        onSelect = _props.onSelect;
 
     return _react2.default.createElement(
       'div',
@@ -61,4 +61,4 @@ var RowInputSelect = _react2.default.createClass({
 });
 
 exports.default = RowInputSelect;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\RowInputSelect.js.map
+//# sourceMappingURL=RowInputSelect.js.map

@@ -84,9 +84,10 @@ var About = _react2.default.createClass({
     this.setState({ isShow: false });
   },
   render: function render() {
-    var isShow = this.state.isShow;
-    var _classOpen = isShow ? "show-popup" : null;
-    var _styleOpen = isShow ? { display: 'block' } : { display: 'none' };
+    var isShow = this.state.isShow,
+        _classOpen = isShow ? "show-popup" : null,
+        _styleOpen = isShow ? { display: 'block' } : { display: 'none' };
+
 
     return _react2.default.createElement(
       'div',
@@ -145,7 +146,7 @@ var About = _react2.default.createClass({
             _react2.default.createElement(
               _Token2.default,
               { color: 'gray' },
-              ', '
+              ',\xA0'
             ),
             _react2.default.createElement(
               _LinkToken2.default,
@@ -160,7 +161,7 @@ var About = _react2.default.createClass({
             _react2.default.createElement(
               _Token2.default,
               { color: 'gray' },
-              ', '
+              ',\xA0'
             ),
             _react2.default.createElement(
               _LinkToken2.default,
@@ -299,4 +300,4 @@ var About = _react2.default.createClass({
 });
 
 exports.default = About;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\about\About.js.map
+//# sourceMappingURL=About.js.map

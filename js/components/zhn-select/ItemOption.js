@@ -20,8 +20,8 @@ var STYLE = {
 };
 
 var ItemOption = function ItemOption(props) {
-  var item = props.item;
-  var propCaption = props.propCaption;
+  var item = props.item,
+      propCaption = props.propCaption;
 
   return _react2.default.createElement(
     'div',
@@ -31,4 +31,4 @@ var ItemOption = function ItemOption(props) {
 };
 
 exports.default = ItemOption;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhn-select\ItemOption.js.map
+//# sourceMappingURL=ItemOption.js.map

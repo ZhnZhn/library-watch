@@ -25,23 +25,25 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _base = 'https://api.github.com';
 
 var fGitHubRecentTag = function fGitHubRecentTag(_ref) {
-  var factory = _ref.factory;
-  var option = _ref.option;
-  var _ref$json = _ref.json;
-  var json = _ref$json === undefined ? [{ name: 'empty' }] : _ref$json;
-  var parentProps = _ref.parentProps;
-  var onCloseItem = _ref.onCloseItem;
-  var onWatchItem = _ref.onWatchItem;
-  var repo = option.repo;
-  var requestType = option.requestType;
-  var chartType = option.chartType;
-  var browserType = option.browserType;
-  var key = repo + '_' + requestType;
-  var tagItem = json[0];
-  var _onClickDetail = _fnFetchJson2.default.bind(null, {
+  var factory = _ref.factory,
+      option = _ref.option,
+      _ref$json = _ref.json,
+      json = _ref$json === undefined ? [{ name: 'empty' }] : _ref$json,
+      parentProps = _ref.parentProps,
+      onCloseItem = _ref.onCloseItem,
+      onWatchItem = _ref.onWatchItem;
+
+  var repo = option.repo,
+      requestType = option.requestType,
+      chartType = option.chartType,
+      browserType = option.browserType,
+      key = repo + '_' + requestType,
+      tagItem = json[0],
+      _onClickDetail = _fnFetchJson2.default.bind(null, {
     uri: _base + '/repos/' + option.repo + '/commits/' + tagItem.commit.sha,
     onCatch: _fnCatch2.default
   });
+
   return factory.createElement(_GitHubRecentTag2.default, _extends({
     key: key,
     repo: repo,
@@ -55,4 +57,4 @@ var fGitHubRecentTag = function fGitHubRecentTag(_ref) {
 };
 
 exports.default = fGitHubRecentTag;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\factories\fGitHubRecentTag.js.map
+//# sourceMappingURL=fGitHubRecentTag.js.map

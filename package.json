@@ -4,8 +4,10 @@
   "description": "Library Watch is a RESTFul client. With it you can view information about libraries, repositories from GitHub, NPM api services.",
   "main": "index.js",
   "scripts": {
+    "lint" : "eslint ./src/*.js*",
     "test": "ava src/**/__tests__/**/*.test.js --verbose",
     "test:watch": "npm run test -- --watch",
+    "transpile": "babel ./src --out-dir ./js --source-maps --ignore test.js",
     "bundle": "jspm bundle js/**/* - [js/**/*] dependency-bundle.js",
     "build": "webpack --colors --progress",
     "gulp": "gulp",
@@ -35,12 +37,13 @@
   },
   "devDependencies": {
     "ava": "^0.17.0",
-    "babel-core": "^6.10.4",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
     "babel-eslint": "^7.1.1",
     "babel-plugin-recharts": "^1.0.2",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.11.1",
-    "babel-preset-stage-2": "^6.11.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-2": "^6.18.0",
     "del": "^2.2.2",
     "enzyme": "^2.6.0",
     "eslint": "^3.11.1",
@@ -68,6 +71,6 @@
     },
     "files": [
       "src/**/__tests__/**/*.test.js"
-    ]    
+    ]
   }
 }

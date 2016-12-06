@@ -105,9 +105,9 @@ var ModalDialog = _react2.default.createClass({
 
 
   _renderCommandButton: function _renderCommandButton() {
-    var _props = this.props;
-    var commandButtons = _props.commandButtons;
-    var onClose = _props.onClose;
+    var _props = this.props,
+        commandButtons = _props.commandButtons,
+        onClose = _props.onClose;
 
     return _react2.default.createElement(
       'div',
@@ -122,13 +122,13 @@ var ModalDialog = _react2.default.createClass({
   },
 
   render: function render() {
-    var _props2 = this.props;
-    var isShow = _props2.isShow;
-    var isWithButton = _props2.isWithButton;
-    var caption = _props2.caption;
-    var style = _props2.style;
-    var children = _props2.children;
-    var onClose = _props2.onClose;
+    var _props2 = this.props,
+        isShow = _props2.isShow,
+        isWithButton = _props2.isWithButton,
+        caption = _props2.caption,
+        style = _props2.style,
+        children = _props2.children,
+        onClose = _props2.onClose;
 
 
     var _className = void 0,
@@ -174,4 +174,4 @@ var ModalDialog = _react2.default.createClass({
 });
 
 exports.default = ModalDialog;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\zhnMoleculs\ModalDialog.js.map
+//# sourceMappingURL=ModalDialog.js.map

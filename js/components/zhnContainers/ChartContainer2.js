@@ -101,10 +101,10 @@ var ChartContainer2 = _react2.default.createClass({
     }
   },
   _handlerHide: function _handlerHide() {
-    var _props = this.props;
-    var chartType = _props.chartType;
-    var browserType = _props.browserType;
-    var onCloseContainer = _props.onCloseContainer;
+    var _props = this.props,
+        chartType = _props.chartType,
+        browserType = _props.browserType,
+        onCloseContainer = _props.onCloseContainer;
 
     onCloseContainer(chartType, browserType);
     this.setState({ isShow: false });
@@ -153,4 +153,4 @@ var ChartContainer2 = _react2.default.createClass({
 });
 
 exports.default = ChartContainer2;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnContainers\ChartContainer2.js.map
+//# sourceMappingURL=ChartContainer2.js.map

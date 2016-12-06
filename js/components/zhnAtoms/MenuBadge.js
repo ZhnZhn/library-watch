@@ -14,10 +14,10 @@ var MenuBadge = _react2.default.createClass({
   displayName: 'MenuBadge',
   _handlerClickBadge: function _handlerClickBadge(event) {
     event.stopPropagation();
-    var _props = this.props;
-    var isOpen = _props.isOpen;
-    var onBadgeOpen = _props.onBadgeOpen;
-    var onBadgeClose = _props.onBadgeClose;
+    var _props = this.props,
+        isOpen = _props.isOpen,
+        onBadgeOpen = _props.onBadgeOpen,
+        onBadgeClose = _props.onBadgeClose;
 
     if (isOpen) {
       onBadgeClose();
@@ -26,9 +26,9 @@ var MenuBadge = _react2.default.createClass({
     }
   },
   render: function render() {
-    var _props2 = this.props;
-    var counter = _props2.counter;
-    var isOpen = _props2.isOpen;
+    var _props2 = this.props,
+        counter = _props2.counter,
+        isOpen = _props2.isOpen;
 
     var spanStyle = isOpen ? { color: 'rgba(164, 135, 212, 1)' } : null;
     return _react2.default.createElement(
@@ -43,4 +43,4 @@ var MenuBadge = _react2.default.createClass({
 });
 
 exports.default = MenuBadge;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\zhnAtoms\MenuBadge.js.map
+//# sourceMappingURL=MenuBadge.js.map

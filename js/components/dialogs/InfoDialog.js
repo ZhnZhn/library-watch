@@ -48,12 +48,12 @@ var InfoDialog = _react2.default.createClass({
     return true;
   },
   render: function render() {
-    var _props = this.props;
-    var isShow = _props.isShow;
-    var data = _props.data;
-    var onClose = _props.onClose;
-    var caption = data.caption;
-    var descr = data.descr;
+    var _props = this.props,
+        isShow = _props.isShow,
+        data = _props.data,
+        onClose = _props.onClose,
+        caption = data.caption,
+        descr = data.descr;
 
     return _react2.default.createElement(
       _ModalDialog2.default,
@@ -85,4 +85,4 @@ var InfoDialog = _react2.default.createClass({
 });
 
 exports.default = InfoDialog;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\dialogs\InfoDialog.js.map
+//# sourceMappingURL=InfoDialog.js.map

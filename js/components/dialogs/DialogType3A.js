@@ -81,10 +81,9 @@ var DialogType3A = _react2.default.createClass(_extends({}, _WithValidation2.def
       msg = msg.concat(this.props.oneTitle + ' is required');
     }
 
-    var _datesFragment$getVal = this.datesFragment.getValidation();
-
-    var isValid = _datesFragment$getVal.isValid;
-    var datesMsg = _datesFragment$getVal.datesMsg;
+    var _datesFragment$getVal = this.datesFragment.getValidation(),
+        isValid = _datesFragment$getVal.isValid,
+        datesMsg = _datesFragment$getVal.datesMsg;
 
     if (!isValid) {
       msg = msg.concat(datesMsg);
@@ -94,13 +93,11 @@ var DialogType3A = _react2.default.createClass(_extends({}, _WithValidation2.def
     return msg;
   },
   _createLoadOption: function _createLoadOption() {
-    var repo = this.inputRepo.getValue();
-
-    var _datesFragment$getVal2 = this.datesFragment.getValues();
-
-    var fromDate = _datesFragment$getVal2.fromDate;
-    var toDate = _datesFragment$getVal2.toDate;
-    var requestType = this.props.requestType;
+    var repo = this.inputRepo.getValue(),
+        _datesFragment$getVal2 = this.datesFragment.getValues(),
+        fromDate = _datesFragment$getVal2.fromDate,
+        toDate = _datesFragment$getVal2.toDate,
+        requestType = this.props.requestType;
 
 
     return {
@@ -114,13 +111,13 @@ var DialogType3A = _react2.default.createClass(_extends({}, _WithValidation2.def
   render: function render() {
     var _this = this;
 
-    var _props = this.props;
-    var caption = _props.caption;
-    var isShow = _props.isShow;
-    var onShow = _props.onShow;
-    var oneTitle = _props.oneTitle;
-    var onePlaceholder = _props.onePlaceholder;
-    var _commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
+    var _props = this.props,
+        caption = _props.caption,
+        isShow = _props.isShow,
+        onShow = _props.onShow,
+        oneTitle = _props.oneTitle,
+        onePlaceholder = _props.onePlaceholder,
+        _commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
       key: 'a',
       type: 'TypeC',
       caption: 'Default',
@@ -135,8 +132,8 @@ var DialogType3A = _react2.default.createClass(_extends({}, _WithValidation2.def
       type: 'TypeC',
       caption: 'Load',
       onClick: this._handlerLoad
-    })];
-    var validationMessages = this.state.validationMessages;
+    })],
+        validationMessages = this.state.validationMessages;
 
 
     return _react2.default.createElement(
@@ -171,4 +168,4 @@ var DialogType3A = _react2.default.createClass(_extends({}, _WithValidation2.def
 }));
 
 exports.default = DialogType3A;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\DialogType3A.js.map
+//# sourceMappingURL=DialogType3A.js.map

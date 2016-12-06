@@ -11,9 +11,9 @@ var _Msg2 = _interopRequireDefault(_Msg);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (_ref) {
-   var error = _ref.error;
-   var option = _ref.option;
-   var onFailed = _ref.onFailed;
+   var error = _ref.error,
+       option = _ref.option,
+       onFailed = _ref.onFailed;
 
    if (error instanceof TypeError) {
       if (error.message.indexOf('code 503') !== -1) {
@@ -33,4 +33,4 @@ exports.default = function (_ref) {
 
    onFailed(option);
 };
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\network\fnCatch.js.map
+//# sourceMappingURL=fnCatch.js.map

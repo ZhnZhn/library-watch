@@ -23,4 +23,4 @@ var BrowserType = exports.BrowserType = {
 var ChartType = exports.ChartType = {
   WATCH_LIST: 'WL_WATCH_LIST'
 };
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\constants\Type.js.map
+//# sourceMappingURL=Type.js.map

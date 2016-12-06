@@ -1,9 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Template_2\\src\\components\\zhnAtoms\\Browser.jsx",
- "file": "D:\\_Dev\\_React\\_Template_2\\js\\components\\zhnAtoms\\Browser.js",
- "sourceRoot": "",
- "names": [],
- "mappings": ";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAM,kCAAN;;AAEA,IAAM,UAAU,SAAV,OAAU,CAAC,KAAD,EAAW;AAAA,OAChB,MADgB,GACW,KADX,CAChB,MADgB;AAAA,OACR,KADQ,GACW,KADX,CACR,KADQ;AACjB,OAAgB,QAAhB,GAA4B,KAA5B,CAAgB,QAAhB;AACA,oBAAa,SAAS,EAAC,SAAS,OAAV,EAAT,GAA8B,EAAC,SAAS,MAAV,EAA3C;AACA,oBAAa,SAAS,YAAT,GAAwB,IAArC;AACN,UACG;AAAA;AAAA;AACG,oBAAW,UADd;AAEG,gBAAO,OAAO,MAAP,CAAc,EAAd,EAAkB,OAAO,cAAzB,EAAyC,KAAzC,EAAgD,UAAhD;AAFV;AAII;AAJJ,IADH;AAQH,CAZD;;kBAce,O"
-}
+{"version":3,"sources":["../../../src/components/zhnAtoms/Browser.jsx"],"names":["styles","Browser","props","isShow","style","children","_styleOpen","display","_classOpen","Object","assign","browserRootDiv"],"mappings":";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,kCAAN;;AAEA,IAAMC,UAAU,SAAVA,OAAU,CAACC,KAAD,EAAW;AAAA,OAChBC,MADgB,GACWD,KADX,CAChBC,MADgB;AAAA,OACRC,KADQ,GACWF,KADX,CACRE,KADQ;AAAA,OACDC,QADC,GACWH,KADX,CACDG,QADC;AAAA,OAEjBC,UAFiB,GAEJH,SAAS,EAACI,SAAS,OAAV,EAAT,GAA8B,EAACA,SAAS,MAAV,EAF1B;AAAA,OAGjBC,UAHiB,GAGJL,SAAS,YAAT,GAAwB,IAHpB;;AAIvB,UACG;AAAA;AAAA;AACG,oBAAWK,UADd;AAEG,gBAAOC,OAAOC,MAAP,CAAc,EAAd,EAAkBV,OAAOW,cAAzB,EAAyCP,KAAzC,EAAgDE,UAAhD;AAFV;AAIID;AAJJ,IADH;AAQH,CAZD;;kBAceJ,O","file":"Browser.js","sourcesContent":["import React from 'react';\r\n\r\nimport ContainerStyles from '../styles/ContainerStyles';\r\n\r\nconst styles = ContainerStyles;\r\n\r\nconst Browser = (props) => {\r\n    const {isShow, style, children} = props\r\n        , _styleOpen = isShow ? {display: 'block'} : {display: 'none'}\r\n        , _classOpen = isShow ? \"show-popup\" : null;\r\n    return (\r\n       <div\r\n          className={_classOpen}\r\n          style={Object.assign({}, styles.browserRootDiv, style, _styleOpen)}\r\n        >\r\n          {children}\r\n       </div>\r\n    )\r\n};\r\n\r\nexport default Browser\r\n"]}

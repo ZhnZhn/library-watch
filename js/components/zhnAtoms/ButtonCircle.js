@@ -24,14 +24,15 @@ var STYLE = {
 };
 
 var ButtonCircle = function ButtonCircle(props) {
-  var caption = props.caption;
-  var title = props.title;
-  var className = props.className;
-  var style = props.style;
-  var isWithoutDefault = props.isWithoutDefault;
-  var onClick = props.onClick;
-  var _className = className ? className + ' not-selected' : 'not-selected';
-  var _style = isWithoutDefault ? style : Object.assign({}, STYLE.ROOT_SPAN, style);
+  var caption = props.caption,
+      title = props.title,
+      className = props.className,
+      style = props.style,
+      isWithoutDefault = props.isWithoutDefault,
+      onClick = props.onClick,
+      _className = className ? className + ' not-selected' : 'not-selected',
+      _style = isWithoutDefault ? style : Object.assign({}, STYLE.ROOT_SPAN, style);
+
   return _react2.default.createElement(
     'span',
     {
@@ -54,4 +55,4 @@ ButtonCircle.propTypes = {
 };
 
 exports.default = ButtonCircle;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\ButtonCircle.js.map
+//# sourceMappingURL=ButtonCircle.js.map

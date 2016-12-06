@@ -41,8 +41,8 @@ var _renderMenuItems = function _renderMenuItems(items) {
 };
 
 var MenuPart = function MenuPart(props) {
-  var caption = props.caption;
-  var items = props.items;
+  var caption = props.caption,
+      items = props.items;
 
   return _react2.default.createElement(
     _OpenClose2.default,
@@ -52,4 +52,4 @@ var MenuPart = function MenuPart(props) {
 };
 
 exports.default = MenuPart;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\zhnMoleculs\MenuPart.js.map
+//# sourceMappingURL=MenuPart.js.map

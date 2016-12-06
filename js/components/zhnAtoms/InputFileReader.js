@@ -68,9 +68,9 @@ var InputFileReader = _react2.default.createClass({
     });
   },
   render: function render() {
-    var _props$as = this.props.as;
-    var as = _props$as === undefined ? 'text' : _props$as;
-    var labelText = this.state.labelText;
+    var _props$as = this.props.as,
+        as = _props$as === undefined ? 'text' : _props$as,
+        labelText = this.state.labelText;
 
     return _react2.default.createElement(
       'div',
@@ -103,4 +103,4 @@ var InputFileReader = _react2.default.createClass({
 });
 
 exports.default = InputFileReader;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\InputFileReader.js.map
+//# sourceMappingURL=InputFileReader.js.map

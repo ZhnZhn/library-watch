@@ -17,11 +17,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var styles = _ContainerStyles2.default;
 
 var Browser = function Browser(props) {
-   var isShow = props.isShow;
-   var style = props.style;
-   var children = props.children;
-   var _styleOpen = isShow ? { display: 'block' } : { display: 'none' };
-   var _classOpen = isShow ? "show-popup" : null;
+   var isShow = props.isShow,
+       style = props.style,
+       children = props.children,
+       _styleOpen = isShow ? { display: 'block' } : { display: 'none' },
+       _classOpen = isShow ? "show-popup" : null;
+
    return _react2.default.createElement(
       'div',
       {
@@ -33,4 +34,4 @@ var Browser = function Browser(props) {
 };
 
 exports.default = Browser;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\zhnAtoms\Browser.js.map
+//# sourceMappingURL=Browser.js.map

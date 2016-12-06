@@ -56,10 +56,10 @@ var GroupAddPane = _react2.default.createClass({
   },
   _onStore: function _onStore(actionType, data) {
     //store
-    var _props = this.props;
-    var actionCompleted = _props.actionCompleted;
-    var actionFailed = _props.actionFailed;
-    var forActionType = _props.forActionType;
+    var _props = this.props,
+        actionCompleted = _props.actionCompleted,
+        actionFailed = _props.actionFailed,
+        forActionType = _props.forActionType;
 
     if (actionType === actionCompleted && data.forActionType === forActionType) {
       this._handlerClear();
@@ -85,8 +85,8 @@ var GroupAddPane = _react2.default.createClass({
   render: function render() {
     var _this = this;
 
-    var onClose = this.props.onClose;
-    var validationMessages = this.state.validationMessages;
+    var onClose = this.props.onClose,
+        validationMessages = this.state.validationMessages;
 
     return _react2.default.createElement(
       'div',
@@ -124,4 +124,4 @@ var GroupAddPane = _react2.default.createClass({
 });
 
 exports.default = GroupAddPane;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\browser-watch\GroupAddPane.js.map
+//# sourceMappingURL=GroupAddPane.js.map

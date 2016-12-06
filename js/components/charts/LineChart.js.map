@@ -1,9 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\charts\\LineChart.jsx",
- "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\charts\\LineChart.js",
- "sourceRoot": "",
- "names": [],
- "mappings": ";;;;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAM,YAAW,gBAAM,WAAN,CAAkB;AAAA;AAClC,OADkC,oBACzB;AAAA;;AACR,SACC,qEACK,KAAK,KADV;AAEC,QAAK;AAAA,WAAO,MAAK,cAAL,GAAsB,QAAO,KAAI,cAAxC;AAAA,IAFN;AAGC,SAAK;AAHN,KADD;AAOA;AATiC,CAAlB,CAAjB;;kBAYe,S"
-}
+{"version":3,"sources":["../../../src/components/charts/LineChart.jsx"],"names":["LineChart","createClass","render","props","chart_instance","ref"],"mappings":";;;;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,YAAW,gBAAMC,WAAN,CAAkB;AAAA;AAClCC,OADkC,oBACzB;AAAA;;AACR,SACC,qEACK,KAAKC,KADV;AAEC,QAAK;AAAA,WAAO,MAAKC,cAAL,GAAsBC,QAAOA,KAAID,cAAxC;AAAA,IAFN;AAGC,SAAK;AAHN,KADD;AAOA;AATiC,CAAlB,CAAjB;;kBAYeJ,S","file":"LineChart.js","sourcesContent":["import React from 'react';\r\n\r\nimport ChartComponent from './ChartComponent';\r\n\r\nconst LineChart =React.createClass({\r\n\trender() {\r\n\t\treturn (\r\n\t\t\t<ChartComponent\r\n\t\t\t\t{...this.props}\r\n\t\t\t\tref={ref => this.chart_instance = ref && ref.chart_instance}\r\n\t\t\t\ttype=\"line\"\r\n\t\t\t/>\r\n\t\t);\r\n\t}\r\n});\r\n\r\nexport default LineChart\r\n"]}

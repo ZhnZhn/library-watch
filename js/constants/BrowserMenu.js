@@ -53,4 +53,4 @@ var BrowserMenu = {
 };
 
 exports.default = BrowserMenu;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\constants\BrowserMenu.js.map
+//# sourceMappingURL=BrowserMenu.js.map

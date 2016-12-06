@@ -13,7 +13,7 @@ var _NpmRecentMonthDownloads2 = _interopRequireDefault(_NpmRecentMonthDownloads)
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _fnTransformDownloads = function _fnTransformDownloads() {
-    var downloads = arguments.length <= 0 || arguments[0] === undefined ? [{ day: '0-0-0', downloads: 0 }] : arguments[0];
+    var downloads = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [{ day: '0-0-0', downloads: 0 }];
 
     var labels = [],
         data = [],
@@ -22,9 +22,10 @@ var _fnTransformDownloads = function _fnTransformDownloads() {
     var sumDownloads = 0;
 
     downloads.forEach(function (item) {
-        var day = item.day;
-        var downloads = item.downloads;
-        var arrDate = day.split('-');
+        var day = item.day,
+            downloads = item.downloads,
+            arrDate = day.split('-');
+
 
         labels.push('' + arrDate[2]);
         data.push(downloads);
@@ -35,26 +36,25 @@ var _fnTransformDownloads = function _fnTransformDownloads() {
 };
 
 var fNpmRecentDownloads = function fNpmRecentDownloads(_ref) {
-    var factory = _ref.factory;
-    var option = _ref.option;
-    var json = _ref.json;
-    var parentProps = _ref.parentProps;
-    var onCloseItem = _ref.onCloseItem;
-    var onWatchItem = _ref.onWatchItem;
-    var repo = option.repo;
-    var requestType = option.requestType;
-    var chartType = option.chartType;
-    var browserType = option.browserType;
-    var downloads = json.downloads;
+    var factory = _ref.factory,
+        option = _ref.option,
+        json = _ref.json,
+        parentProps = _ref.parentProps,
+        onCloseItem = _ref.onCloseItem,
+        onWatchItem = _ref.onWatchItem;
 
-    var _fnTransformDownloads2 = _fnTransformDownloads(downloads);
-
-    var sumDownloads = _fnTransformDownloads2.sumDownloads;
-    var fromDate = _fnTransformDownloads2.fromDate;
-    var toDate = _fnTransformDownloads2.toDate;
-    var labels = _fnTransformDownloads2.labels;
-    var data = _fnTransformDownloads2.data;
-    var key = repo + '_' + requestType;
+    var repo = option.repo,
+        requestType = option.requestType,
+        chartType = option.chartType,
+        browserType = option.browserType,
+        downloads = json.downloads,
+        _fnTransformDownloads2 = _fnTransformDownloads(downloads),
+        sumDownloads = _fnTransformDownloads2.sumDownloads,
+        fromDate = _fnTransformDownloads2.fromDate,
+        toDate = _fnTransformDownloads2.toDate,
+        labels = _fnTransformDownloads2.labels,
+        data = _fnTransformDownloads2.data,
+        key = repo + '_' + requestType;
 
     return factory.createElement(_NpmRecentMonthDownloads2.default, _extends({
         key: key,
@@ -72,4 +72,4 @@ var fNpmRecentDownloads = function fNpmRecentDownloads(_ref) {
 };
 
 exports.default = fNpmRecentDownloads;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\factories\fNpmRecentDownloads.js.map
+//# sourceMappingURL=fNpmRecentDownloads.js.map

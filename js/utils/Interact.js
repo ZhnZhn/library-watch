@@ -62,4 +62,4 @@ var Interact = {
 };
 
 exports.default = Interact;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\utils\Interact.js.map
+//# sourceMappingURL=Interact.js.map

@@ -77,12 +77,13 @@ var GitHubIssues = _react2.default.createClass({
     this.setState({ isShow: !this.state.isShow });
   },
   _handlerClickWatch: function _handlerClickWatch() {
-    var _props = this.props;
-    var repo = _props.repo;
-    var requestType = _props.requestType;
-    var onWatchItem = _props.onWatchItem;
-    var caption = '' + repo;
-    var descr = ITEM_DESCRIPTION;
+    var _props = this.props,
+        repo = _props.repo,
+        requestType = _props.requestType,
+        onWatchItem = _props.onWatchItem,
+        caption = '' + repo,
+        descr = ITEM_DESCRIPTION;
+
     onWatchItem({
       caption: caption,
       config: { repo: repo, requestType: requestType, version: '', caption: caption, descr: descr }
@@ -90,13 +91,14 @@ var GitHubIssues = _react2.default.createClass({
   },
   _renderIssues: function _renderIssues(issues) {
     return issues.map(function (item, index) {
-      var state = item.state;
-      var number = item.number;
-      var created_at = item.created_at;
-      var updated_at = item.updated_at;
-      var title = item.title;
-      var html_url = item.html_url;
-      var className = index % 2 ? 'row-even not-selected' : 'row-odd not-selected';
+      var state = item.state,
+          number = item.number,
+          created_at = item.created_at,
+          updated_at = item.updated_at,
+          title = item.title,
+          html_url = item.html_url,
+          className = index % 2 ? 'row-even not-selected' : 'row-odd not-selected';
+
       return _react2.default.createElement(
         'div',
         { key: index, className: className },
@@ -137,15 +139,15 @@ var GitHubIssues = _react2.default.createClass({
     });
   },
   render: function render() {
-    var _props2 = this.props;
-    var repo = _props2.repo;
-    var caption = _props2.caption;
-    var _props2$issues = _props2.issues;
-    var issues = _props2$issues === undefined ? [] : _props2$issues;
-    var onCloseItem = _props2.onCloseItem;
-    var _number = issues.length;
-    var _styleCaption = styles.captionSpanOpen;
-    var isShow = this.state.isShow;
+    var _props2 = this.props,
+        repo = _props2.repo,
+        caption = _props2.caption,
+        _props2$issues = _props2.issues,
+        issues = _props2$issues === undefined ? [] : _props2$issues,
+        onCloseItem = _props2.onCloseItem,
+        _number = issues.length,
+        _styleCaption = styles.captionSpanOpen,
+        isShow = this.state.isShow;
 
 
     return _react2.default.createElement(
@@ -191,4 +193,4 @@ var GitHubIssues = _react2.default.createClass({
 });
 
 exports.default = GitHubIssues;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\items\GitHubIssues.js.map
+//# sourceMappingURL=GitHubIssues.js.map

@@ -1,9 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Template_2\\src\\components\\header\\AppLabel.jsx",
- "file": "D:\\_Dev\\_React\\_Template_2\\js\\components\\header\\AppLabel.js",
- "sourceRoot": "",
- "names": [],
- "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAM,WAAW,SAAX,QAAW,CAAC,KAAD,EAAW;AAAA,MAClB,OADkB,GACQ,KADR,CAClB,OADkB;AAAA,MACT,KADS,GACQ,KADR,CACT,KADS;AAAA,MACF,KADE,GACQ,KADR,CACF,KADE;;AAE1B,SACE;AAAA;AAAA,MAAM,OAAO,KAAb,EAAoB,OAAO,KAA3B;AACG;AADH,GADF;AAKD,CAPD;;kBASe,Q"
-}
+{"version":3,"sources":["../../../src/components/header/AppLabel.jsx"],"names":["AppLabel","props","caption","title","style"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,WAAW,SAAXA,QAAW,CAACC,KAAD,EAAW;AAAA,MAClBC,OADkB,GACQD,KADR,CAClBC,OADkB;AAAA,MACTC,KADS,GACQF,KADR,CACTE,KADS;AAAA,MACFC,KADE,GACQH,KADR,CACFG,KADE;;AAE1B,SACE;AAAA;AAAA,MAAM,OAAOA,KAAb,EAAoB,OAAOD,KAA3B;AACGD;AADH,GADF;AAKD,CAPD;;kBASeF,Q","file":"AppLabel.js","sourcesContent":["import React from 'react';\r\n\r\nconst AppLabel = (props) => {\r\n  const { caption, title, style } = props;\r\n  return (\r\n    <span style={style} title={title}>\r\n      {caption}\r\n    </span>\r\n  );\r\n};\r\n\r\nexport default AppLabel\r\n"]}

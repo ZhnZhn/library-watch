@@ -55,14 +55,15 @@ var AlertDialog = _react2.default.createClass({
     return true;
   },
   render: function render() {
-    var _props = this.props;
-    var isShow = _props.isShow;
-    var data = _props.data;
-    var onClose = _props.onClose;
-    var alertCaption = data.alertCaption;
-    var alertItemId = data.alertItemId;
-    var alertDescr = data.alertDescr;
-    var _alertItemId = alertItemId.substring(0, 20) + ELLIPSIS;
+    var _props = this.props,
+        isShow = _props.isShow,
+        data = _props.data,
+        onClose = _props.onClose,
+        alertCaption = data.alertCaption,
+        alertItemId = data.alertItemId,
+        alertDescr = data.alertDescr,
+        _alertItemId = alertItemId.substring(0, 20) + ELLIPSIS;
+
     return _react2.default.createElement(
       _ModalDialog2.default,
       {
@@ -98,4 +99,4 @@ var AlertDialog = _react2.default.createClass({
 });
 
 exports.default = AlertDialog;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\dialogs\AlertDialog.js.map
+//# sourceMappingURL=AlertDialog.js.map

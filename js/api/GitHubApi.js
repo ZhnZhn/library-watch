@@ -13,6 +13,7 @@ Object.defineProperty(exports, "__esModule", {
 // repo
 // https://api.github.com/search/repositories?q=tetris+language:assembly&sort=stars&order=desc
 
+
 // commit descr url, (sha), html_url
 //https://api.github.com/repos/lodash/lodash/commits/fc734a63717e2f29268eb79a161daaa6a9107d02
 
@@ -55,4 +56,4 @@ var GitHubApi = {
 };
 
 exports.default = GitHubApi;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\api\GitHubApi.js.map
+//# sourceMappingURL=GitHubApi.js.map

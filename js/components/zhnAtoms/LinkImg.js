@@ -11,11 +11,11 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var LinkImg = function LinkImg(props) {
-  var href = props.href;
-  var imgClass = props.imgClass;
-  var imgSrc = props.imgSrc;
-  var onError = props.onError;
-  var _onError = onError ? onError : _handlerError;
+  var href = props.href,
+      imgClass = props.imgClass,
+      imgSrc = props.imgSrc,
+      onError = props.onError,
+      _onError = onError ? onError : _handlerError;
 
   var _handlerError = function _handlerError(event) {
     console.log("Failed to load image with src: " + imgSrc);
@@ -33,4 +33,4 @@ var LinkImg = function LinkImg(props) {
 };
 
 exports.default = LinkImg;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\LinkImg.js.map
+//# sourceMappingURL=LinkImg.js.map

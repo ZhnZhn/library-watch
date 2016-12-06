@@ -139,11 +139,13 @@ var ZhSelect = _react2.default.createClass({
   getInitialState: function getInitialState() {
     this.domOptionsCache = null;
     this.indexActiveOption = 0;
-    var _props = this.props;
-    var optionName = _props.optionName;
-    var optionNames = _props.optionNames;
-    var _optionName = optionName ? ' ' + optionName : '';
-    var _optionNames = optionNames ? ' ' + optionNames : optionName ? _optionName : '';
+
+    var _props = this.props,
+        optionName = _props.optionName,
+        optionNames = _props.optionNames,
+        _optionName = optionName ? ' ' + optionName : '',
+        _optionNames = optionNames ? ' ' + optionNames : optionName ? _optionName : '';
+
     return {
       value: '',
       isShowOption: false,
@@ -381,10 +383,10 @@ var ZhSelect = _react2.default.createClass({
   renderOptions: function renderOptions() {
     var _this = this;
 
-    var _state = this.state;
-    var isShowOption = _state.isShowOption;
-    var options = _state.options;
-    var isValidDomOptionsCache = _state.isValidDomOptionsCache;
+    var _state = this.state,
+        isShowOption = _state.isShowOption,
+        options = _state.options,
+        isValidDomOptionsCache = _state.isValidDomOptionsCache;
 
 
     var _domOptions = void 0;
@@ -410,11 +412,12 @@ var ZhSelect = _react2.default.createClass({
       }
     }
 
-    var width = this.props.width;
-    var _styleOptions = isShowOption ? { display: 'block' } : { display: 'none' };
-    var _styleDivWidth = width ? { width: width + 'px' } : null;
-    var _numberFilteredItems = options[0] && options[0].value !== 'noresult' ? options.length : 0;
-    var _numberAllItems = this.props.options ? this.props.options.length : 0;
+    var width = this.props.width,
+        _styleOptions = isShowOption ? { display: 'block' } : { display: 'none' },
+        _styleDivWidth = width ? { width: width + 'px' } : null,
+        _numberFilteredItems = options[0] && options[0].value !== 'noresult' ? options.length : 0,
+        _numberAllItems = this.props.options ? this.props.options.length : 0;
+
 
     return _react2.default.createElement(
       'div',
@@ -472,11 +475,11 @@ var ZhSelect = _react2.default.createClass({
   render: function render() {
     var _this2 = this;
 
-    var width = this.props.width;
-    var _state2 = this.state;
-    var value = _state2.value;
-    var isLocalMode = _state2.isLocalMode;
-    var isShowOption = _state2.isShowOption;
+    var width = this.props.width,
+        _state2 = this.state,
+        value = _state2.value,
+        isLocalMode = _state2.isLocalMode,
+        isShowOption = _state2.isShowOption;
 
 
     var _styleArrow = isShowOption ? { borderColor: '#1B75BB transparent transparent' } : null;
@@ -492,13 +495,13 @@ var ZhSelect = _react2.default.createClass({
 
     var _domOptions = isLocalMode || isShowOption ? this.renderOptions() : null;
 
-    var _props2 = this.props;
-    var isLoading = _props2.isLoading;
-    var isLoadingFailed = _props2.isLoadingFailed;
-    var placeholder = _props2.placeholder;
-    var _state3 = this.state;
-    var optionName = _state3.optionName;
-    var optionNames = _state3.optionNames;
+    var _props2 = this.props,
+        isLoading = _props2.isLoading,
+        isLoadingFailed = _props2.isLoadingFailed,
+        placeholder = _props2.placeholder,
+        _state3 = this.state,
+        optionName = _state3.optionName,
+        optionNames = _state3.optionNames;
 
 
     var _domAfterInput = void 0,
@@ -558,4 +561,4 @@ var ZhSelect = _react2.default.createClass({
 });
 
 exports.default = ZhSelect;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\zhnAtoms\ZhSelect.js.map
+//# sourceMappingURL=ZhSelect.js.map

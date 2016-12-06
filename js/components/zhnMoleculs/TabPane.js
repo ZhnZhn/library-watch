@@ -60,9 +60,9 @@ var TabPane = _react2.default.createClass({
     });
   },
   _renderComponents2: function _renderComponents2() {
-    var _state = this.state;
-    var selectedTabIndex = _state.selectedTabIndex;
-    var components = _state.components;
+    var _state = this.state,
+        selectedTabIndex = _state.selectedTabIndex,
+        components = _state.components;
 
     return components.map(function (comp, index) {
       var divStyle = index === selectedTabIndex ? { display: 'block', width: "100%", height: "100%" } : { display: 'none' };
@@ -74,10 +74,10 @@ var TabPane = _react2.default.createClass({
     });
   },
   render: function render() {
-    var _props = this.props;
-    var children = _props.children;
-    var width = _props.width;
-    var height = _props.height;
+    var _props = this.props,
+        children = _props.children,
+        width = _props.width,
+        height = _props.height;
 
     return _react2.default.createElement(
       'div',
@@ -100,4 +100,4 @@ var TabPane = _react2.default.createClass({
 });
 
 exports.default = TabPane;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\zhnMoleculs\TabPane.js.map
+//# sourceMappingURL=TabPane.js.map

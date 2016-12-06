@@ -1,9 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\zhn-select\\ItemTopicOption.jsx",
- "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\zhn-select\\ItemTopicOption.js",
- "sourceRoot": "",
- "names": [],
- "mappings": ";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAM,QAAQ;AACZ,SAAQ;AACN,WAAO,MADD;AAEN,gBAAa,QAFP;AAGN,cAAU,QAHJ;AAIN,kBAAc,UAJR;AAKN,WAAO;AALD;AADI,CAAd;;AAUA,IAAM,kBAAkB,SAAlB,eAAkB,CAAC,KAAD,EAAW;AAAA,MACzB,IADyB,GAChB,KADgB,CACzB,IADyB;;AAEjC,SACG;AAAA;AAAA;AACE,wDAAgB,KAAhB,CADF;AAEE;AAAA;AAAA,QAAK,OAAO,MAAM,KAAlB;AACG,WAAK;AADR;AAFF,GADH;AAQD,CAVD;;kBAYe,e"
-}
+{"version":3,"sources":["../../../src/components/zhn-select/ItemTopicOption.jsx"],"names":["STYLE","TOPIC","width","whiteSpace","overflow","textOverflow","color","ItemTopicOption","props","item","topic"],"mappings":";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,QAAQ;AACZC,SAAQ;AACNC,WAAO,MADD;AAENC,gBAAa,QAFP;AAGNC,cAAU,QAHJ;AAINC,kBAAc,UAJR;AAKNC,WAAO;AALD;AADI,CAAd;;AAUA,IAAMC,kBAAkB,SAAlBA,eAAkB,CAACC,KAAD,EAAW;AAAA,MACzBC,IADyB,GAChBD,KADgB,CACzBC,IADyB;;AAEjC,SACG;AAAA;AAAA;AACE,wDAAgBD,KAAhB,CADF;AAEE;AAAA;AAAA,QAAK,OAAOR,MAAMC,KAAlB;AACGQ,WAAKC;AADR;AAFF,GADH;AAQD,CAVD;;kBAYeH,e","file":"ItemTopicOption.js","sourcesContent":["import React from 'react';\r\n\r\nimport ItemOption from './ItemOption'\r\n\r\nconst STYLE = {\r\n  TOPIC : {\r\n    width: '100%',\r\n    whiteSpace : 'nowrap',\r\n    overflow: 'hidden',\r\n    textOverflow: 'ellipsis',\r\n    color: 'rgb(164, 135, 212)'\r\n  }\r\n}\r\n\r\nconst ItemTopicOption = (props) => {\r\n  const { item } = props\r\n  return (\r\n     <div>\r\n       <ItemOption {...props} />\r\n       <div style={STYLE.TOPIC}>\r\n         {item.topic}\r\n       </div>\r\n     </div>\r\n  )\r\n};\r\n\r\nexport default ItemTopicOption\r\n"]}

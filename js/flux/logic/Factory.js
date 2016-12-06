@@ -46,4 +46,4 @@ var Factory = _extends({}, _WithBrowserDynamic2.default, _WithDialog2.default, _
 });
 
 exports.default = Factory;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\flux\logic\Factory.js.map
+//# sourceMappingURL=Factory.js.map

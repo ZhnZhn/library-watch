@@ -11,4 +11,4 @@ var RouterLoad = {
 };
 
 exports.default = RouterLoad;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\flux\logic\RouterLoad.js.map
+//# sourceMappingURL=RouterLoad.js.map

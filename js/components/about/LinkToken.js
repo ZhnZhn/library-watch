@@ -11,12 +11,13 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var LinkToken = function LinkToken(props) {
-  var isFirstBlank = props.isFirstBlank;
-  var color = props.color;
-  var href = props.href;
-  var title = props.title;
-  var children = props.children;
-  var _firstChart = isFirstBlank ? ' ' : undefined;
+  var isFirstBlank = props.isFirstBlank,
+      color = props.color,
+      href = props.href,
+      title = props.title,
+      children = props.children,
+      _firstChart = isFirstBlank ? ' ' : undefined;
+
   return _react2.default.createElement(
     'a',
     {
@@ -32,4 +33,4 @@ var LinkToken = function LinkToken(props) {
 };
 
 exports.default = LinkToken;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\about\LinkToken.js.map
+//# sourceMappingURL=LinkToken.js.map

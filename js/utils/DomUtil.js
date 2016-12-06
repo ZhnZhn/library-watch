@@ -12,7 +12,7 @@ var _domParser = DOMParser ? new DOMParser() : {
 
 var DomUtil = {
    htmlDecode: function htmlDecode() {
-      var input = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+      var input = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
       var doc = _domParser.parseFromString(input, "text/html");
       return doc.documentElement.textContent;
@@ -20,4 +20,4 @@ var DomUtil = {
 };
 
 exports.default = DomUtil;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\utils\DomUtil.js.map
+//# sourceMappingURL=DomUtil.js.map

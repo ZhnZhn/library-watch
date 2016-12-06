@@ -1,9 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Template_2\\src\\flux\\logic\\RouterLoad.js",
- "file": "D:\\_Dev\\_React\\_Template_2\\js\\flux\\logic\\RouterLoad.js",
- "sourceRoot": "",
- "names": [],
- "mappings": ";;;;;;AACA;;AAEA,IAAM,aAAa;AACjB;AADiB,CAAnB;;kBAIe,U"
-}
+{"version":3,"sources":["../../../src/flux/logic/RouterLoad.js"],"names":["RouterLoad","LW"],"mappings":";;;;;;AACA;;AAEA,IAAMA,aAAa;AACjBC;AADiB,CAAnB;;kBAIeD,U","file":"RouterLoad.js","sourcesContent":["\r\nimport { loadGitHub } from './loadGitHub';\r\n\r\nconst RouterLoad = {\r\n  LW : loadGitHub\r\n};\r\n\r\nexport default RouterLoad\r\n"]}

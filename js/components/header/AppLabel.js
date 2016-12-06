@@ -11,9 +11,9 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var AppLabel = function AppLabel(props) {
-  var caption = props.caption;
-  var title = props.title;
-  var style = props.style;
+  var caption = props.caption,
+      title = props.title,
+      style = props.style;
 
   return _react2.default.createElement(
     'span',
@@ -23,4 +23,4 @@ var AppLabel = function AppLabel(props) {
 };
 
 exports.default = AppLabel;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\header\AppLabel.js.map
+//# sourceMappingURL=AppLabel.js.map

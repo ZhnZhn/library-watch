@@ -66,11 +66,11 @@ var ListCreatePane = _react2.default.createClass({
     this.unsubscribe();
   },
   _onStore: function _onStore(actionType, data) {
-    var _props = this.props;
-    var actionCompleted = _props.actionCompleted;
-    var actionFailed = _props.actionFailed;
-    var forActionType = _props.forActionType;
-    var store = _props.store;
+    var _props = this.props,
+        actionCompleted = _props.actionCompleted,
+        actionFailed = _props.actionFailed,
+        forActionType = _props.forActionType,
+        store = _props.store;
 
     if (actionType === actionCompleted) {
       var isUpdateGroup = true;
@@ -104,10 +104,11 @@ var ListCreatePane = _react2.default.createClass({
         captionList: captionList
       });
     } else {
-      var _props2 = this.props;
-      var msgOnNotSelect = _props2.msgOnNotSelect;
-      var msgOnIsEmptyName = _props2.msgOnIsEmptyName;
-      var msg = [];
+      var _props2 = this.props,
+          msgOnNotSelect = _props2.msgOnNotSelect,
+          msgOnIsEmptyName = _props2.msgOnIsEmptyName,
+          msg = [];
+
       if (!this.captionGroup) {
         msg.push(msgOnNotSelect('In Group'));
       }
@@ -120,11 +121,11 @@ var ListCreatePane = _react2.default.createClass({
   render: function render() {
     var _this = this;
 
-    var onClose = this.props.onClose;
+    var onClose = this.props.onClose,
+        _state = this.state,
+        groupOptions = _state.groupOptions,
+        validationMessages = _state.validationMessages;
     //isUpdateGroup
-    var _state = this.state;
-    var groupOptions = _state.groupOptions;
-    var validationMessages = _state.validationMessages;
 
     return _react2.default.createElement(
       'div',
@@ -168,4 +169,4 @@ var ListCreatePane = _react2.default.createClass({
 });
 
 exports.default = ListCreatePane;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\ListCreatePane.js.map
+//# sourceMappingURL=ListCreatePane.js.map

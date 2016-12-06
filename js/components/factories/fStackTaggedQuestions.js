@@ -23,16 +23,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var THREE_ZERO = '000';
 
 var _fnTransform = function _fnTransform() {
-  var items = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+  var items = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
   var _timeago = (0, _timeago3.default)(Date.now());
   return items.map(function (item) {
-    var title = item.title;
-    var last_activity_date = item.last_activity_date;
-    var _item$owner = item.owner;
-    var owner = _item$owner === undefined ? {} : _item$owner;
-    var display_name = owner.display_name;
-    var _millisUTC = last_activity_date + '' + THREE_ZERO;
+    var title = item.title,
+        last_activity_date = item.last_activity_date,
+        _item$owner = item.owner,
+        owner = _item$owner === undefined ? {} : _item$owner,
+        display_name = owner.display_name,
+        _millisUTC = last_activity_date + '' + THREE_ZERO;
 
     item.dateAgo = _timeago.format(_millisUTC);
     item.title = _DomUtil2.default.htmlDecode(title);
@@ -43,19 +43,20 @@ var _fnTransform = function _fnTransform() {
 };
 
 var fStackTaggedQuestions = function fStackTaggedQuestions(_ref) {
-  var factory = _ref.factory;
-  var option = _ref.option;
-  var _ref$json = _ref.json;
-  var json = _ref$json === undefined ? {} : _ref$json;
-  var parentProps = _ref.parentProps;
-  var onCloseItem = _ref.onCloseItem;
-  var onWatchItem = _ref.onWatchItem;
-  var repo = option.repo;
-  var requestType = option.requestType;
-  var chartType = option.chartType;
-  var browserType = option.browserType;
-  var key = repo + '_' + requestType;
-  var _items = _fnTransform(json.items);
+  var factory = _ref.factory,
+      option = _ref.option,
+      _ref$json = _ref.json,
+      json = _ref$json === undefined ? {} : _ref$json,
+      parentProps = _ref.parentProps,
+      onCloseItem = _ref.onCloseItem,
+      onWatchItem = _ref.onWatchItem;
+
+  var repo = option.repo,
+      requestType = option.requestType,
+      chartType = option.chartType,
+      browserType = option.browserType,
+      key = repo + '_' + requestType,
+      _items = _fnTransform(json.items);
 
   return factory.createElement(_StackTaggedQuestions2.default, _extends({
     key: key,
@@ -69,4 +70,4 @@ var fStackTaggedQuestions = function fStackTaggedQuestions(_ref) {
 };
 
 exports.default = fStackTaggedQuestions;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\factories\fStackTaggedQuestions.js.map
+//# sourceMappingURL=fStackTaggedQuestions.js.map

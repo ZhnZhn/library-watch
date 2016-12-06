@@ -37,9 +37,9 @@ var BrowserContainer = _react2.default.createClass({
     this.unsubscribe();
   },
   _onStore: function _onStore(actionType, data) {
-    var _props = this.props;
-    var initBrowserAction = _props.initBrowserAction;
-    var toggleWatchDbBrowserAction = _props.toggleWatchDbBrowserAction;
+    var _props = this.props,
+        initBrowserAction = _props.initBrowserAction,
+        toggleWatchDbBrowserAction = _props.toggleWatchDbBrowserAction;
 
     if (actionType === initBrowserAction) {
       this.state.elBrowsers.unshift(data);
@@ -49,15 +49,15 @@ var BrowserContainer = _react2.default.createClass({
     }
   },
   render: function render() {
-    var _props2 = this.props;
-    var store = _props2.store;
-    var showBrowserAction = _props2.showBrowserAction;
-    var updateWatchAction = _props2.updateWatchAction;
-    var initDialogAction = _props2.initDialogAction;
-    var showDialogAction = _props2.showDialogAction;
-    var _state = this.state;
-    var isDoubleWatch = _state.isDoubleWatch;
-    var elBrowsers = _state.elBrowsers;
+    var _props2 = this.props,
+        store = _props2.store,
+        showBrowserAction = _props2.showBrowserAction,
+        updateWatchAction = _props2.updateWatchAction,
+        initDialogAction = _props2.initDialogAction,
+        showDialogAction = _props2.showDialogAction;
+    var _state = this.state,
+        isDoubleWatch = _state.isDoubleWatch,
+        elBrowsers = _state.elBrowsers;
 
 
     var _doubleWatch = isDoubleWatch ? _react2.default.createElement(_WatchBrowser2.default, {
@@ -94,4 +94,4 @@ var BrowserContainer = _react2.default.createClass({
 });
 
 exports.default = BrowserContainer;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-container\BrowserContainer.js.map
+//# sourceMappingURL=BrowserContainer.js.map

@@ -85,12 +85,13 @@ var GitHubCommits = _react2.default.createClass({
     this.setState({ isShow: !this.state.isShow });
   },
   _handlerClickWatch: function _handlerClickWatch() {
-    var _props = this.props;
-    var repo = _props.repo;
-    var requestType = _props.requestType;
-    var onWatchItem = _props.onWatchItem;
-    var caption = '' + repo;
-    var descr = ITEM_DESCRIPTION;
+    var _props = this.props,
+        repo = _props.repo,
+        requestType = _props.requestType,
+        onWatchItem = _props.onWatchItem,
+        caption = '' + repo,
+        descr = ITEM_DESCRIPTION;
+
     onWatchItem({
       caption: caption,
       config: { repo: repo, requestType: requestType, version: '', caption: caption, descr: descr }
@@ -99,20 +100,21 @@ var GitHubCommits = _react2.default.createClass({
   _renderCommits: function _renderCommits(commits) {
     var _timeago = (0, _timeago3.default)(Date.now());
     return commits.map(function (item, index) {
-      var _item$commit = item.commit;
-      var commit = _item$commit === undefined ? {} : _item$commit;
-      var html_url = item.html_url;
-      var _commit$message = commit.message;
-      var message = _commit$message === undefined ? '' : _commit$message;
-      var _commit$committer = commit.committer;
-      var committer = _commit$committer === undefined ? {} : _commit$committer;
-      var _committer$date = committer.date;
-      var date = _committer$date === undefined ? '' : _committer$date;
-      var _committer$name = committer.name;
-      var name = _committer$name === undefined ? '' : _committer$name;
-      var _dateTime = date.replace('T', ' ').replace('Z', '');
-      var _dateAgo = _timeago.format(_dateTime);
-      var className = index % 2 ? 'row-even not-selected' : 'row-odd not-selected';
+      var _item$commit = item.commit,
+          commit = _item$commit === undefined ? {} : _item$commit,
+          html_url = item.html_url,
+          _commit$message = commit.message,
+          message = _commit$message === undefined ? '' : _commit$message,
+          _commit$committer = commit.committer,
+          committer = _commit$committer === undefined ? {} : _commit$committer,
+          _committer$date = committer.date,
+          date = _committer$date === undefined ? '' : _committer$date,
+          _committer$name = committer.name,
+          name = _committer$name === undefined ? '' : _committer$name,
+          _dateTime = date.replace('T', ' ').replace('Z', ''),
+          _dateAgo = _timeago.format(_dateTime),
+          className = index % 2 ? 'row-even not-selected' : 'row-odd not-selected';
+
       return _react2.default.createElement(
         'div',
         { key: index, className: className },
@@ -142,13 +144,13 @@ var GitHubCommits = _react2.default.createClass({
     });
   },
   render: function render() {
-    var _props2 = this.props;
-    var repo = _props2.repo;
-    var caption = _props2.caption;
-    var commits = _props2.commits;
-    var onCloseItem = _props2.onCloseItem;
-    var _styleCaption = styles.captionSpanOpen;
-    var isShow = this.state.isShow;
+    var _props2 = this.props,
+        repo = _props2.repo,
+        caption = _props2.caption,
+        commits = _props2.commits,
+        onCloseItem = _props2.onCloseItem,
+        _styleCaption = styles.captionSpanOpen,
+        isShow = this.state.isShow;
 
 
     return _react2.default.createElement(
@@ -189,4 +191,4 @@ var GitHubCommits = _react2.default.createClass({
 });
 
 exports.default = GitHubCommits;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\items\GitHubCommits.js.map
+//# sourceMappingURL=GitHubCommits.js.map

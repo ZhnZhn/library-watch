@@ -53,4 +53,4 @@ var WithDnDStyle = {
 };
 
 exports.default = WithDnDStyle;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\with\WithDnDStyle.js.map
+//# sourceMappingURL=WithDnDStyle.js.map

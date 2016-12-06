@@ -11,9 +11,9 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var IconGitHub = function IconGitHub(props) {
-  var className = props.className;
-  var title = props.title;
-  var uri = props.uri;
+  var className = props.className,
+      title = props.title,
+      uri = props.uri;
 
   return _react2.default.createElement(
     "a",
@@ -31,4 +31,4 @@ var IconGitHub = function IconGitHub(props) {
 };
 
 exports.default = IconGitHub;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\about\IconGitHub.js.map
+//# sourceMappingURL=IconGitHub.js.map

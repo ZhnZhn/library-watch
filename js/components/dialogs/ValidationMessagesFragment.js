@@ -34,8 +34,8 @@ var STYLE = {
 };
 
 var ValidationMessage = function ValidationMessage(props) {
-  var index = props.index;
-  var msg = props.msg;
+  var index = props.index,
+      msg = props.msg;
 
   return _react2.default.createElement(
     'div',
@@ -75,4 +75,4 @@ var ValidationMessagesFragment = function ValidationMessagesFragment(props) {
 };
 
 exports.default = ValidationMessagesFragment;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\ValidationMessagesFragment.js.map
+//# sourceMappingURL=ValidationMessagesFragment.js.map

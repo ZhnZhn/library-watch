@@ -13,18 +13,19 @@ var _GitHubIssues2 = _interopRequireDefault(_GitHubIssues);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var fGitHubCommits = function fGitHubCommits(_ref) {
-    var factory = _ref.factory;
-    var option = _ref.option;
-    var _ref$json = _ref.json;
-    var json = _ref$json === undefined ? [] : _ref$json;
-    var parentProps = _ref.parentProps;
-    var onCloseItem = _ref.onCloseItem;
-    var onWatchItem = _ref.onWatchItem;
-    var repo = option.repo;
-    var requestType = option.requestType;
-    var chartType = option.chartType;
-    var browserType = option.browserType;
-    var key = repo + '_' + requestType;
+    var factory = _ref.factory,
+        option = _ref.option,
+        _ref$json = _ref.json,
+        json = _ref$json === undefined ? [] : _ref$json,
+        parentProps = _ref.parentProps,
+        onCloseItem = _ref.onCloseItem,
+        onWatchItem = _ref.onWatchItem;
+    var repo = option.repo,
+        requestType = option.requestType,
+        chartType = option.chartType,
+        browserType = option.browserType,
+        key = repo + '_' + requestType;
+
     return factory.createElement(_GitHubIssues2.default, _extends({
         key: key,
         repo: repo,
@@ -37,4 +38,4 @@ var fGitHubCommits = function fGitHubCommits(_ref) {
 };
 
 exports.default = fGitHubCommits;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\factories\fGitHubIssues.js.map
+//# sourceMappingURL=fGitHubIssues.js.map

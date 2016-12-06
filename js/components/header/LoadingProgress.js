@@ -17,8 +17,6 @@ var _ProgressLine2 = _interopRequireDefault(_ProgressLine);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //import { ChartActionTypes } from '../../flux/actions/ChartActions';
-
-
 var COLOR = {
   LOADING: '#2F7ED8',
   FAILED: 'rgb(237, 88, 19)'
@@ -59,9 +57,9 @@ var LoadingProgress = _react2.default.createClass({
     }
   },
   render: function render() {
-    var _state = this.state;
-    var completed = _state.completed;
-    var color = _state.color;
+    var _state = this.state,
+        completed = _state.completed,
+        color = _state.color;
 
     return _react2.default.createElement(_ProgressLine2.default, {
       height: 3,
@@ -72,4 +70,4 @@ var LoadingProgress = _react2.default.createClass({
 });
 
 exports.default = LoadingProgress;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\header\LoadingProgress.js.map
+//# sourceMappingURL=LoadingProgress.js.map

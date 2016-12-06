@@ -38,4 +38,4 @@ var DialogStyles = {
 };
 
 exports.default = DialogStyles;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\styles\DialogStyles.js.map
+//# sourceMappingURL=DialogStyles.js.map

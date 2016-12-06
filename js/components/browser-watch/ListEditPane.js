@@ -62,11 +62,11 @@ var ListEditPane = _react2.default.createClass({
     this.unsubscribe();
   },
   _onStore: function _onStore(actionType, data) {
-    var _props = this.props;
-    var actionCompleted = _props.actionCompleted;
-    var actionFailed = _props.actionFailed;
-    var forActionType = _props.forActionType;
-    var store = _props.store;
+    var _props = this.props,
+        actionCompleted = _props.actionCompleted,
+        actionFailed = _props.actionFailed,
+        forActionType = _props.forActionType,
+        store = _props.store;
 
     if (actionType === actionCompleted) {
       if (data.forActionType === forActionType) {
@@ -84,11 +84,11 @@ var ListEditPane = _react2.default.createClass({
     }
   },
   _handlerRename: function _handlerRename() {
-    var _selectGroupList$getV = this.selectGroupList.getValue();
+    var _selectGroupList$getV = this.selectGroupList.getValue(),
+        captionGroup = _selectGroupList$getV.captionGroup,
+        captionList = _selectGroupList$getV.captionList,
+        captionListTo = this.inputText.getValue();
 
-    var captionGroup = _selectGroupList$getV.captionGroup;
-    var captionList = _selectGroupList$getV.captionList;
-    var captionListTo = this.inputText.getValue();
     if (captionGroup && captionList && captionListTo) {
       this.props.onRename({
         captionGroup: captionGroup,
@@ -96,10 +96,11 @@ var ListEditPane = _react2.default.createClass({
         captionListTo: captionListTo
       });
     } else {
-      var _props2 = this.props;
-      var msgOnIsEmptyName = _props2.msgOnIsEmptyName;
-      var msgOnNotSelect = _props2.msgOnNotSelect;
-      var msg = [];
+      var _props2 = this.props,
+          msgOnIsEmptyName = _props2.msgOnIsEmptyName,
+          msgOnNotSelect = _props2.msgOnNotSelect,
+          msg = [];
+
       if (!captionGroup) {
         msg.push(msgOnNotSelect('Group'));
       }
@@ -115,13 +116,12 @@ var ListEditPane = _react2.default.createClass({
   render: function render() {
     var _this = this;
 
-    var _props3 = this.props;
-    var store = _props3.store;
-    var onClose = _props3.onClose;
-    //listOptions
-    var _state = this.state;
-    var groupOptions = _state.groupOptions;
-    var validationMessages = _state.validationMessages;
+    var _props3 = this.props,
+        store = _props3.store,
+        onClose = _props3.onClose,
+        _state = this.state,
+        groupOptions = _state.groupOptions,
+        validationMessages = _state.validationMessages;
 
     return _react2.default.createElement(
       'div',
@@ -168,4 +168,4 @@ var ListEditPane = _react2.default.createClass({
 });
 
 exports.default = ListEditPane;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\ListEditPane.js.map
+//# sourceMappingURL=ListEditPane.js.map

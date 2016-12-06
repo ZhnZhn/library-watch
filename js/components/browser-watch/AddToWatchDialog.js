@@ -132,11 +132,11 @@ var AddToWatchDialog = _react2.default.createClass(_extends({}, _WithValidation2
     var validationMessages = this._getValidationMessages();
     if (validationMessages.isValid) {
       //onClose
-      var data = this.props.data;
-      var caption = data.caption;
-      var config = data.config;
-      var groupCaption = this.groupCaption;
-      var listCaption = this.listCaption;
+      var data = this.props.data,
+          caption = data.caption,
+          config = data.config,
+          groupCaption = this.groupCaption,
+          listCaption = this.listCaption;
 
 
       _WatchActions2.default.addItem({ caption: caption, groupCaption: groupCaption, listCaption: listCaption, config: config });
@@ -163,23 +163,24 @@ var AddToWatchDialog = _react2.default.createClass(_extends({}, _WithValidation2
   },
   render: function render() {
     //onClose
-    var _props = this.props;
-    var isShow = _props.isShow;
-    var data = _props.data;
-    var caption = data.caption;
-    var _data$config = data.config;
-    var config = _data$config === undefined ? {} : _data$config;
-    var descr = config.descr;
-    var _state = this.state;
-    var groupOptions = _state.groupOptions;
-    var listOptions = _state.listOptions;
-    var validationMessages = _state.validationMessages;
-    var commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
+    var _props = this.props,
+        isShow = _props.isShow,
+        data = _props.data,
+        caption = data.caption,
+        _data$config = data.config,
+        config = _data$config === undefined ? {} : _data$config,
+        descr = config.descr,
+        _state = this.state,
+        groupOptions = _state.groupOptions,
+        listOptions = _state.listOptions,
+        validationMessages = _state.validationMessages,
+        commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
       key: 'a',
       type: 'TypeC',
       caption: 'Add',
       onClick: this._handlerAdd
     })];
+
     return _react2.default.createElement(
       _ModalDialog2.default,
       {
@@ -253,4 +254,4 @@ var AddToWatchDialog = _react2.default.createClass(_extends({}, _WithValidation2
 }));
 
 exports.default = AddToWatchDialog;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\AddToWatchDialog.js.map
+//# sourceMappingURL=AddToWatchDialog.js.map

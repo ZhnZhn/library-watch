@@ -47,10 +47,10 @@ var DatesFragment = _react2.default.createClass({
   render: function render() {
     var _this = this;
 
-    var _props = this.props;
-    var initFromDate = _props.initFromDate;
-    var initToDate = _props.initToDate;
-    var onTestDate = _props.onTestDate;
+    var _props = this.props,
+        initFromDate = _props.initFromDate,
+        initToDate = _props.initToDate,
+        onTestDate = _props.onTestDate;
 
     return _react2.default.createElement(
       'div',
@@ -102,8 +102,9 @@ var DatesFragment = _react2.default.createClass({
     this.toDate.setValue(toDate);
   },
   getValidation: function getValidation() {
-    var msgOnNotValidFormat = this.props.msgOnNotValidFormat;
-    var datesMsg = [];
+    var msgOnNotValidFormat = this.props.msgOnNotValidFormat,
+        datesMsg = [];
+
     if (!this.fromDate.isValid()) {
       datesMsg.push(msgOnNotValidFormat(FROM_DATE));
     }
@@ -137,4 +138,4 @@ var DatesFragment = _react2.default.createClass({
 });
 
 exports.default = DatesFragment;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\DatesFragment.js.map
+//# sourceMappingURL=DatesFragment.js.map

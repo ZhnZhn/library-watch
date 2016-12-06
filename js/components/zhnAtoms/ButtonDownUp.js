@@ -55,13 +55,13 @@ var STYLE = {
 };
 
 var ButtonDownUp = function ButtonDownUp(props) {
-  var caption = props.caption;
-  var title = props.title;
-  var isUp = props.isUp;
-  var styleRoot = props.styleRoot;
-  var onClick = props.onClick;
-  var _styleRoot = isUp ? STYLE.ROOT_UP : STYLE.ROOT_DOWN;
-  var _styleCircle = isUp ? STYLE.CIRCLE_UP : STYLE.CIRCLE_DOWN;
+  var caption = props.caption,
+      title = props.title,
+      isUp = props.isUp,
+      styleRoot = props.styleRoot,
+      onClick = props.onClick,
+      _styleRoot = isUp ? STYLE.ROOT_UP : STYLE.ROOT_DOWN,
+      _styleCircle = isUp ? STYLE.CIRCLE_UP : STYLE.CIRCLE_DOWN;
 
   return _react2.default.createElement(
     'span',
@@ -80,4 +80,4 @@ var ButtonDownUp = function ButtonDownUp(props) {
 };
 
 exports.default = ButtonDownUp;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\ButtonDownUp.js.map
+//# sourceMappingURL=ButtonDownUp.js.map

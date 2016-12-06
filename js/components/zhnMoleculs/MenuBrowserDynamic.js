@@ -66,23 +66,23 @@ var MenuBrowserDynamic = _react2.default.createClass({
     this.unsubscribe();
   },
   _loadMenu: function _loadMenu() {
-    var _props = this.props;
-    var browserType = _props.browserType;
-    var caption = _props.caption;
-    var sourceMenuUrl = _props.sourceMenuUrl;
-    var onLoadMenu = _props.onLoadMenu;
+    var _props = this.props,
+        browserType = _props.browserType,
+        caption = _props.caption,
+        sourceMenuUrl = _props.sourceMenuUrl,
+        onLoadMenu = _props.onLoadMenu;
 
     onLoadMenu({ browserType: browserType, caption: caption, sourceMenuUrl: sourceMenuUrl });
   },
 
 
   _onStore: function _onStore(actionType, data) {
-    var _props2 = this.props;
-    var browserType = _props2.browserType;
-    var store = _props2.store;
-    var showAction = _props2.showAction;
-    var updateAction = _props2.updateAction;
-    var loadCompletedAction = _props2.loadCompletedAction;
+    var _props2 = this.props,
+        browserType = _props2.browserType,
+        store = _props2.store,
+        showAction = _props2.showAction,
+        updateAction = _props2.updateAction,
+        loadCompletedAction = _props2.loadCompletedAction;
 
     if (actionType === showAction && data === browserType) {
       this._handlerShow();
@@ -101,19 +101,19 @@ var MenuBrowserDynamic = _react2.default.createClass({
   },
 
   _renderMenuParts: function _renderMenuParts() {
-    var menuItems = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+    var menuItems = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
     return menuItems.map(function (menuPart, index) {
       return _react2.default.createElement(_MenuPart2.default, _extends({ key: index }, menuPart));
     });
   },
   render: function render() {
-    var _props3 = this.props;
-    var caption = _props3.caption;
-    var children = _props3.children;
-    var _state = this.state;
-    var menuItems = _state.menuItems;
-    var isShow = _state.isShow;
+    var _props3 = this.props,
+        caption = _props3.caption,
+        children = _props3.children,
+        _state = this.state,
+        menuItems = _state.menuItems,
+        isShow = _state.isShow;
 
 
     return _react2.default.createElement(
@@ -134,4 +134,4 @@ var MenuBrowserDynamic = _react2.default.createClass({
 });
 
 exports.default = MenuBrowserDynamic;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\zhnMoleculs\MenuBrowserDynamic.js.map
+//# sourceMappingURL=MenuBrowserDynamic.js.map

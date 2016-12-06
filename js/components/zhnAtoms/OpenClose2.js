@@ -42,13 +42,13 @@ var pathClose = "M 2,2 L 14,8 2,14 2,2";
 var OpenClose2 = _react2.default.createClass({
   displayName: 'OpenClose2',
   getInitialState: function getInitialState() {
-    var _props = this.props;
-    var isClose = _props.isClose;
-    var fillOpen = _props.fillOpen;
-    var fillClose = _props.fillClose;
-    var _isOpen = isClose ? false : true;
-    var _fillOpen = fillOpen ? fillOpen : 'yellow';
-    var _fillClose = fillClose ? fillClose : '#4D4D4D';
+    var _props = this.props,
+        isClose = _props.isClose,
+        fillOpen = _props.fillOpen,
+        fillClose = _props.fillClose,
+        _isOpen = isClose ? false : true,
+        _fillOpen = fillOpen ? fillOpen : 'yellow',
+        _fillClose = fillClose ? fillClose : '#4D4D4D';
 
     return {
       isOpen: _isOpen,
@@ -60,20 +60,20 @@ var OpenClose2 = _react2.default.createClass({
     this.setState({ isOpen: !this.state.isOpen });
   },
   render: function render() {
-    var _props2 = this.props;
-    var style = _props2.style;
-    var styleNotSelected = _props2.styleNotSelected;
-    var styleCaption = _props2.styleCaption;
-    var caption = _props2.caption;
-    var isDraggable = _props2.isDraggable;
-    var option = _props2.option;
-    var onDragStart = _props2.onDragStart;
-    var onDragEnter = _props2.onDragEnter;
-    var onDragOver = _props2.onDragOver;
-    var onDragLeave = _props2.onDragLeave;
-    var onDrop = _props2.onDrop;
-    var children = _props2.children;
-    var _dragOption = isDraggable ? {
+    var _props2 = this.props,
+        style = _props2.style,
+        styleNotSelected = _props2.styleNotSelected,
+        styleCaption = _props2.styleCaption,
+        caption = _props2.caption,
+        isDraggable = _props2.isDraggable,
+        option = _props2.option,
+        onDragStart = _props2.onDragStart,
+        onDragEnter = _props2.onDragEnter,
+        onDragOver = _props2.onDragOver,
+        onDragLeave = _props2.onDragLeave,
+        onDrop = _props2.onDrop,
+        children = _props2.children,
+        _dragOption = isDraggable ? {
       draggable: true,
       onDragStart: onDragStart.bind(null, option),
       onDrop: onDrop.bind(null, option),
@@ -147,4 +147,4 @@ var OpenClose2 = _react2.default.createClass({
 });
 
 exports.default = OpenClose2;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\OpenClose2.js.map
+//# sourceMappingURL=OpenClose2.js.map

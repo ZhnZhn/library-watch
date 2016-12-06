@@ -36,4 +36,4 @@ var _fnRemoveSpinner = function _fnRemoveSpinner() {
 };
 
 (0, _reactDom.render)(_react2.default.createElement(_AppGitHub2.default, null), document.getElementById("app"), _fnRemoveSpinner);
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\index.js.map
+//# sourceMappingURL=index.js.map

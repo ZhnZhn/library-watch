@@ -20,4 +20,4 @@ var WatchDefault = {
 };
 
 exports.default = WatchDefault;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\constants\WatchDefault.js.map
+//# sourceMappingURL=WatchDefault.js.map

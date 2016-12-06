@@ -1,9 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\constants\\Type.js",
- "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\constants\\Type.js",
- "sourceRoot": "",
- "names": [],
- "mappings": ";;;;;AACO,IAAM,oCAAc;AACzB,SAAQ,OADiB;AAEzB,QAAO,MAFkB;;AAIzB,YAAW,YAJc;AAKzB,mBAAkB,eALO;AAMzB,oBAAmB,gBANM;AAOzB,mBAAkB,eAPO;;AASzB,aAAY;AATa,CAApB;;AAYA,IAAM,oCAAc;AACzB,WAAU,IADe;AAEzB,cAAa;AAFY,CAApB;;AAKA,IAAM,gCAAY;AACvB,cAAa;AADU,CAAlB"
-}
+{"version":3,"sources":["../../src/constants/Type.js"],"names":["ModalDialog","ALERT","INFO","ADD_ITEM","LOAD_WATCH_ITEM","EDIT_WATCH_GROUP","EDIT_WATCH_LIST","LOAD_FILE","BrowserType","LIBRARY","WATCH_LIST","ChartType"],"mappings":";;;;;AACO,IAAMA,oCAAc;AACzBC,SAAQ,OADiB;AAEzBC,QAAO,MAFkB;;AAIzBC,YAAW,YAJc;AAKzBC,mBAAkB,eALO;AAMzBC,oBAAmB,gBANM;AAOzBC,mBAAkB,eAPO;;AASzBC,aAAY;AATa,CAApB;;AAYA,IAAMC,oCAAc;AACzBC,WAAU,IADe;AAEzBC,cAAa;AAFY,CAApB;;AAKA,IAAMC,gCAAY;AACvBD,cAAa;AADU,CAAlB","file":"Type.js","sourcesContent":["\r\nexport const ModalDialog = {\r\n  ALERT : 'alert',\r\n  INFO : 'info',\r\n\r\n  ADD_ITEM : 'addToWatch',\r\n  LOAD_WATCH_ITEM : 'loadWatchItem',\r\n  EDIT_WATCH_GROUP : 'editWatchGroup',\r\n  EDIT_WATCH_LIST : 'editWatchList',\r\n\r\n  LOAD_FILE : 'loadFile'\r\n}\r\n\r\nexport const BrowserType = {\r\n  LIBRARY : 'LW',\r\n  WATCH_LIST : 'WL'\r\n}\r\n\r\nexport const ChartType = {\r\n  WATCH_LIST : 'WL_WATCH_LIST'\r\n}\r\n"]}

@@ -1,9 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\api\\RouterApi.js",
- "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\api\\RouterApi.js",
- "sourceRoot": "",
- "names": [],
- "mappings": ";;;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAM,YAAY;AAChB,yBADgB;AAEhB,uBAFgB;AAGhB;AAHgB,CAAlB;;kBAMe,S"
-}
+{"version":3,"sources":["../../src/api/RouterApi.js"],"names":["RouterApi","GH","NPM","SE"],"mappings":";;;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,YAAY;AAChBC,yBADgB;AAEhBC,uBAFgB;AAGhBC;AAHgB,CAAlB;;kBAMeH,S","file":"RouterApi.js","sourcesContent":["\r\nimport GitHubApi from './GitHubApi';\r\nimport NpmApi from './NpmApi';\r\nimport StackExchangeApi from './StackExchangeApi';\r\n\r\nconst RouterApi = {\r\n  GH : GitHubApi,\r\n  NPM : NpmApi,\r\n  SE : StackExchangeApi\r\n}\r\n\r\nexport default RouterApi\r\n"]}

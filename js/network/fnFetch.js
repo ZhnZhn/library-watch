@@ -37,13 +37,13 @@ var _fnSetRecentDone = function _fnSetRecentDone(uri, time) {
 };
 
 exports.default = function (_ref) {
-  var uri = _ref.uri;
-  var option = _ref.option;
-  var onCheckResponse = _ref.onCheckResponse;
-  var onFetch = _ref.onFetch;
-  var onCompleted = _ref.onCompleted;
-  var onFailed = _ref.onFailed;
-  var onCatch = _ref.onCatch;
+  var uri = _ref.uri,
+      option = _ref.option,
+      onCheckResponse = _ref.onCheckResponse,
+      onFetch = _ref.onFetch,
+      onCompleted = _ref.onCompleted,
+      onFailed = _ref.onFailed,
+      onCatch = _ref.onCatch;
 
   var _nowTime = Date.now();
 
@@ -59,9 +59,9 @@ exports.default = function (_ref) {
     _LoadingProgressActions2.default.loadingProgress();
 
     fetch(uri).then(function (response) {
-      var status = response.status;
-      var statusText = response.statusText;
-      var headers = response.headers;
+      var status = response.status,
+          statusText = response.statusText,
+          headers = response.headers;
 
       option.limitRemaining = headers.get(LIMIT_REMAINING);
       if (status >= 200 && status <= 400) {
@@ -86,4 +86,4 @@ exports.default = function (_ref) {
     });
   }
 };
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\network\fnFetch.js.map
+//# sourceMappingURL=fnFetch.js.map

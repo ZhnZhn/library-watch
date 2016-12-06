@@ -44,8 +44,8 @@ ChartActions[ChartActionTypes.LOAD_STOCK].listen(function (chartType, browserTyp
   this.isLoading = true;
   this.idLoading = option.key;
 
-  var _option$loadId = option.loadId;
-  var loadId = _option$loadId === undefined ? 'LW' : _option$loadId;
+  var _option$loadId = option.loadId,
+      loadId = _option$loadId === undefined ? 'LW' : _option$loadId;
 
   option.chartType = chartType;
   option.browserType = browserType;
@@ -54,4 +54,4 @@ ChartActions[ChartActionTypes.LOAD_STOCK].listen(function (chartType, browserTyp
 });
 
 exports.default = ChartActions;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\actions\ChartActions.js.map
+//# sourceMappingURL=ChartActions.js.map

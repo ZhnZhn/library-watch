@@ -77,29 +77,30 @@ var GitHubRecentRelease = _react2.default.createClass({
     this.setState({ isShow: !this.state.isShow });
   },
   _handlerClickWatch: function _handlerClickWatch() {
-    var _props = this.props;
-    var repo = _props.repo;
-    var requestType = _props.requestType;
-    var version = _props.version;
-    var published_at = _props.published_at;
-    var onWatchItem = _props.onWatchItem;
-    var caption = repo + ' ' + version;
-    var descr = ITEM_DESCRIPTION;
+    var _props = this.props,
+        repo = _props.repo,
+        requestType = _props.requestType,
+        version = _props.version,
+        published_at = _props.published_at,
+        onWatchItem = _props.onWatchItem,
+        caption = repo + ' ' + version,
+        descr = ITEM_DESCRIPTION;
+
     onWatchItem({
       caption: caption,
       config: { repo: repo, requestType: requestType, version: version, caption: caption, descr: descr, date: published_at }
     });
   },
   render: function render() {
-    var _props2 = this.props;
-    var caption = _props2.caption;
-    var repo = _props2.repo;
-    var version = _props2.version;
-    var published_at = _props2.published_at;
-    var html_url = _props2.html_url;
-    var onCloseItem = _props2.onCloseItem;
-    var _styleCaption = styles.captionSpanOpen;
-    var isShow = this.state.isShow;
+    var _props2 = this.props,
+        caption = _props2.caption,
+        repo = _props2.repo,
+        version = _props2.version,
+        published_at = _props2.published_at,
+        html_url = _props2.html_url,
+        onCloseItem = _props2.onCloseItem,
+        _styleCaption = styles.captionSpanOpen,
+        isShow = this.state.isShow;
 
     return _react2.default.createElement(
       'div',
@@ -157,4 +158,4 @@ var GitHubRecentRelease = _react2.default.createClass({
 });
 
 exports.default = GitHubRecentRelease;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\items\GitHubRecentRelease.js.map
+//# sourceMappingURL=GitHubRecentRelease.js.map

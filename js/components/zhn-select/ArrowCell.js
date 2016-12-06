@@ -41,9 +41,9 @@ var ArrowCell = _react2.default.createClass({
   render: function render() {
     var _this = this;
 
-    var _props = this.props;
-    var styleArrow = _props.styleArrow;
-    var onClick = _props.onClick;
+    var _props = this.props,
+        styleArrow = _props.styleArrow,
+        onClick = _props.onClick;
 
     return _react2.default.createElement(
       'span',
@@ -71,4 +71,4 @@ var ArrowCell = _react2.default.createClass({
 });
 
 exports.default = ArrowCell;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhn-select\ArrowCell.js.map
+//# sourceMappingURL=ArrowCell.js.map

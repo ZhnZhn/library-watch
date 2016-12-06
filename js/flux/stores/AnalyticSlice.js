@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _Logic = {
   sendItemEvent: function sendItemEvent(_ref) {
-    var eventAction = _ref.eventAction;
-    var eventLabel = _ref.eventLabel;
+    var eventAction = _ref.eventAction,
+        eventLabel = _ref.eventLabel;
 
     /* eslint-disable no-undef */
     if (window && window.ga && eventLabel) {
@@ -30,4 +30,4 @@ var AnalyticSlice = {
 };
 
 exports.default = AnalyticSlice;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\stores\AnalyticSlice.js.map
+//# sourceMappingURL=AnalyticSlice.js.map

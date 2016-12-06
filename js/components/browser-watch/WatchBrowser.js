@@ -145,12 +145,12 @@ var WatchBrowser = _react2.default.createClass(_extends({
   displayName: 'WatchBrowser'
 }, _WithDnDStyle2.default, (0, _createHandlerDnDGroup2.default)(DRAG, _WatchActions2.default), (0, _createHandlerDnDList2.default)(DRAG, _WatchActions2.default), (0, _createHandlerDnDItem2.default)(DRAG, _WatchActions2.default), {
   getInitialState: function getInitialState() {
-    var _props = this.props;
-    var _props$isShow = _props.isShow;
-    var isShow = _props$isShow === undefined ? false : _props$isShow;
-    var _props$isEditMode = _props.isEditMode;
-    var isEditMode = _props$isEditMode === undefined ? false : _props$isEditMode;
-    var store = _props.store;
+    var _props = this.props,
+        _props$isShow = _props.isShow,
+        isShow = _props$isShow === undefined ? false : _props$isShow,
+        _props$isEditMode = _props.isEditMode,
+        isEditMode = _props$isEditMode === undefined ? false : _props$isEditMode,
+        store = _props.store;
 
 
     this.isShouldUpdateFind = false;
@@ -175,10 +175,10 @@ var WatchBrowser = _react2.default.createClass(_extends({
     this.unsubscribe();
   },
   _onStore: function _onStore(actionType, data) {
-    var _props2 = this.props;
-    var browserType = _props2.browserType;
-    var showAction = _props2.showAction;
-    var updateAction = _props2.updateAction;
+    var _props2 = this.props,
+        browserType = _props2.browserType,
+        showAction = _props2.showAction,
+        updateAction = _props2.updateAction;
 
     if (actionType === showAction && data === browserType) {
       this._handlerShow();
@@ -209,20 +209,22 @@ var WatchBrowser = _react2.default.createClass(_extends({
     _WatchActions2.default.saveWatch();
   },
   _handlerToggleEditMode: function _handlerToggleEditMode() {
-    var _state = this.state;
-    var isShowFind = _state.isShowFind;
-    var isModeEdit = _state.isModeEdit;
-    var _isModeEdit = !isModeEdit;
+    var _state = this.state,
+        isShowFind = _state.isShowFind,
+        isModeEdit = _state.isModeEdit,
+        _isModeEdit = !isModeEdit;
+
     this.setState({
       isModeEdit: _isModeEdit,
       scrollClass: this._calcScrollClass(isShowFind, _isModeEdit)
     });
   },
   _handlerToggleFindInput: function _handlerToggleFindInput() {
-    var _state2 = this.state;
-    var isShowFind = _state2.isShowFind;
-    var isModeEdit = _state2.isModeEdit;
-    var _isShowFind = !isShowFind;
+    var _state2 = this.state,
+        isShowFind = _state2.isShowFind,
+        isModeEdit = _state2.isModeEdit,
+        _isShowFind = !isShowFind;
+
     this.setState({
       isShowFind: _isShowFind,
       scrollClass: this._calcScrollClass(_isShowFind, isModeEdit)
@@ -243,8 +245,8 @@ var WatchBrowser = _react2.default.createClass(_extends({
     var isModeEdit = this.state.isModeEdit;
 
     return watchList.groups.map(function (group, index) {
-      var caption = group.caption;
-      var lists = group.lists;
+      var caption = group.caption,
+          lists = group.lists;
 
       return _react2.default.createElement(
         _OpenClose2.default,
@@ -271,8 +273,8 @@ var WatchBrowser = _react2.default.createClass(_extends({
     var isModeEdit = this.state.isModeEdit;
 
     return lists.map(function (list) {
-      var caption = list.caption;
-      var items = list.items;
+      var caption = list.caption,
+          items = list.items;
 
       return _react2.default.createElement(
         _OpenClose2.default,
@@ -308,8 +310,9 @@ var WatchBrowser = _react2.default.createClass(_extends({
     var isModeEdit = this.state.isModeEdit;
 
     return items.map(function (item, index) {
-      var caption = item.caption;
-      var _className = index % 2 ? 'row__topic__even not-selected' : 'row__topic__odd not-selected';
+      var caption = item.caption,
+          _className = index % 2 ? 'row__topic__even not-selected' : 'row__topic__odd not-selected';
+
       return _react2.default.createElement(_WatchItem2.default, {
         key: caption,
         className: _className,
@@ -380,17 +383,17 @@ var WatchBrowser = _react2.default.createClass(_extends({
     );
   },
   render: function render() {
-    var _props3 = this.props;
-    var caption = _props3.caption;
-    var isDoubleWatch = _props3.isDoubleWatch;
-    var _state3 = this.state;
-    var isShow = _state3.isShow;
-    var isModeEdit = _state3.isModeEdit;
-    var scrollClass = _state3.scrollClass;
-    var watchList = _state3.watchList;
-    var _styleCaption = isDoubleWatch ? styles.captionRootDouble : styles.captionRoot;
-    var _captionEV = isModeEdit ? 'V' : 'E';
-    var _titleEV = isModeEdit ? "Toggle to View Mode" : "Toggle to Edit Mode";
+    var _props3 = this.props,
+        caption = _props3.caption,
+        isDoubleWatch = _props3.isDoubleWatch,
+        _state3 = this.state,
+        isShow = _state3.isShow,
+        isModeEdit = _state3.isModeEdit,
+        scrollClass = _state3.scrollClass,
+        watchList = _state3.watchList,
+        _styleCaption = isDoubleWatch ? styles.captionRootDouble : styles.captionRoot,
+        _captionEV = isModeEdit ? 'V' : 'E',
+        _titleEV = isModeEdit ? "Toggle to View Mode" : "Toggle to Edit Mode";
 
     return _react2.default.createElement(
       _Browser2.default,
@@ -450,4 +453,4 @@ var WatchBrowser = _react2.default.createClass(_extends({
 }));
 
 exports.default = WatchBrowser;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\WatchBrowser.js.map
+//# sourceMappingURL=WatchBrowser.js.map

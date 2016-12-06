@@ -64,11 +64,11 @@ var GroupEditPane = _react2.default.createClass({
     this.unsubscribe();
   },
   _onStore: function _onStore(actionType, data) {
-    var _props = this.props;
-    var actionCompleted = _props.actionCompleted;
-    var actionFailed = _props.actionFailed;
-    var forActionType = _props.forActionType;
-    var store = _props.store;
+    var _props = this.props,
+        actionCompleted = _props.actionCompleted,
+        actionFailed = _props.actionFailed,
+        forActionType = _props.forActionType,
+        store = _props.store;
 
     if (actionType === actionCompleted) {
       if (data.forActionType === forActionType) {
@@ -110,11 +110,11 @@ var GroupEditPane = _react2.default.createClass({
   render: function render() {
     var _this = this;
 
-    var onClose = this.props.onClose;
+    var onClose = this.props.onClose,
+        _state = this.state,
+        groupOptions = _state.groupOptions,
+        validationMessages = _state.validationMessages;
     //isUpdated
-    var _state = this.state;
-    var groupOptions = _state.groupOptions;
-    var validationMessages = _state.validationMessages;
 
 
     return _react2.default.createElement(
@@ -158,4 +158,4 @@ var GroupEditPane = _react2.default.createClass({
 });
 
 exports.default = GroupEditPane;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\GroupEditPane.js.map
+//# sourceMappingURL=GroupEditPane.js.map

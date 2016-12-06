@@ -69,10 +69,9 @@ var LoadFileDialog = _react2.default.createClass({
   _handlerChange: function _handlerChange(results) {
     //console.log(results)
     if (results && results[0]) {
-      var _results$ = _slicedToArray(results[0], 2);
-
-      var progressEvent = _results$[0];
-      var file = _results$[1];
+      var _results$ = _slicedToArray(results[0], 2),
+          progressEvent = _results$[0],
+          file = _results$[1];
 
       this.progressEvent = progressEvent;
       this.file = file;
@@ -85,8 +84,8 @@ var LoadFileDialog = _react2.default.createClass({
     if (this.progressEvent && this.file) {
       //console.log(this.file.name);
       //console.log(this.progressEvent.target.result);
-      var data = this.props.data;
-      var onLoad = data.onLoad;
+      var data = this.props.data,
+          onLoad = data.onLoad;
 
       onLoad({ progressEvent: this.progressEvent });
       this.setState({
@@ -108,15 +107,16 @@ var LoadFileDialog = _react2.default.createClass({
     onClose();
   },
   render: function render() {
-    var isShow = this.props.isShow;
-    //, { caption } = data
-    var validationMessages = this.state.validationMessages;
-    var _commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
+    var isShow = this.props.isShow,
+        validationMessages = this.state.validationMessages,
+        _commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
       key: 'a',
       type: 'TypeC',
       caption: 'Load',
       onClick: this._handlerLoad
     })];
+    //, { caption } = data
+
     return _react2.default.createElement(
       _ModalDialog2.default,
       {
@@ -153,4 +153,4 @@ var LoadFileDialog = _react2.default.createClass({
 });
 
 exports.default = LoadFileDialog;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\LoadFileDialog.js.map
+//# sourceMappingURL=LoadFileDialog.js.map

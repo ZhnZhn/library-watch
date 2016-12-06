@@ -22,4 +22,4 @@ var TestItem = _react2.default.createClass({
 });
 
 exports.default = TestItem;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\items\TestItem.js.map
+//# sourceMappingURL=TestItem.js.map

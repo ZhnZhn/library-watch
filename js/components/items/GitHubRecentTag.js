@@ -71,29 +71,29 @@ var styles = {
 };
 
 var Detail = function Detail(props) {
-  var json = props.json;
-  var commit = json.commit;
-  var files = json.files;
-  var stats = json.stats;
-  var html_url = json.html_url;
-  var author = commit.author;
-  var message = commit.message;
-  var committer = commit.committer;
-  var authorDate = author.date;
-  var authorName = author.name;
-  var committerDate = committer.date;
-  var committerName = committer.name;
-  var total = stats.total;
-  var additions = stats.additions;
-  var deletions = stats.deletions;
+  var json = props.json,
+      commit = json.commit,
+      files = json.files,
+      stats = json.stats,
+      html_url = json.html_url,
+      author = commit.author,
+      message = commit.message,
+      committer = commit.committer,
+      authorDate = author.date,
+      authorName = author.name,
+      committerDate = committer.date,
+      committerName = committer.name,
+      total = stats.total,
+      additions = stats.additions,
+      deletions = stats.deletions;
 
 
   var _renderFiles = function _renderFiles() {
-    var files = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+    var files = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
     return files.map(function (file, index) {
-      var className = index % 2 ? 'row__topic__even not-selected' : 'row__topic__odd not-selected';
-      var filename = file.filename;
+      var className = index % 2 ? 'row__topic__even not-selected' : 'row__topic__odd not-selected',
+          filename = file.filename;
 
       return _react2.default.createElement(
         'div',
@@ -228,14 +228,15 @@ var GitHubRecentTag = _react2.default.createClass({
     };
   },
   _handlerClickWatch: function _handlerClickWatch() {
-    var _props = this.props;
-    var repo = _props.repo;
-    var requestType = _props.requestType;
-    var version = _props.version;
-    var onWatchItem = _props.onWatchItem;
-    var tagDate = this.state.tagDate;
-    var caption = repo + ' ' + version;
-    var descr = ITEM_DESCRIPTION;
+    var _props = this.props,
+        repo = _props.repo,
+        requestType = _props.requestType,
+        version = _props.version,
+        onWatchItem = _props.onWatchItem,
+        tagDate = this.state.tagDate,
+        caption = repo + ' ' + version,
+        descr = ITEM_DESCRIPTION;
+
     onWatchItem({
       caption: caption,
       config: { repo: repo, requestType: requestType, version: version, caption: caption, descr: descr, date: tagDate }
@@ -246,12 +247,13 @@ var GitHubRecentTag = _react2.default.createClass({
 
     this.props.onClickDetail().then(function (json) {
       //console.log(json);
-      var _json$commit = json.commit;
-      var commit = _json$commit === undefined ? {} : _json$commit;
-      var _commit$committer = commit.committer;
-      var committer = _commit$committer === undefined ? {} : _commit$committer;
-      var tagDate = committer.date;
-      var _tagDate = tagDate.replace('T', ' ').replace('Z', '');
+      var _json$commit = json.commit,
+          commit = _json$commit === undefined ? {} : _json$commit,
+          _commit$committer = commit.committer,
+          committer = _commit$committer === undefined ? {} : _commit$committer,
+          tagDate = committer.date,
+          _tagDate = tagDate.replace('T', ' ').replace('Z', '');
+
       _this.setState({ isDetail: true, isShow: true, json: json, tagDate: _tagDate });
     });
   },
@@ -264,16 +266,16 @@ var GitHubRecentTag = _react2.default.createClass({
     });
   },
   render: function render() {
-    var _props2 = this.props;
-    var repo = _props2.repo;
-    var version = _props2.version;
-    var caption = _props2.caption;
-    var onCloseItem = _props2.onCloseItem;
-    var _styleCaption = styles.captionSpanOpen;
-    var _state = this.state;
-    var isShow = _state.isShow;
-    var isDetail = _state.isDetail;
-    var json = _state.json;
+    var _props2 = this.props,
+        repo = _props2.repo,
+        version = _props2.version,
+        caption = _props2.caption,
+        onCloseItem = _props2.onCloseItem,
+        _styleCaption = styles.captionSpanOpen,
+        _state = this.state,
+        isShow = _state.isShow,
+        isDetail = _state.isDetail,
+        json = _state.json;
 
     return _react2.default.createElement(
       'div',
@@ -324,4 +326,4 @@ var GitHubRecentTag = _react2.default.createClass({
 });
 
 exports.default = GitHubRecentTag;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\items\GitHubRecentTag.js.map
+//# sourceMappingURL=GitHubRecentTag.js.map

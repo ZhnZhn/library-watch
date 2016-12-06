@@ -55,10 +55,10 @@ var ModalDialogContainer = _react2.default.createClass({
     }
   },
   render: function render() {
-    var _props = this.props;
-    var isShow = _props.isShow;
-    var children = _props.children;
-    var onClose = _props.onClose;
+    var _props = this.props,
+        isShow = _props.isShow,
+        children = _props.children,
+        onClose = _props.onClose;
 
     var _className = void 0,
         _style = void 0;
@@ -83,4 +83,4 @@ var ModalDialogContainer = _react2.default.createClass({
 });
 
 exports.default = ModalDialogContainer;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\zhnContainers\ModalDialogContainer.js.map
+//# sourceMappingURL=ModalDialogContainer.js.map

@@ -13,24 +13,26 @@ var _GitHubRecentRelease2 = _interopRequireDefault(_GitHubRecentRelease);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var fGitHubRecentRelease = function fGitHubRecentRelease(_ref) {
-    var factory = _ref.factory;
-    var option = _ref.option;
-    var json = _ref.json;
-    var parentProps = _ref.parentProps;
-    var onCloseItem = _ref.onCloseItem;
-    var onWatchItem = _ref.onWatchItem;
-    var repo = option.repo;
-    var requestType = option.requestType;
-    var chartType = option.chartType;
-    var browserType = option.browserType;
-    var tag_name = json.tag_name;
-    var name = json.name;
-    var _json$published_at = json.published_at;
-    var published_at = _json$published_at === undefined ? 'empty' : _json$published_at;
-    var html_url = json.html_url;
-    var _version = tag_name ? tag_name : name ? name : 'empty';
-    var _published_at = published_at.replace('T', ' ').replace('Z', '');
-    var key = repo + '_' + requestType;
+    var factory = _ref.factory,
+        option = _ref.option,
+        json = _ref.json,
+        parentProps = _ref.parentProps,
+        onCloseItem = _ref.onCloseItem,
+        onWatchItem = _ref.onWatchItem;
+
+    var repo = option.repo,
+        requestType = option.requestType,
+        chartType = option.chartType,
+        browserType = option.browserType,
+        tag_name = json.tag_name,
+        name = json.name,
+        _json$published_at = json.published_at,
+        published_at = _json$published_at === undefined ? 'empty' : _json$published_at,
+        html_url = json.html_url,
+        _version = tag_name ? tag_name : name ? name : 'empty',
+        _published_at = published_at.replace('T', ' ').replace('Z', ''),
+        key = repo + '_' + requestType;
+
     return factory.createElement(_GitHubRecentRelease2.default, _extends({
         key: key,
         repo: repo,
@@ -45,4 +47,4 @@ var fGitHubRecentRelease = function fGitHubRecentRelease(_ref) {
 };
 
 exports.default = fGitHubRecentRelease;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\factories\fGitHubRecentRelease.js.map
+//# sourceMappingURL=fGitHubRecentRelease.js.map

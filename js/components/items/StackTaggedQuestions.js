@@ -104,12 +104,13 @@ var StackTaggedQuestions = _react2.default.createClass({
     this.setState({ isShow: !this.state.isShow });
   },
   _handlerClickWatch: function _handlerClickWatch() {
-    var _props = this.props;
-    var repo = _props.repo;
-    var requestType = _props.requestType;
-    var onWatchItem = _props.onWatchItem;
-    var caption = '' + repo;
-    var descr = ITEM_DESCRIPTION;
+    var _props = this.props,
+        repo = _props.repo,
+        requestType = _props.requestType,
+        onWatchItem = _props.onWatchItem,
+        caption = '' + repo,
+        descr = ITEM_DESCRIPTION;
+
     onWatchItem({
       caption: caption,
       config: { repo: repo, requestType: requestType, version: '', caption: caption, descr: descr }
@@ -119,17 +120,18 @@ var StackTaggedQuestions = _react2.default.createClass({
     var _this = this;
 
     return items.map(function (item, index) {
-      var answer_count = item.answer_count;
-      var score = item.score;
-      var view_count = item.view_count;
-      var title = item.title;
-      var dateAgo = item.dateAgo;
-      var link = item.link;
-      var owner = item.owner;
-      var tags = item.tags;
-      var reputation = owner.reputation;
-      var display_name = owner.display_name;
-      var className = index % 2 ? 'row-even not-selected' : 'row-odd not-selected';
+      var answer_count = item.answer_count,
+          score = item.score,
+          view_count = item.view_count,
+          title = item.title,
+          dateAgo = item.dateAgo,
+          link = item.link,
+          owner = item.owner,
+          tags = item.tags,
+          reputation = owner.reputation,
+          display_name = owner.display_name,
+          className = index % 2 ? 'row-even not-selected' : 'row-odd not-selected';
+
 
       return _react2.default.createElement(
         'div',
@@ -143,25 +145,25 @@ var StackTaggedQuestions = _react2.default.createClass({
             _react2.default.createElement(
               'span',
               { style: styles.PURPLE_BADGE },
-              '⚒ ',
+              '\u2692\xA0',
               answer_count
             ),
             _react2.default.createElement(
               'span',
               { style: styles.GREEN_BADGE },
-              '⚾ ',
+              '\u26BE\xA0',
               score
             ),
             _react2.default.createElement(
               'span',
               { style: styles.BLACK_BAGDE },
-              '☸ ',
+              '\u2638\xA0',
               view_count
             ),
             _react2.default.createElement(
               'span',
               { style: styles.GREEN_BADGE },
-              '☘ ',
+              '\u2618\xA0',
               reputation
             ),
             _react2.default.createElement(
@@ -198,15 +200,15 @@ var StackTaggedQuestions = _react2.default.createClass({
     });
   },
   render: function render() {
-    var _props2 = this.props;
-    var repo = _props2.repo;
-    var caption = _props2.caption;
-    var _props2$items = _props2.items;
-    var items = _props2$items === undefined ? [] : _props2$items;
-    var onCloseItem = _props2.onCloseItem;
-    var _items_count = items.length;
-    var _styleCaption = styles.captionSpanOpen;
-    var isShow = this.state.isShow;
+    var _props2 = this.props,
+        repo = _props2.repo,
+        caption = _props2.caption,
+        _props2$items = _props2.items,
+        items = _props2$items === undefined ? [] : _props2$items,
+        onCloseItem = _props2.onCloseItem,
+        _items_count = items.length,
+        _styleCaption = styles.captionSpanOpen,
+        isShow = this.state.isShow;
 
 
     return _react2.default.createElement(
@@ -246,4 +248,4 @@ var StackTaggedQuestions = _react2.default.createClass({
 });
 
 exports.default = StackTaggedQuestions;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\items\StackTaggedQuestions.js.map
+//# sourceMappingURL=StackTaggedQuestions.js.map

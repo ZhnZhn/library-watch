@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
@@ -52,4 +52,4 @@ var deepEqual = function deepEqual(objA, objB) {
 };
 
 exports.default = deepEqual;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\charts\deepEqual.js.map
+//# sourceMappingURL=deepEqual.js.map

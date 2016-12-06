@@ -11,12 +11,12 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ToolBarButton = function ToolBarButton(props) {
-  var type = props.type;
-  var style = props.style;
-  var title = props.title;
-  var caption = props.caption;
-  var children = props.children;
-  var onClick = props.onClick;
+  var type = props.type,
+      style = props.style,
+      title = props.title,
+      caption = props.caption,
+      children = props.children,
+      onClick = props.onClick;
 
 
   var _className = void 0;
@@ -43,4 +43,4 @@ var ToolBarButton = function ToolBarButton(props) {
 };
 
 exports.default = ToolBarButton;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\header\ToolBarButton.js.map
+//# sourceMappingURL=ToolBarButton.js.map

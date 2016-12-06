@@ -89,11 +89,12 @@ var InputDate = _react2.default.createClass({
     }
   },
   render: function render() {
-    var _state = this.state;
-    var value = _state.value;
-    var isValid = _state.isValid;
-    var errorInput = _state.errorInput;
-    var styleHr = isValid ? { borderColor: '#1B75BB' } : { borderColor: '#F44336' };
+    var _state = this.state,
+        value = _state.value,
+        isValid = _state.isValid,
+        errorInput = _state.errorInput,
+        styleHr = isValid ? { borderColor: '#1B75BB' } : { borderColor: '#F44336' };
+
 
     return _react2.default.createElement(
       'div',
@@ -128,4 +129,4 @@ var InputDate = _react2.default.createClass({
 });
 
 exports.default = InputDate;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\InputDate.js.map
+//# sourceMappingURL=InputDate.js.map

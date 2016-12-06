@@ -67,23 +67,26 @@ const _rRequestTypeToUrl = {
 
 var RestApi = {
   getApi: function getApi(option) {
-    var requestType = option.requestType;
-    var id = requestType.split('_')[0];
+    var requestType = option.requestType,
+        id = requestType.split('_')[0];
+
     return _RouterApi2.default[id];
   },
   getRequestUrl: function getRequestUrl(option) {
-    var requestType = option.requestType;
-    var id = requestType.split('_')[0];
-    var api = _RouterApi2.default[id];
+    var requestType = option.requestType,
+        id = requestType.split('_')[0],
+        api = _RouterApi2.default[id];
+
     return api.getRequestUrl(option);
 
     //const fnFactory = _rRequestTypeToUrl[option.requestType];
     //return fnFactory(option);
   },
   getOnCheckResponse: function getOnCheckResponse(option) {
-    var requestType = option.requestType;
-    var id = requestType.split('_')[0];
-    var api = _RouterApi2.default[id];
+    var requestType = option.requestType,
+        id = requestType.split('_')[0],
+        api = _RouterApi2.default[id];
+
     return api.getOnCheckResponse();
   },
   checkResponse: function checkResponse() {
@@ -92,4 +95,4 @@ var RestApi = {
 };
 
 exports.default = RestApi;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\api\RestApi.js.map
+//# sourceMappingURL=RestApi.js.map

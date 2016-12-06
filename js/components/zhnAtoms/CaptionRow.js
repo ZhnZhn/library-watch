@@ -34,10 +34,10 @@ var styles = {
 };
 
 var CaptionRow = function CaptionRow(props) {
-  var caption = props.caption;
-  var children = props.children;
-  var styleRoot = props.styleRoot;
-  var onClose = props.onClose;
+  var caption = props.caption,
+      children = props.children,
+      styleRoot = props.styleRoot,
+      onClose = props.onClose;
 
 
   return _react2.default.createElement(
@@ -57,4 +57,4 @@ var CaptionRow = function CaptionRow(props) {
 };
 
 exports.default = CaptionRow;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\CaptionRow.js.map
+//# sourceMappingURL=CaptionRow.js.map

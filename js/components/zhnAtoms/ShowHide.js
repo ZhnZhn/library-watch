@@ -21,11 +21,11 @@ var SHOW_POPUP = "show-popup",
 };
 
 var ShowHide = function ShowHide(props) {
-  var isShow = props.isShow;
-  var style = props.style;
-  var children = props.children;
-  var _styleShow = isShow ? STYLES.SHOW : STYLES.HIDE;
-  var _classShow = isShow ? SHOW_POPUP : null;
+  var isShow = props.isShow,
+      style = props.style,
+      children = props.children,
+      _styleShow = isShow ? STYLES.SHOW : STYLES.HIDE,
+      _classShow = isShow ? SHOW_POPUP : null;
 
   return _react2.default.createElement(
     'div',
@@ -35,4 +35,4 @@ var ShowHide = function ShowHide(props) {
 };
 
 exports.default = ShowHide;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\ShowHide.js.map
+//# sourceMappingURL=ShowHide.js.map

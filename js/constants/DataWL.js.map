@@ -1,9 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Template_2\\src\\constants\\DataWL.js",
- "file": "D:\\_Dev\\_React\\_Template_2\\js\\constants\\DataWL.js",
- "sourceRoot": "",
- "names": [],
- "mappings": ";;;;;AAAA,IAAM,SAAS;AACX,mBAAgB;AACZ,cAAO,eADK;AAEZ,mBAAY,YAFA;AAGZ,uBAAgB,YAHJ;AAIZ,+BAAwB;AAJZ;AADL,CAAf;;kBASe,M"
-}
+{"version":3,"sources":["../../src/constants/DataWL.js"],"names":["DataWL","WL_WATCH_LIST","type","menuTitle","dialogCaption","chartContainerCaption"],"mappings":";;;;;AAAA,IAAMA,SAAS;AACXC,mBAAgB;AACZC,cAAO,eADK;AAEZC,mBAAY,YAFA;AAGZC,uBAAgB,YAHJ;AAIZC,+BAAwB;AAJZ;AADL,CAAf;;kBASeL,M","file":"DataWL.js","sourcesContent":["const DataWL = {\r\n    WL_WATCH_LIST : {\r\n        type : 'WL_WATCH_LIST',\r\n        menuTitle : 'Watch List',\r\n        dialogCaption : 'Watch List',\r\n        chartContainerCaption : 'Watch List'\r\n    }\r\n}\r\n\r\nexport default DataWL\r\n"]}

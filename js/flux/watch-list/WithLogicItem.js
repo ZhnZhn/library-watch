@@ -12,13 +12,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var WithLogicItem = {
   addItem: function addItem(watchList, item) {
-    var groupCaption = item.groupCaption;
-    var listCaption = item.listCaption;
-    var caption = item.caption;
-    var config = item.config;
-    var toGroup = _Fn2.default.findGroup(watchList, groupCaption);
-    var toList = _Fn2.default.findList(toGroup, listCaption);
-    var items = toList.items;
+    var groupCaption = item.groupCaption,
+        listCaption = item.listCaption,
+        caption = item.caption,
+        config = item.config,
+        toGroup = _Fn2.default.findGroup(watchList, groupCaption),
+        toList = _Fn2.default.findList(toGroup, listCaption),
+        items = toList.items;
 
     if (_Fn2.default.checkIsInArraySameCaption(items, caption)) {
       return _Fn2.default.fResultItemExisted(caption, listCaption);
@@ -33,9 +33,9 @@ var WithLogicItem = {
     return { isDone: true };
   },
   removeItem: function removeItem(watchList, _ref) {
-    var groupCaption = _ref.groupCaption;
-    var listCaption = _ref.listCaption;
-    var caption = _ref.caption;
+    var groupCaption = _ref.groupCaption,
+        listCaption = _ref.listCaption,
+        caption = _ref.caption;
 
     var groupFrom = _Fn2.default.findGroup(watchList, groupCaption),
         listFrom = _Fn2.default.findList(groupFrom, listCaption);
@@ -45,4 +45,4 @@ var WithLogicItem = {
 };
 
 exports.default = WithLogicItem;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\watch-list\WithLogicItem.js.map
+//# sourceMappingURL=WithLogicItem.js.map

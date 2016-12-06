@@ -6,10 +6,10 @@ Object.defineProperty(exports, "__esModule", {
 
 var Chart = {
   fLineConfig: function fLineConfig(_ref) {
-    var _ref$labels = _ref.labels;
-    var labels = _ref$labels === undefined ? ['1', '2'] : _ref$labels;
-    var _ref$data = _ref.data;
-    var data = _ref$data === undefined ? [0, 0] : _ref$data;
+    var _ref$labels = _ref.labels,
+        labels = _ref$labels === undefined ? ['1', '2'] : _ref$labels,
+        _ref$data = _ref.data,
+        data = _ref$data === undefined ? [0, 0] : _ref$data;
 
     return {
       labels: labels,
@@ -43,4 +43,4 @@ var Chart = {
 };
 
 exports.default = Chart;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\charts\Chart.js.map
+//# sourceMappingURL=Chart.js.map

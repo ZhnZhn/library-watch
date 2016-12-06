@@ -17,8 +17,8 @@ var styles = {
 };
 
 var SvgClose = function SvgClose(_ref) {
-  var style = _ref.style;
-  var onClose = _ref.onClose;
+  var style = _ref.style,
+      onClose = _ref.onClose;
   return _react2.default.createElement(
     'div',
     {
@@ -42,4 +42,4 @@ var SvgClose = function SvgClose(_ref) {
 };
 
 exports.default = SvgClose;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\SvgClose.js.map
+//# sourceMappingURL=SvgClose.js.map

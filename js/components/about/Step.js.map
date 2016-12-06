@@ -1,9 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\about\\Step.jsx",
- "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\about\\Step.js",
- "sourceRoot": "",
- "names": [],
- "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAM,SAAS;AACb,QAAO;AACL,aAAU,cADL;AAEL,WAAO,SAFF;AAGL,YAAS,mBAHJ;AAIL,kBAAe,KAJV;AAKL,WAAQ,MALH;AAML,YAAS,MANJ;AAOL,eAAW;AAPN;AADM,CAAf;;AAYA,IAAM,OAAO,SAAP,IAAO,CAAC,KAAD,EAAW;AACpB,SACE;AAAA;AAAA,MAAM,OAAO,OAAO,IAApB;AACI,UAAM;AADV,GADF;AAKH,CAND;;kBAQe,I"
-}
+{"version":3,"sources":["../../../src/components/about/Step.jsx"],"names":["STYLES","STEP","display","color","border","borderRadius","width","height","textAlign","Step","props","step"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,SAAS;AACbC,QAAO;AACLC,aAAU,cADL;AAELC,WAAO,SAFF;AAGLC,YAAS,mBAHJ;AAILC,kBAAe,KAJV;AAKLC,WAAQ,MALH;AAMLC,YAAS,MANJ;AAOLC,eAAW;AAPN;AADM,CAAf;;AAYA,IAAMC,OAAO,SAAPA,IAAO,CAACC,KAAD,EAAW;AACpB,SACE;AAAA;AAAA,MAAM,OAAOV,OAAOC,IAApB;AACIS,UAAMC;AADV,GADF;AAKH,CAND;;kBAQeF,I","file":"Step.js","sourcesContent":["import React from 'react';\r\n\r\nconst STYLES = {\r\n  STEP : {\r\n    display : 'inline-block',\r\n    color: '#80c040',\r\n    border : '2px solid #80c040',\r\n    borderRadius : '50%',\r\n    width : '22px',\r\n    height : '22px',\r\n    textAlign: 'center'\r\n  }\r\n}\r\n\r\nconst Step = (props) => {\r\n    return (\r\n      <span style={STYLES.STEP}>\r\n         {props.step}\r\n      </span>\r\n    );\r\n};\r\n\r\nexport default Step\r\n"]}

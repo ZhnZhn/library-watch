@@ -54,9 +54,9 @@ var ProgressLine = _react2.default.createClass({
     }
   },
   render: function render() {
-    var _props = this.props;
-    var color = _props.color;
-    var height = _props.height;
+    var _props = this.props,
+        color = _props.color,
+        height = _props.height;
 
     var _style = void 0;
 
@@ -102,4 +102,4 @@ var ProgressLine = _react2.default.createClass({
 });
 
 exports.default = ProgressLine;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\zhnAtoms\ProgressLine.js.map
+//# sourceMappingURL=ProgressLine.js.map

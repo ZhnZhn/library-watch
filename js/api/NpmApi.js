@@ -24,9 +24,9 @@ var _rRequestTypeToUrl = {
     return BASE + '/downloads/range/last-month/' + option.repo;
   },
   NPM_DOWNLOADS: function NPM_DOWNLOADS(option) {
-    var fromDate = option.fromDate;
-    var toDate = option.toDate;
-    var repo = option.repo;
+    var fromDate = option.fromDate,
+        toDate = option.toDate,
+        repo = option.repo;
 
     return BASE + '/downloads/range/' + fromDate + ':' + toDate + '/' + repo;
   }
@@ -41,7 +41,7 @@ var NpmApi = {
     return this.checkResponse;
   },
   checkResponse: function checkResponse() {
-    var json = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+    var json = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var option = arguments[1];
     var error = json.error;
 
@@ -56,4 +56,4 @@ var NpmApi = {
 };
 
 exports.default = NpmApi;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\api\NpmApi.js.map
+//# sourceMappingURL=NpmApi.js.map

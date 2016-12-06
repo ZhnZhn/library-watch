@@ -39,10 +39,11 @@ var styles = {
 };
 
 var Tab = function Tab(props) {
-    var title = props.title;
-    var isSelected = props.isSelected;
-    var onClick = props.onClick;
-    var _selectedStyle = isSelected ? styles.selected : null;
+    var title = props.title,
+        isSelected = props.isSelected,
+        onClick = props.onClick,
+        _selectedStyle = isSelected ? styles.selected : null;
+
     return _react2.default.createElement(
         'li',
         {
@@ -58,4 +59,4 @@ var Tab = function Tab(props) {
 };
 
 exports.default = Tab;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\Tab.js.map
+//# sourceMappingURL=Tab.js.map

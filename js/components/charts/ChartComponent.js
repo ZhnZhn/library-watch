@@ -93,9 +93,9 @@ var ChartComponent = _react2.default.createClass({
 		this.chart_instance.destroy();
 	},
 	updateChart: function updateChart() {
-		var _props = this.props;
-		var data = _props.data;
-		var options = _props.options;
+		var _props = this.props,
+		    data = _props.data,
+		    options = _props.options;
 
 
 		if (!this.chart_instance) return;
@@ -110,10 +110,10 @@ var ChartComponent = _react2.default.createClass({
 	},
 	renderChart: function renderChart() {
 		//legend
-		var _props2 = this.props;
-		var data = _props2.data;
-		var options = _props2.options;
-		var type = _props2.type;
+		var _props2 = this.props,
+		    data = _props2.data,
+		    options = _props2.options,
+		    type = _props2.type;
 
 		var node = _reactDom2.default.findDOMNode(this);
 
@@ -132,10 +132,10 @@ var ChartComponent = _react2.default.createClass({
 		}
 	},
 	render: function render() {
-		var _props3 = this.props;
-		var height = _props3.height;
-		var width = _props3.width;
-		var onElementsClick = _props3.onElementsClick;
+		var _props3 = this.props,
+		    height = _props3.height,
+		    width = _props3.width,
+		    onElementsClick = _props3.onElementsClick;
 
 
 		return _react2.default.createElement('canvas', {
@@ -147,4 +147,4 @@ var ChartComponent = _react2.default.createClass({
 });
 
 exports.default = ChartComponent;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\charts\ChartComponent.js.map
+//# sourceMappingURL=ChartComponent.js.map

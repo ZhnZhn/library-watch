@@ -38,10 +38,10 @@ var WrapperInputSearch = _react2.default.createClass({
     }
   },
   render: function render() {
-    var _props = this.props;
-    var style = _props.style;
-    var data = _props.data;
-    var _options = _TransformFn2.default.fromLevel3(data);
+    var _props = this.props,
+        style = _props.style,
+        data = _props.data,
+        _options = _TransformFn2.default.fromLevel3(data);
 
     return _react2.default.createElement(
       'div',
@@ -58,4 +58,4 @@ var WrapperInputSearch = _react2.default.createClass({
 });
 
 exports.default = WrapperInputSearch;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\WrapperInputSearch.js.map
+//# sourceMappingURL=WrapperInputSearch.js.map

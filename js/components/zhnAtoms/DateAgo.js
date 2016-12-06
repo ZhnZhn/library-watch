@@ -39,11 +39,12 @@ var DateAgo = _react2.default.createClass({
     this.setState({ isShowDate: !this.state.isShowDate });
   },
   render: function render() {
-    var _props = this.props;
-    var dateAgo = _props.dateAgo;
-    var date = _props.date;
-    var isShowDate = this.state.isShowDate;
-    var _dateStyle = isShowDate ? { display: 'inline-block' } : { display: 'none' };
+    var _props = this.props,
+        dateAgo = _props.dateAgo,
+        date = _props.date,
+        isShowDate = this.state.isShowDate,
+        _dateStyle = isShowDate ? { display: 'inline-block' } : { display: 'none' };
+
     return _react2.default.createElement(
       'span',
       null,
@@ -67,4 +68,4 @@ var DateAgo = _react2.default.createClass({
 });
 
 exports.default = DateAgo;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\DateAgo.js.map
+//# sourceMappingURL=DateAgo.js.map

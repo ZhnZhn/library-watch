@@ -84,10 +84,11 @@ var BrowserSlice = {
     }
   },
   onLoadBrowserDynamicCompleted: function onLoadBrowserDynamicCompleted(option) {
-    var menu = option.menu;
-    var items = option.items;
-    var browserType = option.browserType;
-    var elMenu = _BrowserMenu2.default.createMenu(menu, items, browserType);
+    var menu = option.menu,
+        items = option.items,
+        browserType = option.browserType,
+        elMenu = _BrowserMenu2.default.createMenu(menu, items, browserType);
+
     this.routeDialog[browserType] = items;
     this.browserMenu[browserType] = elMenu;
     this.trigger(_BrowserActions.BrowserActionTypes.LOAD_BROWSER_DYNAMIC_COMPLETED, {
@@ -104,4 +105,4 @@ var BrowserSlice = {
 };
 
 exports.default = BrowserSlice;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\stores\BrowserSlice.js.map
+//# sourceMappingURL=BrowserSlice.js.map

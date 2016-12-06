@@ -86,10 +86,9 @@ var DialogType2 = _react2.default.createClass(_extends({}, _WithValidation2.defa
   _createValidationMessages: function _createValidationMessages() {
     var msg = [];
 
-    var _datesFragment$getVal = this.datesFragment.getValidation();
-
-    var isValid = _datesFragment$getVal.isValid;
-    var datesMsg = _datesFragment$getVal.datesMsg;
+    var _datesFragment$getVal = this.datesFragment.getValidation(),
+        isValid = _datesFragment$getVal.isValid,
+        datesMsg = _datesFragment$getVal.datesMsg;
 
     if (!isValid) {
       msg = msg.concat(datesMsg);
@@ -99,16 +98,14 @@ var DialogType2 = _react2.default.createClass(_extends({}, _WithValidation2.defa
     return msg;
   },
   _createLoadOption: function _createLoadOption() {
-    var repo = this.inputRepo.getValue();
-
-    var _datesFragment$getVal2 = this.datesFragment.getValues();
-
-    var fromDate = _datesFragment$getVal2.fromDate;
-    var toDate = _datesFragment$getVal2.toDate;
-    var _fromDate = _DateUtils2.default.toUTCMillis(fromDate) / 1000;
-    var _toDate = _DateUtils2.default.toUTCMillis(toDate) / 1000;
-    var requestType = this.props.requestType;
-    var value = this.sortByItem.value;
+    var repo = this.inputRepo.getValue(),
+        _datesFragment$getVal2 = this.datesFragment.getValues(),
+        fromDate = _datesFragment$getVal2.fromDate,
+        toDate = _datesFragment$getVal2.toDate,
+        _fromDate = _DateUtils2.default.toUTCMillis(fromDate) / 1000,
+        _toDate = _DateUtils2.default.toUTCMillis(toDate) / 1000,
+        requestType = this.props.requestType,
+        value = this.sortByItem.value;
 
 
     return {
@@ -124,13 +121,13 @@ var DialogType2 = _react2.default.createClass(_extends({}, _WithValidation2.defa
   render: function render() {
     var _this = this;
 
-    var _props = this.props;
-    var caption = _props.caption;
-    var isShow = _props.isShow;
-    var onShow = _props.onShow;
-    var oneTitle = _props.oneTitle;
-    var onePlaceholder = _props.onePlaceholder;
-    var _commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
+    var _props = this.props,
+        caption = _props.caption,
+        isShow = _props.isShow,
+        onShow = _props.onShow,
+        oneTitle = _props.oneTitle,
+        onePlaceholder = _props.onePlaceholder,
+        _commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
       key: 'a',
       type: 'TypeC',
       caption: 'Default',
@@ -145,8 +142,8 @@ var DialogType2 = _react2.default.createClass(_extends({}, _WithValidation2.defa
       type: 'TypeC',
       caption: 'Load',
       onClick: this._handlerLoad
-    })];
-    var validationMessages = this.state.validationMessages;
+    })],
+        validationMessages = this.state.validationMessages;
 
 
     return _react2.default.createElement(
@@ -188,4 +185,4 @@ var DialogType2 = _react2.default.createClass(_extends({}, _WithValidation2.defa
 }));
 
 exports.default = DialogType2;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\DialogType2.js.map
+//# sourceMappingURL=DialogType2.js.map

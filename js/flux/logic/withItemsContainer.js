@@ -45,4 +45,4 @@ var WithItemsContainer = {
 };
 
 exports.default = WithItemsContainer;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\flux\logic\WithItemsContainer.js.map
+//# sourceMappingURL=WithItemsContainer.js.map

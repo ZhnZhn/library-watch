@@ -52,9 +52,9 @@ var RowInputText = _react2.default.createClass({
   render: function render() {
     var _this = this;
 
-    var _props = this.props;
-    var caption = _props.caption;
-    var placeholder = _props.placeholder;
+    var _props = this.props,
+        caption = _props.caption,
+        placeholder = _props.placeholder;
 
     return _react2.default.createElement(
       'div',
@@ -82,4 +82,4 @@ var RowInputText = _react2.default.createClass({
 });
 
 exports.default = RowInputText;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\dialogs\RowInputText.js.map
+//# sourceMappingURL=RowInputText.js.map

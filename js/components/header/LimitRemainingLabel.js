@@ -45,8 +45,8 @@ var LimitRemainingLabel = _react2.default.createClass({
     }
   },
   render: function render() {
-    var style = this.props.style;
-    var value = this.state.value;
+    var style = this.props.style,
+        value = this.state.value;
 
 
     return _react2.default.createElement(
@@ -58,4 +58,4 @@ var LimitRemainingLabel = _react2.default.createClass({
 });
 
 exports.default = LimitRemainingLabel;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\header\LimitRemainingLabel.js.map
+//# sourceMappingURL=LimitRemainingLabel.js.map

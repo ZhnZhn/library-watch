@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var WithValidation = {
   _handlerLoadWithValidation: function _handlerLoadWithValidation(validationMessages, fnCreateOption) {
-    var onLoad = arguments.length <= 2 || arguments[2] === undefined ? this.props.onLoad : arguments[2];
+    var onLoad = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.props.onLoad;
 
     if (validationMessages.isValid) {
       onLoad(fnCreateOption());
@@ -17,7 +17,7 @@ var WithValidation = {
     }
   },
   _handlerCloseWithValidation: function _handlerCloseWithValidation(fnCreateMessages) {
-    var onClose = arguments.length <= 1 || arguments[1] === undefined ? this.props.onClose : arguments[1];
+    var onClose = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.props.onClose;
 
     if (this.state.validationMessages.length !== 0) {
       this.setState({ validationMessages: fnCreateMessages() });
@@ -27,4 +27,4 @@ var WithValidation = {
 };
 
 exports.default = WithValidation;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\WithValidation.js.map
+//# sourceMappingURL=WithValidation.js.map

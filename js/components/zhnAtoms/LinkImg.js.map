@@ -1,9 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\zhnAtoms\\LinkImg.jsx",
- "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\zhnAtoms\\LinkImg.js",
- "sourceRoot": "",
- "names": [],
- "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAM,UAAU,SAAV,OAAU,CAAC,KAAD,EAAW;AAAA,MACjB,IADiB,GACmB,KADnB,CACjB,IADiB;AAAA,MACX,QADW,GACmB,KADnB,CACX,QADW;AAAA,MACD,MADC,GACmB,KADnB,CACD,MADC;AACnB,MAA0B,OAA1B,GAAsC,KAAtC,CAA0B,OAA1B;AACA,iBAAY,OAAD,GAAY,OAAZ,GAAsB,aAAjC;;AAEN,MAAM,gBAAgB,SAAhB,aAAgB,CAAC,KAAD,EAAW;AAC9B,YAAQ,GAAR,CAAY,oCAAoC,MAAhD;AACF,GAFD;;AAIA,SACE;AAAA;AAAA,MAAG,MAAM,IAAT;AACG;AACG,eAAS,QADZ;AAEG,iBAAW,QAFd;AAGG,WAAK;AAHR;AADH,GADF;AASD,CAjBD;;kBAmBe,O"
-}
+{"version":3,"sources":["../../../src/components/zhnAtoms/LinkImg.jsx"],"names":["LinkImg","props","href","imgClass","imgSrc","onError","_onError","_handlerError","event","console","log"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,UAAU,SAAVA,OAAU,CAACC,KAAD,EAAW;AAAA,MACjBC,IADiB,GACmBD,KADnB,CACjBC,IADiB;AAAA,MACXC,QADW,GACmBF,KADnB,CACXE,QADW;AAAA,MACDC,MADC,GACmBH,KADnB,CACDG,MADC;AAAA,MACOC,OADP,GACmBJ,KADnB,CACOI,OADP;AAAA,MAEnBC,QAFmB,GAEPD,OAAD,GAAYA,OAAZ,GAAsBE,aAFd;;AAIzB,MAAMA,gBAAgB,SAAhBA,aAAgB,CAACC,KAAD,EAAW;AAC9BC,YAAQC,GAAR,CAAY,oCAAoCN,MAAhD;AACF,GAFD;;AAIA,SACE;AAAA;AAAA,MAAG,MAAMF,IAAT;AACG;AACG,eAASI,QADZ;AAEG,iBAAWH,QAFd;AAGG,WAAKC;AAHR;AADH,GADF;AASD,CAjBD;;kBAmBeJ,O","file":"LinkImg.js","sourcesContent":["import React from 'react';\r\n\r\nconst LinkImg = (props) => {\r\n  const { href, imgClass, imgSrc, onError } = props\r\n      , _onError = (onError) ? onError : _handlerError\r\n\r\n  const _handlerError = (event) => {\r\n     console.log(\"Failed to load image with src: \" + imgSrc);     \r\n  };\r\n\r\n  return (\r\n    <a href={href}>\r\n       <img\r\n          onError={_onError}\r\n          className={imgClass}\r\n          src={imgSrc}\r\n       />\r\n    </a>\r\n  )\r\n};\r\n\r\nexport default LinkImg\r\n"]}

@@ -60,9 +60,9 @@ var LoadItemDialog = _react2.default.createClass({
     return true;
   },
   _handlerLoad: function _handlerLoad() {
-    var _props = this.props;
-    var data = _props.data;
-    var onClose = _props.onClose;
+    var _props = this.props,
+        data = _props.data,
+        onClose = _props.onClose;
 
     _ChartActions2.default.loadStock(_Type.ChartType.WATCH_LIST, _Type.BrowserType.WATCH_LIST, data);
     onClose();
@@ -87,18 +87,19 @@ var LoadItemDialog = _react2.default.createClass({
     );
   },
   render: function render() {
-    var _props2 = this.props;
-    var isShow = _props2.isShow;
-    var data = _props2.data;
-    var caption = data.caption;
-    var descr = data.descr;
-    var date = data.date;
-    var _commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
+    var _props2 = this.props,
+        isShow = _props2.isShow,
+        data = _props2.data,
+        caption = data.caption,
+        descr = data.descr,
+        date = data.date,
+        _commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
       key: 'a',
       type: 'TypeC',
       caption: 'Load',
       onClick: this._handlerLoad
     })];
+
     return _react2.default.createElement(
       _ModalDialog2.default,
       {
@@ -136,4 +137,4 @@ var LoadItemDialog = _react2.default.createClass({
 });
 
 exports.default = LoadItemDialog;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\LoadItemDialog.js.map
+//# sourceMappingURL=LoadItemDialog.js.map

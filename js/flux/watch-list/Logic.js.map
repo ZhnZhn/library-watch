@@ -1,9 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\flux\\watch-list\\Logic.js",
- "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\flux\\watch-list\\Logic.js",
- "sourceRoot": "",
- "names": [],
- "mappings": ";;;;;;;;AACA;;;;AAEA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAM;;AAQJ,aAAY,aAAG;;AARX,EAAN;;kBAYe,K"
-}
+{"version":3,"sources":["../../../src/flux/watch-list/Logic.js"],"names":["Logic","findGroup"],"mappings":";;;;;;;;AACA;;;;AAEA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA;;AAQJC,aAAY,aAAGA;;AARX,EAAN;;kBAYeD,K","file":"Logic.js","sourcesContent":["\r\nimport Fn from './Fn';\r\n\r\nimport WithLogicGroup from './WithLogicGroup';\r\nimport WithLogicList from './WithLogicList';\r\nimport WithLogicItem from './WithLogicItem';\r\nimport WithLogicDragDrop from './WithLogicDragDrop';\r\n\r\nconst Logic = {\r\n\r\n  ...WithLogicGroup,\r\n  ...WithLogicList,\r\n  ...WithLogicItem,\r\n\r\n  ...WithLogicDragDrop,\r\n\r\n  findGroup : Fn.findGroup\r\n\r\n};\r\n\r\nexport default Logic\r\n"]}

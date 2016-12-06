@@ -60,11 +60,11 @@ var ConsentCookiePopup = _react2.default.createClass({
     }
   },
   render: function render() {
-    var _state = this.state;
-    var isOpacity = _state.isOpacity;
-    var isDisplay = _state.isDisplay;
-    var _opacityStyle = isOpacity ? undefined : STYLE.ROOT_SHOW;
-    var _displayStyle = isDisplay ? undefined : STYLE.ROOT_HIDE;
+    var _state = this.state,
+        isOpacity = _state.isOpacity,
+        isDisplay = _state.isDisplay,
+        _opacityStyle = isOpacity ? undefined : STYLE.ROOT_SHOW,
+        _displayStyle = isDisplay ? undefined : STYLE.ROOT_HIDE;
 
     return _react2.default.createElement(
       'div',
@@ -94,4 +94,4 @@ var ConsentCookiePopup = _react2.default.createClass({
 });
 
 exports.default = ConsentCookiePopup;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\ConsentCookiePopup.js.map
+//# sourceMappingURL=ConsentCookiePopup.js.map

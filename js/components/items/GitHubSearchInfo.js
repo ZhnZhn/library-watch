@@ -57,19 +57,20 @@ var styles = {
 };
 
 var ItemDescription = function ItemDescription(props) {
-  var _props$library = props.library;
-  var library = _props$library === undefined ? {} : _props$library;
-  var name = library.name;
-  var description = library.description;
-  var size = library.size;
-  var created_at = library.created_at;
-  var pushed_at = library.pushed_at;
-  var stargazers_count = library.stargazers_count;
-  var open_issues = library.open_issues;
-  var watchers_count = library.watchers_count;
-  var html_url = library.html_url;
-  var _dateCreatedAt = created_at.replace('T', ' ').replace('Z', '');
-  var _datePushedAt = pushed_at.replace('T', ' ').replace('Z', '');
+  var _props$library = props.library,
+      library = _props$library === undefined ? {} : _props$library,
+      name = library.name,
+      description = library.description,
+      size = library.size,
+      created_at = library.created_at,
+      pushed_at = library.pushed_at,
+      stargazers_count = library.stargazers_count,
+      open_issues = library.open_issues,
+      watchers_count = library.watchers_count,
+      html_url = library.html_url,
+      _dateCreatedAt = created_at.replace('T', ' ').replace('Z', ''),
+      _datePushedAt = pushed_at.replace('T', ' ').replace('Z', '');
+
   return _react2.default.createElement(
     'div',
     { className: 'library' },
@@ -189,15 +190,15 @@ var GitHubSearchInfo = _react2.default.createClass({
     this.setState({ isShow: !this.state.isShow });
   },
   render: function render() {
-    var _props = this.props;
-    var repo = _props.repo;
-    var stars_count = _props.stars_count;
-    var pushed_at = _props.pushed_at;
-    var caption = _props.caption;
-    var library = _props.library;
-    var onCloseItem = _props.onCloseItem;
-    var _styleCaption = styles.captionSpanOpen;
-    var isShow = this.state.isShow;
+    var _props = this.props,
+        repo = _props.repo,
+        stars_count = _props.stars_count,
+        pushed_at = _props.pushed_at,
+        caption = _props.caption,
+        library = _props.library,
+        onCloseItem = _props.onCloseItem,
+        _styleCaption = styles.captionSpanOpen,
+        isShow = this.state.isShow;
 
     return _react2.default.createElement(
       'div',
@@ -243,4 +244,4 @@ var GitHubSearchInfo = _react2.default.createClass({
 });
 
 exports.default = GitHubSearchInfo;
-//# sourceMappingURL=D:\_Dev\_React\_Template_2\js\components\items\GitHubSearchInfo.js.map
+//# sourceMappingURL=GitHubSearchInfo.js.map
