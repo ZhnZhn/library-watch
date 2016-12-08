@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MenuBadge from '../zhnAtoms/MenuBadge';
-import OpenClose from '../zhnAtoms/OpenClose';
+import OpenClose2 from '../zhnAtoms/OpenClose2';
 
 const _renderMenuItems = function(items){
   return items.map((item, index) => {
@@ -34,9 +34,9 @@ const _renderMenuItems = function(items){
 const MenuPart = (props) => {
   const {caption, items} = props;
   return (
-    <OpenClose caption={caption}>
+    <OpenClose2 caption={caption}>
         {_renderMenuItems(items)}
-    </OpenClose>
+    </OpenClose2>
   )
 }
 

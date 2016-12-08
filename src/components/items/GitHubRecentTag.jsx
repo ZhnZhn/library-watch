@@ -3,7 +3,7 @@ import React from 'react'
 import ButtonCircle from '../zhnAtoms/ButtonCircle';
 import SvgClose from '../zhnAtoms/SvgClose';
 import ShowHide from '../zhnAtoms/ShowHide';
-import OpenClose from '../zhnAtoms/OpenClose';
+import OpenClose2 from '../zhnAtoms/OpenClose2';
 
 const ITEM_DESCRIPTION = "GitHub Likely Recent Version Tag";
 
@@ -129,9 +129,9 @@ const Detail = (props) => {
           {deletions}
         </span>
       </div>
-      <OpenClose caption={`Files (${files.length})`} isClose={true}>
+      <OpenClose2 caption={`Files (${files.length})`} isClose={true}>
         {_renderFiles(files)}
-      </OpenClose>
+      </OpenClose2>
       <a
          href={html_url}
          className="github-link"

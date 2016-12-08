@@ -12,7 +12,7 @@ var _MenuBadge = require('../zhnAtoms/MenuBadge');
 
 var _MenuBadge2 = _interopRequireDefault(_MenuBadge);
 
-var _OpenClose = require('../zhnAtoms/OpenClose');
+var _OpenClose = require('../zhnAtoms/OpenClose2');
 
 var _OpenClose2 = _interopRequireDefault(_OpenClose);
 
@@ -52,4 +52,4 @@ var MenuPart = function MenuPart(props) {
 };
 
 exports.default = MenuPart;
-//# sourceMappingURL=MenuPart.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnMoleculs\MenuPart.js.map

@@ -20,7 +20,7 @@ var _ShowHide = require('../zhnAtoms/ShowHide');
 
 var _ShowHide2 = _interopRequireDefault(_ShowHide);
 
-var _OpenClose = require('../zhnAtoms/OpenClose');
+var _OpenClose = require('../zhnAtoms/OpenClose2');
 
 var _OpenClose2 = _interopRequireDefault(_OpenClose);
 
@@ -326,4 +326,4 @@ var GitHubRecentTag = _react2.default.createClass({
 });
 
 exports.default = GitHubRecentTag;
-//# sourceMappingURL=GitHubRecentTag.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\items\GitHubRecentTag.js.map

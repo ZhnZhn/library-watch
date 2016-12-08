@@ -63,9 +63,9 @@ var InputText = _react2.default.createClass({
     return _react2.default.createElement('input', {
       type: 'text',
       style: Object.assign({}, styles.inputText, style),
-      value: value,
-      translate: false,
-      placeholder: placeholder,
+      value: value
+      //translate={false}
+      , placeholder: placeholder,
       onChange: this._handlerInputChange,
       onKeyDown: this._handlerInputKeyDown
     });
@@ -79,4 +79,4 @@ var InputText = _react2.default.createClass({
 });
 
 exports.default = InputText;
-//# sourceMappingURL=InputText.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\InputText.js.map

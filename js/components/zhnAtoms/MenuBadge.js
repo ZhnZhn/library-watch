@@ -10,10 +10,16 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var STYLE = {
+  OPEN: {
+    color: 'rgba(164, 135, 212, 1)'
+  }
+};
+
 var MenuBadge = _react2.default.createClass({
   displayName: 'MenuBadge',
-  _handlerClickBadge: function _handlerClickBadge(event) {
-    event.stopPropagation();
+  _handleClickBadge: function _handleClickBadge(event) {
+    //event.stopPropagation();
     var _props = this.props,
         isOpen = _props.isOpen,
         onBadgeOpen = _props.onBadgeOpen,
@@ -28,19 +34,20 @@ var MenuBadge = _react2.default.createClass({
   render: function render() {
     var _props2 = this.props,
         counter = _props2.counter,
-        isOpen = _props2.isOpen;
+        isOpen = _props2.isOpen,
+        _styleSpan = isOpen ? STYLE.OPEN : null;
 
-    var spanStyle = isOpen ? { color: 'rgba(164, 135, 212, 1)' } : null;
     return _react2.default.createElement(
       'span',
       {
         className: 'menu__badge',
-        style: spanStyle,
-        onClick: this._handlerClickBadge },
+        style: _styleSpan,
+        onClick: this._handleClickBadge
+      },
       counter
     );
   }
 });
 
 exports.default = MenuBadge;
-//# sourceMappingURL=MenuBadge.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\MenuBadge.js.map

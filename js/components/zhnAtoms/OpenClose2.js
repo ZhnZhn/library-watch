@@ -33,46 +33,54 @@ var styles = {
   },
   itemRow: {
     backgroundColor: '#404040'
+  },
+  displayInline: {
+    display: 'inline-block'
+  },
+  displayBlock: {
+    display: 'block'
+  },
+  displayNone: {
+    display: 'none'
   }
 };
 
-var pathOpen = "M 2,14 L 14,14 14,2 2,14";
-var pathClose = "M 2,2 L 14,8 2,14 2,2";
+var FILL_OPEN = 'yellow',
+    FILL_CLOSE = '#4D4D4D',
+    PATH_OPEN = "M 2,14 L 14,14 14,2 2,14",
+    PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
 var OpenClose2 = _react2.default.createClass({
   displayName: 'OpenClose2',
   getInitialState: function getInitialState() {
-    var _props = this.props,
-        isClose = _props.isClose,
-        fillOpen = _props.fillOpen,
-        fillClose = _props.fillClose,
-        _isOpen = isClose ? false : true,
-        _fillOpen = fillOpen ? fillOpen : 'yellow',
-        _fillClose = fillClose ? fillClose : '#4D4D4D';
+    var isClose = this.props.isClose;
+
 
     return {
-      isOpen: _isOpen,
-      fillOpen: _fillOpen,
-      fillClose: _fillClose
+      isOpen: isClose ? false : true
     };
   },
-  _handlerClickOpenClose: function _handlerClickOpenClose() {
+  _handleClickOpenClose: function _handleClickOpenClose() {
     this.setState({ isOpen: !this.state.isOpen });
   },
   render: function render() {
-    var _props2 = this.props,
-        style = _props2.style,
-        styleNotSelected = _props2.styleNotSelected,
-        styleCaption = _props2.styleCaption,
-        caption = _props2.caption,
-        isDraggable = _props2.isDraggable,
-        option = _props2.option,
-        onDragStart = _props2.onDragStart,
-        onDragEnter = _props2.onDragEnter,
-        onDragOver = _props2.onDragOver,
-        onDragLeave = _props2.onDragLeave,
-        onDrop = _props2.onDrop,
-        children = _props2.children,
+    var _props = this.props,
+        style = _props.style,
+        styleNotSelected = _props.styleNotSelected,
+        styleCaption = _props.styleCaption,
+        caption = _props.caption,
+        _props$fillOpen = _props.fillOpen,
+        fillOpen = _props$fillOpen === undefined ? FILL_OPEN : _props$fillOpen,
+        _props$fillClose = _props.fillClose,
+        fillClose = _props$fillClose === undefined ? FILL_CLOSE : _props$fillClose,
+        isDraggable = _props.isDraggable,
+        option = _props.option,
+        onDragStart = _props.onDragStart,
+        onDragEnter = _props.onDragEnter,
+        onDragOver = _props.onDragOver,
+        onDragLeave = _props.onDragLeave,
+        onDrop = _props.onDrop,
+        children = _props.children,
         _dragOption = isDraggable ? {
       draggable: true,
       onDragStart: onDragStart.bind(null, option),
@@ -84,19 +92,19 @@ var OpenClose2 = _react2.default.createClass({
 
     var _pathV = void 0,
         _fillV = void 0,
-        _displayDivStyle = void 0,
+        _styleCollapse = void 0,
         _classShow = void 0,
         _styleNotSelected = void 0;
     if (this.state.isOpen) {
-      _pathV = pathOpen;
-      _fillV = this.state.fillOpen;
-      _displayDivStyle = 'block';
+      _pathV = PATH_OPEN;
+      _fillV = fillOpen;
+      _styleCollapse = styles.displayBlock;
       _classShow = 'show-popup';
       _styleNotSelected = null;
     } else {
-      _pathV = pathClose;
-      _fillV = this.state.fillClose;
-      _displayDivStyle = 'none';
+      _pathV = PATH_CLOSE;
+      _fillV = fillClose;
+      _styleCollapse = styles.displayNone;
       _classShow = null;
       _styleNotSelected = styleNotSelected;
     }
@@ -109,7 +117,7 @@ var OpenClose2 = _react2.default.createClass({
         _extends({
           className: 'not-selected',
           style: _styleNotSelected,
-          onClick: this._handlerClickOpenClose
+          onClick: this._handleClickOpenClose
         }, _dragOption),
         _react2.default.createElement(
           'div',
@@ -119,12 +127,12 @@ var OpenClose2 = _react2.default.createClass({
             {
               viewBox: '0 0 16 16', width: '100%', height: '100%',
               preserveAspectRatio: 'none', xmlns: 'http://www.w3.org/2000/svg',
-              style: { display: 'inline-block' }
+              style: styles.displayInline
             },
             _react2.default.createElement('path', {
               d: _pathV,
               fill: _fillV,
-              strokeWidth: '1', stroke: this.state.fillOpen
+              strokeWidth: '1', stroke: fillOpen
             })
           )
         ),
@@ -138,7 +146,7 @@ var OpenClose2 = _react2.default.createClass({
         'div',
         {
           className: _classShow,
-          style: { display: _displayDivStyle }
+          style: _styleCollapse
         },
         children
       )
@@ -147,4 +155,4 @@ var OpenClose2 = _react2.default.createClass({
 });
 
 exports.default = OpenClose2;
-//# sourceMappingURL=OpenClose2.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\OpenClose2.js.map

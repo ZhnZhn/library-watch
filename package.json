@@ -7,6 +7,7 @@
     "lint" : "eslint ./src/*.js*",
     "test": "ava src/**/__tests__/**/*.test.js --verbose",
     "test:watch": "npm run test -- --watch",
+    "test:one": "ava src/**/__tests__/**/*.test.js --verbose --watch --source='menubadge*'",
     "transpile": "babel ./src --out-dir ./js --source-maps --ignore test.js",
     "bundle": "jspm bundle js/**/* - [js/**/*] dependency-bundle.js",
     "build": "webpack --colors --progress",

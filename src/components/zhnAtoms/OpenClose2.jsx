@@ -21,33 +21,40 @@ const styles = {
   },
   itemRow : {
     backgroundColor: '#404040'
+  },
+  displayInline : {
+    display: 'inline-block'
+  },
+  displayBlock : {
+    display: 'block'
+  },
+  displayNone : {
+    display : 'none'
   }
 };
 
-const pathOpen = "M 2,14 L 14,14 14,2 2,14";
-const pathClose = "M 2,2 L 14,8 2,14 2,2";
+const FILL_OPEN = 'yellow'
+    , FILL_CLOSE = '#4D4D4D'
+    , PATH_OPEN = "M 2,14 L 14,14 14,2 2,14"
+    , PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
 const OpenClose2 = React.createClass({
    getInitialState(){
-      const { isClose, fillOpen, fillClose } = this.props
-          , _isOpen = (isClose) ? false : true
-          , _fillOpen = (fillOpen) ? fillOpen : 'yellow'
-          , _fillClose = (fillClose) ? fillClose : '#4D4D4D';
+      const { isClose } = this.props
 
       return {
-        isOpen: _isOpen,
-        fillOpen: _fillOpen,
-        fillClose: _fillClose
+        isOpen: (isClose) ? false : true
       };
    },
 
-  _handlerClickOpenClose(){
-    this.setState({ isOpen : !this.state.isOpen} );
+  _handleClickOpenClose(){
+    this.setState({ isOpen : !this.state.isOpen });
   },
 
   render(){
     const {
             style, styleNotSelected, styleCaption, caption,
+            fillOpen=FILL_OPEN, fillClose=FILL_CLOSE,
             isDraggable, option, onDragStart, onDragEnter, onDragOver, onDragLeave, onDrop,
             children
           } = this.props
@@ -62,18 +69,18 @@ const OpenClose2 = React.createClass({
                  }
               : undefined ;
 
-    let _pathV, _fillV, _displayDivStyle, _classShow, _styleNotSelected;
+    let _pathV, _fillV, _styleCollapse, _classShow, _styleNotSelected;
     if (this.state.isOpen){
-      _pathV = pathOpen;
-      _fillV = this.state.fillOpen;
-      _displayDivStyle = 'block';
+      _pathV = PATH_OPEN;
+      _fillV = fillOpen;
+      _styleCollapse = styles.displayBlock;
       _classShow = 'show-popup';
       _styleNotSelected = null;
 
     } else {
-      _pathV = pathClose;
-      _fillV = this.state.fillClose;
-      _displayDivStyle = 'none';
+      _pathV = PATH_CLOSE;
+      _fillV = fillClose;
+      _styleCollapse = styles.displayNone;
       _classShow = null;
       _styleNotSelected = styleNotSelected;
     }
@@ -84,19 +91,19 @@ const OpenClose2 = React.createClass({
         <div
            className="not-selected"
            style={_styleNotSelected}
-           onClick={this._handlerClickOpenClose}
+           onClick={this._handleClickOpenClose}
            {..._dragOption}
          >
           <div style={styles.divSvg}>
              <svg
                 viewBox="0 0 16 16" width="100%" height="100%"
                 preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
-                style={{display: 'inline-block'}}
+                style={styles.displayInline}
               >
              <path
                 d={_pathV}
                 fill={_fillV}
-                strokeWidth="1" stroke={this.state.fillOpen}
+                strokeWidth="1" stroke={fillOpen}
              >
              </path>
              </svg>
@@ -107,7 +114,7 @@ const OpenClose2 = React.createClass({
        </div>
       <div
          className={_classShow}
-         style={{display: _displayDivStyle}}
+         style={_styleCollapse}
        >
         {children}
       </div>

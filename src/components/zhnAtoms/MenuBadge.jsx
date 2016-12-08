@@ -1,24 +1,31 @@
 import React from 'react';
 
+const STYLE = {
+  OPEN : {
+    color: 'rgba(164, 135, 212, 1)'
+  }
+}
+
 const MenuBadge = React.createClass({
-  _handlerClickBadge(event){
-     event.stopPropagation();
+  _handleClickBadge(event){
+     //event.stopPropagation();
      const { isOpen, onBadgeOpen, onBadgeClose } = this.props;
      if (isOpen){
-       onBadgeClose();       
+       onBadgeClose();
      } else {
-       onBadgeOpen();
+       onBadgeOpen();       
      }
   },
 
   render(){
-    const { counter, isOpen } = this.props;
-    const spanStyle = isOpen ? {color: 'rgba(164, 135, 212, 1)'} : null;
+    const { counter, isOpen } = this.props
+         , _styleSpan = isOpen ? STYLE.OPEN : null;
     return (
       <span
          className="menu__badge"
-         style={spanStyle}
-         onClick={this._handlerClickBadge}>
+         style={_styleSpan}
+         onClick={this._handleClickBadge}
+      >
          {counter}
       </span>
     )
