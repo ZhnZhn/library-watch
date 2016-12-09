@@ -14,24 +14,24 @@ var _ContainerStyles2 = _interopRequireDefault(_ContainerStyles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var styles = _ContainerStyles2.default;
+var CLASS_FOR_OPEN = "show-popup";
 
 var Browser = function Browser(props) {
    var isShow = props.isShow,
        style = props.style,
        children = props.children,
-       _styleOpen = isShow ? { display: 'block' } : { display: 'none' },
-       _classOpen = isShow ? "show-popup" : null;
+       _classRoot = isShow ? CLASS_FOR_OPEN : null,
+       _styleRoot = isShow ? _ContainerStyles2.default.displayBlock : _ContainerStyles2.default.displayNone;
 
    return _react2.default.createElement(
       'div',
       {
-         className: _classOpen,
-         style: Object.assign({}, styles.browserRootDiv, style, _styleOpen)
+         className: _classRoot,
+         style: Object.assign({}, _ContainerStyles2.default.browserRootDiv, style, _styleRoot)
       },
       children
    );
 };
 
 exports.default = Browser;
-//# sourceMappingURL=Browser.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\Browser.js.map

@@ -1,31 +1,15 @@
 import React from 'react';
 
-const STYLE = {
-  ROOT : {
-    display : 'inline-block',
-    cursor : 'pointer'
-  },
-  DATE_AGO : {
-    color : 'gray'
-  },
-  DATE : {
-    display : 'inline-block',
-    color : 'black',
-    marginLeft : '10px'
-  }
-}
+import STYLE from './DateAgo.Style'
 
 const DateAgo = React.createClass({
   getInitialState(){
-    const _isShowDate = (this.props.isShowDate)
-              ? true
-              : false;
     return {
-      isShowDate : _isShowDate
+      isShowDate : (this.props.isShowDate) ? true : false
     }
   },
 
-  _handlerClickDateAgo(event){
+  _handleClickDateAgo(event){
      event.preventDefault();
      event.stopPropagation();
      this.setState({ isShowDate: !this.state.isShowDate });
@@ -34,19 +18,19 @@ const DateAgo = React.createClass({
   render(){
      const { dateAgo, date } = this.props
          , { isShowDate } = this.state
-         , _dateStyle = (isShowDate)
-               ? { display : 'inline-block' }
-               : { display : 'none' }
+         , _styleDate = (isShowDate)
+               ? STYLE.DISPLAY_INLINE_BLOCK
+               : STYLE.DISPLAY_NONE
      return (
        <span>
          <span
             style={STYLE.DATE_AGO}
-            onClick={this._handlerClickDateAgo}
+            onClick={this._handleClickDateAgo}
          >
            {dateAgo}
          </span>
          <span
-            style={Object.assign({}, STYLE.DATE, _dateStyle)}
+            style={Object.assign({}, STYLE.DATE, _styleDate)}
          >
             {date}
          </span>

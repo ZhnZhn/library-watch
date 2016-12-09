@@ -8,32 +8,20 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _DateAgo = require('./DateAgo.Style');
 
-var STYLE = {
-  ROOT: {
-    display: 'inline-block',
-    cursor: 'pointer'
-  },
-  DATE_AGO: {
-    color: 'gray'
-  },
-  DATE: {
-    display: 'inline-block',
-    color: 'black',
-    marginLeft: '10px'
-  }
-};
+var _DateAgo2 = _interopRequireDefault(_DateAgo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var DateAgo = _react2.default.createClass({
   displayName: 'DateAgo',
   getInitialState: function getInitialState() {
-    var _isShowDate = this.props.isShowDate ? true : false;
     return {
-      isShowDate: _isShowDate
+      isShowDate: this.props.isShowDate ? true : false
     };
   },
-  _handlerClickDateAgo: function _handlerClickDateAgo(event) {
+  _handleClickDateAgo: function _handleClickDateAgo(event) {
     event.preventDefault();
     event.stopPropagation();
     this.setState({ isShowDate: !this.state.isShowDate });
@@ -43,7 +31,7 @@ var DateAgo = _react2.default.createClass({
         dateAgo = _props.dateAgo,
         date = _props.date,
         isShowDate = this.state.isShowDate,
-        _dateStyle = isShowDate ? { display: 'inline-block' } : { display: 'none' };
+        _styleDate = isShowDate ? _DateAgo2.default.DISPLAY_INLINE_BLOCK : _DateAgo2.default.DISPLAY_NONE;
 
     return _react2.default.createElement(
       'span',
@@ -51,15 +39,15 @@ var DateAgo = _react2.default.createClass({
       _react2.default.createElement(
         'span',
         {
-          style: STYLE.DATE_AGO,
-          onClick: this._handlerClickDateAgo
+          style: _DateAgo2.default.DATE_AGO,
+          onClick: this._handleClickDateAgo
         },
         dateAgo
       ),
       _react2.default.createElement(
         'span',
         {
-          style: Object.assign({}, STYLE.DATE, _dateStyle)
+          style: Object.assign({}, _DateAgo2.default.DATE, _styleDate)
         },
         date
       )
@@ -68,4 +56,4 @@ var DateAgo = _react2.default.createClass({
 });
 
 exports.default = DateAgo;
-//# sourceMappingURL=DateAgo.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\DateAgo.js.map

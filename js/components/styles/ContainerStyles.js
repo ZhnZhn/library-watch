@@ -28,8 +28,14 @@ var ContainerStyles = {
     position: 'relative',
     /* eslint-disable no-dupe-keys */
     height: '730px'
-  }, _defineProperty(_aboutRootDiv, 'height', 'calc(100vh - 71px)'), _defineProperty(_aboutRootDiv, 'minWidth', '700px'), _defineProperty(_aboutRootDiv, 'maxWidth', '700px'), _defineProperty(_aboutRootDiv, 'marginLeft', '10px'), _defineProperty(_aboutRootDiv, 'paddingRight', '0px'), _defineProperty(_aboutRootDiv, 'paddingBottom', '32px'), _aboutRootDiv)
+  }, _defineProperty(_aboutRootDiv, 'height', 'calc(100vh - 71px)'), _defineProperty(_aboutRootDiv, 'minWidth', '700px'), _defineProperty(_aboutRootDiv, 'maxWidth', '700px'), _defineProperty(_aboutRootDiv, 'marginLeft', '10px'), _defineProperty(_aboutRootDiv, 'paddingRight', '0px'), _defineProperty(_aboutRootDiv, 'paddingBottom', '32px'), _aboutRootDiv),
+  displayBlock: {
+    display: 'block'
+  },
+  displayNone: {
+    display: 'none'
+  }
 };
 
 exports.default = ContainerStyles;
-//# sourceMappingURL=ContainerStyles.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\styles\ContainerStyles.js.map

@@ -1,0 +1,20 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\zhnAtoms\\DateAgo.Style.js",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\zhnAtoms\\DateAgo.Style.js",
+ "sourceRoot": "",
+ "names": [
+  "STYLE",
+  "ROOT",
+  "display",
+  "cursor",
+  "DATE_AGO",
+  "color",
+  "DATE",
+  "marginLeft",
+  "DISPLAY_INLINE_BLOCK",
+  "DISPLAY_NONE"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,QAAQ;AACZC,QAAO;AACLC,aAAU,cADL;AAELC,YAAS;AAFJ,GADK;AAKZC,YAAW;AACTC,WAAQ;AADC,GALC;AAQZC,QAAO;AACLJ,aAAU,cADL;AAELG,WAAQ,OAFH;AAGLE,gBAAa;AAHR,GARK;;AAcZC,wBAAuB;AACrBN,aAAU;AADW,GAdX;AAiBZO,gBAAe;AACbP,aAAU;AADG;AAjBH,CAAd;;kBAsBeF,K"
+}

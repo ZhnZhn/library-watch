@@ -33,7 +33,13 @@ const ContainerStyles = {
     marginLeft: '10px',
     paddingRight: '0px',
     paddingBottom: '32px'
-  }
+  },
+  displayBlock : {
+    display : 'block'
+  },
+  displayNone : {
+    display : 'none'
+  }  
 }
 
 export default ContainerStyles;

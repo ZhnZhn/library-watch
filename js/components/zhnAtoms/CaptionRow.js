@@ -1,12 +1,16 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+   value: true
 });
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _CaptionRow = require('./CaptionRow.Style');
+
+var _CaptionRow2 = _interopRequireDefault(_CaptionRow);
 
 var _SvgClose = require('./SvgClose');
 
@@ -14,47 +18,28 @@ var _SvgClose2 = _interopRequireDefault(_SvgClose);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var styles = {
-  captionDiv: {
-    backgroundColor: '#232F3B',
-    color: 'rgba(164, 135, 212, 1)',
-    height: '28px',
-    borderBottomLeftRadius: '10px',
-    borderBottomRightRadius: '10px',
-    paddingTop: '4px',
-    paddingLeft: '10px',
-    marginRight: '5px',
-    marginBottom: '10px'
-  },
-  captionSpan: {
-    fontSize: '18px',
-    fontWeight: '500',
-    paddingRight: '8px'
-  }
-};
+var CLASS_NOT_SELECTED = "not-selected";
 
-var CaptionRow = function CaptionRow(props) {
-  var caption = props.caption,
-      children = props.children,
-      styleRoot = props.styleRoot,
-      onClose = props.onClose;
-
-
-  return _react2.default.createElement(
-    'div',
-    { style: Object.assign({}, styles.captionDiv, styleRoot) },
-    _react2.default.createElement(
-      'span',
-      {
-        className: 'not-selected',
-        style: styles.captionSpan
-      },
-      caption
-    ),
-    children,
-    _react2.default.createElement(_SvgClose2.default, { onClose: onClose })
-  );
+var CaptionRow = function CaptionRow(_ref) {
+   var caption = _ref.caption,
+       children = _ref.children,
+       styleRoot = _ref.styleRoot,
+       onClose = _ref.onClose;
+   return _react2.default.createElement(
+      'div',
+      { style: Object.assign({}, _CaptionRow2.default.captionDiv, styleRoot) },
+      _react2.default.createElement(
+         'span',
+         {
+            className: CLASS_NOT_SELECTED,
+            style: _CaptionRow2.default.captionSpan
+         },
+         caption
+      ),
+      children,
+      _react2.default.createElement(_SvgClose2.default, { onClose: onClose })
+   );
 };
 
 exports.default = CaptionRow;
-//# sourceMappingURL=CaptionRow.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\CaptionRow.js.map
