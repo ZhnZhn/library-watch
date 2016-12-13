@@ -38,31 +38,35 @@ var _fnGetWrapper = function _fnGetWrapper(props) {
     t.is(parseInt(wrapper.text(), 10), counter);
 });
 
-(0, _ava2.default)('should use prop onBadgeOpen if isOpen falsy on root click', function (t) {
+(0, _ava2.default)('should call stopPropagation and onBadgeOpen on root click if isOpen falsy', function (t) {
     var //onBadgeOpenSpy = sinon.spy()
     //,  onBadgeCloseSpy = sinon.spy()
     onBadgeOpenSpy = _zhnSpy2.default.createValueSpy(),
         onBadgeCloseSpy = _zhnSpy2.default.createValueSpy(),
+        stopPropagationSpy = _zhnSpy2.default.createValueSpy(),
         wrapper = _fnGetWrapper({
         onBadgeOpen: onBadgeOpenSpy,
         onBadgeClose: onBadgeCloseSpy
     });
 
-    wrapper.simulate('click');
+    wrapper.simulate('click', { stopPropagation: stopPropagationSpy });
+    t.true(stopPropagationSpy.isCalledOnce());
     t.true(onBadgeOpenSpy.isCalledOnce());
     t.true(!onBadgeCloseSpy.isCalledOnce());
 });
 
-(0, _ava2.default)('should use prop onBadgeClose if isOpen true on root click', function (t) {
+(0, _ava2.default)('should call stopPropagation and onBadgeClose on root click if isOpen true', function (t) {
     var onBadgeOpenSpy = _zhnSpy2.default.createValueSpy(),
         onBadgeCloseSpy = _zhnSpy2.default.createValueSpy(),
+        stopPropagationSpy = _zhnSpy2.default.createValueSpy(),
         wrapper = _fnGetWrapper({
         isOpen: true,
         onBadgeOpen: onBadgeOpenSpy,
         onBadgeClose: onBadgeCloseSpy
     });
 
-    wrapper.simulate('click');
+    wrapper.simulate('click', { stopPropagation: stopPropagationSpy });
+    t.true(stopPropagationSpy.isCalledOnce());
     t.true(onBadgeCloseSpy.isCalledOnce());
     t.true(!onBadgeOpenSpy.isCalledOnce());
 });

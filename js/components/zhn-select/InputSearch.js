@@ -511,7 +511,6 @@ var InputSearch = _react2.default.createClass({
         value: value,
         style: Object.assign({}, styles.inputText),
         placeholder: _placeholder,
-        translate: false,
         onChange: this._handlerInputChange,
         onKeyDown: this._handlerInputKeyDown }),
       _domAfterInput,
@@ -528,4 +527,4 @@ var InputSearch = _react2.default.createClass({
 });
 
 exports.default = InputSearch;
-//# sourceMappingURL=InputSearch.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhn-select\InputSearch.js.map

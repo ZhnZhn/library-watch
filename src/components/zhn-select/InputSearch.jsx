@@ -497,7 +497,6 @@ const InputSearch = React.createClass({
            value={value}
            style={Object.assign({},styles.inputText)}
            placeholder={_placeholder}
-           translate={false}
            onChange={this._handlerInputChange}
            onKeyDown={this._handlerInputKeyDown}>
         </input>

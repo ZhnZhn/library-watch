@@ -541,7 +541,6 @@ var ZhSelect = _react2.default.createClass({
         value: value,
         style: Object.assign({}, styles.inputText, _styleInputWidth),
         placeholder: _placeholder,
-        translate: false,
         onChange: this._handlerInputChange,
         onKeyDown: this._handlerInputKeyDown }),
       _domAfterInput,
@@ -561,4 +560,4 @@ var ZhSelect = _react2.default.createClass({
 });
 
 exports.default = ZhSelect;
-//# sourceMappingURL=ZhSelect.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\ZhSelect.js.map

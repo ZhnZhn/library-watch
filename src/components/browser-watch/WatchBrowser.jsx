@@ -9,10 +9,11 @@ import createHandlerDnDItem from './with/createHandlerDnDItem';
 import { ModalDialog } from '../../constants/Type';
 import ComponentActions from '../../flux/actions/ComponentActions';
 import BrowserActions from '../../flux/actions/BrowserActions';
-import WatchActions from '../../flux/actions/WatchActions';
+import WatchActions, { WatchActionTypes } from '../../flux/actions/WatchActions';
 
 import Browser from '../zhnAtoms/Browser';
 import CaptionRow from '../zhnAtoms/CaptionRow';
+import ButtonSave from '../zhnMoleculs/ButtonSave';
 import ButtonCircle from '../zhnAtoms/ButtonCircle';
 
 import ShowHide from '../zhnAtoms/ShowHide';
@@ -315,7 +316,7 @@ const WatchBrowser = React.createClass({
   },
 
   render(){
-    const { caption, isDoubleWatch } = this.props
+    const { caption, isDoubleWatch, store } = this.props
         , {
             isShow, isModeEdit,
             scrollClass, watchList
@@ -338,12 +339,12 @@ const WatchBrowser = React.createClass({
             caption={caption}
             onClose={this._handlerHide}
          >
-           <ButtonCircle
-             caption={'S'}
-             title="Save Watch Items to Locale Storage"
+           <ButtonSave
+             store={store}
+             actionWatchEdited={WatchActionTypes.SET_WATCH_EDITED}
              style={styles.btCircle}
              onClick={this._handlerSaveWatch}
-           />
+           />           
            <ButtonCircle
               caption={_captionEV}
               title={_titleEV}

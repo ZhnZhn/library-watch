@@ -56,8 +56,7 @@ const InputText = React.createClass({
       <input
         type="text"
         style={Object.assign({}, styles.inputText, style)}
-        value={value}
-        //translate={false}
+        value={value}        
         placeholder={placeholder}
         onChange={this._handlerInputChange}
         onKeyDown={this._handlerInputKeyDown}

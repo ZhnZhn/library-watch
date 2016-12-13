@@ -8,12 +8,12 @@ const STYLE = {
 
 const MenuBadge = React.createClass({
   _handleClickBadge(event){
-     //event.stopPropagation();
+     event.stopPropagation();
      const { isOpen, onBadgeOpen, onBadgeClose } = this.props;
      if (isOpen){
        onBadgeClose();
      } else {
-       onBadgeOpen();       
+       onBadgeOpen();
      }
   },
 

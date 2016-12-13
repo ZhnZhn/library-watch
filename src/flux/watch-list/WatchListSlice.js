@@ -37,6 +37,13 @@ const WatchListSlice = {
       this.trigger(BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
     })
   },
+  getWatchEdited(){
+    return this.isWatchEdited;
+  },
+  setWatchEdited(value){
+    this.isWatchEdited = value;
+    this.trigger(WatchActionTypes.SET_WATCH_EDITED, this.isWatchEdited);
+  },
   getWatchList(){
     return this.watchList;
   },
@@ -56,13 +63,13 @@ const WatchListSlice = {
   },
   onRemoveItem(option){
     Logic.removeItem(this.watchList, option);
-    this.isWatchEdited = true;
+    this.setWatchEdited(true);
     this.trigger(BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
   },
 
   _onDragDrop(result){
     if (result.isDone){
-       this.isWatchEdited = true;
+       this.setWatchEdited(true);
        this.trigger(BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
     } else {
       this.showAlertDialog(result);
@@ -83,7 +90,7 @@ const WatchListSlice = {
     if (this.isWatchEdited){
        LocalForage.setItem(STORAGE_KEY , this.watchList)
           .then(()=>{
-             this.isWatchEdited = false;
+             this.setWatchEdited(false);
              this.onShowModalDialog(ModalDialog.INFO, {
                 caption : CAPTION_WATCH_SAVE,
                 descr : Msg.WATCH_SAVED
@@ -103,7 +110,7 @@ const WatchListSlice = {
 
   _onEditWatch(result, forActionType){
     if (result.isDone){
-      this.isWatchEdited = true;
+      this.setWatchEdited(true);
       this.trigger(BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
       this.trigger(WatchActionTypes.EDIT_WATCH_COMPLETED, {forActionType});
     } else {
@@ -167,7 +174,7 @@ const WatchListSlice = {
     try {
       const { progressEvent } = option
       merge(this.watchList, JSON.parse(progressEvent.target.result));
-      this.isWatchEdited = true;
+      this.setWatchEdited(true);
       this.trigger(BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
     } catch(exc) {
       ComponentActions.showModalDialog(ModalDialog.ALERT, {...Msg.Alert.LOAD_FROM_JSON })

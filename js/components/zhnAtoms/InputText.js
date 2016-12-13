@@ -63,9 +63,8 @@ var InputText = _react2.default.createClass({
     return _react2.default.createElement('input', {
       type: 'text',
       style: Object.assign({}, styles.inputText, style),
-      value: value
-      //translate={false}
-      , placeholder: placeholder,
+      value: value,
+      placeholder: placeholder,
       onChange: this._handlerInputChange,
       onKeyDown: this._handlerInputKeyDown
     });

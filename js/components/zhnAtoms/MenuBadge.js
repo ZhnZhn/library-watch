@@ -19,7 +19,7 @@ var STYLE = {
 var MenuBadge = _react2.default.createClass({
   displayName: 'MenuBadge',
   _handleClickBadge: function _handleClickBadge(event) {
-    //event.stopPropagation();
+    event.stopPropagation();
     var _props = this.props,
         isOpen = _props.isOpen,
         onBadgeOpen = _props.onBadgeOpen,

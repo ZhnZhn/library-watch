@@ -103,7 +103,6 @@ var InputDate = _react2.default.createClass({
         ref: 'inputDate',
         type: 'text',
         style: styles.inputText,
-        translate: false,
         placeholder: 'YYYY-MM-DD',
         value: value,
         onChange: this._handlerChangeValue,
@@ -129,4 +128,4 @@ var InputDate = _react2.default.createClass({
 });
 
 exports.default = InputDate;
-//# sourceMappingURL=InputDate.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\InputDate.js.map

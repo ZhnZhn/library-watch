@@ -27,31 +27,35 @@ test('should use prop counter', t => {
 
 
 
-test('should use prop onBadgeOpen if isOpen falsy on root click', t => {
+test('should call stopPropagation and onBadgeOpen on root click if isOpen falsy', t => {
    const //onBadgeOpenSpy = sinon.spy()
       //,  onBadgeCloseSpy = sinon.spy()
          onBadgeOpenSpy = zhnSpy.createValueSpy()
        , onBadgeCloseSpy = zhnSpy.createValueSpy()
+       , stopPropagationSpy = zhnSpy.createValueSpy()
        , wrapper = _fnGetWrapper({
            onBadgeOpen: onBadgeOpenSpy,
            onBadgeClose: onBadgeCloseSpy
          })
 
-     wrapper.simulate('click');
+     wrapper.simulate('click', { stopPropagation: stopPropagationSpy });
+     t.true(stopPropagationSpy.isCalledOnce())
      t.true(onBadgeOpenSpy.isCalledOnce());
      t.true(!onBadgeCloseSpy.isCalledOnce());
 })
 
-test('should use prop onBadgeClose if isOpen true on root click', t => {
+test('should call stopPropagation and onBadgeClose on root click if isOpen true', t => {
   const onBadgeOpenSpy = zhnSpy.createValueSpy()
       , onBadgeCloseSpy = zhnSpy.createValueSpy()
+      , stopPropagationSpy = zhnSpy.createValueSpy()
       , wrapper = _fnGetWrapper({
           isOpen : true,
           onBadgeOpen: onBadgeOpenSpy,
           onBadgeClose: onBadgeCloseSpy
         })
 
-    wrapper.simulate('click');
+    wrapper.simulate('click', { stopPropagation: stopPropagationSpy });
+    t.true(stopPropagationSpy.isCalledOnce())
     t.true(onBadgeCloseSpy.isCalledOnce());
     t.true(!onBadgeOpenSpy.isCalledOnce());
 })

@@ -2,11 +2,14 @@ import React from 'react';
 
 import BrowserActions from '../../flux/actions/BrowserActions';
 import ComponentActions from '../../flux/actions/ComponentActions';
+import WatchActions, { WatchActionTypes } from '../../flux/actions/WatchActions';
 import { BrowserType } from '../../constants/Type';
+
 
 import LoadingProgress from './LoadingProgress';
 import AppLabel from './AppLabel';
 import ToolBarButton from './ToolBarButton';
+import ButtonSave from '../zhnMoleculs/ButtonSave';
 import LimitRemainingLabel from './LimitRemainingLabel';
 
 const STYLE = {
@@ -22,6 +25,9 @@ const STYLE = {
     paddingRight: '10px',
     fontSize: '16px',
     fontWeight: 'bold'
+  },
+  BUTTON_SAVE : {
+    marginLeft : '10px'
   }
 }
 
@@ -62,6 +68,12 @@ const HeaderBar = React.createClass({
             caption="Watch"
             title="Watch Browser"
             onClick={this._handlerClickWatch}
+         />
+         <ButtonSave
+            store={store}
+            actionWatchEdited={WatchActionTypes.SET_WATCH_EDITED}
+            style={STYLE.BUTTON_SAVE}
+            onClick={WatchActions.saveWatch}
          />
 
          <ToolBarButton

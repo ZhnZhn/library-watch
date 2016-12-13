@@ -52,6 +52,10 @@ var _CaptionRow = require('../zhnAtoms/CaptionRow');
 
 var _CaptionRow2 = _interopRequireDefault(_CaptionRow);
 
+var _ButtonSave = require('../zhnMoleculs/ButtonSave');
+
+var _ButtonSave2 = _interopRequireDefault(_ButtonSave);
+
 var _ButtonCircle = require('../zhnAtoms/ButtonCircle');
 
 var _ButtonCircle2 = _interopRequireDefault(_ButtonCircle);
@@ -386,6 +390,7 @@ var WatchBrowser = _react2.default.createClass(_extends({
     var _props3 = this.props,
         caption = _props3.caption,
         isDoubleWatch = _props3.isDoubleWatch,
+        store = _props3.store,
         _state3 = this.state,
         isShow = _state3.isShow,
         isModeEdit = _state3.isModeEdit,
@@ -408,9 +413,9 @@ var WatchBrowser = _react2.default.createClass(_extends({
           caption: caption,
           onClose: this._handlerHide
         },
-        _react2.default.createElement(_ButtonCircle2.default, {
-          caption: 'S',
-          title: 'Save Watch Items to Locale Storage',
+        _react2.default.createElement(_ButtonSave2.default, {
+          store: store,
+          actionWatchEdited: _WatchActions.WatchActionTypes.SET_WATCH_EDITED,
           style: styles.btCircle,
           onClick: this._handlerSaveWatch
         }),
@@ -453,4 +458,4 @@ var WatchBrowser = _react2.default.createClass(_extends({
 }));
 
 exports.default = WatchBrowser;
-//# sourceMappingURL=WatchBrowser.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\WatchBrowser.js.map

@@ -16,6 +16,10 @@ var _ComponentActions = require('../../flux/actions/ComponentActions');
 
 var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
 
+var _WatchActions = require('../../flux/actions/WatchActions');
+
+var _WatchActions2 = _interopRequireDefault(_WatchActions);
+
 var _Type = require('../../constants/Type');
 
 var _LoadingProgress = require('./LoadingProgress');
@@ -29,6 +33,10 @@ var _AppLabel2 = _interopRequireDefault(_AppLabel);
 var _ToolBarButton = require('./ToolBarButton');
 
 var _ToolBarButton2 = _interopRequireDefault(_ToolBarButton);
+
+var _ButtonSave = require('../zhnMoleculs/ButtonSave');
+
+var _ButtonSave2 = _interopRequireDefault(_ButtonSave);
 
 var _LimitRemainingLabel = require('./LimitRemainingLabel');
 
@@ -49,6 +57,9 @@ var STYLE = {
     paddingRight: '10px',
     fontSize: '16px',
     fontWeight: 'bold'
+  },
+  BUTTON_SAVE: {
+    marginLeft: '10px'
   }
 };
 
@@ -91,6 +102,12 @@ var HeaderBar = _react2.default.createClass({
         title: 'Watch Browser',
         onClick: this._handlerClickWatch
       }),
+      _react2.default.createElement(_ButtonSave2.default, {
+        store: store,
+        actionWatchEdited: _WatchActions.WatchActionTypes.SET_WATCH_EDITED,
+        style: STYLE.BUTTON_SAVE,
+        onClick: _WatchActions2.default.saveWatch
+      }),
       _react2.default.createElement(_ToolBarButton2.default, {
         type: 'TypeA',
         style: { float: 'right', marginRight: '20px' },
@@ -107,4 +124,4 @@ var HeaderBar = _react2.default.createClass({
 });
 
 exports.default = HeaderBar;
-//# sourceMappingURL=HeaderBar.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\header\HeaderBar.js.map

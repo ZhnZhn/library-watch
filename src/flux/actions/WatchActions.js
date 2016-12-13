@@ -9,7 +9,6 @@ export const WatchActionTypes = {
   DRAG_DROP_LIST : 'dragDropList',
   DRAG_DROP_ITEM : 'dragDropItem',
 
-
   ADD_GROUP : 'addGroup',
   RENAME_GROUP : 'renameGroup',
   DELETE_GROUP : 'deleteGroup',
@@ -20,7 +19,9 @@ export const WatchActionTypes = {
     EDIT_WATCH_FAILED : 'editWatchFailed',
 
   BACKUP_TO_JSON : 'backupToJson',
-  LOAD_FROM_JSON : 'loadFromJson'
+  LOAD_FROM_JSON : 'loadFromJson',
+
+  SET_WATCH_EDITED : 'setWatchEdited'
 }
 
 const WatchActions = Reflux.createActions({

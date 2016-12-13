@@ -69,6 +69,13 @@ var WatchListSlice = {
       _this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, _this.watchList);
     });
   },
+  getWatchEdited: function getWatchEdited() {
+    return this.isWatchEdited;
+  },
+  setWatchEdited: function setWatchEdited(value) {
+    this.isWatchEdited = value;
+    this.trigger(_WatchActions.WatchActionTypes.SET_WATCH_EDITED, this.isWatchEdited);
+  },
   getWatchList: function getWatchList() {
     return this.watchList;
   },
@@ -87,12 +94,12 @@ var WatchListSlice = {
   },
   onRemoveItem: function onRemoveItem(option) {
     _Logic2.default.removeItem(this.watchList, option);
-    this.isWatchEdited = true;
+    this.setWatchEdited(true);
     this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
   },
   _onDragDrop: function _onDragDrop(result) {
     if (result.isDone) {
-      this.isWatchEdited = true;
+      this.setWatchEdited(true);
       this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
     } else {
       this.showAlertDialog(result);
@@ -112,7 +119,7 @@ var WatchListSlice = {
 
     if (this.isWatchEdited) {
       _localforage2.default.setItem(STORAGE_KEY, this.watchList).then(function () {
-        _this2.isWatchEdited = false;
+        _this2.setWatchEdited(false);
         _this2.onShowModalDialog(_Type.ModalDialog.INFO, {
           caption: CAPTION_WATCH_SAVE,
           descr: _Msg2.default.WATCH_SAVED
@@ -130,7 +137,7 @@ var WatchListSlice = {
   },
   _onEditWatch: function _onEditWatch(result, forActionType) {
     if (result.isDone) {
-      this.isWatchEdited = true;
+      this.setWatchEdited(true);
       this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
       this.trigger(_WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED, { forActionType: forActionType });
     } else {
@@ -174,7 +181,7 @@ var WatchListSlice = {
       var progressEvent = option.progressEvent;
 
       (0, _lodash2.default)(this.watchList, JSON.parse(progressEvent.target.result));
-      this.isWatchEdited = true;
+      this.setWatchEdited(true);
       this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
     } catch (exc) {
       _ComponentActions2.default.showModalDialog(_Type.ModalDialog.ALERT, _extends({}, _Msg2.default.Alert.LOAD_FROM_JSON));
@@ -183,4 +190,4 @@ var WatchListSlice = {
 };
 
 exports.default = WatchListSlice;
-//# sourceMappingURL=WatchListSlice.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\watch-list\WatchListSlice.js.map

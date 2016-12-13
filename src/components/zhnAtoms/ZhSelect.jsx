@@ -504,8 +504,7 @@ const ZhSelect = React.createClass({
            type="text"
            value={value}
            style={Object.assign({},styles.inputText, _styleInputWidth)}
-           placeholder={_placeholder}
-           translate={false}
+           placeholder={_placeholder}           
            onChange={this._handlerInputChange}
            onKeyDown={this._handlerInputKeyDown}>
         </input>
