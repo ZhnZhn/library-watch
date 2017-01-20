@@ -31,7 +31,7 @@ const _fnLogLoadError = function({
   console.log('%c' + alertDescr, CONSOLE_LOG_STYLE);
 }
 
-const GitHubStore = Reflux.createStore({
+const AppStore = Reflux.createStore({
   listenables : [
     BrowserActions, ComponentActions, ChartActions, WatchActions,
     LoadingProgressActions
@@ -156,4 +156,4 @@ const GitHubStore = Reflux.createStore({
  ...AnalyticSlice
 });
 
-export default GitHubStore
+export default AppStore

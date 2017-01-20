@@ -1,17 +1,13 @@
 import React from 'react';
-//import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import GitHubStore from '../../flux/stores/GitHubStore';
+import Store from '../../flux/stores/AppStore';
 import { ChartActionTypes } from '../../flux/actions/ChartActions';
 import { ComponentActionTypes } from '../../flux/actions/ComponentActions';
-
-
 
 import CaptionRow from '../zhnAtoms/CaptionRow';
 import SvgHrzResize from '../zhnMoleculs/SvgHrzResize';
 
 import ScrollPane from '../zhnAtoms/ScrollPane';
-
 
 const CHILD_MARGIN = 36;
 
@@ -48,9 +44,11 @@ const styles = {
   }
 };
 
-const isInArray = function(array, value){
-  for (var i=0; i<array.length; i++){
-    if (array[i] === value){
+const isInArray = function(arr=[], value){
+  const len = arr.length;
+  let i=0;  
+  for (; i<len; i++){
+    if (arr[i] === value){
       return true;
     }
   }
@@ -66,12 +64,12 @@ const compActions = [
 const ChartContainer2 = React.createClass({
   getInitialState(){
     this.childMargin = CHILD_MARGIN;
-    return {}
+    return {};
   },
 
    componentWillMount(){
-     this.unsubscribe = GitHubStore.listen(this._onStore);
-     this.setState(GitHubStore.getConfigs(this.props.chartType));
+     this.unsubscribe = Store.listen(this._onStore);
+     this.setState(Store.getConfigs(this.props.chartType));
    },
    componentWillUnmount(){
      this.unsubscribe();
@@ -89,38 +87,33 @@ const ChartContainer2 = React.createClass({
       }
    },
 
-   _handlerHide(){
+   _handleHide(){
       const { chartType, browserType, onCloseContainer } = this.props;
       onCloseContainer(chartType, browserType);
       this.setState({isShow: false});
    },
 
 
-   renderCharts(){
+   _renderCharts(){
       return this.state.configs.map((item, index) => {
         return item;
       })
    },
 
    render(){
-     /*
-     const transitionOption = {
-             transitionName : "scaleY",
-             transitionEnterTimeout : 400,
-             transitionLeave : false
-           }
-    */
-    const styleOpen = this.state.isShow ? {display: 'inline-block'} : {display: 'none'}
-         , classOpen = this.state.isShow ? "show-popup" : null;
+    const  { caption } = this.props
+         , { isShow } = this.state
+         , _styleOpen = (isShow) ? {display: 'inline-block'} : {display: 'none'}
+         , _classOpen = (isShow) ? "show-popup" : undefined;
 
      return(
         <div
-           className={classOpen}
-           style={Object.assign({},styles.rootDiv, styleOpen)}
+           className={_classOpen}
+           style={Object.assign({},styles.rootDiv, _styleOpen)}
         >
           <CaptionRow
-             caption={this.props.caption}
-             onClose={this._handlerHide}
+             caption={caption}
+             onClose={this._handleHide}
           >
             <SvgHrzResize
               minWidth={500}
@@ -130,7 +123,7 @@ const ChartContainer2 = React.createClass({
           </CaptionRow>
 
           <ScrollPane style={styles.scrollDiv}>
-              {this.renderCharts()}
+              {this._renderCharts()}
           </ScrollPane>
 
         </div>

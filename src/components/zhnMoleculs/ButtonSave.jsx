@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 
+import WatchActions, { WatchActionTypes } from '../../flux/actions/WatchActions';
 import ButtonCircle from '../zhnAtoms/ButtonCircle';
 
 const CAPTION = "S"
@@ -13,7 +14,8 @@ const CAPTION = "S"
 
 const ButtonSave = React.createClass({
   propTypes : {
-    store : PropTypes.object.isRequired
+    store : PropTypes.object.isRequired,
+    style : PropTypes.object
   },
 
   getInitialState(){
@@ -35,7 +37,7 @@ const ButtonSave = React.createClass({
     this.setState({ isWatchEdited : store.getWatchEdited() })
   },
   _onStore(actionType, value){
-    if (actionType === this.props.actionWatchEdited){
+    if (actionType === WatchActionTypes.SET_WATCH_EDITED){
       this.setState({ isWatchEdited : value })
     }
   },
@@ -44,7 +46,7 @@ const ButtonSave = React.createClass({
   },
 
   render(){
-    const { style, onClick } = this.props
+    const { style } = this.props
         , { isWatchEdited } = this.state
         , _style = (isWatchEdited)
              ? style
@@ -55,7 +57,7 @@ const ButtonSave = React.createClass({
          caption={CAPTION}
          title={TITLE}
          style={_style}
-         onClick={onClick}
+         onClick={WatchActions.saveWatch}
       />
     );
   }

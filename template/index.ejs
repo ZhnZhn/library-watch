@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <meta name="referrer" content="no-referrer" />
-  <meta name="description" content="Library Watch. With it, you can view information about GitHub's repositories, NPM's packages, StackOverflows's questions." />
-  <meta name="application-name" content="Library Watch" />
-  <meta name="summary" content="Library Watch is a SPA RESTFul client. With it, you can view information about GitHub's repositories, NPM's packages, StackOverflows's questions." />
-  <meta name="url" content="https://zhnzhn.github.io/library-watch" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Library Watch. With it, you can view information about GitHub's repositories, NPM's packages, StackOverflows's questions.">
+  <meta name="application-name" content="Library Watch">
+  <meta name="summary" content="Library Watch is a SPA RESTFul client. With it, you can view information about GitHub's repositories, NPM's packages, StackOverflows's questions.">
+  <meta name="url" content="https://zhnzhn.github.io/library-watch">
   <title>Library Watch v0.11.0</title>
-  <link rel="icon" href="/css/favicon.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="/css/favicon.png" sizes="32x32" type="image/png">
   <base target="_blank">
 
   <!--[if IE]>
@@ -19,7 +19,7 @@
       <script src="lib/fetch.js"></script>
   <![endif]-->
 
-  <script type="text/javascript">
+  <script>
     (function(){
       if (!Object.assign){
         var js = document.createElement('script');
@@ -40,8 +40,43 @@
            return Object.prototype.toString.call(arg) === '[object Array]';
         };
       }
-
     })()
+
+    var preloader = {w:1, hm:{},
+      _getEl:function(id){
+        if (!this.hm[id]){ this.hm[id] = document.getElementById(id);}
+        return this.hm[id];
+      },
+      _setStyle:function(id,n,v){
+        this._getEl(id).style[n]=v;
+      },
+      _setText:function(id,t){
+        this._getEl(id).textContent=t;
+      },
+      done:function(p){
+        this.w = this.w + p;
+        this._setText('msg',(this.w !== 100)?'Loading '+this.w+'%...':'Loaded 100%');
+        this._setStyle('loaded', 'width', this.w+'%');
+      },
+      errCss:function(el, failed){
+         if (failed || (el.sheet.cssRules && !el.sheet.cssRules.length)){
+           this.isErrCss = true;
+           this._setStyle('css-missed','display','block');
+           this._setStyle('msg-reload','display','block');
+         }
+      },
+      errScript:function(){
+        this.isErrScript = true;
+        this._setStyle('bundle-missed','display','block');
+        this._setStyle('msg-reload','display','block');
+      },
+      stop:function(){
+        var arr = ['','-webkit-','-moz-','-o-']
+        ,i=0, len=arr.length,n='animation-play-state';
+        for(;i<len;i++){ this._setStyle('circle', arr[i]+n, 'paused'); }
+        this._setText('msg','Loaded '+this.w+'%');
+      }
+    };
   </script>
 
   <style>
@@ -72,38 +107,54 @@
 @keyframes circle
 { 100% {transform: rotate(360deg);}}
 
-.spinner__wrapper {
-  position: absolute;
-  top : 5%;
-  left: 40%;
+.wrapper {
+  margin: 0 auto;
+  margin-top: 3em;
   background-color: rgb(77, 77, 77);
   border: solid 2px #232F3B;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 6px;
   z-index: 100;
   width: 14em;
-  height: 8em;
-  margin: 0.5em;
-  padding: 2em;
   padding-top: 1em;
+  padding-bottom: 1.5em;
   text-align: center;
 }
-.spinner__wrapper > div {
-   margin: 0.5em auto;
+.wrapper__loading {
+  margin: 0.5em auto;
 }
-.spinner__descr {
-   position: absolute;
-   bottom: 0.2em;
-   left: 2em;
+.wrapper__descr {
+   margin-top: 1em;
    font-family: "Roboto", "Arial", "Lato", sans-serif;
    font-size: 1em;
    font-weight: bold;
 }
+.wrapper__app {
+  color:#80c040;
+  display:block;
+  padding-bottom:0.5em;
+}
+.wrapper__loaded {
+  width: 0;
+  height: 3px;
+  background-color: #80c040;
+}
+.wrapper__error {
+  display: none;
+  color: #F44336;
+  margin-top: 8px;
+}
+.wrapper__reload {
+  display: none;
+  color: black;
+  margin-top: 8px;
+}
+
   </style>
 
-  
-  <link rel="stylesheet" href="/css/app-c7fac24aac.min.css">
-  
+
+  <link rel="stylesheet" href="/css/app-e3acfada22.min.css">
+
 
 
 </head>
@@ -117,18 +168,29 @@
      }
     </style>
   </noscript>
-  <div id="spinner" class="spinner__wrapper">
-    <div data-loader="circle"></div>
-    <div class="spinner__descr">
-      <span style="color:#80c040;">
-        Library Watch&nbsp;
-      </span>
-      <span style="color:gray">
-        Loading...
-      </span>
+  <div id="preloader" class="wrapper">
+      <div id="circle" data-loader="circle" class="wrapper__loading"></div>
+      <div class="wrapper__descr">
+        <span class="wrapper__app">
+          Library Watch&nbsp;
+        </span>
+        <div id='msg' style="color:gray">
+          Loading 1%...
+        </div>
+        <div id="loaded" class="wrapper__loaded">
+        </div>
+        <div id="css-missed" class="wrapper__error">
+          Error on load css.
+        </div>
+        <div id="bundle-missed" class="wrapper__error">
+          Error on load bundle.
+        </div>
+        <div id="msg-reload" class="wrapper__reload">
+          *Maybe, missed in locale cache.
+          Please, reload page through browser's toolbar.
+        </div>
+      </div>
     </div>
-  </div>
-
   <!--googleon: snippet-->
 
 
@@ -153,24 +215,26 @@
       </div>
    </noscript>
 
+   <!--
+   onload="preloader.done(1)" onerror="preloader.errScript()"
+   onload="preloader.done(70)" onerror="preloader.errScript()"
+   onload="preloader.done(26)" onerror="preloader.errScript()"
+   -->
+   <script>if(preloader){if (preloader.isErrScript){preloader.stop()};preloader=undefined;}</script>   
    <!-- Google Analytics -->
- <script>
-  if ( window && window.location.href.indexOf("https://zhnzhn.github.io/library-watch") > -1){
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+   <script>
+    if ( window && window.location.href.indexOf("https://zhnzhn.github.io/library-watch") > -1){
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create' , 'UA-87123545-1', {
-          'cookieDomain' : 'zhnzhn.github.io/library-watch',
-          'cookieExpires' : 0
-    });
-    ga('set', 'anonymizeIp', true);
-    ga('send', 'pageview');
-  }
-</script>
-<!-- Google Analytics -->
-
+      ga('create' , 'UA-87123545-1', {'cookieExpires':0});
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    }
+  </script>
+  <!-- Google Analytics -->
 
 </body>
 </html>

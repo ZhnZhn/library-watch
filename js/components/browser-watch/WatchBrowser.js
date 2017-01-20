@@ -209,9 +209,6 @@ var WatchBrowser = _react2.default.createClass(_extends({
       this.setState({ isShow: true });
     }
   },
-  _handlerSaveWatch: function _handlerSaveWatch() {
-    _WatchActions2.default.saveWatch();
-  },
   _handlerToggleEditMode: function _handlerToggleEditMode() {
     var _state = this.state,
         isShowFind = _state.isShowFind,
@@ -415,9 +412,7 @@ var WatchBrowser = _react2.default.createClass(_extends({
         },
         _react2.default.createElement(_ButtonSave2.default, {
           store: store,
-          actionWatchEdited: _WatchActions.WatchActionTypes.SET_WATCH_EDITED,
-          style: styles.btCircle,
-          onClick: this._handlerSaveWatch
+          style: styles.btCircle
         }),
         _react2.default.createElement(_ButtonCircle2.default, {
           caption: _captionEV,

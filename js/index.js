@@ -10,30 +10,45 @@ var _ravenJs = require('raven-js');
 
 var _ravenJs2 = _interopRequireDefault(_ravenJs);
 
-var _AppGitHub = require('./components/AppGitHub');
+var _AppLibraryWatch = require('./components/AppLibraryWatch');
 
-var _AppGitHub2 = _interopRequireDefault(_AppGitHub);
+var _AppLibraryWatch2 = _interopRequireDefault(_AppLibraryWatch);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* eslint-disable no-undef */
 if (process.env.NODE_ENV !== 'production') {
-   /* eslint-disable no-undef */
-   console.log('Development Mode:');
-   window.onerror = function (message, source, lineno, colno, error) {
-      console.log('window.onerror:');
-      console.log(message);
-      return false;
-   };
+  /* eslint-disable no-undef */
+  console.log('Development Mode:');
+  window.onerror = function (message, source, lineno, colno, error) {
+    console.log('window.onerror:');
+    console.log(message);
+    return false;
+  };
 }
 
 if (process.env.NODE_ENV === 'production') {
-   _ravenJs2.default.config('https://59cd430997004591af3320a9875237d7@sentry.io/99461').install();
+  _ravenJs2.default.config('https://59cd430997004591af3320a9875237d7@sentry.io/99461').install();
 }
 
-var _fnRemoveSpinner = function _fnRemoveSpinner() {
-   document.body.removeChild(document.getElementById('spinner'));
+var _fnRenderApp = function _fnRenderApp() {
+  document.body.removeChild(document.getElementById('preloader'));
+  (0, _reactDom.render)(_react2.default.createElement(_AppLibraryWatch2.default, null), document.getElementById("app"));
 };
 
-(0, _reactDom.render)(_react2.default.createElement(_AppGitHub2.default, null), document.getElementById("app"), _fnRemoveSpinner);
-//# sourceMappingURL=index.js.map
+var _fnLoading = function _fnLoading() {
+  /*eslint-disable no-undef*/
+  if (preloader) {
+    if (!preloader.isErrCss && !preloader.isErrScript) {
+      _fnRenderApp();
+    } else {
+      preloader.stop();
+    }
+    /*eslint-enable no-undef*/
+  } else {
+    _fnRenderApp();
+  }
+};
+
+_fnLoading();
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\index.js.map

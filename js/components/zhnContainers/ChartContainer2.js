@@ -10,9 +10,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _GitHubStore = require('../../flux/stores/GitHubStore');
+var _AppStore = require('../../flux/stores/AppStore');
 
-var _GitHubStore2 = _interopRequireDefault(_GitHubStore);
+var _AppStore2 = _interopRequireDefault(_AppStore);
 
 var _ChartActions = require('../../flux/actions/ChartActions');
 
@@ -33,7 +33,6 @@ var _ScrollPane2 = _interopRequireDefault(_ScrollPane);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-//import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 var CHILD_MARGIN = 36;
 
@@ -65,9 +64,14 @@ var styles = {
   }
 };
 
-var isInArray = function isInArray(array, value) {
-  for (var i = 0; i < array.length; i++) {
-    if (array[i] === value) {
+var isInArray = function isInArray() {
+  var arr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var value = arguments[1];
+
+  var len = arr.length;
+  var i = 0;
+  for (; i < len; i++) {
+    if (arr[i] === value) {
       return true;
     }
   }
@@ -83,8 +87,8 @@ var ChartContainer2 = _react2.default.createClass({
     return {};
   },
   componentWillMount: function componentWillMount() {
-    this.unsubscribe = _GitHubStore2.default.listen(this._onStore);
-    this.setState(_GitHubStore2.default.getConfigs(this.props.chartType));
+    this.unsubscribe = _AppStore2.default.listen(this._onStore);
+    this.setState(_AppStore2.default.getConfigs(this.props.chartType));
   },
   componentWillUnmount: function componentWillUnmount() {
     this.unsubscribe();
@@ -100,7 +104,7 @@ var ChartContainer2 = _react2.default.createClass({
       }
     }
   },
-  _handlerHide: function _handlerHide() {
+  _handleHide: function _handleHide() {
     var _props = this.props,
         chartType = _props.chartType,
         browserType = _props.browserType,
@@ -109,33 +113,29 @@ var ChartContainer2 = _react2.default.createClass({
     onCloseContainer(chartType, browserType);
     this.setState({ isShow: false });
   },
-  renderCharts: function renderCharts() {
+  _renderCharts: function _renderCharts() {
     return this.state.configs.map(function (item, index) {
       return item;
     });
   },
   render: function render() {
-    /*
-    const transitionOption = {
-            transitionName : "scaleY",
-            transitionEnterTimeout : 400,
-            transitionLeave : false
-          }
-    */
-    var styleOpen = this.state.isShow ? { display: 'inline-block' } : { display: 'none' },
-        classOpen = this.state.isShow ? "show-popup" : null;
+    var caption = this.props.caption,
+        isShow = this.state.isShow,
+        _styleOpen = isShow ? { display: 'inline-block' } : { display: 'none' },
+        _classOpen = isShow ? "show-popup" : undefined;
+
 
     return _react2.default.createElement(
       'div',
       {
-        className: classOpen,
-        style: Object.assign({}, styles.rootDiv, styleOpen)
+        className: _classOpen,
+        style: Object.assign({}, styles.rootDiv, _styleOpen)
       },
       _react2.default.createElement(
         _CaptionRow2.default,
         {
-          caption: this.props.caption,
-          onClose: this._handlerHide
+          caption: caption,
+          onClose: this._handleHide
         },
         _react2.default.createElement(_SvgHrzResize2.default, {
           minWidth: 500,
@@ -146,11 +146,11 @@ var ChartContainer2 = _react2.default.createClass({
       _react2.default.createElement(
         _ScrollPane2.default,
         { style: styles.scrollDiv },
-        this.renderCharts()
+        this._renderCharts()
       )
     );
   }
 });
 
 exports.default = ChartContainer2;
-//# sourceMappingURL=ChartContainer2.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnContainers\ChartContainer2.js.map

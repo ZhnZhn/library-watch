@@ -10,9 +10,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _GitHubStore = require('../stores/GitHubStore');
+var _AppStore = require('../stores/AppStore');
 
-var _GitHubStore2 = _interopRequireDefault(_GitHubStore);
+var _AppStore2 = _interopRequireDefault(_AppStore);
 
 var _WithBrowserDynamic = require('./WithBrowserDynamic');
 
@@ -37,13 +37,13 @@ var Factory = _extends({}, _WithBrowserDynamic2.default, _WithDialog2.default, _
     return _react2.default;
   },
   getStore: function getStore() {
-    return _GitHubStore2.default;
+    return _AppStore2.default;
   },
   getDataConf: function getDataConf(dialogType) {
     var dataId = dialogType.split('_')[0];
-    return _GitHubStore2.default.getSourceConfig(dataId, dialogType);
+    return _AppStore2.default.getSourceConfig(dataId, dialogType);
   }
 });
 
 exports.default = Factory;
-//# sourceMappingURL=Factory.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\logic\Factory.js.map

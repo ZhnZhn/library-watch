@@ -16,15 +16,15 @@ var _ComponentActions = require('../../flux/actions/ComponentActions');
 
 var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
 
-var _WatchActions = require('../../flux/actions/WatchActions');
-
-var _WatchActions2 = _interopRequireDefault(_WatchActions);
-
 var _Type = require('../../constants/Type');
 
 var _LoadingProgress = require('./LoadingProgress');
 
 var _LoadingProgress2 = _interopRequireDefault(_LoadingProgress);
+
+var _IconAppLogo = require('./IconAppLogo');
+
+var _IconAppLogo2 = _interopRequireDefault(_IconAppLogo);
 
 var _AppLabel = require('./AppLabel');
 
@@ -73,10 +73,10 @@ var BrowserConfig = {
 
 var HeaderBar = _react2.default.createClass({
   displayName: 'HeaderBar',
-  _handlerClickDynamic: function _handlerClickDynamic(browserConfig) {
+  _handleClickDynamic: function _handleClickDynamic(browserConfig) {
     _BrowserActions2.default.showBrowserDynamic(browserConfig);
   },
-  _handlerClickWatch: function _handlerClickWatch() {
+  _handleClickWatch: function _handleClickWatch() {
     _BrowserActions2.default.showBrowser(_Type.BrowserType.WATCH_LIST);
   },
   render: function render() {
@@ -86,6 +86,10 @@ var HeaderBar = _react2.default.createClass({
       'div',
       { className: 'header', style: STYLE.ROOT_DIV },
       _react2.default.createElement(_LoadingProgress2.default, { store: store }),
+      _react2.default.createElement(_IconAppLogo2.default, {
+        className: 'header__icon-app',
+        title: 'Library Watch v0.11.0'
+      }),
       _react2.default.createElement(_AppLabel2.default, {
         style: STYLE.APP_LABEL,
         caption: 'Library Watch v0.11.0'
@@ -94,19 +98,17 @@ var HeaderBar = _react2.default.createClass({
         type: 'TypeA',
         caption: 'Library',
         title: 'Library Browser',
-        onClick: this._handlerClickDynamic.bind(null, BrowserConfig.LIBRARY)
+        onClick: this._handleClickDynamic.bind(null, BrowserConfig.LIBRARY)
       }),
       _react2.default.createElement(_ToolBarButton2.default, {
         type: 'TypeA',
         caption: 'Watch',
         title: 'Watch Browser',
-        onClick: this._handlerClickWatch
+        onClick: this._handleClickWatch
       }),
       _react2.default.createElement(_ButtonSave2.default, {
         store: store,
-        actionWatchEdited: _WatchActions.WatchActionTypes.SET_WATCH_EDITED,
-        style: STYLE.BUTTON_SAVE,
-        onClick: _WatchActions2.default.saveWatch
+        style: STYLE.BUTTON_SAVE
       }),
       _react2.default.createElement(_ToolBarButton2.default, {
         type: 'TypeA',

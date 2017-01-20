@@ -9,7 +9,7 @@ import createHandlerDnDItem from './with/createHandlerDnDItem';
 import { ModalDialog } from '../../constants/Type';
 import ComponentActions from '../../flux/actions/ComponentActions';
 import BrowserActions from '../../flux/actions/BrowserActions';
-import WatchActions, { WatchActionTypes } from '../../flux/actions/WatchActions';
+import WatchActions from '../../flux/actions/WatchActions';
 
 import Browser from '../zhnAtoms/Browser';
 import CaptionRow from '../zhnAtoms/CaptionRow';
@@ -148,9 +148,6 @@ const WatchBrowser = React.createClass({
     }
   },
 
-  _handlerSaveWatch(){
-    WatchActions.saveWatch();
-  },
   _handlerToggleEditMode(){
     const { isShowFind, isModeEdit } = this.state
          , _isModeEdit = !isModeEdit
@@ -341,10 +338,8 @@ const WatchBrowser = React.createClass({
          >
            <ButtonSave
              store={store}
-             actionWatchEdited={WatchActionTypes.SET_WATCH_EDITED}
              style={styles.btCircle}
-             onClick={this._handlerSaveWatch}
-           />           
+           />
            <ButtonCircle
               caption={_captionEV}
               title={_titleEV}

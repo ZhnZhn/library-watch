@@ -8,9 +8,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _GitHubStore = require('../flux/stores/GitHubStore');
+var _AppStore = require('../flux/stores/AppStore');
 
-var _GitHubStore2 = _interopRequireDefault(_GitHubStore);
+var _AppStore2 = _interopRequireDefault(_AppStore);
 
 var _BrowserActions = require('../flux/actions/BrowserActions');
 
@@ -48,16 +48,16 @@ var _RouterModalDialog2 = _interopRequireDefault(_RouterModalDialog);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var AppGitHub = function AppGitHub(props) {
+var AppLibraryWatch = function AppLibraryWatch(props) {
    return _react2.default.createElement(
       'div',
       null,
-      _react2.default.createElement(_HeaderBar2.default, { store: _GitHubStore2.default }),
+      _react2.default.createElement(_HeaderBar2.default, { store: _AppStore2.default }),
       _react2.default.createElement(
          'div',
          { className: 'component-container' },
          _react2.default.createElement(_BrowserContainer2.default, {
-            store: _GitHubStore2.default,
+            store: _AppStore2.default,
             showBrowserAction: _BrowserActions.BrowserActionTypes.SHOW_BROWSER,
             initBrowserAction: _BrowserActions.BrowserActionTypes.INIT_BROWSER_DYNAMIC,
             updateWatchAction: _BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER,
@@ -66,16 +66,16 @@ var AppGitHub = function AppGitHub(props) {
             showDialogAction: _ComponentActions.ComponentActionTypes.SHOW_DIALOG
          }),
          _react2.default.createElement(_About2.default, {
-            store: _GitHubStore2.default,
+            store: _AppStore2.default,
             isShow: true
          }),
          _react2.default.createElement(_ComponentHrzContainer2.default, {
-            store: _GitHubStore2.default,
+            store: _AppStore2.default,
             initShowAction: _ChartActions.ChartActionTypes.INIT_AND_SHOW_CHART
          })
       ),
       _react2.default.createElement(_DialogContainer2.default, {
-         store: _GitHubStore2.default,
+         store: _AppStore2.default,
          showAction: _ComponentActions.ComponentActionTypes.SHOW_MODAL_DIALOG,
          routerDialog: _RouterModalDialog2.default
       }),
@@ -83,5 +83,5 @@ var AppGitHub = function AppGitHub(props) {
    );
 };
 
-exports.default = AppGitHub;
-//# sourceMappingURL=AppGitHub.js.map
+exports.default = AppLibraryWatch;
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\AppLibraryWatch.js.map

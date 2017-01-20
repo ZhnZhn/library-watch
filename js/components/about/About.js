@@ -52,9 +52,17 @@ var STYLE = {
     paddingRight: '10px'
   },
   ROOT_DIV: {
+    color: 'gray',
+    fontWeight: 'bold',
     paddingLeft: '5px',
     paddingRight: '5px',
     lineHeight: 1.4
+  },
+  MARGIN_BOTTOM: {
+    marginBottom: '1em'
+  },
+  MARGIN_TOP: {
+    marginTop: '3px'
   }
 };
 
@@ -121,13 +129,12 @@ var About = _react2.default.createClass({
           ),
           _react2.default.createElement(
             'p',
-            null,
-            _react2.default.createElement(
-              _Token2.default,
-              { color: 'gray' },
-              'With it, you can view information about GitHub\'s repositories, NPM\'s packages, StackOverflows\'s questions.'
-            ),
-            _react2.default.createElement('br', null),
+            { style: STYLE.MARGIN_BOTTOM },
+            'With it, you can view information about GitHub\'s repositories, NPM\'s packages, StackOverflows\'s questions.'
+          ),
+          _react2.default.createElement(
+            'p',
+            { style: STYLE.MARGIN_BOTTOM },
             _react2.default.createElement(
               _Token2.default,
               { color: 'gray' },
@@ -179,7 +186,6 @@ var About = _react2.default.createClass({
               '.'
             )
           ),
-          _react2.default.createElement('br', null),
           _react2.default.createElement(
             'p',
             null,
@@ -192,7 +198,7 @@ var About = _react2.default.createClass({
           ),
           _react2.default.createElement(
             'p',
-            { style: { marginTop: '3px' } },
+            { style: STYLE.MARGIN_TOP },
             _react2.default.createElement(_Step2.default, { step: '2' }),
             _react2.default.createElement(
               _Token2.default,
@@ -202,7 +208,7 @@ var About = _react2.default.createClass({
           ),
           _react2.default.createElement(
             'p',
-            { style: { marginTop: '3px' } },
+            { style: STYLE.MARGIN_TOP },
             _react2.default.createElement(_Step2.default, { step: '3' }),
             _react2.default.createElement(
               _Token2.default,
@@ -212,7 +218,7 @@ var About = _react2.default.createClass({
           ),
           _react2.default.createElement(
             'p',
-            { style: { marginTop: '3px' } },
+            { style: STYLE.MARGIN_TOP },
             _react2.default.createElement(_Step2.default, { step: '4' }),
             _react2.default.createElement(
               _Token2.default,
@@ -222,7 +228,7 @@ var About = _react2.default.createClass({
           ),
           _react2.default.createElement(
             'p',
-            { style: { marginTop: '3px' } },
+            { style: STYLE.MARGIN_TOP },
             _react2.default.createElement(
               _Token2.default,
               { color: 'gray' },
@@ -231,33 +237,18 @@ var About = _react2.default.createClass({
           ),
           _react2.default.createElement(
             'p',
-            { style: { marginTop: '3px' } },
+            { style: Object.assign({}, STYLE.MARGIN_BOTTOM, STYLE.MARGIN_TOP) },
             _react2.default.createElement(
               _Token2.default,
               { color: 'gray' },
               'Also, you can add an item to Watch Browser and save to LocalStorage.'
             )
           ),
-          _react2.default.createElement('br', null),
           _react2.default.createElement(
             'p',
-            null,
-            _react2.default.createElement(
-              _Token2.default,
-              { color: 'gray' },
-              'After clicking a button Show in a Dialog will be opened Container with Items or empty. After closing a Container all Items remains.'
-            )
+            { style: STYLE.MARGIN_BOTTOM },
+            'After clicking a button Show in a Dialog will be opened Container with Items or empty. After closing a Container all Items remains. In one-time max three Item Dialogs can be opened.'
           ),
-          _react2.default.createElement(
-            'p',
-            null,
-            _react2.default.createElement(
-              _Token2.default,
-              { color: 'gray' },
-              'In one-time max three Item Dialogs can be opened.'
-            )
-          ),
-          _react2.default.createElement('br', null),
           _react2.default.createElement(
             'p',
             null,
@@ -300,4 +291,4 @@ var About = _react2.default.createClass({
 });
 
 exports.default = About;
-//# sourceMappingURL=About.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\about\About.js.map

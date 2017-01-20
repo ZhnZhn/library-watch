@@ -2,11 +2,10 @@ import React from 'react';
 
 import BrowserActions from '../../flux/actions/BrowserActions';
 import ComponentActions from '../../flux/actions/ComponentActions';
-import WatchActions, { WatchActionTypes } from '../../flux/actions/WatchActions';
 import { BrowserType } from '../../constants/Type';
 
-
 import LoadingProgress from './LoadingProgress';
+import IconAppLogo from './IconAppLogo';
 import AppLabel from './AppLabel';
 import ToolBarButton from './ToolBarButton';
 import ButtonSave from '../zhnMoleculs/ButtonSave';
@@ -41,10 +40,10 @@ const BrowserConfig = {
 
 const HeaderBar = React.createClass({
 
-  _handlerClickDynamic(browserConfig){
+  _handleClickDynamic(browserConfig){
     BrowserActions.showBrowserDynamic(browserConfig);
   },
-  _handlerClickWatch(){
+  _handleClickWatch(){
     BrowserActions.showBrowser(BrowserType.WATCH_LIST);
   },
 
@@ -53,6 +52,10 @@ const HeaderBar = React.createClass({
     return (
       <div className="header" style={STYLE.ROOT_DIV}>
          <LoadingProgress store={store} />
+         <IconAppLogo
+           className="header__icon-app"
+           title="Library Watch v0.11.0"
+         />
          <AppLabel
            style={STYLE.APP_LABEL}
            caption="Library Watch v0.11.0"
@@ -61,19 +64,17 @@ const HeaderBar = React.createClass({
             type="TypeA"
             caption="Library"
             title="Library Browser"
-            onClick={this._handlerClickDynamic.bind(null, BrowserConfig.LIBRARY)}
+            onClick={this._handleClickDynamic.bind(null, BrowserConfig.LIBRARY)}
          />
          <ToolBarButton
             type="TypeA"
             caption="Watch"
             title="Watch Browser"
-            onClick={this._handlerClickWatch}
+            onClick={this._handleClickWatch}
          />
          <ButtonSave
             store={store}
-            actionWatchEdited={WatchActionTypes.SET_WATCH_EDITED}
             style={STYLE.BUTTON_SAVE}
-            onClick={WatchActions.saveWatch}
          />
 
          <ToolBarButton

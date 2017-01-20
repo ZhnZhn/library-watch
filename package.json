@@ -4,7 +4,7 @@
   "description": "Library Watch is a RESTFul client. With it you can view information about libraries, repositories from GitHub, NPM api services.",
   "main": "index.js",
   "scripts": {
-    "lint" : "eslint ./src/*.js*",
+    "lint": "eslint ./src/*.js*",
     "test": "ava src/**/__tests__/**/*.test.js --verbose",
     "test:watch": "npm run test -- --watch",
     "test:one": "ava src/**/__tests__/**/*.test.js --verbose --watch --source='menubadge*'",
@@ -29,8 +29,8 @@
       "localforage": "npm:localforage@^1.4.3",
       "lodash.merge": "npm:lodash.merge@^4.6.0",
       "raven-js": "npm:raven-js@^3.8.1",
-      "react": "npm:react@^15.4.1",
-      "react-dom": "npm:react-dom@^15.4.1",
+      "react": "npm:react@^15.4.2",
+      "react-dom": "npm:react-dom@^15.4.2",
       "reflux": "npm:reflux@^5.0.3",
       "timeago.js": "npm:timeago.js@^2.0.4"
     },
@@ -58,9 +58,9 @@
     "gulp-rev": "^7.1.2",
     "html-webpack-plugin": "^2.21.0",
     "jspm": "^0.16.45",
-    "react-addons-test-utils": "^15.4.1",
+    "react-addons-test-utils": "^15.4.2",
     "sinon": "^1.17.5",
-    "webpack": "^1.13.3"
+    "webpack": "^1.14.0"
   },
   "ava": {
     "babel": {

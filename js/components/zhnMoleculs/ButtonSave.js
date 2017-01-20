@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _WatchActions = require('../../flux/actions/WatchActions');
+
+var _WatchActions2 = _interopRequireDefault(_WatchActions);
+
 var _ButtonCircle = require('../zhnAtoms/ButtonCircle');
 
 var _ButtonCircle2 = _interopRequireDefault(_ButtonCircle);
@@ -27,7 +31,8 @@ var ButtonSave = _react2.default.createClass({
   displayName: 'ButtonSave',
 
   propTypes: {
-    store: _react.PropTypes.object.isRequired
+    store: _react.PropTypes.object.isRequired,
+    style: _react.PropTypes.object
   },
 
   getInitialState: function getInitialState() {
@@ -48,7 +53,7 @@ var ButtonSave = _react2.default.createClass({
     this.setState({ isWatchEdited: store.getWatchEdited() });
   },
   _onStore: function _onStore(actionType, value) {
-    if (actionType === this.props.actionWatchEdited) {
+    if (actionType === _WatchActions.WatchActionTypes.SET_WATCH_EDITED) {
       this.setState({ isWatchEdited: value });
     }
   },
@@ -56,17 +61,16 @@ var ButtonSave = _react2.default.createClass({
     this.unsubcribe();
   },
   render: function render() {
-    var _props = this.props,
-        style = _props.style,
-        onClick = _props.onClick,
+    var style = this.props.style,
         isWatchEdited = this.state.isWatchEdited,
         _style = isWatchEdited ? style : Object.assign({}, style, STYLE.NOT_WATCH_EDITED);
+
 
     return _react2.default.createElement(_ButtonCircle2.default, {
       caption: CAPTION,
       title: TITLE,
       style: _style,
-      onClick: onClick
+      onClick: _WatchActions2.default.saveWatch
     });
   }
 });

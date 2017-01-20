@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 
 import Raven from 'raven-js';
 
-import AppGitHub from './components/AppGitHub';
+import App from './components/AppLibraryWatch';
 
 /* eslint-disable no-undef */
 if (process.env.NODE_ENV !== 'production'){
@@ -20,9 +20,23 @@ if (process.env.NODE_ENV === 'production'){
    Raven.config('https://59cd430997004591af3320a9875237d7@sentry.io/99461').install();
 }
 
-const _fnRemoveSpinner = function(){
-  document.body.removeChild(document.getElementById('spinner'));
+const _fnRenderApp = () => {
+  document.body.removeChild(document.getElementById('preloader'));
+  render(<App />, document.getElementById("app"));
 }
 
+const _fnLoading = function(){
+  /*eslint-disable no-undef*/
+  if (preloader) {
+    if (!preloader.isErrCss && !preloader.isErrScript){
+      _fnRenderApp();
+    } else {
+      preloader.stop();
+    }
+  /*eslint-enable no-undef*/
+  } else {
+    _fnRenderApp()
+  }
+}
 
-render(<AppGitHub />, document.getElementById("app"), _fnRemoveSpinner);
+_fnLoading();

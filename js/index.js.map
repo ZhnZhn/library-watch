@@ -1,1 +1,34 @@
-{"version":3,"sources":["../src/index.jsx"],"names":["process","env","NODE_ENV","console","log","window","onerror","message","source","lineno","colno","error","config","install","_fnRemoveSpinner","document","body","removeChild","getElementById"],"mappings":";;AAAA;;;;AACA;;AAEA;;;;AAEA;;;;;;AAEA;AACA,IAAIA,QAAQC,GAAR,CAAYC,QAAZ,KAAyB,YAA7B,EAA0C;AAC1C;AACEC,WAAQC,GAAR,CAAY,mBAAZ;AACAC,UAAOC,OAAP,GAAiB,UAASC,OAAT,EAAkBC,MAAlB,EAA0BC,MAA1B,EAAkCC,KAAlC,EAAyCC,KAAzC,EAAgD;AAC9DR,cAAQC,GAAR,CAAY,iBAAZ;AACAD,cAAQC,GAAR,CAAYG,OAAZ;AACA,aAAO,KAAP;AACF,IAJD;AAKD;;AAED,IAAIP,QAAQC,GAAR,CAAYC,QAAZ,KAAyB,YAA7B,EAA0C;AACvC,qBAAMU,MAAN,CAAa,0DAAb,EAAyEC,OAAzE;AACF;;AAED,IAAMC,mBAAmB,SAAnBA,gBAAmB,GAAU;AACjCC,YAASC,IAAT,CAAcC,WAAd,CAA0BF,SAASG,cAAT,CAAwB,SAAxB,CAA1B;AACD,CAFD;;AAKA,sBAAO,wDAAP,EAAsBH,SAASG,cAAT,CAAwB,KAAxB,CAAtB,EAAsDJ,gBAAtD","file":"index.js","sourcesContent":["import React from 'react';\r\nimport { render } from 'react-dom';\r\n\r\nimport Raven from 'raven-js';\r\n\r\nimport AppGitHub from './components/AppGitHub';\r\n\r\n/* eslint-disable no-undef */\r\nif (process.env.NODE_ENV !== 'production'){\r\n/* eslint-disable no-undef */\r\n  console.log('Development Mode:');\r\n  window.onerror = function(message, source, lineno, colno, error) {\r\n     console.log('window.onerror:');\r\n     console.log(message);\r\n     return false;\r\n  }\r\n}\r\n\r\nif (process.env.NODE_ENV === 'production'){\r\n   Raven.config('https://59cd430997004591af3320a9875237d7@sentry.io/99461').install();\r\n}\r\n\r\nconst _fnRemoveSpinner = function(){\r\n  document.body.removeChild(document.getElementById('spinner'));\r\n}\r\n\r\n\r\nrender(<AppGitHub />, document.getElementById(\"app\"), _fnRemoveSpinner);\r\n"]}
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\index.jsx",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\index.js",
+ "sourceRoot": "",
+ "names": [
+  "process",
+  "env",
+  "NODE_ENV",
+  "console",
+  "log",
+  "window",
+  "onerror",
+  "message",
+  "source",
+  "lineno",
+  "colno",
+  "error",
+  "config",
+  "install",
+  "_fnRenderApp",
+  "document",
+  "body",
+  "removeChild",
+  "getElementById",
+  "_fnLoading",
+  "preloader",
+  "isErrCss",
+  "isErrScript",
+  "stop"
+ ],
+ "mappings": ";;AAAA;;;;AACA;;AAEA;;;;AAEA;;;;;;AAEA;AACA,IAAIA,QAAQC,GAAR,CAAYC,QAAZ,KAAyB,YAA7B,EAA0C;AAC1C;AACEC,UAAQC,GAAR,CAAY,mBAAZ;AACAC,SAAOC,OAAP,GAAiB,UAASC,OAAT,EAAkBC,MAAlB,EAA0BC,MAA1B,EAAkCC,KAAlC,EAAyCC,KAAzC,EAAgD;AAC9DR,YAAQC,GAAR,CAAY,iBAAZ;AACAD,YAAQC,GAAR,CAAYG,OAAZ;AACA,WAAO,KAAP;AACF,GAJD;AAKD;;AAED,IAAIP,QAAQC,GAAR,CAAYC,QAAZ,KAAyB,YAA7B,EAA0C;AACvC,oBAAMU,MAAN,CAAa,0DAAb,EAAyEC,OAAzE;AACF;;AAED,IAAMC,eAAe,SAAfA,YAAe,GAAM;AACzBC,WAASC,IAAT,CAAcC,WAAd,CAA0BF,SAASG,cAAT,CAAwB,WAAxB,CAA1B;AACA,wBAAO,8DAAP,EAAgBH,SAASG,cAAT,CAAwB,KAAxB,CAAhB;AACD,CAHD;;AAKA,IAAMC,aAAa,SAAbA,UAAa,GAAU;AAC3B;AACA,MAAIC,SAAJ,EAAe;AACb,QAAI,CAACA,UAAUC,QAAX,IAAuB,CAACD,UAAUE,WAAtC,EAAkD;AAChDR;AACD,KAFD,MAEO;AACLM,gBAAUG,IAAV;AACD;AACH;AACC,GAPD,MAOO;AACLT;AACD;AACF,CAZD;;AAcAK"
+}

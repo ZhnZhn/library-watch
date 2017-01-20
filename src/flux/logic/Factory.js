@@ -1,6 +1,6 @@
 import React from 'react';
 
-import GitHubStore from '../stores/GitHubStore';
+import Store from '../stores/AppStore';
 
 import WithBrowserDynamic from './WithBrowserDynamic';
 import WithDialog from './WithDialog';
@@ -19,12 +19,12 @@ const Factory = {
   },
 
   getStore(){
-    return GitHubStore;
+    return Store;
   },
 
   getDataConf(dialogType){
     const dataId = dialogType.split('_')[0];
-    return GitHubStore.getSourceConfig(dataId, dialogType);
+    return Store.getSourceConfig(dataId, dialogType);
   }
 
 };

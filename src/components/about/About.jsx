@@ -22,9 +22,17 @@ const STYLE = {
     paddingRight: '10px'
   },
   ROOT_DIV : {
+    color: 'gray',
+    fontWeight: 'bold',
     paddingLeft: '5px',
     paddingRight: '5px',
     lineHeight : 1.4
+  },
+  MARGIN_BOTTOM : {
+    marginBottom : '1em'
+  },
+  MARGIN_TOP : {
+    marginTop: '3px'
   }
 };
 
@@ -84,11 +92,10 @@ const About = React.createClass({
                is a SPA RESTful client.
              </Token>
            </p>
-           <p>
-             <Token color="gray">
-               With it, you can view information about GitHub's repositories, NPM's packages, StackOverflows's questions.
-            </Token>
-            <br/>
+           <p style={STYLE.MARGIN_BOTTOM}>
+              With it, you can view information about GitHub's repositories, NPM's packages, StackOverflows's questions.
+           </p>
+           <p style={STYLE.MARGIN_BOTTOM}>
             <Token color="gray">
               Information API providers :
             </Token>
@@ -115,7 +122,7 @@ const About = React.createClass({
               ,&nbsp;
             </Token>
             <LinkToken
-               href="https://stackexchange.com/"               
+               href="https://stackexchange.com/"
                color="#3186C9"
                isFirstBlank={true}
                title="Stack Exchange"
@@ -126,59 +133,45 @@ const About = React.createClass({
               .
             </Token>
            </p>
-
-           <br/>
             <p>
               <Step step="1" />
               <Token color="black" isFirstBlank={true}>
                  Choose an information Browser from the header bar
               </Token>
             </p>
-            <p style={{marginTop: '3px'}}>
+            <p style={STYLE.MARGIN_TOP}>
               <Step step="2" />
               <Token color="black" isFirstBlank={true}>
                  Choose an information menu item in a Browser
               </Token>
             </p>
-            <p style={{marginTop: '3px'}}>
+            <p style={STYLE.MARGIN_TOP}>
               <Step step="3" />
               <Token color="black" isFirstBlank={true}>
                  Enter repository or package name in a draggable Dialog
               </Token>
             </p>
-            <p style={{marginTop: '3px'}}>
+            <p style={STYLE.MARGIN_TOP}>
                <Step step="4" />
                <Token color="black" isFirstBlank={true}>
                   Click a button Load
                </Token>
             </p>
-            <p style={{marginTop: '3px'}}>
+            <p style={STYLE.MARGIN_TOP}>
                <Token color="gray">
                   The result will be shown in an Item component in a Container.
                </Token>
             </p>
-            <p style={{marginTop: '3px'}}>
+            <p style={Object.assign({}, STYLE.MARGIN_BOTTOM, STYLE.MARGIN_TOP)}>
                <Token color="gray">
                   Also, you can add an item to Watch Browser and save to LocalStorage.
                </Token>
             </p>
-
-            <br/>
-
-            <p>
-              <Token color="gray">
-                After clicking a button Show in a Dialog will be opened Container with Items
-                or empty. After closing a Container all Items remains.
-              </Token>
-            </p>
-            <p>
-              <Token color="gray">
-                In one-time max three Item Dialogs can be opened.
-              </Token>
-            </p>
-
-            <br/>
-
+            <p style={STYLE.MARGIN_BOTTOM}>
+               After clicking a button Show in a Dialog will be opened Container with Items
+               or empty. After closing a Container all Items remains.
+               In one-time max three Item Dialogs can be opened.
+            </p>            
             <p>
               <Token color="gray">
                 In that case of using
@@ -196,9 +189,7 @@ const About = React.createClass({
                  and amount queries (<Token color="#2f7ed8">60 calls per hour, 10 requests per minute for Search API</Token><Token color="gray">).</Token>
               </Token>
             </p>
-
             <IconLogoBar />
-
           </div>
         </ScrollPane>
       </div>

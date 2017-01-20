@@ -1,6 +1,6 @@
 import React from 'react';
 
-import GitHubStore from '../flux/stores/GitHubStore';
+import Store from '../flux/stores/AppStore';
 import { BrowserActionTypes } from '../flux/actions/BrowserActions';
 import { ChartActionTypes } from '../flux/actions/ChartActions';
 import { ComponentActionTypes } from '../flux/actions/ComponentActions';
@@ -15,13 +15,13 @@ import ConsentCookiePopup from './zhnAtoms/ConsentCookiePopup';
 
 import RouterModalDialog from './dialogs/RouterModalDialog';
 
-const AppGitHub = (props) => {
+const AppLibraryWatch = (props) => {
   return (
     <div>
-      <HeaderBar store={GitHubStore} />
+      <HeaderBar store={Store} />
       <div className="component-container">
          <BrowserContainer
-            store={GitHubStore}
+            store={Store}
             showBrowserAction={BrowserActionTypes.SHOW_BROWSER}
             initBrowserAction={BrowserActionTypes.INIT_BROWSER_DYNAMIC}
             updateWatchAction={BrowserActionTypes.UPDATE_WATCH_BROWSER}
@@ -30,16 +30,16 @@ const AppGitHub = (props) => {
             showDialogAction={ComponentActionTypes.SHOW_DIALOG}
          />
          <About
-            store={GitHubStore}
+            store={Store}
             isShow={true}
          />
          <ComponentHrzContainer
-            store={GitHubStore}
+            store={Store}
             initShowAction={ChartActionTypes.INIT_AND_SHOW_CHART}
          />
       </div>
       <DialogContainer
-         store={GitHubStore}
+         store={Store}
          showAction={ComponentActionTypes.SHOW_MODAL_DIALOG}
          routerDialog={RouterModalDialog}
       />
@@ -48,4 +48,4 @@ const AppGitHub = (props) => {
   );
 };
 
-export default AppGitHub
+export default AppLibraryWatch
