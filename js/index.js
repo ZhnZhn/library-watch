@@ -37,14 +37,13 @@ var _fnRenderApp = function _fnRenderApp() {
 };
 
 var _fnLoading = function _fnLoading() {
-  /*eslint-disable no-undef*/
+  var preloader = window.preloader;
   if (preloader) {
     if (!preloader.isErrCss && !preloader.isErrScript) {
       _fnRenderApp();
     } else {
       preloader.stop();
     }
-    /*eslint-enable no-undef*/
   } else {
     _fnRenderApp();
   }

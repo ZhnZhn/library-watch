@@ -1,5 +1,6 @@
 'use strict';
-const webpack = require('webpack')
+const path = require('path')
+    , webpack = require('webpack')
     , HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -11,12 +12,12 @@ module.exports = {
            "timeago.js",
            "raven-js",
            "classnames",
-           "browser-filesaver", "lodash.merge"    
+           "browser-filesaver", "lodash.merge"
          ],
-     app: "./js/index.js"
+     app: path.resolve('js', 'index.js')
   },
   output: {
-      path: "./app",
+      path: path.resolve('app'),
       filename: "[name]_[chunkhash].js",
       chunkFilename: "[chunkhash].js"
   },
@@ -41,9 +42,9 @@ module.exports = {
         }
     }),
     new HtmlWebpackPlugin({
-        filename: '../index.html',
-        template: './template/index.ejs',
-        inject: 'body'
+        filename: path.resolve('index.html'),
+        template: path.resolve('template','index.ejs'),
+        inject: false
     })
   ]
 };

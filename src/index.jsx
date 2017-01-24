@@ -26,14 +26,13 @@ const _fnRenderApp = () => {
 }
 
 const _fnLoading = function(){
-  /*eslint-disable no-undef*/
+  const preloader = window.preloader
   if (preloader) {
     if (!preloader.isErrCss && !preloader.isErrScript){
       _fnRenderApp();
     } else {
       preloader.stop();
     }
-  /*eslint-enable no-undef*/
   } else {
     _fnRenderApp()
   }

@@ -9,7 +9,7 @@
     "test:watch": "npm run test -- --watch",
     "test:one": "ava src/**/__tests__/**/*.test.js --verbose --watch --source='menubadge*'",
     "transpile": "babel ./src --out-dir ./js --source-maps --ignore test.js",
-    "bundle": "jspm bundle js/**/* - [js/**/*] dependency-bundle.js",
+    "bundle": "jspm bundle js/**/*  - [js/**/*] dependency-bundle.js",
     "build": "webpack --colors --progress",
     "gulp": "gulp",
     "start": "http-server -p8080"
@@ -28,7 +28,7 @@
       "interact.js": "npm:interact.js@^1.2.6",
       "localforage": "npm:localforage@^1.4.3",
       "lodash.merge": "npm:lodash.merge@^4.6.0",
-      "raven-js": "npm:raven-js@^3.8.1",
+      "raven-js": "npm:raven-js@^3.9.2",
       "react": "npm:react@^15.4.2",
       "react-dom": "npm:react-dom@^15.4.2",
       "reflux": "npm:reflux@^5.0.3",
@@ -73,5 +73,8 @@
     "files": [
       "src/**/__tests__/**/*.test.js"
     ]
+  },
+  "dependencies": {
+    "raven-js": "^3.9.2"
   }
 }
