@@ -100,7 +100,7 @@ var ChartContainer2 = _react2.default.createClass({
       }
     } else if (actionType === _ComponentActions.ComponentActionTypes.CLOSE_CHART_CONTAINER_2) {
       if (data === this.props.chartType) {
-        this._handlerHide();
+        this._handleHide();
       }
     }
   },

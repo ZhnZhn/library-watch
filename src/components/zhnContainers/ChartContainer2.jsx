@@ -46,7 +46,7 @@ const styles = {
 
 const isInArray = function(arr=[], value){
   const len = arr.length;
-  let i=0;  
+  let i=0;
   for (; i<len; i++){
     if (arr[i] === value){
       return true;
@@ -82,7 +82,7 @@ const ChartContainer2 = React.createClass({
         }
       } else if (actionType === ComponentActionTypes.CLOSE_CHART_CONTAINER_2){
          if (data === this.props.chartType){
-           this._handlerHide();
+           this._handleHide();
          }
       }
    },
