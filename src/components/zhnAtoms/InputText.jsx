@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
 const styles = {
   inputText : {
@@ -18,18 +18,21 @@ const styles = {
   }
 }
 
-const InputText = React.createClass({
-  displayName : 'InputText',
-  propTypes : {
-    initValue : React.PropTypes.string,
-    style : React.PropTypes.object
-  },
+class InputText extends Component {
+  static propTypes = {
+    initValue : PropTypes.string,
+    style : PropTypes.object
+  }
+  static defaultProps = {
+    initValue : ''
+  }
 
-  getInitialState(){
-    return {
-      value : this.props.initValue || ''
+  constructor(props){
+    super()
+    this.state = {
+      value : props.initValue
     }
-  },
+  }
 
   componentWillReceiveProps(nextProps){
     if ( nextProps !== this.props &&
@@ -37,17 +40,17 @@ const InputText = React.createClass({
     {
       this.setState({ value : nextProps.initValue });
     }
-  },
+  }
 
-  _handlerInputChange(event){
+  _handlerInputChange = (event) => {
     this.setState({ value : event.target.value })
-  },
+  }
 
-  _handlerInputKeyDown(event){
+  _handlerInputKeyDown = (event) => {
      if (event.keyCode === 27){
        this.setState({ value : '' })
      }
-  },
+  }
 
   render(){
     const { style, placeholder='' } = this.props
@@ -55,21 +58,25 @@ const InputText = React.createClass({
     return (
       <input
         type="text"
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck={false}
         style={Object.assign({}, styles.inputText, style)}
-        value={value}        
+        value={value}
         placeholder={placeholder}
         onChange={this._handlerInputChange}
         onKeyDown={this._handlerInputKeyDown}
       />
     )
-  },
+  }
 
   getValue(){
     return this.state.value.trim();
-  },
+  }
   setValue(value){
     this.setState({ value });
   }
-})
+}
+
 
 export default InputText

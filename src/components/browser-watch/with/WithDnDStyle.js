@@ -2,7 +2,7 @@
 const BORDER = 'border' // dragStart
     , BORDER_BOTTOM = 'border-bottom' // backup
     , BORDER_LEFT = 'border-left' // dragEnter
-    , START_BORDER_STYLE = "1px solid yellow"
+    //, START_BORDER_STYLE = "1px solid yellow"
     , ENTER_BORDER_LEFT_STYLE = "4px solid green"
     , ENTER_BORDER_LEFT_STYLE_DENY = "4px solid red";
 
@@ -19,7 +19,7 @@ const WithDnDStyle = {
 
       const style = nodeDragTarget.style;
       borderBottom = style.getPropertyValue(BORDER_BOTTOM);
-      style.setProperty(BORDER, START_BORDER_STYLE);
+      //style.setProperty(BORDER, START_BORDER_STYLE);
 
       sourcePermissions = permissions;
    },
@@ -34,7 +34,7 @@ const WithDnDStyle = {
    dragEnterWithDnDStyle(ev, sourceType){
       const style = ev.currentTarget.style
       borderLeftEnter = style.getPropertyValue(BORDER_LEFT);
-      
+
       /* eslint-disable no-unused-expressions */
       ( sourcePermissions.indexOf(sourceType) !== -1 )
          ? style.setProperty(BORDER_LEFT, ENTER_BORDER_LEFT_STYLE)

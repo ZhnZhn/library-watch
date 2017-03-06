@@ -45,14 +45,14 @@ var ButtonCircle = function ButtonCircle(props) {
   );
 };
 
-ButtonCircle.propTypes = {
+process.env.NODE_ENV !== "production" ? ButtonCircle.propTypes = {
   caption: _react.PropTypes.string,
   title: _react.PropTypes.string,
   className: _react.PropTypes.string,
   style: _react.PropTypes.object,
   isWithoutDefault: _react.PropTypes.bool,
   onClick: _react.PropTypes.func
-};
+} : void 0;
 
 exports.default = ButtonCircle;
 //# sourceMappingURL=ButtonCircle.js.map

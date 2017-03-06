@@ -27,9 +27,9 @@ var FormattedInteger = function FormattedInteger(_ref) {
   );
 };
 
-FormattedInteger.propTypes = {
+process.env.NODE_ENV !== "production" ? FormattedInteger.propTypes = {
   value: _react.PropTypes.number.isRequired
-};
+} : void 0;
 
 exports.default = FormattedInteger;
 //# sourceMappingURL=FormattedInteger.js.map

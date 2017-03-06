@@ -291,4 +291,4 @@ var About = _react2.default.createClass({
 });
 
 exports.default = About;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\about\About.js.map
+//# sourceMappingURL=About.js.map

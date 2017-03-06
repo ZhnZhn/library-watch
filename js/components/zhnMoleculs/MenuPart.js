@@ -52,4 +52,4 @@ var MenuPart = function MenuPart(props) {
 };
 
 exports.default = MenuPart;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnMoleculs\MenuPart.js.map
+//# sourceMappingURL=MenuPart.js.map

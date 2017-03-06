@@ -326,4 +326,4 @@ var GitHubRecentTag = _react2.default.createClass({
 });
 
 exports.default = GitHubRecentTag;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\items\GitHubRecentTag.js.map
+//# sourceMappingURL=GitHubRecentTag.js.map

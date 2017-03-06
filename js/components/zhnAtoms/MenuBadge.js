@@ -50,4 +50,4 @@ var MenuBadge = _react2.default.createClass({
 });
 
 exports.default = MenuBadge;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\MenuBadge.js.map
+//# sourceMappingURL=MenuBadge.js.map

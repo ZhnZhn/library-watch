@@ -69,4 +69,4 @@ var IconAppLogo = function IconAppLogo(_ref) {
 };
 
 exports.default = IconAppLogo;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\header\IconAppLogo.js.map
+//# sourceMappingURL=IconAppLogo.js.map

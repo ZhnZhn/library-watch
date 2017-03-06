@@ -56,4 +56,4 @@ var DateAgo = _react2.default.createClass({
 });
 
 exports.default = DateAgo;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\DateAgo.js.map
+//# sourceMappingURL=DateAgo.js.map

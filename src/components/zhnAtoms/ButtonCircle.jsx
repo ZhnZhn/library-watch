@@ -1,5 +1,4 @@
-import React from 'react';
-import { PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
 const STYLE = {
   ROOT_SPAN : {

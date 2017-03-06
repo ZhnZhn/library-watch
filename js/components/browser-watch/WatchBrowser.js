@@ -453,4 +453,4 @@ var WatchBrowser = _react2.default.createClass(_extends({
 }));
 
 exports.default = WatchBrowser;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\WatchBrowser.js.map
+//# sourceMappingURL=WatchBrowser.js.map

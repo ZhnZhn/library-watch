@@ -126,4 +126,4 @@ var HeaderBar = _react2.default.createClass({
 });
 
 exports.default = HeaderBar;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\header\HeaderBar.js.map
+//# sourceMappingURL=HeaderBar.js.map

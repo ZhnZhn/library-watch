@@ -93,7 +93,12 @@ const InputDate = React.createClass({
         <input
            ref="inputDate"
            type="text"
-           style={styles.inputText}           
+           name="date"
+           autoComplete="new-date"
+           autoCorrect="off"
+           autoCapitalize="off"
+           spellCheck={false}
+           style={styles.inputText}
            placeholder="YYYY-MM-DD"
            value={value}
            onChange={this._handlerChangeValue}

@@ -181,4 +181,4 @@ var AppStore = _reflux2.default.createStore(_extends({
 }, _BrowserSlice2.default, _ComponentSlice2.default, _WatchListSlice2.default, _WithLimitRemaining2.default, _WithLoadingProgress2.default, _AnalyticSlice2.default));
 
 exports.default = AppStore;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\stores\AppStore.js.map
+//# sourceMappingURL=AppStore.js.map

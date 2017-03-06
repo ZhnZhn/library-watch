@@ -50,4 +50,4 @@ var _fnLoading = function _fnLoading() {
 };
 
 _fnLoading();
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\index.js.map
+//# sourceMappingURL=index.js.map

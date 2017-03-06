@@ -102,6 +102,11 @@ var InputDate = _react2.default.createClass({
       _react2.default.createElement('input', {
         ref: 'inputDate',
         type: 'text',
+        name: 'date',
+        autoComplete: 'new-date',
+        autoCorrect: 'off',
+        autoCapitalize: 'off',
+        spellCheck: false,
         style: styles.inputText,
         placeholder: 'YYYY-MM-DD',
         value: value,

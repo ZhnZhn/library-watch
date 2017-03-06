@@ -27,4 +27,4 @@ var STYLE = {
 };
 
 exports.default = STYLE;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\DateAgo.Style.js.map
+//# sourceMappingURL=DateAgo.Style.js.map

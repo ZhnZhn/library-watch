@@ -34,4 +34,4 @@ var Browser = function Browser(props) {
 };
 
 exports.default = Browser;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\Browser.js.map
+//# sourceMappingURL=Browser.js.map
