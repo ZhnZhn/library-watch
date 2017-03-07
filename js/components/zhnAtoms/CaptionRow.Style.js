@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var STYLE = {
-  captionDiv: {
+  ROOT: {
     backgroundColor: '#232F3B',
     color: 'rgba(164, 135, 212, 1)',
     height: '28px',
@@ -16,7 +16,7 @@ var STYLE = {
     marginRight: '5px',
     marginBottom: '10px'
   },
-  captionSpan: {
+  SPAN: {
     fontSize: '18px',
     fontWeight: '500',
     paddingRight: '8px'
@@ -24,4 +24,4 @@ var STYLE = {
 };
 
 exports.default = STYLE;
-//# sourceMappingURL=CaptionRow.Style.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\CaptionRow.Style.js.map

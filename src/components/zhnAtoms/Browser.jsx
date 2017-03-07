@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import STYLE from '../styles/ContainerStyles';
 
@@ -16,6 +16,15 @@ const Browser = (props) => {
           {children}
        </div>
     )
-};
+}
+
+Browser.propTypes = {
+  isShow: PropTypes.bool,
+  style: PropTypes.object,
+  children: PropTypes.oneOfType([
+     PropTypes.arrayOf(PropTypes.node),
+     PropTypes.node
+  ])
+}
 
 export default Browser

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
-const styles = {
-  inputText : {
+const STYLE = {
+  INPUT : {
     background: 'transparent none repeat scroll 0 0',
     border: 'medium none',
     outline: 'medium none',
@@ -54,14 +54,14 @@ class InputText extends Component {
 
   render(){
     const { style, placeholder='' } = this.props
-        , {value} = this.state;
+        , { value } = this.state;
     return (
       <input
         type="text"
         autoCorrect="off"
         autoCapitalize="off"
         spellCheck={false}
-        style={Object.assign({}, styles.inputText, style)}
+        style={{...STYLE.INPUT, ...style }}
         value={value}
         placeholder={placeholder}
         onChange={this._handlerInputChange}

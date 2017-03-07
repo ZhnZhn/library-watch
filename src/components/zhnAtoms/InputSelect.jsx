@@ -1,4 +1,10 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
+
+const CLASS_ROW_ACTIVE = "option-row__active"
+const NO_ITEM = {
+  caption: 'No results found',
+  value: 'noresult'
+}
 
 const styles = {
   rootDiv: {
@@ -75,6 +81,9 @@ const styles = {
    height: '0px',
    width: '0px'
  },
+ arrowShow: {
+    borderColor: '#1B75BB transparent transparent'
+ },
  inputHr: {
    borderWidth: 'medium medium 1px',
    borderStyle: 'none none solid',
@@ -115,34 +124,49 @@ const styles = {
   }
 }
 
-const ZhSelect = React.createClass({
-  getDefaultProps(){
-    return {
-      options : [],
-      optionName : '',
-      optionNames : '',
-      isUpdateOptions : false
-    }
-  },
-  getInitialState: function(){
-     this.domOptionsCache = null;
-     this.indexActiveOption = 0;
-     const {optionName, optionNames} = this.props
-         , _optionName = (optionName) ? ' ' + optionName : ''
-         , _optionNames = (optionNames) ? ' ' + optionNames :
-                    (optionName) ? _optionName : '';
-     return {
-       value: '',
-       isShowOption: false,
-       options: this.props.options,
-       optionName : _optionName,
-       optionNames : _optionNames,
-       isValidDomOptionsCache: false,
-       isLocalMode: false
-     }
-  },
+class InputSelect extends Component {
+  static propTypes = {
+     width: PropTypes.string,
+     options: PropTypes.arrayOf(PropTypes.object),
+     optionName: PropTypes.string,
+     optionNames: PropTypes.string,
+     isUpdateOptions: PropTypes.bool,
+     placeholder: PropTypes.string,
+     isLoading: PropTypes.bool,
+     isLoadingFailed: PropTypes.bool,
+     onSelect: PropTypes.func,
+     onLoadOption: PropTypes.func
+  }
+  static defaultProps = {
+    options : [],
+    optionName : '',
+    optionNames : '',
+    isUpdateOptions : false,
+    onSelect: () => {},
+    onLoadOption: () => {}
+  }
 
-  componentWillReceiveProps: function(nextProps){
+  constructor(props){
+    super()
+    this.domOptionsCache = null;
+    this.indexActiveOption = 0;
+    const { optionName, optionNames } = props
+        , _optionNames = (optionNames)
+              ? optionNames
+              : (optionName) ? optionName : '';
+
+    this.state = {
+      value: '',
+      isShowOption: false,
+      options: props.options,
+      optionName : optionName,
+      optionNames : _optionNames,
+      isValidDomOptionsCache: false,
+      isLocalMode: false
+    }
+  }
+
+  componentWillReceiveProps(nextProps){
     if (this.props !== nextProps){
       if (this.props.options !== nextProps.options
           || nextProps.isUpdateOptions){
@@ -150,9 +174,9 @@ const ZhSelect = React.createClass({
         this._setStateToInit(nextProps.options);
       }
     }
-  },
+  }
 
-  shouldComponentUpdate: function(nextProps, nextState){
+  shouldComponentUpdate(nextProps, nextState){
     if (this.props !== nextProps || nextProps.isUpdateOptions) {
       nextState.isLocalMode = false;
     } else {
@@ -160,18 +184,18 @@ const ZhSelect = React.createClass({
     }
 
     return true;
-  },
+  }
 
-  componentDidUpdate: function(){
+  componentDidUpdate(){
      //Decorate Active Option
      if (this.state.isShowOption){
-       let domActiveOption = this._getDomForActiveOption();
-       this._decorateOfDomActiveOption(domActiveOption);
-       this._makeVisibleOfDomActiveOption(domActiveOption);
+       const comp = this._getActiveItemComp();
+       this._decorateActiveRowComp(comp);
+       this._makeVisibleActiveRowComp(comp);
     }
-  },
+  }
 
-  _setStateToInit(options){
+  _setStateToInit = (options) => {
     this.indexActiveOption = 0;
     this.setState({
       value : '',
@@ -179,92 +203,75 @@ const ZhSelect = React.createClass({
       options : options,
       isValidDomOptionsCache : false
     });
-  },
+  }
 
-  _getDomForActiveOption: function(){
-    return this.refs["v"+this.indexActiveOption];
-  },
-
-  _decorateOfDomActiveOption: function(domActiveOption){
-    if (domActiveOption){
-      domActiveOption.classList.add("option-row__active");
+  _getActiveItemComp = () => {
+    return this[`v${this.indexActiveOption}`];
+  }
+  _decorateActiveRowComp = (comp) => {
+    if (comp){
+      comp.classList.add(CLASS_ROW_ACTIVE);
     }
-  },
+  }
+  _undecorateActiveRowComp = (comp) => {
+     if (!comp){
+       comp = this._getActiveItemComp()
+     }
+     if (comp){
+       comp.classList.remove(CLASS_ROW_ACTIVE);
+     }
+  }
 
-  _decorateActiveOption: function(){
-    let domActiveOption = this.refs["v"+this.indexActiveOption];
-    domActiveOption.classList.add("option-row__active");
-  },
-
-  _undecorateActiveOption: function(){
-    if (this.refs["v" + this.indexActiveOption]){
-      this.refs["v" + this.indexActiveOption].classList.remove("option-row__active");
-    }
-  },
-
-  _undecorateOfDomActiveOption: function(domActiveOption){
-     if (domActiveOption){
-       domActiveOption.classList.remove("option-row__active");
-    }
-  },
-
-  _makeVisibleOfDomActiveOption: function(domActiveOption){
-    if (domActiveOption){
-      const offsetTop = domActiveOption.offsetTop;
-      const scrollTop = this.domOptions.scrollTop;
+  _makeVisibleActiveRowComp = (comp) => {
+    if (comp){
+      const offsetTop = comp.offsetTop;
+      const scrollTop = this.optionsComp.scrollTop;
       if ( (offsetTop - scrollTop) > 70){
-         this.domOptions.scrollTop += (offsetTop - scrollTop - 70);
+         this.optionsComp.scrollTop += (offsetTop - scrollTop - 70);
       }
       if ( (offsetTop - scrollTop) < 0){
-        this.domOptions.scrollTop= 0;
+        this.optionsComp.scrollTop= 0;
       }
     }
-  },
+  }
 
-  _makeVisibleActiveOption: function(){
-    let domActiveOption = this.refs["v"+this.indexActiveOption];
-
-    let offsetTop = domActiveOption.offsetTop;
-    let scrollTop = this.domOptions.scrollTop;
-    if ( (offsetTop - scrollTop) > 70){
-        this.domOptions.scrollTop += (offsetTop - scrollTop - 70);
-    }
-  },
-
-  _filterOptionsToState: function(options, value){
+  _filterOptions = (options, value) => {
      const valueFor = value.toLowerCase();
      return options.filter( (option, i) => {
        return option.caption.toLowerCase().indexOf(valueFor) !== -1
      })
-  },
+  }
 
-  _handlerInputChange: function(event){
-    const value = event.target.value;
+  _handleInputChange = (event) => {
+    const token = event.target.value
+        , tokenLn = token.length
+        , { value } = this.state
+        , valueLn = value.length;
     let arr = [];
-    if (value.length !== this.state.value.length){
-      if ( value.length>this.state.value.length){
-        arr = this._filterOptionsToState(this.state.options, value);
-      } else if ( value.length<this.state.value.length) {
-        arr = this._filterOptionsToState(this.props.options, value);
+    if (tokenLn !== valueLn){
+      if (tokenLn > valueLn){
+        arr = this._filterOptions(this.state.options, token);
+      } else if (tokenLn < valueLn) {
+        arr = this._filterOptions(this.props.options, token);
       }
       if (arr.length === 0){
-        arr.push({caption: 'No results found', value: 'noresult'});
+        arr.push(NO_ITEM);
       }
-      this._undecorateActiveOption();
+      this._undecorateActiveRowComp()
       this.indexActiveOption = 0;
       this.setState({
-        value : value,
+        value : token,
         isShowOption : true,
         isValidDomOptionsCache : false,
         options : arr
       })
     }
-  },
+  }
 
-  _handlerInputKeyDown: function(event){
+  _handleInputKeyDown = (event) => {
     switch(event.keyCode){
       // enter
-      case 13:
+      case 13:{
          const item = this.state.options[this.indexActiveOption];
 
          if (item && item.caption){
@@ -280,92 +287,92 @@ const ZhSelect = React.createClass({
              this.props.onSelect(null);
            }
          }
-      break;
+      break; }
       //escape
-      case 27:
+      case 27:{
         if (this.state.isShowOption){
-          this.setState({isShowOption : false});
+          this.setState({ isShowOption : false });
         } else {
-          this._undecorateActiveOption();
+          this._undecorateActiveRowComp();
           this._setStateToInit(this.props.options);
           this.props.onSelect(null);
         }
-      break;
+      break;}
       //down
-      case 40:
+      case 40:{
         if (!this.state.isShowOption){
-          this.setState({isShowOption : true});
+          this.setState({ isShowOption : true });
         } else {
           event.preventDefault();
 
-          let domActiveOption = this._getDomForActiveOption();
+          const prevComp = this._getActiveItemComp();
 
-          if (domActiveOption){
-             this._undecorateOfDomActiveOption(domActiveOption);
+          if (prevComp){
+             this._undecorateActiveRowComp(prevComp);
 
              this.indexActiveOption += 1;
              if (this.indexActiveOption>=this.state.options.length){
                 this.indexActiveOption = 0;
-                this.domOptions.scrollTop = 0;
+                this.optionsComp.scrollTop = 0;
              }
 
-             domActiveOption = this._getDomForActiveOption();
-             this._decorateOfDomActiveOption(domActiveOption)
+             const nextComp = this._getActiveItemComp();
+             this._decorateActiveRowComp(nextComp)
 
-             const offsetTop = this.refs["v"+this.indexActiveOption].offsetTop;
-             const scrollTop = this.domOptions.scrollTop;
+             const offsetTop = nextComp.offsetTop
+             const scrollTop = this.optionsComp.scrollTop;
              if ( (offsetTop - scrollTop) > 70){
-                this.domOptions.scrollTop += (offsetTop - scrollTop - 70);
+                this.optionsComp.scrollTop += (offsetTop - scrollTop - 70);
              }
           }
         }
-      break;
+      break;}
       //up
       case 38:
         if (this.state.isShowOption){
           event.preventDefault();
 
-          let domActiveOption = this._getDomForActiveOption();
-          if (domActiveOption){
-            this._undecorateOfDomActiveOption(domActiveOption);
+          const prevComp = this._getActiveItemComp();
+          if (prevComp){
+            this._undecorateActiveRowComp(prevComp);
 
             this.indexActiveOption -= 1;
             if (this.indexActiveOption < 0){
               this.indexActiveOption = this.state.options.length - 1;
-              const offsetTop2 = this.refs["v"+this.indexActiveOption].offsetTop;
-              this.domOptions.scrollTop = offsetTop2;
+              const bottomComp = this._getActiveItemComp()
+              this.optionsComp.scrollTop = bottomComp.offsetTop
+              //this.optionsComp.scrollTop = this.optionsComp.scrollTopMax
             }
 
-            domActiveOption = this._getDomForActiveOption();
-            this._decorateOfDomActiveOption(domActiveOption);
+            const nextComp = this._getActiveItemComp();
+            this._decorateActiveRowComp(nextComp);
 
-            const offsetTop = domActiveOption.offsetTop;
-            const scrollTop = this.domOptions.scrollTop;
+            const offsetTop = nextComp.offsetTop;
+            const scrollTop = this.optionsComp.scrollTop;
             if ( (offsetTop - scrollTop) < 70){
-              this.domOptions.scrollTop -= ( 70 - (offsetTop - scrollTop) );
+              this.optionsComp.scrollTop -= ( 70 - (offsetTop - scrollTop) );
             }
           }
         }
       break;
       default: /*console.log(event.keyCode);*/ return;
     }
-  },
+  }
 
-  _handlerToggleOptions: function(){
-    this.setState({isShowOption: !this.state.isShowOption});
-  },
+  _handleToggleOptions = () => {
+    this.setState({ isShowOption: !this.state.isShowOption });
+  }
 
-  _handlerClickOption: function(item, index, event){
+  _handleClickItem = (item, index, event) => {
     this.indexActiveOption = index;
     this.setState({
       value : item.caption,
       isShowOption : false
     });
     this.props.onSelect(item);
-  },
+  }
 
-
-  renderOptions: function(){
+  renderOptions = () => {
     const {isShowOption, options, isValidDomOptionsCache} = this.state;
 
     let _domOptions;
@@ -378,8 +385,9 @@ const ZhSelect = React.createClass({
                 className="option-row"
                 style={Object.assign({}, styles.itemDiv, _styleDiv)}
                 key={index}
-                ref={"v"+index}
-                onClick={this._handlerClickOption.bind(this, item, index)}
+                //ref={"v"+index}
+                ref={c => this[`v${index}`] = c}
+                onClick={this._handleClickItem.bind(this, item, index)}
               >
                 {item.caption}
             </div>
@@ -392,49 +400,62 @@ const ZhSelect = React.createClass({
     }
 
     const {width} = this.props
-        ,  _styleOptions = isShowOption ? {display: 'block'} : { display: 'none'}
-        , _styleDivWidth = (width) ? { width: width+'px'} : null
-        , _numberFilteredItems = (options[0] && (options[0].value !== 'noresult') ) ?
-                                  options.length : 0
-        , _numberAllItems = this.props.options ? this.props.options.length : 0;
+        ,  _styleOptions = isShowOption
+              ? {display: 'block'} : { display: 'none'}
+        , _styleDivWidth = (width)
+              ? { width: width+'px'} : null
+        , _numberFilteredItems = (options[0] && (options[0].value !== 'noresult') )
+              ? options.length : 0
+        , _numberAllItems = this.props.options
+              ? this.props.options.length : 0;
 
     return (
         <div style={Object.assign({}, styles.rootOptionDiv, _styleOptions, _styleDivWidth)}>
           <div
-             ref={c => this.domOptions = c}
-             key="1"
+             //ref={c => this.domOptions = c}
+             ref={c => this.optionsComp = c}
              style={Object.assign({}, styles.optionDiv, _styleOptions, _styleDivWidth)}
            >
             {_domOptions}
           </div>
-          <div key="2" style={styles.optionsFooter}>
+          <div style={styles.optionsFooter}>
             <span style={styles.fileredSpan}>
               Filtered {_numberFilteredItems} : {_numberAllItems}
             </span>
           </div>
         </div>
     )
-  },
+  }
 
-  _renderAfterInput(isLoading, isLoadingFailed, _styleArrow){
+  _crAfterInputEl = () => {
+    const { isLoading, isLoadingFailed, placeholder } = this.props
+        , { isShowOption, optionName, optionNames } = this.state;
+
+    let _placeholder, _afterInputEl
     if (!isLoading && !isLoadingFailed){
-      return (
+       const _styleArrow = isShowOption ? styles.arrowShow : null;
+      _placeholder = (placeholder)
+          ? placeholder
+          : `Select ${optionName}...`;
+      _afterInputEl = (
         <span
            style={styles.arrowCell}
-           onClick={this._handlerToggleOptions}>
+           onClick={this._handleToggleOptions}>
           <span style={Object.assign({}, styles.arrow, _styleArrow)}></span>
         </span>
       );
     } else if (isLoading){
-      return (
+      _placeholder = `Loading ${optionNames}...`;
+      _afterInputEl = (
         <span
           style={styles.spinnerCell}
           data-loader="circle"
         >
         </span>
-      )
+      );
     } else if (isLoadingFailed) {
-      return (
+       _placeholder=`Loading ${optionNames} Failed`;
+       _afterInputEl = (
         <span
           style={styles.spinnerFailedCell}
           data-loader="circle-failed"
@@ -443,13 +464,15 @@ const ZhSelect = React.createClass({
         </span>
       )
     }
-  },
+    return {
+      placeholder: _placeholder,
+      afterInputEl: _afterInputEl
+    };
+  }
 
-  render: function(){
-    const {width} = this.props
-        , {value, isLocalMode, isShowOption } = this.state;
-
-    const _styleArrow = isShowOption ? {borderColor: '#1B75BB transparent transparent'} : null;
+  render(){
+    const { width } = this.props
+        , { value, isLocalMode, isShowOption } = this.state;
 
     let _styleDivWidth = null;
     let _styleInputWidth = null;
@@ -460,70 +483,41 @@ const ZhSelect = React.createClass({
       _styleHr = { width: (width-40) + 'px'};
     }
 
-    const _domOptions = (isLocalMode || isShowOption) ? this.renderOptions() : null;
-
-    const  {isLoading, isLoadingFailed, placeholder} = this.props
-        ,  {optionName, optionNames} = this.state;
-
-    let _domAfterInput, _placeholder;
-    if (!isLoading && !isLoadingFailed){
-      _placeholder= (placeholder) ? placeholder : `Select${optionName}...`;
-      _domAfterInput = (
-        <span
-           style={styles.arrowCell}
-           onClick={this._handlerToggleOptions}>
-          <span style={Object.assign({}, styles.arrow, _styleArrow)}></span>
-        </span>
-      );
-    } else if (isLoading){
-      _placeholder=`Loading${optionNames}...`;
-      _domAfterInput = (
-        <span
-          style={styles.spinnerCell}
-          data-loader="circle"
-        >
-        </span>
-      );
-    } else if (isLoadingFailed) {
-       _placeholder=`Loading${optionNames} Failed`;
-       _domAfterInput = (
-        <span
-          style={styles.spinnerFailedCell}
-          data-loader="circle-failed"
-          onClick={this.props.onLoadOption}
-         >
-        </span>
-      )
-    }
-
+    const { afterInputEl, placeholder } = this._crAfterInputEl()
+    const _domOptions = (isLocalMode || isShowOption)
+              ? this.renderOptions()
+              : null;
 
     return (
       <div style={Object.assign({},styles.rootDiv, _styleDivWidth)}>
         <input
            ref={c => this.domInputText = c}
            type="text"
+           name="select"
+           autoComplete="new-select"
+           autoCorrect="off"
+           autoCapitalize="off"
+           spellCheck={false}
            value={value}
            style={Object.assign({},styles.inputText, _styleInputWidth)}
-           placeholder={_placeholder}           
-           onChange={this._handlerInputChange}
-           onKeyDown={this._handlerInputKeyDown}>
+           placeholder={placeholder}
+           onChange={this._handleInputChange}
+           onKeyDown={this._handleInputKeyDown}>
         </input>
-        {_domAfterInput}
+        {afterInputEl}
         <hr style={Object.assign({},styles.inputHr, _styleHr)}></hr>
         {_domOptions}
-
       </div>
     )
-  },
-
-  focusInput: function(){
-    this.domInputText.focus();
-  },
-
-  focusNotValidInput: function(){
-    this.domInputText.focus();
   }
 
-});
+  focusInput(){
+    this.domInputText.focus()
+  }
+  focusNotValidInput(){
+    this.domInputText.focus()
+  }
 
-export default ZhSelect;
+}
+
+export default InputSelect

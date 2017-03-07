@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-const styles = {
-  svg : {
+const STYLE = {
+  SVG : {
     padding: '3px'
   }
 };
@@ -9,11 +9,11 @@ const styles = {
 const SvgClose = ({ style, onClose }) => (
    <div
       className="svg-close"
-      onClick={onClose}
       style={style}
+      onClick={onClose}
    >
      <svg viewBox="0 0 12 12" width="100%" height="100%"
-          style={styles.svg}
+          style={STYLE.SVG}
           preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M 0,0 L 12,12" strokeWidth="2" stroke="#ED5813"
                 strokeLinecap="round"
@@ -27,4 +27,12 @@ const SvgClose = ({ style, onClose }) => (
    </div>
 )
 
-export default SvgClose;
+SvgClose.propTypes = {
+  style: PropTypes.object,
+  onClose: PropTypes.func
+}
+SvgClose.defaultProps = {
+  onClose: () => {}
+}
+
+export default SvgClose

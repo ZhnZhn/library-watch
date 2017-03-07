@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-const LinkImg = (props) => {
-  const { href, imgClass, imgSrc, onError } = props
-      , _onError = (onError) ? onError : _handlerError
-
-  const _handlerError = (event) => {
-     console.log("Failed to load image with src: " + imgSrc);     
-  };
-
-  return (
+const LinkImg = ({ href, imgClass, imgSrc, onError }) => (
     <a href={href}>
        <img
-          onError={_onError}
           className={imgClass}
           src={imgSrc}
+          onError={onError.bind(null, imgSrc)}
        />
     </a>
-  )
-};
+)
+
+LinkImg.propTypes = {
+  href: PropTypes.string,
+  imgClass: PropTypes.string,
+  imgSrc: PropTypes.string,
+  onError: PropTypes.func
+}
+LinkImg.defaultProps = {
+  onError: (imgSrc, event) => {
+     console.log("Failed to load image with src: " + imgSrc);
+  }
+}
 
 export default LinkImg

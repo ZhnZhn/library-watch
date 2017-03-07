@@ -12,7 +12,11 @@ module.exports = {
            "timeago.js",
            "raven-js",
            "classnames",
-           "browser-filesaver", "lodash.merge"
+           "browser-filesaver", "lodash.merge",
+           "babel-runtime/helpers/classCallCheck",
+           "babel-runtime/helpers/createClass",
+           "babel-runtime/helpers/possibleConstructorReturn",
+           "babel-runtime/helpers/inherits"                        
          ],
      app: path.resolve('js', 'index.js')
   },

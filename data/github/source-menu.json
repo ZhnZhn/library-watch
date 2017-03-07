@@ -1,7 +1,7 @@
 {
   "menu" : [
     {
-      "caption" : "GitHub",
+      "caption" : "GitHub", "isInitClose" : false,
       "items" : [
         { "id" : "LW_GH_RELEASE"},
         { "id" : "LW_GH_TAGS"},
@@ -11,13 +11,13 @@
         { "id" : "LW_GH_PULL_REQUESTS" }
       ]
     },{
-      "caption" : "NPM",
+      "caption" : "NPM", "isInitClose" : false,
       "items" : [
         { "id" : "LW_NPM_DOWNLOADS_RECENT_MONTH" },
         { "id" : "LW_NPM_DOWNLOADS"}
       ]
     },{
-      "caption" : "Stack Overflow",
+      "caption" : "Stack Overflow", "isInitClose" : false,
       "items" : [
         { "id" : "LW_SE_QUESTIONS" },
         { "id" : "LW_SE_SEARCH_QUESTIONS" }

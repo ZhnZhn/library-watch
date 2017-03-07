@@ -17,7 +17,7 @@ var FormattedInteger = function FormattedInteger(_ref) {
       style = _ref.style;
 
   if (value >= 1000) {
-    value = String(value).replace(REPLACER_PATTERN, '$1,');
+    value = ('' + value).replace(REPLACER_PATTERN, '$1,');
   }
 
   return _react2.default.createElement(
@@ -28,8 +28,12 @@ var FormattedInteger = function FormattedInteger(_ref) {
 };
 
 process.env.NODE_ENV !== "production" ? FormattedInteger.propTypes = {
-  value: _react.PropTypes.number.isRequired
+  value: _react.PropTypes.number,
+  style: _react.PropTypes.object
 } : void 0;
+FormattedInteger.defaultProps = {
+  value: 0
+};
 
 exports.default = FormattedInteger;
-//# sourceMappingURL=FormattedInteger.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\FormattedInteger.js.map

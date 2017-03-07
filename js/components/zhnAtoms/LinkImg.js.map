@@ -1,1 +1,23 @@
-{"version":3,"sources":["../../../src/components/zhnAtoms/LinkImg.jsx"],"names":["LinkImg","props","href","imgClass","imgSrc","onError","_onError","_handlerError","event","console","log"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,UAAU,SAAVA,OAAU,CAACC,KAAD,EAAW;AAAA,MACjBC,IADiB,GACmBD,KADnB,CACjBC,IADiB;AAAA,MACXC,QADW,GACmBF,KADnB,CACXE,QADW;AAAA,MACDC,MADC,GACmBH,KADnB,CACDG,MADC;AAAA,MACOC,OADP,GACmBJ,KADnB,CACOI,OADP;AAAA,MAEnBC,QAFmB,GAEPD,OAAD,GAAYA,OAAZ,GAAsBE,aAFd;;AAIzB,MAAMA,gBAAgB,SAAhBA,aAAgB,CAACC,KAAD,EAAW;AAC9BC,YAAQC,GAAR,CAAY,oCAAoCN,MAAhD;AACF,GAFD;;AAIA,SACE;AAAA;AAAA,MAAG,MAAMF,IAAT;AACG;AACG,eAASI,QADZ;AAEG,iBAAWH,QAFd;AAGG,WAAKC;AAHR;AADH,GADF;AASD,CAjBD;;kBAmBeJ,O","file":"LinkImg.js","sourcesContent":["import React from 'react';\r\n\r\nconst LinkImg = (props) => {\r\n  const { href, imgClass, imgSrc, onError } = props\r\n      , _onError = (onError) ? onError : _handlerError\r\n\r\n  const _handlerError = (event) => {\r\n     console.log(\"Failed to load image with src: \" + imgSrc);     \r\n  };\r\n\r\n  return (\r\n    <a href={href}>\r\n       <img\r\n          onError={_onError}\r\n          className={imgClass}\r\n          src={imgSrc}\r\n       />\r\n    </a>\r\n  )\r\n};\r\n\r\nexport default LinkImg\r\n"]}
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\zhnAtoms\\LinkImg.jsx",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\zhnAtoms\\LinkImg.js",
+ "sourceRoot": "",
+ "names": [
+  "LinkImg",
+  "href",
+  "imgClass",
+  "imgSrc",
+  "onError",
+  "bind",
+  "propTypes",
+  "string",
+  "func",
+  "defaultProps",
+  "event",
+  "console",
+  "log"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,UAAU,SAAVA,OAAU;AAAA,OAAGC,IAAH,QAAGA,IAAH;AAAA,OAASC,QAAT,QAASA,QAAT;AAAA,OAAmBC,MAAnB,QAAmBA,MAAnB;AAAA,OAA2BC,OAA3B,QAA2BA,OAA3B;AAAA,UACZ;AAAA;AAAA,QAAG,MAAMH,IAAT;AACG;AACG,oBAAWC,QADd;AAEG,cAAKC,MAFR;AAGG,kBAASC,QAAQC,IAAR,CAAa,IAAb,EAAmBF,MAAnB;AAHZ;AADH,IADY;AAAA,CAAhB;;AAUA,gDAAQG,SAAR,GAAoB;AAClBL,SAAM,iBAAUM,MADE;AAElBL,aAAU,iBAAUK,MAFF;AAGlBJ,WAAQ,iBAAUI,MAHA;AAIlBH,YAAS,iBAAUI;AAJD,CAApB;AAMAR,QAAQS,YAAR,GAAuB;AACrBL,YAAS,iBAACD,MAAD,EAASO,KAAT,EAAmB;AACzBC,cAAQC,GAAR,CAAY,oCAAoCT,MAAhD;AACF;AAHoB,CAAvB;;kBAMeH,O"
+}

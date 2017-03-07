@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import MenuBadge from '../zhnAtoms/MenuBadge';
 import OpenClose2 from '../zhnAtoms/OpenClose2';
@@ -31,13 +31,19 @@ const _renderMenuItems = function(items){
   })
 }
 
-const MenuPart = (props) => {
-  const {caption, items} = props;
-  return (
-    <OpenClose2 caption={caption}>
-        {_renderMenuItems(items)}
-    </OpenClose2>
-  )
+const MenuPart = ({ caption, items, isInitClose }) => (
+  <OpenClose2 caption={caption} isClose={isInitClose}>
+     {_renderMenuItems(items)}
+  </OpenClose2>
+)
+
+MenuPart.propTypes = {
+  caption: PropTypes.string,
+  items: PropTypes.arrayOf(PropTypes.object),
+  isInitClose: PropTypes.bool
+}
+MenuPart.defaultProps = {
+  items: []
 }
 
 export default MenuPart

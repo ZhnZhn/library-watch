@@ -1,1 +1,19 @@
-{"version":3,"sources":["../../../src/components/zhnAtoms/FormattedInteger.jsx"],"names":["REPLACER_PATTERN","FormattedInteger","value","style","String","replace","propTypes","number","isRequired"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,mBAAmB,mBAAzB;;AAEA,IAAMC,mBAAmB,SAAnBA,gBAAmB,OAAsB;AAAA,MAAnBC,KAAmB,QAAnBA,KAAmB;AAAA,MAAZC,KAAY,QAAZA,KAAY;;AAC7C,MAAID,SAAS,IAAb,EAAmB;AACjBA,YAAQE,OAAOF,KAAP,EAAcG,OAAd,CAAsBL,gBAAtB,EAAwC,KAAxC,CAAR;AACD;;AAED,SACE;AAAA;AAAA,MAAM,OAAOG,KAAb;AACGD;AADH,GADF;AAKD,CAVD;;AAYA,yDAAiBI,SAAjB,GAA6B;AAC3BJ,SAAO,iBAAUK,MAAV,CAAiBC;AADG,CAA7B;;kBAIeP,gB","file":"FormattedInteger.js","sourcesContent":["import React, { PropTypes } from 'react';\r\n\r\nconst REPLACER_PATTERN = /(.)(?=(\\d{3})+$)/g;\r\n\r\nconst FormattedInteger = ({ value, style }) => {\r\n  if (value >= 1000) {\r\n    value = String(value).replace(REPLACER_PATTERN, '$1,');\r\n  }\r\n\r\n  return (\r\n    <span style={style}>\r\n      {value}\r\n    </span>\r\n  );\r\n}\r\n\r\nFormattedInteger.propTypes = {\r\n  value: PropTypes.number.isRequired\r\n};\r\n\r\nexport default FormattedInteger;\r\n"]}
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\zhnAtoms\\FormattedInteger.jsx",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\zhnAtoms\\FormattedInteger.js",
+ "sourceRoot": "",
+ "names": [
+  "REPLACER_PATTERN",
+  "FormattedInteger",
+  "value",
+  "style",
+  "replace",
+  "propTypes",
+  "number",
+  "object",
+  "defaultProps"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,mBAAmB,mBAAzB;;AAEA,IAAMC,mBAAmB,SAAnBA,gBAAmB,OAAsB;AAAA,MAAnBC,KAAmB,QAAnBA,KAAmB;AAAA,MAAZC,KAAY,QAAZA,KAAY;;AAC7C,MAAID,SAAS,IAAb,EAAmB;AACjBA,YAAQ,CAAC,KAAKA,KAAN,EAAaE,OAAb,CAAqBJ,gBAArB,EAAuC,KAAvC,CAAR;AACD;;AAED,SACE;AAAA;AAAA,MAAM,OAAOG,KAAb;AACGD;AADH,GADF;AAKD,CAVD;;AAYA,yDAAiBG,SAAjB,GAA6B;AAC3BH,SAAO,iBAAUI,MADU;AAE3BH,SAAO,iBAAUI;AAFU,CAA7B;AAIAN,iBAAiBO,YAAjB,GAAgC;AAC9BN,SAAO;AADuB,CAAhC;;kBAIeD,gB"
+}

@@ -1,1 +1,38 @@
-{"version":3,"sources":["../../../src/components/zhnAtoms/Tab.jsx"],"names":["styles","liStyle","float","display","backgroundColor","color","paddingLeft","paddingRight","paddingTop","paddingBottom","borderTopLeftRadius","borderTopRightRadius","cursor","fontWeight","border","borderBottom","selected","borderColor","Tab","props","title","isSelected","onClick","_selectedStyle","Object","assign"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,SAAS;AACbC,aAAU;AACRC,eAAQ,MADA;AAERC,iBAAU,cAFF;;AAIRC,yBAAkB,SAJV;AAKR;AACAC,eAAQ,MANA;AAORC,qBAAc,MAPN;AAQRC,sBAAe,MARP;AASRC,oBAAa,KATL;AAURC,uBAAgB,KAVR;AAWRC,6BAAsB,KAXd;AAYRC,8BAAuB,KAZf;AAaRC,gBAAS,SAbD;;AAeRC,oBAAa,MAfL;AAgBR;AACAC,gBAAQ,gBAjBA;AAkBRC,sBAAe;AACf;AAnBQ,KADG;AAsBbC,cAAW;AACTC,qBAAc,wBADL;AAETZ,eAAQ;AAFC;AAtBE,CAAf;;AA4BA,IAAMa,MAAM,SAANA,GAAM,CAACC,KAAD,EAAW;AAAA,QACXC,KADW,GACoBD,KADpB,CACXC,KADW;AAAA,QACJC,UADI,GACoBF,KADpB,CACJE,UADI;AAAA,QACQC,OADR,GACoBH,KADpB,CACQG,OADR;AAAA,QAEbC,cAFa,GAEKF,UAAD,GACZrB,OAAOgB,QADK,GAEZ,IAJQ;;AAKnB,WACG;AAAA;AAAA;AACG,mBAAOQ,OAAOC,MAAP,CAAc,EAAd,EAAkBzB,OAAOC,OAAzB,EAAkCsB,cAAlC,CADV;AAEG,qBAASD;AAFZ;AAIG;AAAA;AAAA;AAAOF;AAAP;AAJH,KADH;AAQH,CAbD;;kBAeeF,G","file":"Tab.js","sourcesContent":["import React from 'react';\r\n\r\nconst styles = {\r\n  liStyle : {\r\n    float : 'left',\r\n    display : 'inline-block',\r\n\r\n    backgroundColor : '#232F3B',\r\n    /*color : 'rgba(164, 135, 212, 1)',*/\r\n    color : 'gray',\r\n    paddingLeft : '10px',\r\n    paddingRight : '10px',\r\n    paddingTop : '6px',\r\n    paddingBottom : '6px',\r\n    borderTopLeftRadius : '8px',\r\n    borderTopRightRadius : '8px',\r\n    cursor : 'pointer',\r\n\r\n    fontWeight : 'bold',\r\n    //border: '2px solid rgb(44, 40, 40)',\r\n    border: '2px solid gray',\r\n    borderBottom : 'none'\r\n    //borderTop : 'none'\r\n  },\r\n  selected : {\r\n    borderColor : 'rgba(164, 135, 212, 1)',\r\n    color : 'rgba(164, 135, 212, 1)'\r\n  }\r\n}\r\n\r\nconst Tab = (props) => {\r\n    const { title, isSelected, onClick } = props\r\n        , _selectedStyle = (isSelected)\r\n             ? styles.selected\r\n             : null;\r\n    return (\r\n       <li\r\n          style={Object.assign({}, styles.liStyle, _selectedStyle)}\r\n          onClick={onClick}\r\n       >\r\n          <span>{title}</span>\r\n       </li>\r\n    )\r\n};\r\n\r\nexport default Tab\r\n"]}
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\zhnAtoms\\Tab.jsx",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\zhnAtoms\\Tab.js",
+ "sourceRoot": "",
+ "names": [
+  "STYLE",
+  "LI",
+  "float",
+  "display",
+  "backgroundColor",
+  "color",
+  "paddingLeft",
+  "paddingRight",
+  "paddingTop",
+  "paddingBottom",
+  "borderTopLeftRadius",
+  "borderTopRightRadius",
+  "cursor",
+  "fontWeight",
+  "border",
+  "borderBottom",
+  "SELECTED",
+  "borderColor",
+  "Tab",
+  "title",
+  "isSelected",
+  "onClick",
+  "_style",
+  "propTypes",
+  "string",
+  "bool",
+  "func",
+  "defaultProps"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;;;;;AAEA,IAAMA,QAAQ;AACZC,MAAK;AACHC,WAAQ,MADL;AAEHC,aAAU,cAFP;;AAIHC,qBAAkB,SAJf;AAKH;AACAC,WAAQ,MANL;AAOHC,iBAAc,MAPX;AAQHC,kBAAe,MARZ;AASHC,gBAAa,KATV;AAUHC,mBAAgB,KAVb;AAWHC,yBAAsB,KAXnB;AAYHC,0BAAuB,KAZpB;AAaHC,YAAS,SAbN;;AAeHC,gBAAa,MAfV;AAgBH;AACAC,YAAQ,gBAjBL;AAkBHC,kBAAe;AACf;AAnBG,GADO;AAsBZC,YAAW;AACTC,iBAAc,wBADL;AAETZ,WAAQ;AAFC;AAtBC,CAAd;;AA4BA,IAAMa,MAAM,SAANA,GAAM,OAAoC;AAAA,MAAjCC,KAAiC,QAAjCA,KAAiC;AAAA,MAA1BC,UAA0B,QAA1BA,UAA0B;AAAA,MAAdC,OAAc,QAAdA,OAAc;;AAC5C,MAAMC,SAAUF,UAAD,GAAepB,MAAMgB,QAArB,GAAgC,IAA/C;AACA,SACG;AAAA;AAAA;AACG,wCAAYhB,MAAMC,EAAlB,EAAyBqB,MAAzB,CADH;AAEG,eAASD;AAFZ;AAIG;AAAA;AAAA;AAAOF;AAAP;AAJH,GADH;AAQH,CAVD;;AAYA,4CAAII,SAAJ,GAAgB;AACdJ,SAAO,iBAAUK,MADH;AAEdJ,cAAY,iBAAUK,IAFR;AAGdJ,WAAS,iBAAUK;AAHL,CAAhB;AAKAR,IAAIS,YAAJ,GAAmB;AACjBN,WAAS,mBAAM,CAAE;AADA,CAAnB;;kBAIeH,G"
+}

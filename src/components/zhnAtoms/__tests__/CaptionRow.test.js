@@ -15,9 +15,9 @@ test('render root div', t => {
    const wrapper = _fnGetWrapper()
 
    t.true(wrapper.is('div'))
-   t.deepEqual(wrapper.props().style, STYLE.captionDiv)
+   t.deepEqual(wrapper.props().style, STYLE.ROOT)
    const spanCaption = wrapper.childAt(0)
-   t.deepEqual(spanCaption.props().style, STYLE.captionSpan)
+   t.deepEqual(spanCaption.props().style, STYLE.SPAN)
 })
 
 test('should use props caption, styleRoot', t => {

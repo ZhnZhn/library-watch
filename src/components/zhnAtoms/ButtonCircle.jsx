@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 const STYLE = {
-  ROOT_SPAN : {
+  ROOT : {
     display : 'inline-block',
     color: '#80c040',
     border : '2px solid #80c040',
@@ -20,7 +20,7 @@ const ButtonCircle = (props) =>{
            : 'not-selected'
       , _style = (isWithoutDefault)
            ? style
-           : Object.assign({}, STYLE.ROOT_SPAN, style);
+           : {...STYLE.ROOT, ...style};
   return (
     <span
        className={_className}
@@ -31,7 +31,7 @@ const ButtonCircle = (props) =>{
        {caption}
     </span>
   );
-};
+}
 
 ButtonCircle.propTypes = {
   caption : PropTypes.string,

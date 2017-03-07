@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react'
 
-const Transitions = {
+const TRANSITION = {
   WIDTH : 'width 500ms ease-out',
   OPACITY : 'opacity 400ms linear'
 }
 
-const ProgressLine = React.createClass({
-  getDefaultProps(){
-    return {
-      color : '#2F7ED8',
-      height : 3
-    }
-  },
-  getInitialState(){
+class ProgressLine extends Component {
+  static propTypes = {
+    color: PropTypes.string,
+    height: PropTypes.number
+  }
+  static defaultProps = {
+    color : '#2F7ED8',
+    height : 3
+  }
+
+  constructor(){
+    super()
     this.wasCompleted = false;
     this.idCompleted = null;
     this.wasOpacied = false;
     this.idOpacied = null;
-    return {}
-  },
+    this.state = {}
+  }
 
   componentWillUnmount(){
     if (this.idCompleted){
@@ -27,7 +31,7 @@ const ProgressLine = React.createClass({
     if (this.idOpacied){
       clearTimeout(this.idOpacied)
     }
-  },
+  }
 
   componentDidUpdate(){
     if (this.wasCompleted){
@@ -41,7 +45,7 @@ const ProgressLine = React.createClass({
         this.forceUpdate();
       }, 800)
     }
-  },
+  }
 
   render(){
     const { color, height } = this.props;
@@ -60,7 +64,7 @@ const ProgressLine = React.createClass({
           backgroundColor: color,
           width: '100%',
           opacity : 0,
-          transition: Transitions.OPACITY,
+          transition: TRANSITION.OPACITY,
           height: height
       };
       this.wasCompleted = false;
@@ -78,7 +82,7 @@ const ProgressLine = React.createClass({
          backgroundColor: color,
          opacity: 1,
          width: completed + '%',
-         transition: Transitions.WIDTH,
+         transition: TRANSITION.WIDTH,
          height: height
        };
     }
@@ -88,6 +92,6 @@ const ProgressLine = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default ProgressLine

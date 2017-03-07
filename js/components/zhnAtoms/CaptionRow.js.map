@@ -1,1 +1,26 @@
-{"version":3,"sources":["../../../src/components/zhnAtoms/CaptionRow.jsx"],"names":["CLASS_NOT_SELECTED","CaptionRow","caption","children","styleRoot","onClose","Object","assign","captionDiv","captionSpan"],"mappings":";;;;;;AAAA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,qBAAqB,cAA3B;;AAEA,IAAMC,aAAa,SAAbA,UAAa;AAAA,OAAGC,OAAH,QAAGA,OAAH;AAAA,OAAYC,QAAZ,QAAYA,QAAZ;AAAA,OAAsBC,SAAtB,QAAsBA,SAAtB;AAAA,OAAiCC,OAAjC,QAAiCA,OAAjC;AAAA,UACjB;AAAA;AAAA,QAAK,OAAOC,OAAOC,MAAP,CAAc,EAAd,EAAkB,qBAAMC,UAAxB,EAAoCJ,SAApC,CAAZ;AACG;AAAA;AAAA;AACG,uBAAWJ,kBADd;AAEG,mBAAO,qBAAMS;AAFhB;AAIGP;AAJH,OADH;AAOGC,cAPH;AAQE,0DAAU,SAASE,OAAnB;AARF,IADiB;AAAA,CAAnB;;kBAceJ,U","file":"CaptionRow.js","sourcesContent":["import React from 'react'\r\n\r\nimport STYLE from './CaptionRow.Style';\r\nimport SvgClose from './SvgClose';\r\n\r\nconst CLASS_NOT_SELECTED = \"not-selected\";\r\n\r\nconst CaptionRow = ({ caption, children, styleRoot, onClose }) => (\r\n  <div style={Object.assign({}, STYLE.captionDiv, styleRoot)}>\r\n     <span\r\n        className={CLASS_NOT_SELECTED}\r\n        style={STYLE.captionSpan}\r\n     >\r\n       {caption}\r\n    </span>\r\n    {children}\r\n    <SvgClose onClose={onClose} />\r\n  </div>\r\n);\r\n\r\n\r\nexport default CaptionRow;\r\n"]}
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\zhnAtoms\\CaptionRow.jsx",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\zhnAtoms\\CaptionRow.js",
+ "sourceRoot": "",
+ "names": [
+  "CLASS_NOT_SELECTED",
+  "CaptionRow",
+  "caption",
+  "children",
+  "styleRoot",
+  "onClose",
+  "ROOT",
+  "SPAN",
+  "propTypes",
+  "string",
+  "object",
+  "oneOfType",
+  "arrayOf",
+  "node",
+  "func",
+  "defaultProps"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,qBAAqB,cAA3B;;AAEA,IAAMC,aAAa,SAAbA,UAAa;AAAA,MAAGC,OAAH,QAAGA,OAAH;AAAA,MAAYC,QAAZ,QAAYA,QAAZ;AAAA,MAAsBC,SAAtB,QAAsBA,SAAtB;AAAA,MAAiCC,OAAjC,QAAiCA,OAAjC;AAAA,SACjB;AAAA;AAAA,MAAK,kCAAY,qBAAMC,IAAlB,EAA2BF,SAA3B,CAAL;AACG;AAAA;AAAA;AACG,mBAAWJ,kBADd;AAEG,eAAO,qBAAMO;AAFhB;AAIGL;AAJH,KADH;AAOGC,YAPH;AAQE,wDAAU,SAASE,OAAnB;AARF,GADiB;AAAA,CAAnB;;AAaA,mDAAWG,SAAX,GAAuB;AACrBN,WAAS,iBAAUO,MADE;AAErBL,aAAW,iBAAUM,MAFA;AAGrBP,YAAU,iBAAUQ,SAAV,CAAoB,CAC5B,iBAAUC,OAAV,CAAkB,iBAAUC,IAA5B,CAD4B,EAE5B,iBAAUA,IAFkB,CAApB,CAHW;AAOrBR,WAAS,iBAAUS;AAPE,CAAvB;AASAb,WAAWc,YAAX,GAA0B;AACxBb,WAAS,EADe;AAExBG,WAAS,mBAAM,CAAE;AAFO,CAA1B;;kBAMeJ,U"
+}

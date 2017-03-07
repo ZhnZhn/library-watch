@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-const styles = {
-  liStyle : {
+const STYLE = {
+  LI : {
     float : 'left',
     display : 'inline-block',
 
@@ -22,25 +22,31 @@ const styles = {
     borderBottom : 'none'
     //borderTop : 'none'
   },
-  selected : {
+  SELECTED : {
     borderColor : 'rgba(164, 135, 212, 1)',
     color : 'rgba(164, 135, 212, 1)'
   }
 }
 
-const Tab = (props) => {
-    const { title, isSelected, onClick } = props
-        , _selectedStyle = (isSelected)
-             ? styles.selected
-             : null;
+const Tab = ({ title, isSelected, onClick }) => {
+    const _style = (isSelected) ? STYLE.SELECTED : null;
     return (
        <li
-          style={Object.assign({}, styles.liStyle, _selectedStyle)}
+          style={{ ...STYLE.LI, ..._style }}
           onClick={onClick}
        >
           <span>{title}</span>
        </li>
     )
-};
+}
+
+Tab.propTypes = {
+  title: PropTypes.string,
+  isSelected: PropTypes.bool,
+  onClick: PropTypes.func
+}
+Tab.defaultProps = {
+  onClick: () => {}
+}
 
 export default Tab

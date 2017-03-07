@@ -33,5 +33,11 @@ var Browser = function Browser(props) {
    );
 };
 
+process.env.NODE_ENV !== "production" ? Browser.propTypes = {
+   isShow: _react.PropTypes.bool,
+   style: _react.PropTypes.object,
+   children: _react.PropTypes.oneOfType([_react.PropTypes.arrayOf(_react.PropTypes.node), _react.PropTypes.node])
+} : void 0;
+
 exports.default = Browser;
-//# sourceMappingURL=Browser.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\Browser.js.map

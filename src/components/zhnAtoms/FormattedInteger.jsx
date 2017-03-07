@@ -4,7 +4,7 @@ const REPLACER_PATTERN = /(.)(?=(\d{3})+$)/g;
 
 const FormattedInteger = ({ value, style }) => {
   if (value >= 1000) {
-    value = String(value).replace(REPLACER_PATTERN, '$1,');
+    value = ('' + value).replace(REPLACER_PATTERN, '$1,');
   }
 
   return (
@@ -15,7 +15,11 @@ const FormattedInteger = ({ value, style }) => {
 }
 
 FormattedInteger.propTypes = {
-  value: PropTypes.number.isRequired
-};
+  value: PropTypes.number,
+  style: PropTypes.object
+}
+FormattedInteger.defaultProps = {
+  value: 0
+}
 
-export default FormattedInteger;
+export default FormattedInteger

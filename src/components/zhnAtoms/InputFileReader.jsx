@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
-const InputFileReader = React.createClass({
-   getInitialState(){
-     return {
-       labelText : "Choose a file..."
+
+class InputFileReader extends Component {
+   static propTypes = {
+     as: PropTypes.oneOf(['binary', 'buffer', 'text', 'url'])
+   }
+   static defaultProps = {
+     as: 'text'
+   }
+
+   constructor(props){
+     super()
+     this.state = {
+       labelText: "Choose a file..."
      }
-   },
-
-  _handleChange(e){
+   }
+   
+  _handleChange = (e) => {
     const files = [];
     for (let i = 0; i < e.target.files.length; i++) {
       // Convert to Array.
@@ -24,7 +33,7 @@ const InputFileReader = React.createClass({
       };
 
       // Read the file with format based on this.props.as.
-      switch ((this.props.as || 'url').toLowerCase()) {
+      switch ((this.props.as).toLowerCase()) {
         case 'binary':
           reader.readAsBinaryString(file);
           break;
@@ -54,15 +63,14 @@ const InputFileReader = React.createClass({
       }
 
     });
-  },
+  }
 
   render() {
-    const { as='text' } = this.props
+    const { as } = this.props
         , { labelText } = this.state
     return (
       <div className="_react-file-reader-input">
         <input
-          //style={STYLE.INPUT}
           className="inputfile"
           type="file"
           id="file"
@@ -77,6 +85,6 @@ const InputFileReader = React.createClass({
        </div>
     );
   }
-})
+}
 
 export default InputFileReader

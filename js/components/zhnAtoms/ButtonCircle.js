@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -11,7 +15,7 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var STYLE = {
-  ROOT_SPAN: {
+  ROOT: {
     display: 'inline-block',
     color: '#80c040',
     border: '2px solid #80c040',
@@ -31,7 +35,7 @@ var ButtonCircle = function ButtonCircle(props) {
       isWithoutDefault = props.isWithoutDefault,
       onClick = props.onClick,
       _className = className ? className + ' not-selected' : 'not-selected',
-      _style = isWithoutDefault ? style : Object.assign({}, STYLE.ROOT_SPAN, style);
+      _style = isWithoutDefault ? style : (0, _extends3.default)({}, STYLE.ROOT, style);
 
   return _react2.default.createElement(
     'span',
@@ -55,4 +59,4 @@ process.env.NODE_ENV !== "production" ? ButtonCircle.propTypes = {
 } : void 0;
 
 exports.default = ButtonCircle;
-//# sourceMappingURL=ButtonCircle.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\ButtonCircle.js.map

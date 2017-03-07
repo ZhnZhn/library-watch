@@ -12,11 +12,10 @@ const STYLE = {
     color : 'black',
     marginLeft : '10px'
   },
-
-  DISPLAY_INLINE_BLOCK : {
+  INLINE_BLOCK : {
     display : 'inline-block'
   },
-  DISPLAY_NONE : {
+  NONE : {
     display : 'none'
   }
 }

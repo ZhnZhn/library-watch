@@ -1,26 +1,31 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react'
 
 import STYLE from './DateAgo.Style'
 
-const DateAgo = React.createClass({
-  getInitialState(){
-    return {
-      isShowDate : (this.props.isShowDate) ? true : false
-    }
-  },
+class DateAgo extends Component {
+  static propTypes = {
+     isShowDate : PropTypes.bool
+  }
 
-  _handleClickDateAgo(event){
-     event.preventDefault();
-     event.stopPropagation();
-     this.setState({ isShowDate: !this.state.isShowDate });
-  },
+  constructor(props){
+    super()
+    this.state = {
+      isShowDate : !!props.isShowDate
+    }
+  }
+
+  _handleClickDateAgo = (event) => {
+     event.preventDefault()
+     event.stopPropagation()
+     this.setState({ isShowDate: !this.state.isShowDate })
+  }
 
   render(){
      const { dateAgo, date } = this.props
          , { isShowDate } = this.state
          , _styleDate = (isShowDate)
-               ? STYLE.DISPLAY_INLINE_BLOCK
-               : STYLE.DISPLAY_NONE
+               ? STYLE.INLINE_BLOCK
+               : STYLE.NONE;
      return (
        <span>
          <span
@@ -30,13 +35,13 @@ const DateAgo = React.createClass({
            {dateAgo}
          </span>
          <span
-            style={Object.assign({}, STYLE.DATE, _styleDate)}
+            style={{ ...STYLE.DATE, ..._styleDate }}
          >
             {date}
          </span>
        </span>
      );
   }
-});
+}
 
 export default DateAgo

@@ -8,9 +8,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ZhSelect = require('../zhnAtoms/ZhSelect');
+var _InputSelect = require('../zhnAtoms/InputSelect');
 
-var _ZhSelect2 = _interopRequireDefault(_ZhSelect);
+var _InputSelect2 = _interopRequireDefault(_InputSelect);
 
 var _DialogStyles = require('../styles/DialogStyles');
 
@@ -50,7 +50,7 @@ var RowInputSelect = _react2.default.createClass({
         { style: Object.assign({}, styles.labelSpan, Styles.CAPTION) },
         caption
       ),
-      _react2.default.createElement(_ZhSelect2.default, {
+      _react2.default.createElement(_InputSelect2.default, {
         width: '250',
         placeholder: placeholder,
         options: options,
@@ -61,4 +61,4 @@ var RowInputSelect = _react2.default.createClass({
 });
 
 exports.default = RowInputSelect;
-//# sourceMappingURL=RowInputSelect.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\RowInputSelect.js.map

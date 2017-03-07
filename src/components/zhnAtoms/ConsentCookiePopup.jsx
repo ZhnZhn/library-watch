@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 const HIDE_PERIOD = 30000
     , ANIMATION_PERIOD = 1100
@@ -6,25 +6,25 @@ const HIDE_PERIOD = 30000
     , BTN_GOT_TITLE = "Got it."
 
 const STYLE = {
-  ROOT_SHOW : {
+  SHOW : {
      opacity: '0.9',
      bottom : '0px'
   },
-  ROOT_HIDE : {
+  HIDE : {
      display: 'none'
   }
 }
 
-const ConsentCookiePopup = React.createClass({
-
-  getInitialState(){
-    this.timeID = undefined;
-    this.hideID = undefined;
-    return {
+class ConsentCookiePopup extends Component {
+  constructor(props){
+    super()
+    this.timeID = undefined
+    this.hideID = undefined
+    this.state = {
       isOpacity : true,
       isDisplay : true
     }
-  },
+  }
 
   componentDidMount(){
     this.timeID = setTimeout( () => {
@@ -34,37 +34,37 @@ const ConsentCookiePopup = React.createClass({
     setTimeout(()=>{
       this.setState({ isOpacity: false });
     }, 500);
-  },
+  }
 
-  _startHidingAnimation(){
+  _startHidingAnimation = () => {
     this.hideID = setTimeout(this._hidePopup, ANIMATION_PERIOD);
     this.setState({ isOpacity: true });
-  },
-  _hidePopup(){
+  }
+  _hidePopup = () => {
      this.setState({ isDisplay : false });
-  },
+  }
 
-  _handlerClickGot(){
+  _handleClickGot = () => {
     if (!this.hideId) {
       clearTimeout(this.timeID);
       this._startHidingAnimation();
     }
-  },
+  }
 
 
   render(){
     const { isOpacity, isDisplay } = this.state
         , _opacityStyle = (isOpacity)
                ? undefined
-               : STYLE.ROOT_SHOW
+               : STYLE.SHOW
         , _displayStyle = (isDisplay)
                ? undefined
-               : STYLE.ROOT_HIDE
+               : STYLE.HIDE
 
     return (
       <div
          className="consent"
-         style={Object.assign({}, _opacityStyle, _displayStyle)}
+         style={{..._opacityStyle, ..._displayStyle}}
       >
          <p>
             <span className="consent__msg">
@@ -72,7 +72,7 @@ const ConsentCookiePopup = React.createClass({
             </span>
             <span
                className="consent__btn"
-               onClick={this._handlerClickGot}
+               onClick={this._handleClickGot}
             >
                {BTN_GOT_TITLE}
             </span>
@@ -80,6 +80,6 @@ const ConsentCookiePopup = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default ConsentCookiePopup

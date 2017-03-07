@@ -4,7 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
 
 var _react = require('react');
 
@@ -30,9 +32,9 @@ var _ToolBarButton = require('../header/ToolBarButton');
 
 var _ToolBarButton2 = _interopRequireDefault(_ToolBarButton);
 
-var _ZhSelect = require('../zhnAtoms/ZhSelect');
+var _InputSelect = require('../zhnAtoms/InputSelect');
 
-var _ZhSelect2 = _interopRequireDefault(_ZhSelect);
+var _InputSelect2 = _interopRequireDefault(_InputSelect);
 
 var _ValidationMessagesFragment = require('../zhnMoleculs/ValidationMessagesFragment');
 
@@ -50,7 +52,7 @@ var actionCompleted = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
     actionFailed = _WatchActions.WatchActionTypes.EDIT_WATCH_FAILED,
     forActionType = _WatchActions.WatchActionTypes.ADD_ITEM;
 
-var AddToWatchDialog = _react2.default.createClass(_extends({}, _WithValidation2.default, {
+var AddToWatchDialog = _react2.default.createClass((0, _extends3.default)({}, _WithValidation2.default, {
 
   displayName: 'AddToWatchDialog',
   propTypes: {
@@ -197,7 +199,7 @@ var AddToWatchDialog = _react2.default.createClass(_extends({}, _WithValidation2
           { style: styles.labelSpan },
           'Group:'
         ),
-        _react2.default.createElement(_ZhSelect2.default, {
+        _react2.default.createElement(_InputSelect2.default, {
           width: '250',
           options: groupOptions,
           onSelect: this._handlerSelectGroup
@@ -211,10 +213,10 @@ var AddToWatchDialog = _react2.default.createClass(_extends({}, _WithValidation2
           { style: styles.labelSpan },
           'List:'
         ),
-        _react2.default.createElement(_ZhSelect2.default, {
+        _react2.default.createElement(_InputSelect2.default, {
           width: '250',
-          onSelect: this._handlerSelectList,
-          options: listOptions
+          options: listOptions,
+          onSelect: this._handlerSelectList
         })
       ),
       _react2.default.createElement(
@@ -254,4 +256,4 @@ var AddToWatchDialog = _react2.default.createClass(_extends({}, _WithValidation2
 }));
 
 exports.default = AddToWatchDialog;
-//# sourceMappingURL=AddToWatchDialog.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\AddToWatchDialog.js.map

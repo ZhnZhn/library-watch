@@ -8,7 +8,7 @@ import Msg from '../../constants/Msg';
 
 import ModalDialog from '../zhnMoleculs/ModalDialog';
 import ToolBarButton from '../header/ToolBarButton';
-import ZhSelect from '../zhnAtoms/ZhSelect';
+import InputSelect from '../zhnAtoms/InputSelect'
 import ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment';
 
 import DialogStyles from '../styles/DialogStyles'
@@ -154,7 +154,7 @@ const AddToWatchDialog = React.createClass({
           <span style={styles.labelSpan}>
             Group:
           </span>
-          <ZhSelect
+          <InputSelect
              width="250"
              options={groupOptions}
              onSelect={this._handlerSelectGroup}
@@ -164,10 +164,10 @@ const AddToWatchDialog = React.createClass({
           <span style={styles.labelSpan}>
             List:
           </span>
-          <ZhSelect
+          <InputSelect
              width="250"
-             onSelect={this._handlerSelectList}
              options={listOptions}
+             onSelect={this._handlerSelectList}
            />
         </div>
         <div style={Object.assign({}, styles.rowDiv, {lineHeight: 2})} key="3">

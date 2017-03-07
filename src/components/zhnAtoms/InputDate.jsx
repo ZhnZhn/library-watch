@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
-const styles = {
-  rootDiv: {
+const STYLE = {
+  ROOT: {
     position: 'relative',
     display: 'inline-block',
     backgroundColor: '#E1E1CB',
     width: '250px'
   },
-  inputText: {
+  INPUT: {
     background: 'transparent none repeat scroll 0 0',
     border: 'medium none',
     outline: 'medium none',
@@ -18,7 +18,7 @@ const styles = {
     fontSize: '16px',
     fontWeight: 'bold'
   },
-  inputHr: {
+  HR: {
     borderWidth: 'medium medium 1px',
     borderStyle: 'none none solid',
     borderColor: 'red',
@@ -28,7 +28,13 @@ const styles = {
     marginBottom: '5px',
     width: '230px'
   },
-  errMsg: {
+  HR_VALID : {
+    borderColor: '#1B75BB'
+  },
+  HR_NOT_VALID : {
+    borderColor: '#F44336'
+  },
+  ERR_MSG: {
     color: '#F44336',
     paddingLeft: '10px',
     paddingBottom: '5px',
@@ -37,19 +43,27 @@ const styles = {
   }
 };
 
+class InputDate extends Component {
+  static propTypes = {
+    initValue: PropTypes.string,
+    errorMsg: PropTypes.string,
+    onTest: PropTypes.func
+  }
+  static defaultProps = {
+    initValue: '',
+    onTest: () => {}
+  }
 
-const InputDate = React.createClass({
-  getInitialState(){
-      const initValue = this.props.initValue || '';
+  constructor(props){
+    super()
+    this.state = {
+      value: props.initValue,
+      errorInput: null,
+      isValid: true
+    }
+  }
 
-      return {
-        value: initValue,
-        errorInput: null,
-        isValid: true
-      }
-  },
-
-  setValue(value){
+  setValue = (value) => {
     if (!this.props.onTest(value)) {
       this.setState({
          value : value,
@@ -62,13 +76,13 @@ const InputDate = React.createClass({
         errorInput : null
       });
     }
-  },
+  }
 
-  _handlerChangeValue(event){
+  _handleChangeValue = (event) => {
     this.setValue(event.target.value);
-  },
+  }
 
-  _handlerBlurValue(){
+  _handleBlurValue = () => {
     if (!this.props.onTest(this.state.value)) {
       this.setState({
           isValid : false,
@@ -80,51 +94,48 @@ const InputDate = React.createClass({
           errorInput : null
       });
     }
-  },
+  }
 
   render(){
     const { value, isValid, errorInput } = this.state
-        , styleHr = isValid
-                    ? { borderColor: '#1B75BB' }
-                    : { borderColor: '#F44336' };
+        , _hrStyle = isValid ? STYLE.HR_VALID : STYLE.HR_NOT_VALID;
 
     return (
-      <div style={styles.rootDiv}>
+      <div style={STYLE.ROOT}>
         <input
-           ref="inputDate"
+           ref={c => this.inputComp = c}
            type="text"
            name="date"
            autoComplete="new-date"
            autoCorrect="off"
            autoCapitalize="off"
            spellCheck={false}
-           style={styles.inputText}
+           style={STYLE.INPUT}
            placeholder="YYYY-MM-DD"
            value={value}
-           onChange={this._handlerChangeValue}
-           onBlur={this._handlerBlurValue}
+           onChange={this._handleChangeValue}
+           onBlur={this._handleBlurValue}
         >
         </input>
-        <hr style={Object.assign({}, styles.inputHr, styleHr)}></hr>
-        <div style={styles.errMsg}>
+        <hr style={{...STYLE.HR, ..._hrStyle}}></hr>
+        <div style={STYLE.ERR_MSG}>
           {errorInput}
         </div>
       </div>
     );
-  },
+  }
 
   getValue(){
     return this.state.value;
-  },
+  }
 
   isValid(){
     return this.state.isValid;
-  },
-
-  focusInput(){
-    this.refs.inputDate.focus();
   }
 
-});
+  focusInput(){
+    this.inputComp.focus()
+  }
+}
 
-export default InputDate;
+export default InputDate

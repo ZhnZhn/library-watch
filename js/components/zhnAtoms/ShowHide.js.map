@@ -1,1 +1,27 @@
-{"version":3,"sources":["../../../src/components/zhnAtoms/ShowHide.jsx"],"names":["SHOW_POPUP","STYLES","SHOW","display","HIDE","ShowHide","props","isShow","style","children","_styleShow","_classShow","Object","assign"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,aAAa,YAAnB;AAAA,IACMC,SAAS;AACPC,QAAO;AACLC,aAAS;AADJ,GADA;AAIPC,QAAO;AACLD,aAAU;AADL;AAJA,CADf;;AAUA,IAAME,WAAW,SAAXA,QAAW,CAACC,KAAD,EAAW;AAAA,MACjBC,MADiB,GACUD,KADV,CACjBC,MADiB;AAAA,MACTC,KADS,GACUF,KADV,CACTE,KADS;AAAA,MACFC,QADE,GACUH,KADV,CACFG,QADE;AAAA,MAElBC,UAFkB,GAELH,SAASN,OAAOC,IAAhB,GAAuBD,OAAOG,IAFzB;AAAA,MAGlBO,UAHkB,GAGLJ,SAASP,UAAT,GAAsB,IAHjB;;AAKxB,SACE;AAAA;AAAA,MAAK,WAAWW,UAAhB,EAA4B,OAAOC,OAAOC,MAAP,CAAc,EAAd,EAAkBL,KAAlB,EAAyBE,UAAzB,CAAnC;AACGD;AADH,GADF;AAKH,CAVD;;kBAYeJ,Q","file":"ShowHide.js","sourcesContent":["import React from 'react';\r\n\r\nconst SHOW_POPUP = \"show-popup\"\r\n    , STYLES = {\r\n        SHOW : {\r\n          display: 'block'\r\n        },\r\n        HIDE : {\r\n          display : 'none'\r\n        }\r\n};\r\n\r\nconst ShowHide = (props) => {\r\n    const {isShow, style, children} = props\r\n        , _styleShow = isShow ? STYLES.SHOW : STYLES.HIDE\r\n        , _classShow = isShow ? SHOW_POPUP : null;\r\n\r\n    return (\r\n      <div className={_classShow} style={Object.assign({}, style, _styleShow)}>\r\n        {children}\r\n      </div>\r\n    )\r\n};\r\n\r\nexport default ShowHide\r\n"]}
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\zhnAtoms\\ShowHide.jsx",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\zhnAtoms\\ShowHide.js",
+ "sourceRoot": "",
+ "names": [
+  "SHOW_POPUP",
+  "STYLE",
+  "SHOW",
+  "display",
+  "HIDE",
+  "ShowHide",
+  "isShow",
+  "style",
+  "children",
+  "_style",
+  "_class",
+  "propTypes",
+  "bool",
+  "object",
+  "oneOfType",
+  "arrayOf",
+  "node"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;;;;;AAEA,IAAMA,aAAa,YAAnB;AAAA,IACMC,QAAQ;AACNC,QAAO;AACLC,aAAS;AADJ,GADD;AAINC,QAAO;AACLD,aAAU;AADL;AAJD,CADd;;AAUA,IAAME,WAAW,SAAXA,QAAW,OAAiC;AAAA,MAA9BC,MAA8B,QAA9BA,MAA8B;AAAA,MAAtBC,KAAsB,QAAtBA,KAAsB;AAAA,MAAfC,QAAe,QAAfA,QAAe;;AAC9C,MAAMC,SAASH,SAASL,MAAMC,IAAf,GAAsBD,MAAMG,IAA3C;AAAA,MACMM,SAASJ,SAASN,UAAT,GAAsB,IADrC;;AAGA,SACE;AAAA;AAAA,MAAK,WAAWU,MAAhB,EAAwB,kCAAYH,KAAZ,EAAsBE,MAAtB,CAAxB;AACGD;AADH,GADF;AAKH,CATD;;AAWA,iDAASG,SAAT,GAAqB;AACnBL,UAAQ,iBAAUM,IADC;AAEnBL,SAAO,iBAAUM,MAFE;AAGnBL,YAAU,iBAAUM,SAAV,CAAoB,CAC5B,iBAAUC,OAAV,CAAkB,iBAAUC,IAA5B,CAD4B,EAE5B,iBAAUA,IAFkB,CAApB;AAHS,CAArB;;kBASeX,Q"
+}

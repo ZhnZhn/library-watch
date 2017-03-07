@@ -1,1 +1,21 @@
-{"version":3,"sources":["../../../src/components/zhnAtoms/ScrollPane.jsx"],"names":["ScrollPane","style","className","children"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,aAAa,SAAbA,UAAa;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,4BAAUC,SAAV;AAAA,MAAUA,SAAV,kCAAoB,EAApB;AAAA,MAAwBC,QAAxB,QAAwBA,QAAxB;AAAA,SACjB;AAAA;AAAA,MAAK,4BAA0BD,SAA/B,EAA4C,OAAOD,KAAnD;AACIE;AADJ,GADiB;AAAA,CAAnB;;kBAMeH,U","file":"ScrollPane.js","sourcesContent":["import React from 'react';\r\n\r\nconst ScrollPane = ({ style, className='', children }) => (\r\n  <div className={`with-scroll ${className}`} style={style}>\r\n     {children}\r\n  </div>\r\n)\r\n\r\nexport default ScrollPane\r\n"]}
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\zhnAtoms\\ScrollPane.jsx",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\zhnAtoms\\ScrollPane.js",
+ "sourceRoot": "",
+ "names": [
+  "ScrollPane",
+  "style",
+  "className",
+  "children",
+  "propTypes",
+  "object",
+  "string",
+  "oneOfType",
+  "arrayOf",
+  "node",
+  "defaultProps"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,aAAa,SAAbA,UAAa;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,MAAUC,SAAV,QAAUA,SAAV;AAAA,MAAqBC,QAArB,QAAqBA,QAArB;AAAA,SACjB;AAAA;AAAA,MAAK,4BAA0BD,SAA/B,EAA4C,OAAOD,KAAnD;AACIE;AADJ,GADiB;AAAA,CAAnB;;AAMA,mDAAWC,SAAX,GAAuB;AACrBH,SAAQ,iBAAUI,MADG;AAErBH,aAAW,iBAAUI,MAFA;AAGrBH,YAAU,iBAAUI,SAAV,CAAoB,CAC5B,iBAAUC,OAAV,CAAkB,iBAAUC,IAA5B,CAD4B,EAE5B,iBAAUA,IAFkB,CAApB;AAHW,CAAvB;AAQAT,WAAWU,YAAX,GAA0B;AACxBR,aAAW;AADa,CAA1B;;kBAIeF,U"
+}

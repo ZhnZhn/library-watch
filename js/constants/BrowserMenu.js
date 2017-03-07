@@ -35,14 +35,13 @@ var fnCreateMenu = function fnCreateMenu(menu, data, browserType) {
         counter: 0,
         isOpen: false,
         onClick: _fnClick(item.id, browserType),
-        //onBadgeClick: _fnBadgeClick(item.id, browserType),
-        //onBadgeClose : _fnBadgeClose(item.id)
         onBadgeOpen: _fnBadgeOpen(item.id, browserType),
         onBadgeClose: _fnBadgeClose(item.id)
       };
     });
     return {
       caption: menuPart.caption,
+      isInitClose: menuPart.isInitClose,
       items: items
     };
   });
@@ -53,4 +52,4 @@ var BrowserMenu = {
 };
 
 exports.default = BrowserMenu;
-//# sourceMappingURL=BrowserMenu.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\constants\BrowserMenu.js.map

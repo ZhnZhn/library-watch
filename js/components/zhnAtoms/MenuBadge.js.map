@@ -1,1 +1,30 @@
-{"version":3,"sources":["../../../src/components/zhnAtoms/MenuBadge.jsx"],"names":["STYLE","OPEN","color","MenuBadge","createClass","_handleClickBadge","event","stopPropagation","props","isOpen","onBadgeOpen","onBadgeClose","render","counter","_styleSpan"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,QAAQ;AACZC,QAAO;AACLC,WAAO;AADF;AADK,CAAd;;AAMA,IAAMC,YAAY,gBAAMC,WAAN,CAAkB;AAAA;AAClCC,mBADkC,6BAChBC,KADgB,EACV;AACrBA,UAAMC,eAAN;AADqB,iBAEyB,KAAKC,KAF9B;AAAA,QAEbC,MAFa,UAEbA,MAFa;AAAA,QAELC,WAFK,UAELA,WAFK;AAAA,QAEQC,YAFR,UAEQA,YAFR;;AAGrB,QAAIF,MAAJ,EAAW;AACTE;AACD,KAFD,MAEO;AACLD;AACD;AACH,GATiC;AAWlCE,QAXkC,oBAW1B;AAAA,kBACsB,KAAKJ,KAD3B;AAAA,QACEK,OADF,WACEA,OADF;AAAA,QACWJ,MADX,WACWA,MADX;AAAA,QAECK,UAFD,GAEcL,SAAST,MAAMC,IAAf,GAAsB,IAFpC;;AAGN,WACE;AAAA;AAAA;AACG,mBAAU,aADb;AAEG,eAAOa,UAFV;AAGG,iBAAS,KAAKT;AAHjB;AAKIQ;AALJ,KADF;AASD;AAvBiC,CAAlB,CAAlB;;kBA0BeV,S","file":"MenuBadge.js","sourcesContent":["import React from 'react';\r\n\r\nconst STYLE = {\r\n  OPEN : {\r\n    color: 'rgba(164, 135, 212, 1)'\r\n  }\r\n}\r\n\r\nconst MenuBadge = React.createClass({\r\n  _handleClickBadge(event){\r\n     event.stopPropagation();\r\n     const { isOpen, onBadgeOpen, onBadgeClose } = this.props;\r\n     if (isOpen){\r\n       onBadgeClose();\r\n     } else {\r\n       onBadgeOpen();\r\n     }\r\n  },\r\n\r\n  render(){\r\n    const { counter, isOpen } = this.props\r\n         , _styleSpan = isOpen ? STYLE.OPEN : null;\r\n    return (\r\n      <span\r\n         className=\"menu__badge\"\r\n         style={_styleSpan}\r\n         onClick={this._handleClickBadge}\r\n      >\r\n         {counter}\r\n      </span>\r\n    )\r\n  }\r\n});\r\n\r\nexport default MenuBadge\r\n"]}
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\zhnAtoms\\MenuBadge.jsx",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\zhnAtoms\\MenuBadge.js",
+ "sourceRoot": "",
+ "names": [
+  "ROOT_CLASS",
+  "STYLE",
+  "OPEN",
+  "color",
+  "MenuBadge",
+  "_handleClickBadge",
+  "event",
+  "stopPropagation",
+  "props",
+  "isOpen",
+  "onBadgeOpen",
+  "onBadgeClose",
+  "counter",
+  "_style",
+  "propTypes",
+  "oneOfType",
+  "number",
+  "string",
+  "bool",
+  "func"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;;;AAGA,IAAMA,aAAa,aAAnB;;AAEA,IAAMC,QAAQ;AACZC,QAAO;AACLC,WAAO;AADF;AADK,CAAd;;IAMMC,S;;;;;;;;;;;;;;0MAUJC,iB,GAAoB,UAACC,KAAD,EAAW;AAC5BA,YAAMC,eAAN;AAD4B,wBAEkB,MAAKC,KAFvB;AAAA,UAEpBC,MAFoB,eAEpBA,MAFoB;AAAA,UAEZC,WAFY,eAEZA,WAFY;AAAA,UAECC,YAFD,eAECA,YAFD;;AAG5B,UAAIF,MAAJ,EAAW;AACTE;AACD,OAFD,MAEO;AACLD;AACD;AACH,K;;;;;6BAEO;AAAA,mBACsB,KAAKF,KAD3B;AAAA,UACEI,OADF,UACEA,OADF;AAAA,UACWH,MADX,UACWA,MADX;AAAA,UAECI,MAFD,GAEUJ,SAASR,MAAMC,IAAf,GAAsB,IAFhC;;AAGN,aACE;AAAA;AAAA;AACG,qBAAWF,UADd;AAEG,iBAAOa,MAFV;AAGG,mBAAS,KAAKR;AAHjB;AAKIO;AALJ,OADF;AASD;;;;;wCAhCGR,S,CACGU,S,GAAY;AACjBF,WAAU,iBAAUG,SAAV,CAAoB,CACjB,iBAAUC,MADO,EACC,iBAAUC,MADX,CAApB,CADO;AAIjBR,UAAS,iBAAUS,IAJF;AAKjBR,eAAc,iBAAUS,IALP;AAMjBR,gBAAe,iBAAUQ;AANR,C;kBAkCNf,S"
+}

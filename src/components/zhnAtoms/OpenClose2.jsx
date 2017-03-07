@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
-const styles = {
-  rootDiv: {
+const STYLE = {
+  ROOT: {
     backgroundColor: '#4D4D4D',
     lineHeight: 1.5
   },
-  divSvg : {
+  SVG: {
     width: '16px',
     height: '16px',
     display: 'inline-block'
   },
-  labelCaption: {
+  CAPTION: {
     paddingLeft: '4px',
     verticalAlign: 'top',
     color: 'rgba(164, 135, 212, 1)',
@@ -19,16 +19,13 @@ const styles = {
     fontSize: '16px',
     cursor: 'pointer'
   },
-  itemRow : {
-    backgroundColor: '#404040'
-  },
-  displayInline : {
+  INLINE : {
     display: 'inline-block'
   },
-  displayBlock : {
+  BLOCK : {
     display: 'block'
   },
-  displayNone : {
+  NONE : {
     display : 'none'
   }
 };
@@ -38,23 +35,53 @@ const FILL_OPEN = 'yellow'
     , PATH_OPEN = "M 2,14 L 14,14 14,2 2,14"
     , PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
-const OpenClose2 = React.createClass({
-   getInitialState(){
-      const { isClose } = this.props
+class OpenClose2 extends Component {
+  static propTypes = {
+    isClose: PropTypes.bool,
 
-      return {
-        isOpen: (isClose) ? false : true
-      };
-   },
+    style: PropTypes.object,
+    styleNotSelected: PropTypes.object,
+    styleCaption: PropTypes.object,
 
-  _handleClickOpenClose(){
-    this.setState({ isOpen : !this.state.isOpen });
-  },
+    caption: PropTypes.string,
+    fillOpen: PropTypes.string,
+    fillClose: PropTypes.string,
+
+    isDraggable: PropTypes.bool,
+    option: PropTypes.object,
+    onDragStart: PropTypes.func,
+    onDragEnter: PropTypes.func,
+    onDragOver: PropTypes.func,
+    onDragLeave: PropTypes.func,
+    onDrop: PropTypes.func,
+
+    children: PropTypes.oneOfType([
+       PropTypes.arrayOf(PropTypes.node),
+       PropTypes.node
+    ])
+  }
+
+  static defaultProps = {
+    isClose: true,
+    fillOpen: FILL_OPEN,
+    fillClose: FILL_CLOSE
+  }
+
+  constructor(props){
+    super()
+    this.state = {
+      isOpen: !props.isClose
+    }
+  }
+
+  _handleToggle = () => {
+    this.setState({ isOpen : !this.state.isOpen })
+  }
 
   render(){
     const {
             style, styleNotSelected, styleCaption, caption,
-            fillOpen=FILL_OPEN, fillClose=FILL_CLOSE,
+            fillOpen, fillClose,
             isDraggable, option, onDragStart, onDragEnter, onDragOver, onDragLeave, onDrop,
             children
           } = this.props
@@ -73,32 +100,30 @@ const OpenClose2 = React.createClass({
     if (this.state.isOpen){
       _pathV = PATH_OPEN;
       _fillV = fillOpen;
-      _styleCollapse = styles.displayBlock;
+      _styleCollapse = STYLE.BLOCK;
       _classShow = 'show-popup';
       _styleNotSelected = null;
-
     } else {
       _pathV = PATH_CLOSE;
       _fillV = fillClose;
-      _styleCollapse = styles.displayNone;
+      _styleCollapse = STYLE.NONE;
       _classShow = null;
       _styleNotSelected = styleNotSelected;
     }
 
-
     return (
-      <div style={Object.assign({}, styles.rootDiv, style)}>
+      <div style={{...STYLE.ROOT, ...style}}>
         <div
            className="not-selected"
            style={_styleNotSelected}
-           onClick={this._handleClickOpenClose}
+           onClick={this._handleToggle}
            {..._dragOption}
          >
-          <div style={styles.divSvg}>
+          <div style={STYLE.SVG}>
              <svg
                 viewBox="0 0 16 16" width="100%" height="100%"
                 preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
-                style={styles.displayInline}
+                style={STYLE.INLINE}
               >
              <path
                 d={_pathV}
@@ -108,7 +133,7 @@ const OpenClose2 = React.createClass({
              </path>
              </svg>
          </div>
-         <span style={Object.assign({}, styles.labelCaption, styleCaption)} >
+         <span style={{...STYLE.CAPTION, ...styleCaption}} >
             {caption}
          </span>
        </div>
@@ -121,6 +146,6 @@ const OpenClose2 = React.createClass({
      </div>
     )
   }
-});
+}
 
-export default OpenClose2;
+export default OpenClose2

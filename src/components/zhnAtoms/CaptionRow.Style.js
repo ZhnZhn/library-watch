@@ -1,6 +1,6 @@
 
 const STYLE =  {
-  captionDiv : {
+  ROOT : {
     backgroundColor: '#232F3B',
     color: 'rgba(164, 135, 212, 1)',
     height: '28px',
@@ -11,7 +11,7 @@ const STYLE =  {
     marginRight: '5px',
     marginBottom: '10px'
   },
-  captionSpan: {
+  SPAN : {
     fontSize: '18px',
     fontWeight: '500',
     paddingRight: '8px'

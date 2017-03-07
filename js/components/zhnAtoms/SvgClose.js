@@ -10,8 +10,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var styles = {
-  svg: {
+var STYLE = {
+  SVG: {
     padding: '3px'
   }
 };
@@ -23,13 +23,13 @@ var SvgClose = function SvgClose(_ref) {
     'div',
     {
       className: 'svg-close',
-      onClick: onClose,
-      style: style
+      style: style,
+      onClick: onClose
     },
     _react2.default.createElement(
       'svg',
       { viewBox: '0 0 12 12', width: '100%', height: '100%',
-        style: styles.svg,
+        style: STYLE.SVG,
         preserveAspectRatio: 'none', xmlns: 'http://www.w3.org/2000/svg' },
       _react2.default.createElement('path', { d: 'M 0,0 L 12,12', strokeWidth: '2', stroke: '#ED5813',
         strokeLinecap: 'round'
@@ -41,5 +41,13 @@ var SvgClose = function SvgClose(_ref) {
   );
 };
 
+process.env.NODE_ENV !== "production" ? SvgClose.propTypes = {
+  style: _react.PropTypes.object,
+  onClose: _react.PropTypes.func
+} : void 0;
+SvgClose.defaultProps = {
+  onClose: function onClose() {}
+};
+
 exports.default = SvgClose;
-//# sourceMappingURL=SvgClose.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\SvgClose.js.map

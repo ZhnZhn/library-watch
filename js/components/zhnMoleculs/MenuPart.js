@@ -40,16 +40,25 @@ var _renderMenuItems = function _renderMenuItems(items) {
   });
 };
 
-var MenuPart = function MenuPart(props) {
-  var caption = props.caption,
-      items = props.items;
-
+var MenuPart = function MenuPart(_ref) {
+  var caption = _ref.caption,
+      items = _ref.items,
+      isInitClose = _ref.isInitClose;
   return _react2.default.createElement(
     _OpenClose2.default,
-    { caption: caption },
+    { caption: caption, isClose: isInitClose },
     _renderMenuItems(items)
   );
 };
 
+process.env.NODE_ENV !== "production" ? MenuPart.propTypes = {
+  caption: _react.PropTypes.string,
+  items: _react.PropTypes.arrayOf(_react.PropTypes.object),
+  isInitClose: _react.PropTypes.bool
+} : void 0;
+MenuPart.defaultProps = {
+  items: []
+};
+
 exports.default = MenuPart;
-//# sourceMappingURL=MenuPart.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnMoleculs\MenuPart.js.map

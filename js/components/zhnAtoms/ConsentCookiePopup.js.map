@@ -1,1 +1,37 @@
-{"version":3,"sources":["../../../src/components/zhnAtoms/ConsentCookiePopup.jsx"],"names":["HIDE_PERIOD","ANIMATION_PERIOD","MSG","BTN_GOT_TITLE","STYLE","ROOT_SHOW","opacity","bottom","ROOT_HIDE","display","ConsentCookiePopup","createClass","getInitialState","timeID","undefined","hideID","isOpacity","isDisplay","componentDidMount","setTimeout","_startHidingAnimation","setState","_hidePopup","_handlerClickGot","hideId","clearTimeout","render","state","_opacityStyle","_displayStyle","Object","assign"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,cAAc,KAApB;AAAA,IACMC,mBAAmB,IADzB;AAAA,IAEMC,MAAM,kGAFZ;AAAA,IAGMC,gBAAgB,SAHtB;;AAKA,IAAMC,QAAQ;AACZC,aAAY;AACTC,aAAS,KADA;AAETC,YAAS;AAFA,GADA;AAKZC,aAAY;AACTC,aAAS;AADA;AALA,CAAd;;AAUA,IAAMC,qBAAqB,gBAAMC,WAAN,CAAkB;AAAA;AAE3CC,iBAF2C,6BAE1B;AACf,SAAKC,MAAL,GAAcC,SAAd;AACA,SAAKC,MAAL,GAAcD,SAAd;AACA,WAAO;AACLE,iBAAY,IADP;AAELC,iBAAY;AAFP,KAAP;AAID,GAT0C;AAW3CC,mBAX2C,+BAWxB;AAAA;;AACjB,SAAKL,MAAL,GAAcM,WAAY,YAAM;AAC9B,YAAKC,qBAAL;AACD,KAFa,EAEXpB,WAFW,CAAd;;AAIAmB,eAAW,YAAI;AACb,YAAKE,QAAL,CAAc,EAAEL,WAAW,KAAb,EAAd;AACD,KAFD,EAEG,GAFH;AAGD,GAnB0C;AAqB3CI,uBArB2C,mCAqBpB;AACrB,SAAKL,MAAL,GAAcI,WAAW,KAAKG,UAAhB,EAA4BrB,gBAA5B,CAAd;AACA,SAAKoB,QAAL,CAAc,EAAEL,WAAW,IAAb,EAAd;AACD,GAxB0C;AAyB3CM,YAzB2C,wBAyB/B;AACT,SAAKD,QAAL,CAAc,EAAEJ,WAAY,KAAd,EAAd;AACF,GA3B0C;AA6B3CM,kBA7B2C,8BA6BzB;AAChB,QAAI,CAAC,KAAKC,MAAV,EAAkB;AAChBC,mBAAa,KAAKZ,MAAlB;AACA,WAAKO,qBAAL;AACD;AACF,GAlC0C;AAqC3CM,QArC2C,oBAqCnC;AAAA,iBAC2B,KAAKC,KADhC;AAAA,QACEX,SADF,UACEA,SADF;AAAA,QACaC,SADb,UACaA,SADb;AAAA,QAEAW,aAFA,GAEiBZ,SAAD,GACTF,SADS,GAETV,MAAMC,SAJb;AAAA,QAKAwB,aALA,GAKiBZ,SAAD,GACTH,SADS,GAETV,MAAMI,SAPb;;AASN,WACE;AAAA;AAAA;AACG,mBAAU,SADb;AAEG,eAAOsB,OAAOC,MAAP,CAAc,EAAd,EAAkBH,aAAlB,EAAiCC,aAAjC;AAFV;AAIG;AAAA;AAAA;AACG;AAAA;AAAA,YAAM,WAAU,cAAhB;AACG3B;AADH,SADH;AAIG;AAAA;AAAA;AACG,uBAAU,cADb;AAEG,qBAAS,KAAKqB;AAFjB;AAIIpB;AAJJ;AAJH;AAJH,KADF;AAkBD;AAhE0C,CAAlB,CAA3B;;kBAmEeO,kB","file":"ConsentCookiePopup.js","sourcesContent":["import React from 'react';\r\n\r\nconst HIDE_PERIOD = 30000\r\n    , ANIMATION_PERIOD = 1100\r\n    , MSG = 'Library Watch uses session cookies from Google Analytics with anonymizeIp for better experience.'\r\n    , BTN_GOT_TITLE = \"Got it.\"\r\n\r\nconst STYLE = {\r\n  ROOT_SHOW : {\r\n     opacity: '0.9',\r\n     bottom : '0px'\r\n  },\r\n  ROOT_HIDE : {\r\n     display: 'none'\r\n  }\r\n}\r\n\r\nconst ConsentCookiePopup = React.createClass({\r\n\r\n  getInitialState(){\r\n    this.timeID = undefined;\r\n    this.hideID = undefined;\r\n    return {\r\n      isOpacity : true,\r\n      isDisplay : true\r\n    }\r\n  },\r\n\r\n  componentDidMount(){\r\n    this.timeID = setTimeout( () => {\r\n      this._startHidingAnimation();\r\n    }, HIDE_PERIOD);\r\n\r\n    setTimeout(()=>{\r\n      this.setState({ isOpacity: false });\r\n    }, 500);\r\n  },\r\n\r\n  _startHidingAnimation(){\r\n    this.hideID = setTimeout(this._hidePopup, ANIMATION_PERIOD);\r\n    this.setState({ isOpacity: true });\r\n  },\r\n  _hidePopup(){\r\n     this.setState({ isDisplay : false });\r\n  },\r\n\r\n  _handlerClickGot(){\r\n    if (!this.hideId) {\r\n      clearTimeout(this.timeID);\r\n      this._startHidingAnimation();\r\n    }\r\n  },\r\n\r\n\r\n  render(){\r\n    const { isOpacity, isDisplay } = this.state\r\n        , _opacityStyle = (isOpacity)\r\n               ? undefined\r\n               : STYLE.ROOT_SHOW\r\n        , _displayStyle = (isDisplay)\r\n               ? undefined\r\n               : STYLE.ROOT_HIDE\r\n\r\n    return (\r\n      <div\r\n         className=\"consent\"\r\n         style={Object.assign({}, _opacityStyle, _displayStyle)}\r\n      >\r\n         <p>\r\n            <span className=\"consent__msg\">\r\n              {MSG}\r\n            </span>\r\n            <span\r\n               className=\"consent__btn\"\r\n               onClick={this._handlerClickGot}\r\n            >\r\n               {BTN_GOT_TITLE}\r\n            </span>\r\n         </p>\r\n      </div>\r\n    );\r\n  }\r\n});\r\n\r\nexport default ConsentCookiePopup\r\n"]}
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\zhnAtoms\\ConsentCookiePopup.jsx",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\zhnAtoms\\ConsentCookiePopup.js",
+ "sourceRoot": "",
+ "names": [
+  "HIDE_PERIOD",
+  "ANIMATION_PERIOD",
+  "MSG",
+  "BTN_GOT_TITLE",
+  "STYLE",
+  "SHOW",
+  "opacity",
+  "bottom",
+  "HIDE",
+  "display",
+  "ConsentCookiePopup",
+  "props",
+  "_startHidingAnimation",
+  "hideID",
+  "setTimeout",
+  "_hidePopup",
+  "setState",
+  "isOpacity",
+  "isDisplay",
+  "_handleClickGot",
+  "hideId",
+  "clearTimeout",
+  "timeID",
+  "undefined",
+  "state",
+  "_opacityStyle",
+  "_displayStyle"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;;;AAEA,IAAMA,cAAc,KAApB;AAAA,IACMC,mBAAmB,IADzB;AAAA,IAEMC,MAAM,kGAFZ;AAAA,IAGMC,gBAAgB,SAHtB;;AAKA,IAAMC,QAAQ;AACZC,QAAO;AACJC,aAAS,KADL;AAEJC,YAAS;AAFL,GADK;AAKZC,QAAO;AACJC,aAAS;AADL;AALK,CAAd;;IAUMC,kB;;;AACJ,8BAAYC,KAAZ,EAAkB;AAAA;;AAAA;;AAAA,UAoBlBC,qBApBkB,GAoBM,YAAM;AAC5B,YAAKC,MAAL,GAAcC,WAAW,MAAKC,UAAhB,EAA4Bd,gBAA5B,CAAd;AACA,YAAKe,QAAL,CAAc,EAAEC,WAAW,IAAb,EAAd;AACD,KAvBiB;;AAAA,UAwBlBF,UAxBkB,GAwBL,YAAM;AAChB,YAAKC,QAAL,CAAc,EAAEE,WAAY,KAAd,EAAd;AACF,KA1BiB;;AAAA,UA4BlBC,eA5BkB,GA4BA,YAAM;AACtB,UAAI,CAAC,MAAKC,MAAV,EAAkB;AAChBC,qBAAa,MAAKC,MAAlB;AACA,cAAKV,qBAAL;AACD;AACF,KAjCiB;;AAEhB,UAAKU,MAAL,GAAcC,SAAd;AACA,UAAKV,MAAL,GAAcU,SAAd;AACA,UAAKC,KAAL,GAAa;AACXP,iBAAY,IADD;AAEXC,iBAAY;AAFD,KAAb;AAJgB;AAQjB;;;;wCAEkB;AAAA;;AACjB,WAAKI,MAAL,GAAcR,WAAY,YAAM;AAC9B,eAAKF,qBAAL;AACD,OAFa,EAEXZ,WAFW,CAAd;;AAIAc,iBAAW,YAAI;AACb,eAAKE,QAAL,CAAc,EAAEC,WAAW,KAAb,EAAd;AACD,OAFD,EAEG,GAFH;AAGD;;;6BAkBO;AAAA,mBAC2B,KAAKO,KADhC;AAAA,UACEP,SADF,UACEA,SADF;AAAA,UACaC,SADb,UACaA,SADb;AAAA,UAEAO,aAFA,GAEiBR,SAAD,GACTM,SADS,GAETnB,MAAMC,IAJb;AAAA,UAKAqB,aALA,GAKiBR,SAAD,GACTK,SADS,GAETnB,MAAMI,IAPb;;AASN,aACE;AAAA;AAAA;AACG,qBAAU,SADb;AAEG,4CAAWiB,aAAX,EAA6BC,aAA7B;AAFH;AAIG;AAAA;AAAA;AACG;AAAA;AAAA,cAAM,WAAU,cAAhB;AACGxB;AADH,WADH;AAIG;AAAA;AAAA;AACG,yBAAU,cADb;AAEG,uBAAS,KAAKiB;AAFjB;AAIIhB;AAJJ;AAJH;AAJH,OADF;AAkBD;;;;;kBAGYO,kB"
+}
