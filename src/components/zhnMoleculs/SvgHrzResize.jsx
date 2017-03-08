@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component, PropTypes } from 'react'
+import ReactDOM from 'react-dom'
 
 const styles = {
   rootDiv : {
@@ -10,19 +10,26 @@ const styles = {
   }
 };
 
-const SvgHrzResize = React.createClass({
-  getInitialState(){
-    this.id = null;
-    this.domNode = null;
-    this.delta = 0;
-    this.step = 1;
-    this.countStep = 0;
-    this.isResizeAfter = ( typeof this.props.onResizeAfter === 'function')
+class SvgHrzResize extends Component {
+  static propTypes = {
+    //comp,
+    minWidth: PropTypes.number,
+    maxWidth: PropTypes.number,
+    onResizeAfter: PropTypes.func
+  }
+
+  constructor(props){
+    super()
+    this.id = null
+    this.domNode = null
+    this.delta = 0
+    this.step = 1
+    this.countStep = 0
+    this.isResizeAfter = (typeof props.onResizeAfter === 'function')
             ? true
-            : false ;
-    return {
-    }
-  },
+            : false
+    this.state = {}
+  }
 
   componentDidMount(){
      const {comp, minWidth, maxWidth} = this.props;
@@ -31,9 +38,9 @@ const SvgHrzResize = React.createClass({
      this.currentWidth = this.initWidth;
      this.minDelta = minWidth - this.initWidth;
      this.maxDelta = maxWidth - this.initWidth;
-  },
+  }
 
-  _increaseStepValue(){
+  _increaseStepValue = () => {
     this.countStep +=1;
     if ( this.countStep > 30){
       this.step = 3;
@@ -44,31 +51,31 @@ const SvgHrzResize = React.createClass({
          (this.delta - this.minDelta) < 20    ){
       this.step = 1;
     }
-  },
+  }
 
-  _resizeLeft(){
+  _resizeLeft = () => {
     if (this.delta > this.minDelta){
       this.delta -= this.step;
       this.currentWidth = this.initWidth + this.delta;
       this.domNode.style.width = this.currentWidth + 'px';
       this._increaseStepValue();
     }
-  },
-  _resizeRight(){
+  }
+  _resizeRight = () => {
     if (this.delta < this.maxDelta){
       this.delta += this.step;
       this.currentWidth = this.initWidth + this.delta;
       this.domNode.style.width = this.currentWidth + 'px';
       this._increaseStepValue();
     }
-  },
-  _handlerStartResize(fnResize){
+  }
+  _handlerStartResize = (fnResize) => {
     if (this.id !== null){
       this._handlerStopResize(false);
     }
     this.id = setInterval(fnResize, 5);
-  },
-  _handlerStopResize(isOnResizeAfter){
+  }
+  _handlerStopResize = (isOnResizeAfter) => {
     clearInterval(this.id);
     this.id = null;
     this.step = 1;
@@ -77,8 +84,7 @@ const SvgHrzResize = React.createClass({
     if (isOnResizeAfter && this.isResizeAfter){
       this.props.onResizeAfter(this.currentWidth);
     }
-  },
-
+  }
 
   render(){
     return (
@@ -134,6 +140,6 @@ const SvgHrzResize = React.createClass({
     </div>
     )
   }
-});
+}
 
 export default SvgHrzResize

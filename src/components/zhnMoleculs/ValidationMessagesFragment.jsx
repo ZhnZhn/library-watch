@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import DialogStyles from '../styles/DialogStyles';
 
@@ -10,16 +10,13 @@ const Styles = {
   }
 }
 
-const ValidationMessagesFragment = React.createClass({
-   displayName : 'ValidationMessagesFragment',
-   propTypes : {
-     validationMessages : React.PropTypes.array
-   },
-   getDefaultProps(){
-     return {
-       validationMessages : []
-     }
-   },
+class ValidationMessagesFragment extends Component{   
+   static propTypes = {
+     validationMessages: PropTypes.array
+   }
+   static defaultProps = {
+     validationMessages: []
+   }
 
   _renderValidationMessages(validationMessages){
     return validationMessages.map((msg, index)=>{
@@ -30,7 +27,7 @@ const ValidationMessagesFragment = React.createClass({
         </div>
       )
     });
-  },
+  }
 
   render(){
     const {validationMessages} = this.props;
@@ -40,6 +37,6 @@ const ValidationMessagesFragment = React.createClass({
       </div>
     )
   }
-});
+}
 
 export default ValidationMessagesFragment

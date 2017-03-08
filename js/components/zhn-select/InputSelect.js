@@ -66,6 +66,7 @@ var styles = {
     //height: '160px',
     minHeight: '160px',
     maxHeight: '200px',
+    paddingBottom: '2px',
     overflow: 'auto'
   },
   spinnerCell: {
@@ -441,7 +442,6 @@ var _initialiseProps = function _initialiseProps() {
               _this3.indexActiveOption = _this3.state.options.length - 1;
               var bottomComp = _this3._getActiveItemComp();
               _this3.optionsComp.scrollTop = bottomComp.offsetTop;
-              //this.optionsComp.scrollTop = this.optionsComp.scrollTopMax
             }
 
             var _nextComp = _this3._getActiveItemComp();
@@ -599,4 +599,4 @@ process.env.NODE_ENV !== "production" ? InputSelect.propTypes = {
   onLoadOption: _react.PropTypes.func
 } : void 0;
 exports.default = InputSelect;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\InputSelect.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhn-select\InputSelect.js.map

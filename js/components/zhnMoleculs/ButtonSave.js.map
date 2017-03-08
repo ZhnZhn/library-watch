@@ -1,1 +1,39 @@
-{"version":3,"sources":["../../../src/components/zhnMoleculs/ButtonSave.jsx"],"names":["CAPTION","TITLE","STYLE","NOT_WATCH_EDITED","borderColor","color","ButtonSave","createClass","propTypes","store","object","isRequired","style","getInitialState","isWatchEdited","props","getWatchEdited","shouldComponentUpdate","nextProps","nextState","state","componentDidMount","unsubcribe","listen","_onStore","setState","actionType","value","SET_WATCH_EDITED","componentWillUnmount","render","_style","Object","assign","saveWatch"],"mappings":";;;;;;AAAA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,UAAU,GAAhB;AAAA,IACMC,QAAQ,oCADd;AAAA,IAEMC,QAAQ;AACZC,oBAAmB;AACjBC,iBAAc,MADG;AAEjBC,WAAQ;AAFS;AADP,CAFd;;AASA,IAAMC,aAAa,gBAAMC,WAAN,CAAkB;AAAA;;AACnCC,aAAY;AACVC,WAAQ,iBAAUC,MAAV,CAAiBC,UADf;AAEVC,WAAQ,iBAAUF;AAFR,GADuB;;AAMnCG,iBANmC,6BAMlB;AACf,WAAO;AACLC,qBAAgB,KAAKC,KAAL,CAAWN,KAAX,CAAiBO,cAAjB;AADX,KAAP;AAGD,GAVkC;AAYnCC,uBAZmC,iCAYbC,SAZa,EAYFC,SAZE,EAYQ;AACzC,QAAIA,UAAUL,aAAV,KAA4B,KAAKM,KAAL,CAAWN,aAA3C,EAAyD;AACvD,aAAO,KAAP;AACD;AACD,WAAO,IAAP;AACD,GAjBkC;AAmBnCO,mBAnBmC,+BAmBhB;AAAA,QACTZ,KADS,GACC,KAAKM,KADN,CACTN,KADS;;AAEjB,SAAKa,UAAL,GAAkBb,MAAMc,MAAN,CAAa,KAAKC,QAAlB,CAAlB;AACA,SAAKC,QAAL,CAAc,EAAEX,eAAgBL,MAAMO,cAAN,EAAlB,EAAd;AACD,GAvBkC;AAwBnCQ,UAxBmC,oBAwB1BE,UAxB0B,EAwBdC,KAxBc,EAwBR;AACzB,QAAID,eAAe,+BAAiBE,gBAApC,EAAqD;AACnD,WAAKH,QAAL,CAAc,EAAEX,eAAgBa,KAAlB,EAAd;AACD;AACF,GA5BkC;AA6BnCE,sBA7BmC,kCA6Bb;AACpB,SAAKP,UAAL;AACD,GA/BkC;AAiCnCQ,QAjCmC,oBAiC3B;AACA,QAAElB,KAAF,GAAY,KAAKG,KAAjB,CAAEH,KAAF;AAAA,QACEE,aADF,GACoB,KAAKM,KADzB,CACEN,aADF;AAAA,QAEAiB,MAFA,GAEUjB,aAAD,GACJF,KADI,GAEJoB,OAAOC,MAAP,CAAc,EAAd,EAAkBrB,KAAlB,EAAyBV,MAAMC,gBAA/B,CAJL;;;AAMN,WACE;AACG,eAASH,OADZ;AAEG,aAAOC,KAFV;AAGG,aAAO8B,MAHV;AAIG,eAAS,uBAAaG;AAJzB,MADF;AAQD;AAhDkC,CAAlB,CAAnB;;kBAqDe5B,U","file":"ButtonSave.js","sourcesContent":["import React, { PropTypes } from 'react';\r\n\r\nimport WatchActions, { WatchActionTypes } from '../../flux/actions/WatchActions';\r\nimport ButtonCircle from '../zhnAtoms/ButtonCircle';\r\n\r\nconst CAPTION = \"S\"\r\n    , TITLE = \"Save Watch Items to Locale Storage\"\r\n    , STYLE = {\r\n  NOT_WATCH_EDITED : {\r\n    borderColor : 'gray',\r\n    color : 'gray'\r\n  }\r\n}\r\n\r\nconst ButtonSave = React.createClass({\r\n  propTypes : {\r\n    store : PropTypes.object.isRequired,\r\n    style : PropTypes.object\r\n  },\r\n\r\n  getInitialState(){\r\n    return {\r\n      isWatchEdited : this.props.store.getWatchEdited()\r\n    }\r\n  },\r\n\r\n  shouldComponentUpdate(nextProps, nextState){\r\n    if (nextState.isWatchEdited === this.state.isWatchEdited){\r\n      return false;\r\n    }\r\n    return true;\r\n  },\r\n\r\n  componentDidMount(){\r\n    const { store } = this.props\r\n    this.unsubcribe = store.listen(this._onStore)\r\n    this.setState({ isWatchEdited : store.getWatchEdited() })\r\n  },\r\n  _onStore(actionType, value){\r\n    if (actionType === WatchActionTypes.SET_WATCH_EDITED){\r\n      this.setState({ isWatchEdited : value })\r\n    }\r\n  },\r\n  componentWillUnmount(){\r\n    this.unsubcribe()\r\n  },\r\n\r\n  render(){\r\n    const { style } = this.props\r\n        , { isWatchEdited } = this.state\r\n        , _style = (isWatchEdited)\r\n             ? style\r\n             : Object.assign({}, style, STYLE.NOT_WATCH_EDITED)\r\n\r\n    return (\r\n      <ButtonCircle\r\n         caption={CAPTION}\r\n         title={TITLE}\r\n         style={_style}\r\n         onClick={WatchActions.saveWatch}\r\n      />\r\n    );\r\n  }\r\n})\r\n\r\n\r\n\r\nexport default ButtonSave\r\n"]}
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\zhnMoleculs\\ButtonSave.jsx",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\zhnMoleculs\\ButtonSave.js",
+ "sourceRoot": "",
+ "names": [
+  "CAPTION",
+  "TITLE",
+  "STYLE",
+  "NOT_WATCH_EDITED",
+  "borderColor",
+  "color",
+  "ButtonSave",
+  "props",
+  "_onStore",
+  "actionType",
+  "value",
+  "SET_WATCH_EDITED",
+  "setState",
+  "isWatchEdited",
+  "state",
+  "store",
+  "getWatchEdited",
+  "nextProps",
+  "nextState",
+  "unsubcribe",
+  "listen",
+  "style",
+  "_style",
+  "Object",
+  "assign",
+  "saveWatch",
+  "propTypes",
+  "object",
+  "isRequired"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,UAAU,GAAhB;AAAA,IACMC,QAAQ,oCADd;AAAA,IAEMC,QAAQ;AACNC,oBAAmB;AACjBC,iBAAc,MADG;AAEjBC,WAAQ;AAFS;AADb,CAFd;;IASMC,U;;;AAMJ,sBAAYC,KAAZ,EAAkB;AAAA;;AAAA;;AAAA,UAmBlBC,QAnBkB,GAmBP,UAACC,UAAD,EAAaC,KAAb,EAAuB;AAChC,UAAID,eAAe,+BAAiBE,gBAApC,EAAqD;AACnD,cAAKC,QAAL,CAAc,EAAEC,eAAgBH,KAAlB,EAAd;AACD;AACF,KAvBiB;;AAEhB,UAAKI,KAAL,GAAa;AACXD,qBAAgBN,MAAMQ,KAAN,CAAYC,cAAZ;AADL,KAAb;AAFgB;AAKjB;;;;0CAEqBC,S,EAAWC,S,EAAU;AACzC,UAAIA,UAAUL,aAAV,KAA4B,KAAKC,KAAL,CAAWD,aAA3C,EAAyD;AACvD,eAAO,KAAP;AACD;AACD,aAAO,IAAP;AACD;;;wCAEkB;AAAA,UACTE,KADS,GACC,KAAKR,KADN,CACTQ,KADS;;AAEjB,WAAKI,UAAL,GAAkBJ,MAAMK,MAAN,CAAa,KAAKZ,QAAlB,CAAlB;AACA,WAAKI,QAAL,CAAc,EAAEC,eAAgBE,MAAMC,cAAN,EAAlB,EAAd;AACD;;;2CAMqB;AACpB,WAAKG,UAAL;AACD;;;6BAEO;AACA,UAAEE,KAAF,GAAY,KAAKd,KAAjB,CAAEc,KAAF;AAAA,UACER,aADF,GACoB,KAAKC,KADzB,CACED,aADF;AAAA,UAEAS,MAFA,GAEUT,aAAD,GACJQ,KADI,GAEJE,OAAOC,MAAP,CAAc,EAAd,EAAkBH,KAAlB,EAAyBnB,MAAMC,gBAA/B,CAJL;;;AAMN,aACE;AACG,iBAASH,OADZ;AAEG,eAAOC,KAFV;AAGG,eAAOqB,MAHV;AAIG,iBAAS,uBAAaG;AAJzB,QADF;AAQD;;;;;wCAjDGnB,U,CACGoB,S,GAAY;AACjBX,SAAQ,iBAAUY,MAAV,CAAiBC,UADR;AAEjBP,SAAQ,iBAAUM;AAFD,C;kBAmDNrB,U"
+}

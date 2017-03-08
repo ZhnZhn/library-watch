@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react'
 
-import SvgClose from '../zhnAtoms/SvgClose';
-import ToolBarButton from '../header/ToolBarButton';
+import SvgClose from '../zhnAtoms/SvgClose'
+import ToolBarButton from '../header/ToolBarButton'
 
-const ClassNames = {
+const CLASS = {
   SHOWING : 'show-popup',
   HIDING : 'hide-popup'
 };
 
-const Styles = {
+const STYLE = {
   SHOW : {
     display : 'block'
   },
@@ -46,28 +46,34 @@ const Styles = {
   }
 };
 
+class ModalDialog extends Component {
+   static propTypes = {
+     isShow: PropTypes.bool,
+     isWithButton: PropTypes.bool,
+     timeout: PropTypes.number,
+     caption: PropTypes.string,
+     style: PropTypes.object,
 
-const ModalDialog = React.createClass({
-   displayName : 'ModalDialog',
-   propTypes : {
-     isShow : React.PropTypes.bool,
-     isWithButton : React.PropTypes.bool,
-     timeout : React.PropTypes.number,
-     caption : React.PropTypes.string,
-     style : React.PropTypes.object,
-     onClose : React.PropTypes.func
-   },
-   getDefaultProps(){
-     return {
-       isWithButton : true,
-       isNotUpdate : false,
-       timeout : 450
-     }
-   },
-   getInitialState(){
-     this.wasClosing = false;
-     return {}
-   },
+     isNotUpdate: PropTypes.bool,
+
+     children: PropTypes.oneOfType([
+       PropTypes.arrayOf(PropTypes.node),
+       PropTypes.node
+     ]),
+     commandButtons: PropTypes.arrayOf(PropTypes.node),
+     onClose: PropTypes.func
+   }
+   static defaultProps = {
+     isWithButton : true,
+     isNotUpdate : false,
+     timeout : 450
+   }
+
+   constructor(props){
+     super()
+     this.wasClosing = false
+     this.state = {}
+   }
 
    shouldComponentUpdate(nextProps, nextState){
      if (nextProps !== this.props){
@@ -76,7 +82,7 @@ const ModalDialog = React.createClass({
        }
      }
      return true;
-   },
+   }
 
    componentDidUpdate(prevProps, prevState){
      if (this.wasClosing){
@@ -84,16 +90,14 @@ const ModalDialog = React.createClass({
          this.setState({});
        }, this.props.timeout)
      }
-   },
+   }
 
-  _handlerClickDialog(event){
+  _handleClickDialog = (event) => {
     event.stopPropagation();
-  },
+  }
 
-  _renderCommandButton: function(){
-    const {commandButtons, onClose} = this.props;
-    return (
-      <div style={Styles.COMMAND_DIV}>
+  _renderCommandButton = (commandButtons, onClose) => (
+      <div style={STYLE.COMMAND_DIV}>
         {commandButtons}
         <ToolBarButton
            type="TypeC"
@@ -101,20 +105,22 @@ const ModalDialog = React.createClass({
            onClick={onClose}
         />
       </div>
-    );
-  },
+  )
 
-  render: function(){
-    const { isShow, isWithButton, caption, style, children, onClose } = this.props;
+  render(){
+    const {
+            isShow, isWithButton, caption, style,
+            children, commandButtons, onClose
+          } = this.props;
 
     let _className, _style;
 
     if (this.wasClosing){
-      _style = Styles.HIDE;
+      _style = STYLE.HIDE;
       this.wasClosing = false;
     } else {
-      _className = isShow ? ClassNames.SHOWING : ClassNames.HIDING;
-      _style = isShow ? Styles.SHOW : Styles.HIDE_POPUP;
+      _className = isShow ? CLASS.SHOWING : CLASS.HIDING;
+      _style = isShow ? STYLE.SHOW : STYLE.HIDE_POPUP;
       if (!isShow){
         this.wasClosing = true;
       }
@@ -123,10 +129,10 @@ const ModalDialog = React.createClass({
     return (
          <div
              className={_className}
-             style={Object.assign({}, Styles.ROOT_DIV, style, _style)}
-             onClick={this._handlerClickDialog}
+             style={Object.assign({}, STYLE.ROOT_DIV, style, _style)}
+             onClick={this._handleClickDialog}
          >
-              <div style={Styles.CAPTON_DIV}>
+              <div style={STYLE.CAPTON_DIV}>
                  <span>{caption}</span>
                  <SvgClose onClose={onClose} />
               </div>
@@ -135,12 +141,11 @@ const ModalDialog = React.createClass({
                {children}
              </div>
 
-            {isWithButton && this._renderCommandButton()}
+            {isWithButton && this._renderCommandButton(commandButtons, onClose)}
 
         </div>
     );
   }
+}
 
-});
-
-export default ModalDialog;
+export default ModalDialog

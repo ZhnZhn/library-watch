@@ -32,7 +32,7 @@ var _ToolBarButton = require('../header/ToolBarButton');
 
 var _ToolBarButton2 = _interopRequireDefault(_ToolBarButton);
 
-var _InputSelect = require('../zhnAtoms/InputSelect');
+var _InputSelect = require('../zhn-select/InputSelect');
 
 var _InputSelect2 = _interopRequireDefault(_InputSelect);
 

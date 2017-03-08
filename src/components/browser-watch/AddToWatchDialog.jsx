@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import WithValidation from '../dialogs/WithValidation';
+import WithValidation from '../dialogs/WithValidation'
 
-import WatchActions from '../../flux/actions/WatchActions';
-import { WatchActionTypes } from '../../flux/actions/WatchActions';
-import Msg from '../../constants/Msg';
+import WatchActions from '../../flux/actions/WatchActions'
+import { WatchActionTypes } from '../../flux/actions/WatchActions'
+import Msg from '../../constants/Msg'
 
-import ModalDialog from '../zhnMoleculs/ModalDialog';
-import ToolBarButton from '../header/ToolBarButton';
-import InputSelect from '../zhnAtoms/InputSelect'
-import ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment';
+import ModalDialog from '../zhnMoleculs/ModalDialog'
+import ToolBarButton from '../header/ToolBarButton'
+import InputSelect from '../zhn-select/InputSelect'
+import ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment'
 
 import DialogStyles from '../styles/DialogStyles'
 

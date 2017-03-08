@@ -4,6 +4,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -27,53 +43,69 @@ var CAPTION = "S",
   }
 };
 
-var ButtonSave = _react2.default.createClass({
-  displayName: 'ButtonSave',
+var ButtonSave = function (_Component) {
+  (0, _inherits3.default)(ButtonSave, _Component);
 
-  propTypes: {
-    store: _react.PropTypes.object.isRequired,
-    style: _react.PropTypes.object
-  },
+  function ButtonSave(props) {
+    (0, _classCallCheck3.default)(this, ButtonSave);
 
-  getInitialState: function getInitialState() {
-    return {
-      isWatchEdited: this.props.store.getWatchEdited()
+    var _this = (0, _possibleConstructorReturn3.default)(this, (ButtonSave.__proto__ || Object.getPrototypeOf(ButtonSave)).call(this));
+
+    _this._onStore = function (actionType, value) {
+      if (actionType === _WatchActions.WatchActionTypes.SET_WATCH_EDITED) {
+        _this.setState({ isWatchEdited: value });
+      }
     };
-  },
-  shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
-    if (nextState.isWatchEdited === this.state.isWatchEdited) {
-      return false;
-    }
-    return true;
-  },
-  componentDidMount: function componentDidMount() {
-    var store = this.props.store;
 
-    this.unsubcribe = store.listen(this._onStore);
-    this.setState({ isWatchEdited: store.getWatchEdited() });
-  },
-  _onStore: function _onStore(actionType, value) {
-    if (actionType === _WatchActions.WatchActionTypes.SET_WATCH_EDITED) {
-      this.setState({ isWatchEdited: value });
-    }
-  },
-  componentWillUnmount: function componentWillUnmount() {
-    this.unsubcribe();
-  },
-  render: function render() {
-    var style = this.props.style,
-        isWatchEdited = this.state.isWatchEdited,
-        _style = isWatchEdited ? style : Object.assign({}, style, STYLE.NOT_WATCH_EDITED);
-
-
-    return _react2.default.createElement(_ButtonCircle2.default, {
-      caption: CAPTION,
-      title: TITLE,
-      style: _style,
-      onClick: _WatchActions2.default.saveWatch
-    });
+    _this.state = {
+      isWatchEdited: props.store.getWatchEdited()
+    };
+    return _this;
   }
-});
 
+  (0, _createClass3.default)(ButtonSave, [{
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      if (nextState.isWatchEdited === this.state.isWatchEdited) {
+        return false;
+      }
+      return true;
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var store = this.props.store;
+
+      this.unsubcribe = store.listen(this._onStore);
+      this.setState({ isWatchEdited: store.getWatchEdited() });
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.unsubcribe();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var style = this.props.style,
+          isWatchEdited = this.state.isWatchEdited,
+          _style = isWatchEdited ? style : Object.assign({}, style, STYLE.NOT_WATCH_EDITED);
+
+
+      return _react2.default.createElement(_ButtonCircle2.default, {
+        caption: CAPTION,
+        title: TITLE,
+        style: _style,
+        onClick: _WatchActions2.default.saveWatch
+      });
+    }
+  }]);
+  return ButtonSave;
+}(_react.Component);
+
+process.env.NODE_ENV !== "production" ? ButtonSave.propTypes = {
+  store: _react.PropTypes.object.isRequired,
+  style: _react.PropTypes.object
+} : void 0;
 exports.default = ButtonSave;
-//# sourceMappingURL=ButtonSave.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnMoleculs\ButtonSave.js.map

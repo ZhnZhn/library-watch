@@ -18,7 +18,9 @@ var _OpenClose2 = _interopRequireDefault(_OpenClose);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _renderMenuItems = function _renderMenuItems(items) {
+var _renderMenuItems = function _renderMenuItems() {
+  var items = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
   return items.map(function (item, index) {
     var className = index % 2 ? 'row__topic__even not-selected' : 'row__topic__odd not-selected',
         menuBadge = item.counter !== 0 ? _react2.default.createElement(_MenuBadge2.default, {
@@ -56,9 +58,6 @@ process.env.NODE_ENV !== "production" ? MenuPart.propTypes = {
   items: _react.PropTypes.arrayOf(_react.PropTypes.object),
   isInitClose: _react.PropTypes.bool
 } : void 0;
-MenuPart.defaultProps = {
-  items: []
-};
 
 exports.default = MenuPart;
 //# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnMoleculs\MenuPart.js.map

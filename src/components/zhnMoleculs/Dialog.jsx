@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import SvgClose from '../zhnAtoms/SvgClose';
 import ToolBarButton from '../header/ToolBarButton';
@@ -35,12 +35,22 @@ const styles = {
   }
 };
 
-
-const Dialog = React.createClass({
+class Dialog extends Component {
+  static propTypes = {
+    isShow: PropTypes.bool,
+    caption: PropTypes.string,
+    children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node
+    ]),
+    commandButtons: PropTypes.arrayOf(PropTypes.node),
+    onShowChart: PropTypes.func,
+    onClose: PropTypes.func
+  }
 
   componentDidMount(){
-     Interact.makeDragable(this.domRootDiv);
-  },
+     Interact.makeDragable(this.rootComp)
+  }
 
   _renderCommandButton(commandButtons, onShowChart, onClose){
     return (
@@ -58,7 +68,7 @@ const Dialog = React.createClass({
         />
       </div>
     );
-  },
+  }
 
   render(){
     const {
@@ -70,7 +80,7 @@ const Dialog = React.createClass({
 
     return (
       <div
-           ref={ c => this.domRootDiv = c }        
+           ref={ c => this.rootComp = c }
            className={_classShow}
            style={Object.assign({}, styles.rootDiv, _styleShow)}
       >
@@ -87,6 +97,6 @@ const Dialog = React.createClass({
       </div>
     );
   }
-});
+}
 
-export default Dialog;
+export default Dialog

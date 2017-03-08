@@ -40,6 +40,7 @@ const styles = {
     //height: '160px',
     minHeight: '160px',
     maxHeight: '200px',
+    paddingBottom: '2px',
     overflow: 'auto'
   },
   spinnerCell : {
@@ -341,7 +342,6 @@ class InputSelect extends Component {
               this.indexActiveOption = this.state.options.length - 1;
               const bottomComp = this._getActiveItemComp()
               this.optionsComp.scrollTop = bottomComp.offsetTop
-              //this.optionsComp.scrollTop = this.optionsComp.scrollTopMax
             }
 
             const nextComp = this._getActiveItemComp();

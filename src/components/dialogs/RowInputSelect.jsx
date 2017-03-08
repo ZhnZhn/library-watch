@@ -1,6 +1,6 @@
 import React from 'react';
 
-import InputSelect from '../zhnAtoms/InputSelect';
+import InputSelect from '../zhn-select/InputSelect'
 import DialogStyles from '../styles/DialogStyles'
 
 const PropTypes = React.PropTypes;
