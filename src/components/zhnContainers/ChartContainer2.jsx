@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import Store from '../../flux/stores/AppStore';
 import { ChartActionTypes } from '../../flux/actions/ChartActions';
@@ -61,21 +61,30 @@ const compActions = [
   ChartActionTypes.CLOSE_CHART
 ];
 
-const ChartContainer2 = React.createClass({
-  getInitialState(){
-    this.childMargin = CHILD_MARGIN;
-    return {};
-  },
+
+class ChartContainer2 extends Component {
+  static propTypes = {
+    caption: PropTypes.string,
+    browserType: PropTypes.string,
+    chartType: PropTypes.string,
+    onCloseContainer: PropTypes.func
+  }
+
+  constructor(props){
+    super()
+    this.childMargin = CHILD_MARGIN
+    this.state = {}
+  }
 
    componentWillMount(){
      this.unsubscribe = Store.listen(this._onStore);
      this.setState(Store.getConfigs(this.props.chartType));
-   },
+   }
    componentWillUnmount(){
      this.unsubscribe();
-   },
+   }
 
-   _onStore(actionType, data){
+   _onStore = (actionType, data) => {
       if (isInArray(compActions, actionType)) {
         if (data && data.chartType === this.props.chartType){
           this.setState(data);
@@ -85,25 +94,27 @@ const ChartContainer2 = React.createClass({
            this._handleHide();
          }
       }
-   },
+   }
 
-   _handleHide(){
+   _handleHide = () => {
       const { chartType, browserType, onCloseContainer } = this.props;
       onCloseContainer(chartType, browserType);
       this.setState({isShow: false});
-   },
+   }
 
 
-   _renderCharts(){
+   _renderCharts = () => {
       return this.state.configs.map((item, index) => {
         return item;
       })
-   },
+   }
 
    render(){
     const  { caption } = this.props
          , { isShow } = this.state
-         , _styleOpen = (isShow) ? {display: 'inline-block'} : {display: 'none'}
+         , _styleOpen = (isShow)
+               ? {display: 'inline-block'}
+               : {display: 'none'}
          , _classOpen = (isShow) ? "show-popup" : undefined;
 
      return(
@@ -129,6 +140,6 @@ const ChartContainer2 = React.createClass({
         </div>
      )
    }
-})
+}
 
-export default ChartContainer2;
+export default ChartContainer2

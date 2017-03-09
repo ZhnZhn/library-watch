@@ -12,7 +12,7 @@ const styles = {
 
 class SvgHrzResize extends Component {
   static propTypes = {
-    //comp,
+    comp: PropTypes.element,
     minWidth: PropTypes.number,
     maxWidth: PropTypes.number,
     onResizeAfter: PropTypes.func

@@ -588,13 +588,18 @@ var _initialiseProps = function _initialiseProps() {
 
 process.env.NODE_ENV !== "production" ? InputSelect.propTypes = {
   width: _react.PropTypes.string,
-  options: _react.PropTypes.arrayOf(_react.PropTypes.object),
+  options: _react.PropTypes.arrayOf(_react.PropTypes.shape({
+    caption: _react.PropTypes.string,
+    value: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number])
+  })),
   optionName: _react.PropTypes.string,
   optionNames: _react.PropTypes.string,
   isUpdateOptions: _react.PropTypes.bool,
   placeholder: _react.PropTypes.string,
+
   isLoading: _react.PropTypes.bool,
   isLoadingFailed: _react.PropTypes.bool,
+
   onSelect: _react.PropTypes.func,
   onLoadOption: _react.PropTypes.func
 } : void 0;

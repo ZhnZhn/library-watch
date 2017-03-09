@@ -128,13 +128,21 @@ const styles = {
 class InputSelect extends Component {
   static propTypes = {
      width: PropTypes.string,
-     options: PropTypes.arrayOf(PropTypes.object),
+     options: PropTypes.arrayOf(PropTypes.shape({
+        caption: PropTypes.string,
+        value: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.number
+        ])
+     })),
      optionName: PropTypes.string,
      optionNames: PropTypes.string,
      isUpdateOptions: PropTypes.bool,
      placeholder: PropTypes.string,
+
      isLoading: PropTypes.bool,
      isLoadingFailed: PropTypes.bool,
+
      onSelect: PropTypes.func,
      onLoadOption: PropTypes.func
   }

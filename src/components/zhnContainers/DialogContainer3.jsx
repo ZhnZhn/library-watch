@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
-const styles = {
-  rootDiv: {
+const STYLE = {
+  ROOT: {
     zIndex : 30,
     position: 'absolute',
     top: '70px',
@@ -11,57 +11,64 @@ const styles = {
 };
 
 const getObjToFirst = function(arr, keyValue){
-  let index;
-  for (var i=0, max=arr.length; i<max; i++){
+  let index, i, len=arr.length;
+  for (i=0; i<len; i++){
     if (arr[i].key === keyValue){
-      index = i;
+      index = i
       break;
     }
   }
-  return [...arr.slice(0, index), ...arr.slice(index+1), arr[index]]
+  return [...arr.slice(0, index), ...arr.slice(index+1), arr[index]];
 }
 
+class DialogContainer3 extends Component {
+  static propTypes = {
+    maxDialog: PropTypes.number,
+    store: PropTypes.shape({
+      listen: PropTypes.func
+    }),
+    initAction: PropTypes.string,
+    showAction: PropTypes.string
+  }
 
-const DialogContainer3 = React.createClass({
-  getInitialState: function(){
-    this._activeDialogs = [];
-    return {
+  constructor(props){
+    super()
+    this._activeDialogs = []
+    this.state = {
       dialog: {},
       compDialogs : []
     }
-  },
+  }
 
-   componentWillMount: function(){
-     this.unsubscribe = this.props.store.listen(this._onStore);
-   },
+   componentWillMount(){
+     this.unsubscribe = this.props.store.listen(this._onStore)
+   }
+   componentWillUnmount(){
+     this.unsubscribe()
+   }
 
-   componentWillUnmount: function(){
-     this.unsubscribe();
-   },
-
-   _checkActiveDialogs(dialogType){
-     this._activeDialogs.push(dialogType);
+   _checkActiveDialogs = (dialogType) => {
+     this._activeDialogs.push(dialogType)
      if (this._activeDialogs.length > this.props.maxDialog){
-       this.state.dialog[this._activeDialogs[0]] = false;
-       this._activeDialogs = this._activeDialogs.slice(1);
+       this.state.dialog[this._activeDialogs[0]] = false
+       this._activeDialogs = this._activeDialogs.slice(1)
      }
-   },
-   filterActiveDialogs(dialogType){
+   }
+   filterActiveDialogs = (dialogType) => {
      this._activeDialogs = this._activeDialogs.filter((value) => {
          return value !== dialogType;
      })
-   },
+   }
 
-   _onStore: function(actionType, data){
-      const {initAction, showAction} = this.props;
+   _onStore = (actionType, data) => {
+      const { initAction, showAction } = this.props
       if (actionType === showAction){
-
          if (!this.state.dialog[data]){
             this.state.dialog[data] = true;
             this._checkActiveDialogs(data);
          }
-         this.state.compDialogs = getObjToFirst(this.state.compDialogs, data);
-         this.setState(this.state);
+         this.state.compDialogs = getObjToFirst(this.state.compDialogs, data)
+         this.setState(this.state)
 
       } else if (actionType === initAction) {
 
@@ -71,39 +78,37 @@ const DialogContainer3 = React.createClass({
          this.setState(this.state);
 
       }
-   },
+   }
 
-  _handlerToggleDialog: function(dialogType){
-    const {dialog} = this.state;
-    dialog[dialogType] = !dialog[dialogType];
-    this.setState(this.state);
+  _handleToggleDialog = (dialogType) => {
+    const { dialog } = this.state
+    dialog[dialogType] = !dialog[dialogType]
+    this.setState(this.state)
 
     if (!dialog[dialogType]) {
       this.filterActiveDialogs(dialogType);
       document.getElementsByTagName('html')[0].style.cursor = '';
     }
-  },
+  }
 
-  _renderDialogs(){
-    const {dialog, compDialogs} = this.state;
+  _renderDialogs = () => {
+    const { dialog, compDialogs } = this.state
     return compDialogs.map((compDialog, index) => {
-       return React.cloneElement(compDialog,
-          {
+       return React.cloneElement(compDialog, {
              key : compDialog.key,
              isShow  : dialog[compDialog.key],
-             onClose : this._handlerToggleDialog.bind(this, compDialog.key)
+             onClose : this._handleToggleDialog.bind(this, compDialog.key)
           });
-    })
-  },
+    });
+  }
 
   render(){
     return (
-      <div style={styles.rootDiv}>
+      <div style={STYLE.ROOT}>
         {this._renderDialogs()}
       </div>
     );
   }
+}
 
-});
-
-export default DialogContainer3;
+export default DialogContainer3

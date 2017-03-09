@@ -188,7 +188,7 @@ var SvgHrzResize = function (_Component) {
 }(_react.Component);
 
 process.env.NODE_ENV !== "production" ? SvgHrzResize.propTypes = {
-  //comp,
+  comp: _react.PropTypes.element,
   minWidth: _react.PropTypes.number,
   maxWidth: _react.PropTypes.number,
   onResizeAfter: _react.PropTypes.func

@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import ModalDialogContainer from './ModalDialogContainer';
-//import { ComponentActionTypes } from '../../flux/actions/ComponentActions';
 
-//import RouterModalDialog from '../dialogs/RouterModalDialog';
-//const _hmDialogs = RouterModalDialog;
+class DialogContainer extends Component {
+  static propTypes = {
+    store: PropTypes.shape({
+      listen: PropTypes.func
+    }),
+    showAction: PropTypes.string,
+    routerDialog: PropTypes.object
+  }
 
-const DialogContainer = React.createClass({
-  getInitialState(){
-    return {
+  constructor(props){
+    super();
+    this.state = {
       isShow : false,
       inits : {},
       shows : {},
@@ -16,15 +21,15 @@ const DialogContainer = React.createClass({
       dialogs : [],
       currentDialog : null
     }
-  },
+  }
 
-  componentDidMount: function(){
-    this.unsubscribe = this.props.store.listen(this._onStore);
-  },
-  componentWillUnmount: function(){
-    this.unsubscribe();
-  },
-  _onStore(actionType, option){
+  componentDidMount(){
+    this.unsubscribe = this.props.store.listen(this._onStore)
+  }
+  componentWillUnmount(){
+    this.unsubscribe()
+  }
+  _onStore = (actionType, option) => {
      const { showAction, routerDialog } = this.props;
      if (actionType === showAction){
        const { modalDialogType:type } = option
@@ -40,29 +45,35 @@ const DialogContainer = React.createClass({
          this.setState({ isShow: true, currentDialog: type, shows, data, dialogs });
        }
      }
-  },
+  }
 
-  _handlerClose(type){
+  _handlerClose = (type) => {
     this.state.shows[type] = false;
-    this.setState({isShow : false, currentDialog: null, shows : this.state.shows})
-  },
+    this.setState({
+      isShow : false,
+      currentDialog: null,
+      shows : this.state.shows
+    })
+  }
 
-  _renderDialogs(){
-    const {store} = this.props
-        , {shows, data} = this.state;
+  _renderDialogs = () => {
+    const { store } = this.props
+        , { shows, data } = this.state;
 
     return this.state.dialogs.map((dialog, index) => {
-      const {type, comp} = dialog
+      const { type, comp } = dialog
       return React.createElement(comp, {
            key: type,
            isShow: shows[type],
            data: data[type],
            store : store,
-           onClose: this._handlerClose.bind(null, type)})
-    })
-  },
+           onClose: this._handlerClose.bind(null, type)
+      });
+    });
+  }
+
   render(){
-    const {isShow, currentDialog} = this.state;
+    const { isShow, currentDialog } = this.state;
 
     return (
       <ModalDialogContainer
@@ -71,8 +82,8 @@ const DialogContainer = React.createClass({
       >
          {this._renderDialogs()}
      </ModalDialogContainer>
-    )
+   );
   }
-});
+}
 
 export default DialogContainer

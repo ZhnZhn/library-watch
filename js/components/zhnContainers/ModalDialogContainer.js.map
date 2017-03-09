@@ -1,1 +1,42 @@
-{"version":3,"sources":["../../../src/components/zhnContainers/ModalDialogContainer.jsx"],"names":["ClassNames","INIT","SHOWING","HIDING","Styles","SHOW","display","HIDE","HIDE_BACKGROUND","backgroundColor","ModalDialogContainer","createClass","propTypes","isShow","PropTypes","bool","timeout","number","onClose","func","getDefaultProps","getInitialState","wasClosing","componentDidUpdate","prevProps","prevState","setTimeout","setState","props","render","children","_className","_style"],"mappings":";;;;;;AAAA;;;;;;AAGA,IAAMA,aAAa;AACjBC,QAAO,YADU;AAEjBC,WAAU,uBAFO;AAGjBC,UAAS;AAHQ,CAAnB;;AAMA,IAAMC,SAAS;AACbC,QAAO;AACLC,aAAU;AADL,GADM;AAIbC,QAAO;AACLD,aAAU;AADL,GAJM;AAObE,mBAAkB;AAChBC,qBAAkB;AADF;AAPL,CAAf;;AAYA,IAAMC,uBAAuB,gBAAMC,WAAN,CAAkB;AAAA;;AAC7CC,aAAY;AACVC,YAAU,gBAAMC,SAAN,CAAgBC,IADhB;AAEVC,aAAU,gBAAMF,SAAN,CAAgBG,MAFhB;AAGVC,aAAU,gBAAMJ,SAAN,CAAgBK;AAHhB,GADiC;AAM7CC,iBAN6C,6BAM5B;AACf,WAAO;AACLJ,eAAU;AADL,KAAP;AAGD,GAV4C;AAW7CK,iBAX6C,6BAW5B;AACf,SAAKC,UAAL,GAAkB,IAAlB;AACA,WAAO,EAAP;AACD,GAd4C;AAgB7CC,oBAhB6C,8BAgB1BC,SAhB0B,EAgBfC,SAhBe,EAgBL;AAAA;;AACtC,QAAI,KAAKH,UAAT,EAAoB;AAClBI,iBAAW,YAAI;AACb,cAAKC,QAAL,CAAc,EAAd;AACD,OAFD,EAEG,KAAKC,KAAL,CAAWZ,OAFd;AAGD;AACF,GAtB4C;AAwB7Ca,QAxB6C,oBAwBrC;AAAA,iBAC8B,KAAKD,KADnC;AAAA,QACCf,MADD,UACCA,MADD;AAAA,QACSiB,QADT,UACSA,QADT;AAAA,QACmBZ,OADnB,UACmBA,OADnB;;AAEN,QAAIa,mBAAJ;AAAA,QAAgBC,eAAhB;AACA,QAAI,KAAKV,UAAT,EAAoB;AACjBS,mBAAa/B,WAAWC,IAAxB;AACA+B,eAAS5B,OAAOG,IAAhB;AACA,WAAKe,UAAL,GAAkB,KAAlB;AACF,KAJD,MAIO;AACLS,mBAAalB,SAASb,WAAWE,OAApB,GAA8BF,WAAWG,MAAtD;AACA6B,eAASnB,SAAST,OAAOC,IAAhB,GAAuBD,OAAOI,eAAvC;AACA,UAAI,CAACK,MAAL,EAAY;AACV,aAAKS,UAAL,GAAkB,IAAlB;AACD;AACF;;AAED,WACE;AAAA;AAAA,QAAK,WAAWS,UAAhB,EAA4B,OAAOC,MAAnC,EAA2C,SAASd,OAApD;AACGY;AADH,KADF;AAKD;AA5C4C,CAAlB,CAA7B;;kBAgDepB,oB","file":"ModalDialogContainer.js","sourcesContent":["import React from 'react';\r\n\r\n\r\nconst ClassNames = {\r\n  INIT : 'modal-root',\r\n  SHOWING : 'modal-root show-modal',\r\n  HIDING : 'modal-root hide-modal'\r\n};\r\n\r\nconst Styles = {\r\n  SHOW : {\r\n    display : 'block'\r\n  },\r\n  HIDE : {\r\n    display : 'none'\r\n  },\r\n  HIDE_BACKGROUND : {\r\n    backgroundColor : 'rgba(0,0,0, 0)'\r\n  }\r\n}\r\n\r\nconst ModalDialogContainer = React.createClass({\r\n  propTypes : {\r\n    isShow  : React.PropTypes.bool,\r\n    timeout : React.PropTypes.number,\r\n    onClose : React.PropTypes.func\r\n  },\r\n  getDefaultProps(){\r\n    return {\r\n      timeout : 450\r\n    }\r\n  },\r\n  getInitialState(){\r\n    this.wasClosing = true;\r\n    return {}\r\n  },\r\n\r\n  componentDidUpdate(prevProps, prevState){\r\n    if (this.wasClosing){\r\n      setTimeout(()=>{\r\n        this.setState({});\r\n      }, this.props.timeout)\r\n    }\r\n  },\r\n\r\n  render(){\r\n    const {isShow, children, onClose} = this.props;\r\n    let _className, _style;\r\n    if (this.wasClosing){\r\n       _className = ClassNames.INIT;\r\n       _style = Styles.HIDE;\r\n       this.wasClosing = false;\r\n    } else {\r\n      _className = isShow ? ClassNames.SHOWING : ClassNames.HIDING;\r\n      _style = isShow ? Styles.SHOW : Styles.HIDE_BACKGROUND;\r\n      if (!isShow){\r\n        this.wasClosing = true;\r\n      }\r\n    }\r\n\r\n    return (\r\n      <div className={_className} style={_style} onClick={onClose}>\r\n        {children}\r\n      </div>\r\n    )\r\n  }\r\n\r\n});\r\n\r\nexport default ModalDialogContainer\r\n"]}
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\zhnContainers\\ModalDialogContainer.jsx",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\zhnContainers\\ModalDialogContainer.js",
+ "sourceRoot": "",
+ "names": [
+  "CLASS",
+  "INIT",
+  "SHOWING",
+  "HIDING",
+  "STYLE",
+  "SHOW",
+  "display",
+  "HIDE",
+  "HIDE_BACKGROUND",
+  "backgroundColor",
+  "ModalDialogContainer",
+  "props",
+  "wasClosing",
+  "state",
+  "prevProps",
+  "prevState",
+  "setTimeout",
+  "setState",
+  "timeout",
+  "isShow",
+  "children",
+  "onClose",
+  "_className",
+  "_style",
+  "defaultProps",
+  "propTypes",
+  "bool",
+  "number",
+  "oneOfType",
+  "arrayOf",
+  "node",
+  "func"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;;;AAEA,IAAMA,QAAQ;AACZC,QAAO,YADK;AAEZC,WAAU,uBAFE;AAGZC,UAAS;AAHG,CAAd;;AAMA,IAAMC,QAAQ;AACZC,QAAO;AACLC,aAAU;AADL,GADK;AAIZC,QAAO;AACLD,aAAU;AADL,GAJK;AAOZE,mBAAkB;AAChBC,qBAAkB;AADF;AAPN,CAAd;;IAYMC,oB;;;AAgBJ,gCAAYC,KAAZ,EAAkB;AAAA;;AAAA;;AAEhB,UAAKC,UAAL,GAAkB,IAAlB;AACA,UAAKC,KAAL,GAAa,EAAb;AAHgB;AAIjB;;;;uCAEkBC,S,EAAWC,S,EAAU;AAAA;;AACtC,UAAI,KAAKH,UAAT,EAAoB;AAClBI,mBAAW,YAAM;AACf,iBAAKC,QAAL,CAAc,EAAd;AACD,SAFD,EAEG,KAAKN,KAAL,CAAWO,OAFd;AAGD;AACF;;;6BAEO;AAAA,mBACgC,KAAKP,KADrC;AAAA,UACEQ,MADF,UACEA,MADF;AAAA,UACUC,QADV,UACUA,QADV;AAAA,UACoBC,OADpB,UACoBA,OADpB;;AAEN,UAAIC,mBAAJ;AAAA,UAAgBC,eAAhB;AACA,UAAI,KAAKX,UAAT,EAAoB;AACjBU,qBAAatB,MAAMC,IAAnB;AACAsB,iBAASnB,MAAMG,IAAf;AACA,aAAKK,UAAL,GAAkB,KAAlB;AACF,OAJD,MAIO;AACLU,qBAAaH,SAASnB,MAAME,OAAf,GAAyBF,MAAMG,MAA5C;AACAoB,iBAASJ,SAASf,MAAMC,IAAf,GAAsBD,MAAMI,eAArC;AACA,YAAI,CAACW,MAAL,EAAY;AACV,eAAKP,UAAL,GAAkB,IAAlB;AACD;AACF;;AAED,aACE;AAAA;AAAA;AACE,qBAAWU,UADb;AAEE,iBAAOC,MAFT;AAGE,mBAASF;AAHX;AAKGD;AALH,OADF;AASD;;;;;AAtDGV,oB,CAWGc,Y,GAAe;AACnBN,WAAS,GADU;AAEnBG,WAAS,mBAAM,CAAE;AAFE,C;wCAXlBX,oB,CACGe,S,GAAY;AACjBN,UAAU,iBAAUO,IADH;AAEjBR,WAAU,iBAAUS,MAFH;AAGjBP,YAAU,iBAAUQ,SAAV,CAAoB,CAC5B,iBAAUC,OAAV,CAAkB,iBAAUC,IAA5B,CAD4B,EAE5B,iBAAUA,IAFkB,CAApB,CAHO;AAOjBT,WAAU,iBAAUU;AAPH,C;kBAwDNrB,oB"
+}
