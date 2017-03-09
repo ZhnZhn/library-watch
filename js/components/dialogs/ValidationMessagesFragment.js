@@ -33,10 +33,9 @@ var STYLE = {
   }
 };
 
-var ValidationMessage = function ValidationMessage(props) {
-  var index = props.index,
-      msg = props.msg;
-
+var ValidationMessage = function ValidationMessage(_ref) {
+  var index = _ref.index,
+      msg = _ref.msg;
   return _react2.default.createElement(
     'div',
     null,
@@ -52,13 +51,17 @@ var ValidationMessage = function ValidationMessage(props) {
     )
   );
 };
+process.env.NODE_ENV !== "production" ? ValidationMessage.propTypes = {
+  index: _react.PropTypes.number,
+  msg: _react.PropTypes.string
+} : void 0;
 
 var ValidationMessagesFragment = function ValidationMessagesFragment(props) {
   var validationMessages = props.validationMessages;
 
 
   if (!Array.isArray(validationMessages)) {
-    return undefined;
+    return null;
   }
 
   var _renderValidationMessages = function _renderValidationMessages(msgs) {
@@ -74,5 +77,11 @@ var ValidationMessagesFragment = function ValidationMessagesFragment(props) {
   );
 };
 
+process.env.NODE_ENV !== "production" ? ValidationMessagesFragment.propTypes = {
+  validationMessages: _react.PropTypes.arrayOf(_react.PropTypes.shape({
+    msg: _react.PropTypes.string
+  }))
+} : void 0;
+
 exports.default = ValidationMessagesFragment;
-//# sourceMappingURL=ValidationMessagesFragment.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\ValidationMessagesFragment.js.map

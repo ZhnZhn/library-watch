@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react'
 
-import ModalDialog from '../zhnMoleculs/ModalDialog';
+import ModalDialog from '../zhnMoleculs/ModalDialog'
 import DialogStyles from '../styles/DialogStyles'
 
 const styles = DialogStyles;
 
-const Styles = {
+const STYLE = {
   CAPTION : {
     width : '400px',
     paddingLeft : '10px',
@@ -24,36 +24,43 @@ const Styles = {
   }
 }
 
-const InfoDialog = React.createClass({
+class InfoDialog extends Component {
+  static propTypes = {
+    isShow: PropTypes.bool,
+    data: PropTypes.shape({
+      caption: PropTypes.string,
+      descr: PropTypes.string
+    }),
+    onClose: PropTypes.func
+  }
 
   shouldComponentUpdate(nextProps, nextState){
     if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
       return false;
     }
     return true;
-  },
+  }
 
   render(){
-    const {isShow, data, onClose} = this.props
-        , {caption, descr} = data
+    const { isShow, data, onClose } = this.props
+        , { caption, descr } = data;
     return (
       <ModalDialog
         caption="Information"
         isShow={isShow}
         onClose={onClose}
       >
-         <div style={styles.rowDiv} key="1">
-            <p style={Styles.CAPTION}>
+         <div style={styles.rowDiv}>
+            <p style={STYLE.CAPTION}>
               {caption}
             </p>
          </div>
-         <div style={styles.rowDiv} key="2">
-            <p style={Styles.DESCR}>{descr}</p>
+         <div style={styles.rowDiv}>
+            <p style={STYLE.DESCR}>{descr}</p>
          </div>
-
       </ModalDialog>
-    )
+    );
   }
-});
+}
 
 export default InfoDialog

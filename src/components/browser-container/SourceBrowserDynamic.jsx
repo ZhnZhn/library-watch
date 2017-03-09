@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import MenuBrowserDynamic from '../zhnMoleculs/MenuBrowserDynamic';
 import BrowserActions, {BrowserActionTypes} from '../../flux/actions/BrowserActions';
 
-const SourceBrowserDynamic = React.createClass({
+class SourceBrowserDynamic extends Component {
   shouldComponentUpdate(){
     return false;
-  },
+  }
 
   render(){
-    const props = this.props;
     return (
        <MenuBrowserDynamic
           caption="Source Browser"
@@ -17,10 +16,10 @@ const SourceBrowserDynamic = React.createClass({
           loadCompletedAction={BrowserActionTypes.LOAD_BROWSER_DYNAMIC_COMPLETED}
           updateAction={BrowserActionTypes.UPDATE_BROWSER_MENU}
           onLoadMenu={BrowserActions.loadBrowserDynamic}
-          {...props}
+          {...this.props}
        />
-    )
+    );
   }
-});
+}
 
-export default SourceBrowserDynamic;
+export default SourceBrowserDynamic

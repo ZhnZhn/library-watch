@@ -4,7 +4,25 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
+
+var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _react = require('react');
 
@@ -51,106 +69,117 @@ var STYLE = {
   }
 };
 
-var LoadFileDialog = _react2.default.createClass({
-  displayName: 'LoadFileDialog',
-  getInitialState: function getInitialState() {
-    this.progressEvent = undefined;
-    this.file = undefined;
-    return {
-      validationMessages: []
+var LoadFileDialog = function (_Component) {
+  (0, _inherits3.default)(LoadFileDialog, _Component);
+
+  function LoadFileDialog(props) {
+    (0, _classCallCheck3.default)(this, LoadFileDialog);
+
+    var _this = (0, _possibleConstructorReturn3.default)(this, (LoadFileDialog.__proto__ || Object.getPrototypeOf(LoadFileDialog)).call(this));
+
+    _this._handleChange = function (results) {
+      if (results && results[0]) {
+        var _results$ = (0, _slicedToArray3.default)(results[0], 2),
+            progressEvent = _results$[0],
+            file = _results$[1];
+
+        _this.progressEvent = progressEvent;
+        _this.file = file;
+      } else {
+        _this.progressEvent = null;
+        _this.file = null;
+      }
     };
-  },
-  shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-      return false;
-    }
-    return true;
-  },
-  _handlerChange: function _handlerChange(results) {
-    //console.log(results)
-    if (results && results[0]) {
-      var _results$ = _slicedToArray(results[0], 2),
-          progressEvent = _results$[0],
-          file = _results$[1];
 
-      this.progressEvent = progressEvent;
-      this.file = file;
-    } else {
-      this.progressEvent = undefined;
-      this.file = undefined;
-    }
-  },
-  _handlerLoad: function _handlerLoad() {
-    if (this.progressEvent && this.file) {
-      //console.log(this.file.name);
-      //console.log(this.progressEvent.target.result);
-      var data = this.props.data,
-          onLoad = data.onLoad;
+    _this._handleLoad = function () {
+      if (_this.progressEvent && _this.file) {
+        var data = _this.props.data,
+            onLoad = data.onLoad;
 
-      onLoad({ progressEvent: this.progressEvent });
-      this.setState({
-        validationMessages: []
-      });
-    } else {
-      this.setState({
-        validationMessages: [C.FILE_NOT_CHOOSED]
-      });
-    }
-  },
-  _handlerClose: function _handlerClose() {
-    var onClose = this.props.onClose;
+        onLoad({ progressEvent: _this.progressEvent });
+        _this.setState({
+          validationMessages: []
+        });
+      } else {
+        _this.setState({
+          validationMessages: [C.FILE_NOT_CHOOSED]
+        });
+      }
+    };
+
+    _this._handleClose = function () {
+      var onClose = _this.props.onClose;
 
 
-    if (this.state.validationMessages.length !== 0) {
-      this.setState({ validationMessages: [] });
-    }
-    onClose();
-  },
-  render: function render() {
-    var isShow = this.props.isShow,
-        validationMessages = this.state.validationMessages,
-        _commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
-      key: 'a',
+      if (_this.state.validationMessages.length !== 0) {
+        _this.setState({ validationMessages: [] });
+      }
+      onClose();
+    };
+
+    _this.progressEvent = null;
+    _this.file = null;
+    _this._commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
       type: 'TypeC',
       caption: 'Load',
-      onClick: this._handlerLoad
+      onClick: _this._handleLoad
     })];
-    //, { caption } = data
-
-    return _react2.default.createElement(
-      _ModalDialog2.default,
-      {
-        style: STYLE.MODAL_DIALOG,
-        caption: 'Load Watch Items from File',
-        isShow: isShow,
-        commandButtons: _commandButtons,
-        onClose: this._handlerClose
-      },
-      _react2.default.createElement(
-        'div',
-        {
-          key: '1',
-          style: Object.assign({}, styles.rowDiv, STYLE.ROW_INPUT_FILE)
-
-        },
-        _react2.default.createElement(_InputFileReader2.default, {
-          as: 'text',
-          onChange: this._handlerChange
-        })
-      ),
-      _react2.default.createElement(
-        'div',
-        {
-          key: '2',
-          style: Object.assign({}, styles.rowDiv, STYLE.ROW_VALIDATION)
-        },
-        _react2.default.createElement(_ValidationMessagesFragment2.default, {
-          validationMessages: validationMessages
-        })
-      )
-    );
+    _this.state = {
+      validationMessages: []
+    };
+    return _this;
   }
-});
 
+  (0, _createClass3.default)(LoadFileDialog, [{
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
+        return false;
+      }
+      return true;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var isShow = this.props.isShow,
+          validationMessages = this.state.validationMessages;
+
+      return _react2.default.createElement(
+        _ModalDialog2.default,
+        {
+          style: STYLE.MODAL_DIALOG,
+          caption: 'Load Watch Items from File',
+          isShow: isShow,
+          commandButtons: this._commandButtons,
+          onClose: this._handleClose
+        },
+        _react2.default.createElement(
+          'div',
+          { style: Object.assign({}, styles.rowDiv, STYLE.ROW_INPUT_FILE) },
+          _react2.default.createElement(_InputFileReader2.default, {
+            as: 'text',
+            onChange: this._handleChange
+          })
+        ),
+        _react2.default.createElement(
+          'div',
+          { style: Object.assign({}, styles.rowDiv, STYLE.ROW_VALIDATION) },
+          _react2.default.createElement(_ValidationMessagesFragment2.default, {
+            validationMessages: validationMessages
+          })
+        )
+      );
+    }
+  }]);
+  return LoadFileDialog;
+}(_react.Component);
+
+process.env.NODE_ENV !== "production" ? LoadFileDialog.propTypes = {
+  isShow: _react.PropTypes.bool,
+  data: _react.PropTypes.shape({
+    onLoad: _react.PropTypes.func
+  }),
+  onClose: _react.PropTypes.func
+} : void 0;
 exports.default = LoadFileDialog;
-//# sourceMappingURL=LoadFileDialog.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\LoadFileDialog.js.map

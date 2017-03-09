@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react'
 
-import ModalDialog from '../zhnMoleculs/ModalDialog';
-import InputFileReader from '../zhnAtoms/InputFileReader';
-import ToolBarButton from '../header/ToolBarButton';
-import ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment';
+import ModalDialog from '../zhnMoleculs/ModalDialog'
+import InputFileReader from '../zhnAtoms/InputFileReader'
+import ToolBarButton from '../header/ToolBarButton'
+import ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment'
 import DialogStyles from '../styles/DialogStyles'
 
-const styles = DialogStyles;
+const styles = DialogStyles
 
 const C = {
   FILE_NOT_CHOOSED : 'Choose file with Watch Items for Load'
@@ -25,39 +25,51 @@ const STYLE = {
   }
 }
 
+class LoadFileDialog extends Component {
+  static propTypes = {
+    isShow: PropTypes.bool,
+    data: PropTypes.shape({
+      onLoad: PropTypes.func
+    }),
+    onClose: PropTypes.func
+  }
 
-const LoadFileDialog = React.createClass({
-  getInitialState(){
-    this.progressEvent = undefined;
-    this.file = undefined;
-    return {
+  constructor(props){
+    super()
+    this.progressEvent = null
+    this.file = null
+    this._commandButtons = [
+      <ToolBarButton
+        type="TypeC"
+        caption="Load"
+        onClick={this._handleLoad}
+     />
+    ]
+    this.state = {
       validationMessages : []
-    };
-  },
+    }
+  }
 
   shouldComponentUpdate(nextProps, nextState){
     if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
       return false;
     }
     return true;
-  },
+  }
 
-  _handlerChange(results){
-    //console.log(results)
+  _handleChange = (results) => {
     if (results && results[0] ){
       const [progressEvent, file] = results[0]
-      this.progressEvent = progressEvent;
+      this.progressEvent = progressEvent
       this.file = file
-   } else {
-     this.progressEvent = undefined;
-     this.file = undefined;
-   }
-  },
+    } else {
+      this.progressEvent = null
+      this.file = null
+    }
+  }
 
-  _handlerLoad(){
+  _handleLoad = () => {
     if (this.progressEvent && this.file){
-      //console.log(this.file.name);
-      //console.log(this.progressEvent.target.result);
       const { data } = this.props
           , { onLoad } = data
       onLoad({ progressEvent : this.progressEvent });
@@ -69,51 +81,35 @@ const LoadFileDialog = React.createClass({
         validationMessages : [C.FILE_NOT_CHOOSED]
       })
     }
-  },
+  }
 
-  _handlerClose(){
+  _handleClose = () => {
     const { onClose } = this.props;
 
     if (this.state.validationMessages.length !== 0){
       this.setState({ validationMessages : [] });
     }
-    onClose();
-  },
+    onClose()
+  }
 
   render(){
     const { isShow } = this.props
-        //, { caption } = data
-        , { validationMessages } = this.state
-        , _commandButtons = [
-            <ToolBarButton
-              key="a"
-              type="TypeC"
-              caption="Load"
-              onClick={this._handlerLoad}
-           />
-        ]
+        , { validationMessages } = this.state;
     return (
       <ModalDialog
         style={STYLE.MODAL_DIALOG}
         caption="Load Watch Items from File"
         isShow={isShow}
-        commandButtons={_commandButtons}
-        onClose={this._handlerClose}
+        commandButtons={this._commandButtons}
+        onClose={this._handleClose}
       >
-         <div
-            key="1"
-            style={Object.assign({}, styles.rowDiv, STYLE.ROW_INPUT_FILE)}
-
-         >
+         <div style={Object.assign({}, styles.rowDiv, STYLE.ROW_INPUT_FILE)}>
             <InputFileReader
                as="text"
-               onChange={this._handlerChange}
+               onChange={this._handleChange}
             />
          </div>
-         <div
-            key="2"
-            style={Object.assign({}, styles.rowDiv, STYLE.ROW_VALIDATION)}
-         >
+         <div style={Object.assign({}, styles.rowDiv, STYLE.ROW_VALIDATION)}>
            <ValidationMessagesFragment
               validationMessages={validationMessages}
            />
@@ -121,6 +117,6 @@ const LoadFileDialog = React.createClass({
       </ModalDialog>
     )
   }
-});
+}
 
 export default LoadFileDialog

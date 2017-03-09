@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react'
 
-import InputDate from '../zhnAtoms/InputDate';
+import InputDate from '../zhnAtoms/InputDate'
 
 const STYLE = {
   ROW_DIV : {
     margin: '5px'
   },
-
   LABEL_SPAN : {
     color: '#1B75BB',
     display: 'inline-block',
@@ -23,13 +22,16 @@ const ERROR_FORMAT = "YYYY-MM-DD format must be"
     , TO_DATE = "To Date"
     , ERROR_FROM_NEAR_TO = "From Date is near that To Date";
 
-const DatesFragment = React.createClass({
-  displayName : 'DatesFragment',
-  getDefaultProps(){
-    return  {
-      msgOnNotValidFormat : (item) => `${item} is not in valid format`
-    }
-  },
+class DatesFragment extends Component {
+  static propTypes = {
+    initFromDate: PropTypes.string,
+    initToDate: PropTypes.string,
+    onTestDate: PropTypes.func,
+    msgOnNotValidFormat: PropTypes.func
+  }
+  static defaultProps = {
+    msgOnNotValidFormat : (item) => `${item} is not in valid format`
+  }
 
   render(){
     const { initFromDate, initToDate, onTestDate } = this.props;
@@ -59,52 +61,51 @@ const DatesFragment = React.createClass({
          </div>
        </div>
     );
-  },
+  }
 
   getValues(){
     return {
       fromDate: this.fromDate.getValue(),
       toDate: this.toDate.getValue()
-    }
-  },
+    };
+  }
 
   setValues(fromDate, toDate){
-     this.fromDate.setValue(fromDate);
-     this.toDate.setValue(toDate);
-  },
+     this.fromDate.setValue(fromDate)
+     this.toDate.setValue(toDate)
+  }
 
   getValidation(){
-    const {msgOnNotValidFormat} = this.props
+    const { msgOnNotValidFormat } = this.props
         ,  datesMsg = [];
-    if (!this.fromDate.isValid()) { datesMsg.push(msgOnNotValidFormat(FROM_DATE)); }
-    if (!this.toDate.isValid())   { datesMsg.push(msgOnNotValidFormat(TO_DATE)); }
+    if (!this.fromDate.isValid()) { datesMsg.push(msgOnNotValidFormat(FROM_DATE)) }
+    if (!this.toDate.isValid())   { datesMsg.push(msgOnNotValidFormat(TO_DATE)) }
 
     if (this.fromDate.getValue().trim() > this.toDate.getValue().trim() ) {
-      datesMsg.push(ERROR_FROM_NEAR_TO);
+      datesMsg.push(ERROR_FROM_NEAR_TO)
     }
 
     if (datesMsg.length>0){
-      return { isValid: false, datesMsg }
+      return { isValid: false, datesMsg };
     }
-    return { isValid : true}
-  },
+    return { isValid : true };
+  }
 
   focusInput(){
-    this.fromDate.focusInput();
-  },
+    this.fromDate.focusInput()
+  }
 
   focusNotValidInput(){
     if (!this.fromDate.isValid()){
-       this.fromDate.focusInput();
+       this.fromDate.focusInput()
        return true;
     }
     if (!this.toDate.isValid()){
-      this.toDate.focusInput();
+      this.toDate.focusInput()
       return true;
     }
     return false;
   }
+}
 
-});
-
-export default DatesFragment;
+export default DatesFragment

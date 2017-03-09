@@ -4,6 +4,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -20,7 +36,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var styles = _DialogStyles2.default;
 
-var Styles = {
+var STYLE = {
   CAPTION: {
     display: 'inline-block',
     width: '400px',
@@ -46,57 +62,85 @@ var Styles = {
 
 var ELLIPSIS = '...';
 
-var AlertDialog = _react2.default.createClass({
-  displayName: 'AlertDialog',
-  shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-      return false;
-    }
-    return true;
-  },
-  render: function render() {
-    var _props = this.props,
-        isShow = _props.isShow,
-        data = _props.data,
-        onClose = _props.onClose,
-        alertCaption = data.alertCaption,
-        alertItemId = data.alertItemId,
-        alertDescr = data.alertDescr,
-        _alertItemId = alertItemId.substring(0, 20) + ELLIPSIS;
+//const AlertDialog = React.createClass({
 
-    return _react2.default.createElement(
-      _ModalDialog2.default,
-      {
-        caption: 'Alert',
-        isShow: isShow,
-        onClose: onClose
-      },
-      _react2.default.createElement(
-        'div',
-        { style: styles.rowDiv, key: '1' },
+var AlertDialog = function (_Component) {
+  (0, _inherits3.default)(AlertDialog, _Component);
+
+  function AlertDialog() {
+    (0, _classCallCheck3.default)(this, AlertDialog);
+    return (0, _possibleConstructorReturn3.default)(this, (AlertDialog.__proto__ || Object.getPrototypeOf(AlertDialog)).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(AlertDialog, [{
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
+        return false;
+      }
+      return true;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          isShow = _props.isShow,
+          data = _props.data,
+          onClose = _props.onClose,
+          alertCaption = data.alertCaption,
+          alertItemId = data.alertItemId,
+          alertDescr = data.alertDescr,
+          _alertItemId = alertItemId.substring(0, 20) + ELLIPSIS;
+
+      return _react2.default.createElement(
+        _ModalDialog2.default,
+        {
+          caption: 'Alert',
+          isShow: isShow,
+          onClose: onClose
+        },
         _react2.default.createElement(
-          'span',
-          { style: Styles.CAPTION },
-          alertCaption + ': ',
+          'div',
+          { style: styles.rowDiv },
           _react2.default.createElement(
             'span',
-            { style: Styles.ITEM_ID, title: alertItemId },
-            _alertItemId
+            { style: STYLE.CAPTION },
+            alertCaption + ': ',
+            _react2.default.createElement(
+              'span',
+              { style: STYLE.ITEM_ID, title: alertItemId },
+              _alertItemId
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { style: styles.rowDiv },
+          _react2.default.createElement(
+            'p',
+            { style: STYLE.DESCR },
+            alertDescr
           )
         )
-      ),
-      _react2.default.createElement(
-        'div',
-        { style: styles.rowDiv, key: '2' },
-        _react2.default.createElement(
-          'p',
-          { style: Styles.DESCR },
-          alertDescr
-        )
-      )
-    );
-  }
-});
+      );
+    }
+  }]);
+  return AlertDialog;
+}(_react.Component);
+//});
 
+AlertDialog.defaultProps = {
+  data: {},
+  onClose: function onClose() {}
+};
+process.env.NODE_ENV !== "production" ? AlertDialog.propTypes = {
+  isShow: _react.PropTypes.bool,
+  data: _react.PropTypes.shape({
+    alertCaption: _react.PropTypes.string,
+    alertItemId: _react.PropTypes.string,
+    alertDescr: _react.PropTypes.string
+  }),
+  onClose: _react.PropTypes.func
+} : void 0;
 exports.default = AlertDialog;
-//# sourceMappingURL=AlertDialog.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\AlertDialog.js.map

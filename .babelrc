@@ -2,7 +2,7 @@
     "ignore" : [
        "**/__tests__/*"
      ],
-    "only" : [                
+    "only" : [
                 "*.js",
                 "*.jsx",
                 "*.es6"
@@ -10,18 +10,19 @@
      "presets" : [
                    "es2015",
                    "react",
-                   "stage-2" 
-     ],    
+                   "stage-2"
+     ],
     "plugins" : [
+      "transform-decorators-legacy",
       [ "transform-react-remove-prop-types", {
          "mode": "wrap",
-         "ignoreFilenames":["node_modules"]    
+         "ignoreFilenames":["node_modules"]
       }],
       [ "transform-runtime", {
          "helpers": true,
          "polyfill": false,
          "regenerator": false,
-         "moduleName": "babel-runtime" 
+         "moduleName": "babel-runtime"
       }]
     ]
  }

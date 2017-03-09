@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react'
 
-import InputText from '../zhnAtoms/InputText';
-
+import InputText from '../zhnAtoms/InputText'
 
 const Styles = {
   ROW_DIV: {
@@ -33,11 +32,12 @@ const Styles = {
   }
 }
 
-const RowInputText = React.createClass({
-  displayName : 'RowInputText',
-  propTypes : {
-    caption : React.PropTypes.string
-  },
+class RowInputText extends Component {
+  static propTypes = {
+    caption: PropTypes.string,
+    placeholder: PropTypes.string
+  }
+
   render(){
     const { caption, placeholder } = this.props;
     return (
@@ -52,14 +52,14 @@ const RowInputText = React.createClass({
          />
       </div>
     )
-  },
+  }
 
   getValue(){
     return this.inputText.getValue().trim();
-  },
-  setValue(value){
-    this.inputText.setValue(value);
   }
-});
+  setValue(value){
+    this.inputText.setValue(value)
+  }
+}
 
 export default RowInputText

@@ -17,7 +17,8 @@ module.exports = {
            "babel-runtime/helpers/createClass",
            "babel-runtime/helpers/possibleConstructorReturn",
            "babel-runtime/helpers/inherits",
-           "babel-runtime/helpers/toConsumableArray"                        
+           "babel-runtime/helpers/toConsumableArray",
+           "babel-runtime/helpers/slicedToArray"                         
          ],
      app: path.resolve('js', 'index.js')
   },

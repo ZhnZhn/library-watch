@@ -1,1 +1,36 @@
-{"version":3,"sources":["../../../src/components/browser-container/BrowserContainer.jsx"],"names":["BrowserContainer","createClass","getInitialState","isDoubleWatch","elBrowsers","componentWillMount","store","props","unsubscribe","listen","_onStore","componentWillUnmount","actionType","data","initBrowserAction","toggleWatchDbBrowserAction","state","unshift","setState","render","showBrowserAction","updateWatchAction","initDialogAction","showDialogAction","_doubleWatch","WATCH_LIST","undefined"],"mappings":";;;;;;AAAA;;;;AAEA;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,mBAAmB,gBAAMC,WAAN,CAAkB;AAAA;AACzCC,iBADyC,6BACxB;AACf,WAAO;AACLC,qBAAgB,KADX;AAELC,kBAAa;AAFR,KAAP;AAID,GANwC;AAQzCC,oBARyC,gCAQrB;AAAA,QACVC,KADU,GACA,KAAKC,KADL,CACVD,KADU;;AAElB,SAAKE,WAAL,GAAmBF,MAAMG,MAAN,CAAa,KAAKC,QAAlB,CAAnB;AACD,GAXwC;AAYzCC,sBAZyC,kCAYnB;AACpB,SAAKH,WAAL;AACD,GAdwC;AAezCE,UAfyC,oBAehCE,UAfgC,EAepBC,IAfoB,EAef;AAAA,iBACmC,KAAKN,KADxC;AAAA,QACfO,iBADe,UACfA,iBADe;AAAA,QACIC,0BADJ,UACIA,0BADJ;;AAEvB,QAAIH,eAAeE,iBAAnB,EAAqC;AACnC,WAAKE,KAAL,CAAWZ,UAAX,CAAsBa,OAAtB,CAA8BJ,IAA9B;AACA,WAAKK,QAAL,CAAc,KAAKF,KAAnB;AACD,KAHD,MAGO,IAAIJ,eAAeG,0BAAnB,EAA8C;AACnD,WAAKG,QAAL,CAAc,EAAEf,eAAgB,CAAC,KAAKa,KAAL,CAAWb,aAA9B,EAAd;AACD;AACH,GAvBwC;AAyBzCgB,QAzByC,oBAyBjC;AAAA,kBAOI,KAAKZ,KAPT;AAAA,QAGGD,KAHH,WAGGA,KAHH;AAAA,QAIGc,iBAJH,WAIGA,iBAJH;AAAA,QAIsBC,iBAJtB,WAIsBA,iBAJtB;AAAA,QAMGC,gBANH,WAMGA,gBANH;AAAA,QAMqBC,gBANrB,WAMqBA,gBANrB;AAAA,iBASiC,KAAKP,KATtC;AAAA,QASGb,aATH,UASGA,aATH;AAAA,QASkBC,UATlB,UASkBA,UATlB;;;AAWN,QAAMoB,eAAgBrB,aAAD,GAER;AACE,cAAQ,IADV;AAEE,kBAAY,IAFd;AAGE,qBAAe,IAHjB;AAIE,mBAAa,kBAAYsB,UAJ3B;AAKE,eAAQ,SALV;AAME,aAAOnB,KANT;AAOE,kBAAYc,iBAPd;AAQE,oBAAcC;AARhB,MAFQ,GAaVK,SAbX;;AAeA,WACE;AAAA;AAAA,QAAK,WAAU,eAAf;AACE;AACG,qBAAa,kBAAYD,UAD5B;AAEG,iBAAQ,OAFX;AAGG,eAAOnB,KAHV;AAIG,oBAAYc,iBAJf;AAKG,sBAAcC;AALjB,QADF;AAQGG,kBARH;AASGpB,gBATH;AAUE;AACG,mBAAW,CADd;AAEG,eAAOE,KAFV;AAGG,oBAAYgB,gBAHf;AAIG,oBAAYC;AAJf;AAVF,KADF;AAmBD;AAtEwC,CAAlB,CAAzB;;kBA0EevB,gB","file":"BrowserContainer.js","sourcesContent":["import React from 'react';\r\n\r\nimport { BrowserType } from '../../constants/Type';\r\n\r\nimport WatchBrowser from '../browser-watch/WatchBrowser';\r\nimport DialogContainer3 from '../zhnContainers/DialogContainer3';\r\n\r\nconst BrowserContainer = React.createClass({\r\n  getInitialState(){\r\n    return {\r\n      isDoubleWatch : false,\r\n      elBrowsers : []\r\n    }\r\n  },\r\n\r\n  componentWillMount(){\r\n    const { store } = this.props;\r\n    this.unsubscribe = store.listen(this._onStore);\r\n  },\r\n  componentWillUnmount(){\r\n    this.unsubscribe();\r\n  },\r\n  _onStore(actionType, data){\r\n     const { initBrowserAction, toggleWatchDbBrowserAction } = this.props\r\n     if (actionType === initBrowserAction){\r\n       this.state.elBrowsers.unshift(data);\r\n       this.setState(this.state);\r\n     } else if (actionType === toggleWatchDbBrowserAction){\r\n       this.setState({ isDoubleWatch : !this.state.isDoubleWatch })\r\n     }\r\n  },\r\n\r\n  render(){\r\n\r\n    const {\r\n             store\r\n           , showBrowserAction, updateWatchAction\r\n           //, updateBrowserAction,\r\n           , initDialogAction, showDialogAction\r\n          } = this.props\r\n\r\n    const  { isDoubleWatch, elBrowsers } = this.state;\r\n\r\n    const _doubleWatch = (isDoubleWatch)\r\n             ? (\r\n                 <WatchBrowser\r\n                   isShow={true}\r\n                   isEditMode={true}\r\n                   isDoubleWatch={true}\r\n                   browserType={BrowserType.WATCH_LIST}\r\n                   caption=\"Watch 2\"\r\n                   store={store}\r\n                   showAction={showBrowserAction}\r\n                   updateAction={updateWatchAction}\r\n                 />\r\n               )\r\n             : undefined;\r\n\r\n    return (\r\n      <div className=\"hrz-container\">\r\n        <WatchBrowser\r\n           browserType={BrowserType.WATCH_LIST}\r\n           caption=\"Watch\"\r\n           store={store}\r\n           showAction={showBrowserAction}\r\n           updateAction={updateWatchAction}\r\n        />\r\n        {_doubleWatch}\r\n        {elBrowsers}\r\n        <DialogContainer3\r\n           maxDialog={3}\r\n           store={store}\r\n           initAction={initDialogAction}\r\n           showAction={showDialogAction}\r\n        />\r\n      </div>\r\n    );\r\n  }\r\n\r\n});\r\n\r\nexport default BrowserContainer\r\n"]}
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\browser-container\\BrowserContainer.jsx",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\browser-container\\BrowserContainer.js",
+ "sourceRoot": "",
+ "names": [
+  "BrowserContainer",
+  "props",
+  "_onStore",
+  "actionType",
+  "data",
+  "initBrowserAction",
+  "toggleWatchDbBrowserAction",
+  "state",
+  "elBrowsers",
+  "unshift",
+  "setState",
+  "isDoubleWatch",
+  "store",
+  "unsubscribe",
+  "listen",
+  "showBrowserAction",
+  "updateWatchAction",
+  "initDialogAction",
+  "showDialogAction",
+  "_doubleWatch",
+  "WATCH_LIST",
+  "undefined",
+  "propTypes",
+  "shape",
+  "func",
+  "string"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;AAEA;;;;AACA;;;;;;AAEA;IACMA,gB;;;AAYJ,4BAAYC,KAAZ,EAAkB;AAAA;;AAAA;;AAAA,UAsBlBC,QAtBkB,GAsBP,UAACC,UAAD,EAAaC,IAAb,EAAsB;AAAA,wBAC4B,MAAKH,KADjC;AAAA,UACtBI,iBADsB,eACtBA,iBADsB;AAAA,UACHC,0BADG,eACHA,0BADG;;AAE9B,UAAIH,eAAeE,iBAAnB,EAAqC;AACnC,cAAKE,KAAL,CAAWC,UAAX,CAAsBC,OAAtB,CAA8BL,IAA9B;AACA,cAAKM,QAAL,CAAc,MAAKH,KAAnB;AACD,OAHD,MAGO,IAAIJ,eAAeG,0BAAnB,EAA8C;AACnD,cAAKI,QAAL,CAAc,EAAEC,eAAgB,CAAC,MAAKJ,KAAL,CAAWI,aAA9B,EAAd;AACD;AACH,KA9BiB;;AAEhB,UAAKJ,KAAL,GAAa;AACXI,qBAAgB,KADL;AAEXH,kBAAa;AAFF,KAAb;AAFgB;AAMjB;AACD;;;;;;;;;;;;yCAQoB;AAAA,UACVI,KADU,GACA,KAAKX,KADL,CACVW,KADU;;AAElB,WAAKC,WAAL,GAAmBD,MAAME,MAAN,CAAa,KAAKZ,QAAlB,CAAnB;AACD;;;2CACqB;AACpB,WAAKW,WAAL;AACD;;;6BAWO;AAAA,mBAKG,KAAKZ,KALR;AAAA,UAEGW,KAFH,UAEGA,KAFH;AAAA,UAGGG,iBAHH,UAGGA,iBAHH;AAAA,UAGsBC,iBAHtB,UAGsBA,iBAHtB;AAAA,UAIGC,gBAJH,UAIGA,gBAJH;AAAA,UAIqBC,gBAJrB,UAIqBA,gBAJrB;AAAA,mBAM+B,KAAKX,KANpC;AAAA,UAMCI,aAND,UAMCA,aAND;AAAA,UAMgBH,UANhB,UAMgBA,UANhB;;;AAQN,UAAMW,eAAgBR,aAAD,GAER;AACE,gBAAQ,IADV;AAEE,oBAAY,IAFd;AAGE,uBAAe,IAHjB;AAIE,qBAAa,kBAAYS,UAJ3B;AAKE,iBAAQ,SALV;AAME,eAAOR,KANT;AAOE,oBAAYG,iBAPd;AAQE,sBAAcC;AARhB,QAFQ,GAaVK,SAbX;;AAeA,aACE;AAAA;AAAA,UAAK,WAAU,eAAf;AACE;AACG,uBAAa,kBAAYD,UAD5B;AAEG,mBAAQ,OAFX;AAGG,iBAAOR,KAHV;AAIG,sBAAYG,iBAJf;AAKG,wBAAcC;AALjB,UADF;AAQGG,oBARH;AASGX,kBATH;AAUE;AACG,qBAAW,CADd;AAEG,iBAAOI,KAFV;AAGG,sBAAYK,gBAHf;AAIG,sBAAYC;AAJf;AAVF,OADF;AAmBD;;;;AAEH;;wCAxFMlB,gB,CACGsB,S,GAAY;AACjBV,SAAO,iBAAUW,KAAV,CAAgB;AACrBT,YAAQ,iBAAUU;AADG,GAAhB,CADU;AAIjBnB,qBAAmB,iBAAUoB,MAJZ;AAKjBV,qBAAmB,iBAAUU,MALZ;AAMjBP,oBAAkB,iBAAUO,MANX;AAOjBT,qBAAmB,iBAAUS,MAPZ;AAQjBnB,8BAA4B,iBAAUmB;AARrB,C;kBAyFNzB,gB"
+}

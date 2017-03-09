@@ -1,24 +1,42 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react'
 
-import WithValidation from './WithValidation';
-import Dialog from '../zhnMoleculs/Dialog';
-import ToolBarButton from '../header/ToolBarButton';
-import RowInputText from './RowInputText';
-import ValidationMessagesFragment from './ValidationMessagesFragment';
+import Dialog from '../zhnMoleculs/Dialog'
+import ToolBarButton from '../header/ToolBarButton'
+import RowInputText from './RowInputText'
+import ValidationMessagesFragment from './ValidationMessagesFragment'
 
-const DialogType1 = React.createClass({
+import withValidationLoad from './decorators/withValidationLoad'
 
-   ...WithValidation,
+@withValidationLoad
+class DialogType1 extends Component {
+  static propTypes = {
+    caption: PropTypes.string,
+    requestType: PropTypes.string,
+    oneTitle: PropTypes.string,
+    onePlaceholder: PropTypes.string,
+    isShow: PropTypes.bool,
+    onShow: PropTypes.func
+  }
 
-  displayName : 'DialogType1',
-
-  getInitialState(){
-    this.stock = null;
-
-    return {
+  constructor(props){
+    super()
+    this.stock = null
+    this._commandButtons = [
+       <ToolBarButton
+          type="TypeC"
+          caption="Clear"
+          onClick={this._handleClear}
+       />,
+       <ToolBarButton
+          type="TypeC"
+          caption="Load"
+          onClick={this._handleLoad}
+       />
+    ]
+    this.state = {
       validationMessages : []
-    };
-  },
+    }
+  }
 
   shouldComponentUpdate(nextProps, nextState){
     if (this.props !== nextProps){
@@ -27,72 +45,58 @@ const DialogType1 = React.createClass({
        }
     }
     return true;
-  },
+  }
 
- _handlerClear(){
+ _handleClear = () => {
    this.inputRepo.setValue('');
    this.setState({ validationMessages: [] });
- },
+ }
 
- _handlerLoad(){
-    this._handlerLoadWithValidation(
+ _handleLoad = () => {
+    this._handleLoadWithValidation(
       this._createValidationMessages(),
       this._createLoadOption
-    );
-  },
-  _createValidationMessages(){
+    )
+  }
+  _createValidationMessages = () => {
     let msg = [];
 
     const value = this.inputRepo.getValue();
     if (!value) {
-      msg = msg.concat(`${this.props.oneTitle} is required`);
+      msg = msg.concat(`${this.props.oneTitle} is required`)
     }
 
     msg.isValid = (msg.length === 0) ? true : false;
     return msg;
-  },
-  _createLoadOption(){
+  }
+  _createLoadOption = () => {
     const { requestType } = this.props;
     return {
       repo : this.inputRepo.getValue(),
       requestType
-    }
-  },
+    };
+  }
 
-  _handlerClose(){
-     this._handlerCloseWithValidation(
+  _handleClose = () => {
+     this._handleCloseWithValidation(
         this._createValidationMessages
-     );
-   },
+     )
+   }
 
   render(){
     const {
             caption, isShow, onShow,
             oneTitle, onePlaceholder
           } = this.props
-        , { validationMessages } = this.state
-        , _commandButtons = [
-       <ToolBarButton
-          key="a"
-          type="TypeC"
-          caption="Clear"
-          onClick={this._handlerClear}
-       />,
-       <ToolBarButton
-          key="b"
-          type="TypeC"
-          caption="Load"
-          onClick={this._handlerLoad}
-       />
-    ];
+        , { validationMessages } = this.state;
 
     return (
        <Dialog
            caption={caption}
            isShow={isShow}
-           commandButtons={_commandButtons}
+           commandButtons={this._commandButtons}
            onShowChart={onShow}
-           onClose={this._handlerClose}
+           onClose={this._handleClose}
        >
         <RowInputText
            ref={c => this.inputRepo = c}
@@ -105,6 +109,6 @@ const DialogType1 = React.createClass({
       </Dialog>
     );
   }
-});
+}
 
-export default DialogType1;
+export default DialogType1
