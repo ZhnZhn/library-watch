@@ -20,7 +20,7 @@ const ButtonCircle = (props) =>{
            : 'not-selected'
       , _style = (isWithoutDefault)
            ? style
-           : {...STYLE.ROOT, ...style};
+           : {...STYLE.ROOT, ...style};  
   return (
     <span
        className={_className}

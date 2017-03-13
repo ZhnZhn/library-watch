@@ -41,7 +41,10 @@ var CaptionRow = function CaptionRow(_ref) {
       caption
     ),
     children,
-    _react2.default.createElement(_SvgClose2.default, { onClose: onClose })
+    _react2.default.createElement(_SvgClose2.default, {
+      style: _CaptionRow2.default.SVG_CLOSE,
+      onClose: onClose
+    })
   );
 };
 

@@ -13,7 +13,7 @@ const onCloseItem = ChartActions.closeChart
     , onWatchItem = ComponentActions.showModalDialog.bind(null, ModalDialog.ADD_ITEM );
     //, onWatchItem = WatchActions.addItem;
 
-const WithItem = {
+const withItem = {
   createItem(option, json, parentProps){
     const { requestType } = option
          , _fnFactory= (RouterItem[requestType])
@@ -27,4 +27,4 @@ const WithItem = {
   }
 };
 
-export default WithItem
+export default withItem

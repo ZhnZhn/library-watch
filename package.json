@@ -12,8 +12,8 @@
     "bundle": "jspm bundle js/**/*  - [js/**/*] dependency-bundle.js",
     "build": "webpack --colors --progress",
     "gulp": "gulp",
-    "start:emmiter": "chokidar-socket-emitter",
-    "start:web": "http-server -c-1 -p7070"
+    "start:emitter": "chokidar-socket-emitter",
+    "start:web": "http-server -c-1 -p8080"
   },
   "author": "ZhnZhn",
   "license": "MIT",

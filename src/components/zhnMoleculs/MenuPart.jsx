@@ -3,11 +3,13 @@ import React, { PropTypes } from 'react';
 import MenuBadge from '../zhnAtoms/MenuBadge';
 import OpenClose2 from '../zhnAtoms/OpenClose2';
 
-const _renderMenuItems = function(items=[]){
+const _renderMenuItems = function(rowClass, items=[]){
   return items.map((item, index) => {
-    const className = (index % 2)
-             ? 'row__topic__even not-selected'
-             : 'row__topic__odd not-selected'
+    const _className = (rowClass)
+             ? rowClass + ' not-selected'
+             : (index % 2)
+                 ? 'row__topic__even not-selected'
+                 : 'row__topic__odd not-selected'
         , menuBadge = (item.counter !== 0)
              ? (
                   <MenuBadge
@@ -21,7 +23,7 @@ const _renderMenuItems = function(items=[]){
     return (
        <div
            key={index}
-           className={className}
+           className={_className}
            onClick={item.onClick}
         >
           {item.title}
@@ -31,9 +33,12 @@ const _renderMenuItems = function(items=[]){
   })
 }
 
-const MenuPart = ({ caption, items, isInitClose }) => (
-  <OpenClose2 caption={caption} isClose={isInitClose}>
-     {_renderMenuItems(items)}
+const MenuPart = ({ rowClass, caption, items, isInitClose }) => (
+  <OpenClose2
+     caption={caption}
+     isClose={isInitClose}
+  >
+     {_renderMenuItems(rowClass, items)}
   </OpenClose2>
 )
 

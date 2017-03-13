@@ -1,0 +1,21 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\flux\\logic\\withDynamicBrowser.js",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\flux\\logic\\withDynamicBrowser.js",
+ "sourceRoot": "",
+ "names": [
+  "withDynamicBrowser",
+  "createBrowserDynamic",
+  "browserType",
+  "caption",
+  "sourceMenuUrl",
+  "rowClass",
+  "createElement",
+  "key",
+  "store",
+  "getStore",
+  "isInitShow"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,qBAAqB;AACzBC,uBADyB,sCACkD;AAAA,UAApDC,WAAoD,QAApDA,WAAoD;AAAA,8BAAvCC,OAAuC;AAAA,UAAvCA,OAAuC,gCAA/B,EAA+B;AAAA,UAA1BC,aAA0B,QAA1BA,aAA0B;AAAA,UAAXC,QAAW,QAAXA,QAAW;;AACvE,aAAO,gBAAMC,aAAN,iCAA2C;AAC/CC,cAAML,WADyC;AAE/CA,sBAAcA,WAFiC;AAG/CM,gBAAQ,KAAKC,QAAL,EAHuC;AAI/CC,qBAAa,IAJkC;AAK/CP,kBAAUA,OALqC;AAM/CC,wBAAgBA,aAN+B;AAO/CC,mBAAUA;AAPqC,OAA3C,CAAP;AASH;AAXwB,CAA3B;;kBAceL,kB"
+}

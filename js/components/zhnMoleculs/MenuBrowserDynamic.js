@@ -133,11 +133,14 @@ var MenuBrowserDynamic = function (_Component) {
     }
   }, {
     key: '_renderMenuParts',
-    value: function _renderMenuParts() {
-      var menuItems = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    value: function _renderMenuParts(rowClass) {
+      var menuItems = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 
       return menuItems.map(function (menuPart, index) {
-        return _react2.default.createElement(_MenuPart2.default, (0, _extends3.default)({ key: index }, menuPart));
+        return _react2.default.createElement(_MenuPart2.default, (0, _extends3.default)({}, menuPart, {
+          key: index,
+          rowClass: rowClass
+        }));
       });
     }
   }, {
@@ -146,6 +149,7 @@ var MenuBrowserDynamic = function (_Component) {
       var _props = this.props,
           caption = _props.caption,
           children = _props.children,
+          rowClass = _props.rowClass,
           _state = this.state,
           menuItems = _state.menuItems,
           isShow = _state.isShow;
@@ -161,7 +165,7 @@ var MenuBrowserDynamic = function (_Component) {
         _react2.default.createElement(
           _ScrollPane2.default,
           { style: STYLE.SCROLL_DIV },
-          this._renderMenuParts(menuItems),
+          this._renderMenuParts(rowClass, menuItems),
           children
         )
       );

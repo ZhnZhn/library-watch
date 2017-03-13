@@ -337,34 +337,38 @@ const WatchBrowser = React.createClass({
             onClose={this._handlerHide}
          >
            <ButtonSave
+             className="bt__watch__caption"
              store={store}
-             style={styles.btCircle}
            />
            <ButtonCircle
+              className="bt__watch__caption"
               caption={_captionEV}
               title={_titleEV}
-              style={styles.btCircle}
+              isWithoutDefault={true}
               onClick={this._handlerToggleEditMode}
            />
            <ButtonCircle
+             className="bt__watch__caption"
              caption={'F'}
              title="Show/Hide : Find Item Input"
-             style={styles.btCircle}
+             isWithoutDefault={true}
              onClick={this._handlerToggleFindInput}
            />
            { !isDoubleWatch &&
              <ButtonCircle
+                className="bt__watch__caption"
                 caption={'B'}
                 title="BackUp Watch Items to JSON File"
-                style={styles.btCircle}
+                isWithoutDefault={true}
                 onClick={WatchActions.backupToJson}
               />
            }
            { !isDoubleWatch &&
              <ButtonCircle
+                className="bt__watch__caption"
                 caption={'L'}
                 title="Load Watch Items from JSON File"
-                style={styles.btCircleRight}
+                isWithoutDefault={true}                
                 onClick={ComponentActions.showModalDialog.bind(null, ModalDialog.LOAD_FILE, {
                    onLoad : WatchActions.loadFromJson
                 })}

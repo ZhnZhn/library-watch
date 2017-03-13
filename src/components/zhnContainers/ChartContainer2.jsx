@@ -13,19 +13,19 @@ const CHILD_MARGIN = 36;
 
 const styles = {
   rootDiv : {
-    backgroundColor: '#4D4D4D',
-    paddingTop : '5px',
-    paddingLeft : '5px',
-    borderRadius: '10px',
-    border: 'solid 3px #232F3B',
     position: 'relative',
+    backgroundColor: '#4D4D4D',
+    padding: '0px 0px 3px 0px',
+    //paddingTop : '5px',
+    //paddingLeft : '5px',    
+    //border: 'solid 3px #232F3B',
     width: '635px',
-    /* eslint-disable no-dupe-keys */
-    height: '730px',
     height: 'calc(100vh - 71px)',
-    /* eslint-enable no-dupe-keys */
+    minHeight: '500px',
+    marginLeft: '16px',
+    borderRadius: '4px',
+    boxShadow: '1px 4px 6px 1px rgba(0, 0, 0, 0.6)',
     overflowY: 'hidden',
-    marginLeft: '10px',
     overflowX : 'hidden'
   },
   hrzResize : {

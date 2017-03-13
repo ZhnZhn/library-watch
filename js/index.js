@@ -32,7 +32,10 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 var _fnRenderApp = function _fnRenderApp() {
-  document.body.removeChild(document.getElementById('preloader'));
+  var preloader = document.getElementById('preloader');
+  if (preloader) {
+    document.body.removeChild(document.getElementById('preloader'));
+  }
   (0, _reactDom.render)(_react2.default.createElement(_AppLibraryWatch2.default, null), document.getElementById("app"));
 };
 
@@ -50,4 +53,4 @@ var _fnLoading = function _fnLoading() {
 };
 
 _fnLoading();
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\index.js.map

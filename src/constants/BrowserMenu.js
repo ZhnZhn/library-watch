@@ -26,7 +26,7 @@ const fnCreateMenu = function(menu, data, browserType){
                  onBadgeOpen: _fnBadgeOpen(item.id, browserType),
                  onBadgeClose : _fnBadgeClose(item.id)
                }
-     });
+     });          
      return {
         caption: menuPart.caption,
         isInitClose: menuPart.isInitClose,

@@ -2,17 +2,17 @@ import React from 'react';
 
 import Store from '../stores/AppStore';
 
-import WithBrowserDynamic from './WithBrowserDynamic';
-import WithDialog from './WithDialog';
-import WithItemsContainer from './WithItemsContainer';
-import WithItem from './WithItem';
+import withDialog from './withDialog';
+import withDynamicBrowser from './withDynamicBrowser';
+import withItemsContainer from './withItemsContainer';
+import withItem from './withItem';
 
 const Factory = {
 
-  ...WithBrowserDynamic,
-  ...WithDialog,
-  ...WithItemsContainer,
-  ...WithItem,
+  ...withDialog,
+  ...withDynamicBrowser,
+  ...withItemsContainer,
+  ...withItem,
 
   getElementFactory(){
     return React;

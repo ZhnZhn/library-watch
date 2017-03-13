@@ -54,7 +54,7 @@ var STYLE = {
   ROOT_DIV: {
     color: 'gray',
     fontWeight: 'bold',
-    paddingLeft: '5px',
+    paddingLeft: '16px',
     paddingRight: '5px',
     lineHeight: 1.4
   },
@@ -291,4 +291,4 @@ var About = _react2.default.createClass({
 });
 
 exports.default = About;
-//# sourceMappingURL=About.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\about\About.js.map

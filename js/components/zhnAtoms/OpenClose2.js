@@ -24,6 +24,8 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -33,7 +35,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var STYLE = {
   ROOT: {
     backgroundColor: '#4D4D4D',
-    lineHeight: 1.5
+    lineHeight: 2
   },
   SVG: {
     width: '16px',
@@ -65,7 +67,7 @@ var FILL_OPEN = 'yellow',
     PATH_OPEN = "M 2,14 L 14,14 14,2 2,14",
     PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
-var OpenClose2 = function (_Component) {
+var OpenClose2 = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(OpenClose2, _Component);
 
   function OpenClose2(props) {
@@ -174,13 +176,11 @@ var OpenClose2 = function (_Component) {
     }
   }]);
   return OpenClose2;
-}(_react.Component);
-
-OpenClose2.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   isClose: true,
   fillOpen: FILL_OPEN,
   fillClose: FILL_CLOSE
-};
+}, _temp);
 process.env.NODE_ENV !== "production" ? OpenClose2.propTypes = {
   isClose: _react.PropTypes.bool,
 

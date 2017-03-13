@@ -4,7 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
 
 var _react = require('react');
 
@@ -14,25 +16,25 @@ var _AppStore = require('../stores/AppStore');
 
 var _AppStore2 = _interopRequireDefault(_AppStore);
 
-var _WithBrowserDynamic = require('./WithBrowserDynamic');
+var _withDialog = require('./withDialog');
 
-var _WithBrowserDynamic2 = _interopRequireDefault(_WithBrowserDynamic);
+var _withDialog2 = _interopRequireDefault(_withDialog);
 
-var _WithDialog = require('./WithDialog');
+var _withDynamicBrowser = require('./withDynamicBrowser');
 
-var _WithDialog2 = _interopRequireDefault(_WithDialog);
+var _withDynamicBrowser2 = _interopRequireDefault(_withDynamicBrowser);
 
-var _WithItemsContainer = require('./WithItemsContainer');
+var _withItemsContainer = require('./withItemsContainer');
 
-var _WithItemsContainer2 = _interopRequireDefault(_WithItemsContainer);
+var _withItemsContainer2 = _interopRequireDefault(_withItemsContainer);
 
-var _WithItem = require('./WithItem');
+var _withItem = require('./withItem');
 
-var _WithItem2 = _interopRequireDefault(_WithItem);
+var _withItem2 = _interopRequireDefault(_withItem);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Factory = _extends({}, _WithBrowserDynamic2.default, _WithDialog2.default, _WithItemsContainer2.default, _WithItem2.default, {
+var Factory = (0, _extends3.default)({}, _withDialog2.default, _withDynamicBrowser2.default, _withItemsContainer2.default, _withItem2.default, {
   getElementFactory: function getElementFactory() {
     return _react2.default;
   },
@@ -46,4 +48,4 @@ var Factory = _extends({}, _WithBrowserDynamic2.default, _WithDialog2.default, _
 });
 
 exports.default = Factory;
-//# sourceMappingURL=Factory.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\logic\Factory.js.map

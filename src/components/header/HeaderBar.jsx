@@ -33,8 +33,9 @@ const STYLE = {
 const BrowserConfig = {
   LIBRARY : {
     browserType: BrowserType.LIBRARY,
-    caption: 'Libary',
-    sourceMenuUrl : './data/github/source-menu.json'
+    caption: 'Library',
+    sourceMenuUrl : './data/github/source-menu.json',
+    rowClass: 'row__library'
   }
 }
 

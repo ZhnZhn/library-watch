@@ -3,32 +3,45 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _browserRootDiv, _aboutRootDiv;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var ContainerStyles = {
-  browserRootDiv: (_browserRootDiv = {
+  browserRootDiv: {
+    position: 'relative',
     zIndex: 20,
     backgroundColor: '#4D4D4D',
-    padding: '5px',
-    borderRadius: '10px',
-    border: 'solid 3px #232F3B',
+    //padding: '5px',
+    padding: '0px 3px 35px 0px',
+    //borderRadius: '10px',
+    //border: 'solid 3px #232F3B',
+    //height: '730px',
+    height: 'calc(100vh - 71px)',
+    minHeight: '500px',
+    //width: '270px',
+    minWidth: '270px',
+    maxWidth: '400px',
+    marginLeft: '10px',
+    borderRadius: '4px',
+    boxShadow: '1px 4px 6px 1px rgba(0, 0, 0, 0.6)'
+    //paddingBottom: '32px'
+  },
+  aboutRootDiv: {
     position: 'relative',
-    /* eslint-disable no-dupe-keys */
-    height: '730px'
-  }, _defineProperty(_browserRootDiv, 'height', 'calc(100vh - 71px)'), _defineProperty(_browserRootDiv, 'minWidth', '270px'), _defineProperty(_browserRootDiv, 'maxWidth', '400px'), _defineProperty(_browserRootDiv, 'marginLeft', '10px'), _defineProperty(_browserRootDiv, 'paddingBottom', '32px'), _browserRootDiv),
-  aboutRootDiv: (_aboutRootDiv = {
     zIndex: 20,
     backgroundColor: '#4D4D4D',
-    padding: '5px',
-    borderRadius: '10px',
-    border: 'solid 3px #232F3B',
-    position: 'relative',
-    /* eslint-disable no-dupe-keys */
-    height: '730px'
-  }, _defineProperty(_aboutRootDiv, 'height', 'calc(100vh - 71px)'), _defineProperty(_aboutRootDiv, 'minWidth', '700px'), _defineProperty(_aboutRootDiv, 'maxWidth', '700px'), _defineProperty(_aboutRootDiv, 'marginLeft', '10px'), _defineProperty(_aboutRootDiv, 'paddingRight', '0px'), _defineProperty(_aboutRootDiv, 'paddingBottom', '32px'), _aboutRootDiv),
+    padding: '0px 0px 32px 0px',
+    //padding: '5px',
+    //borderRadius: '10px',
+    borderRadius: '4px',
+    //border: 'solid 3px #232F3B',
+    //height: '730px',
+    height: 'calc(100vh - 71px)',
+    minHeight: '500px',
+    minWidth: '300px',
+    maxWidth: '700px',
+    marginLeft: '16px',
+    //paddingRight: '0px',
+    //paddingBottom: '32px',
+    boxShadow: '1px 4px 6px 1px rgba(0, 0, 0, 0.6)'
+  },
   displayBlock: {
     display: 'block'
   },
@@ -38,4 +51,4 @@ var ContainerStyles = {
 };
 
 exports.default = ContainerStyles;
-//# sourceMappingURL=ContainerStyles.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\styles\ContainerStyles.js.map

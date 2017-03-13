@@ -9,17 +9,19 @@
   "ROOT",
   "backgroundColor",
   "color",
-  "height",
-  "borderBottomLeftRadius",
-  "borderBottomRightRadius",
+  "lineHeight",
   "paddingTop",
   "paddingLeft",
-  "marginRight",
   "marginBottom",
+  "borderTopLeftRadius",
+  "borderTopRightRadius",
   "SPAN",
   "fontSize",
   "fontWeight",
-  "paddingRight"
+  "paddingRight",
+  "SVG_CLOSE",
+  "position",
+  "top"
  ],
- "mappings": ";;;;;;AACA,IAAMA,QAAS;AACbC,QAAO;AACLC,qBAAiB,SADZ;AAELC,WAAO,wBAFF;AAGLC,YAAQ,MAHH;AAILC,4BAAwB,MAJnB;AAKLC,6BAAyB,MALpB;AAMLC,gBAAY,KANP;AAOLC,iBAAa,MAPR;AAQLC,iBAAa,KARR;AASLC,kBAAc;AATT,GADM;AAYbC,QAAO;AACLC,cAAU,MADL;AAELC,gBAAY,KAFP;AAGLC,kBAAc;AAHT;AAZM,CAAf;;kBAmBed,K"
+ "mappings": ";;;;;;AACA,IAAMA,QAAS;AACbC,QAAM;AACJC,qBAAiB,SADb;AAEJC,WAAO,wBAFH;AAGJ;AACAC,gBAAY,KAJR;AAKJ;AACA;AACAC,gBAAY,KAPR;AAQJC,iBAAa,MART;AASJ;AACAC,kBAAc,MAVV;AAWJC,yBAAqB,KAXjB;AAYJC,0BAAsB;AAZlB,GADO;AAebC,QAAM;AACJC,cAAU,MADN;AAEJC,gBAAY,KAFR;AAGJC,kBAAc;AAHV,GAfO;AAoBbC,aAAW;AACTC,cAAU,UADD;AAETC,SAAK;AAFI;AApBE,CAAf;;kBA0BehB,K"
 }

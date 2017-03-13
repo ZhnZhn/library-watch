@@ -78,14 +78,19 @@ class MenuBrowserDynamic extends Component {
     this.setState({ isShow : true })
   }
 
-  _renderMenuParts(menuItems=[]){
+  _renderMenuParts(rowClass, menuItems=[]){
     return menuItems.map((menuPart, index) => {
-      return (<MenuPart key={index} {...menuPart} />);
+      return (
+         <MenuPart
+            {...menuPart}
+            key={index}
+            rowClass={rowClass}
+        />);
     });
   }
 
   render(){
-    const { caption, children } = this.props
+    const { caption, children, rowClass } = this.props
         , { menuItems, isShow } = this.state;
 
     return (
@@ -95,7 +100,7 @@ class MenuBrowserDynamic extends Component {
              onClose={this._handleHide}
           />
           <ScrollPane style={STYLE.SCROLL_DIV}>
-            {this._renderMenuParts(menuItems)}
+            {this._renderMenuParts(rowClass, menuItems)}
             {children}
           </ScrollPane>
        </Browser>

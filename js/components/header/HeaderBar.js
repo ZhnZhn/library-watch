@@ -66,8 +66,9 @@ var STYLE = {
 var BrowserConfig = {
   LIBRARY: {
     browserType: _Type.BrowserType.LIBRARY,
-    caption: 'Libary',
-    sourceMenuUrl: './data/github/source-menu.json'
+    caption: 'Library',
+    sourceMenuUrl: './data/github/source-menu.json',
+    rowClass: 'row__library'
   }
 };
 
@@ -126,4 +127,4 @@ var HeaderBar = _react2.default.createClass({
 });
 
 exports.default = HeaderBar;
-//# sourceMappingURL=HeaderBar.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\header\HeaderBar.js.map

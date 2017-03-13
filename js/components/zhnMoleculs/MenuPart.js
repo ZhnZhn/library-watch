@@ -18,11 +18,11 @@ var _OpenClose2 = _interopRequireDefault(_OpenClose);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _renderMenuItems = function _renderMenuItems() {
-  var items = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+var _renderMenuItems = function _renderMenuItems(rowClass) {
+  var items = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 
   return items.map(function (item, index) {
-    var className = index % 2 ? 'row__topic__even not-selected' : 'row__topic__odd not-selected',
+    var _className = rowClass ? rowClass + ' not-selected' : index % 2 ? 'row__topic__even not-selected' : 'row__topic__odd not-selected',
         menuBadge = item.counter !== 0 ? _react2.default.createElement(_MenuBadge2.default, {
       counter: item.counter,
       isOpen: item.isOpen,
@@ -33,7 +33,7 @@ var _renderMenuItems = function _renderMenuItems() {
       'div',
       {
         key: index,
-        className: className,
+        className: _className,
         onClick: item.onClick
       },
       item.title,
@@ -43,13 +43,17 @@ var _renderMenuItems = function _renderMenuItems() {
 };
 
 var MenuPart = function MenuPart(_ref) {
-  var caption = _ref.caption,
+  var rowClass = _ref.rowClass,
+      caption = _ref.caption,
       items = _ref.items,
       isInitClose = _ref.isInitClose;
   return _react2.default.createElement(
     _OpenClose2.default,
-    { caption: caption, isClose: isInitClose },
-    _renderMenuItems(items)
+    {
+      caption: caption,
+      isClose: isInitClose
+    },
+    _renderMenuItems(rowClass, items)
   );
 };
 

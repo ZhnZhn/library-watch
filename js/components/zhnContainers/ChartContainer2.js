@@ -20,12 +20,6 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
-
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
-
-var _rootDiv;
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -55,17 +49,22 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var CHILD_MARGIN = 36;
 
 var styles = {
-  rootDiv: (_rootDiv = {
-    backgroundColor: '#4D4D4D',
-    paddingTop: '5px',
-    paddingLeft: '5px',
-    borderRadius: '10px',
-    border: 'solid 3px #232F3B',
+  rootDiv: {
     position: 'relative',
+    backgroundColor: '#4D4D4D',
+    padding: '0px 0px 3px 0px',
+    //paddingTop : '5px',
+    //paddingLeft : '5px',    
+    //border: 'solid 3px #232F3B',
     width: '635px',
-    /* eslint-disable no-dupe-keys */
-    height: '730px'
-  }, (0, _defineProperty3.default)(_rootDiv, 'height', 'calc(100vh - 71px)'), (0, _defineProperty3.default)(_rootDiv, 'overflowY', 'hidden'), (0, _defineProperty3.default)(_rootDiv, 'marginLeft', '10px'), (0, _defineProperty3.default)(_rootDiv, 'overflowX', 'hidden'), _rootDiv),
+    height: 'calc(100vh - 71px)',
+    minHeight: '500px',
+    marginLeft: '16px',
+    borderRadius: '4px',
+    boxShadow: '1px 4px 6px 1px rgba(0, 0, 0, 0.6)',
+    overflowY: 'hidden',
+    overflowX: 'hidden'
+  },
   hrzResize: {
     position: 'absolute',
     top: '30px',

@@ -14,7 +14,10 @@ const CaptionRow = ({ caption, children, styleRoot, onClose }) => (
        {caption}
     </span>
     {children}
-    <SvgClose onClose={onClose} />
+    <SvgClose
+       style={STYLE.SVG_CLOSE}
+       onClose={onClose}
+    />
   </div>
 );
 

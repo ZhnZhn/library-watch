@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 const STYLE = {
   ROOT: {
     backgroundColor: '#4D4D4D',
-    lineHeight: 1.5
+    lineHeight: 2
   },
   SVG: {
     width: '16px',

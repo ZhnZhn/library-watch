@@ -38,11 +38,11 @@ var _createChartContainerComp = function _createChartContainerComp(conf, browser
   });
 };
 
-var WithItemsContainer = {
+var withItemsContainer = {
   createChartContainer: function createChartContainer(dialogType, browserType) {
     return _createChartContainerComp(this.getDataConf(dialogType), browserType);
   }
 };
 
-exports.default = WithItemsContainer;
-//# sourceMappingURL=WithItemsContainer.js.map
+exports.default = withItemsContainer;
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\logic\withItemsContainer.js.map

@@ -25,7 +25,7 @@ var onCloseItem = _ChartActions2.default.closeChart,
     onWatchItem = _ComponentActions2.default.showModalDialog.bind(null, _Type.ModalDialog.ADD_ITEM);
 //, onWatchItem = WatchActions.addItem;
 
-var WithItem = {
+var withItem = {
   createItem: function createItem(option, json, parentProps) {
     var requestType = option.requestType,
         _fnFactory = _RouterItem2.default[requestType] ? _RouterItem2.default[requestType] : _RouterItem2.default.DEFAULT;
@@ -38,5 +38,5 @@ var WithItem = {
   }
 };
 
-exports.default = WithItem;
-//# sourceMappingURL=WithItem.js.map
+exports.default = withItem;
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\logic\withItem.js.map

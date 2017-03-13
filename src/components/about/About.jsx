@@ -24,7 +24,7 @@ const STYLE = {
   ROOT_DIV : {
     color: 'gray',
     fontWeight: 'bold',
-    paddingLeft: '5px',
+    paddingLeft: '16px',
     paddingRight: '5px',
     lineHeight : 1.4
   },
@@ -171,7 +171,7 @@ const About = React.createClass({
                After clicking a button Show in a Dialog will be opened Container with Items
                or empty. After closing a Container all Items remains.
                In one-time max three Item Dialogs can be opened.
-            </p>            
+            </p>
             <p>
               <Token color="gray">
                 In that case of using

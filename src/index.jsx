@@ -21,7 +21,10 @@ if (process.env.NODE_ENV === 'production'){
 }
 
 const _fnRenderApp = () => {
-  document.body.removeChild(document.getElementById('preloader'));
+  const preloader = document.getElementById('preloader')
+  if (preloader){
+    document.body.removeChild(document.getElementById('preloader'));
+  }  
   render(<App />, document.getElementById("app"));
 }
 

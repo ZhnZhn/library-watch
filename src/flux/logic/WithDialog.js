@@ -28,10 +28,10 @@ const _createDialogComp = function (conf, browserType){
   });
 }
 
-const WithDialog = {
+const withDialog = {
   createDialog(dialogType, browserType){
     return _createDialogComp(this.getDataConf(dialogType), browserType);
   }
 };
 
-export default WithDialog
+export default withDialog

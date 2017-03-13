@@ -63,7 +63,7 @@ const BrowserSlice = {
   onShowBrowserDynamic(option){
     const { browserType } = option;
     if (!this.browserMenu[browserType]) {
-       const elBrowser = Factory.createBrowserDynamic(option);
+       const elBrowser = Factory.createBrowserDynamic(option);       
        this.browserMenu[browserType] = [];
        this.trigger(BrowserActionTypes.INIT_BROWSER_DYNAMIC, elBrowser);
     } else {
@@ -72,7 +72,7 @@ const BrowserSlice = {
   },
   onLoadBrowserDynamicCompleted(option){
     const { menu, items, browserType } = option
-        , elMenu = BrowserMenu.createMenu(menu, items, browserType);        
+        , elMenu = BrowserMenu.createMenu(menu, items, browserType);
     this.routeDialog[browserType] = items;
     this.browserMenu[browserType] = elMenu;
     this.trigger(BrowserActionTypes.LOAD_BROWSER_DYNAMIC_COMPLETED, {

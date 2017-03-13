@@ -23,10 +23,10 @@ const _createChartContainerComp = function(conf, browserType){
 }
 
 
-const WithItemsContainer = {
+const withItemsContainer = {
   createChartContainer(dialogType, browserType){
     return _createChartContainerComp(this.getDataConf(dialogType), browserType);
   }
 };
 
-export default WithItemsContainer
+export default withItemsContainer

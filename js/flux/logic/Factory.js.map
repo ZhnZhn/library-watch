@@ -1,1 +1,18 @@
-{"version":3,"sources":["../../../src/flux/logic/Factory.js"],"names":["Factory","getElementFactory","getStore","getDataConf","dialogType","dataId","split","getSourceConfig"],"mappings":";;;;;;;;AAAA;;;;AAEA;;;;AAEA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA;AAOJC,mBAPI,+BAOe;AACjB;AACD,GATG;AAWJC,UAXI,sBAWM;AACR;AACD,GAbG;AAeJC,aAfI,uBAeQC,UAfR,EAemB;AACrB,QAAMC,SAASD,WAAWE,KAAX,CAAiB,GAAjB,EAAsB,CAAtB,CAAf;AACA,WAAO,mBAAMC,eAAN,CAAsBF,MAAtB,EAA8BD,UAA9B,CAAP;AACD;AAlBG,EAAN;;kBAsBeJ,O","file":"Factory.js","sourcesContent":["import React from 'react';\r\n\r\nimport Store from '../stores/AppStore';\r\n\r\nimport WithBrowserDynamic from './WithBrowserDynamic';\r\nimport WithDialog from './WithDialog';\r\nimport WithItemsContainer from './WithItemsContainer';\r\nimport WithItem from './WithItem';\r\n\r\nconst Factory = {\r\n\r\n  ...WithBrowserDynamic,\r\n  ...WithDialog,\r\n  ...WithItemsContainer,\r\n  ...WithItem,\r\n\r\n  getElementFactory(){\r\n    return React;\r\n  },\r\n\r\n  getStore(){\r\n    return Store;\r\n  },\r\n\r\n  getDataConf(dialogType){\r\n    const dataId = dialogType.split('_')[0];\r\n    return Store.getSourceConfig(dataId, dialogType);\r\n  }\r\n\r\n};\r\n\r\nexport default Factory\r\n"]}
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\flux\\logic\\Factory.js",
+ "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\flux\\logic\\Factory.js",
+ "sourceRoot": "",
+ "names": [
+  "Factory",
+  "getElementFactory",
+  "getStore",
+  "getDataConf",
+  "dialogType",
+  "dataId",
+  "split",
+  "getSourceConfig"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;;;AAEA;;;;AAEA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA;AAOJC,mBAPI,+BAOe;AACjB;AACD,GATG;AAWJC,UAXI,sBAWM;AACR;AACD,GAbG;AAeJC,aAfI,uBAeQC,UAfR,EAemB;AACrB,QAAMC,SAASD,WAAWE,KAAX,CAAiB,GAAjB,EAAsB,CAAtB,CAAf;AACA,WAAO,mBAAMC,eAAN,CAAsBF,MAAtB,EAA8BD,UAA9B,CAAP;AACD;AAlBG,EAAN;;kBAsBeJ,O"
+}

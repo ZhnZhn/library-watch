@@ -4,7 +4,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
 
 var _react = require('react');
 
@@ -82,8 +88,6 @@ var _WatchItem2 = _interopRequireDefault(_WatchItem);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var DRAG = {
   GROUP: 'GROUP',
   LIST: 'LIST',
@@ -145,7 +149,7 @@ var styles = {
   }
 };
 
-var WatchBrowser = _react2.default.createClass(_extends({
+var WatchBrowser = _react2.default.createClass((0, _extends3.default)({
   displayName: 'WatchBrowser'
 }, _WithDnDStyle2.default, (0, _createHandlerDnDGroup2.default)(DRAG, _WatchActions2.default), (0, _createHandlerDnDList2.default)(DRAG, _WatchActions2.default), (0, _createHandlerDnDItem2.default)(DRAG, _WatchActions2.default), {
   getInitialState: function getInitialState() {
@@ -170,7 +174,7 @@ var WatchBrowser = _react2.default.createClass(_extends({
   _calcScrollClass: function _calcScrollClass(isShowFind, isModeEdit) {
     var _classNames;
 
-    return (0, _classnames2.default)((_classNames = {}, _defineProperty(_classNames, CLASS.BROWSER_WATCH, !(isShowFind && isModeEdit)), _defineProperty(_classNames, CLASS.BROWSER_WATCH__30, isShowFind && !isModeEdit || !isShowFind && isModeEdit), _defineProperty(_classNames, CLASS.BROWSER_WATCH__60, isShowFind && isModeEdit), _classNames));
+    return (0, _classnames2.default)((_classNames = {}, (0, _defineProperty3.default)(_classNames, CLASS.BROWSER_WATCH, !(isShowFind && isModeEdit)), (0, _defineProperty3.default)(_classNames, CLASS.BROWSER_WATCH__30, isShowFind && !isModeEdit || !isShowFind && isModeEdit), (0, _defineProperty3.default)(_classNames, CLASS.BROWSER_WATCH__60, isShowFind && isModeEdit), _classNames));
   },
   componentWillMount: function componentWillMount() {
     this.unsubscribe = this.props.store.listen(this._onStore);
@@ -411,31 +415,35 @@ var WatchBrowser = _react2.default.createClass(_extends({
           onClose: this._handlerHide
         },
         _react2.default.createElement(_ButtonSave2.default, {
-          store: store,
-          style: styles.btCircle
+          className: 'bt__watch__caption',
+          store: store
         }),
         _react2.default.createElement(_ButtonCircle2.default, {
+          className: 'bt__watch__caption',
           caption: _captionEV,
           title: _titleEV,
-          style: styles.btCircle,
+          isWithoutDefault: true,
           onClick: this._handlerToggleEditMode
         }),
         _react2.default.createElement(_ButtonCircle2.default, {
+          className: 'bt__watch__caption',
           caption: 'F',
           title: 'Show/Hide : Find Item Input',
-          style: styles.btCircle,
+          isWithoutDefault: true,
           onClick: this._handlerToggleFindInput
         }),
         !isDoubleWatch && _react2.default.createElement(_ButtonCircle2.default, {
+          className: 'bt__watch__caption',
           caption: 'B',
           title: 'BackUp Watch Items to JSON File',
-          style: styles.btCircle,
+          isWithoutDefault: true,
           onClick: _WatchActions2.default.backupToJson
         }),
         !isDoubleWatch && _react2.default.createElement(_ButtonCircle2.default, {
+          className: 'bt__watch__caption',
           caption: 'L',
           title: 'Load Watch Items from JSON File',
-          style: styles.btCircleRight,
+          isWithoutDefault: true,
           onClick: _ComponentActions2.default.showModalDialog.bind(null, _Type.ModalDialog.LOAD_FILE, {
             onLoad: _WatchActions2.default.loadFromJson
           })
@@ -453,4 +461,4 @@ var WatchBrowser = _react2.default.createClass(_extends({
 }));
 
 exports.default = WatchBrowser;
-//# sourceMappingURL=WatchBrowser.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\WatchBrowser.js.map

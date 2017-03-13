@@ -87,12 +87,14 @@ var ButtonSave = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var style = this.props.style,
+      var _props = this.props,
+          className = _props.className,
+          style = _props.style,
           isWatchEdited = this.state.isWatchEdited,
           _style = isWatchEdited ? style : Object.assign({}, style, STYLE.NOT_WATCH_EDITED);
 
-
       return _react2.default.createElement(_ButtonCircle2.default, {
+        className: className,
         caption: CAPTION,
         title: TITLE,
         style: _style,

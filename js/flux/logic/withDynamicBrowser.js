@@ -14,12 +14,13 @@ var _SourceBrowserDynamic2 = _interopRequireDefault(_SourceBrowserDynamic);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var WithBrowserDynamic = {
+var withDynamicBrowser = {
    createBrowserDynamic: function createBrowserDynamic(_ref) {
       var browserType = _ref.browserType,
           _ref$caption = _ref.caption,
           caption = _ref$caption === undefined ? '' : _ref$caption,
-          sourceMenuUrl = _ref.sourceMenuUrl;
+          sourceMenuUrl = _ref.sourceMenuUrl,
+          rowClass = _ref.rowClass;
 
       return _react2.default.createElement(_SourceBrowserDynamic2.default, {
          key: browserType,
@@ -27,10 +28,11 @@ var WithBrowserDynamic = {
          store: this.getStore(),
          isInitShow: true,
          caption: caption,
-         sourceMenuUrl: sourceMenuUrl
+         sourceMenuUrl: sourceMenuUrl,
+         rowClass: rowClass
       });
    }
 };
 
-exports.default = WithBrowserDynamic;
-//# sourceMappingURL=WithBrowserDynamic.js.map
+exports.default = withDynamicBrowser;
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\logic\withDynamicBrowser.js.map

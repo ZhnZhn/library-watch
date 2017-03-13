@@ -47,7 +47,7 @@ class ButtonSave extends Component {
   }
 
   render(){
-    const { style } = this.props
+    const { className, style } = this.props
         , { isWatchEdited } = this.state
         , _style = (isWatchEdited)
              ? style
@@ -55,6 +55,7 @@ class ButtonSave extends Component {
 
     return (
       <ButtonCircle
+         className={className}
          caption={CAPTION}
          title={TITLE}
          style={_style}
