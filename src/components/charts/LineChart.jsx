@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import ChartComponent from './ChartComponent';
 
-const LineChart =React.createClass({
+class LineChart extends Component {
+
+	_refChart = node => this.chart_instance = node
+
 	render() {
 		return (
 			<ChartComponent
 				{...this.props}
-				ref={ref => this.chart_instance = ref && ref.chart_instance}
+				ref={this._refChart}
 				type="line"
 			/>
 		);
 	}
-});
+}
 
 export default LineChart

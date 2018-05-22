@@ -1,23 +1,38 @@
-import React, {PropTypes} from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
+//import ReactDOM from 'react-dom';
 import Chart from 'chart.js';
 import deepEqual from './deepEqual';
 
-Chart.defaults.global.defaultFontColor = 'black';
-Chart.defaults.global.defaultFontSize = 14;
-Chart.defaults.global.defaultFontStyle = 'bold';
+Object.assign(Chart.defaults.global, {
+	defaultFontColor: 'black',
+  defaultFontSize: 14,
+  defaultFontStyle: 'bold'
+})
 
+Object.assign(Chart.defaults.global.tooltips, {
+	titleFontColor: '#a487d4',
+	titleFontSize: 16,
+	bodyFontColor: '#80c040',
+	bodyFontSize: 16
+})
 
-Chart.defaults.global.tooltips.titleFontColor = '#a487d4';
-Chart.defaults.global.tooltips.titleFontSize =  16;
-Chart.defaults.global.tooltips.bodyFontColor = '#80c040';
-Chart.defaults.global.tooltips.bodyFontSize = 16;
+const _objectWithoutProperties = (obj, keys) => {
+	const target = {};
+	let i;
+	for (i in obj) {
+		if (keys.indexOf(i) >= 0) continue;
+		if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
+		target[i] = obj[i];
+	}
+	return target;
+}
 
-const ChartComponent = React.createClass({
+class ChartComponent extends Component {
 
-	displayName: 'ChartComponent',
+	//displayName: 'ChartComponent',
 
-	propTypes: {
+  /*
+	static propTypes = {
 		data: PropTypes.object.isRequired,
 		height: PropTypes.number,
 		legend: PropTypes.object,
@@ -27,9 +42,9 @@ const ChartComponent = React.createClass({
 		type: PropTypes.oneOf(['doughnut', 'pie', 'line', 'bar', 'horizontalBar', 'radar', 'polarArea']),
 		width: PropTypes.number
 	},
+	*/
 
-	getDefaultProps() {
-		return {
+	static deffaultProps = {
 			legend: {
 				display: true,
 				position: 'bottom'
@@ -38,16 +53,15 @@ const ChartComponent = React.createClass({
 			height: 150,
 			width: 300,
 			redraw: false
-		};
-	},
+	}
 
 	componentWillMount() {
 		this.chart_instance = undefined;
-	},
+	}
 
 	componentDidMount() {
 		this.renderChart();
-	},
+	}
 
 	componentDidUpdate() {
 		if (this.props.redraw) {
@@ -56,30 +70,23 @@ const ChartComponent = React.createClass({
 		} else {
 			this.updateChart();
 		}
-	},
+	}
 
-	_objectWithoutProperties (obj, keys) {
-		var target = {};
-		for (var i in obj) {
-			if (keys.indexOf(i) >= 0) continue;
-			if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-			target[i] = obj[i];
-		}
-		return target;
-	},
 
 	shouldComponentUpdate(nextProps, nextState) {
-		const ignoredProperties = ['id', 'width', 'height', 'onElementsClick'];
-		const compareNext = this._objectWithoutProperties(nextProps, ignoredProperties);
-		const compareNow = this._objectWithoutProperties(this.props, ignoredProperties);
+		const ignoredProperties = [
+			       'id', 'width', 'height', 'onElementsClick'
+		      ];
+		const compareNext = _objectWithoutProperties(nextProps, ignoredProperties);
+		const compareNow = _objectWithoutProperties(this.props, ignoredProperties);
 		return !deepEqual(compareNext, compareNow, {strict: true});
-	},
+	}
 
 	componentWillUnmount() {
 		this.chart_instance.destroy();
-	},
+	}
 
-	updateChart() {
+	updateChart = () => {
 		const {data, options} = this.props;
 
 		if (!this.chart_instance) return;
@@ -94,39 +101,41 @@ const ChartComponent = React.createClass({
 		};
 
 		this.chart_instance.update();
-	},
+	}
 
-	renderChart() {
-    //legend
+	renderChart = () => {
 		const {data, options, type} = this.props;
-		const node = ReactDOM.findDOMNode(this);
-    
-		this.chart_instance = new Chart(node, {
+		this.chart_instance = new Chart(this.rootNode, {
 			type,
 			data,
 			options
 		});
-	},
+	}
 
-	handleOnClick(evt) {
+	handleOnClick = (evt) => {
 		const elems = this.chart_instance.getElementsAtEvent(evt);
 		if (elems.length) {
 			const {onElementsClick} = this.props;
 			onElementsClick(elems);
 		}
-	},
+	}
+
+  _refRoot = n => this.rootNode = n
 
 	render() {
-		const { height, width, onElementsClick } = this.props;
-
+		const { height, width, onElementsClick } = this.props
+		    , _onClick = typeof onElementsClick === 'function'
+		         ? this.handleOnClick
+				     : null;
 		return (
 			<canvas
+				 ref={this._refRoot}
 				 height={height}
 				 width={width}
-				 onClick={typeof onElementsClick === 'function' ? this.handleOnClick : null}
+				 onClick={_onClick}
 			/>
 		);
 	}
-});
+}
 
 export default ChartComponent;

@@ -5,13 +5,16 @@ import NpmRecentMonthDownloads from '../items/NpmRecentMonthDownloads';
 
 const MAX_ITEMS = 30;
 
-const _fnTransformDownloads = (downloads=[{ day: '0-0-0', downloads : 0}]) => {
+/* Irregular Time Inrevals */
+const _fnTransformDownloads = (downloads=[{ day: '1970-01-01', downloads : 0}]) => {
     const labels = []
         , data = []
         , itemLen = downloads.length
         , fromDate = downloads[0].day
-        , toDate = downloads[itemLen-1].day
-        , itemStep = (itemLen > MAX_ITEMS)
+        , toDate = itemLen > 0
+            ? downloads[itemLen-1].day
+            : fromDate
+        , itemStep = itemLen > MAX_ITEMS
             ? Math.round(itemLen/MAX_ITEMS)
             : 1;
     let sumDownloads = 0;
@@ -28,37 +31,38 @@ const _fnTransformDownloads = (downloads=[{ day: '0-0-0', downloads : 0}]) => {
            const item = downloads[index-2]
               , { day:date, downloads:value } = item
            /* eslint-disable no-unused-vars */
-               , [ y, m, d ] = date.split('-');
+              , [ y, m, d ] = date.split('-');
            /* eslint-disable no-unused-vars */
            labels.push(`${m}-${d}`);
            data.push(value);
          }
       }
 
-      sumDownloads = sumDownloads + value;
+      sumDownloads += value;
     })
 
     return {sumDownloads, fromDate, toDate, labels, data};
 }
 
+
 const fNpmDownloads = function({
   factory, option, json, parentProps, onCloseItem, onWatchItem
 }){
   const { repo, requestType, chartType, browserType } = option
-      , { downloads } = json
+      , { downloads, package:packageName } = json
       , { sumDownloads, fromDate, toDate, labels, data } = _fnTransformDownloads(downloads)
-      , key = `${repo}_${requestType}_${fromDate}`
+      , key = `${repo}_${requestType}_${fromDate}`;
 
   return factory.createElement(NpmRecentMonthDownloads, {
-     key : key,
-     packageName : json.package,
-     requestType : requestType,
-     caption : json.package,
-     sumDownloads : sumDownloads,
-     fromDate : fromDate,
-     toDate : toDate,
-     labels : labels,
-     data : data,
+     key,
+     packageName,
+     caption: packageName,
+     requestType,
+     sumDownloads,
+     fromDate,
+     toDate,
+     labels,
+     data,
      onCloseItem : onCloseItem.bind(null, chartType, browserType, key),
      //onWatchItem : onWatchItem,
      ...parentProps

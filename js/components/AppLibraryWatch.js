@@ -38,10 +38,6 @@ var _DialogContainer = require('./zhnContainers/DialogContainer');
 
 var _DialogContainer2 = _interopRequireDefault(_DialogContainer);
 
-var _ConsentCookiePopup = require('./zhnAtoms/ConsentCookiePopup');
-
-var _ConsentCookiePopup2 = _interopRequireDefault(_ConsentCookiePopup);
-
 var _RouterModalDialog = require('./dialogs/RouterModalDialog');
 
 var _RouterModalDialog2 = _interopRequireDefault(_RouterModalDialog);
@@ -78,8 +74,7 @@ var AppLibraryWatch = function AppLibraryWatch(props) {
          store: _AppStore2.default,
          showAction: _ComponentActions.ComponentActionTypes.SHOW_MODAL_DIALOG,
          routerDialog: _RouterModalDialog2.default
-      }),
-      _react2.default.createElement(_ConsentCookiePopup2.default, null)
+      })
    );
 };
 

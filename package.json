@@ -25,7 +25,7 @@
     "dependencies": {
       "babel-runtime": "npm:babel-runtime@^6.23.0",
       "browser-filesaver": "npm:browser-filesaver@^1.1.1",
-      "chart.js": "npm:chart.js@^2.4.0",
+      "chart.js": "npm:chart.js@^2.7.1",
       "classnames": "npm:classnames@^2.2.5",
       "interact.js": "npm:interact.js@^1.2.6",
       "localforage": "npm:localforage@^1.5.0",
@@ -64,7 +64,7 @@
     "gulp-replace": "^0.5.4",
     "gulp-rev": "^7.1.2",
     "html-webpack-plugin": "^2.21.0",
-    "jspm": "^0.16.45",
+    "jspm": "^0.16.53",
     "react-addons-test-utils": "^15.4.2",
     "sinon": "^1.17.5",
     "webpack": "^1.14.0"

@@ -4,9 +4,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends2 = require('babel-runtime/helpers/extends');
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
+
+var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
 
 var _DateUtils = require('../../utils/DateUtils');
 
@@ -20,14 +24,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var MAX_ITEMS = 30;
 
+/* Irregular Time Inrevals */
 var _fnTransformDownloads = function _fnTransformDownloads() {
-    var downloads = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [{ day: '0-0-0', downloads: 0 }];
+    var downloads = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [{ day: '1970-01-01', downloads: 0 }];
 
     var labels = [],
         data = [],
         itemLen = downloads.length,
         fromDate = downloads[0].day,
-        toDate = downloads[itemLen - 1].day,
+        toDate = itemLen > 0 ? downloads[itemLen - 1].day : fromDate,
         itemStep = itemLen > MAX_ITEMS ? Math.round(itemLen / MAX_ITEMS) : 1;
     var sumDownloads = 0;
 
@@ -35,7 +40,7 @@ var _fnTransformDownloads = function _fnTransformDownloads() {
         var date = item.day,
             value = item.downloads,
             _date$split = date.split('-'),
-            _date$split2 = _slicedToArray(_date$split, 3),
+            _date$split2 = (0, _slicedToArray3.default)(_date$split, 3),
             y = _date$split2[0],
             m = _date$split2[1],
             d = _date$split2[2];
@@ -49,7 +54,7 @@ var _fnTransformDownloads = function _fnTransformDownloads() {
                     _date = _item.day,
                     _value = _item.downloads,
                     _date$split3 = _date.split('-'),
-                    _date$split4 = _slicedToArray(_date$split3, 3),
+                    _date$split4 = (0, _slicedToArray3.default)(_date$split3, 3),
                     _y = _date$split4[0],
                     _m = _date$split4[1],
                     _d = _date$split4[2];
@@ -59,7 +64,7 @@ var _fnTransformDownloads = function _fnTransformDownloads() {
             }
         }
 
-        sumDownloads = sumDownloads + value;
+        sumDownloads += value;
     });
 
     return { sumDownloads: sumDownloads, fromDate: fromDate, toDate: toDate, labels: labels, data: data };
@@ -78,6 +83,7 @@ var fNpmDownloads = function fNpmDownloads(_ref) {
         chartType = option.chartType,
         browserType = option.browserType,
         downloads = json.downloads,
+        packageName = json.package,
         _fnTransformDownloads2 = _fnTransformDownloads(downloads),
         sumDownloads = _fnTransformDownloads2.sumDownloads,
         fromDate = _fnTransformDownloads2.fromDate,
@@ -86,11 +92,11 @@ var fNpmDownloads = function fNpmDownloads(_ref) {
         data = _fnTransformDownloads2.data,
         key = repo + '_' + requestType + '_' + fromDate;
 
-    return factory.createElement(_NpmRecentMonthDownloads2.default, _extends({
+    return factory.createElement(_NpmRecentMonthDownloads2.default, (0, _extends3.default)({
         key: key,
-        packageName: json.package,
+        packageName: packageName,
+        caption: packageName,
         requestType: requestType,
-        caption: json.package,
         sumDownloads: sumDownloads,
         fromDate: fromDate,
         toDate: toDate,
@@ -101,4 +107,4 @@ var fNpmDownloads = function fNpmDownloads(_ref) {
 };
 
 exports.default = fNpmDownloads;
-//# sourceMappingURL=fNpmDownloads.js.map
+//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\factories\fNpmDownloads.js.map

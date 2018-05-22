@@ -1,1 +1,15 @@
-{"version":3,"sources":["../../../src/components/charts/LineChart.jsx"],"names":["LineChart","createClass","render","props","chart_instance","ref"],"mappings":";;;;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,YAAW,gBAAMC,WAAN,CAAkB;AAAA;AAClCC,OADkC,oBACzB;AAAA;;AACR,SACC,qEACK,KAAKC,KADV;AAEC,QAAK;AAAA,WAAO,MAAKC,cAAL,GAAsBC,QAAOA,KAAID,cAAxC;AAAA,IAFN;AAGC,SAAK;AAHN,KADD;AAOA;AATiC,CAAlB,CAAjB;;kBAYeJ,S","file":"LineChart.js","sourcesContent":["import React from 'react';\r\n\r\nimport ChartComponent from './ChartComponent';\r\n\r\nconst LineChart =React.createClass({\r\n\trender() {\r\n\t\treturn (\r\n\t\t\t<ChartComponent\r\n\t\t\t\t{...this.props}\r\n\t\t\t\tref={ref => this.chart_instance = ref && ref.chart_instance}\r\n\t\t\t\ttype=\"line\"\r\n\t\t\t/>\r\n\t\t);\r\n\t}\r\n});\r\n\r\nexport default LineChart\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/charts/LineChart.js"
+ ],
+ "file": "../../../src/components/charts/LineChart.js",
+ "names": [
+  "LineChart",
+  "_refChart",
+  "chart_instance",
+  "node",
+  "props"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;;;;;IAEMA,S;;;;;;;;;;;;;;wMAELC,S,GAAY;AAAA,UAAQ,MAAKC,cAAL,GAAsBC,IAA9B;AAAA,G;;;;;2BAEH;AACR,UACC,mFACK,KAAKC,KADV;AAEC,SAAK,KAAKH,SAFX;AAGC,UAAK;AAHN,MADD;AAOA;;;;;kBAGaD,S"
+}

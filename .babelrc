@@ -1,11 +1,11 @@
  {
-    "ignore" : [
-       "**/__tests__/*"
-     ],
     "only" : [
                 "*.js",
                 "*.jsx",
                 "*.es6"
+     ],
+     "ignore" : [
+       "**/__tests__/*.test.js"
      ],
      "presets" : [
                    "es2015",
