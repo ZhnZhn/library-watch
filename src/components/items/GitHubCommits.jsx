@@ -1,8 +1,8 @@
 import React from 'react';
 import timeago from 'timeago.js';
 
+import Caption from './ItemCaption'
 import ButtonCircle from '../zhnAtoms/ButtonCircle';
-import SvgClose from '../zhnAtoms/SvgClose';
 import ShowHide from '../zhnAtoms/ShowHide';
 import DateAgo from '../zhnAtoms/DateAgo';
 
@@ -15,19 +15,7 @@ const styles = {
     marginRight: '25px',
     //marginRight: '10px',
     position : 'relative'
-  },
-  headerDiv: {
-    backgroundColor: '#232F3B',
-    borderTopLeftRadius: '10px',
-    borderTopRightRadius: '10px',
-    paddingTop: '4px',
-    paddingLeft: '10px',
-    lineHeight: 1.5,
-    //height: '25px',
-    //width: '600px'
-    width : '100%',
-    height: '30px'
-  },
+  },  
   captionSpanOpen : {
     display : 'inline-block',
     color: 'rgba(164, 135, 212, 1)',
@@ -94,7 +82,7 @@ const GitHubCommits = React.createClass({
                    dateAgo={_dateAgo}
                    date={_dateTime}
                 />
-              </div>              
+              </div>
                 <div>
                   {message}
                 </div>
@@ -114,7 +102,7 @@ const GitHubCommits = React.createClass({
 
      return (
        <div style={styles.rootDiv}>
-         <div style={styles.headerDiv}>
+         <Caption onClose={onCloseItem}>
            <span
               className="not-selected"
               title={caption}
@@ -131,8 +119,7 @@ const GitHubCommits = React.createClass({
               style={styles.BTN_CIRCLE}
               onClick={this._handlerClickWatch}
            />
-           <SvgClose onClose={onCloseItem} />
-         </div>
+         </Caption>
          <ShowHide isShow={isShow}>
            {this._renderCommits(commits)}
          </ShowHide>

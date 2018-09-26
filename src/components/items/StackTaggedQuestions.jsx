@@ -1,7 +1,6 @@
 import React from 'react';
 
-//import ButtonCircle from '../zhnAtoms/ButtonCircle';
-import SvgClose from '../zhnAtoms/SvgClose';
+import Caption from './ItemCaption'
 import ShowHide from '../zhnAtoms/ShowHide';
 import DateAgo from '../zhnAtoms/DateAgo';
 
@@ -14,18 +13,6 @@ const styles = {
     marginRight: '25px',
     //marginRight: '10px',
     position : 'relative'
-  },
-  headerDiv: {
-    backgroundColor: '#232F3B',
-    borderTopLeftRadius: '10px',
-    borderTopRightRadius: '10px',
-    paddingTop: '4px',
-    paddingLeft: '10px',
-    lineHeight: 1.5,
-    //height: '25px',
-    //width: '600px'
-    width : '100%',
-    height: '30px'
   },
   captionSpanOpen : {
     display : 'inline-block',
@@ -163,7 +150,7 @@ const StackTaggedQuestions = React.createClass({
 
      return (
        <div style={styles.rootDiv}>
-         <div style={styles.headerDiv}>
+         <Caption onClose={onCloseItem}>
            <span
               className="not-selected"
               title={caption}
@@ -176,17 +163,8 @@ const StackTaggedQuestions = React.createClass({
              <span style={{ color: '#a9a9a9', paddingLeft: '12px' }}>
                 {_items_count}
              </span>
-           </span>
-           {/*
-           <ButtonCircle
-              caption={'W'}
-              title="Add to Watch"
-              style={styles.BTN_CIRCLE}
-              onClick={this._handlerClickWatch}
-           />
-           */}
-           <SvgClose onClose={onCloseItem} />
-         </div>
+           </span>                     
+         </Caption>
          <ShowHide isShow={isShow}>
            {this._renderCommits(items)}
          </ShowHide>

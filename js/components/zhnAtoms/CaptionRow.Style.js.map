@@ -1,9 +1,9 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_Library_Watch\\src\\components\\zhnAtoms\\CaptionRow.Style.js",
- "file": "D:\\_Dev\\_React\\_Library_Watch\\js\\components\\zhnAtoms\\CaptionRow.Style.js",
- "sourceRoot": "",
+ "sources": [
+  "../../../src/components/zhnAtoms/CaptionRow.Style.js"
+ ],
+ "file": "../../../src/components/zhnAtoms/CaptionRow.Style.js",
  "names": [
   "STYLE",
   "ROOT",
@@ -21,7 +21,8 @@
   "paddingRight",
   "SVG_CLOSE",
   "position",
-  "top"
+  "top",
+  "right"
  ],
- "mappings": ";;;;;;AACA,IAAMA,QAAS;AACbC,QAAM;AACJC,qBAAiB,SADb;AAEJC,WAAO,wBAFH;AAGJ;AACAC,gBAAY,KAJR;AAKJ;AACA;AACAC,gBAAY,KAPR;AAQJC,iBAAa,MART;AASJ;AACAC,kBAAc,MAVV;AAWJC,yBAAqB,KAXjB;AAYJC,0BAAsB;AAZlB,GADO;AAebC,QAAM;AACJC,cAAU,MADN;AAEJC,gBAAY,KAFR;AAGJC,kBAAc;AAHV,GAfO;AAoBbC,aAAW;AACTC,cAAU,UADD;AAETC,SAAK;AAFI;AApBE,CAAf;;kBA0BehB,K"
+ "mappings": ";;;;;;AACA,IAAMA,QAAS;AACbC,QAAM;AACJC,qBAAiB,SADb;AAEJC,WAAO,wBAFH;AAGJ;AACAC,gBAAY,KAJR;AAKJ;AACA;AACAC,gBAAY,KAPR;AAQJC,iBAAa,MART;AASJ;AACAC,kBAAc,MAVV;AAWJC,yBAAqB,KAXjB;AAYJC,0BAAsB;AAZlB,GADO;AAebC,QAAM;AACJC,cAAU,MADN;AAEJC,gBAAY,KAFR;AAGJC,kBAAc;AAHV,GAfO;AAoBbC,aAAW;AACTC,cAAU,UADD;AAETC,SAAK,CAFI;AAGTC,WAAO;AAHE;AApBE,CAAf;;kBA2BejB,K"
 }

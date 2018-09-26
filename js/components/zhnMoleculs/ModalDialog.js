@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -20,13 +24,16 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp;
+//import PropTypes from 'prop-types'
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _SvgClose = require('../zhnAtoms/SvgClose');
+var _DialogCaption = require('./DialogCaption');
 
-var _SvgClose2 = _interopRequireDefault(_SvgClose);
+var _DialogCaption2 = _interopRequireDefault(_DialogCaption);
 
 var _ToolBarButton = require('../header/ToolBarButton');
 
@@ -34,7 +41,7 @@ var _ToolBarButton2 = _interopRequireDefault(_ToolBarButton);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var CLASS = {
+var CL = {
   SHOWING: 'show-popup',
   HIDING: 'hide-popup'
 };
@@ -61,13 +68,6 @@ var STYLE = {
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
   },
-  CAPTON_DIV: {
-    padding: '5px',
-    color: 'rgba(164, 135, 212,1)',
-    backgroundColor: '#232F3B',
-    textAlign: 'center',
-    fontSize: '18px'
-  },
   COMMAND_DIV: {
     cursor: 'default',
     float: 'right',
@@ -77,7 +77,7 @@ var STYLE = {
   }
 };
 
-var ModalDialog = function (_Component) {
+var ModalDialog = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(ModalDialog, _Component);
 
   function ModalDialog(props) {
@@ -106,6 +106,23 @@ var ModalDialog = function (_Component) {
     _this.state = {};
     return _this;
   }
+  /*
+   static propTypes = {
+     isShow: PropTypes.bool,
+     isWithButton: PropTypes.bool,
+     timeout: PropTypes.number,
+     caption: PropTypes.string,
+     style: PropTypes.object,
+       isNotUpdate: PropTypes.bool,
+       children: PropTypes.oneOfType([
+       PropTypes.arrayOf(PropTypes.node),
+       PropTypes.node
+     ]),
+     commandButtons: PropTypes.arrayOf(PropTypes.node),
+     onClose: PropTypes.func
+   }
+   */
+
 
   (0, _createClass3.default)(ModalDialog, [{
     key: 'shouldComponentUpdate',
@@ -148,7 +165,7 @@ var ModalDialog = function (_Component) {
         _style = STYLE.HIDE;
         this.wasClosing = false;
       } else {
-        _className = isShow ? CLASS.SHOWING : CLASS.HIDING;
+        _className = isShow ? CL.SHOWING : CL.HIDING;
         _style = isShow ? STYLE.SHOW : STYLE.HIDE_POPUP;
         if (!isShow) {
           this.wasClosing = true;
@@ -159,19 +176,13 @@ var ModalDialog = function (_Component) {
         'div',
         {
           className: _className,
-          style: Object.assign({}, STYLE.ROOT_DIV, style, _style),
+          style: (0, _extends3.default)({}, STYLE.ROOT_DIV, style, _style),
           onClick: this._handleClickDialog
         },
-        _react2.default.createElement(
-          'div',
-          { style: STYLE.CAPTON_DIV },
-          _react2.default.createElement(
-            'span',
-            null,
-            caption
-          ),
-          _react2.default.createElement(_SvgClose2.default, { onClose: onClose })
-        ),
+        _react2.default.createElement(_DialogCaption2.default, {
+          caption: caption,
+          onClose: onClose
+        }),
         _react2.default.createElement(
           'div',
           null,
@@ -182,25 +193,10 @@ var ModalDialog = function (_Component) {
     }
   }]);
   return ModalDialog;
-}(_react.Component);
-
-ModalDialog.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   isWithButton: true,
   isNotUpdate: false,
   timeout: 450
-};
-process.env.NODE_ENV !== "production" ? ModalDialog.propTypes = {
-  isShow: _react.PropTypes.bool,
-  isWithButton: _react.PropTypes.bool,
-  timeout: _react.PropTypes.number,
-  caption: _react.PropTypes.string,
-  style: _react.PropTypes.object,
-
-  isNotUpdate: _react.PropTypes.bool,
-
-  children: _react.PropTypes.oneOfType([_react.PropTypes.arrayOf(_react.PropTypes.node), _react.PropTypes.node]),
-  commandButtons: _react.PropTypes.arrayOf(_react.PropTypes.node),
-  onClose: _react.PropTypes.func
-} : void 0;
+}, _temp);
 exports.default = ModalDialog;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnMoleculs\ModalDialog.js.map
+//# sourceMappingURL=ModalDialog.js.map

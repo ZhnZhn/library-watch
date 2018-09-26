@@ -25,12 +25,22 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _class, _temp;
+//import PropTypes from 'prop-types'
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _isKeyEnter = require('./isKeyEnter');
+
+var _isKeyEnter2 = _interopRequireDefault(_isKeyEnter);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CL = {
+  ROW_CAPTION: 'zhn-oc not-selected',
+  SHOW_POPUP: 'show-popup'
+};
 
 var STYLE = {
   ROOT: {
@@ -73,10 +83,20 @@ var OpenClose2 = (_temp = _class = function (_Component) {
   function OpenClose2(props) {
     (0, _classCallCheck3.default)(this, OpenClose2);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (OpenClose2.__proto__ || Object.getPrototypeOf(OpenClose2)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (OpenClose2.__proto__ || Object.getPrototypeOf(OpenClose2)).call(this, props));
 
     _this._handleToggle = function () {
-      _this.setState({ isOpen: !_this.state.isOpen });
+      _this.setState(function (prevState) {
+        return {
+          isOpen: !prevState.isOpen
+        };
+      });
+    };
+
+    _this._handleKeyDown = function (event) {
+      if ((0, _isKeyEnter2.default)(event)) {
+        _this._handleToggle();
+      }
     };
 
     _this.state = {
@@ -84,6 +104,29 @@ var OpenClose2 = (_temp = _class = function (_Component) {
     };
     return _this;
   }
+  /*
+  static propTypes = {
+    isClose: PropTypes.bool,
+      style: PropTypes.object,
+    styleNotSelected: PropTypes.object,
+    styleCpationRow: PropTypes.object,
+    styleCaption: PropTypes.object,
+      caption: PropTypes.string,
+    fillOpen: PropTypes.string,
+    fillClose: PropTypes.string,
+      isDraggable: PropTypes.bool,
+    option: PropTypes.object,
+    onDragStart: PropTypes.func,
+    onDragEnter: PropTypes.func,
+    onDragOver: PropTypes.func,
+    onDragLeave: PropTypes.func,
+    onDrop: PropTypes.func,
+      children: PropTypes.oneOfType([
+       PropTypes.arrayOf(PropTypes.node),
+       PropTypes.node
+    ])
+  }
+  */
 
   (0, _createClass3.default)(OpenClose2, [{
     key: 'render',
@@ -91,6 +134,7 @@ var OpenClose2 = (_temp = _class = function (_Component) {
       var _props = this.props,
           style = _props.style,
           styleNotSelected = _props.styleNotSelected,
+          styleCaptionRow = _props.styleCaptionRow,
           styleCaption = _props.styleCaption,
           caption = _props.caption,
           fillOpen = _props.fillOpen,
@@ -121,7 +165,7 @@ var OpenClose2 = (_temp = _class = function (_Component) {
         _pathV = PATH_OPEN;
         _fillV = fillOpen;
         _styleCollapse = STYLE.BLOCK;
-        _classShow = 'show-popup';
+        _classShow = CL.SHOW_POPUP;
         _styleNotSelected = null;
       } else {
         _pathV = PATH_CLOSE;
@@ -137,9 +181,12 @@ var OpenClose2 = (_temp = _class = function (_Component) {
         _react2.default.createElement(
           'div',
           (0, _extends3.default)({
-            className: 'not-selected',
-            style: _styleNotSelected,
-            onClick: this._handleToggle
+            className: CL.ROW_CAPTION,
+            style: (0, _extends3.default)({}, styleCaptionRow, _styleNotSelected),
+            onClick: this._handleToggle,
+            tabIndex: '0',
+            role: 'menuitem',
+            onKeyDown: this._handleKeyDown
           }, _dragOption),
           _react2.default.createElement(
             'div',
@@ -154,7 +201,8 @@ var OpenClose2 = (_temp = _class = function (_Component) {
               _react2.default.createElement('path', {
                 d: _pathV,
                 fill: _fillV,
-                strokeWidth: '1', stroke: fillOpen
+                strokeWidth: '1',
+                stroke: fillOpen
               })
             )
           ),
@@ -181,26 +229,5 @@ var OpenClose2 = (_temp = _class = function (_Component) {
   fillOpen: FILL_OPEN,
   fillClose: FILL_CLOSE
 }, _temp);
-process.env.NODE_ENV !== "production" ? OpenClose2.propTypes = {
-  isClose: _react.PropTypes.bool,
-
-  style: _react.PropTypes.object,
-  styleNotSelected: _react.PropTypes.object,
-  styleCaption: _react.PropTypes.object,
-
-  caption: _react.PropTypes.string,
-  fillOpen: _react.PropTypes.string,
-  fillClose: _react.PropTypes.string,
-
-  isDraggable: _react.PropTypes.bool,
-  option: _react.PropTypes.object,
-  onDragStart: _react.PropTypes.func,
-  onDragEnter: _react.PropTypes.func,
-  onDragOver: _react.PropTypes.func,
-  onDragLeave: _react.PropTypes.func,
-  onDrop: _react.PropTypes.func,
-
-  children: _react.PropTypes.oneOfType([_react.PropTypes.arrayOf(_react.PropTypes.node), _react.PropTypes.node])
-} : void 0;
 exports.default = OpenClose2;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\OpenClose2.js.map
+//# sourceMappingURL=OpenClose2.js.map

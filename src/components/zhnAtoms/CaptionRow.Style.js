@@ -20,8 +20,9 @@ const STYLE =  {
     paddingRight: '8px'
   },
   SVG_CLOSE: {
-    position: 'relative',
-    top: '3px'
+    position: 'absolute',
+    top: 6,
+    right: 0    
   }
 };
 

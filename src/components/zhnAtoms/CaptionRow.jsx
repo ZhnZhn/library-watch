@@ -1,14 +1,15 @@
-import React, { PropTypes } from 'react'
+import React from 'react';
+//import PropTypes from 'prop-types';
 
 import STYLE from './CaptionRow.Style';
 import SvgClose from './SvgClose';
 
-const CLASS_NOT_SELECTED = "not-selected";
+const CL = "not-selected";
 
 const CaptionRow = ({ caption, children, styleRoot, onClose }) => (
   <div style={{ ...STYLE.ROOT, ...styleRoot }}>
      <span
-        className={CLASS_NOT_SELECTED}
+        className={CL}
         style={STYLE.SPAN}
      >
        {caption}
@@ -20,7 +21,7 @@ const CaptionRow = ({ caption, children, styleRoot, onClose }) => (
     />
   </div>
 );
-
+/*
 CaptionRow.propTypes = {
   caption: PropTypes.string,
   styleRoot: PropTypes.object,
@@ -30,9 +31,9 @@ CaptionRow.propTypes = {
   ]),
   onClose: PropTypes.func
 }
+*/
 CaptionRow.defaultProps = {
-  caption: '',
-  onClose: () => {}
+  caption: ''
 }
 
 

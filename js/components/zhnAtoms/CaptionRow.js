@@ -22,7 +22,9 @@ var _SvgClose2 = _interopRequireDefault(_SvgClose);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var CLASS_NOT_SELECTED = "not-selected";
+//import PropTypes from 'prop-types';
+
+var CL = "not-selected";
 
 var CaptionRow = function CaptionRow(_ref) {
   var caption = _ref.caption,
@@ -35,7 +37,7 @@ var CaptionRow = function CaptionRow(_ref) {
     _react2.default.createElement(
       'span',
       {
-        className: CLASS_NOT_SELECTED,
+        className: CL,
         style: _CaptionRow2.default.SPAN
       },
       caption
@@ -47,17 +49,20 @@ var CaptionRow = function CaptionRow(_ref) {
     })
   );
 };
-
-process.env.NODE_ENV !== "production" ? CaptionRow.propTypes = {
-  caption: _react.PropTypes.string,
-  styleRoot: _react.PropTypes.object,
-  children: _react.PropTypes.oneOfType([_react.PropTypes.arrayOf(_react.PropTypes.node), _react.PropTypes.node]),
-  onClose: _react.PropTypes.func
-} : void 0;
+/*
+CaptionRow.propTypes = {
+  caption: PropTypes.string,
+  styleRoot: PropTypes.object,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  onClose: PropTypes.func
+}
+*/
 CaptionRow.defaultProps = {
-  caption: '',
-  onClose: function onClose() {}
+  caption: ''
 };
 
 exports.default = CaptionRow;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\CaptionRow.js.map
+//# sourceMappingURL=CaptionRow.js.map

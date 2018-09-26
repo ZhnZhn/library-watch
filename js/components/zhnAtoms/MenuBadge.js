@@ -24,9 +24,15 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _ButtonCircle = require('./ButtonCircle2');
+
+var _ButtonCircle2 = _interopRequireDefault(_ButtonCircle);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ROOT_CLASS = "menu__badge";
+var CL = "menu__badge";
+//import PropTypes from 'prop-types'
+
 
 var STYLE = {
   OPEN: {
@@ -62,34 +68,47 @@ var MenuBadge = function (_Component) {
       }
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
+  /*
+  static propTypes = {
+    counter : PropTypes.oneOfType([
+                 PropTypes.number, PropTypes.string
+              ]),
+    isOpen : PropTypes.bool,
+    onBadgeOpen : PropTypes.func,
+    onBadgeClose : PropTypes.func
+  }
+  */
 
   (0, _createClass3.default)(MenuBadge, [{
     key: 'render',
+
+
+    /*
+    <span
+       className={CL}
+       style={_style}
+       onClick={this._handleClickBadge}
+    >
+       {counter}
+    </span>
+    */
+
     value: function render() {
       var _props = this.props,
           counter = _props.counter,
           isOpen = _props.isOpen,
-          _style = isOpen ? STYLE.OPEN : null;
+          _style = isOpen ? STYLE.OPEN : undefined;
 
-      return _react2.default.createElement(
-        'span',
-        {
-          className: ROOT_CLASS,
-          style: _style,
-          onClick: this._handleClickBadge
-        },
-        counter
-      );
+      return _react2.default.createElement(_ButtonCircle2.default, {
+        className: CL,
+        style: _style,
+        caption: counter,
+        onClick: this._handleClickBadge
+      });
     }
   }]);
   return MenuBadge;
 }(_react.Component);
 
-process.env.NODE_ENV !== "production" ? MenuBadge.propTypes = {
-  counter: _react.PropTypes.oneOfType([_react.PropTypes.number, _react.PropTypes.string]),
-  isOpen: _react.PropTypes.bool,
-  onBadgeOpen: _react.PropTypes.func,
-  onBadgeClose: _react.PropTypes.func
-} : void 0;
 exports.default = MenuBadge;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\MenuBadge.js.map
+//# sourceMappingURL=MenuBadge.js.map

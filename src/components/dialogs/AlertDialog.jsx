@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+//import PropTypes from 'prop-types'
 
 import ModalDialog from '../zhnMoleculs/ModalDialog'
 import DialogStyles from '../styles/DialogStyles'
@@ -31,8 +32,8 @@ const STYLE = {
 
 const ELLIPSIS = '...';
 
-//const AlertDialog = React.createClass({
 class AlertDialog extends Component {
+  /*
   static propTypes = {
     isShow: PropTypes.bool,
     data: PropTypes.shape({
@@ -42,6 +43,7 @@ class AlertDialog extends Component {
     }),
     onClose: PropTypes.func
   }
+  */
   static defaultProps = {
     data: {},
     onClose: () => {}
@@ -76,11 +78,10 @@ class AlertDialog extends Component {
          <div style={styles.rowDiv}>
             <p style={STYLE.DESCR}>{alertDescr}</p>
          </div>
-
       </ModalDialog>
     )
   }
 }
-//});
+
 
 export default AlertDialog

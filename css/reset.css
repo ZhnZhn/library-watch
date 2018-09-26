@@ -24,3 +24,17 @@ a:visited {
   /*color : #551a8b;*/
   color: gray;
 }
+
+button {
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  font-size: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+/*
+button:focus {
+  outline: 0;
+}
+*/

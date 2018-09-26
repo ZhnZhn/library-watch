@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -24,9 +28,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _SvgClose = require('../zhnAtoms/SvgClose');
+var _DialogCaption = require('./DialogCaption');
 
-var _SvgClose2 = _interopRequireDefault(_SvgClose);
+var _DialogCaption2 = _interopRequireDefault(_DialogCaption);
 
 var _ToolBarButton = require('../header/ToolBarButton');
 
@@ -49,13 +53,6 @@ var styles = {
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
   },
-  captionDiv: {
-    padding: '5px',
-    color: 'rgba(164, 135, 212,1)',
-    backgroundColor: '#232F3B',
-    textAlign: 'center',
-    fontSize: '18px'
-  },
   childrenDiv: {
     cursor: 'default'
   },
@@ -67,17 +64,44 @@ var styles = {
     marginRight: '4px'
   }
 };
+//import PropTypes from 'prop-types'
 
 var Dialog = function (_Component) {
   (0, _inherits3.default)(Dialog, _Component);
 
   function Dialog() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, Dialog);
-    return (0, _possibleConstructorReturn3.default)(this, (Dialog.__proto__ || Object.getPrototypeOf(Dialog)).apply(this, arguments));
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Dialog.__proto__ || Object.getPrototypeOf(Dialog)).call.apply(_ref, [this].concat(args))), _this), _this._refRootComp = function (node) {
+      return _this.rootComp = node;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
   (0, _createClass3.default)(Dialog, [{
     key: 'componentDidMount',
+
+    /*
+    static propTypes = {
+      isShow: PropTypes.bool,
+      caption: PropTypes.string,
+      children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+      ]),
+      commandButtons: PropTypes.arrayOf(PropTypes.node),
+      onShowChart: PropTypes.func,
+      onClose: PropTypes.func
+    }
+    */
+
     value: function componentDidMount() {
       _Interact2.default.makeDragable(this.rootComp);
     }
@@ -103,8 +127,6 @@ var Dialog = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       var _props = this.props,
           isShow = _props.isShow,
           caption = _props.caption,
@@ -118,22 +140,14 @@ var Dialog = function (_Component) {
       return _react2.default.createElement(
         'div',
         {
-          ref: function ref(c) {
-            return _this2.rootComp = c;
-          },
+          ref: this._refRootComp,
           className: _classShow,
-          style: Object.assign({}, styles.rootDiv, _styleShow)
+          style: (0, _extends3.default)({}, styles.rootDiv, _styleShow)
         },
-        _react2.default.createElement(
-          'div',
-          { style: styles.captionDiv },
-          _react2.default.createElement(
-            'span',
-            { className: 'not-selected' },
-            caption
-          ),
-          _react2.default.createElement(_SvgClose2.default, { onClose: onClose })
-        ),
+        _react2.default.createElement(_DialogCaption2.default, {
+          caption: caption,
+          onClose: onClose
+        }),
         _react2.default.createElement(
           'div',
           { style: styles.childrenDiv },
@@ -146,13 +160,5 @@ var Dialog = function (_Component) {
   return Dialog;
 }(_react.Component);
 
-process.env.NODE_ENV !== "production" ? Dialog.propTypes = {
-  isShow: _react.PropTypes.bool,
-  caption: _react.PropTypes.string,
-  children: _react.PropTypes.oneOfType([_react.PropTypes.arrayOf(_react.PropTypes.node), _react.PropTypes.node]),
-  commandButtons: _react.PropTypes.arrayOf(_react.PropTypes.node),
-  onShowChart: _react.PropTypes.func,
-  onClose: _react.PropTypes.func
-} : void 0;
 exports.default = Dialog;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnMoleculs\Dialog.js.map
+//# sourceMappingURL=Dialog.js.map

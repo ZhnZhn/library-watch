@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SvgClose from '../zhnAtoms/SvgClose';
+import Caption from './ItemCaption'
 import ShowHide from '../zhnAtoms/ShowHide';
 
 const styles = {
@@ -10,18 +10,6 @@ const styles = {
     marginRight: '25px',
     //marginRight: '10px',
     position : 'relative'
-  },
-  headerDiv: {
-    backgroundColor: '#232F3B',
-    borderTopLeftRadius: '10px',
-    borderTopRightRadius: '10px',
-    paddingTop: '4px',
-    paddingLeft: '10px',
-    lineHeight: 1.5,
-    //height: '25px',
-    //width: '600px'
-    width : '100%',
-    height: '30px'
   },
   captionSpanOpen : {
     display : 'inline-block',
@@ -125,7 +113,9 @@ const GitHubSearchInfo = React.createClass({
 
 
   _handlerToggleOpen(){
-    this.setState({ isShow : !this.state.isShow });
+    this.setState(prevState => ({
+      isShow: !prevState.isShow
+    }))
   },
 
   render(){
@@ -134,7 +124,7 @@ const GitHubSearchInfo = React.createClass({
         , { isShow } = this.state;
     return (
       <div style={styles.rootDiv}>
-        <div style={styles.headerDiv}>
+        <Caption onClose={onCloseItem}>
           <span
              className="not-selected"
              title={caption}
@@ -151,8 +141,7 @@ const GitHubSearchInfo = React.createClass({
               {pushed_at}
             </span>
           </span>
-          <SvgClose onClose={onCloseItem} />
-        </div>
+        </Caption>
         <ShowHide isShow={isShow}>
           <ItemDescription
             library={library}

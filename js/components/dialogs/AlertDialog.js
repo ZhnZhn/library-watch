@@ -20,6 +20,9 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp;
+//import PropTypes from 'prop-types'
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -62,9 +65,7 @@ var STYLE = {
 
 var ELLIPSIS = '...';
 
-//const AlertDialog = React.createClass({
-
-var AlertDialog = function (_Component) {
+var AlertDialog = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(AlertDialog, _Component);
 
   function AlertDialog() {
@@ -80,6 +81,18 @@ var AlertDialog = function (_Component) {
       }
       return true;
     }
+    /*
+    static propTypes = {
+      isShow: PropTypes.bool,
+      data: PropTypes.shape({
+        alertCaption: PropTypes.string,
+        alertItemId: PropTypes.string,
+        alertDescr: PropTypes.string
+      }),
+      onClose: PropTypes.func
+    }
+    */
+
   }, {
     key: 'render',
     value: function render() {
@@ -126,21 +139,9 @@ var AlertDialog = function (_Component) {
     }
   }]);
   return AlertDialog;
-}(_react.Component);
-//});
-
-AlertDialog.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   data: {},
   onClose: function onClose() {}
-};
-process.env.NODE_ENV !== "production" ? AlertDialog.propTypes = {
-  isShow: _react.PropTypes.bool,
-  data: _react.PropTypes.shape({
-    alertCaption: _react.PropTypes.string,
-    alertItemId: _react.PropTypes.string,
-    alertDescr: _react.PropTypes.string
-  }),
-  onClose: _react.PropTypes.func
-} : void 0;
+}, _temp);
 exports.default = AlertDialog;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\AlertDialog.js.map
+//# sourceMappingURL=AlertDialog.js.map

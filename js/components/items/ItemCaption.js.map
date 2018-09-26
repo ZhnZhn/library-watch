@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/ItemCaption.js"
+ ],
+ "file": "../../../src/components/items/ItemCaption.js",
+ "names": [
+  "CL",
+  "ROOT",
+  "BT_CLOSE",
+  "ItemCaption",
+  "children",
+  "onClose"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,KAAK;AACTC,QAAM,cADG;AAETC,YAAU;AAFD,CAAX;;AAKA,IAAMC,cAAc,SAAdA,WAAc;AAAA,MAClBC,QADkB,QAClBA,QADkB;AAAA,MAElBC,OAFkB,QAElBA,OAFkB;AAAA,SAIlB;AAAA;AAAA,MAAK,WAAWL,GAAGC,IAAnB;AACGG,YADH;AAEE;AACE,iBAAWJ,GAAGE,QADhB;AAEE,eAASG;AAFX;AAFF,GAJkB;AAAA,CAApB;;kBAaeF,W"
+}

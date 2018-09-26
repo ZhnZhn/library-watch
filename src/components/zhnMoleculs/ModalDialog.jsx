@@ -1,11 +1,12 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+//import PropTypes from 'prop-types'
 
-import SvgClose from '../zhnAtoms/SvgClose'
+import Caption from './DialogCaption'
 import ToolBarButton from '../header/ToolBarButton'
 
-const CLASS = {
-  SHOWING : 'show-popup',
-  HIDING : 'hide-popup'
+const CL = {
+  SHOWING: 'show-popup',
+  HIDING: 'hide-popup'
 };
 
 const STYLE = {
@@ -30,13 +31,6 @@ const STYLE = {
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
   },
-  CAPTON_DIV:{
-    padding: '5px',
-    color: 'rgba(164, 135, 212,1)',
-    backgroundColor: '#232F3B',
-    textAlign: 'center',
-    fontSize: '18px'
-  },
   COMMAND_DIV : {
      cursor: 'default',
      float: 'right',
@@ -47,6 +41,7 @@ const STYLE = {
 };
 
 class ModalDialog extends Component {
+  /*
    static propTypes = {
      isShow: PropTypes.bool,
      isWithButton: PropTypes.bool,
@@ -63,10 +58,11 @@ class ModalDialog extends Component {
      commandButtons: PropTypes.arrayOf(PropTypes.node),
      onClose: PropTypes.func
    }
+   */
    static defaultProps = {
-     isWithButton : true,
-     isNotUpdate : false,
-     timeout : 450
+     isWithButton: true,
+     isNotUpdate: false,
+     timeout: 450
    }
 
    constructor(props){
@@ -119,7 +115,7 @@ class ModalDialog extends Component {
       _style = STYLE.HIDE;
       this.wasClosing = false;
     } else {
-      _className = isShow ? CLASS.SHOWING : CLASS.HIDING;
+      _className = isShow ? CL.SHOWING : CL.HIDING;
       _style = isShow ? STYLE.SHOW : STYLE.HIDE_POPUP;
       if (!isShow){
         this.wasClosing = true;
@@ -129,20 +125,17 @@ class ModalDialog extends Component {
     return (
          <div
              className={_className}
-             style={Object.assign({}, STYLE.ROOT_DIV, style, _style)}
+             style={{ ...STYLE.ROOT_DIV, ...style, ..._style }}
              onClick={this._handleClickDialog}
          >
-              <div style={STYLE.CAPTON_DIV}>
-                 <span>{caption}</span>
-                 <SvgClose onClose={onClose} />
-              </div>
-
+             <Caption
+               caption={caption}
+               onClose={onClose}
+             />
              <div>
                {children}
              </div>
-
             {isWithButton && this._renderCommandButton(commandButtons, onClose)}
-
         </div>
     );
   }

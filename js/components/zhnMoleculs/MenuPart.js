@@ -18,6 +18,14 @@ var _OpenClose2 = _interopRequireDefault(_OpenClose);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import PropTypes from 'prop-types'
+
+var S = {
+  CAPTION_ROW: {
+    paddingLeft: 6
+  }
+};
+
 var _renderMenuItems = function _renderMenuItems(rowClass) {
   var items = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 
@@ -33,8 +41,10 @@ var _renderMenuItems = function _renderMenuItems(rowClass) {
       'div',
       {
         key: index,
+        tabIndex: 0,
         className: _className,
         onClick: item.onClick
+        //onKeyPress={item.onClick}
       },
       item.title,
       menuBadge
@@ -50,6 +60,7 @@ var MenuPart = function MenuPart(_ref) {
   return _react2.default.createElement(
     _OpenClose2.default,
     {
+      styleCaptionRow: S.CAPTION_ROW,
       caption: caption,
       isClose: isInitClose
     },
@@ -57,11 +68,13 @@ var MenuPart = function MenuPart(_ref) {
   );
 };
 
-process.env.NODE_ENV !== "production" ? MenuPart.propTypes = {
-  caption: _react.PropTypes.string,
-  items: _react.PropTypes.arrayOf(_react.PropTypes.object),
-  isInitClose: _react.PropTypes.bool
-} : void 0;
+/*
+MenuPart.propTypes = {
+  caption: PropTypes.string,
+  items: PropTypes.arrayOf(PropTypes.object),
+  isInitClose: PropTypes.bool
+}
+*/
 
 exports.default = MenuPart;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnMoleculs\MenuPart.js.map
+//# sourceMappingURL=MenuPart.js.map

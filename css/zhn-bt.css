@@ -1,0 +1,31 @@
+.zhn-bt-circle2 {
+  display: inline-block;
+  /*background-color: #949ab4;*/
+  background-color: #1b2836;
+  width: 32px;
+  line-height: 2.0;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  vertical-align: middle;
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+.zhn-bt-circle2:hover,
+.zhn-bt-circle2:focus {
+  outline: 0;
+  box-shadow: 0 5px 6px 0 rgba(0,0,0,0.3), 0 4px 15px 0 rgba(0,0,0,0.2);
+}
+
+.zhn-bt-circle2 > div {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background-color: transparent;
+  transition: background-color 200ms ease-out;
+}
+.zhn-bt-circle2:hover > div,
+.zhn-bt-circle2:hover > div {
+  background-color: rgba(0, 0, 0, 0.3);
+}

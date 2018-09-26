@@ -8,9 +8,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _SvgClose = require('../zhnAtoms/SvgClose');
+var _ItemCaption = require('./ItemCaption');
 
-var _SvgClose2 = _interopRequireDefault(_SvgClose);
+var _ItemCaption2 = _interopRequireDefault(_ItemCaption);
 
 var _ShowHide = require('../zhnAtoms/ShowHide');
 
@@ -25,18 +25,6 @@ var styles = {
     marginRight: '25px',
     //marginRight: '10px',
     position: 'relative'
-  },
-  headerDiv: {
-    backgroundColor: '#232F3B',
-    borderTopLeftRadius: '10px',
-    borderTopRightRadius: '10px',
-    paddingTop: '4px',
-    paddingLeft: '10px',
-    lineHeight: 1.5,
-    //height: '25px',
-    //width: '600px'
-    width: '100%',
-    height: '30px'
   },
   captionSpanOpen: {
     display: 'inline-block',
@@ -187,7 +175,11 @@ var GitHubSearchInfo = _react2.default.createClass({
     };
   },
   _handlerToggleOpen: function _handlerToggleOpen() {
-    this.setState({ isShow: !this.state.isShow });
+    this.setState(function (prevState) {
+      return {
+        isShow: !prevState.isShow
+      };
+    });
   },
   render: function render() {
     var _props = this.props,
@@ -204,8 +196,8 @@ var GitHubSearchInfo = _react2.default.createClass({
       'div',
       { style: styles.rootDiv },
       _react2.default.createElement(
-        'div',
-        { style: styles.headerDiv },
+        _ItemCaption2.default,
+        { onClose: onCloseItem },
         _react2.default.createElement(
           'span',
           {
@@ -229,8 +221,7 @@ var GitHubSearchInfo = _react2.default.createClass({
             null,
             pushed_at
           )
-        ),
-        _react2.default.createElement(_SvgClose2.default, { onClose: onCloseItem })
+        )
       ),
       _react2.default.createElement(
         _ShowHide2.default,

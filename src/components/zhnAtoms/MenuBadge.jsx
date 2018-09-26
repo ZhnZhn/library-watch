@@ -1,7 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+//import PropTypes from 'prop-types'
+import Button from './ButtonCircle2'
 
 
-const ROOT_CLASS = "menu__badge"
+const CL = "menu__badge";
 
 const STYLE = {
   OPEN : {
@@ -10,6 +12,7 @@ const STYLE = {
 }
 
 class MenuBadge extends Component {
+  /*
   static propTypes = {
     counter : PropTypes.oneOfType([
                  PropTypes.number, PropTypes.string
@@ -18,6 +21,7 @@ class MenuBadge extends Component {
     onBadgeOpen : PropTypes.func,
     onBadgeClose : PropTypes.func
   }
+  */
 
   _handleClickBadge = (event) => {
      event.stopPropagation()
@@ -29,18 +33,28 @@ class MenuBadge extends Component {
      }
   }
 
+  /*
+  <span
+     className={CL}
+     style={_style}
+     onClick={this._handleClickBadge}
+  >
+     {counter}
+  </span>
+  */
+
   render(){
     const { counter, isOpen } = this.props
-         , _style = isOpen ? STYLE.OPEN : null;
+         , _style = isOpen
+             ? STYLE.OPEN : undefined;
     return (
-      <span
-         className={ROOT_CLASS}
-         style={_style}
-         onClick={this._handleClickBadge}
-      >
-         {counter}
-      </span>
-    )
+      <Button
+        className={CL}
+        style={_style}
+        caption={counter}
+        onClick={this._handleClickBadge}
+      />
+    );
   }
 }
 

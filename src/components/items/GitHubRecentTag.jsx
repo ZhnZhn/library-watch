@@ -1,7 +1,7 @@
 import React from 'react'
 
+import Caption from './ItemCaption'
 import ButtonCircle from '../zhnAtoms/ButtonCircle';
-import SvgClose from '../zhnAtoms/SvgClose';
 import ShowHide from '../zhnAtoms/ShowHide';
 import OpenClose2 from '../zhnAtoms/OpenClose2';
 
@@ -14,18 +14,6 @@ const styles = {
     marginRight: '25px',
     //marginRight: '10px',
     position : 'relative'
-  },
-  headerDiv: {
-    backgroundColor: '#232F3B',
-    borderTopLeftRadius: '10px',
-    borderTopRightRadius: '10px',
-    paddingTop: '4px',
-    paddingLeft: '10px',
-    lineHeight: 1.5,
-    //height: '25px',
-    //width: '600px'
-    width : '100%',
-    height: '30px'
   },
   captionSpanOpen : {
     display : 'inline-block',
@@ -192,7 +180,7 @@ const GitHubRecentTag = React.createClass({
         , { isShow, isDetail, json } = this.state;
     return (
       <div style={styles.rootDiv}>
-        <div style={styles.headerDiv}>
+        <Caption onClose={onCloseItem}>
           <span
              className="not-selected"
              title={caption}
@@ -217,9 +205,8 @@ const GitHubRecentTag = React.createClass({
              title="Load Tag Details"
              style={styles.BTN_CIRCLE}
              onClick={this._handlerClickDetail}
-          />
-          <SvgClose onClose={onCloseItem} />
-        </div>
+          />          
+        </Caption>
         <ShowHide isShow={isShow}>
           {isDetail && this._renderDetail(json)}
         </ShowHide>

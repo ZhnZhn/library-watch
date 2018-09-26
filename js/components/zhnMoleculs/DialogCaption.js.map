@@ -1,0 +1,25 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhnMoleculs/DialogCaption.js"
+ ],
+ "file": "../../../src/components/zhnMoleculs/DialogCaption.js",
+ "names": [
+  "CL",
+  "S",
+  "ROOT",
+  "color",
+  "backgroundColor",
+  "padding",
+  "textAlign",
+  "fontSize",
+  "SVG",
+  "position",
+  "top",
+  "right",
+  "DialogCaption",
+  "caption",
+  "onClose"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAGA;;;;;;AAEA,IAAMA,KAAK,cAAX;AAJA;;AAMA,IAAMC,IAAI;AACRC,QAAM;AACJC,WAAO,wBADH;AAEJC,qBAAiB,SAFb;AAGJC,aAAS,CAHL;AAIJC,eAAW,QAJP;AAKJC,cAAU;AALN,GADE;AAQRC,OAAK;AACHC,cAAU,UADP;AAEHC,SAAK,CAFF;AAGHC,WAAO;AAHJ;AARG,CAAV;;AAeA,IAAMC,gBAAgB,SAAhBA,aAAgB;AAAA,MACpBC,OADoB,QACpBA,OADoB;AAAA,MAEpBC,OAFoB,QAEpBA,OAFoB;AAAA,SAIpB;AAAA;AAAA,MAAK,OAAOb,EAAEC,IAAd;AACG;AAAA;AAAA,QAAM,WAAWF,EAAjB;AACGa;AADH,KADH;AAIG;AACG,aAAOZ,EAAEO,GADZ;AAEG,eAASM;AAFZ;AAJH,GAJoB;AAAA,CAAtB;AAcA;;;;;;;kBAOeF,a"
+}

@@ -1,6 +1,7 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+//import PropTypes from 'prop-types'
 
-import SvgClose from '../zhnAtoms/SvgClose';
+import Caption from './DialogCaption'
 import ToolBarButton from '../header/ToolBarButton';
 
 import Interact from '../../utils/Interact';
@@ -16,13 +17,6 @@ const styles = {
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
   },
-  captionDiv:{
-    padding: '5px',
-    color: 'rgba(164, 135, 212,1)',
-    backgroundColor: '#232F3B',
-    textAlign: 'center',
-    fontSize: '18px'
-  },
   childrenDiv : {
     cursor : 'default'
   },
@@ -32,10 +26,11 @@ const styles = {
      marginTop: '8px',
      marginBottom: '10px',
      marginRight: '4px'
-  }
+  },
 };
 
 class Dialog extends Component {
+  /*
   static propTypes = {
     isShow: PropTypes.bool,
     caption: PropTypes.string,
@@ -47,6 +42,7 @@ class Dialog extends Component {
     onShowChart: PropTypes.func,
     onClose: PropTypes.func
   }
+ */
 
   componentDidMount(){
      Interact.makeDragable(this.rootComp)
@@ -70,26 +66,30 @@ class Dialog extends Component {
     );
   }
 
+  _refRootComp = (node) => this.rootComp = node
+
   render(){
     const {
             isShow, caption, children, commandButtons,
             onShowChart, onClose
           } = this.props
-        , _styleShow = isShow ? {display: 'block'} : {display: 'none'}
-        , _classShow = isShow ? 'show-popup' : undefined;
+        , _styleShow = isShow
+             ? { display: 'block' }
+             : { display: 'none' }
+        , _classShow = isShow
+             ? 'show-popup'
+             : undefined;
 
     return (
       <div
-           ref={ c => this.rootComp = c }
+           ref={this._refRootComp}
            className={_classShow}
-           style={Object.assign({}, styles.rootDiv, _styleShow)}
+           style={{ ...styles.rootDiv, ..._styleShow }}
       >
-        <div style={styles.captionDiv}>
-          <span className="not-selected">
-             {caption}
-          </span>
-          <SvgClose onClose={onClose} />
-        </div>
+        <Caption
+          caption={caption}
+          onClose={onClose}
+        />
         <div style={styles.childrenDiv}>
            {children}
         </div>

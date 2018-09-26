@@ -8,13 +8,13 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _ItemCaption = require('./ItemCaption');
+
+var _ItemCaption2 = _interopRequireDefault(_ItemCaption);
+
 var _ButtonCircle = require('../zhnAtoms/ButtonCircle');
 
 var _ButtonCircle2 = _interopRequireDefault(_ButtonCircle);
-
-var _SvgClose = require('../zhnAtoms/SvgClose');
-
-var _SvgClose2 = _interopRequireDefault(_SvgClose);
 
 var _ShowHide = require('../zhnAtoms/ShowHide');
 
@@ -31,18 +31,6 @@ var styles = {
     marginRight: '25px',
     //marginRight: '10px',
     position: 'relative'
-  },
-  headerDiv: {
-    backgroundColor: '#232F3B',
-    borderTopLeftRadius: '10px',
-    borderTopRightRadius: '10px',
-    paddingTop: '4px',
-    paddingLeft: '10px',
-    lineHeight: 1.5,
-    //height: '25px',
-    //width: '600px'
-    width: '100%',
-    height: '30px'
   },
   captionSpanOpen: {
     display: 'inline-block',
@@ -154,8 +142,8 @@ var GitHubIssues = _react2.default.createClass({
       'div',
       { style: styles.rootDiv },
       _react2.default.createElement(
-        'div',
-        { style: styles.headerDiv },
+        _ItemCaption2.default,
+        { onClose: onCloseItem },
         _react2.default.createElement(
           'span',
           {
@@ -180,8 +168,7 @@ var GitHubIssues = _react2.default.createClass({
           title: 'Add to Watch',
           style: styles.BTN_CIRCLE,
           onClick: this._handlerClickWatch
-        }),
-        _react2.default.createElement(_SvgClose2.default, { onClose: onCloseItem })
+        })
       ),
       _react2.default.createElement(
         _ShowHide2.default,

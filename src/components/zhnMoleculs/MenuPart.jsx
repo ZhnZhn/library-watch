@@ -1,7 +1,14 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+//import PropTypes from 'prop-types'
 
 import MenuBadge from '../zhnAtoms/MenuBadge';
 import OpenClose2 from '../zhnAtoms/OpenClose2';
+
+const S = {
+  CAPTION_ROW: {
+    paddingLeft: 6
+  }
+};
 
 const _renderMenuItems = function(rowClass, items=[]){
   return items.map((item, index) => {
@@ -22,9 +29,11 @@ const _renderMenuItems = function(rowClass, items=[]){
               : null;
     return (
        <div
-           key={index}
-           className={_className}
-           onClick={item.onClick}
+         key={index}
+         tabIndex={0}
+         className={_className}
+         onClick={item.onClick}
+         //onKeyPress={item.onClick}
         >
           {item.title}
           {menuBadge}
@@ -35,6 +44,7 @@ const _renderMenuItems = function(rowClass, items=[]){
 
 const MenuPart = ({ rowClass, caption, items, isInitClose }) => (
   <OpenClose2
+     styleCaptionRow={S.CAPTION_ROW}
      caption={caption}
      isClose={isInitClose}
   >
@@ -42,10 +52,12 @@ const MenuPart = ({ rowClass, caption, items, isInitClose }) => (
   </OpenClose2>
 )
 
+/*
 MenuPart.propTypes = {
   caption: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.object),
   isInitClose: PropTypes.bool
 }
+*/
 
 export default MenuPart

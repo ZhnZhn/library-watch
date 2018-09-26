@@ -25,10 +25,11 @@ var STYLE = {
     paddingRight: '8px'
   },
   SVG_CLOSE: {
-    position: 'relative',
-    top: '3px'
+    position: 'absolute',
+    top: 6,
+    right: 0
   }
 };
 
 exports.default = STYLE;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\CaptionRow.Style.js.map
+//# sourceMappingURL=CaptionRow.Style.js.map

@@ -2,9 +2,9 @@ import React from 'react'
 
 import Chart from '../charts/Chart';
 
+import Caption from './ItemCaption'
 import ButtonCircle from '../zhnAtoms/ButtonCircle';
 import FormattedInteger from '../zhnAtoms/FormattedInteger';
-import SvgClose from '../zhnAtoms/SvgClose';
 import ShowHide from '../zhnAtoms/ShowHide';
 import LineChart from '../charts/LineChart';
 import ButtonDownUp from '../zhnAtoms/ButtonDownUp';
@@ -22,18 +22,6 @@ const styles = {
     marginRight: '25px',
     //marginRight: '10px',
     position : 'relative'
-  },
-  headerDiv: {
-    backgroundColor: '#232F3B',
-    borderTopLeftRadius: '10px',
-    borderTopRightRadius: '10px',
-    paddingTop: '4px',
-    paddingLeft: '10px',
-    lineHeight: 1.5,
-    //height: '25px',
-    //width: '600px'
-    width : '100%',
-    height: '30px'
   },
   captionSpanOpen : {
     display : 'inline-block',
@@ -154,7 +142,7 @@ const NpmRecentDownloads = React.createClass({
         , _lineChartConfig = Chart.fLineConfig({ labels, data })
     return (
       <div style={styles.rootDiv}>
-        <div style={styles.headerDiv}>
+        <Caption onClose={onCloseItem}>
           <span
              className="not-selected"
              title={caption}
@@ -180,11 +168,8 @@ const NpmRecentDownloads = React.createClass({
               {toDate}
             </span>
           </span>
-
           { _isButtonWatch && this._renderButtonWatch() }
-
-          <SvgClose onClose={onCloseItem} />
-        </div>
+        </Caption>
         <ShowHide isShow={isShow}>
           <LineChart
              data={_lineChartConfig}

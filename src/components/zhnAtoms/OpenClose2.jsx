@@ -1,4 +1,12 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+//import PropTypes from 'prop-types'
+
+import isKeyEnter from './isKeyEnter'
+
+const CL = {
+  ROW_CAPTION: 'zhn-oc not-selected',
+  SHOW_POPUP: 'show-popup'
+};
 
 const STYLE = {
   ROOT: {
@@ -36,11 +44,13 @@ const FILL_OPEN = 'yellow'
     , PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
 class OpenClose2 extends Component {
+  /*
   static propTypes = {
     isClose: PropTypes.bool,
 
     style: PropTypes.object,
     styleNotSelected: PropTypes.object,
+    styleCpationRow: PropTypes.object,
     styleCaption: PropTypes.object,
 
     caption: PropTypes.string,
@@ -60,6 +70,7 @@ class OpenClose2 extends Component {
        PropTypes.node
     ])
   }
+  */
 
   static defaultProps = {
     isClose: true,
@@ -68,19 +79,28 @@ class OpenClose2 extends Component {
   }
 
   constructor(props){
-    super()
+    super(props)
     this.state = {
       isOpen: !props.isClose
     }
   }
 
   _handleToggle = () => {
-    this.setState({ isOpen : !this.state.isOpen })
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen
+    }))
+  }
+
+  _handleKeyDown = (event) => {
+    if (isKeyEnter(event)){
+      this._handleToggle()
+    }
   }
 
   render(){
     const {
-            style, styleNotSelected, styleCaption, caption,
+            style, styleNotSelected,
+            styleCaptionRow, styleCaption, caption,
             fillOpen, fillClose,
             isDraggable, option, onDragStart, onDragEnter, onDragOver, onDragLeave, onDrop,
             children
@@ -101,7 +121,7 @@ class OpenClose2 extends Component {
       _pathV = PATH_OPEN;
       _fillV = fillOpen;
       _styleCollapse = STYLE.BLOCK;
-      _classShow = 'show-popup';
+      _classShow = CL.SHOW_POPUP;
       _styleNotSelected = null;
     } else {
       _pathV = PATH_CLOSE;
@@ -114,9 +134,12 @@ class OpenClose2 extends Component {
     return (
       <div style={{...STYLE.ROOT, ...style}}>
         <div
-           className="not-selected"
-           style={_styleNotSelected}
+           className={CL.ROW_CAPTION}
+           style={{ ...styleCaptionRow, ..._styleNotSelected }}
            onClick={this._handleToggle}
+           tabIndex="0"
+           role="menuitem"
+           onKeyDown={this._handleKeyDown}
            {..._dragOption}
          >
           <div style={STYLE.SVG}>
@@ -125,12 +148,12 @@ class OpenClose2 extends Component {
                 preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
                 style={STYLE.INLINE}
               >
-             <path
-                d={_pathV}
-                fill={_fillV}
-                strokeWidth="1" stroke={fillOpen}
-             >
-             </path>
+               <path
+                  d={_pathV}
+                  fill={_fillV}
+                  strokeWidth="1"
+                  stroke={fillOpen}
+               />
              </svg>
          </div>
          <span style={{...STYLE.CAPTION, ...styleCaption}} >
