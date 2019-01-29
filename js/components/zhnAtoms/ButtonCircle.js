@@ -14,6 +14,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import PropTypes from "prop-types";
+
 var STYLE = {
   ROOT: {
     display: 'inline-block',
@@ -49,14 +51,16 @@ var ButtonCircle = function ButtonCircle(props) {
   );
 };
 
-process.env.NODE_ENV !== "production" ? ButtonCircle.propTypes = {
-  caption: _react.PropTypes.string,
-  title: _react.PropTypes.string,
-  className: _react.PropTypes.string,
-  style: _react.PropTypes.object,
-  isWithoutDefault: _react.PropTypes.bool,
-  onClick: _react.PropTypes.func
-} : void 0;
+/*
+ButtonCircle.propTypes = {
+  caption : PropTypes.string,
+  title : PropTypes.string,
+  className : PropTypes.string,
+  style : PropTypes.object,
+  isWithoutDefault : PropTypes.bool,
+  onClick : PropTypes.func
+}
+*/
 
 exports.default = ButtonCircle;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\ButtonCircle.js.map
+//# sourceMappingURL=ButtonCircle.js.map

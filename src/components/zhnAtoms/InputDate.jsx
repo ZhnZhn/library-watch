@@ -1,4 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+
+//import PropTypes from "prop-types";
 
 const STYLE = {
   ROOT: {
@@ -44,11 +46,13 @@ const STYLE = {
 };
 
 class InputDate extends Component {
+  /*
   static propTypes = {
     initValue: PropTypes.string,
     errorMsg: PropTypes.string,
     onTest: PropTypes.func
   }
+  */
   static defaultProps = {
     initValue: '',
     onTest: () => {}

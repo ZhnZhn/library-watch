@@ -4,7 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
 
 var _GitHubRecentTag = require('../items/GitHubRecentTag');
 
@@ -44,7 +46,7 @@ var fGitHubRecentTag = function fGitHubRecentTag(_ref) {
     onCatch: _fnCatch2.default
   });
 
-  return factory.createElement(_GitHubRecentTag2.default, _extends({
+  return factory.createElement(_GitHubRecentTag2.default, (0, _extends3.default)({
     key: key,
     repo: repo,
     requestType: requestType,

@@ -8,20 +8,26 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _createReactClass = require('create-react-class');
+
+var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
 var _RowInputSelect = require('./RowInputSelect');
 
 var _RowInputSelect2 = _interopRequireDefault(_RowInputSelect);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var FragmentSelectGroupList = _react2.default.createClass({
+var FragmentSelectGroupList = (0, _createReactClass2.default)({
   displayName: 'FragmentSelectGroupList',
-  propTypes: {
-    store: _react2.default.PropTypes.object,
-    groupCaption: _react2.default.PropTypes.string,
-    groupOptions: _react2.default.PropTypes.array,
-    listCaption: _react2.default.PropTypes.string
+  /*
+  propTypes : {
+    store : PropTypes.object,
+    groupCaption : PropTypes.string,
+    groupOptions : PropTypes.array,
+    listCaption : PropTypes.string
   },
+  */
 
   getInitialState: function getInitialState() {
     this.groupCaption = null;
@@ -90,6 +96,8 @@ var FragmentSelectGroupList = _react2.default.createClass({
     this.listCaption = null;
   }
 });
+
+//import PropTypes from 'prop-types'
 
 exports.default = FragmentSelectGroupList;
 //# sourceMappingURL=FragmentSelectGroupList.js.map

@@ -1,20 +1,20 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react';
+
+//import PropTypes from "prop-types";
 
 class ComponentHrzContainer extends Component {
+  /*
   static propTypes = {
     store: PropTypes.shape({
       listen: PropTypes.func
     }),
     initShowAction: PropTypes.string
   }
-
-  constructor(props){
-    super()
-    this.state = {
-      containers : []
-    }
+  */
+  state = {
+    containers : []
   }
-
+  
   componentWillMount(){
     const { store } = this.props;
     this.unsubscribe = store.listen(this._onStore);

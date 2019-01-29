@@ -20,6 +20,10 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp;
+
+//import PropTypes from "prop-types";
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -38,7 +42,7 @@ var Styles = {
   }
 };
 
-var ValidationMessagesFragment = function (_Component) {
+var ValidationMessagesFragment = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(ValidationMessagesFragment, _Component);
 
   function ValidationMessagesFragment() {
@@ -66,6 +70,12 @@ var ValidationMessagesFragment = function (_Component) {
         );
       });
     }
+    /*
+     static propTypes = {
+       validationMessages: PropTypes.array
+     }
+     */
+
   }, {
     key: 'render',
     value: function render() {
@@ -79,13 +89,8 @@ var ValidationMessagesFragment = function (_Component) {
     }
   }]);
   return ValidationMessagesFragment;
-}(_react.Component);
-
-ValidationMessagesFragment.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   validationMessages: []
-};
-process.env.NODE_ENV !== "production" ? ValidationMessagesFragment.propTypes = {
-  validationMessages: _react.PropTypes.array
-} : void 0;
+}, _temp);
 exports.default = ValidationMessagesFragment;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnMoleculs\ValidationMessagesFragment.js.map
+//# sourceMappingURL=ValidationMessagesFragment.js.map

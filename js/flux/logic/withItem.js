@@ -39,4 +39,4 @@ var withItem = {
 };
 
 exports.default = withItem;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\logic\withItem.js.map
+//# sourceMappingURL=withItem.js.map

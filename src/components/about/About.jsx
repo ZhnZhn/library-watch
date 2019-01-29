@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import { ComponentActionTypes } from '../../flux/actions/ComponentActions';
-import { ChartActionTypes } from '../../flux/actions/ChartActions';
+import { ComponentActionTypes as CAT } from '../../flux/actions/ComponentActions';
+import { ChartActionTypes as CHAT } from '../../flux/actions/ChartActions';
 
 import ScrollPane from '../zhnAtoms/ScrollPane';
 import CaptionRow from '../zhnAtoms/CaptionRow';
@@ -36,32 +36,38 @@ const STYLE = {
   }
 };
 
-const About = React.createClass({
-  getInitialState(){
-    return {
-      isShow : this.props.isShow
+class About extends Component {
+   static defaultProps = {
+     isShowInit: true
+   }
+
+  constructor(props){
+    super(props)
+    this.state = {
+      isShow: props.isShowInit
     }
-  },
+  }
 
   componentWillMount(){
     this.unsubscribe = this.props.store.listen(this._onStore);
-  },
+  }
   componentWillUnmount(){
     this.unsubscribe();
-  },
-  _onStore(actionType, data){
-    if (actionType === ComponentActionTypes.SHOW_ABOUT){
+  }
+  _onStore = (actionType, data) => {
+    if (actionType === CAT.SHOW_ABOUT){
       this.setState({isShow : true});
-    } else if (actionType === ChartActionTypes.INIT_AND_SHOW_CHART){
+    } else if (actionType === CHAT.INIT_AND_SHOW_CHART){
       this.setState({isShow : false});
-    } else if (actionType === ChartActionTypes.SHOW_CHART){
+    } else if (actionType === CHAT.SHOW_CHART){
       this.setState({isShow : false});
     }
-  },
+  }
 
-  _handlerClose(){
+  _handlerClose = () => {
     this.setState({ isShow : false });
-  },
+  }
+
   render(){
     const { isShow } = this.state
         , _classOpen = isShow
@@ -195,6 +201,6 @@ const About = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default About

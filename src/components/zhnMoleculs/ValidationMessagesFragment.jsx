@@ -1,4 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+
+//import PropTypes from "prop-types";
 
 import DialogStyles from '../styles/DialogStyles';
 
@@ -10,10 +12,12 @@ const Styles = {
   }
 }
 
-class ValidationMessagesFragment extends Component{   
+class ValidationMessagesFragment extends Component{
+  /*
    static propTypes = {
      validationMessages: PropTypes.array
    }
+   */
    static defaultProps = {
      validationMessages: []
    }

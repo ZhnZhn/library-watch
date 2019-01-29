@@ -1,4 +1,7 @@
 import React from 'react';
+import createReactClass from 'create-react-class'
+
+//import PropTypes from 'prop-types'
 
 import WatchActions from '../../flux/actions/WatchActions';
 import { WatchActionTypes } from '../../flux/actions/WatchActions';
@@ -13,13 +16,15 @@ import ListEditPane from './ListEditPane';
 import ListDeletePane from './ListDeletePane';
 
 
-const EditListDialog = React.createClass({
+const EditListDialog = createReactClass({
   displayName : 'EditListDialog',
+  /*
   propTypes : {
-    isShow : React.PropTypes.bool,
-    store : React.PropTypes.object,
-    onClose : React.PropTypes.func
+    isShow : PropTypes.bool,
+    store : PropTypes.object,
+    onClose : PropTypes.func
   },
+  */
 
   shouldComponentUpdate(nextProps, nextState){
     if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {

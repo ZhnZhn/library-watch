@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+
+//import PropTypes from "prop-types";
 
 const STYLE = {
   ROOT : {
@@ -20,7 +22,7 @@ const ButtonCircle = (props) =>{
            : 'not-selected'
       , _style = (isWithoutDefault)
            ? style
-           : {...STYLE.ROOT, ...style};  
+           : {...STYLE.ROOT, ...style};
   return (
     <span
        className={_className}
@@ -33,6 +35,7 @@ const ButtonCircle = (props) =>{
   );
 }
 
+/*
 ButtonCircle.propTypes = {
   caption : PropTypes.string,
   title : PropTypes.string,
@@ -41,5 +44,6 @@ ButtonCircle.propTypes = {
   isWithoutDefault : PropTypes.bool,
   onClick : PropTypes.func
 }
+*/
 
 export default ButtonCircle

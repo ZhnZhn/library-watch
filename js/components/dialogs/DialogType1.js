@@ -21,6 +21,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _class;
+//import PropTypes from "prop-types";
 
 var _react = require('react');
 
@@ -51,6 +52,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var DialogType1 = (0, _withValidationLoad2.default)(_class = function (_Component) {
   (0, _inherits3.default)(DialogType1, _Component);
 
+  /*
+  static propTypes = {
+    caption: PropTypes.string,
+    requestType: PropTypes.string,
+    oneTitle: PropTypes.string,
+    onePlaceholder: PropTypes.string,
+    isShow: PropTypes.bool,
+    onShow: PropTypes.func
+  }
+  */
   function DialogType1(props) {
     (0, _classCallCheck3.default)(this, DialogType1);
 
@@ -155,13 +166,5 @@ var DialogType1 = (0, _withValidationLoad2.default)(_class = function (_Componen
   return DialogType1;
 }(_react.Component)) || _class;
 
-process.env.NODE_ENV !== "production" ? DialogType1.propTypes = {
-  caption: _react.PropTypes.string,
-  requestType: _react.PropTypes.string,
-  oneTitle: _react.PropTypes.string,
-  onePlaceholder: _react.PropTypes.string,
-  isShow: _react.PropTypes.bool,
-  onShow: _react.PropTypes.func
-} : void 0;
 exports.default = DialogType1;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\DialogType1.js.map
+//# sourceMappingURL=DialogType1.js.map

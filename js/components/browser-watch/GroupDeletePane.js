@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _createReactClass = require('create-react-class');
+
+var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
 var _RowInputSelect = require('./RowInputSelect');
 
 var _RowInputSelect2 = _interopRequireDefault(_RowInputSelect);
@@ -32,16 +36,20 @@ var Styles = {
   }
 };
 
-var GroupDeletePane = _react2.default.createClass({
+//import PropTypes from 'prop-types'
+
+var GroupDeletePane = (0, _createReactClass2.default)({
   displayName: 'GroupDeletePane',
-  propTypes: {
-    store: _react2.default.PropTypes.object,
-    actionCompleted: _react2.default.PropTypes.string,
-    forActionType: _react2.default.PropTypes.string,
-    msgOnNotSelect: _react2.default.PropTypes.func,
-    onDelete: _react2.default.PropTypes.func,
-    onClose: _react2.default.PropTypes.func
+  /*
+  propTypes : {
+    store : PropTypes.object,
+    actionCompleted : PropTypes.string,
+    forActionType : PropTypes.string,
+    msgOnNotSelect : PropTypes.func,
+    onDelete : PropTypes.func,
+    onClose : PropTypes.func
   },
+  */
   getInitialState: function getInitialState() {
     var store = this.props.store;
 

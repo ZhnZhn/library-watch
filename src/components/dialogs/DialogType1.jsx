@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+//import PropTypes from "prop-types";
 
 import Dialog from '../zhnMoleculs/Dialog'
 import ToolBarButton from '../header/ToolBarButton'
@@ -9,6 +10,7 @@ import withValidationLoad from './decorators/withValidationLoad'
 
 @withValidationLoad
 class DialogType1 extends Component {
+  /*
   static propTypes = {
     caption: PropTypes.string,
     requestType: PropTypes.string,
@@ -17,7 +19,7 @@ class DialogType1 extends Component {
     isShow: PropTypes.bool,
     onShow: PropTypes.func
   }
-
+  */
   constructor(props){
     super()
     this.stock = null

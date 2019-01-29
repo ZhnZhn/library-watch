@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _createReactClass = require('create-react-class');
+
+var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
 var _RowInputText = require('./RowInputText');
 
 var _RowInputText2 = _interopRequireDefault(_RowInputText);
@@ -32,17 +36,21 @@ var Styles = {
   }
 };
 
-var GroupAddPane = _react2.default.createClass({
+//import PropTypes from 'prop-types'
+
+var GroupAddPane = (0, _createReactClass2.default)({
   displayName: 'GroupAddPane',
-  propTypes: {
-    store: _react2.default.PropTypes.object,
-    actionCompleted: _react2.default.PropTypes.string,
-    actionFailed: _react2.default.PropTypes.string,
-    forActionType: _react2.default.PropTypes.string,
-    msgOnIsEmptyName: _react2.default.PropTypes.func,
-    onCreate: _react2.default.PropTypes.func,
-    onClose: _react2.default.PropTypes.func
+  /*
+  propTypes : {
+    store : PropTypes.object,
+    actionCompleted : PropTypes.string,
+    actionFailed : PropTypes.string,
+    forActionType : PropTypes.string,
+    msgOnIsEmptyName : PropTypes.func,
+    onCreate : PropTypes.func,
+    onClose : PropTypes.func
   },
+  */
   getInitialState: function getInitialState() {
     return {
       validationMessages: []

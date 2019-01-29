@@ -46,6 +46,8 @@ var _ScrollPane2 = _interopRequireDefault(_ScrollPane);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import PropTypes from "prop-types";
+
 var CHILD_MARGIN = 36;
 
 var styles = {
@@ -54,7 +56,7 @@ var styles = {
     backgroundColor: '#4D4D4D',
     padding: '0px 0px 3px 0px',
     //paddingTop : '5px',
-    //paddingLeft : '5px',    
+    //paddingLeft : '5px',
     //border: 'solid 3px #232F3B',
     width: '635px',
     height: 'calc(100vh - 71px)',
@@ -99,6 +101,15 @@ var compActions = [_ChartActions.ChartActionTypes.SHOW_CHART, _ChartActions.Char
 
 var ChartContainer2 = function (_Component) {
   (0, _inherits3.default)(ChartContainer2, _Component);
+
+  /*
+  static propTypes = {
+    caption: PropTypes.string,
+    browserType: PropTypes.string,
+    chartType: PropTypes.string,
+    onCloseContainer: PropTypes.func
+  }
+  */
 
   function ChartContainer2(props) {
     (0, _classCallCheck3.default)(this, ChartContainer2);
@@ -187,11 +198,5 @@ var ChartContainer2 = function (_Component) {
   return ChartContainer2;
 }(_react.Component);
 
-process.env.NODE_ENV !== "production" ? ChartContainer2.propTypes = {
-  caption: _react.PropTypes.string,
-  browserType: _react.PropTypes.string,
-  chartType: _react.PropTypes.string,
-  onCloseContainer: _react.PropTypes.func
-} : void 0;
 exports.default = ChartContainer2;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnContainers\ChartContainer2.js.map
+//# sourceMappingURL=ChartContainer2.js.map

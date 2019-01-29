@@ -1,4 +1,7 @@
 import React from 'react';
+import createReactClass from 'create-react-class'
+
+//import PropTypes from 'prop-types'
 
 import FragmentSelectGroupList from './FragmentSelectGroupList';
 import RowInputText from './RowInputText';
@@ -15,15 +18,17 @@ const Styles = {
   }
 }
 
-const ListEditPane = React.createClass({
+const ListEditPane = createReactClass({
   displayName : 'ListEditPane',
+  /*
   propTypes : {
-    store : React.PropTypes.object,
-    actionCompleted : React.PropTypes.string,
-    forActionType : React.PropTypes.string,
-    onRename : React.PropTypes.func,
-    onClose : React.PropTypes.func
+    store : PropTypes.object,
+    actionCompleted : PropTypes.string,
+    forActionType : PropTypes.string,
+    onRename : PropTypes.func,
+    onClose : PropTypes.func
   },
+  */
 
   getInitialState(){
     const {store} = this.props;

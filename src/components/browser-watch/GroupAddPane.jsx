@@ -1,4 +1,7 @@
 import React from 'react';
+import createReactClass from 'create-react-class'
+
+//import PropTypes from 'prop-types'
 
 import RowInputText from './RowInputText';
 import ToolBarButton from '../header/ToolBarButton';
@@ -14,17 +17,19 @@ const Styles = {
   }
 }
 
-const GroupAddPane = React.createClass({
+const GroupAddPane = createReactClass({
   displayName : 'GroupAddPane',
+  /*
   propTypes : {
-    store : React.PropTypes.object,
-    actionCompleted : React.PropTypes.string,
-    actionFailed : React.PropTypes.string,
-    forActionType : React.PropTypes.string,
-    msgOnIsEmptyName : React.PropTypes.func,
-    onCreate : React.PropTypes.func,
-    onClose : React.PropTypes.func
+    store : PropTypes.object,
+    actionCompleted : PropTypes.string,
+    actionFailed : PropTypes.string,
+    forActionType : PropTypes.string,
+    msgOnIsEmptyName : PropTypes.func,
+    onCreate : PropTypes.func,
+    onClose : PropTypes.func
   },
+  */
   getInitialState(){
     return {
       validationMessages : []

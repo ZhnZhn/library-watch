@@ -61,10 +61,7 @@ var AppLibraryWatch = function AppLibraryWatch(props) {
             initDialogAction: _ComponentActions.ComponentActionTypes.INIT_AND_SHOW_DIALOG,
             showDialogAction: _ComponentActions.ComponentActionTypes.SHOW_DIALOG
          }),
-         _react2.default.createElement(_About2.default, {
-            store: _AppStore2.default,
-            isShow: true
-         }),
+         _react2.default.createElement(_About2.default, { store: _AppStore2.default }),
          _react2.default.createElement(_ComponentHrzContainer2.default, {
             store: _AppStore2.default,
             initShowAction: _ChartActions.ChartActionTypes.INIT_AND_SHOW_CHART

@@ -4,6 +4,28 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _class, _temp;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -13,8 +35,6 @@ var _ArrowCell = require('./ArrowCell');
 var _ArrowCell2 = _interopRequireDefault(_ArrowCell);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var MAX_WITHOUT_ANIMATION = 800;
 
@@ -116,287 +136,246 @@ var styles = {
   }
 };
 
-var InputSearch = _react2.default.createClass({
-  displayName: 'InputSearch',
-  getDefaultProps: function getDefaultProps() {
-    return {
-      options: [],
-      optionName: '',
-      optionNames: '',
-      isUpdateOptions: false,
-      propCaption: 'caption'
-    };
-  },
-  getInitialState: function getInitialState() {
-    this.domOptionsCache = null;
-    this.indexActiveOption = 0;
+var InputSearch = (_temp = _class = function (_Component) {
+  (0, _inherits3.default)(InputSearch, _Component);
 
-    var _props = this.props,
-        optionName = _props.optionName,
-        optionNames = _props.optionNames,
-        propCaption = _props.propCaption,
-        _optionName = optionName ? ' ' + optionName : '',
-        _optionNames = optionNames ? ' ' + optionNames : optionName ? _optionName : '';
+  function InputSearch(props) {
+    (0, _classCallCheck3.default)(this, InputSearch);
 
-    this.propCaption = propCaption;
+    var _this = (0, _possibleConstructorReturn3.default)(this, (InputSearch.__proto__ || Object.getPrototypeOf(InputSearch)).call(this, props));
 
-    return {
-      value: '',
-      isShowOption: false,
-      options: this.props.options,
-      optionName: _optionName,
-      optionNames: _optionNames,
-      isValidDomOptionsCache: false,
-      isLocalMode: false
-    };
-  },
-  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-    if (this.props !== nextProps) {
-      if (this.props.options !== nextProps.options || nextProps.isUpdateOptions) {
-        //New options come from Parent - Clear domCache, Init State
-        this._setStateToInit(nextProps.options);
-      }
-    }
-  },
-  shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
-    if (this.props !== nextProps || nextProps.isUpdateOptions) {
-      nextState.isLocalMode = false;
-    } else {
-      nextState.isLocalMode = true;
-    }
-
-    return true;
-  },
-  componentDidUpdate: function componentDidUpdate() {
-    //Decorate Active Option
-    if (this.state.isShowOption) {
-      var domActiveOption = this._getDomForActiveOption();
-      this._decorateOfDomActiveOption(domActiveOption);
-      this._makeVisibleOfDomActiveOption(domActiveOption);
-    }
-  },
-  _setStateToInit: function _setStateToInit(options) {
-    this.indexActiveOption = 0;
-    this.setState({
-      value: '',
-      isShowOption: false,
-      options: options,
-      isValidDomOptionsCache: false
-    });
-  },
-  _getDomForActiveOption: function _getDomForActiveOption() {
-    return this.refs["v" + this.indexActiveOption];
-  },
-  _decorateOfDomActiveOption: function _decorateOfDomActiveOption(domActiveOption) {
-    if (domActiveOption) {
-      domActiveOption.classList.add("option-row__active");
-    }
-  },
-  _decorateActiveOption: function _decorateActiveOption() {
-    var domActiveOption = this.refs["v" + this.indexActiveOption];
-    domActiveOption.classList.add("option-row__active");
-  },
-  _undecorateActiveOption: function _undecorateActiveOption() {
-    if (this.refs["v" + this.indexActiveOption]) {
-      this.refs["v" + this.indexActiveOption].classList.remove("option-row__active");
-    }
-  },
-  _undecorateOfDomActiveOption: function _undecorateOfDomActiveOption(domActiveOption) {
-    if (domActiveOption) {
-      domActiveOption.classList.remove("option-row__active");
-    }
-  },
-  _makeVisibleOfDomActiveOption: function _makeVisibleOfDomActiveOption(domActiveOption) {
-    if (domActiveOption) {
-      var offsetTop = domActiveOption.offsetTop;
-      var scrollTop = this.domOptions.scrollTop;
-      if (offsetTop - scrollTop > 70) {
-        this.domOptions.scrollTop += offsetTop - scrollTop - 70;
-      }
-      if (offsetTop - scrollTop < 0) {
-        this.domOptions.scrollTop = 0;
-      }
-    }
-  },
-  _makeVisibleActiveOption: function _makeVisibleActiveOption() {
-    var domActiveOption = this.refs["v" + this.indexActiveOption];
-
-    var offsetTop = domActiveOption.offsetTop;
-    var scrollTop = this.domOptions.scrollTop;
-    if (offsetTop - scrollTop > 70) {
-      this.domOptions.scrollTop += offsetTop - scrollTop - 70;
-    }
-  },
-  _filterOptionsToState: function _filterOptionsToState(options, value) {
-    var valueFor = value.toLowerCase(),
-        _caption = this.propCaption;
-    return options.filter(function (option, i) {
-      return option[_caption].toLowerCase().indexOf(valueFor) !== -1;
-    });
-  },
-  _handlerInputChange: function _handlerInputChange(event) {
-    var value = event.target.value;
-    var arr = [];
-    if (value.length !== this.state.value.length) {
-      if (value.length > this.state.value.length) {
-        arr = this._filterOptionsToState(this.state.options, value);
-      } else if (value.length < this.state.value.length) {
-        arr = this._filterOptionsToState(this.props.options, value);
-      }
-      if (arr.length === 0) {
-        var _arr$push;
-
-        arr.push((_arr$push = {}, _defineProperty(_arr$push, this.propCaption, 'No results found'), _defineProperty(_arr$push, 'value', 'noresult'), _arr$push));
-      }
-      this._undecorateActiveOption();
-      this.indexActiveOption = 0;
-      this.setState({
-        value: value,
-        isShowOption: true,
-        isValidDomOptionsCache: false,
-        options: arr
+    _this._setStateToInit = function (options) {
+      _this.indexActiveOption = 0;
+      _this.setState({
+        value: '',
+        isShowOption: false,
+        options: options,
+        isValidDomOptionsCache: false
       });
-    }
-  },
-  _startAfterInputAnimation: function _startAfterInputAnimation() {
-    if (this.state.options.length > MAX_WITHOUT_ANIMATION) {
-      this.arrowCell.startAnimation();
-    }
-  },
-  _stopAfterInputAnimation: function _stopAfterInputAnimation() {
-    this.arrowCell.stopAnimation();
-  },
-  _handlerInputKeyDown: function _handlerInputKeyDown(event) {
-    var _this = this;
+    };
 
-    switch (event.keyCode) {
-      // enter
-      case 13:
-        var item = this.state.options[this.indexActiveOption];
+    _this._getDomForActiveOption = function () {
+      return _this.refs["v" + _this.indexActiveOption];
+    };
 
-        if (item && item[this.propCaption]) {
-          this.setState({
-            value: item[this.propCaption],
-            isShowOption: false,
-            isValidDomOptionsCache: true
-          });
+    _this._decorateOfDomActiveOption = function (domActiveOption) {
+      if (domActiveOption) {
+        domActiveOption.classList.add("option-row__active");
+      }
+    };
 
-          if (item.value !== 'noresult') {
-            this.props.onSelect(item);
+    _this._decorateActiveOption = function () {
+      var domActiveOption = _this.refs["v" + _this.indexActiveOption];
+      domActiveOption.classList.add("option-row__active");
+    };
+
+    _this._undecorateActiveOption = function () {
+      if (_this.refs["v" + _this.indexActiveOption]) {
+        _this.refs["v" + _this.indexActiveOption].classList.remove("option-row__active");
+      }
+    };
+
+    _this._undecorateOfDomActiveOption = function (domActiveOption) {
+      if (domActiveOption) {
+        domActiveOption.classList.remove("option-row__active");
+      }
+    };
+
+    _this._makeVisibleOfDomActiveOption = function (domActiveOption) {
+      if (domActiveOption) {
+        var offsetTop = domActiveOption.offsetTop;
+        var scrollTop = _this.domOptions.scrollTop;
+        if (offsetTop - scrollTop > 70) {
+          _this.domOptions.scrollTop += offsetTop - scrollTop - 70;
+        }
+        if (offsetTop - scrollTop < 0) {
+          _this.domOptions.scrollTop = 0;
+        }
+      }
+    };
+
+    _this._makeVisibleActiveOption = function () {
+      var domActiveOption = _this.refs["v" + _this.indexActiveOption];
+
+      var offsetTop = domActiveOption.offsetTop;
+      var scrollTop = _this.domOptions.scrollTop;
+      if (offsetTop - scrollTop > 70) {
+        _this.domOptions.scrollTop += offsetTop - scrollTop - 70;
+      }
+    };
+
+    _this._filterOptionsToState = function (options, value) {
+      var valueFor = value.toLowerCase(),
+          _caption = _this.propCaption;
+      return options.filter(function (option, i) {
+        return option[_caption].toLowerCase().indexOf(valueFor) !== -1;
+      });
+    };
+
+    _this._handlerInputChange = function (event) {
+      var value = event.target.value;
+      var arr = [];
+      if (value.length !== _this.state.value.length) {
+        if (value.length > _this.state.value.length) {
+          arr = _this._filterOptionsToState(_this.state.options, value);
+        } else if (value.length < _this.state.value.length) {
+          arr = _this._filterOptionsToState(_this.props.options, value);
+        }
+        if (arr.length === 0) {
+          var _arr$push;
+
+          arr.push((_arr$push = {}, (0, _defineProperty3.default)(_arr$push, _this.propCaption, 'No results found'), (0, _defineProperty3.default)(_arr$push, 'value', 'noresult'), _arr$push));
+        }
+        _this._undecorateActiveOption();
+        _this.indexActiveOption = 0;
+        _this.setState({
+          value: value,
+          isShowOption: true,
+          isValidDomOptionsCache: false,
+          options: arr
+        });
+      }
+    };
+
+    _this._startAfterInputAnimation = function () {
+      if (_this.state.options.length > MAX_WITHOUT_ANIMATION) {
+        _this.arrowCell.startAnimation();
+      }
+    };
+
+    _this._stopAfterInputAnimation = function () {
+      _this.arrowCell.stopAnimation();
+    };
+
+    _this._handlerInputKeyDown = function (event) {
+      switch (event.keyCode) {
+        // enter
+        case 13:
+          {
+            var item = _this.state.options[_this.indexActiveOption];
+
+            if (item && item[_this.propCaption]) {
+              _this.setState({
+                value: item[_this.propCaption],
+                isShowOption: false,
+                isValidDomOptionsCache: true
+              });
+
+              if (item.value !== 'noresult') {
+                _this.props.onSelect(item);
+              } else {
+                _this.props.onSelect(null);
+              }
+            }
+            break;
+          }
+        //escape
+        case 27:
+          if (_this.state.isShowOption) {
+            _this.setState({ isShowOption: false });
           } else {
-            this.props.onSelect(null);
+            _this._undecorateActiveOption();
+            _this._setStateToInit(_this.props.options);
+            _this.props.onSelect(null);
           }
-        }
-        break;
-      //escape
-      case 27:
-        if (this.state.isShowOption) {
-          this.setState({ isShowOption: false });
-        } else {
-          this._undecorateActiveOption();
-          this._setStateToInit(this.props.options);
-          this.props.onSelect(null);
-        }
-        break;
-      //down
-      case 40:
-        if (!this.state.isShowOption) {
+          break;
+        //down
+        case 40:
+          if (!_this.state.isShowOption) {
 
-          this._startAfterInputAnimation();
-          setTimeout(function () {
-            _this.setState({ isShowOption: true }, _this._stopAfterInputAnimation);
-          }, 0);
-        } else {
-          event.preventDefault();
+            _this._startAfterInputAnimation();
+            setTimeout(function () {
+              _this.setState({ isShowOption: true }, _this._stopAfterInputAnimation);
+            }, 0);
+          } else {
+            event.preventDefault();
 
-          var domActiveOption = this._getDomForActiveOption();
+            var domActiveOption = _this._getDomForActiveOption();
 
-          if (domActiveOption) {
-            this._undecorateOfDomActiveOption(domActiveOption);
+            if (domActiveOption) {
+              _this._undecorateOfDomActiveOption(domActiveOption);
 
-            this.indexActiveOption += 1;
-            if (this.indexActiveOption >= this.state.options.length) {
-              this.indexActiveOption = 0;
-              this.domOptions.scrollTop = 0;
-            }
+              _this.indexActiveOption += 1;
+              if (_this.indexActiveOption >= _this.state.options.length) {
+                _this.indexActiveOption = 0;
+                _this.domOptions.scrollTop = 0;
+              }
 
-            domActiveOption = this._getDomForActiveOption();
-            this._decorateOfDomActiveOption(domActiveOption);
+              domActiveOption = _this._getDomForActiveOption();
+              _this._decorateOfDomActiveOption(domActiveOption);
 
-            var offsetTop = this.refs["v" + this.indexActiveOption].offsetTop;
-            var scrollTop = this.domOptions.scrollTop;
-            if (offsetTop - scrollTop > 70) {
-              this.domOptions.scrollTop += offsetTop - scrollTop - 70;
+              var offsetTop = _this.refs["v" + _this.indexActiveOption].offsetTop;
+              var scrollTop = _this.domOptions.scrollTop;
+              if (offsetTop - scrollTop > 70) {
+                _this.domOptions.scrollTop += offsetTop - scrollTop - 70;
+              }
             }
           }
-        }
-        break;
-      //up
-      case 38:
-        if (this.state.isShowOption) {
-          event.preventDefault();
+          break;
+        //up
+        case 38:
+          if (_this.state.isShowOption) {
+            event.preventDefault();
 
-          var _domActiveOption = this._getDomForActiveOption();
-          if (_domActiveOption) {
-            this._undecorateOfDomActiveOption(_domActiveOption);
+            var _domActiveOption = _this._getDomForActiveOption();
+            if (_domActiveOption) {
+              _this._undecorateOfDomActiveOption(_domActiveOption);
 
-            this.indexActiveOption -= 1;
-            if (this.indexActiveOption < 0) {
-              this.indexActiveOption = this.state.options.length - 1;
-              var offsetTop2 = this.refs["v" + this.indexActiveOption].offsetTop;
-              this.domOptions.scrollTop = offsetTop2;
-            }
+              _this.indexActiveOption -= 1;
+              if (_this.indexActiveOption < 0) {
+                _this.indexActiveOption = _this.state.options.length - 1;
+                var offsetTop2 = _this.refs["v" + _this.indexActiveOption].offsetTop;
+                _this.domOptions.scrollTop = offsetTop2;
+              }
 
-            _domActiveOption = this._getDomForActiveOption();
-            this._decorateOfDomActiveOption(_domActiveOption);
+              _domActiveOption = _this._getDomForActiveOption();
+              _this._decorateOfDomActiveOption(_domActiveOption);
 
-            var _offsetTop = _domActiveOption.offsetTop;
-            var _scrollTop = this.domOptions.scrollTop;
-            if (_offsetTop - _scrollTop < 70) {
-              this.domOptions.scrollTop -= 70 - (_offsetTop - _scrollTop);
+              var _offsetTop = _domActiveOption.offsetTop;
+              var _scrollTop = _this.domOptions.scrollTop;
+              if (_offsetTop - _scrollTop < 70) {
+                _this.domOptions.scrollTop -= 70 - (_offsetTop - _scrollTop);
+              }
             }
           }
-        }
-        break;
-      default:
-        /*console.log(event.keyCode);*/return;
-    }
-  },
-  _handlerToggleOptions: function _handlerToggleOptions() {
-    var _this2 = this;
+          break;
+        default:
+          /*console.log(event.keyCode);*/return;
+      }
+    };
 
-    if (this.state.isShowOption) {
-      this.setState({ isShowOption: false });
-    } else {
-      this._startAfterInputAnimation();
-      setTimeout(function () {
-        return _this2.setState({ isShowOption: true }, _this2._stopAfterInputAnimation);
-      }, 1);
-    }
-  },
-  _handlerClickOption: function _handlerClickOption(item, index, event) {
-    this.indexActiveOption = index;
-    this.setState({
-      value: item[this.propCaption],
-      isShowOption: false
-    });
-    this.props.onSelect(item);
-  },
-  renderOptions: function renderOptions() {
-    var _this3 = this;
+    _this._handlerToggleOptions = function () {
+      if (_this.state.isShowOption) {
+        _this.setState({ isShowOption: false });
+      } else {
+        _this._startAfterInputAnimation();
+        setTimeout(function () {
+          return _this.setState({ isShowOption: true }, _this._stopAfterInputAnimation);
+        }, 1);
+      }
+    };
 
-    var ItemOptionComp = this.props.ItemOptionComp,
-        _state = this.state,
-        isShowOption = _state.isShowOption,
-        options = _state.options,
-        isValidDomOptionsCache = _state.isValidDomOptionsCache;
+    _this._handlerClickOption = function (item, index, event) {
+      _this.indexActiveOption = index;
+      _this.setState({
+        value: item[_this.propCaption],
+        isShowOption: false
+      });
+      _this.props.onSelect(item);
+    };
+
+    _this.renderOptions = function () {
+      var ItemOptionComp = _this.props.ItemOptionComp,
+          _this$state = _this.state,
+          isShowOption = _this$state.isShowOption,
+          options = _this$state.options,
+          isValidDomOptionsCache = _this$state.isValidDomOptionsCache;
 
 
-    var _domOptions = void 0;
-    if (options) {
-      if (!isValidDomOptionsCache) {
-        (function () {
-          var _caption = _this3.propCaption;
+      var _domOptions = void 0;
+      if (options) {
+        if (!isValidDomOptionsCache) {
+          var _caption = _this.propCaption;
           _domOptions = options.map(function (item, index) {
             var _styleDiv = index % 2 === 0 ? styles.itemOdd : styles.itemEven;
             return _react2.default.createElement(
@@ -406,7 +385,7 @@ var InputSearch = _react2.default.createClass({
                 ref: "v" + index,
                 className: 'option-row',
                 style: Object.assign({}, styles.itemDiv, _styleDiv),
-                onClick: _this3._handlerClickOption.bind(_this3, item, index)
+                onClick: _this._handlerClickOption.bind(_this, item, index)
               },
               _react2.default.createElement(ItemOptionComp, {
                 item: item,
@@ -414,117 +393,184 @@ var InputSearch = _react2.default.createClass({
               })
             );
           });
-          _this3.domOptionsCache = _domOptions;
-        })();
-      } else {
-        _domOptions = this.domOptionsCache;
+          _this.domOptionsCache = _domOptions;
+        } else {
+          _domOptions = _this.domOptionsCache;
+        }
+      }
+
+      var _styleOptions = isShowOption ? { display: 'block' } : { display: 'none' },
+          _numberFilteredItems = options[0] && options[0].value !== 'noresult' ? options.length : 0,
+          _numberAllItems = _this.props.options ? _this.props.options.length : 0;
+
+      return _react2.default.createElement(
+        'div',
+        { style: Object.assign({}, styles.rootOptionDiv, _styleOptions) },
+        _react2.default.createElement(
+          'div',
+          {
+            ref: function ref(c) {
+              return _this.domOptions = c;
+            },
+            key: '1',
+            style: Object.assign({}, styles.optionDiv, _styleOptions)
+          },
+          _domOptions
+        ),
+        _react2.default.createElement(
+          'div',
+          { key: '2', style: styles.optionsFooter },
+          _react2.default.createElement(
+            'span',
+            { style: styles.fileredSpan },
+            'Filtered ',
+            _numberFilteredItems,
+            ' : ',
+            _numberAllItems
+          )
+        )
+      );
+    };
+
+    _this.domOptionsCache = null;
+    _this.indexActiveOption = 0;
+
+    var _this$props = _this.props,
+        optionName = _this$props.optionName,
+        optionNames = _this$props.optionNames,
+        propCaption = _this$props.propCaption,
+        _optionName = optionName ? ' ' + optionName : '',
+        _optionNames = optionNames ? ' ' + optionNames : optionName ? _optionName : '';
+
+    _this.propCaption = propCaption;
+    _this.state = {
+      value: '',
+      isShowOption: false,
+      options: _this.props.options,
+      optionName: _optionName,
+      optionNames: _optionNames,
+      isValidDomOptionsCache: false,
+      isLocalMode: false
+    };
+    return _this;
+  }
+
+  (0, _createClass3.default)(InputSearch, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (this.props !== nextProps) {
+        if (this.props.options !== nextProps.options || nextProps.isUpdateOptions) {
+          //New options come from Parent - Clear domCache, Init State
+          this._setStateToInit(nextProps.options);
+        }
       }
     }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      if (this.props !== nextProps || nextProps.isUpdateOptions) {
+        nextState.isLocalMode = false;
+      } else {
+        nextState.isLocalMode = true;
+      }
 
-    var _styleOptions = isShowOption ? { display: 'block' } : { display: 'none' },
-        _numberFilteredItems = options[0] && options[0].value !== 'noresult' ? options.length : 0,
-        _numberAllItems = this.props.options ? this.props.options.length : 0;
-
-    return _react2.default.createElement(
-      'div',
-      { style: Object.assign({}, styles.rootOptionDiv, _styleOptions) },
-      _react2.default.createElement(
-        'div',
-        {
-          ref: function ref(c) {
-            return _this3.domOptions = c;
-          },
-          key: '1',
-          style: Object.assign({}, styles.optionDiv, _styleOptions)
-        },
-        _domOptions
-      ),
-      _react2.default.createElement(
-        'div',
-        { key: '2', style: styles.optionsFooter },
-        _react2.default.createElement(
-          'span',
-          { style: styles.fileredSpan },
-          'Filtered ',
-          _numberFilteredItems,
-          ' : ',
-          _numberAllItems
-        )
-      )
-    );
-  },
-  render: function render() {
-    var _this4 = this;
-
-    var _state2 = this.state,
-        value = _state2.value,
-        isLocalMode = _state2.isLocalMode,
-        isShowOption = _state2.isShowOption;
-
-
-    var _styleArrow = isShowOption ? styles.arrow_show : null;
-    var _domOptions = isLocalMode || isShowOption ? this.renderOptions() : null;
-
-    var _props2 = this.props,
-        isLoading = _props2.isLoading,
-        isLoadingFailed = _props2.isLoadingFailed,
-        placeholder = _props2.placeholder,
-        _state3 = this.state,
-        optionName = _state3.optionName,
-        optionNames = _state3.optionNames;
-
-
-    var _domAfterInput = void 0,
-        _placeholder = void 0;
-    if (!isLoading && !isLoadingFailed) {
-      _placeholder = placeholder ? placeholder : 'Select' + optionName + '...';
-      _domAfterInput = _react2.default.createElement(_ArrowCell2.default, {
-        ref: function ref(c) {
-          return _this4.arrowCell = c;
-        },
-        styleArrow: _styleArrow,
-        onClick: this._handlerToggleOptions
-      });
-    } else if (isLoading) {
-      _placeholder = 'Loading' + optionNames + '...';
-      _domAfterInput = _react2.default.createElement('span', {
-        style: styles.spinnerCell,
-        'data-loader': 'circle'
-      });
-    } else if (isLoadingFailed) {
-      _placeholder = 'Loading' + optionNames + ' Failed';
-      _domAfterInput = _react2.default.createElement('span', {
-        style: styles.spinnerFailedCell,
-        'data-loader': 'circle-failed',
-        onClick: this.props.onLoadOption
-      });
+      return true;
     }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      //Decorate Active Option
+      if (this.state.isShowOption) {
+        var domActiveOption = this._getDomForActiveOption();
+        this._decorateOfDomActiveOption(domActiveOption);
+        this._makeVisibleOfDomActiveOption(domActiveOption);
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
 
-    return _react2.default.createElement(
-      'div',
-      { style: Object.assign({}, styles.rootDiv) },
-      _react2.default.createElement('input', {
-        ref: function ref(c) {
-          return _this4.domInputText = c;
-        },
-        type: 'text',
-        value: value,
-        style: Object.assign({}, styles.inputText),
-        placeholder: _placeholder,
-        onChange: this._handlerInputChange,
-        onKeyDown: this._handlerInputKeyDown }),
-      _domAfterInput,
-      _react2.default.createElement('hr', { style: Object.assign({}, styles.inputHr) }),
-      _domOptions
-    );
-  },
-  focusInput: function focusInput() {
-    this.domInputText.focus();
-  },
-  focusNotValidInput: function focusNotValidInput() {
-    this.domInputText.focus();
-  }
-});
+      var _state = this.state,
+          value = _state.value,
+          isLocalMode = _state.isLocalMode,
+          isShowOption = _state.isShowOption;
 
+
+      var _styleArrow = isShowOption ? styles.arrow_show : null;
+      var _domOptions = isLocalMode || isShowOption ? this.renderOptions() : null;
+
+      var _props = this.props,
+          isLoading = _props.isLoading,
+          isLoadingFailed = _props.isLoadingFailed,
+          placeholder = _props.placeholder,
+          _state2 = this.state,
+          optionName = _state2.optionName,
+          optionNames = _state2.optionNames;
+
+
+      var _domAfterInput = void 0,
+          _placeholder = void 0;
+      if (!isLoading && !isLoadingFailed) {
+        _placeholder = placeholder ? placeholder : 'Select' + optionName + '...';
+        _domAfterInput = _react2.default.createElement(_ArrowCell2.default, {
+          ref: function ref(c) {
+            return _this2.arrowCell = c;
+          },
+          styleArrow: _styleArrow,
+          onClick: this._handlerToggleOptions
+        });
+      } else if (isLoading) {
+        _placeholder = 'Loading' + optionNames + '...';
+        _domAfterInput = _react2.default.createElement('span', {
+          style: styles.spinnerCell,
+          'data-loader': 'circle'
+        });
+      } else if (isLoadingFailed) {
+        _placeholder = 'Loading' + optionNames + ' Failed';
+        _domAfterInput = _react2.default.createElement('span', {
+          style: styles.spinnerFailedCell,
+          'data-loader': 'circle-failed',
+          onClick: this.props.onLoadOption
+        });
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { style: Object.assign({}, styles.rootDiv) },
+        _react2.default.createElement('input', {
+          ref: function ref(c) {
+            return _this2.domInputText = c;
+          },
+          type: 'text',
+          value: value,
+          style: Object.assign({}, styles.inputText),
+          placeholder: _placeholder,
+          onChange: this._handlerInputChange,
+          onKeyDown: this._handlerInputKeyDown }),
+        _domAfterInput,
+        _react2.default.createElement('hr', { style: Object.assign({}, styles.inputHr) }),
+        _domOptions
+      );
+    }
+  }, {
+    key: 'focusInput',
+    value: function focusInput() {
+      this.domInputText.focus();
+    }
+  }, {
+    key: 'focusNotValidInput',
+    value: function focusNotValidInput() {
+      this.domInputText.focus();
+    }
+  }]);
+  return InputSearch;
+}(_react.Component), _class.defaultProps = {
+  options: [],
+  optionName: '',
+  optionNames: '',
+  isUpdateOptions: false,
+  propCaption: 'caption'
+}, _temp);
 exports.default = InputSearch;
 //# sourceMappingURL=InputSearch.js.map

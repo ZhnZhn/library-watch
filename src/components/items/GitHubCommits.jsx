@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import timeago from 'timeago.js';
 
 import Caption from './ItemCaption'
@@ -15,7 +15,7 @@ const styles = {
     marginRight: '25px',
     //marginRight: '10px',
     position : 'relative'
-  },  
+  },
   captionSpanOpen : {
     display : 'inline-block',
     color: 'rgba(164, 135, 212, 1)',
@@ -39,18 +39,16 @@ const styles = {
 }
 
 
-const GitHubCommits = React.createClass({
-  getInitialState(){
-    return {
-      isShow : true
-    }
-  },
+class GitHubCommits extends Component {
+  state = {
+    isShow: true
+  }
 
-  _handlerToggleOpen(){
+  _handlerToggleOpen = () => {
     this.setState({ isShow: !this.state.isShow })
-  },
+  }
 
-  _handlerClickWatch(){
+  _handlerClickWatch = () => {
     const { repo, requestType, onWatchItem } = this.props
         , caption = `${repo}`
         , descr = ITEM_DESCRIPTION
@@ -58,9 +56,9 @@ const GitHubCommits = React.createClass({
        caption : caption,
        config : { repo, requestType, version : '', caption, descr }
     });
-  },
+  }
 
-  _renderCommits(commits){
+  _renderCommits = (commits) => {
      const _timeago = timeago(Date.now());
      return commits.map((item, index) => {
         const { commit={}, html_url } = item
@@ -90,7 +88,7 @@ const GitHubCommits = React.createClass({
            </div>
         );
      })
-  },
+  }
 
   render(){
     const {
@@ -114,7 +112,7 @@ const GitHubCommits = React.createClass({
              </span>
            </span>
            <ButtonCircle
-              caption={'W'}
+              caption="W"
               title="Add to Watch"
               style={styles.BTN_CIRCLE}
               onClick={this._handlerClickWatch}
@@ -126,6 +124,6 @@ const GitHubCommits = React.createClass({
        </div>
      );
   }
-});
+}
 
 export default GitHubCommits

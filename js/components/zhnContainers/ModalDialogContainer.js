@@ -20,11 +20,15 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import PropTypes from "prop-types";
 
 var CLASS = {
   INIT: 'modal-root',
@@ -44,7 +48,7 @@ var STYLE = {
   }
 };
 
-var ModalDialogContainer = function (_Component) {
+var ModalDialogContainer = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(ModalDialogContainer, _Component);
 
   function ModalDialogContainer(props) {
@@ -56,6 +60,17 @@ var ModalDialogContainer = function (_Component) {
     _this.state = {};
     return _this;
   }
+  /*
+  static propTypes = {
+    isShow  : PropTypes.bool,
+    timeout : PropTypes.number,
+    children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node
+    ]),
+    onClose : PropTypes.func
+  }
+  */
 
   (0, _createClass3.default)(ModalDialogContainer, [{
     key: 'componentDidUpdate',
@@ -102,17 +117,9 @@ var ModalDialogContainer = function (_Component) {
     }
   }]);
   return ModalDialogContainer;
-}(_react.Component);
-
-ModalDialogContainer.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   timeout: 450,
   onClose: function onClose() {}
-};
-process.env.NODE_ENV !== "production" ? ModalDialogContainer.propTypes = {
-  isShow: _react.PropTypes.bool,
-  timeout: _react.PropTypes.number,
-  children: _react.PropTypes.oneOfType([_react.PropTypes.arrayOf(_react.PropTypes.node), _react.PropTypes.node]),
-  onClose: _react.PropTypes.func
-} : void 0;
+}, _temp);
 exports.default = ModalDialogContainer;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnContainers\ModalDialogContainer.js.map
+//# sourceMappingURL=ModalDialogContainer.js.map

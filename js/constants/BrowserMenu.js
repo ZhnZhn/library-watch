@@ -52,4 +52,4 @@ var BrowserMenu = {
 };
 
 exports.default = BrowserMenu;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\constants\BrowserMenu.js.map
+//# sourceMappingURL=BrowserMenu.js.map

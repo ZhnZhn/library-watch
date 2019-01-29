@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+//import PropTypes from "prop-types";
 
 import DateUtils from '../../utils/DateUtils'
 
@@ -25,6 +26,7 @@ const _initFromDate = DateUtils.getFromDate(1)
 
 @withValidationLoad
 class DialogType3 extends Component {
+  /*
   static propTypes = {
     caption: PropTypes.string,
     requestType: PropTypes.string,
@@ -35,6 +37,7 @@ class DialogType3 extends Component {
     isShow: PropTypes.bool,
     onShow: PropTypes.func
   }
+  */
 
   constructor(props){
     super()

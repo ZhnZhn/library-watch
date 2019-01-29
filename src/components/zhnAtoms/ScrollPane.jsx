@@ -1,11 +1,14 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+
+//import PropTypes from "prop-types";
 
 const ScrollPane = ({ style, className, children }) => (
   <div className={`with-scroll ${className}`} style={style}>
      {children}
   </div>
-)
+);
 
+/*
 ScrollPane.propTypes = {
   style : PropTypes.object,
   className: PropTypes.string,
@@ -14,6 +17,7 @@ ScrollPane.propTypes = {
     PropTypes.node
   ])
 }
+*/
 ScrollPane.defaultProps = {
   className: ''
 }

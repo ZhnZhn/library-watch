@@ -1,4 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react';
+
+//import PropTypes from "prop-types";
 
 import ModalDialog from '../zhnMoleculs/ModalDialog'
 import DialogStyles from '../styles/DialogStyles'
@@ -25,6 +27,7 @@ const STYLE = {
 }
 
 class InfoDialog extends Component {
+  /*
   static propTypes = {
     isShow: PropTypes.bool,
     data: PropTypes.shape({
@@ -33,6 +36,7 @@ class InfoDialog extends Component {
     }),
     onClose: PropTypes.func
   }
+  */
 
   shouldComponentUpdate(nextProps, nextState){
     if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {

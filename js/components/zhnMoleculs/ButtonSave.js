@@ -34,6 +34,8 @@ var _ButtonCircle2 = _interopRequireDefault(_ButtonCircle);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import PropTypes from "prop-types";
+
 var CAPTION = "S",
     TITLE = "Save Watch Items to Locale Storage",
     STYLE = {
@@ -45,6 +47,13 @@ var CAPTION = "S",
 
 var ButtonSave = function (_Component) {
   (0, _inherits3.default)(ButtonSave, _Component);
+
+  /*
+  static propTypes = {
+    store : PropTypes.object.isRequired,
+    style : PropTypes.object
+  }
+  */
 
   function ButtonSave(props) {
     (0, _classCallCheck3.default)(this, ButtonSave);
@@ -105,9 +114,5 @@ var ButtonSave = function (_Component) {
   return ButtonSave;
 }(_react.Component);
 
-process.env.NODE_ENV !== "production" ? ButtonSave.propTypes = {
-  store: _react.PropTypes.object.isRequired,
-  style: _react.PropTypes.object
-} : void 0;
 exports.default = ButtonSave;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnMoleculs\ButtonSave.js.map
+//# sourceMappingURL=ButtonSave.js.map

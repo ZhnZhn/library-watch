@@ -46,6 +46,8 @@ var _MenuPart2 = _interopRequireDefault(_MenuPart);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import PropTypes from "prop-types";
+
 var STYLE = {
   BROWSER: {
     paddingRight: '0'
@@ -60,6 +62,20 @@ var STYLE = {
 
 var MenuBrowserDynamic = function (_Component) {
   (0, _inherits3.default)(MenuBrowserDynamic, _Component);
+
+  /*
+  static propTypes = {
+    isInitShow: PropTypes.bool,
+    browserType: PropTypes.string,
+    caption: PropTypes.string,
+    sourceMenuUrl: PropTypes.string,
+    onLoadMenu: PropTypes.func,
+      store: PropTypes.object,
+    showAction: PropTypes.string,
+    updateAction: PropTypes.string,
+    loadCompletedAction: PropTypes.string
+  }
+  */
 
   function MenuBrowserDynamic(props) {
     (0, _classCallCheck3.default)(this, MenuBrowserDynamic);
@@ -174,17 +190,5 @@ var MenuBrowserDynamic = function (_Component) {
   return MenuBrowserDynamic;
 }(_react.Component);
 
-process.env.NODE_ENV !== "production" ? MenuBrowserDynamic.propTypes = {
-  isInitShow: _react.PropTypes.bool,
-  browserType: _react.PropTypes.string,
-  caption: _react.PropTypes.string,
-  sourceMenuUrl: _react.PropTypes.string,
-  onLoadMenu: _react.PropTypes.func,
-
-  store: _react.PropTypes.object,
-  showAction: _react.PropTypes.string,
-  updateAction: _react.PropTypes.string,
-  loadCompletedAction: _react.PropTypes.string
-} : void 0;
 exports.default = MenuBrowserDynamic;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnMoleculs\MenuBrowserDynamic.js.map
+//# sourceMappingURL=MenuBrowserDynamic.js.map

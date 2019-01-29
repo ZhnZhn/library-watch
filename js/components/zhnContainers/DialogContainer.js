@@ -33,6 +33,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var DialogContainer = function (_Component) {
   (0, _inherits3.default)(DialogContainer, _Component);
 
+  /*
+  static propTypes = {
+    store: PropTypes.shape({
+      listen: PropTypes.func
+    }),
+    showAction: PropTypes.string,
+    routerDialog: PropTypes.object
+  }
+  */
+
   function DialogContainer(props) {
     (0, _classCallCheck3.default)(this, DialogContainer);
 
@@ -136,12 +146,7 @@ var DialogContainer = function (_Component) {
   return DialogContainer;
 }(_react.Component);
 
-process.env.NODE_ENV !== "production" ? DialogContainer.propTypes = {
-  store: _react.PropTypes.shape({
-    listen: _react.PropTypes.func
-  }),
-  showAction: _react.PropTypes.string,
-  routerDialog: _react.PropTypes.object
-} : void 0;
+//import PropTypes from "prop-types";
+
 exports.default = DialogContainer;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnContainers\DialogContainer.js.map
+//# sourceMappingURL=DialogContainer.js.map

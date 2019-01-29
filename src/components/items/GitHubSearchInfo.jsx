@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Caption from './ItemCaption'
 import ShowHide from '../zhnAtoms/ShowHide';
@@ -104,19 +104,16 @@ const ItemDescription = (props) => {
 }
 
 
-const GitHubSearchInfo = React.createClass({
-   getInitialState(){
-     return {
-       isShow : true
-     }
-   },
+class GitHubSearchInfo extends Component {
+  state = {
+    isShow: true
+  }
 
-
-  _handlerToggleOpen(){
+  _handlerToggleOpen = () => {
     this.setState(prevState => ({
       isShow: !prevState.isShow
     }))
-  },
+  }
 
   render(){
     const { repo, stars_count, pushed_at, caption, library, onCloseItem } = this.props
@@ -150,6 +147,6 @@ const GitHubSearchInfo = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default GitHubSearchInfo

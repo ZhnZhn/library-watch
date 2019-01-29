@@ -1,4 +1,7 @@
 import React from 'react';
+import createReactClass from 'create-react-class'
+
+//import PropTypes from 'prop-types'
 
 import RowInputSelect from './RowInputSelect';
 import RowInputText from './RowInputText';
@@ -15,18 +18,20 @@ const Styles = {
   }
 }
 
-const GroupEditPane = React.createClass({
+const GroupEditPane = createReactClass({
   displayName : 'GroupEditPane',
+  /*
   propTypes : {
-    store : React.PropTypes.object,
-    actionCompleted : React.PropTypes.string,
-    actionFailed : React.PropTypes.string,
-    forActionType : React.PropTypes.string,
-    msgOnIsEmptyName : React.PropTypes.func,
-    msgOnNotSelect : React.PropTypes.func,
-    onRename : React.PropTypes.func,
-    onClose : React.PropTypes.func
+    store : PropTypes.object,
+    actionCompleted : PropTypes.string,
+    actionFailed : PropTypes.string,
+    forActionType : PropTypes.string,
+    msgOnIsEmptyName : PropTypes.func,
+    msgOnNotSelect : PropTypes.func,
+    onRename : PropTypes.func,
+    onClose : PropTypes.func
   },
+  */
   getInitialState(){
     const {store} = this.props;
     this.captionFrom = null;

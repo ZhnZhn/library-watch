@@ -4,9 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-//import JSZip from 'jszip';
+var _extends2 = require('babel-runtime/helpers/extends');
 
+var _extends3 = _interopRequireDefault(_extends2);
 
 var _localforage = require('localforage');
 
@@ -48,6 +48,7 @@ var _Logic2 = _interopRequireDefault(_Logic);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import JSZip from 'jszip';
 var STORAGE_KEY = 'WATCH_LIST_PACKAGE',
     CAPTION_WATCH_SAVE = 'Watch List:',
     CAPTION_WATCH_EXPORT = "BackUp Watch Items:",
@@ -184,7 +185,7 @@ var WatchListSlice = {
       this.setWatchEdited(true);
       this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
     } catch (exc) {
-      _ComponentActions2.default.showModalDialog(_Type.ModalDialog.ALERT, _extends({}, _Msg2.default.Alert.LOAD_FROM_JSON));
+      _ComponentActions2.default.showModalDialog(_Type.ModalDialog.ALERT, (0, _extends3.default)({}, _Msg2.default.Alert.LOAD_FROM_JSON));
     }
   }
 };

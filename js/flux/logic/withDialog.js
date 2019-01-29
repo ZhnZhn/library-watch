@@ -48,4 +48,4 @@ var withDialog = {
 };
 
 exports.default = withDialog;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\flux\logic\withDialog.js.map
+//# sourceMappingURL=withDialog.js.map

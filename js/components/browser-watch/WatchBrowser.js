@@ -16,6 +16,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _createReactClass = require('create-react-class');
+
+var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -149,7 +153,7 @@ var styles = {
   }
 };
 
-var WatchBrowser = _react2.default.createClass((0, _extends3.default)({
+var WatchBrowser = (0, _createReactClass2.default)((0, _extends3.default)({
   displayName: 'WatchBrowser'
 }, _WithDnDStyle2.default, (0, _createHandlerDnDGroup2.default)(DRAG, _WatchActions2.default), (0, _createHandlerDnDList2.default)(DRAG, _WatchActions2.default), (0, _createHandlerDnDItem2.default)(DRAG, _WatchActions2.default), {
   getInitialState: function getInitialState() {
@@ -461,4 +465,4 @@ var WatchBrowser = _react2.default.createClass((0, _extends3.default)({
 }));
 
 exports.default = WatchBrowser;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\WatchBrowser.js.map
+//# sourceMappingURL=WatchBrowser.js.map

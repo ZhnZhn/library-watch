@@ -38,9 +38,19 @@ var styles = {
     marginLeft: '10px'
   }
 };
+//import PropTypes from "prop-types";
 
 var SvgHrzResize = function (_Component) {
   (0, _inherits3.default)(SvgHrzResize, _Component);
+
+  /*
+  static propTypes = {
+    comp: PropTypes.element,
+    minWidth: PropTypes.number,
+    maxWidth: PropTypes.number,
+    onResizeAfter: PropTypes.func
+  }
+  */
 
   function SvgHrzResize(props) {
     (0, _classCallCheck3.default)(this, SvgHrzResize);
@@ -187,11 +197,5 @@ var SvgHrzResize = function (_Component) {
   return SvgHrzResize;
 }(_react.Component);
 
-process.env.NODE_ENV !== "production" ? SvgHrzResize.propTypes = {
-  comp: _react.PropTypes.element,
-  minWidth: _react.PropTypes.number,
-  maxWidth: _react.PropTypes.number,
-  onResizeAfter: _react.PropTypes.func
-} : void 0;
 exports.default = SvgHrzResize;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnMoleculs\SvgHrzResize.js.map
+//# sourceMappingURL=SvgHrzResize.js.map

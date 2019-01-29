@@ -1,4 +1,7 @@
 import React from 'react';
+import createReactClass from 'create-react-class'
+
+//import PropTypes from 'prop-types'
 
 import InputSelect from '../zhn-select/InputSelect';
 import DialogStyles from '../styles/DialogStyles'
@@ -10,14 +13,16 @@ const Styles = {
   }
 }
 
-const RowInputSelect = React.createClass({
+const RowInputSelect = createReactClass({
   displayName : 'RowInputSelect',
+  /*
   propTypes : {
-    caption : React.PropTypes.string,
-    options : React.PropTypes.array,
-    isUpdateOptions : React.PropTypes.bool,
-    onSelect : React.PropTypes.func
+    caption : PropTypes.string,
+    options : PropTypes.array,
+    isUpdateOptions : PropTypes.bool,
+    onSelect : PropTypes.func
   },
+  */
   render(){
     const {caption, options, isUpdateOptions, onSelect} = this.props;
     return (

@@ -4,6 +4,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -167,72 +183,87 @@ var ItemDescription = function ItemDescription(props) {
   );
 };
 
-var GitHubSearchInfo = _react2.default.createClass({
-  displayName: 'GitHubSearchInfo',
-  getInitialState: function getInitialState() {
-    return {
-      isShow: true
-    };
-  },
-  _handlerToggleOpen: function _handlerToggleOpen() {
-    this.setState(function (prevState) {
-      return {
-        isShow: !prevState.isShow
-      };
-    });
-  },
-  render: function render() {
-    var _props = this.props,
-        repo = _props.repo,
-        stars_count = _props.stars_count,
-        pushed_at = _props.pushed_at,
-        caption = _props.caption,
-        library = _props.library,
-        onCloseItem = _props.onCloseItem,
-        _styleCaption = styles.captionSpanOpen,
-        isShow = this.state.isShow;
+var GitHubSearchInfo = function (_Component) {
+  (0, _inherits3.default)(GitHubSearchInfo, _Component);
 
-    return _react2.default.createElement(
-      'div',
-      { style: styles.rootDiv },
-      _react2.default.createElement(
-        _ItemCaption2.default,
-        { onClose: onCloseItem },
-        _react2.default.createElement(
-          'span',
-          {
-            className: 'not-selected',
-            title: caption,
-            style: _styleCaption,
-            onClick: this._handlerToggleOpen
-          },
-          _react2.default.createElement(
-            'span',
-            null,
-            repo
-          ),
-          _react2.default.createElement(
-            'span',
-            { style: styles.SPAN_VERSION },
-            stars_count
-          ),
-          _react2.default.createElement(
-            'span',
-            null,
-            pushed_at
-          )
-        )
-      ),
-      _react2.default.createElement(
-        _ShowHide2.default,
-        { isShow: isShow },
-        _react2.default.createElement(ItemDescription, {
-          library: library
-        })
-      )
-    );
+  function GitHubSearchInfo() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    (0, _classCallCheck3.default)(this, GitHubSearchInfo);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = GitHubSearchInfo.__proto__ || Object.getPrototypeOf(GitHubSearchInfo)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      isShow: true
+    }, _this._handlerToggleOpen = function () {
+      _this.setState(function (prevState) {
+        return {
+          isShow: !prevState.isShow
+        };
+      });
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
-});
+
+  (0, _createClass3.default)(GitHubSearchInfo, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          repo = _props.repo,
+          stars_count = _props.stars_count,
+          pushed_at = _props.pushed_at,
+          caption = _props.caption,
+          library = _props.library,
+          onCloseItem = _props.onCloseItem,
+          _styleCaption = styles.captionSpanOpen,
+          isShow = this.state.isShow;
+
+      return _react2.default.createElement(
+        'div',
+        { style: styles.rootDiv },
+        _react2.default.createElement(
+          _ItemCaption2.default,
+          { onClose: onCloseItem },
+          _react2.default.createElement(
+            'span',
+            {
+              className: 'not-selected',
+              title: caption,
+              style: _styleCaption,
+              onClick: this._handlerToggleOpen
+            },
+            _react2.default.createElement(
+              'span',
+              null,
+              repo
+            ),
+            _react2.default.createElement(
+              'span',
+              { style: styles.SPAN_VERSION },
+              stars_count
+            ),
+            _react2.default.createElement(
+              'span',
+              null,
+              pushed_at
+            )
+          )
+        ),
+        _react2.default.createElement(
+          _ShowHide2.default,
+          { isShow: isShow },
+          _react2.default.createElement(ItemDescription, {
+            library: library
+          })
+        )
+      );
+    }
+  }]);
+  return GitHubSearchInfo;
+}(_react.Component);
 
 exports.default = GitHubSearchInfo;
 //# sourceMappingURL=GitHubSearchInfo.js.map

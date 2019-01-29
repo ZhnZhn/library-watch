@@ -27,10 +27,7 @@ const AppLibraryWatch = (props) => {
             initDialogAction={ComponentActionTypes.INIT_AND_SHOW_DIALOG}
             showDialogAction={ComponentActionTypes.SHOW_DIALOG}
          />
-         <About
-            store={Store}
-            isShow={true}
-         />
+         <About store={Store} />
          <ComponentHrzContainer
             store={Store}
             initShowAction={ChartActionTypes.INIT_AND_SHOW_CHART}

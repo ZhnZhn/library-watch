@@ -1,4 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react';
+
+//import PropTypes from "prop-types";
 
 const CLASS = {
   INIT : 'modal-root',
@@ -19,6 +21,7 @@ const STYLE = {
 }
 
 class ModalDialogContainer extends Component {
+  /*
   static propTypes = {
     isShow  : PropTypes.bool,
     timeout : PropTypes.number,
@@ -28,6 +31,7 @@ class ModalDialogContainer extends Component {
     ]),
     onClose : PropTypes.func
   }
+  */
 
   static defaultProps = {
      timeout: 450,

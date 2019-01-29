@@ -10,16 +10,13 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var TestItem = _react2.default.createClass({
-  displayName: 'TestItem',
-  render: function render() {
-    return _react2.default.createElement(
-      'span',
-      null,
-      'TestItem'
-    );
-  }
-});
+var TestItem = function TestItem() {
+  return _react2.default.createElement(
+    'span',
+    null,
+    'TestItem'
+  );
+};
 
 exports.default = TestItem;
 //# sourceMappingURL=TestItem.js.map

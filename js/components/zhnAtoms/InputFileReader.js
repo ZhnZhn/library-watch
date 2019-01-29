@@ -20,21 +20,33 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp2;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var InputFileReader = function (_Component) {
+//import PropTypes from "prop-types";
+
+var InputFileReader = (_temp2 = _class = function (_Component) {
   (0, _inherits3.default)(InputFileReader, _Component);
 
-  function InputFileReader(props) {
+  function InputFileReader() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, InputFileReader);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (InputFileReader.__proto__ || Object.getPrototypeOf(InputFileReader)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this._handleChange = function (e) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = InputFileReader.__proto__ || Object.getPrototypeOf(InputFileReader)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      labelText: "Choose a file..."
+    }, _this._handleChange = function (e) {
       var files = [];
       for (var i = 0; i < e.target.files.length; i++) {
         // Convert to Array.
@@ -81,13 +93,14 @@ var InputFileReader = function (_Component) {
           _this.props.onChange(zippedResults);
         }
       });
-    };
-
-    _this.state = {
-      labelText: "Choose a file..."
-    };
-    return _this;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
+  /*
+   static propTypes = {
+     as: PropTypes.oneOf(['binary', 'buffer', 'text', 'url'])
+   }
+   */
+
 
   (0, _createClass3.default)(InputFileReader, [{
     key: 'render',
@@ -124,13 +137,8 @@ var InputFileReader = function (_Component) {
     }
   }]);
   return InputFileReader;
-}(_react.Component);
-
-InputFileReader.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   as: 'text'
-};
-process.env.NODE_ENV !== "production" ? InputFileReader.propTypes = {
-  as: _react.PropTypes.oneOf(['binary', 'buffer', 'text', 'url'])
-} : void 0;
+}, _temp2);
 exports.default = InputFileReader;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\InputFileReader.js.map
+//# sourceMappingURL=InputFileReader.js.map

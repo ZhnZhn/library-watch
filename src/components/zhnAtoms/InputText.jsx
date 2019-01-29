@@ -1,4 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+
+//import PropTypes from "prop-types";
 
 const STYLE = {
   INPUT : {
@@ -18,11 +20,16 @@ const STYLE = {
   }
 }
 
+const _isKeyClean = ({ keyCode }) => keyCode === 27
+ || keyCode === 46;
+
 class InputText extends Component {
+  /*
   static propTypes = {
     initValue : PropTypes.string,
     style : PropTypes.object
   }
+  */
   static defaultProps = {
     initValue : ''
   }
@@ -47,7 +54,7 @@ class InputText extends Component {
   }
 
   _handlerInputKeyDown = (event) => {
-     if (event.keyCode === 27){
+     if ( _isKeyClean(event) ){
        this.setState({ value : '' })
      }
   }

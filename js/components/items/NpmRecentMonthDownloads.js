@@ -4,6 +4,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -100,145 +116,156 @@ var styles = {
 
 };
 
-var NpmRecentDownloads = _react2.default.createClass({
-  displayName: 'NpmRecentDownloads',
-  getInitialState: function getInitialState() {
-    return {
+var NpmRecentDownloads = function (_Component) {
+  (0, _inherits3.default)(NpmRecentDownloads, _Component);
+
+  function NpmRecentDownloads() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    (0, _classCallCheck3.default)(this, NpmRecentDownloads);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = NpmRecentDownloads.__proto__ || Object.getPrototypeOf(NpmRecentDownloads)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       isShow: true,
       isLoadNodeIco: false,
       isShowNodeIco: false
-    };
-  },
-  _handlerToggleOpen: function _handlerToggleOpen() {
-    this.setState({ isShow: !this.state.isShow });
-  },
-  _handlerClickWatch: function _handlerClickWatch() {
-    var _props = this.props,
-        packageName = _props.packageName,
-        requestType = _props.requestType,
-        sumDownloads = _props.sumDownloads,
-        toDate = _props.toDate,
-        onWatchItem = _props.onWatchItem,
-        _caption = packageName + ' ' + sumDownloads,
-        _descr = ITEM_DESCRIPTION;
+    }, _this._handlerToggleOpen = function () {
+      _this.setState({ isShow: !_this.state.isShow });
+    }, _this._handlerClickWatch = function () {
+      var _this$props = _this.props,
+          packageName = _this$props.packageName,
+          requestType = _this$props.requestType,
+          sumDownloads = _this$props.sumDownloads,
+          toDate = _this$props.toDate,
+          onWatchItem = _this$props.onWatchItem,
+          _caption = packageName + ' ' + sumDownloads,
+          _descr = ITEM_DESCRIPTION;
 
-    onWatchItem({
-      caption: _caption,
-      config: {
-        requestType: requestType,
-        repo: packageName,
-        descr: _descr,
-        version: sumDownloads,
+      onWatchItem({
         caption: _caption,
-        date: toDate
-      }
-    });
-  },
-  _handlerClickNodeIco: function _handlerClickNodeIco() {
-    this.setState({
-      isLoadNodeIco: true,
-      isShowNodeIco: !this.state.isShowNodeIco
-    });
-  },
-  _renderButtonWatch: function _renderButtonWatch() {
-    return _react2.default.createElement(_ButtonCircle2.default, {
-      caption: 'W',
-      title: 'Add to Watch',
-      style: styles.BTN_CIRCLE,
-      onClick: this._handlerClickWatch
-    });
-  },
-  _renderNodeIcoBadge: function _renderNodeIcoBadge(packageName) {
-    var _href = BASE_NPM + packageName,
-        _imgSrc = BASE_NODEICO + packageName + SUFFIX_NODEICO;
-    return _react2.default.createElement(_LinkImg2.default, {
-      href: _href,
-      imgClass: 'node-ico',
-      imgSrc: _imgSrc
-    });
-  },
-  render: function render() {
-    var _props2 = this.props,
-        packageName = _props2.packageName,
-        caption = _props2.caption,
-        _props2$sumDownloads = _props2.sumDownloads,
-        sumDownloads = _props2$sumDownloads === undefined ? 0 : _props2$sumDownloads,
-        fromDate = _props2.fromDate,
-        toDate = _props2.toDate,
-        labels = _props2.labels,
-        data = _props2.data,
-        onCloseItem = _props2.onCloseItem,
-        onWatchItem = _props2.onWatchItem,
-        _isButtonWatch = typeof onWatchItem === 'function' ? true : false,
-        _styleCaption = styles.captionSpanOpen,
-        _state = this.state,
-        isShow = _state.isShow,
-        isLoadNodeIco = _state.isLoadNodeIco,
-        isShowNodeIco = _state.isShowNodeIco,
-        _lineChartConfig = _Chart2.default.fLineConfig({ labels: labels, data: data });
+        config: {
+          requestType: requestType,
+          repo: packageName,
+          descr: _descr,
+          version: sumDownloads,
+          caption: _caption,
+          date: toDate
+        }
+      });
+    }, _this._handlerClickNodeIco = function () {
+      _this.setState({
+        isLoadNodeIco: true,
+        isShowNodeIco: !_this.state.isShowNodeIco
+      });
+    }, _this._renderButtonWatch = function () {
+      return _react2.default.createElement(_ButtonCircle2.default, {
+        caption: 'W',
+        title: 'Add to Watch',
+        style: styles.BTN_CIRCLE,
+        onClick: _this._handlerClickWatch
+      });
+    }, _this._renderNodeIcoBadge = function (packageName) {
+      var _href = BASE_NPM + packageName,
+          _imgSrc = BASE_NODEICO + packageName + SUFFIX_NODEICO;
+      return _react2.default.createElement(_LinkImg2.default, {
+        href: _href,
+        imgClass: 'node-ico',
+        imgSrc: _imgSrc
+      });
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+  }
 
-    return _react2.default.createElement(
-      'div',
-      { style: styles.rootDiv },
-      _react2.default.createElement(
-        _ItemCaption2.default,
-        { onClose: onCloseItem },
+  (0, _createClass3.default)(NpmRecentDownloads, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          packageName = _props.packageName,
+          caption = _props.caption,
+          _props$sumDownloads = _props.sumDownloads,
+          sumDownloads = _props$sumDownloads === undefined ? 0 : _props$sumDownloads,
+          fromDate = _props.fromDate,
+          toDate = _props.toDate,
+          labels = _props.labels,
+          data = _props.data,
+          onCloseItem = _props.onCloseItem,
+          onWatchItem = _props.onWatchItem,
+          _isButtonWatch = typeof onWatchItem === 'function' ? true : false,
+          _styleCaption = styles.captionSpanOpen,
+          _state = this.state,
+          isShow = _state.isShow,
+          isLoadNodeIco = _state.isLoadNodeIco,
+          isShowNodeIco = _state.isShowNodeIco,
+          _lineChartConfig = _Chart2.default.fLineConfig({ labels: labels, data: data });
+
+      return _react2.default.createElement(
+        'div',
+        { style: styles.rootDiv },
         _react2.default.createElement(
-          'span',
-          {
-            className: 'not-selected',
-            title: caption,
-            style: _styleCaption,
-            onClick: this._handlerToggleOpen
-          },
+          _ItemCaption2.default,
+          { onClose: onCloseItem },
           _react2.default.createElement(
             'span',
-            null,
-            packageName
+            {
+              className: 'not-selected',
+              title: caption,
+              style: _styleCaption,
+              onClick: this._handlerToggleOpen
+            },
+            _react2.default.createElement(
+              'span',
+              null,
+              packageName
+            ),
+            _react2.default.createElement(_FormattedInteger2.default, {
+              value: sumDownloads,
+              style: styles.SPAN_SUM
+            }),
+            _react2.default.createElement(
+              'span',
+              { style: styles.SPAN_START },
+              fromDate
+            ),
+            _react2.default.createElement(
+              'span',
+              null,
+              toDate
+            )
           ),
-          _react2.default.createElement(_FormattedInteger2.default, {
-            value: sumDownloads,
-            style: styles.SPAN_SUM
-          }),
-          _react2.default.createElement(
-            'span',
-            { style: styles.SPAN_START },
-            fromDate
-          ),
-          _react2.default.createElement(
-            'span',
-            null,
-            toDate
-          )
+          _isButtonWatch && this._renderButtonWatch()
         ),
-        _isButtonWatch && this._renderButtonWatch()
-      ),
-      _react2.default.createElement(
-        _ShowHide2.default,
-        { isShow: isShow },
-        _react2.default.createElement(_LineChart2.default, {
-          data: _lineChartConfig
-        }),
         _react2.default.createElement(
-          'div',
-          { style: styles.DIV_NODEICO_BADGE },
-          _react2.default.createElement(_ButtonDownUp2.default, {
-            caption: 'NodeICO',
-            title: 'Package badge from Nodei.co',
-            styleRoot: styles.BUTTON_DOWN_UP,
-            isUp: isShowNodeIco,
-            onClick: this._handlerClickNodeIco
+          _ShowHide2.default,
+          { isShow: isShow },
+          _react2.default.createElement(_LineChart2.default, {
+            data: _lineChartConfig
           }),
           _react2.default.createElement(
-            _ShowHide2.default,
-            { isShow: isShowNodeIco, style: styles.SHOW_HIDE_BADGE },
-            isLoadNodeIco && this._renderNodeIcoBadge(packageName)
+            'div',
+            { style: styles.DIV_NODEICO_BADGE },
+            _react2.default.createElement(_ButtonDownUp2.default, {
+              caption: 'NodeICO',
+              title: 'Package badge from Nodei.co',
+              styleRoot: styles.BUTTON_DOWN_UP,
+              isUp: isShowNodeIco,
+              onClick: this._handlerClickNodeIco
+            }),
+            _react2.default.createElement(
+              _ShowHide2.default,
+              { isShow: isShowNodeIco, style: styles.SHOW_HIDE_BADGE },
+              isLoadNodeIco && this._renderNodeIcoBadge(packageName)
+            )
           )
         )
-      )
-    );
-  }
-});
+      );
+    }
+  }]);
+  return NpmRecentDownloads;
+}(_react.Component);
 
 exports.default = NpmRecentDownloads;
 //# sourceMappingURL=NpmRecentMonthDownloads.js.map

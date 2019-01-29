@@ -18,6 +18,8 @@ var _DialogStyles2 = _interopRequireDefault(_DialogStyles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import PropTypes from "prop-types";
+
 var styles = _DialogStyles2.default;
 var STYLE = {
   CAPTION: {
@@ -47,12 +49,14 @@ var RowInputSelect = function RowInputSelect(_ref) {
   );
 };
 
-process.env.NODE_ENV !== "production" ? RowInputSelect.propTypes = {
-  caption: _react.PropTypes.string,
-  placeholder: _react.PropTypes.string,
-  options: _react.PropTypes.array,
-  onSelect: _react.PropTypes.func
-} : void 0;
+/*
+RowInputSelect.propTypes = {
+  caption : PropTypes.string,
+  placeholder: PropTypes.string,
+  options : PropTypes.array,
+  onSelect : PropTypes.func
+}
+*/
 
 exports.default = RowInputSelect;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\RowInputSelect.js.map
+//# sourceMappingURL=RowInputSelect.js.map

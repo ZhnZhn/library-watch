@@ -34,6 +34,8 @@ var _DialogStyles2 = _interopRequireDefault(_DialogStyles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import PropTypes from "prop-types";
+
 var styles = _DialogStyles2.default;
 
 var STYLE = {
@@ -65,6 +67,18 @@ var InfoDialog = function (_Component) {
 
   (0, _createClass3.default)(InfoDialog, [{
     key: 'shouldComponentUpdate',
+
+    /*
+    static propTypes = {
+      isShow: PropTypes.bool,
+      data: PropTypes.shape({
+        caption: PropTypes.string,
+        descr: PropTypes.string
+      }),
+      onClose: PropTypes.func
+    }
+    */
+
     value: function shouldComponentUpdate(nextProps, nextState) {
       if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
         return false;
@@ -112,13 +126,5 @@ var InfoDialog = function (_Component) {
   return InfoDialog;
 }(_react.Component);
 
-process.env.NODE_ENV !== "production" ? InfoDialog.propTypes = {
-  isShow: _react.PropTypes.bool,
-  data: _react.PropTypes.shape({
-    caption: _react.PropTypes.string,
-    descr: _react.PropTypes.string
-  }),
-  onClose: _react.PropTypes.func
-} : void 0;
 exports.default = InfoDialog;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\InfoDialog.js.map
+//# sourceMappingURL=InfoDialog.js.map

@@ -1,15 +1,20 @@
 import React from 'react';
+import createReactClass from 'create-react-class'
+
+//import PropTypes from 'prop-types'
 
 import RowInputSelect from './RowInputSelect';
 
-const FragmentSelectGroupList = React.createClass({
+const FragmentSelectGroupList = createReactClass({
   displayName : 'FragmentSelectGroupList',
+  /*
   propTypes : {
-    store : React.PropTypes.object,
-    groupCaption : React.PropTypes.string,
-    groupOptions : React.PropTypes.array,
-    listCaption : React.PropTypes.string
+    store : PropTypes.object,
+    groupCaption : PropTypes.string,
+    groupOptions : PropTypes.array,
+    listCaption : PropTypes.string
   },
+  */
 
   getInitialState(){
     this.groupCaption = null;

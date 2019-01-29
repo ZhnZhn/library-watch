@@ -1,4 +1,7 @@
 import React from 'react';
+import createReactClass from 'create-react-class'
+
+//import PropTypes from 'prop-types'
 
 import InputText from '../zhnAtoms/InputText';
 import DialogStyles from '../styles/DialogStyles'
@@ -20,11 +23,13 @@ const Styles = {
   }
 }
 
-const RowInputText = React.createClass({
+const RowInputText = createReactClass({
   displayName : 'RowInputText',
+  /*
   propTypes : {
-    caption : React.PropTypes.string
+    caption : PropTypes.string
   },
+  */
   render(){
     const {caption} = this.props;
     return (

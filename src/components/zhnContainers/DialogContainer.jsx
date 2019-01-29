@@ -1,8 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+
+//import PropTypes from "prop-types";
 
 import ModalDialogContainer from './ModalDialogContainer';
 
 class DialogContainer extends Component {
+  /*
   static propTypes = {
     store: PropTypes.shape({
       listen: PropTypes.func
@@ -10,6 +13,7 @@ class DialogContainer extends Component {
     showAction: PropTypes.string,
     routerDialog: PropTypes.object
   }
+  */
 
   constructor(props){
     super();

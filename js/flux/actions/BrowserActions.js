@@ -5,6 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.BrowserActionTypes = undefined;
 
+var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
 var _Reflux$createActions;
 
 var _reflux = require('reflux');
@@ -21,8 +25,6 @@ var _fnCatch2 = _interopRequireDefault(_fnCatch);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var BrowserActionTypes = exports.BrowserActionTypes = {
   SHOW_BROWSER: 'showBrowser',
   UPDATE_BROWSER_MENU: 'updateBrowserMenu',
@@ -36,7 +38,7 @@ var BrowserActionTypes = exports.BrowserActionTypes = {
   TOGGLE_WATCH_DB_BROWSER: 'toggleWatchDbBrowser'
 };
 
-var BrowserActions = _reflux2.default.createActions((_Reflux$createActions = {}, _defineProperty(_Reflux$createActions, BrowserActionTypes.SHOW_BROWSER, {}), _defineProperty(_Reflux$createActions, BrowserActionTypes.UPDATE_BROWSER_MENU, {}), _defineProperty(_Reflux$createActions, BrowserActionTypes.SHOW_BROWSER_DYNAMIC, {}), _defineProperty(_Reflux$createActions, BrowserActionTypes.INIT_BROWSER_DYNAMIC, {}), _defineProperty(_Reflux$createActions, BrowserActionTypes.LOAD_BROWSER_DYNAMIC, { children: ['completed', 'failed'] }), _defineProperty(_Reflux$createActions, BrowserActionTypes.UPDATE_WATCH_BROWSER, {}), _defineProperty(_Reflux$createActions, BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER, {}), _Reflux$createActions));
+var BrowserActions = _reflux2.default.createActions((_Reflux$createActions = {}, (0, _defineProperty3.default)(_Reflux$createActions, BrowserActionTypes.SHOW_BROWSER, {}), (0, _defineProperty3.default)(_Reflux$createActions, BrowserActionTypes.UPDATE_BROWSER_MENU, {}), (0, _defineProperty3.default)(_Reflux$createActions, BrowserActionTypes.SHOW_BROWSER_DYNAMIC, {}), (0, _defineProperty3.default)(_Reflux$createActions, BrowserActionTypes.INIT_BROWSER_DYNAMIC, {}), (0, _defineProperty3.default)(_Reflux$createActions, BrowserActionTypes.LOAD_BROWSER_DYNAMIC, { children: ['completed', 'failed'] }), (0, _defineProperty3.default)(_Reflux$createActions, BrowserActionTypes.UPDATE_WATCH_BROWSER, {}), (0, _defineProperty3.default)(_Reflux$createActions, BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER, {}), _Reflux$createActions));
 
 var _fnFetchSourceMenu = function _fnFetchSourceMenu(_ref) {
   var json = _ref.json,

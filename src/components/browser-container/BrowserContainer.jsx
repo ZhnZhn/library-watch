@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+//import PropTypes from 'props-type'
 
 import { BrowserType } from '../../constants/Type';
 
@@ -7,6 +8,7 @@ import DialogContainer3 from '../zhnContainers/DialogContainer3';
 
 //const BrowserContainer = React.createClass({
 class BrowserContainer extends Component {
+  /*
   static propTypes = {
     store: PropTypes.shape({
       listen: PropTypes.func
@@ -17,22 +19,13 @@ class BrowserContainer extends Component {
     updateWatchAction: PropTypes.string,
     toggleWatchDbBrowserAction: PropTypes.string,
   }
-
-  constructor(props){
-    super()
-    this.state = {
-      isDoubleWatch : false,
-      elBrowsers : []
-    }
-  }
-  /*
-  getInitialState(){
-    return {
-      isDoubleWatch : false,
-      elBrowsers : []
-    }
-  },
   */
+
+  state = {
+    isDoubleWatch : false,
+    elBrowsers : []
+  }
+
   componentWillMount(){
     const { store } = this.props
     this.unsubscribe = store.listen(this._onStore)
@@ -48,6 +41,11 @@ class BrowserContainer extends Component {
      } else if (actionType === toggleWatchDbBrowserAction){
        this.setState({ isDoubleWatch : !this.state.isDoubleWatch })
      }
+  }
+
+  _renderEl = (elBrowsers) => {
+    return elBrowsers
+      .map(el => React.cloneElement(el))
   }
 
   render(){
@@ -83,7 +81,7 @@ class BrowserContainer extends Component {
            updateAction={updateWatchAction}
         />
         {_doubleWatch}
-        {elBrowsers}
+        {this._renderEl(elBrowsers)}
         <DialogContainer3
            maxDialog={3}
            store={store}

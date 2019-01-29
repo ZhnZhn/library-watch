@@ -26,28 +26,42 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import PropTypes from "prop-types";
+
 var ComponentHrzContainer = function (_Component) {
   (0, _inherits3.default)(ComponentHrzContainer, _Component);
 
-  function ComponentHrzContainer(props) {
+  function ComponentHrzContainer() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, ComponentHrzContainer);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (ComponentHrzContainer.__proto__ || Object.getPrototypeOf(ComponentHrzContainer)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this._onStore = function (actionType, data) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = ComponentHrzContainer.__proto__ || Object.getPrototypeOf(ComponentHrzContainer)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      containers: []
+    }, _this._onStore = function (actionType, data) {
       var initShowAction = _this.props.initShowAction;
 
       if (actionType === initShowAction) {
         _this.state.containers.unshift(data);
         _this.setState(_this.state);
       }
-    };
-
-    _this.state = {
-      containers: []
-    };
-    return _this;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
+  /*
+  static propTypes = {
+    store: PropTypes.shape({
+      listen: PropTypes.func
+    }),
+    initShowAction: PropTypes.string
+  }
+  */
+
 
   (0, _createClass3.default)(ComponentHrzContainer, [{
     key: "componentWillMount",
@@ -86,11 +100,5 @@ var ComponentHrzContainer = function (_Component) {
   return ComponentHrzContainer;
 }(_react.Component);
 
-process.env.NODE_ENV !== "production" ? ComponentHrzContainer.propTypes = {
-  store: _react.PropTypes.shape({
-    listen: _react.PropTypes.func
-  }),
-  initShowAction: _react.PropTypes.string
-} : void 0;
 exports.default = ComponentHrzContainer;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnContainers\ComponentHrzContainer.js.map
+//# sourceMappingURL=ComponentHrzContainer.js.map

@@ -5,6 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ChartActionTypes = undefined;
 
+var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
 var _Reflux$createActions;
 
 var _reflux = require('reflux');
@@ -16,8 +20,6 @@ var _RouterLoad = require('../logic/RouterLoad');
 var _RouterLoad2 = _interopRequireDefault(_RouterLoad);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var ChartActionTypes = exports.ChartActionTypes = {
   INIT_AND_SHOW_CHART: 'initAndShowChart',
@@ -31,13 +33,13 @@ var ChartActionTypes = exports.ChartActionTypes = {
 
 };
 
-var ChartActions = _reflux2.default.createActions((_Reflux$createActions = {}, _defineProperty(_Reflux$createActions, ChartActionTypes.LOAD_STOCK, {
+var ChartActions = _reflux2.default.createActions((_Reflux$createActions = {}, (0, _defineProperty3.default)(_Reflux$createActions, ChartActionTypes.LOAD_STOCK, {
   children: ['completed', 'failed'],
   isLoading: false,
   idLoading: undefined,
   isShouldEmit: true
   //cancelLoad : _fnCancelLoad
-}), _defineProperty(_Reflux$createActions, ChartActionTypes.SHOW_CHART, {}), _defineProperty(_Reflux$createActions, ChartActionTypes.CLOSE_CHART, {}), _Reflux$createActions));
+}), (0, _defineProperty3.default)(_Reflux$createActions, ChartActionTypes.SHOW_CHART, {}), (0, _defineProperty3.default)(_Reflux$createActions, ChartActionTypes.CLOSE_CHART, {}), _Reflux$createActions));
 
 ChartActions[ChartActionTypes.LOAD_STOCK].listen(function (chartType, browserType, option) {
 

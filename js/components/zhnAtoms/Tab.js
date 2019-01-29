@@ -14,6 +14,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import PropTypes from "prop-types";
+
 var STYLE = {
   LI: {
     float: 'left',
@@ -62,14 +64,16 @@ var Tab = function Tab(_ref) {
   );
 };
 
-process.env.NODE_ENV !== "production" ? Tab.propTypes = {
-  title: _react.PropTypes.string,
-  isSelected: _react.PropTypes.bool,
-  onClick: _react.PropTypes.func
-} : void 0;
+/*
+Tab.propTypes = {
+  title: PropTypes.string,
+  isSelected: PropTypes.bool,
+  onClick: PropTypes.func
+}
+*/
 Tab.defaultProps = {
   onClick: function onClick() {}
 };
 
 exports.default = Tab;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\Tab.js.map
+//# sourceMappingURL=Tab.js.map

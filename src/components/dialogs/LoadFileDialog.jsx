@@ -1,4 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react';
+
+//import PropTypes from "prop-types";
 
 import ModalDialog from '../zhnMoleculs/ModalDialog'
 import InputFileReader from '../zhnAtoms/InputFileReader'
@@ -26,6 +28,7 @@ const STYLE = {
 }
 
 class LoadFileDialog extends Component {
+  /*
   static propTypes = {
     isShow: PropTypes.bool,
     data: PropTypes.shape({
@@ -33,6 +36,7 @@ class LoadFileDialog extends Component {
     }),
     onClose: PropTypes.func
   }
+  */
 
   constructor(props){
     super()

@@ -1,4 +1,7 @@
 import React from 'react';
+import createReactClass from 'create-react-class'
+
+//import PropTypes from 'prop-types'
 
 import WatchActions from '../../flux/actions/WatchActions';
 import {WatchActionTypes} from '../../flux/actions/WatchActions';
@@ -12,13 +15,15 @@ import GroupAddPane from './GroupAddPane';
 import GroupEditPane from './GroupEditPane';
 import GroupDeletePane from './GroupDeletePane';
 
-const EditGroupDialog = React.createClass({
+const EditGroupDialog = createReactClass({
   displayName : 'EditGroupDialog',
+  /*
   propTypes : {
-    isShow : React.PropTypes.bool,
-    store : React.PropTypes.object,
-    onClose : React.PropTypes.func
+    isShow : PropTypes.bool,
+    store : PropTypes.object,
+    onClose : PropTypes.func
   },
+  */
 
   shouldComponentUpdate(nextProps, nextState){
     if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {

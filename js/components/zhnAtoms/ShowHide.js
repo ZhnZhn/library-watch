@@ -14,6 +14,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import PropTypes from "prop-types";
+
 var SHOW_POPUP = "show-popup",
     STYLE = {
   SHOW: {
@@ -39,11 +41,16 @@ var ShowHide = function ShowHide(_ref) {
   );
 };
 
-process.env.NODE_ENV !== "production" ? ShowHide.propTypes = {
-  isShow: _react.PropTypes.bool,
-  style: _react.PropTypes.object,
-  children: _react.PropTypes.oneOfType([_react.PropTypes.arrayOf(_react.PropTypes.node), _react.PropTypes.node])
-} : void 0;
+/*
+ShowHide.propTypes = {
+  isShow: PropTypes.bool,
+  style: PropTypes.object,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
+}
+*/
 
 exports.default = ShowHide;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\ShowHide.js.map
+//# sourceMappingURL=ShowHide.js.map

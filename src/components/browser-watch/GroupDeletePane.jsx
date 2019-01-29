@@ -1,4 +1,7 @@
 import React from 'react';
+import createReactClass from 'create-react-class'
+
+//import PropTypes from 'prop-types'
 
 import RowInputSelect from './RowInputSelect';
 import ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment';
@@ -14,16 +17,18 @@ const Styles = {
   }
 }
 
-const GroupDeletePane = React.createClass({
+const GroupDeletePane = createReactClass({
   displayName : 'GroupDeletePane',
+  /*
   propTypes : {
-    store : React.PropTypes.object,
-    actionCompleted : React.PropTypes.string,
-    forActionType : React.PropTypes.string,
-    msgOnNotSelect : React.PropTypes.func,
-    onDelete : React.PropTypes.func,
-    onClose : React.PropTypes.func
+    store : PropTypes.object,
+    actionCompleted : PropTypes.string,
+    forActionType : PropTypes.string,
+    msgOnNotSelect : PropTypes.func,
+    onDelete : PropTypes.func,
+    onClose : PropTypes.func
   },
+  */
   getInitialState(){
     const {store} = this.props;
     this.caption = null;

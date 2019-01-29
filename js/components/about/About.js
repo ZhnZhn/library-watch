@@ -4,6 +4,24 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _class, _temp;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -66,229 +84,247 @@ var STYLE = {
   }
 };
 
-var About = _react2.default.createClass({
-  displayName: 'About',
-  getInitialState: function getInitialState() {
-    return {
-      isShow: this.props.isShow
+var About = (_temp = _class = function (_Component) {
+  (0, _inherits3.default)(About, _Component);
+
+  function About(props) {
+    (0, _classCallCheck3.default)(this, About);
+
+    var _this = (0, _possibleConstructorReturn3.default)(this, (About.__proto__ || Object.getPrototypeOf(About)).call(this, props));
+
+    _this._onStore = function (actionType, data) {
+      if (actionType === _ComponentActions.ComponentActionTypes.SHOW_ABOUT) {
+        _this.setState({ isShow: true });
+      } else if (actionType === _ChartActions.ChartActionTypes.INIT_AND_SHOW_CHART) {
+        _this.setState({ isShow: false });
+      } else if (actionType === _ChartActions.ChartActionTypes.SHOW_CHART) {
+        _this.setState({ isShow: false });
+      }
     };
-  },
-  componentWillMount: function componentWillMount() {
-    this.unsubscribe = this.props.store.listen(this._onStore);
-  },
-  componentWillUnmount: function componentWillUnmount() {
-    this.unsubscribe();
-  },
-  _onStore: function _onStore(actionType, data) {
-    if (actionType === _ComponentActions.ComponentActionTypes.SHOW_ABOUT) {
-      this.setState({ isShow: true });
-    } else if (actionType === _ChartActions.ChartActionTypes.INIT_AND_SHOW_CHART) {
-      this.setState({ isShow: false });
-    } else if (actionType === _ChartActions.ChartActionTypes.SHOW_CHART) {
-      this.setState({ isShow: false });
+
+    _this._handlerClose = function () {
+      _this.setState({ isShow: false });
+    };
+
+    _this.state = {
+      isShow: props.isShowInit
+    };
+    return _this;
+  }
+
+  (0, _createClass3.default)(About, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.unsubscribe = this.props.store.listen(this._onStore);
     }
-  },
-  _handlerClose: function _handlerClose() {
-    this.setState({ isShow: false });
-  },
-  render: function render() {
-    var isShow = this.state.isShow,
-        _classOpen = isShow ? "show-popup" : null,
-        _styleOpen = isShow ? { display: 'block' } : { display: 'none' };
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.unsubscribe();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var isShow = this.state.isShow,
+          _classOpen = isShow ? "show-popup" : null,
+          _styleOpen = isShow ? { display: 'block' } : { display: 'none' };
 
 
-    return _react2.default.createElement(
-      'div',
-      {
-        className: _classOpen,
-        style: Object.assign({}, styles.aboutRootDiv, _styleOpen)
-      },
-      _react2.default.createElement(_CaptionRow2.default, {
-        caption: 'About',
-        onClose: this._handlerClose
-      }),
-      _react2.default.createElement(
-        _ScrollPane2.default,
-        { style: STYLE.SCROLL_DIV },
+      return _react2.default.createElement(
+        'div',
+        {
+          className: _classOpen,
+          style: Object.assign({}, styles.aboutRootDiv, _styleOpen)
+        },
+        _react2.default.createElement(_CaptionRow2.default, {
+          caption: 'About',
+          onClose: this._handlerClose
+        }),
         _react2.default.createElement(
-          'div',
-          { style: STYLE.ROOT_DIV },
+          _ScrollPane2.default,
+          { style: STYLE.SCROLL_DIV },
           _react2.default.createElement(
-            'p',
-            null,
+            'div',
+            { style: STYLE.ROOT_DIV },
             _react2.default.createElement(
-              _Token2.default,
-              { color: '#80c040' },
-              'Library Watch'
-            ),
-            _react2.default.createElement(
-              _Token2.default,
-              { color: 'gray', isFirstBlank: true },
-              'is a SPA RESTful client.'
-            )
-          ),
-          _react2.default.createElement(
-            'p',
-            { style: STYLE.MARGIN_BOTTOM },
-            'With it, you can view information about GitHub\'s repositories, NPM\'s packages, StackOverflows\'s questions.'
-          ),
-          _react2.default.createElement(
-            'p',
-            { style: STYLE.MARGIN_BOTTOM },
-            _react2.default.createElement(
-              _Token2.default,
-              { color: 'gray' },
-              'Information API providers :'
-            ),
-            _react2.default.createElement(
-              _LinkToken2.default,
-              {
-                href: 'https://www.github.com/',
-                color: '#009ae5',
-                isFirstBlank: true,
-                title: 'GitHub'
-              },
-              'GitHub'
-            ),
-            _react2.default.createElement(
-              _Token2.default,
-              { color: 'gray' },
-              ',\xA0'
-            ),
-            _react2.default.createElement(
-              _LinkToken2.default,
-              {
-                href: 'https://www.npmjs.com/',
-                color: '#273547',
-                isFirstBlank: true,
-                title: 'NPM'
-              },
-              'NPM'
-            ),
-            _react2.default.createElement(
-              _Token2.default,
-              { color: 'gray' },
-              ',\xA0'
-            ),
-            _react2.default.createElement(
-              _LinkToken2.default,
-              {
-                href: 'https://stackexchange.com/',
-                color: '#3186C9',
-                isFirstBlank: true,
-                title: 'Stack Exchange'
-              },
-              'Stack Exchange'
-            ),
-            _react2.default.createElement(
-              _Token2.default,
-              { color: 'gray' },
-              '.'
-            )
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            _react2.default.createElement(_Step2.default, { step: '1' }),
-            _react2.default.createElement(
-              _Token2.default,
-              { color: 'black', isFirstBlank: true },
-              'Choose an information Browser from the header bar'
-            )
-          ),
-          _react2.default.createElement(
-            'p',
-            { style: STYLE.MARGIN_TOP },
-            _react2.default.createElement(_Step2.default, { step: '2' }),
-            _react2.default.createElement(
-              _Token2.default,
-              { color: 'black', isFirstBlank: true },
-              'Choose an information menu item in a Browser'
-            )
-          ),
-          _react2.default.createElement(
-            'p',
-            { style: STYLE.MARGIN_TOP },
-            _react2.default.createElement(_Step2.default, { step: '3' }),
-            _react2.default.createElement(
-              _Token2.default,
-              { color: 'black', isFirstBlank: true },
-              'Enter repository or package name in a draggable Dialog'
-            )
-          ),
-          _react2.default.createElement(
-            'p',
-            { style: STYLE.MARGIN_TOP },
-            _react2.default.createElement(_Step2.default, { step: '4' }),
-            _react2.default.createElement(
-              _Token2.default,
-              { color: 'black', isFirstBlank: true },
-              'Click a button Load'
-            )
-          ),
-          _react2.default.createElement(
-            'p',
-            { style: STYLE.MARGIN_TOP },
-            _react2.default.createElement(
-              _Token2.default,
-              { color: 'gray' },
-              'The result will be shown in an Item component in a Container.'
-            )
-          ),
-          _react2.default.createElement(
-            'p',
-            { style: Object.assign({}, STYLE.MARGIN_BOTTOM, STYLE.MARGIN_TOP) },
-            _react2.default.createElement(
-              _Token2.default,
-              { color: 'gray' },
-              'Also, you can add an item to Watch Browser and save to LocalStorage.'
-            )
-          ),
-          _react2.default.createElement(
-            'p',
-            { style: STYLE.MARGIN_BOTTOM },
-            'After clicking a button Show in a Dialog will be opened Container with Items or empty. After closing a Container all Items remains. In one-time max three Item Dialogs can be opened.'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            _react2.default.createElement(
-              _Token2.default,
-              { color: 'gray' },
-              'In that case of using'
-            ),
-            _react2.default.createElement(
-              _LinkToken2.default,
-              {
-                href: 'https://developer.github.com/v3/#rate-limiting',
-                color: '#009ae5',
-                isFirstBlank: true,
-                title: 'GitHub API v3 Rate Limiting'
-              },
-              'GitHub'
-            ),
-            _react2.default.createElement(
-              _Token2.default,
-              { color: 'gray', isFirstBlank: true },
-              'API provider, exists some restriction on frequency and amount queries (',
+              'p',
+              null,
               _react2.default.createElement(
                 _Token2.default,
-                { color: '#2f7ed8' },
-                '60 calls per hour, 10 requests per minute for Search API'
+                { color: '#80c040' },
+                'Library Watch'
+              ),
+              _react2.default.createElement(
+                _Token2.default,
+                { color: 'gray', isFirstBlank: true },
+                'is a SPA RESTful client.'
+              )
+            ),
+            _react2.default.createElement(
+              'p',
+              { style: STYLE.MARGIN_BOTTOM },
+              'With it, you can view information about GitHub\'s repositories, NPM\'s packages, StackOverflows\'s questions.'
+            ),
+            _react2.default.createElement(
+              'p',
+              { style: STYLE.MARGIN_BOTTOM },
+              _react2.default.createElement(
+                _Token2.default,
+                { color: 'gray' },
+                'Information API providers :'
+              ),
+              _react2.default.createElement(
+                _LinkToken2.default,
+                {
+                  href: 'https://www.github.com/',
+                  color: '#009ae5',
+                  isFirstBlank: true,
+                  title: 'GitHub'
+                },
+                'GitHub'
               ),
               _react2.default.createElement(
                 _Token2.default,
                 { color: 'gray' },
-                ').'
+                ',\xA0'
+              ),
+              _react2.default.createElement(
+                _LinkToken2.default,
+                {
+                  href: 'https://www.npmjs.com/',
+                  color: '#273547',
+                  isFirstBlank: true,
+                  title: 'NPM'
+                },
+                'NPM'
+              ),
+              _react2.default.createElement(
+                _Token2.default,
+                { color: 'gray' },
+                ',\xA0'
+              ),
+              _react2.default.createElement(
+                _LinkToken2.default,
+                {
+                  href: 'https://stackexchange.com/',
+                  color: '#3186C9',
+                  isFirstBlank: true,
+                  title: 'Stack Exchange'
+                },
+                'Stack Exchange'
+              ),
+              _react2.default.createElement(
+                _Token2.default,
+                { color: 'gray' },
+                '.'
               )
-            )
-          ),
-          _react2.default.createElement(_IconLogoBar2.default, null)
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              _react2.default.createElement(_Step2.default, { step: '1' }),
+              _react2.default.createElement(
+                _Token2.default,
+                { color: 'black', isFirstBlank: true },
+                'Choose an information Browser from the header bar'
+              )
+            ),
+            _react2.default.createElement(
+              'p',
+              { style: STYLE.MARGIN_TOP },
+              _react2.default.createElement(_Step2.default, { step: '2' }),
+              _react2.default.createElement(
+                _Token2.default,
+                { color: 'black', isFirstBlank: true },
+                'Choose an information menu item in a Browser'
+              )
+            ),
+            _react2.default.createElement(
+              'p',
+              { style: STYLE.MARGIN_TOP },
+              _react2.default.createElement(_Step2.default, { step: '3' }),
+              _react2.default.createElement(
+                _Token2.default,
+                { color: 'black', isFirstBlank: true },
+                'Enter repository or package name in a draggable Dialog'
+              )
+            ),
+            _react2.default.createElement(
+              'p',
+              { style: STYLE.MARGIN_TOP },
+              _react2.default.createElement(_Step2.default, { step: '4' }),
+              _react2.default.createElement(
+                _Token2.default,
+                { color: 'black', isFirstBlank: true },
+                'Click a button Load'
+              )
+            ),
+            _react2.default.createElement(
+              'p',
+              { style: STYLE.MARGIN_TOP },
+              _react2.default.createElement(
+                _Token2.default,
+                { color: 'gray' },
+                'The result will be shown in an Item component in a Container.'
+              )
+            ),
+            _react2.default.createElement(
+              'p',
+              { style: Object.assign({}, STYLE.MARGIN_BOTTOM, STYLE.MARGIN_TOP) },
+              _react2.default.createElement(
+                _Token2.default,
+                { color: 'gray' },
+                'Also, you can add an item to Watch Browser and save to LocalStorage.'
+              )
+            ),
+            _react2.default.createElement(
+              'p',
+              { style: STYLE.MARGIN_BOTTOM },
+              'After clicking a button Show in a Dialog will be opened Container with Items or empty. After closing a Container all Items remains. In one-time max three Item Dialogs can be opened.'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              _react2.default.createElement(
+                _Token2.default,
+                { color: 'gray' },
+                'In that case of using'
+              ),
+              _react2.default.createElement(
+                _LinkToken2.default,
+                {
+                  href: 'https://developer.github.com/v3/#rate-limiting',
+                  color: '#009ae5',
+                  isFirstBlank: true,
+                  title: 'GitHub API v3 Rate Limiting'
+                },
+                'GitHub'
+              ),
+              _react2.default.createElement(
+                _Token2.default,
+                { color: 'gray', isFirstBlank: true },
+                'API provider, exists some restriction on frequency and amount queries (',
+                _react2.default.createElement(
+                  _Token2.default,
+                  { color: '#2f7ed8' },
+                  '60 calls per hour, 10 requests per minute for Search API'
+                ),
+                _react2.default.createElement(
+                  _Token2.default,
+                  { color: 'gray' },
+                  ').'
+                )
+              )
+            ),
+            _react2.default.createElement(_IconLogoBar2.default, null)
+          )
         )
-      )
-    );
-  }
-});
-
+      );
+    }
+  }]);
+  return About;
+}(_react.Component), _class.defaultProps = {
+  isShowInit: true
+}, _temp);
 exports.default = About;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\about\About.js.map
+//# sourceMappingURL=About.js.map

@@ -52,6 +52,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var styles = _DialogStyles2.default;
 
+//import PropTypes from "prop-types";
+
 var C = {
   FILE_NOT_CHOOSED: 'Choose file with Watch Items for Load'
 };
@@ -71,6 +73,16 @@ var STYLE = {
 
 var LoadFileDialog = function (_Component) {
   (0, _inherits3.default)(LoadFileDialog, _Component);
+
+  /*
+  static propTypes = {
+    isShow: PropTypes.bool,
+    data: PropTypes.shape({
+      onLoad: PropTypes.func
+    }),
+    onClose: PropTypes.func
+  }
+  */
 
   function LoadFileDialog(props) {
     (0, _classCallCheck3.default)(this, LoadFileDialog);
@@ -174,12 +186,5 @@ var LoadFileDialog = function (_Component) {
   return LoadFileDialog;
 }(_react.Component);
 
-process.env.NODE_ENV !== "production" ? LoadFileDialog.propTypes = {
-  isShow: _react.PropTypes.bool,
-  data: _react.PropTypes.shape({
-    onLoad: _react.PropTypes.func
-  }),
-  onClose: _react.PropTypes.func
-} : void 0;
 exports.default = LoadFileDialog;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\LoadFileDialog.js.map
+//# sourceMappingURL=LoadFileDialog.js.map

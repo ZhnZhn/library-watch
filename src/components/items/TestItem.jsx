@@ -1,11 +1,7 @@
 import React from 'react';
 
-const TestItem = React.createClass({
-  render(){
-    return (
-      <span>TestItem</span>
-    )
-  }
-});
+const TestItem = () => (
+  <span>TestItem</span>
+);
 
 export default TestItem

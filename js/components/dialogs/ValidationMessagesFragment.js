@@ -10,6 +10,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import PropTypes from "prop-types";
+
 var STYLE = {
   ROOT_DIV: {
     paddingLeft: '10px',
@@ -51,10 +53,12 @@ var ValidationMessage = function ValidationMessage(_ref) {
     )
   );
 };
-process.env.NODE_ENV !== "production" ? ValidationMessage.propTypes = {
-  index: _react.PropTypes.number,
-  msg: _react.PropTypes.string
-} : void 0;
+/*
+ValidationMessage.propTypes = {
+  index: PropTypes.number,
+  msg: PropTypes.string
+}
+*/
 
 var ValidationMessagesFragment = function ValidationMessagesFragment(props) {
   var validationMessages = props.validationMessages;
@@ -77,11 +81,15 @@ var ValidationMessagesFragment = function ValidationMessagesFragment(props) {
   );
 };
 
-process.env.NODE_ENV !== "production" ? ValidationMessagesFragment.propTypes = {
-  validationMessages: _react.PropTypes.arrayOf(_react.PropTypes.shape({
-    msg: _react.PropTypes.string
-  }))
-} : void 0;
+/*
+ValidationMessagesFragment.propTypes = {
+  validationMessages: PropTypes.arrayOf(
+    PropTypes.shape({
+      msg: PropTypes.string
+    })
+  )
+}
+*/
 
 exports.default = ValidationMessagesFragment;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\ValidationMessagesFragment.js.map
+//# sourceMappingURL=ValidationMessagesFragment.js.map

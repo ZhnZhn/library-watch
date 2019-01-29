@@ -4,6 +4,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -206,111 +222,117 @@ var Detail = function Detail(props) {
   );
 };
 
-var GitHubRecentTag = _react2.default.createClass({
-  displayName: 'GitHubRecentTag',
-  getInitialState: function getInitialState() {
-    return {
+var GitHubRecentTag = function (_Component) {
+  (0, _inherits3.default)(GitHubRecentTag, _Component);
+
+  function GitHubRecentTag() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    (0, _classCallCheck3.default)(this, GitHubRecentTag);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = GitHubRecentTag.__proto__ || Object.getPrototypeOf(GitHubRecentTag)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       isShow: true,
       isDetail: false,
       json: {}
-    };
-  },
-  _handlerClickWatch: function _handlerClickWatch() {
-    var _props = this.props,
-        repo = _props.repo,
-        requestType = _props.requestType,
-        version = _props.version,
-        onWatchItem = _props.onWatchItem,
-        tagDate = this.state.tagDate,
-        caption = repo + ' ' + version,
-        descr = ITEM_DESCRIPTION;
+    }, _this._handlerClickWatch = function () {
+      var _this$props = _this.props,
+          repo = _this$props.repo,
+          requestType = _this$props.requestType,
+          version = _this$props.version,
+          onWatchItem = _this$props.onWatchItem,
+          tagDate = _this.state.tagDate,
+          caption = repo + ' ' + version,
+          descr = ITEM_DESCRIPTION;
 
-    onWatchItem({
-      caption: caption,
-      config: { repo: repo, requestType: requestType, version: version, caption: caption, descr: descr, date: tagDate }
-    });
-  },
-  _handlerClickDetail: function _handlerClickDetail() {
-    var _this = this;
+      onWatchItem({
+        caption: caption,
+        config: { repo: repo, requestType: requestType, version: version, caption: caption, descr: descr, date: tagDate }
+      });
+    }, _this._handlerClickDetail = function () {
+      _this.props.onClickDetail().then(function (json) {
+        //console.log(json);
+        var _json$commit = json.commit,
+            commit = _json$commit === undefined ? {} : _json$commit,
+            _commit$committer = commit.committer,
+            committer = _commit$committer === undefined ? {} : _commit$committer,
+            tagDate = committer.date,
+            _tagDate = tagDate.replace('T', ' ').replace('Z', '');
 
-    this.props.onClickDetail().then(function (json) {
-      //console.log(json);
-      var _json$commit = json.commit,
-          commit = _json$commit === undefined ? {} : _json$commit,
-          _commit$committer = commit.committer,
-          committer = _commit$committer === undefined ? {} : _commit$committer,
-          tagDate = committer.date,
-          _tagDate = tagDate.replace('T', ' ').replace('Z', '');
-
-      _this.setState({ isDetail: true, isShow: true, json: json, tagDate: _tagDate });
-    });
-  },
-  _handlerToggleOpen: function _handlerToggleOpen() {
-    this.setState({ isShow: !this.state.isShow });
-  },
-  _renderDetail: function _renderDetail(json) {
-    return _react2.default.createElement(Detail, {
-      json: json
-    });
-  },
-  render: function render() {
-    var _props2 = this.props,
-        repo = _props2.repo,
-        version = _props2.version,
-        caption = _props2.caption,
-        onCloseItem = _props2.onCloseItem,
-        _styleCaption = styles.captionSpanOpen,
-        _state = this.state,
-        isShow = _state.isShow,
-        isDetail = _state.isDetail,
-        json = _state.json;
-
-    return _react2.default.createElement(
-      'div',
-      { style: styles.rootDiv },
-      _react2.default.createElement(
-        _ItemCaption2.default,
-        { onClose: onCloseItem },
-        _react2.default.createElement(
-          'span',
-          {
-            className: 'not-selected',
-            title: caption,
-            style: _styleCaption,
-            onClick: this._handlerToggleOpen
-          },
-          _react2.default.createElement(
-            'span',
-            null,
-            repo
-          ),
-          _react2.default.createElement(
-            'span',
-            { style: styles.SPAN_VERSION },
-            version
-          )
-        ),
-        _react2.default.createElement(_ButtonCircle2.default, {
-          caption: 'W',
-          title: 'Add to Watch',
-          style: styles.BTN_CIRCLE,
-          onClick: this._handlerClickWatch
-        }),
-        _react2.default.createElement(_ButtonCircle2.default, {
-          caption: 'D',
-          title: 'Load Tag Details',
-          style: styles.BTN_CIRCLE,
-          onClick: this._handlerClickDetail
-        })
-      ),
-      _react2.default.createElement(
-        _ShowHide2.default,
-        { isShow: isShow },
-        isDetail && this._renderDetail(json)
-      )
-    );
+        _this.setState({ isDetail: true, isShow: true, json: json, tagDate: _tagDate });
+      });
+    }, _this._handlerToggleOpen = function () {
+      _this.setState({ isShow: !_this.state.isShow });
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
-});
+
+  (0, _createClass3.default)(GitHubRecentTag, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          repo = _props.repo,
+          version = _props.version,
+          caption = _props.caption,
+          onCloseItem = _props.onCloseItem,
+          _styleCaption = styles.captionSpanOpen,
+          _state = this.state,
+          isShow = _state.isShow,
+          isDetail = _state.isDetail,
+          json = _state.json;
+
+      return _react2.default.createElement(
+        'div',
+        { style: styles.rootDiv },
+        _react2.default.createElement(
+          _ItemCaption2.default,
+          { onClose: onCloseItem },
+          _react2.default.createElement(
+            'span',
+            {
+              className: 'not-selected',
+              title: caption,
+              style: _styleCaption,
+              onClick: this._handlerToggleOpen
+            },
+            _react2.default.createElement(
+              'span',
+              null,
+              repo
+            ),
+            _react2.default.createElement(
+              'span',
+              { style: styles.SPAN_VERSION },
+              version
+            )
+          ),
+          _react2.default.createElement(_ButtonCircle2.default, {
+            caption: 'W',
+            title: 'Add to Watch',
+            style: styles.BTN_CIRCLE,
+            onClick: this._handlerClickWatch
+          }),
+          _react2.default.createElement(_ButtonCircle2.default, {
+            caption: 'D',
+            title: 'Load Tag Details',
+            style: styles.BTN_CIRCLE,
+            onClick: this._handlerClickDetail
+          })
+        ),
+        _react2.default.createElement(
+          _ShowHide2.default,
+          { isShow: isShow },
+          isDetail && _react2.default.createElement(Detail, { json: json })
+        )
+      );
+    }
+  }]);
+  return GitHubRecentTag;
+}(_react.Component);
 
 exports.default = GitHubRecentTag;
 //# sourceMappingURL=GitHubRecentTag.js.map

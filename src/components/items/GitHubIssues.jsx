@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Caption from './ItemCaption'
 import ButtonCircle from '../zhnAtoms/ButtonCircle';
@@ -37,18 +37,16 @@ const styles = {
 }
 
 
-const GitHubIssues = React.createClass({
-  getInitialState(){
-    return {
-      isShow : true
-    }
-  },
+class GitHubIssues extends Component {
+  state = {
+    isShow: true
+  }
 
-  _handlerToggleOpen(){
+  _handlerToggleOpen = () => {
     this.setState({ isShow: !this.state.isShow })
-  },
+  }
 
-  _handlerClickWatch(){
+  _handlerClickWatch = () => {
     const { repo, requestType, onWatchItem } = this.props
         , caption = `${repo}`
         , descr = ITEM_DESCRIPTION
@@ -56,9 +54,9 @@ const GitHubIssues = React.createClass({
        caption : caption,
        config : { repo, requestType, version : '', caption, descr }
     });
-  },
+  }
 
-  _renderIssues(issues){
+  _renderIssues = (issues) => {
      return issues.map((item, index) => {
         const { state, number, created_at, updated_at, title, html_url } = item
             , className = (index % 2)
@@ -88,7 +86,7 @@ const GitHubIssues = React.createClass({
            </div>
         );
      })
-  },
+  }
 
   render(){
     const {
@@ -116,11 +114,11 @@ const GitHubIssues = React.createClass({
              </span>
            </span>
            <ButtonCircle
-              caption={'W'}
+              caption="W"
               title="Add to Watch"
               style={styles.BTN_CIRCLE}
               onClick={this._handlerClickWatch}
-           />           
+           />
          </Caption>
          <ShowHide isShow={isShow}>
            {this._renderIssues(issues)}
@@ -128,6 +126,6 @@ const GitHubIssues = React.createClass({
        </div>
      );
   }
-});
+}
 
 export default GitHubIssues

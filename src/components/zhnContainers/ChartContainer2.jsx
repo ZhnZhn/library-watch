@@ -1,4 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+
+//import PropTypes from "prop-types";
 
 import Store from '../../flux/stores/AppStore';
 import { ChartActionTypes } from '../../flux/actions/ChartActions';
@@ -17,7 +19,7 @@ const styles = {
     backgroundColor: '#4D4D4D',
     padding: '0px 0px 3px 0px',
     //paddingTop : '5px',
-    //paddingLeft : '5px',    
+    //paddingLeft : '5px',
     //border: 'solid 3px #232F3B',
     width: '635px',
     height: 'calc(100vh - 71px)',
@@ -63,12 +65,14 @@ const compActions = [
 
 
 class ChartContainer2 extends Component {
+  /*
   static propTypes = {
     caption: PropTypes.string,
     browserType: PropTypes.string,
     chartType: PropTypes.string,
     onCloseContainer: PropTypes.func
   }
+  */
 
   constructor(props){
     super()

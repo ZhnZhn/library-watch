@@ -1,4 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react';
+
+//import PropTypes from "prop-types";
 
 import InputText from '../zhnAtoms/InputText'
 
@@ -33,11 +35,12 @@ const Styles = {
 }
 
 class RowInputText extends Component {
+  /*
   static propTypes = {
     caption: PropTypes.string,
     placeholder: PropTypes.string
   }
-
+  */
   render(){
     const { caption, placeholder } = this.props;
     return (

@@ -37,6 +37,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var DateAgo = function (_Component) {
   (0, _inherits3.default)(DateAgo, _Component);
 
+  /*
+  static propTypes = {
+     isShowDate : PropTypes.bool
+  }
+  */
+
   function DateAgo(props) {
     (0, _classCallCheck3.default)(this, DateAgo);
 
@@ -87,8 +93,7 @@ var DateAgo = function (_Component) {
   return DateAgo;
 }(_react.Component);
 
-process.env.NODE_ENV !== "production" ? DateAgo.propTypes = {
-  isShowDate: _react.PropTypes.bool
-} : void 0;
+//import PropTypes from "prop-types";
+
 exports.default = DateAgo;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\DateAgo.js.map
+//# sourceMappingURL=DateAgo.js.map

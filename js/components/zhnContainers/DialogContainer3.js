@@ -30,6 +30,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import PropTypes from "prop-types";
+
 var STYLE = {
   ROOT: {
     zIndex: 30,
@@ -55,6 +57,17 @@ var getObjToFirst = function getObjToFirst(arr, keyValue) {
 
 var DialogContainer3 = function (_Component) {
   (0, _inherits3.default)(DialogContainer3, _Component);
+
+  /*
+  static propTypes = {
+    maxDialog: PropTypes.number,
+    store: PropTypes.shape({
+      listen: PropTypes.func
+    }),
+    initAction: PropTypes.string,
+    showAction: PropTypes.string
+  }
+  */
 
   function DialogContainer3(props) {
     (0, _classCallCheck3.default)(this, DialogContainer3);
@@ -153,13 +166,5 @@ var DialogContainer3 = function (_Component) {
   return DialogContainer3;
 }(_react.Component);
 
-process.env.NODE_ENV !== "production" ? DialogContainer3.propTypes = {
-  maxDialog: _react.PropTypes.number,
-  store: _react.PropTypes.shape({
-    listen: _react.PropTypes.func
-  }),
-  initAction: _react.PropTypes.string,
-  showAction: _react.PropTypes.string
-} : void 0;
 exports.default = DialogContainer3;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnContainers\DialogContainer3.js.map
+//# sourceMappingURL=DialogContainer3.js.map

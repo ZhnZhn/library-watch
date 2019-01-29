@@ -1,4 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+
+//import PropTypes from "prop-types";
 
 import Browser from '../zhnAtoms/Browser';
 import CaptionRow from '../zhnAtoms/CaptionRow';
@@ -18,6 +20,7 @@ const STYLE = {
 };
 
 class MenuBrowserDynamic extends Component {
+  /*
   static propTypes = {
     isInitShow: PropTypes.bool,
     browserType: PropTypes.string,
@@ -30,6 +33,7 @@ class MenuBrowserDynamic extends Component {
     updateAction: PropTypes.string,
     loadCompletedAction: PropTypes.string
   }
+  */
 
   constructor(props){
     super()
@@ -92,7 +96,7 @@ class MenuBrowserDynamic extends Component {
   render(){
     const { caption, children, rowClass } = this.props
         , { menuItems, isShow } = this.state;
-
+    
     return (
        <Browser isShow={isShow} style={STYLE.BROWSER}>
           <CaptionRow

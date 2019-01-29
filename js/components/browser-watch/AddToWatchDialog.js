@@ -12,6 +12,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _createReactClass = require('create-react-class');
+
+var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
 var _WithValidation = require('../dialogs/WithValidation');
 
 var _WithValidation2 = _interopRequireDefault(_WithValidation);
@@ -48,19 +52,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var styles = _DialogStyles2.default;
 
+//import PropTypes from 'prop-types'
+
 var actionCompleted = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
     actionFailed = _WatchActions.WatchActionTypes.EDIT_WATCH_FAILED,
     forActionType = _WatchActions.WatchActionTypes.ADD_ITEM;
 
-var AddToWatchDialog = _react2.default.createClass((0, _extends3.default)({}, _WithValidation2.default, {
+var AddToWatchDialog = (0, _createReactClass2.default)((0, _extends3.default)({}, _WithValidation2.default, {
 
   displayName: 'AddToWatchDialog',
-  propTypes: {
-    isShow: _react2.default.PropTypes.bool.isRequired,
-    data: _react2.default.PropTypes.object.isRequired,
-    store: _react2.default.PropTypes.object,
-    onClose: _react2.default.PropTypes.func.isRequired
+  /*
+  propTypes : {
+    isShow  : PropTypes.bool.isRequired,
+    data    : PropTypes.object.isRequired,
+    store   : PropTypes.object,
+    onClose : PropTypes.func.isRequired
   },
+  */
   getInitialState: function getInitialState() {
     var store = this.props.store;
 
@@ -256,4 +264,4 @@ var AddToWatchDialog = _react2.default.createClass((0, _extends3.default)({}, _W
 }));
 
 exports.default = AddToWatchDialog;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\AddToWatchDialog.js.map
+//# sourceMappingURL=AddToWatchDialog.js.map

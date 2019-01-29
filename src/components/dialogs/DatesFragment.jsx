@@ -1,4 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react';
+
+//import PropTypes from "prop-types";
 
 import InputDate from '../zhnAtoms/InputDate'
 
@@ -23,18 +25,24 @@ const ERROR_FORMAT = "YYYY-MM-DD format must be"
     , ERROR_FROM_NEAR_TO = "From Date is near that To Date";
 
 class DatesFragment extends Component {
+  /*
   static propTypes = {
     initFromDate: PropTypes.string,
     initToDate: PropTypes.string,
     onTestDate: PropTypes.func,
     msgOnNotValidFormat: PropTypes.func
   }
+  */
   static defaultProps = {
-    msgOnNotValidFormat : (item) => `${item} is not in valid format`
+    msgOnNotValidFormat: item => `${item} is not in valid format`
   }
 
   render(){
-    const { initFromDate, initToDate, onTestDate } = this.props;
+    const {
+      initFromDate,
+      initToDate,
+      onTestDate
+    } = this.props;
     return (
         <div>
           <div style={STYLE.ROW_DIV}>

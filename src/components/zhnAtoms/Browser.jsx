@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+
+//import PropTypes from "prop-types";
 
 import STYLE from '../styles/ContainerStyles';
 
@@ -18,6 +20,7 @@ const Browser = (props) => {
     )
 }
 
+/*
 Browser.propTypes = {
   isShow: PropTypes.bool,
   style: PropTypes.object,
@@ -26,5 +29,6 @@ Browser.propTypes = {
      PropTypes.node
   ])
 }
+*/
 
 export default Browser

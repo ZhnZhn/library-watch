@@ -10,13 +10,13 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var IconReact = function IconReact(props) {
+var IconReact = function IconReact() {
   return _react2.default.createElement(
     "a",
     {
       className: "icon__react",
       title: "React",
-      href: "https://facebook.github.io/react/"
+      href: "https://github.com/facebook/react"
     },
     _react2.default.createElement(
       "svg",

@@ -1,21 +1,21 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 
+//import PropTypes from "prop-types";
 
 class InputFileReader extends Component {
+  /*
    static propTypes = {
      as: PropTypes.oneOf(['binary', 'buffer', 'text', 'url'])
    }
+   */
    static defaultProps = {
      as: 'text'
    }
 
-   constructor(props){
-     super()
-     this.state = {
-       labelText: "Choose a file..."
-     }
+   state = {
+     labelText: "Choose a file..."
    }
-   
+      
   _handleChange = (e) => {
     const files = [];
     for (let i = 0; i < e.target.files.length; i++) {

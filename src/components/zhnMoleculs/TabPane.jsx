@@ -1,4 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+
+//import PropTypes from "prop-types";
 
 const STYLE = {
   UL : {
@@ -15,11 +17,13 @@ const STYLE = {
 };
 
 class TabPane extends Component {
+  /*
   static propTypes = {
      width: PropTypes.number,
      height: PropTypes.number,
      children: PropTypes.arrayOf(PropTypes.node)
   }
+  */
 
   constructor(props){
     super()

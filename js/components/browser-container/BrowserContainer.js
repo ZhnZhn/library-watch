@@ -40,12 +40,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var BrowserContainer = function (_Component) {
   (0, _inherits3.default)(BrowserContainer, _Component);
 
-  function BrowserContainer(props) {
+  function BrowserContainer() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, BrowserContainer);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (BrowserContainer.__proto__ || Object.getPrototypeOf(BrowserContainer)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this._onStore = function (actionType, data) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = BrowserContainer.__proto__ || Object.getPrototypeOf(BrowserContainer)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      isDoubleWatch: false,
+      elBrowsers: []
+    }, _this._onStore = function (actionType, data) {
       var _this$props = _this.props,
           initBrowserAction = _this$props.initBrowserAction,
           toggleWatchDbBrowserAction = _this$props.toggleWatchDbBrowserAction;
@@ -56,23 +65,24 @@ var BrowserContainer = function (_Component) {
       } else if (actionType === toggleWatchDbBrowserAction) {
         _this.setState({ isDoubleWatch: !_this.state.isDoubleWatch });
       }
-    };
-
-    _this.state = {
-      isDoubleWatch: false,
-      elBrowsers: []
-    };
-    return _this;
+    }, _this._renderEl = function (elBrowsers) {
+      return elBrowsers.map(function (el) {
+        return _react2.default.cloneElement(el);
+      });
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
   /*
-  getInitialState(){
-    return {
-      isDoubleWatch : false,
-      elBrowsers : []
-    }
-  },
+  static propTypes = {
+    store: PropTypes.shape({
+      listen: PropTypes.func
+    }),
+    initBrowserAction: PropTypes.string,
+    showBrowserAction: PropTypes.string,
+    showDialogAction: PropTypes.string,
+    updateWatchAction: PropTypes.string,
+    toggleWatchDbBrowserAction: PropTypes.string,
+  }
   */
-
 
   (0, _createClass3.default)(BrowserContainer, [{
     key: 'componentWillMount',
@@ -122,7 +132,7 @@ var BrowserContainer = function (_Component) {
           updateAction: updateWatchAction
         }),
         _doubleWatch,
-        elBrowsers,
+        this._renderEl(elBrowsers),
         _react2.default.createElement(_DialogContainer2.default, {
           maxDialog: 3,
           store: store,
@@ -136,15 +146,7 @@ var BrowserContainer = function (_Component) {
 }(_react.Component);
 //});
 
-process.env.NODE_ENV !== "production" ? BrowserContainer.propTypes = {
-  store: _react.PropTypes.shape({
-    listen: _react.PropTypes.func
-  }),
-  initBrowserAction: _react.PropTypes.string,
-  showBrowserAction: _react.PropTypes.string,
-  showDialogAction: _react.PropTypes.string,
-  updateWatchAction: _react.PropTypes.string,
-  toggleWatchDbBrowserAction: _react.PropTypes.string
-} : void 0;
+//import PropTypes from 'props-type'
+
 exports.default = BrowserContainer;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-container\BrowserContainer.js.map
+//# sourceMappingURL=BrowserContainer.js.map

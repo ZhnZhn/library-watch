@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _createReactClass = require('create-react-class');
+
+var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
 var _ChartActions = require('../../flux/actions/ChartActions');
 
 var _ChartActions2 = _interopRequireDefault(_ChartActions);
@@ -31,6 +35,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var styles = _DialogStyles2.default;
 //import ChartType from '../../constants/ChartType';
 
+//import PropTypes from 'prop-types'
+
 var DIALOG_CAPTION = "Load Watch Item";
 
 var STYLE = {
@@ -43,15 +49,17 @@ var STYLE = {
   }
 };
 
-var LoadItemDialog = _react2.default.createClass({
+var LoadItemDialog = (0, _createReactClass2.default)({
   displayName: 'LoadItemDialog',
 
-  propTypes: {
-    isShow: _react2.default.PropTypes.bool.isRequired,
-    data: _react2.default.PropTypes.object.isRequired,
-    store: _react2.default.PropTypes.object,
-    onClose: _react2.default.PropTypes.func.isRequired
-  },
+  /*
+   propTypes : {
+     isShow  : PropTypes.bool.isRequired,
+     data    : PropTypes.object.isRequired,
+     store   : PropTypes.object,
+     onClose : PropTypes.func.isRequired
+   },
+   */
 
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
     if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {

@@ -24,11 +24,15 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import PropTypes from "prop-types";
 
 var STYLE = {
   ROOT: {
@@ -73,7 +77,7 @@ var STYLE = {
   }
 };
 
-var InputDate = function (_Component) {
+var InputDate = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(InputDate, _Component);
 
   function InputDate(props) {
@@ -121,6 +125,14 @@ var InputDate = function (_Component) {
     };
     return _this;
   }
+  /*
+  static propTypes = {
+    initValue: PropTypes.string,
+    errorMsg: PropTypes.string,
+    onTest: PropTypes.func
+  }
+  */
+
 
   (0, _createClass3.default)(InputDate, [{
     key: 'render',
@@ -177,16 +189,9 @@ var InputDate = function (_Component) {
     }
   }]);
   return InputDate;
-}(_react.Component);
-
-InputDate.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   initValue: '',
   onTest: function onTest() {}
-};
-process.env.NODE_ENV !== "production" ? InputDate.propTypes = {
-  initValue: _react.PropTypes.string,
-  errorMsg: _react.PropTypes.string,
-  onTest: _react.PropTypes.func
-} : void 0;
+}, _temp);
 exports.default = InputDate;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\InputDate.js.map
+//# sourceMappingURL=InputDate.js.map

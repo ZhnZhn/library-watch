@@ -10,6 +10,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import PropTypes from "prop-types";
+
 var ScrollPane = function ScrollPane(_ref) {
   var style = _ref.style,
       className = _ref.className,
@@ -21,14 +23,19 @@ var ScrollPane = function ScrollPane(_ref) {
   );
 };
 
-process.env.NODE_ENV !== "production" ? ScrollPane.propTypes = {
-  style: _react.PropTypes.object,
-  className: _react.PropTypes.string,
-  children: _react.PropTypes.oneOfType([_react.PropTypes.arrayOf(_react.PropTypes.node), _react.PropTypes.node])
-} : void 0;
+/*
+ScrollPane.propTypes = {
+  style : PropTypes.object,
+  className: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
+}
+*/
 ScrollPane.defaultProps = {
   className: ''
 };
 
 exports.default = ScrollPane;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\ScrollPane.js.map
+//# sourceMappingURL=ScrollPane.js.map

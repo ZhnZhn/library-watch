@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react'
+import React from 'react';
+
+//import PropTypes from "prop-types";
 
 const STYLE = {
   ROOT_DIV : {
@@ -29,11 +31,12 @@ const ValidationMessage = ({ index, msg }) => (
     <span style={STYLE.MSG_SPAN}>{msg}</span>
   </div>
 )
+/*
 ValidationMessage.propTypes = {
   index: PropTypes.number,
   msg: PropTypes.string
 }
-
+*/
 
 const ValidationMessagesFragment = (props) => {
    const { validationMessages } = props;
@@ -57,6 +60,7 @@ const ValidationMessagesFragment = (props) => {
   );
 };
 
+/*
 ValidationMessagesFragment.propTypes = {
   validationMessages: PropTypes.arrayOf(
     PropTypes.shape({
@@ -64,5 +68,6 @@ ValidationMessagesFragment.propTypes = {
     })
   )
 }
+*/
 
 export default ValidationMessagesFragment

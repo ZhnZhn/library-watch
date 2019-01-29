@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _createReactClass = require('create-react-class');
+
+var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
 var _RowInputSelect = require('./RowInputSelect');
 
 var _RowInputSelect2 = _interopRequireDefault(_RowInputSelect);
@@ -26,6 +30,8 @@ var _ToolBarButton2 = _interopRequireDefault(_ToolBarButton);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import PropTypes from 'prop-types'
+
 var Styles = {
   COMMAND_DIV: {
     cursor: 'default',
@@ -36,18 +42,20 @@ var Styles = {
   }
 };
 
-var ListCreatePane = _react2.default.createClass({
+var ListCreatePane = (0, _createReactClass2.default)({
   displayName: 'ListCreatePane',
-  propTypes: {
-    store: _react2.default.PropTypes.object,
-    actionCompleted: _react2.default.PropTypes.string,
-    actionFailed: _react2.default.PropTypes.string,
-    forActionType: _react2.default.PropTypes.string,
-    msgOnNotSelect: _react2.default.PropTypes.func,
-    msgOnIsEmptyName: _react2.default.PropTypes.func,
-    onCreate: _react2.default.PropTypes.func,
-    onClose: _react2.default.PropTypes.func
+  /*
+  propTypes : {
+    store : PropTypes.object,
+    actionCompleted : PropTypes.string,
+    actionFailed : PropTypes.string,
+    forActionType : PropTypes.string,
+    msgOnNotSelect : PropTypes.func,
+    msgOnIsEmptyName : PropTypes.func,
+    onCreate : PropTypes.func,
+    onClose : PropTypes.func
   },
+  */
 
   getInitialState: function getInitialState() {
     var store = this.props.store;

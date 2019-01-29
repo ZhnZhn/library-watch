@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react';
+//import PropTypes from "prop-types";
 import ReactDOM from 'react-dom'
 
 const styles = {
@@ -11,12 +12,14 @@ const styles = {
 };
 
 class SvgHrzResize extends Component {
+  /*
   static propTypes = {
     comp: PropTypes.element,
     minWidth: PropTypes.number,
     maxWidth: PropTypes.number,
     onResizeAfter: PropTypes.func
   }
+  */
 
   constructor(props){
     super()

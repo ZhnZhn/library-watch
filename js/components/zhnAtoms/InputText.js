@@ -24,11 +24,15 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import PropTypes from "prop-types";
 
 var STYLE = {
   INPUT: {
@@ -48,7 +52,12 @@ var STYLE = {
   }
 };
 
-var InputText = function (_Component) {
+var _isKeyClean = function _isKeyClean(_ref) {
+  var keyCode = _ref.keyCode;
+  return keyCode === 27 || keyCode === 46;
+};
+
+var InputText = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(InputText, _Component);
 
   function InputText(props) {
@@ -61,7 +70,7 @@ var InputText = function (_Component) {
     };
 
     _this._handlerInputKeyDown = function (event) {
-      if (event.keyCode === 27) {
+      if (_isKeyClean(event)) {
         _this.setState({ value: '' });
       }
     };
@@ -71,6 +80,13 @@ var InputText = function (_Component) {
     };
     return _this;
   }
+  /*
+  static propTypes = {
+    initValue : PropTypes.string,
+    style : PropTypes.object
+  }
+  */
+
 
   (0, _createClass3.default)(InputText, [{
     key: 'componentWillReceiveProps',
@@ -112,14 +128,8 @@ var InputText = function (_Component) {
     }
   }]);
   return InputText;
-}(_react.Component);
-
-InputText.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   initValue: ''
-};
-process.env.NODE_ENV !== "production" ? InputText.propTypes = {
-  initValue: _react.PropTypes.string,
-  style: _react.PropTypes.object
-} : void 0;
+}, _temp);
 exports.default = InputText;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\InputText.js.map
+//# sourceMappingURL=InputText.js.map

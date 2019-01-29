@@ -1,4 +1,7 @@
 import React from 'react'
+import createReactClass from 'create-react-class'
+
+//import PropTypes from 'prop-types'
 
 import WithValidation from '../dialogs/WithValidation'
 
@@ -19,16 +22,18 @@ const actionCompleted = WatchActionTypes.EDIT_WATCH_COMPLETED
     , actionFailed =  WatchActionTypes.EDIT_WATCH_FAILED
     , forActionType = WatchActionTypes.ADD_ITEM
 
-const AddToWatchDialog = React.createClass({
+const AddToWatchDialog = createReactClass({
   ...WithValidation,
 
   displayName : 'AddToWatchDialog',
+  /*
   propTypes : {
-    isShow  : React.PropTypes.bool.isRequired,
-    data    : React.PropTypes.object.isRequired,
-    store   : React.PropTypes.object,
-    onClose : React.PropTypes.func.isRequired
+    isShow  : PropTypes.bool.isRequired,
+    data    : PropTypes.object.isRequired,
+    store   : PropTypes.object,
+    onClose : PropTypes.func.isRequired
   },
+  */
   getInitialState(){
     const { store } = this.props;
     this.groupCaption = null;

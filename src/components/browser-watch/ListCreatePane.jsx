@@ -1,4 +1,7 @@
 import React from 'react';
+import createReactClass from 'create-react-class'
+
+//import PropTypes from 'prop-types'
 
 import RowInputSelect from './RowInputSelect';
 import RowInputText from './RowInputText';
@@ -15,18 +18,20 @@ const Styles = {
   }
 }
 
-const ListCreatePane = React.createClass({
+const ListCreatePane = createReactClass({
   displayName : 'ListCreatePane',
+  /*
   propTypes : {
-    store : React.PropTypes.object,
-    actionCompleted : React.PropTypes.string,
-    actionFailed : React.PropTypes.string,
-    forActionType : React.PropTypes.string,
-    msgOnNotSelect : React.PropTypes.func,
-    msgOnIsEmptyName : React.PropTypes.func,
-    onCreate : React.PropTypes.func,
-    onClose : React.PropTypes.func
+    store : PropTypes.object,
+    actionCompleted : PropTypes.string,
+    actionFailed : PropTypes.string,
+    forActionType : PropTypes.string,
+    msgOnNotSelect : PropTypes.func,
+    msgOnIsEmptyName : PropTypes.func,
+    onCreate : PropTypes.func,
+    onClose : PropTypes.func
   },
+  */
 
   getInitialState(){
     const {store} = this.props;

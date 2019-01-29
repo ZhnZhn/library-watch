@@ -20,6 +20,10 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp;
+
+//import PropTypes from "prop-types";
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -50,7 +54,7 @@ var ERROR_FORMAT = "YYYY-MM-DD format must be",
     TO_DATE = "To Date",
     ERROR_FROM_NEAR_TO = "From Date is near that To Date";
 
-var DatesFragment = function (_Component) {
+var DatesFragment = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(DatesFragment, _Component);
 
   function DatesFragment() {
@@ -107,6 +111,15 @@ var DatesFragment = function (_Component) {
         )
       );
     }
+    /*
+    static propTypes = {
+      initFromDate: PropTypes.string,
+      initToDate: PropTypes.string,
+      onTestDate: PropTypes.func,
+      msgOnNotValidFormat: PropTypes.func
+    }
+    */
+
   }, {
     key: 'getValues',
     value: function getValues() {
@@ -163,18 +176,10 @@ var DatesFragment = function (_Component) {
     }
   }]);
   return DatesFragment;
-}(_react.Component);
-
-DatesFragment.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   msgOnNotValidFormat: function msgOnNotValidFormat(item) {
     return item + ' is not in valid format';
   }
-};
-process.env.NODE_ENV !== "production" ? DatesFragment.propTypes = {
-  initFromDate: _react.PropTypes.string,
-  initToDate: _react.PropTypes.string,
-  onTestDate: _react.PropTypes.func,
-  msgOnNotValidFormat: _react.PropTypes.func
-} : void 0;
+}, _temp);
 exports.default = DatesFragment;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\DatesFragment.js.map
+//# sourceMappingURL=DatesFragment.js.map

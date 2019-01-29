@@ -1,4 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+
+//import PropTypes from "prop-types";
 
 import WatchActions, { WatchActionTypes } from '../../flux/actions/WatchActions';
 import ButtonCircle from '../zhnAtoms/ButtonCircle';
@@ -13,10 +15,12 @@ const CAPTION = "S"
 }
 
 class ButtonSave extends Component {
+  /*
   static propTypes = {
     store : PropTypes.object.isRequired,
     style : PropTypes.object
   }
+  */
 
   constructor(props){
     super()

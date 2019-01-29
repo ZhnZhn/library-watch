@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import BrowserActions from '../../flux/actions/BrowserActions';
 import ComponentActions from '../../flux/actions/ComponentActions';
@@ -39,14 +39,14 @@ const BrowserConfig = {
   }
 }
 
-const HeaderBar = React.createClass({
+class HeaderBar extends Component {
 
-  _handleClickDynamic(browserConfig){
+  _handleClickDynamic = (browserConfig) => {
     BrowserActions.showBrowserDynamic(browserConfig);
-  },
-  _handleClickWatch(){
+  }
+  _handleClickWatch = () => {
     BrowserActions.showBrowser(BrowserType.WATCH_LIST);
-  },
+  }
 
   render(){
     const { store } = this.props;
@@ -92,6 +92,6 @@ const HeaderBar = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default HeaderBar

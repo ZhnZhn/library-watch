@@ -60,6 +60,8 @@ var Styles = {
   }
 };
 
+//import PropTypes from "prop-types";
+
 var RowInputText = function (_Component) {
   (0, _inherits3.default)(RowInputText, _Component);
 
@@ -70,6 +72,13 @@ var RowInputText = function (_Component) {
 
   (0, _createClass3.default)(RowInputText, [{
     key: 'render',
+
+    /*
+    static propTypes = {
+      caption: PropTypes.string,
+      placeholder: PropTypes.string
+    }
+    */
     value: function render() {
       var _this2 = this;
 
@@ -108,9 +117,5 @@ var RowInputText = function (_Component) {
   return RowInputText;
 }(_react.Component);
 
-process.env.NODE_ENV !== "production" ? RowInputText.propTypes = {
-  caption: _react.PropTypes.string,
-  placeholder: _react.PropTypes.string
-} : void 0;
 exports.default = RowInputText;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\RowInputText.js.map
+//# sourceMappingURL=RowInputText.js.map

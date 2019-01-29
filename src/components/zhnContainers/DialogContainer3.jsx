@@ -1,4 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+
+//import PropTypes from "prop-types";
 
 const STYLE = {
   ROOT: {
@@ -22,6 +24,7 @@ const getObjToFirst = function(arr, keyValue){
 }
 
 class DialogContainer3 extends Component {
+  /*
   static propTypes = {
     maxDialog: PropTypes.number,
     store: PropTypes.shape({
@@ -30,6 +33,7 @@ class DialogContainer3 extends Component {
     initAction: PropTypes.string,
     showAction: PropTypes.string
   }
+  */
 
   constructor(props){
     super()

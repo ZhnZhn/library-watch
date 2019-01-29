@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _createReactClass = require('create-react-class');
+
+var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
 var _WatchActions = require('../../flux/actions/WatchActions');
 
 var _WatchActions2 = _interopRequireDefault(_WatchActions);
@@ -42,13 +46,15 @@ var _GroupDeletePane2 = _interopRequireDefault(_GroupDeletePane);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var EditGroupDialog = _react2.default.createClass({
+var EditGroupDialog = (0, _createReactClass2.default)({
   displayName: 'EditGroupDialog',
-  propTypes: {
-    isShow: _react2.default.PropTypes.bool,
-    store: _react2.default.PropTypes.object,
-    onClose: _react2.default.PropTypes.func
+  /*
+  propTypes : {
+    isShow : PropTypes.bool,
+    store : PropTypes.object,
+    onClose : PropTypes.func
   },
+  */
 
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
     if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
@@ -116,6 +122,8 @@ var EditGroupDialog = _react2.default.createClass({
     );
   }
 });
+
+//import PropTypes from 'prop-types'
 
 exports.default = EditGroupDialog;
 //# sourceMappingURL=EditGroupDialog.js.map

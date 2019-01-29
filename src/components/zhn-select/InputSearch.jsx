@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import ArrowCell from './ArrowCell';
 
@@ -102,41 +102,40 @@ const styles = {
   }
 }
 
-const InputSearch = React.createClass({
-  getDefaultProps(){
-    return {
-      options : [],
-      optionName : '',
-      optionNames : '',
-      isUpdateOptions : false,
-      propCaption : 'caption'
+class InputSearch extends Component {
+  static defaultProps = {
+    options : [],
+    optionName : '',
+    optionNames : '',
+    isUpdateOptions : false,
+    propCaption : 'caption'
+  }
+
+  constructor(props){
+    super(props)
+
+    this.domOptionsCache = null;
+    this.indexActiveOption = 0;
+
+    const { optionName, optionNames, propCaption } = this.props
+        , _optionName = (optionName)
+                 ? ' ' + optionName
+                 : ''
+        , _optionNames = (optionNames)
+                 ? ' ' + optionNames
+                 : (optionName) ? _optionName : '';
+
+    this.propCaption = propCaption;
+    this.state = {
+      value: '',
+      isShowOption: false,
+      options: this.props.options,
+      optionName : _optionName,
+      optionNames : _optionNames,
+      isValidDomOptionsCache: false,
+      isLocalMode: false
     }
-  },
-
-  getInitialState(){
-     this.domOptionsCache = null;
-     this.indexActiveOption = 0;
-
-     const { optionName, optionNames, propCaption } = this.props
-         , _optionName = (optionName)
-                  ? ' ' + optionName
-                  : ''
-         , _optionNames = (optionNames)
-                  ? ' ' + optionNames
-                  : (optionName) ? _optionName : '';
-
-     this.propCaption = propCaption;
-
-     return {
-        value: '',
-        isShowOption: false,
-        options: this.props.options,
-        optionName : _optionName,
-        optionNames : _optionNames,
-        isValidDomOptionsCache: false,
-        isLocalMode: false
-     }
-  },
+  }
 
   componentWillReceiveProps(nextProps){
     if (this.props !== nextProps){
@@ -147,7 +146,7 @@ const InputSearch = React.createClass({
         this._setStateToInit(nextProps.options);
       }
     }
-  },
+  }
 
   shouldComponentUpdate(nextProps, nextState){
     if (this.props !== nextProps || nextProps.isUpdateOptions) {
@@ -157,7 +156,7 @@ const InputSearch = React.createClass({
     }
 
     return true;
-  },
+  }
 
   componentDidUpdate(){
      //Decorate Active Option
@@ -166,9 +165,9 @@ const InputSearch = React.createClass({
        this._decorateOfDomActiveOption(domActiveOption);
        this._makeVisibleOfDomActiveOption(domActiveOption);
     }
-  },
+  }
 
-  _setStateToInit(options){
+  _setStateToInit = (options) => {
     this.indexActiveOption = 0;
     this.setState({
       value : '',
@@ -176,36 +175,36 @@ const InputSearch = React.createClass({
       options : options,
       isValidDomOptionsCache : false
     });
-  },
+  }
 
-  _getDomForActiveOption(){
+  _getDomForActiveOption = () => {
     return this.refs["v"+this.indexActiveOption];
-  },
+  }
 
-  _decorateOfDomActiveOption(domActiveOption){
+  _decorateOfDomActiveOption = (domActiveOption) => {
     if (domActiveOption){
       domActiveOption.classList.add("option-row__active");
     }
-  },
+  }
 
-  _decorateActiveOption(){
+  _decorateActiveOption = () => {
     let domActiveOption = this.refs["v"+this.indexActiveOption];
     domActiveOption.classList.add("option-row__active");
-  },
+  }
 
-  _undecorateActiveOption(){
+  _undecorateActiveOption = () => {
     if (this.refs["v" + this.indexActiveOption]){
       this.refs["v" + this.indexActiveOption].classList.remove("option-row__active");
     }
-  },
+  }
 
-  _undecorateOfDomActiveOption(domActiveOption){
+  _undecorateOfDomActiveOption = (domActiveOption) => {
      if (domActiveOption){
        domActiveOption.classList.remove("option-row__active");
     }
-  },
+  }
 
-  _makeVisibleOfDomActiveOption(domActiveOption){
+  _makeVisibleOfDomActiveOption = (domActiveOption) => {
     if (domActiveOption){
       const offsetTop = domActiveOption.offsetTop;
       const scrollTop = this.domOptions.scrollTop;
@@ -216,9 +215,9 @@ const InputSearch = React.createClass({
         this.domOptions.scrollTop= 0;
       }
     }
-  },
+  }
 
-  _makeVisibleActiveOption(){
+  _makeVisibleActiveOption = () => {
     let domActiveOption = this.refs["v"+this.indexActiveOption];
 
     let offsetTop = domActiveOption.offsetTop;
@@ -226,17 +225,17 @@ const InputSearch = React.createClass({
     if ( (offsetTop - scrollTop) > 70){
         this.domOptions.scrollTop += (offsetTop - scrollTop - 70);
     }
-  },
+  }
 
-  _filterOptionsToState(options, value){
+  _filterOptionsToState = (options, value) => {
      const valueFor = value.toLowerCase()
          , _caption = this.propCaption;
      return options.filter( (option, i) => {
        return option[_caption].toLowerCase().indexOf(valueFor) !== -1;
      })
-  },
+  }
 
-  _handlerInputChange(event){
+  _handlerInputChange = (event) => {
     const value = event.target.value;
     let arr = [];
     if (value.length !== this.state.value.length){
@@ -257,21 +256,21 @@ const InputSearch = React.createClass({
         options : arr
       })
     }
-  },
+  }
 
-  _startAfterInputAnimation(){
+  _startAfterInputAnimation = () => {
     if (this.state.options.length>MAX_WITHOUT_ANIMATION){
       this.arrowCell.startAnimation();
     }
-  },
-  _stopAfterInputAnimation(){
+  }
+  _stopAfterInputAnimation = () => {
     this.arrowCell.stopAnimation();
-  },
+  }
 
-  _handlerInputKeyDown(event){
+  _handlerInputKeyDown = (event) => {
     switch(event.keyCode){
       // enter
-      case 13:
+      case 13:{
          const item = this.state.options[this.indexActiveOption];
 
          if (item && item[this.propCaption]){
@@ -287,7 +286,8 @@ const InputSearch = React.createClass({
              this.props.onSelect(null);
            }
          }
-      break;
+         break;
+      }
       //escape
       case 27:
         if (this.state.isShowOption){
@@ -362,9 +362,9 @@ const InputSearch = React.createClass({
       break;
       default: /*console.log(event.keyCode);*/ return;
     }
-  },
+  }
 
-  _handlerToggleOptions(){
+  _handlerToggleOptions = () => {
     if (this.state.isShowOption){
        this.setState({ isShowOption: false });
     } else {
@@ -374,19 +374,19 @@ const InputSearch = React.createClass({
         1
       )
     }
-  },
+  }
 
-  _handlerClickOption(item, index, event){
+  _handlerClickOption = (item, index, event) => {
     this.indexActiveOption = index;
     this.setState({
       value : item[this.propCaption],
       isShowOption : false
     });
     this.props.onSelect(item);
-  },
+  }
 
 
-  renderOptions(){
+  renderOptions = () => {
     const { ItemOptionComp } = this.props
          , { isShowOption, options, isValidDomOptionsCache } = this.state;
 
@@ -440,7 +440,7 @@ const InputSearch = React.createClass({
           </div>
         </div>
     )
-  },
+  }
 
   render(){
     const {value, isLocalMode, isShowOption } = this.state;
@@ -506,16 +506,16 @@ const InputSearch = React.createClass({
 
       </div>
     )
-  },
+  }
 
   focusInput(){
     this.domInputText.focus();
-  },
+  }
 
   focusNotValidInput(){
     this.domInputText.focus();
   }
 
-});
+}
 
 export default InputSearch

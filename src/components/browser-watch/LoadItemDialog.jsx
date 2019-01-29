@@ -1,4 +1,7 @@
 import React from 'react';
+import createReactClass from 'create-react-class'
+
+//import PropTypes from 'prop-types'
 
 import ChartActions from '../../flux/actions/ChartActions';
 import { BrowserType, ChartType } from '../../constants/Type';
@@ -24,13 +27,15 @@ const STYLE = {
   }
 }
 
-const LoadItemDialog = React.createClass({
+const LoadItemDialog = createReactClass({
+  /*
    propTypes : {
-     isShow  : React.PropTypes.bool.isRequired,
-     data    : React.PropTypes.object.isRequired,
-     store   : React.PropTypes.object,
-     onClose : React.PropTypes.func.isRequired
+     isShow  : PropTypes.bool.isRequired,
+     data    : PropTypes.object.isRequired,
+     store   : PropTypes.object,
+     onClose : PropTypes.func.isRequired
    },
+   */
 
    shouldComponentUpdate(nextProps, nextState){
      if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
@@ -40,7 +45,7 @@ const LoadItemDialog = React.createClass({
    },
 
   _handlerLoad(){
-     const { data, onClose } = this.props          
+     const { data, onClose } = this.props
      ChartActions.loadStock(ChartType.WATCH_LIST, BrowserType.WATCH_LIST, data);
      onClose();
   },

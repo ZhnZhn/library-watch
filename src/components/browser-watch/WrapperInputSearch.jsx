@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+
 
 import TransformFn from '../zhn-select/TransformFn';
 import InputSearch from '../zhn-select/InputSearch';
@@ -6,25 +7,28 @@ import ItemTopicOption from '../zhn-select/ItemTopicOption';
 
 const SEARCH_PLACEHOLDER = 'Find Item';
 
-const WrapperInputSearch = React.createClass({
+const _isFn = fn => typeof fn === 'function';
+
+class WrapperInputSearch extends Component {
 
   shouldComponentUpdate(nextProps, nextState){
     if (nextProps !== this.props && nextProps.isShouldUpdate){
       return true;
     }
     return false;
-  },
+  }
 
-  _handlerSelectItem(item){
-     if (item){
-      this.props.onSelect(item);
+  _handlerSelectItem = (item) => {
+    const { onSelect } = this.props;
+     if (item && _isFn(onSelect)){
+       onSelect(item);
      }
-  },
+  }
 
   render(){
     const  { style, data } = this.props
          , _options = TransformFn.fromLevel3(data);
-        
+
     return (
       <div style={style}>
         <InputSearch
@@ -37,6 +41,6 @@ const WrapperInputSearch = React.createClass({
      </div>
     );
   }
-});
+}
 
 export default WrapperInputSearch

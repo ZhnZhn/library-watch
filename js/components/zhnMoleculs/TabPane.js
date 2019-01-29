@@ -20,11 +20,15 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp, _initialiseProps;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import PropTypes from "prop-types";
 
 var STYLE = {
   UL: {
@@ -40,8 +44,16 @@ var STYLE = {
   }
 };
 
-var TabPane = function (_Component) {
+var TabPane = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(TabPane, _Component);
+
+  /*
+  static propTypes = {
+     width: PropTypes.number,
+     height: PropTypes.number,
+     children: PropTypes.arrayOf(PropTypes.node)
+  }
+  */
 
   function TabPane(props) {
     (0, _classCallCheck3.default)(this, TabPane);
@@ -90,9 +102,7 @@ var TabPane = function (_Component) {
     }
   }]);
   return TabPane;
-}(_react.Component);
-
-var _initialiseProps = function _initialiseProps() {
+}(_react.Component), _initialiseProps = function _initialiseProps() {
   var _this2 = this;
 
   this._handlerClickTab = function (index) {
@@ -122,12 +132,6 @@ var _initialiseProps = function _initialiseProps() {
       );
     });
   };
-};
-
-process.env.NODE_ENV !== "production" ? TabPane.propTypes = {
-  width: _react.PropTypes.number,
-  height: _react.PropTypes.number,
-  children: _react.PropTypes.arrayOf(_react.PropTypes.node)
-} : void 0;
+}, _temp);
 exports.default = TabPane;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnMoleculs\TabPane.js.map
+//# sourceMappingURL=TabPane.js.map

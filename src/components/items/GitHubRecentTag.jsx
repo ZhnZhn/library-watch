@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import Caption from './ItemCaption'
 import ButtonCircle from '../zhnAtoms/ButtonCircle';
@@ -130,16 +130,14 @@ const Detail = (props) => {
   );
 }
 
-const GitHubRecentTag = React.createClass({
-  getInitialState(){
-     return {
-       isShow : true,
-       isDetail : false,
-       json : {}
-     }
-  },
+class GitHubRecentTag extends Component {
+  state = {
+    isShow: true,
+    isDetail: false,
+    json: {}
+  }
 
-  _handlerClickWatch(){
+  _handlerClickWatch = () => {
     const { repo, requestType, version, onWatchItem } = this.props
         , { tagDate } = this.state
         , caption = `${repo} ${version}`
@@ -148,9 +146,9 @@ const GitHubRecentTag = React.createClass({
        caption : caption,
        config : { repo, requestType, version, caption, descr, date: tagDate }
     });
-  },
+  }
 
-  _handlerClickDetail(){
+  _handlerClickDetail = () => {
     this.props.onClickDetail().then((json) => {
       //console.log(json);
       const { commit={} } = json
@@ -159,20 +157,11 @@ const GitHubRecentTag = React.createClass({
           , _tagDate = tagDate.replace('T', ' ').replace('Z', '')
       this.setState({ isDetail: true, isShow: true, json: json, tagDate : _tagDate });
     });
-  },
+  }
 
-  _handlerToggleOpen(){
+  _handlerToggleOpen = () => {
     this.setState({ isShow : !this.state.isShow });
-  },
-
-
-  _renderDetail(json){
-    return (
-      <Detail
-         json={json}
-      />
-    );
-  },
+  }
 
   render(){
     const { repo, version, caption, onCloseItem } = this.props
@@ -195,24 +184,24 @@ const GitHubRecentTag = React.createClass({
             </span>
           </span>
           <ButtonCircle
-             caption={'W'}
+             caption="W"
              title="Add to Watch"
              style={styles.BTN_CIRCLE}
              onClick={this._handlerClickWatch}
           />
           <ButtonCircle
-             caption={'D'}
+             caption="D"
              title="Load Tag Details"
              style={styles.BTN_CIRCLE}
              onClick={this._handlerClickDetail}
-          />          
+          />
         </Caption>
         <ShowHide isShow={isShow}>
-          {isDetail && this._renderDetail(json)}
+          {isDetail && <Detail json={json} />}
         </ShowHide>
       </div>
     );
   }
-});
+}
 
 export default GitHubRecentTag

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import Chart from '../charts/Chart';
 
@@ -69,19 +69,17 @@ const styles = {
 }
 
 
-const NpmRecentDownloads = React.createClass({
-  getInitialState(){
-    return {
-      isShow : true,
-      isLoadNodeIco : false,
-      isShowNodeIco : false
-    }
-  },
+class NpmRecentDownloads extends Component {
+  state = {
+    isShow : true,
+    isLoadNodeIco : false,
+    isShowNodeIco : false
+  }
 
-  _handlerToggleOpen(){
+  _handlerToggleOpen = () => {
     this.setState({ isShow : !this.state.isShow });
-  },
-  _handlerClickWatch(){
+  }
+  _handlerClickWatch = () => {
     const { packageName, requestType, sumDownloads, toDate, onWatchItem } = this.props
         , _caption = `${packageName} ${sumDownloads}`
         , _descr = ITEM_DESCRIPTION
@@ -96,16 +94,16 @@ const NpmRecentDownloads = React.createClass({
           date : toDate
         }
     });
-  },
+  }
 
-  _handlerClickNodeIco(){
+  _handlerClickNodeIco = () => {
     this.setState({
       isLoadNodeIco : true,
       isShowNodeIco : !this.state.isShowNodeIco
     });
-  },
+  }
 
-  _renderButtonWatch(){
+  _renderButtonWatch = () => {
     return (
       <ButtonCircle
          caption="W"
@@ -114,9 +112,9 @@ const NpmRecentDownloads = React.createClass({
          onClick={this._handlerClickWatch}
       />
     )
-  },
+  }
 
-  _renderNodeIcoBadge(packageName){
+  _renderNodeIcoBadge = (packageName) => {
     const _href = BASE_NPM + packageName
         , _imgSrc = BASE_NODEICO + packageName + SUFFIX_NODEICO
     return (
@@ -126,7 +124,7 @@ const NpmRecentDownloads = React.createClass({
          imgSrc={_imgSrc}
       />
     );
-  },
+  }
 
   render(){
     const {
@@ -156,11 +154,6 @@ const NpmRecentDownloads = React.createClass({
                value={sumDownloads}
                style={styles.SPAN_SUM}
             />
-            {/*
-            <span style={styles.SPAN_SUM}>
-               {sumDownloads}
-            </span>
-            */}
             <span style={styles.SPAN_START}>
               {fromDate}
             </span>
@@ -192,6 +185,6 @@ const NpmRecentDownloads = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default NpmRecentDownloads

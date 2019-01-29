@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+
+//import PropTypes from "prop-types";
 
 const REPLACER_PATTERN = /(.)(?=(\d{3})+$)/g;
 
@@ -14,10 +16,12 @@ const FormattedInteger = ({ value, style }) => {
   );
 }
 
+/*
 FormattedInteger.propTypes = {
   value: PropTypes.number,
   style: PropTypes.object
 }
+*/
 FormattedInteger.defaultProps = {
   value: 0
 }

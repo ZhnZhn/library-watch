@@ -21,6 +21,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _class;
+//import PropTypes from "prop-types";
 
 var _react = require('react');
 
@@ -68,6 +69,19 @@ var _initFromDate = _DateUtils2.default.getFromDate(1),
 
 var DialogType3 = (0, _withValidationLoad2.default)(_class = function (_Component) {
   (0, _inherits3.default)(DialogType3, _Component);
+
+  /*
+  static propTypes = {
+    caption: PropTypes.string,
+    requestType: PropTypes.string,
+    oneTitle: PropTypes.string,
+    onePlaceholder: PropTypes.string,
+    twoTitle: PropTypes.string,
+    twoPlaceholder: PropTypes.string,
+    isShow: PropTypes.bool,
+    onShow: PropTypes.func
+  }
+  */
 
   function DialogType3(props) {
     (0, _classCallCheck3.default)(this, DialogType3);
@@ -225,15 +239,5 @@ var DialogType3 = (0, _withValidationLoad2.default)(_class = function (_Componen
   return DialogType3;
 }(_react.Component)) || _class;
 
-process.env.NODE_ENV !== "production" ? DialogType3.propTypes = {
-  caption: _react.PropTypes.string,
-  requestType: _react.PropTypes.string,
-  oneTitle: _react.PropTypes.string,
-  onePlaceholder: _react.PropTypes.string,
-  twoTitle: _react.PropTypes.string,
-  twoPlaceholder: _react.PropTypes.string,
-  isShow: _react.PropTypes.bool,
-  onShow: _react.PropTypes.func
-} : void 0;
 exports.default = DialogType3;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\dialogs\DialogType3.js.map
+//# sourceMappingURL=DialogType3.js.map

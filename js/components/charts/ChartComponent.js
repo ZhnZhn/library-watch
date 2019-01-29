@@ -195,4 +195,4 @@ var ChartComponent = (_temp2 = _class = function (_Component) {
 	redraw: false
 }, _temp2);
 exports.default = ChartComponent;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\charts\ChartComponent.js.map
+//# sourceMappingURL=ChartComponent.js.map

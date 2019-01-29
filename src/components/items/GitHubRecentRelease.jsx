@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Caption from './ItemCaption'
 import ButtonCircle from '../zhnAtoms/ButtonCircle';
@@ -37,18 +37,16 @@ const styles = {
 }
 
 
-const GitHubRecentRelease = React.createClass({
-  getInitialState(){
-    return {
-      isShow : true
-    }
-  },
+class GitHubRecentRelease extends Component {
+  state = {
+    isShow: true
+  }
 
-  _handlerToggleOpen(){
+  _handlerToggleOpen = () => {
      this.setState({ isShow : !this.state.isShow });
-  },
+  }
 
-  _handlerClickWatch(){
+  _handlerClickWatch = () => {
      const { repo, requestType, version, published_at, onWatchItem } = this.props
          , caption = `${repo} ${version}`
          , descr = ITEM_DESCRIPTION
@@ -56,7 +54,7 @@ const GitHubRecentRelease = React.createClass({
         caption : caption,
         config : { repo, requestType, version, caption, descr, date : published_at }
      });
-  },
+  }
 
   render(){
     const {
@@ -89,7 +87,7 @@ const GitHubRecentRelease = React.createClass({
              title="Add to Watch"
              style={styles.BTN_CIRCLE}
              onClick={this._handlerClickWatch}
-          />          
+          />
         </Caption>
         <ShowHide isShow={isShow} style={{ paddingTop: '8px' }}>
           <a
@@ -103,6 +101,6 @@ const GitHubRecentRelease = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default GitHubRecentRelease

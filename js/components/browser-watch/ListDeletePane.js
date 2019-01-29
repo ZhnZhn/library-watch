@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _createReactClass = require('create-react-class');
+
+var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
 var _FragmentSelectGroupList = require('./FragmentSelectGroupList');
 
 var _FragmentSelectGroupList2 = _interopRequireDefault(_FragmentSelectGroupList);
@@ -32,15 +36,19 @@ var Styles = {
   }
 };
 
-var ListDeletePane = _react2.default.createClass({
+//import PropTypes from 'prop-types'
+
+var ListDeletePane = (0, _createReactClass2.default)({
   displayName: 'ListDeletePane',
-  propTypes: {
-    store: _react2.default.PropTypes.object,
-    actionCompleted: _react2.default.PropTypes.string,
-    forActionType: _react2.default.PropTypes.string,
-    onRename: _react2.default.PropTypes.func,
-    onClose: _react2.default.PropTypes.func
+  /*
+  propTypes : {
+    store : PropTypes.object,
+    actionCompleted : PropTypes.string,
+    forActionType : PropTypes.string,
+    onRename : PropTypes.func,
+    onClose : PropTypes.func
   },
+  */
 
   getInitialState: function getInitialState() {
     var store = this.props.store;

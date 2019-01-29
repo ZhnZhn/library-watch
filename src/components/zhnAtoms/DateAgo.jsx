@@ -1,11 +1,15 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react';
+
+//import PropTypes from "prop-types";
 
 import STYLE from './DateAgo.Style'
 
 class DateAgo extends Component {
+  /*
   static propTypes = {
      isShowDate : PropTypes.bool
   }
+  */
 
   constructor(props){
     super()

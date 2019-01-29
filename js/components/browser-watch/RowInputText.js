@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _createReactClass = require('create-react-class');
+
+var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
 var _InputText = require('../zhnAtoms/InputText');
 
 var _InputText2 = _interopRequireDefault(_InputText);
@@ -17,6 +21,8 @@ var _DialogStyles = require('../styles/DialogStyles');
 var _DialogStyles2 = _interopRequireDefault(_DialogStyles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import PropTypes from 'prop-types'
 
 var styles = _DialogStyles2.default;
 var Styles = {
@@ -35,11 +41,13 @@ var Styles = {
   }
 };
 
-var RowInputText = _react2.default.createClass({
+var RowInputText = (0, _createReactClass2.default)({
   displayName: 'RowInputText',
-  propTypes: {
-    caption: _react2.default.PropTypes.string
+  /*
+  propTypes : {
+    caption : PropTypes.string
   },
+  */
   render: function render() {
     var _this = this;
 

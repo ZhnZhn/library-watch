@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Caption from './ItemCaption'
 import ShowHide from '../zhnAtoms/ShowHide';
@@ -60,18 +60,16 @@ const styles = {
   }
 }
 
-const StackTaggedQuestions = React.createClass({
-  getInitialState(){
-    return {
-      isShow : true
-    }
-  },
+class StackTaggedQuestions extends Component {
+  state = {
+    isShow: true
+  }
 
-  _handlerToggleOpen(){
+  _handlerToggleOpen = () => {
     this.setState({ isShow: !this.state.isShow })
-  },
+  }
 
-  _handlerClickWatch(){
+  _handlerClickWatch = () => {
     const { repo, requestType, onWatchItem } = this.props
         , caption = `${repo}`
         , descr = ITEM_DESCRIPTION
@@ -79,9 +77,9 @@ const StackTaggedQuestions = React.createClass({
        caption : caption,
        config : { repo, requestType, version : '', caption, descr }
     });
-  },
+  }
 
-  _renderCommits(items){
+  _renderCommits = (items) => {
      return items.map((item, index) => {
         const {
                  answer_count, score, view_count,
@@ -127,9 +125,9 @@ const StackTaggedQuestions = React.createClass({
            </div>
         );
      })
-  },
+  }
 
-  _renderTags(tags){
+  _renderTags = (tags) => {
     return tags.map((tag, index) => {
        return (
          <span key={index} style={styles.SPAN_TAG}>
@@ -137,7 +135,7 @@ const StackTaggedQuestions = React.createClass({
          </span>
        );
     })
-  },
+  }
 
   render(){
     const {
@@ -163,7 +161,7 @@ const StackTaggedQuestions = React.createClass({
              <span style={{ color: '#a9a9a9', paddingLeft: '12px' }}>
                 {_items_count}
              </span>
-           </span>                     
+           </span>
          </Caption>
          <ShowHide isShow={isShow}>
            {this._renderCommits(items)}
@@ -171,6 +169,6 @@ const StackTaggedQuestions = React.createClass({
        </div>
      );
   }
-});
+}
 
 export default StackTaggedQuestions

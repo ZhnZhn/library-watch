@@ -20,11 +20,15 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp, _initialiseProps;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import PropTypes from "prop-types";
 
 var CLASS_ROW_ACTIVE = "option-row__active";
 var NO_ITEM = {
@@ -151,7 +155,7 @@ var styles = {
   }
 };
 
-var InputSelect = function (_Component) {
+var InputSelect = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(InputSelect, _Component);
 
   function InputSelect(props) {
@@ -179,6 +183,27 @@ var InputSelect = function (_Component) {
     };
     return _this;
   }
+  /*
+  static propTypes = {
+     width: PropTypes.string,
+     options: PropTypes.arrayOf(PropTypes.shape({
+        caption: PropTypes.string,
+        value: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.number
+        ])
+     })),
+     optionName: PropTypes.string,
+     optionNames: PropTypes.string,
+     isUpdateOptions: PropTypes.bool,
+     placeholder: PropTypes.string,
+       isLoading: PropTypes.bool,
+     isLoadingFailed: PropTypes.bool,
+       onSelect: PropTypes.func,
+     onLoadOption: PropTypes.func
+  }
+  */
+
 
   (0, _createClass3.default)(InputSelect, [{
     key: 'componentWillReceiveProps',
@@ -273,18 +298,14 @@ var InputSelect = function (_Component) {
     }
   }]);
   return InputSelect;
-}(_react.Component);
-
-InputSelect.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   options: [],
   optionName: '',
   optionNames: '',
   isUpdateOptions: false,
   onSelect: function onSelect() {},
   onLoadOption: function onLoadOption() {}
-};
-
-var _initialiseProps = function _initialiseProps() {
+}, _initialiseProps = function _initialiseProps() {
   var _this3 = this;
 
   this._setStateToInit = function (options) {
@@ -584,24 +605,6 @@ var _initialiseProps = function _initialiseProps() {
       afterInputEl: _afterInputEl
     };
   };
-};
-
-process.env.NODE_ENV !== "production" ? InputSelect.propTypes = {
-  width: _react.PropTypes.string,
-  options: _react.PropTypes.arrayOf(_react.PropTypes.shape({
-    caption: _react.PropTypes.string,
-    value: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number])
-  })),
-  optionName: _react.PropTypes.string,
-  optionNames: _react.PropTypes.string,
-  isUpdateOptions: _react.PropTypes.bool,
-  placeholder: _react.PropTypes.string,
-
-  isLoading: _react.PropTypes.bool,
-  isLoadingFailed: _react.PropTypes.bool,
-
-  onSelect: _react.PropTypes.func,
-  onLoadOption: _react.PropTypes.func
-} : void 0;
+}, _temp);
 exports.default = InputSelect;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhn-select\InputSelect.js.map
+//# sourceMappingURL=InputSelect.js.map

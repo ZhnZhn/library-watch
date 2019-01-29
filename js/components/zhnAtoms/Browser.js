@@ -16,6 +16,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var CLASS_FOR_OPEN = "show-popup";
 
+//import PropTypes from "prop-types";
+
 var Browser = function Browser(props) {
    var isShow = props.isShow,
        style = props.style,
@@ -33,11 +35,16 @@ var Browser = function Browser(props) {
    );
 };
 
-process.env.NODE_ENV !== "production" ? Browser.propTypes = {
-   isShow: _react.PropTypes.bool,
-   style: _react.PropTypes.object,
-   children: _react.PropTypes.oneOfType([_react.PropTypes.arrayOf(_react.PropTypes.node), _react.PropTypes.node])
-} : void 0;
+/*
+Browser.propTypes = {
+  isShow: PropTypes.bool,
+  style: PropTypes.object,
+  children: PropTypes.oneOfType([
+     PropTypes.arrayOf(PropTypes.node),
+     PropTypes.node
+  ])
+}
+*/
 
 exports.default = Browser;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\Browser.js.map
+//# sourceMappingURL=Browser.js.map

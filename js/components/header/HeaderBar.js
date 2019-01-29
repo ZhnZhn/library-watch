@@ -4,6 +4,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -72,59 +88,76 @@ var BrowserConfig = {
   }
 };
 
-var HeaderBar = _react2.default.createClass({
-  displayName: 'HeaderBar',
-  _handleClickDynamic: function _handleClickDynamic(browserConfig) {
-    _BrowserActions2.default.showBrowserDynamic(browserConfig);
-  },
-  _handleClickWatch: function _handleClickWatch() {
-    _BrowserActions2.default.showBrowser(_Type.BrowserType.WATCH_LIST);
-  },
-  render: function render() {
-    var store = this.props.store;
+var HeaderBar = function (_Component) {
+  (0, _inherits3.default)(HeaderBar, _Component);
 
-    return _react2.default.createElement(
-      'div',
-      { className: 'header', style: STYLE.ROOT_DIV },
-      _react2.default.createElement(_LoadingProgress2.default, { store: store }),
-      _react2.default.createElement(_IconAppLogo2.default, {
-        className: 'header__icon-app',
-        title: 'Library Watch v0.11.0'
-      }),
-      _react2.default.createElement(_AppLabel2.default, {
-        style: STYLE.APP_LABEL,
-        caption: 'Library Watch v0.11.0'
-      }),
-      _react2.default.createElement(_ToolBarButton2.default, {
-        type: 'TypeA',
-        caption: 'Library',
-        title: 'Library Browser',
-        onClick: this._handleClickDynamic.bind(null, BrowserConfig.LIBRARY)
-      }),
-      _react2.default.createElement(_ToolBarButton2.default, {
-        type: 'TypeA',
-        caption: 'Watch',
-        title: 'Watch Browser',
-        onClick: this._handleClickWatch
-      }),
-      _react2.default.createElement(_ButtonSave2.default, {
-        store: store,
-        style: STYLE.BUTTON_SAVE
-      }),
-      _react2.default.createElement(_ToolBarButton2.default, {
-        type: 'TypeA',
-        style: { float: 'right', marginRight: '20px' },
-        caption: 'About',
-        title: 'Description about Library Watch',
-        onClick: _ComponentActions2.default.showAbout
-      }),
-      _react2.default.createElement(_LimitRemainingLabel2.default, {
-        store: store,
-        style: { float: 'right', paddingTop: '5px' }
-      })
-    );
+  function HeaderBar() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    (0, _classCallCheck3.default)(this, HeaderBar);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = HeaderBar.__proto__ || Object.getPrototypeOf(HeaderBar)).call.apply(_ref, [this].concat(args))), _this), _this._handleClickDynamic = function (browserConfig) {
+      _BrowserActions2.default.showBrowserDynamic(browserConfig);
+    }, _this._handleClickWatch = function () {
+      _BrowserActions2.default.showBrowser(_Type.BrowserType.WATCH_LIST);
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
-});
+
+  (0, _createClass3.default)(HeaderBar, [{
+    key: 'render',
+    value: function render() {
+      var store = this.props.store;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'header', style: STYLE.ROOT_DIV },
+        _react2.default.createElement(_LoadingProgress2.default, { store: store }),
+        _react2.default.createElement(_IconAppLogo2.default, {
+          className: 'header__icon-app',
+          title: 'Library Watch v0.11.0'
+        }),
+        _react2.default.createElement(_AppLabel2.default, {
+          style: STYLE.APP_LABEL,
+          caption: 'Library Watch v0.11.0'
+        }),
+        _react2.default.createElement(_ToolBarButton2.default, {
+          type: 'TypeA',
+          caption: 'Library',
+          title: 'Library Browser',
+          onClick: this._handleClickDynamic.bind(null, BrowserConfig.LIBRARY)
+        }),
+        _react2.default.createElement(_ToolBarButton2.default, {
+          type: 'TypeA',
+          caption: 'Watch',
+          title: 'Watch Browser',
+          onClick: this._handleClickWatch
+        }),
+        _react2.default.createElement(_ButtonSave2.default, {
+          store: store,
+          style: STYLE.BUTTON_SAVE
+        }),
+        _react2.default.createElement(_ToolBarButton2.default, {
+          type: 'TypeA',
+          style: { float: 'right', marginRight: '20px' },
+          caption: 'About',
+          title: 'Description about Library Watch',
+          onClick: _ComponentActions2.default.showAbout
+        }),
+        _react2.default.createElement(_LimitRemainingLabel2.default, {
+          store: store,
+          style: { float: 'right', paddingTop: '5px' }
+        })
+      );
+    }
+  }]);
+  return HeaderBar;
+}(_react.Component);
 
 exports.default = HeaderBar;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\header\HeaderBar.js.map
+//# sourceMappingURL=HeaderBar.js.map

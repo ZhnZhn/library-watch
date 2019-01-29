@@ -1,4 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+
+//import PropTypes from "prop-types";
 
 const CLASS_ROW_ACTIVE = "option-row__active"
 const NO_ITEM = {
@@ -126,6 +128,7 @@ const styles = {
 }
 
 class InputSelect extends Component {
+  /*
   static propTypes = {
      width: PropTypes.string,
      options: PropTypes.arrayOf(PropTypes.shape({
@@ -146,6 +149,7 @@ class InputSelect extends Component {
      onSelect: PropTypes.func,
      onLoadOption: PropTypes.func
   }
+  */
   static defaultProps = {
     options : [],
     optionName : '',

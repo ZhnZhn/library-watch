@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class'
 import classNames from 'classnames';
 
 import WithDnDStyle from './with/WithDnDStyle';
@@ -86,7 +87,7 @@ const styles = {
   }
 };
 
-const WatchBrowser = React.createClass({
+const WatchBrowser = createReactClass({
   ...WithDnDStyle,
   ...createHandlerDnDGroup(DRAG, WatchActions),
   ...createHandlerDnDList(DRAG, WatchActions),
@@ -368,7 +369,7 @@ const WatchBrowser = React.createClass({
                 className="bt__watch__caption"
                 caption={'L'}
                 title="Load Watch Items from JSON File"
-                isWithoutDefault={true}                
+                isWithoutDefault={true}
                 onClick={ComponentActions.showModalDialog.bind(null, ModalDialog.LOAD_FILE, {
                    onLoad : WatchActions.loadFromJson
                 })}

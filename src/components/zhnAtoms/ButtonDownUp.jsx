@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+
+//import PropTypes from "prop-types";
 
 import STYLE from './ButtonDownUp.Style';
 
@@ -22,6 +24,7 @@ const ButtonDownUp = (props) => {
    );
 }
 
+/*
 ButtonDownUp.propTypes = {
   caption: PropTypes.string,
   title: PropTypes.string,
@@ -29,6 +32,7 @@ ButtonDownUp.propTypes = {
   styleRoot: PropTypes.object,
   onClick: PropTypes.func
 }
+*/
 ButtonDownUp.defaultProps = {
   caption: '',
   title: '',

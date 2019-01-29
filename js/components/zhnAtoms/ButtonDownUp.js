@@ -39,13 +39,19 @@ var ButtonDownUp = function ButtonDownUp(props) {
   );
 };
 
-process.env.NODE_ENV !== "production" ? ButtonDownUp.propTypes = {
-  caption: _react.PropTypes.string,
-  title: _react.PropTypes.string,
-  isUp: _react.PropTypes.bool,
-  styleRoot: _react.PropTypes.object,
-  onClick: _react.PropTypes.func
-} : void 0;
+/*
+ButtonDownUp.propTypes = {
+  caption: PropTypes.string,
+  title: PropTypes.string,
+  isUp: PropTypes.bool,
+  styleRoot: PropTypes.object,
+  onClick: PropTypes.func
+}
+*/
+
+
+//import PropTypes from "prop-types";
+
 ButtonDownUp.defaultProps = {
   caption: '',
   title: '',
@@ -53,4 +59,4 @@ ButtonDownUp.defaultProps = {
 };
 
 exports.default = ButtonDownUp;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\zhnAtoms\ButtonDownUp.js.map
+//# sourceMappingURL=ButtonDownUp.js.map

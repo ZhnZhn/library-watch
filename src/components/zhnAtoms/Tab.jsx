@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+
+//import PropTypes from "prop-types";
 
 const STYLE = {
   LI : {
@@ -40,11 +42,13 @@ const Tab = ({ title, isSelected, onClick }) => {
     )
 }
 
+/*
 Tab.propTypes = {
   title: PropTypes.string,
   isSelected: PropTypes.bool,
   onClick: PropTypes.func
 }
+*/
 Tab.defaultProps = {
   onClick: () => {}
 }

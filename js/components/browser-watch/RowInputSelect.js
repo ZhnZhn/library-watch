@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _createReactClass = require('create-react-class');
+
+var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
 var _InputSelect = require('../zhn-select/InputSelect');
 
 var _InputSelect2 = _interopRequireDefault(_InputSelect);
@@ -18,6 +22,8 @@ var _DialogStyles2 = _interopRequireDefault(_DialogStyles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import PropTypes from 'prop-types'
+
 var styles = _DialogStyles2.default;
 var Styles = {
   CAPTION: {
@@ -25,14 +31,16 @@ var Styles = {
   }
 };
 
-var RowInputSelect = _react2.default.createClass({
+var RowInputSelect = (0, _createReactClass2.default)({
   displayName: 'RowInputSelect',
-  propTypes: {
-    caption: _react2.default.PropTypes.string,
-    options: _react2.default.PropTypes.array,
-    isUpdateOptions: _react2.default.PropTypes.bool,
-    onSelect: _react2.default.PropTypes.func
+  /*
+  propTypes : {
+    caption : PropTypes.string,
+    options : PropTypes.array,
+    isUpdateOptions : PropTypes.bool,
+    onSelect : PropTypes.func
   },
+  */
   render: function render() {
     var _props = this.props,
         caption = _props.caption,
@@ -59,4 +67,4 @@ var RowInputSelect = _react2.default.createClass({
 });
 
 exports.default = RowInputSelect;
-//# sourceMappingURL=D:\_Dev\_React\_Library_Watch\js\components\browser-watch\RowInputSelect.js.map
+//# sourceMappingURL=RowInputSelect.js.map

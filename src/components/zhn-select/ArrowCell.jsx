@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 const STYLE = {
   ARROW_CELL : {
@@ -26,7 +26,7 @@ const C = {
   BORDER_COLOR : "rgb(27, 117, 187) transparent transparent"
 }
 
-const ArrowCell = React.createClass({
+class ArrowCell extends Component {
 
   render(){
     const { styleArrow, onClick } = this.props
@@ -42,15 +42,15 @@ const ArrowCell = React.createClass({
         </span>
       </span>
     );
-  },
+  }
 
   startAnimation(){
     this.arrowCell.style.animation = C.ANIMATION_CIRCLE;
     this.arrow.style.borderColor = C.BORDER_COLOR;
-  },
+  }
   stopAnimation(){
     this.arrowCell.style.animation = "";
   }
-})
+}
 
 export default ArrowCell

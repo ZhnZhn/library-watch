@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react'
+import React from 'react';
+
+//import PropTypes from "prop-types";
 
 import InputSelect from '../zhn-select/InputSelect'
 import DialogStyles from '../styles/DialogStyles'
@@ -24,11 +26,13 @@ const RowInputSelect = ({ caption, placeholder, options, onSelect }) => (
   </div>
 )
 
+/*
 RowInputSelect.propTypes = {
   caption : PropTypes.string,
   placeholder: PropTypes.string,
   options : PropTypes.array,
   onSelect : PropTypes.func
 }
+*/
 
 export default RowInputSelect
