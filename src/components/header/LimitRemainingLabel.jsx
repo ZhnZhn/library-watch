@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
 const WITHOUT_LIMIT = '';
-const STYLE = {
-  LABEL : {
+const S = {
+  LABEL: {
+    position: 'relative',
+    top: 4,
     display: 'inline-block',
     color:'#2f7ed8',
     paddingLeft: '10px',
@@ -10,7 +12,7 @@ const STYLE = {
     fontSize: '16px',
     fontWeight: 'bold'
   }
-}
+};
 
 class LimitRemainingLabel extends Component {
   state = {
@@ -37,7 +39,7 @@ class LimitRemainingLabel extends Component {
         , { value } = this.state;
 
     return (
-       <span style={{ ...STYLE.LABEL, ...style}}>
+       <span style={{ ...S.LABEL, ...style}}>
          {value}
        </span>
     );

@@ -1,1 +1,22 @@
-{"version":3,"sources":["../../../src/components/browser-watch/RowInputSelect.jsx"],"names":["styles","DialogStyles","Styles","CAPTION","width","RowInputSelect","displayName","render","props","caption","options","isUpdateOptions","onSelect","Object","assign","rowDiv","labelSpan"],"mappings":";;;;;;AAAA;;;;AACA;;;;AAIA;;;;AACA;;;;;;AAHA;;AAKA,IAAMA,SAASC,sBAAf;AACA,IAAMC,SAAS;AACbC,WAAU;AACRC,WAAO;AADC;AADG,CAAf;;AAMA,IAAMC,iBAAiB,gCAAiB;AACtCC,eAAc,gBADwB;AAEtC;;;;;;;;AAQAC,QAVsC,oBAU9B;AAAA,iBACgD,KAAKC,KADrD;AAAA,QACCC,OADD,UACCA,OADD;AAAA,QACUC,OADV,UACUA,OADV;AAAA,QACmBC,eADnB,UACmBA,eADnB;AAAA,QACoCC,QADpC,UACoCA,QADpC;;AAEN,WACE;AAAA;AAAA,QAAK,OAAOC,OAAOC,MAAP,CAAc,EAAd,EAAkBd,OAAOe,MAAzB,CAAZ;AACG;AAAA;AAAA,UAAM,OAAOF,OAAOC,MAAP,CAAc,EAAd,EAAkBd,OAAOgB,SAAzB,EAAoCd,OAAOC,OAA3C,CAAb;AACGM;AADH,OADH;AAIG,oCAAC,qBAAD;AACG,eAAM,KADT;AAEG,iBAASC,OAFZ;AAGG,yBAAiBC,eAHpB;AAIG,kBAAUC;AAJb;AAJH,KADF;AAaD;AAzBqC,CAAjB,CAAvB;;kBA4BeP,c","file":"RowInputSelect.js","sourcesContent":["import React from 'react';\r\nimport createReactClass from 'create-react-class'\r\n\r\n//import PropTypes from 'prop-types'\r\n\r\nimport InputSelect from '../zhn-select/InputSelect';\r\nimport DialogStyles from '../styles/DialogStyles'\r\n\r\nconst styles = DialogStyles;\r\nconst Styles = {\r\n  CAPTION : {\r\n    width: '120px'\r\n  }\r\n}\r\n\r\nconst RowInputSelect = createReactClass({\r\n  displayName : 'RowInputSelect',\r\n  /*\r\n  propTypes : {\r\n    caption : PropTypes.string,\r\n    options : PropTypes.array,\r\n    isUpdateOptions : PropTypes.bool,\r\n    onSelect : PropTypes.func\r\n  },\r\n  */\r\n  render(){\r\n    const {caption, options, isUpdateOptions, onSelect} = this.props;\r\n    return (\r\n      <div style={Object.assign({}, styles.rowDiv)}>\r\n         <span style={Object.assign({}, styles.labelSpan, Styles.CAPTION)}>\r\n           {caption}\r\n         </span>\r\n         <InputSelect\r\n            width=\"250\"\r\n            options={options}\r\n            isUpdateOptions={isUpdateOptions}\r\n            onSelect={onSelect}\r\n         />\r\n      </div>\r\n    );\r\n  }\r\n});\r\n\r\nexport default RowInputSelect\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/browser-watch/RowInputSelect.js"
+ ],
+ "file": "../../../src/components/browser-watch/RowInputSelect.js",
+ "names": [
+  "styles",
+  "DialogStyles",
+  "S",
+  "CAPTION",
+  "width",
+  "RowInputSelect",
+  "caption",
+  "options",
+  "isUpdateOptions",
+  "onSelect",
+  "rowDiv",
+  "labelSpan"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;;;AAGA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,SAASC,sBAAf;AANA;;AAOA,IAAMC,IAAI;AACRC,WAAS;AACPC,WAAO;AADA;AADD,CAAV;;AAMA,IAAMC,iBAAiB,SAAjBA,cAAiB;AAAA,MACrBC,OADqB,QACrBA,OADqB;AAAA,MAErBC,OAFqB,QAErBA,OAFqB;AAAA,MAGrBC,eAHqB,QAGrBA,eAHqB;AAAA,MAIrBC,QAJqB,QAIrBA,QAJqB;AAAA,SAMrB;AAAA;AAAA,MAAK,OAAOT,OAAOU,MAAnB;AACG;AAAA;AAAA,QAAM,kCAAYV,OAAOW,SAAnB,EAAiCT,EAAEC,OAAnC,CAAN;AACG,kCAAaG,OAAb;AADH,KADH;AAIG,kCAAC,qBAAD;AACG,aAAM,KADT;AAEG,eAASC,OAFZ;AAGG,uBAAiBC,eAHpB;AAIG,gBAAUC;AAJb;AAJH,GANqB;AAAA,CAAvB;;AAmBA;;;;;;;;;kBASeJ,c"
+}

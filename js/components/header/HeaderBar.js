@@ -34,6 +34,10 @@ var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
 
 var _Type = require('../../constants/Type');
 
+var _FlatButton = require('../zhn-m/FlatButton');
+
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
 var _LoadingProgress = require('./LoadingProgress');
 
 var _LoadingProgress2 = _interopRequireDefault(_LoadingProgress);
@@ -46,10 +50,6 @@ var _AppLabel = require('./AppLabel');
 
 var _AppLabel2 = _interopRequireDefault(_AppLabel);
 
-var _ToolBarButton = require('./ToolBarButton');
-
-var _ToolBarButton2 = _interopRequireDefault(_ToolBarButton);
-
 var _ButtonSave = require('../zhnMoleculs/ButtonSave');
 
 var _ButtonSave2 = _interopRequireDefault(_ButtonSave);
@@ -60,7 +60,7 @@ var _LimitRemainingLabel2 = _interopRequireDefault(_LimitRemainingLabel);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var STYLE = {
+var S = {
   ROOT_DIV: {
     position: 'relative',
     zIndex: 50
@@ -74,8 +74,16 @@ var STYLE = {
     fontSize: '16px',
     fontWeight: 'bold'
   },
+  BT_ABOUT: {
+    float: 'right',
+    marginRight: '20px'
+  },
   BUTTON_SAVE: {
     marginLeft: '10px'
+  },
+  LABEL_LIMIT: {
+    float: 'right',
+    paddingTop: '5px'
   }
 };
 
@@ -116,42 +124,42 @@ var HeaderBar = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'header', style: STYLE.ROOT_DIV },
+        { className: 'header', style: S.ROOT_DIV },
         _react2.default.createElement(_LoadingProgress2.default, { store: store }),
         _react2.default.createElement(_IconAppLogo2.default, {
           className: 'header__icon-app',
           title: 'Library Watch v0.11.0'
         }),
         _react2.default.createElement(_AppLabel2.default, {
-          style: STYLE.APP_LABEL,
+          style: S.APP_LABEL,
           caption: 'Library Watch v0.11.0'
         }),
-        _react2.default.createElement(_ToolBarButton2.default, {
-          type: 'TypeA',
+        _react2.default.createElement(_FlatButton2.default, {
           caption: 'Library',
-          title: 'Library Browser',
+          title: 'Click to show library browser',
+          accessKey: 'l',
           onClick: this._handleClickDynamic.bind(null, BrowserConfig.LIBRARY)
         }),
-        _react2.default.createElement(_ToolBarButton2.default, {
-          type: 'TypeA',
+        _react2.default.createElement(_FlatButton2.default, {
           caption: 'Watch',
-          title: 'Watch Browser',
+          title: 'Click to show watch browser',
+          accessKey: 'w',
           onClick: this._handleClickWatch
         }),
         _react2.default.createElement(_ButtonSave2.default, {
           store: store,
-          style: STYLE.BUTTON_SAVE
+          style: S.BUTTON_SAVE
         }),
-        _react2.default.createElement(_ToolBarButton2.default, {
-          type: 'TypeA',
-          style: { float: 'right', marginRight: '20px' },
+        _react2.default.createElement(_FlatButton2.default, {
+          rootStyle: S.BT_ABOUT,
           caption: 'About',
-          title: 'Description about Library Watch',
+          title: 'Click to show about description',
+          accessKey: 'a',
           onClick: _ComponentActions2.default.showAbout
         }),
         _react2.default.createElement(_LimitRemainingLabel2.default, {
           store: store,
-          style: { float: 'right', paddingTop: '5px' }
+          style: S.LABEL_LIMIT
         })
       );
     }

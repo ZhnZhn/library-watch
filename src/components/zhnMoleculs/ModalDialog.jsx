@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 //import PropTypes from 'prop-types'
 
 import Caption from './DialogCaption'
-import ToolBarButton from '../header/ToolBarButton'
+import FlatButton from '../zhn-m/FlatButton'
 
 const CL = {
   SHOWING: 'show-popup',
@@ -65,11 +65,8 @@ class ModalDialog extends Component {
      timeout: 450
    }
 
-   constructor(props){
-     super()
-     this.wasClosing = false
-     this.state = {}
-   }
+   wasClosing = false
+   state = {}
 
    shouldComponentUpdate(nextProps, nextState){
      if (nextProps !== this.props){
@@ -95,10 +92,12 @@ class ModalDialog extends Component {
   _renderCommandButton = (commandButtons, onClose) => (
       <div style={STYLE.COMMAND_DIV}>
         {commandButtons}
-        <ToolBarButton
-           type="TypeC"
-           caption="Close"
-           onClick={onClose}
+        <FlatButton
+          key="close"
+          caption="Close"
+          title="Click to close modal dialog"
+          timeout={0}
+          onClick={onClose}
         />
       </div>
   )

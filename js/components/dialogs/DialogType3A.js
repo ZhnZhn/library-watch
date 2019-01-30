@@ -31,13 +31,13 @@ var _DateUtils = require('../../utils/DateUtils');
 
 var _DateUtils2 = _interopRequireDefault(_DateUtils);
 
+var _crCommandButtons = require('./crCommandButtons');
+
+var _crCommandButtons2 = _interopRequireDefault(_crCommandButtons);
+
 var _Dialog = require('../zhnMoleculs/Dialog');
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
-
-var _ToolBarButton = require('../header/ToolBarButton');
-
-var _ToolBarButton2 = _interopRequireDefault(_ToolBarButton);
 
 var _RowInputText = require('./RowInputText');
 
@@ -74,11 +74,10 @@ var DialogType3A = (0, _withValidationLoad2.default)(_class = function (_Compone
     onShow: PropTypes.func
   }
   */
-
   function DialogType3A(props) {
     (0, _classCallCheck3.default)(this, DialogType3A);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (DialogType3A.__proto__ || Object.getPrototypeOf(DialogType3A)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (DialogType3A.__proto__ || Object.getPrototypeOf(DialogType3A)).call(this, props));
 
     _this._handleDefault = function () {
       _this.datesFragment.setValues(_initFromDate, _initToDate);
@@ -132,19 +131,9 @@ var DialogType3A = (0, _withValidationLoad2.default)(_class = function (_Compone
     };
 
     _this.stock = null;
-    _this._commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
-      type: 'TypeC',
-      caption: 'Default',
-      onClick: _this._handleDefault
-    }), _react2.default.createElement(_ToolBarButton2.default, {
-      type: 'TypeC',
-      caption: 'Clear',
-      onClick: _this._handleClear
-    }), _react2.default.createElement(_ToolBarButton2.default, {
-      type: 'TypeC',
-      caption: 'Load',
-      onClick: _this._handleLoad
-    })];
+    _this._commandButtons = (0, _crCommandButtons2.default)({
+      inst: _this, isDefault: true
+    });
     _this.state = {
       validationMessages: []
     };

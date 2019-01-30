@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 //import PropTypes from 'prop-types'
 
 import Caption from './DialogCaption'
-import ToolBarButton from '../header/ToolBarButton';
+import FlatButton from '../zhn-m/FlatButton'
 
 import Interact from '../../utils/Interact';
 
@@ -52,15 +52,17 @@ class Dialog extends Component {
     return (
       <div style={styles.commandDiv}>
         {commandButtons}
-        <ToolBarButton
-           type="TypeC"
-           caption="Show"
-           onClick={onShowChart}
+        <FlatButton
+          key="show"
+          caption="Show"
+          timeout={0}
+          onClick={onShowChart}
         />
-        <ToolBarButton
-           type="TypeC"
-           caption="Close"
-           onClick={onClose}
+        <FlatButton
+          key="close"
+          caption="Close"
+          timeout={0}
+          onClick={onClose}
         />
       </div>
     );

@@ -1,13 +1,11 @@
-import React from 'react';
-import createReactClass from 'create-react-class'
-
+import React, { Component } from 'react';
 //import PropTypes from 'prop-types'
 
 import FragmentSelectGroupList from './FragmentSelectGroupList';
 import ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment';
-import ToolBarButton from '../header/ToolBarButton';
+import FlatButton from '../zhn-m/FlatButton'
 
-const Styles = {
+const S = {
   COMMAND_DIV : {
      cursor: 'default',
      float: 'right',
@@ -17,10 +15,9 @@ const Styles = {
   }
 }
 
-const ListDeletePane = createReactClass({
-  displayName : 'ListDeletePane',
+class ListDeletePane extends Component {
   /*
-  propTypes : {
+  static propTypes = {
     store : PropTypes.object,
     actionCompleted : PropTypes.string,
     forActionType : PropTypes.string,
@@ -28,38 +25,42 @@ const ListDeletePane = createReactClass({
     onClose : PropTypes.func
   },
   */
-
-  getInitialState(){
-    const {store} = this.props;
-    return {
-      groupOptions : store.getWatchGroups(),
-      validationMessages : []
+  constructor(props){
+    super(props)
+    const {store} = props;
+    this.state = {
+      groupOptions: store.getWatchGroups(),
+      validationMessages: []
     }
-  },
+  }
+
 
   componentDidMount(){
-    this.unsubscribe = this.props.store.listen(this._onStore)
-  },
+    this.unsubscribe = this.props
+      .store.listen(this._onStore)
+  }
   componentWillUnmount(){
     this.unsubscribe()
-  },
-  _onStore(actionType, data){
+  }
+  _onStore = (actionType, data) => {
     const {actionCompleted, forActionType, store} = this.props;
     if (actionType === actionCompleted){
         if (data.forActionType === forActionType) {
           this._handlerClear();
         }
-        this.setState({groupOptions : store.getWatchGroups()});
+        this.setState({
+          groupOptions: store.getWatchGroups()
+        });
     }
-  },
+  }
 
-  _handlerClear(){
+  _handlerClear = () => {
     if (this.state.validationMessages.length>0){
       this.setState({validationMessages: []})
     }
-  },
+  }
 
-  _handlerDelete(){
+  _handlerDelete = () => {
       const {captionGroup, captionList} = this.selectGroupList.getValue();
       if (captionGroup && captionList){
         this.props.onDelete({captionGroup, captionList});
@@ -70,7 +71,9 @@ const ListDeletePane = createReactClass({
         if (!captionList)  {msg.push(msgOnNotSelect('List')); }
         this.setState({validationMessages: msg});
       }
-  },
+  }
+
+  _refGroupList = c => this.selectGroupList = c
 
   render(){
     const {store, onClose} = this.props
@@ -78,35 +81,36 @@ const ListDeletePane = createReactClass({
     return (
       <div>
          <FragmentSelectGroupList
-           ref={c => this.selectGroupList = c}
+           ref={this._refGroupList}
            store={store}
-           groupCaption={'In Group:'}
+           groupCaption="In Group"
            groupOptions={groupOptions}
-           listCaption={'List:'}
+           listCaption="List"
          />
          <ValidationMessagesFragment
             validationMessages={validationMessages}
          />
-         <div style={Styles.COMMAND_DIV}>
-            <ToolBarButton
-               type="TypeC"
+         <div style={S.COMMAND_DIV}>
+            <FlatButton
+               isPrimary={true}
                caption="Delete"
+               timeout={0}
                onClick={this._handlerDelete}
             />
-            <ToolBarButton
-               type="TypeC"
+            <FlatButton
                caption="Clear"
+               timeout={0}
                onClick={this._handlerClear}
             />
-            <ToolBarButton
-               type="TypeC"
+            <FlatButton
                caption="Close"
+               timeout={0}
                onClick={onClose}
             />
         </div>
       </div>
     );
   }
-});
+}
 
 export default ListDeletePane

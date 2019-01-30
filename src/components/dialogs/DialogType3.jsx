@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 
 import DateUtils from '../../utils/DateUtils'
 
+import crButtons from './crCommandButtons'
 import Dialog from '../zhnMoleculs/Dialog'
-import ToolBarButton from '../header/ToolBarButton'
 import RowInputText from './RowInputText'
 import RowInputSelect from './RowInputSelect'
 import DatesFragment from './DatesFragment'
@@ -38,33 +38,18 @@ class DialogType3 extends Component {
     onShow: PropTypes.func
   }
   */
-
   constructor(props){
-    super()
+    super(props)
     this.stock = null
     this.sortByItem = {}
-    this._commandButtons = [
-      <ToolBarButton
-        type="TypeC"
-        caption="Default"
-        onClick={this._handleDefault}
-       />,
-      <ToolBarButton
-        type="TypeC"
-        caption="Clear"
-        onClick={this._handleClear}
-       />,
-       <ToolBarButton
-         type="TypeC"
-         caption="Load"
-         onClick={this._handleLoad}
-        />
-    ]
+    this._commandButtons = crButtons({
+      inst: this, isDefault: true
+    })
     this.state = {
-      validationMessages : []
+      validationMessages: []
     }
   }
-
+  
   shouldComponentUpdate(nextProps, nextState){
     if (this.props !== nextProps){
        if (this.props.isShow === nextProps.isShow){

@@ -7,7 +7,7 @@ const CL = "not-selected";
 
 const S = {
   ROOT: {
-    color: 'rgba(164, 135, 212, 1)',
+    color: 'silver',
     backgroundColor: '#232f3b',
     padding: 5,
     textAlign: 'center',

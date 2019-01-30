@@ -32,9 +32,9 @@ var _DialogCaption = require('./DialogCaption');
 
 var _DialogCaption2 = _interopRequireDefault(_DialogCaption);
 
-var _ToolBarButton = require('../header/ToolBarButton');
+var _FlatButton = require('../zhn-m/FlatButton');
 
-var _ToolBarButton2 = _interopRequireDefault(_ToolBarButton);
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
 
 var _Interact = require('../../utils/Interact');
 
@@ -112,14 +112,16 @@ var Dialog = function (_Component) {
         'div',
         { style: styles.commandDiv },
         commandButtons,
-        _react2.default.createElement(_ToolBarButton2.default, {
-          type: 'TypeC',
+        _react2.default.createElement(_FlatButton2.default, {
+          key: 'show',
           caption: 'Show',
+          timeout: 0,
           onClick: onShowChart
         }),
-        _react2.default.createElement(_ToolBarButton2.default, {
-          type: 'TypeC',
+        _react2.default.createElement(_FlatButton2.default, {
+          key: 'close',
           caption: 'Close',
+          timeout: 0,
           onClick: onClose
         })
       );

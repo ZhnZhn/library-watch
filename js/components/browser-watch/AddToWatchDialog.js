@@ -32,9 +32,9 @@ var _ModalDialog = require('../zhnMoleculs/ModalDialog');
 
 var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 
-var _ToolBarButton = require('../header/ToolBarButton');
+var _FlatButton = require('../zhn-m/FlatButton');
 
-var _ToolBarButton2 = _interopRequireDefault(_ToolBarButton);
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
 
 var _InputSelect = require('../zhn-select/InputSelect');
 
@@ -58,6 +58,19 @@ var actionCompleted = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
     actionFailed = _WatchActions.WatchActionTypes.EDIT_WATCH_FAILED,
     forActionType = _WatchActions.WatchActionTypes.ADD_ITEM;
 
+var S = {
+  BOLD: {
+    fontWeight: 'bold'
+  },
+  LH: {
+    lineHeight: 2
+  },
+  DESCR: {
+    fontWeight: 'bold',
+    color: 'gray'
+  }
+};
+
 var AddToWatchDialog = (0, _createReactClass2.default)((0, _extends3.default)({}, _WithValidation2.default, {
 
   displayName: 'AddToWatchDialog',
@@ -74,6 +87,13 @@ var AddToWatchDialog = (0, _createReactClass2.default)((0, _extends3.default)({}
 
     this.groupCaption = null;
     this.listCaption = null;
+    this._commandButtons = [_react2.default.createElement(_FlatButton2.default, {
+      key: 'add',
+      caption: 'Add',
+      title: 'Click to add to watch list',
+      timeout: 0,
+      onClick: this._handlerAdd
+    })];
     return {
       groupOptions: store.getWatchGroups(),
       listOptions: [],
@@ -172,7 +192,6 @@ var AddToWatchDialog = (0, _createReactClass2.default)((0, _extends3.default)({}
     this.props.onClose();
   },
   render: function render() {
-    //onClose
     var _props = this.props,
         isShow = _props.isShow,
         data = _props.data,
@@ -183,20 +202,15 @@ var AddToWatchDialog = (0, _createReactClass2.default)((0, _extends3.default)({}
         _state = this.state,
         groupOptions = _state.groupOptions,
         listOptions = _state.listOptions,
-        validationMessages = _state.validationMessages,
-        commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
-      key: 'a',
-      type: 'TypeC',
-      caption: 'Add',
-      onClick: this._handlerAdd
-    })];
+        validationMessages = _state.validationMessages;
+
 
     return _react2.default.createElement(
       _ModalDialog2.default,
       {
         caption: 'Add To Watch List',
         isShow: isShow,
-        commandButtons: commandButtons,
+        commandButtons: this._commandButtons,
         onClose: this._handlerClose
       },
       _react2.default.createElement(
@@ -229,7 +243,7 @@ var AddToWatchDialog = (0, _createReactClass2.default)((0, _extends3.default)({}
       ),
       _react2.default.createElement(
         'div',
-        { style: Object.assign({}, styles.rowDiv, { lineHeight: 2 }), key: '3' },
+        { style: (0, _extends3.default)({}, styles.rowDiv, S.LH), key: '3' },
         _react2.default.createElement(
           'span',
           { style: styles.labelSpan },
@@ -237,13 +251,13 @@ var AddToWatchDialog = (0, _createReactClass2.default)((0, _extends3.default)({}
         ),
         _react2.default.createElement(
           'span',
-          { style: { fontWeight: 'bold' } },
+          { style: S.BOLD },
           caption
         )
       ),
       _react2.default.createElement(
         'div',
-        { style: Object.assign({}, styles.rowDiv, { lineHeight: 2 }), key: '4' },
+        { style: (0, _extends3.default)({}, styles.rowDiv, S.LH), key: '4' },
         _react2.default.createElement(
           'span',
           { style: styles.labelSpan },
@@ -251,7 +265,7 @@ var AddToWatchDialog = (0, _createReactClass2.default)((0, _extends3.default)({}
         ),
         _react2.default.createElement(
           'span',
-          { style: { fontWeight: 'bold', color: 'gray' } },
+          { style: S.DESCR },
           descr
         )
       ),

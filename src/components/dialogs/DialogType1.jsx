@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 //import PropTypes from "prop-types";
 
+import crButtons from './crCommandButtons'
 import Dialog from '../zhnMoleculs/Dialog'
-import ToolBarButton from '../header/ToolBarButton'
 import RowInputText from './RowInputText'
 import ValidationMessagesFragment from './ValidationMessagesFragment'
 
@@ -20,23 +20,13 @@ class DialogType1 extends Component {
     onShow: PropTypes.func
   }
   */
+
   constructor(props){
-    super()
+    super(props)
     this.stock = null
-    this._commandButtons = [
-       <ToolBarButton
-          type="TypeC"
-          caption="Clear"
-          onClick={this._handleClear}
-       />,
-       <ToolBarButton
-          type="TypeC"
-          caption="Load"
-          onClick={this._handleLoad}
-       />
-    ]
+    this._commandButtons = crButtons({ inst: this })
     this.state = {
-      validationMessages : []
+      validationMessages: []
     }
   }
 

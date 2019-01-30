@@ -21,7 +21,7 @@ const STYLE = {
   CAPTION: {
     paddingLeft: '4px',
     verticalAlign: 'top',
-    color: 'rgba(164, 135, 212, 1)',
+    color: '#1b2836',
     fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
     fontWeight: 'bold',
     fontSize: '16px',

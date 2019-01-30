@@ -4,8 +4,8 @@ import React, { Component } from 'react'
 import DateUtils from '../../utils/DateUtils'
 
 //import WithValidation from './WithValidation'
+import crButtons from './crCommandButtons'
 import Dialog from '../zhnMoleculs/Dialog'
-import ToolBarButton from '../header/ToolBarButton'
 import RowInputText from './RowInputText'
 import RowInputSelect from './RowInputSelect'
 import DatesFragment from './DatesFragment'
@@ -20,11 +20,11 @@ const _sortOptions = [
   { caption: "Hot Tab", value: "hot" },
   { caption: "Hot Week Tab", value: "week" },
   { caption: "Hot Month Tab", value: "month" }
-]
+];
 
 const _initFromDate = DateUtils.getFromDate(1)
     , _initToDate = DateUtils.getToDate()
-    , _onTestDate = DateUtils.isValidDate
+    , _onTestDate = DateUtils.isValidDate;
 
 
 @withValidationLoad
@@ -39,30 +39,15 @@ class DialogType2 extends Component{
     onShow: PropTypes.func
   }
   */
-
   constructor(props){
-    super()
+    super(props)
     this.stock = null
     this.sortByItem = {}
-    this._commandButtons = [
-        <ToolBarButton
-          type="TypeC"
-          caption="Default"
-          onClick={this._handleDefault}
-         />,
-        <ToolBarButton
-          type="TypeC"
-          caption="Clear"
-          onClick={this._handleClear}
-         />,
-         <ToolBarButton
-           type="TypeC"
-           caption="Load"
-           onClick={this._handleLoad}
-          />
-       ]
+    this._commandButtons = crButtons({
+      inst: this, isDefault: true
+    })
     this.state = {
-      validationMessages : []
+      validationMessages: []
     }
   }
 
@@ -116,9 +101,9 @@ class DialogType2 extends Component{
 
    return {
      repo, requestType,
-     sort : value,
-     fromdate : _fromDate,
-     todate : _toDate
+     sort: value,
+     fromdate: _fromDate,
+     todate: _toDate
    };
  }
 
@@ -127,6 +112,9 @@ class DialogType2 extends Component{
        this._createValidationMessages
     )
   }
+
+  _refInputRepo = c => this.inputRepo = c
+  _refDatesFragment = c => this.datesFragment = c
 
   render(){
     const {
@@ -144,7 +132,7 @@ class DialogType2 extends Component{
            onClose={this._handleClose}
        >
         <RowInputText
-           ref={c => this.inputRepo = c}
+           ref={this._refInputRepo}
            caption={oneTitle}
            placeholder={onePlaceholder}
         />
@@ -155,7 +143,7 @@ class DialogType2 extends Component{
            onSelect={this._handleSelectSortBy}
         />
         <DatesFragment
-            ref={c => this.datesFragment = c}
+            ref={this._refDatesFragment}
             initFromDate={_initFromDate}
             initToDate={_initToDate}
             onTestDate={_onTestDate}

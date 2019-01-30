@@ -1,14 +1,12 @@
-import React from 'react';
-import createReactClass from 'create-react-class'
-
+import React, { Component } from 'react';
 //import PropTypes from 'prop-types'
 
 import RowInputSelect from './RowInputSelect';
 import RowInputText from './RowInputText';
 import ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment';
-import ToolBarButton from '../header/ToolBarButton';
+import FlatButton from '../zhn-m/FlatButton'
 
-const Styles = {
+const S = {
   COMMAND_DIV : {
      cursor: 'default',
      float: 'right',
@@ -16,12 +14,11 @@ const Styles = {
      marginBottom: '10px',
      marginRight: '4px'
   }
-}
+};
 
-const GroupEditPane = createReactClass({
-  displayName : 'GroupEditPane',
+class GroupEditPane extends Component {
   /*
-  propTypes : {
+  statis propTypes = {
     store : PropTypes.object,
     actionCompleted : PropTypes.string,
     actionFailed : PropTypes.string,
@@ -32,22 +29,24 @@ const GroupEditPane = createReactClass({
     onClose : PropTypes.func
   },
   */
-  getInitialState(){
-    const {store} = this.props;
+  constructor(props){
+    super(props)
+    const { store } = props;
     this.captionFrom = null;
-    return {
-      groupOptions : store.getWatchGroups(),
-      validationMessages : []
+    this.state = {
+      groupOptions: store.getWatchGroups(),
+      validationMessages: []
     }
-  },
+  }
 
   componentDidMount(){
-    this.unsubscribe = this.props.store.listen(this._onStore)
-  },
+    this.unsubscribe = this.props
+      .store.listen(this._onStore)
+  }
   componentWillUnmount(){
     this.unsubscribe()
-  },
-  _onStore(actionType, data){
+  }
+  _onStore = (actionType, data) => {
     const {actionCompleted, actionFailed, forActionType, store} = this.props;
     if (actionType === actionCompleted){
       if (data.forActionType === forActionType){
@@ -57,23 +56,23 @@ const GroupEditPane = createReactClass({
     } else if (actionType === actionFailed && data.forActionType === forActionType){
       this.setState({validationMessages: data.messages});
     }
-  },
+  }
 
-  _handlerSelectGroup(item){
+  _handlerSelectGroup = (item) => {
      if (item && item.caption){
        this.captionFrom = item.caption;
      } else {
        this.captionFrom = null;
      }
-  },
+  }
 
-  _handlerClear(){
+  _handlerClear = () => {
     this.inputText.setValue('');
     if (this.state.validationMessages.length>0){
       this.setState({validationMessages:[]});
     }
-  },
-  _handlerRename(){
+  }
+  _handlerRename = () => {
      const captionTo = this.inputText.getValue();
      if (captionTo && this.captionFrom) {
        this.props.onRename({captionFrom: this.captionFrom, captionTo});
@@ -85,49 +84,51 @@ const GroupEditPane = createReactClass({
        if (!captionTo){
          msg.push(this.props.msgOnIsEmptyName('Group To'));
        }
-       this.setState({validationMessages:msg});
+       this.setState({validationMessages: msg});
      }
-  },
+  }
+
+  _refInputText = c => this.inputText = c
 
   render(){
     const { onClose } = this.props
-          //isUpdated
         , { groupOptions, validationMessages} = this.state;
 
     return (
        <div>
           <RowInputSelect
-             caption={'Group From:'}
+             caption="Group From"
              options={groupOptions}
              onSelect={this._handlerSelectGroup}
           />
          <RowInputText
-           ref={c => this.inputText = c}
-           caption={'Group To:'}
+           ref={this._refInputText}
+           caption="Group To"
          />
          <ValidationMessagesFragment
            validationMessages={validationMessages}
          />
-         <div style={Styles.COMMAND_DIV}>
-           <ToolBarButton
-             type="TypeC"
+         <div style={S.COMMAND_DIV}>
+           <FlatButton
+             isPrimary={true}
              caption="Rename"
+             timeout={0}
              onClick={this._handlerRename}
            />
-           <ToolBarButton
-             type="TypeC"
+           <FlatButton
              caption="Clear"
+             timeout={0}
              onClick={this._handlerClear}
            />
-          <ToolBarButton
-             type="TypeC"
+          <FlatButton
              caption="Close"
+             timeout={0}
              onClick={onClose}
           />
          </div>
        </div>
     );
   }
-});
+}
 
 export default GroupEditPane

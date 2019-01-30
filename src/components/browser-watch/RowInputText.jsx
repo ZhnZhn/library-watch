@@ -1,56 +1,56 @@
-import React from 'react';
-import createReactClass from 'create-react-class'
-
+import React, { Component } from 'react';
 //import PropTypes from 'prop-types'
 
 import InputText from '../zhnAtoms/InputText';
 import DialogStyles from '../styles/DialogStyles'
+import crRowCaption from './crRowCaption'
 
 const styles = DialogStyles;
-const Styles = {
-  ROOT : {
+const S = {
+  ROOT: {
     lineHeight: 2
   },
-  CAPTION : {
-    width: '120px'
+  CAPTION: {
+    width: 120
   },
-  INPUT_TEXT : {
-    width : '250px',
+  INPUT_TEXT: {
+    width : 250,
     marginLeft : 0,
     marginRight: 0,
-    paddingLeft: '10px',
-    height: '30px'
+    paddingLeft: 10,
+    height: 30
   }
-}
+};
 
-const RowInputText = createReactClass({
-  displayName : 'RowInputText',
+
+class RowInputText extends Component {
   /*
-  propTypes : {
-    caption : PropTypes.string
+  static propTypes = {
+    caption: PropTypes.string
   },
   */
-  render(){
-    const {caption} = this.props;
+  _refInput = c => this.inputText = c
+
+  render(){    
     return (
-      <div style={Object.assign({}, styles.rowDiv, Styles.ROOT)}>
-         <span style={Object.assign({}, styles.labelSpan, Styles.CAPTION)}>
-           {caption}
+      <div style={{ ...styles.rowDiv, ...S.ROOT }}>
+         <span style={{ ...styles.labelSpan, ...S.CAPTION }}>
+           {crRowCaption(this.props.caption)}
          </span>
          <InputText
-            ref={c => this.inputText = c}
-            style={Styles.INPUT_TEXT}
+            ref={this._refInput}
+            style={S.INPUT_TEXT}
          />
       </div>
     )
-  },
+  }
 
   getValue(){
     return this.inputText.getValue().trim();
-  },
+  }
   setValue(value){
     this.inputText.setValue(value);
   }
-});
+}
 
 export default RowInputText

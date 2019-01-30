@@ -1,1 +1,35 @@
-{"version":3,"sources":["../../../src/components/browser-watch/RowInputText.jsx"],"names":["styles","DialogStyles","Styles","ROOT","lineHeight","CAPTION","width","INPUT_TEXT","marginLeft","marginRight","paddingLeft","height","RowInputText","displayName","render","caption","props","Object","assign","rowDiv","labelSpan","inputText","c","getValue","trim","setValue","value"],"mappings":";;;;;;AAAA;;;;AACA;;;;AAIA;;;;AACA;;;;;;AAHA;;AAKA,IAAMA,SAASC,sBAAf;AACA,IAAMC,SAAS;AACbC,QAAO;AACLC,gBAAY;AADP,GADM;AAIbC,WAAU;AACRC,WAAO;AADC,GAJG;AAObC,cAAa;AACXD,WAAQ,OADG;AAEXE,gBAAa,CAFF;AAGXC,iBAAa,CAHF;AAIXC,iBAAa,MAJF;AAKXC,YAAQ;AALG;AAPA,CAAf;;AAgBA,IAAMC,eAAe,gCAAiB;AACpCC,eAAc,cADsB;AAEpC;;;;;AAKAC,QAPoC,oBAO5B;AAAA;;AAAA,QACCC,OADD,GACY,KAAKC,KADjB,CACCD,OADD;;AAEN,WACE;AAAA;AAAA,QAAK,OAAOE,OAAOC,MAAP,CAAc,EAAd,EAAkBlB,OAAOmB,MAAzB,EAAiCjB,OAAOC,IAAxC,CAAZ;AACG;AAAA;AAAA,UAAM,OAAOc,OAAOC,MAAP,CAAc,EAAd,EAAkBlB,OAAOoB,SAAzB,EAAoClB,OAAOG,OAA3C,CAAb;AACGU;AADH,OADH;AAIG,oCAAC,mBAAD;AACG,aAAK;AAAA,iBAAK,MAAKM,SAAL,GAAiBC,CAAtB;AAAA,SADR;AAEG,eAAOpB,OAAOK;AAFjB;AAJH,KADF;AAWD,GApBmC;AAsBpCgB,UAtBoC,sBAsB1B;AACR,WAAO,KAAKF,SAAL,CAAeE,QAAf,GAA0BC,IAA1B,EAAP;AACD,GAxBmC;AAyBpCC,UAzBoC,oBAyB3BC,KAzB2B,EAyBrB;AACb,SAAKL,SAAL,CAAeI,QAAf,CAAwBC,KAAxB;AACD;AA3BmC,CAAjB,CAArB;;kBA8Bed,Y","file":"RowInputText.js","sourcesContent":["import React from 'react';\r\nimport createReactClass from 'create-react-class'\r\n\r\n//import PropTypes from 'prop-types'\r\n\r\nimport InputText from '../zhnAtoms/InputText';\r\nimport DialogStyles from '../styles/DialogStyles'\r\n\r\nconst styles = DialogStyles;\r\nconst Styles = {\r\n  ROOT : {\r\n    lineHeight: 2\r\n  },\r\n  CAPTION : {\r\n    width: '120px'\r\n  },\r\n  INPUT_TEXT : {\r\n    width : '250px',\r\n    marginLeft : 0,\r\n    marginRight: 0,\r\n    paddingLeft: '10px',\r\n    height: '30px'\r\n  }\r\n}\r\n\r\nconst RowInputText = createReactClass({\r\n  displayName : 'RowInputText',\r\n  /*\r\n  propTypes : {\r\n    caption : PropTypes.string\r\n  },\r\n  */\r\n  render(){\r\n    const {caption} = this.props;\r\n    return (\r\n      <div style={Object.assign({}, styles.rowDiv, Styles.ROOT)}>\r\n         <span style={Object.assign({}, styles.labelSpan, Styles.CAPTION)}>\r\n           {caption}\r\n         </span>\r\n         <InputText\r\n            ref={c => this.inputText = c}\r\n            style={Styles.INPUT_TEXT}\r\n         />\r\n      </div>\r\n    )\r\n  },\r\n\r\n  getValue(){\r\n    return this.inputText.getValue().trim();\r\n  },\r\n  setValue(value){\r\n    this.inputText.setValue(value);\r\n  }\r\n});\r\n\r\nexport default RowInputText\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/browser-watch/RowInputText.js"
+ ],
+ "file": "../../../src/components/browser-watch/RowInputText.js",
+ "names": [
+  "styles",
+  "DialogStyles",
+  "S",
+  "ROOT",
+  "lineHeight",
+  "CAPTION",
+  "width",
+  "INPUT_TEXT",
+  "marginLeft",
+  "marginRight",
+  "paddingLeft",
+  "height",
+  "RowInputText",
+  "_refInput",
+  "inputText",
+  "c",
+  "rowDiv",
+  "labelSpan",
+  "props",
+  "caption",
+  "getValue",
+  "trim",
+  "value",
+  "setValue",
+  "Component"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAGA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,SAASC,sBAAf;AANA;;AAOA,IAAMC,IAAI;AACRC,QAAM;AACJC,gBAAY;AADR,GADE;AAIRC,WAAS;AACPC,WAAO;AADA,GAJD;AAORC,cAAY;AACVD,WAAQ,GADE;AAEVE,gBAAa,CAFH;AAGVC,iBAAa,CAHH;AAIVC,iBAAa,EAJH;AAKVC,YAAQ;AALE;AAPJ,CAAV;;IAiBMC,Y;;;;;;;;;;;;;;gNAMJC,S,GAAY;AAAA,aAAK,MAAKC,SAAL,GAAiBC,CAAtB;AAAA,K;;AALZ;;;;;;;;;6BAOQ;AACN,aACE;AAAA;AAAA,UAAK,kCAAYf,OAAOgB,MAAnB,EAA8Bd,EAAEC,IAAhC,CAAL;AACG;AAAA;AAAA,YAAM,kCAAYH,OAAOiB,SAAnB,EAAiCf,EAAEG,OAAnC,CAAN;AACG,sCAAa,KAAKa,KAAL,CAAWC,OAAxB;AADH,SADH;AAIG,sCAAC,mBAAD;AACG,eAAK,KAAKN,SADb;AAEG,iBAAOX,EAAEK;AAFZ;AAJH,OADF;AAWD;;;+BAES;AACR,aAAO,KAAKO,SAAL,CAAeM,QAAf,GAA0BC,IAA1B,EAAP;AACD;;;6BACQC,K,EAAM;AACb,WAAKR,SAAL,CAAeS,QAAf,CAAwBD,KAAxB;AACD;;;EA3BwBE,gB;;kBA8BZZ,Y"
+}

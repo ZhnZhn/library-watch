@@ -4,6 +4,14 @@ import React from 'react';
 import MenuBadge from '../zhnAtoms/MenuBadge';
 import OpenClose2 from '../zhnAtoms/OpenClose2';
 
+const CL = {
+  NOT_SELECTED: 'not-selected',
+  ROW_EVEN: 'row__topic__even not-selected',
+  ROW_ODD: 'row__topic__odd not-selected'
+};
+
+const COLOR_FILL = '#1b2836';
+
 const S = {
   CAPTION_ROW: {
     paddingLeft: 6
@@ -13,10 +21,10 @@ const S = {
 const _renderMenuItems = function(rowClass, items=[]){
   return items.map((item, index) => {
     const _className = (rowClass)
-             ? rowClass + ' not-selected'
+             ? rowClass + ' ' + CL.NOT_SELECTED
              : (index % 2)
-                 ? 'row__topic__even not-selected'
-                 : 'row__topic__odd not-selected'
+                 ? CL.ROW_EVEN
+                 : CL.ROW_ODD
         , menuBadge = (item.counter !== 0)
              ? (
                   <MenuBadge
@@ -45,6 +53,8 @@ const _renderMenuItems = function(rowClass, items=[]){
 const MenuPart = ({ rowClass, caption, items, isInitClose }) => (
   <OpenClose2
      styleCaptionRow={S.CAPTION_ROW}
+     fillOpen={COLOR_FILL}
+     fillClose={COLOR_FILL}
      caption={caption}
      isClose={isInitClose}
   >

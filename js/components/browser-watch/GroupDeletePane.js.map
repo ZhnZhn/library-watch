@@ -1,1 +1,42 @@
-{"version":3,"sources":["../../../src/components/browser-watch/GroupDeletePane.jsx"],"names":["Styles","COMMAND_DIV","cursor","float","marginTop","marginBottom","marginRight","GroupDeletePane","displayName","getInitialState","store","props","caption","groupOptions","getWatchGroups","validationMessages","componentDidMount","unsubscribe","listen","_onStore","componentWillUnmount","actionType","data","actionCompleted","forActionType","_handlerClear","setState","_handlerSelectGroup","item","state","length","_handlerDeleteGroup","onDelete","msgOnNotSelect","render","onClose"],"mappings":";;;;;;AAAA;;;;AACA;;;;AAIA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,SAAS;AACbC,eAAc;AACXC,YAAQ,SADG;AAEXC,WAAO,OAFI;AAGXC,eAAW,KAHA;AAIXC,kBAAc,MAJH;AAKXC,iBAAa;AALF;AADD,CAAf;;AANA;;AAgBA,IAAMC,kBAAkB,gCAAiB;AACvCC,eAAc,iBADyB;AAEvC;;;;;;;;;;AAUAC,iBAZuC,6BAYtB;AAAA,QACRC,KADQ,GACC,KAAKC,KADN,CACRD,KADQ;;AAEf,SAAKE,OAAL,GAAe,IAAf;AACA,WAAO;AACLC,oBAAeH,MAAMI,cAAN,EADV;AAELC,0BAAqB;AAFhB,KAAP;AAID,GAnBsC;AAqBvCC,mBArBuC,+BAqBpB;AACjB,SAAKC,WAAL,GAAmB,KAAKN,KAAL,CAAWD,KAAX,CAAiBQ,MAAjB,CAAwB,KAAKC,QAA7B,CAAnB;AACD,GAvBsC;AAwBvCC,sBAxBuC,kCAwBjB;AACpB,SAAKH,WAAL;AACD,GA1BsC;AA2BvCE,UA3BuC,oBA2B9BE,UA3B8B,EA2BlBC,IA3BkB,EA2Bb;AAAA,iBACwB,KAAKX,KAD7B;AAAA,QACjBY,eADiB,UACjBA,eADiB;AAAA,QACAC,aADA,UACAA,aADA;AAAA,QACed,KADf,UACeA,KADf;;AAExB,QAAIW,eAAeE,eAAnB,EAAoC;AAClC,UAAID,KAAKE,aAAL,KAAuBA,aAA3B,EAAyC;AACvC,aAAKC,aAAL;AACD;AACD,WAAKC,QAAL,CAAc,EAACb,cAAeH,MAAMI,cAAN,EAAhB,EAAd;AACD;AACF,GAnCsC;AAqCvCa,qBArCuC,+BAqCnBC,IArCmB,EAqCd;AACtB,QAAIA,QAAQA,KAAKhB,OAAjB,EAAyB;AACvB,WAAKA,OAAL,GAAegB,KAAKhB,OAApB;AACD,KAFD,MAEO;AACL,WAAKA,OAAL,GAAe,IAAf;AACD;AACH,GA3CsC;AA6CvCa,eA7CuC,2BA6CxB;AACb,QAAI,KAAKI,KAAL,CAAWd,kBAAX,CAA8Be,MAA9B,GAAqC,CAAzC,EAA2C;AACzC,WAAKJ,QAAL,CAAc,EAACX,oBAAmB,EAApB,EAAd;AACD;AACF,GAjDsC;AAmDvCgB,qBAnDuC,iCAmDlB;AAClB,QAAI,KAAKnB,OAAT,EAAiB;AACf,WAAKD,KAAL,CAAWqB,QAAX,CAAoB,EAACpB,SAAS,KAAKA,OAAf,EAApB;AACD,KAFD,MAEO;AACL,WAAKc,QAAL,CAAc,EAACX,oBAAmB,CAAC,KAAKJ,KAAL,CAAWsB,cAAX,CAA0B,OAA1B,CAAD,CAApB,EAAd;AACD;AACH,GAzDsC;AA2DvCC,QA3DuC,oBA2D/B;AACE,QAACC,OAAD,GAAY,KAAKxB,KAAjB,CAACwB,OAAD;AAAA,iBACqC,KAAKN,KAD1C;AAAA,QACChB,YADD,UACCA,YADD;AAAA,QACeE,kBADf,UACeA,kBADf;;;AAGN,WACG;AAAA;AAAA;AACE,oCAAC,wBAAD;AACE,iBAAS,QADX;AAEE,iBAASF;AACT;AAHF,UAIE,UAAU,KAAKc;AAJjB,QADF;AAOE,oCAAC,oCAAD;AACE,4BAAoBZ;AADtB,QAPF;AAUE;AAAA;AAAA,UAAK,OAAOf,OAAOC,WAAnB;AACE,sCAAC,uBAAD;AACE,gBAAK,OADP;AAEE,mBAAQ,QAFV;AAGE,mBAAS,KAAK8B;AAHhB,UADF;AAMC,sCAAC,uBAAD;AACG,gBAAK,OADR;AAEG,mBAAQ,OAFX;AAGG,mBAASI;AAHZ;AAND;AAVF,KADH;AAyBH;AAxFsC,CAAjB,CAAxB;;kBA2Fe5B,e","file":"GroupDeletePane.js","sourcesContent":["import React from 'react';\r\nimport createReactClass from 'create-react-class'\r\n\r\n//import PropTypes from 'prop-types'\r\n\r\nimport RowInputSelect from './RowInputSelect';\r\nimport ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment';\r\nimport ToolBarButton from '../header/ToolBarButton';\r\n\r\nconst Styles = {\r\n  COMMAND_DIV : {\r\n     cursor: 'default',\r\n     float: 'right',\r\n     marginTop: '8px',\r\n     marginBottom: '10px',\r\n     marginRight: '4px'\r\n  }\r\n}\r\n\r\nconst GroupDeletePane = createReactClass({\r\n  displayName : 'GroupDeletePane',\r\n  /*\r\n  propTypes : {\r\n    store : PropTypes.object,\r\n    actionCompleted : PropTypes.string,\r\n    forActionType : PropTypes.string,\r\n    msgOnNotSelect : PropTypes.func,\r\n    onDelete : PropTypes.func,\r\n    onClose : PropTypes.func\r\n  },\r\n  */\r\n  getInitialState(){\r\n    const {store} = this.props;\r\n    this.caption = null;\r\n    return {\r\n      groupOptions : store.getWatchGroups(),\r\n      validationMessages : []\r\n    }\r\n  },\r\n\r\n  componentDidMount(){\r\n    this.unsubscribe = this.props.store.listen(this._onStore);\r\n  },\r\n  componentWillUnmount(){\r\n    this.unsubscribe();\r\n  },\r\n  _onStore(actionType, data){\r\n    const {actionCompleted, forActionType, store} = this.props;\r\n    if (actionType === actionCompleted) {\r\n      if (data.forActionType === forActionType){\r\n        this._handlerClear();\r\n      }\r\n      this.setState({groupOptions : store.getWatchGroups()})\r\n    }\r\n  },\r\n\r\n  _handlerSelectGroup(item){\r\n     if (item && item.caption){\r\n       this.caption = item.caption;\r\n     } else {\r\n       this.caption = null;\r\n     }\r\n  },\r\n\r\n  _handlerClear(){\r\n    if (this.state.validationMessages.length>0){\r\n      this.setState({validationMessages:[]})\r\n    }\r\n  },\r\n\r\n  _handlerDeleteGroup(){\r\n     if (this.caption){\r\n       this.props.onDelete({caption: this.caption})\r\n     } else {\r\n       this.setState({validationMessages:[this.props.msgOnNotSelect('Group')]});\r\n     }\r\n  },\r\n\r\n  render(){\r\n      const {onClose} = this.props\r\n          , {groupOptions, validationMessages} = this.state;\r\n\r\n      return (\r\n         <div>\r\n           <RowInputSelect\r\n             caption={'Group:'}\r\n             options={groupOptions}\r\n             //isUpdateOptions={true}\r\n             onSelect={this._handlerSelectGroup}\r\n           />\r\n           <ValidationMessagesFragment\r\n             validationMessages={validationMessages}\r\n           />\r\n           <div style={Styles.COMMAND_DIV}>\r\n             <ToolBarButton\r\n               type=\"TypeC\"\r\n               caption=\"Delete\"\r\n               onClick={this._handlerDeleteGroup}\r\n             />\r\n            <ToolBarButton\r\n               type=\"TypeC\"\r\n               caption=\"Close\"\r\n               onClick={onClose}\r\n             />\r\n           </div>\r\n        </div>\r\n    );\r\n  }\r\n});\r\n\r\nexport default GroupDeletePane\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/browser-watch/GroupDeletePane.js"
+ ],
+ "file": "../../../src/components/browser-watch/GroupDeletePane.js",
+ "names": [
+  "S",
+  "COMMAND_DIV",
+  "cursor",
+  "float",
+  "marginTop",
+  "marginBottom",
+  "marginRight",
+  "GroupDeletePane",
+  "props",
+  "store",
+  "caption",
+  "state",
+  "groupOptions",
+  "getWatchGroups",
+  "validationMessages",
+  "unsubscribe",
+  "listen",
+  "_onStore",
+  "onClose",
+  "_handlerSelectGroup",
+  "_handlerDeleteGroup",
+  "Component",
+  "actionType",
+  "data",
+  "actionCompleted",
+  "forActionType",
+  "_handlerClear",
+  "setState",
+  "item",
+  "length",
+  "onDelete",
+  "msgOnNotSelect"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAEA;;AAFA;;;;AAIA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,eAAc;AACXC,YAAQ,SADG;AAEXC,WAAO,OAFI;AAGXC,eAAW,KAHA;AAIXC,kBAAc,MAJH;AAKXC,iBAAa;AALF;AADN,CAAV;;IAUMC,e;;;AAEJ;;;;;;;;;;AAUA,2BAAYC,KAAZ,EAAkB;AAAA;;AAAA,gJACVA,KADU;;AAAA;;AAAA,QAERC,KAFQ,GAEED,KAFF,CAERC,KAFQ;;AAGhB,UAAKC,OAAL,GAAe,IAAf;AACA,UAAKC,KAAL,GAAa;AACXC,oBAAcH,MAAMI,cAAN,EADH;AAEXC,0BAAoB;AAFT,KAAb;AAJgB;AAQjB;;;;wCAEkB;AACjB,WAAKC,WAAL,GAAmB,KAAKP,KAAL,CAChBC,KADgB,CACVO,MADU,CACH,KAAKC,QADF,CAAnB;AAED;;;2CACqB;AACpB,WAAKF,WAAL;AACD;;;6BAiCO;AACE,UAACG,OAAD,GAAY,KAAKV,KAAjB,CAACU,OAAD;AAAA,mBACqC,KAAKP,KAD1C;AAAA,UACCC,YADD,UACCA,YADD;AAAA,UACeE,kBADf,UACeA,kBADf;;;AAGN,aACG;AAAA;AAAA;AACE,sCAAC,wBAAD;AACE,mBAAQ,OADV;AAEE,mBAASF;AACT;AAHF,YAIE,UAAU,KAAKO;AAJjB,UADF;AAOE,sCAAC,oCAAD;AACE,8BAAoBL;AADtB,UAPF;AAUE;AAAA;AAAA,YAAK,OAAOd,EAAEC,WAAd;AACE,wCAAC,oBAAD;AACE,uBAAW,IADb;AAEE,qBAAQ,QAFV;AAGE,qBAAS,CAHX;AAIE,qBAAS,KAAKmB;AAJhB,YADF;AAOE,wCAAC,oBAAD;AACE,qBAAQ,OADV;AAEE,qBAAS,CAFX;AAGE,qBAASF;AAHX;AAPF;AAVF,OADH;AA0BH;;;EA3F2BG,gB;;;OA6B5BJ,Q,GAAW,UAACK,UAAD,EAAaC,IAAb,EAAsB;AAAA,iBACiB,OAAKf,KADtB;AAAA,QACxBgB,eADwB,UACxBA,eADwB;AAAA,QACPC,aADO,UACPA,aADO;AAAA,QACQhB,KADR,UACQA,KADR;;AAE/B,QAAIa,eAAeE,eAAnB,EAAoC;AAClC,UAAID,KAAKE,aAAL,KAAuBA,aAA3B,EAAyC;AACvC,eAAKC,aAAL;AACD;AACD,aAAKC,QAAL,CAAc,EAAEf,cAAcH,MAAMI,cAAN,EAAhB,EAAd;AACD;AACF,G;;OAEDM,mB,GAAsB,UAACS,IAAD,EAAU;AAC7B,QAAIA,QAAQA,KAAKlB,OAAjB,EAAyB;AACvB,aAAKA,OAAL,GAAekB,KAAKlB,OAApB;AACD,KAFD,MAEO;AACL,aAAKA,OAAL,GAAe,IAAf;AACD;AACH,G;;OAEDgB,a,GAAgB,YAAM;AACpB,QAAI,OAAKf,KAAL,CAAWG,kBAAX,CAA8Be,MAA9B,GAAqC,CAAzC,EAA2C;AACzC,aAAKF,QAAL,CAAc,EAAEb,oBAAoB,EAAtB,EAAd;AACD;AACF,G;;OAEDM,mB,GAAsB,YAAM;AACzB,QAAI,OAAKV,OAAT,EAAiB;AACf,aAAKF,KAAL,CAAWsB,QAAX,CAAoB,EAACpB,SAAS,OAAKA,OAAf,EAApB;AACD,KAFD,MAEO;AACL,aAAKiB,QAAL,CAAc,EAAEb,oBAAoB,CAAC,OAAKN,KAAL,CAAWuB,cAAX,CAA0B,OAA1B,CAAD,CAAtB,EAAd;AACD;AACH,G;;kBAmCYxB,e"
+}

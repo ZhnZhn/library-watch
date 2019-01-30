@@ -1,1 +1,28 @@
-{"version":3,"sources":["../../../src/components/zhnAtoms/CaptionRow.Style.js"],"names":["STYLE","ROOT","backgroundColor","color","lineHeight","paddingTop","paddingLeft","marginBottom","borderTopLeftRadius","borderTopRightRadius","SPAN","fontSize","fontWeight","paddingRight","SVG_CLOSE","position","top","right"],"mappings":";;;;;;AACA,IAAMA,QAAS;AACbC,QAAM;AACJC,qBAAiB,SADb;AAEJC,WAAO,wBAFH;AAGJ;AACAC,gBAAY,KAJR;AAKJ;AACA;AACAC,gBAAY,KAPR;AAQJC,iBAAa,MART;AASJ;AACAC,kBAAc,MAVV;AAWJC,yBAAqB,KAXjB;AAYJC,0BAAsB;AAZlB,GADO;AAebC,QAAM;AACJC,cAAU,MADN;AAEJC,gBAAY,KAFR;AAGJC,kBAAc;AAHV,GAfO;AAoBbC,aAAW;AACTC,cAAU,UADD;AAETC,SAAK,CAFI;AAGTC,WAAO;AAHE;AApBE,CAAf;;kBA2BejB,K","file":"CaptionRow.Style.js","sourcesContent":["\r\nconst STYLE =  {\r\n  ROOT: {\r\n    backgroundColor: '#232F3B',\r\n    color: 'rgba(164, 135, 212, 1)',\r\n    //height: '28px',\r\n    lineHeight: '1.8',\r\n    //borderBottomLeftRadius: '10px',\r\n    //borderBottomRightRadius: '10px',\r\n    paddingTop: '4px',\r\n    paddingLeft: '10px',\r\n    //marginRight: '5px',\r\n    marginBottom: '10px',\r\n    borderTopLeftRadius: '4px',\r\n    borderTopRightRadius: '4px'\r\n  },\r\n  SPAN: {\r\n    fontSize: '18px',\r\n    fontWeight: '500',\r\n    paddingRight: '8px'\r\n  },\r\n  SVG_CLOSE: {\r\n    position: 'absolute',\r\n    top: 6,\r\n    right: 0    \r\n  }\r\n};\r\n\r\nexport default STYLE\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhnAtoms/CaptionRow.Style.js"
+ ],
+ "file": "../../../src/components/zhnAtoms/CaptionRow.Style.js",
+ "names": [
+  "STYLE",
+  "ROOT",
+  "backgroundColor",
+  "color",
+  "lineHeight",
+  "paddingTop",
+  "paddingLeft",
+  "marginBottom",
+  "borderTopLeftRadius",
+  "borderTopRightRadius",
+  "SPAN",
+  "fontSize",
+  "fontWeight",
+  "paddingRight",
+  "SVG_CLOSE",
+  "position",
+  "top",
+  "right"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,QAAS;AACbC,QAAM;AACJC,qBAAiB,SADb;AAEJC,WAAO,QAFH;AAGJ;AACAC,gBAAY,KAJR;AAKJC,gBAAY,KALR;AAMJC,iBAAa,MANT;AAOJC,kBAAc,MAPV;AAQJC,yBAAqB,KARjB;AASJC,0BAAsB;AATlB,GADO;AAYbC,QAAM;AACJC,cAAU,MADN;AAEJC,gBAAY,KAFR;AAGJC,kBAAc;AAHV,GAZO;AAiBbC,aAAW;AACTC,cAAU,UADD;AAETC,SAAK,CAFI;AAGTC,WAAO;AAHE;AAjBE,CAAf;;kBAwBejB,K"
+}

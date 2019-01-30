@@ -1,1 +1,45 @@
-{"version":3,"sources":["../../../src/components/dialogs/DialogType1.jsx"],"names":["DialogType1","withValidationLoad","props","_handleClear","inputRepo","setValue","setState","validationMessages","_handleLoad","_handleLoadWithValidation","_createValidationMessages","_createLoadOption","msg","value","getValue","concat","oneTitle","isValid","length","requestType","repo","_handleClose","_handleCloseWithValidation","stock","_commandButtons","state","nextProps","nextState","isShow","caption","onShow","onePlaceholder","c","Component"],"mappings":";;;;;;;;;;;;;;;;;;;;;;;AACA;;AADA;;;;AAGA;;;;AACA;;;;AACA;;;;AACA;;;;AAEA;;;;;;IAGMA,W,OADLC,4B;;;AAEC;;;;;;;;;;AAUA,uBAAYC,KAAZ,EAAkB;AAAA;;AAAA;;AAAA,UA6BnBC,YA7BmB,GA6BJ,YAAM;AACnB,YAAKC,SAAL,CAAeC,QAAf,CAAwB,EAAxB;AACA,YAAKC,QAAL,CAAc,EAAEC,oBAAoB,EAAtB,EAAd;AACD,KAhCkB;;AAAA,UAkCnBC,WAlCmB,GAkCL,YAAM;AACjB,YAAKC,yBAAL,CACE,MAAKC,yBAAL,EADF,EAEE,MAAKC,iBAFP;AAID,KAvCiB;;AAAA,UAwClBD,yBAxCkB,GAwCU,YAAM;AAChC,UAAIE,MAAM,EAAV;;AAEA,UAAMC,QAAQ,MAAKT,SAAL,CAAeU,QAAf,EAAd;AACA,UAAI,CAACD,KAAL,EAAY;AACVD,cAAMA,IAAIG,MAAJ,CAAc,MAAKb,KAAL,CAAWc,QAAzB,kBAAN;AACD;;AAEDJ,UAAIK,OAAJ,GAAeL,IAAIM,MAAJ,KAAe,CAAhB,GAAqB,IAArB,GAA4B,KAA1C;AACA,aAAON,GAAP;AACD,KAlDiB;;AAAA,UAmDlBD,iBAnDkB,GAmDE,YAAM;AAAA,UAChBQ,WADgB,GACA,MAAKjB,KADL,CAChBiB,WADgB;;AAExB,aAAO;AACLC,cAAO,MAAKhB,SAAL,CAAeU,QAAf,EADF;AAELK;AAFK,OAAP;AAID,KAzDiB;;AAAA,UA2DlBE,YA3DkB,GA2DH,YAAM;AAClB,YAAKC,0BAAL,CACG,MAAKZ,yBADR;AAGD,KA/DgB;;AAEhB,UAAKa,KAAL,GAAa,IAAb;AACA,UAAKC,eAAL,GAAuB,CACpB,8BAAC,uBAAD;AACG,YAAK,OADR;AAEG,eAAQ,OAFX;AAGG,eAAS,MAAKrB;AAHjB,MADoB,EAMpB,8BAAC,uBAAD;AACG,YAAK,OADR;AAEG,eAAQ,MAFX;AAGG,eAAS,MAAKK;AAHjB,MANoB,CAAvB;AAYA,UAAKiB,KAAL,GAAa;AACXlB,0BAAqB;AADV,KAAb;AAfgB;AAkBjB;;;;0CAEqBmB,S,EAAWC,S,EAAU;AACzC,UAAI,KAAKzB,KAAL,KAAewB,SAAnB,EAA6B;AAC1B,YAAI,KAAKxB,KAAL,CAAW0B,MAAX,KAAsBF,UAAUE,MAApC,EAA2C;AACxC,iBAAO,KAAP;AACF;AACH;AACD,aAAO,IAAP;AACD;;;6BAsCO;AAAA;;AAAA,mBAII,KAAK1B,KAJT;AAAA,UAEE2B,OAFF,UAEEA,OAFF;AAAA,UAEWD,MAFX,UAEWA,MAFX;AAAA,UAEmBE,MAFnB,UAEmBA,MAFnB;AAAA,UAGEd,QAHF,UAGEA,QAHF;AAAA,UAGYe,cAHZ,UAGYA,cAHZ;AAAA,UAKExB,kBALF,GAKyB,KAAKkB,KAL9B,CAKElB,kBALF;;;AAON,aACG;AAAC,wBAAD;AAAA;AACI,mBAASsB,OADb;AAEI,kBAAQD,MAFZ;AAGI,0BAAgB,KAAKJ,eAHzB;AAII,uBAAaM,MAJjB;AAKI,mBAAS,KAAKT;AALlB;AAOC,sCAAC,sBAAD;AACG,eAAK;AAAA,mBAAK,OAAKjB,SAAL,GAAiB4B,CAAtB;AAAA,WADR;AAEG,mBAAShB,QAFZ;AAGG,uBAAae;AAHhB,UAPD;AAYC,sCAAC,oCAAD;AACG,8BAAoBxB;AADvB;AAZD,OADH;AAkBD;;;EArGuB0B,gB;;kBAwGXjC,W","file":"DialogType1.js","sourcesContent":["import React, { Component } from 'react'\r\n//import PropTypes from \"prop-types\";\r\n\r\nimport Dialog from '../zhnMoleculs/Dialog'\r\nimport ToolBarButton from '../header/ToolBarButton'\r\nimport RowInputText from './RowInputText'\r\nimport ValidationMessagesFragment from './ValidationMessagesFragment'\r\n\r\nimport withValidationLoad from './decorators/withValidationLoad'\r\n\r\n@withValidationLoad\r\nclass DialogType1 extends Component {\r\n  /*\r\n  static propTypes = {\r\n    caption: PropTypes.string,\r\n    requestType: PropTypes.string,\r\n    oneTitle: PropTypes.string,\r\n    onePlaceholder: PropTypes.string,\r\n    isShow: PropTypes.bool,\r\n    onShow: PropTypes.func\r\n  }\r\n  */\r\n  constructor(props){\r\n    super()\r\n    this.stock = null\r\n    this._commandButtons = [\r\n       <ToolBarButton\r\n          type=\"TypeC\"\r\n          caption=\"Clear\"\r\n          onClick={this._handleClear}\r\n       />,\r\n       <ToolBarButton\r\n          type=\"TypeC\"\r\n          caption=\"Load\"\r\n          onClick={this._handleLoad}\r\n       />\r\n    ]\r\n    this.state = {\r\n      validationMessages : []\r\n    }\r\n  }\r\n\r\n  shouldComponentUpdate(nextProps, nextState){\r\n    if (this.props !== nextProps){\r\n       if (this.props.isShow === nextProps.isShow){\r\n          return false;\r\n       }\r\n    }\r\n    return true;\r\n  }\r\n\r\n _handleClear = () => {\r\n   this.inputRepo.setValue('');\r\n   this.setState({ validationMessages: [] });\r\n }\r\n\r\n _handleLoad = () => {\r\n    this._handleLoadWithValidation(\r\n      this._createValidationMessages(),\r\n      this._createLoadOption\r\n    )\r\n  }\r\n  _createValidationMessages = () => {\r\n    let msg = [];\r\n\r\n    const value = this.inputRepo.getValue();\r\n    if (!value) {\r\n      msg = msg.concat(`${this.props.oneTitle} is required`)\r\n    }\r\n\r\n    msg.isValid = (msg.length === 0) ? true : false;\r\n    return msg;\r\n  }\r\n  _createLoadOption = () => {\r\n    const { requestType } = this.props;\r\n    return {\r\n      repo : this.inputRepo.getValue(),\r\n      requestType\r\n    };\r\n  }\r\n\r\n  _handleClose = () => {\r\n     this._handleCloseWithValidation(\r\n        this._createValidationMessages\r\n     )\r\n   }\r\n\r\n  render(){\r\n    const {\r\n            caption, isShow, onShow,\r\n            oneTitle, onePlaceholder\r\n          } = this.props\r\n        , { validationMessages } = this.state;\r\n\r\n    return (\r\n       <Dialog\r\n           caption={caption}\r\n           isShow={isShow}\r\n           commandButtons={this._commandButtons}\r\n           onShowChart={onShow}\r\n           onClose={this._handleClose}\r\n       >\r\n        <RowInputText\r\n           ref={c => this.inputRepo = c}\r\n           caption={oneTitle}\r\n           placeholder={onePlaceholder}\r\n        />\r\n        <ValidationMessagesFragment\r\n           validationMessages={validationMessages}\r\n        />\r\n      </Dialog>\r\n    );\r\n  }\r\n}\r\n\r\nexport default DialogType1\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/DialogType1.js"
+ ],
+ "file": "../../../src/components/dialogs/DialogType1.js",
+ "names": [
+  "DialogType1",
+  "withValidationLoad",
+  "props",
+  "_handleClear",
+  "inputRepo",
+  "setValue",
+  "setState",
+  "validationMessages",
+  "_handleLoad",
+  "_handleLoadWithValidation",
+  "_createValidationMessages",
+  "_createLoadOption",
+  "msg",
+  "value",
+  "getValue",
+  "concat",
+  "oneTitle",
+  "isValid",
+  "length",
+  "requestType",
+  "repo",
+  "_handleClose",
+  "_handleCloseWithValidation",
+  "stock",
+  "_commandButtons",
+  "inst",
+  "state",
+  "nextProps",
+  "nextState",
+  "isShow",
+  "caption",
+  "onShow",
+  "onePlaceholder",
+  "c",
+  "Component"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;;AACA;;AADA;;;;AAGA;;;;AACA;;;;AACA;;;;AACA;;;;AAEA;;;;;;IAGMA,W,OADLC,4B;;;AAEC;;;;;;;;;;;AAWA,uBAAYC,KAAZ,EAAkB;AAAA;;AAAA,wIACVA,KADU;;AAAA,UAkBnBC,YAlBmB,GAkBJ,YAAM;AACnB,YAAKC,SAAL,CAAeC,QAAf,CAAwB,EAAxB;AACA,YAAKC,QAAL,CAAc,EAAEC,oBAAoB,EAAtB,EAAd;AACD,KArBkB;;AAAA,UAuBnBC,WAvBmB,GAuBL,YAAM;AACjB,YAAKC,yBAAL,CACE,MAAKC,yBAAL,EADF,EAEE,MAAKC,iBAFP;AAID,KA5BiB;;AAAA,UA6BlBD,yBA7BkB,GA6BU,YAAM;AAChC,UAAIE,MAAM,EAAV;;AAEA,UAAMC,QAAQ,MAAKT,SAAL,CAAeU,QAAf,EAAd;AACA,UAAI,CAACD,KAAL,EAAY;AACVD,cAAMA,IAAIG,MAAJ,CAAc,MAAKb,KAAL,CAAWc,QAAzB,kBAAN;AACD;;AAEDJ,UAAIK,OAAJ,GAAeL,IAAIM,MAAJ,KAAe,CAAhB,GAAqB,IAArB,GAA4B,KAA1C;AACA,aAAON,GAAP;AACD,KAvCiB;;AAAA,UAwClBD,iBAxCkB,GAwCE,YAAM;AAAA,UAChBQ,WADgB,GACA,MAAKjB,KADL,CAChBiB,WADgB;;AAExB,aAAO;AACLC,cAAO,MAAKhB,SAAL,CAAeU,QAAf,EADF;AAELK;AAFK,OAAP;AAID,KA9CiB;;AAAA,UAgDlBE,YAhDkB,GAgDH,YAAM;AAClB,YAAKC,0BAAL,CACG,MAAKZ,yBADR;AAGD,KApDgB;;AAEhB,UAAKa,KAAL,GAAa,IAAb;AACA,UAAKC,eAAL,GAAuB,gCAAU,EAAEC,WAAF,EAAV,CAAvB;AACA,UAAKC,KAAL,GAAa;AACXnB,0BAAoB;AADT,KAAb;AAJgB;AAOjB;;;;0CAEqBoB,S,EAAWC,S,EAAU;AACzC,UAAI,KAAK1B,KAAL,KAAeyB,SAAnB,EAA6B;AAC1B,YAAI,KAAKzB,KAAL,CAAW2B,MAAX,KAAsBF,UAAUE,MAApC,EAA2C;AACxC,iBAAO,KAAP;AACF;AACH;AACD,aAAO,IAAP;AACD;;;6BAsCO;AAAA;;AAAA,mBAII,KAAK3B,KAJT;AAAA,UAEE4B,OAFF,UAEEA,OAFF;AAAA,UAEWD,MAFX,UAEWA,MAFX;AAAA,UAEmBE,MAFnB,UAEmBA,MAFnB;AAAA,UAGEf,QAHF,UAGEA,QAHF;AAAA,UAGYgB,cAHZ,UAGYA,cAHZ;AAAA,UAKEzB,kBALF,GAKyB,KAAKmB,KAL9B,CAKEnB,kBALF;;;AAON,aACG;AAAC,wBAAD;AAAA;AACI,mBAASuB,OADb;AAEI,kBAAQD,MAFZ;AAGI,0BAAgB,KAAKL,eAHzB;AAII,uBAAaO,MAJjB;AAKI,mBAAS,KAAKV;AALlB;AAOC,sCAAC,sBAAD;AACG,eAAK;AAAA,mBAAK,OAAKjB,SAAL,GAAiB6B,CAAtB;AAAA,WADR;AAEG,mBAASjB,QAFZ;AAGG,uBAAagB;AAHhB,UAPD;AAYC,sCAAC,oCAAD;AACG,8BAAoBzB;AADvB;AAZD,OADH;AAkBD;;;EA3FuB2B,gB;;kBA8FXlC,W"
+}

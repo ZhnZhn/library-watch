@@ -20,6 +20,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //import PropTypes from 'prop-types'
 
+var CL = {
+  NOT_SELECTED: 'not-selected',
+  ROW_EVEN: 'row__topic__even not-selected',
+  ROW_ODD: 'row__topic__odd not-selected'
+};
+
+var COLOR_FILL = '#1b2836';
+
 var S = {
   CAPTION_ROW: {
     paddingLeft: 6
@@ -30,7 +38,7 @@ var _renderMenuItems = function _renderMenuItems(rowClass) {
   var items = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 
   return items.map(function (item, index) {
-    var _className = rowClass ? rowClass + ' not-selected' : index % 2 ? 'row__topic__even not-selected' : 'row__topic__odd not-selected',
+    var _className = rowClass ? rowClass + ' ' + CL.NOT_SELECTED : index % 2 ? CL.ROW_EVEN : CL.ROW_ODD,
         menuBadge = item.counter !== 0 ? _react2.default.createElement(_MenuBadge2.default, {
       counter: item.counter,
       isOpen: item.isOpen,
@@ -61,6 +69,8 @@ var MenuPart = function MenuPart(_ref) {
     _OpenClose2.default,
     {
       styleCaptionRow: S.CAPTION_ROW,
+      fillOpen: COLOR_FILL,
+      fillClose: COLOR_FILL,
       caption: caption,
       isClose: isInitClose
     },

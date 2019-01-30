@@ -1,14 +1,12 @@
-import React from 'react';
-import createReactClass from 'create-react-class'
-
+import React, { Component } from 'react';
 //import PropTypes from 'prop-types'
 
 import RowInputSelect from './RowInputSelect';
 import RowInputText from './RowInputText';
 import ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment';
-import ToolBarButton from '../header/ToolBarButton';
+import FlatButton from '../zhn-m/FlatButton'
 
-const Styles = {
+const S = {
   COMMAND_DIV : {
      cursor: 'default',
      float: 'right',
@@ -18,10 +16,9 @@ const Styles = {
   }
 }
 
-const ListCreatePane = createReactClass({
-  displayName : 'ListCreatePane',
+class ListCreatePane extends Component {
   /*
-  propTypes : {
+  statis propTypes = {
     store : PropTypes.object,
     actionCompleted : PropTypes.string,
     actionFailed : PropTypes.string,
@@ -32,24 +29,26 @@ const ListCreatePane = createReactClass({
     onClose : PropTypes.func
   },
   */
-
-  getInitialState(){
-    const {store} = this.props;
+  constructor(props){
+    super(props)
+    const { store } = props;
     this.captionGroup = null;
-    return {
-      groupOptions : store.getWatchGroups(),
-      isUpdateGroup : false,
-      validationMessages : []
+    this.state = {
+      groupOptions: store.getWatchGroups(),
+      isUpdateGroup: false,
+      validationMessages: []
     }
-  },
+  }
+
 
   componentDidMount(){
-    this.unsubscribe = this.props.store.listen(this._onStore)
-  },
+    this.unsubscribe = this.props
+      .store.listen(this._onStore)
+  }
   componentWillUnmount(){
     this.unsubscribe()
-  },
-  _onStore(actionType, data){
+  }
+  _onStore = (actionType, data) => {
     const {actionCompleted, actionFailed, forActionType, store} = this.props;
     if (actionType === actionCompleted){
         let isUpdateGroup = true;
@@ -61,72 +60,80 @@ const ListCreatePane = createReactClass({
     } else if (actionType === actionFailed && data.forActionType === forActionType){
       this.setState({validationMessages: data.messages, isUpdateGroup:false})
     }
-  },
+  }
 
-  _handlerSelectGroup(item){
+  _handlerSelectGroup = (item) => {
     if (item && item.caption){
       this.captionGroup = item.caption;
     } else {
       this.captionGroup = null;
     }
-  },
+  }
 
-  _handlerClear(){
+  _handlerClear = () => {
      this.inputText.setValue('');
      if (this.state.validationMessages.length>0){
-       this.setState({validationMessages: [], isUpdateGroup:false});
+       this.setState({
+         validationMessages: [],
+         isUpdateGroup: false
+       });
      }
-  },
+  }
 
-  _handlerCreate(){
+  _handlerCreate = () => {
      const captionList = this.inputText.getValue();
      if (this.captionGroup && captionList){
        this.props.onCreate({
-          captionGroup : this.captionGroup,
-          captionList : captionList
+          captionGroup: this.captionGroup,
+          captionList: captionList
        });
      } else {
        const {msgOnNotSelect, msgOnIsEmptyName} = this.props
            , msg = [];
        if (!this.captionGroup) { msg.push(msgOnNotSelect('In Group')); }
        if (!captionList)       { msg.push(msgOnIsEmptyName('List')); }
-       this.setState({validationMessages:msg, isUpdateGroup:false});
+       this.setState({
+         validationMessages: msg,
+         isUpdateGroup: false
+       });
      }
-  },
+  }
+
+  _refInputText = c => this.inputText = c
 
   render(){
     const {onClose} = this.props
-          //isUpdateGroup
         , {groupOptions, validationMessages} = this.state;
     return (
       <div>
         <RowInputSelect
-           caption={'In Group:'}
+           caption="In Group"
            options={groupOptions}
            //isUpdateOptions={isUpdateGroup}
            onSelect={this._handlerSelectGroup}
         />
         <RowInputText
-           ref={c => this.inputText = c}
-           caption={'List:'}
+           ref={this._refInputText}
+           caption="List"
         />
         <ValidationMessagesFragment
           validationMessages={validationMessages}
         />
-        <div style={Styles.COMMAND_DIV}>
-         <ToolBarButton
-            type="TypeC"
+        <div style={S.COMMAND_DIV}>
+         <FlatButton
+            isPrimary={true}
             caption="Create"
+            timeout={0}
             onClick={this._handlerCreate}
          />
-         <ToolBarButton
-            type="TypeC"
+         <FlatButton
             caption="Clear"
+            timeout={0}
             onClick={this._handlerClear}
          />
-         <ToolBarButton
-            type="TypeC"
+         <FlatButton
             caption="Close"
+            timeout={0}
             onClick={onClose}
          />
        </div>
@@ -134,6 +141,6 @@ const ListCreatePane = createReactClass({
     )
   }
 
-});
+}
 
 export default ListCreatePane

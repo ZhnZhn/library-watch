@@ -1,0 +1,13 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/browser-watch/crRowCaption.js"
+ ],
+ "file": "../../../src/components/browser-watch/crRowCaption.js",
+ "names": [
+  "crRowCaption",
+  "str",
+  "length"
+ ],
+ "mappings": ";;;;;AAAA,IAAMA,eAAe,SAAfA,YAAe,CAACC,GAAD,EAAS;AAC5B,MAAI,CAACA,GAAD,IAAQ,OAAOA,GAAP,KAAe,QAA3B,EAAqC;AACnC,WAAO,EAAP;AACD;AACD,SAAOA,IAAIA,IAAIC,MAAJ,GAAW,CAAf,MAAsB,GAAtB,GACHD,MAAM,GADH,GAEHA,GAFJ;AAGD,CAPD;;kBASeD,Y"
+}

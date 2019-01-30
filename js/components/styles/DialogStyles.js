@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 var DialogStyles = {
   //Dialogs, DatesFragments
   rowDiv: {
+    display: 'flex',
+    alignItems: 'center',
     margin: '5px'
   },
   labelSpan: {

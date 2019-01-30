@@ -31,8 +31,10 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var WITHOUT_LIMIT = '';
-var STYLE = {
+var S = {
   LABEL: {
+    position: 'relative',
+    top: 4,
     display: 'inline-block',
     color: '#2f7ed8',
     paddingLeft: '10px',
@@ -88,7 +90,7 @@ var LimitRemainingLabel = function (_Component) {
 
       return _react2.default.createElement(
         'span',
-        { style: (0, _extends3.default)({}, STYLE.LABEL, style) },
+        { style: (0, _extends3.default)({}, S.LABEL, style) },
         value
       );
     }

@@ -24,7 +24,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class, _temp;
+var _class, _temp2;
 //import PropTypes from 'prop-types'
 
 var _react = require('react');
@@ -35,9 +35,9 @@ var _DialogCaption = require('./DialogCaption');
 
 var _DialogCaption2 = _interopRequireDefault(_DialogCaption);
 
-var _ToolBarButton = require('../header/ToolBarButton');
+var _FlatButton = require('../zhn-m/FlatButton');
 
-var _ToolBarButton2 = _interopRequireDefault(_ToolBarButton);
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -77,34 +77,36 @@ var STYLE = {
   }
 };
 
-var ModalDialog = (_temp = _class = function (_Component) {
+var ModalDialog = (_temp2 = _class = function (_Component) {
   (0, _inherits3.default)(ModalDialog, _Component);
 
-  function ModalDialog(props) {
+  function ModalDialog() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, ModalDialog);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (ModalDialog.__proto__ || Object.getPrototypeOf(ModalDialog)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this._handleClickDialog = function (event) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = ModalDialog.__proto__ || Object.getPrototypeOf(ModalDialog)).call.apply(_ref, [this].concat(args))), _this), _this.wasClosing = false, _this.state = {}, _this._handleClickDialog = function (event) {
       event.stopPropagation();
-    };
-
-    _this._renderCommandButton = function (commandButtons, onClose) {
+    }, _this._renderCommandButton = function (commandButtons, onClose) {
       return _react2.default.createElement(
         'div',
         { style: STYLE.COMMAND_DIV },
         commandButtons,
-        _react2.default.createElement(_ToolBarButton2.default, {
-          type: 'TypeC',
+        _react2.default.createElement(_FlatButton2.default, {
+          key: 'close',
           caption: 'Close',
+          title: 'Click to close modal dialog',
+          timeout: 0,
           onClick: onClose
         })
       );
-    };
-
-    _this.wasClosing = false;
-    _this.state = {};
-    return _this;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
   /*
    static propTypes = {
@@ -197,6 +199,6 @@ var ModalDialog = (_temp = _class = function (_Component) {
   isWithButton: true,
   isNotUpdate: false,
   timeout: 450
-}, _temp);
+}, _temp2);
 exports.default = ModalDialog;
 //# sourceMappingURL=ModalDialog.js.map

@@ -1,1 +1,46 @@
-{"version":3,"sources":["../../../src/components/browser-watch/LoadItemDialog.jsx"],"names":["styles","DialogStyles","DIALOG_CAPTION","STYLE","ITEM_DESCRIPTION","fontWeight","color","paddingTop","paddingLeft","paddingRight","LoadItemDialog","shouldComponentUpdate","nextProps","nextState","props","isShow","_handlerLoad","data","onClose","ChartActions","loadStock","ChartType","WATCH_LIST","BrowserType","_handlerClose","_renderDate","date","Object","assign","rowDiv","lineHeight","labelSpan","render","caption","descr","_commandButtons"],"mappings":";;;;;;AAAA;;;;AACA;;;;AAIA;;;;AACA;;AAGA;;;;AACA;;;;AAGA;;;;;;AAEA,IAAMA,SAASC,sBAAf;AARA;;AAJA;;AAcA,IAAMC,iBAAiB,iBAAvB;;AAEA,IAAMC,QAAQ;AACZC,oBAAmB;AACjBC,gBAAY,MADK;AAEjBC,WAAO,MAFU;AAGjBC,gBAAa,KAHI;AAIjBC,iBAAc,KAJG;AAKjBC,kBAAe;AALE;AADP,CAAd;;AAUA,IAAMC,iBAAiB,gCAAiB;AAAA;;AACtC;;;;;;;;;AASCC,uBAVqC,iCAUfC,SAVe,EAUJC,SAVI,EAUM;AACzC,QAAID,cAAc,KAAKE,KAAnB,IAA4BF,UAAUG,MAAV,KAAqB,KAAKD,KAAL,CAAWC,MAAhE,EAAwE;AACtE,aAAO,KAAP;AACD;AACD,WAAO,IAAP;AACD,GAfoC;AAiBtCC,cAjBsC,0BAiBxB;AAAA,iBACe,KAAKF,KADpB;AAAA,QACHG,IADG,UACHA,IADG;AAAA,QACGC,OADH,UACGA,OADH;;AAEXC,2BAAaC,SAAb,CAAuBC,gBAAUC,UAAjC,EAA6CC,kBAAYD,UAAzD,EAAqEL,IAArE;AACAC;AACF,GArBqC;AAuBtCM,eAvBsC,2BAuBvB;AACZ,SAAKV,KAAL,CAAWI,OAAX;AACF,GAzBqC;AA2BtCO,aA3BsC,uBA2B1BC,IA3B0B,EA2BrB;AACf,WACE;AAAA;AAAA,QAAK,OAAOC,OAAOC,MAAP,CAAc,EAAd,EAAkB5B,OAAO6B,MAAzB,EAAiC,EAACC,YAAY,CAAb,EAAjC,CAAZ,EAA+D,KAAI,GAAnE;AACE;AAAA;AAAA,UAAM,OAAO9B,OAAO+B,SAApB;AAAA;AAAA,OADF;AAIE;AAAA;AAAA,UAAM,OAAO,EAAC1B,YAAY,MAAb,EAAb;AACIqB;AADJ;AAJF,KADF;AAUD,GAtCqC;AAwCtCM,QAxCsC,oBAwC9B;AAAA,kBACmB,KAAKlB,KADxB;AAAA,QACEC,MADF,WACEA,MADF;AAAA,QACUE,IADV,WACUA,IADV;AAAA,QAEEgB,OAFF,GAE2BhB,IAF3B,CAEEgB,OAFF;AAAA,QAEWC,KAFX,GAE2BjB,IAF3B,CAEWiB,KAFX;AAAA,QAEkBR,IAFlB,GAE2BT,IAF3B,CAEkBS,IAFlB;AAAA,QAGAS,eAHA,GAGkB,CACrB,8BAAC,uBAAD;AACG,WAAI,GADP;AAEG,YAAK,OAFR;AAGG,eAAQ,MAHX;AAIG,eAAS,KAAKnB;AAJjB,MADqB,CAHlB;;AAWN,WACE;AAAC,2BAAD;AAAA;AACG,iBAASd,cADZ;AAEG,gBAAQa,MAFX;AAGG,wBAAgBoB,eAHnB;AAIG,iBAAS,KAAKX;AAJjB;AAME;AAAA;AAAA,UAAK,OAAOG,OAAOC,MAAP,CAAc,EAAd,EAAkB5B,OAAO6B,MAAzB,EAAiC,EAACC,YAAY,GAAb,EAAjC,CAAZ,EAAiE,KAAI,GAArE;AACE;AAAA;AAAA,YAAM,OAAO3B,MAAMC,gBAAnB;AACI8B;AADJ;AADF,OANF;AAWE;AAAA;AAAA,UAAK,OAAOP,OAAOC,MAAP,CAAc,EAAd,EAAkB5B,OAAO6B,MAAzB,EAAiC,EAACC,YAAY,CAAb,EAAjC,CAAZ,EAA+D,KAAI,GAAnE;AACE;AAAA;AAAA,YAAM,OAAO9B,OAAO+B,SAApB;AAAA;AAAA,SADF;AAIE;AAAA;AAAA,YAAM,OAAO,EAAC1B,YAAY,MAAb,EAAb;AACI4B;AADJ;AAJF,OAXF;AAmBIP,cAAQ,KAAKD,WAAL,CAAiBC,IAAjB;AAnBZ,KADF;AAwBD;AA3EqC,CAAjB,CAAvB;;kBA8EehB,c","file":"LoadItemDialog.js","sourcesContent":["import React from 'react';\r\nimport createReactClass from 'create-react-class'\r\n\r\n//import PropTypes from 'prop-types'\r\n\r\nimport ChartActions from '../../flux/actions/ChartActions';\r\nimport { BrowserType, ChartType } from '../../constants/Type';\r\n//import ChartType from '../../constants/ChartType';\r\n\r\nimport ModalDialog from '../zhnMoleculs/ModalDialog';\r\nimport ToolBarButton from '../header/ToolBarButton';\r\n\r\n\r\nimport DialogStyles from '../styles/DialogStyles'\r\n\r\nconst styles = DialogStyles;\r\n\r\nconst DIALOG_CAPTION = \"Load Watch Item\";\r\n\r\nconst STYLE = {\r\n  ITEM_DESCRIPTION : {\r\n    fontWeight: 'bold',\r\n    color: 'gray',\r\n    paddingTop : '8px',\r\n    paddingLeft : '8px',\r\n    paddingRight : '8px'\r\n  }\r\n}\r\n\r\nconst LoadItemDialog = createReactClass({\r\n  /*\r\n   propTypes : {\r\n     isShow  : PropTypes.bool.isRequired,\r\n     data    : PropTypes.object.isRequired,\r\n     store   : PropTypes.object,\r\n     onClose : PropTypes.func.isRequired\r\n   },\r\n   */\r\n\r\n   shouldComponentUpdate(nextProps, nextState){\r\n     if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {\r\n       return false;\r\n     }\r\n     return true;\r\n   },\r\n\r\n  _handlerLoad(){\r\n     const { data, onClose } = this.props\r\n     ChartActions.loadStock(ChartType.WATCH_LIST, BrowserType.WATCH_LIST, data);\r\n     onClose();\r\n  },\r\n\r\n  _handlerClose(){\r\n     this.props.onClose();\r\n  },\r\n\r\n  _renderDate(date){\r\n    return (\r\n      <div style={Object.assign({}, styles.rowDiv, {lineHeight: 2})} key=\"3\">\r\n        <span style={styles.labelSpan}>\r\n           Date:\r\n        </span>\r\n        <span style={{fontWeight: 'bold'}}>\r\n           {date}\r\n        </span>\r\n      </div>\r\n    );\r\n  },\r\n\r\n  render(){\r\n    const { isShow, data } = this.props\r\n        , { caption, descr, date } = data\r\n        , _commandButtons = [\r\n       <ToolBarButton\r\n          key=\"a\"\r\n          type=\"TypeC\"\r\n          caption=\"Load\"\r\n          onClick={this._handlerLoad}\r\n       />\r\n    ];\r\n    return (\r\n      <ModalDialog\r\n         caption={DIALOG_CAPTION}\r\n         isShow={isShow}\r\n         commandButtons={_commandButtons}\r\n         onClose={this._handlerClose}\r\n      >\r\n        <div style={Object.assign({}, styles.rowDiv, {lineHeight: 1.5})} key=\"1\">\r\n          <span style={STYLE.ITEM_DESCRIPTION}>\r\n             {descr}\r\n          </span>\r\n        </div>\r\n        <div style={Object.assign({}, styles.rowDiv, {lineHeight: 2})} key=\"2\">\r\n          <span style={styles.labelSpan}>\r\n            Item:\r\n          </span>\r\n          <span style={{fontWeight: 'bold'}}>\r\n             {caption}\r\n          </span>\r\n        </div>\r\n        { date && this._renderDate(date) }\r\n\r\n      </ModalDialog>\r\n    )\r\n  }\r\n});\r\n\r\nexport default LoadItemDialog\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/browser-watch/LoadItemDialog.js"
+ ],
+ "file": "../../../src/components/browser-watch/LoadItemDialog.js",
+ "names": [
+  "styles",
+  "DialogStyles",
+  "DIALOG_CAPTION",
+  "S",
+  "ITEM_DESCRIPTION",
+  "fontWeight",
+  "color",
+  "paddingTop",
+  "paddingLeft",
+  "paddingRight",
+  "LH_2",
+  "lineHeight",
+  "LH_1_5",
+  "BOLD",
+  "LoadItemDialog",
+  "props",
+  "_handlerLoad",
+  "data",
+  "onClose",
+  "ChartActions",
+  "loadStock",
+  "ChartType",
+  "WATCH_LIST",
+  "BrowserType",
+  "_handlerClose",
+  "_renderDate",
+  "date",
+  "rowDiv",
+  "labelSpan",
+  "_commandButtons",
+  "nextProps",
+  "nextState",
+  "isShow",
+  "caption",
+  "descr",
+  "Component"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAGA;;;;AACA;;AAGA;;;;AACA;;;;AAGA;;;;;;AAEA,IAAMA,SAASC,sBAAf;AARA;;AAJA;;AAcA,IAAMC,iBAAiB,iBAAvB;;AAEA,IAAMC,IAAI;AACRC,oBAAmB;AACjBC,gBAAY,MADK;AAEjBC,WAAO,MAFU;AAGjBC,gBAAa,KAHI;AAIjBC,iBAAc,KAJG;AAKjBC,kBAAe;AALE,GADX;AAQRC,QAAM;AACJC,gBAAY;AADR,GARE;AAWRC,UAAQ;AACND,gBAAY;AADN,GAXA;AAcRE,QAAM;AACJR,gBAAY;AADR;AAdE,CAAV;;IAmBMS,c;;;AACJ;;;;;;;;AAQC,0BAAYC,KAAZ,EAAkB;AAAA;;AAAA,8IACVA,KADU;;AAAA,UAmBnBC,YAnBmB,GAmBJ,YAAM;AAAA,wBACQ,MAAKD,KADb;AAAA,UACVE,IADU,eACVA,IADU;AAAA,UACJC,OADI,eACJA,OADI;;AAElBC,6BAAaC,SAAb,CAAuBC,gBAAUC,UAAjC,EAA6CC,kBAAYD,UAAzD,EAAqEL,IAArE;AACAC;AACF,KAvBkB;;AAAA,UAyBnBM,aAzBmB,GAyBH,YAAM;AACnB,YAAKT,KAAL,CAAWG,OAAX;AACF,KA3BkB;;AAAA,UA6BnBO,WA7BmB,GA6BL,UAACC,IAAD,EAAU;AACtB,aACE;AAAA;AAAA,UAAK,kCAAY1B,OAAO2B,MAAnB,EAA8BxB,EAAEO,IAAhC,CAAL,EAA6C,KAAI,GAAjD;AACE;AAAA;AAAA,YAAM,OAAOV,OAAO4B,SAApB;AAAA;AAAA,SADF;AAIE;AAAA;AAAA,YAAM,OAAOzB,EAAEU,IAAf;AACIa;AADJ;AAJF,OADF;AAUD,KAxCkB;;AAEhB,UAAKG,eAAL,GAAuB,CACtB,8BAAC,oBAAD;AACE,WAAI,MADN;AAEE,iBAAW,IAFb;AAGE,eAAQ,MAHV;AAIE,eAAS,MAAKb;AAJhB,MADsB,CAAvB;AAFgB;AAUjB;;;;0CAEqBc,S,EAAWC,S,EAAU;AACzC,UAAID,cAAc,KAAKf,KAAnB,IAA4Be,UAAUE,MAAV,KAAqB,KAAKjB,KAAL,CAAWiB,MAAhE,EAAwE;AACtE,eAAO,KAAP;AACD;AACD,aAAO,IAAP;AACD;;;6BAyBM;AAAA,mBACmB,KAAKjB,KADxB;AAAA,UACEiB,MADF,UACEA,MADF;AAAA,UACUf,IADV,UACUA,IADV;AAAA,UAEEgB,OAFF,GAE2BhB,IAF3B,CAEEgB,OAFF;AAAA,UAEWC,KAFX,GAE2BjB,IAF3B,CAEWiB,KAFX;AAAA,UAEkBR,IAFlB,GAE2BT,IAF3B,CAEkBS,IAFlB;;;AAIN,aACE;AAAC,6BAAD;AAAA;AACG,mBAASxB,cADZ;AAEG,kBAAQ8B,MAFX;AAGG,0BAAgB,KAAKH,eAHxB;AAIG,mBAAS,KAAKL;AAJjB;AAME;AAAA;AAAA,YAAK,kCAAYxB,OAAO2B,MAAnB,EAA8BxB,EAAES,MAAhC,CAAL,EAA+C,KAAI,GAAnD;AACE;AAAA;AAAA,cAAM,OAAOT,EAAEC,gBAAf;AACI8B;AADJ;AADF,SANF;AAWE;AAAA;AAAA,YAAK,kCAAYlC,OAAO2B,MAAnB,EAA8BxB,EAAEO,IAAhC,CAAL,EAA6C,KAAI,GAAjD;AACE;AAAA;AAAA,cAAM,OAAOV,OAAO4B,SAApB;AAAA;AAAA,WADF;AAIE;AAAA;AAAA,cAAM,OAAOzB,EAAEU,IAAf;AACIoB;AADJ;AAJF,SAXF;AAmBIP,gBAAQ,KAAKD,WAAL,CAAiBC,IAAjB;AAnBZ,OADF;AAwBD;;;EA/E0BS,gB;;kBAkFdrB,c"
+}

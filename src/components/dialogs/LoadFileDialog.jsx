@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 //import PropTypes from "prop-types";
 
+import FlatButton from '../zhn-m/FlatButton'
 import ModalDialog from '../zhnMoleculs/ModalDialog'
 import InputFileReader from '../zhnAtoms/InputFileReader'
-import ToolBarButton from '../header/ToolBarButton'
 import ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment'
 import DialogStyles from '../styles/DialogStyles'
 
@@ -39,20 +39,23 @@ class LoadFileDialog extends Component {
   */
 
   constructor(props){
-    super()
+    super(props)
     this.progressEvent = null
     this.file = null
     this._commandButtons = [
-      <ToolBarButton
-        type="TypeC"
+      <FlatButton
+        key="load"
+        isPrimary={true}
         caption="Load"
+        timeout={2000}
         onClick={this._handleLoad}
      />
-    ]
-    this.state = {
-      validationMessages : []
-    }
+   ]
+   this.state = {
+     validationMessages: []
+   }
   }
+
 
   shouldComponentUpdate(nextProps, nextState){
     if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
@@ -107,13 +110,13 @@ class LoadFileDialog extends Component {
         commandButtons={this._commandButtons}
         onClose={this._handleClose}
       >
-         <div style={Object.assign({}, styles.rowDiv, STYLE.ROW_INPUT_FILE)}>
+         <div style={{ ...styles.rowDiv, ...STYLE.ROW_INPUT_FILE }}>
             <InputFileReader
                as="text"
                onChange={this._handleChange}
             />
          </div>
-         <div style={Object.assign({}, styles.rowDiv, STYLE.ROW_VALIDATION)}>
+         <div style={{ ...styles.rowDiv, ...STYLE.ROW_VALIDATION }}>
            <ValidationMessagesFragment
               validationMessages={validationMessages}
            />

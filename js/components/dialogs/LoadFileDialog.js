@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
 
 var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
@@ -28,6 +32,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _FlatButton = require('../zhn-m/FlatButton');
+
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
 var _ModalDialog = require('../zhnMoleculs/ModalDialog');
 
 var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
@@ -35,10 +43,6 @@ var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 var _InputFileReader = require('../zhnAtoms/InputFileReader');
 
 var _InputFileReader2 = _interopRequireDefault(_InputFileReader);
-
-var _ToolBarButton = require('../header/ToolBarButton');
-
-var _ToolBarButton2 = _interopRequireDefault(_ToolBarButton);
 
 var _ValidationMessagesFragment = require('../zhnMoleculs/ValidationMessagesFragment');
 
@@ -87,7 +91,7 @@ var LoadFileDialog = function (_Component) {
   function LoadFileDialog(props) {
     (0, _classCallCheck3.default)(this, LoadFileDialog);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (LoadFileDialog.__proto__ || Object.getPrototypeOf(LoadFileDialog)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (LoadFileDialog.__proto__ || Object.getPrototypeOf(LoadFileDialog)).call(this, props));
 
     _this._handleChange = function (results) {
       if (results && results[0]) {
@@ -131,9 +135,11 @@ var LoadFileDialog = function (_Component) {
 
     _this.progressEvent = null;
     _this.file = null;
-    _this._commandButtons = [_react2.default.createElement(_ToolBarButton2.default, {
-      type: 'TypeC',
+    _this._commandButtons = [_react2.default.createElement(_FlatButton2.default, {
+      key: 'load',
+      isPrimary: true,
       caption: 'Load',
+      timeout: 2000,
       onClick: _this._handleLoad
     })];
     _this.state = {
@@ -167,7 +173,7 @@ var LoadFileDialog = function (_Component) {
         },
         _react2.default.createElement(
           'div',
-          { style: Object.assign({}, styles.rowDiv, STYLE.ROW_INPUT_FILE) },
+          { style: (0, _extends3.default)({}, styles.rowDiv, STYLE.ROW_INPUT_FILE) },
           _react2.default.createElement(_InputFileReader2.default, {
             as: 'text',
             onChange: this._handleChange
@@ -175,7 +181,7 @@ var LoadFileDialog = function (_Component) {
         ),
         _react2.default.createElement(
           'div',
-          { style: Object.assign({}, styles.rowDiv, STYLE.ROW_VALIDATION) },
+          { style: (0, _extends3.default)({}, styles.rowDiv, STYLE.ROW_VALIDATION) },
           _react2.default.createElement(_ValidationMessagesFragment2.default, {
             validationMessages: validationMessages
           })

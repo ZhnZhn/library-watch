@@ -1,1 +1,43 @@
-{"version":3,"sources":["../../../src/components/dialogs/LoadFileDialog.jsx"],"names":["styles","DialogStyles","C","FILE_NOT_CHOOSED","STYLE","MODAL_DIALOG","minWidth","ROW_INPUT_FILE","marginTop","marginBottom","ROW_VALIDATION","marginRight","LoadFileDialog","props","_handleChange","results","progressEvent","file","_handleLoad","data","onLoad","setState","validationMessages","_handleClose","onClose","state","length","_commandButtons","nextProps","nextState","isShow","Object","assign","rowDiv","Component"],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAIA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,SAASC,sBAAf;;AARA;;AAUA,IAAMC,IAAI;AACRC,oBAAmB;AADX,CAAV;;AAIA,IAAMC,QAAQ;AACZC,gBAAe;AACbC,cAAU;AADG,GADH;AAIZC,kBAAiB;AACfC,eAAW,MADI;AAEfC,kBAAc;AAFC,GAJL;AAQZC,kBAAiB;AACfC,iBAAa;AADE;AARL,CAAd;;IAaMC,c;;;AACJ;;;;;;;;;;AAUA,0BAAYC,KAAZ,EAAkB;AAAA;;AAAA;;AAAA,UAuBlBC,aAvBkB,GAuBF,UAACC,OAAD,EAAa;AAC3B,UAAIA,WAAWA,QAAQ,CAAR,CAAf,EAA2B;AAAA,qDACKA,QAAQ,CAAR,CADL;AAAA,YAClBC,aADkB;AAAA,YACHC,IADG;;AAEzB,cAAKD,aAAL,GAAqBA,aAArB;AACA,cAAKC,IAAL,GAAYA,IAAZ;AACD,OAJD,MAIO;AACL,cAAKD,aAAL,GAAqB,IAArB;AACA,cAAKC,IAAL,GAAY,IAAZ;AACD;AACF,KAhCiB;;AAAA,UAkClBC,WAlCkB,GAkCJ,YAAM;AAClB,UAAI,MAAKF,aAAL,IAAsB,MAAKC,IAA/B,EAAoC;AAC5B,YAAEE,IAAF,GAAW,MAAKN,KAAhB,CAAEM,IAAF;AAAA,YACEC,MADF,GACaD,IADb,CACEC,MADF;;AAENA,eAAO,EAAEJ,eAAgB,MAAKA,aAAvB,EAAP;AACA,cAAKK,QAAL,CAAc;AACZC,8BAAqB;AADT,SAAd;AAGD,OAPD,MAOO;AACL,cAAKD,QAAL,CAAc;AACZC,8BAAqB,CAACpB,EAAEC,gBAAH;AADT,SAAd;AAGD;AACF,KA/CiB;;AAAA,UAiDlBoB,YAjDkB,GAiDH,YAAM;AAAA,UACXC,OADW,GACC,MAAKX,KADN,CACXW,OADW;;;AAGnB,UAAI,MAAKC,KAAL,CAAWH,kBAAX,CAA8BI,MAA9B,KAAyC,CAA7C,EAA+C;AAC7C,cAAKL,QAAL,CAAc,EAAEC,oBAAqB,EAAvB,EAAd;AACD;AACDE;AACD,KAxDiB;;AAEhB,UAAKR,aAAL,GAAqB,IAArB;AACA,UAAKC,IAAL,GAAY,IAAZ;AACA,UAAKU,eAAL,GAAuB,CACrB,8BAAC,uBAAD;AACE,YAAK,OADP;AAEE,eAAQ,MAFV;AAGE,eAAS,MAAKT;AAHhB,MADqB,CAAvB;AAOA,UAAKO,KAAL,GAAa;AACXH,0BAAqB;AADV,KAAb;AAXgB;AAcjB;;;;0CAEqBM,S,EAAWC,S,EAAU;AACzC,UAAID,cAAc,KAAKf,KAAnB,IAA4Be,UAAUE,MAAV,KAAqB,KAAKjB,KAAL,CAAWiB,MAAhE,EAAwE;AACtE,eAAO,KAAP;AACD;AACD,aAAO,IAAP;AACD;;;6BAqCO;AACA,UAAEA,MAAF,GAAa,KAAKjB,KAAlB,CAAEiB,MAAF;AAAA,UACER,kBADF,GACyB,KAAKG,KAD9B,CACEH,kBADF;;AAEN,aACE;AAAC,6BAAD;AAAA;AACE,iBAAOlB,MAAMC,YADf;AAEE,mBAAQ,4BAFV;AAGE,kBAAQyB,MAHV;AAIE,0BAAgB,KAAKH,eAJvB;AAKE,mBAAS,KAAKJ;AALhB;AAOG;AAAA;AAAA,YAAK,OAAOQ,OAAOC,MAAP,CAAc,EAAd,EAAkBhC,OAAOiC,MAAzB,EAAiC7B,MAAMG,cAAvC,CAAZ;AACG,wCAAC,yBAAD;AACG,gBAAG,MADN;AAEG,sBAAU,KAAKO;AAFlB;AADH,SAPH;AAaG;AAAA;AAAA,YAAK,OAAOiB,OAAOC,MAAP,CAAc,EAAd,EAAkBhC,OAAOiC,MAAzB,EAAiC7B,MAAMM,cAAvC,CAAZ;AACE,wCAAC,oCAAD;AACG,gCAAoBY;AADvB;AADF;AAbH,OADF;AAqBD;;;EA7F0BY,gB;;kBAgGdtB,c","file":"LoadFileDialog.js","sourcesContent":["import React, { Component } from 'react';\r\n\r\n//import PropTypes from \"prop-types\";\r\n\r\nimport ModalDialog from '../zhnMoleculs/ModalDialog'\r\nimport InputFileReader from '../zhnAtoms/InputFileReader'\r\nimport ToolBarButton from '../header/ToolBarButton'\r\nimport ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment'\r\nimport DialogStyles from '../styles/DialogStyles'\r\n\r\nconst styles = DialogStyles\r\n\r\nconst C = {\r\n  FILE_NOT_CHOOSED : 'Choose file with Watch Items for Load'\r\n}\r\n\r\nconst STYLE = {\r\n  MODAL_DIALOG : {\r\n    minWidth: '320px'\r\n  },\r\n  ROW_INPUT_FILE : {\r\n    marginTop: '16px',\r\n    marginBottom: '16px'\r\n  },\r\n  ROW_VALIDATION : {\r\n    marginRight: '16px'\r\n  }\r\n}\r\n\r\nclass LoadFileDialog extends Component {\r\n  /*\r\n  static propTypes = {\r\n    isShow: PropTypes.bool,\r\n    data: PropTypes.shape({\r\n      onLoad: PropTypes.func\r\n    }),\r\n    onClose: PropTypes.func\r\n  }\r\n  */\r\n\r\n  constructor(props){\r\n    super()\r\n    this.progressEvent = null\r\n    this.file = null\r\n    this._commandButtons = [\r\n      <ToolBarButton\r\n        type=\"TypeC\"\r\n        caption=\"Load\"\r\n        onClick={this._handleLoad}\r\n     />\r\n    ]\r\n    this.state = {\r\n      validationMessages : []\r\n    }\r\n  }\r\n\r\n  shouldComponentUpdate(nextProps, nextState){\r\n    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {\r\n      return false;\r\n    }\r\n    return true;\r\n  }\r\n\r\n  _handleChange = (results) => {\r\n    if (results && results[0] ){\r\n      const [progressEvent, file] = results[0]\r\n      this.progressEvent = progressEvent\r\n      this.file = file\r\n    } else {\r\n      this.progressEvent = null\r\n      this.file = null\r\n    }\r\n  }\r\n\r\n  _handleLoad = () => {\r\n    if (this.progressEvent && this.file){\r\n      const { data } = this.props\r\n          , { onLoad } = data\r\n      onLoad({ progressEvent : this.progressEvent });\r\n      this.setState({\r\n        validationMessages : []\r\n      })\r\n    } else {\r\n      this.setState({\r\n        validationMessages : [C.FILE_NOT_CHOOSED]\r\n      })\r\n    }\r\n  }\r\n\r\n  _handleClose = () => {\r\n    const { onClose } = this.props;\r\n\r\n    if (this.state.validationMessages.length !== 0){\r\n      this.setState({ validationMessages : [] });\r\n    }\r\n    onClose()\r\n  }\r\n\r\n  render(){\r\n    const { isShow } = this.props\r\n        , { validationMessages } = this.state;\r\n    return (\r\n      <ModalDialog\r\n        style={STYLE.MODAL_DIALOG}\r\n        caption=\"Load Watch Items from File\"\r\n        isShow={isShow}\r\n        commandButtons={this._commandButtons}\r\n        onClose={this._handleClose}\r\n      >\r\n         <div style={Object.assign({}, styles.rowDiv, STYLE.ROW_INPUT_FILE)}>\r\n            <InputFileReader\r\n               as=\"text\"\r\n               onChange={this._handleChange}\r\n            />\r\n         </div>\r\n         <div style={Object.assign({}, styles.rowDiv, STYLE.ROW_VALIDATION)}>\r\n           <ValidationMessagesFragment\r\n              validationMessages={validationMessages}\r\n           />\r\n         </div>\r\n      </ModalDialog>\r\n    )\r\n  }\r\n}\r\n\r\nexport default LoadFileDialog\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/LoadFileDialog.js"
+ ],
+ "file": "../../../src/components/dialogs/LoadFileDialog.js",
+ "names": [
+  "styles",
+  "DialogStyles",
+  "C",
+  "FILE_NOT_CHOOSED",
+  "STYLE",
+  "MODAL_DIALOG",
+  "minWidth",
+  "ROW_INPUT_FILE",
+  "marginTop",
+  "marginBottom",
+  "ROW_VALIDATION",
+  "marginRight",
+  "LoadFileDialog",
+  "props",
+  "_handleChange",
+  "results",
+  "progressEvent",
+  "file",
+  "_handleLoad",
+  "data",
+  "onLoad",
+  "setState",
+  "validationMessages",
+  "_handleClose",
+  "onClose",
+  "state",
+  "length",
+  "_commandButtons",
+  "nextProps",
+  "nextState",
+  "isShow",
+  "rowDiv",
+  "Component"
+ ],
+ "mappings": "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"
+}

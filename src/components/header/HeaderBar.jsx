@@ -4,14 +4,14 @@ import BrowserActions from '../../flux/actions/BrowserActions';
 import ComponentActions from '../../flux/actions/ComponentActions';
 import { BrowserType } from '../../constants/Type';
 
+import FlatButton from '../zhn-m/FlatButton'
 import LoadingProgress from './LoadingProgress';
 import IconAppLogo from './IconAppLogo';
 import AppLabel from './AppLabel';
-import ToolBarButton from './ToolBarButton';
 import ButtonSave from '../zhnMoleculs/ButtonSave';
 import LimitRemainingLabel from './LimitRemainingLabel';
 
-const STYLE = {
+const S = {
   ROOT_DIV : {
     position : 'relative',
     zIndex : 50
@@ -25,10 +25,18 @@ const STYLE = {
     fontSize: '16px',
     fontWeight: 'bold'
   },
+  BT_ABOUT: {
+    float: 'right',
+    marginRight: '20px'
+  },
   BUTTON_SAVE : {
     marginLeft : '10px'
+  },
+  LABEL_LIMIT: {
+    float: 'right',
+    paddingTop: '5px'
   }
-}
+};
 
 const BrowserConfig = {
   LIBRARY : {
@@ -37,7 +45,7 @@ const BrowserConfig = {
     sourceMenuUrl : './data/github/source-menu.json',
     rowClass: 'row__library'
   }
-}
+};
 
 class HeaderBar extends Component {
 
@@ -51,44 +59,43 @@ class HeaderBar extends Component {
   render(){
     const { store } = this.props;
     return (
-      <div className="header" style={STYLE.ROOT_DIV}>
+      <div className="header" style={S.ROOT_DIV}>
          <LoadingProgress store={store} />
          <IconAppLogo
            className="header__icon-app"
            title="Library Watch v0.11.0"
          />
          <AppLabel
-           style={STYLE.APP_LABEL}
+           style={S.APP_LABEL}
            caption="Library Watch v0.11.0"
          />
-         <ToolBarButton
-            type="TypeA"
+         <FlatButton
             caption="Library"
-            title="Library Browser"
+            title="Click to show library browser"
+            accessKey="l"
             onClick={this._handleClickDynamic.bind(null, BrowserConfig.LIBRARY)}
          />
-         <ToolBarButton
-            type="TypeA"
+         <FlatButton
             caption="Watch"
-            title="Watch Browser"
+            title="Click to show watch browser"
+            accessKey="w"
             onClick={this._handleClickWatch}
          />
          <ButtonSave
             store={store}
-            style={STYLE.BUTTON_SAVE}
+            style={S.BUTTON_SAVE}
          />
-
-         <ToolBarButton
-            type="TypeA"
-            style={{ float: 'right', marginRight : '20px' }}
+         <FlatButton
+            rootStyle={S.BT_ABOUT}
             caption="About"
-            title="Description about Library Watch"
+            title="Click to show about description"
+            accessKey="a"
             onClick={ComponentActions.showAbout}
          />
          <LimitRemainingLabel
-              store={store}
-              style={{ float: 'right', paddingTop: '5px' }}
-           />
+             store={store}
+             style={S.LABEL_LIMIT}
+         />
       </div>
     );
   }

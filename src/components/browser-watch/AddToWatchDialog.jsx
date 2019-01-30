@@ -6,11 +6,11 @@ import createReactClass from 'create-react-class'
 import WithValidation from '../dialogs/WithValidation'
 
 import WatchActions from '../../flux/actions/WatchActions'
-import { WatchActionTypes } from '../../flux/actions/WatchActions'
+import { WatchActionTypes as WAT } from '../../flux/actions/WatchActions'
 import Msg from '../../constants/Msg'
 
 import ModalDialog from '../zhnMoleculs/ModalDialog'
-import ToolBarButton from '../header/ToolBarButton'
+import FlatButton from '../zhn-m/FlatButton'
 import InputSelect from '../zhn-select/InputSelect'
 import ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment'
 
@@ -18,9 +18,22 @@ import DialogStyles from '../styles/DialogStyles'
 
 const styles = DialogStyles;
 
-const actionCompleted = WatchActionTypes.EDIT_WATCH_COMPLETED
-    , actionFailed =  WatchActionTypes.EDIT_WATCH_FAILED
-    , forActionType = WatchActionTypes.ADD_ITEM
+const actionCompleted = WAT.EDIT_WATCH_COMPLETED
+    , actionFailed =  WAT.EDIT_WATCH_FAILED
+    , forActionType = WAT.ADD_ITEM
+
+const S = {
+  BOLD: {
+    fontWeight: 'bold'
+  },
+  LH: {
+    lineHeight: 2
+  },
+  DESCR: {
+    fontWeight: 'bold',
+    color: 'gray'
+  }
+};
 
 const AddToWatchDialog = createReactClass({
   ...WithValidation,
@@ -38,10 +51,19 @@ const AddToWatchDialog = createReactClass({
     const { store } = this.props;
     this.groupCaption = null;
     this.listCaption = null;
+    this._commandButtons = [
+      <FlatButton
+        key="add"
+        caption="Add"
+        title="Click to add to watch list"
+        timeout={0}
+        onClick={this._handlerAdd}
+      />
+   ];
     return {
-      groupOptions : store.getWatchGroups(),
-      listOptions : [],
-      validationMessages : []
+      groupOptions: store.getWatchGroups(),
+      listOptions: [],
+      validationMessages: []
     }
   },
 
@@ -129,30 +151,22 @@ const AddToWatchDialog = createReactClass({
 
   _handlerClose(){
     if (this.state.validationMessages.length>0){
-      this.setState({validationMessages:[]});
+      this.setState({validationMessages: []});
     }
     this.props.onClose();
   },
 
   render(){
-    //onClose
     const { isShow, data } = this.props
         , { caption, config={} } = data
         , { descr } = config
-        , { groupOptions, listOptions, validationMessages } = this.state
-        , commandButtons =[
-       <ToolBarButton
-          key="a"
-          type="TypeC"
-          caption="Add"
-          onClick={this._handlerAdd}
-       />
-    ];
+        , { groupOptions, listOptions, validationMessages } = this.state;
+
     return (
       <ModalDialog
          caption="Add To Watch List"
          isShow={isShow}
-         commandButtons={commandButtons}
+         commandButtons={this._commandButtons}
          onClose={this._handlerClose}
       >
         <div style={styles.rowDiv} key="1">
@@ -175,19 +189,19 @@ const AddToWatchDialog = createReactClass({
              onSelect={this._handlerSelectList}
            />
         </div>
-        <div style={Object.assign({}, styles.rowDiv, {lineHeight: 2})} key="3">
+        <div style={{...styles.rowDiv, ...S.LH}} key="3">
           <span style={styles.labelSpan}>
             Item:
           </span>
-          <span style={{fontWeight: 'bold'}}>
+          <span style={S.BOLD}>
              {caption}
           </span>
         </div>
-        <div style={Object.assign({}, styles.rowDiv, {lineHeight: 2})} key="4">
+        <div style={{...styles.rowDiv, ...S.LH}} key="4">
           <span style={styles.labelSpan}>
              Descr:
           </span>
-          <span style={{ fontWeight: 'bold', color: 'gray' }}>
+          <span style={S.DESCR}>
              {descr}
           </span>
         </div>

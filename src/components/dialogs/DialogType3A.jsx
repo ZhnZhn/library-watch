@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 
 import DateUtils from '../../utils/DateUtils'
 
+import crButtons from './crCommandButtons'
 import Dialog from '../zhnMoleculs/Dialog'
-import ToolBarButton from '../header/ToolBarButton'
 import RowInputText from './RowInputText'
 import DatesFragment from './DatesFragment'
 import ValidationMessagesFragment from './ValidationMessagesFragment'
@@ -27,29 +27,14 @@ class DialogType3A extends Component {
     onShow: PropTypes.func
   }
   */
-
   constructor(props){
-    super()
+    super(props)
     this.stock = null
-    this._commandButtons = [
-      <ToolBarButton
-        type="TypeC"
-        caption="Default"
-        onClick={this._handleDefault}
-      />,
-      <ToolBarButton
-        type="TypeC"
-        caption="Clear"
-        onClick={this._handleClear}
-      />,
-     <ToolBarButton
-       type="TypeC"
-       caption="Load"
-       onClick={this._handleLoad}
-     />
-    ]
+    this._commandButtons = crButtons({
+      inst: this, isDefault: true
+    })
     this.state = {
-      validationMessages : []
+      validationMessages: []
     }
   }
 
