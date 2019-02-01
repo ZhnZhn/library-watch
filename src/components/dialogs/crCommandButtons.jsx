@@ -12,13 +12,7 @@ const crCommandButtons = ({
       caption="Default"
       timeout={0}
       onClick={inst._handleDefault}
-     />,
-    <FlatButton
-      key="clear"
-      caption="Clear"
-      timeout={0}
-      onClick={inst._handleClear}
-     />,
+     />,     
      <FlatButton
        key="load"
        isPrimary={true}

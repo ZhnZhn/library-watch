@@ -24,14 +24,14 @@ const ButtonCircle = (props) =>{
            ? style
            : {...STYLE.ROOT, ...style};
   return (
-    <span
+    <button
        className={_className}
        style={_style}
        title={title}
        onClick={onClick}
     >
        {caption}
-    </span>
+    </button>
   );
 }
 

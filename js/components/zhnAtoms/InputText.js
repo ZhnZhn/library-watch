@@ -4,10 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
-
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -34,27 +30,31 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //import PropTypes from "prop-types";
 
-var STYLE = {
-  INPUT: {
-    background: 'transparent none repeat scroll 0 0',
-    border: 'medium none',
-    outline: 'medium none',
-    height: '26px',
-    paddingLeft: '5px',
-    color: 'green',
-    width: '40px',
-    fontSize: '16px',
-    fontWeight: 'bold',
-    backgroundColor: '#E1E1CB',
-    marginLeft: '5px',
-    marginRight: '5px',
-    display: 'inline'
-  }
+var CL = {
+  FIELD: 'm-field',
+  INPUT: 'm-field__input',
+  BT_CLEAR: 'm-field__bt-clear'
 };
+
+var IS_TOUCH = document && 'ontouchstart' in document.documentElement;
 
 var _isKeyClean = function _isKeyClean(_ref) {
   var keyCode = _ref.keyCode;
   return keyCode === 27 || keyCode === 46;
+};
+
+var BtClear = function BtClear(_ref2) {
+  var isValue = _ref2.isValue,
+      onClick = _ref2.onClick;
+  return _react2.default.createElement(
+    'button',
+    {
+      'class': CL.BT_CLEAR,
+      tabIndex: '-1',
+      onClick: onClick
+    },
+    isValue ? 'x' : ''
+  );
 };
 
 var InputText = (_temp = _class = function (_Component) {
@@ -65,14 +65,18 @@ var InputText = (_temp = _class = function (_Component) {
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (InputText.__proto__ || Object.getPrototypeOf(InputText)).call(this));
 
-    _this._handlerInputChange = function (event) {
+    _this._hChange = function (event) {
       _this.setState({ value: event.target.value });
     };
 
-    _this._handlerInputKeyDown = function (event) {
+    _this._hKeyDown = function (event) {
       if (_isKeyClean(event)) {
         _this.setState({ value: '' });
       }
+    };
+
+    _this._hClean = function () {
+      _this.setState({ value: '' });
     };
 
     _this.state = {
@@ -102,19 +106,30 @@ var InputText = (_temp = _class = function (_Component) {
           style = _props.style,
           _props$placeholder = _props.placeholder,
           placeholder = _props$placeholder === undefined ? '' : _props$placeholder,
+          maxLength = _props.maxLength,
           value = this.state.value;
 
-      return _react2.default.createElement('input', {
-        type: 'text',
-        autoCorrect: 'off',
-        autoCapitalize: 'off',
-        spellCheck: false,
-        style: (0, _extends3.default)({}, STYLE.INPUT, style),
-        value: value,
-        placeholder: placeholder,
-        onChange: this._handlerInputChange,
-        onKeyDown: this._handlerInputKeyDown
-      });
+      return _react2.default.createElement(
+        'div',
+        { 'class': CL.FIELD },
+        _react2.default.createElement('input', {
+          type: 'text',
+          autoCorrect: 'off',
+          autoCapitalize: 'off',
+          spellCheck: false,
+          'class': CL.INPUT,
+          style: style,
+          value: value,
+          placeholder: placeholder,
+          maxLength: maxLength,
+          onChange: this._hChange,
+          onKeyDown: this._hKeyDown
+        }),
+        IS_TOUCH && _react2.default.createElement(BtClear, {
+          isValue: Boolean(value),
+          onClick: this._hClean
+        })
+      );
     }
   }, {
     key: 'getValue',
@@ -129,7 +144,8 @@ var InputText = (_temp = _class = function (_Component) {
   }]);
   return InputText;
 }(_react.Component), _class.defaultProps = {
-  initValue: ''
+  initValue: '',
+  maxLength: 50
 }, _temp);
 exports.default = InputText;
 //# sourceMappingURL=InputText.js.map

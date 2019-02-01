@@ -1,6 +1,6 @@
 
 
-.button-tab{
+.button-tab {
   position : absolute;
   z-index : 10;
   top : 0;
@@ -90,11 +90,13 @@
     position: relative;
     top: -2px;
 }
+.bt__watch__caption:focus,
+.bt__watch__caption:hover {
+  background-color: rgba(0, 0, 0, 0.3)
+}
 
 .bt__watch__bar{
   display: inline-block;
-  /*position: relative;
-  top: -2px;*/
   text-align: center;
   font-weight : bold;
   margin-left: 10px;
@@ -102,7 +104,6 @@
   border-radius : 20px;
   width : auto;
   height : auto;
-  /*line-height: initial;*/
   border : 2px solid gray;
   color : gray;
   cursor: pointer;

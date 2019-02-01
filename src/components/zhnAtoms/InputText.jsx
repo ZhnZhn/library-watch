@@ -2,26 +2,27 @@ import React, { Component } from 'react';
 
 //import PropTypes from "prop-types";
 
-const STYLE = {
-  INPUT : {
-    background: 'transparent none repeat scroll 0 0',
-    border: 'medium none',
-    outline: 'medium none',
-    height: '26px',
-    paddingLeft: '5px',
-    color: 'green',
-    width: '40px',
-    fontSize: '16px',
-    fontWeight: 'bold',
-    backgroundColor : '#E1E1CB',
-    marginLeft : '5px',
-    marginRight : '5px',
-    display : 'inline'
-  }
-}
+const CL = {
+  FIELD: 'm-field',
+  INPUT:  'm-field__input',
+  BT_CLEAR: 'm-field__bt-clear'
+};
+
+const IS_TOUCH = document &&
+ 'ontouchstart' in document.documentElement;
 
 const _isKeyClean = ({ keyCode }) => keyCode === 27
  || keyCode === 46;
+
+const BtClear = ({ isValue, onClick }) => (
+  <button
+    class={CL.BT_CLEAR}
+    tabIndex="-1"
+    onClick={onClick}
+  >
+    { isValue ? 'x' : '' }
+  </button>
+);
 
 class InputText extends Component {
   /*
@@ -31,13 +32,14 @@ class InputText extends Component {
   }
   */
   static defaultProps = {
-    initValue : ''
+    initValue: '',
+    maxLength: 50
   }
 
   constructor(props){
     super()
     this.state = {
-      value : props.initValue
+      value: props.initValue
     }
   }
 
@@ -45,36 +47,53 @@ class InputText extends Component {
     if ( nextProps !== this.props &&
          typeof nextProps.initValue !== "undefined")
     {
-      this.setState({ value : nextProps.initValue });
+      this.setState({ value: nextProps.initValue });
     }
   }
 
-  _handlerInputChange = (event) => {
-    this.setState({ value : event.target.value })
+  _hChange = (event) => {
+    this.setState({ value: event.target.value })
   }
 
-  _handlerInputKeyDown = (event) => {
+  _hKeyDown = (event) => {
      if ( _isKeyClean(event) ){
-       this.setState({ value : '' })
+       this.setState({ value: '' })
      }
   }
 
+  _hClean = () => {
+    this.setState({ value: '' })
+  }
+
   render(){
-    const { style, placeholder='' } = this.props
-        , { value } = this.state;
+    const {
+      style, placeholder='',
+      maxLength
+    } = this.props
+    , { value } = this.state;
     return (
-      <input
-        type="text"
-        autoCorrect="off"
-        autoCapitalize="off"
-        spellCheck={false}
-        style={{...STYLE.INPUT, ...style }}
-        value={value}
-        placeholder={placeholder}
-        onChange={this._handlerInputChange}
-        onKeyDown={this._handlerInputKeyDown}
-      />
-    )
+      <div class={CL.FIELD}>
+        <input
+          type="text"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck={false}
+          class={CL.INPUT}
+          style={style}
+          value={value}
+          placeholder={placeholder}
+          maxLength={maxLength}
+          onChange={this._hChange}
+          onKeyDown={this._hKeyDown}
+        />
+        {
+          IS_TOUCH && <BtClear
+            isValue={Boolean(value)}
+            onClick={this._hClean}
+          />
+        }
+     </div>
+   );
   }
 
   getValue(){

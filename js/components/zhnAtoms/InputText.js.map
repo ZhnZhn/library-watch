@@ -1,1 +1,41 @@
-{"version":3,"sources":["../../../src/components/zhnAtoms/InputText.jsx"],"names":["STYLE","INPUT","background","border","outline","height","paddingLeft","color","width","fontSize","fontWeight","backgroundColor","marginLeft","marginRight","display","_isKeyClean","keyCode","InputText","props","_handlerInputChange","event","setState","value","target","_handlerInputKeyDown","state","initValue","nextProps","style","placeholder","trim","Component","defaultProps"],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;;;AAEA;;AAEA,IAAMA,QAAQ;AACZC,SAAQ;AACNC,gBAAY,oCADN;AAENC,YAAQ,aAFF;AAGNC,aAAS,aAHH;AAINC,YAAQ,MAJF;AAKNC,iBAAa,KALP;AAMNC,WAAO,OAND;AAONC,WAAO,MAPD;AAQNC,cAAU,MARJ;AASNC,gBAAY,MATN;AAUNC,qBAAkB,SAVZ;AAWNC,gBAAa,KAXP;AAYNC,iBAAc,KAZR;AAaNC,aAAU;AAbJ;AADI,CAAd;;AAkBA,IAAMC,cAAc,SAAdA,WAAc;AAAA,MAAGC,OAAH,QAAGA,OAAH;AAAA,SAAiBA,YAAY,EAAZ,IACjCA,YAAY,EADI;AAAA,CAApB;;IAGMC,S;;;AAWJ,qBAAYC,KAAZ,EAAkB;AAAA;;AAAA;;AAAA,UAelBC,mBAfkB,GAeI,UAACC,KAAD,EAAW;AAC/B,YAAKC,QAAL,CAAc,EAAEC,OAAQF,MAAMG,MAAN,CAAaD,KAAvB,EAAd;AACD,KAjBiB;;AAAA,UAmBlBE,oBAnBkB,GAmBK,UAACJ,KAAD,EAAW;AAC/B,UAAKL,YAAYK,KAAZ,CAAL,EAAyB;AACvB,cAAKC,QAAL,CAAc,EAAEC,OAAQ,EAAV,EAAd;AACD;AACH,KAvBiB;;AAEhB,UAAKG,KAAL,GAAa;AACXH,aAAQJ,MAAMQ;AADH,KAAb;AAFgB;AAKjB;AAfD;;;;;;;;;;8CAiB0BC,S,EAAU;AAClC,UAAKA,cAAc,KAAKT,KAAnB,IACA,OAAOS,UAAUD,SAAjB,KAA+B,WADpC,EAEA;AACE,aAAKL,QAAL,CAAc,EAAEC,OAAQK,UAAUD,SAApB,EAAd;AACD;AACF;;;6BAYO;AAAA,mBAC4B,KAAKR,KADjC;AAAA,UACEU,KADF,UACEA,KADF;AAAA,sCACSC,WADT;AAAA,UACSA,WADT,sCACqB,EADrB;AAAA,UAEEP,KAFF,GAEY,KAAKG,KAFjB,CAEEH,KAFF;;AAGN,aACE;AACE,cAAK,MADP;AAEE,qBAAY,KAFd;AAGE,wBAAe,KAHjB;AAIE,oBAAY,KAJd;AAKE,0CAAWtB,MAAMC,KAAjB,EAA2B2B,KAA3B,CALF;AAME,eAAON,KANT;AAOE,qBAAaO,WAPf;AAQE,kBAAU,KAAKV,mBARjB;AASE,mBAAW,KAAKK;AATlB,QADF;AAaD;;;+BAES;AACR,aAAO,KAAKC,KAAL,CAAWH,KAAX,CAAiBQ,IAAjB,EAAP;AACD;;;6BACQR,K,EAAM;AACb,WAAKD,QAAL,CAAc,EAAEC,YAAF,EAAd;AACD;;;EA3DqBS,gB,UAOfC,Y,GAAe;AACpBN,aAAY;AADQ,C;kBAwDTT,S","file":"InputText.js","sourcesContent":["import React, { Component } from 'react';\r\n\r\n//import PropTypes from \"prop-types\";\r\n\r\nconst STYLE = {\r\n  INPUT : {\r\n    background: 'transparent none repeat scroll 0 0',\r\n    border: 'medium none',\r\n    outline: 'medium none',\r\n    height: '26px',\r\n    paddingLeft: '5px',\r\n    color: 'green',\r\n    width: '40px',\r\n    fontSize: '16px',\r\n    fontWeight: 'bold',\r\n    backgroundColor : '#E1E1CB',\r\n    marginLeft : '5px',\r\n    marginRight : '5px',\r\n    display : 'inline'\r\n  }\r\n}\r\n\r\nconst _isKeyClean = ({ keyCode }) => keyCode === 27\r\n || keyCode === 46;\r\n\r\nclass InputText extends Component {\r\n  /*\r\n  static propTypes = {\r\n    initValue : PropTypes.string,\r\n    style : PropTypes.object\r\n  }\r\n  */\r\n  static defaultProps = {\r\n    initValue : ''\r\n  }\r\n\r\n  constructor(props){\r\n    super()\r\n    this.state = {\r\n      value : props.initValue\r\n    }\r\n  }\r\n\r\n  componentWillReceiveProps(nextProps){\r\n    if ( nextProps !== this.props &&\r\n         typeof nextProps.initValue !== \"undefined\")\r\n    {\r\n      this.setState({ value : nextProps.initValue });\r\n    }\r\n  }\r\n\r\n  _handlerInputChange = (event) => {\r\n    this.setState({ value : event.target.value })\r\n  }\r\n\r\n  _handlerInputKeyDown = (event) => {\r\n     if ( _isKeyClean(event) ){\r\n       this.setState({ value : '' })\r\n     }\r\n  }\r\n\r\n  render(){\r\n    const { style, placeholder='' } = this.props\r\n        , { value } = this.state;\r\n    return (\r\n      <input\r\n        type=\"text\"\r\n        autoCorrect=\"off\"\r\n        autoCapitalize=\"off\"\r\n        spellCheck={false}\r\n        style={{...STYLE.INPUT, ...style }}\r\n        value={value}\r\n        placeholder={placeholder}\r\n        onChange={this._handlerInputChange}\r\n        onKeyDown={this._handlerInputKeyDown}\r\n      />\r\n    )\r\n  }\r\n\r\n  getValue(){\r\n    return this.state.value.trim();\r\n  }\r\n  setValue(value){\r\n    this.setState({ value });\r\n  }\r\n}\r\n\r\n\r\nexport default InputText\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhnAtoms/InputText.js"
+ ],
+ "file": "../../../src/components/zhnAtoms/InputText.js",
+ "names": [
+  "CL",
+  "FIELD",
+  "INPUT",
+  "BT_CLEAR",
+  "IS_TOUCH",
+  "document",
+  "documentElement",
+  "_isKeyClean",
+  "keyCode",
+  "BtClear",
+  "isValue",
+  "onClick",
+  "InputText",
+  "props",
+  "_hChange",
+  "event",
+  "setState",
+  "value",
+  "target",
+  "_hKeyDown",
+  "_hClean",
+  "state",
+  "initValue",
+  "nextProps",
+  "style",
+  "placeholder",
+  "maxLength",
+  "Boolean",
+  "trim",
+  "Component",
+  "defaultProps"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;;;AAEA;;AAEA,IAAMA,KAAK;AACTC,SAAO,SADE;AAETC,SAAQ,gBAFC;AAGTC,YAAU;AAHD,CAAX;;AAMA,IAAMC,WAAWC,YAChB,kBAAkBA,SAASC,eAD5B;;AAGA,IAAMC,cAAc,SAAdA,WAAc;AAAA,MAAGC,OAAH,QAAGA,OAAH;AAAA,SAAiBA,YAAY,EAAZ,IACjCA,YAAY,EADI;AAAA,CAApB;;AAGA,IAAMC,UAAU,SAAVA,OAAU;AAAA,MAAGC,OAAH,SAAGA,OAAH;AAAA,MAAYC,OAAZ,SAAYA,OAAZ;AAAA,SACd;AAAA;AAAA;AACE,eAAOX,GAAGG,QADZ;AAEE,gBAAS,IAFX;AAGE,eAASQ;AAHX;AAKID,cAAU,GAAV,GAAgB;AALpB,GADc;AAAA,CAAhB;;IAUME,S;;;AAYJ,qBAAYC,KAAZ,EAAkB;AAAA;;AAAA;;AAAA,UAelBC,QAfkB,GAeP,UAACC,KAAD,EAAW;AACpB,YAAKC,QAAL,CAAc,EAAEC,OAAOF,MAAMG,MAAN,CAAaD,KAAtB,EAAd;AACD,KAjBiB;;AAAA,UAmBlBE,SAnBkB,GAmBN,UAACJ,KAAD,EAAW;AACpB,UAAKR,YAAYQ,KAAZ,CAAL,EAAyB;AACvB,cAAKC,QAAL,CAAc,EAAEC,OAAO,EAAT,EAAd;AACD;AACH,KAvBiB;;AAAA,UAyBlBG,OAzBkB,GAyBR,YAAM;AACd,YAAKJ,QAAL,CAAc,EAAEC,OAAO,EAAT,EAAd;AACD,KA3BiB;;AAEhB,UAAKI,KAAL,GAAa;AACXJ,aAAOJ,MAAMS;AADF,KAAb;AAFgB;AAKjB;AAhBD;;;;;;;;;;8CAkB0BC,S,EAAU;AAClC,UAAKA,cAAc,KAAKV,KAAnB,IACA,OAAOU,UAAUD,SAAjB,KAA+B,WADpC,EAEA;AACE,aAAKN,QAAL,CAAc,EAAEC,OAAOM,UAAUD,SAAnB,EAAd;AACD;AACF;;;6BAgBO;AAAA,mBAIF,KAAKT,KAJH;AAAA,UAEJW,KAFI,UAEJA,KAFI;AAAA,sCAEGC,WAFH;AAAA,UAEGA,WAFH,sCAEe,EAFf;AAAA,UAGJC,SAHI,UAGJA,SAHI;AAAA,UAKFT,KALE,GAKQ,KAAKI,KALb,CAKFJ,KALE;;AAMN,aACE;AAAA;AAAA,UAAK,SAAOjB,GAAGC,KAAf;AACE;AACE,gBAAK,MADP;AAEE,uBAAY,KAFd;AAGE,0BAAe,KAHjB;AAIE,sBAAY,KAJd;AAKE,mBAAOD,GAAGE,KALZ;AAME,iBAAOsB,KANT;AAOE,iBAAOP,KAPT;AAQE,uBAAaQ,WARf;AASE,qBAAWC,SATb;AAUE,oBAAU,KAAKZ,QAVjB;AAWE,qBAAW,KAAKK;AAXlB,UADF;AAeIf,oBAAY,8BAAC,OAAD;AACV,mBAASuB,QAAQV,KAAR,CADC;AAEV,mBAAS,KAAKG;AAFJ;AAfhB,OADF;AAuBD;;;+BAES;AACR,aAAO,KAAKC,KAAL,CAAWJ,KAAX,CAAiBW,IAAjB,EAAP;AACD;;;6BACQX,K,EAAM;AACb,WAAKD,QAAL,CAAc,EAAEC,YAAF,EAAd;AACD;;;EA7EqBY,gB,UAOfC,Y,GAAe;AACpBR,aAAW,EADS;AAEpBI,aAAW;AAFS,C;kBA0ETd,S"
+}

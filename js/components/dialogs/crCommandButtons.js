@@ -24,11 +24,6 @@ var crCommandButtons = function crCommandButtons(_ref) {
     timeout: 0,
     onClick: inst._handleDefault
   }), _react2.default.createElement(_FlatButton2.default, {
-    key: 'clear',
-    caption: 'Clear',
-    timeout: 0,
-    onClick: inst._handleClear
-  }), _react2.default.createElement(_FlatButton2.default, {
     key: 'load',
     isPrimary: true,
     caption: 'Load',

@@ -40,7 +40,7 @@ var ButtonCircle = function ButtonCircle(props) {
       _style = isWithoutDefault ? style : (0, _extends3.default)({}, STYLE.ROOT, style);
 
   return _react2.default.createElement(
-    'span',
+    'button',
     {
       className: _className,
       style: _style,
