@@ -39,7 +39,7 @@ var fGitHubRecentTag = function fGitHubRecentTag(_ref) {
       requestType = option.requestType,
       chartType = option.chartType,
       browserType = option.browserType,
-      key = repo + '_' + requestType,
+      key = option.key,
       tagItem = json[0],
       _onClickDetail = _fnFetchJson2.default.bind(null, {
     uri: _base + '/repos/' + option.repo + '/commits/' + tagItem.commit.sha,

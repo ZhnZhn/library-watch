@@ -3,8 +3,11 @@ import GitHubIssues from '../items/GitHubIssues';
 const fGitHubCommits = function({
   factory, option, json=[], parentProps, onCloseItem, onWatchItem
 }) {
-  const { repo, requestType, chartType, browserType } = option
-      , key = `${repo}_${requestType}`
+  const {
+    repo, requestType,
+    chartType, browserType,
+    key
+  } = option;
   return factory.createElement(GitHubIssues, {
       key : key,
       repo : repo,

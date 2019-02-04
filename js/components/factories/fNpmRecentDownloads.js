@@ -45,18 +45,18 @@ var fNpmRecentDownloads = function fNpmRecentDownloads(_ref) {
         onCloseItem = _ref.onCloseItem,
         onWatchItem = _ref.onWatchItem;
 
-    var repo = option.repo,
-        requestType = option.requestType,
+    var requestType = option.requestType,
         chartType = option.chartType,
         browserType = option.browserType,
+        key = option.key,
         downloads = json.downloads,
         _fnTransformDownloads2 = _fnTransformDownloads(downloads),
         sumDownloads = _fnTransformDownloads2.sumDownloads,
         fromDate = _fnTransformDownloads2.fromDate,
         toDate = _fnTransformDownloads2.toDate,
         labels = _fnTransformDownloads2.labels,
-        data = _fnTransformDownloads2.data,
-        key = repo + '_' + requestType;
+        data = _fnTransformDownloads2.data;
+    //, key = `${repo}_${requestType}`
 
     return factory.createElement(_NpmRecentMonthDownloads2.default, (0, _extends3.default)({
         key: key,

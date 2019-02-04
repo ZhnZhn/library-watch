@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -30,7 +34,7 @@ var _InputText2 = _interopRequireDefault(_InputText);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Styles = {
+var S = {
   ROW_DIV: {
     margin: '5px'
   },
@@ -66,40 +70,50 @@ var RowInputText = function (_Component) {
   (0, _inherits3.default)(RowInputText, _Component);
 
   function RowInputText() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, RowInputText);
-    return (0, _possibleConstructorReturn3.default)(this, (RowInputText.__proto__ || Object.getPrototypeOf(RowInputText)).apply(this, arguments));
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = RowInputText.__proto__ || Object.getPrototypeOf(RowInputText)).call.apply(_ref, [this].concat(args))), _this), _this._refInput = function (c) {
+      return _this.inputText = c;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
+  /*
+  static propTypes = {
+    caption: PropTypes.string,
+    placeholder: PropTypes.string,
+    onEnter: PropTypes.function
+  }
+  */
+
 
   (0, _createClass3.default)(RowInputText, [{
     key: 'render',
-
-    /*
-    static propTypes = {
-      caption: PropTypes.string,
-      placeholder: PropTypes.string
-    }
-    */
     value: function render() {
-      var _this2 = this;
-
       var _props = this.props,
           caption = _props.caption,
-          placeholder = _props.placeholder;
+          placeholder = _props.placeholder,
+          onEnter = _props.onEnter;
 
       return _react2.default.createElement(
         'div',
-        { style: Object.assign({}, Styles.ROW_DIV, Styles.ROOT) },
+        { style: (0, _extends3.default)({}, S.ROW_DIV, S.ROOT) },
         _react2.default.createElement(
           'span',
-          { style: Object.assign({}, Styles.LABEL_SPAN, Styles.CAPTION) },
+          { style: (0, _extends3.default)({}, S.LABEL_SPAN, S.CAPTION) },
           caption
         ),
         _react2.default.createElement(_InputText2.default, {
-          ref: function ref(c) {
-            return _this2.inputText = c;
-          },
-          style: Styles.INPUT_TEXT,
-          placeholder: placeholder
+          ref: this._refInput,
+          style: S.INPUT_TEXT,
+          placeholder: placeholder,
+          onEnter: onEnter
         })
       );
     }

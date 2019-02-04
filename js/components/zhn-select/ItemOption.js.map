@@ -1,1 +1,19 @@
-{"version":3,"sources":["../../../src/components/zhn-select/ItemOption.jsx"],"names":["STYLE","CAPTION","width","whiteSpace","overflow","textOverflow","ItemOption","props","item","propCaption"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,QAAQ;AACZC,WAAU;AACRC,WAAO,MADC;AAERC,gBAAY,QAFJ;AAGRC,cAAU,QAHF;AAIRC,kBAAc;AAJN;AADE,CAAd;;AASA,IAAMC,aAAa,SAAbA,UAAa,CAACC,KAAD,EAAW;AAAA,MACpBC,IADoB,GACED,KADF,CACpBC,IADoB;AAAA,MACdC,WADc,GACEF,KADF,CACdE,WADc;;AAE5B,SACE;AAAA;AAAA,MAAK,OAAOT,MAAMC,OAAlB;AACGO,SAAKC,WAAL;AADH,GADF;AAKD,CAPD;;kBASeH,U","file":"ItemOption.js","sourcesContent":["import React from 'react';\r\n\r\nconst STYLE = {\r\n  CAPTION : {\r\n    width: '100%',\r\n    whiteSpace: 'nowrap',\r\n    overflow: 'hidden',\r\n    textOverflow: 'ellipsis'\r\n  }\r\n}\r\n\r\nconst ItemOption = (props) => {\r\n  const { item, propCaption } = props;\r\n  return (\r\n    <div style={STYLE.CAPTION}>\r\n      {item[propCaption]}\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default ItemOption\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-select/ItemOption.js"
+ ],
+ "file": "../../../src/components/zhn-select/ItemOption.js",
+ "names": [
+  "S",
+  "CAPTION",
+  "width",
+  "whiteSpace",
+  "overflow",
+  "textOverflow",
+  "ItemOption",
+  "item",
+  "propCaption"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,IAAI;AACRC,WAAU;AACRC,WAAO,MADC;AAERC,gBAAY,QAFJ;AAGRC,cAAU,QAHF;AAIRC,kBAAc;AAJN;AADF,CAAV;;AASA,IAAMC,aAAa,SAAbA,UAAa;AAAA,uBAAGC,IAAH;AAAA,MAAGA,IAAH,6BAAQ,EAAR;AAAA,MAAYC,WAAZ,QAAYA,WAAZ;AAAA,SACjB;AAAA;AAAA,MAAK,OAAOR,EAAEC,OAAd;AACGM,SAAKC,WAAL;AADH,GADiB;AAAA,CAAnB;;kBAMeF,U"
+}

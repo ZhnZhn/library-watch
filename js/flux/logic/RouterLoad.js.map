@@ -1,1 +1,13 @@
-{"version":3,"sources":["../../../src/flux/logic/RouterLoad.js"],"names":["RouterLoad","LW","loadGitHub"],"mappings":";;;;;;AACA;;AAEA,IAAMA,aAAa;AACjBC,MAAKC;AADY,CAAnB;;kBAIeF,U","file":"RouterLoad.js","sourcesContent":["\r\nimport { loadGitHub } from './loadGitHub';\r\n\r\nconst RouterLoad = {\r\n  LW : loadGitHub\r\n};\r\n\r\nexport default RouterLoad\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/logic/RouterLoad.js"
+ ],
+ "file": "../../../src/flux/logic/RouterLoad.js",
+ "names": [
+  "RouterLoad",
+  "LW",
+  "loadImpl"
+ ],
+ "mappings": ";;;;;;AACA;;;;;;AAEA,IAAMA,aAAa;AACjBC,MAAIC;AADa,CAAnB;;kBAIeF,U"
+}

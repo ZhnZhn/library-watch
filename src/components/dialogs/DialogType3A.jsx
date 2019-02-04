@@ -52,7 +52,7 @@ class DialogType3A extends Component {
  }
 
  _handleClear = () => {
-    this.inputRepo.setValue('')
+    this.inputOne.setValue('')
     this.setState({ validationMessages: []})
  }
 
@@ -65,7 +65,7 @@ class DialogType3A extends Component {
    _createValidationMessages = () => {
        let msg = [];
 
-       const repo = this.inputRepo.getValue()
+       const repo = this.inputOne.getValue()
        if (!repo) {
           msg = msg.concat(`${this.props.oneTitle} is required`);
        }
@@ -77,7 +77,7 @@ class DialogType3A extends Component {
        return msg;
    }
    _createLoadOption = () => {
-     const repo = this.inputRepo.getValue()
+     const repo = this.inputOne.getValue()
          , { fromDate, toDate } = this.datesFragment.getValues()
          , { requestType } = this.props;
 
@@ -92,6 +92,9 @@ class DialogType3A extends Component {
          this._createValidationMessages
       );
     }
+
+  _refInputOne = c => this.inputOne = c
+  _refInputDates = c => this.datesFragment = c
 
    render(){
      const {
@@ -109,12 +112,13 @@ class DialogType3A extends Component {
            onClose={this._handleClose}
        >
         <RowInputText
-           ref={c => this.inputRepo = c}
+           ref={this._refInputOne}
            caption={oneTitle}
            placeholder={onePlaceholder}
+           onEnter={this._handleLoad}
         />
         <DatesFragment
-            ref={c => this.datesFragment = c}
+            ref={this._refInputDates}
             initFromDate={_initFromDate}
             initToDate={_initToDate}
             onTestDate={_onTestDate}

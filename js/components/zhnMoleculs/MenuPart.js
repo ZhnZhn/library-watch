@@ -26,7 +26,8 @@ var CL = {
   ROW_ODD: 'row__topic__odd not-selected'
 };
 
-var COLOR_FILL = '#1b2836';
+var FILL_OPEN = '#1b2836';
+var FILL_CLOSE = 'transparent';
 
 var S = {
   CAPTION_ROW: {
@@ -69,8 +70,8 @@ var MenuPart = function MenuPart(_ref) {
     _OpenClose2.default,
     {
       styleCaptionRow: S.CAPTION_ROW,
-      fillOpen: COLOR_FILL,
-      fillClose: COLOR_FILL,
+      fillOpen: FILL_OPEN,
+      fillClose: FILL_CLOSE,
       caption: caption,
       isClose: isInitClose
     },

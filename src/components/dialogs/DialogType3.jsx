@@ -49,7 +49,7 @@ class DialogType3 extends Component {
       validationMessages: []
     }
   }
-  
+
   shouldComponentUpdate(nextProps, nextState){
     if (this.props !== nextProps){
        if (this.props.isShow === nextProps.isShow){
@@ -69,7 +69,7 @@ class DialogType3 extends Component {
  }
 
  _handleClear = () => {
-    this.inputRepo.setValue('')
+    this.inputOne.setValue('')
     this.inputTwo.setValue('')
     this.setState({ validationMessages: [] })
  }
@@ -91,7 +91,7 @@ class DialogType3 extends Component {
       return msg;
   }
  _createLoadOption = () => {
-   const repo = this.inputRepo.getValue()
+   const repo = this.inputOne.getValue()
        , intitle = this.inputTwo.getValue()
        , { fromDate, toDate } = this.datesFragment.getValues()
        , _fromDate = DateUtils.toUTCMillis(fromDate)/1000
@@ -113,6 +113,10 @@ class DialogType3 extends Component {
     )
   }
 
+  _refInputOne = c => this.inputOne = c
+  _refInputTwo = c => this.inputTwo = c
+  _refDatesFragment = c => this.datesFragment = c
+
   render(){
     const {
             caption, isShow, onShow,
@@ -130,12 +134,13 @@ class DialogType3 extends Component {
            onClose={this._handleClose}
        >
         <RowInputText
-           ref={c => this.inputRepo = c}
+           ref={this._refInputOne}
            caption={oneTitle}
            placeholder={onePlaceholder}
+           onEnter={this._handleLoad}
         />
         <RowInputText
-           ref={c => this.inputTwo = c}
+           ref={this._refInputTwo}
            caption={twoTitle}
            placeholder={twoPlaceholder}
         />
@@ -146,7 +151,7 @@ class DialogType3 extends Component {
            onSelect={this._handleSelectSortBy}
         />
         <DatesFragment
-            ref={c => this.datesFragment = c}
+            ref={this._refDatesFragment}
             initFromDate={_initFromDate}
             initToDate={_initToDate}
             onTestDate={_onTestDate}

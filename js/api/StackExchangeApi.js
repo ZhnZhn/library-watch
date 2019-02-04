@@ -50,6 +50,12 @@ var StackExchangeApi = {
   getOnCheckResponse: function getOnCheckResponse() {
     return this.checkResponse;
   },
+  crKey: function crKey(_ref3) {
+    var repo = _ref3.repo,
+        requestType = _ref3.requestType;
+
+    return repo + '_' + requestType;
+  },
   checkResponse: function checkResponse() {
     var json = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var option = arguments[1];

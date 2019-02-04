@@ -82,6 +82,7 @@ var fNpmDownloads = function fNpmDownloads(_ref) {
         requestType = option.requestType,
         chartType = option.chartType,
         browserType = option.browserType,
+        key = option.key,
         downloads = json.downloads,
         packageName = json.package,
         _fnTransformDownloads2 = _fnTransformDownloads(downloads),
@@ -89,8 +90,8 @@ var fNpmDownloads = function fNpmDownloads(_ref) {
         fromDate = _fnTransformDownloads2.fromDate,
         toDate = _fnTransformDownloads2.toDate,
         labels = _fnTransformDownloads2.labels,
-        data = _fnTransformDownloads2.data,
-        key = repo + '_' + requestType + '_' + fromDate;
+        data = _fnTransformDownloads2.data;
+    //, key = `${repo}_${requestType}_${fromDate}`;
 
     return factory.createElement(_NpmRecentMonthDownloads2.default, (0, _extends3.default)({
         key: key,

@@ -10,7 +10,9 @@ const CL = {
   ROW_ODD: 'row__topic__odd not-selected'
 };
 
-const COLOR_FILL = '#1b2836';
+const FILL_OPEN = '#1b2836';
+const FILL_CLOSE = 'transparent';
+
 
 const S = {
   CAPTION_ROW: {
@@ -53,8 +55,8 @@ const _renderMenuItems = function(rowClass, items=[]){
 const MenuPart = ({ rowClass, caption, items, isInitClose }) => (
   <OpenClose2
      styleCaptionRow={S.CAPTION_ROW}
-     fillOpen={COLOR_FILL}
-     fillClose={COLOR_FILL}
+     fillOpen={FILL_OPEN}
+     fillClose={FILL_CLOSE}
      caption={caption}
      isClose={isInitClose}
   >

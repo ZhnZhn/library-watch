@@ -1,8 +1,8 @@
 
-import { loadGitHub } from './loadGitHub';
+import loadImpl from './loadImpl';
 
 const RouterLoad = {
-  LW : loadGitHub
+  LW: loadImpl
 };
 
 export default RouterLoad

@@ -23,11 +23,11 @@ const _fnTransformDownloads = (downloads=[{ day: '0-0-0', downloads : 0}]) => {
 const fNpmRecentDownloads = function({
   factory, option, json, parentProps, onCloseItem, onWatchItem
 }){
-  const { repo, requestType, chartType, browserType } = option
+  const { requestType, chartType, browserType, key } = option
       , { downloads } = json
-      , { sumDownloads, fromDate, toDate, labels, data } = _fnTransformDownloads(downloads)
-      , key = `${repo}_${requestType}`
-    
+      , { sumDownloads, fromDate, toDate, labels, data } = _fnTransformDownloads(downloads);
+      //, key = `${repo}_${requestType}`
+
   return factory.createElement(NpmRecentMonthDownloads, {
      key : key,
      packageName : json.package,

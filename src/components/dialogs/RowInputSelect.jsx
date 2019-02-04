@@ -3,18 +3,17 @@ import React from 'react';
 //import PropTypes from "prop-types";
 
 import InputSelect from '../zhn-select/InputSelect'
-import DialogStyles from '../styles/DialogStyles'
+import STYLE from '../styles/DialogStyles'
 
-const styles = DialogStyles;
-const STYLE = {
+const S = {
   CAPTION : {
     width: '120px'
   }
 }
 
 const RowInputSelect = ({ caption, placeholder, options, onSelect }) => (
-  <div style={Object.assign({}, styles.rowDiv)}>
-     <span style={Object.assign({}, styles.labelSpan, STYLE.CAPTION)}>
+  <div style={STYLE.rowDiv}>
+     <span style={{ ...STYLE.labelSpan, ...S.CAPTION }}>
        {caption}
      </span>
      <InputSelect
@@ -24,7 +23,7 @@ const RowInputSelect = ({ caption, placeholder, options, onSelect }) => (
         onSelect={onSelect}
      />
   </div>
-)
+);
 
 /*
 RowInputSelect.propTypes = {

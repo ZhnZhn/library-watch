@@ -12,9 +12,12 @@ const STYLE = {
     paddingRight: '5px'
   },
   ARROW : {
+    position: 'relative',
+    top: '2px',
     borderColor: '#999 transparent transparent',
     borderStyle: 'solid',
-    borderWidth: '5px 5px 2.5px',
+    //borderWidth: '5px 5px 2.5px',
+    borderWidth: '10px 8px 4px',
     display: 'inline-block',
     height: '0px',
     width: '0px'
@@ -26,29 +29,31 @@ const C = {
   BORDER_COLOR : "rgb(27, 117, 187) transparent transparent"
 }
 
-class ArrowCell extends Component {
 
+class ArrowCell extends Component {
+  _refArrowCell = (n) => this.arrowCell = n
+  _refArrow = (n) => this.arrow = n
   render(){
-    const { styleArrow, onClick } = this.props
+    const { arrowStyle, onClick } = this.props
     return (
       <span
-         ref={ (c) => this.arrowCell = c }
+         ref={this._refArrowCell}
          style={STYLE.ARROW_CELL}
          onClick={onClick}>
         <span
-           ref={ (c) => this.arrow = c }
-           style={Object.assign({}, STYLE.ARROW, styleArrow)}
+           ref={this._refArrow}
+           style={{ ...STYLE.ARROW, ...arrowStyle}}
         >
         </span>
       </span>
     );
   }
 
-  startAnimation(){
+  startAnimation = () => {
     this.arrowCell.style.animation = C.ANIMATION_CIRCLE;
     this.arrow.style.borderColor = C.BORDER_COLOR;
   }
-  stopAnimation(){
+  stopAnimation = () => {
     this.arrowCell.style.animation = "";
   }
 }

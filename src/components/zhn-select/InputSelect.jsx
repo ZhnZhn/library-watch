@@ -1,136 +1,89 @@
 import React, { Component } from 'react';
+//import PropTypes from 'prop-types'
 
-//import PropTypes from "prop-types";
+import ArrowCell from './ArrowCell';
 
-const CLASS_ROW_ACTIVE = "option-row__active"
-const NO_ITEM = {
-  caption: 'No results found',
-  value: 'noresult'
-}
+import BtCircle from '../zhnAtoms/ButtonCircle2'
 
-const styles = {
-  rootDiv: {
-    position: 'relative',
-    display: 'inline-block',
-    backgroundColor: '#E1E1CB',
-    width: '160px'
+const MAX_WITHOUT_ANIMATION = 800;
 
-  },
-  inputText: {
-    background: 'transparent none repeat scroll 0 0',
-    border: 'medium none',
-    outline: 'medium none',
-    height: '30px',
-    paddingLeft: '10px',
-    color: 'green',
-    width: '140px',
-    fontSize: '16px',
-    fontWeight: 'bold'
-  },
-  rootOptionDiv: {
-    position: 'absolute',
-    left: 0,
-    backgroundColor: '#E1E1CB',
-    color: 'green',
-    width: '160px',
-    //height: '160px',
-    zIndex: '10',
-    borderBottomLeftRadius : '5px',
-    borderBottomRightRadius : '5px'
-  },
-  optionDiv: {
-    //height: '160px',
-    minHeight: '160px',
-    maxHeight: '200px',
-    paddingBottom: '2px',
-    overflow: 'auto'
-  },
-  spinnerCell : {
-    position: 'relative',
-    left: '8px',
-    top: '4px',
-    display: 'inline-block',
-    width: '16px',
-    height: '16px'
-  },
-  spinnerFailedCell : {
-    position: 'relative',
-    left: '8px',
-    top: '4px',
-    display: 'inline-block',
-    width: '16px',
-    height: '16px',
-    borderColor : '#F44336',
-    cursor : 'pointer'
-  },
-  arrowCell:{
-    cursor: 'pointer',
-    //display: table-cell
-    position: 'relative',
-    textAlign: 'center',
-    verticalAlign: 'middle',
-    //width: '25px',
-    width: '35px',
-    paddingRight: '5px',
-    marginLeft: '10px'
+const CL_ROOT = 'zhn-select';
+const CL = {
+  ROOT: CL_ROOT,
+  INPUT: `${CL_ROOT}__input`,
+  SPINNER: `${CL_ROOT}__spinner`,
+  SPINNER_FAILED: `${CL_ROOT}__spinner--failed`,
+  INPUT_HR: `${CL_ROOT}__input__hr`,
 
+  OPTIONS: `${CL_ROOT}__options`,
+  OPTIONS_DIV: `${CL_ROOT}__options__div`,
+
+  OPTIONS_ROW: `${CL_ROOT}__row`,
+  OPTIONS_ROW_ACTIVE: `${CL_ROOT}__row--active`,
+
+  FOOTER: `${CL_ROOT}__footer`,
+  FOOTER_INDEX: `${CL_ROOT}__footer__index`,
+  FOOTER_BTS: `${CL_ROOT}__footer__bts`,
+  FOOTER_MARGIN: `${CL_ROOT}__footer--margin`,
+
+  NOT_SELECTED: 'not-selected'
+};
+
+const INPUT_PREFIX = 'From input:';
+const _fnNoItem = (propCaption, inputValue, isWithInput) => {
+  const _inputValue = String(inputValue)
+    .replace(INPUT_PREFIX,'').trim()
+    , _caption = (isWithInput)
+           ? `${INPUT_PREFIX} ${_inputValue}`
+           : 'No results found';
+  return {
+    [propCaption]: _caption,
+    value: 'noresult',
+    inputValue: _inputValue
+  };
+};
+
+const _toItem = (item, propCaption) => ({
+  [propCaption]: 'From Input',
+  value: item.inputValue
+});
+
+const _crWidth = (width, style) => {
+  return (width)
+    ? ((''+width).indexOf('%') !== -1)
+        ? { ...style, width: width }
+        : { ...style, width: width + 'px'}
+    : null;
+};
+
+const S = {
+  BLOCK: {
+    display: 'block'
   },
-  arrow : {
-   borderColor: '#999 transparent transparent',
-   borderStyle: 'solid',
-   borderWidth: '5px 5px 2.5px',
-   //borderWidth: '10px 10px 5px',
-   display: 'inline-block',
-   height: '0px',
-   width: '0px'
- },
- arrowShow: {
+  NONE: {
+    display: 'none'
+  },
+  ARROW_SHOW: {
     borderColor: '#1B75BB transparent transparent'
- },
- inputHr: {
-   borderWidth: 'medium medium 1px',
-   borderStyle: 'none none solid',
-   borderColor: '#1B75BB',
-   borderImage: 'none',
-   margin: 0,
-   marginLeft: '10px',
-   marginBottom: '5px',
-   width: '150px'
-
- },
-  itemDiv:{
-    cursor: 'pointer',
-    paddingTop: '4px',
-    paddingLeft: '5px',
-    paddingBottom: '4px'
-    //lineHeight: '14px'
   },
-  itemOdd: {
-    backgroundColor: '#C3C3AC'
-  },
-  itemEven: {
-    backgroundColor: '#D5D5BC'
-  },
-  optionsFooter : {
-    backgroundColor: 'silver',
-    borderBottomLeftRadius : '5px',
-    borderBottomRightRadius : '5px'
-  },
-  fileredSpan : {
-    display: 'inline-block',
-    color: 'gray',
-    fontWeight : 'bold',
-    //height: '20px',
-    paddingLeft: '10px',
-    paddingTop: '4px',
-    paddingBottom : '4px'
+  BT_CIRCLE: {
+    backgroundColor: '#949ab4'
   }
-}
+};
+
+const ItemOptionDf = ({ item, propCaption }) => (
+  <span>
+    {item[propCaption]}
+  </span>
+);
 
 class InputSelect extends Component {
   /*
   static propTypes = {
+     propCaption: PropTypes.string,
+     ItemOptionComp: PropTypes.element,
      width: PropTypes.string,
+     isShowOptionAnim: PropTypes.bool,
      options: PropTypes.arrayOf(PropTypes.shape({
         caption: PropTypes.string,
         value: PropTypes.oneOfType([
@@ -140,8 +93,9 @@ class InputSelect extends Component {
      })),
      optionName: PropTypes.string,
      optionNames: PropTypes.string,
-     isUpdateOptions: PropTypes.bool,
      placeholder: PropTypes.string,
+     isWithInput: PropTypes.bool,
+     prefixInput: PropTypes.string
 
      isLoading: PropTypes.bool,
      isLoadingFailed: PropTypes.bool,
@@ -150,30 +104,31 @@ class InputSelect extends Component {
      onLoadOption: PropTypes.func
   }
   */
+
   static defaultProps = {
-    options : [],
-    optionName : '',
-    optionNames : '',
-    isUpdateOptions : false,
+    propCaption: 'caption',
+    ItemOptionComp: ItemOptionDf,
+    options: [],
+    optionName: '',
+    optionNames: '',
+    isWithInput: false,
+    //prefixInput: 'From Input:',
     onSelect: () => {},
     onLoadOption: () => {}
   }
 
   constructor(props){
-    super()
-    this.domOptionsCache = null;
-    this.indexActiveOption = 0;
-    const { optionName, optionNames } = props
-        , _optionNames = (optionNames)
-              ? optionNames
-              : (optionName) ? optionName : '';
+    super(props)
+    this.domOptionsCache = null
+    this.indexActiveOption = 0
+    this.propCaption = props.propCaption
 
+    const { optionName, optionNames, options } = props;
     this.state = {
       value: '',
       isShowOption: false,
-      options: props.options,
-      optionName : optionName,
-      optionNames : _optionNames,
+      options: options,
+      optionNames: optionNames || optionName || '',
       isValidDomOptionsCache: false,
       isLocalMode: false
     }
@@ -181,8 +136,7 @@ class InputSelect extends Component {
 
   componentWillReceiveProps(nextProps){
     if (this.props !== nextProps){
-      if (this.props.options !== nextProps.options
-          || nextProps.isUpdateOptions){
+      if (this.props.options !== nextProps.options){
         //New options come from Parent - Clear domCache, Init State
         this._setStateToInit(nextProps.options);
       }
@@ -190,7 +144,7 @@ class InputSelect extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState){
-    if (this.props !== nextProps || nextProps.isUpdateOptions) {
+    if (this.props !== nextProps) {
       nextState.isLocalMode = false;
     } else {
       nextState.isLocalMode = true;
@@ -223,15 +177,18 @@ class InputSelect extends Component {
   }
   _decorateActiveRowComp = (comp) => {
     if (comp){
-      comp.classList.add(CLASS_ROW_ACTIVE);
+      comp.classList.add(CL.OPTIONS_ROW_ACTIVE);
+    }
+    if (this.indexNode) {
+      this.indexNode.textContent = this.indexActiveOption + 1
     }
   }
   _undecorateActiveRowComp = (comp) => {
-     if (!comp){
-       comp = this._getActiveItemComp()
-     }
-     if (comp){
-       comp.classList.remove(CLASS_ROW_ACTIVE);
+     const _comp = !comp
+              ? this._getActiveItemComp()
+              : comp;
+     if (_comp){
+      _comp.classList.remove(CL.OPTIONS_ROW_ACTIVE);
      }
   }
 
@@ -249,9 +206,10 @@ class InputSelect extends Component {
   }
 
   _filterOptions = (options, value) => {
-     const valueFor = value.toLowerCase();
+     const valueFor = value.toLowerCase()
+        ,  _caption = this.propCaption;
      return options.filter( (option, i) => {
-       return option.caption.toLowerCase().indexOf(valueFor) !== -1
+       return option[_caption].toLowerCase().indexOf(valueFor) !== -1
      })
   }
 
@@ -268,7 +226,9 @@ class InputSelect extends Component {
         arr = this._filterOptions(this.props.options, token);
       }
       if (arr.length === 0){
-        arr.push(NO_ITEM);
+        arr.push(_fnNoItem(
+          this.propCaption, token, this.props.isWithInput
+        ))
       }
       this._undecorateActiveRowComp()
       this.indexActiveOption = 0;
@@ -281,15 +241,86 @@ class InputSelect extends Component {
     }
   }
 
+  _startAfterInputAnimation = () => {
+    if (this.state.options.length>MAX_WITHOUT_ANIMATION){
+      this.arrowCell.startAnimation()
+    }
+  }
+  _stopAfterInputAnimation = () => {
+    this.arrowCell.stopAnimation()
+  }
+  _setShowOptions = () => {
+    this.setState(
+      { isShowOption : true },
+      this._stopAfterInputAnimation
+    )
+  }
+  _showOptions = (ms) => {
+    if (this.props.isShowOptionAnim) {
+      this._startAfterInputAnimation()
+      setTimeout( this._setShowOptions, ms )
+    } else {
+      this.setState({ isShowOption: true })
+    }
+  }
+
+  _stepDownOption = () => {
+    const prevComp = this._getActiveItemComp();
+
+    if (prevComp){
+       this._undecorateActiveRowComp(prevComp);
+
+       this.indexActiveOption += 1;
+       if (this.indexActiveOption>=this.state.options.length){
+          this.indexActiveOption = 0;
+          this.optionsComp.scrollTop = 0;
+       }
+
+       const nextComp = this._getActiveItemComp();
+       this._decorateActiveRowComp(nextComp)
+       //this.indexNode.innerHTML = this.indexActiveOption
+
+       const offsetTop = nextComp.offsetTop
+       const scrollTop = this.optionsComp.scrollTop;
+       if ( (offsetTop - scrollTop) > 70){
+          this.optionsComp.scrollTop += (offsetTop - scrollTop - 70);
+       }
+    }
+  }
+
+  _stepUpOption = () => {
+    const prevComp = this._getActiveItemComp();
+    if (prevComp){
+      this._undecorateActiveRowComp(prevComp);
+
+      this.indexActiveOption -= 1;
+      if (this.indexActiveOption < 0){
+        this.indexActiveOption = this.state.options.length - 1;
+        const bottomComp = this._getActiveItemComp()
+        this.optionsComp.scrollTop = bottomComp.offsetTop
+      }
+
+      const nextComp = this._getActiveItemComp();
+      this._decorateActiveRowComp(nextComp);
+      //this.indexNode.innerHTML = this.indexActiveOption
+
+      const offsetTop = nextComp.offsetTop;
+      const scrollTop = this.optionsComp.scrollTop;
+      if ( (offsetTop - scrollTop) < 70){
+        this.optionsComp.scrollTop -= ( 70 - (offsetTop - scrollTop) );
+      }
+    }
+  }
+
   _handleInputKeyDown = (event) => {
     switch(event.keyCode){
       // enter
       case 13:{
          const item = this.state.options[this.indexActiveOption];
 
-         if (item && item.caption){
+         if (item && item[this.propCaption]){
            this.setState({
-             value : item.caption,
+             value : item[this.propCaption],
              isShowOption : false,
              isValidDomOptionsCache : true
            });
@@ -297,111 +328,128 @@ class InputSelect extends Component {
            if (item.value !== 'noresult'){
              this.props.onSelect(item);
            } else {
-             this.props.onSelect(null);
+             if (!this.props.isWithInput) {
+                this.props.onSelect(undefined);
+             } else {
+               this.props.onSelect(_toItem(item, this.propCaption))
+             }
            }
          }
       break; }
-      //escape
-      case 27:{
+      //escape, delete
+      case 27: case 46: {
+        event.preventDefault()
         if (this.state.isShowOption){
           this.setState({ isShowOption : false });
         } else {
           this._undecorateActiveRowComp();
           this._setStateToInit(this.props.options);
-          this.props.onSelect(null);
+          this.props.onSelect(undefined);
         }
       break;}
-      //down
-      case 40:{
+      case 40: //down
         if (!this.state.isShowOption){
-          this.setState({ isShowOption : true });
+          this._showOptions(0)
+          //this.setState({ isShowOption : true });
         } else {
-          event.preventDefault();
-
-          const prevComp = this._getActiveItemComp();
-
-          if (prevComp){
-             this._undecorateActiveRowComp(prevComp);
-
-             this.indexActiveOption += 1;
-             if (this.indexActiveOption>=this.state.options.length){
-                this.indexActiveOption = 0;
-                this.optionsComp.scrollTop = 0;
-             }
-
-             const nextComp = this._getActiveItemComp();
-             this._decorateActiveRowComp(nextComp)
-
-             const offsetTop = nextComp.offsetTop
-             const scrollTop = this.optionsComp.scrollTop;
-             if ( (offsetTop - scrollTop) > 70){
-                this.optionsComp.scrollTop += (offsetTop - scrollTop - 70);
-             }
-          }
+          event.preventDefault()
+          this._stepDownOption()
         }
-      break;}
-      //up
-      case 38:
+        break;
+      case 38: //up
         if (this.state.isShowOption){
-          event.preventDefault();
-
-          const prevComp = this._getActiveItemComp();
-          if (prevComp){
-            this._undecorateActiveRowComp(prevComp);
-
-            this.indexActiveOption -= 1;
-            if (this.indexActiveOption < 0){
-              this.indexActiveOption = this.state.options.length - 1;
-              const bottomComp = this._getActiveItemComp()
-              this.optionsComp.scrollTop = bottomComp.offsetTop
-            }
-
-            const nextComp = this._getActiveItemComp();
-            this._decorateActiveRowComp(nextComp);
-
-            const offsetTop = nextComp.offsetTop;
-            const scrollTop = this.optionsComp.scrollTop;
-            if ( (offsetTop - scrollTop) < 70){
-              this.optionsComp.scrollTop -= ( 70 - (offsetTop - scrollTop) );
-            }
-          }
+          event.preventDefault()
+          this._stepUpOption()
         }
-      break;
-      default: /*console.log(event.keyCode);*/ return;
+        break;
+      default: return undefined;
     }
   }
 
   _handleToggleOptions = () => {
-    this.setState({ isShowOption: !this.state.isShowOption });
+    //this.setState({ isShowOption: !this.state.isShowOption });
+    if (this.state.isShowOption){
+      this.setState({ isShowOption: false })
+    } else {
+      this._showOptions(1)
+    }
   }
 
   _handleClickItem = (item, index, event) => {
+    this._undecorateActiveRowComp()
     this.indexActiveOption = index;
     this.setState({
-      value : item.caption,
+      value : item[this.propCaption],
       isShowOption : false
     });
     this.props.onSelect(item);
   }
 
+  _refIndexNode = n => this.indexNode = n
+
+  _renderOptionsFooter = (nFiltered, nAll) => {
+    return (
+      <div className={`${CL.FOOTER} ${CL.NOT_SELECTED}`}>
+        <span className={CL.FOOTER_INDEX}>
+          <span ref={this._refIndexNode} >
+            {this.indexActiveOption}
+          </span>
+          <span>
+             : {nFiltered}: {nAll}
+          </span>
+        </span>
+        <span className={CL.FOOTER_BTS}>
+          <BtCircle
+             className={CL.FOOTER_MARGIN}
+             style={S.BT_CIRCLE}
+             caption="Dn"
+             onClick={this._stepDownOption}
+          />
+          <BtCircle
+             className={CL.FOOTER_MARGIN}
+             style={S.BT_CIRCLE}
+             caption="Up"
+             onClick={this._stepUpOption}
+          />
+          <BtCircle
+             caption="CL"
+             style={S.BT_CIRCLE}
+             onClick={this.clearInput}
+          />
+        </span>
+      </div>
+    );
+  }
+
+  _refOptionsComp = c => this.optionsComp = c
+
   renderOptions = () => {
-    const {isShowOption, options, isValidDomOptionsCache} = this.state;
+    const {
+            rootOptionsStyle,
+            ItemOptionComp
+          } = this.props
+        , { isShowOption, options, isValidDomOptionsCache } = this.state
+        , _propCaption = this.propCaption;
 
     let _domOptions;
     if (options){
       if (!isValidDomOptionsCache){
          _domOptions = options.map((item, index)=>{
-           const _styleDiv = (index % 2 === 0) ? styles.itemOdd : styles.itemEven;
            return (
              <div
-                className="option-row"
-                style={Object.assign({}, styles.itemDiv, _styleDiv)}
+                //role="option"
+                //aria-selected={this.indexActiveOption === index}
+                //tabIndex="0"
                 key={index}
-                //ref={"v"+index}
+                className={CL.OPTIONS_ROW}
                 ref={c => this[`v${index}`] = c}
                 onClick={this._handleClickItem.bind(this, item, index)}
               >
-                {item.caption}
+                <ItemOptionComp
+                   item={item}
+                   propCaption={_propCaption}
+                />
+                {/*item.caption*/}
             </div>
            )
         });
@@ -411,56 +459,62 @@ class InputSelect extends Component {
       }
     }
 
-    const {width} = this.props
-        ,  _styleOptions = isShowOption
-              ? {display: 'block'} : { display: 'none'}
-        , _styleDivWidth = (width)
-              ? { width: width+'px'} : null
-        , _numberFilteredItems = (options[0] && (options[0].value !== 'noresult') )
+    const { width } = this.props
+        ,  _styleOptions = isShowOption ? S.BLOCK : S.NONE
+        , _rootWidthStyle = _crWidth(width, _styleOptions)
+        , _nFiltered = (options[0] && (options[0].value !== 'noresult') )
               ? options.length : 0
-        , _numberAllItems = this.props.options
+        , _nAll = this.props.options
               ? this.props.options.length : 0;
 
     return (
-        <div style={Object.assign({}, styles.rootOptionDiv, _styleOptions, _styleDivWidth)}>
+        <div
+           className={CL.OPTIONS}
+           style={_rootWidthStyle}
+           data-scrollable={true}
+         >
           <div
-             //ref={c => this.domOptions = c}
-             ref={c => this.optionsComp = c}
-             style={Object.assign({}, styles.optionDiv, _styleOptions, _styleDivWidth)}
+             ref={this._refOptionsComp}
+             className={CL.OPTIONS_DIV}
+             style={{...rootOptionsStyle, ..._rootWidthStyle}}
            >
             {_domOptions}
           </div>
-          <div style={styles.optionsFooter}>
-            <span style={styles.fileredSpan}>
-              Filtered {_numberFilteredItems} : {_numberAllItems}
-            </span>
-          </div>
+          { this._renderOptionsFooter(_nFiltered, _nAll) }
         </div>
-    )
+    );
   }
 
+  _refArrowCell = c => this.arrowCell = c
+
   _crAfterInputEl = () => {
-    const { isLoading, isLoadingFailed, placeholder } = this.props
-        , { isShowOption, optionName, optionNames } = this.state;
+    const {
+           isLoading, isLoadingFailed,
+           placeholder, optionName, onLoadOption
+         } = this.props
+        , { isShowOption, optionNames } = this.state;
 
     let _placeholder, _afterInputEl
     if (!isLoading && !isLoadingFailed){
-       const _styleArrow = isShowOption ? styles.arrowShow : null;
+       const _arrowStyle = isShowOption
+                ? S.ARROW_SHOW
+                : null;
       _placeholder = (placeholder)
           ? placeholder
           : `Select ${optionName}...`;
       _afterInputEl = (
-        <span
-           style={styles.arrowCell}
-           onClick={this._handleToggleOptions}>
-          <span style={Object.assign({}, styles.arrow, _styleArrow)}></span>
-        </span>
+         <ArrowCell
+           ref={this._refArrowCell}
+           arrowStyle={_arrowStyle}
+           onClick={this._handleToggleOptions}
+         />
       );
     } else if (isLoading){
       _placeholder = `Loading ${optionNames}...`;
       _afterInputEl = (
         <span
-          style={styles.spinnerCell}
+          className={CL.SPINNER}
+          //style={S.SPINNER_CELL}
           data-loader="circle"
         >
         </span>
@@ -468,13 +522,12 @@ class InputSelect extends Component {
     } else if (isLoadingFailed) {
        _placeholder=`Loading ${optionNames} Failed`;
        _afterInputEl = (
-        <span
-          style={styles.spinnerFailedCell}
-          data-loader="circle-failed"
-          onClick={this.props.onLoadOption}
-         >
-        </span>
-      )
+         <BtCircle
+           className={CL.SPINNER_FAILED}
+           data-loader="circle-failed"
+           onClick={onLoadOption}
+         />
+       )
     }
     return {
       placeholder: _placeholder,
@@ -482,45 +535,49 @@ class InputSelect extends Component {
     };
   }
 
+  _refDomInputText = c => this.domInputText = c
+
   render(){
-    const { width } = this.props
-        , { value, isLocalMode, isShowOption } = this.state;
-
-    let _styleDivWidth = null;
-    let _styleInputWidth = null;
-    let _styleHr = null;
-    if (width){
-      _styleDivWidth = { width: width + 'px' };
-      _styleInputWidth = { width: (width-30) + 'px'};
-      _styleHr = { width: (width-40) + 'px'};
-    }
-
-    const { afterInputEl, placeholder } = this._crAfterInputEl()
-    const _domOptions = (isLocalMode || isShowOption)
+    const { rootStyle, width } = this.props
+        , { value, isLocalMode, isShowOption } = this.state
+        , _rootWidthStyle = _crWidth(width, rootStyle)
+        , { afterInputEl, placeholder } = this._crAfterInputEl()
+        , _domOptions = (isLocalMode || isShowOption)
               ? this.renderOptions()
               : null;
-
     return (
-      <div style={Object.assign({},styles.rootDiv, _styleDivWidth)}>
+      <div
+        className={CL.ROOT}
+        style={_rootWidthStyle}
+      >
         <input
-           ref={c => this.domInputText = c}
+           ref={this._refDomInputText}
            type="text"
            name="select"
-           autoComplete="new-select"
+           //autoComplete="new-select"
+           autoComplete="off"
            autoCorrect="off"
            autoCapitalize="off"
            spellCheck={false}
            value={value}
-           style={Object.assign({},styles.inputText, _styleInputWidth)}
+           className={CL.INPUT}
            placeholder={placeholder}
            onChange={this._handleInputChange}
            onKeyDown={this._handleInputKeyDown}>
         </input>
         {afterInputEl}
-        <hr style={Object.assign({},styles.inputHr, _styleHr)}></hr>
+        <hr className={CL.INPUT_HR} />
         {_domOptions}
       </div>
     )
+  }
+
+  clearInput = () => {
+    const { options, onSelect } = this.props;
+    this._undecorateActiveRowComp()
+    onSelect(undefined)
+    this._setStateToInit(options)
+    this.setState({ isShowOption : false });
   }
 
   focusInput(){

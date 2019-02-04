@@ -21,10 +21,9 @@ var fGitHubSearchInfo = function fGitHubSearchInfo(_ref) {
       parentProps = _ref.parentProps,
       onCloseItem = _ref.onCloseItem;
 
-  var repo = option.repo,
-      requestType = option.requestType,
-      chartType = option.chartType,
+  var chartType = option.chartType,
       browserType = option.browserType,
+      key = option.key,
       _json$items = json.items,
       items = _json$items === undefined ? [{}] : _json$items,
       library = items[0],
@@ -34,8 +33,7 @@ var fGitHubSearchInfo = function fGitHubSearchInfo(_ref) {
       stargazers_count = _library$stargazers_c === undefined ? '' : _library$stargazers_c,
       _library$pushed_at = library.pushed_at,
       pushed_at = _library$pushed_at === undefined ? '' : _library$pushed_at,
-      _pushed_at = pushed_at.replace('T', ' ').replace('Z', ''),
-      key = repo + '_' + requestType;
+      _pushed_at = pushed_at.replace('T', ' ').replace('Z', '');
 
   return factory.createElement(_GitHubSearchInfo2.default, (0, _extends3.default)({
     key: key,

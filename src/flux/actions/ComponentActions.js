@@ -1,5 +1,7 @@
 import Reflux from 'reflux';
 
+import { ModalDialog as MD } from '../../constants/Type'
+
 export const ComponentActionTypes = {
   SHOW_ABOUT : 'showAbout',
 
@@ -23,6 +25,8 @@ const ComponentActions = Reflux.createActions({
 
   [ComponentActionTypes.SHOW_MODAL_DIALOG] : {}
 });
+ComponentActions.showAlert = ComponentActions
+  .showModalDialog.bind(null, MD.ALERT)
 
 
 export default ComponentActions

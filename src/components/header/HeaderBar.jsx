@@ -73,12 +73,14 @@ class HeaderBar extends Component {
             caption="Library"
             title="Click to show library browser"
             accessKey="l"
+            timeout={0}
             onClick={this._handleClickDynamic.bind(null, BrowserConfig.LIBRARY)}
          />
          <FlatButton
             caption="Watch"
             title="Click to show watch browser"
             accessKey="w"
+            timeout={0}
             onClick={this._handleClickWatch}
          />
          <ButtonSave
@@ -90,6 +92,7 @@ class HeaderBar extends Component {
             caption="About"
             title="Click to show about description"
             accessKey="a"
+            timeout={0}
             onClick={ComponentActions.showAbout}
          />
          <LimitRemainingLabel

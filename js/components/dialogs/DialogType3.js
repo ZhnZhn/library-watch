@@ -97,7 +97,7 @@ var DialogType3 = (0, _withValidationLoad2.default)(_class = function (_Componen
     };
 
     _this._handleClear = function () {
-      _this.inputRepo.setValue('');
+      _this.inputOne.setValue('');
       _this.inputTwo.setValue('');
       _this.setState({ validationMessages: [] });
     };
@@ -122,7 +122,7 @@ var DialogType3 = (0, _withValidationLoad2.default)(_class = function (_Componen
     };
 
     _this._createLoadOption = function () {
-      var repo = _this.inputRepo.getValue(),
+      var repo = _this.inputOne.getValue(),
           intitle = _this.inputTwo.getValue(),
           _this$datesFragment$g2 = _this.datesFragment.getValues(),
           fromDate = _this$datesFragment$g2.fromDate,
@@ -143,6 +143,18 @@ var DialogType3 = (0, _withValidationLoad2.default)(_class = function (_Componen
 
     _this._handleClose = function () {
       _this._handleCloseWithValidation(_this._createValidationMessages);
+    };
+
+    _this._refInputOne = function (c) {
+      return _this.inputOne = c;
+    };
+
+    _this._refInputTwo = function (c) {
+      return _this.inputTwo = c;
+    };
+
+    _this._refDatesFragment = function (c) {
+      return _this.datesFragment = c;
     };
 
     _this.stock = null;
@@ -169,8 +181,6 @@ var DialogType3 = (0, _withValidationLoad2.default)(_class = function (_Componen
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       var _props = this.props,
           caption = _props.caption,
           isShow = _props.isShow,
@@ -192,16 +202,13 @@ var DialogType3 = (0, _withValidationLoad2.default)(_class = function (_Componen
           onClose: this._handleClose
         },
         _react2.default.createElement(_RowInputText2.default, {
-          ref: function ref(c) {
-            return _this2.inputRepo = c;
-          },
+          ref: this._refInputOne,
           caption: oneTitle,
-          placeholder: onePlaceholder
+          placeholder: onePlaceholder,
+          onEnter: this._handleLoad
         }),
         _react2.default.createElement(_RowInputText2.default, {
-          ref: function ref(c) {
-            return _this2.inputTwo = c;
-          },
+          ref: this._refInputTwo,
           caption: twoTitle,
           placeholder: twoPlaceholder
         }),
@@ -212,9 +219,7 @@ var DialogType3 = (0, _withValidationLoad2.default)(_class = function (_Componen
           onSelect: this._handleSelectSortBy
         }),
         _react2.default.createElement(_DatesFragment2.default, {
-          ref: function ref(c) {
-            return _this2.datesFragment = c;
-          },
+          ref: this._refDatesFragment,
           initFromDate: _initFromDate,
           initToDate: _initToDate,
           onTestDate: _onTestDate

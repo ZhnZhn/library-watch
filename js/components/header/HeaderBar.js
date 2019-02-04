@@ -138,12 +138,14 @@ var HeaderBar = function (_Component) {
           caption: 'Library',
           title: 'Click to show library browser',
           accessKey: 'l',
+          timeout: 0,
           onClick: this._handleClickDynamic.bind(null, BrowserConfig.LIBRARY)
         }),
         _react2.default.createElement(_FlatButton2.default, {
           caption: 'Watch',
           title: 'Click to show watch browser',
           accessKey: 'w',
+          timeout: 0,
           onClick: this._handleClickWatch
         }),
         _react2.default.createElement(_ButtonSave2.default, {
@@ -155,6 +157,7 @@ var HeaderBar = function (_Component) {
           caption: 'About',
           title: 'Click to show about description',
           accessKey: 'a',
+          timeout: 0,
           onClick: _ComponentActions2.default.showAbout
         }),
         _react2.default.createElement(_LimitRemainingLabel2.default, {

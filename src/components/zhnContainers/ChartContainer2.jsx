@@ -3,24 +3,22 @@ import React, { Component } from 'react';
 //import PropTypes from "prop-types";
 
 import Store from '../../flux/stores/AppStore';
-import { ChartActionTypes } from '../../flux/actions/ChartActions';
-import { ComponentActionTypes } from '../../flux/actions/ComponentActions';
+import { ChartActionTypes as CHAT } from '../../flux/actions/ChartActions';
+import { ComponentActionTypes as CAT } from '../../flux/actions/ComponentActions';
 
 import CaptionRow from '../zhnAtoms/CaptionRow';
 import SvgHrzResize from '../zhnMoleculs/SvgHrzResize';
 
 import ScrollPane from '../zhnAtoms/ScrollPane';
 
+const CL = "show-popup";
 const CHILD_MARGIN = 36;
 
-const styles = {
-  rootDiv : {
+const S = {
+  ROOT: {
     position: 'relative',
     backgroundColor: '#4D4D4D',
     padding: '0px 0px 3px 0px',
-    //paddingTop : '5px',
-    //paddingLeft : '5px',
-    //border: 'solid 3px #232F3B',
     width: '635px',
     height: 'calc(100vh - 71px)',
     minHeight: '500px',
@@ -30,19 +28,16 @@ const styles = {
     overflowY: 'hidden',
     overflowX : 'hidden'
   },
-  hrzResize : {
-    position : 'absolute',
-    top : '30px',
-    right: '0'
+  BLOCK: {
+    display: 'inline-block'
   },
-  scrollDiv : {
+  NONE: {
+    display: 'none'
+  },
+  SCROLL: {
     overflowY: 'auto',
     height: '92%',
     paddingRight: '10px'
-  },
-  chartDiv : {
-    overflowY: 'auto',
-    height : '680px'
   }
 };
 
@@ -58,11 +53,10 @@ const isInArray = function(arr=[], value){
 };
 
 const compActions = [
-  ChartActionTypes.SHOW_CHART,
-  ChartActionTypes.LOAD_STOCK_COMPLETED,
-  ChartActionTypes.CLOSE_CHART
+  CHAT.SHOW_CHART,
+  CHAT.LOAD_STOCK_COMPLETED,
+  CHAT.CLOSE_CHART
 ];
-
 
 class ChartContainer2 extends Component {
   /*
@@ -73,12 +67,8 @@ class ChartContainer2 extends Component {
     onCloseContainer: PropTypes.func
   }
   */
-
-  constructor(props){
-    super()
-    this.childMargin = CHILD_MARGIN
-    this.state = {}
-  }
+   childMargin = CHILD_MARGIN
+   state = {}
 
    componentWillMount(){
      this.unsubscribe = Store.listen(this._onStore);
@@ -91,9 +81,12 @@ class ChartContainer2 extends Component {
    _onStore = (actionType, data) => {
       if (isInArray(compActions, actionType)) {
         if (data && data.chartType === this.props.chartType){
+          if (this._scrollComp) {
+            this._scrollComp.scrollTop()
+          }
           this.setState(data);
         }
-      } else if (actionType === ComponentActionTypes.CLOSE_CHART_CONTAINER_2){
+      } else if (actionType === CAT.CLOSE_CHART_CONTAINER_2){
          if (data === this.props.chartType){
            this._handleHide();
          }
@@ -103,28 +96,20 @@ class ChartContainer2 extends Component {
    _handleHide = () => {
       const { chartType, browserType, onCloseContainer } = this.props;
       onCloseContainer(chartType, browserType);
-      this.setState({isShow: false});
+      this.setState({ isShow: false });
    }
 
-
-   _renderCharts = () => {
-      return this.state.configs.map((item, index) => {
-        return item;
-      })
-   }
+   _refScroll = c => this._scrollComp = c
 
    render(){
     const  { caption } = this.props
-         , { isShow } = this.state
-         , _styleOpen = (isShow)
-               ? {display: 'inline-block'}
-               : {display: 'none'}
-         , _classOpen = (isShow) ? "show-popup" : undefined;
-
+         , { isShow, configs } = this.state
+         , _styleOpen = isShow ? S.BLOCK : S.NONE
+         , _classOpen = isShow ? CL : undefined;
      return(
         <div
            className={_classOpen}
-           style={Object.assign({},styles.rootDiv, _styleOpen)}
+           style={{ ...S.ROOT, ..._styleOpen }}
         >
           <CaptionRow
              caption={caption}
@@ -137,8 +122,11 @@ class ChartContainer2 extends Component {
             />
           </CaptionRow>
 
-          <ScrollPane style={styles.scrollDiv}>
-              {this._renderCharts()}
+          <ScrollPane
+            ref={this._refScroll}
+            style={S.SCROLL}
+          >
+            {configs}
           </ScrollPane>
 
         </div>

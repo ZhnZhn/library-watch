@@ -23,8 +23,8 @@ const _fnTransform = (items=[]) => {
 const fStackTaggedQuestions = function({
   factory, option, json={}, parentProps, onCloseItem, onWatchItem
 }) {
-  const { repo, requestType, chartType, browserType } = option
-      , key = `${repo}_${requestType}`
+  const { repo, requestType, chartType, browserType, key } = option
+      //, key = `${repo}_${requestType}`
       , _items = _fnTransform(json.items);
 
   return factory.createElement(StackTaggedQuestions, {
@@ -36,7 +36,7 @@ const fStackTaggedQuestions = function({
       onCloseItem : onCloseItem.bind(null, chartType, browserType, key),
       onWatchItem : onWatchItem,
       ...parentProps
-  })
+  });
 }
 
 export default fStackTaggedQuestions

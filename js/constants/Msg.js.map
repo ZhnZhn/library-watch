@@ -1,1 +1,43 @@
-{"version":3,"sources":["../../src/constants/Msg.js"],"names":["Msg","setAlertMsg","option","msg","caption","descr","alertCaption","alertDescr","WATCH_SAVED","WATCH_PREV","WATCH_BACKUP_ZIP","zipName","WATCH_BACKUP_ZIP_FAILED","NOT_FOUND_ITEM","itemType","captionGroup","GROUP_EXISTED","LIST_EXISTED","captionList","ITEM_EXISTED","IS_EMPTY_NAME","item","NOT_SELECTED","NOT_VALID_FORMAT","TEST_DATE_OR_EMPTY","Alert","ALREADY_EXIST","LOADING_IN_PROGRESS","DOUBLE_LOAD_META","DRAG_DROP_ITEM","DRAG_DROP_LIST","LOAD_FROM_JSON","RUNTIME_ERROR","NETWORK_ERROR","SERVICE_UNAVAILABLE"],"mappings":";;;;;AAAA,IAAMA,MAAM;AACVC,eAAc,qBAACC,MAAD,EAASC,GAAT,EAAiB;AAAA,QACtBC,OADsB,GACJD,GADI,CACtBC,OADsB;AAAA,QACbC,KADa,GACJF,GADI,CACbE,KADa;;AAE7BH,WAAOI,YAAP,GAAsBF,OAAtB;AACAF,WAAOK,UAAP,GAAoBF,KAApB;AACD,GALS;;AAOVG,eAAc,4BAPJ;AAQVC,cAAa,qDARH;AASVC,oBAAmB,0BAACC,OAAD;AAAA,gDAAgDA,OAAhD;AAAA,GATT;AAUVC,2BAA0B,gCAVhB;;AAYVC,kBAAiB,wBAACC,QAAD,EAAWC,YAAX;AAAA,oBAAmCD,QAAnC,mBAAyDC,YAAzD;AAAA,GAZP;AAaVC,iBAAgB,uBAACZ,OAAD;AAAA,gCAAgCA,OAAhC;AAAA,GAbN;AAcVa,gBAAe,sBAACC,WAAD,EAAcH,YAAd;AAAA,+BAAiDG,WAAjD,yBAAgFH,YAAhF;AAAA,GAdL;AAeVI,gBAAe,sBAACf,OAAD,EAAUc,WAAV;AAAA,+BAA4Cd,OAA5C,wBAAsEc,WAAtE;AAAA,GAfL;;AAiBVE,iBAAgB,uBAACC,IAAD;AAAA,WAAaA,IAAb;AAAA,GAjBN;AAkBVC,gBAAe,sBAACD,IAAD;AAAA,WAAaA,IAAb;AAAA,GAlBL;;AAoBVE,oBAAmB,0BAACF,IAAD;AAAA,WAAaA,IAAb;AAAA,GApBT;AAqBVG,sBAAqB,oCArBX;;AAuBVC,SAAQ;AACLC,mBAAgB;AACbtB,eAAU,aADG;AAEbC,aAAO;AAFM,KADX;AAKLsB,yBAAsB;AACnBvB,eAAU,qBADS;AAEnBC,aAAO;AAFY,KALjB;AASLuB,sBAAmB;AACjBxB,eAAU,wBADO;AAEjBC,aAAO;AAFU,KATd;AAaLwB,oBAAiB;AACfzB,eAAU,gBADK;AAEfC,aAAQ;AAFO,KAbZ;AAiBLyB,oBAAiB;AACf1B,eAAU,gBADK;AAEfC,aAAQ;AAFO,KAjBZ;AAqBL0B,oBAAiB;AACf3B,eAAU,qBADK;AAEfC,aAAQ;AAFO,KArBZ;AAyBL2B,mBAAgB;AACb5B,eAAU;AADG,KAzBX;AA4BL6B,mBAAgB;AACb7B,eAAU,eADG;AAEbC,aAAO;AAFM,KA5BX;AAgCL6B,yBAAsB;AACpB9B,eAAU,yBADU;AAEpBC,aAAO;AAFa;AAhCjB;AAvBE,CAAZ;;kBA8DeL,G","file":"Msg.js","sourcesContent":["const Msg = {\r\n  setAlertMsg : (option, msg) => {\r\n    const {caption, descr} = msg;\r\n    option.alertCaption = caption;\r\n    option.alertDescr = descr;\r\n  },\r\n\r\n  WATCH_SAVED : 'Watch List has been saved.',\r\n  WATCH_PREV : 'Watch List has not been edited\\nfrom previous save.',\r\n  WATCH_BACKUP_ZIP : (zipName) => `Watch Items have been saved to\\n${zipName}`,\r\n  WATCH_BACKUP_ZIP_FAILED : 'Watch Items Saving was Failed.',\r\n\r\n  NOT_FOUND_ITEM : (itemType, captionGroup) => `The ${itemType} witn name ${captionGroup} not found.`,\r\n  GROUP_EXISTED : (caption) => `Group with name ${caption} is already existed.`,\r\n  LIST_EXISTED : (captionList, captionGroup) => `List with name ${captionList}\\n      In Group ${captionGroup} is already existed.`,\r\n  ITEM_EXISTED : (caption, captionList) => `Item with name ${caption}\\n      In List ${captionList} is already existed.`,\r\n\r\n  IS_EMPTY_NAME : (item) => `${item} name can not be empty.`,\r\n  NOT_SELECTED : (item) => `${item} is not selected.`,\r\n\r\n  NOT_VALID_FORMAT : (item) => `${item} is not in valid format.`,\r\n  TEST_DATE_OR_EMPTY : \"YYYY-MM-DD format must be OR Empty\",\r\n\r\n  Alert : {\r\n     ALREADY_EXIST : {\r\n        caption : 'Check Error',\r\n        descr: 'The chart for this code has already existed in a container. Please, close it and load again.'\r\n     },\r\n     LOADING_IN_PROGRESS : {\r\n        caption : 'Loading In Progress',\r\n        descr: 'Loading the chart for this item-code in progress.\\nIt seems several clicks on button Load repeatedly happend.'\r\n     },\r\n     DOUBLE_LOAD_META : {\r\n       caption : 'Double Load Meta Error',\r\n       descr: 'Meta data for this code already have been loaded.'\r\n     },\r\n     DRAG_DROP_ITEM : {\r\n       caption : 'Drag Drop Item',\r\n       descr : 'Item in List already has been existed.'\r\n     },\r\n     DRAG_DROP_LIST : {\r\n       caption : 'Drag Drop List',\r\n       descr : 'List in Group already has been existed.'\r\n     },\r\n     LOAD_FROM_JSON : {\r\n       caption : 'Load from JSON File',\r\n       descr : 'Can not Load Watch Items from JSON File'\r\n     },\r\n     RUNTIME_ERROR : {\r\n        caption : 'Runtime Error'\r\n     },\r\n     NETWORK_ERROR : {\r\n        caption : 'Network Error',\r\n        descr: 'Network error is encountered. Failed to fetch. May be you are offline, a DNS lookup failure or a resource unreachable.'\r\n     },\r\n     SERVICE_UNAVAILABLE : {\r\n       caption : 'Service Unavailable 503',\r\n       descr: 'Back-end server is at capacity. HTTP Code 503'\r\n     }\r\n  }\r\n}\r\n\r\nexport default Msg\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../src/constants/Msg.js"
+ ],
+ "file": "../../src/constants/Msg.js",
+ "names": [
+  "Msg",
+  "setAlertMsg",
+  "option",
+  "msg",
+  "caption",
+  "descr",
+  "alertCaption",
+  "alertDescr",
+  "WATCH_SAVED",
+  "WATCH_PREV",
+  "WATCH_BACKUP_ZIP",
+  "zipName",
+  "WATCH_BACKUP_ZIP_FAILED",
+  "NOT_FOUND_ITEM",
+  "itemType",
+  "captionGroup",
+  "GROUP_EXISTED",
+  "LIST_EXISTED",
+  "captionList",
+  "ITEM_EXISTED",
+  "IS_EMPTY_NAME",
+  "item",
+  "NOT_SELECTED",
+  "NOT_VALID_FORMAT",
+  "TEST_DATE_OR_EMPTY",
+  "Alert",
+  "LOADING_IN_PROGRESS",
+  "DRAG_DROP_ITEM",
+  "DRAG_DROP_LIST",
+  "LOAD_FROM_JSON",
+  "RUNTIME_ERROR",
+  "NETWORK_ERROR",
+  "SERVICE_UNAVAILABLE"
+ ],
+ "mappings": ";;;;;AAAA,IAAMA,MAAM;AACVC,eAAc,qBAACC,MAAD,EAASC,GAAT,EAAiB;AAAA,QACtBC,OADsB,GACJD,GADI,CACtBC,OADsB;AAAA,QACbC,KADa,GACJF,GADI,CACbE,KADa;;AAE7BH,WAAOI,YAAP,GAAsBF,OAAtB;AACAF,WAAOK,UAAP,GAAoBF,KAApB;AACD,GALS;;AAOVG,eAAc,4BAPJ;AAQVC,cAAa,qDARH;AASVC,oBAAmB,0BAACC,OAAD;AAAA,gDAAgDA,OAAhD;AAAA,GATT;AAUVC,2BAA0B,gCAVhB;;AAYVC,kBAAiB,wBAACC,QAAD,EAAWC,YAAX;AAAA,oBAAmCD,QAAnC,mBAAyDC,YAAzD;AAAA,GAZP;AAaVC,iBAAgB,uBAACZ,OAAD;AAAA,gCAAgCA,OAAhC;AAAA,GAbN;AAcVa,gBAAe,sBAACC,WAAD,EAAcH,YAAd;AAAA,+BAAiDG,WAAjD,yBAAgFH,YAAhF;AAAA,GAdL;AAeVI,gBAAe,sBAACf,OAAD,EAAUc,WAAV;AAAA,+BAA4Cd,OAA5C,wBAAsEc,WAAtE;AAAA,GAfL;;AAiBVE,iBAAgB,uBAACC,IAAD;AAAA,WAAaA,IAAb;AAAA,GAjBN;AAkBVC,gBAAe,sBAACD,IAAD;AAAA,WAAaA,IAAb;AAAA,GAlBL;;AAoBVE,oBAAmB,0BAACF,IAAD;AAAA,WAAaA,IAAb;AAAA,GApBT;AAqBVG,sBAAqB,oCArBX;;AAuBVC,SAAQ;AACLC,yBAAsB;AACnBtB,eAAU,qBADS;AAEnBC,aAAO;AAFY,KADjB;AAKLsB,oBAAiB;AACfvB,eAAU,gBADK;AAEfC,aAAQ;AAFO,KALZ;AASLuB,oBAAiB;AACfxB,eAAU,gBADK;AAEfC,aAAQ;AAFO,KATZ;AAaLwB,oBAAiB;AACfzB,eAAU,qBADK;AAEfC,aAAQ;AAFO,KAbZ;AAiBLyB,mBAAgB;AACb1B,eAAU;AADG,KAjBX;AAoBL2B,mBAAgB;AACb3B,eAAU,eADG;AAEbC,aAAO;AAFM,KApBX;AAwBL2B,yBAAsB;AACpB5B,eAAU,yBADU;AAEpBC,aAAO;AAFa;AAxBjB;AAvBE,CAAZ;;kBAsDeL,G"
+}

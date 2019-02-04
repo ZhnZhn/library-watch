@@ -1,1 +1,22 @@
-{"version":3,"sources":["../../../src/components/zhnAtoms/ScrollPane.jsx"],"names":["ScrollPane","style","className","children","defaultProps"],"mappings":";;;;;;AAAA;;;;;;AAEA;;AAEA,IAAMA,aAAa,SAAbA,UAAa;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,MAAUC,SAAV,QAAUA,SAAV;AAAA,MAAqBC,QAArB,QAAqBA,QAArB;AAAA,SACjB;AAAA;AAAA,MAAK,4BAA0BD,SAA/B,EAA4C,OAAOD,KAAnD;AACIE;AADJ,GADiB;AAAA,CAAnB;;AAMA;;;;;;;;;;AAUAH,WAAWI,YAAX,GAA0B;AACxBF,aAAW;AADa,CAA1B;;kBAIeF,U","file":"ScrollPane.js","sourcesContent":["import React from 'react';\r\n\r\n//import PropTypes from \"prop-types\";\r\n\r\nconst ScrollPane = ({ style, className, children }) => (\r\n  <div className={`with-scroll ${className}`} style={style}>\r\n     {children}\r\n  </div>\r\n);\r\n\r\n/*\r\nScrollPane.propTypes = {\r\n  style : PropTypes.object,\r\n  className: PropTypes.string,\r\n  children: PropTypes.oneOfType([\r\n    PropTypes.arrayOf(PropTypes.node),\r\n    PropTypes.node\r\n  ])\r\n}\r\n*/\r\nScrollPane.defaultProps = {\r\n  className: ''\r\n}\r\n\r\nexport default ScrollPane\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhnAtoms/ScrollPane.js"
+ ],
+ "file": "../../../src/components/zhnAtoms/ScrollPane.js",
+ "names": [
+  "CL",
+  "ScrollPane",
+  "_refNode",
+  "_node",
+  "n",
+  "props",
+  "style",
+  "className",
+  "children",
+  "scrollTop",
+  "Component",
+  "defaultProps"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;;;AAEA;AACA,IAAMA,KAAK,aAAX;;IAEMC,U;;;;;;;;;;;;;;4MAeJC,Q,GAAW;AAAA,aAAK,MAAKC,KAAL,GAAaC,CAAlB;AAAA,K;;AAdX;;;;;;;;;;;;;;6BAgBQ;AAAA,mBACiC,KAAKC,KADtC;AAAA,UACEC,KADF,UACEA,KADF;AAAA,UACSC,SADT,UACSA,SADT;AAAA,UACoBC,QADpB,UACoBA,QADpB;;AAEN,aACE;AAAA;AAAA;AACE,eAAK,KAAKN,QADZ;AAEE,qBAAcF,EAAd,SAAoBO,SAFtB;AAGE,iBAAOD;AAHT;AAKIE;AALJ,OADF;AASD;;;gCAEU;AACT,UAAI,KAAKL,KAAT,EAAgB;AACd,aAAKA,KAAL,CAAWM,SAAX,GAAuB,CAAvB;AACD;AACF;;;EAlCsBC,gB,UAWhBC,Y,GAAe;AACpBJ,aAAW;AADS,C;kBA0BTN,U"
+}

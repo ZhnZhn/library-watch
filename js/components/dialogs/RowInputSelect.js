@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -20,8 +24,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //import PropTypes from "prop-types";
 
-var styles = _DialogStyles2.default;
-var STYLE = {
+var S = {
   CAPTION: {
     width: '120px'
   }
@@ -34,10 +37,10 @@ var RowInputSelect = function RowInputSelect(_ref) {
       onSelect = _ref.onSelect;
   return _react2.default.createElement(
     'div',
-    { style: Object.assign({}, styles.rowDiv) },
+    { style: _DialogStyles2.default.rowDiv },
     _react2.default.createElement(
       'span',
-      { style: Object.assign({}, styles.labelSpan, STYLE.CAPTION) },
+      { style: (0, _extends3.default)({}, _DialogStyles2.default.labelSpan, S.CAPTION) },
       caption
     ),
     _react2.default.createElement(_InputSelect2.default, {

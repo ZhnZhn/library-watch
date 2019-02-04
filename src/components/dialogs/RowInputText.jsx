@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 import InputText from '../zhnAtoms/InputText'
 
-const Styles = {
+const S = {
   ROW_DIV: {
     margin: '5px'
   },
@@ -38,20 +38,24 @@ class RowInputText extends Component {
   /*
   static propTypes = {
     caption: PropTypes.string,
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
+    onEnter: PropTypes.function
   }
   */
+  _refInput = c => this.inputText = c
+
   render(){
-    const { caption, placeholder } = this.props;
+    const { caption, placeholder, onEnter } = this.props;    
     return (
-      <div style={Object.assign({}, Styles.ROW_DIV, Styles.ROOT)}>
-         <span style={Object.assign({}, Styles.LABEL_SPAN, Styles.CAPTION)}>
+      <div style={{ ...S.ROW_DIV, ...S.ROOT }}>
+         <span style={{ ...S.LABEL_SPAN, ...S.CAPTION }}>
            {caption}
          </span>
          <InputText
-            ref={c => this.inputText = c}
-            style={Styles.INPUT_TEXT}
+            ref={this._refInput}
+            style={S.INPUT_TEXT}
             placeholder={placeholder}
+            onEnter={onEnter}
          />
       </div>
     )

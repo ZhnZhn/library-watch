@@ -24,6 +24,9 @@ const StackExchangeApi = {
    getOnCheckResponse(){
      return this.checkResponse
    },
+   crKey({ repo, requestType }){
+     return `${repo}_${requestType}`;
+   },
 
    checkResponse(json={}, option){
      const { error_message, error_name='' } = json

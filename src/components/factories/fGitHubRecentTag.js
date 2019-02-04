@@ -10,13 +10,12 @@ const _base = 'https://api.github.com';
 const fGitHubRecentTag = function({
   factory, option, json=[{name: 'empty'}], parentProps, onCloseItem, onWatchItem
 }){
-  const { repo, requestType, chartType, browserType } = option
-      , key = `${repo}_${requestType}`
+  const { repo, requestType, chartType, browserType, key } = option
       , tagItem = json[0]
       , _onClickDetail = fnFetchJson.bind(null, {
           uri : `${_base}/repos/${option.repo}/commits/${tagItem.commit.sha}`,
           onCatch : fnCatch
-        })
+        });
   return factory.createElement(GitHubRecentTag, {
       key : key,
       repo : repo,
@@ -27,7 +26,7 @@ const fGitHubRecentTag = function({
       onClickDetail : _onClickDetail,
       onWatchItem : onWatchItem,
       ...parentProps
-  })
+  });
 };
 
 export default fGitHubRecentTag

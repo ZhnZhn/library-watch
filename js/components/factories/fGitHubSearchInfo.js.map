@@ -1,1 +1,32 @@
-{"version":3,"sources":["../../../src/components/factories/fGitHubSearchInfo.js"],"names":["fGitHubSearchInfo","factory","option","json","parentProps","onCloseItem","repo","requestType","chartType","browserType","items","library","full_name","stargazers_count","pushed_at","_pushed_at","replace","key","createElement","GitHubSearchInfo","stars_count","caption","bind"],"mappings":";;;;;;;;;;AAEA;;;;;;AAEA,IAAMA,oBAAoB,SAApBA,iBAAoB,OAExB;AAAA,MADAC,OACA,QADAA,OACA;AAAA,MADSC,MACT,QADSA,MACT;AAAA,MADiBC,IACjB,QADiBA,IACjB;AAAA,MADuBC,WACvB,QADuBA,WACvB;AAAA,MADoCC,WACpC,QADoCA,WACpC;;AAAA,MACQC,IADR,GACsDJ,MADtD,CACQI,IADR;AAAA,MACcC,WADd,GACsDL,MADtD,CACcK,WADd;AAAA,MAC2BC,SAD3B,GACsDN,MADtD,CAC2BM,SAD3B;AAAA,MACsCC,WADtC,GACsDP,MADtD,CACsCO,WADtC;AAAA,oBAEuBN,IAFvB,CAEQO,KAFR;AAAA,MAEQA,KAFR,+BAEc,CAAC,EAAD,CAFd;AAAA,MAGMC,OAHN,GAGgBD,MAAM,CAAN,CAHhB;AAAA,2BAIiEC,OAJjE,CAIQC,SAJR;AAAA,MAIQA,SAJR,sCAIkB,OAJlB;AAAA,8BAIiED,OAJjE,CAI2BE,gBAJ3B;AAAA,MAI2BA,gBAJ3B,yCAI4C,EAJ5C;AAAA,2BAIiEF,OAJjE,CAIgDG,SAJhD;AAAA,MAIgDA,SAJhD,sCAI0D,EAJ1D;AAAA,MAKMC,UALN,GAKmBD,UAAUE,OAAV,CAAkB,GAAlB,EAAuB,GAAvB,EAA4BA,OAA5B,CAAoC,GAApC,EAAyC,EAAzC,CALnB;AAAA,MAMMC,GANN,GAMeX,IANf,SAMuBC,WANvB;;AAQA,SAAON,QAAQiB,aAAR,CAAsBC,0BAAtB;AACHF,SAAMA,GADH;AAEHX,UAAOM,SAFJ;AAGHQ,iBAAcP,gBAHX;AAIHC,eAAYC,UAJT;AAKHM,aAAaT,SAAb,SAA0BC,gBAA1B,SAA8CE,UAL3C;AAMHJ,aAAUA,OANP;AAOHN,iBAAcA,YAAYiB,IAAZ,CAAiB,IAAjB,EAAuBd,SAAvB,EAAkCC,WAAlC,EAA+CQ,GAA/C;AAPX,KAQAb,WARA,EAAP;AAUD,CApBD;;kBAsBeJ,iB","file":"fGitHubSearchInfo.js","sourcesContent":["\r\n\r\nimport GitHubSearchInfo from '../items/GitHubSearchInfo';\r\n\r\nconst fGitHubSearchInfo = function({\r\n  factory, option, json, parentProps, onCloseItem\r\n}){\r\n  const { repo, requestType, chartType, browserType } = option\r\n      , { items=[{}] } = json\r\n      , library = items[0]\r\n      , { full_name='empty', stargazers_count='', pushed_at='' } = library\r\n      , _pushed_at = pushed_at.replace('T', ' ').replace('Z', '')\r\n      , key = `${repo}_${requestType}`\r\n\r\n  return factory.createElement(GitHubSearchInfo, {\r\n      key : key,\r\n      repo : full_name,\r\n      stars_count : stargazers_count,\r\n      pushed_at : _pushed_at,\r\n      caption : `${full_name} ${stargazers_count} ${_pushed_at}`,\r\n      library : library,\r\n      onCloseItem : onCloseItem.bind(null, chartType, browserType, key),\r\n      ...parentProps\r\n  })\r\n};\r\n\r\nexport default fGitHubSearchInfo\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/factories/fGitHubSearchInfo.js"
+ ],
+ "file": "../../../src/components/factories/fGitHubSearchInfo.js",
+ "names": [
+  "fGitHubSearchInfo",
+  "factory",
+  "option",
+  "json",
+  "parentProps",
+  "onCloseItem",
+  "chartType",
+  "browserType",
+  "key",
+  "items",
+  "library",
+  "full_name",
+  "stargazers_count",
+  "pushed_at",
+  "_pushed_at",
+  "replace",
+  "createElement",
+  "GitHubSearchInfo",
+  "repo",
+  "stars_count",
+  "caption",
+  "bind"
+ ],
+ "mappings": ";;;;;;;;;;AAEA;;;;;;AAEA,IAAMA,oBAAoB,SAApBA,iBAAoB,OAExB;AAAA,MADAC,OACA,QADAA,OACA;AAAA,MADSC,MACT,QADSA,MACT;AAAA,MADiBC,IACjB,QADiBA,IACjB;AAAA,MADuBC,WACvB,QADuBA,WACvB;AAAA,MADoCC,WACpC,QADoCA,WACpC;;AAAA,MACQC,SADR,GACwCJ,MADxC,CACQI,SADR;AAAA,MACmBC,WADnB,GACwCL,MADxC,CACmBK,WADnB;AAAA,MACgCC,GADhC,GACwCN,MADxC,CACgCM,GADhC;AAAA,oBAEuBL,IAFvB,CAEQM,KAFR;AAAA,MAEQA,KAFR,+BAEc,CAAC,EAAD,CAFd;AAAA,MAGMC,OAHN,GAGgBD,MAAM,CAAN,CAHhB;AAAA,2BAIiEC,OAJjE,CAIQC,SAJR;AAAA,MAIQA,SAJR,sCAIkB,OAJlB;AAAA,8BAIiED,OAJjE,CAI2BE,gBAJ3B;AAAA,MAI2BA,gBAJ3B,yCAI4C,EAJ5C;AAAA,2BAIiEF,OAJjE,CAIgDG,SAJhD;AAAA,MAIgDA,SAJhD,sCAI0D,EAJ1D;AAAA,MAKMC,UALN,GAKmBD,UAAUE,OAAV,CAAkB,GAAlB,EAAuB,GAAvB,EAA4BA,OAA5B,CAAoC,GAApC,EAAyC,EAAzC,CALnB;;AAOA,SAAOd,QAAQe,aAAR,CAAsBC,0BAAtB;AACHT,SAAMA,GADH;AAEHU,UAAOP,SAFJ;AAGHQ,iBAAcP,gBAHX;AAIHC,eAAYC,UAJT;AAKHM,aAAaT,SAAb,SAA0BC,gBAA1B,SAA8CE,UAL3C;AAMHJ,aAAUA,OANP;AAOHL,iBAAcA,YAAYgB,IAAZ,CAAiB,IAAjB,EAAuBf,SAAvB,EAAkCC,WAAlC,EAA+CC,GAA/C;AAPX,KAQAJ,WARA,EAAP;AAUD,CAnBD;;kBAqBeJ,iB"
+}

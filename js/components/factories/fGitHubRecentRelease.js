@@ -26,14 +26,14 @@ var fGitHubRecentRelease = function fGitHubRecentRelease(_ref) {
         requestType = option.requestType,
         chartType = option.chartType,
         browserType = option.browserType,
+        key = option.key,
         tag_name = json.tag_name,
         name = json.name,
         _json$published_at = json.published_at,
         published_at = _json$published_at === undefined ? 'empty' : _json$published_at,
         html_url = json.html_url,
         _version = tag_name ? tag_name : name ? name : 'empty',
-        _published_at = published_at.replace('T', ' ').replace('Z', ''),
-        key = repo + '_' + requestType;
+        _published_at = published_at.replace('T', ' ').replace('Z', '');
 
     return factory.createElement(_GitHubRecentRelease2.default, (0, _extends3.default)({
         key: key,

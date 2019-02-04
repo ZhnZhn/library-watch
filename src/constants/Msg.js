@@ -22,18 +22,10 @@ const Msg = {
   TEST_DATE_OR_EMPTY : "YYYY-MM-DD format must be OR Empty",
 
   Alert : {
-     ALREADY_EXIST : {
-        caption : 'Check Error',
-        descr: 'The chart for this code has already existed in a container. Please, close it and load again.'
-     },
      LOADING_IN_PROGRESS : {
         caption : 'Loading In Progress',
         descr: 'Loading the chart for this item-code in progress.\nIt seems several clicks on button Load repeatedly happend.'
-     },
-     DOUBLE_LOAD_META : {
-       caption : 'Double Load Meta Error',
-       descr: 'Meta data for this code already have been loaded.'
-     },
+     },     
      DRAG_DROP_ITEM : {
        caption : 'Drag Drop Item',
        descr : 'Item in List already has been existed.'

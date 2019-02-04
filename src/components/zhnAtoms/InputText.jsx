@@ -13,6 +13,7 @@ const IS_TOUCH = document &&
 
 const _isKeyClean = ({ keyCode }) => keyCode === 27
  || keyCode === 46;
+const _isKeyEnter = ({ keyCode }) => keyCode === 13;
 
 const BtClear = ({ isValue, onClick }) => (
   <button
@@ -33,7 +34,8 @@ class InputText extends Component {
   */
   static defaultProps = {
     initValue: '',
-    maxLength: 50
+    maxLength: 50,
+    onEnter: () => {}
   }
 
   constructor(props){
@@ -55,9 +57,11 @@ class InputText extends Component {
     this.setState({ value: event.target.value })
   }
 
-  _hKeyDown = (event) => {
+  _hKeyDown = (event) => {     
      if ( _isKeyClean(event) ){
        this.setState({ value: '' })
+     } else if ( _isKeyEnter(event) ) {
+       this.props.onEnter(event.target.value)
      }
   }
 

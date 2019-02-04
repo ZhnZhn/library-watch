@@ -48,7 +48,13 @@ var GitHubApi = {
     return fnFactory(option);
   },
   getOnCheckResponse: function getOnCheckResponse() {
-    return this.checkResponse;
+    return GitHubApi.checkResponse;
+  },
+  crKey: function crKey(_ref) {
+    var repo = _ref.repo,
+        requestType = _ref.requestType;
+
+    return repo + '_' + requestType;
   },
   checkResponse: function checkResponse() {
     return true;

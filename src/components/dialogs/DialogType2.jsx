@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 
 import DateUtils from '../../utils/DateUtils'
 
-//import WithValidation from './WithValidation'
 import crButtons from './crCommandButtons'
 import Dialog from '../zhnMoleculs/Dialog'
 import RowInputText from './RowInputText'
@@ -71,7 +70,7 @@ class DialogType2 extends Component{
  }
 
  _handleClear = () => {
-    this.inputRepo.setValue('')
+    this.inputOne.setValue('')
     this.setState({ validationMessages: [] })
  }
 
@@ -92,7 +91,7 @@ class DialogType2 extends Component{
       return msg;
   }
  _createLoadOption = () => {
-   const repo = this.inputRepo.getValue()
+   const repo = this.inputOne.getValue()
        , { fromDate, toDate } = this.datesFragment.getValues()
        , _fromDate = DateUtils.toUTCMillis(fromDate)/1000
        , _toDate = DateUtils.toUTCMillis(toDate)/1000
@@ -113,7 +112,7 @@ class DialogType2 extends Component{
     )
   }
 
-  _refInputRepo = c => this.inputRepo = c
+  _refInputOne = c => this.inputOne = c
   _refDatesFragment = c => this.datesFragment = c
 
   render(){
@@ -132,9 +131,10 @@ class DialogType2 extends Component{
            onClose={this._handleClose}
        >
         <RowInputText
-           ref={this._refInputRepo}
+           ref={this._refInputOne}
            caption={oneTitle}
            placeholder={onePlaceholder}
+           onEnter={this._handleLoad}
         />
         <RowInputSelect
            caption="Sort By:"

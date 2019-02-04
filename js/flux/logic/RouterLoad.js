@@ -4,10 +4,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _loadGitHub = require('./loadGitHub');
+var _loadImpl = require('./loadImpl');
+
+var _loadImpl2 = _interopRequireDefault(_loadImpl);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var RouterLoad = {
-  LW: _loadGitHub.loadGitHub
+  LW: _loadImpl2.default
 };
 
 exports.default = RouterLoad;

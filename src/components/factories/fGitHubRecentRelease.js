@@ -4,15 +4,14 @@ import GitHubRecentRelease from '../items/GitHubRecentRelease';
 const fGitHubRecentRelease = function({
   factory, option, json, parentProps, onCloseItem, onWatchItem
 }) {
-  const { repo, requestType, chartType, browserType } = option
+  const { repo, requestType, chartType, browserType, key } = option
       , { tag_name, name, published_at='empty', html_url } = json
       , _version = (tag_name)
            ? tag_name
            : (name)
            ? name
            : 'empty'
-      , _published_at = published_at.replace('T', ' ').replace('Z', '')
-      , key = `${repo}_${requestType}`
+      , _published_at = published_at.replace('T', ' ').replace('Z', '');
   return factory.createElement(GitHubRecentRelease, {
       key : key,
       repo : repo,

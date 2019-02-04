@@ -3,21 +3,7 @@ import React, { Component } from 'react';
 //import PropTypes from "prop-types";
 
 import InputDate from '../zhnAtoms/InputDate'
-
-const STYLE = {
-  ROW_DIV : {
-    margin: '5px'
-  },
-  LABEL_SPAN : {
-    color: '#1B75BB',
-    display: 'inline-block',
-    textAlign: 'right',
-    width: '120px',
-    paddingRight: '5px',
-    fontSize: '16px',
-    fontWeight: 'bold'
-  }
-}
+import styles from '../styles/DialogStyles'
 
 const ERROR_FORMAT = "YYYY-MM-DD format must be"
     , FROM_DATE = "From Date"
@@ -37,6 +23,9 @@ class DatesFragment extends Component {
     msgOnNotValidFormat: item => `${item} is not in valid format`
   }
 
+  _refFromDate = c => this.fromDate = c
+  _refToDate = c => this.toDate = c
+
   render(){
     const {
       initFromDate,
@@ -45,23 +34,23 @@ class DatesFragment extends Component {
     } = this.props;
     return (
         <div>
-          <div style={STYLE.ROW_DIV}>
-            <span style={STYLE.LABEL_SPAN}>
+          <div style={styles.rowDiv}>
+            <span style={styles.labelSpan}>
                From Date:
             </span>
             <InputDate
-               ref={c => this.fromDate = c}
+               ref={this._refFromDate}
                initValue={initFromDate}
                errorMsg={ERROR_FORMAT}
                onTest={onTestDate}
             />
          </div>
-         <div style={STYLE.ROW_DIV}>
-            <span style={STYLE.LABEL_SPAN}>
+         <div style={styles.rowDiv}>
+            <span style={styles.labelSpan}>
               To Date:
             </span>
             <InputDate
-                 ref={c => this.toDate = c}
+                 ref={this._refToDate}
                  initValue={initToDate}
                  errorMsg={ERROR_FORMAT}
                  onTest={onTestDate}

@@ -1,1 +1,27 @@
-{"version":3,"sources":["../../../src/components/factories/fGitHubIssues.js"],"names":["fGitHubCommits","factory","option","json","parentProps","onCloseItem","onWatchItem","repo","requestType","chartType","browserType","key","createElement","GitHubIssues","caption","issues","bind"],"mappings":";;;;;;;;;;AAAA;;;;;;AAEA,IAAMA,iBAAiB,SAAjBA,cAAiB,OAEpB;AAAA,QADDC,OACC,QADDA,OACC;AAAA,QADQC,MACR,QADQA,MACR;AAAA,yBADgBC,IAChB;AAAA,QADgBA,IAChB,6BADqB,EACrB;AAAA,QADyBC,WACzB,QADyBA,WACzB;AAAA,QADsCC,WACtC,QADsCA,WACtC;AAAA,QADmDC,WACnD,QADmDA,WACnD;AAAA,QACOC,IADP,GACqDL,MADrD,CACOK,IADP;AAAA,QACaC,WADb,GACqDN,MADrD,CACaM,WADb;AAAA,QAC0BC,SAD1B,GACqDP,MADrD,CAC0BO,SAD1B;AAAA,QACqCC,WADrC,GACqDR,MADrD,CACqCQ,WADrC;AAAA,QAEKC,GAFL,GAEcJ,IAFd,SAEsBC,WAFtB;;AAGD,WAAOP,QAAQW,aAAR,CAAsBC,sBAAtB;AACHF,aAAMA,GADH;AAEHJ,cAAOA,IAFJ;AAGHC,qBAAcA,WAHX;AAIHM,sBAAaP,IAJV;AAKHQ,gBAASZ,IALN;AAMHE,qBAAcA,YAAYW,IAAZ,CAAiB,IAAjB,EAAuBP,SAAvB,EAAkCC,WAAlC,EAA+CC,GAA/C,CANX;AAOHL,qBAAcA;AAPX,OAQAF,WARA,EAAP;AAUD,CAfD;;kBAiBeJ,c","file":"fGitHubIssues.js","sourcesContent":["import GitHubIssues from '../items/GitHubIssues';\r\n\r\nconst fGitHubCommits = function({\r\n  factory, option, json=[], parentProps, onCloseItem, onWatchItem\r\n}) {\r\n  const { repo, requestType, chartType, browserType } = option\r\n      , key = `${repo}_${requestType}`\r\n  return factory.createElement(GitHubIssues, {\r\n      key : key,\r\n      repo : repo,\r\n      requestType : requestType,\r\n      caption : `${repo}`,\r\n      issues : json,\r\n      onCloseItem : onCloseItem.bind(null, chartType, browserType, key),\r\n      onWatchItem : onWatchItem,\r\n      ...parentProps\r\n  })\r\n}\r\n\r\nexport default fGitHubCommits\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/factories/fGitHubIssues.js"
+ ],
+ "file": "../../../src/components/factories/fGitHubIssues.js",
+ "names": [
+  "fGitHubCommits",
+  "factory",
+  "option",
+  "json",
+  "parentProps",
+  "onCloseItem",
+  "onWatchItem",
+  "repo",
+  "requestType",
+  "chartType",
+  "browserType",
+  "key",
+  "createElement",
+  "GitHubIssues",
+  "caption",
+  "issues",
+  "bind"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;;;;;AAEA,IAAMA,iBAAiB,SAAjBA,cAAiB,OAEpB;AAAA,MADDC,OACC,QADDA,OACC;AAAA,MADQC,MACR,QADQA,MACR;AAAA,uBADgBC,IAChB;AAAA,MADgBA,IAChB,6BADqB,EACrB;AAAA,MADyBC,WACzB,QADyBA,WACzB;AAAA,MADsCC,WACtC,QADsCA,WACtC;AAAA,MADmDC,WACnD,QADmDA,WACnD;AAAA,MAECC,IAFD,GAKGL,MALH,CAECK,IAFD;AAAA,MAEOC,WAFP,GAKGN,MALH,CAEOM,WAFP;AAAA,MAGCC,SAHD,GAKGP,MALH,CAGCO,SAHD;AAAA,MAGYC,WAHZ,GAKGR,MALH,CAGYQ,WAHZ;AAAA,MAICC,GAJD,GAKGT,MALH,CAICS,GAJD;;AAMD,SAAOV,QAAQW,aAAR,CAAsBC,sBAAtB;AACHF,SAAMA,GADH;AAEHJ,UAAOA,IAFJ;AAGHC,iBAAcA,WAHX;AAIHM,kBAAaP,IAJV;AAKHQ,YAASZ,IALN;AAMHE,iBAAcA,YAAYW,IAAZ,CAAiB,IAAjB,EAAuBP,SAAvB,EAAkCC,WAAlC,EAA+CC,GAA/C,CANX;AAOHL,iBAAcA;AAPX,KAQAF,WARA,EAAP;AAUD,CAlBD;;kBAoBeJ,c"
+}

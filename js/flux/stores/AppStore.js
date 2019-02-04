@@ -8,6 +8,10 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
+var _typeof2 = require('babel-runtime/helpers/typeof');
+
+var _typeof3 = _interopRequireDefault(_typeof2);
+
 var _reflux = require('reflux');
 
 var _reflux2 = _interopRequireDefault(_reflux);
@@ -70,6 +74,32 @@ var _fnLogLoadError = function _fnLogLoadError(_ref) {
   console.log('%c' + alertDescr, CONSOLE_LOG_STYLE);
 };
 
+var _isObj = function _isObj(obj) {
+  return (typeof obj === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj)) === 'object' && obj !== null;
+};
+
+var _isKeyTop = function _isKeyTop(slice, key) {
+  if (!_isObj(slice)) {
+    return false;
+  }
+  var _configs = slice.configs;
+  if (!Array.isArray(_configs)) {
+    return false;
+  }
+  var _index = _configs.findIndex(function (obj) {
+    return obj.key === key;
+  });
+  if (_index !== -1) {
+    _configs.unshift(_configs[_index]);
+    _configs.splice(_index + 1, 1);
+    return true;
+  } else {
+    return false;
+  }
+  //console.log(slice)
+  //return Boolean(_configs.find(obj => obj.key === key));
+};
+
 var AppStore = _reflux2.default.createStore((0, _extends3.default)({
   listenables: [_BrowserActions2.default, _ComponentActions2.default, _ChartActions2.default, _WatchActions2.default, _LoadingProgressActions2.default],
   charts: {},
@@ -78,7 +108,11 @@ var AppStore = _reflux2.default.createStore((0, _extends3.default)({
     this.initWatchList();
   },
   createInitConfig: function createInitConfig(chartType) {
-    return { chartType: chartType, configs: [], isShow: true };
+    return {
+      chartType: chartType,
+      configs: [],
+      isShow: true
+    };
   },
   getConfigs: function getConfigs(chartType) {
     return this.charts[chartType];
@@ -89,6 +123,12 @@ var AppStore = _reflux2.default.createStore((0, _extends3.default)({
     option.modalDialogType = _Type.ModalDialog.ALERT;
     option.alertItemId = option.alertItemId ? option.alertItemId : option.repo;
     this.trigger(_ComponentActions.ComponentActionTypes.SHOW_MODAL_DIALOG, option);
+  },
+  isKeyTop: function isKeyTop(key, option) {
+    var chartType = option.chartType,
+        slice = this.charts[chartType];
+
+    return _isKeyTop(slice, key);
   },
   onShowChart: function onShowChart(chartType, browserType) {
     var chartCont = this.charts[chartType];

@@ -26,16 +26,19 @@ const NpmApi = {
      return fnFactory(option);
    },
    getOnCheckResponse(){
-     return this.checkResponse
+     return NpmApi.checkResponse;
+   },
+   crKey({repo, requestType, fromDate=''}){
+     return `${repo}_${requestType}_${fromDate}`;
    },
 
    checkResponse(json={}, option){
       const { error } = json
       if (error){
         throw {
-           errCaption : REQUEST_PACKAGE,
-           message : StringUtil.setFirstToUpperCase(error)
-         }
+           errCaption: REQUEST_PACKAGE,
+           message: StringUtil.setFirstToUpperCase(error)
+         };
       }
       return true;
    }

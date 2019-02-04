@@ -38,7 +38,15 @@ var NpmApi = {
     return fnFactory(option);
   },
   getOnCheckResponse: function getOnCheckResponse() {
-    return this.checkResponse;
+    return NpmApi.checkResponse;
+  },
+  crKey: function crKey(_ref) {
+    var repo = _ref.repo,
+        requestType = _ref.requestType,
+        _ref$fromDate = _ref.fromDate,
+        fromDate = _ref$fromDate === undefined ? '' : _ref$fromDate;
+
+    return repo + '_' + requestType + '_' + fromDate;
   },
   checkResponse: function checkResponse() {
     var json = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};

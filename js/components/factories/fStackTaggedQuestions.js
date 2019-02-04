@@ -57,7 +57,7 @@ var fStackTaggedQuestions = function fStackTaggedQuestions(_ref) {
       requestType = option.requestType,
       chartType = option.chartType,
       browserType = option.browserType,
-      key = repo + '_' + requestType,
+      key = option.key,
       _items = _fnTransform(json.items);
 
   return factory.createElement(_StackTaggedQuestions2.default, (0, _extends3.default)({

@@ -42,10 +42,14 @@ var _isKeyClean = function _isKeyClean(_ref) {
   var keyCode = _ref.keyCode;
   return keyCode === 27 || keyCode === 46;
 };
+var _isKeyEnter = function _isKeyEnter(_ref2) {
+  var keyCode = _ref2.keyCode;
+  return keyCode === 13;
+};
 
-var BtClear = function BtClear(_ref2) {
-  var isValue = _ref2.isValue,
-      onClick = _ref2.onClick;
+var BtClear = function BtClear(_ref3) {
+  var isValue = _ref3.isValue,
+      onClick = _ref3.onClick;
   return _react2.default.createElement(
     'button',
     {
@@ -72,6 +76,8 @@ var InputText = (_temp = _class = function (_Component) {
     _this._hKeyDown = function (event) {
       if (_isKeyClean(event)) {
         _this.setState({ value: '' });
+      } else if (_isKeyEnter(event)) {
+        _this.props.onEnter(event.target.value);
       }
     };
 
@@ -145,7 +151,8 @@ var InputText = (_temp = _class = function (_Component) {
   return InputText;
 }(_react.Component), _class.defaultProps = {
   initValue: '',
-  maxLength: 50
+  maxLength: 50,
+  onEnter: function onEnter() {}
 }, _temp);
 exports.default = InputText;
 //# sourceMappingURL=InputText.js.map

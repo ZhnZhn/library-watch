@@ -1,1 +1,44 @@
-{"version":3,"sources":["../../../src/components/factories/fStackTaggedQuestions.js"],"names":["THREE_ZERO","_fnTransform","items","_timeago","Date","now","map","item","title","last_activity_date","owner","display_name","_millisUTC","dateAgo","format","DomUtil","htmlDecode","fStackTaggedQuestions","factory","option","json","parentProps","onCloseItem","onWatchItem","repo","requestType","chartType","browserType","key","_items","createElement","StackTaggedQuestions","caption","bind"],"mappings":";;;;;;;;;;AAAA;;;;AACA;;;;AAEA;;;;;;AAEA,IAAMA,aAAa,KAAnB;;AAEA,IAAMC,eAAe,SAAfA,YAAe,GAAc;AAAA,MAAbC,KAAa,uEAAP,EAAO;;AACjC,MAAMC,WAAW,uBAAQC,KAAKC,GAAL,EAAR,CAAjB;AACA,SAAOH,MAAMI,GAAN,CAAU,UAACC,IAAD,EAAU;AAAA,QAChBC,KADgB,GACwBD,IADxB,CAChBC,KADgB;AAAA,QACTC,kBADS,GACwBF,IADxB,CACTE,kBADS;AAAA,sBACwBF,IADxB,CACWG,KADX;AAAA,QACWA,KADX,+BACiB,EADjB;AAAA,QAEhBC,YAFgB,GAECD,KAFD,CAEhBC,YAFgB;AAAA,QAGlBC,UAHkB,GAGLH,qBAAqB,EAArB,GAA0BT,UAHrB;;AAKxBO,SAAKM,OAAL,GAAeV,SAASW,MAAT,CAAgBF,UAAhB,CAAf;AACAL,SAAKC,KAAL,GAAaO,kBAAQC,UAAR,CAAmBR,KAAnB,CAAb;AACAD,SAAKG,KAAL,CAAWC,YAAX,GAA0BI,kBAAQC,UAAR,CAAmBL,YAAnB,CAA1B;;AAEA,WAAOJ,IAAP;AACF,GAVM,CAAP;AAWD,CAbD;;AAeA,IAAMU,wBAAwB,SAAxBA,qBAAwB,OAE3B;AAAA,MADDC,OACC,QADDA,OACC;AAAA,MADQC,MACR,QADQA,MACR;AAAA,uBADgBC,IAChB;AAAA,MADgBA,IAChB,6BADqB,EACrB;AAAA,MADyBC,WACzB,QADyBA,WACzB;AAAA,MADsCC,WACtC,QADsCA,WACtC;AAAA,MADmDC,WACnD,QADmDA,WACnD;;AAAA,MACOC,IADP,GACqDL,MADrD,CACOK,IADP;AAAA,MACaC,WADb,GACqDN,MADrD,CACaM,WADb;AAAA,MAC0BC,SAD1B,GACqDP,MADrD,CAC0BO,SAD1B;AAAA,MACqCC,WADrC,GACqDR,MADrD,CACqCQ,WADrC;AAAA,MAEKC,GAFL,GAEcJ,IAFd,SAEsBC,WAFtB;AAAA,MAGKI,MAHL,GAGc5B,aAAamB,KAAKlB,KAAlB,CAHd;;AAKD,SAAOgB,QAAQY,aAAR,CAAsBC,8BAAtB;AACHH,SAAMA,GADH;AAEHJ,UAAOA,IAFJ;AAGHC,iBAAcA,WAHX;AAIHO,kBAAaR,IAJV;AAKHtB,WAAQ2B,MALL;AAMHP,iBAAcA,YAAYW,IAAZ,CAAiB,IAAjB,EAAuBP,SAAvB,EAAkCC,WAAlC,EAA+CC,GAA/C,CANX;AAOHL,iBAAcA;AAPX,KAQAF,WARA,EAAP;AAUD,CAjBD;;kBAmBeJ,qB","file":"fStackTaggedQuestions.js","sourcesContent":["import timeago from 'timeago.js';\r\nimport DomUtil from '../../utils/DomUtil';\r\n\r\nimport StackTaggedQuestions from '../items/StackTaggedQuestions';\r\n\r\nconst THREE_ZERO = '000';\r\n\r\nconst _fnTransform = (items=[]) => {\r\n  const _timeago = timeago(Date.now());\r\n  return items.map((item) => {\r\n     const { title, last_activity_date, owner={} } = item\r\n         , { display_name } = owner\r\n         , _millisUTC = last_activity_date + '' + THREE_ZERO\r\n\r\n     item.dateAgo = _timeago.format(_millisUTC);\r\n     item.title = DomUtil.htmlDecode(title);\r\n     item.owner.display_name = DomUtil.htmlDecode(display_name);\r\n\r\n     return item;\r\n  });\r\n}\r\n\r\nconst fStackTaggedQuestions = function({\r\n  factory, option, json={}, parentProps, onCloseItem, onWatchItem\r\n}) {\r\n  const { repo, requestType, chartType, browserType } = option\r\n      , key = `${repo}_${requestType}`\r\n      , _items = _fnTransform(json.items);\r\n\r\n  return factory.createElement(StackTaggedQuestions, {\r\n      key : key,\r\n      repo : repo,\r\n      requestType : requestType,\r\n      caption : `${repo}`,\r\n      items : _items,\r\n      onCloseItem : onCloseItem.bind(null, chartType, browserType, key),\r\n      onWatchItem : onWatchItem,\r\n      ...parentProps\r\n  })\r\n}\r\n\r\nexport default fStackTaggedQuestions\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/factories/fStackTaggedQuestions.js"
+ ],
+ "file": "../../../src/components/factories/fStackTaggedQuestions.js",
+ "names": [
+  "THREE_ZERO",
+  "_fnTransform",
+  "items",
+  "_timeago",
+  "Date",
+  "now",
+  "map",
+  "item",
+  "title",
+  "last_activity_date",
+  "owner",
+  "display_name",
+  "_millisUTC",
+  "dateAgo",
+  "format",
+  "DomUtil",
+  "htmlDecode",
+  "fStackTaggedQuestions",
+  "factory",
+  "option",
+  "json",
+  "parentProps",
+  "onCloseItem",
+  "onWatchItem",
+  "repo",
+  "requestType",
+  "chartType",
+  "browserType",
+  "key",
+  "_items",
+  "createElement",
+  "StackTaggedQuestions",
+  "caption",
+  "bind"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;;;AACA;;;;AAEA;;;;;;AAEA,IAAMA,aAAa,KAAnB;;AAEA,IAAMC,eAAe,SAAfA,YAAe,GAAc;AAAA,MAAbC,KAAa,uEAAP,EAAO;;AACjC,MAAMC,WAAW,uBAAQC,KAAKC,GAAL,EAAR,CAAjB;AACA,SAAOH,MAAMI,GAAN,CAAU,UAACC,IAAD,EAAU;AAAA,QAChBC,KADgB,GACwBD,IADxB,CAChBC,KADgB;AAAA,QACTC,kBADS,GACwBF,IADxB,CACTE,kBADS;AAAA,sBACwBF,IADxB,CACWG,KADX;AAAA,QACWA,KADX,+BACiB,EADjB;AAAA,QAEhBC,YAFgB,GAECD,KAFD,CAEhBC,YAFgB;AAAA,QAGlBC,UAHkB,GAGLH,qBAAqB,EAArB,GAA0BT,UAHrB;;AAKxBO,SAAKM,OAAL,GAAeV,SAASW,MAAT,CAAgBF,UAAhB,CAAf;AACAL,SAAKC,KAAL,GAAaO,kBAAQC,UAAR,CAAmBR,KAAnB,CAAb;AACAD,SAAKG,KAAL,CAAWC,YAAX,GAA0BI,kBAAQC,UAAR,CAAmBL,YAAnB,CAA1B;;AAEA,WAAOJ,IAAP;AACF,GAVM,CAAP;AAWD,CAbD;;AAeA,IAAMU,wBAAwB,SAAxBA,qBAAwB,OAE3B;AAAA,MADDC,OACC,QADDA,OACC;AAAA,MADQC,MACR,QADQA,MACR;AAAA,uBADgBC,IAChB;AAAA,MADgBA,IAChB,6BADqB,EACrB;AAAA,MADyBC,WACzB,QADyBA,WACzB;AAAA,MADsCC,WACtC,QADsCA,WACtC;AAAA,MADmDC,WACnD,QADmDA,WACnD;;AAAA,MACOC,IADP,GAC0DL,MAD1D,CACOK,IADP;AAAA,MACaC,WADb,GAC0DN,MAD1D,CACaM,WADb;AAAA,MAC0BC,SAD1B,GAC0DP,MAD1D,CAC0BO,SAD1B;AAAA,MACqCC,WADrC,GAC0DR,MAD1D,CACqCQ,WADrC;AAAA,MACkDC,GADlD,GAC0DT,MAD1D,CACkDS,GADlD;AAAA,MAGKC,MAHL,GAGc5B,aAAamB,KAAKlB,KAAlB,CAHd;;AAKD,SAAOgB,QAAQY,aAAR,CAAsBC,8BAAtB;AACHH,SAAMA,GADH;AAEHJ,UAAOA,IAFJ;AAGHC,iBAAcA,WAHX;AAIHO,kBAAaR,IAJV;AAKHtB,WAAQ2B,MALL;AAMHP,iBAAcA,YAAYW,IAAZ,CAAiB,IAAjB,EAAuBP,SAAvB,EAAkCC,WAAlC,EAA+CC,GAA/C,CANX;AAOHL,iBAAcA;AAPX,KAQAF,WARA,EAAP;AAUD,CAjBD;;kBAmBeJ,qB"
+}

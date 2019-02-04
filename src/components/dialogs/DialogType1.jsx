@@ -40,7 +40,7 @@ class DialogType1 extends Component {
   }
 
  _handleClear = () => {
-   this.inputRepo.setValue('');
+   this.inputOne.setValue('');
    this.setState({ validationMessages: [] });
  }
 
@@ -53,7 +53,7 @@ class DialogType1 extends Component {
   _createValidationMessages = () => {
     let msg = [];
 
-    const value = this.inputRepo.getValue();
+    const value = this.inputOne.getValue();
     if (!value) {
       msg = msg.concat(`${this.props.oneTitle} is required`)
     }
@@ -64,7 +64,7 @@ class DialogType1 extends Component {
   _createLoadOption = () => {
     const { requestType } = this.props;
     return {
-      repo : this.inputRepo.getValue(),
+      repo : this.inputOne.getValue(),
       requestType
     };
   }
@@ -75,12 +75,14 @@ class DialogType1 extends Component {
      )
    }
 
+  _refInputOne = c => this.inputOne = c
+
   render(){
     const {
-            caption, isShow, onShow,
-            oneTitle, onePlaceholder
-          } = this.props
-        , { validationMessages } = this.state;
+      caption, isShow, onShow,
+      oneTitle, onePlaceholder
+    } = this.props
+    , { validationMessages } = this.state;
 
     return (
        <Dialog
@@ -91,9 +93,10 @@ class DialogType1 extends Component {
            onClose={this._handleClose}
        >
         <RowInputText
-           ref={c => this.inputRepo = c}
+           ref={this._refInputOne}
            caption={oneTitle}
            placeholder={onePlaceholder}
+           onEnter={this._handleLoad}
         />
         <ValidationMessagesFragment
            validationMessages={validationMessages}

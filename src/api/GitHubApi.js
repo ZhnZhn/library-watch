@@ -44,9 +44,12 @@ const GitHubApi = {
      return fnFactory(option);
    },
    getOnCheckResponse(){
-     return this.checkResponse
+     return GitHubApi.checkResponse;
    },
-        
+   crKey({ repo, requestType }){
+     return `${repo}_${requestType}`;
+   },
+
    checkResponse(){
       return true;
    }

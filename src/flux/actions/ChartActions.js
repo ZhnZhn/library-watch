@@ -1,6 +1,13 @@
 import Reflux from 'reflux';
 
 import RouterLoad from '../logic/RouterLoad';
+import Store from '../stores/AppStore'
+import ComponentActions from './ComponentActions'
+
+const ALREADY_LOADED = {
+  caption: 'Already loaded',
+  descr: 'This item already has been loaded\nto container, moved to top.'
+};
 
 export const ChartActionTypes = {
   INIT_AND_SHOW_CHART : 'initAndShowChart',
@@ -11,8 +18,7 @@ export const ChartActionTypes = {
 
   SHOW_CHART : 'showChart',
   CLOSE_CHART : 'closeChart'
-
-}
+};
 
 const ChartActions =  Reflux.createActions({
       [ChartActionTypes.LOAD_STOCK] : {
@@ -27,15 +33,21 @@ const ChartActions =  Reflux.createActions({
 });
 
 ChartActions[ChartActionTypes.LOAD_STOCK].listen(function(chartType, browserType, option){
-
-  this.isLoading = true;
-  this.idLoading = option.key;
-
   const { loadId='LW' } = option;
   option.chartType = chartType;
   option.browserType = browserType;
 
-  RouterLoad[loadId](option, this.completed, this.failed);
+  const { crKey, loadItem } = RouterLoad[loadId];
+  const key = crKey(option);  
+  if ( !(Store.isKeyTop(key, option)) ) {
+    option.key = key
+    this.isLoading = true;
+    this.idLoading = key;
+    loadItem(option, this.completed, this.failed);
+  } else {
+    ComponentActions.showAlert(ALREADY_LOADED)
+    ChartActions.showChart(chartType, browserType)
+  }
 })
 
 

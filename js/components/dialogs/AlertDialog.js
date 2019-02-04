@@ -37,9 +37,7 @@ var _DialogStyles2 = _interopRequireDefault(_DialogStyles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var styles = _DialogStyles2.default;
-
-var STYLE = {
+var S = {
   CAPTION: {
     display: 'inline-block',
     width: '400px',
@@ -64,6 +62,9 @@ var STYLE = {
 };
 
 var ELLIPSIS = '...';
+var _crItemId = function _crItemId(str) {
+  return str ? str.substring(0, 20) + ELLIPSIS : '';
+};
 
 var AlertDialog = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(AlertDialog, _Component);
@@ -100,10 +101,16 @@ var AlertDialog = (_temp = _class = function (_Component) {
           isShow = _props.isShow,
           data = _props.data,
           onClose = _props.onClose,
-          alertCaption = data.alertCaption,
-          alertItemId = data.alertItemId,
-          alertDescr = data.alertDescr,
-          _alertItemId = alertItemId.substring(0, 20) + ELLIPSIS;
+          _ref = data || {},
+          alertCaption = _ref.alertCaption,
+          alertItemId = _ref.alertItemId,
+          alertDescr = _ref.alertDescr,
+          caption = _ref.caption,
+          itemId = _ref.itemId,
+          descr = _ref.descr,
+          _caption = alertCaption || caption || '',
+          _itemId = _crItemId(alertItemId || itemId),
+          _descr = alertDescr || descr || '';
 
       return _react2.default.createElement(
         _ModalDialog2.default,
@@ -114,25 +121,34 @@ var AlertDialog = (_temp = _class = function (_Component) {
         },
         _react2.default.createElement(
           'div',
-          { style: styles.rowDiv },
+          { style: _DialogStyles2.default.rowDiv },
           _react2.default.createElement(
             'span',
-            { style: STYLE.CAPTION },
-            alertCaption + ': ',
+            { style: S.CAPTION },
             _react2.default.createElement(
               'span',
-              { style: STYLE.ITEM_ID, title: alertItemId },
-              _alertItemId
+              null,
+              _caption
+            ),
+            _react2.default.createElement(
+              'span',
+              null,
+              ':'
+            ),
+            _react2.default.createElement(
+              'span',
+              { style: S.ITEM_ID, title: _itemId },
+              _itemId
             )
           )
         ),
         _react2.default.createElement(
           'div',
-          { style: styles.rowDiv },
+          { style: _DialogStyles2.default.rowDiv },
           _react2.default.createElement(
             'p',
-            { style: STYLE.DESCR },
-            alertDescr
+            { style: S.DESCR },
+            _descr
           )
         )
       );

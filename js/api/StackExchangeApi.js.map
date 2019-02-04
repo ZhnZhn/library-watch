@@ -1,1 +1,35 @@
-{"version":3,"sources":["../../src/api/StackExchangeApi.js"],"names":["BASE","_rRequestTypeToUrl","SE_QUESTIONS","repo","sort","fromdate","todate","SE_SEARCH_QUESTIONS","intitle","StackExchangeApi","getRequestUrl","option","fnFactory","requestType","getOnCheckResponse","checkResponse","json","error_message","error_name","errCaption","StringUtil","setFirstToUpperCase","replace","message"],"mappings":";;;;;;AACA;;;;;;AAEA,IAAMA,OAAO,mCAAb;;AAEA;AACA;;AAEA,IAAMC,qBAAqB;AACzBC,gBAAe,4BAA6C;AAAA,QAA1CC,IAA0C,QAA1CA,IAA0C;AAAA,yBAApCC,IAAoC;AAAA,QAApCA,IAAoC,6BAA/B,MAA+B;AAAA,QAAvBC,QAAuB,QAAvBA,QAAuB;AAAA,QAAbC,MAAa,QAAbA,MAAa;;AAC1D,WAAUN,IAAV,0DAAmEK,QAAnE,gBAAsFC,MAAtF,cAAqGF,IAArG,gBAAoHD,IAApH;AACD,GAHwB;AAIzBI,uBAAsB,oCAAkE;AAAA,2BAA/DJ,IAA+D;AAAA,QAA/DA,IAA+D,8BAA1D,KAA0D;AAAA,8BAAnDK,OAAmD;AAAA,QAAnDA,OAAmD,iCAA3C,EAA2C;AAAA,2BAAvCJ,IAAuC;AAAA,QAAvCA,IAAuC,8BAAlC,UAAkC;AAAA,QAAtBC,QAAsB,SAAtBA,QAAsB;AAAA,QAAZC,MAAY,SAAZA,MAAY;;AACtF,QAAI,CAACH,IAAD,IAAS,CAACK,OAAd,EAAuB;AAAEL,aAAO,KAAP;AAAe;AACxC,WAAUH,IAAV,uDAAgEK,QAAhE,gBAAmFC,MAAnF,cAAkGF,IAAlG,gBAAiHD,IAAjH,iBAAiIK,OAAjI;AACD;AAPwB,CAA3B;;AAUA,IAAMC,mBAAmB;AACtBC,eADsB,yBACRC,MADQ,EACD;AACnB,QAAMC,YAAYX,mBAAmBU,OAAOE,WAA1B,CAAlB;AACA,WAAOD,UAAUD,MAAV,CAAP;AACD,GAJqB;AAKtBG,oBALsB,gCAKF;AAClB,WAAO,KAAKC,aAAZ;AACD,GAPqB;AAStBA,eATsB,2BASQ;AAAA,QAAhBC,IAAgB,uEAAX,EAAW;AAAA,QAAPL,MAAO;AAAA,QACpBM,aADoB,GACaD,IADb,CACpBC,aADoB;AAAA,2BACaD,IADb,CACLE,UADK;AAAA,QACLA,UADK,oCACM,EADN;;AAE5B,QAAID,aAAJ,EAAkB;AAChB,YAAM;AACHE,oBAAaC,qBAAWC,mBAAX,CAA+BH,WAAWI,OAAX,CAAmB,GAAnB,EAAwB,GAAxB,CAA/B,CADV;AAEHC,iBAAUH,qBAAWC,mBAAX,CAA+BJ,aAA/B;AAFP,OAAN;AAID;AACA,WAAO,IAAP;AACF;AAlBqB,CAAzB;;kBAqBeR,gB","file":"StackExchangeApi.js","sourcesContent":["\r\nimport StringUtil from '../utils/StringUtil';\r\n\r\nconst BASE = \"https://api.stackexchange.com/2.2\";\r\n\r\n// /questions/{ids}/linked Get the questions that link to the questions identified by a set of ids.\r\n// /questions/{ids}/related Get the questions that are related to the questions identified by a set of ids.\r\n\r\nconst _rRequestTypeToUrl = {\r\n  SE_QUESTIONS : ({ repo, sort='week', fromdate, todate }) => {\r\n    return `${BASE}/questions?page=1&pagesize=50&order=desc&fromdate=${fromdate}&todate=${todate}&sort=${sort}&tagged=${repo}&site=stackoverflow`;\r\n  },\r\n  SE_SEARCH_QUESTIONS : ({ repo='css', intitle='', sort='activity', fromdate, todate}) => {\r\n    if (!repo && !intitle) { repo = 'css'; }\r\n    return `${BASE}/search?page=1&pagesize=50&order=desc&fromdate=${fromdate}&todate=${todate}&sort=${sort}&tagged=${repo}&intitle=${intitle}&site=stackoverflow`;\r\n  }\r\n}\r\n\r\nconst StackExchangeApi = {\r\n   getRequestUrl(option){\r\n     const fnFactory = _rRequestTypeToUrl[option.requestType];\r\n     return fnFactory(option);\r\n   },\r\n   getOnCheckResponse(){\r\n     return this.checkResponse\r\n   },\r\n\r\n   checkResponse(json={}, option){\r\n     const { error_message, error_name='' } = json\r\n     if (error_message){\r\n       throw {\r\n          errCaption : StringUtil.setFirstToUpperCase(error_name.replace('_', ' ')),\r\n          message : StringUtil.setFirstToUpperCase(error_message)\r\n        }\r\n     }\r\n      return true;\r\n   }\r\n};\r\n\r\nexport default StackExchangeApi\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/StackExchangeApi.js"
+ ],
+ "file": "../../src/api/StackExchangeApi.js",
+ "names": [
+  "BASE",
+  "_rRequestTypeToUrl",
+  "SE_QUESTIONS",
+  "repo",
+  "sort",
+  "fromdate",
+  "todate",
+  "SE_SEARCH_QUESTIONS",
+  "intitle",
+  "StackExchangeApi",
+  "getRequestUrl",
+  "option",
+  "fnFactory",
+  "requestType",
+  "getOnCheckResponse",
+  "checkResponse",
+  "crKey",
+  "json",
+  "error_message",
+  "error_name",
+  "errCaption",
+  "StringUtil",
+  "setFirstToUpperCase",
+  "replace",
+  "message"
+ ],
+ "mappings": ";;;;;;AACA;;;;;;AAEA,IAAMA,OAAO,mCAAb;;AAEA;AACA;;AAEA,IAAMC,qBAAqB;AACzBC,gBAAe,4BAA6C;AAAA,QAA1CC,IAA0C,QAA1CA,IAA0C;AAAA,yBAApCC,IAAoC;AAAA,QAApCA,IAAoC,6BAA/B,MAA+B;AAAA,QAAvBC,QAAuB,QAAvBA,QAAuB;AAAA,QAAbC,MAAa,QAAbA,MAAa;;AAC1D,WAAUN,IAAV,0DAAmEK,QAAnE,gBAAsFC,MAAtF,cAAqGF,IAArG,gBAAoHD,IAApH;AACD,GAHwB;AAIzBI,uBAAsB,oCAAkE;AAAA,2BAA/DJ,IAA+D;AAAA,QAA/DA,IAA+D,8BAA1D,KAA0D;AAAA,8BAAnDK,OAAmD;AAAA,QAAnDA,OAAmD,iCAA3C,EAA2C;AAAA,2BAAvCJ,IAAuC;AAAA,QAAvCA,IAAuC,8BAAlC,UAAkC;AAAA,QAAtBC,QAAsB,SAAtBA,QAAsB;AAAA,QAAZC,MAAY,SAAZA,MAAY;;AACtF,QAAI,CAACH,IAAD,IAAS,CAACK,OAAd,EAAuB;AAAEL,aAAO,KAAP;AAAe;AACxC,WAAUH,IAAV,uDAAgEK,QAAhE,gBAAmFC,MAAnF,cAAkGF,IAAlG,gBAAiHD,IAAjH,iBAAiIK,OAAjI;AACD;AAPwB,CAA3B;;AAUA,IAAMC,mBAAmB;AACtBC,eADsB,yBACRC,MADQ,EACD;AACnB,QAAMC,YAAYX,mBAAmBU,OAAOE,WAA1B,CAAlB;AACA,WAAOD,UAAUD,MAAV,CAAP;AACD,GAJqB;AAKtBG,oBALsB,gCAKF;AAClB,WAAO,KAAKC,aAAZ;AACD,GAPqB;AAQtBC,OARsB,wBAQM;AAAA,QAApBb,IAAoB,SAApBA,IAAoB;AAAA,QAAdU,WAAc,SAAdA,WAAc;;AAC1B,WAAUV,IAAV,SAAkBU,WAAlB;AACD,GAVqB;AAYtBE,eAZsB,2BAYQ;AAAA,QAAhBE,IAAgB,uEAAX,EAAW;AAAA,QAAPN,MAAO;AAAA,QACpBO,aADoB,GACaD,IADb,CACpBC,aADoB;AAAA,2BACaD,IADb,CACLE,UADK;AAAA,QACLA,UADK,oCACM,EADN;;AAE5B,QAAID,aAAJ,EAAkB;AAChB,YAAM;AACHE,oBAAaC,qBAAWC,mBAAX,CAA+BH,WAAWI,OAAX,CAAmB,GAAnB,EAAwB,GAAxB,CAA/B,CADV;AAEHC,iBAAUH,qBAAWC,mBAAX,CAA+BJ,aAA/B;AAFP,OAAN;AAID;AACA,WAAO,IAAP;AACF;AArBqB,CAAzB;;kBAwBeT,gB"
+}

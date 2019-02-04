@@ -23,9 +23,6 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 var _class;
 //import PropTypes from "prop-types";
 
-//import WithValidation from './WithValidation'
-
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -98,7 +95,7 @@ var DialogType2 = (0, _withValidationLoad2.default)(_class = function (_Componen
     };
 
     _this._handleClear = function () {
-      _this.inputRepo.setValue('');
+      _this.inputOne.setValue('');
       _this.setState({ validationMessages: [] });
     };
 
@@ -122,7 +119,7 @@ var DialogType2 = (0, _withValidationLoad2.default)(_class = function (_Componen
     };
 
     _this._createLoadOption = function () {
-      var repo = _this.inputRepo.getValue(),
+      var repo = _this.inputOne.getValue(),
           _this$datesFragment$g2 = _this.datesFragment.getValues(),
           fromDate = _this$datesFragment$g2.fromDate,
           toDate = _this$datesFragment$g2.toDate,
@@ -144,8 +141,8 @@ var DialogType2 = (0, _withValidationLoad2.default)(_class = function (_Componen
       _this._handleCloseWithValidation(_this._createValidationMessages);
     };
 
-    _this._refInputRepo = function (c) {
-      return _this.inputRepo = c;
+    _this._refInputOne = function (c) {
+      return _this.inputOne = c;
     };
 
     _this._refDatesFragment = function (c) {
@@ -195,9 +192,10 @@ var DialogType2 = (0, _withValidationLoad2.default)(_class = function (_Componen
           onClose: this._handleClose
         },
         _react2.default.createElement(_RowInputText2.default, {
-          ref: this._refInputRepo,
+          ref: this._refInputOne,
           caption: oneTitle,
-          placeholder: onePlaceholder
+          placeholder: onePlaceholder,
+          onEnter: this._handleLoad
         }),
         _react2.default.createElement(_RowInputSelect2.default, {
           caption: 'Sort By:',
