@@ -9,11 +9,11 @@ const _fnGetWrapper = (props) => {
   return shallow(<OpenClose2 {...props} />);
 }
 
-test('render root div with div `not-selected`, open by default', t=> {
+test('render root div with div `not-selected`, close by default', t=> {
   const wrapper = _fnGetWrapper()
 
   t.true(wrapper.is('div'))
-  t.true(wrapper.state('isOpen'))
+  t.false(wrapper.state('isOpen'))
   t.true(wrapper.find('.not-selected').is('div'))
 })
 
@@ -27,7 +27,7 @@ test('should use prop style for root styling', t => {
   const style = { color: 'green '}
       , wrapper = _fnGetWrapper({ style })
 
-  t.is(wrapper.node.props.style.color, style.color);
+  t.is(wrapper.props().style.color, style.color);
 })
 
 test('should use prop caption for span text', t => {
@@ -41,7 +41,7 @@ test('should use prop styleCaption for span styling', t => {
   const styleCaption = { color: 'green '}
       , wrapper = _fnGetWrapper({ styleCaption })
 
-  t.is(wrapper.find('span').node.props.style.color, styleCaption.color);
+  t.is(wrapper.find('span').props().style.color, styleCaption.color);
 })
 
 
@@ -49,15 +49,16 @@ test('should change isOpen state on click `div.not-selected` and use prop fillOp
   const  fillOpen = 'green'
        , fillClose = 'yellow'
        , wrapper = _fnGetWrapper({ fillOpen, fillClose })
+       , div = wrapper.find('div.not-selected')
 
-  t.true(wrapper.state('isOpen'))
-  t.is(wrapper.find('path').node.props.fill, fillOpen);
-
-  wrapper.find('div.not-selected').simulate('click')
   t.false(wrapper.state('isOpen'))
-  t.is(wrapper.find('path').node.props.fill, fillClose);
+  t.is(wrapper.find('path').props().fill, fillClose);
 
-  wrapper.find('div.not-selected').simulate('click')
+  div.simulate('click')
   t.true(wrapper.state('isOpen'))
-  t.is(wrapper.find('path').node.props.fill, fillOpen);
+  t.is(wrapper.find('path').props().fill, fillOpen);
+
+  div.simulate('click')
+  t.false(wrapper.state('isOpen'))
+  t.is(wrapper.find('path').props().fill, fillClose);
 })

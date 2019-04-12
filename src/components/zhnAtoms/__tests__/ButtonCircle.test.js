@@ -11,10 +11,10 @@ const _fnGetWrapper = (props) => {
   return shallow(<ButtonCircle {...props} />);
 }
 
-test('render root span, with class .not-selected', t => {
+test('render root button, with class .not-selected', t => {
    const wrapper = _fnGetWrapper();
 
-   t.true(wrapper.is('span'));
+   t.true(wrapper.is('button'));
    t.true(wrapper.hasClass('not-selected'));
 });
 
@@ -33,12 +33,14 @@ test('should use prop caption for custom text', t => {
    t.is(wrapper.text(), caption );
 });
 
+
 test('should use prop style for custom style root', t => {
    const style = { color: 'green' }
        , wrapper = _fnGetWrapper({ style })
 
-   t.is(wrapper.node.props.style.color, style.color);
+   t.is(wrapper.props().style.color, style.color);
 });
+
 
 test('should use prop onClick for click event on root', t => {
   const onClickStub = sinon.spy()

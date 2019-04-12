@@ -19,7 +19,7 @@ test ('should use prop style for custom styling', t => {
     const style = { color: 'green'}
         , wrapper = _fnGetWrapper({ value: 100, style })
 
-    t.is(wrapper.node.props.style.color, style.color);
+    t.is(wrapper.props().style.color, style.color);
 })
 
 test('should insert comma to separate groups of thousands', t => {

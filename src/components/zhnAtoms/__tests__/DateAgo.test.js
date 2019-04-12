@@ -2,7 +2,7 @@ import React from 'react';
 
 import test from 'ava';
 import { shallow } from 'enzyme';
-import { spy } from 'sinon';
+
 
 import zhnSpy from '../../../../js/components/zhnAtoms/__tests__/zhnSpy';
 
@@ -27,7 +27,7 @@ test('render root span with props dateAgo and `display: none` date', t => {
    t.deepEqual(spanDateAgo.props().style, STYLE.DATE_AGO)
 
    const spanDate = wrapper.childAt(1)
-   t.is(spanDate.props().style.display, STYLE.DISPLAY_NONE.display)
+   t.is(spanDate.props().style.display, STYLE.NONE.display)
 })
 
 test('should on click on dateAgo preventDefault, stopPropagation and change state isShowDate', t => {

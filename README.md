@@ -3,7 +3,7 @@
 With it, you can view information about **GitHub's** repositories, **NPM's** packages, **StackOverflows's** questions.   
 Information API providers : [GitHub](https://www.github.com/), [NPM](https://www.npmjs.com/), [Stack Exchange](https://stackexchange.com/).    
 
-![alt text](screenshots/library-watch.png?raw=true "Library Watch")
+![alt text](screencast/library-watch.png?raw=true "Library Watch")
 
 **1.** **Choose an information Browser from the header bar.**  
 **2.** **Choose an information menu item in a Browser.**   

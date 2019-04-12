@@ -18,7 +18,7 @@ test('should use prop style', t => {
    const style = { color: 'green'}
        , wrapper = _fnGetWrapper({ style });
 
-    t.is(wrapper.node.props.style.color, style.color);
+    t.is(wrapper.props().style.color, style.color);
 })
 
 test('should have display none with prop isShow false', t => {
@@ -27,7 +27,7 @@ test('should have display none with prop isShow false', t => {
       , wrapper = _fnGetWrapper({ isShow : false, style });
 
   //t.true(wrapper.hasClass(''));
-  t.is(wrapper.node.props.style.display, notShowStyle.display);
+  t.is(wrapper.props().style.display, notShowStyle.display);
 })
 
 
@@ -37,5 +37,5 @@ test('should have class `show-popup` and display block with prop isShow true', t
       , wrapper = _fnGetWrapper({ isShow : true, style });
 
   t.true(wrapper.hasClass('show-popup'))
-  t.is(wrapper.node.props.style.display, showStyle.display);
+  t.is(wrapper.props().style.display, showStyle.display);
 })

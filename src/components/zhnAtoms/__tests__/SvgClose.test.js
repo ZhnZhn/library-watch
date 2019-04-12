@@ -21,7 +21,7 @@ test('should use prop style for custom styling root', t => {
    const style = { color: 'green' }
        , wrapper = _fnGetWrapper({ style })
 
-   t.is(wrapper.node.props.style.color, style.color)
+   t.is(wrapper.props().style.color, style.color)
 })
 
 test('should use prop onClose for click event on root', t => {

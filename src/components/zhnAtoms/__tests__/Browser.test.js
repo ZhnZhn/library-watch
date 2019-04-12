@@ -14,20 +14,21 @@ test('render root div display none by default', t => {
   const wrapper = _fnGetWrapper();
 
   t.true(wrapper.is('div'))
-  t.is(wrapper.node.props.style.display, 'none')
+  t.is(wrapper.props().style.display, 'none')
 })
 
 test('should use prop isShow', t => {
    const wrapper = _fnGetWrapper({ isShow: true })
 
    t.true(wrapper.hasClass('show-popup'))
-   t.is(wrapper.node.props.style.display, 'block');
+   t.is(wrapper.props().style.display, 'block');
 })
+
 
 test('should use prop style', t => {
    const style = { color : "green" }
       , wrapper = _fnGetWrapper({ isShow: true, style })
 
-   t.is(wrapper.node.props.style.display, 'block');
-   t.is(wrapper.node.props.style.color, style.color);
+   t.is(wrapper.props().style.display, 'block');
+   t.is(wrapper.props().style.color, style.color);
 })

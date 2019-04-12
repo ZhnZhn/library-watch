@@ -25,8 +25,8 @@ test('should use props isSelected for inner style root', t => {
          }
        , wrapper = _fnGetWrapper({ isSelected : true })
 
-   t.is(wrapper.node.props.style.color, selected.color);
-   t.is(wrapper.node.props.style.borderColor, selected.borderColor);
+   t.is(wrapper.props().style.color, selected.color);
+   t.is(wrapper.props().style.borderColor, selected.borderColor);
 })
 
 test('should use prop onClick for click event on root', t => {

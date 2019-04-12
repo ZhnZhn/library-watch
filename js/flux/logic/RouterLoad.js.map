@@ -1,13 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/flux/logic/RouterLoad.js"
- ],
- "file": "../../../src/flux/logic/RouterLoad.js",
- "names": [
-  "RouterLoad",
-  "LW",
-  "loadImpl"
- ],
- "mappings": ";;;;;;AACA;;;;;;AAEA,IAAMA,aAAa;AACjBC,MAAIC;AADa,CAAnB;;kBAIeF,U"
-}
+{"version":3,"sources":["../../../src/flux/logic/RouterLoad.js"],"names":["RouterLoad","LW","loadImpl"],"mappings":";;;;;;AACA;;;;;;AAEA,IAAMA,aAAa;AACjBC,MAAIC;AADa,CAAnB;;kBAIeF,U","file":"RouterLoad.js","sourcesContent":["\r\nimport loadImpl from './loadImpl';\r\n\r\nconst RouterLoad = {\r\n  LW: loadImpl\r\n};\r\n\r\nexport default RouterLoad\r\n"]}

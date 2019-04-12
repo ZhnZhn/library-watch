@@ -28,5 +28,5 @@ test('should use prop style', t => {
    const style = { color : 'green'}
        , wrapper = _fnGetWrapper({ style });
 
-    t.is(wrapper.node.props.style.color, style.color);
+    t.is(wrapper.props().style.color, style.color);
 })

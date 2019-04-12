@@ -11,19 +11,23 @@ const _fnGetWrapper = (props) => {
   return shallow(<MenuBadge {...props} />);
 }
 
+/*
 test('render root span with class `menu__badge`', t => {
    const wrapper = _fnGetWrapper()
 
    t.true(wrapper.is('span'))
    t.true(wrapper.hasClass('menu__badge'))
 })
+*/
 
+/*
 test('should use prop counter', t => {
     const counter = 10
         , wrapper = _fnGetWrapper({ counter})
 
     t.is(parseInt(wrapper.text(), 10), counter);
 })
+*/
 
 
 
