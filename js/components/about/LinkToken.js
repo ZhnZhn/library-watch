@@ -1,34 +1,43 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var LinkToken = function LinkToken(props) {
-  var isFirstBlank = props.isFirstBlank,
-      color = props.color,
-      href = props.href,
-      title = props.title,
-      children = props.children,
-      _firstChart = isFirstBlank ? ' ' : undefined;
+var CL = "github-link";
 
+var S = {
+  WRAPPER: {
+    paddingLeft: 8,
+    paddingRight: 8
+  }
+};
+
+var LinkToken = function LinkToken(_ref) {
+  var color = _ref.color,
+      href = _ref.href,
+      title = _ref.title,
+      children = _ref.children;
   return _react2.default.createElement(
-    'a',
-    {
-      className: 'github-link',
-      style: { color: color },
-      target: '_blank',
-      href: href,
-      title: title
-    },
-    _firstChart,
-    children
+    "span",
+    { style: S.WRAPPER },
+    _react2.default.createElement(
+      "a",
+      {
+        className: CL,
+        style: { color: color },
+        target: "_blank",
+        href: href,
+        title: title
+      },
+      children
+    )
   );
 };
 

@@ -33,7 +33,7 @@
       "chartContainerCaption" : "GitHub Recent Release",
       "dialogType" : "DialogType1",
       "dialogProps" : {
-        "oneTitle" : "Owner/Repo:",
+        "oneTitle" : "Owner/Repo",
         "onePlaceholder" : "owner/repository",
         "requestType" : "GH_RELEASE_RECENT"
       }
@@ -45,7 +45,7 @@
       "chartContainerCaption" : "GitHub Likely Recent Version Tag",
       "dialogType" : "DialogType1",
       "dialogProps" : {
-        "oneTitle" : "Owner/Repo:",
+        "oneTitle" : "Owner/Repo",
         "onePlaceholder" : "owner/repository",
         "requestType" : "GH_TAGS"
       }
@@ -57,7 +57,7 @@
       "chartContainerCaption" : "GitHub Search Information",
       "dialogType" : "DialogType1",
       "dialogProps" : {
-        "oneTitle" : "Owner/Repo:",
+        "oneTitle" : "Owner/Repo",
         "onePlaceholder" : "owner/repository",
         "requestType" : "GH_SEARCH_INFO"
       }
@@ -69,7 +69,7 @@
       "chartContainerCaption" : "GitHub Open Pull Requests (Recent 30)",
       "dialogType" : "DialogType1",
       "dialogProps" : {
-        "oneTitle" : "Owner/Repo:",
+        "oneTitle" : "Owner/Repo",
         "onePlaceholder" : "owner/repository",
         "requestType" : "GH_PULL_REQUESTS"
       }
@@ -81,7 +81,7 @@
       "chartContainerCaption" : "GitHub Commits (Recent 30)",
       "dialogType" : "DialogType1",
       "dialogProps" : {
-        "oneTitle" : "Owner/Repo:",
+        "oneTitle" : "Owner/Repo",
         "onePlaceholder" : "owner/repository",
         "requestType" : "GH_COMMITS"
       }
@@ -93,7 +93,7 @@
       "chartContainerCaption" : "GitHub Open Issues (Recent 30)",
       "dialogType" : "DialogType1",
       "dialogProps" : {
-        "oneTitle" : "Owner/Repo:",
+        "oneTitle" : "Owner/Repo",
         "onePlaceholder" : "owner/repository",
         "requestType" : "GH_ISSUES"
       }
@@ -106,7 +106,7 @@
       "chartContainerCaption" : "NPM Recent Version",
       "dialogType" : "DialogType1",
       "dialogProps" : {
-        "oneTitle" : "Package:",
+        "oneTitle" : "Package",
         "requestType" : "NPM_RECENT_VERSION"
       }
     },
@@ -118,7 +118,7 @@
       "chartContainerCaption" : "NPM Downloads Recent Month",
       "dialogType" : "DialogType1",
       "dialogProps" : {
-        "oneTitle" : "Package:",
+        "oneTitle" : "Package",
         "requestType" : "NPM_DOWNLOADS_RECENT_MONTH"
       }
    },
@@ -129,7 +129,7 @@
      "chartContainerCaption" : "NPM Package Downloads",
      "dialogType" : "DialogType3A",
      "dialogProps" : {
-       "oneTitle" : "Package:",
+       "oneTitle" : "Package",
        "requestType" : "NPM_DOWNLOADS"
      }
   },
@@ -141,7 +141,7 @@
      "chartContainerCaption" : "Stack Overflow Tagged Questions",
      "dialogType" : "DialogType2",
      "dialogProps" : {
-       "oneTitle" : "Tag:",
+       "oneTitle" : "Tag",
        "requestType" : "SE_QUESTIONS"
      }
   },
@@ -152,7 +152,7 @@
     "chartContainerCaption" : "Stack Overflow Search Questions",
     "dialogType" : "DialogType3",
     "dialogProps" : {
-      "oneTitle" : "Tagged:",
+      "oneTitle" : "Tagged",
       "twoTitle" : "InTitle",
       "requestType" : "SE_SEARCH_QUESTIONS"
     }

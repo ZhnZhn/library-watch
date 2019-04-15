@@ -1,8 +1,7 @@
 import React from 'react';
-
 //import PropTypes from "prop-types";
 
-const STYLE = {
+const S = {
   ROOT_DIV : {
     paddingLeft: '10px',
     paddingTop: '5px',
@@ -27,10 +26,10 @@ const STYLE = {
 
 const ValidationMessage = ({ index, msg }) => (
   <div>
-    <div style={STYLE.NUMBER_DIV}>{index+1}</div>
-    <span style={STYLE.MSG_SPAN}>{msg}</span>
+    <div style={S.NUMBER_DIV}>{index+1}</div>
+    <span style={S.MSG_SPAN}>{msg}</span>
   </div>
-)
+);
 /*
 ValidationMessage.propTypes = {
   index: PropTypes.number,
@@ -38,7 +37,7 @@ ValidationMessage.propTypes = {
 }
 */
 
-const ValidationMessagesFragment = (props) => {
+const ValidationMessages = (props) => {
    const { validationMessages } = props;
 
    if (!Array.isArray(validationMessages)){
@@ -54,7 +53,7 @@ const ValidationMessagesFragment = (props) => {
   }
 
   return (
-      <div style={STYLE.ROOT_DIV}>
+      <div style={S.ROOT_DIV}>
         {_renderValidationMessages(validationMessages)}
       </div>
   );
@@ -70,4 +69,4 @@ ValidationMessagesFragment.propTypes = {
 }
 */
 
-export default ValidationMessagesFragment
+export default ValidationMessages

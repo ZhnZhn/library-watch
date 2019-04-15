@@ -20,7 +20,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class;
+var _dec, _dec2, _class;
 //import PropTypes from "prop-types";
 
 var _react = require('react');
@@ -39,21 +39,13 @@ var _Dialog = require('../zhnMoleculs/Dialog');
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
 
-var _RowInputText = require('./RowInputText');
+var _DialogCell = require('./DialogCell');
 
-var _RowInputText2 = _interopRequireDefault(_RowInputText);
+var _DialogCell2 = _interopRequireDefault(_DialogCell);
 
-var _DatesFragment = require('./DatesFragment');
+var _Decorators = require('./decorators/Decorators');
 
-var _DatesFragment2 = _interopRequireDefault(_DatesFragment);
-
-var _ValidationMessagesFragment = require('./ValidationMessagesFragment');
-
-var _ValidationMessagesFragment2 = _interopRequireDefault(_ValidationMessagesFragment);
-
-var _withValidationLoad = require('./decorators/withValidationLoad');
-
-var _withValidationLoad2 = _interopRequireDefault(_withValidationLoad);
+var _Decorators2 = _interopRequireDefault(_Decorators);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61,7 +53,7 @@ var _initFromDate = _DateUtils2.default.getFromDate(1),
     _initToDate = _DateUtils2.default.getToDate(),
     _onTestDate = _DateUtils2.default.isValidDate;
 
-var DialogType3A = (0, _withValidationLoad2.default)(_class = function (_Component) {
+var DialogType3A = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2.default.withValidationLoad, _dec(_class = _dec2(_class = function (_Component) {
   (0, _inherits3.default)(DialogType3A, _Component);
 
   /*
@@ -139,10 +131,15 @@ var DialogType3A = (0, _withValidationLoad2.default)(_class = function (_Compone
     };
 
     _this.stock = null;
+    _this.toolbarButtons = _this._createType2WithToolbar(props, {
+      hasDate: true
+    });
     _this._commandButtons = (0, _crCommandButtons2.default)({
       inst: _this, isDefault: true
     });
     _this.state = {
+      isShowLabels: true,
+      isShowDate: true,
       validationMessages: []
     };
     return _this;
@@ -167,7 +164,10 @@ var DialogType3A = (0, _withValidationLoad2.default)(_class = function (_Compone
           onShow = _props.onShow,
           oneTitle = _props.oneTitle,
           onePlaceholder = _props.onePlaceholder,
-          validationMessages = this.state.validationMessages;
+          _state = this.state,
+          isShowLabels = _state.isShowLabels,
+          isShowDate = _state.isShowDate,
+          validationMessages = _state.validationMessages;
 
 
       return _react2.default.createElement(
@@ -179,26 +179,35 @@ var DialogType3A = (0, _withValidationLoad2.default)(_class = function (_Compone
           onShowChart: onShow,
           onClose: this._handleClose
         },
-        _react2.default.createElement(_RowInputText2.default, {
+        _react2.default.createElement(_DialogCell2.default.Toolbar, {
+          isShow: true,
+          buttons: this.toolbarButtons
+        }),
+        _react2.default.createElement(_DialogCell2.default.RowInputText, {
           ref: this._refInputOne,
+          isShowLabel: isShowLabels,
           caption: oneTitle,
           placeholder: onePlaceholder,
           onEnter: this._handleLoad
         }),
-        _react2.default.createElement(_DatesFragment2.default, {
-          ref: this._refInputDates,
-          initFromDate: _initFromDate,
-          initToDate: _initToDate,
-          onTestDate: _onTestDate
-        }),
-        _react2.default.createElement(_ValidationMessagesFragment2.default, {
+        _react2.default.createElement(
+          _DialogCell2.default.ShowHide,
+          { isShow: isShowDate },
+          _react2.default.createElement(_DialogCell2.default.Dates, {
+            ref: this._refInputDates,
+            isShowLabels: isShowLabels,
+            initFromDate: _initFromDate,
+            initToDate: _initToDate,
+            onTestDate: _onTestDate
+          })
+        ),
+        _react2.default.createElement(_DialogCell2.default.ValidationMessages, {
           validationMessages: validationMessages
         })
       );
     }
   }]);
   return DialogType3A;
-}(_react.Component)) || _class;
-
+}(_react.Component)) || _class) || _class);
 exports.default = DialogType3A;
 //# sourceMappingURL=DialogType3A.js.map

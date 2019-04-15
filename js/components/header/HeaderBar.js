@@ -60,6 +60,8 @@ var _LimitRemainingLabel2 = _interopRequireDefault(_LimitRemainingLabel);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var TITLE = "Library Watch v0.12.0";
+
 var S = {
   ROOT_DIV: {
     position: 'relative',
@@ -128,11 +130,11 @@ var HeaderBar = function (_Component) {
         _react2.default.createElement(_LoadingProgress2.default, { store: store }),
         _react2.default.createElement(_IconAppLogo2.default, {
           className: 'header__icon-app',
-          title: 'Library Watch v0.11.0'
+          title: TITLE
         }),
         _react2.default.createElement(_AppLabel2.default, {
           style: S.APP_LABEL,
-          caption: 'Library Watch v0.11.0'
+          caption: TITLE
         }),
         _react2.default.createElement(_FlatButton2.default, {
           caption: 'Library',

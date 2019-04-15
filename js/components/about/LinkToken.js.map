@@ -1,1 +1,20 @@
-{"version":3,"sources":["../../../src/components/about/LinkToken.jsx"],"names":["LinkToken","props","isFirstBlank","color","href","title","children","_firstChart","undefined"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,YAAY,SAAZA,SAAY,CAACC,KAAD,EAAW;AAAA,MACnBC,YADmB,GAC4BD,KAD5B,CACnBC,YADmB;AAAA,MACLC,KADK,GAC4BF,KAD5B,CACLE,KADK;AAAA,MACEC,IADF,GAC4BH,KAD5B,CACEG,IADF;AAAA,MACQC,KADR,GAC4BJ,KAD5B,CACQI,KADR;AAAA,MACeC,QADf,GAC4BL,KAD5B,CACeK,QADf;AAAA,MAErBC,WAFqB,GAENL,YAAD,GAAiB,GAAjB,GAAuBM,SAFhB;;AAG3B,SACE;AAAA;AAAA;AACE,iBAAU,aADZ;AAEE,aAAO,EAACL,OAAOA,KAAR,EAFT;AAGE,cAAO,QAHT;AAIE,YAAMC,IAJR;AAKE,aAAOC;AALT;AAOGE,eAPH;AAQGD;AARH,GADF;AAYD,CAfD;;kBAiBeN,S","file":"LinkToken.js","sourcesContent":["import React from 'react';\r\n\r\nconst LinkToken = (props) => {\r\n  const { isFirstBlank, color, href, title, children } = props\r\n      , _firstChart = (isFirstBlank) ? ' ' : undefined;\r\n  return (\r\n    <a\r\n      className=\"github-link\"\r\n      style={{color: color}}\r\n      target=\"_blank\"\r\n      href={href}\r\n      title={title}\r\n    >\r\n      {_firstChart}\r\n      {children}\r\n    </a>\r\n  );\r\n};\r\n\r\nexport default LinkToken\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/about/LinkToken.js"
+ ],
+ "file": "../../../src/components/about/LinkToken.js",
+ "names": [
+  "CL",
+  "S",
+  "WRAPPER",
+  "paddingLeft",
+  "paddingRight",
+  "LinkToken",
+  "color",
+  "href",
+  "title",
+  "children"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,KAAK,aAAX;;AAEA,IAAMC,IAAI;AACRC,WAAS;AACPC,iBAAa,CADN;AAEPC,kBAAc;AAFP;AADD,CAAV;;AAOA,IAAMC,YAAY,SAAZA,SAAY;AAAA,MAChBC,KADgB,QAChBA,KADgB;AAAA,MACTC,IADS,QACTA,IADS;AAAA,MACHC,KADG,QACHA,KADG;AAAA,MACIC,QADJ,QACIA,QADJ;AAAA,SAGhB;AAAA;AAAA,MAAM,OAAOR,EAAEC,OAAf;AACE;AAAA;AAAA;AACE,mBAAWF,EADb;AAEE,eAAO,EAACM,OAAOA,KAAR,EAFT;AAGE,gBAAO,QAHT;AAIE,cAAMC,IAJR;AAKE,eAAOC;AALT;AAOGC;AAPH;AADF,GAHgB;AAAA,CAAlB;;kBAiBeJ,S"
+}

@@ -5,12 +5,8 @@ import DateUtils from '../../utils/DateUtils'
 
 import crButtons from './crCommandButtons'
 import Dialog from '../zhnMoleculs/Dialog'
-import RowInputText from './RowInputText'
-import RowInputSelect from './RowInputSelect'
-import DatesFragment from './DatesFragment'
-import ValidationMessagesFragment from './ValidationMessagesFragment'
-
-import withValidationLoad from './decorators/withValidationLoad'
+import D from './DialogCell'
+import Decor from './decorators/Decorators'
 
 const _sortOptions = [
   { caption: "Activity, Recent Day", value: "activity" },
@@ -25,8 +21,8 @@ const _initFromDate = DateUtils.getFromDate(1)
     , _initToDate = DateUtils.getToDate()
     , _onTestDate = DateUtils.isValidDate;
 
-
-@withValidationLoad
+@Decor.withToolbar
+@Decor.withValidationLoad
 class DialogType2 extends Component{
   /*
   static propTypes = {
@@ -42,10 +38,15 @@ class DialogType2 extends Component{
     super(props)
     this.stock = null
     this.sortByItem = {}
+    this.toolbarButtons = this._createType2WithToolbar(props, {
+      hasDate: true
+    })
     this._commandButtons = crButtons({
       inst: this, isDefault: true
     })
     this.state = {
+      isShowLabels: true,
+      isShowDate: true,
       validationMessages: []
     }
   }
@@ -117,10 +118,13 @@ class DialogType2 extends Component{
 
   render(){
     const {
-            caption, isShow, onShow,
-            oneTitle, onePlaceholder
-          } = this.props
-        , { validationMessages } = this.state;
+        caption, isShow, onShow,
+        oneTitle, onePlaceholder
+      } = this.props
+    , {
+      isShowLabels, isShowDate,
+      validationMessages
+    } = this.state;
 
     return (
        <Dialog
@@ -130,25 +134,34 @@ class DialogType2 extends Component{
            onShowChart={onShow}
            onClose={this._handleClose}
        >
-        <RowInputText
+         <D.Toolbar
+            isShow={true}
+            buttons={this.toolbarButtons}
+         />
+        <D.RowInputText
            ref={this._refInputOne}
+           isShowLabel={isShowLabels}
            caption={oneTitle}
            placeholder={onePlaceholder}
            onEnter={this._handleLoad}
         />
-        <RowInputSelect
-           caption="Sort By:"
+        <D.RowInputSelect
+           isShowLabel={isShowLabels}
+           caption="Sort By"
            placeholder="Default: Hot Week Tab"
            options={_sortOptions}
            onSelect={this._handleSelectSortBy}
         />
-        <DatesFragment
-            ref={this._refDatesFragment}
-            initFromDate={_initFromDate}
-            initToDate={_initToDate}
-            onTestDate={_onTestDate}
-        />
-        <ValidationMessagesFragment
+        <D.ShowHide isShow={isShowDate}>
+          <D.Dates
+              ref={this._refDatesFragment}
+              isShowLabels={isShowLabels}
+              initFromDate={_initFromDate}
+              initToDate={_initToDate}
+              onTestDate={_onTestDate}
+          />
+        </D.ShowHide>
+        <D.ValidationMessages
            validationMessages={validationMessages}
         />
       </Dialog>

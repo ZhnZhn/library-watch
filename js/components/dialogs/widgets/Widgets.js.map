@@ -1,0 +1,12 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/dialogs/widgets/Widgets.js"
+ ],
+ "file": "../../../../src/components/dialogs/widgets/Widgets.js",
+ "names": [
+  "Widgets",
+  "Toolbar"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,UAAU;AACdC;AADc,CAAhB;;kBAIeD,O"
+}

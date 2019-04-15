@@ -80,7 +80,7 @@ class About extends Component {
     return (
       <div
          className={_classOpen}
-         style={Object.assign({}, styles.aboutRootDiv, _styleOpen)}
+         style={{ ...styles.aboutRootDiv, ..._styleOpen }}
       >
          <CaptionRow
             caption="About"
@@ -99,68 +99,56 @@ class About extends Component {
              </Token>
            </p>
            <p style={STYLE.MARGIN_BOTTOM}>
-              With it, you can view information about GitHub's repositories, NPM's packages, StackOverflows's questions.
+              By means of web app Library-Watch, it is possible to view information about GitHub's repositories, NPM's packages, StackOverflows's questions.
            </p>
            <p style={STYLE.MARGIN_BOTTOM}>
             <Token color="gray">
-              Information API providers :
+              Information API providers:
             </Token>
             <LinkToken
                href="https://www.github.com/"
                color="#009ae5"
-               isFirstBlank={true}
                title="GitHub"
             >
                GitHub
             </LinkToken>
-            <Token color="gray">
-              ,&nbsp;
-            </Token>
             <LinkToken
                href="https://www.npmjs.com/"
                color="#273547"
-               isFirstBlank={true}
                title="NPM"
             >
                NPM
             </LinkToken>
-            <Token color="gray">
-              ,&nbsp;
-            </Token>
             <LinkToken
                href="https://stackexchange.com/"
                color="#3186C9"
-               isFirstBlank={true}
                title="Stack Exchange"
             >
                Stack Exchange
             </LinkToken>
-            <Token color="gray">
-              .
-            </Token>
            </p>
             <p>
               <Step step="1" />
               <Token color="black" isFirstBlank={true}>
-                 Choose an information Browser from the header bar
+                 Please, choose an information Browser from the header bar.
               </Token>
             </p>
             <p style={STYLE.MARGIN_TOP}>
               <Step step="2" />
               <Token color="black" isFirstBlank={true}>
-                 Choose an information menu item in a Browser
+                 Next, choose an information menu item in a Browser.
               </Token>
             </p>
             <p style={STYLE.MARGIN_TOP}>
               <Step step="3" />
               <Token color="black" isFirstBlank={true}>
-                 Enter repository or package name in a draggable Dialog
+                 Enter repository or package name in a draggable Dialog.
               </Token>
             </p>
             <p style={STYLE.MARGIN_TOP}>
                <Step step="4" />
                <Token color="black" isFirstBlank={true}>
-                  Click a button Load
+                  Click a button Load.
                </Token>
             </p>
             <p style={STYLE.MARGIN_TOP}>
@@ -170,11 +158,11 @@ class About extends Component {
             </p>
             <p style={Object.assign({}, STYLE.MARGIN_BOTTOM, STYLE.MARGIN_TOP)}>
                <Token color="gray">
-                  Also, you can add an item to Watch Browser and save to LocalStorage.
+                  Also, it possible to add an item to Watch Browser and save to LocalStorage.
                </Token>
             </p>
             <p style={STYLE.MARGIN_BOTTOM}>
-               After clicking a button Show in a Dialog will be opened Container with Items
+               After clicking a button Show in a Dialog opens Container with Items
                or empty. After closing a Container all Items remains.
                In one-time max three Item Dialogs can be opened.
             </p>

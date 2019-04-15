@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 //import PropTypes from "prop-types";
 
+import Decor from './decorators/Decorators'
 import crButtons from './crCommandButtons'
 import Dialog from '../zhnMoleculs/Dialog'
-import RowInputText from './RowInputText'
-import ValidationMessagesFragment from './ValidationMessagesFragment'
+import D from './DialogCell'
 
-import withValidationLoad from './decorators/withValidationLoad'
-
-@withValidationLoad
+@Decor.withToolbar
+@Decor.withValidationLoad
 class DialogType1 extends Component {
   /*
   static propTypes = {
@@ -24,8 +23,10 @@ class DialogType1 extends Component {
   constructor(props){
     super(props)
     this.stock = null
+    this.toolbarButtons = this._createType2WithToolbar(props)
     this._commandButtons = crButtons({ inst: this })
     this.state = {
+      isShowLabels: true,
       validationMessages: []
     }
   }
@@ -82,7 +83,10 @@ class DialogType1 extends Component {
       caption, isShow, onShow,
       oneTitle, onePlaceholder
     } = this.props
-    , { validationMessages } = this.state;
+    , {
+      isShowLabels,
+      validationMessages
+    } = this.state;
 
     return (
        <Dialog
@@ -92,13 +96,18 @@ class DialogType1 extends Component {
            onShowChart={onShow}
            onClose={this._handleClose}
        >
-        <RowInputText
+        <D.Toolbar
+           isShow={true}
+           buttons={this.toolbarButtons}
+        />
+        <D.RowInputText
            ref={this._refInputOne}
+           isShowLabel={isShowLabels}
            caption={oneTitle}
            placeholder={onePlaceholder}
            onEnter={this._handleLoad}
         />
-        <ValidationMessagesFragment
+        <D.ValidationMessages
            validationMessages={validationMessages}
         />
       </Dialog>

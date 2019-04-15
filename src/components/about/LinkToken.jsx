@@ -1,20 +1,29 @@
 import React from 'react';
 
-const LinkToken = (props) => {
-  const { isFirstBlank, color, href, title, children } = props
-      , _firstChart = (isFirstBlank) ? ' ' : undefined;
-  return (
+const CL = "github-link";
+
+const S = {
+  WRAPPER: {
+    paddingLeft: 8,
+    paddingRight: 8
+  }
+};
+
+const LinkToken = ({
+  color, href, title, children
+}) => (
+  <span style={S.WRAPPER}>
     <a
-      className="github-link"
+      className={CL}
       style={{color: color}}
       target="_blank"
       href={href}
       title={title}
     >
-      {_firstChart}
       {children}
     </a>
-  );
-};
+</span>
+);
+
 
 export default LinkToken

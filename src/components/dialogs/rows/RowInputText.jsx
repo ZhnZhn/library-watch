@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-
 //import PropTypes from "prop-types";
 
-import InputText from '../zhnAtoms/InputText'
+import InputText from '../../zhnAtoms/InputText'
+import Caption from './Caption'
 
 const S = {
   ROW_DIV: {
@@ -11,14 +11,12 @@ const S = {
   LABEL_SPAN : {
     color: '#1B75BB',
     display: 'inline-block',
-    //verticalAlign: 'top',
     textAlign: 'right',
     width: '100px',
     paddingRight: '5px',
     fontSize: '16px',
     fontWeight: 'bold'
   },
-
   ROOT : {
     lineHeight: 2
   },
@@ -37,24 +35,38 @@ const S = {
 class RowInputText extends Component {
   /*
   static propTypes = {
+    isShowLabel: true,
     caption: PropTypes.string,
     placeholder: PropTypes.string,
     onEnter: PropTypes.function
   }
   */
+  static defaultProps = {
+    isShowLabel: true,
+    caption: ''
+  }
+
   _refInput = c => this.inputText = c
 
   render(){
-    const { caption, placeholder, onEnter } = this.props;    
+    const {
+      isShowLabel, caption,
+      placeholder, onEnter
+    } = this.props
+    , _placeholder = isShowLabel
+        ? placeholder
+        : placeholder || caption;
     return (
       <div style={{ ...S.ROW_DIV, ...S.ROOT }}>
-         <span style={{ ...S.LABEL_SPAN, ...S.CAPTION }}>
-           {caption}
-         </span>
+         <Caption
+           is={isShowLabel}
+           style={{ ...S.LABEL_SPAN, ...S.CAPTION }}
+           caption={caption}
+         />
          <InputText
             ref={this._refInput}
             style={S.INPUT_TEXT}
-            placeholder={placeholder}
+            placeholder={_placeholder}
             onEnter={onEnter}
          />
       </div>

@@ -11,6 +11,8 @@ import AppLabel from './AppLabel';
 import ButtonSave from '../zhnMoleculs/ButtonSave';
 import LimitRemainingLabel from './LimitRemainingLabel';
 
+const TITLE = "Library Watch v0.12.0"
+
 const S = {
   ROOT_DIV : {
     position : 'relative',
@@ -63,11 +65,11 @@ class HeaderBar extends Component {
          <LoadingProgress store={store} />
          <IconAppLogo
            className="header__icon-app"
-           title="Library Watch v0.11.0"
+           title={TITLE}
          />
          <AppLabel
            style={S.APP_LABEL}
-           caption="Library Watch v0.11.0"
+           caption={TITLE}
          />
          <FlatButton
             caption="Library"

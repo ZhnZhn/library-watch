@@ -24,13 +24,20 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp2;
+//import PropTypes from "prop-types";
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _InputText = require('../zhnAtoms/InputText');
+var _InputText = require('../../zhnAtoms/InputText');
 
 var _InputText2 = _interopRequireDefault(_InputText);
+
+var _Caption = require('./Caption');
+
+var _Caption2 = _interopRequireDefault(_Caption);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41,14 +48,12 @@ var S = {
   LABEL_SPAN: {
     color: '#1B75BB',
     display: 'inline-block',
-    //verticalAlign: 'top',
     textAlign: 'right',
     width: '100px',
     paddingRight: '5px',
     fontSize: '16px',
     fontWeight: 'bold'
   },
-
   ROOT: {
     lineHeight: 2
   },
@@ -64,9 +69,7 @@ var S = {
   }
 };
 
-//import PropTypes from "prop-types";
-
-var RowInputText = function (_Component) {
+var RowInputText = (_temp2 = _class = function (_Component) {
   (0, _inherits3.default)(RowInputText, _Component);
 
   function RowInputText() {
@@ -86,6 +89,7 @@ var RowInputText = function (_Component) {
   }
   /*
   static propTypes = {
+    isShowLabel: true,
     caption: PropTypes.string,
     placeholder: PropTypes.string,
     onEnter: PropTypes.function
@@ -97,22 +101,24 @@ var RowInputText = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
+          isShowLabel = _props.isShowLabel,
           caption = _props.caption,
           placeholder = _props.placeholder,
-          onEnter = _props.onEnter;
+          onEnter = _props.onEnter,
+          _placeholder = isShowLabel ? placeholder : placeholder || caption;
 
       return _react2.default.createElement(
         'div',
         { style: (0, _extends3.default)({}, S.ROW_DIV, S.ROOT) },
-        _react2.default.createElement(
-          'span',
-          { style: (0, _extends3.default)({}, S.LABEL_SPAN, S.CAPTION) },
-          caption
-        ),
+        _react2.default.createElement(_Caption2.default, {
+          is: isShowLabel,
+          style: (0, _extends3.default)({}, S.LABEL_SPAN, S.CAPTION),
+          caption: caption
+        }),
         _react2.default.createElement(_InputText2.default, {
           ref: this._refInput,
           style: S.INPUT_TEXT,
-          placeholder: placeholder,
+          placeholder: _placeholder,
           onEnter: onEnter
         })
       );
@@ -129,7 +135,9 @@ var RowInputText = function (_Component) {
     }
   }]);
   return RowInputText;
-}(_react.Component);
-
+}(_react.Component), _class.defaultProps = {
+  isShowLabel: true,
+  caption: ''
+}, _temp2);
 exports.default = RowInputText;
 //# sourceMappingURL=RowInputText.js.map

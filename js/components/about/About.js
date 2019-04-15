@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -134,7 +138,7 @@ var About = (_temp = _class = function (_Component) {
         'div',
         {
           className: _classOpen,
-          style: Object.assign({}, styles.aboutRootDiv, _styleOpen)
+          style: (0, _extends3.default)({}, styles.aboutRootDiv, _styleOpen)
         },
         _react2.default.createElement(_CaptionRow2.default, {
           caption: 'About',
@@ -163,7 +167,7 @@ var About = (_temp = _class = function (_Component) {
             _react2.default.createElement(
               'p',
               { style: STYLE.MARGIN_BOTTOM },
-              'With it, you can view information about GitHub\'s repositories, NPM\'s packages, StackOverflows\'s questions.'
+              'By means of web app Library-Watch, it is possible to view information about GitHub\'s repositories, NPM\'s packages, StackOverflows\'s questions.'
             ),
             _react2.default.createElement(
               'p',
@@ -171,52 +175,34 @@ var About = (_temp = _class = function (_Component) {
               _react2.default.createElement(
                 _Token2.default,
                 { color: 'gray' },
-                'Information API providers :'
+                'Information API providers:'
               ),
               _react2.default.createElement(
                 _LinkToken2.default,
                 {
                   href: 'https://www.github.com/',
                   color: '#009ae5',
-                  isFirstBlank: true,
                   title: 'GitHub'
                 },
                 'GitHub'
-              ),
-              _react2.default.createElement(
-                _Token2.default,
-                { color: 'gray' },
-                ',\xA0'
               ),
               _react2.default.createElement(
                 _LinkToken2.default,
                 {
                   href: 'https://www.npmjs.com/',
                   color: '#273547',
-                  isFirstBlank: true,
                   title: 'NPM'
                 },
                 'NPM'
-              ),
-              _react2.default.createElement(
-                _Token2.default,
-                { color: 'gray' },
-                ',\xA0'
               ),
               _react2.default.createElement(
                 _LinkToken2.default,
                 {
                   href: 'https://stackexchange.com/',
                   color: '#3186C9',
-                  isFirstBlank: true,
                   title: 'Stack Exchange'
                 },
                 'Stack Exchange'
-              ),
-              _react2.default.createElement(
-                _Token2.default,
-                { color: 'gray' },
-                '.'
               )
             ),
             _react2.default.createElement(
@@ -226,7 +212,7 @@ var About = (_temp = _class = function (_Component) {
               _react2.default.createElement(
                 _Token2.default,
                 { color: 'black', isFirstBlank: true },
-                'Choose an information Browser from the header bar'
+                'Please, choose an information Browser from the header bar.'
               )
             ),
             _react2.default.createElement(
@@ -236,7 +222,7 @@ var About = (_temp = _class = function (_Component) {
               _react2.default.createElement(
                 _Token2.default,
                 { color: 'black', isFirstBlank: true },
-                'Choose an information menu item in a Browser'
+                'Next, choose an information menu item in a Browser.'
               )
             ),
             _react2.default.createElement(
@@ -246,7 +232,7 @@ var About = (_temp = _class = function (_Component) {
               _react2.default.createElement(
                 _Token2.default,
                 { color: 'black', isFirstBlank: true },
-                'Enter repository or package name in a draggable Dialog'
+                'Enter repository or package name in a draggable Dialog.'
               )
             ),
             _react2.default.createElement(
@@ -256,7 +242,7 @@ var About = (_temp = _class = function (_Component) {
               _react2.default.createElement(
                 _Token2.default,
                 { color: 'black', isFirstBlank: true },
-                'Click a button Load'
+                'Click a button Load.'
               )
             ),
             _react2.default.createElement(
@@ -274,13 +260,13 @@ var About = (_temp = _class = function (_Component) {
               _react2.default.createElement(
                 _Token2.default,
                 { color: 'gray' },
-                'Also, you can add an item to Watch Browser and save to LocalStorage.'
+                'Also, it possible to add an item to Watch Browser and save to LocalStorage.'
               )
             ),
             _react2.default.createElement(
               'p',
               { style: STYLE.MARGIN_BOTTOM },
-              'After clicking a button Show in a Dialog will be opened Container with Items or empty. After closing a Container all Items remains. In one-time max three Item Dialogs can be opened.'
+              'After clicking a button Show in a Dialog opens Container with Items or empty. After closing a Container all Items remains. In one-time max three Item Dialogs can be opened.'
             ),
             _react2.default.createElement(
               'p',

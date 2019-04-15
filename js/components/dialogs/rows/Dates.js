@@ -21,20 +21,23 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _class, _temp2;
-
 //import PropTypes from "prop-types";
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _InputDate = require('../zhnAtoms/InputDate');
+var _InputDate = require('../../zhnAtoms/InputDate');
 
 var _InputDate2 = _interopRequireDefault(_InputDate);
 
-var _DialogStyles = require('../styles/DialogStyles');
+var _DialogStyles = require('../../styles/DialogStyles');
 
 var _DialogStyles2 = _interopRequireDefault(_DialogStyles);
+
+var _Caption = require('./Caption');
+
+var _Caption2 = _interopRequireDefault(_Caption);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43,21 +46,21 @@ var ERROR_FORMAT = "YYYY-MM-DD format must be",
     TO_DATE = "To Date",
     ERROR_FROM_NEAR_TO = "From Date is near that To Date";
 
-var DatesFragment = (_temp2 = _class = function (_Component) {
-  (0, _inherits3.default)(DatesFragment, _Component);
+var Dates = (_temp2 = _class = function (_Component) {
+  (0, _inherits3.default)(Dates, _Component);
 
-  function DatesFragment() {
+  function Dates() {
     var _ref;
 
     var _temp, _this, _ret;
 
-    (0, _classCallCheck3.default)(this, DatesFragment);
+    (0, _classCallCheck3.default)(this, Dates);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = DatesFragment.__proto__ || Object.getPrototypeOf(DatesFragment)).call.apply(_ref, [this].concat(args))), _this), _this._refFromDate = function (c) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Dates.__proto__ || Object.getPrototypeOf(Dates)).call.apply(_ref, [this].concat(args))), _this), _this._refFromDate = function (c) {
       return _this.fromDate = c;
     }, _this._refToDate = function (c) {
       return _this.toDate = c;
@@ -65,6 +68,7 @@ var DatesFragment = (_temp2 = _class = function (_Component) {
   }
   /*
   static propTypes = {
+    isShowLabels: PropTypes.bool,
     initFromDate: PropTypes.string,
     initToDate: PropTypes.string,
     onTestDate: PropTypes.func,
@@ -73,10 +77,11 @@ var DatesFragment = (_temp2 = _class = function (_Component) {
   */
 
 
-  (0, _createClass3.default)(DatesFragment, [{
+  (0, _createClass3.default)(Dates, [{
     key: 'render',
     value: function render() {
       var _props = this.props,
+          isShowLabels = _props.isShowLabels,
           initFromDate = _props.initFromDate,
           initToDate = _props.initToDate,
           onTestDate = _props.onTestDate;
@@ -87,11 +92,11 @@ var DatesFragment = (_temp2 = _class = function (_Component) {
         _react2.default.createElement(
           'div',
           { style: _DialogStyles2.default.rowDiv },
-          _react2.default.createElement(
-            'span',
-            { style: _DialogStyles2.default.labelSpan },
-            'From Date:'
-          ),
+          _react2.default.createElement(_Caption2.default, {
+            is: isShowLabels,
+            style: _DialogStyles2.default.labelSpan,
+            caption: 'From Date'
+          }),
           _react2.default.createElement(_InputDate2.default, {
             ref: this._refFromDate,
             initValue: initFromDate,
@@ -102,11 +107,11 @@ var DatesFragment = (_temp2 = _class = function (_Component) {
         _react2.default.createElement(
           'div',
           { style: _DialogStyles2.default.rowDiv },
-          _react2.default.createElement(
-            'span',
-            { style: _DialogStyles2.default.labelSpan },
-            'To Date:'
-          ),
+          _react2.default.createElement(_Caption2.default, {
+            is: isShowLabels,
+            style: _DialogStyles2.default.labelSpan,
+            caption: 'To Date'
+          }),
           _react2.default.createElement(_InputDate2.default, {
             ref: this._refToDate,
             initValue: initToDate,
@@ -171,11 +176,12 @@ var DatesFragment = (_temp2 = _class = function (_Component) {
       return false;
     }
   }]);
-  return DatesFragment;
+  return Dates;
 }(_react.Component), _class.defaultProps = {
+  isShowLabels: true,
   msgOnNotValidFormat: function msgOnNotValidFormat(item) {
     return item + ' is not in valid format';
   }
 }, _temp2);
-exports.default = DatesFragment;
-//# sourceMappingURL=DatesFragment.js.map
+exports.default = Dates;
+//# sourceMappingURL=Dates.js.map

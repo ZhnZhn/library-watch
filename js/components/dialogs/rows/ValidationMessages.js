@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //import PropTypes from "prop-types";
 
-var STYLE = {
+var S = {
   ROOT_DIV: {
     paddingLeft: '10px',
     paddingTop: '5px',
@@ -43,12 +43,12 @@ var ValidationMessage = function ValidationMessage(_ref) {
     null,
     _react2.default.createElement(
       'div',
-      { style: STYLE.NUMBER_DIV },
+      { style: S.NUMBER_DIV },
       index + 1
     ),
     _react2.default.createElement(
       'span',
-      { style: STYLE.MSG_SPAN },
+      { style: S.MSG_SPAN },
       msg
     )
   );
@@ -60,7 +60,7 @@ ValidationMessage.propTypes = {
 }
 */
 
-var ValidationMessagesFragment = function ValidationMessagesFragment(props) {
+var ValidationMessages = function ValidationMessages(props) {
   var validationMessages = props.validationMessages;
 
 
@@ -76,7 +76,7 @@ var ValidationMessagesFragment = function ValidationMessagesFragment(props) {
 
   return _react2.default.createElement(
     'div',
-    { style: STYLE.ROOT_DIV },
+    { style: S.ROOT_DIV },
     _renderValidationMessages(validationMessages)
   );
 };
@@ -91,5 +91,5 @@ ValidationMessagesFragment.propTypes = {
 }
 */
 
-exports.default = ValidationMessagesFragment;
-//# sourceMappingURL=ValidationMessagesFragment.js.map
+exports.default = ValidationMessages;
+//# sourceMappingURL=ValidationMessages.js.map

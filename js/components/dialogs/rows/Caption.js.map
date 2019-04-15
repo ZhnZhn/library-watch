@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/dialogs/rows/Caption.js"
+ ],
+ "file": "../../../../src/components/dialogs/rows/Caption.js",
+ "names": [
+  "_crCaption",
+  "caption",
+  "indexOf",
+  "Caption",
+  "is",
+  "style"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,aAAa,SAAbA,UAAa;AAAA,SAAWC,WAC1BA,QAAQC,OAAR,CAAgB,GAAhB,MAAyB,CAAC,CADA,GAE3BD,UAAU,GAFiB,GAG3B,EAHgB;AAAA,CAAnB;;AAKA,IAAME,UAAU,SAAVA,OAAU,OAA4B;AAAA,MAAzBC,EAAyB,QAAzBA,EAAyB;AAAA,MAArBC,KAAqB,QAArBA,KAAqB;AAAA,MAAdJ,OAAc,QAAdA,OAAc;;AAC1C,MAAI,CAACG,EAAL,EAAS;AACP,WAAO,IAAP;AACD;AACD,SACE;AAAA;AAAA,MAAM,OAAOC,KAAb;AACKL,eAAWC,OAAX;AADL,GADF;AAKD,CATD;;kBAYeE,O"
+}

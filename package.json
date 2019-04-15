@@ -1,6 +1,6 @@
 {
   "name": "library-watch",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "Library Watch is a RESTFul client. With it you can view information about libraries, repositories from GitHub, NPM api services.",
   "main": "index.js",
   "scripts": {

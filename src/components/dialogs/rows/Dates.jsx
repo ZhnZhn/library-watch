@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-
 //import PropTypes from "prop-types";
 
-import InputDate from '../zhnAtoms/InputDate'
-import styles from '../styles/DialogStyles'
+import InputDate from '../../zhnAtoms/InputDate'
+import styles from '../../styles/DialogStyles'
+import Caption from './Caption'
 
 const ERROR_FORMAT = "YYYY-MM-DD format must be"
     , FROM_DATE = "From Date"
     , TO_DATE = "To Date"
     , ERROR_FROM_NEAR_TO = "From Date is near that To Date";
 
-class DatesFragment extends Component {
+class Dates extends Component {
   /*
   static propTypes = {
+    isShowLabels: PropTypes.bool,
     initFromDate: PropTypes.string,
     initToDate: PropTypes.string,
     onTestDate: PropTypes.func,
@@ -20,6 +21,7 @@ class DatesFragment extends Component {
   }
   */
   static defaultProps = {
+    isShowLabels: true,
     msgOnNotValidFormat: item => `${item} is not in valid format`
   }
 
@@ -28,6 +30,7 @@ class DatesFragment extends Component {
 
   render(){
     const {
+      isShowLabels,
       initFromDate,
       initToDate,
       onTestDate
@@ -35,9 +38,11 @@ class DatesFragment extends Component {
     return (
         <div>
           <div style={styles.rowDiv}>
-            <span style={styles.labelSpan}>
-               From Date:
-            </span>
+            <Caption
+              is={isShowLabels}
+              style={styles.labelSpan}
+              caption="From Date"
+            />
             <InputDate
                ref={this._refFromDate}
                initValue={initFromDate}
@@ -46,9 +51,11 @@ class DatesFragment extends Component {
             />
          </div>
          <div style={styles.rowDiv}>
-            <span style={styles.labelSpan}>
-              To Date:
-            </span>
+           <Caption
+              is={isShowLabels}
+              style={styles.labelSpan}
+              caption="To Date"
+            />
             <InputDate
                  ref={this._refToDate}
                  initValue={initToDate}
@@ -105,4 +112,4 @@ class DatesFragment extends Component {
   }
 }
 
-export default DatesFragment
+export default Dates
