@@ -12,16 +12,15 @@ import ComponentActions from '../../flux/actions/ComponentActions';
 import BrowserActions from '../../flux/actions/BrowserActions';
 import WatchActions from '../../flux/actions/WatchActions';
 
-import Browser from '../zhnAtoms/Browser';
-import CaptionRow from '../zhnAtoms/CaptionRow';
-import ButtonSave from '../zhnMoleculs/ButtonSave';
-import ButtonCircle from '../zhnAtoms/ButtonCircle';
-
-import ShowHide from '../zhnAtoms/ShowHide';
+import Browser from '../zhn-atoms/Browser';
+import CaptionRow from '../zhn-atoms/CaptionRow';
+import ButtonSave from '../zhn-moleculs/ButtonSave';
+import ButtonCircle from '../zhn-atoms/ButtonCircle';
+import ShowHide from '../zhn-atoms/ShowHide';
 import WrapperInputSearch from './WrapperInputSearch';
 
-import ScrollPane from '../zhnAtoms/ScrollPane';
-import OpenClose2 from '../zhnAtoms/OpenClose2';
+import ScrollPane from '../zhn-atoms/ScrollPane';
+import OpenClose2 from '../zhn-atoms/OpenClose2';
 import WatchItem from './WatchItem';
 
 

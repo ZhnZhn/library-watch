@@ -1,14 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/dialogs/DialogCell.js"
- ],
- "file": "../../../src/components/dialogs/DialogCell.js",
- "names": [
-  "DialogCell",
-  "Rows",
-  "Widgets",
-  "ShowHide"
- ],
- "mappings": ";;;;;;;;;;AAAA;;;;AACA;;;;AAEA;;;;;;AAEA,IAAMA,wCACDC,cADC,EAEDC,iBAFC;AAGJC;AAHI,EAAN;;kBAMeH,U"
-}
+{"version":3,"sources":["../../../src/components/dialogs/DialogCell.js"],"names":["DialogCell","Rows","Widgets","ShowHide","DraggableDialog"],"mappings":";;;;;;;;;;AAAA;;;;AACA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,wCACDC,cADC,EAEDC,iBAFC;AAGJC,8BAHI;AAIJC;AAJI,EAAN;;kBAOeJ,U","file":"DialogCell.js","sourcesContent":["import Rows from './rows/Rows'\r\nimport Widgets from './widgets/Widgets'\r\n\r\nimport ShowHide from '../zhn-atoms/ShowHide';\r\nimport DraggableDialog from '../zhn-moleculs/DraggableDialog';\r\n\r\nconst DialogCell = {\r\n  ...Rows,\r\n  ...Widgets,\r\n  ShowHide,\r\n  DraggableDialog\r\n};\r\n\r\nexport default DialogCell\r\n"]}

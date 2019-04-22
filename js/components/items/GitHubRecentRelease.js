@@ -28,11 +28,11 @@ var _ItemCaption = require('./ItemCaption');
 
 var _ItemCaption2 = _interopRequireDefault(_ItemCaption);
 
-var _ButtonCircle = require('../zhnAtoms/ButtonCircle');
+var _ButtonCircle = require('../zhn-atoms/ButtonCircle');
 
 var _ButtonCircle2 = _interopRequireDefault(_ButtonCircle);
 
-var _ShowHide = require('../zhnAtoms/ShowHide');
+var _ShowHide = require('../zhn-atoms/ShowHide');
 
 var _ShowHide2 = _interopRequireDefault(_ShowHide);
 

@@ -50,7 +50,7 @@ var _AppLabel = require('./AppLabel');
 
 var _AppLabel2 = _interopRequireDefault(_AppLabel);
 
-var _ButtonSave = require('../zhnMoleculs/ButtonSave');
+var _ButtonSave = require('../zhn-moleculs/ButtonSave');
 
 var _ButtonSave2 = _interopRequireDefault(_ButtonSave);
 

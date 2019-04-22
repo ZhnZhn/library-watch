@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 import Caption from './ItemCaption'
-import ShowHide from '../zhnAtoms/ShowHide';
-import DateAgo from '../zhnAtoms/DateAgo';
+import ShowHide from '../zhn-atoms/ShowHide';
+import DateAgo from '../zhn-atoms/DateAgo';
 
 const ITEM_DESCRIPTION = "GitHub Repository Commits"
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { LoadingProgressActionTypes as Action } from '../../flux/actions/LoadingProgressActions';
-import ProgressLine from '../zhnAtoms/ProgressLine';
+import ProgressLine from '../zhn-atoms/ProgressLine';
 
 const COLOR = {
   LOADING : '#2F7ED8',

@@ -31,7 +31,7 @@ var _FragmentSelectGroupList = require('./FragmentSelectGroupList');
 
 var _FragmentSelectGroupList2 = _interopRequireDefault(_FragmentSelectGroupList);
 
-var _ValidationMessagesFragment = require('../zhnMoleculs/ValidationMessagesFragment');
+var _ValidationMessagesFragment = require('../zhn-moleculs/ValidationMessagesFragment');
 
 var _ValidationMessagesFragment2 = _interopRequireDefault(_ValidationMessagesFragment);
 

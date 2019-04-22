@@ -1,6 +1,6 @@
 import React from 'react'
 
-import SvgClose from '../zhnAtoms/SvgClose'
+import SvgClose from '../zhn-atoms/SvgClose';
 
 const CL = {
   ROOT: 'item-caption',

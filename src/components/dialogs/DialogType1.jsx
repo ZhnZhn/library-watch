@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 //import PropTypes from "prop-types";
 
 import Decor from './decorators/Decorators'
-import crButtons from './crCommandButtons'
-import Dialog from '../zhnMoleculs/Dialog'
+import helperFns from './helperFns/helperFns'
 import D from './DialogCell'
+
+const { crMenuMore, crButtons } = helperFns;
 
 @Decor.withToolbar
 @Decor.withValidationLoad
@@ -24,8 +25,13 @@ class DialogType1 extends Component {
     super(props)
     this.stock = null
     this.toolbarButtons = this._createType2WithToolbar(props)
+    this._menuMore = crMenuMore(this, {
+      toggleLabels: this._clickLabelWithToolbar,
+      toggleToolBar: this._toggleWithToolbar,
+    })
     this._commandButtons = crButtons({ inst: this })
     this.state = {
+      isToolbar: true,
       isShowLabels: true,
       validationMessages: []
     }
@@ -84,20 +90,22 @@ class DialogType1 extends Component {
       oneTitle, onePlaceholder
     } = this.props
     , {
+      isToolbar,
       isShowLabels,
       validationMessages
     } = this.state;
 
     return (
-       <Dialog
-           caption={caption}
+       <D.DraggableDialog
            isShow={isShow}
+           caption={caption}
+           menuModel={this._menuMore}
            commandButtons={this._commandButtons}
            onShowChart={onShow}
            onClose={this._handleClose}
        >
         <D.Toolbar
-           isShow={true}
+           isShow={isToolbar}
            buttons={this.toolbarButtons}
         />
         <D.RowInputText
@@ -110,7 +118,7 @@ class DialogType1 extends Component {
         <D.ValidationMessages
            validationMessages={validationMessages}
         />
-      </Dialog>
+      </D.DraggableDialog>
     );
   }
 }

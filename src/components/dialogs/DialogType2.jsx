@@ -3,10 +3,11 @@ import React, { Component } from 'react'
 
 import DateUtils from '../../utils/DateUtils'
 
-import crButtons from './crCommandButtons'
-import Dialog from '../zhnMoleculs/Dialog'
 import D from './DialogCell'
 import Decor from './decorators/Decorators'
+import helperFns from './helperFns/helperFns'
+
+const { crMenuMore, crButtons } = helperFns;
 
 const _sortOptions = [
   { caption: "Activity, Recent Day", value: "activity" },
@@ -41,10 +42,16 @@ class DialogType2 extends Component{
     this.toolbarButtons = this._createType2WithToolbar(props, {
       hasDate: true
     })
+    this._menuMore = crMenuMore(this, {
+      toggleDates: this._clickDateWithToolbar,
+      toggleLabels: this._clickLabelWithToolbar,
+      toggleToolBar: this._toggleWithToolbar,
+    })
     this._commandButtons = crButtons({
       inst: this, isDefault: true
     })
     this.state = {
+      isToolbar: true,
       isShowLabels: true,
       isShowDate: true,
       validationMessages: []
@@ -122,20 +129,23 @@ class DialogType2 extends Component{
         oneTitle, onePlaceholder
       } = this.props
     , {
-      isShowLabels, isShowDate,
+      isToolbar,
+      isShowLabels,
+      isShowDate,
       validationMessages
     } = this.state;
 
     return (
-       <Dialog
-           caption={caption}
+       <D.DraggableDialog
            isShow={isShow}
+           caption={caption}
+           menuModel={this._menuMore}
            commandButtons={this._commandButtons}
            onShowChart={onShow}
            onClose={this._handleClose}
        >
          <D.Toolbar
-            isShow={true}
+            isShow={isToolbar}
             buttons={this.toolbarButtons}
          />
         <D.RowInputText
@@ -164,7 +174,7 @@ class DialogType2 extends Component{
         <D.ValidationMessages
            validationMessages={validationMessages}
         />
-      </Dialog>
+      </D.DraggableDialog>
     );
   }
 }

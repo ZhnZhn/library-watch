@@ -32,7 +32,7 @@ var _RowInputSelect = require('./RowInputSelect');
 
 var _RowInputSelect2 = _interopRequireDefault(_RowInputSelect);
 
-var _ValidationMessagesFragment = require('../zhnMoleculs/ValidationMessagesFragment');
+var _ValidationMessagesFragment = require('../zhn-moleculs/ValidationMessagesFragment');
 
 var _ValidationMessagesFragment2 = _interopRequireDefault(_ValidationMessagesFragment);
 

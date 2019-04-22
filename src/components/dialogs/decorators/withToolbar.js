@@ -33,10 +33,17 @@ const _createType2WithToolbar = function(
   return buttons;
 }
 
+const _toggleWithToolbar = function(){
+  this.setState(prevState => ({
+    isToolbar: !prevState.isToolbar
+  }))
+};
+
 const withToolbar = (target) => {
   withToggle(target)
   Object.assign(target.prototype, {
     _createType2WithToolbar,
+    _toggleWithToolbar
   })
 };
 

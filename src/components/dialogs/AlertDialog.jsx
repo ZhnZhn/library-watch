@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-//import PropTypes from 'prop-types'
-
-import ModalDialog from '../zhnMoleculs/ModalDialog'
+import ModalDialog from '../zhn-moleculs/ModalDialog';
 import styles from '../styles/DialogStyles'
 
 const S = {

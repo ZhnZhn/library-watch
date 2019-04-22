@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import RowInputText from './RowInputText';
 import FlatButton from '../zhn-m/FlatButton'
-import ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment';
+import ValidationMessagesFragment from '../zhn-moleculs/ValidationMessagesFragment';
 
 const S = {
   COMMAND_DIV : {

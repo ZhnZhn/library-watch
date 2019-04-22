@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-//import PropTypes from "prop-types";
-
-import InputDate from '../../zhnAtoms/InputDate'
+import InputDate from '../../zhn-atoms/InputDate';
 import styles from '../../styles/DialogStyles'
 import Caption from './Caption'
 

@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 
 import ChartActions from '../../flux/actions/ChartActions';
 import { BrowserType, ChartType } from '../../constants/Type';
-//import ChartType from '../../constants/ChartType';
-
-import ModalDialog from '../zhnMoleculs/ModalDialog';
+import ModalDialog from '../zhn-moleculs/ModalDialog';
 import FlatButton from '../zhn-m/FlatButton'
 
 

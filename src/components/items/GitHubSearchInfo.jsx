@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Caption from './ItemCaption'
-import ShowHide from '../zhnAtoms/ShowHide';
+import ShowHide from '../zhn-atoms/ShowHide';
 
 const styles = {
   rootDiv : {

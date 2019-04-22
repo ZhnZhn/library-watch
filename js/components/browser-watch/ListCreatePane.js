@@ -35,7 +35,7 @@ var _RowInputText = require('./RowInputText');
 
 var _RowInputText2 = _interopRequireDefault(_RowInputText);
 
-var _ValidationMessagesFragment = require('../zhnMoleculs/ValidationMessagesFragment');
+var _ValidationMessagesFragment = require('../zhn-moleculs/ValidationMessagesFragment');
 
 var _ValidationMessagesFragment2 = _interopRequireDefault(_ValidationMessagesFragment);
 

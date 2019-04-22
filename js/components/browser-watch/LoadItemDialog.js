@@ -34,7 +34,7 @@ var _ChartActions2 = _interopRequireDefault(_ChartActions);
 
 var _Type = require('../../constants/Type');
 
-var _ModalDialog = require('../zhnMoleculs/ModalDialog');
+var _ModalDialog = require('../zhn-moleculs/ModalDialog');
 
 var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 
@@ -49,8 +49,6 @@ var _DialogStyles2 = _interopRequireDefault(_DialogStyles);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var styles = _DialogStyles2.default;
-//import ChartType from '../../constants/ChartType';
-
 //import PropTypes from 'prop-types'
 
 var DIALOG_CAPTION = "Load Watch Item";

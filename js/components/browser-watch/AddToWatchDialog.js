@@ -28,7 +28,7 @@ var _Msg = require('../../constants/Msg');
 
 var _Msg2 = _interopRequireDefault(_Msg);
 
-var _ModalDialog = require('../zhnMoleculs/ModalDialog');
+var _ModalDialog = require('../zhn-moleculs/ModalDialog');
 
 var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 
@@ -40,7 +40,7 @@ var _InputSelect = require('../zhn-select/InputSelect');
 
 var _InputSelect2 = _interopRequireDefault(_InputSelect);
 
-var _ValidationMessagesFragment = require('../zhnMoleculs/ValidationMessagesFragment');
+var _ValidationMessagesFragment = require('../zhn-moleculs/ValidationMessagesFragment');
 
 var _ValidationMessagesFragment2 = _interopRequireDefault(_ValidationMessagesFragment);
 

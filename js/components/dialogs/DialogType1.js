@@ -31,13 +31,9 @@ var _Decorators = require('./decorators/Decorators');
 
 var _Decorators2 = _interopRequireDefault(_Decorators);
 
-var _crCommandButtons = require('./crCommandButtons');
+var _helperFns = require('./helperFns/helperFns');
 
-var _crCommandButtons2 = _interopRequireDefault(_crCommandButtons);
-
-var _Dialog = require('../zhnMoleculs/Dialog');
-
-var _Dialog2 = _interopRequireDefault(_Dialog);
+var _helperFns2 = _interopRequireDefault(_helperFns);
 
 var _DialogCell = require('./DialogCell');
 
@@ -45,6 +41,8 @@ var _DialogCell2 = _interopRequireDefault(_DialogCell);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var crMenuMore = _helperFns2.default.crMenuMore,
+    crButtons = _helperFns2.default.crButtons;
 var DialogType1 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2.default.withValidationLoad, _dec(_class = _dec2(_class = function (_Component) {
   (0, _inherits3.default)(DialogType1, _Component);
 
@@ -104,8 +102,13 @@ var DialogType1 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2
 
     _this.stock = null;
     _this.toolbarButtons = _this._createType2WithToolbar(props);
-    _this._commandButtons = (0, _crCommandButtons2.default)({ inst: _this });
+    _this._menuMore = crMenuMore(_this, {
+      toggleLabels: _this._clickLabelWithToolbar,
+      toggleToolBar: _this._toggleWithToolbar
+    });
+    _this._commandButtons = crButtons({ inst: _this });
     _this.state = {
+      isToolbar: true,
       isShowLabels: true,
       validationMessages: []
     };
@@ -132,21 +135,23 @@ var DialogType1 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2
           oneTitle = _props.oneTitle,
           onePlaceholder = _props.onePlaceholder,
           _state = this.state,
+          isToolbar = _state.isToolbar,
           isShowLabels = _state.isShowLabels,
           validationMessages = _state.validationMessages;
 
 
       return _react2.default.createElement(
-        _Dialog2.default,
+        _DialogCell2.default.DraggableDialog,
         {
-          caption: caption,
           isShow: isShow,
+          caption: caption,
+          menuModel: this._menuMore,
           commandButtons: this._commandButtons,
           onShowChart: onShow,
           onClose: this._handleClose
         },
         _react2.default.createElement(_DialogCell2.default.Toolbar, {
-          isShow: true,
+          isShow: isToolbar,
           buttons: this.toolbarButtons
         }),
         _react2.default.createElement(_DialogCell2.default.RowInputText, {

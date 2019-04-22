@@ -12,7 +12,7 @@ var _ComponentActions = require('../actions/ComponentActions');
 
 var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
 
-var _ChartContainer = require('../../components/zhnContainers/ChartContainer2');
+var _ChartContainer = require('../../components/zhn-containers/ChartContainer2');
 
 var _ChartContainer2 = _interopRequireDefault(_ChartContainer);
 

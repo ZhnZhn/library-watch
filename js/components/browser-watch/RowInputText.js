@@ -28,7 +28,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _InputText = require('../zhnAtoms/InputText');
+var _InputText = require('../zhn-atoms/InputText');
 
 var _InputText2 = _interopRequireDefault(_InputText);
 
@@ -43,8 +43,6 @@ var _crRowCaption2 = _interopRequireDefault(_crRowCaption);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var styles = _DialogStyles2.default;
-//import PropTypes from 'prop-types'
-
 var S = {
   ROOT: {
     lineHeight: 2

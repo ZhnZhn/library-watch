@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ShowHide from '../../zhnAtoms/ShowHide'
+import ShowHide from '../../zhn-atoms/ShowHide';
 import ToolbarButtonCircle from './ToolbarButtonCircle'
 
 const Toolbar = ({ isShow,  buttons }) => (

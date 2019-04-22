@@ -34,11 +34,11 @@ var _ComponentActions = require('../../flux/actions/ComponentActions');
 
 var _ChartActions = require('../../flux/actions/ChartActions');
 
-var _ScrollPane = require('../zhnAtoms/ScrollPane');
+var _ScrollPane = require('../zhn-atoms/ScrollPane');
 
 var _ScrollPane2 = _interopRequireDefault(_ScrollPane);
 
-var _CaptionRow = require('../zhnAtoms/CaptionRow');
+var _CaptionRow = require('../zhn-atoms/CaptionRow');
 
 var _CaptionRow2 = _interopRequireDefault(_CaptionRow);
 

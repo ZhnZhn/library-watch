@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import FragmentSelectGroupList from './FragmentSelectGroupList';
 import RowInputText from './RowInputText';
-import ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment';
+import ValidationMessagesFragment from '../zhn-moleculs/ValidationMessagesFragment';
 import FlatButton from '../zhn-m/FlatButton'
 
 const S = {

@@ -8,8 +8,8 @@ import { ComponentActionTypes } from '../flux/actions/ComponentActions';
 import HeaderBar from './header/HeaderBar';
 import About from './about/About';
 import BrowserContainer from './browser-container/BrowserContainer';
-import ComponentHrzContainer from './zhnContainers/ComponentHrzContainer';
-import DialogContainer from './zhnContainers/DialogContainer';
+import ComponentHrzContainer from './zhn-containers/ComponentHrzContainer';
+import DialogContainer from './zhn-containers/DialogContainer';
 
 import RouterModalDialog from './dialogs/RouterModalDialog';
 

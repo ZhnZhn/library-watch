@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 import Caption from './ItemCaption'
-import ButtonCircle from '../zhnAtoms/ButtonCircle';
-import ShowHide from '../zhnAtoms/ShowHide';
+import ButtonCircle from '../zhn-atoms/ButtonCircle';
+import ShowHide from '../zhn-atoms/ShowHide';
 
 const ITEM_DESCRIPTION = "GitHub Repository Issues"
 

@@ -32,7 +32,7 @@ var _FlatButton = require('../zhn-m/FlatButton');
 
 var _FlatButton2 = _interopRequireDefault(_FlatButton);
 
-var _ValidationMessagesFragment = require('../zhnMoleculs/ValidationMessagesFragment');
+var _ValidationMessagesFragment = require('../zhn-moleculs/ValidationMessagesFragment');
 
 var _ValidationMessagesFragment2 = _interopRequireDefault(_ValidationMessagesFragment);
 

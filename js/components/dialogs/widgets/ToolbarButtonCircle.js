@@ -28,7 +28,7 @@ var _Row = require('../rows/Row');
 
 var _Row2 = _interopRequireDefault(_Row);
 
-var _ButtonCircle = require('../../zhnAtoms/ButtonCircle');
+var _ButtonCircle = require('../../zhn-atoms/ButtonCircle');
 
 var _ButtonCircle2 = _interopRequireDefault(_ButtonCircle);
 

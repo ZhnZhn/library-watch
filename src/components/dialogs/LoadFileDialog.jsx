@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 //import PropTypes from "prop-types";
 
 import FlatButton from '../zhn-m/FlatButton'
-import ModalDialog from '../zhnMoleculs/ModalDialog'
-import InputFileReader from '../zhnAtoms/InputFileReader'
-import ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment'
+import ModalDialog from '../zhn-moleculs/ModalDialog';
+import InputFileReader from '../zhn-atoms/InputFileReader';
+import ValidationMessagesFragment from '../zhn-moleculs/ValidationMessagesFragment';
 import DialogStyles from '../styles/DialogStyles'
 
 const styles = DialogStyles

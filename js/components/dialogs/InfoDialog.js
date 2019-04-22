@@ -24,7 +24,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ModalDialog = require('../zhnMoleculs/ModalDialog');
+var _ModalDialog = require('../zhn-moleculs/ModalDialog');
 
 var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 
@@ -33,8 +33,6 @@ var _DialogStyles = require('../styles/DialogStyles');
 var _DialogStyles2 = _interopRequireDefault(_DialogStyles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//import PropTypes from "prop-types";
 
 var styles = _DialogStyles2.default;
 

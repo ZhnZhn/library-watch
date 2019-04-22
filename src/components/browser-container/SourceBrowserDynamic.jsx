@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import MenuBrowserDynamic from '../zhnMoleculs/MenuBrowserDynamic';
+import MenuBrowserDynamic from '../zhn-moleculs/MenuBrowserDynamic';
 import BA, {BrowserActionTypes as BAT} from '../../flux/actions/BrowserActions';
 
 class SourceBrowserDynamic extends Component {

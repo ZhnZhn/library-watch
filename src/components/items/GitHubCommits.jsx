@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import timeago from 'timeago.js';
 
 import Caption from './ItemCaption'
-import ButtonCircle from '../zhnAtoms/ButtonCircle';
-import ShowHide from '../zhnAtoms/ShowHide';
-import DateAgo from '../zhnAtoms/DateAgo';
+import ButtonCircle from '../zhn-atoms/ButtonCircle';
+import ShowHide from '../zhn-atoms/ShowHide';
+import DateAgo from '../zhn-atoms/DateAgo';
 
 const ITEM_DESCRIPTION = "GitHub Repository Commits"
 

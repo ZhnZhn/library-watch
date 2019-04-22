@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-//import PropTypes from 'prop-types'
-
-import InputText from '../zhnAtoms/InputText';
+import InputText from '../zhn-atoms/InputText';
 import DialogStyles from '../styles/DialogStyles'
 import crRowCaption from './crRowCaption'
 

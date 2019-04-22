@@ -1,12 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../../src/components/dialogs/widgets/Widgets.js"
- ],
- "file": "../../../../src/components/dialogs/widgets/Widgets.js",
- "names": [
-  "Widgets",
-  "Toolbar"
- ],
- "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,UAAU;AACdC;AADc,CAAhB;;kBAIeD,O"
-}
+{"version":3,"sources":["../../../../src/components/dialogs/widgets/Widgets.js"],"names":["Widgets","Toolbar"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,UAAU;AACdC;AADc,CAAhB;;kBAIeD,O","file":"Widgets.js","sourcesContent":["import Toolbar from './Toolbar'\r\n\r\nconst Widgets = {\r\n  Toolbar\r\n};\r\n\r\nexport default Widgets\r\n"]}

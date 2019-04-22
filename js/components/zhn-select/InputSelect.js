@@ -39,7 +39,7 @@ var _ArrowCell = require('./ArrowCell');
 
 var _ArrowCell2 = _interopRequireDefault(_ArrowCell);
 
-var _ButtonCircle = require('../zhnAtoms/ButtonCircle2');
+var _ButtonCircle = require('../zhn-atoms/ButtonCircle2');
 
 var _ButtonCircle2 = _interopRequireDefault(_ButtonCircle);
 

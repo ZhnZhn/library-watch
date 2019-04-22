@@ -20,15 +20,15 @@ var _Msg = require('../../constants/Msg');
 
 var _Msg2 = _interopRequireDefault(_Msg);
 
-var _ModalDialog = require('../zhnMoleculs/ModalDialog');
+var _ModalDialog = require('../zhn-moleculs/ModalDialog');
 
 var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 
-var _TabPane = require('../zhnMoleculs/TabPane');
+var _TabPane = require('../zhn-moleculs/TabPane');
 
 var _TabPane2 = _interopRequireDefault(_TabPane);
 
-var _Tab = require('../zhnAtoms/Tab');
+var _Tab = require('../zhn-atoms/Tab');
 
 var _Tab2 = _interopRequireDefault(_Tab);
 

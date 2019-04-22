@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { BrowserType } from '../../constants/Type';
 
 import WatchBrowser from '../browser-watch/WatchBrowser';
-import DialogContainer3 from '../zhnContainers/DialogContainer3';
+import DialogContainer3 from '../zhn-containers/DialogContainer3';
 
 //const BrowserContainer = React.createClass({
 class BrowserContainer extends Component {

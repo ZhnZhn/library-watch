@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { ComponentActionTypes as CAT } from '../../flux/actions/ComponentActions';
 import { ChartActionTypes as CHAT } from '../../flux/actions/ChartActions';
 
-import ScrollPane from '../zhnAtoms/ScrollPane';
-import CaptionRow from '../zhnAtoms/CaptionRow';
+import ScrollPane from '../zhn-atoms/ScrollPane';
+import CaptionRow from '../zhn-atoms/CaptionRow';
 
 import Step from './Step';
 import Token from './Token';

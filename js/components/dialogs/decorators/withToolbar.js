@@ -36,10 +36,19 @@ var _createType2WithToolbar = function _createType2WithToolbar(props) {
   return buttons;
 };
 
+var _toggleWithToolbar = function _toggleWithToolbar() {
+  this.setState(function (prevState) {
+    return {
+      isToolbar: !prevState.isToolbar
+    };
+  });
+};
+
 var withToolbar = function withToolbar(target) {
   (0, _withToggle2.default)(target);
   Object.assign(target.prototype, {
-    _createType2WithToolbar: _createType2WithToolbar
+    _createType2WithToolbar: _createType2WithToolbar,
+    _toggleWithToolbar: _toggleWithToolbar
   });
 };
 

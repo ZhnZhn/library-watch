@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Row from '../rows/Row';
-import ButtonCircle from '../../zhnAtoms/ButtonCircle';
+import ButtonCircle from '../../zhn-atoms/ButtonCircle';
 
 const S = {
   ROW : {

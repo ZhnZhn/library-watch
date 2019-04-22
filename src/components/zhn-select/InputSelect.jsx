@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import ArrowCell from './ArrowCell';
 
-import BtCircle from '../zhnAtoms/ButtonCircle2'
+import BtCircle from '../zhn-atoms/ButtonCircle2';
 
 const MAX_WITHOUT_ANIMATION = 800;
 

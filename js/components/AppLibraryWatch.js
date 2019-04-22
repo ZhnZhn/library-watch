@@ -30,11 +30,11 @@ var _BrowserContainer = require('./browser-container/BrowserContainer');
 
 var _BrowserContainer2 = _interopRequireDefault(_BrowserContainer);
 
-var _ComponentHrzContainer = require('./zhnContainers/ComponentHrzContainer');
+var _ComponentHrzContainer = require('./zhn-containers/ComponentHrzContainer');
 
 var _ComponentHrzContainer2 = _interopRequireDefault(_ComponentHrzContainer);
 
-var _DialogContainer = require('./zhnContainers/DialogContainer');
+var _DialogContainer = require('./zhn-containers/DialogContainer');
 
 var _DialogContainer2 = _interopRequireDefault(_DialogContainer);
 

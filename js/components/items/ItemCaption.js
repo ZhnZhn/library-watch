@@ -8,7 +8,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _SvgClose = require('../zhnAtoms/SvgClose');
+var _SvgClose = require('../zhn-atoms/SvgClose');
 
 var _SvgClose2 = _interopRequireDefault(_SvgClose);
 

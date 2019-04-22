@@ -28,7 +28,7 @@ var _ItemCaption = require('./ItemCaption');
 
 var _ItemCaption2 = _interopRequireDefault(_ItemCaption);
 
-var _ShowHide = require('../zhnAtoms/ShowHide');
+var _ShowHide = require('../zhn-atoms/ShowHide');
 
 var _ShowHide2 = _interopRequireDefault(_ShowHide);
 

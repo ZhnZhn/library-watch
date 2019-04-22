@@ -25,13 +25,12 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _class, _temp2;
-//import PropTypes from "prop-types";
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _InputText = require('../../zhnAtoms/InputText');
+var _InputText = require('../../zhn-atoms/InputText');
 
 var _InputText2 = _interopRequireDefault(_InputText);
 

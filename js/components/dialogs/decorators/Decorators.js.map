@@ -1,13 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../../src/components/dialogs/decorators/Decorators.js"
- ],
- "file": "../../../../src/components/dialogs/decorators/Decorators.js",
- "names": [
-  "Decorators",
-  "withToolbar",
-  "withValidationLoad"
- ],
- "mappings": ";;;;;;AAAA;;;;AACA;;;;;;AAEA,IAAMA,aAAa;AACjBC,oCADiB;AAEjBC;AAFiB,CAAnB;;kBAKeF,U"
-}
+{"version":3,"sources":["../../../../src/components/dialogs/decorators/Decorators.js"],"names":["Decorators","withToolbar","withValidationLoad"],"mappings":";;;;;;AAAA;;;;AACA;;;;;;AAEA,IAAMA,aAAa;AACjBC,oCADiB;AAEjBC;AAFiB,CAAnB;;kBAKeF,U","file":"Decorators.js","sourcesContent":["import withToolbar from './withToolbar'\r\nimport withValidationLoad from './withValidationLoad'\r\n\r\nconst Decorators = {\r\n  withToolbar,\r\n  withValidationLoad\r\n};\r\n\r\nexport default Decorators\r\n"]}

@@ -8,7 +8,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ShowHide = require('../../zhnAtoms/ShowHide');
+var _ShowHide = require('../../zhn-atoms/ShowHide');
 
 var _ShowHide2 = _interopRequireDefault(_ShowHide);
 

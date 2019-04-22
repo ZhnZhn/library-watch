@@ -3,12 +3,12 @@ import React, { Component } from 'react'
 import Chart from '../charts/Chart';
 
 import Caption from './ItemCaption'
-import ButtonCircle from '../zhnAtoms/ButtonCircle';
-import FormattedInteger from '../zhnAtoms/FormattedInteger';
-import ShowHide from '../zhnAtoms/ShowHide';
+import ButtonCircle from '../zhn-atoms/ButtonCircle';
+import FormattedInteger from '../zhn-atoms/FormattedInteger';
+import ShowHide from '../zhn-atoms/ShowHide';
 import LineChart from '../charts/LineChart';
-import ButtonDownUp from '../zhnAtoms/ButtonDownUp';
-import LinkImg from '../zhnAtoms/LinkImg';
+import ButtonDownUp from '../zhn-atoms/ButtonDownUp';
+import LinkImg from '../zhn-atoms/LinkImg';
 
 const BASE_NODEICO = "https://nodei.co/npm/"
     , SUFFIX_NODEICO = ".png?downloads=true&downloadRank=true&stars=true"

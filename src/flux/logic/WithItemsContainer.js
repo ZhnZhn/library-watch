@@ -3,7 +3,7 @@ import React from 'react';
 //import ChartActions from '../actions/ChartActions';
 import ComponentActions from '../actions/ComponentActions';
 
-import ChartContainer2 from '../../components/zhnContainers/ChartContainer2'
+import ChartContainer2 from '../../components/zhn-containers/ChartContainer2';
 
 //const _onCloseItem = ChartActions.closeChart;
 const _fnCloseChartContainer = function(chartType, browserType){

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
 import Caption from './ItemCaption'
-import ButtonCircle from '../zhnAtoms/ButtonCircle';
-import ShowHide from '../zhnAtoms/ShowHide';
-import OpenClose2 from '../zhnAtoms/OpenClose2';
+import ButtonCircle from '../zhn-atoms/ButtonCircle';
+import ShowHide from '../zhn-atoms/ShowHide';
+import OpenClose2 from '../zhn-atoms/OpenClose2';
 
 const ITEM_DESCRIPTION = "GitHub Likely Recent Version Tag";
 

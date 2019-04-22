@@ -26,7 +26,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _LoadingProgressActions = require('../../flux/actions/LoadingProgressActions');
 
-var _ProgressLine = require('../zhnAtoms/ProgressLine');
+var _ProgressLine = require('../zhn-atoms/ProgressLine');
 
 var _ProgressLine2 = _interopRequireDefault(_ProgressLine);
 

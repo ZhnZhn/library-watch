@@ -31,14 +31,6 @@ var _DateUtils = require('../../utils/DateUtils');
 
 var _DateUtils2 = _interopRequireDefault(_DateUtils);
 
-var _crCommandButtons = require('./crCommandButtons');
-
-var _crCommandButtons2 = _interopRequireDefault(_crCommandButtons);
-
-var _Dialog = require('../zhnMoleculs/Dialog');
-
-var _Dialog2 = _interopRequireDefault(_Dialog);
-
 var _DialogCell = require('./DialogCell');
 
 var _DialogCell2 = _interopRequireDefault(_DialogCell);
@@ -47,7 +39,15 @@ var _Decorators = require('./decorators/Decorators');
 
 var _Decorators2 = _interopRequireDefault(_Decorators);
 
+var _helperFns = require('./helperFns/helperFns');
+
+var _helperFns2 = _interopRequireDefault(_helperFns);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var crMenuMore = _helperFns2.default.crMenuMore,
+    crButtons = _helperFns2.default.crButtons;
+
 
 var _initFromDate = _DateUtils2.default.getFromDate(1),
     _initToDate = _DateUtils2.default.getToDate(),
@@ -134,10 +134,16 @@ var DialogType3A = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators
     _this.toolbarButtons = _this._createType2WithToolbar(props, {
       hasDate: true
     });
-    _this._commandButtons = (0, _crCommandButtons2.default)({
+    _this._menuMore = crMenuMore(_this, {
+      toggleDates: _this._clickDateWithToolbar,
+      toggleLabels: _this._clickLabelWithToolbar,
+      toggleToolBar: _this._toggleWithToolbar
+    });
+    _this._commandButtons = crButtons({
       inst: _this, isDefault: true
     });
     _this.state = {
+      isToolbar: true,
       isShowLabels: true,
       isShowDate: true,
       validationMessages: []
@@ -165,22 +171,24 @@ var DialogType3A = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators
           oneTitle = _props.oneTitle,
           onePlaceholder = _props.onePlaceholder,
           _state = this.state,
+          isToolbar = _state.isToolbar,
           isShowLabels = _state.isShowLabels,
           isShowDate = _state.isShowDate,
           validationMessages = _state.validationMessages;
 
 
       return _react2.default.createElement(
-        _Dialog2.default,
+        _DialogCell2.default.DraggableDialog,
         {
-          caption: caption,
           isShow: isShow,
+          caption: caption,
+          menuModel: this._menuMore,
           commandButtons: this._commandButtons,
           onShowChart: onShow,
           onClose: this._handleClose
         },
         _react2.default.createElement(_DialogCell2.default.Toolbar, {
-          isShow: true,
+          isShow: isToolbar,
           buttons: this.toolbarButtons
         }),
         _react2.default.createElement(_DialogCell2.default.RowInputText, {

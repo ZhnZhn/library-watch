@@ -28,7 +28,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _MenuBrowserDynamic = require('../zhnMoleculs/MenuBrowserDynamic');
+var _MenuBrowserDynamic = require('../zhn-moleculs/MenuBrowserDynamic');
 
 var _MenuBrowserDynamic2 = _interopRequireDefault(_MenuBrowserDynamic);
 

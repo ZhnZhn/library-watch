@@ -9,10 +9,10 @@ import WatchActions from '../../flux/actions/WatchActions'
 import { WatchActionTypes as WAT } from '../../flux/actions/WatchActions'
 import Msg from '../../constants/Msg'
 
-import ModalDialog from '../zhnMoleculs/ModalDialog'
+import ModalDialog from '../zhn-moleculs/ModalDialog';
 import FlatButton from '../zhn-m/FlatButton'
 import InputSelect from '../zhn-select/InputSelect'
-import ValidationMessagesFragment from '../zhnMoleculs/ValidationMessagesFragment'
+import ValidationMessagesFragment from '../zhn-moleculs/ValidationMessagesFragment';
 
 import DialogStyles from '../styles/DialogStyles'
 

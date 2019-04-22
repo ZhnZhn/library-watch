@@ -21,13 +21,12 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _class, _temp2;
-//import PropTypes from "prop-types";
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _InputDate = require('../../zhnAtoms/InputDate');
+var _InputDate = require('../../zhn-atoms/InputDate');
 
 var _InputDate2 = _interopRequireDefault(_InputDate);
 

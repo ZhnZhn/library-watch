@@ -8,7 +8,7 @@ import FlatButton from '../zhn-m/FlatButton'
 import LoadingProgress from './LoadingProgress';
 import IconAppLogo from './IconAppLogo';
 import AppLabel from './AppLabel';
-import ButtonSave from '../zhnMoleculs/ButtonSave';
+import ButtonSave from '../zhn-moleculs/ButtonSave';
 import LimitRemainingLabel from './LimitRemainingLabel';
 
 const TITLE = "Library Watch v0.12.0"

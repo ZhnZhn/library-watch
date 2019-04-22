@@ -32,15 +32,15 @@ var _ItemCaption = require('./ItemCaption');
 
 var _ItemCaption2 = _interopRequireDefault(_ItemCaption);
 
-var _ButtonCircle = require('../zhnAtoms/ButtonCircle');
+var _ButtonCircle = require('../zhn-atoms/ButtonCircle');
 
 var _ButtonCircle2 = _interopRequireDefault(_ButtonCircle);
 
-var _FormattedInteger = require('../zhnAtoms/FormattedInteger');
+var _FormattedInteger = require('../zhn-atoms/FormattedInteger');
 
 var _FormattedInteger2 = _interopRequireDefault(_FormattedInteger);
 
-var _ShowHide = require('../zhnAtoms/ShowHide');
+var _ShowHide = require('../zhn-atoms/ShowHide');
 
 var _ShowHide2 = _interopRequireDefault(_ShowHide);
 
@@ -48,11 +48,11 @@ var _LineChart = require('../charts/LineChart');
 
 var _LineChart2 = _interopRequireDefault(_LineChart);
 
-var _ButtonDownUp = require('../zhnAtoms/ButtonDownUp');
+var _ButtonDownUp = require('../zhn-atoms/ButtonDownUp');
 
 var _ButtonDownUp2 = _interopRequireDefault(_ButtonDownUp);
 
-var _LinkImg = require('../zhnAtoms/LinkImg');
+var _LinkImg = require('../zhn-atoms/LinkImg');
 
 var _LinkImg2 = _interopRequireDefault(_LinkImg);
 

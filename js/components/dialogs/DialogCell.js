@@ -16,14 +16,19 @@ var _Widgets = require('./widgets/Widgets');
 
 var _Widgets2 = _interopRequireDefault(_Widgets);
 
-var _ShowHide = require('../zhnAtoms/ShowHide');
+var _ShowHide = require('../zhn-atoms/ShowHide');
 
 var _ShowHide2 = _interopRequireDefault(_ShowHide);
+
+var _DraggableDialog = require('../zhn-moleculs/DraggableDialog');
+
+var _DraggableDialog2 = _interopRequireDefault(_DraggableDialog);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var DialogCell = (0, _extends3.default)({}, _Rows2.default, _Widgets2.default, {
-  ShowHide: _ShowHide2.default
+  ShowHide: _ShowHide2.default,
+  DraggableDialog: _DraggableDialog2.default
 });
 
 exports.default = DialogCell;

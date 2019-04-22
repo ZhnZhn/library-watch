@@ -8,9 +8,9 @@ import { WatchActionTypes } from '../../flux/actions/WatchActions';
 
 import Msg from '../../constants/Msg';
 
-import ModalDialog from '../zhnMoleculs/ModalDialog';
-import TabPane from '../zhnMoleculs/TabPane';
-import Tab from '../zhnAtoms/Tab';
+import ModalDialog from '../zhn-moleculs/ModalDialog';
+import TabPane from '../zhn-moleculs/TabPane';
+import Tab from '../zhn-atoms/Tab';
 import ListCreatePane from './ListCreatePane';
 import ListEditPane from './ListEditPane';
 import ListDeletePane from './ListDeletePane';
