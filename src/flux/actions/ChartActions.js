@@ -10,26 +10,33 @@ const ALREADY_LOADED = {
 };
 
 export const ChartActionTypes = {
-  INIT_AND_SHOW_CHART : 'initAndShowChart',
+  INIT_AND_SHOW_CHART: 'initAndShowChart',
 
-  LOAD_STOCK : 'loadStock',
-  LOAD_STOCK_COMPLETED : 'loadStockCompleted',
-  LOAD_STOCK_FAILED : 'loadStockFailed',
+  LOAD_STOCK: 'loadStock',
+  LOAD_STOCK_COMPLETED: 'loadStockCompleted',
+  LOAD_STOCK_FAILED: 'loadStockFailed',
 
-  SHOW_CHART : 'showChart',
-  CLOSE_CHART : 'closeChart'
+  SHOW_CHART: 'showChart',
+  CLOSE_CHART: 'closeChart',
+
+  REMOVE_ALL: 'removeAll',
+  MOVE_TO_TOP: 'moveToTop'
 };
 
+const A = ChartActionTypes;
+
 const ChartActions =  Reflux.createActions({
-      [ChartActionTypes.LOAD_STOCK] : {
-         children : ['completed', 'failed'],
-         isLoading : false,
-         idLoading : undefined,
-         isShouldEmit : true
-         //cancelLoad : _fnCancelLoad
-       },
-      [ChartActionTypes.SHOW_CHART] : {},
-      [ChartActionTypes.CLOSE_CHART] : {}
+    [A.LOAD_STOCK]: {
+       children: ['completed', 'failed'],
+       isLoading: false,
+       idLoading: undefined,
+       isShouldEmit: true
+       //cancelLoad : _fnCancelLoad
+     },
+    [A.SHOW_CHART]: {},
+    [A.CLOSE_CHART]: {},
+    [A.REMOVE_ALL]: {},
+    [A.MOVE_TO_TOP]: {}
 });
 
 ChartActions[ChartActionTypes.LOAD_STOCK].listen(function(chartType, browserType, option){
@@ -38,7 +45,7 @@ ChartActions[ChartActionTypes.LOAD_STOCK].listen(function(chartType, browserType
   option.browserType = browserType;
 
   const { crKey, loadItem } = RouterLoad[loadId];
-  const key = crKey(option);  
+  const key = crKey(option);
   if ( !(Store.isKeyTop(key, option)) ) {
     option.key = key
     this.isLoading = true;

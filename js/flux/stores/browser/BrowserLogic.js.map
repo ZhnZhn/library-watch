@@ -1,0 +1,24 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/flux/stores/browser/BrowserLogic.js"
+ ],
+ "file": "../../../../src/flux/stores/browser/BrowserLogic.js",
+ "names": [
+  "BrowserLogic",
+  "setIsOpen",
+  "chartType",
+  "browserMenu",
+  "browserType",
+  "value",
+  "item",
+  "isOpen",
+  "plusCounter",
+  "counter",
+  "resetCounter",
+  "appMenu",
+  "bT",
+  "cT"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,eAAe;AACnBC,aAAW,mBAACC,SAAD,EAAYC,WAAZ,EAAyBC,WAAzB,EAAsCC,KAAtC,EAAgD;AACzD,QAAMC,OAAO,wBAASH,YAAYC,WAAZ,CAAT,EAAmCF,SAAnC,CAAb;AACA,QAAII,IAAJ,EAAU;AACRA,WAAKC,MAAL,GAAcF,KAAd;AACD;AACF,GANkB;AAOnBG,eAAa,qBAACN,SAAD,EAAYE,WAAZ,EAAyBD,WAAzB,EAAsCE,KAAtC,EAAgD;AAC3D,QAAMC,OAAO,wBAASH,YAAYC,WAAZ,CAAT,EAAmCF,SAAnC,CAAb;AACA,QAAII,IAAJ,EAAU;AACRA,WAAKG,OAAL,IAAgBJ,KAAhB;AACAC,WAAKC,MAAL,GAAc,IAAd;AACD;AACF,GAbkB;AAcnBG,gBAAc,sBAACC,OAAD,EAAUC,EAAV,EAAcC,EAAd,EAAqB;AACjC,QAAMP,OAAO,wBAASK,QAAQC,EAAR,CAAT,EAAsBC,EAAtB,CAAb;AACA,QAAIP,IAAJ,EAAU;AACRA,WAAKG,OAAL,GAAe,CAAf;AACD;AACF;AAnBkB,CAArB;;kBAsBeT,Y"
+}

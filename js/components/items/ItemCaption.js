@@ -20,11 +20,12 @@ var CL = {
 };
 
 var ItemCaption = function ItemCaption(_ref) {
-  var children = _ref.children,
+  var style = _ref.style,
+      children = _ref.children,
       onClose = _ref.onClose;
   return _react2.default.createElement(
     'div',
-    { className: CL.ROOT },
+    { className: CL.ROOT, style: style },
     children,
     _react2.default.createElement(_SvgClose2.default, {
       className: CL.BT_CLOSE,

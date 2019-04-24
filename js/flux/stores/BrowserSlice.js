@@ -14,40 +14,24 @@ var _Factory2 = _interopRequireDefault(_Factory);
 
 var _BrowserActions = require('../actions/BrowserActions');
 
+var _BrowserLogic = require('./browser/BrowserLogic');
+
+var _BrowserLogic2 = _interopRequireDefault(_BrowserLogic);
+
 var _DataWL = require('../../constants/DataWL');
 
 var _DataWL2 = _interopRequireDefault(_DataWL);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var fnFindObj = function fnFindObj(menu, chartType) {
-  for (var i = 0, maxPart = menu.length; i < maxPart; i++) {
-    for (var j = 0, maxItem = menu[i].items.length; j < maxItem; j++) {
-      if (menu[i].items[j].id === chartType) {
-        return menu[i].items[j];
-      }
-    }
-  }
-};
+var setIsOpen = _BrowserLogic2.default.setIsOpen,
+    plusCounter = _BrowserLogic2.default.plusCounter,
+    resetCounter = _BrowserLogic2.default.resetCounter;
 
-//import DataQE from '../../constants/DataQE';
-
-var fnSetIsOpen = function fnSetIsOpen(chartType, browserMenu, browserType, value) {
-  var obj = fnFindObj(browserMenu[browserType], chartType);
-  obj.isOpen = value;
-};
-
-var fnAddCounter = function fnAddCounter(chartType, browserType, browserMenu, value) {
-  var obj = fnFindObj(browserMenu[browserType], chartType);
-  obj.counter += value;
-  obj.isOpen = true;
-};
 
 var BrowserSlice = {
   browserMenu: _BrowserMenu2.default,
   routeDialog: {
-    //QE : DataQE,
-
     WL: _DataWL2.default
   },
 
@@ -55,16 +39,16 @@ var BrowserSlice = {
     return this.browserMenu[browserType];
   },
   setMenuItemOpen: function setMenuItemOpen(chartType, browserType) {
-    fnSetIsOpen(chartType, this.browserMenu, browserType, true);
+    setIsOpen(chartType, this.browserMenu, browserType, true);
   },
   setMenuItemClose: function setMenuItemClose(chartType, browserType) {
-    fnSetIsOpen(chartType, this.browserMenu, browserType, false);
+    setIsOpen(chartType, this.browserMenu, browserType, false);
   },
   addMenuItemCounter: function addMenuItemCounter(chartType, browserType) {
-    fnAddCounter(chartType, browserType, this.browserMenu, 1);
+    plusCounter(chartType, browserType, this.browserMenu, 1);
   },
   minusMenuItemCounter: function minusMenuItemCounter(chartType, browserType) {
-    fnAddCounter(chartType, browserType, this.browserMenu, -1);
+    plusCounter(chartType, browserType, this.browserMenu, -1);
   },
   getSourceConfig: function getSourceConfig(browserId, sourceId) {
     return this.routeDialog[browserId][sourceId];
@@ -96,11 +80,14 @@ var BrowserSlice = {
     });
   },
   onLoadBrowserDynamicFailed: function onLoadBrowserDynamicFailed(option) {
-    option.alertItemId = option.alertItemId ? option.alertItemId : option.caption;
+    option.alertItemId = option.alertItemId || option.caption || '';
     this.showAlertDialog(option);
   },
   onToggleWatchDbBrowser: function onToggleWatchDbBrowser() {
     this.trigger(_BrowserActions.BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER);
+  },
+  resetMenuItemCounter: function resetMenuItemCounter(cT, bT) {
+    resetCounter(this.browserMenu, bT, cT);
   }
 };
 

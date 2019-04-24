@@ -8,10 +8,6 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _typeof2 = require('babel-runtime/helpers/typeof');
-
-var _typeof3 = _interopRequireDefault(_typeof2);
-
 var _reflux = require('reflux');
 
 var _reflux2 = _interopRequireDefault(_reflux);
@@ -42,6 +38,10 @@ var _Factory = require('../logic/Factory');
 
 var _Factory2 = _interopRequireDefault(_Factory);
 
+var _ChartLogic = require('./chart/ChartLogic');
+
+var _ChartLogic2 = _interopRequireDefault(_ChartLogic);
+
 var _BrowserSlice = require('./BrowserSlice');
 
 var _BrowserSlice2 = _interopRequireDefault(_BrowserSlice);
@@ -64,40 +64,18 @@ var _WithLoadingProgress2 = _interopRequireDefault(_WithLoadingProgress);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var toTopByKey = _ChartLogic2.default.toTopByKey,
+    removeAll = _ChartLogic2.default.removeAll;
+
+
 var CONSOLE_LOG_STYLE = 'color:rgb(237, 88, 19);';
-var _fnLogLoadError = function _fnLogLoadError(_ref) {
+var _logLoadError = function _logLoadError(_ref) {
   var alertCaption = _ref.alertCaption,
       alertDescr = _ref.alertDescr,
       alertItemId = _ref.alertItemId;
 
   console.log('%c' + alertCaption + ':' + alertItemId, CONSOLE_LOG_STYLE);
   console.log('%c' + alertDescr, CONSOLE_LOG_STYLE);
-};
-
-var _isObj = function _isObj(obj) {
-  return (typeof obj === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj)) === 'object' && obj !== null;
-};
-
-var _isKeyTop = function _isKeyTop(slice, key) {
-  if (!_isObj(slice)) {
-    return false;
-  }
-  var _configs = slice.configs;
-  if (!Array.isArray(_configs)) {
-    return false;
-  }
-  var _index = _configs.findIndex(function (obj) {
-    return obj.key === key;
-  });
-  if (_index !== -1) {
-    _configs.unshift(_configs[_index]);
-    _configs.splice(_index + 1, 1);
-    return true;
-  } else {
-    return false;
-  }
-  //console.log(slice)
-  //return Boolean(_configs.find(obj => obj.key === key));
 };
 
 var AppStore = _reflux2.default.createStore((0, _extends3.default)({
@@ -121,14 +99,20 @@ var AppStore = _reflux2.default.createStore((0, _extends3.default)({
     var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
     option.modalDialogType = _Type.ModalDialog.ALERT;
-    option.alertItemId = option.alertItemId ? option.alertItemId : option.repo;
+    option.alertItemId = option.alertItemId || option.repo || '';
     this.trigger(_ComponentActions.ComponentActionTypes.SHOW_MODAL_DIALOG, option);
   },
   isKeyTop: function isKeyTop(key, option) {
     var chartType = option.chartType,
         slice = this.charts[chartType];
 
-    return _isKeyTop(slice, key);
+    return toTopByKey(slice, key);
+  },
+  onMoveToTop: function onMoveToTop(chartType, key) {
+    var slice = this.charts[chartType];
+    if (toTopByKey(slice, key)) {
+      this.trigger(_ChartActions.ChartActionTypes.SHOW_CHART, slice);
+    }
   },
   onShowChart: function onShowChart(chartType, browserType) {
     var chartCont = this.charts[chartType];
@@ -180,12 +164,9 @@ var AppStore = _reflux2.default.createStore((0, _extends3.default)({
   onLoadStockFailed: function onLoadStockFailed(option) {
     var limitRemaining = option.limitRemaining;
 
-
     this.triggerLimitRemaining(limitRemaining);
-
     this.showAlertDialog(option);
-
-    _fnLogLoadError(option);
+    _logLoadError(option);
   },
   onCloseChart: function onCloseChart(chartType, browserType, key) {
     var chartCont = this.charts[chartType];
@@ -207,6 +188,12 @@ var AppStore = _reflux2.default.createStore((0, _extends3.default)({
   },
   onCloseChartContainer2: function onCloseChartContainer2(chartType, browserType) {
     this.trigger(_ComponentActions.ComponentActionTypes.CLOSE_CHART_CONTAINER_2, chartType);
+  },
+  onRemoveAll: function onRemoveAll(chartType, browserType) {
+    var chartSlice = removeAll(this.charts, chartType);
+    this.resetMenuItemCounter(chartType, browserType);
+    this.trigger(_ChartActions.ChartActionTypes.SHOW_CHART, chartSlice);
+    this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_BROWSER_MENU, browserType);
   }
 }, _BrowserSlice2.default, _ComponentSlice2.default, _WatchListSlice2.default, _WithLimitRemaining2.default, _WithLoadingProgress2.default));
 

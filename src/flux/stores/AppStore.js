@@ -11,49 +11,33 @@ import { BrowserType as BT, ModalDialog as MD } from '../../constants/Type';
 
 import Factory from '../logic/Factory';
 
+import ChartLogic from './chart/ChartLogic';
 import BrowserSlice from './BrowserSlice';
 import ComponentSlice from './ComponentSlice';
 import WatchListSlice from '../watch-list/WatchListSlice';
 import WithLimitRemaining from './WithLimitRemaining';
 import WithLoadingProgress from './WithLoadingProgress';
 
+const {
+  toTopByKey,
+  removeAll
+} = ChartLogic;
+
 const CONSOLE_LOG_STYLE = 'color:rgb(237, 88, 19);';
-const _fnLogLoadError = function({
+const _logLoadError = function({
   alertCaption, alertDescr, alertItemId
 }){
   console.log('%c'+ alertCaption + ':' + alertItemId, CONSOLE_LOG_STYLE);
   console.log('%c' + alertDescr, CONSOLE_LOG_STYLE);
 }
 
-const _isObj = obj => typeof obj === 'object'
-  && obj !== null;
-
-const _isKeyTop = (slice, key) => {
-  if ( !_isObj(slice) ) {
-    return false;
-  }
-  const _configs = slice.configs;
-  if ( !Array.isArray(_configs) ) {
-    return false;
-  }
-  const _index = _configs.findIndex(obj => obj.key === key)
-  if (_index !== -1) {
-    _configs.unshift(_configs[_index])
-    _configs.splice(_index+1, 1)
-    return true;
-  } else {
-    return false;
-  }
-  //console.log(slice)
-  //return Boolean(_configs.find(obj => obj.key === key));
-};
-
 const AppStore = Reflux.createStore({
-  listenables : [
-    BrowserActions, ComponentActions, ChartActions, WatchActions,
+  listenables: [
+    BrowserActions, ComponentActions,
+    ChartActions, WatchActions,
     LoadingProgressActions
   ],
-  charts : {},
+  charts: {},
 
   init(){
     this.initWatchList();
@@ -71,16 +55,21 @@ const AppStore = Reflux.createStore({
   },
   showAlertDialog(option={}){
    option.modalDialogType = MD.ALERT;
-   option.alertItemId = (option.alertItemId)
-             ? option.alertItemId
-             : option.repo;
+   option.alertItemId = option.alertItemId
+     || option.repo || '';
    this.trigger(CAT.SHOW_MODAL_DIALOG, option);
  },
 
   isKeyTop(key, option){
     const { chartType } = option
     , slice = this.charts[chartType];
-    return _isKeyTop(slice, key);
+    return toTopByKey(slice, key);
+  },
+  onMoveToTop(chartType, key){
+    const slice = this.charts[chartType];    
+    if (toTopByKey(slice, key)) {
+      this.trigger(CHAT.SHOW_CHART, slice);
+    }
   },
 
   onShowChart(chartType, browserType){
@@ -109,7 +98,7 @@ const AppStore = Reflux.createStore({
    if (process.env.NODE_ENV !== 'production'){
    /* eslint-disable no-undef */
      console.log(option);
-     console.log(json);     
+     console.log(json);
    }
 
    const { chartType, browserType, limitRemaining } = option
@@ -139,12 +128,9 @@ const AppStore = Reflux.createStore({
   },
   onLoadStockFailed(option){
    const  { limitRemaining } = option;
-
    this.triggerLimitRemaining(limitRemaining);
-
    this.showAlertDialog(option);
-
-   _fnLogLoadError(option);
+   _logLoadError(option);
  },
 
   onCloseChart(chartType, browserType, key){
@@ -170,6 +156,13 @@ const AppStore = Reflux.createStore({
  onCloseChartContainer2(chartType, browserType){
    this.trigger(CAT.CLOSE_CHART_CONTAINER_2, chartType);
  },
+
+ onRemoveAll(chartType, browserType){
+    const chartSlice = removeAll(this.charts, chartType);
+    this.resetMenuItemCounter(chartType, browserType)
+    this.trigger(CHAT.SHOW_CHART, chartSlice);
+    this.trigger(BAT.UPDATE_BROWSER_MENU, browserType);
+  },
 
  ...BrowserSlice,
  ...ComponentSlice,

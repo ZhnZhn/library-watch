@@ -1,1 +1,34 @@
-{"version":3,"sources":["../../../src/flux/logic/withItem.js"],"names":["onCloseItem","ChartActions","closeChart","onWatchItem","ComponentActions","showModalDialog","bind","ModalDialog","ADD_ITEM","withItem","createItem","option","json","parentProps","requestType","_fnFactory","RouterItem","DEFAULT","factory","getElementFactory"],"mappings":";;;;;;AAEA;;;;AAEA;;;;AAEA;;;;AAEA;;;;AAHA;AAMA,IAAMA,cAAcC,uBAAaC,UAAjC;AAAA,IACMC,cAAcC,2BAAiBC,eAAjB,CAAiCC,IAAjC,CAAsC,IAAtC,EAA4CC,kBAAYC,QAAxD,CADpB;AAEI;;AAEJ,IAAMC,WAAW;AACfC,YADe,sBACJC,MADI,EACIC,IADJ,EACUC,WADV,EACsB;AAC7B,QAAEC,WAAF,GAAkBH,MAAlB,CAAEG,WAAF;AAAA,QACCC,UADD,GACcC,qBAAWF,WAAX,CAAD,GACRE,qBAAWF,WAAX,CADQ,GAERE,qBAAWC,OAHhB;;AAIL,WAAOF,WAAW;AAChBG,eAAS,KAAKC,iBAAL,EADO;AAEhBR,oBAFgB,EAERC,UAFQ,EAEFC,wBAFE;AAGhBb,8BAHgB,EAGHG;AAHG,KAAX,CAAP;AAKF;AAXc,CAAjB;;kBAceM,Q","file":"withItem.js","sourcesContent":["\r\n\r\nimport RouterItem from '../../components/factories/RouterItem';\r\n\r\nimport ChartActions from '../actions/ChartActions';\r\n//import WatchActions from '../actions/WatchActions';\r\nimport ComponentActions from '../actions/ComponentActions';\r\n\r\nimport { ModalDialog } from '../../constants/Type';\r\n\r\n\r\nconst onCloseItem = ChartActions.closeChart\r\n    , onWatchItem = ComponentActions.showModalDialog.bind(null, ModalDialog.ADD_ITEM );\r\n    //, onWatchItem = WatchActions.addItem;\r\n\r\nconst withItem = {\r\n  createItem(option, json, parentProps){\r\n    const { requestType } = option\r\n         , _fnFactory= (RouterItem[requestType])\r\n             ? RouterItem[requestType]\r\n             : RouterItem.DEFAULT\r\n     return _fnFactory({\r\n       factory: this.getElementFactory(),\r\n       option, json, parentProps,\r\n       onCloseItem, onWatchItem\r\n     })\r\n  }\r\n};\r\n\r\nexport default withItem\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/logic/withItem.js"
+ ],
+ "file": "../../../src/flux/logic/withItem.js",
+ "names": [
+  "onWatchItem",
+  "ComponentActions",
+  "showModalDialog",
+  "bind",
+  "ModalDialog",
+  "ADD_ITEM",
+  "withItem",
+  "createItem",
+  "option",
+  "json",
+  "parentProps",
+  "requestType",
+  "chartType",
+  "key",
+  "_fnFactory",
+  "RouterItem",
+  "DEFAULT",
+  "factory",
+  "getElementFactory",
+  "onMoveToTop",
+  "CHA",
+  "moveToTop",
+  "onCloseItem",
+  "closeChart"
+ ],
+ "mappings": ";;;;;;AACA;;;;AAEA;;;;AACA;;;;AAEA;;;;AAEA,IAAMA,cAAcC,2BAAiBC,eAAjB,CAAiCC,IAAjC,CAAsC,IAAtC,EAA4CC,kBAAYC,QAAxD,CAApB;;AAEA,IAAMC,WAAW;AACfC,YADe,sBACJC,MADI,EACIC,IADJ,EACUC,WADV,EACsB;AAAA,QAEjCC,WAFiC,GAI/BH,MAJ+B,CAEjCG,WAFiC;AAAA,QAGjCC,SAHiC,GAI/BJ,MAJ+B,CAGjCI,SAHiC;AAAA,QAGtBC,GAHsB,GAI/BL,MAJ+B,CAGtBK,GAHsB;AAAA,QAKjCC,UALiC,GAKpBC,qBAAWJ,WAAX,CAAD,GACRI,qBAAWJ,WAAX,CADQ,GAERI,qBAAWC,OAPkB;;AAQlC,WAAOF,WAAW;AAChBG,eAAS,KAAKC,iBAAL,EADO;AAEhBV,oBAFgB,EAERC,UAFQ,EAEFC,wBAFE;AAGhBS,mBAAaC,uBAAIC,SAAJ,CAAclB,IAAd,CAAmB,IAAnB,EAAyBS,SAAzB,EAAoCC,GAApC,CAHG;AAIhBS,mBAAaF,uBAAIG,UAJD;AAKhBvB;AALgB,KAAX,CAAP;AAOF;AAhBc,CAAjB;;kBAmBeM,Q"
+}

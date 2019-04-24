@@ -59,3 +59,10 @@
     margin-top: -0.25em;
     margin-right: 16px;
 }
+
+.charts__menu-more {
+  top: 36px;
+  left: 8px;
+  z-index: 2000;
+  //border: 2px solid rgb(27, 40, 54);
+}

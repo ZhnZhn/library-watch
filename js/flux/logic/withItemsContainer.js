@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _ChartActions = require('../actions/ChartActions');
+
+var _ChartActions2 = _interopRequireDefault(_ChartActions);
+
 var _ComponentActions = require('../actions/ComponentActions');
 
 var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
@@ -18,23 +22,16 @@ var _ChartContainer2 = _interopRequireDefault(_ChartContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//const _onCloseItem = ChartActions.closeChart;
-
-
-//import ChartActions from '../actions/ChartActions';
-var _fnCloseChartContainer = function _fnCloseChartContainer(chartType, browserType) {
-  return _ComponentActions2.default.closeChartContainer.bind(null, chartType, browserType);
-};
-
 var _createChartContainerComp = function _createChartContainerComp(conf, browserType) {
-  var Comp = conf.chartContainerComp ? conf.chartContainerComp : _ChartContainer2.default;
+  var Comp = conf.chartContainerComp ? conf.chartContainerComp : _ChartContainer2.default,
+      _chartType = conf.type;
   return _react2.default.createElement(Comp, {
-    key: conf.type,
+    key: _chartType,
     caption: conf.chartContainerCaption,
-    chartType: conf.type,
+    chartType: _chartType,
     browserType: browserType,
-    onCloseContainer: _fnCloseChartContainer(conf.type, browserType)
-    //onCloseItem : _onCloseItem
+    onCloseContainer: _ComponentActions2.default.closeChartContainer.bind(null, _chartType, browserType),
+    onRemoveAll: _ChartActions2.default.removeAll.bind(null, _chartType, browserType)
   });
 };
 

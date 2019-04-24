@@ -1,55 +1,38 @@
 import BrowserMenu from '../../constants/BrowserMenu';
 
 import Factory from '../logic/Factory';
-import { BrowserActionTypes } from '../actions/BrowserActions';
+import { BrowserActionTypes as BAT } from '../actions/BrowserActions';
 
-//import DataQE from '../../constants/DataQE';
+import Logic from './browser/BrowserLogic'
 
 import DataWL from '../../constants/DataWL';
 
-const fnFindObj = function(menu, chartType){
-  for (var i=0, maxPart=menu.length; i<maxPart; i++){
-    for(var j=0, maxItem=menu[i].items.length; j<maxItem; j++){
-      if (menu[i].items[j].id === chartType){
-        return menu[i].items[j];
-      }
-    }
-  }
-};
-
-const fnSetIsOpen = function(chartType, browserMenu, browserType, value){
-  const obj = fnFindObj(browserMenu[browserType], chartType);
-  obj.isOpen = value;
-};
-
-const fnAddCounter = function(chartType, browserType, browserMenu, value){
-  const obj = fnFindObj(browserMenu[browserType], chartType);
-  obj.counter += value;
-  obj.isOpen = true;
-};
+const {
+  setIsOpen,
+  plusCounter,
+  resetCounter
+} = Logic;
 
 const BrowserSlice = {
-  browserMenu : BrowserMenu,
-  routeDialog : {
-    //QE : DataQE,
-
-    WL : DataWL
+  browserMenu: BrowserMenu,
+  routeDialog: {
+    WL: DataWL
   },
 
   getBrowserMenu(browserType){
      return this.browserMenu[browserType];
   },
   setMenuItemOpen(chartType, browserType){
-    fnSetIsOpen(chartType, this.browserMenu, browserType, true);
+    setIsOpen(chartType, this.browserMenu, browserType, true);
   },
   setMenuItemClose(chartType, browserType){
-    fnSetIsOpen(chartType, this.browserMenu, browserType, false);
+    setIsOpen(chartType, this.browserMenu, browserType, false);
   },
   addMenuItemCounter(chartType, browserType){
-    fnAddCounter(chartType, browserType, this.browserMenu, 1);
+    plusCounter(chartType, browserType, this.browserMenu, 1);
   },
   minusMenuItemCounter(chartType, browserType){
-    fnAddCounter(chartType, browserType, this.browserMenu, -1);
+    plusCounter(chartType, browserType, this.browserMenu, -1);
   },
 
   getSourceConfig(browserId, sourceId){
@@ -57,17 +40,17 @@ const BrowserSlice = {
   },
 
   onShowBrowser(browserType){
-    this.trigger(BrowserActionTypes.SHOW_BROWSER, browserType);
+    this.trigger(BAT.SHOW_BROWSER, browserType);
   },
 
   onShowBrowserDynamic(option){
     const { browserType } = option;
     if (!this.browserMenu[browserType]) {
-       const elBrowser = Factory.createBrowserDynamic(option);       
+       const elBrowser = Factory.createBrowserDynamic(option);
        this.browserMenu[browserType] = [];
-       this.trigger(BrowserActionTypes.INIT_BROWSER_DYNAMIC, elBrowser);
+       this.trigger(BAT.INIT_BROWSER_DYNAMIC, elBrowser);
     } else {
-       this.trigger(BrowserActionTypes.SHOW_BROWSER_DYNAMIC, browserType);
+       this.trigger(BAT.SHOW_BROWSER_DYNAMIC, browserType);
     }
   },
   onLoadBrowserDynamicCompleted(option){
@@ -75,21 +58,23 @@ const BrowserSlice = {
         , elMenu = BrowserMenu.createMenu(menu, items, browserType);
     this.routeDialog[browserType] = items;
     this.browserMenu[browserType] = elMenu;
-    this.trigger(BrowserActionTypes.LOAD_BROWSER_DYNAMIC_COMPLETED, {
-      menuItems : elMenu, browserType: browserType
+    this.trigger(BAT.LOAD_BROWSER_DYNAMIC_COMPLETED, {
+      menuItems: elMenu, browserType: browserType
     })
   },
   onLoadBrowserDynamicFailed(option){
-    option.alertItemId = (option.alertItemId)
-              ? option.alertItemId
-              : option.caption;
+    option.alertItemId = option.alertItemId
+      || option.caption || '';
     this.showAlertDialog(option);
   },
 
   onToggleWatchDbBrowser(){
-    this.trigger(BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER);
-  }
+    this.trigger(BAT.TOGGLE_WATCH_DB_BROWSER);
+  },
 
+  resetMenuItemCounter(cT, bT){
+    resetCounter(this.browserMenu, bT, cT)
+  }
 }
 
 export default BrowserSlice

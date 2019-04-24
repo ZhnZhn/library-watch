@@ -8,10 +8,11 @@ const CL = {
 };
 
 const ItemCaption = ({
+  style,
   children,
   onClose
 }) => (
-  <div className={CL.ROOT}>
+  <div className={CL.ROOT} style={style}>
     {children}
     <SvgClose
       className={CL.BT_CLOSE}

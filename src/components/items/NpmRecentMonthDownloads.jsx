@@ -2,78 +2,111 @@ import React, { Component } from 'react'
 
 import Chart from '../charts/Chart';
 
+import crModelMore from './crNpmModelMore'
+
 import Caption from './ItemCaption'
+import ModalSlider from '../zhn-modal-slider/ModalSlider'
+import SvgMore from '../zhn-atoms/SvgMore'
 import ButtonCircle from '../zhn-atoms/ButtonCircle';
 import FormattedInteger from '../zhn-atoms/FormattedInteger';
 import ShowHide from '../zhn-atoms/ShowHide';
 import LineChart from '../charts/LineChart';
 import ButtonDownUp from '../zhn-atoms/ButtonDownUp';
 import LinkImg from '../zhn-atoms/LinkImg';
+import CL from '../styles/CL';
 
 const BASE_NODEICO = "https://nodei.co/npm/"
     , SUFFIX_NODEICO = ".png?downloads=true&downloadRank=true&stars=true"
     , BASE_NPM = "https://www.npmjs.com/package/"
     , ITEM_DESCRIPTION = "Npm Recent Month Downloads";
 
-const styles = {
-  rootDiv : {
-    lineHeight : 1.5,
-    marginBottom: '10px',
-    marginRight: '25px',
-    //marginRight: '10px',
-    position : 'relative'
+const S = {
+  ROOT: {
+    position: 'relative',
+    lineHeight: 1.5,
+    marginBottom: 10,
+    marginRight: 25
   },
-  captionSpanOpen : {
-    display : 'inline-block',
-    color: 'rgba(164, 135, 212, 1)',
-    cursor: 'pointer',
-    maxWidth: '500px',
+  CAPTION_OPEN: {
+    position: 'relative',
+    top: -6,
+    display: 'inline-block',
+    color: '#a487d4',
+    paddingLeft: 8,
+    maxWidth: 500,
     fontWeight : 'bold',
     whiteSpace: 'nowrap',
     textOverflow : 'ellipsis',
     overflow : 'hidden',
-    float : 'left'
+    cursor: 'pointer'
+  },
+  CAPTION: {
+    paddingLeft: 4,
+  },
+  BT_MORE: {
+    verticalAlign: 'none'
   },
 
-  SPAN_SUM : {
+  SPAN_SUM: {
     color: '#80c040',
-    paddingLeft : '10px',
-    paddingRight : '10px'
+    paddingLeft: 10,
+    paddingRight: 10
   },
-  SPAN_START : {
-    paddingRight : '10px'
+  SPAN_START: {
+    paddingRight: 10
   },
-  BTN_CIRCLE : {
-    marginLeft: '10px'
+  BTN_CIRCLE: {
+    position: 'relative',
+    top: -6,
+    marginLeft: 10
   },
 
-  DIV_NODEICO_BADGE : {
-     marginLeft: '32px'
+  DIV_NODEICO_BADGE: {
+     marginLeft: 32
   },
-  SPAN_NODEICO : {
+  SPAN_NODEICO: {
     display: 'block',
     fontWeight: 'bold' ,
     color: '#3399FF',
     cursor: 'pointer'
   },
 
-  BUTTON_DOWN_UP : {
-    paddingTop : '4px',
-    paddingBottom : '4px'
+  BUTTON_DOWN_UP: {
+    paddingTop: 4,
+    paddingBottom: 4
   },
 
-  SHOW_HIDE_BADGE : {
-     marginTop: '16px'
+  SHOW_HIDE_BADGE: {
+    marginTop: 16
   }
+};
 
-}
 
+const _isFn = fn => typeof fn === 'function';
 
 class NpmRecentDownloads extends Component {
-  state = {
-    isShow : true,
-    isLoadNodeIco : false,
-    isShowNodeIco : false
+
+  constructor(props){
+    super(props)
+    const { onMoveToTop } = props;
+    this._MORE = crModelMore({
+      onMoveToTop
+    })
+    this.state = {
+      isShow: true,
+      isMore: false,
+      isLoadNodeIco: false,
+      isShowNodeIco: false
+    }
+  }
+
+  _hClickMore = () => {
+    this.setState({ isMore: true })
+  }
+  _hToggleMore = () => {
+    this.setState(prevState => ({
+      isMore: !prevState.isMore
+    }))
   }
 
   _handlerToggleOpen = () => {
@@ -108,7 +141,7 @@ class NpmRecentDownloads extends Component {
       <ButtonCircle
          caption="W"
          title="Add to Watch"
-         style={styles.BTN_CIRCLE}
+         style={S.BTN_CIRCLE}
          onClick={this._handlerClickWatch}
       />
     )
@@ -128,23 +161,33 @@ class NpmRecentDownloads extends Component {
 
   render(){
     const {
-            packageName, caption, sumDownloads=0, fromDate, toDate,
-            labels, data,
-            onCloseItem, onWatchItem
-          } = this.props
-        , _isButtonWatch = ( typeof onWatchItem === 'function' )
-                ? true
-                : false
-        , _styleCaption = styles.captionSpanOpen
-        , { isShow, isLoadNodeIco, isShowNodeIco } = this.state
-        , _lineChartConfig = Chart.fLineConfig({ labels, data })
+      packageName, caption, sumDownloads=0,
+      fromDate, toDate,
+      labels, data,
+      onCloseItem, onWatchItem
+    } = this.props
+    , {
+      isShow, isMore,
+      isLoadNodeIco, isShowNodeIco
+    } = this.state
+    , _lineChartConfig = Chart.fLineConfig({ labels, data })
     return (
-      <div style={styles.rootDiv}>
-        <Caption onClose={onCloseItem}>
-          <span
+      <div style={S.ROOT}>
+        <ModalSlider
+          isShow={isMore}
+          className={CL.MENU_MORE}
+          model={this._MORE}
+          onClose={this._hToggleMore}
+        />
+        <Caption style={S.CAPTION} onClose={onCloseItem}>
+          <SvgMore
+            style={S.BT_MORE}
+            onClick={this._hClickMore}
+          />
+          <button
              className="not-selected"
              title={caption}
-             style={_styleCaption}
+             style={S.CAPTION_OPEN}
              onClick={this._handlerToggleOpen}
           >
             <span>
@@ -152,31 +195,31 @@ class NpmRecentDownloads extends Component {
             </span>
             <FormattedInteger
                value={sumDownloads}
-               style={styles.SPAN_SUM}
+               style={S.SPAN_SUM}
             />
-            <span style={styles.SPAN_START}>
+            <span style={S.SPAN_START}>
               {fromDate}
             </span>
             <span>
               {toDate}
             </span>
-          </span>
-          { _isButtonWatch && this._renderButtonWatch() }
+          </button>
+          { _isFn(onWatchItem) && this._renderButtonWatch() }
         </Caption>
         <ShowHide isShow={isShow}>
           <LineChart
              data={_lineChartConfig}
           />
 
-          <div style={styles.DIV_NODEICO_BADGE}>
+          <div style={S.DIV_NODEICO_BADGE}>
             <ButtonDownUp
                caption="NodeICO"
                title="Package badge from Nodei.co"
-               styleRoot={styles.BUTTON_DOWN_UP}
+               styleRoot={S.BUTTON_DOWN_UP}
                isUp={isShowNodeIco}
                onClick={this._handlerClickNodeIco}
             />
-            <ShowHide isShow={isShowNodeIco} style={styles.SHOW_HIDE_BADGE}>
+            <ShowHide isShow={isShowNodeIco} style={S.SHOW_HIDE_BADGE}>
               {isLoadNodeIco && this._renderNodeIcoBadge(packageName)}
             </ShowHide>
           </div>

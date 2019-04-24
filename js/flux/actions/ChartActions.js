@@ -42,16 +42,21 @@ var ChartActionTypes = exports.ChartActionTypes = {
   LOAD_STOCK_FAILED: 'loadStockFailed',
 
   SHOW_CHART: 'showChart',
-  CLOSE_CHART: 'closeChart'
+  CLOSE_CHART: 'closeChart',
+
+  REMOVE_ALL: 'removeAll',
+  MOVE_TO_TOP: 'moveToTop'
 };
 
-var ChartActions = _reflux2.default.createActions((_Reflux$createActions = {}, (0, _defineProperty3.default)(_Reflux$createActions, ChartActionTypes.LOAD_STOCK, {
+var A = ChartActionTypes;
+
+var ChartActions = _reflux2.default.createActions((_Reflux$createActions = {}, (0, _defineProperty3.default)(_Reflux$createActions, A.LOAD_STOCK, {
   children: ['completed', 'failed'],
   isLoading: false,
   idLoading: undefined,
   isShouldEmit: true
   //cancelLoad : _fnCancelLoad
-}), (0, _defineProperty3.default)(_Reflux$createActions, ChartActionTypes.SHOW_CHART, {}), (0, _defineProperty3.default)(_Reflux$createActions, ChartActionTypes.CLOSE_CHART, {}), _Reflux$createActions));
+}), (0, _defineProperty3.default)(_Reflux$createActions, A.SHOW_CHART, {}), (0, _defineProperty3.default)(_Reflux$createActions, A.CLOSE_CHART, {}), (0, _defineProperty3.default)(_Reflux$createActions, A.REMOVE_ALL, {}), (0, _defineProperty3.default)(_Reflux$createActions, A.MOVE_TO_TOP, {}), _Reflux$createActions));
 
 ChartActions[ChartActionTypes.LOAD_STOCK].listen(function (chartType, browserType, option) {
   var _option$loadId = option.loadId,

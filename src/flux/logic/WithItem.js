@@ -1,29 +1,29 @@
 
-
 import RouterItem from '../../components/factories/RouterItem';
 
-import ChartActions from '../actions/ChartActions';
-//import WatchActions from '../actions/WatchActions';
+import CHA from '../actions/ChartActions';
 import ComponentActions from '../actions/ComponentActions';
 
 import { ModalDialog } from '../../constants/Type';
 
-
-const onCloseItem = ChartActions.closeChart
-    , onWatchItem = ComponentActions.showModalDialog.bind(null, ModalDialog.ADD_ITEM );
-    //, onWatchItem = WatchActions.addItem;
+const onWatchItem = ComponentActions.showModalDialog.bind(null, ModalDialog.ADD_ITEM );
 
 const withItem = {
   createItem(option, json, parentProps){
-    const { requestType } = option
-         , _fnFactory= (RouterItem[requestType])
-             ? RouterItem[requestType]
-             : RouterItem.DEFAULT
+    const {
+      requestType,
+      chartType, key
+    } = option
+    , _fnFactory= (RouterItem[requestType])
+        ? RouterItem[requestType]
+        : RouterItem.DEFAULT;
      return _fnFactory({
        factory: this.getElementFactory(),
        option, json, parentProps,
-       onCloseItem, onWatchItem
-     })
+       onMoveToTop: CHA.moveToTop.bind(null, chartType, key),
+       onCloseItem: CHA.closeChart,
+       onWatchItem
+     });
   }
 };
 

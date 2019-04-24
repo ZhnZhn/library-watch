@@ -1,0 +1,23 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/crNpmModelMore.js"
+ ],
+ "file": "../../../src/components/items/crNpmModelMore.js",
+ "names": [
+  "CL_ROW",
+  "CL",
+  "ROW_MENU_MORE",
+  "crNpmModelMore",
+  "onMoveToTop",
+  "baseTitleCl",
+  "pageWidth",
+  "maxPages",
+  "p0",
+  "cn",
+  "name",
+  "onClick",
+  "isClose"
+ ],
+ "mappings": ";;;;;;AACA;;;;;;AAEA,IAAMA,SAASC,aAAGC,aAAlB;;AAEA,IAAMC,iBAAiB,SAAjBA,cAAiB;AAAA,MAAGC,WAAH,QAAGA,WAAH;AAAA,SAAsB;AAC3CC,iBAAaL,MAD8B;AAE3CM,eAAW,GAFgC;AAG3CC,cAAU,CAHiC;AAI3CC,QAAI,CACF;AACEC,UAAIT,MADN;AAEEU,YAAM,aAFR;AAGEC,eAASP,WAHX;AAIEQ,eAAS;AAJX,KADE;AAJuC,GAAtB;AAAA,CAAvB;;kBAceT,c"
+}

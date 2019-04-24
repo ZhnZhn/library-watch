@@ -198,7 +198,7 @@ class ModalSlider extends Component {
              ...S.PAGES,
              ..._pagesStyle,
              ..._transform
-           };
+           };    
     return (
       <ModalPane
         isShow={isShow}
