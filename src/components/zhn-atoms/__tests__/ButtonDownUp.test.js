@@ -11,22 +11,22 @@ const _fnGetWrapper = (props) => {
   return shallow(<ButtonDownUp {...props} />);
 }
 
-test('render root span with empty title, caption by default', t => {
+test('render root button with empty title, caption by default', t => {
   const wrapper = _fnGetWrapper();
 
-   t.true(wrapper.is('span'))
+   t.true(wrapper.is('button'))
    t.is(wrapper.props().title, '')
    t.is(wrapper.text(), '')
 })
 
-test('should use prop title, caption, styleRoot', t => {
+test('should use prop title, caption, style', t => {
   const title = 'title'
       , caption = 'caption'
-      , styleRoot = { paddingLeft : '20px' }
-      , wrapper = _fnGetWrapper({ title, caption, styleRoot });
+      , style = { paddingLeft : '20px' }
+      , wrapper = _fnGetWrapper({ title, caption, style });
 
    t.is(wrapper.props().title, title)
-   t.is(wrapper.props().style.paddingLeft, styleRoot.paddingLeft)
+   t.is(wrapper.props().style.paddingLeft, style.paddingLeft)
    t.is(wrapper.text(), caption)
 })
 

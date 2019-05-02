@@ -19,20 +19,20 @@ const STYLE = {
     overflowY: 'auto',
     height: '92%',
     //height: 'calc(100vh - 90px)',
-    paddingRight: '10px'
+    paddingRight: 10
   },
   ROOT_DIV : {
     color: 'gray',
     fontWeight: 'bold',
-    paddingLeft: '16px',
-    paddingRight: '5px',
+    paddingLeft: 16,
+    paddingRight: 5,
     lineHeight : 1.4
   },
   MARGIN_BOTTOM : {
     marginBottom : '1em'
   },
-  MARGIN_TOP : {
-    marginTop: '3px'
+  MARGIN_TOP: {
+    marginTop: 3
   }
 };
 
@@ -109,23 +109,26 @@ class About extends Component {
                href="https://www.github.com/"
                color="#009ae5"
                title="GitHub"
-            >
-               GitHub
-            </LinkToken>
+               caption="GitHub"
+            />
             <LinkToken
                href="https://www.npmjs.com/"
                color="#273547"
                title="NPM"
-            >
-               NPM
-            </LinkToken>
+               caption="NPM"
+            />
+            <LinkToken
+               href="https://api-docs.npms.io/"
+               color="#273547"
+               title="NPMS.IO"
+               caption="NPMS.IO"
+            />
             <LinkToken
                href="https://stackexchange.com/"
                color="#3186C9"
                title="Stack Exchange"
-            >
-               Stack Exchange
-            </LinkToken>
+               caption="Stack Exchange"
+            />
            </p>
             <p>
               <Step step="1" />

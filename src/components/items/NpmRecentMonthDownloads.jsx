@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
 
-import Chart from '../charts/Chart';
+import Chart from '../charts/Chart'
 
 import crModelMore from './crNpmModelMore'
 
-import Caption from './ItemCaption'
+import loadNpms from './loadNpms'
+
+import A from '../zhn-atoms/A'
 import ModalSlider from '../zhn-modal-slider/ModalSlider'
-import SvgMore from '../zhn-atoms/SvgMore'
-import ButtonCircle from '../zhn-atoms/ButtonCircle';
-import FormattedInteger from '../zhn-atoms/FormattedInteger';
-import ShowHide from '../zhn-atoms/ShowHide';
-import LineChart from '../charts/LineChart';
-import ButtonDownUp from '../zhn-atoms/ButtonDownUp';
-import LinkImg from '../zhn-atoms/LinkImg';
-import CL from '../styles/CL';
+import LineChart from '../charts/LineChart'
+import Caption from './ItemCaption'
+import PackageDetails from './PackageDetails'
+
+import CL from '../styles/CL'
 
 const BASE_NODEICO = "https://nodei.co/npm/"
     , SUFFIX_NODEICO = ".png?downloads=true&downloadRank=true&stars=true"
@@ -61,6 +60,9 @@ const S = {
     marginLeft: 10
   },
 
+  ROW_BTS: {
+    marginLeft: 32
+  },
   DIV_NODEICO_BADGE: {
      marginLeft: 32
   },
@@ -96,7 +98,9 @@ class NpmRecentDownloads extends Component {
       isShow: true,
       isMore: false,
       isLoadNodeIco: false,
-      isShowNodeIco: false
+      isShowNodeIco: false,
+      isLoadedNpms: false,
+      isShowNmps: false
     }
   }
 
@@ -136,9 +140,28 @@ class NpmRecentDownloads extends Component {
     });
   }
 
+  _hClickNpms = () => {
+    const { packageName } = this.props;
+    loadNpms({ packageName, onLoad: this._onLoadNpms })
+  }
+
+  _onLoadNpms = (json) => {
+    this.setState({
+      npmsJson: json,
+      isLoadedNpms: true,
+      isShowNmps: true
+    })
+  }
+
+  _toggleNpms = () => {
+    this.setState(prevState => ({
+      isShowNmps: !prevState.isShowNmps
+    }))
+  }
+
   _renderButtonWatch = () => {
     return (
-      <ButtonCircle
+      <A.ButtonCircle
          caption="W"
          title="Add to Watch"
          style={S.BTN_CIRCLE}
@@ -151,7 +174,7 @@ class NpmRecentDownloads extends Component {
     const _href = BASE_NPM + packageName
         , _imgSrc = BASE_NODEICO + packageName + SUFFIX_NODEICO
     return (
-      <LinkImg
+      <A.LinkImg
          href={_href}
          imgClass="node-ico"
          imgSrc={_imgSrc}
@@ -168,9 +191,13 @@ class NpmRecentDownloads extends Component {
     } = this.props
     , {
       isShow, isMore,
-      isLoadNodeIco, isShowNodeIco
+      isLoadNodeIco, isShowNodeIco,
+      isLoadedNpms, isShowNmps, npmsJson
     } = this.state
     , _lineChartConfig = Chart.fLineConfig({ labels, data })
+    , _onClickNpms = isLoadedNpms
+        ? this._toggleNpms
+        : this._hClickNpms;
     return (
       <div style={S.ROOT}>
         <ModalSlider
@@ -180,7 +207,7 @@ class NpmRecentDownloads extends Component {
           onClose={this._hToggleMore}
         />
         <Caption style={S.CAPTION} onClose={onCloseItem}>
-          <SvgMore
+          <A.SvgMore
             style={S.BT_MORE}
             onClick={this._hClickMore}
           />
@@ -193,7 +220,7 @@ class NpmRecentDownloads extends Component {
             <span>
               {packageName}
             </span>
-            <FormattedInteger
+            <A.FormattedInteger
                value={sumDownloads}
                style={S.SPAN_SUM}
             />
@@ -206,25 +233,38 @@ class NpmRecentDownloads extends Component {
           </button>
           { _isFn(onWatchItem) && this._renderButtonWatch() }
         </Caption>
-        <ShowHide isShow={isShow}>
+        <A.ShowHide isShow={isShow}>
           <LineChart
              data={_lineChartConfig}
           />
 
+         <div style={S.ROW_BTS}>
+           <A.ButtonDownUp
+             style={S.BUTTON_DOWN_UP}
+             isUp={isShowNodeIco}
+             caption="NodeICO"
+             title="Package badge from Nodei.co"
+             onClick={this._handlerClickNodeIco}
+           />
+           <A.ButtonDownUp
+             style={{ ...S.BUTTON_DOWN_UP, marginLeft: 32 }}
+             isUp={isShowNmps}
+             caption="NPMS.IO"
+             title="Click to load package info from npms.io"
+             onClick={_onClickNpms}
+           />
+         </div>
+
           <div style={S.DIV_NODEICO_BADGE}>
-            <ButtonDownUp
-               caption="NodeICO"
-               title="Package badge from Nodei.co"
-               styleRoot={S.BUTTON_DOWN_UP}
-               isUp={isShowNodeIco}
-               onClick={this._handlerClickNodeIco}
-            />
-            <ShowHide isShow={isShowNodeIco} style={S.SHOW_HIDE_BADGE}>
+            <A.ShowHide isShow={isShowNodeIco} style={S.SHOW_HIDE_BADGE}>
               {isLoadNodeIco && this._renderNodeIcoBadge(packageName)}
-            </ShowHide>
+            </A.ShowHide>
+            <A.ShowHide isShow={isShowNmps} style={S.SHOW_HIDE_BADGE}>
+              {isLoadedNpms && <PackageDetails json={npmsJson} />}
+            </A.ShowHide>
           </div>
 
-        </ShowHide>
+        </A.ShowHide>
       </div>
     );
   }

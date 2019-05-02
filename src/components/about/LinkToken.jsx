@@ -10,7 +10,9 @@ const S = {
 };
 
 const LinkToken = ({
-  color, href, title, children
+  color, href, 
+  caption, title,
+  children
 }) => (
   <span style={S.WRAPPER}>
     <a
@@ -20,9 +22,9 @@ const LinkToken = ({
       href={href}
       title={title}
     >
-      {children}
+      {caption || children}
     </a>
-</span>
+  </span>
 );
 
 

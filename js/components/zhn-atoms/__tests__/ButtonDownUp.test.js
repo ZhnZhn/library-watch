@@ -26,22 +26,22 @@ var _fnGetWrapper = function _fnGetWrapper(props) {
    return (0, _enzyme.shallow)(_react2.default.createElement(_ButtonDownUp2.default, props));
 };
 
-(0, _ava2.default)('render root span with empty title, caption by default', function (t) {
+(0, _ava2.default)('render root button with empty title, caption by default', function (t) {
    var wrapper = _fnGetWrapper();
 
-   t.true(wrapper.is('span'));
+   t.true(wrapper.is('button'));
    t.is(wrapper.props().title, '');
    t.is(wrapper.text(), '');
 });
 
-(0, _ava2.default)('should use prop title, caption, styleRoot', function (t) {
+(0, _ava2.default)('should use prop title, caption, style', function (t) {
    var title = 'title',
        caption = 'caption',
-       styleRoot = { paddingLeft: '20px' },
-       wrapper = _fnGetWrapper({ title: title, caption: caption, styleRoot: styleRoot });
+       style = { paddingLeft: '20px' },
+       wrapper = _fnGetWrapper({ title: title, caption: caption, style: style });
 
    t.is(wrapper.props().title, title);
-   t.is(wrapper.props().style.paddingLeft, styleRoot.paddingLeft);
+   t.is(wrapper.props().style.paddingLeft, style.paddingLeft);
    t.is(wrapper.text(), caption);
 });
 

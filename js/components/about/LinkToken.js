@@ -22,6 +22,7 @@ var S = {
 var LinkToken = function LinkToken(_ref) {
   var color = _ref.color,
       href = _ref.href,
+      caption = _ref.caption,
       title = _ref.title,
       children = _ref.children;
   return _react2.default.createElement(
@@ -36,7 +37,7 @@ var LinkToken = function LinkToken(_ref) {
         href: href,
         title: title
       },
-      children
+      caption || children
     )
   );
 };

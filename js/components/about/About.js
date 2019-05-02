@@ -71,20 +71,20 @@ var STYLE = {
     overflowY: 'auto',
     height: '92%',
     //height: 'calc(100vh - 90px)',
-    paddingRight: '10px'
+    paddingRight: 10
   },
   ROOT_DIV: {
     color: 'gray',
     fontWeight: 'bold',
-    paddingLeft: '16px',
-    paddingRight: '5px',
+    paddingLeft: 16,
+    paddingRight: 5,
     lineHeight: 1.4
   },
   MARGIN_BOTTOM: {
     marginBottom: '1em'
   },
   MARGIN_TOP: {
-    marginTop: '3px'
+    marginTop: 3
   }
 };
 
@@ -177,33 +177,30 @@ var About = (_temp = _class = function (_Component) {
                 { color: 'gray' },
                 'Information API providers:'
               ),
-              _react2.default.createElement(
-                _LinkToken2.default,
-                {
-                  href: 'https://www.github.com/',
-                  color: '#009ae5',
-                  title: 'GitHub'
-                },
-                'GitHub'
-              ),
-              _react2.default.createElement(
-                _LinkToken2.default,
-                {
-                  href: 'https://www.npmjs.com/',
-                  color: '#273547',
-                  title: 'NPM'
-                },
-                'NPM'
-              ),
-              _react2.default.createElement(
-                _LinkToken2.default,
-                {
-                  href: 'https://stackexchange.com/',
-                  color: '#3186C9',
-                  title: 'Stack Exchange'
-                },
-                'Stack Exchange'
-              )
+              _react2.default.createElement(_LinkToken2.default, {
+                href: 'https://www.github.com/',
+                color: '#009ae5',
+                title: 'GitHub',
+                caption: 'GitHub'
+              }),
+              _react2.default.createElement(_LinkToken2.default, {
+                href: 'https://www.npmjs.com/',
+                color: '#273547',
+                title: 'NPM',
+                caption: 'NPM'
+              }),
+              _react2.default.createElement(_LinkToken2.default, {
+                href: 'https://api-docs.npms.io/',
+                color: '#273547',
+                title: 'NPMS.IO',
+                caption: 'NPMS.IO'
+              }),
+              _react2.default.createElement(_LinkToken2.default, {
+                href: 'https://stackexchange.com/',
+                color: '#3186C9',
+                title: 'Stack Exchange',
+                caption: 'Stack Exchange'
+              })
             ),
             _react2.default.createElement(
               'p',

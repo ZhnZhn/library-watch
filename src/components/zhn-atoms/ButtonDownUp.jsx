@@ -5,38 +5,37 @@ import React from 'react';
 import STYLE from './ButtonDownUp.Style';
 
 const ButtonDownUp = (props) => {
-    const { caption, title, isUp, styleRoot, onClick } = props
-        , _styleRoot = (isUp) ? STYLE.ROOT_UP : STYLE.ROOT_DOWN
-        , _styleCircle = (isUp) ? STYLE.CIRCLE_UP : STYLE.CIRCLE_DOWN;
+    const {
+      style, isUp,
+      caption='', title='',
+      onClick
+    } = props
+    , _style = isUp ? STYLE.ROOT_UP : STYLE.ROOT_DOWN
+    , _circleStyle = isUp ? STYLE.CIRCLE_UP : STYLE.CIRCLE_DOWN;
 
     return (
-      <span
+      <button
          title={title}
-         style={Object.assign({}, STYLE.ROOT, styleRoot, _styleRoot)}
+         style={{...STYLE.ROOT, ...style, ..._style}}
          onClick={onClick}
       >
-        <span style={Object.assign({}, STYLE.CIRCLE, _styleCircle)}>
-        </span>
+        <span style={{...STYLE.CIRCLE, ..._circleStyle}} />
         <span style={STYLE.ITEM}>
            {caption}
         </span>
-     </span>
+     </button>
    );
 }
 
 /*
 ButtonDownUp.propTypes = {
+  style: PropTypes.object,
+  isUp: PropTypes.bool,
   caption: PropTypes.string,
   title: PropTypes.string,
-  isUp: PropTypes.bool,
-  styleRoot: PropTypes.object,
   onClick: PropTypes.func
 }
 */
-ButtonDownUp.defaultProps = {
-  caption: '',
-  title: '',
-  onClick: () => {}
-}
+
 
 export default ButtonDownUp

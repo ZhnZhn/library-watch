@@ -1,1 +1,33 @@
-{"version":3,"sources":["../../../../src/components/zhn-atoms/__tests__/ButtonDownUp.test.js"],"names":["_fnGetWrapper","props","wrapper","t","true","is","title","text","caption","styleRoot","paddingLeft","style","isUp","color","STYLE","ROOT_UP","spanCircle","childAt","borderColor","CIRCLE_UP","onClickSpy","onClick","simulate","calledOnce"],"mappings":";;AAAA;;;;AAEA;;;;AACA;;AACA;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,gBAAgB,SAAhBA,aAAgB,CAACC,KAAD,EAAW;AAC/B,UAAO,qBAAQ,8BAAC,sBAAD,EAAkBA,KAAlB,CAAR,CAAP;AACD,CAFD;;AAIA,mBAAK,uDAAL,EAA8D,aAAK;AACjE,OAAMC,UAAUF,eAAhB;;AAECG,KAAEC,IAAF,CAAOF,QAAQG,EAAR,CAAW,MAAX,CAAP;AACAF,KAAEE,EAAF,CAAKH,QAAQD,KAAR,GAAgBK,KAArB,EAA4B,EAA5B;AACAH,KAAEE,EAAF,CAAKH,QAAQK,IAAR,EAAL,EAAqB,EAArB;AACF,CAND;;AAQA,mBAAK,2CAAL,EAAkD,aAAK;AACrD,OAAMD,QAAQ,OAAd;AAAA,OACME,UAAU,SADhB;AAAA,OAEMC,YAAY,EAAEC,aAAc,MAAhB,EAFlB;AAAA,OAGMR,UAAUF,cAAc,EAAEM,YAAF,EAASE,gBAAT,EAAkBC,oBAAlB,EAAd,CAHhB;;AAKCN,KAAEE,EAAF,CAAKH,QAAQD,KAAR,GAAgBK,KAArB,EAA4BA,KAA5B;AACAH,KAAEE,EAAF,CAAKH,QAAQD,KAAR,GAAgBU,KAAhB,CAAsBD,WAA3B,EAAwCD,UAAUC,WAAlD;AACAP,KAAEE,EAAF,CAAKH,QAAQK,IAAR,EAAL,EAAqBC,OAArB;AACF,CATD;;AAYA,mBAAK,sBAAL,EAA6B,aAAK;AAC/B,OAAMN,UAAUF,cAAc,EAAEY,MAAM,IAAR,EAAd,CAAhB;;AAEAT,KAAEE,EAAF,CAAKH,QAAQD,KAAR,GAAgBU,KAAhB,CAAsBE,KAA3B,EAAkCC,uBAAMC,OAAN,CAAcF,KAAhD;AACA,OAAMG,aAAad,QAAQe,OAAR,CAAgB,CAAhB,CAAnB;AACAd,KAAEE,EAAF,CAAKW,WAAWf,KAAX,GAAmBU,KAAnB,CAAyBO,WAA9B,EAA2CJ,uBAAMK,SAAN,CAAgBD,WAA3D;AACF,CAND;;AASA,mBAAK,6CAAL,EAAoD,aAAK;AACrD,OAAME,aAAa,iBAAnB;AAAA,OACOlB,UAAUF,cAAc,EAAEqB,SAAUD,UAAZ,EAAd,CADjB;;AAGAlB,WAAQoB,QAAR,CAAiB,OAAjB;AACAnB,KAAEC,IAAF,CAAOgB,WAAWG,UAAlB;AACH,CAND","file":"ButtonDownUp.test.js","sourcesContent":["import React from 'react';\r\n\r\nimport test from 'ava';\r\nimport { shallow } from 'enzyme';\r\nimport { spy } from 'sinon';\r\n\r\nimport ButtonDownUp from '../../../../js/components/zhn-atoms/ButtonDownUp';\r\nimport STYLE from '../../../../js/components/zhn-atoms/ButtonDownUp.Style';\r\n\r\nconst _fnGetWrapper = (props) => {\r\n  return shallow(<ButtonDownUp {...props} />);\r\n}\r\n\r\ntest('render root span with empty title, caption by default', t => {\r\n  const wrapper = _fnGetWrapper();\r\n\r\n   t.true(wrapper.is('span'))\r\n   t.is(wrapper.props().title, '')\r\n   t.is(wrapper.text(), '')\r\n})\r\n\r\ntest('should use prop title, caption, styleRoot', t => {\r\n  const title = 'title'\r\n      , caption = 'caption'\r\n      , styleRoot = { paddingLeft : '20px' }\r\n      , wrapper = _fnGetWrapper({ title, caption, styleRoot });\r\n\r\n   t.is(wrapper.props().title, title)\r\n   t.is(wrapper.props().style.paddingLeft, styleRoot.paddingLeft)\r\n   t.is(wrapper.text(), caption)\r\n})\r\n\r\n\r\ntest('should use prop isUp', t => {\r\n   const wrapper = _fnGetWrapper({ isUp: true })\r\n\r\n   t.is(wrapper.props().style.color, STYLE.ROOT_UP.color)\r\n   const spanCircle = wrapper.childAt(0)\r\n   t.is(spanCircle.props().style.borderColor, STYLE.CIRCLE_UP.borderColor)\r\n})\r\n\r\n\r\ntest('should use prop onClick on event click root', t => {\r\n    const onClickSpy = spy()\r\n         , wrapper = _fnGetWrapper({ onClick : onClickSpy })\r\n\r\n    wrapper.simulate('click')\r\n    t.true(onClickSpy.calledOnce)\r\n})\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/zhn-atoms/__tests__/ButtonDownUp.test.js"
+ ],
+ "file": "../../../../src/components/zhn-atoms/__tests__/ButtonDownUp.test.js",
+ "names": [
+  "_fnGetWrapper",
+  "props",
+  "wrapper",
+  "t",
+  "true",
+  "is",
+  "title",
+  "text",
+  "caption",
+  "style",
+  "paddingLeft",
+  "isUp",
+  "color",
+  "STYLE",
+  "ROOT_UP",
+  "spanCircle",
+  "childAt",
+  "borderColor",
+  "CIRCLE_UP",
+  "onClickSpy",
+  "onClick",
+  "simulate",
+  "calledOnce"
+ ],
+ "mappings": ";;AAAA;;;;AAEA;;;;AACA;;AACA;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,gBAAgB,SAAhBA,aAAgB,CAACC,KAAD,EAAW;AAC/B,UAAO,qBAAQ,8BAAC,sBAAD,EAAkBA,KAAlB,CAAR,CAAP;AACD,CAFD;;AAIA,mBAAK,yDAAL,EAAgE,aAAK;AACnE,OAAMC,UAAUF,eAAhB;;AAECG,KAAEC,IAAF,CAAOF,QAAQG,EAAR,CAAW,QAAX,CAAP;AACAF,KAAEE,EAAF,CAAKH,QAAQD,KAAR,GAAgBK,KAArB,EAA4B,EAA5B;AACAH,KAAEE,EAAF,CAAKH,QAAQK,IAAR,EAAL,EAAqB,EAArB;AACF,CAND;;AAQA,mBAAK,uCAAL,EAA8C,aAAK;AACjD,OAAMD,QAAQ,OAAd;AAAA,OACME,UAAU,SADhB;AAAA,OAEMC,QAAQ,EAAEC,aAAc,MAAhB,EAFd;AAAA,OAGMR,UAAUF,cAAc,EAAEM,YAAF,EAASE,gBAAT,EAAkBC,YAAlB,EAAd,CAHhB;;AAKCN,KAAEE,EAAF,CAAKH,QAAQD,KAAR,GAAgBK,KAArB,EAA4BA,KAA5B;AACAH,KAAEE,EAAF,CAAKH,QAAQD,KAAR,GAAgBQ,KAAhB,CAAsBC,WAA3B,EAAwCD,MAAMC,WAA9C;AACAP,KAAEE,EAAF,CAAKH,QAAQK,IAAR,EAAL,EAAqBC,OAArB;AACF,CATD;;AAYA,mBAAK,sBAAL,EAA6B,aAAK;AAC/B,OAAMN,UAAUF,cAAc,EAAEW,MAAM,IAAR,EAAd,CAAhB;;AAEAR,KAAEE,EAAF,CAAKH,QAAQD,KAAR,GAAgBQ,KAAhB,CAAsBG,KAA3B,EAAkCC,uBAAMC,OAAN,CAAcF,KAAhD;AACA,OAAMG,aAAab,QAAQc,OAAR,CAAgB,CAAhB,CAAnB;AACAb,KAAEE,EAAF,CAAKU,WAAWd,KAAX,GAAmBQ,KAAnB,CAAyBQ,WAA9B,EAA2CJ,uBAAMK,SAAN,CAAgBD,WAA3D;AACF,CAND;;AASA,mBAAK,6CAAL,EAAoD,aAAK;AACrD,OAAME,aAAa,iBAAnB;AAAA,OACOjB,UAAUF,cAAc,EAAEoB,SAAUD,UAAZ,EAAd,CADjB;;AAGAjB,WAAQmB,QAAR,CAAiB,OAAjB;AACAlB,KAAEC,IAAF,CAAOe,WAAWG,UAAlB;AACH,CAND"
+}
