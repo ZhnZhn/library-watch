@@ -1,58 +1,33 @@
 import React, { Component } from 'react';
 
+import A from '../zhn-atoms/A';
 import Caption from './ItemCaption'
-import ButtonCircle from '../zhn-atoms/ButtonCircle';
-import ShowHide from '../zhn-atoms/ShowHide';
+import STYLE from './Item.Style'
 
 const ITEM_DESCRIPTION = "GitHub Repository Issues"
 
-const styles = {
-  rootDiv : {
-    lineHeight : 1.5,
-    marginBottom: '10px',
-    marginRight: '25px',
-    //marginRight: '10px',
-    position : 'relative'
-  },
-  captionSpanOpen : {
-    display : 'inline-block',
-    color: 'rgba(164, 135, 212, 1)',
-    cursor: 'pointer',
-    maxWidth: '500px',
-    fontWeight : 'bold',
-    whiteSpace: 'nowrap',
-    textOverflow : 'ellipsis',
-    overflow : 'hidden',
-    float : 'left'
-  },
-
-  SPAN_VERSION : {
-    color: '#80c040',
-    paddingLeft : '10px',
-    paddingRight : '10px'
-  },
-  BTN_CIRCLE : {
-    marginLeft: '10px'
-  }
-}
-
+const _toDate = strDate => (''+strDate)
+  .replace('T', ' ')
+  .replace('Z', '');
 
 class GitHubIssues extends Component {
   state = {
     isShow: true
   }
 
-  _handlerToggleOpen = () => {
-    this.setState({ isShow: !this.state.isShow })
+  _hToggleOpen = () => {
+    this.setState( prevState => ({
+      isShow: !prevState.isShow
+    }))
   }
 
-  _handlerClickWatch = () => {
+  _hClickWatch = () => {
     const { repo, requestType, onWatchItem } = this.props
         , caption = `${repo}`
         , descr = ITEM_DESCRIPTION
     onWatchItem({
-       caption : caption,
-       config : { repo, requestType, version : '', caption, descr }
+       caption: caption,
+       config: { repo, requestType, version : '', caption, descr }
     });
   }
 
@@ -61,22 +36,22 @@ class GitHubIssues extends Component {
         const { state, number, created_at, updated_at, title, html_url } = item
             , className = (index % 2)
                      ? 'row-even not-selected'
-                     : 'row-odd not-selected'
+                     : 'row-odd not-selected';
         return (
            <div key={index} className={className}>
              <a href={html_url}>
-                <div style={{ paddingBottom: '8px' }}>
-                  <span style={{ paddingRight: '8px' }}>
+                <div style={STYLE.PB_8}>
+                  <span style={STYLE.PR_8}>
                     {state}
                   </span>
-                  <span style={{ paddingRight: '8px' }}>
+                  <span style={STYLE.PR_8}>
                     {`(#${number})`}
                   </span>
-                  <span style={{ paddingRight: '8px' }}>
-                    {created_at.replace('T', ' ').replace('Z', '')}
+                  <span style={STYLE.PR_8}>
+                    {_toDate(created_at)}
                   </span>
                   <span>
-                    {updated_at.replace('T', ' ').replace('Z', '')}
+                    {_toDate(updated_at)}
                   </span>
                 </div>
                 <div>
@@ -94,35 +69,34 @@ class GitHubIssues extends Component {
             onCloseItem
            } = this.props
         ,  _number = issues.length
-        , _styleCaption = styles.captionSpanOpen
         , { isShow } = this.state;
 
      return (
-       <div style={styles.rootDiv}>
+       <div style={STYLE.ROOT}>
          <Caption onClose={onCloseItem}>
-           <span
+           <button
               className="not-selected"
               title={caption}
-              style={_styleCaption}
-              onClick={this._handlerToggleOpen}
+              style={STYLE.CAPTION_OPEN}
+              onClick={this._hToggleOpen}
            >
-             <span style={{ paddingRight: '8px' }}>
+             <span style={STYLE.PR_8}>
                {repo}
              </span>
              <span>
                {_number}
              </span>
-           </span>
-           <ButtonCircle
+           </button>
+           <A.ButtonCircle
               caption="W"
               title="Add to Watch"
-              style={styles.BTN_CIRCLE}
-              onClick={this._handlerClickWatch}
+              style={STYLE.BTN_CIRCLE}
+              onClick={this._hClickWatch}
            />
          </Caption>
-         <ShowHide isShow={isShow}>
+         <A.ShowHide isShow={isShow}>
            {this._renderIssues(issues)}
-         </ShowHide>
+         </A.ShowHide>
        </div>
      );
   }

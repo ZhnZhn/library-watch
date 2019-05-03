@@ -1,42 +1,21 @@
 import React, { Component } from 'react';
 
+import A from '../zhn-atoms/A'
 import Caption from './ItemCaption'
-import ShowHide from '../zhn-atoms/ShowHide';
+import STYLE from './Item.Style'
 
-const styles = {
-  rootDiv : {
-    lineHeight : 1.5,
-    marginBottom: '10px',
-    marginRight: '25px',
-    //marginRight: '10px',
-    position : 'relative'
-  },
-  captionSpanOpen : {
-    display : 'inline-block',
-    color: 'rgba(164, 135, 212, 1)',
-    cursor: 'pointer',
-    maxWidth: '500px',
-    fontWeight : 'bold',
-    whiteSpace: 'nowrap',
-    textOverflow : 'ellipsis',
-    overflow : 'hidden',
-    float : 'left'
-  },
-  SPAN_VERSION : {
-    color: '#80c040',
-    paddingLeft : '10px',
-    paddingRight : '10px'
-  }
-}
+const _formatDate = strDate => (''+strDate)
+ .replace('T', ' ')
+ .replace('Z', '');
 
 const ItemDescription = (props) => {
   const { library={} } = props
-      , {
-          name, description, size, created_at, pushed_at, stargazers_count,
-          open_issues, watchers_count, html_url
-        } = library
-      , _dateCreatedAt = created_at.replace('T', ' ').replace('Z', '')
-      , _datePushedAt = pushed_at.replace('T', ' ').replace('Z', '')
+  , {
+      name, description, size, created_at, pushed_at, stargazers_count,
+      open_issues, watchers_count, html_url
+    } = library
+  , _dateCreatedAt = _formatDate(created_at)
+  , _datePushedAt = _formatDate(pushed_at);
   return (
     <div className="library">
           <div>
@@ -109,7 +88,7 @@ class GitHubSearchInfo extends Component {
     isShow: true
   }
 
-  _handlerToggleOpen = () => {
+  _hToggleOpen = () => {
     this.setState(prevState => ({
       isShow: !prevState.isShow
     }))
@@ -117,33 +96,32 @@ class GitHubSearchInfo extends Component {
 
   render(){
     const { repo, stars_count, pushed_at, caption, library, onCloseItem } = this.props
-        , _styleCaption = styles.captionSpanOpen
-        , { isShow } = this.state;
+    , { isShow } = this.state;
     return (
-      <div style={styles.rootDiv}>
+      <div style={STYLE.ROOT}>
         <Caption onClose={onCloseItem}>
-          <span
+          <button
              className="not-selected"
              title={caption}
-             style={_styleCaption}
-             onClick={this._handlerToggleOpen}
+             style={STYLE.CAPTION_OPEN}
+             onClick={this._hToggleOpen}
           >
             <span>
               {repo}
             </span>
-            <span style={styles.SPAN_VERSION}>
+            <span style={STYLE.SPAN_VERSION}>
               {stars_count}
             </span>
             <span>
               {pushed_at}
             </span>
-          </span>
+          </button>
         </Caption>
-        <ShowHide isShow={isShow}>
+        <A.ShowHide isShow={isShow}>
           <ItemDescription
             library={library}
           />
-        </ShowHide>
+        </A.ShowHide>
       </div>
     );
   }

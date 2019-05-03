@@ -27,7 +27,7 @@ var CellValue = function CellValue(_ref) {
   var _ref$caption = _ref.caption,
       caption = _ref$caption === undefined ? '' : _ref$caption,
       _ref$value = _ref.value,
-      value = _ref$value === undefined ? '' : _ref$value;
+      value = _ref$value === undefined ? 'N/A' : _ref$value;
   return _react2.default.createElement(
     'div',
     { style: S.CELL },

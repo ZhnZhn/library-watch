@@ -1,52 +1,23 @@
 import React, { Component } from 'react';
 
+import A from '../zhn-atoms/A';
 import Caption from './ItemCaption'
-import ButtonCircle from '../zhn-atoms/ButtonCircle';
-import ShowHide from '../zhn-atoms/ShowHide';
+import STYLE from './Item.Style'
 
 const ITEM_DESCRIPTION = "GitHub Repository Recent Release";
-
-const styles = {
-  rootDiv : {
-    lineHeight : 1.5,
-    marginBottom: '10px',
-    marginRight: '25px',
-    //marginRight: '10px',
-    position : 'relative'
-  },
-  captionSpanOpen : {
-    display : 'inline-block',
-    color: 'rgba(164, 135, 212, 1)',
-    cursor: 'pointer',
-    maxWidth: '500px',
-    fontWeight : 'bold',
-    whiteSpace: 'nowrap',
-    textOverflow : 'ellipsis',
-    overflow : 'hidden',
-    float : 'left'
-  },
-
-  SPAN_VERSION : {
-    color: '#80c040',
-    paddingLeft : '10px',
-    paddingRight : '10px'
-  },
-  BTN_CIRCLE : {
-    marginLeft: '10px'
-  }
-}
-
 
 class GitHubRecentRelease extends Component {
   state = {
     isShow: true
   }
 
-  _handlerToggleOpen = () => {
-     this.setState({ isShow : !this.state.isShow });
+  _hToggleOpen = () => {
+     this.setState(prevState => ({
+       isShow: !prevState.isShow
+     }))
   }
 
-  _handlerClickWatch = () => {
+  _hClickWatch = () => {
      const { repo, requestType, version, published_at, onWatchItem } = this.props
          , caption = `${repo} ${version}`
          , descr = ITEM_DESCRIPTION
@@ -58,46 +29,45 @@ class GitHubRecentRelease extends Component {
 
   render(){
     const {
-            caption, repo, version, published_at, html_url,
-            onCloseItem
-          } = this.props
-        , _styleCaption = styles.captionSpanOpen
-        , { isShow } = this.state
+        caption, repo, version, published_at, html_url,
+        onCloseItem
+      } = this.props
+    , { isShow } = this.state;
     return (
-      <div style={styles.rootDiv}>
+      <div style={STYLE.ROOT}>
         <Caption onClose={onCloseItem}>
-          <span
+          <button
              className="not-selected"
              title={caption}
-             style={_styleCaption}
-             onClick={this._handlerToggleOpen}
+             style={STYLE.CAPTION_OPEN}
+             onClick={this._hToggleOpen}
           >
             <span>
               {repo}
             </span>
-            <span style={styles.SPAN_VERSION}>
+            <span style={STYLE.SPAN_VERSION}>
                {version}
             </span>
             <span>
                {published_at}
             </span>
-          </span>
-          <ButtonCircle
+          </button>
+          <A.ButtonCircle
              caption="W"
              title="Add to Watch"
-             style={styles.BTN_CIRCLE}
-             onClick={this._handlerClickWatch}
+             style={STYLE.BTN_CIRCLE}
+             onClick={this._hClickWatch}
           />
         </Caption>
-        <ShowHide isShow={isShow} style={{ paddingTop: '8px' }}>
+        <A.ShowHide isShow={isShow} style={STYLE.PT_8}>
           <a
              href={html_url}
              className="github-link"
-             style={{ marginLeft : '8px' }}
+             style={STYLE.ML_8}
           >
              Link to description of recent release tag
           </a>
-        </ShowHide>
+        </A.ShowHide>
       </div>
     );
   }

@@ -112,12 +112,16 @@ var S = {
     marginLeft: 10
   },
 
-  ROW_BTS: {
+  ML_32: {
     marginLeft: 32
   },
-  DIV_NODEICO_BADGE: {
-    marginLeft: 32
+  MT_16: {
+    marginTop: 16
   },
+  MB_16: {
+    marginBottom: 16
+  },
+
   SPAN_NODEICO: {
     display: 'block',
     fontWeight: 'bold',
@@ -128,11 +132,8 @@ var S = {
   BUTTON_DOWN_UP: {
     paddingTop: 4,
     paddingBottom: 4
-  },
-
-  SHOW_HIDE_BADGE: {
-    marginTop: 16
   }
+
 };
 
 var _isFn = function _isFn(fn) {
@@ -155,6 +156,14 @@ var NpmRecentDownloads = function (_Component) {
       _this.setState(function (prevState) {
         return {
           isMore: !prevState.isMore
+        };
+      });
+    };
+
+    _this._toggleButtons = function () {
+      _this.setState(function (prevState) {
+        return {
+          isButtons: !prevState.isButtons
         };
       });
     };
@@ -237,11 +246,13 @@ var NpmRecentDownloads = function (_Component) {
     var onMoveToTop = props.onMoveToTop;
 
     _this._MORE = (0, _crNpmModelMore2.default)({
-      onMoveToTop: onMoveToTop
+      onMoveToTop: onMoveToTop,
+      onToggleButtons: _this._toggleButtons
     });
     _this.state = {
       isShow: true,
       isMore: false,
+      isButtons: true,
       isLoadNodeIco: false,
       isShowNodeIco: false,
       isLoadedNpms: false,
@@ -267,13 +278,15 @@ var NpmRecentDownloads = function (_Component) {
           _state = this.state,
           isShow = _state.isShow,
           isMore = _state.isMore,
+          isButtons = _state.isButtons,
           isLoadNodeIco = _state.isLoadNodeIco,
           isShowNodeIco = _state.isShowNodeIco,
           isLoadedNpms = _state.isLoadedNpms,
           isShowNmps = _state.isShowNmps,
           npmsJson = _state.npmsJson,
           _lineChartConfig = _Chart2.default.fLineConfig({ labels: labels, data: data }),
-          _onClickNpms = isLoadedNpms ? this._toggleNpms : this._hClickNpms;
+          _onClickNpms = isLoadedNpms ? this._toggleNpms : this._hClickNpms,
+          _infoStyle = isButtons ? (0, _extends3.default)({}, S.ML_32, S.MT_16) : S.ML_32;
 
       return _react2.default.createElement(
         'div',
@@ -328,34 +341,38 @@ var NpmRecentDownloads = function (_Component) {
             data: _lineChartConfig
           }),
           _react2.default.createElement(
-            'div',
-            { style: S.ROW_BTS },
-            _react2.default.createElement(_A2.default.ButtonDownUp, {
-              style: S.BUTTON_DOWN_UP,
-              isUp: isShowNodeIco,
-              caption: 'NodeICO',
-              title: 'Package badge from Nodei.co',
-              onClick: this._handlerClickNodeIco
-            }),
-            _react2.default.createElement(_A2.default.ButtonDownUp, {
-              style: (0, _extends3.default)({}, S.BUTTON_DOWN_UP, { marginLeft: 32 }),
-              isUp: isShowNmps,
-              caption: 'NPMS.IO',
-              title: 'Click to load package info from npms.io',
-              onClick: _onClickNpms
-            })
+            _A2.default.ShowHide,
+            { isShow: isButtons },
+            _react2.default.createElement(
+              'div',
+              { style: S.ML_32 },
+              _react2.default.createElement(_A2.default.ButtonDownUp, {
+                style: S.BUTTON_DOWN_UP,
+                isUp: isShowNodeIco,
+                caption: 'NodeICO',
+                title: 'Package badge from Nodei.co',
+                onClick: this._handlerClickNodeIco
+              }),
+              _react2.default.createElement(_A2.default.ButtonDownUp, {
+                style: (0, _extends3.default)({}, S.BUTTON_DOWN_UP, { marginLeft: 32 }),
+                isUp: isShowNmps,
+                caption: 'NPMS.IO',
+                title: 'Click to load package info from npms.io',
+                onClick: _onClickNpms
+              })
+            )
           ),
           _react2.default.createElement(
             'div',
-            { style: S.DIV_NODEICO_BADGE },
+            { style: _infoStyle },
             _react2.default.createElement(
               _A2.default.ShowHide,
-              { isShow: isShowNodeIco, style: S.SHOW_HIDE_BADGE },
+              { isShow: isShowNodeIco, style: S.MB_16 },
               isLoadNodeIco && this._renderNodeIcoBadge(packageName)
             ),
             _react2.default.createElement(
               _A2.default.ShowHide,
-              { isShow: isShowNmps, style: S.SHOW_HIDE_BADGE },
+              { isShow: isShowNmps, style: S.MB_16 },
               isLoadedNpms && _react2.default.createElement(_PackageDetails2.default, { json: npmsJson })
             )
           )

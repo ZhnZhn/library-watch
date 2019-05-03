@@ -1,82 +1,55 @@
 import React, { Component } from 'react';
 
+import A from '../zhn-atoms/A'
 import Caption from './ItemCaption'
-import ShowHide from '../zhn-atoms/ShowHide';
-import DateAgo from '../zhn-atoms/DateAgo';
+import STYLE from './Item.Style'
 
-const ITEM_DESCRIPTION = "GitHub Repository Commits"
-
-const styles = {
-  rootDiv : {
-    lineHeight : 1.5,
-    marginBottom: '10px',
-    marginRight: '25px',
-    //marginRight: '10px',
-    position : 'relative'
-  },
-  captionSpanOpen : {
-    display : 'inline-block',
-    color: 'rgba(164, 135, 212, 1)',
-    cursor: 'pointer',
-    maxWidth: '500px',
-    fontWeight : 'bold',
-    whiteSpace: 'nowrap',
-    textOverflow : 'ellipsis',
-    overflow : 'hidden',
-    float : 'left'
-  },
-
-  SPAN_VERSION : {
-    color: '#80c040',
-    paddingLeft : '10px',
-    paddingRight : '10px'
-  },
-  BTN_CIRCLE : {
-    marginLeft: '10px'
-  },
+const S = {
   SPAN_TAG : {
     display: 'inline-block',
     color: 'black',
     backgroundColor: 'gray',
-    paddingTop: '4px',
-    paddingLeft: '8px',
-    paddingRight: '8px',
-    paddingBottom: '4px',
-    marginLeft: '8px',
-    marginRight: '8px',
-    marginTop: '6px',
-    marginBottom: '2px',
-    borderRadius: '16px'
+    paddingTop: 4,
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingBottom: 4,
+    marginLeft: 8,
+    marginRight: 8,
+    marginTop: 6,
+    marginBottom: 2,
+    borderRadius: 16
   },
 
   PURPLE_BADGE : {
-    color: '#a487d4', fontSize: '18px', paddingRight: '8px'
+    color: '#a487d4',
+    fontSize: 18,
+    paddingRight: 8
   },
   GREEN_BADGE : {
-    color: '#80c040', fontSize: '18px', paddingRight: '8px'
+    color: '#80c040',
+    fontSize: 18,
+    paddingRight: 8
   },
   BLACK_BAGDE : {
-    color: 'black', fontSize: '18px', paddingRight: '8px'
+    color: 'black',
+    fontSize: 18,
+    paddingRight: 8
+  },
+  ITEM_COUNT: {
+    color: '#a9a9a9',
+    paddingLeft: 12
   }
-}
+};
 
 class StackTaggedQuestions extends Component {
   state = {
     isShow: true
   }
 
-  _handlerToggleOpen = () => {
-    this.setState({ isShow: !this.state.isShow })
-  }
-
-  _handlerClickWatch = () => {
-    const { repo, requestType, onWatchItem } = this.props
-        , caption = `${repo}`
-        , descr = ITEM_DESCRIPTION
-    onWatchItem({
-       caption : caption,
-       config : { repo, requestType, version : '', caption, descr }
-    });
+  _hToggleOpen = () => {
+    this.setState(prevState => ({
+      isShow: !prevState.isShow
+    }))
   }
 
   _renderCommits = (items) => {
@@ -94,23 +67,23 @@ class StackTaggedQuestions extends Component {
         return (
            <div key={index} className={className}>
               <a href={link}>
-              <div style={{ paddingBottom: '8px' }}>
-                <span style={styles.PURPLE_BADGE}>
+              <div style={STYLE.PB_8}>
+                <span style={S.PURPLE_BADGE}>
                   &#9874;&nbsp;{answer_count}
                 </span>
-                <span style={styles.GREEN_BADGE}>
+                <span style={S.GREEN_BADGE} role="img" aria-label="stars score">
                   &#9918;&nbsp;{score}
                 </span>
-                <span style={styles.BLACK_BAGDE}>
+                <span style={S.BLACK_BAGDE}>
                   &#9784;&nbsp;{view_count}
                 </span>
-                <span style={styles.GREEN_BADGE}>
+                <span style={S.GREEN_BADGE}>
                   &#9752;&nbsp;{reputation}
                 </span>
-                <span style={styles.BLACK_BAGDE}>
+                <span style={S.BLACK_BAGDE}>
                   {display_name}
                 </span>
-                <DateAgo
+                <A.DateAgo
                    dateAgo={dateAgo}
                    date={""}
                 />
@@ -130,7 +103,7 @@ class StackTaggedQuestions extends Component {
   _renderTags = (tags) => {
     return tags.map((tag, index) => {
        return (
-         <span key={index} style={styles.SPAN_TAG}>
+         <span key={index} style={S.SPAN_TAG}>
             {tag}
          </span>
        );
@@ -139,33 +112,32 @@ class StackTaggedQuestions extends Component {
 
   render(){
     const {
-            repo, caption, items=[],
-            onCloseItem
-           } = this.props
-        , _items_count = items.length
-        , _styleCaption = styles.captionSpanOpen
-        , { isShow } = this.state;
+      repo, caption, items=[],
+      onCloseItem
+     } = this.props
+    , _items_count = items.length
+    , { isShow } = this.state;
 
      return (
-       <div style={styles.rootDiv}>
+       <div style={STYLE.ROOT}>
          <Caption onClose={onCloseItem}>
-           <span
+           <button
               className="not-selected"
               title={caption}
-              style={_styleCaption}
-              onClick={this._handlerToggleOpen}
+              style={STYLE.CAPTION_OPEN}
+              onClick={this._hToggleOpen}
            >
              <span>
                {repo}
              </span>
-             <span style={{ color: '#a9a9a9', paddingLeft: '12px' }}>
+             <span style={S.ITEM_COUNT}>
                 {_items_count}
              </span>
-           </span>
+           </button>
          </Caption>
-         <ShowHide isShow={isShow}>
+         <A.ShowHide isShow={isShow}>
            {this._renderCommits(items)}
-         </ShowHide>
+         </A.ShowHide>
        </div>
      );
   }

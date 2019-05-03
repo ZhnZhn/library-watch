@@ -60,12 +60,16 @@ const S = {
     marginLeft: 10
   },
 
-  ROW_BTS: {
+  ML_32: {
     marginLeft: 32
   },
-  DIV_NODEICO_BADGE: {
-     marginLeft: 32
+  MT_16: {
+    marginTop: 16
   },
+  MB_16: {
+    marginBottom: 16
+  },
+
   SPAN_NODEICO: {
     display: 'block',
     fontWeight: 'bold' ,
@@ -76,11 +80,8 @@ const S = {
   BUTTON_DOWN_UP: {
     paddingTop: 4,
     paddingBottom: 4
-  },
-
-  SHOW_HIDE_BADGE: {
-    marginTop: 16
   }
+
 };
 
 
@@ -92,11 +93,13 @@ class NpmRecentDownloads extends Component {
     super(props)
     const { onMoveToTop } = props;
     this._MORE = crModelMore({
-      onMoveToTop
+      onMoveToTop,
+      onToggleButtons: this._toggleButtons
     })
     this.state = {
       isShow: true,
       isMore: false,
+      isButtons: true,
       isLoadNodeIco: false,
       isShowNodeIco: false,
       isLoadedNpms: false,
@@ -110,6 +113,11 @@ class NpmRecentDownloads extends Component {
   _hToggleMore = () => {
     this.setState(prevState => ({
       isMore: !prevState.isMore
+    }))
+  }
+  _toggleButtons = () => {
+    this.setState(prevState => ({
+      isButtons: !prevState.isButtons
     }))
   }
 
@@ -191,13 +199,17 @@ class NpmRecentDownloads extends Component {
     } = this.props
     , {
       isShow, isMore,
+      isButtons,
       isLoadNodeIco, isShowNodeIco,
       isLoadedNpms, isShowNmps, npmsJson
     } = this.state
     , _lineChartConfig = Chart.fLineConfig({ labels, data })
     , _onClickNpms = isLoadedNpms
         ? this._toggleNpms
-        : this._hClickNpms;
+        : this._hClickNpms
+    , _infoStyle = isButtons
+          ? { ...S.ML_32, ...S.MT_16 }
+          : S.ML_32;
     return (
       <div style={S.ROOT}>
         <ModalSlider
@@ -238,28 +250,30 @@ class NpmRecentDownloads extends Component {
              data={_lineChartConfig}
           />
 
-         <div style={S.ROW_BTS}>
-           <A.ButtonDownUp
-             style={S.BUTTON_DOWN_UP}
-             isUp={isShowNodeIco}
-             caption="NodeICO"
-             title="Package badge from Nodei.co"
-             onClick={this._handlerClickNodeIco}
-           />
-           <A.ButtonDownUp
-             style={{ ...S.BUTTON_DOWN_UP, marginLeft: 32 }}
-             isUp={isShowNmps}
-             caption="NPMS.IO"
-             title="Click to load package info from npms.io"
-             onClick={_onClickNpms}
-           />
-         </div>
+          <A.ShowHide isShow={isButtons} >
+           <div style={S.ML_32}>
+             <A.ButtonDownUp
+               style={S.BUTTON_DOWN_UP}
+               isUp={isShowNodeIco}
+               caption="NodeICO"
+               title="Package badge from Nodei.co"
+               onClick={this._handlerClickNodeIco}
+             />
+             <A.ButtonDownUp
+               style={{ ...S.BUTTON_DOWN_UP, marginLeft: 32 }}
+               isUp={isShowNmps}
+               caption="NPMS.IO"
+               title="Click to load package info from npms.io"
+               onClick={_onClickNpms}
+             />
+           </div>
+          </A.ShowHide>
 
-          <div style={S.DIV_NODEICO_BADGE}>
-            <A.ShowHide isShow={isShowNodeIco} style={S.SHOW_HIDE_BADGE}>
+          <div style={_infoStyle}>
+            <A.ShowHide isShow={isShowNodeIco} style={S.MB_16}>
               {isLoadNodeIco && this._renderNodeIcoBadge(packageName)}
             </A.ShowHide>
-            <A.ShowHide isShow={isShowNmps} style={S.SHOW_HIDE_BADGE}>
+            <A.ShowHide isShow={isShowNmps} style={S.MB_16}>
               {isLoadedNpms && <PackageDetails json={npmsJson} />}
             </A.ShowHide>
           </div>

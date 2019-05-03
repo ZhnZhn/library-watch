@@ -1,0 +1,38 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/Item.Style.js"
+ ],
+ "file": "../../../src/components/items/Item.Style.js",
+ "names": [
+  "STYLE",
+  "ROOT",
+  "position",
+  "lineHeight",
+  "marginBottom",
+  "marginRight",
+  "CAPTION_OPEN",
+  "display",
+  "color",
+  "cursor",
+  "maxWidth",
+  "fontWeight",
+  "whiteSpace",
+  "textOverflow",
+  "overflow",
+  "float",
+  "SPAN_VERSION",
+  "paddingLeft",
+  "paddingRight",
+  "BTN_CIRCLE",
+  "marginTop",
+  "marginLeft",
+  "PT_8",
+  "paddingTop",
+  "PB_8",
+  "paddingBottom",
+  "PR_8",
+  "ML_8"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,QAAQ;AACZC,QAAM;AACJC,cAAU,UADN;AAEJC,gBAAY,GAFR;AAGJC,kBAAc,EAHV;AAIJC,iBAAa;AAJT,GADM;AAOZC,gBAAc;AACZC,aAAS,cADG;AAEZC,WAAO,wBAFK;AAGZC,YAAQ,SAHI;AAIZC,cAAU,GAJE;AAKZC,gBAAY,MALA;AAMZC,gBAAY,QANA;AAOZC,kBAAc,UAPF;AAQZC,cAAU,QARE;AASZC,WAAO;AATK,GAPF;AAkBZC,gBAAe;AACbR,WAAO,SADM;AAEbS,iBAAa,EAFA;AAGbC,kBAAc;AAHD,GAlBH;AAuBZC,cAAY;AACVC,eAAW,CAAC,CADF;AAEVC,gBAAY;AAFF,GAvBA;AA2BZC,QAAM;AACJC,gBAAY;AADR,GA3BM;AA8BZC,QAAM;AACJC,mBAAe;AADX,GA9BM;AAiCZC,QAAM;AACJR,kBAAc;AADV,GAjCM;;AAqCZS,QAAM;AACJN,gBAAY;AADR;AArCM,CAAd;;kBA0CerB,K"
+}

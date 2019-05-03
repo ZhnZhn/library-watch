@@ -24,73 +24,54 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _A = require('../zhn-atoms/A');
+
+var _A2 = _interopRequireDefault(_A);
+
 var _ItemCaption = require('./ItemCaption');
 
 var _ItemCaption2 = _interopRequireDefault(_ItemCaption);
 
-var _ShowHide = require('../zhn-atoms/ShowHide');
+var _Item = require('./Item.Style');
 
-var _ShowHide2 = _interopRequireDefault(_ShowHide);
-
-var _DateAgo = require('../zhn-atoms/DateAgo');
-
-var _DateAgo2 = _interopRequireDefault(_DateAgo);
+var _Item2 = _interopRequireDefault(_Item);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ITEM_DESCRIPTION = "GitHub Repository Commits";
-
-var styles = {
-  rootDiv: {
-    lineHeight: 1.5,
-    marginBottom: '10px',
-    marginRight: '25px',
-    //marginRight: '10px',
-    position: 'relative'
-  },
-  captionSpanOpen: {
-    display: 'inline-block',
-    color: 'rgba(164, 135, 212, 1)',
-    cursor: 'pointer',
-    maxWidth: '500px',
-    fontWeight: 'bold',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-    overflow: 'hidden',
-    float: 'left'
-  },
-
-  SPAN_VERSION: {
-    color: '#80c040',
-    paddingLeft: '10px',
-    paddingRight: '10px'
-  },
-  BTN_CIRCLE: {
-    marginLeft: '10px'
-  },
+var S = {
   SPAN_TAG: {
     display: 'inline-block',
     color: 'black',
     backgroundColor: 'gray',
-    paddingTop: '4px',
-    paddingLeft: '8px',
-    paddingRight: '8px',
-    paddingBottom: '4px',
-    marginLeft: '8px',
-    marginRight: '8px',
-    marginTop: '6px',
-    marginBottom: '2px',
-    borderRadius: '16px'
+    paddingTop: 4,
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingBottom: 4,
+    marginLeft: 8,
+    marginRight: 8,
+    marginTop: 6,
+    marginBottom: 2,
+    borderRadius: 16
   },
 
   PURPLE_BADGE: {
-    color: '#a487d4', fontSize: '18px', paddingRight: '8px'
+    color: '#a487d4',
+    fontSize: 18,
+    paddingRight: 8
   },
   GREEN_BADGE: {
-    color: '#80c040', fontSize: '18px', paddingRight: '8px'
+    color: '#80c040',
+    fontSize: 18,
+    paddingRight: 8
   },
   BLACK_BAGDE: {
-    color: 'black', fontSize: '18px', paddingRight: '8px'
+    color: 'black',
+    fontSize: 18,
+    paddingRight: 8
+  },
+  ITEM_COUNT: {
+    color: '#a9a9a9',
+    paddingLeft: 12
   }
 };
 
@@ -110,19 +91,11 @@ var StackTaggedQuestions = function (_Component) {
 
     return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = StackTaggedQuestions.__proto__ || Object.getPrototypeOf(StackTaggedQuestions)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       isShow: true
-    }, _this._handlerToggleOpen = function () {
-      _this.setState({ isShow: !_this.state.isShow });
-    }, _this._handlerClickWatch = function () {
-      var _this$props = _this.props,
-          repo = _this$props.repo,
-          requestType = _this$props.requestType,
-          onWatchItem = _this$props.onWatchItem,
-          caption = '' + repo,
-          descr = ITEM_DESCRIPTION;
-
-      onWatchItem({
-        caption: caption,
-        config: { repo: repo, requestType: requestType, version: '', caption: caption, descr: descr }
+    }, _this._hToggleOpen = function () {
+      _this.setState(function (prevState) {
+        return {
+          isShow: !prevState.isShow
+        };
       });
     }, _this._renderCommits = function (items) {
       return items.map(function (item, index) {
@@ -147,37 +120,37 @@ var StackTaggedQuestions = function (_Component) {
             { href: link },
             _react2.default.createElement(
               'div',
-              { style: { paddingBottom: '8px' } },
+              { style: _Item2.default.PB_8 },
               _react2.default.createElement(
                 'span',
-                { style: styles.PURPLE_BADGE },
+                { style: S.PURPLE_BADGE },
                 '\u2692\xA0',
                 answer_count
               ),
               _react2.default.createElement(
                 'span',
-                { style: styles.GREEN_BADGE },
+                { style: S.GREEN_BADGE, role: 'img', 'aria-label': 'stars score' },
                 '\u26BE\xA0',
                 score
               ),
               _react2.default.createElement(
                 'span',
-                { style: styles.BLACK_BAGDE },
+                { style: S.BLACK_BAGDE },
                 '\u2638\xA0',
                 view_count
               ),
               _react2.default.createElement(
                 'span',
-                { style: styles.GREEN_BADGE },
+                { style: S.GREEN_BADGE },
                 '\u2618\xA0',
                 reputation
               ),
               _react2.default.createElement(
                 'span',
-                { style: styles.BLACK_BAGDE },
+                { style: S.BLACK_BAGDE },
                 display_name
               ),
-              _react2.default.createElement(_DateAgo2.default, {
+              _react2.default.createElement(_A2.default.DateAgo, {
                 dateAgo: dateAgo,
                 date: ""
               })
@@ -199,7 +172,7 @@ var StackTaggedQuestions = function (_Component) {
       return tags.map(function (tag, index) {
         return _react2.default.createElement(
           'span',
-          { key: index, style: styles.SPAN_TAG },
+          { key: index, style: S.SPAN_TAG },
           tag
         );
       });
@@ -216,23 +189,22 @@ var StackTaggedQuestions = function (_Component) {
           items = _props$items === undefined ? [] : _props$items,
           onCloseItem = _props.onCloseItem,
           _items_count = items.length,
-          _styleCaption = styles.captionSpanOpen,
           isShow = this.state.isShow;
 
 
       return _react2.default.createElement(
         'div',
-        { style: styles.rootDiv },
+        { style: _Item2.default.ROOT },
         _react2.default.createElement(
           _ItemCaption2.default,
           { onClose: onCloseItem },
           _react2.default.createElement(
-            'span',
+            'button',
             {
               className: 'not-selected',
               title: caption,
-              style: _styleCaption,
-              onClick: this._handlerToggleOpen
+              style: _Item2.default.CAPTION_OPEN,
+              onClick: this._hToggleOpen
             },
             _react2.default.createElement(
               'span',
@@ -241,13 +213,13 @@ var StackTaggedQuestions = function (_Component) {
             ),
             _react2.default.createElement(
               'span',
-              { style: { color: '#a9a9a9', paddingLeft: '12px' } },
+              { style: S.ITEM_COUNT },
               _items_count
             )
           )
         ),
         _react2.default.createElement(
-          _ShowHide2.default,
+          _A2.default.ShowHide,
           { isShow: isShow },
           this._renderCommits(items)
         )

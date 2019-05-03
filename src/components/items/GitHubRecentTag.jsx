@@ -1,41 +1,44 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
+import A from '../zhn-atoms/A'
 import Caption from './ItemCaption'
-import ButtonCircle from '../zhn-atoms/ButtonCircle';
-import ShowHide from '../zhn-atoms/ShowHide';
-import OpenClose2 from '../zhn-atoms/OpenClose2';
+import STYLE from './Item.Style'
 
 const ITEM_DESCRIPTION = "GitHub Likely Recent Version Tag";
 
-const styles = {
-  rootDiv : {
-    lineHeight : 1.5,
-    marginBottom: '10px',
-    marginRight: '25px',
-    //marginRight: '10px',
-    position : 'relative'
-  },
-  captionSpanOpen : {
-    display : 'inline-block',
-    color: 'rgba(164, 135, 212, 1)',
-    cursor: 'pointer',
-    maxWidth: '500px',
-    fontWeight : 'bold',
-    whiteSpace: 'nowrap',
-    textOverflow : 'ellipsis',
-    overflow : 'hidden',
-    float : 'left'
-  },
+const _formatDate = strDate => (''+strDate)
+ .replace('T', ' ')
+ .replace('Z', '');
 
-  SPAN_VERSION : {
-    color: '#80c040',
-    paddingLeft : '10px',
-    paddingRight : '10px'
-  },
-  BTN_CIRCLE : {
-    marginLeft: '10px'
-  }
-}
+const Token = ({ caption, value }) => (
+  <Fragment>
+    <span className="library__value-title">
+      {caption+':'}
+    </span>
+    <span className="library__value">
+      {value}
+    </span>
+  </Fragment>
+);
+
+const CellValue = props => (
+  <div>
+    <Token {...props} />
+  </div>
+);
+
+const CellValueDate = ({ caption, value, date }) => (
+  <div>
+    <Token
+      caption={caption}
+      value={value}
+    />
+    <Token
+      caption="Date"
+      value={_formatDate(date)}
+    />
+  </div>
+);
 
 const Detail = (props) => {
   const { json } = props
@@ -61,65 +64,37 @@ const Detail = (props) => {
 
   return (
     <div className="library">
+      <CellValue
+        caption="Message"
+        value={message}
+      />
+      <CellValueDate
+        caption="Author"
+        value={authorName}
+        date={authorDate}
+      />
+      <CellValueDate
+        caption="Committer"
+        value={committerName}
+        date={committerDate}
+      />
       <div>
-        <span className="library__value-title">
-          Message:
-        </span>
-        <span className="library__value">
-          {message}
-        </span>
+        <Token
+          caption="Total"
+          value={total}
+        />
+        <Token
+          caption="Additions"
+          value={additions}
+        />
+        <Token
+          caption="Deletions"
+          value={deletions}
+        />
       </div>
-      <div>
-        <span className="library__value-title">
-          Author:
-        </span>
-        <span className="library__value">
-          {authorName}
-        </span>
-        <span className="library__value-title">
-          Date:
-        </span>
-        <span className="library__value">
-          {authorDate.replace('T', ' ').replace('Z', '')}
-        </span>
-      </div>
-      <div>
-        <span className="library__value-title">
-          Committer:
-        </span>
-        <span className="library__value">
-          {committerName}
-        </span>
-        <span className="library__value-title">
-          Date:
-        </span>
-        <span className="library__value">
-          {committerDate.replace('T', ' ').replace('Z', '')}
-        </span>
-      </div>
-      <div>
-        <span className="library__value-title">
-          Total:
-        </span>
-        <span className="library__value">
-          {total}
-        </span>
-        <span className="library__value-title">
-          Additions:
-        </span>
-        <span className="library__value">
-          {additions}
-        </span>
-        <span className="library__value-title">
-          Deletions:
-        </span>
-        <span className="library__value">
-          {deletions}
-        </span>
-      </div>
-      <OpenClose2 caption={`Files (${files.length})`} isClose={true}>
+      <A.OpenClose2 caption={`Files (${files.length})`} isClose={true}>
         {_renderFiles(files)}
-      </OpenClose2>
+      </A.OpenClose2>
       <a
          href={html_url}
          className="github-link"
@@ -137,68 +112,73 @@ class GitHubRecentTag extends Component {
     json: {}
   }
 
-  _handlerClickWatch = () => {
+  _hClickWatch = () => {
     const { repo, requestType, version, onWatchItem } = this.props
         , { tagDate } = this.state
         , caption = `${repo} ${version}`
-        , descr = ITEM_DESCRIPTION
+        , descr = ITEM_DESCRIPTION;
     onWatchItem({
-       caption : caption,
-       config : { repo, requestType, version, caption, descr, date: tagDate }
+       caption: caption,
+       config: { repo, requestType, version, caption, descr, date: tagDate }
     });
   }
 
-  _handlerClickDetail = () => {
-    this.props.onClickDetail().then((json) => {
-      //console.log(json);
-      const { commit={} } = json
-          , { committer={} } = commit
-          , { date:tagDate } = committer
-          , _tagDate = tagDate.replace('T', ' ').replace('Z', '')
-      this.setState({ isDetail: true, isShow: true, json: json, tagDate : _tagDate });
-    });
+  _hClickDetail = () => {
+    this.props.onClickDetail()
+     .then(json => {
+        const { commit={} } = json
+        , { committer={} } = commit
+        , { date } = committer
+        , tagDate = _formatDate(date)
+        this.setState({
+          isDetail: true,
+          isShow: true,
+          json, tagDate
+        });
+     });
   }
 
-  _handlerToggleOpen = () => {
-    this.setState({ isShow : !this.state.isShow });
+  _hToggleOpen = () => {
+    this.setState(prevState => ({
+      isShow: !prevState.isShow
+    }))
   }
 
   render(){
     const { repo, version, caption, onCloseItem } = this.props
-        , _styleCaption = styles.captionSpanOpen
         , { isShow, isDetail, json } = this.state;
     return (
-      <div style={styles.rootDiv}>
+      <div style={STYLE.ROOT}>
         <Caption onClose={onCloseItem}>
-          <span
+          <button
              className="not-selected"
              title={caption}
-             style={_styleCaption}
-             onClick={this._handlerToggleOpen}
+             style={STYLE.CAPTION_OPEN}
+             onClick={this._hToggleOpen}
           >
             <span>
               {repo}
             </span>
-            <span style={styles.SPAN_VERSION}>
+            <span style={STYLE.SPAN_VERSION}>
               {version}
             </span>
-          </span>
-          <ButtonCircle
+          </button>
+          <A.ButtonCircle
              caption="W"
              title="Add to Watch"
-             style={styles.BTN_CIRCLE}
-             onClick={this._handlerClickWatch}
+             style={STYLE.BTN_CIRCLE}
+             onClick={this._hClickWatch}
           />
-          <ButtonCircle
+          <A.ButtonCircle
              caption="D"
              title="Load Tag Details"
-             style={styles.BTN_CIRCLE}
-             onClick={this._handlerClickDetail}
+             style={STYLE.BTN_CIRCLE}
+             onClick={this._hClickDetail}
           />
         </Caption>
-        <ShowHide isShow={isShow}>
+        <A.ShowHide isShow={isShow}>
           {isDetail && <Detail json={json} />}
-        </ShowHide>
+        </A.ShowHide>
       </div>
     );
   }

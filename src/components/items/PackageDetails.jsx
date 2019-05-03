@@ -13,7 +13,7 @@ const S = {
   }
 };
 
-const CellValue = ({ caption='', value='' }) => (
+const CellValue = ({ caption='', value='N/A' }) => (
   <div style={S.CELL}>
     <div style={S.CAPTION}>{caption}</div>
     <div style={S.VALUE}>{value}</div>

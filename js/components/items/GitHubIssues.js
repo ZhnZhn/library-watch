@@ -24,50 +24,24 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _A = require('../zhn-atoms/A');
+
+var _A2 = _interopRequireDefault(_A);
+
 var _ItemCaption = require('./ItemCaption');
 
 var _ItemCaption2 = _interopRequireDefault(_ItemCaption);
 
-var _ButtonCircle = require('../zhn-atoms/ButtonCircle');
+var _Item = require('./Item.Style');
 
-var _ButtonCircle2 = _interopRequireDefault(_ButtonCircle);
-
-var _ShowHide = require('../zhn-atoms/ShowHide');
-
-var _ShowHide2 = _interopRequireDefault(_ShowHide);
+var _Item2 = _interopRequireDefault(_Item);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ITEM_DESCRIPTION = "GitHub Repository Issues";
 
-var styles = {
-  rootDiv: {
-    lineHeight: 1.5,
-    marginBottom: '10px',
-    marginRight: '25px',
-    //marginRight: '10px',
-    position: 'relative'
-  },
-  captionSpanOpen: {
-    display: 'inline-block',
-    color: 'rgba(164, 135, 212, 1)',
-    cursor: 'pointer',
-    maxWidth: '500px',
-    fontWeight: 'bold',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-    overflow: 'hidden',
-    float: 'left'
-  },
-
-  SPAN_VERSION: {
-    color: '#80c040',
-    paddingLeft: '10px',
-    paddingRight: '10px'
-  },
-  BTN_CIRCLE: {
-    marginLeft: '10px'
-  }
+var _toDate = function _toDate(strDate) {
+  return ('' + strDate).replace('T', ' ').replace('Z', '');
 };
 
 var GitHubIssues = function (_Component) {
@@ -86,9 +60,13 @@ var GitHubIssues = function (_Component) {
 
     return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = GitHubIssues.__proto__ || Object.getPrototypeOf(GitHubIssues)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       isShow: true
-    }, _this._handlerToggleOpen = function () {
-      _this.setState({ isShow: !_this.state.isShow });
-    }, _this._handlerClickWatch = function () {
+    }, _this._hToggleOpen = function () {
+      _this.setState(function (prevState) {
+        return {
+          isShow: !prevState.isShow
+        };
+      });
+    }, _this._hClickWatch = function () {
       var _this$props = _this.props,
           repo = _this$props.repo,
           requestType = _this$props.requestType,
@@ -118,26 +96,26 @@ var GitHubIssues = function (_Component) {
             { href: html_url },
             _react2.default.createElement(
               'div',
-              { style: { paddingBottom: '8px' } },
+              { style: _Item2.default.PB_8 },
               _react2.default.createElement(
                 'span',
-                { style: { paddingRight: '8px' } },
+                { style: _Item2.default.PR_8 },
                 state
               ),
               _react2.default.createElement(
                 'span',
-                { style: { paddingRight: '8px' } },
+                { style: _Item2.default.PR_8 },
                 '(#' + number + ')'
               ),
               _react2.default.createElement(
                 'span',
-                { style: { paddingRight: '8px' } },
-                created_at.replace('T', ' ').replace('Z', '')
+                { style: _Item2.default.PR_8 },
+                _toDate(created_at)
               ),
               _react2.default.createElement(
                 'span',
                 null,
-                updated_at.replace('T', ' ').replace('Z', '')
+                _toDate(updated_at)
               )
             ),
             _react2.default.createElement(
@@ -161,27 +139,26 @@ var GitHubIssues = function (_Component) {
           issues = _props$issues === undefined ? [] : _props$issues,
           onCloseItem = _props.onCloseItem,
           _number = issues.length,
-          _styleCaption = styles.captionSpanOpen,
           isShow = this.state.isShow;
 
 
       return _react2.default.createElement(
         'div',
-        { style: styles.rootDiv },
+        { style: _Item2.default.ROOT },
         _react2.default.createElement(
           _ItemCaption2.default,
           { onClose: onCloseItem },
           _react2.default.createElement(
-            'span',
+            'button',
             {
               className: 'not-selected',
               title: caption,
-              style: _styleCaption,
-              onClick: this._handlerToggleOpen
+              style: _Item2.default.CAPTION_OPEN,
+              onClick: this._hToggleOpen
             },
             _react2.default.createElement(
               'span',
-              { style: { paddingRight: '8px' } },
+              { style: _Item2.default.PR_8 },
               repo
             ),
             _react2.default.createElement(
@@ -190,15 +167,15 @@ var GitHubIssues = function (_Component) {
               _number
             )
           ),
-          _react2.default.createElement(_ButtonCircle2.default, {
+          _react2.default.createElement(_A2.default.ButtonCircle, {
             caption: 'W',
             title: 'Add to Watch',
-            style: styles.BTN_CIRCLE,
-            onClick: this._handlerClickWatch
+            style: _Item2.default.BTN_CIRCLE,
+            onClick: this._hClickWatch
           })
         ),
         _react2.default.createElement(
-          _ShowHide2.default,
+          _A2.default.ShowHide,
           { isShow: isShow },
           this._renderIssues(issues)
         )
