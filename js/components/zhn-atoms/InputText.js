@@ -92,26 +92,21 @@ var InputText = (_temp = _class = function (_Component) {
   }
   /*
   static propTypes = {
-    initValue : PropTypes.string,
-    style : PropTypes.object
+    isUpdateInitValue: PropTypes.bool,
+    initValue: PropTypes.string,
+    placeholder: PropTypes.string,
+    style: PropTypes.object
+    onEnter: PropTypes.func
   }
   */
 
 
   (0, _createClass3.default)(InputText, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      if (nextProps !== this.props && typeof nextProps.initValue !== "undefined") {
-        this.setState({ value: nextProps.initValue });
-      }
-    }
-  }, {
     key: 'render',
     value: function render() {
       var _props = this.props,
           style = _props.style,
-          _props$placeholder = _props.placeholder,
-          placeholder = _props$placeholder === undefined ? '' : _props$placeholder,
+          placeholder = _props.placeholder,
           maxLength = _props.maxLength,
           value = this.state.value;
 
@@ -147,10 +142,20 @@ var InputText = (_temp = _class = function (_Component) {
     value: function setValue(value) {
       this.setState({ value: value });
     }
+  }], [{
+    key: 'getDerivedStateFromProps',
+    value: function getDerivedStateFromProps(_ref4) {
+      var isUpdateInitValue = _ref4.isUpdateInitValue,
+          initValue = _ref4.initValue;
+
+      return isUpdateInitValue && typeof initValue === "string" ? { value: initValue } : void 0;
+    }
   }]);
   return InputText;
 }(_react.Component), _class.defaultProps = {
+  isUpdateInitValue: false,
   initValue: '',
+  placeholder: '',
   maxLength: 50,
   onEnter: function onEnter() {}
 }, _temp);

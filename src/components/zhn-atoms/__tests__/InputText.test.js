@@ -59,14 +59,24 @@ test('should clear state value onKeyDown 27', t => {
   t.is(wrapper.state('value'), '')
 })
 
-test('should update state value on new prop initValue', t => {
+test('should update state value on new prop initValue with isUpdateInitValue true', t => {
   const initValue1 = 'initValue1'
       , initValue2 = 'initValue2'
-      , wrapper = _fnGetWrapper({ initValue : initValue1 });
+      , wrapper = _fnGetWrapper({ initValue: initValue1 });
 
   t.is(wrapper.state('value'), initValue1)
-  wrapper.setProps({ initValue : initValue2 })
+  wrapper.setProps({ initValue: initValue2, isUpdateInitValue: true })
   t.is(wrapper.state('value'), initValue2)
+})
+
+test('should not update state value on new prop initValue without isUpdateInitValue true', t => {
+  const initValue1 = 'initValue1'
+      , initValue2 = 'initValue2'
+      , wrapper = _fnGetWrapper({ initValue: initValue1 });
+
+  t.is(wrapper.state('value'), initValue1)
+  wrapper.setProps({ initValue: initValue2 })
+  t.is(wrapper.state('value'), initValue1)
 })
 
 test('should instance method getValue return trim value', t => {

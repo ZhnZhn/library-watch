@@ -28,12 +28,17 @@ const BtClear = ({ isValue, onClick }) => (
 class InputText extends Component {
   /*
   static propTypes = {
-    initValue : PropTypes.string,
-    style : PropTypes.object
+    isUpdateInitValue: PropTypes.bool,
+    initValue: PropTypes.string,
+    placeholder: PropTypes.string,
+    style: PropTypes.object
+    onEnter: PropTypes.func
   }
   */
   static defaultProps = {
+    isUpdateInitValue: false,
     initValue: '',
+    placeholder: '',
     maxLength: 50,
     onEnter: () => {}
   }
@@ -45,19 +50,18 @@ class InputText extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps){
-    if ( nextProps !== this.props &&
-         typeof nextProps.initValue !== "undefined")
-    {
-      this.setState({ value: nextProps.initValue });
-    }
+  static getDerivedStateFromProps({ isUpdateInitValue, initValue }){
+    return isUpdateInitValue
+     && typeof initValue === "string"
+      ?  { value: initValue }
+      : void 0;
   }
 
   _hChange = (event) => {
     this.setState({ value: event.target.value })
   }
 
-  _hKeyDown = (event) => {     
+  _hKeyDown = (event) => {
      if ( _isKeyClean(event) ){
        this.setState({ value: '' })
      } else if ( _isKeyEnter(event) ) {
@@ -71,7 +75,8 @@ class InputText extends Component {
 
   render(){
     const {
-      style, placeholder='',
+      style,
+      placeholder,
       maxLength
     } = this.props
     , { value } = this.state;

@@ -70,14 +70,24 @@ var _fnGetWrapper = function _fnGetWrapper(props) {
   t.is(wrapper.state('value'), '');
 });
 
-(0, _ava2.default)('should update state value on new prop initValue', function (t) {
+(0, _ava2.default)('should update state value on new prop initValue with isUpdateInitValue true', function (t) {
+  var initValue1 = 'initValue1',
+      initValue2 = 'initValue2',
+      wrapper = _fnGetWrapper({ initValue: initValue1 });
+
+  t.is(wrapper.state('value'), initValue1);
+  wrapper.setProps({ initValue: initValue2, isUpdateInitValue: true });
+  t.is(wrapper.state('value'), initValue2);
+});
+
+(0, _ava2.default)('should not update state value on new prop initValue without isUpdateInitValue true', function (t) {
   var initValue1 = 'initValue1',
       initValue2 = 'initValue2',
       wrapper = _fnGetWrapper({ initValue: initValue1 });
 
   t.is(wrapper.state('value'), initValue1);
   wrapper.setProps({ initValue: initValue2 });
-  t.is(wrapper.state('value'), initValue2);
+  t.is(wrapper.state('value'), initValue1);
 });
 
 (0, _ava2.default)('should instance method getValue return trim value', function (t) {

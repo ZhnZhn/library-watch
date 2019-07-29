@@ -4,14 +4,14 @@ import Caption from './Caption'
 
 const S = {
   ROW_DIV: {
-    margin: '5px'
+    margin: 5
   },
   LABEL_SPAN : {
-    color: '#1B75BB',
+    color: '#1b75bb',
     display: 'inline-block',
+    width: 100,
+    paddingRight: 5,
     textAlign: 'right',
-    width: '100px',
-    paddingRight: '5px',
     fontSize: '16px',
     fontWeight: 'bold'
   },
@@ -19,16 +19,16 @@ const S = {
     lineHeight: 2
   },
   CAPTION : {
-    width: '120px'
+    width: 120
   },
   INPUT_TEXT : {
-    width : '250px',
-    marginLeft : 0,
-    marginRight: 0,
-    paddingLeft: '10px',
-    height: '30px'
+    width: 250,
+    height: 30,
+    paddingLeft: 10,
+    marginLeft: 0,
+    marginRight: 0
   }
-}
+};
 
 class RowInputText extends Component {
   /*
@@ -63,7 +63,7 @@ class RowInputText extends Component {
          />
          <InputText
             ref={this._refInput}
-            style={S.INPUT_TEXT}
+            style={S.INPUT_TEXT}            
             placeholder={_placeholder}
             onEnter={onEnter}
          />
