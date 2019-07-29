@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint -c .eslintrc-build.json ./src > lint.txt",
-    "test": "ava src/**/__tests__/**/*.test.js --verbose",
+    "test": "ava --verbose",
     "test:watch": "npm run test -- --watch",
-    "test:one": "ava src/**/__tests__/**/*.test.js --verbose --watch --source='menubadge*'",
+    "test:one": "ava --config ava-one.config.js --verbose --watch --source='menubadge*'",
     "transpile": "babel ./src --out-dir ./js --source-maps --ignore test.js",
     "transpile:all": "babel ./src --out-dir ./js --source-maps",
     "bundle": "jspm bundle js/**/* - [js/**/*] dependency-bundle.js",
@@ -46,7 +46,7 @@
     }
   },
   "devDependencies": {
-    "ava": "^0.25.0",
+    "ava": "^2.2.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
@@ -78,22 +78,6 @@
     "jspm": "^0.16.54",
     "sinon": "^1.17.5",
     "webpack": "^3.12.0"
-  },
-  "ava": {
-    "babel": {
-      "presets": [
-        "es2015",
-        "stage-2",
-        "react"
-      ]
-    },
-    "files": [
-      "src/**/__tests__/**/*.test.js"
-    ],
-    "require": [
-      "./test/setupGlobal.test.js",
-      "./test/setupEnzyme.test.js"
-    ]
   },
   "dependencies": {
     "browser-filesaver": "^1.1.1",
