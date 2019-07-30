@@ -71,7 +71,10 @@ class InputText extends Component {
 
   _hClean = () => {
     this.setState({ value: '' })
+    this.focus()
   }
+
+  _refInput = element => this._inputElement = element
 
   render(){
     const {
@@ -83,6 +86,7 @@ class InputText extends Component {
     return (
       <div class={CL.FIELD}>
         <input
+          ref={this._refInput}
           type="text"
           autoCorrect="off"
           autoCapitalize="off"
@@ -110,6 +114,11 @@ class InputText extends Component {
   }
   setValue(value){
     this.setState({ value });
+  }
+  focus(){
+    if (this._inputElement) {
+      this._inputElement.focus()
+    }
   }
 }
 

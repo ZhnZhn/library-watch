@@ -83,6 +83,11 @@ var InputText = (_temp = _class = function (_Component) {
 
     _this._hClean = function () {
       _this.setState({ value: '' });
+      _this.focus();
+    };
+
+    _this._refInput = function (element) {
+      return _this._inputElement = element;
     };
 
     _this.state = {
@@ -114,6 +119,7 @@ var InputText = (_temp = _class = function (_Component) {
         'div',
         { 'class': CL.FIELD },
         _react2.default.createElement('input', {
+          ref: this._refInput,
           type: 'text',
           autoCorrect: 'off',
           autoCapitalize: 'off',
@@ -141,6 +147,13 @@ var InputText = (_temp = _class = function (_Component) {
     key: 'setValue',
     value: function setValue(value) {
       this.setState({ value: value });
+    }
+  }, {
+    key: 'focus',
+    value: function focus() {
+      if (this._inputElement) {
+        this._inputElement.focus();
+      }
     }
   }], [{
     key: 'getDerivedStateFromProps',

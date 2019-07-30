@@ -4,8 +4,8 @@ import { LoadingProgressActionTypes as Action } from '../../flux/actions/Loading
 import ProgressLine from '../zhn-atoms/ProgressLine';
 
 const COLOR = {
-  LOADING : '#2F7ED8',
-  FAILED : 'rgb(237, 88, 19)'
+  LOADING : '#2f7ed8',
+  FAILED : '#ed5813'
 };
 
 class LoadingProgress extends Component {

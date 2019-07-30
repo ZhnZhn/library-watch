@@ -11,32 +11,29 @@ import AppLabel from './AppLabel';
 import ButtonSave from '../zhn-moleculs/ButtonSave';
 import LimitRemainingLabel from './LimitRemainingLabel';
 
-const TITLE = "Library Watch v0.12.0"
-
+const TITLE = "Library Watch v0.12.0";
+const CL = {
+  HEADER: "header",
+  ICON: "header__icon-app",
+  ABOUT: "header__bt-about",
+  APP_LABEL: "header__app-label",
+  LIBRARY: "header__bt-library"
+};
 const S = {
   ROOT_DIV : {
     position : 'relative',
     zIndex : 50
   },
-  APP_LABEL : {
-    display: 'inline-block',
-    color:'#80c040',
-    marginLeft: '35px',
-    paddingLeft: '10px',
-    paddingRight: '10px',
-    fontSize: '16px',
-    fontWeight: 'bold'
-  },
   BT_ABOUT: {
     float: 'right',
-    marginRight: '20px'
+    marginRight: 20
   },
   BUTTON_SAVE : {
-    marginLeft : '10px'
+    marginLeft : 10
   },
   LABEL_LIMIT: {
     float: 'right',
-    paddingTop: '5px'
+    paddingTop: 5
   }
 };
 
@@ -61,17 +58,18 @@ class HeaderBar extends Component {
   render(){
     const { store } = this.props;
     return (
-      <div className="header" style={S.ROOT_DIV}>
+      <div className={CL.HEADER} style={S.ROOT_DIV}>
          <LoadingProgress store={store} />
          <IconAppLogo
-           className="header__icon-app"
+           className={CL.ICON}
            title={TITLE}
          />
          <AppLabel
-           style={S.APP_LABEL}
+           className={CL.APP_LABEL}
            caption={TITLE}
          />
          <FlatButton
+            className={CL.LIBRARY}
             caption="Library"
             title="Click to show library browser"
             accessKey="l"
@@ -90,6 +88,7 @@ class HeaderBar extends Component {
             style={S.BUTTON_SAVE}
          />
          <FlatButton
+            className={CL.ABOUT}
             rootStyle={S.BT_ABOUT}
             caption="About"
             title="Click to show about description"

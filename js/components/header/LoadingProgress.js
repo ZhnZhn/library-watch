@@ -33,8 +33,8 @@ var _ProgressLine2 = _interopRequireDefault(_ProgressLine);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var COLOR = {
-  LOADING: '#2F7ED8',
-  FAILED: 'rgb(237, 88, 19)'
+  LOADING: '#2f7ed8',
+  FAILED: '#ed5813'
 };
 
 var LoadingProgress = function (_Component) {

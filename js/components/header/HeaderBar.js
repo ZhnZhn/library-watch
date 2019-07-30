@@ -61,31 +61,28 @@ var _LimitRemainingLabel2 = _interopRequireDefault(_LimitRemainingLabel);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var TITLE = "Library Watch v0.12.0";
-
+var CL = {
+  HEADER: "header",
+  ICON: "header__icon-app",
+  ABOUT: "header__bt-about",
+  APP_LABEL: "header__app-label",
+  LIBRARY: "header__bt-library"
+};
 var S = {
   ROOT_DIV: {
     position: 'relative',
     zIndex: 50
   },
-  APP_LABEL: {
-    display: 'inline-block',
-    color: '#80c040',
-    marginLeft: '35px',
-    paddingLeft: '10px',
-    paddingRight: '10px',
-    fontSize: '16px',
-    fontWeight: 'bold'
-  },
   BT_ABOUT: {
     float: 'right',
-    marginRight: '20px'
+    marginRight: 20
   },
   BUTTON_SAVE: {
-    marginLeft: '10px'
+    marginLeft: 10
   },
   LABEL_LIMIT: {
     float: 'right',
-    paddingTop: '5px'
+    paddingTop: 5
   }
 };
 
@@ -126,17 +123,18 @@ var HeaderBar = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'header', style: S.ROOT_DIV },
+        { className: CL.HEADER, style: S.ROOT_DIV },
         _react2.default.createElement(_LoadingProgress2.default, { store: store }),
         _react2.default.createElement(_IconAppLogo2.default, {
-          className: 'header__icon-app',
+          className: CL.ICON,
           title: TITLE
         }),
         _react2.default.createElement(_AppLabel2.default, {
-          style: S.APP_LABEL,
+          className: CL.APP_LABEL,
           caption: TITLE
         }),
         _react2.default.createElement(_FlatButton2.default, {
+          className: CL.LIBRARY,
           caption: 'Library',
           title: 'Click to show library browser',
           accessKey: 'l',
@@ -155,6 +153,7 @@ var HeaderBar = function (_Component) {
           style: S.BUTTON_SAVE
         }),
         _react2.default.createElement(_FlatButton2.default, {
+          className: CL.ABOUT,
           rootStyle: S.BT_ABOUT,
           caption: 'About',
           title: 'Click to show about description',
