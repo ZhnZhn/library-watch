@@ -1,7 +1,7 @@
 import timeago from 'timeago.js';
 import DomUtil from '../../utils/DomUtil';
 
-import StackTaggedQuestions from '../items/StackTaggedQuestions';
+import StackTaggedQuestions from '../items/stack/TaggedQuestions';
 
 const THREE_ZERO = '000';
 

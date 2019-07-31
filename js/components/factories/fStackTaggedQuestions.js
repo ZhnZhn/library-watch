@@ -16,9 +16,9 @@ var _DomUtil = require('../../utils/DomUtil');
 
 var _DomUtil2 = _interopRequireDefault(_DomUtil);
 
-var _StackTaggedQuestions = require('../items/StackTaggedQuestions');
+var _TaggedQuestions = require('../items/stack/TaggedQuestions');
 
-var _StackTaggedQuestions2 = _interopRequireDefault(_StackTaggedQuestions);
+var _TaggedQuestions2 = _interopRequireDefault(_TaggedQuestions);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60,7 +60,7 @@ var fStackTaggedQuestions = function fStackTaggedQuestions(_ref) {
       key = option.key,
       _items = _fnTransform(json.items);
 
-  return factory.createElement(_StackTaggedQuestions2.default, (0, _extends3.default)({
+  return factory.createElement(_TaggedQuestions2.default, (0, _extends3.default)({
     key: key,
     repo: repo,
     requestType: requestType,

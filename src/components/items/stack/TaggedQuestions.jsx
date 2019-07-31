@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 
-import A from '../zhn-atoms/A'
-import Caption from './ItemCaption'
-import STYLE from './Item.Style'
+import A from '../../zhn-atoms/A'
+import Caption from '../ItemCaption'
+import ModalSlider from '../../zhn-modal-slider/ModalSlider'
+import crModelMore from './crModelMore'
+import sortItemsBy from './sortItemsBy'
+import STYLE from '../Item.Style'
+import CL from '../../styles/CL'
 
 const S = {
+  BT_MORE: {
+    marginRight: 12
+  },
   SPAN_TAG : {
     display: 'inline-block',
     color: 'black',
@@ -38,12 +45,28 @@ const S = {
   ITEM_COUNT: {
     color: '#a9a9a9',
     paddingLeft: 12
+  },
+  NOT_FLOAT: {
+    float: 'none'
   }
 };
 
 class StackTaggedQuestions extends Component {
   state = {
-    isShow: true
+    isShow: true,
+    isMore: false,
+    pnForSort: ''
+  }
+
+  constructor(props){
+    super(props)
+    this._MODEL_MORE = crModelMore({
+      setSortByProp: this._setPnForSort.bind(this)
+    })
+  }
+
+  _setPnForSort = (propName) => {
+    this.setState({ pnForSort: propName })
   }
 
   _hToggleOpen = () => {
@@ -52,26 +75,40 @@ class StackTaggedQuestions extends Component {
     }))
   }
 
+  _showMore = () => {
+    this.setState({ isMore: true })
+  }
+
+  _hToggleMore = () => {
+    this.setState(prevState => ({
+      isMore: !prevState.isMore
+    }))
+  }
+
   _renderCommits = (items) => {
-     return items.map((item, index) => {
+     const { pnForSort } = this.state
+     , _items = sortItemsBy(items, pnForSort);
+     return _items.map((item, index) => {
         const {
-                 answer_count, score, view_count,
-                 title, dateAgo, link,
-                 owner, tags
-               } = item
-            , { reputation, display_name } = owner
-            , className = (index % 2)
-                     ? 'row-even not-selected'
-                     : 'row-odd not-selected'
+           question_id,
+           is_answered,
+           answer_count, score, view_count,
+           title, dateAgo, link,
+           owner, tags
+        } = item
+        , { reputation, display_name } = owner
+        , className = (index % 2)
+            ? 'row-even not-selected'
+            : 'row-odd not-selected';
 
         return (
-           <div key={index} className={className}>
+           <div key={question_id} className={className}>
               <a href={link}>
               <div style={STYLE.PB_8}>
-                <span style={S.PURPLE_BADGE}>
+                <span style={is_answered ? S.GREEN_BADGE: S.PURPLE_BADGE}>
                   &#9874;&nbsp;{answer_count}
                 </span>
-                <span style={S.GREEN_BADGE} role="img" aria-label="stars score">
+                <span style={S.PURPLE_BADGE} role="img" aria-label="stars score">
                   &#9918;&nbsp;{score}
                 </span>
                 <span style={S.BLACK_BAGDE}>
@@ -116,15 +153,25 @@ class StackTaggedQuestions extends Component {
       onCloseItem
      } = this.props
     , _items_count = items.length
-    , { isShow } = this.state;
+    , { isShow, isMore } = this.state;
 
      return (
        <div style={STYLE.ROOT}>
          <Caption onClose={onCloseItem}>
+           <ModalSlider
+             isShow={isMore}
+             className={CL.MENU_MORE}
+             model={this._MODEL_MORE}
+             onClose={this._hToggleMore}
+           />
+           <A.SvgMore
+             style={S.BT_MORE}
+             onClick={this._showMore}
+           />
            <button
-              className="not-selected"
+              className={CL.NOT_SELECTED}
               title={caption}
-              style={STYLE.CAPTION_OPEN}
+              style={{...STYLE.CAPTION_OPEN, ...S.NOT_FLOAT}}
               onClick={this._hToggleOpen}
            >
              <span>
