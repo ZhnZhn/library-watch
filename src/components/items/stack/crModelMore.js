@@ -4,14 +4,14 @@ import CL from '../../styles/CL'
 const CL_ROW = CL.ROW_MENU_MORE;
 
 const _fSortByItem = onClick => (name, propName) => ({
-  cn: CL_ROW,
   name,
-  onClick: onClick.bind(null, propName),
+  onClick: onClick.bind(null, propName, name),
   isClose: true
 });
 
 const crModelMore = ({
-  setSortByProp
+  setSortByProp,
+  reverse
   //onRemoveAll
 }={}) => {
   const _crSortByItem = _fSortByItem(setSortByProp);
@@ -24,7 +24,7 @@ const crModelMore = ({
         id: 'p1',
         type: 'sub',
         cn: CL_ROW,
-        name: 'Sort By'
+        name: 'Sort By, DESC'
       }/*,{
         cn: CL_ROW,
         name: 'Remove Visited',
@@ -36,7 +36,11 @@ const crModelMore = ({
       _crSortByItem('Answer Count', 'answer_count'),
       _crSortByItem('Score', 'score'),
       _crSortByItem('View Count', 'view_count'),
-      _crSortByItem('Reputation', 'reputation')
+      _crSortByItem('Reputation', 'reputation'), {
+        name: 'Reverse Items',
+        onClick: reverse,
+        isClose: true
+      }
     ]
   }
 };

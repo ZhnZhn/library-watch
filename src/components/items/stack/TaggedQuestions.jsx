@@ -44,7 +44,13 @@ const S = {
   },
   ITEM_COUNT: {
     color: '#a9a9a9',
-    paddingLeft: 12
+    paddingLeft: 12,
+    paddingRight: 12
+  },
+  BT_REVERSE: {
+    color: '#a487d4',
+    fontWeight: 'bold',
+    cursor: 'pointer'
   },
   NOT_FLOAT: {
     float: 'none'
@@ -52,21 +58,39 @@ const S = {
 };
 
 class StackTaggedQuestions extends Component {
-  state = {
-    isShow: true,
-    isMore: false,
-    pnForSort: ''
+
+  static defaultProps = {
+    items: []
   }
 
   constructor(props){
     super(props)
+
     this._MODEL_MORE = crModelMore({
-      setSortByProp: this._setPnForSort.bind(this)
+      setSortByProp: this._sortItemsByPropName.bind(this),
+      reverse: this._reverseItems.bind(this)
     })
+
+    this.state = {
+      isShow: true,
+      isMore: false,
+      pnForSort: '',
+      titleForSort: '',
+      items: props.items
+    }
   }
 
-  _setPnForSort = (propName) => {
-    this.setState({ pnForSort: propName })
+  _sortItemsByPropName = (propName, title) => {
+    this.setState(prevState => ({
+      pnForSort: propName,
+      titleForSort: title,
+      items: [...sortItemsBy(prevState.items, propName)]
+    }))
+  }
+  _reverseItems = () => {
+    this.setState(prevState => ({
+      items: [...prevState.items.reverse()]
+    }))
   }
 
   _hToggleOpen = () => {
@@ -86,9 +110,7 @@ class StackTaggedQuestions extends Component {
   }
 
   _renderCommits = (items) => {
-     const { pnForSort } = this.state
-     , _items = sortItemsBy(items, pnForSort);
-     return _items.map((item, index) => {
+     return items.map((item, index) => {
         const {
            question_id,
            is_answered,
@@ -149,11 +171,15 @@ class StackTaggedQuestions extends Component {
 
   render(){
     const {
-      repo, caption, items=[],
+      repo, caption,
       onCloseItem
      } = this.props
+    , {
+        isShow, isMore,
+        items, titleForSort
+      } = this.state
     , _items_count = items.length
-    , { isShow, isMore } = this.state;
+    , _titleForSort = `Sorted By ${titleForSort}`;
 
      return (
        <div style={STYLE.ROOT}>
@@ -180,6 +206,14 @@ class StackTaggedQuestions extends Component {
              <span style={S.ITEM_COUNT}>
                 {_items_count}
              </span>
+           </button>
+           <button
+             className={CL.NOT_SELECTED}
+             style={S.BT_REVERSE}
+             title="Reverse Items"
+             onClick={this._reverseItems}
+           >
+              {_titleForSort}
            </button>
          </Caption>
          <A.ShowHide isShow={isShow}>

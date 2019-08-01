@@ -3,17 +3,22 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _isNaN = Number.isNaN || isNaN;
-var _isNumber = function _isNumber(n) {
-  return typeof n === 'number' && !_isNaN(n);
-};
 
-var DF_RESULT = 10;
+var _is = require('../../../utils/is');
+
+var _is2 = _interopRequireDefault(_is);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var isNumber = _is2.default.isNumber;
+
+
+var DF_RESULT = 2;
 var _compareNotNumber = function _compareNotNumber(a, b) {
   var dfR = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : DF_RESULT;
 
-  var isB = _isNumber(b),
-      isA = _isNumber(a);
+  var isB = isNumber(b),
+      isA = isNumber(a);
 
   if (!isB && !isA) return 0;
   if (isB && !isA) return 1;

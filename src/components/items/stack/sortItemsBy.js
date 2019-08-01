@@ -1,11 +1,11 @@
-const _isNaN = Number.isNaN || isNaN;
-const _isNumber = n => typeof n === 'number'
- && !_isNaN(n);
+import is from '../../../utils/is'
 
-const DF_RESULT = 10;
+const { isNumber } = is;
+
+const DF_RESULT = 2;
 const _compareNotNumber = (a, b, dfR=DF_RESULT) => {
-  const isB = _isNumber(b)
-  , isA = _isNumber(a);
+  const isB = isNumber(b)
+  , isA = isNumber(a);
 
   if (!isB && !isA) return 0;
   if (isB && !isA) return 1;

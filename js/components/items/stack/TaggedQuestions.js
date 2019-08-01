@@ -8,6 +8,10 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
+var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -23,6 +27,8 @@ var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorRet
 var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _class, _temp;
 
 var _react = require('react');
 
@@ -94,14 +100,20 @@ var S = {
   },
   ITEM_COUNT: {
     color: '#a9a9a9',
-    paddingLeft: 12
+    paddingLeft: 12,
+    paddingRight: 12
+  },
+  BT_REVERSE: {
+    color: '#a487d4',
+    fontWeight: 'bold',
+    cursor: 'pointer'
   },
   NOT_FLOAT: {
     float: 'none'
   }
 };
 
-var StackTaggedQuestions = function (_Component) {
+var StackTaggedQuestions = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(StackTaggedQuestions, _Component);
 
   function StackTaggedQuestions(props) {
@@ -109,14 +121,22 @@ var StackTaggedQuestions = function (_Component) {
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (StackTaggedQuestions.__proto__ || Object.getPrototypeOf(StackTaggedQuestions)).call(this, props));
 
-    _this.state = {
-      isShow: true,
-      isMore: false,
-      pnForSort: ''
+    _this._sortItemsByPropName = function (propName, title) {
+      _this.setState(function (prevState) {
+        return {
+          pnForSort: propName,
+          titleForSort: title,
+          items: [].concat((0, _toConsumableArray3.default)((0, _sortItemsBy2.default)(prevState.items, propName)))
+        };
+      });
     };
 
-    _this._setPnForSort = function (propName) {
-      _this.setState({ pnForSort: propName });
+    _this._reverseItems = function () {
+      _this.setState(function (prevState) {
+        return {
+          items: [].concat((0, _toConsumableArray3.default)(prevState.items.reverse()))
+        };
+      });
     };
 
     _this._hToggleOpen = function () {
@@ -140,10 +160,7 @@ var StackTaggedQuestions = function (_Component) {
     };
 
     _this._renderCommits = function (items) {
-      var pnForSort = _this.state.pnForSort,
-          _items = (0, _sortItemsBy2.default)(items, pnForSort);
-
-      return _items.map(function (item, index) {
+      return items.map(function (item, index) {
         var question_id = item.question_id,
             is_answered = item.is_answered,
             answer_count = item.answer_count,
@@ -228,8 +245,17 @@ var StackTaggedQuestions = function (_Component) {
     };
 
     _this._MODEL_MORE = (0, _crModelMore2.default)({
-      setSortByProp: _this._setPnForSort.bind(_this)
+      setSortByProp: _this._sortItemsByPropName.bind(_this),
+      reverse: _this._reverseItems.bind(_this)
     });
+
+    _this.state = {
+      isShow: true,
+      isMore: false,
+      pnForSort: '',
+      titleForSort: '',
+      items: props.items
+    };
     return _this;
   }
 
@@ -239,14 +265,14 @@ var StackTaggedQuestions = function (_Component) {
       var _props = this.props,
           repo = _props.repo,
           caption = _props.caption,
-          _props$items = _props.items,
-          items = _props$items === undefined ? [] : _props$items,
           onCloseItem = _props.onCloseItem,
-          _items_count = items.length,
           _state = this.state,
           isShow = _state.isShow,
-          isMore = _state.isMore;
-
+          isMore = _state.isMore,
+          items = _state.items,
+          titleForSort = _state.titleForSort,
+          _items_count = items.length,
+          _titleForSort = 'Sorted By ' + titleForSort;
 
       return _react2.default.createElement(
         'div',
@@ -282,6 +308,16 @@ var StackTaggedQuestions = function (_Component) {
               { style: S.ITEM_COUNT },
               _items_count
             )
+          ),
+          _react2.default.createElement(
+            'button',
+            {
+              className: _CL2.default.NOT_SELECTED,
+              style: S.BT_REVERSE,
+              title: 'Reverse Items',
+              onClick: this._reverseItems
+            },
+            _titleForSort
           )
         ),
         _react2.default.createElement(
@@ -293,7 +329,8 @@ var StackTaggedQuestions = function (_Component) {
     }
   }]);
   return StackTaggedQuestions;
-}(_react.Component);
-
+}(_react.Component), _class.defaultProps = {
+  items: []
+}, _temp);
 exports.default = StackTaggedQuestions;
 //# sourceMappingURL=TaggedQuestions.js.map

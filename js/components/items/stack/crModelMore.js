@@ -15,9 +15,8 @@ var CL_ROW = _CL2.default.ROW_MENU_MORE;
 var _fSortByItem = function _fSortByItem(onClick) {
   return function (name, propName) {
     return {
-      cn: CL_ROW,
       name: name,
-      onClick: onClick.bind(null, propName),
+      onClick: onClick.bind(null, propName, name),
       isClose: true
     };
   };
@@ -25,7 +24,8 @@ var _fSortByItem = function _fSortByItem(onClick) {
 
 var crModelMore = function crModelMore() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-      setSortByProp = _ref.setSortByProp;
+      setSortByProp = _ref.setSortByProp,
+      reverse = _ref.reverse;
 
   var _crSortByItem = _fSortByItem(setSortByProp);
   return {
@@ -36,14 +36,18 @@ var crModelMore = function crModelMore() {
       id: 'p1',
       type: 'sub',
       cn: CL_ROW,
-      name: 'Sort By' /*,{
-                       cn: CL_ROW,
-                       name: 'Remove Visited',
-                       onClick: onRemoveAll,
-                       isClose: true
-                      }*/
+      name: 'Sort By, DESC' /*,{
+                             cn: CL_ROW,
+                             name: 'Remove Visited',
+                             onClick: onRemoveAll,
+                             isClose: true
+                            }*/
     }],
-    p1: [_crSortByItem('Answer Count', 'answer_count'), _crSortByItem('Score', 'score'), _crSortByItem('View Count', 'view_count'), _crSortByItem('Reputation', 'reputation')]
+    p1: [_crSortByItem('Answer Count', 'answer_count'), _crSortByItem('Score', 'score'), _crSortByItem('View Count', 'view_count'), _crSortByItem('Reputation', 'reputation'), {
+      name: 'Reverse Items',
+      onClick: reverse,
+      isClose: true
+    }]
   };
 };
 
