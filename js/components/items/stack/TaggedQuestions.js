@@ -83,8 +83,15 @@ var S = {
     borderRadius: 16
   },
 
-  PURPLE_BADGE: {
+  /*
+  PURPLE_BADGE : {
     color: '#a487d4',
+    fontSize: 18,
+    paddingRight: 8
+  },
+  */
+  FISH_BADGE: {
+    color: '#d7bb52',
     fontSize: 18,
     paddingRight: 8
   },
@@ -187,14 +194,14 @@ var StackTaggedQuestions = (_temp = _class = function (_Component) {
               { style: _Item2.default.PB_8 },
               _react2.default.createElement(
                 'span',
-                { style: is_answered ? S.GREEN_BADGE : S.PURPLE_BADGE },
+                { style: is_answered ? S.GREEN_BADGE : S.FISH_BADGE },
                 '\u2692\xA0',
                 answer_count
               ),
               _react2.default.createElement(
                 'span',
-                { style: S.PURPLE_BADGE, role: 'img', 'aria-label': 'stars score' },
-                '\u26BE\xA0',
+                { style: S.FISH_BADGE, role: 'img', 'aria-label': 'fish badge' },
+                '\uD83D\uDC1F\xA0',
                 score
               ),
               _react2.default.createElement(

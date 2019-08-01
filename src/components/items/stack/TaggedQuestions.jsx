@@ -27,8 +27,15 @@ const S = {
     borderRadius: 16
   },
 
+  /*
   PURPLE_BADGE : {
     color: '#a487d4',
+    fontSize: 18,
+    paddingRight: 8
+  },
+  */
+  FISH_BADGE: {
+    color: '#d7bb52',
     fontSize: 18,
     paddingRight: 8
   },
@@ -127,11 +134,11 @@ class StackTaggedQuestions extends Component {
            <div key={question_id} className={className}>
               <a href={link}>
               <div style={STYLE.PB_8}>
-                <span style={is_answered ? S.GREEN_BADGE: S.PURPLE_BADGE}>
+                <span style={is_answered ? S.GREEN_BADGE: S.FISH_BADGE}>
                   &#9874;&nbsp;{answer_count}
                 </span>
-                <span style={S.PURPLE_BADGE} role="img" aria-label="stars score">
-                  &#9918;&nbsp;{score}
+                <span style={S.FISH_BADGE} role="img" aria-label="fish badge">
+                  &#x1F41F;&nbsp;{score}
                 </span>
                 <span style={S.BLACK_BAGDE}>
                   &#9784;&nbsp;{view_count}
