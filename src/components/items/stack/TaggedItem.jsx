@@ -82,8 +82,10 @@ class TaggedItem extends Component {
     ev.persist()
     this._clientX = ev.clientX
     this.dragStartWithDnDStyle(ev)
-    ev.dataTransfer.effectAllowed="move"
-    ev.dataTransfer.dropEffect="move"
+    if (ev && ev.dataTransfer) {
+      ev.dataTransfer.effectAllowed="move"
+      ev.dataTransfer.dropEffect="move"
+    }
   }
   _dragEnd = (ev) => {
     ev.preventDefault()

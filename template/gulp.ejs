@@ -47,6 +47,10 @@
                 .add('lib/es6-promise.min.js')
                 .add('lib/fetch.min.js');
       }
+      if (!("ondragstart" in document.documentElement)
+          || !("draggable" in document.documentElement)) {
+        polyfill.add('lib/mobile-drag-drop.min.js')
+      }
       if (!Array.isArray) {
         Array.isArray = function(arg) {
            return Object.prototype.toString.call(arg) === '[object Array]';
@@ -176,7 +180,7 @@
 
   </style>
   <!-- inject:css -->
-  <link rel="stylesheet" href="/css/app-aa989c49ee.min.css">
+  <link rel="stylesheet" href="/css/app-116add442d.min.css">
   <!-- endinject  -->
 
 </head>

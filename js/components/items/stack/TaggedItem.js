@@ -134,8 +134,10 @@ var TaggedItem = (0, _withDnDStyle2.default)(_class = (_temp2 = _class2 = functi
       ev.persist();
       _this._clientX = ev.clientX;
       _this.dragStartWithDnDStyle(ev);
-      ev.dataTransfer.effectAllowed = "move";
-      ev.dataTransfer.dropEffect = "move";
+      if (ev && ev.dataTransfer) {
+        ev.dataTransfer.effectAllowed = "move";
+        ev.dataTransfer.dropEffect = "move";
+      }
     }, _this._dragEnd = function (ev) {
       ev.preventDefault();
       ev.persist();
