@@ -88,6 +88,7 @@ var S = {
 
 var D_REMOVE_UNDER = 150;
 var D_REMOVE_ITEM = 35;
+var D_MARK_REMOVE = 25;
 
 var isTouchable = _is2.default.isTouchable;
 
@@ -148,7 +149,10 @@ var TaggedItem = (0, _withDnDStyle2.default)(_class = (_temp2 = _class2 = functi
       ev.persist();
       _this._clientX = ev.touches[0].clientX;
     }, _this._onTouchMove = function (ev) {
-      _this.dragStartWithDnDStyle(ev);
+      ev.persist();
+      if (Math.abs(_this._clientX - ev.touches[0].clientX) > D_MARK_REMOVE) {
+        _this.dragStartWithDnDStyle(ev);
+      }
     }, _this._dragEnd = function (ev) {
       ev.preventDefault();
       ev.persist();
@@ -167,7 +171,7 @@ var TaggedItem = (0, _withDnDStyle2.default)(_class = (_temp2 = _class2 = functi
       ev.preventDefault();
       ev.persist();
       _this.dragEndWithDnDStyle();
-      var _deltaX = Math.abs(_this._clientX - ev.touches[0].clientX),
+      var _deltaX = Math.abs(_this._clientX - ev.changedTouches[0].clientX),
           _this$props2 = _this.props,
           item = _this$props2.item,
           onRemoveUnder = _this$props2.onRemoveUnder;

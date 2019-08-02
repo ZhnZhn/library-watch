@@ -16,8 +16,10 @@ var _dragStart = function _dragStart(ev) {
 };
 
 var _dragEnd = function _dragEnd(ev) {
-  _node.style.removeProperty(BORDER_LEFT);
-  _node = void 0;
+  if (_node) {
+    _node.style.removeProperty(BORDER_LEFT);
+    _node = void 0;
+  }
 };
 
 var withDnDStyle = function withDnDStyle(target) {

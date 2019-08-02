@@ -11,8 +11,10 @@ const _dragStart = function(ev){
 }
 
 const _dragEnd = function(ev){
-  _node.style.removeProperty(BORDER_LEFT)
-  _node = void 0
+  if (_node) {
+    _node.style.removeProperty(BORDER_LEFT)
+    _node = void 0
+  }
 }
 
 const withDnDStyle = (target) => {

@@ -49,6 +49,7 @@ const S = {
 
 const D_REMOVE_UNDER = 150;
 const D_REMOVE_ITEM = 35;
+const D_MARK_REMOVE = 25;
 
 const { isTouchable } = is;
 const IS_TOUCH = isTouchable();
@@ -97,7 +98,10 @@ class TaggedItem extends Component {
     this._clientX = ev.touches[0].clientX
   }
   _onTouchMove = (ev) => {
-    this.dragStartWithDnDStyle(ev)
+    ev.persist()
+    if (Math.abs(this._clientX - ev.touches[0].clientX) > D_MARK_REMOVE) {
+      this.dragStartWithDnDStyle(ev)
+    }
   }
   _dragEnd = (ev) => {
     ev.preventDefault()
@@ -115,7 +119,7 @@ class TaggedItem extends Component {
     ev.preventDefault()
     ev.persist()
     this.dragEndWithDnDStyle()
-    const _deltaX = Math.abs(this._clientX - ev.touches[0].clientX)
+    const _deltaX = Math.abs(this._clientX - ev.changedTouches[0].clientX)
         , { item, onRemoveUnder } = this.props;
     if (_deltaX > D_REMOVE_UNDER) {
       onRemoveUnder(item)
