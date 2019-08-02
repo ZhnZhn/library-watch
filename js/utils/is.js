@@ -8,6 +8,10 @@ var _isNaN = Number.isNaN || isNaN;
 var is = {
   isNumber: function isNumber(n) {
     return typeof n === 'number' && !_isNaN(n);
+  },
+
+  isTouchable: function isTouchable() {
+    return document && 'ontouchstart' in document.documentElement;
   }
 };
 

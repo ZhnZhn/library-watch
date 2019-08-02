@@ -21,14 +21,17 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _class, _temp;
+//import PropTypes from "prop-types";
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _is = require('../../utils/is');
 
-//import PropTypes from "prop-types";
+var _is2 = _interopRequireDefault(_is);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CL = {
   FIELD: 'm-field',
@@ -36,7 +39,9 @@ var CL = {
   BT_CLEAR: 'm-field__bt-clear'
 };
 
-var IS_TOUCH = document && 'ontouchstart' in document.documentElement;
+var isTouchable = _is2.default.isTouchable;
+
+var IS_TOUCH = isTouchable();
 
 var _isKeyClean = function _isKeyClean(_ref) {
   var keyCode = _ref.keyCode;

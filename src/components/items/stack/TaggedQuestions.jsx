@@ -5,49 +5,13 @@ import Caption from '../ItemCaption'
 import ModalSlider from '../../zhn-modal-slider/ModalSlider'
 import crModelMore from './crModelMore'
 import sortItemsBy from './sortItemsBy'
+import TaggedItemList from './TaggedItemList'
 import STYLE from '../Item.Style'
 import CL from '../../styles/CL'
 
 const S = {
   BT_MORE: {
     marginRight: 12
-  },
-  SPAN_TAG : {
-    display: 'inline-block',
-    color: 'black',
-    backgroundColor: 'gray',
-    paddingTop: 4,
-    paddingLeft: 8,
-    paddingRight: 8,
-    paddingBottom: 4,
-    marginLeft: 8,
-    marginRight: 8,
-    marginTop: 6,
-    marginBottom: 2,
-    borderRadius: 16
-  },
-
-  /*
-  PURPLE_BADGE : {
-    color: '#a487d4',
-    fontSize: 18,
-    paddingRight: 8
-  },
-  */
-  FISH_BADGE: {
-    color: '#d7bb52',
-    fontSize: 18,
-    paddingRight: 8
-  },
-  GREEN_BADGE : {
-    color: '#80c040',
-    fontSize: 18,
-    paddingRight: 8
-  },
-  BLACK_BAGDE : {
-    color: 'black',
-    fontSize: 18,
-    paddingRight: 8
   },
   ITEM_COUNT: {
     color: '#a9a9a9',
@@ -83,7 +47,8 @@ class StackTaggedQuestions extends Component {
       isMore: false,
       pnForSort: '',
       titleForSort: '',
-      items: props.items
+      items: props.items,
+      itemRemoved: 0
     }
   }
 
@@ -106,7 +71,7 @@ class StackTaggedQuestions extends Component {
     }))
   }
 
-  _showMore = () => {
+  _hShowMore = () => {
     this.setState({ isMore: true })
   }
 
@@ -116,65 +81,12 @@ class StackTaggedQuestions extends Component {
     }))
   }
 
-  _renderCommits = (items) => {
-     return items.map((item, index) => {
-        const {
-           question_id,
-           is_answered,
-           answer_count, score, view_count,
-           title, dateAgo, link,
-           owner, tags
-        } = item
-        , { reputation, display_name } = owner
-        , className = (index % 2)
-            ? 'row-even not-selected'
-            : 'row-odd not-selected';
-
-        return (
-           <div key={question_id} className={className}>
-              <a href={link}>
-              <div style={STYLE.PB_8}>
-                <span style={is_answered ? S.GREEN_BADGE: S.FISH_BADGE}>
-                  &#9874;&nbsp;{answer_count}
-                </span>
-                <span style={S.FISH_BADGE} role="img" aria-label="fish badge">
-                  &#x1F41F;&nbsp;{score}
-                </span>
-                <span style={S.BLACK_BAGDE}>
-                  &#9784;&nbsp;{view_count}
-                </span>
-                <span style={S.GREEN_BADGE}>
-                  &#9752;&nbsp;{reputation}
-                </span>
-                <span style={S.BLACK_BAGDE}>
-                  {display_name}
-                </span>
-                <A.DateAgo
-                   dateAgo={dateAgo}
-                   date={""}
-                />
-              </div>
-                <div>
-                  {title}
-                </div>
-                <div>
-                  {this._renderTags(tags)}
-                </div>
-              </a>
-           </div>
-        );
-     })
+  _onRemoveItem = () => {
+    this.setState(prevState => ({
+      itemRemoved: prevState.itemRemoved + 1
+    }))
   }
 
-  _renderTags = (tags) => {
-    return tags.map((tag, index) => {
-       return (
-         <span key={index} style={S.SPAN_TAG}>
-            {tag}
-         </span>
-       );
-    })
-  }
 
   render(){
     const {
@@ -183,9 +95,13 @@ class StackTaggedQuestions extends Component {
      } = this.props
     , {
         isShow, isMore,
-        items, titleForSort
+        items, titleForSort,
+        itemRemoved
       } = this.state
     , _items_count = items.length
+    , _token_count = itemRemoved
+        ? `${_items_count - itemRemoved}/${_items_count}`
+        : `${_items_count}`
     , _titleForSort = `Sorted By ${titleForSort}`;
 
      return (
@@ -199,7 +115,7 @@ class StackTaggedQuestions extends Component {
            />
            <A.SvgMore
              style={S.BT_MORE}
-             onClick={this._showMore}
+             onClick={this._hShowMore}
            />
            <button
               className={CL.NOT_SELECTED}
@@ -211,7 +127,7 @@ class StackTaggedQuestions extends Component {
                {repo}
              </span>
              <span style={S.ITEM_COUNT}>
-                {_items_count}
+                {_token_count}
              </span>
            </button>
            <button
@@ -224,7 +140,10 @@ class StackTaggedQuestions extends Component {
            </button>
          </Caption>
          <A.ShowHide isShow={isShow}>
-           {this._renderCommits(items)}
+           <TaggedItemList
+             items={items}
+             onRemoveItem={this._onRemoveItem}
+           />
          </A.ShowHide>
        </div>
      );

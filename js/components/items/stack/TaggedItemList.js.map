@@ -1,0 +1,26 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/items/stack/TaggedItemList.js"
+ ],
+ "file": "../../../../src/components/items/stack/TaggedItemList.js",
+ "names": [
+  "CL",
+  "ROW_EVEN",
+  "ROW_ODD",
+  "TaggedItemList",
+  "_renderItems",
+  "props",
+  "items",
+  "onRemoveItem",
+  "map",
+  "item",
+  "index",
+  "question_id",
+  "className",
+  "nextProps",
+  "Component",
+  "defaultProps"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,KAAK;AACTC,YAAU,uBADD;AAETC,WAAS;AAFA,CAAX;;IAKMC,c;;;;;;;;;;;;;;oNAYJC,Y,GAAe,YAAM;AAAA,wBACa,MAAKC,KADlB;AAAA,UACXC,KADW,eACXA,KADW;AAAA,UACJC,YADI,eACJA,YADI;;AAElB,aAAOD,MAAME,GAAN,CAAU,UAACC,IAAD,EAAOC,KAAP,EAAiB;AACzB,YAAEC,WAAF,GAAkBF,IAAlB,CAAEE,WAAF;AAAA,YACJC,SADI,GACSF,QAAQ,CAAT,GACRV,GAAGC,QADK,GAERD,GAAGE,OAHH;;AAIN,eACE,8BAAC,oBAAD;AACG,eAAKS,WADR;AAEG,qBAAWC,SAFd;AAGG,gBAAMH,IAHT;AAIG,wBAAcF;AAJjB,UADF;AAQF,OAbM,CAAP;AAcF,K;;;;;0CAvBqBM,S,EAAU;AAC9B,UAAIA,UAAUP,KAAV,KAAoB,KAAKD,KAAL,CAAWC,KAAnC,EAA0C;AACxC,eAAO,KAAP;AACD;AACD,aAAO,IAAP;AACD;;;6BAoBO;AACN,aACE;AAAC,uBAAD;AAAA;AACG,aAAKF,YAAL;AADH,OADF;AAKD;;;EApC0BU,gB,UACpBC,Y,GAAe;AACpBT,SAAO;AADa,C;kBAsCTH,c"
+}

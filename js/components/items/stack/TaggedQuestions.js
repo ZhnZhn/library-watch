@@ -54,6 +54,10 @@ var _sortItemsBy = require('./sortItemsBy');
 
 var _sortItemsBy2 = _interopRequireDefault(_sortItemsBy);
 
+var _TaggedItemList = require('./TaggedItemList');
+
+var _TaggedItemList2 = _interopRequireDefault(_TaggedItemList);
+
 var _Item = require('../Item.Style');
 
 var _Item2 = _interopRequireDefault(_Item);
@@ -67,43 +71,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var S = {
   BT_MORE: {
     marginRight: 12
-  },
-  SPAN_TAG: {
-    display: 'inline-block',
-    color: 'black',
-    backgroundColor: 'gray',
-    paddingTop: 4,
-    paddingLeft: 8,
-    paddingRight: 8,
-    paddingBottom: 4,
-    marginLeft: 8,
-    marginRight: 8,
-    marginTop: 6,
-    marginBottom: 2,
-    borderRadius: 16
-  },
-
-  /*
-  PURPLE_BADGE : {
-    color: '#a487d4',
-    fontSize: 18,
-    paddingRight: 8
-  },
-  */
-  FISH_BADGE: {
-    color: '#d7bb52',
-    fontSize: 18,
-    paddingRight: 8
-  },
-  GREEN_BADGE: {
-    color: '#80c040',
-    fontSize: 18,
-    paddingRight: 8
-  },
-  BLACK_BAGDE: {
-    color: 'black',
-    fontSize: 18,
-    paddingRight: 8
   },
   ITEM_COUNT: {
     color: '#a9a9a9',
@@ -154,7 +121,7 @@ var StackTaggedQuestions = (_temp = _class = function (_Component) {
       });
     };
 
-    _this._showMore = function () {
+    _this._hShowMore = function () {
       _this.setState({ isMore: true });
     };
 
@@ -166,88 +133,11 @@ var StackTaggedQuestions = (_temp = _class = function (_Component) {
       });
     };
 
-    _this._renderCommits = function (items) {
-      return items.map(function (item, index) {
-        var question_id = item.question_id,
-            is_answered = item.is_answered,
-            answer_count = item.answer_count,
-            score = item.score,
-            view_count = item.view_count,
-            title = item.title,
-            dateAgo = item.dateAgo,
-            link = item.link,
-            owner = item.owner,
-            tags = item.tags,
-            reputation = owner.reputation,
-            display_name = owner.display_name,
-            className = index % 2 ? 'row-even not-selected' : 'row-odd not-selected';
-
-
-        return _react2.default.createElement(
-          'div',
-          { key: question_id, className: className },
-          _react2.default.createElement(
-            'a',
-            { href: link },
-            _react2.default.createElement(
-              'div',
-              { style: _Item2.default.PB_8 },
-              _react2.default.createElement(
-                'span',
-                { style: is_answered ? S.GREEN_BADGE : S.FISH_BADGE },
-                '\u2692\xA0',
-                answer_count
-              ),
-              _react2.default.createElement(
-                'span',
-                { style: S.FISH_BADGE, role: 'img', 'aria-label': 'fish badge' },
-                '\uD83D\uDC1F\xA0',
-                score
-              ),
-              _react2.default.createElement(
-                'span',
-                { style: S.BLACK_BAGDE },
-                '\u2638\xA0',
-                view_count
-              ),
-              _react2.default.createElement(
-                'span',
-                { style: S.GREEN_BADGE },
-                '\u2618\xA0',
-                reputation
-              ),
-              _react2.default.createElement(
-                'span',
-                { style: S.BLACK_BAGDE },
-                display_name
-              ),
-              _react2.default.createElement(_A2.default.DateAgo, {
-                dateAgo: dateAgo,
-                date: ""
-              })
-            ),
-            _react2.default.createElement(
-              'div',
-              null,
-              title
-            ),
-            _react2.default.createElement(
-              'div',
-              null,
-              _this._renderTags(tags)
-            )
-          )
-        );
-      });
-    };
-
-    _this._renderTags = function (tags) {
-      return tags.map(function (tag, index) {
-        return _react2.default.createElement(
-          'span',
-          { key: index, style: S.SPAN_TAG },
-          tag
-        );
+    _this._onRemoveItem = function () {
+      _this.setState(function (prevState) {
+        return {
+          itemRemoved: prevState.itemRemoved + 1
+        };
       });
     };
 
@@ -261,7 +151,8 @@ var StackTaggedQuestions = (_temp = _class = function (_Component) {
       isMore: false,
       pnForSort: '',
       titleForSort: '',
-      items: props.items
+      items: props.items,
+      itemRemoved: 0
     };
     return _this;
   }
@@ -278,7 +169,9 @@ var StackTaggedQuestions = (_temp = _class = function (_Component) {
           isMore = _state.isMore,
           items = _state.items,
           titleForSort = _state.titleForSort,
+          itemRemoved = _state.itemRemoved,
           _items_count = items.length,
+          _token_count = itemRemoved ? _items_count - itemRemoved + '/' + _items_count : '' + _items_count,
           _titleForSort = 'Sorted By ' + titleForSort;
 
       return _react2.default.createElement(
@@ -295,7 +188,7 @@ var StackTaggedQuestions = (_temp = _class = function (_Component) {
           }),
           _react2.default.createElement(_A2.default.SvgMore, {
             style: S.BT_MORE,
-            onClick: this._showMore
+            onClick: this._hShowMore
           }),
           _react2.default.createElement(
             'button',
@@ -313,7 +206,7 @@ var StackTaggedQuestions = (_temp = _class = function (_Component) {
             _react2.default.createElement(
               'span',
               { style: S.ITEM_COUNT },
-              _items_count
+              _token_count
             )
           ),
           _react2.default.createElement(
@@ -330,7 +223,10 @@ var StackTaggedQuestions = (_temp = _class = function (_Component) {
         _react2.default.createElement(
           _A2.default.ShowHide,
           { isShow: isShow },
-          this._renderCommits(items)
+          _react2.default.createElement(_TaggedItemList2.default, {
+            items: items,
+            onRemoveItem: this._onRemoveItem
+          })
         )
       );
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-
 //import PropTypes from "prop-types";
+
+import is from '../../utils/is'
 
 const CL = {
   FIELD: 'm-field',
@@ -8,8 +9,8 @@ const CL = {
   BT_CLEAR: 'm-field__bt-clear'
 };
 
-const IS_TOUCH = document &&
- 'ontouchstart' in document.documentElement;
+const { isTouchable } = is;
+const IS_TOUCH = isTouchable();
 
 const _isKeyClean = ({ keyCode }) => keyCode === 27
  || keyCode === 46;
