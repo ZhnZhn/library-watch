@@ -138,7 +138,10 @@ class TaggedItem extends Component {
         style={_style}
         draggable={true}
         onDragStart={this._dragStart}
+        onTouchStart={this._dragStart}
         onDragEnd={this._dragEnd}
+        onTouchEnd={this._dragEnd}
+        onTouchMove={this._preventDefault}
         onDrop={this._preventDefault}
         onDragOver={this._preventDefault}
         onDragEnter={this._preventDefault}

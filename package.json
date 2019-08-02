@@ -75,7 +75,6 @@
     "html-webpack-processing-plugin": "^0.1.2",
     "jsdom": "^14.0.0",
     "jspm": "^0.16.54",
-    "mobile-drag-drop": "^2.3.0-rc.2",
     "sinon": "^1.17.5",
     "webpack": "^3.12.0"
   },
