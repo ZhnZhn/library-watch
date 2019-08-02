@@ -66,6 +66,11 @@ const TOKEN_REPUTATION = IS_TOUCH ? 'R' : (
   <span role="img" arial-label="shamrock">&#x2618;</span>
 );
 
+/*
+const _getClientX = (ev, dfValue) => ev.clientX
+  || ev.touches[0].clientX
+  || dfValue;
+*/
 
 @withDnDStyle
 class TaggedItem extends Component {
@@ -87,11 +92,30 @@ class TaggedItem extends Component {
       ev.dataTransfer.dropEffect="move"
     }
   }
+  _onTouchStart = (ev) => {
+    ev.persist()
+    this._clientX = ev.touches[0].clientX
+  }
+  _onTouchMove = (ev) => {
+    this.dragStartWithDnDStyle(ev)
+  }
   _dragEnd = (ev) => {
     ev.preventDefault()
     ev.persist()
     this.dragEndWithDnDStyle()
     const _deltaX = Math.abs(this._clientX - ev.clientX)
+        , { item, onRemoveUnder } = this.props;
+    if (_deltaX > D_REMOVE_UNDER) {
+      onRemoveUnder(item)
+    } else if (_deltaX > D_REMOVE_ITEM){
+      this._onHide()
+    }
+  }
+  _onTouchEnd = (ev) => {
+    ev.preventDefault()
+    ev.persist()
+    this.dragEndWithDnDStyle()
+    const _deltaX = Math.abs(this._clientX - ev.touches[0].clientX)
         , { item, onRemoveUnder } = this.props;
     if (_deltaX > D_REMOVE_UNDER) {
       onRemoveUnder(item)
@@ -138,10 +162,10 @@ class TaggedItem extends Component {
         style={_style}
         draggable={true}
         onDragStart={this._dragStart}
-        onTouchStart={this._dragStart}
+        onTouchStart={this._onTouchStart}
+        onTouchMove={this._onTouchMove}
         onDragEnd={this._dragEnd}
-        onTouchEnd={this._dragEnd}
-        onTouchMove={this._preventDefault}
+        onTouchEnd={this._onTouchEnd}
         onDrop={this._preventDefault}
         onDragOver={this._preventDefault}
         onDragEnter={this._preventDefault}

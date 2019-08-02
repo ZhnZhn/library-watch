@@ -114,6 +114,12 @@ var TOKEN_REPUTATION = IS_TOUCH ? 'R' : _react2.default.createElement(
   '\u2618'
 );
 
+/*
+const _getClientX = (ev, dfValue) => ev.clientX
+  || ev.touches[0].clientX
+  || dfValue;
+*/
+
 var TaggedItem = (0, _withDnDStyle2.default)(_class = (_temp2 = _class2 = function (_Component) {
   (0, _inherits3.default)(TaggedItem, _Component);
 
@@ -138,6 +144,11 @@ var TaggedItem = (0, _withDnDStyle2.default)(_class = (_temp2 = _class2 = functi
         ev.dataTransfer.effectAllowed = "move";
         ev.dataTransfer.dropEffect = "move";
       }
+    }, _this._onTouchStart = function (ev) {
+      ev.persist();
+      _this._clientX = ev.touches[0].clientX;
+    }, _this._onTouchMove = function (ev) {
+      _this.dragStartWithDnDStyle(ev);
     }, _this._dragEnd = function (ev) {
       ev.preventDefault();
       ev.persist();
@@ -152,12 +163,26 @@ var TaggedItem = (0, _withDnDStyle2.default)(_class = (_temp2 = _class2 = functi
       } else if (_deltaX > D_REMOVE_ITEM) {
         _this._onHide();
       }
+    }, _this._onTouchEnd = function (ev) {
+      ev.preventDefault();
+      ev.persist();
+      _this.dragEndWithDnDStyle();
+      var _deltaX = Math.abs(_this._clientX - ev.touches[0].clientX),
+          _this$props2 = _this.props,
+          item = _this$props2.item,
+          onRemoveUnder = _this$props2.onRemoveUnder;
+
+      if (_deltaX > D_REMOVE_UNDER) {
+        onRemoveUnder(item);
+      } else if (_deltaX > D_REMOVE_ITEM) {
+        _this._onHide();
+      }
     }, _this._preventDefault = function (ev) {
       ev.preventDefault();
     }, _this._onHide = function () {
-      var _this$props2 = _this.props,
-          onRemoveItem = _this$props2.onRemoveItem,
-          item = _this$props2.item;
+      var _this$props3 = _this.props,
+          onRemoveItem = _this$props3.onRemoveItem,
+          item = _this$props3.item;
 
       onRemoveItem(item);
       _this.setState({ isClosed: true });
@@ -203,10 +228,10 @@ var TaggedItem = (0, _withDnDStyle2.default)(_class = (_temp2 = _class2 = functi
           style: _style,
           draggable: true,
           onDragStart: this._dragStart,
-          onTouchStart: this._dragStart,
+          onTouchStart: this._onTouchStart,
+          onTouchMove: this._onTouchMove,
           onDragEnd: this._dragEnd,
-          onTouchEnd: this._dragEnd,
-          onTouchMove: this._preventDefault,
+          onTouchEnd: this._onTouchEnd,
           onDrop: this._preventDefault,
           onDragOver: this._preventDefault,
           onDragEnter: this._preventDefault,
