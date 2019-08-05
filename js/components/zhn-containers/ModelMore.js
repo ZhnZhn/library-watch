@@ -14,30 +14,35 @@ var CL_ROW = _CL2.default.ROW_MENU_MORE;
 
 var crModelMore = function crModelMore(_ref) {
   var chartType = _ref.chartType,
+      onMinWidth = _ref.onMinWidth,
+      onInitialWidth = _ref.onInitialWidth,
       onPlusWidth = _ref.onPlusWidth,
       onMinusWidth = _ref.onMinusWidth,
       onRemoveAll = _ref.onRemoveAll;
   return {
+    // cn property name for item
     baseTitleCl: CL_ROW,
     pageWidth: 180,
     maxPages: 2,
     p0: [{
       id: 'p1',
       type: 'sub',
-      cn: CL_ROW,
       name: 'Resize'
     }, {
-      cn: CL_ROW,
       name: 'Remove All Items',
       onClick: onRemoveAll,
       isClose: true
     }],
     p1: [{
-      cn: CL_ROW,
+      name: 'to MinWidth',
+      onClick: onMinWidth
+    }, {
+      name: 'to InitialWidth',
+      onClick: onInitialWidth
+    }, {
       name: '+10px to Width',
       onClick: onPlusWidth
     }, {
-      cn: CL_ROW,
       name: '-10px to Width',
       onClick: onMinusWidth
     }]

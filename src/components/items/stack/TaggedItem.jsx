@@ -3,11 +3,17 @@ import React, { Component } from 'react'
 import is from '../../../utils/is'
 import withDnDStyle from '../decorators/withDnDStyle'
 import A from '../../zhn-atoms/A'
-import STYLE from '../Item.Style'
+
+const CL = 'row-odd not-selected';
 
 const S = {
   NONE: {
     display: 'none'
+  },
+  ITEM_CAPTION: {
+    paddingBottom: 8,
+    display: 'flex',
+    flexWrap: 'wrap'
   },
   /*
   PURPLE_BADGE : {
@@ -17,16 +23,19 @@ const S = {
   },
   */
   FISH_BADGE: {
+    display: 'inline-block',
     color: '#d7bb52',
     fontSize: 18,
     paddingRight: 8
   },
   GREEN_BADGE : {
+    display: 'inline-block',
     color: '#80c040',
     fontSize: 18,
     paddingRight: 8
   },
   BLACK_BAGDE : {
+    display: 'inline-block',
     color: 'black',
     fontSize: 18,
     paddingRight: 8
@@ -44,34 +53,51 @@ const S = {
     marginTop: 6,
     marginBottom: 2,
     borderRadius: 16
+  },
+  DATE_AGO: {
+    display: 'inline-block',
+    fontSize: '18px'
+  },
+  TITLE: {
+    paddingBottom: 8,
+    fontSize: '18px'
   }
 };
 
-const D_REMOVE_UNDER = 150;
-const D_REMOVE_ITEM = 35;
-const D_MARK_REMOVE = 25;
+
 
 const { isTouchable } = is;
-const IS_TOUCH = isTouchable();
+const HAS_TOUCH = isTouchable();
 
-const TOKEN_ANSWER = IS_TOUCH ? 'A' : (
+const DELTA = HAS_TOUCH ? {
+  MARK_REMOVE: 45,
+  REMOVE_ITEM: 75,
+  REMOVE_UNDER: 150
+} : {
+  MARK_REMOVE: 25,
+  REMOVE_ITEM: 35,
+  REMOVE_UNDER: 150
+}
+
+const TOKEN_ANSWER = HAS_TOUCH ? 'A' : (
   <span role="img" arial-label="hammer and pick">&#x2692;</span>
 );
-const TOKEN_SCORE = IS_TOUCH ? 'S' : (
+const TOKEN_SCORE = HAS_TOUCH ? 'S' : (
   <span role="img" aria-label="fish">&#x1F41F;</span>
 );
-const TOKEN_VIEW = IS_TOUCH ? 'V' : (
+const TOKEN_VIEW = HAS_TOUCH ? 'V' : (
   <span role="img" aria-label="wheel of dharma">&#x2638;</span>
 );
-const TOKEN_REPUTATION = IS_TOUCH ? 'R' : (
+const TOKEN_REPUTATION = HAS_TOUCH ? 'R' : (
   <span role="img" arial-label="shamrock">&#x2618;</span>
 );
 
-/*
-const _getClientX = (ev, dfValue) => ev.clientX
-  || ev.touches[0].clientX
-  || dfValue;
-*/
+
+const _getTouchesClientX = (ev) =>
+  (((ev || {}).touches || [])[0] || {}).clientX || 0;
+const _getChangedTouches = (ev) =>
+  (((ev || {}).changedTouches || [])[0] || {}).clientX || 0;
+
 
 @withDnDStyle
 class TaggedItem extends Component {
@@ -80,8 +106,27 @@ class TaggedItem extends Component {
     onRemoveItem: () => {}
   }
 
-  state = {
-    isClosed: false
+  constructor(props){
+    super(props)
+    this._itemHandlers = HAS_TOUCH
+      ? {
+          onTouchStart: this._onTouchStart.bind(this),
+          onTouchMove: this._onTouchMove.bind(this),
+          onTouchEnd: this._onTouchEnd.bind(this)
+        }
+      : {
+          draggable: true,
+          onDragStart: this._dragStart.bind(this),
+          onDragEnd: this._dragEnd.bind(this),
+          onDrop: this._preventDefault,
+          onDragOver: this._preventDefault,
+          onDragEnter: this._preventDefault,
+          onDragLeave: this._preventDefault
+        }
+
+    this.state = {
+      isClosed: false
+    }
   }
 
   _dragStart = (ev) => {
@@ -95,13 +140,19 @@ class TaggedItem extends Component {
   }
   _onTouchStart = (ev) => {
     ev.persist()
-    this._clientX = ev.touches[0].clientX
+    const _clientX = _getTouchesClientX(ev);
+    if (_clientX) {
+      this._clientX = _clientX
+    }
   }
   _onTouchMove = (ev) => {
     ev.persist()
-    if (Math.abs(this._clientX - ev.touches[0].clientX) > D_MARK_REMOVE) {
+    const _clientX = _getTouchesClientX(ev);
+    if (_clientX
+       && Math.abs(this._clientX -  _clientX) > DELTA.MARK_REMOVE) {
       this.dragStartWithDnDStyle(ev)
     }
+
   }
   _dragEnd = (ev) => {
     ev.preventDefault()
@@ -109,22 +160,25 @@ class TaggedItem extends Component {
     this.dragEndWithDnDStyle()
     const _deltaX = Math.abs(this._clientX - ev.clientX)
         , { item, onRemoveUnder } = this.props;
-    if (_deltaX > D_REMOVE_UNDER) {
+    if (_deltaX > DELTA.REMOVE_UNDER) {
       onRemoveUnder(item)
-    } else if (_deltaX > D_REMOVE_ITEM){
+    } else if (_deltaX > DELTA.REMOVE_ITEM){
       this._onHide()
     }
   }
   _onTouchEnd = (ev) => {
-    ev.preventDefault()
+    //ev.preventDefault()
     ev.persist()
     this.dragEndWithDnDStyle()
-    const _deltaX = Math.abs(this._clientX - ev.changedTouches[0].clientX)
-        , { item, onRemoveUnder } = this.props;
-    if (_deltaX > D_REMOVE_UNDER) {
-      onRemoveUnder(item)
-    } else if (_deltaX > D_REMOVE_ITEM){
-      this._onHide()
+    const _clientX = _getChangedTouches(ev);
+    if (_clientX) {
+      const _deltaX = Math.abs(this._clientX - _clientX)
+          , { item, onRemoveUnder } = this.props;
+      if (_deltaX > DELTA.REMOVE_UNDER) {
+        onRemoveUnder(item)
+      } else if (_deltaX > DELTA.REMOVE_ITEM){
+        this._onHide()
+      }
     }
   }
   _preventDefault = (ev) => {
@@ -148,7 +202,7 @@ class TaggedItem extends Component {
   }
 
   render(){
-    const { className, item } = this.props
+    const { item } = this.props
     , {
        question_id,
        is_answered,
@@ -162,21 +216,12 @@ class TaggedItem extends Component {
     return (
       <div
         key={question_id}
-        className={className}
+        className={CL}
         style={_style}
-        draggable={true}
-        onDragStart={this._dragStart}
-        onTouchStart={this._onTouchStart}
-        onTouchMove={this._onTouchMove}
-        onDragEnd={this._dragEnd}
-        onTouchEnd={this._onTouchEnd}
-        onDrop={this._preventDefault}
-        onDragOver={this._preventDefault}
-        onDragEnter={this._preventDefault}
-        onDragLeave={this._preventDefault}
+        {...this._itemHandlers}
       >
          <a href={link}>
-         <div style={STYLE.PB_8}>
+         <div style={S.ITEM_CAPTION}>
            <span style={is_answered ? S.GREEN_BADGE: S.FISH_BADGE}>
              {TOKEN_ANSWER}&nbsp;{answer_count}
            </span>
@@ -193,11 +238,12 @@ class TaggedItem extends Component {
              {display_name}
            </span>
            <A.DateAgo
+              style={S.DATE_AGO}
               dateAgo={dateAgo}
               date=""
            />
          </div>
-           <div>
+           <div style={S.TITLE}>
              {title}
            </div>
            <div>

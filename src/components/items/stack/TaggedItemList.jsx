@@ -2,10 +2,6 @@ import React, { Component, Fragment } from 'react'
 
 import TaggedItem from './TaggedItem'
 
-const CL = {
-  ROW_EVEN: 'row-even not-selected',
-  ROW_ODD: 'row-odd not-selected'
-};
 
 class TaggedItemList extends Component {
   static defaultProps = {
@@ -22,14 +18,10 @@ class TaggedItemList extends Component {
   _renderItems = () => {
     const { items, onRemoveItem } = this.props;
      return items.map((item, index) => {
-        const { question_id } = item
-        , className = (index % 2)
-            ? CL.ROW_EVEN
-            : CL.ROW_ODD;
+        const { question_id } = item;
         return (
           <TaggedItem
              key={question_id}
-             className={className}
              item={item}
              onRemoveItem={onRemoveItem}
            />

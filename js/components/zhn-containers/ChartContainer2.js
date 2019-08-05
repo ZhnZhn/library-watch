@@ -141,6 +141,8 @@ var ChartContainer2 = (_temp = _class = function (_Component) {
     _this.childMargin = CHILD_MARGIN;
     _this._MORE = (0, _ModelMore2.default)({
       chartType: chartType,
+      onMinWidth: _this._resizeTo.bind(_this, RESIZE_MIN_WIDTH),
+      onInitialWidth: _this._resizeTo.bind(_this, RESIZE_INIT_WIDTH),
       onPlusWidth: _this._plusToWidth,
       onMinusWidth: _this._minusToWidth,
       onRemoveAll: onRemoveAll
@@ -229,25 +231,30 @@ var ChartContainer2 = (_temp = _class = function (_Component) {
     }
   };
 
-  this._plusToWidth = function () {
+  this._getRootNodeStyle = function () {
     var _rootNode2 = _this2._rootNode,
         _rootNode = _rootNode2 === undefined ? {} : _rootNode2,
         _rootNode$style = _rootNode.style,
-        style = _rootNode$style === undefined ? {} : _rootNode$style,
-        w = _getWidth(style) + DELTA;
+        style = _rootNode$style === undefined ? {} : _rootNode$style;
 
+    return style;
+  };
+
+  this._resizeTo = function (width) {
+    _this2._getRootNodeStyle().width = width + 'px';
+  };
+
+  this._plusToWidth = function () {
+    var style = _this2._getRootNodeStyle(),
+        w = _getWidth(style) + DELTA;
     if (w < RESIZE_MAX_WIDTH) {
       style.width = w + 'px';
     }
   };
 
   this._minusToWidth = function () {
-    var _rootNode3 = _this2._rootNode,
-        _rootNode = _rootNode3 === undefined ? {} : _rootNode3,
-        _rootNode$style2 = _rootNode.style,
-        style = _rootNode$style2 === undefined ? {} : _rootNode$style2,
+    var style = _this2._getRootNodeStyle(),
         w = _getWidth(style) - DELTA;
-
     if (w > RESIZE_MIN_WIDTH) {
       style.width = w + 'px';
     }

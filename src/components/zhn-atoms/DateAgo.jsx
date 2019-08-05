@@ -7,40 +7,42 @@ import STYLE from './DateAgo.Style'
 class DateAgo extends Component {
   /*
   static propTypes = {
-     isShowDate : PropTypes.bool
+     isShowDate: PropTypes.bool,
+     style: PropTypes.object
   }
   */
 
   constructor(props){
-    super()
+    super(props)
+
     this.state = {
       isShowDate : !!props.isShowDate
     }
   }
 
-  _handleClickDateAgo = (event) => {
+  _hClick = (event) => {
      event.preventDefault()
      event.stopPropagation()
-     this.setState({ isShowDate: !this.state.isShowDate })
+     this.setState(prevState => ({
+       isShowDate: !prevState.isShowDate
+     }))
   }
 
   render(){
-     const { dateAgo, date } = this.props
+     const { style, dateAgo, date } = this.props
          , { isShowDate } = this.state
-         , _styleDate = (isShowDate)
+         , _styleDate = isShowDate
                ? STYLE.INLINE_BLOCK
                : STYLE.NONE;
      return (
        <span>
          <span
-            style={STYLE.DATE_AGO}
-            onClick={this._handleClickDateAgo}
+            style={{ ...STYLE.DATE_AGO, ...style }}
+            onClick={date ? this._hClick : void 0}
          >
            {dateAgo}
          </span>
-         <span
-            style={{ ...STYLE.DATE, ..._styleDate }}
-         >
+         <span style={{ ...STYLE.DATE, ..._styleDate }}>
             {date}
          </span>
        </span>

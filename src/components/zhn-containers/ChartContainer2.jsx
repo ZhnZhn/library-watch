@@ -79,6 +79,8 @@ class ChartContainer2 extends Component {
      this.childMargin = CHILD_MARGIN
      this._MORE = crModelMore({
        chartType,
+       onMinWidth: this._resizeTo.bind(this, RESIZE_MIN_WIDTH),
+       onInitialWidth: this._resizeTo.bind(this, RESIZE_INIT_WIDTH),
        onPlusWidth: this._plusToWidth,
        onMinusWidth: this._minusToWidth,
        onRemoveAll
@@ -111,18 +113,26 @@ class ChartContainer2 extends Component {
       }
    }
 
-   _plusToWidth = () => {
+   _getRootNodeStyle = () => {
      const { _rootNode={} } = this
-         , { style={} } = _rootNode
-         , w = _getWidth(style) + DELTA;
+     , { style={} } = _rootNode;
+     return style;
+   }
+
+   _resizeTo = (width) => {
+     this._getRootNodeStyle().width = width + 'px'
+   }
+
+   _plusToWidth = () => {
+     const style = this._getRootNodeStyle()
+     , w = _getWidth(style) + DELTA;
      if (w < RESIZE_MAX_WIDTH) {
         style.width = w + 'px'
      }
    }
    _minusToWidth = () => {
-     const { _rootNode={} } = this
-         , { style={} } = _rootNode
-         , w = _getWidth(style) - DELTA;
+     const style = this._getRootNodeStyle()
+     , w = _getWidth(style) - DELTA;
      if (w > RESIZE_MIN_WIDTH) {
        style.width = w  + 'px'
      }

@@ -32,11 +32,6 @@ var _TaggedItem2 = _interopRequireDefault(_TaggedItem);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var CL = {
-  ROW_EVEN: 'row-even not-selected',
-  ROW_ODD: 'row-odd not-selected'
-};
-
 var TaggedItemList = (_temp2 = _class = function (_Component) {
   (0, _inherits3.default)(TaggedItemList, _Component);
 
@@ -57,12 +52,10 @@ var TaggedItemList = (_temp2 = _class = function (_Component) {
           onRemoveItem = _this$props.onRemoveItem;
 
       return items.map(function (item, index) {
-        var question_id = item.question_id,
-            className = index % 2 ? CL.ROW_EVEN : CL.ROW_ODD;
+        var question_id = item.question_id;
 
         return _react2.default.createElement(_TaggedItem2.default, {
           key: question_id,
-          className: className,
           item: item,
           onRemoveItem: onRemoveItem
         });

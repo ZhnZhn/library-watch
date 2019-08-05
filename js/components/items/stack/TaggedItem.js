@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -20,7 +24,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class, _class2, _temp2;
+var _class, _class2, _temp;
 
 var _react = require('react');
 
@@ -38,15 +42,18 @@ var _A = require('../../zhn-atoms/A');
 
 var _A2 = _interopRequireDefault(_A);
 
-var _Item = require('../Item.Style');
-
-var _Item2 = _interopRequireDefault(_Item);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CL = 'row-odd not-selected';
 
 var S = {
   NONE: {
     display: 'none'
+  },
+  ITEM_CAPTION: {
+    paddingBottom: 8,
+    display: 'flex',
+    flexWrap: 'wrap'
   },
   /*
   PURPLE_BADGE : {
@@ -56,16 +63,19 @@ var S = {
   },
   */
   FISH_BADGE: {
+    display: 'inline-block',
     color: '#d7bb52',
     fontSize: 18,
     paddingRight: 8
   },
   GREEN_BADGE: {
+    display: 'inline-block',
     color: '#80c040',
     fontSize: 18,
     paddingRight: 8
   },
   BLACK_BAGDE: {
+    display: 'inline-block',
     color: 'black',
     fontSize: 18,
     paddingRight: 8
@@ -83,61 +93,68 @@ var S = {
     marginTop: 6,
     marginBottom: 2,
     borderRadius: 16
+  },
+  DATE_AGO: {
+    display: 'inline-block',
+    fontSize: '18px'
+  },
+  TITLE: {
+    paddingBottom: 8,
+    fontSize: '18px'
   }
 };
 
-var D_REMOVE_UNDER = 150;
-var D_REMOVE_ITEM = 35;
-var D_MARK_REMOVE = 25;
-
 var isTouchable = _is2.default.isTouchable;
 
-var IS_TOUCH = isTouchable();
+var HAS_TOUCH = isTouchable();
 
-var TOKEN_ANSWER = IS_TOUCH ? 'A' : _react2.default.createElement(
+var DELTA = HAS_TOUCH ? {
+  MARK_REMOVE: 45,
+  REMOVE_ITEM: 75,
+  REMOVE_UNDER: 150
+} : {
+  MARK_REMOVE: 25,
+  REMOVE_ITEM: 35,
+  REMOVE_UNDER: 150
+};
+
+var TOKEN_ANSWER = HAS_TOUCH ? 'A' : _react2.default.createElement(
   'span',
   { role: 'img', 'arial-label': 'hammer and pick' },
   '\u2692'
 );
-var TOKEN_SCORE = IS_TOUCH ? 'S' : _react2.default.createElement(
+var TOKEN_SCORE = HAS_TOUCH ? 'S' : _react2.default.createElement(
   'span',
   { role: 'img', 'aria-label': 'fish' },
   '\uD83D\uDC1F'
 );
-var TOKEN_VIEW = IS_TOUCH ? 'V' : _react2.default.createElement(
+var TOKEN_VIEW = HAS_TOUCH ? 'V' : _react2.default.createElement(
   'span',
   { role: 'img', 'aria-label': 'wheel of dharma' },
   '\u2638'
 );
-var TOKEN_REPUTATION = IS_TOUCH ? 'R' : _react2.default.createElement(
+var TOKEN_REPUTATION = HAS_TOUCH ? 'R' : _react2.default.createElement(
   'span',
   { role: 'img', 'arial-label': 'shamrock' },
   '\u2618'
 );
 
-/*
-const _getClientX = (ev, dfValue) => ev.clientX
-  || ev.touches[0].clientX
-  || dfValue;
-*/
+var _getTouchesClientX = function _getTouchesClientX(ev) {
+  return (((ev || {}).touches || [])[0] || {}).clientX || 0;
+};
+var _getChangedTouches = function _getChangedTouches(ev) {
+  return (((ev || {}).changedTouches || [])[0] || {}).clientX || 0;
+};
 
-var TaggedItem = (0, _withDnDStyle2.default)(_class = (_temp2 = _class2 = function (_Component) {
+var TaggedItem = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Component) {
   (0, _inherits3.default)(TaggedItem, _Component);
 
-  function TaggedItem() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
+  function TaggedItem(props) {
     (0, _classCallCheck3.default)(this, TaggedItem);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+    var _this = (0, _possibleConstructorReturn3.default)(this, (TaggedItem.__proto__ || Object.getPrototypeOf(TaggedItem)).call(this, props));
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = TaggedItem.__proto__ || Object.getPrototypeOf(TaggedItem)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      isClosed: false
-    }, _this._dragStart = function (ev) {
+    _this._dragStart = function (ev) {
       ev.persist();
       _this._clientX = ev.clientX;
       _this.dragStartWithDnDStyle(ev);
@@ -145,15 +162,25 @@ var TaggedItem = (0, _withDnDStyle2.default)(_class = (_temp2 = _class2 = functi
         ev.dataTransfer.effectAllowed = "move";
         ev.dataTransfer.dropEffect = "move";
       }
-    }, _this._onTouchStart = function (ev) {
+    };
+
+    _this._onTouchStart = function (ev) {
       ev.persist();
-      _this._clientX = ev.touches[0].clientX;
-    }, _this._onTouchMove = function (ev) {
+      var _clientX = _getTouchesClientX(ev);
+      if (_clientX) {
+        _this._clientX = _clientX;
+      }
+    };
+
+    _this._onTouchMove = function (ev) {
       ev.persist();
-      if (Math.abs(_this._clientX - ev.touches[0].clientX) > D_MARK_REMOVE) {
+      var _clientX = _getTouchesClientX(ev);
+      if (_clientX && Math.abs(_this._clientX - _clientX) > DELTA.MARK_REMOVE) {
         _this.dragStartWithDnDStyle(ev);
       }
-    }, _this._dragEnd = function (ev) {
+    };
+
+    _this._dragEnd = function (ev) {
       ev.preventDefault();
       ev.persist();
       _this.dragEndWithDnDStyle();
@@ -162,35 +189,46 @@ var TaggedItem = (0, _withDnDStyle2.default)(_class = (_temp2 = _class2 = functi
           item = _this$props.item,
           onRemoveUnder = _this$props.onRemoveUnder;
 
-      if (_deltaX > D_REMOVE_UNDER) {
+      if (_deltaX > DELTA.REMOVE_UNDER) {
         onRemoveUnder(item);
-      } else if (_deltaX > D_REMOVE_ITEM) {
+      } else if (_deltaX > DELTA.REMOVE_ITEM) {
         _this._onHide();
       }
-    }, _this._onTouchEnd = function (ev) {
-      ev.preventDefault();
+    };
+
+    _this._onTouchEnd = function (ev) {
+      //ev.preventDefault()
       ev.persist();
       _this.dragEndWithDnDStyle();
-      var _deltaX = Math.abs(_this._clientX - ev.changedTouches[0].clientX),
-          _this$props2 = _this.props,
-          item = _this$props2.item,
-          onRemoveUnder = _this$props2.onRemoveUnder;
+      var _clientX = _getChangedTouches(ev);
+      if (_clientX) {
+        var _deltaX = Math.abs(_this._clientX - _clientX),
+            _this$props2 = _this.props,
+            item = _this$props2.item,
+            onRemoveUnder = _this$props2.onRemoveUnder;
 
-      if (_deltaX > D_REMOVE_UNDER) {
-        onRemoveUnder(item);
-      } else if (_deltaX > D_REMOVE_ITEM) {
-        _this._onHide();
+        if (_deltaX > DELTA.REMOVE_UNDER) {
+          onRemoveUnder(item);
+        } else if (_deltaX > DELTA.REMOVE_ITEM) {
+          _this._onHide();
+        }
       }
-    }, _this._preventDefault = function (ev) {
+    };
+
+    _this._preventDefault = function (ev) {
       ev.preventDefault();
-    }, _this._onHide = function () {
+    };
+
+    _this._onHide = function () {
       var _this$props3 = _this.props,
           onRemoveItem = _this$props3.onRemoveItem,
           item = _this$props3.item;
 
       onRemoveItem(item);
       _this.setState({ isClosed: true });
-    }, _this._renderTags = function (tags) {
+    };
+
+    _this._renderTags = function (tags) {
       return tags.map(function (tag, index) {
         return _react2.default.createElement(
           'span',
@@ -198,15 +236,32 @@ var TaggedItem = (0, _withDnDStyle2.default)(_class = (_temp2 = _class2 = functi
           tag
         );
       });
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    _this._itemHandlers = HAS_TOUCH ? {
+      onTouchStart: _this._onTouchStart.bind(_this),
+      onTouchMove: _this._onTouchMove.bind(_this),
+      onTouchEnd: _this._onTouchEnd.bind(_this)
+    } : {
+      draggable: true,
+      onDragStart: _this._dragStart.bind(_this),
+      onDragEnd: _this._dragEnd.bind(_this),
+      onDrop: _this._preventDefault,
+      onDragOver: _this._preventDefault,
+      onDragEnter: _this._preventDefault,
+      onDragLeave: _this._preventDefault
+    };
+
+    _this.state = {
+      isClosed: false
+    };
+    return _this;
   }
 
   (0, _createClass3.default)(TaggedItem, [{
     key: 'render',
     value: function render() {
-      var _props = this.props,
-          className = _props.className,
-          item = _props.item,
+      var item = this.props.item,
           question_id = item.question_id,
           is_answered = item.is_answered,
           answer_count = item.answer_count,
@@ -226,27 +281,17 @@ var TaggedItem = (0, _withDnDStyle2.default)(_class = (_temp2 = _class2 = functi
 
       return _react2.default.createElement(
         'div',
-        {
+        (0, _extends3.default)({
           key: question_id,
-          className: className,
-          style: _style,
-          draggable: true,
-          onDragStart: this._dragStart,
-          onTouchStart: this._onTouchStart,
-          onTouchMove: this._onTouchMove,
-          onDragEnd: this._dragEnd,
-          onTouchEnd: this._onTouchEnd,
-          onDrop: this._preventDefault,
-          onDragOver: this._preventDefault,
-          onDragEnter: this._preventDefault,
-          onDragLeave: this._preventDefault
-        },
+          className: CL,
+          style: _style
+        }, this._itemHandlers),
         _react2.default.createElement(
           'a',
           { href: link },
           _react2.default.createElement(
             'div',
-            { style: _Item2.default.PB_8 },
+            { style: S.ITEM_CAPTION },
             _react2.default.createElement(
               'span',
               { style: is_answered ? S.GREEN_BADGE : S.FISH_BADGE },
@@ -281,13 +326,14 @@ var TaggedItem = (0, _withDnDStyle2.default)(_class = (_temp2 = _class2 = functi
               display_name
             ),
             _react2.default.createElement(_A2.default.DateAgo, {
+              style: S.DATE_AGO,
               dateAgo: dateAgo,
               date: ''
             })
           ),
           _react2.default.createElement(
             'div',
-            null,
+            { style: S.TITLE },
             title
           ),
           _react2.default.createElement(
@@ -303,7 +349,7 @@ var TaggedItem = (0, _withDnDStyle2.default)(_class = (_temp2 = _class2 = functi
 }(_react.Component), _class2.defaultProps = {
   onRemoveUnder: function onRemoveUnder() {},
   onRemoveItem: function onRemoveItem() {}
-}, _temp2)) || _class;
+}, _temp)) || _class;
 
 exports.default = TaggedItem;
 //# sourceMappingURL=TaggedItem.js.map

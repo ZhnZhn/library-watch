@@ -5,9 +5,11 @@ const CL_ROW = CL.ROW_MENU_MORE;
 
 const crModelMore = ({
   chartType,
+  onMinWidth, onInitialWidth,
   onPlusWidth, onMinusWidth,
   onRemoveAll
 }) => ({
+  // cn property name for item
   baseTitleCl: CL_ROW,
   pageWidth: 180,
   maxPages: 2,
@@ -15,10 +17,8 @@ const crModelMore = ({
     {
       id: 'p1',
       type: 'sub',
-      cn: CL_ROW,
       name: 'Resize'
     },{
-      cn: CL_ROW,
       name: 'Remove All Items',
       onClick: onRemoveAll,
       isClose: true
@@ -26,11 +26,15 @@ const crModelMore = ({
   ],
   p1: [
     {
-      cn: CL_ROW,
+      name: 'to MinWidth',
+      onClick: onMinWidth
+    },{
+      name: 'to InitialWidth',
+      onClick: onInitialWidth
+    },{
       name: '+10px to Width',
       onClick: onPlusWidth
     },{
-      cn: CL_ROW,
       name: '-10px to Width',
       onClick: onMinusWidth
     }
