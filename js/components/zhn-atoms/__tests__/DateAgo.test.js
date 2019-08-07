@@ -44,19 +44,28 @@ var _fnGetWrapper = function _fnGetWrapper(props) {
   t.is(spanDate.props().style.display, _DateAgo4.default.NONE.display);
 });
 
-(0, _ava2.default)('should on click on dateAgo preventDefault, stopPropagation and change state isShowDate', function (t) {
+(0, _ava2.default)('should on click on dateAgo with date call preventDefault, stopPropagation and change state isShowDate', function (t) {
   var preventDefaultSpy = _zhnSpy2.default.createValueSpy(),
       stopPropagationSpy = _zhnSpy2.default.createValueSpy(),
-      wrapper = _fnGetWrapper(),
-      spanDateAgo = wrapper.childAt(0);
+      date = '01-01-1970',
+      wrapper = _fnGetWrapper({ date: date }),
+      spanDateAgo = wrapper.childAt(0),
+      spanDate = wrapper.childAt(1);
+
+  t.false(wrapper.state('isShowDate'));
+  t.is(spanDate.prop('style').display, 'none');
+  t.is(spanDate.text(), date);
 
   spanDateAgo.simulate('click', {
     preventDefault: preventDefaultSpy,
     stopPropagation: stopPropagationSpy
   });
 
-  t.true(wrapper.state('isShowDate'));
+  var spanDate2 = wrapper.childAt(1);
   t.true(preventDefaultSpy.isCalledOnce());
   t.true(stopPropagationSpy.isCalledOnce());
+  t.true(wrapper.state('isShowDate'));
+  t.is(spanDate2.prop('style').display, 'inline-block');
+  t.is(spanDate2.text(), date);
 });
 //# sourceMappingURL=DateAgo.test.js.map

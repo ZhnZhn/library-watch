@@ -70,8 +70,8 @@ const { isTouchable } = is;
 const HAS_TOUCH = isTouchable();
 
 const DELTA = HAS_TOUCH ? {
-  MARK_REMOVE: 45,
-  REMOVE_ITEM: 75,
+  MARK_REMOVE: 50,
+  REMOVE_ITEM: 90,
   REMOVE_UNDER: 150
 } : {
   MARK_REMOVE: 25,

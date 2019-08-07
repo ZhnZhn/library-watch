@@ -11,6 +11,9 @@ class DateAgo extends Component {
      style: PropTypes.object
   }
   */
+  static defaultProps = {
+    date: ''
+  }
 
   constructor(props){
     super(props)

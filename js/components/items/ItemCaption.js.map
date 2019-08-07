@@ -1,17 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/items/ItemCaption.js"
- ],
- "file": "../../../src/components/items/ItemCaption.js",
- "names": [
-  "CL",
-  "ROOT",
-  "BT_CLOSE",
-  "ItemCaption",
-  "style",
-  "children",
-  "onClose"
- ],
- "mappings": ";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,KAAK;AACTC,QAAM,cADG;AAETC,YAAU;AAFD,CAAX;;AAKA,IAAMC,cAAc,SAAdA,WAAc;AAAA,MAClBC,KADkB,QAClBA,KADkB;AAAA,MAElBC,QAFkB,QAElBA,QAFkB;AAAA,MAGlBC,OAHkB,QAGlBA,OAHkB;AAAA,SAKlB;AAAA;AAAA,MAAK,WAAWN,GAAGC,IAAnB,EAAyB,OAAOG,KAAhC;AACGC,YADH;AAEE,kCAAC,kBAAD;AACE,iBAAWL,GAAGE,QADhB;AAEE,eAASI;AAFX;AAFF,GALkB;AAAA,CAApB;;kBAceH,W"
-}
+{"version":3,"sources":["../../../src/components/items/ItemCaption.jsx"],"names":["CL","ROOT","BT_CLOSE","ItemCaption","style","children","onClose"],"mappings":";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,KAAK;AACTC,QAAM,cADG;AAETC,YAAU;AAFD,CAAX;;AAKA,IAAMC,cAAc,SAAdA,WAAc;AAAA,MAClBC,KADkB,QAClBA,KADkB;AAAA,MAElBC,QAFkB,QAElBA,QAFkB;AAAA,MAGlBC,OAHkB,QAGlBA,OAHkB;AAAA,SAKlB;AAAA;AAAA,MAAK,WAAWN,GAAGC,IAAnB,EAAyB,OAAOG,KAAhC;AACGC,YADH;AAEE,kCAAC,kBAAD;AACE,iBAAWL,GAAGE,QADhB;AAEE,eAASI;AAFX;AAFF,GALkB;AAAA,CAApB;;kBAceH,W","file":"ItemCaption.js","sourcesContent":["import React from 'react'\r\n\r\nimport SvgClose from '../zhn-atoms/SvgClose';\r\n\r\nconst CL = {\r\n  ROOT: 'item-caption',\r\n  BT_CLOSE: 'item-caption__bt-close'\r\n};\r\n\r\nconst ItemCaption = ({\r\n  style,\r\n  children,\r\n  onClose\r\n}) => (\r\n  <div className={CL.ROOT} style={style}>\r\n    {children}\r\n    <SvgClose\r\n      className={CL.BT_CLOSE}\r\n      onClose={onClose}\r\n    />\r\n  </div>\r\n);\r\n\r\nexport default ItemCaption\r\n"]}

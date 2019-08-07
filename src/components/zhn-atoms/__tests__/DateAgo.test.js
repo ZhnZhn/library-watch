@@ -29,18 +29,27 @@ test('render root span with props dateAgo and `display: none` date', t => {
    t.is(spanDate.props().style.display, STYLE.NONE.display)
 })
 
-test('should on click on dateAgo preventDefault, stopPropagation and change state isShowDate', t => {
+test('should on click on dateAgo with date call preventDefault, stopPropagation and change state isShowDate', t => {
   const preventDefaultSpy = zhnSpy.createValueSpy()
       , stopPropagationSpy = zhnSpy.createValueSpy()
-      , wrapper = _fnGetWrapper()
+      , date = '01-01-1970'
+      , wrapper = _fnGetWrapper({ date })
       , spanDateAgo = wrapper.childAt(0)
+      , spanDate = wrapper.childAt(1);
+
+  t.false(wrapper.state('isShowDate'))
+  t.is(spanDate.prop('style').display, 'none')
+  t.is(spanDate.text(), date)
 
   spanDateAgo.simulate('click', {
     preventDefault: preventDefaultSpy,
     stopPropagation: stopPropagationSpy
   })
 
-  t.true(wrapper.state('isShowDate'))
+  const spanDate2 = wrapper.childAt(1);
   t.true(preventDefaultSpy.isCalledOnce())
   t.true(stopPropagationSpy.isCalledOnce())
+  t.true(wrapper.state('isShowDate'))
+  t.is(spanDate2.prop('style').display, 'inline-block')
+  t.is(spanDate2.text(), date)
 })

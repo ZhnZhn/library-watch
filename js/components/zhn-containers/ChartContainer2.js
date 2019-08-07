@@ -67,7 +67,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var CHILD_MARGIN = 36,
     RESIZE_INIT_WIDTH = 635,
-    RESIZE_MIN_WIDTH = 395,
+    RESIZE_MIN_WIDTH = 375,
     RESIZE_MAX_WIDTH = 1200,
     DELTA = 10;
 

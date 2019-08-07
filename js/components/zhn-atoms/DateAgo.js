@@ -24,6 +24,10 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp;
+
+//import PropTypes from "prop-types";
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -34,15 +38,8 @@ var _DateAgo2 = _interopRequireDefault(_DateAgo);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var DateAgo = function (_Component) {
+var DateAgo = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(DateAgo, _Component);
-
-  /*
-  static propTypes = {
-     isShowDate: PropTypes.bool,
-     style: PropTypes.object
-  }
-  */
 
   function DateAgo(props) {
     (0, _classCallCheck3.default)(this, DateAgo);
@@ -64,6 +61,13 @@ var DateAgo = function (_Component) {
     };
     return _this;
   }
+  /*
+  static propTypes = {
+     isShowDate: PropTypes.bool,
+     style: PropTypes.object
+  }
+  */
+
 
   (0, _createClass3.default)(DateAgo, [{
     key: 'render',
@@ -95,9 +99,8 @@ var DateAgo = function (_Component) {
     }
   }]);
   return DateAgo;
-}(_react.Component);
-
-//import PropTypes from "prop-types";
-
+}(_react.Component), _class.defaultProps = {
+  date: ''
+}, _temp);
 exports.default = DateAgo;
 //# sourceMappingURL=DateAgo.js.map
