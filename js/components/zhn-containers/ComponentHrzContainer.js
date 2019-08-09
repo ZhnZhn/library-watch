@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _toConsumableArray2 = require("babel-runtime/helpers/toConsumableArray");
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+
 var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -28,6 +32,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //import PropTypes from "prop-types";
 
+var CL = "hrz-container";
+
 var ComponentHrzContainer = function (_Component) {
   (0, _inherits3.default)(ComponentHrzContainer, _Component);
 
@@ -48,8 +54,14 @@ var ComponentHrzContainer = function (_Component) {
       var initShowAction = _this.props.initShowAction;
 
       if (actionType === initShowAction) {
-        _this.state.containers.unshift(data);
-        _this.setState(_this.state);
+        _this.setState(function (prevState) {
+          prevState.containers.unshift(data);
+          return {
+            containers: [].concat((0, _toConsumableArray3.default)(prevState.containers))
+          };
+        });
+        //this.state.containers.unshift(data);
+        //this.setState(this.state);
       }
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
@@ -64,8 +76,8 @@ var ComponentHrzContainer = function (_Component) {
 
 
   (0, _createClass3.default)(ComponentHrzContainer, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       var store = this.props.store;
 
       this.unsubscribe = store.listen(this._onStore);
@@ -77,22 +89,12 @@ var ComponentHrzContainer = function (_Component) {
     }
   }, {
     key: "render",
-
-
-    /*
-     _renderContainers(containers){
-       return containers.map((container, index) => {
-         return container;
-       })
-     }
-     */
-
     value: function render() {
       var containers = this.state.containers;
 
       return _react2.default.createElement(
         "div",
-        { className: "hrz-container" },
+        { className: CL },
         containers
       );
     }

@@ -54,7 +54,7 @@ var STYLE = {
     overflowY: 'auto',
     height: '92%',
     //height: 'calc(100vh - 90px)',
-    paddingRight: '10px'
+    paddingRight: 10
   }
 };
 
@@ -78,7 +78,7 @@ var MenuBrowserDynamic = function (_Component) {
   function MenuBrowserDynamic(props) {
     (0, _classCallCheck3.default)(this, MenuBrowserDynamic);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (MenuBrowserDynamic.__proto__ || Object.getPrototypeOf(MenuBrowserDynamic)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (MenuBrowserDynamic.__proto__ || Object.getPrototypeOf(MenuBrowserDynamic)).call(this, props));
 
     _this._loadMenu = function () {
       var _this$props = _this.props,
@@ -101,9 +101,14 @@ var MenuBrowserDynamic = function (_Component) {
       if (actionType === showAction && data === browserType) {
         _this._handleShow();
       } else if (actionType === loadCompletedAction && data.browserType === browserType) {
-        _this.setState({ menuItems: data.menuItems, isLoaded: true });
+        _this.setState({
+          menuItems: data.menuItems,
+          isLoaded: true
+        });
       } else if (actionType === updateAction && data === browserType) {
-        _this.setState({ menuItems: store.getBrowserMenu(browserType) });
+        _this.setState({
+          menuItems: store.getBrowserMenu(browserType)
+        });
       }
     };
 
@@ -124,18 +129,14 @@ var MenuBrowserDynamic = function (_Component) {
   }
 
   (0, _createClass3.default)(MenuBrowserDynamic, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      this.unsubscribe = this.props.store.listen(this._onStore);
-    }
-  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
+      this.unsubscribe = this.props.store.listen(this._onStore);
       this._loadMenu();
     }
   }, {
-    key: 'componentWillUpdate',
-    value: function componentWillUpdate(nextProps, nextState) {
+    key: 'UNSAFE_componentWillUpdate',
+    value: function UNSAFE_componentWillUpdate(nextProps, nextState) {
       if (!nextState.isLoaded && nextState.isShow) {
         this._loadMenu();
       }

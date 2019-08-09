@@ -15,11 +15,11 @@ const styles = {
     background: 'transparent none repeat scroll 0 0',
     border: 'medium none',
     outline: 'medium none',
-    height: '30px',
-    paddingLeft: '10px',
+    height: 30,
+    paddingLeft: 10,
     color: 'green',
     width: '100%',
-    paddingRight: '40px',
+    paddingRight: 40,
     fontSize: '16px',
     fontWeight: 'bold'
   },
@@ -31,74 +31,71 @@ const styles = {
     width: '100%',
     //height: '160px',
     zIndex: '10',
-    borderBottomLeftRadius : '5px',
-    borderBottomRightRadius : '5px'
+    borderBottomLeftRadius: 5,
+    borderBottomRightRadius: 5
   },
   optionDiv: {
     width: '100%',
     //height: '160px',
-    minHeight: '160px',
-    maxHeight: '200px',
+    minHeight: 160,
+    maxHeight: 200,
     overflow: 'auto'
   },
   spinnerCell : {
-    position: 'relative',
-    left: '8px',
-    top: '4px',
     display: 'inline-block',
-    width: '16px',
-    height: '16px'
+    position: 'relative',
+    left: 8,
+    top: 4,
+    width: 16,
+    height: 16
   },
   spinnerFailedCell : {
-    position: 'relative',
-    left: '8px',
-    top: '4px',
     display: 'inline-block',
-    width: '16px',
-    height: '16px',
-    borderColor : '#F44336',
+    position: 'relative',
+    left: 8,
+    top: 4,
+    width: 16,
+    height: 16,
+    borderColor : '#f44336',
     cursor : 'pointer'
   },
  inputHr: {
    borderWidth: 'medium medium 1px',
    borderStyle: 'none none solid',
-   borderColor: '#1B75BB',
+   borderColor: '#1b75bb',
    borderImage: 'none',
    margin: 0,
-   marginLeft: '10px',
-   marginBottom: '5px',
-   marginRight: '40px'
-   //width: '150px'
+   marginLeft: 10,
+   marginBottom: 5,
+   marginRight: 40
  },
  arrow_show : {
-    borderColor: '#1B75BB transparent transparent'
+    borderColor: '#1b75bb transparent transparent'
  },
   itemDiv:{
-    cursor: 'pointer',
-    paddingTop: '4px',
-    paddingLeft: '5px',
-    paddingBottom: '4px'
-    //lineHeight: '14px'
+    paddingTop: 4,
+    paddingLeft: 5,
+    paddingBottom: 4,
+    cursor: 'pointer'
   },
   itemOdd: {
-    backgroundColor: '#C3C3AC'
+    backgroundColor: '#c3c3ac'
   },
   itemEven: {
-    backgroundColor: '#D5D5BC'
+    backgroundColor: '#d5d5bc'
   },
   optionsFooter : {
     backgroundColor: 'silver',
-    borderBottomLeftRadius : '5px',
-    borderBottomRightRadius : '5px'
+    borderBottomLeftRadius : 5,
+    borderBottomRightRadius : 5
   },
   fileredSpan : {
     display: 'inline-block',
     color: 'gray',
     fontWeight : 'bold',
-    //height: '20px',
-    paddingLeft: '10px',
-    paddingTop: '4px',
-    paddingBottom : '4px'
+    paddingLeft: 10,
+    paddingTop: 4,
+    paddingBottom : 4
   }
 }
 
@@ -137,7 +134,7 @@ class InputSearch extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if (this.props !== nextProps){
       if (this.props.options !== nextProps.options
           || nextProps.isUpdateOptions)
@@ -442,6 +439,8 @@ class InputSearch extends Component {
     )
   }
 
+  _refInput = c => this.domInputText = c
+
   render(){
     const {value, isLocalMode, isShowOption } = this.state;
 
@@ -490,18 +489,18 @@ class InputSearch extends Component {
 
 
     return (
-      <div style={Object.assign({},styles.rootDiv)}>
+      <div style={styles.rootDiv}>
         <input
-           ref={c => this.domInputText = c}
+           ref={this._refInput}
            type="text"
            value={value}
-           style={Object.assign({},styles.inputText)}
+           style={styles.inputText}
            placeholder={_placeholder}
            onChange={this._handlerInputChange}
            onKeyDown={this._handlerInputKeyDown}>
         </input>
         {_domAfterInput}
-        <hr style={Object.assign({},styles.inputHr)}></hr>
+        <hr style={styles.inputHr}></hr>
         {_domOptions}
 
       </div>

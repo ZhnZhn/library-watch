@@ -6,7 +6,9 @@ import { BrowserType } from '../../constants/Type';
 import WatchBrowser from '../browser-watch/WatchBrowser';
 import DialogContainer3 from '../zhn-containers/DialogContainer3';
 
-//const BrowserContainer = React.createClass({
+
+const CL = "hrz-container";
+
 class BrowserContainer extends Component {
   /*
   static propTypes = {
@@ -26,7 +28,7 @@ class BrowserContainer extends Component {
     elBrowsers : []
   }
 
-  componentWillMount(){
+  componentDidMount(){
     const { store } = this.props
     this.unsubscribe = store.listen(this._onStore)
   }
@@ -54,9 +56,8 @@ class BrowserContainer extends Component {
            , showBrowserAction, updateWatchAction
            , initDialogAction, showDialogAction
          } = this.props
-       , { isDoubleWatch, elBrowsers } = this.state;
-
-    const _doubleWatch = (isDoubleWatch)
+       , { isDoubleWatch, elBrowsers } = this.state
+       , _doubleWatch = isDoubleWatch
              ? (
                  <WatchBrowser
                    isShow={true}
@@ -69,10 +70,10 @@ class BrowserContainer extends Component {
                    updateAction={updateWatchAction}
                  />
                )
-             : undefined;
+             : null;
 
     return (
-      <div className="hrz-container">
+      <div className={CL}>
         <WatchBrowser
            browserType={BrowserType.WATCH_LIST}
            caption="Watch"
@@ -92,6 +93,5 @@ class BrowserContainer extends Component {
     );
   }
 }
-//});
 
 export default BrowserContainer

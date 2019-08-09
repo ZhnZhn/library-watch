@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 //import PropTypes from "prop-types";
 
+const CL = "hrz-container";
+
 class ComponentHrzContainer extends Component {
   /*
   static propTypes = {
@@ -14,8 +16,8 @@ class ComponentHrzContainer extends Component {
   state = {
     containers : []
   }
-  
-  componentWillMount(){
+
+  componentDidMount(){
     const { store } = this.props;
     this.unsubscribe = store.listen(this._onStore);
   }
@@ -25,23 +27,21 @@ class ComponentHrzContainer extends Component {
   _onStore = (actionType, data) => {
      const { initShowAction } = this.props;
      if (actionType === initShowAction){
-       this.state.containers.unshift(data);
-       this.setState(this.state);
+       this.setState(prevState => {
+         prevState.containers.unshift(data)
+         return {
+           containers: [...prevState.containers]
+         };
+       })
+       //this.state.containers.unshift(data);
+       //this.setState(this.state);
      }
   }
-
- /*
-  _renderContainers(containers){
-    return containers.map((container, index) => {
-      return container;
-    })
-  }
-  */
 
   render(){
     const { containers } = this.state;
     return (
-       <div className="hrz-container">
+       <div className={CL}>
           {containers}
        </div>
     );

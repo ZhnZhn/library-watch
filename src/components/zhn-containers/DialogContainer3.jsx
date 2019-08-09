@@ -6,8 +6,8 @@ const STYLE = {
   ROOT: {
     zIndex : 30,
     position: 'absolute',
-    top: '70px',
-    left: '10px',
+    top: 70,
+    left: 10,
     width: '99%'
   }
 };
@@ -20,8 +20,12 @@ const getObjToFirst = function(arr, keyValue){
       break;
     }
   }
-  return [...arr.slice(0, index), ...arr.slice(index+1), arr[index]];
-}
+  return [
+    ...arr.slice(0, index),
+    ...arr.slice(index+1),
+    arr[index]
+  ];
+};
 
 class DialogContainer3 extends Component {
   /*
@@ -44,7 +48,7 @@ class DialogContainer3 extends Component {
     }
   }
 
-   componentWillMount(){
+   componentDidMount(){
      this.unsubscribe = this.props.store.listen(this._onStore)
    }
    componentWillUnmount(){

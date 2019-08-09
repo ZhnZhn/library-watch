@@ -90,7 +90,7 @@ class ChartContainer2 extends Component {
      }
    }
 
-   componentWillMount(){
+   componentDidMount(){
      this.unsubscribe = Store.listen(this._onStore);
      this.setState(Store.getConfigs(this.props.chartType));
    }

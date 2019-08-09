@@ -36,8 +36,8 @@ var STYLE = {
   ROOT: {
     zIndex: 30,
     position: 'absolute',
-    top: '70px',
-    left: '10px',
+    top: 70,
+    left: 10,
     width: '99%'
   }
 };
@@ -144,8 +144,8 @@ var DialogContainer3 = function (_Component) {
   }
 
   (0, _createClass3.default)(DialogContainer3, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
       this.unsubscribe = this.props.store.listen(this._onStore);
     }
   }, {

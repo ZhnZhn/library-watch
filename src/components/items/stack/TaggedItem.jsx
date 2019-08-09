@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import is from '../../../utils/is'
+import has from '../../has'
 import withDnDStyle from '../decorators/withDnDStyle'
 import A from '../../zhn-atoms/A'
 
@@ -64,10 +64,7 @@ const S = {
   }
 };
 
-
-
-const { isTouchable } = is;
-const HAS_TOUCH = isTouchable();
+const { HAS_TOUCH } = has;
 
 const DELTA = HAS_TOUCH ? {
   MARK_REMOVE: 50,

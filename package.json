@@ -36,8 +36,8 @@
       "lodash.merge": "npm:lodash.merge@^4.6.2",
       "prop-types": "npm:prop-types@^15.7.2",
       "raven-js": "npm:raven-js@3.27.0",
-      "react": "npm:react@^16.8.6",
-      "react-dom": "npm:react-dom@^16.8.6",
+      "react": "npm:react@^16.9.0",
+      "react-dom": "npm:react-dom@^16.9.0",
       "reflux": "npm:reflux@5.0.4",
       "timeago.js": "npm:timeago.js@2.0.5"
     },
@@ -88,8 +88,8 @@
     "localforage": "^1.5.7",
     "lodash.merge": "^4.6.2",
     "raven-js": "^3.27.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "reflux": "^5.0.4",
     "timeago.js": "^2.0.5"
   }

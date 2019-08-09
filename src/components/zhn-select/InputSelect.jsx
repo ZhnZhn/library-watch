@@ -134,7 +134,7 @@ class InputSelect extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if (this.props !== nextProps){
       if (this.props.options !== nextProps.options){
         //New options come from Parent - Clear domCache, Init State

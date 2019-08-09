@@ -58,15 +58,13 @@ var _IconLogoBar = require('./IconLogoBar');
 
 var _IconLogoBar2 = _interopRequireDefault(_IconLogoBar);
 
-var _ContainerStyles = require('../styles/ContainerStyles.js');
+var _ContainerStyles = require('../styles/ContainerStyles');
 
 var _ContainerStyles2 = _interopRequireDefault(_ContainerStyles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var styles = _ContainerStyles2.default;
-
-var STYLE = {
+var S = {
   SCROLL_DIV: {
     overflowY: 'auto',
     height: '92%',
@@ -117,8 +115,8 @@ var About = (_temp = _class = function (_Component) {
   }
 
   (0, _createClass3.default)(About, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
       this.unsubscribe = this.props.store.listen(this._onStore);
     }
   }, {
@@ -138,7 +136,7 @@ var About = (_temp = _class = function (_Component) {
         'div',
         {
           className: _classOpen,
-          style: (0, _extends3.default)({}, styles.aboutRootDiv, _styleOpen)
+          style: (0, _extends3.default)({}, _ContainerStyles2.default.aboutRootDiv, _styleOpen)
         },
         _react2.default.createElement(_CaptionRow2.default, {
           caption: 'About',
@@ -146,10 +144,10 @@ var About = (_temp = _class = function (_Component) {
         }),
         _react2.default.createElement(
           _ScrollPane2.default,
-          { style: STYLE.SCROLL_DIV },
+          { style: S.SCROLL_DIV },
           _react2.default.createElement(
             'div',
-            { style: STYLE.ROOT_DIV },
+            { style: S.ROOT_DIV },
             _react2.default.createElement(
               'p',
               null,
@@ -166,12 +164,12 @@ var About = (_temp = _class = function (_Component) {
             ),
             _react2.default.createElement(
               'p',
-              { style: STYLE.MARGIN_BOTTOM },
+              { style: S.MARGIN_BOTTOM },
               'By means of web app Library-Watch, it is possible to view information about GitHub\'s repositories, NPM\'s packages, StackOverflows\'s questions.'
             ),
             _react2.default.createElement(
               'p',
-              { style: STYLE.MARGIN_BOTTOM },
+              { style: S.MARGIN_BOTTOM },
               _react2.default.createElement(
                 _Token2.default,
                 { color: 'gray' },
@@ -214,7 +212,7 @@ var About = (_temp = _class = function (_Component) {
             ),
             _react2.default.createElement(
               'p',
-              { style: STYLE.MARGIN_TOP },
+              { style: S.MARGIN_TOP },
               _react2.default.createElement(_Step2.default, { step: '2' }),
               _react2.default.createElement(
                 _Token2.default,
@@ -224,7 +222,7 @@ var About = (_temp = _class = function (_Component) {
             ),
             _react2.default.createElement(
               'p',
-              { style: STYLE.MARGIN_TOP },
+              { style: S.MARGIN_TOP },
               _react2.default.createElement(_Step2.default, { step: '3' }),
               _react2.default.createElement(
                 _Token2.default,
@@ -234,7 +232,7 @@ var About = (_temp = _class = function (_Component) {
             ),
             _react2.default.createElement(
               'p',
-              { style: STYLE.MARGIN_TOP },
+              { style: S.MARGIN_TOP },
               _react2.default.createElement(_Step2.default, { step: '4' }),
               _react2.default.createElement(
                 _Token2.default,
@@ -244,7 +242,7 @@ var About = (_temp = _class = function (_Component) {
             ),
             _react2.default.createElement(
               'p',
-              { style: STYLE.MARGIN_TOP },
+              { style: S.MARGIN_TOP },
               _react2.default.createElement(
                 _Token2.default,
                 { color: 'gray' },
@@ -253,7 +251,7 @@ var About = (_temp = _class = function (_Component) {
             ),
             _react2.default.createElement(
               'p',
-              { style: Object.assign({}, STYLE.MARGIN_BOTTOM, STYLE.MARGIN_TOP) },
+              { style: (0, _extends3.default)({}, S.MARGIN_BOTTOM, S.MARGIN_TOP) },
               _react2.default.createElement(
                 _Token2.default,
                 { color: 'gray' },
@@ -262,7 +260,7 @@ var About = (_temp = _class = function (_Component) {
             ),
             _react2.default.createElement(
               'p',
-              { style: STYLE.MARGIN_BOTTOM },
+              { style: S.MARGIN_BOTTOM },
               'After clicking a button Show in a Dialog opens Container with Items or empty. After closing a Container all Items remains. In one-time max three Item Dialogs can be opened.'
             ),
             _react2.default.createElement(

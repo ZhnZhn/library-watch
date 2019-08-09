@@ -42,13 +42,20 @@ var _deepEqual2 = _interopRequireDefault(_deepEqual);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-Object.assign(_chart2.default.defaults.global, {
+var IGNORED_PROPERTIES = ['id', 'width', 'height', 'onElementsClick'];
+
+var _isFn = function _isFn(fn) {
+	return typeof fn === 'function';
+};
+var _assign = Object.assign;
+
+_assign(_chart2.default.defaults.global, {
 	defaultFontColor: 'black',
 	defaultFontSize: 14,
 	defaultFontStyle: 'bold'
 });
 
-Object.assign(_chart2.default.defaults.global.tooltips, {
+_assign(_chart2.default.defaults.global.tooltips, {
 	titleFontColor: '#a487d4',
 	titleFontSize: 16,
 	bodyFontColor: '#80c040',
@@ -134,13 +141,9 @@ var ChartComponent = (_temp2 = _class = function (_Component) {
  */
 
 	(0, _createClass3.default)(ChartComponent, [{
-		key: 'componentWillMount',
-		value: function componentWillMount() {
-			this.chart_instance = undefined;
-		}
-	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
+			this.chart_instance = void 0;
 			this.renderChart();
 		}
 	}, {
@@ -156,9 +159,8 @@ var ChartComponent = (_temp2 = _class = function (_Component) {
 	}, {
 		key: 'shouldComponentUpdate',
 		value: function shouldComponentUpdate(nextProps, nextState) {
-			var ignoredProperties = ['id', 'width', 'height', 'onElementsClick'];
-			var compareNext = _objectWithoutProperties(nextProps, ignoredProperties);
-			var compareNow = _objectWithoutProperties(this.props, ignoredProperties);
+			var compareNext = _objectWithoutProperties(nextProps, IGNORED_PROPERTIES),
+			    compareNow = _objectWithoutProperties(this.props, IGNORED_PROPERTIES);
 			return !(0, _deepEqual2.default)(compareNext, compareNow, { strict: true });
 		}
 	}, {
@@ -173,7 +175,7 @@ var ChartComponent = (_temp2 = _class = function (_Component) {
 			    height = _props.height,
 			    width = _props.width,
 			    onElementsClick = _props.onElementsClick,
-			    _onClick = typeof onElementsClick === 'function' ? this.handleOnClick : null;
+			    _onClick = _isFn(onElementsClick) ? this.handleOnClick : null;
 
 			return _react2.default.createElement('canvas', {
 				ref: this._refRoot,
@@ -184,7 +186,7 @@ var ChartComponent = (_temp2 = _class = function (_Component) {
 		}
 	}]);
 	return ChartComponent;
-}(_react.Component), _class.deffaultProps = {
+}(_react.Component), _class.defaultProps = {
 	legend: {
 		display: true,
 		position: 'bottom'

@@ -84,7 +84,7 @@ const AddToWatchDialog = createReactClass({
     }
   },
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if (nextProps !== this.props && nextProps.isShow !== this.props.isShow) {
       const groups = nextProps.store.getWatchGroups();
       if (groups !== this.state.groupOptions){

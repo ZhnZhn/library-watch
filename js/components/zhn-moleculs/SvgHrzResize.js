@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -28,17 +32,30 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _has = require('../has');
+
+var _has2 = _interopRequireDefault(_has);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import PropTypes from "prop-types";
+var CL = "svg-resize";
+
+var HAS_TOUCH = _has2.default.HAS_TOUCH;
+
+
+var _isFn = function _isFn(fn) {
+  return typeof fn === 'function';
+};
 
 var styles = {
   rootDiv: {
     display: 'inline-block'
   },
   leftDiv: {
-    marginLeft: '10px'
+    marginLeft: 10
   }
 };
-//import PropTypes from "prop-types";
 
 var SvgHrzResize = function (_Component) {
   (0, _inherits3.default)(SvgHrzResize, _Component);
@@ -55,7 +72,7 @@ var SvgHrzResize = function (_Component) {
   function SvgHrzResize(props) {
     (0, _classCallCheck3.default)(this, SvgHrzResize);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (SvgHrzResize.__proto__ || Object.getPrototypeOf(SvgHrzResize)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (SvgHrzResize.__proto__ || Object.getPrototypeOf(SvgHrzResize)).call(this, props));
 
     _this._increaseStepValue = function () {
       _this.countStep += 1;
@@ -87,14 +104,24 @@ var SvgHrzResize = function (_Component) {
       }
     };
 
-    _this._handlerStartResize = function (fnResize) {
+    _this._updateDelta = function () {
+      var w = parseInt(_this.domNode.style.width);
+      if (!isNaN(w)) {
+        _this.delta = w - _this.initWidth;
+      }
+    };
+
+    _this._hStartResize = function (fnResize) {
+      //evt.preventDefault()
+      _this._updateDelta();
       if (_this.id !== null) {
-        _this._handlerStopResize(false);
+        _this._hStopResize(false);
       }
       _this.id = setInterval(fnResize, 5);
     };
 
-    _this._handlerStopResize = function (isOnResizeAfter) {
+    _this._hStopResize = function (isOnResizeAfter, evt) {
+      evt.preventDefault();
       clearInterval(_this.id);
       _this.id = null;
       _this.step = 1;
@@ -110,7 +137,24 @@ var SvgHrzResize = function (_Component) {
     _this.delta = 0;
     _this.step = 1;
     _this.countStep = 0;
-    _this.isResizeAfter = typeof props.onResizeAfter === 'function' ? true : false;
+    _this.isResizeAfter = _isFn(props.onResizeAfter);
+
+    _this._leftBtHandlers = HAS_TOUCH ? {
+      onTouchStart: _this._hStartResize.bind(_this, _this._resizeLeft),
+      onTouchEnd: _this._hStopResize.bind(_this, true)
+    } : {
+      onMouseDown: _this._hStartResize.bind(_this, _this._resizeLeft),
+      onMouseUp: _this._hStopResize.bind(_this, true)
+    };
+
+    _this._rightBtHandlers = HAS_TOUCH ? {
+      onTouchStart: _this._hStartResize.bind(_this, _this._resizeRight),
+      onTouchEnd: _this._hStopResize.bind(_this, true)
+    } : {
+      onMouseDown: _this._hStartResize.bind(_this, _this._resizeRight),
+      onMouseUp: _this._hStopResize.bind(_this, true)
+    };
+
     _this.state = {};
     return _this;
   }
@@ -137,15 +181,11 @@ var SvgHrzResize = function (_Component) {
         { style: styles.rootDiv },
         _react2.default.createElement(
           'div',
-          {
-            className: 'svg-resize',
+          (0, _extends3.default)({
+            className: CL,
             style: styles.leftDiv,
-            title: 'Resize container horizontal left',
-            onMouseDown: this._handlerStartResize.bind(null, this._resizeLeft),
-            onMouseUp: this._handlerStopResize.bind(null, true),
-            onTouchStart: this._handlerStartResize.bind(null, this._resizeLeft),
-            onTouchEnd: this._handlerStopResize.bind(null, true)
-          },
+            title: 'Resize container horizontal left'
+          }, this._leftBtHandlers),
           _react2.default.createElement(
             'svg',
             { viewBox: '0 0 12 12', width: '100%', height: '100%',
@@ -165,15 +205,11 @@ var SvgHrzResize = function (_Component) {
         ),
         _react2.default.createElement(
           'div',
-          {
-            className: 'svg-resize',
+          (0, _extends3.default)({
+            className: CL,
             style: styles.leftDiv,
-            title: 'Resize container horizontal right',
-            onMouseDown: this._handlerStartResize.bind(null, this._resizeRight),
-            onMouseUp: this._handlerStopResize.bind(null, true),
-            onTouchStart: this._handlerStartResize.bind(null, this._resizeRight),
-            onTouchEnd: this._handlerStopResize.bind(null, true)
-          },
+            title: 'Resize container horizontal right'
+          }, this._rightBtHandlers),
           _react2.default.createElement(
             'svg',
             { viewBox: '0 0 12 12', width: '100%', height: '100%',

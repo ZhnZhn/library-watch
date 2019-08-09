@@ -28,61 +28,61 @@ const DRAG = {
   GROUP : 'GROUP',
   LIST : 'LIST',
   ITEM : 'ITEM'
-}
+};
 
-const CLASS = {
+const CL = {
   BROWSER_WATCH : "browser-watch",
   BROWSER_WATCH__30 : "browser-watch--1r",
   BROWSER_WATCH__60 : "browser-watch--2r"
-}
+};
 
 
 const styles = {
   browser : {
-    paddingRight: '0px',
-    maxWidth: '500px'
+    paddingRight: 0,
+    maxWidth: 500
   },
   captionRoot : {
-     minWidth: '340px'
+     minWidth: 340
   },
   captionRootDouble : {
-     minWidth: '310px'
+     minWidth: 310
   },
   editBarDiv : {
-    marginBottom: '10px'
+    marginBottom: 10
   },
   btCircle : {
-    marginLeft: '20px'
+    marginLeft: 20
   },
   btCircleRight : {
-    marginLeft: '20px',
-    marginRight: '20px'
+    marginLeft: 20,
+    marginRight: 20
   },
   btEditBarList : {
-    marginLeft: '20px'
+    marginLeft: 20
   },
   wrapperSearch : {
-     paddingBottom: '8px',
+     paddingBottom: 8,
      width: '100%',
-     paddingRight: '24px'
+     paddingRight: 24
   },
   scrollDiv : {
     overflowY: 'auto',
     height: '92%',
-    paddingRight: '10px'
+    paddingRight: 10
   },
   groupDiv : {
     lineHeight : 2
   },
   listDiv : {
-    marginLeft : '8px',
-    paddingLeft : '12px',
+    marginLeft : 8,
+    paddingLeft : 12,
     borderLeft : '1px solid yellow',
     lineHeight : 2
   },
   itemNotSelected : {
     borderBottom : '1px solid rgba(128, 192, 64, 0.6)',
-    marginRight : '10px'
+    marginRight : 10
   }
 };
 
@@ -108,13 +108,13 @@ const WatchBrowser = createReactClass({
 
   _calcScrollClass(isShowFind, isModeEdit){
     return classNames({
-      [CLASS.BROWSER_WATCH] : !(isShowFind && isModeEdit),
-      [CLASS.BROWSER_WATCH__30] : (isShowFind && !isModeEdit) || (!isShowFind && isModeEdit),
-      [CLASS.BROWSER_WATCH__60] : (isShowFind && isModeEdit)
-    })
+      [CL.BROWSER_WATCH] : !(isShowFind && isModeEdit),
+      [CL.BROWSER_WATCH__30] : (isShowFind && !isModeEdit) || (!isShowFind && isModeEdit),
+      [CL.BROWSER_WATCH__60] : (isShowFind && isModeEdit)
+    });
   },
 
-  componentWillMount(){
+  componentDidMount(){
     this.unsubscribe = this.props.store.listen(this._onStore);
   },
   componentWillUnmount(){
@@ -267,14 +267,14 @@ const WatchBrowser = createReactClass({
            <ButtonCircle
              caption={'GROUP'}
              title="Edit Group"
-             className={'bt__watch__bar'}
+             className="bt__watch__bar"
              isWithoutDefault={true}
              onClick={this._handlerEditGroup}
           />
           <ButtonCircle
              caption={'LIST'}
              title="Edit Group List"
-             className={'bt__watch__bar'}
+             className="bt__watch__bar"
              isWithoutDefault={true}
              style={styles.btEditBarList}
              onClick={this._handlerEditList}
@@ -282,7 +282,7 @@ const WatchBrowser = createReactClass({
           <ButtonCircle
              caption={'DB'}
              title="Double Watch Browser"
-             className={'bt__watch__bar'}
+             className="bt__watch__bar"
              isWithoutDefault={true}
              style={styles.btEditBarList}
              onClick={this._handlerDouble}

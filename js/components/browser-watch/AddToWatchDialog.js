@@ -116,7 +116,7 @@ var AddToWatchDialog = (0, _createReactClass2.default)((0, _extends3.default)({}
       this.setState({ validationMessages: data.messages });
     }
   },
-  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps: function UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps !== this.props && nextProps.isShow !== this.props.isShow) {
       var groups = nextProps.store.getWatchGroups();
       if (groups !== this.state.groupOptions) {

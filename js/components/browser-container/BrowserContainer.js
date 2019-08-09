@@ -36,7 +36,9 @@ var _DialogContainer2 = _interopRequireDefault(_DialogContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//const BrowserContainer = React.createClass({
+var CL = "hrz-container";
+//import PropTypes from 'props-type'
+
 var BrowserContainer = function (_Component) {
   (0, _inherits3.default)(BrowserContainer, _Component);
 
@@ -85,8 +87,8 @@ var BrowserContainer = function (_Component) {
   */
 
   (0, _createClass3.default)(BrowserContainer, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
       var store = this.props.store;
 
       this.unsubscribe = store.listen(this._onStore);
@@ -107,10 +109,8 @@ var BrowserContainer = function (_Component) {
           showDialogAction = _props.showDialogAction,
           _state = this.state,
           isDoubleWatch = _state.isDoubleWatch,
-          elBrowsers = _state.elBrowsers;
-
-
-      var _doubleWatch = isDoubleWatch ? _react2.default.createElement(_WatchBrowser2.default, {
+          elBrowsers = _state.elBrowsers,
+          _doubleWatch = isDoubleWatch ? _react2.default.createElement(_WatchBrowser2.default, {
         isShow: true,
         isEditMode: true,
         isDoubleWatch: true,
@@ -119,11 +119,11 @@ var BrowserContainer = function (_Component) {
         store: store,
         showAction: showBrowserAction,
         updateAction: updateWatchAction
-      }) : undefined;
+      }) : null;
 
       return _react2.default.createElement(
         'div',
-        { className: 'hrz-container' },
+        { className: CL },
         _react2.default.createElement(_WatchBrowser2.default, {
           browserType: _Type.BrowserType.WATCH_LIST,
           caption: 'Watch',
@@ -144,9 +144,6 @@ var BrowserContainer = function (_Component) {
   }]);
   return BrowserContainer;
 }(_react.Component);
-//});
-
-//import PropTypes from 'props-type'
 
 exports.default = BrowserContainer;
 //# sourceMappingURL=BrowserContainer.js.map

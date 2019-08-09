@@ -3,13 +3,21 @@ import React, { Component } from 'react';
 import Chart from 'chart.js';
 import deepEqual from './deepEqual';
 
-Object.assign(Chart.defaults.global, {
+const IGNORED_PROPERTIES = [
+	'id', 'width', 'height', 'onElementsClick'
+];
+
+const _isFn = fn => typeof fn === 'function';
+const _assign = Object.assign;
+
+
+_assign(Chart.defaults.global, {
 	defaultFontColor: 'black',
   defaultFontSize: 14,
   defaultFontStyle: 'bold'
 })
 
-Object.assign(Chart.defaults.global.tooltips, {
+_assign(Chart.defaults.global.tooltips, {
 	titleFontColor: '#a487d4',
 	titleFontSize: 16,
 	bodyFontColor: '#80c040',
@@ -44,7 +52,7 @@ class ChartComponent extends Component {
 	},
 	*/
 
-	static deffaultProps = {
+	static defaultProps = {
 			legend: {
 				display: true,
 				position: 'bottom'
@@ -55,11 +63,9 @@ class ChartComponent extends Component {
 			redraw: false
 	}
 
-	componentWillMount() {
-		this.chart_instance = undefined;
-	}
 
 	componentDidMount() {
+		this.chart_instance = void 0;
 		this.renderChart();
 	}
 
@@ -74,12 +80,9 @@ class ChartComponent extends Component {
 
 
 	shouldComponentUpdate(nextProps, nextState) {
-		const ignoredProperties = [
-			       'id', 'width', 'height', 'onElementsClick'
-		      ];
-		const compareNext = _objectWithoutProperties(nextProps, ignoredProperties);
-		const compareNow = _objectWithoutProperties(this.props, ignoredProperties);
-		return !deepEqual(compareNext, compareNow, {strict: true});
+		const compareNext = _objectWithoutProperties(nextProps, IGNORED_PROPERTIES)
+		, compareNow = _objectWithoutProperties(this.props, IGNORED_PROPERTIES);
+		return !deepEqual(compareNext, compareNow, { strict: true });
 	}
 
 	componentWillUnmount() {
@@ -124,7 +127,7 @@ class ChartComponent extends Component {
 
 	render() {
 		const { height, width, onElementsClick } = this.props
-		    , _onClick = typeof onElementsClick === 'function'
+		    , _onClick = _isFn(onElementsClick)
 		         ? this.handleOnClick
 				     : null;
 		return (

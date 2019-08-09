@@ -11,10 +11,9 @@ import Token from './Token';
 import LinkToken from './LinkToken';
 import IconLogoBar from './IconLogoBar';
 
-import ContainerStyles from '../styles/ContainerStyles.js';
-const styles = ContainerStyles;
+import STYLE from '../styles/ContainerStyles';
 
-const STYLE = {
+const S = {
   SCROLL_DIV : {
     overflowY: 'auto',
     height: '92%',
@@ -41,6 +40,7 @@ class About extends Component {
      isShowInit: true
    }
 
+
   constructor(props){
     super(props)
     this.state = {
@@ -48,7 +48,7 @@ class About extends Component {
     }
   }
 
-  componentWillMount(){
+  componentDidMount(){
     this.unsubscribe = this.props.store.listen(this._onStore);
   }
   componentWillUnmount(){
@@ -80,16 +80,16 @@ class About extends Component {
     return (
       <div
          className={_classOpen}
-         style={{ ...styles.aboutRootDiv, ..._styleOpen }}
+         style={{ ...STYLE.aboutRootDiv, ..._styleOpen }}
       >
          <CaptionRow
             caption="About"
             onClose={this._handlerClose}
          />
 
-         <ScrollPane style={STYLE.SCROLL_DIV}>
+         <ScrollPane style={S.SCROLL_DIV}>
 
-         <div style={STYLE.ROOT_DIV}>
+         <div style={S.ROOT_DIV}>
            <p>
              <Token color="#80c040">
                Library Watch
@@ -98,10 +98,10 @@ class About extends Component {
                is a SPA RESTful client.
              </Token>
            </p>
-           <p style={STYLE.MARGIN_BOTTOM}>
+           <p style={S.MARGIN_BOTTOM}>
               By means of web app Library-Watch, it is possible to view information about GitHub's repositories, NPM's packages, StackOverflows's questions.
            </p>
-           <p style={STYLE.MARGIN_BOTTOM}>
+           <p style={S.MARGIN_BOTTOM}>
             <Token color="gray">
               Information API providers:
             </Token>
@@ -136,35 +136,35 @@ class About extends Component {
                  Please, choose an information Browser from the header bar.
               </Token>
             </p>
-            <p style={STYLE.MARGIN_TOP}>
+            <p style={S.MARGIN_TOP}>
               <Step step="2" />
               <Token color="black" isFirstBlank={true}>
                  Next, choose an information menu item in a Browser.
               </Token>
             </p>
-            <p style={STYLE.MARGIN_TOP}>
+            <p style={S.MARGIN_TOP}>
               <Step step="3" />
               <Token color="black" isFirstBlank={true}>
                  Enter repository or package name in a draggable Dialog.
               </Token>
             </p>
-            <p style={STYLE.MARGIN_TOP}>
+            <p style={S.MARGIN_TOP}>
                <Step step="4" />
                <Token color="black" isFirstBlank={true}>
                   Click a button Load.
                </Token>
             </p>
-            <p style={STYLE.MARGIN_TOP}>
+            <p style={S.MARGIN_TOP}>
                <Token color="gray">
                   The result will be shown in an Item component in a Container.
                </Token>
             </p>
-            <p style={Object.assign({}, STYLE.MARGIN_BOTTOM, STYLE.MARGIN_TOP)}>
+            <p style={{ ...S.MARGIN_BOTTOM, ...S.MARGIN_TOP }}>
                <Token color="gray">
                   Also, it possible to add an item to Watch Browser and save to LocalStorage.
                </Token>
             </p>
-            <p style={STYLE.MARGIN_BOTTOM}>
+            <p style={S.MARGIN_BOTTOM}>
                After clicking a button Show in a Dialog opens Container with Items
                or empty. After closing a Container all Items remains.
                In one-time max three Item Dialogs can be opened.

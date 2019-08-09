@@ -37,8 +37,8 @@ var S = {
     top: 4,
     display: 'inline-block',
     color: '#2f7ed8',
-    paddingLeft: '10px',
-    paddingRight: '10px',
+    paddingLeft: 10,
+    paddingRight: 10,
     fontSize: '16px',
     fontWeight: 'bold'
   }
@@ -70,8 +70,8 @@ var LimitRemainingLabel = function (_Component) {
   }
 
   (0, _createClass3.default)(LimitRemainingLabel, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
       var store = this.props.store;
 
       this.unsubscribe = store.listenLimitRemaining(this._onStore);

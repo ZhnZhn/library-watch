@@ -36,7 +36,7 @@ var FragmentSelectGroupList = (0, _createReactClass2.default)({
       listOptions: []
     };
   },
-  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps: function UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps !== this.props) {
       if (nextProps.groupOptions !== this.props.groupOptions) {
         this.groupCaption = null;
@@ -89,7 +89,10 @@ var FragmentSelectGroupList = (0, _createReactClass2.default)({
     );
   },
   getValue: function getValue() {
-    return { captionGroup: this.groupCaption, captionList: this.listCaption };
+    return {
+      captionGroup: this.groupCaption,
+      captionList: this.listCaption
+    };
   },
   setValueNull: function setValueNull() {
     this.groupCaption = null;

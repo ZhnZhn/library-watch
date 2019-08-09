@@ -13,7 +13,7 @@ const STYLE = {
     overflowY: 'auto',
     height: '92%',
     //height: 'calc(100vh - 90px)',
-    paddingRight: '10px'
+    paddingRight: 10
   }
 };
 
@@ -34,7 +34,7 @@ class MenuBrowserDynamic extends Component {
   */
 
   constructor(props){
-    super()
+    super(props)
     this.state = {
       isShow : !!props.isInitShow,
       isLoaded : false,
@@ -42,13 +42,12 @@ class MenuBrowserDynamic extends Component {
     }
   }
 
-  componentWillMount(){
-    this.unsubscribe = this.props.store.listen(this._onStore);
-  }
+
   componentDidMount(){
+    this.unsubscribe = this.props.store.listen(this._onStore);
     this._loadMenu();
   }
-  componentWillUpdate(nextProps, nextState){
+  UNSAFE_componentWillUpdate(nextProps, nextState){
      if (!nextState.isLoaded && nextState.isShow){
        this._loadMenu();
      }
@@ -58,7 +57,12 @@ class MenuBrowserDynamic extends Component {
   }
 
   _loadMenu = () => {
-    const { browserType, caption, sourceMenuUrl, onLoadMenu } = this.props;
+    const {
+      browserType,
+      caption,
+      sourceMenuUrl,
+      onLoadMenu
+    } = this.props;
     onLoadMenu({ browserType, caption, sourceMenuUrl });
   }
 
@@ -67,9 +71,14 @@ class MenuBrowserDynamic extends Component {
     if (actionType === showAction && data === browserType){
       this._handleShow();
     } else if (actionType === loadCompletedAction && data.browserType === browserType){
-      this.setState({ menuItems: data.menuItems, isLoaded : true });
+      this.setState({
+        menuItems: data.menuItems,
+        isLoaded : true
+      });
     } else if (actionType === updateAction && data === browserType){
-      this.setState({ menuItems: store.getBrowserMenu(browserType) });
+      this.setState({
+        menuItems: store.getBrowserMenu(browserType)
+      });
     }
   }
 
@@ -94,7 +103,7 @@ class MenuBrowserDynamic extends Component {
   render(){
     const { caption, children, rowClass } = this.props
         , { menuItems, isShow } = this.state;
-    
+
     return (
        <Browser isShow={isShow} style={STYLE.BROWSER}>
           <CaptionRow

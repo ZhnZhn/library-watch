@@ -154,8 +154,8 @@ var ChartContainer2 = (_temp = _class = function (_Component) {
   }
 
   (0, _createClass3.default)(ChartContainer2, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
       this.unsubscribe = _AppStore2.default.listen(this._onStore);
       this.setState(_AppStore2.default.getConfigs(this.props.chartType));
     }

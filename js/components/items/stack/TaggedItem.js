@@ -30,9 +30,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _is = require('../../../utils/is');
+var _has = require('../../has');
 
-var _is2 = _interopRequireDefault(_is);
+var _has2 = _interopRequireDefault(_has);
 
 var _withDnDStyle = require('../decorators/withDnDStyle');
 
@@ -104,9 +104,8 @@ var S = {
   }
 };
 
-var isTouchable = _is2.default.isTouchable;
+var HAS_TOUCH = _has2.default.HAS_TOUCH;
 
-var HAS_TOUCH = isTouchable();
 
 var DELTA = HAS_TOUCH ? {
   MARK_REMOVE: 50,

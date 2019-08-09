@@ -49,11 +49,11 @@ var styles = {
     background: 'transparent none repeat scroll 0 0',
     border: 'medium none',
     outline: 'medium none',
-    height: '30px',
-    paddingLeft: '10px',
+    height: 30,
+    paddingLeft: 10,
     color: 'green',
     width: '100%',
-    paddingRight: '40px',
+    paddingRight: 40,
     fontSize: '16px',
     fontWeight: 'bold'
   },
@@ -65,74 +65,71 @@ var styles = {
     width: '100%',
     //height: '160px',
     zIndex: '10',
-    borderBottomLeftRadius: '5px',
-    borderBottomRightRadius: '5px'
+    borderBottomLeftRadius: 5,
+    borderBottomRightRadius: 5
   },
   optionDiv: {
     width: '100%',
     //height: '160px',
-    minHeight: '160px',
-    maxHeight: '200px',
+    minHeight: 160,
+    maxHeight: 200,
     overflow: 'auto'
   },
   spinnerCell: {
-    position: 'relative',
-    left: '8px',
-    top: '4px',
     display: 'inline-block',
-    width: '16px',
-    height: '16px'
+    position: 'relative',
+    left: 8,
+    top: 4,
+    width: 16,
+    height: 16
   },
   spinnerFailedCell: {
-    position: 'relative',
-    left: '8px',
-    top: '4px',
     display: 'inline-block',
-    width: '16px',
-    height: '16px',
-    borderColor: '#F44336',
+    position: 'relative',
+    left: 8,
+    top: 4,
+    width: 16,
+    height: 16,
+    borderColor: '#f44336',
     cursor: 'pointer'
   },
   inputHr: {
     borderWidth: 'medium medium 1px',
     borderStyle: 'none none solid',
-    borderColor: '#1B75BB',
+    borderColor: '#1b75bb',
     borderImage: 'none',
     margin: 0,
-    marginLeft: '10px',
-    marginBottom: '5px',
-    marginRight: '40px'
-    //width: '150px'
+    marginLeft: 10,
+    marginBottom: 5,
+    marginRight: 40
   },
   arrow_show: {
-    borderColor: '#1B75BB transparent transparent'
+    borderColor: '#1b75bb transparent transparent'
   },
   itemDiv: {
-    cursor: 'pointer',
-    paddingTop: '4px',
-    paddingLeft: '5px',
-    paddingBottom: '4px'
-    //lineHeight: '14px'
+    paddingTop: 4,
+    paddingLeft: 5,
+    paddingBottom: 4,
+    cursor: 'pointer'
   },
   itemOdd: {
-    backgroundColor: '#C3C3AC'
+    backgroundColor: '#c3c3ac'
   },
   itemEven: {
-    backgroundColor: '#D5D5BC'
+    backgroundColor: '#d5d5bc'
   },
   optionsFooter: {
     backgroundColor: 'silver',
-    borderBottomLeftRadius: '5px',
-    borderBottomRightRadius: '5px'
+    borderBottomLeftRadius: 5,
+    borderBottomRightRadius: 5
   },
   fileredSpan: {
     display: 'inline-block',
     color: 'gray',
     fontWeight: 'bold',
-    //height: '20px',
-    paddingLeft: '10px',
-    paddingTop: '4px',
-    paddingBottom: '4px'
+    paddingLeft: 10,
+    paddingTop: 4,
+    paddingBottom: 4
   }
 };
 
@@ -432,6 +429,10 @@ var InputSearch = (_temp = _class = function (_Component) {
       );
     };
 
+    _this._refInput = function (c) {
+      return _this.domInputText = c;
+    };
+
     _this.domOptionsCache = null;
     _this.indexActiveOption = 0;
 
@@ -456,8 +457,8 @@ var InputSearch = (_temp = _class = function (_Component) {
   }
 
   (0, _createClass3.default)(InputSearch, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(nextProps) {
       if (this.props !== nextProps) {
         if (this.props.options !== nextProps.options || nextProps.isUpdateOptions) {
           //New options come from Parent - Clear domCache, Init State
@@ -537,19 +538,17 @@ var InputSearch = (_temp = _class = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { style: Object.assign({}, styles.rootDiv) },
+        { style: styles.rootDiv },
         _react2.default.createElement('input', {
-          ref: function ref(c) {
-            return _this2.domInputText = c;
-          },
+          ref: this._refInput,
           type: 'text',
           value: value,
-          style: Object.assign({}, styles.inputText),
+          style: styles.inputText,
           placeholder: _placeholder,
           onChange: this._handlerInputChange,
           onKeyDown: this._handlerInputKeyDown }),
         _domAfterInput,
-        _react2.default.createElement('hr', { style: Object.assign({}, styles.inputHr) }),
+        _react2.default.createElement('hr', { style: styles.inputHr }),
         _domOptions
       );
     }

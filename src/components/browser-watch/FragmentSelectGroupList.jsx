@@ -24,7 +24,7 @@ const FragmentSelectGroupList = createReactClass({
     }
   },
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if (nextProps !== this.props){
       if (nextProps.groupOptions !== this.props.groupOptions){
           this.groupCaption = null;
@@ -78,7 +78,10 @@ const FragmentSelectGroupList = createReactClass({
   },
 
   getValue(){
-    return {captionGroup: this.groupCaption, captionList: this.listCaption}
+    return {
+      captionGroup: this.groupCaption,
+      captionList: this.listCaption
+    };
   },
   setValueNull(){
     this.groupCaption = null;
