@@ -44,7 +44,7 @@ var _A2 = _interopRequireDefault(_A);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var CL = 'row-odd not-selected';
+var CL = 'row-item not-selected';
 
 var S = {
   NONE: {

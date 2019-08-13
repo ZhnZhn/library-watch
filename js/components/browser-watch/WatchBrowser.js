@@ -101,7 +101,9 @@ var DRAG = {
 var CL = {
   BROWSER_WATCH: "browser-watch",
   BROWSER_WATCH__30: "browser-watch--1r",
-  BROWSER_WATCH__60: "browser-watch--2r"
+  BROWSER_WATCH__60: "browser-watch--2r",
+  BT_BAR: "bt__watch__bar",
+  BT_CAPTION: "bt__watch__caption"
 };
 
 var styles = {
@@ -346,14 +348,14 @@ var WatchBrowser = (0, _createReactClass2.default)((0, _extends3.default)({
         _react2.default.createElement(_ButtonCircle2.default, {
           caption: 'GROUP',
           title: 'Edit Group',
-          className: 'bt__watch__bar',
+          className: CL.BT_BAR,
           isWithoutDefault: true,
           onClick: this._handlerEditGroup
         }),
         _react2.default.createElement(_ButtonCircle2.default, {
           caption: 'LIST',
           title: 'Edit Group List',
-          className: 'bt__watch__bar',
+          className: CL.BT_BAR,
           isWithoutDefault: true,
           style: styles.btEditBarList,
           onClick: this._handlerEditList
@@ -361,7 +363,7 @@ var WatchBrowser = (0, _createReactClass2.default)((0, _extends3.default)({
         _react2.default.createElement(_ButtonCircle2.default, {
           caption: 'DB',
           title: 'Double Watch Browser',
-          className: 'bt__watch__bar',
+          className: CL.BT_BAR,
           isWithoutDefault: true,
           style: styles.btEditBarList,
           onClick: this._handlerDouble
@@ -419,32 +421,32 @@ var WatchBrowser = (0, _createReactClass2.default)((0, _extends3.default)({
           onClose: this._handlerHide
         },
         _react2.default.createElement(_ButtonSave2.default, {
-          className: 'bt__watch__caption',
+          className: CL.BT_CAPTION,
           store: store
         }),
         _react2.default.createElement(_ButtonCircle2.default, {
-          className: 'bt__watch__caption',
+          className: CL.BT_CAPTION,
           caption: _captionEV,
           title: _titleEV,
           isWithoutDefault: true,
           onClick: this._handlerToggleEditMode
         }),
         _react2.default.createElement(_ButtonCircle2.default, {
-          className: 'bt__watch__caption',
+          className: CL.BT_CAPTION,
           caption: 'F',
           title: 'Show/Hide : Find Item Input',
           isWithoutDefault: true,
           onClick: this._handlerToggleFindInput
         }),
         !isDoubleWatch && _react2.default.createElement(_ButtonCircle2.default, {
-          className: 'bt__watch__caption',
+          className: CL.BT_CAPTION,
           caption: 'B',
           title: 'BackUp Watch Items to JSON File',
           isWithoutDefault: true,
           onClick: _WatchActions2.default.backupToJson
         }),
         !isDoubleWatch && _react2.default.createElement(_ButtonCircle2.default, {
-          className: 'bt__watch__caption',
+          className: CL.BT_CAPTION,
           caption: 'L',
           title: 'Load Watch Items from JSON File',
           isWithoutDefault: true,

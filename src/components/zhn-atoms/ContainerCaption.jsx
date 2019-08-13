@@ -1,17 +1,10 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
 
-import STYLE from './CaptionRow.Style';
 import SvgMore from './SvgMore';
 import SvgClose from './SvgClose';
+import STYLE from './CaptionRow.Style';
 
-const CL = "not-selected";
-
-const S = {
-  ROOT: {
-    paddingLeft: 4
-  }
-};
 
 const _isFn = fn => typeof fn === 'function';
 
@@ -22,7 +15,7 @@ const ContainerCaption = ({
   onMore,
   onClose
 }) => (
-  <div style={{ ...STYLE.ROOT, ...S.ROOT, ...style }}>
+  <div className={STYLE.CL_CAPTION} style={style}>
     {
        _isFn(onMore) &&
        <SvgMore
@@ -30,7 +23,7 @@ const ContainerCaption = ({
        />
      }
      <span
-        className={CL}
+        className={STYLE.CL_NOT_SELECTED}
         style={STYLE.SPAN}
      >
        {caption}
@@ -42,6 +35,7 @@ const ContainerCaption = ({
     />
   </div>
 );
+
 /*
 ContainerCaption.propTypes = {
   caption: PropTypes.string,

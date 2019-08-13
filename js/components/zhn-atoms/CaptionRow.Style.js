@@ -1,25 +1,17 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
 var STYLE = {
-  ROOT: {
-    backgroundColor: '#232F3B',
-    color: 'silver',
-    //color: 'rgba(164, 135, 212, 1)',    
-    lineHeight: '1.8',
-    paddingTop: '4px',
-    paddingLeft: '10px',
-    marginBottom: '10px',
-    borderTopLeftRadius: '4px',
-    borderTopRightRadius: '4px'
-  },
+  CL_CAPTION: "gap-right cont-caption",
+  CL_NOT_SELECTED: "not-selected",
+
   SPAN: {
+    paddingRight: 8,
     fontSize: '18px',
-    fontWeight: '500',
-    paddingRight: '8px'
+    fontWeight: '500'
   },
   SVG_CLOSE: {
     position: 'absolute',

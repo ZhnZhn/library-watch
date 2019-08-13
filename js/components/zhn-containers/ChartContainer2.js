@@ -98,23 +98,19 @@ var S = {
   }
 };
 
-var isInArray = function isInArray() {
+var _isInArray = function _isInArray() {
   var arr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var value = arguments[1];
-
-  var len = arr.length;
-  for (var i = 0; i < len; i++) {
-    if (arr[i] === value) {
-      return true;
-    }
-  }
-  return false;
+  return Boolean(~arr.indexOf(value));
 };
 
-var compActions = [_ChartActions.ChartActionTypes.SHOW_CHART, _ChartActions.ChartActionTypes.LOAD_STOCK_COMPLETED, _ChartActions.ChartActionTypes.CLOSE_CHART];
+var COMP_ACTIONS = [_ChartActions.ChartActionTypes.SHOW_CHART, _ChartActions.ChartActionTypes.LOAD_STOCK_COMPLETED, _ChartActions.ChartActionTypes.CLOSE_CHART];
 
 var _getWidth = function _getWidth(style) {
   return parseInt(style.width, 10) || RESIZE_INIT_WIDTH;
+};
+var _toStyleWidth = function _toStyleWidth(width) {
+  return width + 'px';
 };
 
 var ChartContainer2 = (_temp = _class = function (_Component) {
@@ -196,8 +192,8 @@ var ChartContainer2 = (_temp = _class = function (_Component) {
             onClose: this._handleHide
           },
           _react2.default.createElement(_SvgHrzResize2.default, {
-            minWidth: 500,
-            maxWidth: 1200,
+            minWidth: RESIZE_MIN_WIDTH,
+            maxWidth: RESIZE_MAX_WIDTH,
             comp: this
           })
         ),
@@ -217,7 +213,7 @@ var ChartContainer2 = (_temp = _class = function (_Component) {
   var _this2 = this;
 
   this._onStore = function (actionType, data) {
-    if (isInArray(compActions, actionType)) {
+    if (_isInArray(COMP_ACTIONS, actionType)) {
       if (data && data.chartType === _this2.props.chartType) {
         if (_this2._scrollComp) {
           _this2._scrollComp.scrollTop();
@@ -241,14 +237,14 @@ var ChartContainer2 = (_temp = _class = function (_Component) {
   };
 
   this._resizeTo = function (width) {
-    _this2._getRootNodeStyle().width = width + 'px';
+    _this2._getRootNodeStyle().width = _toStyleWidth(width);
   };
 
   this._plusToWidth = function () {
     var style = _this2._getRootNodeStyle(),
         w = _getWidth(style) + DELTA;
     if (w < RESIZE_MAX_WIDTH) {
-      style.width = w + 'px';
+      style.width = _toStyleWidth(w);
     }
   };
 
@@ -256,7 +252,7 @@ var ChartContainer2 = (_temp = _class = function (_Component) {
     var style = _this2._getRootNodeStyle(),
         w = _getWidth(style) - DELTA;
     if (w > RESIZE_MIN_WIDTH) {
-      style.width = w + 'px';
+      style.width = _toStyleWidth(w);
     }
   };
 

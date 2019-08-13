@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import PropTypes from "prop-types";
 
-import is from '../../utils/is'
+import has from '../has'
 
 const CL = {
   FIELD: 'm-field',
@@ -9,8 +9,8 @@ const CL = {
   BT_CLEAR: 'm-field__bt-clear'
 };
 
-const { isTouchable } = is;
-const IS_TOUCH = isTouchable();
+
+const { HAS_TOUCH } = has;
 
 const _isKeyClean = ({ keyCode }) => keyCode === 27
  || keyCode === 46;
@@ -101,7 +101,7 @@ class InputText extends Component {
           onKeyDown={this._hKeyDown}
         />
         {
-          IS_TOUCH && <BtClear
+          HAS_TOUCH && <BtClear
             isValue={Boolean(value)}
             onClick={this._hClean}
           />

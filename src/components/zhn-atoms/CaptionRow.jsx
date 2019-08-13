@@ -4,12 +4,10 @@ import React from 'react';
 import STYLE from './CaptionRow.Style';
 import SvgClose from './SvgClose';
 
-const CL = "not-selected";
-
-const CaptionRow = ({ caption, children, styleRoot, onClose }) => (
-  <div style={{ ...STYLE.ROOT, ...styleRoot }}>
+const CaptionRow = ({ caption='', children, styleRoot, onClose }) => (
+  <div className={STYLE.CL_CAPTION} style={styleRoot}>
      <span
-        className={CL}
+        className={STYLE.CL_NOT_SELECTED}
         style={STYLE.SPAN}
      >
        {caption}
@@ -32,9 +30,5 @@ CaptionRow.propTypes = {
   onClose: PropTypes.func
 }
 */
-CaptionRow.defaultProps = {
-  caption: ''
-}
-
 
 export default CaptionRow;

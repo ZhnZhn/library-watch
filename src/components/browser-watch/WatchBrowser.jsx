@@ -33,7 +33,9 @@ const DRAG = {
 const CL = {
   BROWSER_WATCH : "browser-watch",
   BROWSER_WATCH__30 : "browser-watch--1r",
-  BROWSER_WATCH__60 : "browser-watch--2r"
+  BROWSER_WATCH__60 : "browser-watch--2r",
+  BT_BAR: "bt__watch__bar",
+  BT_CAPTION: "bt__watch__caption",
 };
 
 
@@ -265,24 +267,24 @@ const WatchBrowser = createReactClass({
       return (
         <div style={styles.editBarDiv}>
            <ButtonCircle
-             caption={'GROUP'}
+             caption="GROUP"
              title="Edit Group"
-             className="bt__watch__bar"
+             className={CL.BT_BAR}
              isWithoutDefault={true}
              onClick={this._handlerEditGroup}
           />
           <ButtonCircle
-             caption={'LIST'}
+             caption="LIST"
              title="Edit Group List"
-             className="bt__watch__bar"
+             className={CL.BT_BAR}
              isWithoutDefault={true}
              style={styles.btEditBarList}
              onClick={this._handlerEditList}
           />
           <ButtonCircle
-             caption={'DB'}
+             caption="DB"
              title="Double Watch Browser"
-             className="bt__watch__bar"
+             className={CL.BT_BAR}
              isWithoutDefault={true}
              style={styles.btEditBarList}
              onClick={this._handlerDouble}
@@ -337,27 +339,27 @@ const WatchBrowser = createReactClass({
             onClose={this._handlerHide}
          >
            <ButtonSave
-             className="bt__watch__caption"
+             className={CL.BT_CAPTION}
              store={store}
            />
            <ButtonCircle
-              className="bt__watch__caption"
+              className={CL.BT_CAPTION}
               caption={_captionEV}
               title={_titleEV}
               isWithoutDefault={true}
               onClick={this._handlerToggleEditMode}
            />
            <ButtonCircle
-             className="bt__watch__caption"
-             caption={'F'}
+             className={CL.BT_CAPTION}
+             caption="F"
              title="Show/Hide : Find Item Input"
              isWithoutDefault={true}
              onClick={this._handlerToggleFindInput}
            />
            { !isDoubleWatch &&
              <ButtonCircle
-                className="bt__watch__caption"
-                caption={'B'}
+                className={CL.BT_CAPTION}
+                caption="B"
                 title="BackUp Watch Items to JSON File"
                 isWithoutDefault={true}
                 onClick={WatchActions.backupToJson}
@@ -365,8 +367,8 @@ const WatchBrowser = createReactClass({
            }
            { !isDoubleWatch &&
              <ButtonCircle
-                className="bt__watch__caption"
-                caption={'L'}
+                className={CL.BT_CAPTION}
+                caption="L"
                 title="Load Watch Items from JSON File"
                 isWithoutDefault={true}
                 onClick={ComponentActions.showModalDialog.bind(null, ModalDialog.LOAD_FILE, {
@@ -376,7 +378,7 @@ const WatchBrowser = createReactClass({
            }
          </CaptionRow>
          {this._renderEditBar(isModeEdit)}
-         { watchList && this._renderFindInput(watchList)}
+         {watchList && this._renderFindInput(watchList)}
          <ScrollPane className={scrollClass}>
            {watchList && this._renderWatchList(watchList)}
          </ScrollPane>

@@ -4,7 +4,7 @@ import has from '../../has'
 import withDnDStyle from '../decorators/withDnDStyle'
 import A from '../../zhn-atoms/A'
 
-const CL = 'row-odd not-selected';
+const CL = 'row-item not-selected';
 
 const S = {
   NONE: {

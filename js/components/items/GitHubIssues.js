@@ -20,6 +20,10 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -39,6 +43,20 @@ var _Item2 = _interopRequireDefault(_Item);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ITEM_DESCRIPTION = "GitHub Repository Issues";
+
+var CL_ITEM = 'row-item not-selected';
+
+var S = {
+  STATE: (0, _extends3.default)({}, _Item2.default.PR_8, {
+    color: '#d7bb52'
+  }),
+  NUMBER: (0, _extends3.default)({}, _Item2.default.PR_8, {
+    color: '#80c040'
+  }),
+  DATE: (0, _extends3.default)({}, _Item2.default.PR_8, {
+    color: 'gray'
+  })
+};
 
 var _toDate = function _toDate(strDate) {
   return ('' + strDate).replace('T', ' ').replace('Z', '');
@@ -76,7 +94,13 @@ var GitHubIssues = function (_Component) {
 
       onWatchItem({
         caption: caption,
-        config: { repo: repo, requestType: requestType, version: '', caption: caption, descr: descr }
+        config: {
+          repo: repo,
+          requestType: requestType,
+          version: '',
+          caption: caption,
+          descr: descr
+        }
       });
     }, _this._renderIssues = function (issues) {
       return issues.map(function (item, index) {
@@ -86,11 +110,12 @@ var GitHubIssues = function (_Component) {
             updated_at = item.updated_at,
             title = item.title,
             html_url = item.html_url,
-            className = index % 2 ? 'row-even not-selected' : 'row-odd not-selected';
+            _creadedAt = _toDate(created_at),
+            _updatedAt = created_at !== updated_at ? _toDate(updated_at) : '';
 
         return _react2.default.createElement(
           'div',
-          { key: index, className: className },
+          { key: index, className: CL_ITEM },
           _react2.default.createElement(
             'a',
             { href: html_url },
@@ -99,23 +124,23 @@ var GitHubIssues = function (_Component) {
               { style: _Item2.default.PB_8 },
               _react2.default.createElement(
                 'span',
-                { style: _Item2.default.PR_8 },
+                { style: S.STATE },
                 state
               ),
               _react2.default.createElement(
                 'span',
-                { style: _Item2.default.PR_8 },
+                { style: S.NUMBER },
                 '(#' + number + ')'
               ),
               _react2.default.createElement(
                 'span',
-                { style: _Item2.default.PR_8 },
-                _toDate(created_at)
+                { style: S.DATE },
+                _creadedAt
               ),
               _react2.default.createElement(
                 'span',
-                null,
-                _toDate(updated_at)
+                { style: S.DATE },
+                _updatedAt
               )
             ),
             _react2.default.createElement(

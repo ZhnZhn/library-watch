@@ -4,7 +4,25 @@ import A from '../zhn-atoms/A';
 import Caption from './ItemCaption'
 import STYLE from './Item.Style'
 
-const ITEM_DESCRIPTION = "GitHub Repository Issues"
+const ITEM_DESCRIPTION = "GitHub Repository Issues";
+
+const CL_ITEM = 'row-item not-selected';
+
+
+const S = {
+  STATE: {
+    ...STYLE.PR_8,
+    color: '#d7bb52'
+  },
+  NUMBER: {
+    ...STYLE.PR_8,
+    color: '#80c040'
+  },
+  DATE: {
+    ...STYLE.PR_8,
+    color: 'gray'
+  }
+};
 
 const _toDate = strDate => (''+strDate)
   .replace('T', ' ')
@@ -24,34 +42,41 @@ class GitHubIssues extends Component {
   _hClickWatch = () => {
     const { repo, requestType, onWatchItem } = this.props
         , caption = `${repo}`
-        , descr = ITEM_DESCRIPTION
+        , descr = ITEM_DESCRIPTION;
     onWatchItem({
        caption: caption,
-       config: { repo, requestType, version : '', caption, descr }
+       config: {
+         repo,
+         requestType,
+         version : '',
+         caption,
+         descr
+       }
     });
   }
 
   _renderIssues = (issues) => {
      return issues.map((item, index) => {
         const { state, number, created_at, updated_at, title, html_url } = item
-            , className = (index % 2)
-                     ? 'row-even not-selected'
-                     : 'row-odd not-selected';
+        , _creadedAt = _toDate(created_at)
+        , _updatedAt = created_at !== updated_at
+             ? _toDate(updated_at)
+             : '';
         return (
-           <div key={index} className={className}>
+           <div key={index} className={CL_ITEM}>
              <a href={html_url}>
                 <div style={STYLE.PB_8}>
-                  <span style={STYLE.PR_8}>
+                  <span style={S.STATE}>
                     {state}
                   </span>
-                  <span style={STYLE.PR_8}>
+                  <span style={S.NUMBER}>
                     {`(#${number})`}
                   </span>
-                  <span style={STYLE.PR_8}>
-                    {_toDate(created_at)}
+                  <span style={S.DATE}>
+                    {_creadedAt}
                   </span>
-                  <span>
-                    {_toDate(updated_at)}
+                  <span style={S.DATE}>
+                    {_updatedAt}
                   </span>
                 </div>
                 <div>

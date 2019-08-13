@@ -45,17 +45,9 @@ const S = {
   }
 };
 
-const isInArray = function(arr=[], value){
-  const len = arr.length;
-  for (let i=0; i<len; i++){
-    if (arr[i] === value){
-      return true;
-    }
-  }
-  return false;
-};
+const _isInArray = (arr=[], value) => Boolean(~arr.indexOf(value));
 
-const compActions = [
+const COMP_ACTIONS = [
   CHAT.SHOW_CHART,
   CHAT.LOAD_STOCK_COMPLETED,
   CHAT.CLOSE_CHART
@@ -63,6 +55,7 @@ const compActions = [
 
 const _getWidth = style => parseInt(style.width, 10)
   || RESIZE_INIT_WIDTH;
+const _toStyleWidth = width => width + 'px';
 
 class ChartContainer2 extends Component {
   /*
@@ -99,7 +92,7 @@ class ChartContainer2 extends Component {
    }
 
    _onStore = (actionType, data) => {
-      if (isInArray(compActions, actionType)) {
+      if (_isInArray(COMP_ACTIONS, actionType)) {
         if (data && data.chartType === this.props.chartType){
           if (this._scrollComp) {
             this._scrollComp.scrollTop()
@@ -120,21 +113,21 @@ class ChartContainer2 extends Component {
    }
 
    _resizeTo = (width) => {
-     this._getRootNodeStyle().width = width + 'px'
+     this._getRootNodeStyle().width = _toStyleWidth(width)
    }
 
    _plusToWidth = () => {
      const style = this._getRootNodeStyle()
      , w = _getWidth(style) + DELTA;
      if (w < RESIZE_MAX_WIDTH) {
-        style.width = w + 'px'
+        style.width = _toStyleWidth(w)
      }
    }
    _minusToWidth = () => {
      const style = this._getRootNodeStyle()
      , w = _getWidth(style) - DELTA;
      if (w > RESIZE_MIN_WIDTH) {
-       style.width = w  + 'px'
+       style.width = _toStyleWidth(w)
      }
    }
 
@@ -179,8 +172,8 @@ class ChartContainer2 extends Component {
              onClose={this._handleHide}
           >
             <SvgHrzResize
-              minWidth={500}
-              maxWidth={1200}
+              minWidth={RESIZE_MIN_WIDTH}
+              maxWidth={RESIZE_MAX_WIDTH}
               comp={this}
             />
           </ContainerCaption>

@@ -7,6 +7,8 @@ import STYLE from './Item.Style'
 
 const ITEM_DESCRIPTION = "GitHub Repository Commits";
 
+const CL_ITEM = 'row-item not-selected';
+
 class GitHubCommits extends Component {
   state = {
     isShow: true
@@ -32,15 +34,13 @@ class GitHubCommits extends Component {
      const _timeago = timeago(Date.now());
      return commits.map((item, index) => {
         const { commit={}, html_url } = item
-            , { message='', committer={} } = commit
-            , { date='', name='' } = committer
-            , _dateTime = date.replace('T', ' ').replace('Z', '')
-            , _dateAgo = _timeago.format(_dateTime)
-            , className = (index % 2)
-                     ? 'row-even not-selected'
-                     : 'row-odd not-selected'
+        , { message='', committer={} } = commit
+        , { date='', name='' } = committer
+        , _dateTime = date.replace('T', ' ').replace('Z', '')
+        , _dateAgo = _timeago.format(_dateTime)
+
         return (
-           <div key={index} className={className}>
+           <div key={index} className={CL_ITEM}>
               <a href={html_url}>
               <div style={STYLE.PB_8}>
                 <span style={STYLE.PR_8}>

@@ -27,9 +27,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _is = require('../../utils/is');
+var _has = require('../has');
 
-var _is2 = _interopRequireDefault(_is);
+var _has2 = _interopRequireDefault(_has);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39,9 +39,8 @@ var CL = {
   BT_CLEAR: 'm-field__bt-clear'
 };
 
-var isTouchable = _is2.default.isTouchable;
+var HAS_TOUCH = _has2.default.HAS_TOUCH;
 
-var IS_TOUCH = isTouchable();
 
 var _isKeyClean = function _isKeyClean(_ref) {
   var keyCode = _ref.keyCode;
@@ -137,7 +136,7 @@ var InputText = (_temp = _class = function (_Component) {
           onChange: this._hChange,
           onKeyDown: this._hKeyDown
         }),
-        IS_TOUCH && _react2.default.createElement(BtClear, {
+        HAS_TOUCH && _react2.default.createElement(BtClear, {
           isValue: Boolean(value),
           onClick: this._hClean
         })

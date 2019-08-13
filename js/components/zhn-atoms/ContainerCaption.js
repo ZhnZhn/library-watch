@@ -4,17 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
-
-var _CaptionRow = require('./CaptionRow.Style');
-
-var _CaptionRow2 = _interopRequireDefault(_CaptionRow);
 
 var _SvgMore = require('./SvgMore');
 
@@ -24,20 +16,16 @@ var _SvgClose = require('./SvgClose');
 
 var _SvgClose2 = _interopRequireDefault(_SvgClose);
 
+var _CaptionRow = require('./CaptionRow.Style');
+
+var _CaptionRow2 = _interopRequireDefault(_CaptionRow);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var CL = "not-selected";
-//import PropTypes from 'prop-types';
-
-var S = {
-  ROOT: {
-    paddingLeft: 4
-  }
-};
 
 var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
 };
+//import PropTypes from 'prop-types';
 
 var ContainerCaption = function ContainerCaption(_ref) {
   var style = _ref.style,
@@ -47,14 +35,14 @@ var ContainerCaption = function ContainerCaption(_ref) {
       onClose = _ref.onClose;
   return _react2.default.createElement(
     'div',
-    { style: (0, _extends3.default)({}, _CaptionRow2.default.ROOT, S.ROOT, style) },
+    { className: _CaptionRow2.default.CL_CAPTION, style: style },
     _isFn(onMore) && _react2.default.createElement(_SvgMore2.default, {
       onClick: onMore
     }),
     _react2.default.createElement(
       'span',
       {
-        className: CL,
+        className: _CaptionRow2.default.CL_NOT_SELECTED,
         style: _CaptionRow2.default.SPAN
       },
       caption
@@ -66,6 +54,7 @@ var ContainerCaption = function ContainerCaption(_ref) {
     })
   );
 };
+
 /*
 ContainerCaption.propTypes = {
   caption: PropTypes.string,

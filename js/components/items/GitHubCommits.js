@@ -44,6 +44,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var ITEM_DESCRIPTION = "GitHub Repository Commits";
 
+var CL_ITEM = 'row-item not-selected';
+
 var GitHubCommits = function (_Component) {
   (0, _inherits3.default)(GitHubCommits, _Component);
 
@@ -93,12 +95,11 @@ var GitHubCommits = function (_Component) {
             _committer$name = committer.name,
             name = _committer$name === undefined ? '' : _committer$name,
             _dateTime = date.replace('T', ' ').replace('Z', ''),
-            _dateAgo = _timeago.format(_dateTime),
-            className = index % 2 ? 'row-even not-selected' : 'row-odd not-selected';
+            _dateAgo = _timeago.format(_dateTime);
 
         return _react2.default.createElement(
           'div',
-          { key: index, className: className },
+          { key: index, className: CL_ITEM },
           _react2.default.createElement(
             'a',
             { href: html_url },

@@ -4,16 +4,16 @@ import React from 'react';
 
 import STYLE from '../styles/ContainerStyles';
 
-const CLASS_FOR_OPEN = "show-popup";
+const CL_OPEN = "show-popup";
 
-const Browser = (props) => {
-    const { isShow, style, children } = props
-        , _classRoot = isShow ? CLASS_FOR_OPEN : null
-        , _styleRoot = isShow ? STYLE.displayBlock : STYLE.displayNone;
+const Browser = ({ isShow, style, children }) => {
+    const _className = isShow ? CL_OPEN : null
+        , _style = isShow 
+             ? STYLE.displayBlock : STYLE.displayNone;
     return (
        <div
-          className={_classRoot}
-          style={Object.assign({}, STYLE.browserRootDiv, style, _styleRoot)}
+          className={_className}
+          style={{ ...STYLE.browserRootDiv, ...style, ..._style}}
         >
           {children}
        </div>
