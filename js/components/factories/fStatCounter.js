@@ -97,8 +97,11 @@ var fStatCounter = function fStatCounter(_ref) {
       _fnTransform2 = _fnTransform(json.data),
       labels = _fnTransform2.labels,
       data = _fnTransform2.data,
-      fromDate = labels[0],
-      toDate = labels[labels.length - 1];
+      _labels = labels.filter(function (strDate) {
+    return Boolean(strDate);
+  }),
+      fromDate = _labels[0],
+      toDate = _labels[_labels.length - 1];
 
   return factory.createElement(_StatCounterShare2.default, (0, _extends3.default)({
     key: key,

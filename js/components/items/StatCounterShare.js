@@ -87,6 +87,7 @@ var S = {
     paddingRight: 10
   },
   SPAN_START: {
+    paddingLeft: 10,
     paddingRight: 10
   },
   BTN_CIRCLE: {

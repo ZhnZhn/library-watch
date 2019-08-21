@@ -67,8 +67,9 @@ const fStatCounter = ({
     sourceLink
   } = option
   , { labels , data } = _fnTransform(json.data)
-  , fromDate = labels[0]
-  , toDate = labels[labels.length - 1];
+  , _labels = labels.filter(strDate => Boolean(strDate))
+  , fromDate = _labels[0]
+  , toDate = _labels[_labels.length - 1];
 
   return factory.createElement(StatCounterShare, {
      key,
