@@ -1,34 +1,44 @@
+'use strict';
 
-import React from 'react';
+var _react = require('react');
 
-import test from 'ava';
-import { shallow } from 'enzyme';
+var _react2 = _interopRequireDefault(_react);
 
-import Browser from '../../../../js/components/zhn-atoms/Browser';
+var _ava = require('ava');
 
-const _fnGetWrapper = (props) => {
-  return shallow(<Browser {...props} />);
-}
+var _ava2 = _interopRequireDefault(_ava);
 
-test('render root div display none by default', t => {
-  const wrapper = _fnGetWrapper();
+var _enzyme = require('enzyme');
 
-  t.true(wrapper.is('div'))
-  t.is(wrapper.props().style.display, 'none')
-})
+var _Browser = require('../../../../js/components/zhn-atoms/Browser');
 
-test('should use prop isShow', t => {
-   const wrapper = _fnGetWrapper({ isShow: true })
+var _Browser2 = _interopRequireDefault(_Browser);
 
-   t.true(wrapper.hasClass('show-popup'))
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _fnGetWrapper = function _fnGetWrapper(props) {
+   return (0, _enzyme.shallow)(_react2.default.createElement(_Browser2.default, props));
+};
+
+(0, _ava2.default)('render root div display none by default', function (t) {
+   var wrapper = _fnGetWrapper();
+
+   t.true(wrapper.is('div'));
+   t.is(wrapper.props().style.display, 'none');
+});
+
+(0, _ava2.default)('should use prop isShow', function (t) {
+   var wrapper = _fnGetWrapper({ isShow: true });
+
+   t.true(wrapper.hasClass('show-popup'));
    t.is(wrapper.props().style.display, 'block');
-})
+});
 
-
-test('should use prop style', t => {
-   const style = { color : "green" }
-      , wrapper = _fnGetWrapper({ isShow: true, style })
+(0, _ava2.default)('should use prop style', function (t) {
+   var style = { color: "green" },
+       wrapper = _fnGetWrapper({ isShow: true, style: style });
 
    t.is(wrapper.props().style.display, 'block');
    t.is(wrapper.props().style.color, style.color);
-})
+});
+//# sourceMappingURL=Browser.test.js.map

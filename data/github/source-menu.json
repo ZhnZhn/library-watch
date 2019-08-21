@@ -22,6 +22,11 @@
         { "id" : "LW_SE_QUESTIONS" },
         { "id" : "LW_SE_SEARCH_QUESTIONS" }
       ]
+    },{
+      "caption": "StatCounter", "isInitClose": true,
+      "items": [
+        { "id" : "LW_ST_OSVERSION" }
+      ]
     }
   ],
 
@@ -155,6 +160,18 @@
       "oneTitle" : "Tagged",
       "twoTitle" : "InTitle",
       "requestType" : "SE_SEARCH_QUESTIONS"
+    }
+  },
+
+  "LW_ST_OSVERSION" : {
+    "type" : "LW_ST_OSVERSION",
+    "menuTitle" : "OS Market Share, Top5",
+    "dialogCaption" : "OS Market Share, Top5",
+    "chartContainerCaption" : "StatCounter: OS Version Market Share",
+    "dialogType" : "DialogType1A",
+    "dialogProps" : {
+      "oneTitle" : "Tag",
+      "requestType" : "ST_OSVERSION"
     }
   }
 

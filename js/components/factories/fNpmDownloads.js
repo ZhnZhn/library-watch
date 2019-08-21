@@ -93,6 +93,9 @@ var fNpmDownloads = function fNpmDownloads(_ref) {
       labels = _fnTransformDownloads2.labels,
       data = _fnTransformDownloads2.data;
 
+  console.log(labels);
+  console.log(data);
+
   return factory.createElement(_NpmRecentMonthDownloads2.default, (0, _extends3.default)({
     key: key,
     packageName: packageName,

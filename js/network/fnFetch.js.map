@@ -1,1 +1,45 @@
-{"version":3,"sources":["../../src/network/fnFetch.js"],"names":["CLICK_TIME_INTERVAL","MIN_FREQUENCY","LIMIT_REMAINING","DONE","ALERT_FREQUENCY","errCaption","message","ALERT_IN_PROGRESS","_recentUri","_recentTime","Date","now","_recentCall","_fnSetRecentCall","uri","time","_fnSetRecentDone","option","onCheckResponse","onFetch","onCompleted","onFailed","onCatch","_nowTime","undefined","error","LoadingProgressActions","loadingProgress","fetch","then","response","status","statusText","headers","limitRemaining","get","json","loadingProgressComplete","catch","loadingProgressFailed"],"mappings":"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","file":"fnFetch.js","sourcesContent":["import LoadingProgressActions from '../flux/actions/LoadingProgressActions';\r\n\r\nconst CLICK_TIME_INTERVAL = 300\r\n    , MIN_FREQUENCY = 3000\r\n    , LIMIT_REMAINING = 'X-RateLimit-Remaining'\r\n    , DONE = 'DONE'\r\n    , ALERT_FREQUENCY = {\r\n        errCaption : 'Load Frequency',\r\n        message : `Exceed item load frequency restriction of ${MIN_FREQUENCY/1000}s`\r\n    }\r\n    , ALERT_IN_PROGRESS = {\r\n         errCaption : 'Loading In Progress',\r\n         message : 'Loading data for this item in progress.\\nIt seems several clicks on button Load repeatedly happend.'\r\n    };\r\n\r\n\r\nlet _recentUri = DONE\r\n  , _recentTime = Date.now() - MIN_FREQUENCY\r\n  , _recentCall = _recentTime;\r\n\r\nconst _fnSetRecentCall = function(uri, time){\r\n  _recentUri = uri;\r\n  _recentCall = time\r\n}\r\nconst _fnSetRecentDone = function(uri, time){\r\n  _recentUri = uri;\r\n  _recentTime = time;\r\n}\r\n\r\nexport default ({\r\n   uri, option,\r\n   onCheckResponse, onFetch, onCompleted,\r\n   onFailed, onCatch\r\n }) => {\r\n  const _nowTime = Date.now()\r\n\r\n  if (_nowTime - _recentCall < CLICK_TIME_INTERVAL){\r\n    return undefined;\r\n  } else if (uri === _recentUri){\r\n    onCatch({ error : ALERT_IN_PROGRESS, option, onFailed });\r\n  } else if (_nowTime - _recentTime < MIN_FREQUENCY){\r\n    onCatch({ error : ALERT_FREQUENCY, option, onFailed });\r\n  } else {\r\n\r\n    _fnSetRecentCall(uri, _nowTime);\r\n    LoadingProgressActions.loadingProgress();\r\n\r\n    fetch(uri)\r\n      .then((response) => {\r\n        const { status, statusText, headers } = response;\r\n        option.limitRemaining = headers.get(LIMIT_REMAINING);\r\n        if (status>=200 && status<=400){\r\n          return response.json();\r\n        } else if (status>400 && status<500){\r\n           throw { errCaption : 'Request Error', message : `${status} : ${statusText}` }\r\n        } else if (status>=500 && status<600){\r\n           throw { errCaption : 'Response Error', message : `${status} : ${statusText}` }\r\n        }\r\n      })\r\n      .then((json) => {\r\n         if (onCheckResponse(json, option)){\r\n           onFetch({ json, option, onCompleted });\r\n         }\r\n\r\n         _fnSetRecentDone(DONE, _nowTime);\r\n         LoadingProgressActions.loadingProgressComplete();\r\n      })\r\n      .catch((error) => {\r\n         onCatch({ error, option, onFailed })\r\n\r\n         _fnSetRecentDone(DONE, _nowTime);\r\n         LoadingProgressActions.loadingProgressFailed();\r\n      })\r\n  }\r\n}\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../src/network/fnFetch.js"
+ ],
+ "file": "../../src/network/fnFetch.js",
+ "names": [
+  "CLICK_TIME_INTERVAL",
+  "MIN_FREQUENCY",
+  "DONE",
+  "ALERT_FREQUENCY",
+  "errCaption",
+  "message",
+  "ALERT_IN_PROGRESS",
+  "_crErr",
+  "status",
+  "statusText",
+  "_recentUri",
+  "_recentTime",
+  "Date",
+  "now",
+  "_recentCall",
+  "_fnSetRecentCall",
+  "uri",
+  "time",
+  "_fnSetRecentDone",
+  "_starLoading",
+  "nowTime",
+  "LPA",
+  "loadingProgress",
+  "_doneOk",
+  "loadingProgressComplete",
+  "_doneFailure",
+  "loadingProgressFailed",
+  "config",
+  "option",
+  "onFailed",
+  "onCatch",
+  "_nowTime",
+  "error",
+  "_configFetch",
+  "fetchType"
+ ],
+ "mappings": ";;;;;;;;;;AAEA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,sBAAsB,GAA5B;AAAA,IACMC,gBAAgB,IADtB;AAAA,IAEMC,OAAO,MAFb;AAAA,IAGMC,kBAAkB;AAChBC,cAAa,gBADG;AAEhBC,0DAAuDJ,gBAAc,IAArE;AAFgB,CAHxB;AAAA,IAOMK,oBAAoB;AACjBF,cAAa,qBADI;AAEjBC,WAAU;AAFO,CAP1B,C,CAPA;;AAoBA,IAAME,SAAS,SAATA,MAAS;AAAA,iFAAwB,EAAxB;AAAA,MAAGC,MAAH,QAAGA,MAAH;AAAA,MAAWC,UAAX,QAAWA,UAAX;;AAAA,SAAgC;AAC7CL,gBAAY,eADiC;AAE7CC,aAAaG,MAAb,WAAyBC;AAFoB,GAAhC;AAAA,CAAf;;AAKA,IAAIC,aAAaR,IAAjB;AAAA,IACIS,cAAcC,KAAKC,GAAL,KAAaZ,aAD/B;AAAA,IAEIa,cAAcH,WAFlB;;AAIA,IAAMI,mBAAmB,SAAnBA,gBAAmB,CAASC,GAAT,EAAcC,IAAd,EAAmB;AAC1CP,eAAaM,GAAb;AACAF,gBAAcG,IAAd;AACD,CAHD;AAIA,IAAMC,mBAAmB,SAAnBA,gBAAmB,CAASF,GAAT,EAAcC,IAAd,EAAmB;AAC1CP,eAAaM,GAAb;AACAL,gBAAcM,IAAd;AACD,CAHD;;AAKA,IAAME,eAAe,SAAfA,YAAe,CAACH,GAAD,EAAMI,OAAN,EAAkB;AACrCL,mBAAiBC,GAAjB,EAAsBI,OAAtB;AACAC,mCAAIC,eAAJ;AACD,CAHD;;AAKA,IAAMC,UAAU,SAAVA,OAAU,CAACH,OAAD,EAAa;AAC3BF,mBAAiBhB,IAAjB,EAAuBkB,OAAvB;AACAC,mCAAIG,uBAAJ;AACD,CAHD;;AAKA,IAAMC,eAAe,SAAfA,YAAe,CAACL,OAAD,EAAa;AAChCF,mBAAiBhB,IAAjB,EAAuBkB,OAAvB;AACAC,mCAAIK,qBAAJ;AACD,CAHD;;kBAKe,UAACC,MAAD,EAAY;AAAA,MAErBX,GAFqB,GAInBW,MAJmB,CAErBX,GAFqB;AAAA,MAEhBY,MAFgB,GAInBD,MAJmB,CAEhBC,MAFgB;AAAA,MAGrBC,QAHqB,GAInBF,MAJmB,CAGrBE,QAHqB;AAAA,MAGXC,OAHW,GAInBH,MAJmB,CAGXG,OAHW;;AAKzB,MAAMC,WAAWnB,KAAKC,GAAL,EAAjB;;AAEA,MAAIkB,WAAWjB,WAAX,GAAyBd,mBAA7B,EAAiD;AAC/C,WAAO,KAAK,CAAZ;AACD,GAFD,MAEO,IAAIgB,QAAQN,UAAZ,EAAuB;AAC5BoB,YAAQ,EAAEE,OAAQ1B,iBAAV,EAA6BsB,cAA7B,EAAqCC,kBAArC,EAAR;AACD,GAFM,MAEA,IAAIE,WAAWpB,WAAX,GAAyBV,aAA7B,EAA2C;AAChD6B,YAAQ,EAAEE,OAAQ7B,eAAV,EAA2ByB,cAA3B,EAAmCC,kBAAnC,EAAR;AACD,GAFM,MAEA;;AAEJ,QAAMI,0CACDN,MADC;AAEJpB,oBAFI;AAGJwB,wBAHI,EAGMR,gBAHN,EAGeE;AAHf,MAAN;;AAMDN,iBAAaH,GAAb,EAAkBe,QAAlB;;AARK,QAUGG,SAVH,GAUiBN,MAVjB,CAUGM,SAVH;;AAWL,QAAIA,cAAc,YAAlB,EAAgC;AAC9B,oCAAeD,YAAf;AACD,KAFD,MAEO;AACL,+BAAUA,YAAV;AACD;AACF;AACF,C"
+}

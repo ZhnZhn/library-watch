@@ -1,14 +1,28 @@
-import React from 'react';
+'use strict';
 
-import test from 'ava';
-import { shallow } from 'enzyme';
+var _react = require('react');
 
-import zhnSpy from '../../../../js/components/zhn-atoms/__tests__/zhnSpy';
-import MenuBadge from '../../../../js/components/zhn-atoms/MenuBadge';
+var _react2 = _interopRequireDefault(_react);
 
-const _fnGetWrapper = (props) => {
-  return shallow(<MenuBadge {...props} />);
-}
+var _ava = require('ava');
+
+var _ava2 = _interopRequireDefault(_ava);
+
+var _enzyme = require('enzyme');
+
+var _zhnSpy = require('../../../../js/components/zhn-atoms/__tests__/zhnSpy');
+
+var _zhnSpy2 = _interopRequireDefault(_zhnSpy);
+
+var _MenuBadge = require('../../../../js/components/zhn-atoms/MenuBadge');
+
+var _MenuBadge2 = _interopRequireDefault(_MenuBadge);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _fnGetWrapper = function _fnGetWrapper(props) {
+    return (0, _enzyme.shallow)(_react2.default.createElement(_MenuBadge2.default, props));
+};
 
 /*
 test('render root span with class `menu__badge`', t => {
@@ -28,37 +42,36 @@ test('should use prop counter', t => {
 })
 */
 
-
-
-test('should call stopPropagation and onBadgeOpen on root click if isOpen falsy', t => {
-   const //onBadgeOpenSpy = sinon.spy()
-      //,  onBadgeCloseSpy = sinon.spy()
-         onBadgeOpenSpy = zhnSpy.createValueSpy()
-       , onBadgeCloseSpy = zhnSpy.createValueSpy()
-       , stopPropagationSpy = zhnSpy.createValueSpy()
-       , wrapper = _fnGetWrapper({
-           onBadgeOpen: onBadgeOpenSpy,
-           onBadgeClose: onBadgeCloseSpy
-         })
-
-     wrapper.simulate('click', { stopPropagation: stopPropagationSpy });
-     t.true(stopPropagationSpy.isCalledOnce())
-     t.true(onBadgeOpenSpy.isCalledOnce());
-     t.true(!onBadgeCloseSpy.isCalledOnce());
-})
-
-test('should call stopPropagation and onBadgeClose on root click if isOpen true', t => {
-  const onBadgeOpenSpy = zhnSpy.createValueSpy()
-      , onBadgeCloseSpy = zhnSpy.createValueSpy()
-      , stopPropagationSpy = zhnSpy.createValueSpy()
-      , wrapper = _fnGetWrapper({
-          isOpen : true,
-          onBadgeOpen: onBadgeOpenSpy,
-          onBadgeClose: onBadgeCloseSpy
-        })
+(0, _ava2.default)('should call stopPropagation and onBadgeOpen on root click if isOpen falsy', function (t) {
+    var //onBadgeOpenSpy = sinon.spy()
+    //,  onBadgeCloseSpy = sinon.spy()
+    onBadgeOpenSpy = _zhnSpy2.default.createValueSpy(),
+        onBadgeCloseSpy = _zhnSpy2.default.createValueSpy(),
+        stopPropagationSpy = _zhnSpy2.default.createValueSpy(),
+        wrapper = _fnGetWrapper({
+        onBadgeOpen: onBadgeOpenSpy,
+        onBadgeClose: onBadgeCloseSpy
+    });
 
     wrapper.simulate('click', { stopPropagation: stopPropagationSpy });
-    t.true(stopPropagationSpy.isCalledOnce())
+    t.true(stopPropagationSpy.isCalledOnce());
+    t.true(onBadgeOpenSpy.isCalledOnce());
+    t.true(!onBadgeCloseSpy.isCalledOnce());
+});
+
+(0, _ava2.default)('should call stopPropagation and onBadgeClose on root click if isOpen true', function (t) {
+    var onBadgeOpenSpy = _zhnSpy2.default.createValueSpy(),
+        onBadgeCloseSpy = _zhnSpy2.default.createValueSpy(),
+        stopPropagationSpy = _zhnSpy2.default.createValueSpy(),
+        wrapper = _fnGetWrapper({
+        isOpen: true,
+        onBadgeOpen: onBadgeOpenSpy,
+        onBadgeClose: onBadgeCloseSpy
+    });
+
+    wrapper.simulate('click', { stopPropagation: stopPropagationSpy });
+    t.true(stopPropagationSpy.isCalledOnce());
     t.true(onBadgeCloseSpy.isCalledOnce());
     t.true(!onBadgeOpenSpy.isCalledOnce());
-})
+});
+//# sourceMappingURL=MenuBadge.test.js.map

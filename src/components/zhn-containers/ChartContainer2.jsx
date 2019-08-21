@@ -107,8 +107,8 @@ class ChartContainer2 extends Component {
    }
 
    _getRootNodeStyle = () => {
-     const { _rootNode={} } = this
-     , { style={} } = _rootNode;
+     const { _rootNode } = this
+     , { style={} } = _rootNode || {};
      return style;
    }
 

@@ -40,6 +40,10 @@ var _fStackTaggedQuestions = require('./fStackTaggedQuestions');
 
 var _fStackTaggedQuestions2 = _interopRequireDefault(_fStackTaggedQuestions);
 
+var _fStatCounter = require('./fStatCounter');
+
+var _fStatCounter2 = _interopRequireDefault(_fStatCounter);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var RouterItem = {
@@ -55,7 +59,9 @@ var RouterItem = {
   NPM_DOWNLOADS: _fNpmDownloads2.default,
 
   SE_QUESTIONS: _fStackTaggedQuestions2.default,
-  SE_SEARCH_QUESTIONS: _fStackTaggedQuestions2.default
+  SE_SEARCH_QUESTIONS: _fStackTaggedQuestions2.default,
+
+  ST_OSVERSION: _fStatCounter2.default
 };
 
 exports.default = RouterItem;

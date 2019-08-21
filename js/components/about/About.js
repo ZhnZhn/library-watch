@@ -198,6 +198,12 @@ var About = (_temp = _class = function (_Component) {
                 color: '#3186C9',
                 title: 'Stack Exchange',
                 caption: 'Stack Exchange'
+              }),
+              _react2.default.createElement(_LinkToken2.default, {
+                href: 'https://gs.statcounter.com/',
+                color: '#009ae5',
+                title: 'StatCounter',
+                caption: 'StatCounter'
               })
             ),
             _react2.default.createElement(

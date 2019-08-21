@@ -1,38 +1,53 @@
-import React from 'react';
+'use strict';
 
-import test from 'ava';
-import { shallow } from 'enzyme';
-import sinon from 'sinon';
+var _react = require('react');
 
-import Tab from '../../../../js/components/zhn-atoms/Tab';
+var _react2 = _interopRequireDefault(_react);
 
-const _fnGetWrapper = (props) => {
-  return shallow(<Tab {...props} />);
-}
+var _ava = require('ava');
 
-test('render root li with props title text', t => {
-  const title = 'title'
-      , wrapper = _fnGetWrapper({ title })
+var _ava2 = _interopRequireDefault(_ava);
+
+var _enzyme = require('enzyme');
+
+var _sinon = require('sinon');
+
+var _sinon2 = _interopRequireDefault(_sinon);
+
+var _Tab = require('../../../../js/components/zhn-atoms/Tab');
+
+var _Tab2 = _interopRequireDefault(_Tab);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _fnGetWrapper = function _fnGetWrapper(props) {
+  return (0, _enzyme.shallow)(_react2.default.createElement(_Tab2.default, props));
+};
+
+(0, _ava2.default)('render root li with props title text', function (t) {
+  var title = 'title',
+      wrapper = _fnGetWrapper({ title: title });
 
   t.true(wrapper.is('li'));
   t.is(wrapper.text(), title);
-})
+});
 
-test('should use props isSelected for inner style root', t => {
-   const selected = {
-             borderColor : 'rgba(164, 135, 212, 1)',
-             color : 'rgba(164, 135, 212, 1)'
-         }
-       , wrapper = _fnGetWrapper({ isSelected : true })
+(0, _ava2.default)('should use props isSelected for inner style root', function (t) {
+  var selected = {
+    borderColor: 'rgba(164, 135, 212, 1)',
+    color: 'rgba(164, 135, 212, 1)'
+  },
+      wrapper = _fnGetWrapper({ isSelected: true });
 
-   t.is(wrapper.props().style.color, selected.color);
-   t.is(wrapper.props().style.borderColor, selected.borderColor);
-})
+  t.is(wrapper.props().style.color, selected.color);
+  t.is(wrapper.props().style.borderColor, selected.borderColor);
+});
 
-test('should use prop onClick for click event on root', t => {
-    const onClickSpy = sinon.spy()
-        , wrapper = _fnGetWrapper({ onClick : onClickSpy })
+(0, _ava2.default)('should use prop onClick for click event on root', function (t) {
+  var onClickSpy = _sinon2.default.spy(),
+      wrapper = _fnGetWrapper({ onClick: onClickSpy });
 
-    wrapper.simulate('click')
-    t.true(onClickSpy.calledOnce);
-})
+  wrapper.simulate('click');
+  t.true(onClickSpy.calledOnce);
+});
+//# sourceMappingURL=Tab.test.js.map

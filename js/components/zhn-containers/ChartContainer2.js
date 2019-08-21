@@ -228,10 +228,10 @@ var ChartContainer2 = (_temp = _class = function (_Component) {
   };
 
   this._getRootNodeStyle = function () {
-    var _rootNode2 = _this2._rootNode,
-        _rootNode = _rootNode2 === undefined ? {} : _rootNode2,
-        _rootNode$style = _rootNode.style,
-        style = _rootNode$style === undefined ? {} : _rootNode$style;
+    var _rootNode = _this2._rootNode,
+        _ref = _rootNode || {},
+        _ref$style = _ref.style,
+        style = _ref$style === undefined ? {} : _ref$style;
 
     return style;
   };

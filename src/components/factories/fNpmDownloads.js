@@ -54,6 +54,10 @@ const fNpmDownloads = function({
   , { downloads, package:packageName } = json
   , { sumDownloads, fromDate, toDate, labels, data } = _fnTransformDownloads(downloads)
 
+
+  console.log(labels)
+  console.log(data)
+   
   return factory.createElement(NpmRecentMonthDownloads, {
      key,
      packageName,
@@ -65,7 +69,7 @@ const fNpmDownloads = function({
      labels,
      data,
      onMoveToTop,
-     onCloseItem: onCloseItem.bind(null, chartType, browserType, key),     
+     onCloseItem: onCloseItem.bind(null, chartType, browserType, key),
      ...parentProps
   })
 };

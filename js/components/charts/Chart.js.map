@@ -1,1 +1,42 @@
-{"version":3,"sources":["../../../src/components/charts/Chart.js"],"names":["Chart","fLineConfig","labels","data","datasets","label","fill","lineTension","backgroundColor","borderColor","borderCapStyle","borderDash","borderDashOffset","borderJoinStyle","pointBorderColor","pointBackgroundColor","pointBorderWidth","pointHoverRadius","pointHoverBackgroundColor","pointHoverBorderColor","pointHoverBorderWidth","pointRadius","pointHitRadius"],"mappings":";;;;;;AACA,IAAMA,QAAQ;AAEZC,aAFY,6BAEoC;AAAA,2BAAlCC,MAAkC;AAAA,QAAlCA,MAAkC,+BAA3B,CAAC,GAAD,EAAM,GAAN,CAA2B;AAAA,yBAAfC,IAAe;AAAA,QAAfA,IAAe,6BAAV,CAAC,CAAD,EAAI,CAAJ,CAAU;;AAC9C,WAAO;AACLD,cAAQA,MADH;AAELE,gBAAU,CACR;AACEC,eAAO,WADT;AAEEC,cAAM,KAFR;AAGEC,qBAAa,GAHf;AAIEC,yBAAiB,yBAJnB;AAKE;AACA;AACAC,qBAAa,uBAPf;AAQEC,wBAAgB,MARlB;AASEC,oBAAY,EATd;AAUEC,0BAAkB,GAVpB;AAWEC,yBAAiB,OAXnB;AAYEC,0BAAkB,uBAZpB;AAaE;AACAC,8BAAuB,uBAdzB;AAeEC,0BAAkB,CAfpB;AAgBEC,0BAAkB,CAhBpB;AAiBEC,mCAA2B,uBAjB7B;AAkBE;AACAC,+BAAuB,wBAnBzB;AAoBEC,+BAAuB,CApBzB;AAqBEC,qBAAa,CArBf;AAsBEC,wBAAgB,EAtBlB;AAuBEnB,cAAMA;AAvBR,OADQ;AAFL,KAAP;AA8BD;AAjCW,CAAd;;kBAqCeH,K","file":"Chart.js","sourcesContent":["\r\nconst Chart = {\r\n\r\n  fLineConfig({ labels=['1', '2'], data=[0, 0] }) {\r\n    return {\r\n      labels: labels,\r\n      datasets: [\r\n        {\r\n          label: 'Downloads',\r\n          fill: false,\r\n          lineTension: 0.1,\r\n          backgroundColor: 'rgba(128, 192, 64, 0.4)',\r\n          //rgba(128, 192, 64, 1)\r\n          //rgba(75,192,192,1)\r\n          borderColor: 'rgba(128, 192, 64, 1)',\r\n          borderCapStyle: 'butt',\r\n          borderDash: [],\r\n          borderDashOffset: 0.0,\r\n          borderJoinStyle: 'miter',\r\n          pointBorderColor: 'rgba(128, 192, 64, 1)',\r\n          //pointBackgroundColor: '#fff',\r\n          pointBackgroundColor : 'rgba(128, 192, 64, 1)',\r\n          pointBorderWidth: 1,\r\n          pointHoverRadius: 8,\r\n          pointHoverBackgroundColor: 'rgba(128, 192, 64, 1)',\r\n          //pointHoverBorderColor: 'rgba(220,220,220,1)',\r\n          pointHoverBorderColor: 'rgba(164, 135, 212, 1)',\r\n          pointHoverBorderWidth: 4,\r\n          pointRadius: 5,\r\n          pointHitRadius: 10,\r\n          data: data\r\n        }\r\n      ]\r\n    }\r\n  }\r\n\r\n};\r\n\r\nexport default Chart\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/charts/Chart.js"
+ ],
+ "file": "../../../src/components/charts/Chart.js",
+ "names": [
+  "COLORS",
+  "_crDataset",
+  "label",
+  "data",
+  "color",
+  "fill",
+  "lineTension",
+  "backgroundColor",
+  "borderColor",
+  "borderCapStyle",
+  "borderDash",
+  "borderDashOffset",
+  "borderJoinStyle",
+  "pointBorderColor",
+  "pointBackgroundColor",
+  "pointBorderWidth",
+  "pointHoverRadius",
+  "pointHoverBackgroundColor",
+  "pointHoverBorderColor",
+  "pointHoverBorderWidth",
+  "pointRadius",
+  "pointHitRadius",
+  "Chart",
+  "fLineConfig",
+  "labels",
+  "datasets",
+  "fLineConfigs",
+  "forEach",
+  "arr",
+  "index",
+  "push",
+  "seriaName"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,SAAS,CACb,uBADa,CAAf;;AAKA,IAAMC,aAAa,SAAbA,UAAa,CAAEC,KAAF,EAASC,IAAT;AAAA,MAAeC,KAAf,uEAAqBJ,OAAO,CAAP,CAArB;AAAA,SAAqC;AACtDE,WAAOA,KAD+C;AAEtDG,UAAM,KAFgD;AAGtDC,iBAAa,GAHyC;AAItDC,qBAAiB,yBAJqC;AAKtD;AACA;AACAC,iBAAaJ,KAPyC;AAQtDK,oBAAgB,MARsC;AAStDC,gBAAY,EAT0C;AAUtDC,sBAAkB,GAVoC;AAWtDC,qBAAiB,OAXqC;AAYtDC,sBAAkBT,KAZoC;AAatD;AACAU,0BAAuBV,KAd+B;AAetDW,sBAAkB,CAfoC;AAgBtDC,sBAAkB,CAhBoC;AAiBtDC,+BAA2Bb,KAjB2B;AAkBtD;AACAc,2BAAuB,wBAnB+B;AAoBtDC,2BAAuB,CApB+B;AAqBtDC,iBAAa,CArByC;AAsBtDC,oBAAgB,EAtBsC;AAuBtDlB,UAAMA;AAvBgD,GAArC;AAAA,CAAnB;;AA0BA,IAAMmB,QAAQ;AAEZC,aAFY,6BAEoC;AAAA,2BAAlCC,MAAkC;AAAA,QAAlCA,MAAkC,+BAA3B,CAAC,GAAD,EAAM,GAAN,CAA2B;AAAA,yBAAfrB,IAAe;AAAA,QAAfA,IAAe,6BAAV,CAAC,CAAD,EAAI,CAAJ,CAAU;;AAC9C,WAAO;AACLqB,cAAQA,MADH;AAELC,gBAAU,CACRxB,WAAW,WAAX,EAAwBE,IAAxB,CADQ;AAFL,KAAP;AAMD,GATW;AAWZuB,cAXY,+BAWuC;AAAA,6BAApCF,MAAoC;AAAA,QAApCA,MAAoC,gCAA7B,CAAC,GAAD,EAAM,GAAN,CAA6B;AAAA,2BAAjBrB,IAAiB;AAAA,QAAjBA,IAAiB,8BAAZ,CAAC,CAAC,CAAD,EAAI,CAAJ,CAAD,CAAY;;AACjD,QAAMsB,WAAW,EAAjB;AACAtB,SAAKwB,OAAL,CAAa,UAACC,GAAD,EAAMC,KAAN,EAAgB;AAC3BJ,eAASK,IAAT,CAAc7B,WAAW2B,IAAIG,SAAf,EAA0BH,GAA1B,EAA+B5B,OAAO6B,KAAP,CAA/B,CAAd;AACD,KAFD;AAGA,WAAO;AACLL,oBADK;AAELC;AAFK,KAAP;AAID;AApBW,CAAd;;kBAwBeH,K"
+}

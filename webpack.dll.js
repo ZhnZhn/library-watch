@@ -12,6 +12,7 @@ module.exports = {
             "chart.js", "interactjs", "timeago.js", 
             "localforage", "browser-filesaver",
             "lodash.merge", "classnames",
+            "papaparse",
             "raven-js",
             "babel-runtime/helpers/classCallCheck",
             "babel-runtime/helpers/createClass",

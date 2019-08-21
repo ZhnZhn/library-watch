@@ -129,6 +129,12 @@ class About extends Component {
                title="Stack Exchange"
                caption="Stack Exchange"
             />
+            <LinkToken
+               href="https://gs.statcounter.com/"
+               color="#009ae5"
+               title="StatCounter"
+               caption="StatCounter"
+            />
            </p>
             <p>
               <Step step="1" />

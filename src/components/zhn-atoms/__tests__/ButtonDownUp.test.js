@@ -1,49 +1,63 @@
-import React from 'react';
+'use strict';
 
-import test from 'ava';
-import { shallow } from 'enzyme';
-import { spy } from 'sinon';
+var _react = require('react');
 
-import ButtonDownUp from '../../../../js/components/zhn-atoms/ButtonDownUp';
-import STYLE from '../../../../js/components/zhn-atoms/ButtonDownUp.Style';
+var _react2 = _interopRequireDefault(_react);
 
-const _fnGetWrapper = (props) => {
-  return shallow(<ButtonDownUp {...props} />);
-}
+var _ava = require('ava');
 
-test('render root button with empty title, caption by default', t => {
-  const wrapper = _fnGetWrapper();
+var _ava2 = _interopRequireDefault(_ava);
 
-   t.true(wrapper.is('button'))
-   t.is(wrapper.props().title, '')
-   t.is(wrapper.text(), '')
-})
+var _enzyme = require('enzyme');
 
-test('should use prop title, caption, style', t => {
-  const title = 'title'
-      , caption = 'caption'
-      , style = { paddingLeft : '20px' }
-      , wrapper = _fnGetWrapper({ title, caption, style });
+var _sinon = require('sinon');
 
-   t.is(wrapper.props().title, title)
-   t.is(wrapper.props().style.paddingLeft, style.paddingLeft)
-   t.is(wrapper.text(), caption)
-})
+var _ButtonDownUp = require('../../../../js/components/zhn-atoms/ButtonDownUp');
 
+var _ButtonDownUp2 = _interopRequireDefault(_ButtonDownUp);
 
-test('should use prop isUp', t => {
-   const wrapper = _fnGetWrapper({ isUp: true })
+var _ButtonDownUp3 = require('../../../../js/components/zhn-atoms/ButtonDownUp.Style');
 
-   t.is(wrapper.props().style.color, STYLE.ROOT_UP.color)
-   const spanCircle = wrapper.childAt(0)
-   t.is(spanCircle.props().style.borderColor, STYLE.CIRCLE_UP.borderColor)
-})
+var _ButtonDownUp4 = _interopRequireDefault(_ButtonDownUp3);
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-test('should use prop onClick on event click root', t => {
-    const onClickSpy = spy()
-         , wrapper = _fnGetWrapper({ onClick : onClickSpy })
+var _fnGetWrapper = function _fnGetWrapper(props) {
+   return (0, _enzyme.shallow)(_react2.default.createElement(_ButtonDownUp2.default, props));
+};
 
-    wrapper.simulate('click')
-    t.true(onClickSpy.calledOnce)
-})
+(0, _ava2.default)('render root button with empty title, caption by default', function (t) {
+   var wrapper = _fnGetWrapper();
+
+   t.true(wrapper.is('button'));
+   t.is(wrapper.props().title, '');
+   t.is(wrapper.text(), '');
+});
+
+(0, _ava2.default)('should use prop title, caption, style', function (t) {
+   var title = 'title',
+       caption = 'caption',
+       style = { paddingLeft: '20px' },
+       wrapper = _fnGetWrapper({ title: title, caption: caption, style: style });
+
+   t.is(wrapper.props().title, title);
+   t.is(wrapper.props().style.paddingLeft, style.paddingLeft);
+   t.is(wrapper.text(), caption);
+});
+
+(0, _ava2.default)('should use prop isUp', function (t) {
+   var wrapper = _fnGetWrapper({ isUp: true });
+
+   t.is(wrapper.props().style.color, _ButtonDownUp4.default.ROOT_UP.color);
+   var spanCircle = wrapper.childAt(0);
+   t.is(spanCircle.props().style.borderColor, _ButtonDownUp4.default.CIRCLE_UP.borderColor);
+});
+
+(0, _ava2.default)('should use prop onClick on event click root', function (t) {
+   var onClickSpy = (0, _sinon.spy)(),
+       wrapper = _fnGetWrapper({ onClick: onClickSpy });
+
+   wrapper.simulate('click');
+   t.true(onClickSpy.calledOnce);
+});
+//# sourceMappingURL=ButtonDownUp.test.js.map

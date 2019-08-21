@@ -3,7 +3,8 @@ const CL = {
   NOT_SELECTED: 'not-selected',
   SHOW_POPUP: 'show-popup',
   MENU_MORE: 'popup-menu charts__menu-more',
-  ROW_MENU_MORE: 'row__pane-topic not-selected'
+  ROW_MENU_MORE: 'row__pane-topic not-selected',
+  SOURCE_LINK: 'source-link'  
 };
 
 export default Object.freeze(CL);

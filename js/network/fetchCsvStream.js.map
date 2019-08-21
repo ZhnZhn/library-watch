@@ -1,0 +1,39 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/network/fetchCsvStream.js"
+ ],
+ "file": "../../src/network/fetchCsvStream.js",
+ "names": [
+  "fetchCsvStream",
+  "uri",
+  "option",
+  "onFetch",
+  "onCompleted",
+  "onCatch",
+  "onFailed",
+  "_crErr",
+  "_nowTime",
+  "_doneOk",
+  "_doneFailure",
+  "fetch",
+  "then",
+  "response",
+  "body",
+  "_reader",
+  "getReader",
+  "read",
+  "_str",
+  "String",
+  "fromCharCode",
+  "result",
+  "value",
+  "csv",
+  "parse",
+  "header",
+  "json",
+  "catch",
+  "error"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;;;;;AAGA,IAAMA,iBAAiB,SAAjBA,cAAiB;AAAA,MACrBC,GADqB,QACrBA,GADqB;AAAA,MAErBC,MAFqB,QAErBA,MAFqB;AAAA,MAEbC,OAFa,QAEbA,OAFa;AAAA,MAEJC,WAFI,QAEJA,WAFI;AAAA,MAGrBC,OAHqB,QAGrBA,OAHqB;AAAA,MAGZC,QAHY,QAGZA,QAHY;AAAA,MAIrBC,MAJqB,QAIrBA,MAJqB;AAAA,MAKrBC,QALqB,QAKrBA,QALqB;AAAA,MAKXC,OALW,QAKXA,OALW;AAAA,MAKFC,YALE,QAKFA,YALE;AAAA,SAMjBC,MAAMV,GAAN,EACDW,IADC,CACI,oBAAY;AAChB,QAAIC,SAASC,IAAb,EAAmB;AACjB,UAAMC,UAAUF,SAASC,IAAT,CAAcE,SAAd,EAAhB;AACA,aAAOD,QAAQE,IAAR,EAAP;AACD,KAHD,MAGO;AACJ,YAAMV,OAAOM,QAAP,CAAN;AACF;AACF,GARC,EASDD,IATC,CASI,kBAAU;AACd,QAAMM,OAAOC,OAAOC,YAAP,gDAAuBC,OAAOC,KAA9B,EAAb;AACA,WAAOC,oBAAIC,KAAJ,CAAUN,IAAV,EAAgB,EAAEO,QAAQ,IAAV,EAAhB,CAAP;AACD,GAZC,EAaDb,IAbC,CAaI,gBAAQ;AACZT,YAAQ,EAAEuB,UAAF,EAAQxB,cAAR,EAAgBE,wBAAhB,EAAR;AACAK,YAAQD,QAAR;AACD,GAhBC,EAiBDmB,KAjBC,CAiBK,iBAAS;AACdtB,YAAQ,EAAEuB,YAAF,EAAS1B,cAAT,EAAiBI,kBAAjB,EAAR;AACDI,iBAAaF,QAAb;AACD,GApBE,CANiB;AAAA,CAAvB;;kBA4BeR,c"
+}

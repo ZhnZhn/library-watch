@@ -11,6 +11,8 @@ import fNpmDownloads from './fNpmDownloads';
 
 import fStackTaggedQuestions from './fStackTaggedQuestions';
 
+import fStatCounter from './fStatCounter'
+
 const RouterItem = {
   DEFAULT : fItemTest,
   GH_RELEASE_RECENT : fGitHubRecentRelease,
@@ -24,7 +26,9 @@ const RouterItem = {
   NPM_DOWNLOADS : fNpmDownloads,
 
   SE_QUESTIONS : fStackTaggedQuestions,
-  SE_SEARCH_QUESTIONS : fStackTaggedQuestions
+  SE_SEARCH_QUESTIONS : fStackTaggedQuestions,
+
+  ST_OSVERSION: fStatCounter
 };
 
 export default RouterItem

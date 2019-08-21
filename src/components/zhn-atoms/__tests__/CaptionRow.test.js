@@ -1,39 +1,55 @@
-import React from 'react';
+'use strict';
 
-import test from 'ava';
-import { shallow } from 'enzyme';
-import { spy } from 'sinon';
+var _react = require('react');
 
-import CaptionRow from '../../../../js/components/zhn-atoms/CaptionRow';
-import STYLE from '../../../../js/components/zhn-atoms/CaptionRow.Style';
+var _react2 = _interopRequireDefault(_react);
 
-const _fnGetWrapper = (props) => {
-  return shallow(<CaptionRow {...props} />);
-}
+var _ava = require('ava');
 
-test('render root div', t => {
-   const wrapper = _fnGetWrapper()
+var _ava2 = _interopRequireDefault(_ava);
 
-   t.true(wrapper.is('div'))
-   t.deepEqual(wrapper.props().style, STYLE.ROOT)
-   const spanCaption = wrapper.childAt(0)
-   t.deepEqual(spanCaption.props().style, STYLE.SPAN)
-})
+var _enzyme = require('enzyme');
 
-test('should use props caption, styleRoot', t => {
-   const caption = "caption"
-       , styleRoot = { color : "green"}
-       , wrapper = _fnGetWrapper({ caption, styleRoot })
+var _sinon = require('sinon');
 
-    const spanCaption = wrapper.childAt(0)
-    t.is(spanCaption.text(), caption)
-    t.is(wrapper.props().style.color, styleRoot.color)
-})
+var _CaptionRow = require('../../../../js/components/zhn-atoms/CaptionRow');
 
-test('should pass prop onClose for SvgClose', t => {
-  const onCloseSpy = spy()
-      , wrapper = _fnGetWrapper({ onClose: onCloseSpy })
+var _CaptionRow2 = _interopRequireDefault(_CaptionRow);
 
-    const svgClose = wrapper.find('SvgClose')
-    t.is(svgClose.props().onClose, onCloseSpy)
-})
+var _CaptionRow3 = require('../../../../js/components/zhn-atoms/CaptionRow.Style');
+
+var _CaptionRow4 = _interopRequireDefault(_CaptionRow3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _fnGetWrapper = function _fnGetWrapper(props) {
+    return (0, _enzyme.shallow)(_react2.default.createElement(_CaptionRow2.default, props));
+};
+
+(0, _ava2.default)('render root div', function (t) {
+    var wrapper = _fnGetWrapper();
+
+    t.true(wrapper.is('div'));
+    t.deepEqual(wrapper.props().style, _CaptionRow4.default.ROOT);
+    var spanCaption = wrapper.childAt(0);
+    t.deepEqual(spanCaption.props().style, _CaptionRow4.default.SPAN);
+});
+
+(0, _ava2.default)('should use props caption, styleRoot', function (t) {
+    var caption = "caption",
+        styleRoot = { color: "green" },
+        wrapper = _fnGetWrapper({ caption: caption, styleRoot: styleRoot });
+
+    var spanCaption = wrapper.childAt(0);
+    t.is(spanCaption.text(), caption);
+    t.is(wrapper.props().style.color, styleRoot.color);
+});
+
+(0, _ava2.default)('should pass prop onClose for SvgClose', function (t) {
+    var onCloseSpy = (0, _sinon.spy)(),
+        wrapper = _fnGetWrapper({ onClose: onCloseSpy });
+
+    var svgClose = wrapper.find('SvgClose');
+    t.is(svgClose.props().onClose, onCloseSpy);
+});
+//# sourceMappingURL=CaptionRow.test.js.map

@@ -1,8 +1,12 @@
-import LoadingProgressActions from '../flux/actions/LoadingProgressActions';
+//import csvtojson from 'csvtojson'
+
+import LPA from '../flux/actions/LoadingProgressActions';
+
+import fetchJson from './fetchJson'
+import fetchCsvStream from './fetchCsvStream'
 
 const CLICK_TIME_INTERVAL = 300
     , MIN_FREQUENCY = 3000
-    , LIMIT_REMAINING = 'X-RateLimit-Remaining'
     , DONE = 'DONE'
     , ALERT_FREQUENCY = {
         errCaption : 'Load Frequency',
@@ -13,6 +17,11 @@ const CLICK_TIME_INTERVAL = 300
          message : 'Loading data for this item in progress.\nIt seems several clicks on button Load repeatedly happend.'
     };
 
+
+const _crErr = ({ status, statusText }={}) => ({
+  errCaption: 'Request Error',
+  message : `${status} : ${statusText}`
+});
 
 let _recentUri = DONE
   , _recentTime = Date.now() - MIN_FREQUENCY
@@ -27,49 +36,49 @@ const _fnSetRecentDone = function(uri, time){
   _recentTime = time;
 }
 
-export default ({
-   uri, option,
-   onCheckResponse, onFetch, onCompleted,
-   onFailed, onCatch
- }) => {
-  const _nowTime = Date.now()
+const _starLoading = (uri, nowTime) => {
+  _fnSetRecentCall(uri, nowTime);
+  LPA.loadingProgress();
+}
+
+const _doneOk = (nowTime) => {
+  _fnSetRecentDone(DONE, nowTime);
+  LPA.loadingProgressComplete()
+}
+
+const _doneFailure = (nowTime) => {
+  _fnSetRecentDone(DONE, nowTime);
+  LPA.loadingProgressFailed();
+}
+
+export default (config) => {
+   const {
+      uri, option,
+      onFailed, onCatch
+    } = config;
+  const _nowTime = Date.now();
 
   if (_nowTime - _recentCall < CLICK_TIME_INTERVAL){
-    return undefined;
+    return void 0;
   } else if (uri === _recentUri){
     onCatch({ error : ALERT_IN_PROGRESS, option, onFailed });
   } else if (_nowTime - _recentTime < MIN_FREQUENCY){
     onCatch({ error : ALERT_FREQUENCY, option, onFailed });
   } else {
 
-    _fnSetRecentCall(uri, _nowTime);
-    LoadingProgressActions.loadingProgress();
+     const _configFetch = {
+       ...config,
+       _crErr,
+       _nowTime, _doneOk, _doneFailure
+     };
 
-    fetch(uri)
-      .then((response) => {
-        const { status, statusText, headers } = response;
-        option.limitRemaining = headers.get(LIMIT_REMAINING);
-        if (status>=200 && status<=400){
-          return response.json();
-        } else if (status>400 && status<500){
-           throw { errCaption : 'Request Error', message : `${status} : ${statusText}` }
-        } else if (status>=500 && status<600){
-           throw { errCaption : 'Response Error', message : `${status} : ${statusText}` }
-        }
-      })
-      .then((json) => {
-         if (onCheckResponse(json, option)){
-           onFetch({ json, option, onCompleted });
-         }
+    _starLoading(uri, _nowTime);
 
-         _fnSetRecentDone(DONE, _nowTime);
-         LoadingProgressActions.loadingProgressComplete();
-      })
-      .catch((error) => {
-         onCatch({ error, option, onFailed })
-
-         _fnSetRecentDone(DONE, _nowTime);
-         LoadingProgressActions.loadingProgressFailed();
-      })
+    const { fetchType } = option;
+    if (fetchType === 'csv-stream') {
+      fetchCsvStream(_configFetch)
+    } else {
+      fetchJson(_configFetch)
+    }
   }
 }
