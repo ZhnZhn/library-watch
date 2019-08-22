@@ -194,7 +194,16 @@ var ChartComponent = (_temp2 = _class = function (_Component) {
 	type: 'doughnut',
 	height: 150,
 	width: 300,
-	redraw: false
+	redraw: false,
+	options: {
+		tooltips: {
+			callbacks: {
+				labelTextColor: function labelTextColor(tooltipItem, chartInst) {
+					return chartInst.data.datasets[tooltipItem.datasetIndex].borderColor;
+				}
+			}
+		}
+	}
 }, _temp2);
 exports.default = ChartComponent;
 //# sourceMappingURL=ChartComponent.js.map

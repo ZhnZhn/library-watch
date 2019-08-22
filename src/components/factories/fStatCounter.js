@@ -1,7 +1,10 @@
 
 import StatCounterShare from '../items/StatCounterShare';
 
-const _crArrFromObj = (obj) => {
+const _filterEmptyDate = json => json
+ .data.filter(item => Boolean(item.Date));
+
+const _crArrFromObj = obj => {
   const _arr = [];
   for(let propName in obj) {
       _arr.push({
@@ -13,9 +16,7 @@ const _crArrFromObj = (obj) => {
 }
 
 const _crTopN = (arr, top=5) => {
-  const _recent = arr
-    .filter(item => Boolean(item.Date)).length - 1
-  , { Date, ...rest } = arr[_recent]
+  const { Date, ...rest } = arr[arr.length-1]
   , _arrRecent = _crArrFromObj(rest);
   _arrRecent.sort((a, b) => b.value - a.value)
   const _arrTop = []
@@ -39,15 +40,13 @@ const _fnTransform = (json) => {
     return _arr;
   });
 
-  if (Array.isArray(json)) {
-    json.forEach(row => {
-      labels.push(row.Date)
-      for(let i=0; i<_maxSeria; i++){
-        const _arr = arrSeries[i];
-        _arr.push(row[_arr.seriaName])
-      }
-    })
-  }
+  json.forEach(row => {
+    labels.push(row.Date)
+    for(let i=0; i<_maxSeria; i++){
+      const _arr = arrSeries[i];
+      _arr.push(row[_arr.seriaName])
+    }
+  })
 
   return {
     labels,
@@ -66,10 +65,10 @@ const fStatCounter = ({
     caption,
     sourceLink
   } = option
-  , { labels , data } = _fnTransform(json.data)
-  , _labels = labels.filter(strDate => Boolean(strDate))
-  , fromDate = _labels[0]
-  , toDate = _labels[_labels.length - 1];
+  , _data = _filterEmptyDate(json)
+  , { labels , data } = _fnTransform(_data)
+  , fromDate = labels[0]
+  , toDate = labels[labels.length - 1];
 
   return factory.createElement(StatCounterShare, {
      key,

@@ -18,6 +18,12 @@ var _StatCounterShare2 = _interopRequireDefault(_StatCounterShare);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var _filterEmptyDate = function _filterEmptyDate(json) {
+  return json.data.filter(function (item) {
+    return Boolean(item.Date);
+  });
+};
+
 var _crArrFromObj = function _crArrFromObj(obj) {
   var _arr = [];
   for (var propName in obj) {
@@ -31,12 +37,10 @@ var _crArrFromObj = function _crArrFromObj(obj) {
 
 var _crTopN = function _crTopN(arr) {
   var top = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 5;
-  var _recent = arr.filter(function (item) {
-    return Boolean(item.Date);
-  }).length - 1,
-      _arr$_recent = arr[_recent],
-      Date = _arr$_recent.Date,
-      rest = (0, _objectWithoutProperties3.default)(_arr$_recent, ['Date']),
+
+  var _arr2 = arr[arr.length - 1],
+      Date = _arr2.Date,
+      rest = (0, _objectWithoutProperties3.default)(_arr2, ['Date']),
       _arrRecent = _crArrFromObj(rest);
 
   _arrRecent.sort(function (a, b) {
@@ -63,15 +67,13 @@ var _fnTransform = function _fnTransform(json) {
     return _arr;
   });
 
-  if (Array.isArray(json)) {
-    json.forEach(function (row) {
-      labels.push(row.Date);
-      for (var i = 0; i < _maxSeria; i++) {
-        var _arr = arrSeries[i];
-        _arr.push(row[_arr.seriaName]);
-      }
-    });
-  }
+  json.forEach(function (row) {
+    labels.push(row.Date);
+    for (var i = 0; i < _maxSeria; i++) {
+      var _arr = arrSeries[i];
+      _arr.push(row[_arr.seriaName]);
+    }
+  });
 
   return {
     labels: labels,
@@ -94,14 +96,12 @@ var fStatCounter = function fStatCounter(_ref) {
       key = option.key,
       caption = option.caption,
       sourceLink = option.sourceLink,
-      _fnTransform2 = _fnTransform(json.data),
+      _data = _filterEmptyDate(json),
+      _fnTransform2 = _fnTransform(_data),
       labels = _fnTransform2.labels,
       data = _fnTransform2.data,
-      _labels = labels.filter(function (strDate) {
-    return Boolean(strDate);
-  }),
-      fromDate = _labels[0],
-      toDate = _labels[_labels.length - 1];
+      fromDate = labels[0],
+      toDate = labels[labels.length - 1];
 
   return factory.createElement(_StatCounterShare2.default, (0, _extends3.default)({
     key: key,

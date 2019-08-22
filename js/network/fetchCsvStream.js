@@ -18,10 +18,12 @@ var fetchCsvStream = function fetchCsvStream(_ref) {
   var uri = _ref.uri,
       option = _ref.option,
       onFetch = _ref.onFetch,
+      onCheckResponse = _ref.onCheckResponse,
       onCompleted = _ref.onCompleted,
       onCatch = _ref.onCatch,
       onFailed = _ref.onFailed,
       _crErr = _ref._crErr,
+      _crErrResp = _ref._crErrResp,
       _nowTime = _ref._nowTime,
       _doneOk = _ref._doneOk,
       _doneFailure = _ref._doneFailure;
@@ -36,8 +38,12 @@ var fetchCsvStream = function fetchCsvStream(_ref) {
     var _str = String.fromCharCode.apply(String, (0, _toConsumableArray3.default)(result.value));
     return _papaparse2.default.parse(_str, { header: true });
   }).then(function (json) {
-    onFetch({ json: json, option: option, onCompleted: onCompleted });
-    _doneOk(_nowTime);
+    if (onCheckResponse(json)) {
+      onFetch({ json: json, option: option, onCompleted: onCompleted });
+      _doneOk(_nowTime);
+    } else {
+      throw _crErrResp();
+    }
   }).catch(function (error) {
     onCatch({ error: error, option: option, onFailed: onFailed });
     _doneFailure(_nowTime);

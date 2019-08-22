@@ -22,7 +22,7 @@ _assign(Chart.defaults.global.tooltips, {
 	titleFontSize: 16,
 	bodyFontColor: '#80c040',
 	bodyFontSize: 16
-})
+});
 
 const _objectWithoutProperties = (obj, keys) => {
 	const target = {};
@@ -60,7 +60,16 @@ class ChartComponent extends Component {
 			type: 'doughnut',
 			height: 150,
 			width: 300,
-			redraw: false
+			redraw: false,
+			options: {
+				tooltips: {
+					callbacks: {
+						labelTextColor: function(tooltipItem, chartInst) {
+							 return chartInst.data.datasets[tooltipItem.datasetIndex].borderColor;
+						}
+					}
+				}
+			}
 	}
 
 

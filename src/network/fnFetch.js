@@ -20,7 +20,12 @@ const CLICK_TIME_INTERVAL = 300
 
 const _crErr = ({ status, statusText }={}) => ({
   errCaption: 'Request Error',
-  message : `${status} : ${statusText}`
+  message : `${status}: ${statusText}`
+});
+
+const _crErrResp = () => ({
+  errCaption: 'Response Error',
+  message : `Response format is incorrect`
 });
 
 let _recentUri = DONE
@@ -68,7 +73,7 @@ export default (config) => {
 
      const _configFetch = {
        ...config,
-       _crErr,
+       _crErr, _crErrResp,
        _nowTime, _doneOk, _doneFailure
      };
 

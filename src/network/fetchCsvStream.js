@@ -3,9 +3,9 @@ import csv from 'papaparse';
 
 const fetchCsvStream = ({
   uri,
-  option, onFetch, onCompleted,
+  option, onFetch, onCheckResponse, onCompleted,
   onCatch, onFailed,
-  _crErr,
+  _crErr, _crErrResp,
   _nowTime, _doneOk, _doneFailure
 }) => fetch(uri)
     .then(response => {
@@ -21,8 +21,12 @@ const fetchCsvStream = ({
       return csv.parse(_str, { header: true });
     })
     .then(json => {
-      onFetch({ json, option, onCompleted });
-      _doneOk(_nowTime)
+      if (onCheckResponse(json)) {
+        onFetch({ json, option, onCompleted });
+        _doneOk(_nowTime)
+      } else {
+        throw _crErrResp();
+      }
     })
     .catch(error => {
       onCatch({ error, option, onFailed })

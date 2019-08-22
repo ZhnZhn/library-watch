@@ -41,7 +41,14 @@ var _crErr = function _crErr() {
 
   return {
     errCaption: 'Request Error',
-    message: status + ' : ' + statusText
+    message: status + ': ' + statusText
+  };
+};
+
+var _crErrResp = function _crErrResp() {
+  return {
+    errCaption: 'Response Error',
+    message: 'Response format is incorrect'
   };
 };
 
@@ -90,7 +97,7 @@ exports.default = function (config) {
   } else {
 
     var _configFetch = (0, _extends3.default)({}, config, {
-      _crErr: _crErr,
+      _crErr: _crErr, _crErrResp: _crErrResp,
       _nowTime: _nowTime, _doneOk: _doneOk, _doneFailure: _doneFailure
     });
 

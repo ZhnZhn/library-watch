@@ -62,7 +62,7 @@ var StatCounterApi = {
   },
 
   checkResponse: function checkResponse(json, option) {
-    return _isArr(json);
+    return json && _isArr(json.data);
   }
 };
 
