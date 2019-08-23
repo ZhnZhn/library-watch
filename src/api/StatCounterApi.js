@@ -4,7 +4,9 @@ const C = {
   WIN_DESKTOP: 'os-version-market-share/windows/desktop/',
   MAC_DESKTOP: 'os-version-market-share/macos/desktop',
   ANDROID_MOBILE: 'os-version-market-share/android/mobile-tablet',
-  IOS_MOBILE: 'os-version-market-share/ios/mobile-tablet'
+  IOS_MOBILE: 'os-version-market-share/ios/mobile-tablet',
+
+
 };
 
 const HM_URL = {
@@ -33,6 +35,10 @@ const HM_URL = {
     csv: `${C.URL}${C.IOS_MOBILE}chart.php?device=Mobile%-49%26%20Tablet&device_hidden=mobile%2Btablet&multi-device=true&statType_hidden=ios_version&region_hidden=US&granularity=monthly&statType=iOS%20Version&region=ww&fromInt=201807&toInt=201907&fromMonthYear=2018-07&toMonthYear=2019-07&csv=1`,
     link: `${C.URL}${C.IOS_MOBILE}worlwide`
     //'https://gs.statcounter.com/os-version-market-share/ios/mobile-tablet/chart.php?device=Mobile%-49%26%20Tablet&device_hidden=mobile%2Btablet&multi-device=true&statType_hidden=ios_version&region_hidden=US&granularity=monthly&statType=iOS%20Version&region=ww&fromInt=201807&toInt=201907&fromMonthYear=2018-07&toMonthYear=2019-07&csv=1'
+  },
+  "browser": {
+    csv: `${C.URL}chart.php?device=Desktop%20%26%20Mobile%20%26%20Tablet%20%26%20Console&device_hidden=desktop%2Bmobile%2Btablet%2Bconsole&multi-device=true&statType_hidden=browser&region_hidden=ww&granularity=monthly&statType=Browser&region=Worldwide&fromInt=201807&toInt=201907&fromMonthYear=2018-07&toMonthYear=2019-07&csv=1`,
+    linl: `${C.URL}browser-market-share`
   }
 };
 

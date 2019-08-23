@@ -7,6 +7,8 @@ const IGNORED_PROPERTIES = [
 	'id', 'width', 'height', 'onElementsClick'
 ];
 
+const _configMerge = Chart.helpers.configMerge;
+
 const _isFn = fn => typeof fn === 'function';
 const _assign = Object.assign;
 
@@ -24,16 +26,30 @@ _assign(Chart.defaults.global.tooltips, {
 	bodyFontSize: 16
 });
 
-const _objectWithoutProperties = (obj, keys) => {
+_assign(Chart.defaults.global.legend, {
+	display: true,
+	position: 'bottom'
+})
+
+const DF_OPTIONS = {
+	tooltips: {
+		callbacks: {
+			labelTextColor: function(tooltipItem, chartInst) {
+				 return chartInst.data.datasets[tooltipItem.datasetIndex].borderColor;
+			}
+		}
+	}
+};
+
+const _crObjWithoutProperties = (obj, keys) => {
 	const target = {};
-	let i;
-	for (i in obj) {
-		if (keys.indexOf(i) >= 0) continue;
-		if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-		target[i] = obj[i];
+	for (let propName in obj) {
+		if (keys.indexOf(propName) >= 0) continue;
+		if (!Object.prototype.hasOwnProperty.call(obj, propName)) continue;
+		target[propName] = obj[propName];
 	}
 	return target;
-}
+};
 
 class ChartComponent extends Component {
 
@@ -49,27 +65,15 @@ class ChartComponent extends Component {
 		redraw: PropTypes.bool,
 		type: PropTypes.oneOf(['doughnut', 'pie', 'line', 'bar', 'horizontalBar', 'radar', 'polarArea']),
 		width: PropTypes.number
+		legendOptions: PropTypes.object
 	},
 	*/
 
 	static defaultProps = {
-			legend: {
-				display: true,
-				position: 'bottom'
-			},
 			type: 'doughnut',
 			height: 150,
 			width: 300,
 			redraw: false,
-			options: {
-				tooltips: {
-					callbacks: {
-						labelTextColor: function(tooltipItem, chartInst) {
-							 return chartInst.data.datasets[tooltipItem.datasetIndex].borderColor;
-						}
-					}
-				}
-			}
 	}
 
 
@@ -89,8 +93,8 @@ class ChartComponent extends Component {
 
 
 	shouldComponentUpdate(nextProps, nextState) {
-		const compareNext = _objectWithoutProperties(nextProps, IGNORED_PROPERTIES)
-		, compareNow = _objectWithoutProperties(this.props, IGNORED_PROPERTIES);
+		const compareNext = _crObjWithoutProperties(nextProps, IGNORED_PROPERTIES)
+		, compareNow = _crObjWithoutProperties(this.props, IGNORED_PROPERTIES);
 		return !deepEqual(compareNext, compareNow, { strict: true });
 	}
 
@@ -99,12 +103,12 @@ class ChartComponent extends Component {
 	}
 
 	updateChart = () => {
-		const {data, options} = this.props;
+		const { data, options } = this.props;
 
 		if (!this.chart_instance) return;
 
 		if (options) {
-			this.chart_instance.options = Chart.helpers.configMerge(this.chart_instance.options, options);
+			this.chart_instance.options = _configMerge(this.chart_instance.options, options);
 		}
 
 		this.chart_instance.config.data = {
@@ -116,11 +120,12 @@ class ChartComponent extends Component {
 	}
 
 	renderChart = () => {
-		const {data, options, type} = this.props;
+		const { data, options, type } = this.props
+		, _options = _configMerge(DF_OPTIONS, options);
 		this.chart_instance = new Chart(this.rootNode, {
 			type,
 			data,
-			options
+			options: _options
 		});
 	}
 

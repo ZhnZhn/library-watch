@@ -54,22 +54,18 @@ const S = {
     marginLeft: 10
   },
 
-  ML_32: {
-    marginLeft: 32
-  },
-  MT_16: {
-    marginTop: 16
-  },
-  MB_16: {
-    marginBottom: 16
+
+  CHART_WRAPER: {
+    paddingTop: 12
   },
 
   BUTTON_DOWN_UP: {
     paddingTop: 4,
     paddingBottom: 4
   },
-  LINK: {
-    marginLeft: 32
+  SOURCE_LINK: {
+    marginTop: 4,
+    marginLeft: 16
   }
 };
 
@@ -115,6 +111,8 @@ class NpmRecentDownloads extends Component {
       isShow, isMore,
     } = this.state
     , _lineChartConfig = Chart.fLineConfigs({ labels, data })
+    , _numSeries = _lineChartConfig.datasets.length
+    , _heigh = 150 + Math.floor(_numSeries / 5) * 16
 
     return (
       <div style={S.ROOT}>
@@ -146,11 +144,12 @@ class NpmRecentDownloads extends Component {
             </span>
           </button>
         </Caption>
-        <A.ShowHide isShow={isShow}>
+        <A.ShowHide isShow={isShow} style={S.CHART_WRAPER}>
           <LineChart
              data={_lineChartConfig}
+             height={_heigh}
           />
-          <a className={CL.SOURCE_LINK} style={S.LINK} href={sourceLink} target="_blank">
+          <a className={CL.SOURCE_LINK} style={S.SOURCE_LINK} href={sourceLink} target="_blank">
               StatCounter Chart
           </a>
         </A.ShowHide>

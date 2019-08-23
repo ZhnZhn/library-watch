@@ -49,7 +49,7 @@ var crMenuMore = _helperFns2.default.crMenuMore,
     crButtons = _helperFns2.default.crButtons;
 
 
-var OS_OPTIONS = [{ caption: "OS Desktop, Mobile, Tablet, Console", value: "os" }, { caption: "Windows Desktop", value: "win-desktop" }, { caption: "macOS Desktop", value: "mac-desktop" }, { caption: "Android Mobile, Tablet", value: "android-mobile" }, { caption: "IOS Mobile, Tablet", value: "ios-mobile" }];
+var OS_OPTIONS = [{ caption: "OS Desktop, Mobile, Tablet, Console", value: "os" }, { caption: "Windows Desktop", value: "win-desktop" }, { caption: "macOS Desktop", value: "mac-desktop" }, { caption: "Android Mobile, Tablet", value: "android-mobile" }, { caption: "IOS Mobile, Tablet", value: "ios-mobile" }, { caption: "Browser: All Platforms", value: "browser" }];
 
 var _initFromDate = _DateUtils2.default.getFromDate(1),
     _initToDate = _DateUtils2.default.getToDate(),
@@ -196,7 +196,7 @@ var DialogType3 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2
         }),
         _react2.default.createElement(_DialogCell2.default.RowInputSelect, {
           isShowLabel: isShowLabels,
-          caption: 'OS Market',
+          caption: 'Item',
           placeholder: OS_OPTIONS[0].caption,
           options: OS_OPTIONS,
           onSelect: this._handleSelectSortBy

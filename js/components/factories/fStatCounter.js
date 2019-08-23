@@ -46,8 +46,10 @@ var _crTopN = function _crTopN(arr) {
   _arrRecent.sort(function (a, b) {
     return b.value - a.value;
   });
-  var _arrTop = [],
-      _toIndex = Math.min(top, _arrRecent.length);
+  var _arrTop = []
+  //, _toIndex = Math.min(top, _arrRecent.length);
+  ,
+      _toIndex = _arrRecent.length;
   for (var i = 0; i < _toIndex; i++) {
     var caption = _arrRecent[i].caption;
     if (caption) {

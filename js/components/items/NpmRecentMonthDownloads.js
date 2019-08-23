@@ -122,6 +122,10 @@ var S = {
     marginBottom: 16
   },
 
+  CHART_WRAPER: {
+    paddingTop: 4
+  },
+
   SPAN_NODEICO: {
     display: 'block',
     fontWeight: 'bold',
@@ -134,6 +138,12 @@ var S = {
     paddingBottom: 4
   }
 
+};
+
+var CHART_OPTIONS = {
+  legend: {
+    position: 'top'
+  }
 };
 
 var _isFn = function _isFn(fn) {
@@ -336,9 +346,10 @@ var NpmRecentDownloads = function (_Component) {
         ),
         _react2.default.createElement(
           _A2.default.ShowHide,
-          { isShow: isShow },
+          { isShow: isShow, style: S.CHART_WRAPER },
           _react2.default.createElement(_LineChart2.default, {
-            data: _lineChartConfig
+            data: _lineChartConfig,
+            options: CHART_OPTIONS
           }),
           _react2.default.createElement(
             _A2.default.ShowHide,

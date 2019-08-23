@@ -96,22 +96,17 @@ var S = {
     marginLeft: 10
   },
 
-  ML_32: {
-    marginLeft: 32
-  },
-  MT_16: {
-    marginTop: 16
-  },
-  MB_16: {
-    marginBottom: 16
+  CHART_WRAPER: {
+    paddingTop: 12
   },
 
   BUTTON_DOWN_UP: {
     paddingTop: 4,
     paddingBottom: 4
   },
-  LINK: {
-    marginLeft: 32
+  SOURCE_LINK: {
+    marginTop: 4,
+    marginLeft: 16
   }
 };
 
@@ -169,7 +164,9 @@ var NpmRecentDownloads = function (_Component) {
           _state = this.state,
           isShow = _state.isShow,
           isMore = _state.isMore,
-          _lineChartConfig = _Chart2.default.fLineConfigs({ labels: labels, data: data });
+          _lineChartConfig = _Chart2.default.fLineConfigs({ labels: labels, data: data }),
+          _numSeries = _lineChartConfig.datasets.length,
+          _heigh = 150 + Math.floor(_numSeries / 5) * 16;
 
       return _react2.default.createElement(
         'div',
@@ -214,13 +211,14 @@ var NpmRecentDownloads = function (_Component) {
         ),
         _react2.default.createElement(
           _A2.default.ShowHide,
-          { isShow: isShow },
+          { isShow: isShow, style: S.CHART_WRAPER },
           _react2.default.createElement(_LineChart2.default, {
-            data: _lineChartConfig
+            data: _lineChartConfig,
+            height: _heigh
           }),
           _react2.default.createElement(
             'a',
-            { className: _CL2.default.SOURCE_LINK, style: S.LINK, href: sourceLink, target: '_blank' },
+            { className: _CL2.default.SOURCE_LINK, style: S.SOURCE_LINK, href: sourceLink, target: '_blank' },
             'StatCounter Chart'
           )
         )

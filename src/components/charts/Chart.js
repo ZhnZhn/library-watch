@@ -11,10 +11,17 @@ const COLORS = [
 const _crBgColor = str => `rgba(${str}, 0.4)`;
 const _crBorderColor = str => `rgba(${str}, 1)`;
 
-const _crDataset = ( { label, data, strColor=COLORS[0]}={} ) => {
+const _crDataset = (
+  {
+    label, data,
+    strColor=COLORS[0],
+    hidden=false
+  }={}
+) => {
   const _label = label || data.seriaName || 'Downloads'
   , _borderColor = _crBorderColor(strColor);
   return {
+  hidden,  
   label: _label,
   fill: false,
   lineTension: 0.1,
@@ -52,13 +59,14 @@ const Chart = {
     };
   },
 
-  fLineConfigs({ labels=['1', '2'], data=[[0, 0]] }) {
+  fLineConfigs({ labels=['1', '2'], data=[[0, 0]], numVisible=5 }) {
     const datasets = []
     , numColors = COLORS.length;
     data.forEach((arr, index) => {
       datasets.push(_crDataset({
           data: arr,
-          strColor: COLORS[index % numColors]
+          strColor: COLORS[index % numColors],
+          hidden: index >= numVisible ? true : false
       }))
     })
     return {

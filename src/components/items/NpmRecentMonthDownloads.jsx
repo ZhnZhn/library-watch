@@ -70,6 +70,10 @@ const S = {
     marginBottom: 16
   },
 
+  CHART_WRAPER: {
+    paddingTop: 4
+  },
+
   SPAN_NODEICO: {
     display: 'block',
     fontWeight: 'bold' ,
@@ -82,6 +86,12 @@ const S = {
     paddingBottom: 4
   }
 
+};
+
+const CHART_OPTIONS = {
+  legend: {
+    position: 'top'
+  }
 };
 
 
@@ -245,12 +255,12 @@ class NpmRecentDownloads extends Component {
           </button>
           { _isFn(onWatchItem) && this._renderButtonWatch() }
         </Caption>
-        <A.ShowHide isShow={isShow}>
+        <A.ShowHide isShow={isShow} style={S.CHART_WRAPER}>
           <LineChart
              data={_lineChartConfig}
+             options={CHART_OPTIONS}
           />
-
-          <A.ShowHide isShow={isButtons} >
+          <A.ShowHide isShow={isButtons}>
            <div style={S.ML_32}>
              <A.ButtonDownUp
                style={S.BUTTON_DOWN_UP}

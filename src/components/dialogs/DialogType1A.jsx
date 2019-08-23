@@ -14,7 +14,8 @@ const OS_OPTIONS = [
   { caption: "Windows Desktop", value: "win-desktop"},
   { caption: "macOS Desktop", value: "mac-desktop"},
   { caption: "Android Mobile, Tablet", value: "android-mobile" },
-  { caption: "IOS Mobile, Tablet", value: "ios-mobile" }
+  { caption: "IOS Mobile, Tablet", value: "ios-mobile" },
+  { caption: "Browser: All Platforms", value: "browser" }
 ];
 
 const _initFromDate = DateUtils.getFromDate(1)
@@ -148,7 +149,7 @@ class DialogType3 extends Component {
          />
         <D.RowInputSelect
            isShowLabel={isShowLabels}
-           caption="OS Market"
+           caption="Item"
            placeholder={OS_OPTIONS[0].caption}
            options={OS_OPTIONS}
            onSelect={this._handleSelectSortBy}

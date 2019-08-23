@@ -44,6 +44,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var IGNORED_PROPERTIES = ['id', 'width', 'height', 'onElementsClick'];
 
+var _configMerge = _chart2.default.helpers.configMerge;
+
 var _isFn = function _isFn(fn) {
 	return typeof fn === 'function';
 };
@@ -62,13 +64,27 @@ _assign(_chart2.default.defaults.global.tooltips, {
 	bodyFontSize: 16
 });
 
-var _objectWithoutProperties = function _objectWithoutProperties(obj, keys) {
+_assign(_chart2.default.defaults.global.legend, {
+	display: true,
+	position: 'bottom'
+});
+
+var DF_OPTIONS = {
+	tooltips: {
+		callbacks: {
+			labelTextColor: function labelTextColor(tooltipItem, chartInst) {
+				return chartInst.data.datasets[tooltipItem.datasetIndex].borderColor;
+			}
+		}
+	}
+};
+
+var _crObjWithoutProperties = function _crObjWithoutProperties(obj, keys) {
 	var target = {};
-	var i = void 0;
-	for (i in obj) {
-		if (keys.indexOf(i) >= 0) continue;
-		if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-		target[i] = obj[i];
+	for (var propName in obj) {
+		if (keys.indexOf(propName) >= 0) continue;
+		if (!Object.prototype.hasOwnProperty.call(obj, propName)) continue;
+		target[propName] = obj[propName];
 	}
 	return target;
 };
@@ -96,7 +112,7 @@ var ChartComponent = (_temp2 = _class = function (_Component) {
 			if (!_this.chart_instance) return;
 
 			if (options) {
-				_this.chart_instance.options = _chart2.default.helpers.configMerge(_this.chart_instance.options, options);
+				_this.chart_instance.options = _configMerge(_this.chart_instance.options, options);
 			}
 
 			_this.chart_instance.config.data = (0, _extends3.default)({}, _this.chart_instance.config.data, data);
@@ -106,12 +122,13 @@ var ChartComponent = (_temp2 = _class = function (_Component) {
 			var _this$props2 = _this.props,
 			    data = _this$props2.data,
 			    options = _this$props2.options,
-			    type = _this$props2.type;
+			    type = _this$props2.type,
+			    _options = _configMerge(DF_OPTIONS, options);
 
 			_this.chart_instance = new _chart2.default(_this.rootNode, {
 				type: type,
 				data: data,
-				options: options
+				options: _options
 			});
 		}, _this.handleOnClick = function (evt) {
 			var elems = _this.chart_instance.getElementsAtEvent(evt);
@@ -137,6 +154,7 @@ var ChartComponent = (_temp2 = _class = function (_Component) {
  redraw: PropTypes.bool,
  type: PropTypes.oneOf(['doughnut', 'pie', 'line', 'bar', 'horizontalBar', 'radar', 'polarArea']),
  width: PropTypes.number
+ legendOptions: PropTypes.object
  },
  */
 
@@ -159,8 +177,8 @@ var ChartComponent = (_temp2 = _class = function (_Component) {
 	}, {
 		key: 'shouldComponentUpdate',
 		value: function shouldComponentUpdate(nextProps, nextState) {
-			var compareNext = _objectWithoutProperties(nextProps, IGNORED_PROPERTIES),
-			    compareNow = _objectWithoutProperties(this.props, IGNORED_PROPERTIES);
+			var compareNext = _crObjWithoutProperties(nextProps, IGNORED_PROPERTIES),
+			    compareNow = _crObjWithoutProperties(this.props, IGNORED_PROPERTIES);
 			return !(0, _deepEqual2.default)(compareNext, compareNow, { strict: true });
 		}
 	}, {
@@ -187,23 +205,10 @@ var ChartComponent = (_temp2 = _class = function (_Component) {
 	}]);
 	return ChartComponent;
 }(_react.Component), _class.defaultProps = {
-	legend: {
-		display: true,
-		position: 'bottom'
-	},
 	type: 'doughnut',
 	height: 150,
 	width: 300,
-	redraw: false,
-	options: {
-		tooltips: {
-			callbacks: {
-				labelTextColor: function labelTextColor(tooltipItem, chartInst) {
-					return chartInst.data.datasets[tooltipItem.datasetIndex].borderColor;
-				}
-			}
-		}
-	}
+	redraw: false
 }, _temp2);
 exports.default = ChartComponent;
 //# sourceMappingURL=ChartComponent.js.map

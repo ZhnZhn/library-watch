@@ -20,7 +20,8 @@ const _crTopN = (arr, top=5) => {
   , _arrRecent = _crArrFromObj(rest);
   _arrRecent.sort((a, b) => b.value - a.value)
   const _arrTop = []
-  , _toIndex = Math.min(top, _arrRecent.length);
+  //, _toIndex = Math.min(top, _arrRecent.length);
+  , _toIndex = _arrRecent.length;
   for(let i=0; i<_toIndex; i++){
     const caption = _arrRecent[i].caption;
     if (caption) {

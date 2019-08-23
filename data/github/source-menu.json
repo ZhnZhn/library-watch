@@ -165,9 +165,9 @@
 
   "LW_ST_OSVERSION" : {
     "type" : "LW_ST_OSVERSION",
-    "menuTitle" : "OS Market Share, Top5",
-    "dialogCaption" : "OS Market Share, Top5",
-    "chartContainerCaption" : "StatCounter: OS Version Market Share",
+    "menuTitle" : "Market Share",
+    "dialogCaption" : "Market Share",
+    "chartContainerCaption" : "StatCounter: Market Share",
     "dialogType" : "DialogType1A",
     "dialogProps" : {
       "oneTitle" : "Tag",

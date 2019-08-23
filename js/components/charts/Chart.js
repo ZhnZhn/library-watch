@@ -20,11 +20,14 @@ var _crDataset = function _crDataset() {
       label = _ref.label,
       data = _ref.data,
       _ref$strColor = _ref.strColor,
-      strColor = _ref$strColor === undefined ? COLORS[0] : _ref$strColor;
+      strColor = _ref$strColor === undefined ? COLORS[0] : _ref$strColor,
+      _ref$hidden = _ref.hidden,
+      hidden = _ref$hidden === undefined ? false : _ref$hidden;
 
   var _label = label || data.seriaName || 'Downloads',
       _borderColor = _crBorderColor(strColor);
   return {
+    hidden: hidden,
     label: _label,
     fill: false,
     lineTension: 0.1,
@@ -67,14 +70,17 @@ var Chart = {
     var _ref3$labels = _ref3.labels,
         labels = _ref3$labels === undefined ? ['1', '2'] : _ref3$labels,
         _ref3$data = _ref3.data,
-        data = _ref3$data === undefined ? [[0, 0]] : _ref3$data;
+        data = _ref3$data === undefined ? [[0, 0]] : _ref3$data,
+        _ref3$numVisible = _ref3.numVisible,
+        numVisible = _ref3$numVisible === undefined ? 5 : _ref3$numVisible;
 
     var datasets = [],
         numColors = COLORS.length;
     data.forEach(function (arr, index) {
       datasets.push(_crDataset({
         data: arr,
-        strColor: COLORS[index % numColors]
+        strColor: COLORS[index % numColors],
+        hidden: index >= numVisible ? true : false
       }));
     });
     return {
