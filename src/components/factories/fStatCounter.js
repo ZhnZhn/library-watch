@@ -20,7 +20,6 @@ const _crTopN = (arr, top=5) => {
   , _arrRecent = _crArrFromObj(rest);
   _arrRecent.sort((a, b) => b.value - a.value)
   const _arrTop = []
-  //, _toIndex = Math.min(top, _arrRecent.length);
   , _toIndex = _arrRecent.length;
   for(let i=0; i<_toIndex; i++){
     const caption = _arrRecent[i].caption;
@@ -55,6 +54,11 @@ const _fnTransform = (json) => {
   };
 };
 
+const _crCaption = ({
+  caption, region = {}
+} = {}
+) => `${region.caption || ''}: ${caption}`;
+
 const fStatCounter = ({
   factory, option, json,
   parentProps,
@@ -63,17 +67,18 @@ const fStatCounter = ({
 }) => {
   const {
     requestType, chartType, browserType, key,
-    caption,
     sourceLink
   } = option
   , _data = _filterEmptyDate(json)
   , { labels , data } = _fnTransform(_data)
   , fromDate = labels[0]
-  , toDate = labels[labels.length - 1];
+  , toDate = labels[labels.length - 1]
+  , _caption = _crCaption(option);
+
 
   return factory.createElement(StatCounterShare, {
      key,
-     caption,
+     caption: _caption,
      requestType,
      fromDate,
      toDate,

@@ -46,9 +46,7 @@ var _crTopN = function _crTopN(arr) {
   _arrRecent.sort(function (a, b) {
     return b.value - a.value;
   });
-  var _arrTop = []
-  //, _toIndex = Math.min(top, _arrRecent.length);
-  ,
+  var _arrTop = [],
       _toIndex = _arrRecent.length;
   for (var i = 0; i < _toIndex; i++) {
     var caption = _arrRecent[i].caption;
@@ -83,31 +81,40 @@ var _fnTransform = function _fnTransform(json) {
   };
 };
 
-var fStatCounter = function fStatCounter(_ref) {
-  var factory = _ref.factory,
-      option = _ref.option,
-      json = _ref.json,
-      parentProps = _ref.parentProps,
-      onMoveToTop = _ref.onMoveToTop,
-      onCloseItem = _ref.onCloseItem,
-      onWatchItem = _ref.onWatchItem;
+var _crCaption = function _crCaption() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      caption = _ref.caption,
+      _ref$region = _ref.region,
+      region = _ref$region === undefined ? {} : _ref$region;
+
+  return (region.caption || '') + ': ' + caption;
+};
+
+var fStatCounter = function fStatCounter(_ref2) {
+  var factory = _ref2.factory,
+      option = _ref2.option,
+      json = _ref2.json,
+      parentProps = _ref2.parentProps,
+      onMoveToTop = _ref2.onMoveToTop,
+      onCloseItem = _ref2.onCloseItem,
+      onWatchItem = _ref2.onWatchItem;
 
   var requestType = option.requestType,
       chartType = option.chartType,
       browserType = option.browserType,
       key = option.key,
-      caption = option.caption,
       sourceLink = option.sourceLink,
       _data = _filterEmptyDate(json),
       _fnTransform2 = _fnTransform(_data),
       labels = _fnTransform2.labels,
       data = _fnTransform2.data,
       fromDate = labels[0],
-      toDate = labels[labels.length - 1];
+      toDate = labels[labels.length - 1],
+      _caption = _crCaption(option);
 
   return factory.createElement(_StatCounterShare2.default, (0, _extends3.default)({
     key: key,
-    caption: caption,
+    caption: _caption,
     requestType: requestType,
     fromDate: fromDate,
     toDate: toDate,

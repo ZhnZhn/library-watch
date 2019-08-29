@@ -49,7 +49,8 @@ var crMenuMore = _helperFns2.default.crMenuMore,
     crButtons = _helperFns2.default.crButtons;
 
 
-var OS_OPTIONS = [{ caption: "OS Desktop, Mobile, Tablet, Console", value: "os" }, { caption: "Windows Desktop", value: "win-desktop" }, { caption: "macOS Desktop", value: "mac-desktop" }, { caption: "Android Mobile, Tablet", value: "android-mobile" }, { caption: "IOS Mobile, Tablet", value: "ios-mobile" }, { caption: "Browser: All Platforms", value: "browser" }];
+var MARKET_SHARES = [{ caption: "OS Desktop, Mobile, Tablet, Console", value: "os" }, { caption: "Windows Desktop", value: "win-desktop" }, { caption: "macOS Desktop", value: "mac-desktop" }, { caption: "Android Mobile, Tablet", value: "android-mobile" }, { caption: "IOS Mobile, Tablet", value: "ios-mobile" }, { caption: "Browser: All Platforms", value: "browser" }];
+var REGIONS = [{ caption: "Worldwide", value: "worlwide", v2: "ww" }, { caption: "Africa", value: "africa", v2: "af" }, { caption: "Asia", value: "asia", v2: "as" }, { caption: "Antarctica", value: "antarctica", v2: "an" }, { caption: "Australia", value: "australia", v2: "au" }, { caption: "Europe", value: "europe", v2: "eu" }, { caption: "North America", value: "north-america", v2: "na" }, { caption: "South America", value: "south-america", v2: "sa" }, { caption: "Oceania", value: "oceania", v2: "oc" }];
 
 var _initFromDate = _DateUtils2.default.getFromDate(1),
     _initToDate = _DateUtils2.default.getToDate(),
@@ -75,8 +76,12 @@ var DialogType3 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (DialogType3.__proto__ || Object.getPrototypeOf(DialogType3)).call(this, props));
 
-    _this._handleSelectSortBy = function (item) {
-      _this.sortByItem = item;
+    _this._hSelectItem = function (item) {
+      _this._item = item;
+    };
+
+    _this._hSelectRegion = function (item) {
+      _this._region = item;
     };
 
     _this._handleDefault = function () {
@@ -112,15 +117,16 @@ var DialogType3 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2
       //, _fromDate = DateUtils.toUTCMillis(fromDate)/1000
       //, _toDate = DateUtils.toUTCMillis(toDate)/1000
       var requestType = _this.props.requestType,
-          _this$sortByItem = _this.sortByItem,
-          value = _this$sortByItem.value,
-          caption = _this$sortByItem.caption;
+          _this$_item = _this._item,
+          value = _this$_item.value,
+          caption = _this$_item.caption;
 
 
       return {
         requestType: requestType,
         value: value,
-        caption: caption
+        caption: caption,
+        region: _this._region
         //fromdate : _fromDate,
         //todate : _toDate
       };
@@ -135,7 +141,8 @@ var DialogType3 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2
     };
 
     _this.stock = null;
-    _this.sortByItem = OS_OPTIONS[0];
+    _this._item = MARKET_SHARES[0];
+    _this._region = REGIONS[0];
     _this.toolbarButtons = _this._createType2WithToolbar(props, {
       hasDate: false
     });
@@ -197,9 +204,16 @@ var DialogType3 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2
         _react2.default.createElement(_DialogCell2.default.RowInputSelect, {
           isShowLabel: isShowLabels,
           caption: 'Item',
-          placeholder: OS_OPTIONS[0].caption,
-          options: OS_OPTIONS,
-          onSelect: this._handleSelectSortBy
+          placeholder: MARKET_SHARES[0].caption,
+          options: MARKET_SHARES,
+          onSelect: this._hSelectItem
+        }),
+        _react2.default.createElement(_DialogCell2.default.RowInputSelect, {
+          isShowLabel: isShowLabels,
+          caption: 'Region',
+          placeholder: REGIONS[0].caption,
+          options: REGIONS,
+          onSelect: this._hSelectRegion
         }),
         _react2.default.createElement(
           _DialogCell2.default.ShowHide,

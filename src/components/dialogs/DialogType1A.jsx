@@ -9,13 +9,24 @@ import helperFns from './helperFns/helperFns'
 
 const { crMenuMore, crButtons } = helperFns;
 
-const OS_OPTIONS = [
+const MARKET_SHARES = [
   { caption: "OS Desktop, Mobile, Tablet, Console", value: "os"},
   { caption: "Windows Desktop", value: "win-desktop"},
   { caption: "macOS Desktop", value: "mac-desktop"},
   { caption: "Android Mobile, Tablet", value: "android-mobile" },
   { caption: "IOS Mobile, Tablet", value: "ios-mobile" },
   { caption: "Browser: All Platforms", value: "browser" }
+];
+const REGIONS = [
+  { caption: "Worldwide", value: "worlwide", v2: "ww"  },
+  { caption: "Africa", value: "africa", v2: "af" },
+  { caption: "Asia", value: "asia", v2: "as" },
+  { caption: "Antarctica", value: "antarctica", v2: "an" },
+  { caption: "Australia", value: "australia", v2: "au" },
+  { caption: "Europe", value: "europe", v2: "eu" },
+  { caption: "North America", value: "north-america", v2: "na" },
+  { caption: "South America", value: "south-america", v2: "sa" },
+  { caption: "Oceania", value: "oceania", v2: "oc" }
 ];
 
 const _initFromDate = DateUtils.getFromDate(1)
@@ -40,7 +51,8 @@ class DialogType3 extends Component {
   constructor(props){
     super(props)
     this.stock = null
-    this.sortByItem = OS_OPTIONS[0];
+    this._item = MARKET_SHARES[0];
+    this._region = REGIONS[0];
     this.toolbarButtons = this._createType2WithToolbar(props, {
       hasDate: false
     })
@@ -69,8 +81,11 @@ class DialogType3 extends Component {
     return true;
   }
 
- _handleSelectSortBy = (item) => {
-   this.sortByItem = item
+ _hSelectItem = (item) => {
+   this._item = item
+ }
+ _hSelectRegion = item => {
+   this._region = item
  }
 
  _handleDefault = () => {
@@ -104,12 +119,13 @@ class DialogType3 extends Component {
        //, _fromDate = DateUtils.toUTCMillis(fromDate)/1000
        //, _toDate = DateUtils.toUTCMillis(toDate)/1000
         { requestType } = this.props
-       , { value, caption } = this.sortByItem;
+       , { value, caption } = this._item;
 
    return {
      requestType,
      value,
-     caption: caption
+     caption: caption,
+     region: this._region
      //fromdate : _fromDate,
      //todate : _toDate
    };
@@ -150,9 +166,16 @@ class DialogType3 extends Component {
         <D.RowInputSelect
            isShowLabel={isShowLabels}
            caption="Item"
-           placeholder={OS_OPTIONS[0].caption}
-           options={OS_OPTIONS}
-           onSelect={this._handleSelectSortBy}
+           placeholder={MARKET_SHARES[0].caption}
+           options={MARKET_SHARES}
+           onSelect={this._hSelectItem}
+        />
+        <D.RowInputSelect
+           isShowLabel={isShowLabels}
+           caption="Region"
+           placeholder={REGIONS[0].caption}
+           options={REGIONS}
+           onSelect={this._hSelectRegion}
         />
         <D.ShowHide isShow={isShowDate}>
           <D.Dates
