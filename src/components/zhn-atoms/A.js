@@ -1,4 +1,6 @@
 
+
+import SvgIcons from './svg/SvgIcons'
 import ButtonCircle from './ButtonCircle';
 import ButtonDownUp from './ButtonDownUp';
 import DateAgo from './DateAgo';
@@ -9,6 +11,7 @@ import ShowHide from './ShowHide';
 import SvgMore from './SvgMore';
 
 const A = {
+  ...SvgIcons,
   ButtonCircle,
   ButtonDownUp,
   DateAgo,

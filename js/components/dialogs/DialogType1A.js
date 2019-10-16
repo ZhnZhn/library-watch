@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -20,7 +24,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _dec, _dec2, _class;
+var _dec, _dec2, _dec3, _class;
 //import PropTypes from "prop-types";
 
 var _react = require('react');
@@ -56,7 +60,7 @@ var _initFromDate = _DateUtils2.default.getFromDate(1),
     _initToDate = _DateUtils2.default.getToDate(),
     _onTestDate = _DateUtils2.default.isValidDate;
 
-var DialogType3 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2.default.withValidationLoad, _dec(_class = _dec2(_class = function (_Component) {
+var DialogType3 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2.default.withValidationLoad, _dec3 = _Decorators2.default.withInitialState, _dec(_class = _dec2(_class = _dec3(_class = function (_Component) {
   (0, _inherits3.default)(DialogType3, _Component);
 
   /*
@@ -82,11 +86,6 @@ var DialogType3 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2
 
     _this._hSelectRegion = function (item) {
       _this._region = item;
-    };
-
-    _this._handleDefault = function () {
-      _this.datesFragment.setValues(_initFromDate, _initToDate);
-      _this.setState({ validationMessages: [] });
     };
 
     _this._handleClear = function () {
@@ -151,15 +150,8 @@ var DialogType3 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2
       toggleLabels: _this._clickLabelWithToolbar,
       toggleToolBar: _this._toggleWithToolbar
     });
-    _this._commandButtons = crButtons({
-      inst: _this, isDefault: false
-    });
-    _this.state = {
-      isToolbar: true,
-      isShowLabels: true,
-      isShowDate: false,
-      validationMessages: []
-    };
+    _this._commandButtons = crButtons({ inst: _this });
+    _this.state = (0, _extends3.default)({}, _this._withInitialState());
     return _this;
   }
 
@@ -233,6 +225,6 @@ var DialogType3 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2
     }
   }]);
   return DialogType3;
-}(_react.Component)) || _class) || _class);
+}(_react.Component)) || _class) || _class) || _class);
 exports.default = DialogType3;
 //# sourceMappingURL=DialogType1A.js.map

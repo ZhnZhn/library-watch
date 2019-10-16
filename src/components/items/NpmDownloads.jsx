@@ -16,7 +16,6 @@ import CL from '../styles/CL'
 
 const BASE_NODEICO = "https://nodei.co/npm/"
     , SUFFIX_NODEICO = ".png?downloads=true&downloadRank=true&stars=true"
-    , BASE_NPM = "https://www.npmjs.com/package/"
     , ITEM_DESCRIPTION = "Npm Recent Month Downloads";
 
 const S = {
@@ -59,9 +58,8 @@ const S = {
     top: -6,
     marginLeft: 10
   },
-
-  ML_32: {
-    marginLeft: 32
+  ML_16: {
+    marginLeft: 16
   },
   MT_16: {
     marginTop: 16
@@ -97,7 +95,7 @@ const CHART_OPTIONS = {
 
 const _isFn = fn => typeof fn === 'function';
 
-class NpmRecentDownloads extends Component {
+class NpmDownloads extends Component {
 
   constructor(props){
     super(props)
@@ -181,23 +179,11 @@ class NpmRecentDownloads extends Component {
     return (
       <A.ButtonCircle
          caption="W"
-         title="Add to Watch"
+         title="Add to WatchList"
          style={S.BTN_CIRCLE}
          onClick={this._handlerClickWatch}
       />
     )
-  }
-
-  _renderNodeIcoBadge = (packageName) => {
-    const _href = BASE_NPM + packageName
-        , _imgSrc = BASE_NODEICO + packageName + SUFFIX_NODEICO
-    return (
-      <A.LinkImg
-         href={_href}
-         imgClass="node-ico"
-         imgSrc={_imgSrc}
-      />
-    );
   }
 
   render(){
@@ -205,6 +191,7 @@ class NpmRecentDownloads extends Component {
       packageName, caption, sumDownloads=0,
       fromDate, toDate,
       labels, data,
+      packageLink,
       onCloseItem, onWatchItem
     } = this.props
     , {
@@ -218,8 +205,8 @@ class NpmRecentDownloads extends Component {
         ? this._toggleNpms
         : this._hClickNpms
     , _infoStyle = isButtons
-          ? { ...S.ML_32, ...S.MT_16 }
-          : S.ML_32;
+          ? { ...S.ML_16, ...S.MT_16 }
+          : S.ML_16;
     return (
       <div style={S.ROOT}>
         <ModalSlider
@@ -261,16 +248,23 @@ class NpmRecentDownloads extends Component {
              options={CHART_OPTIONS}
           />
           <A.ShowHide isShow={isButtons}>
-           <div style={S.ML_32}>
+           <div style={S.ML_16}>
+             <a
+                target="_blank"
+                className={CL.SOURCE_LINK}
+                href={packageLink}
+             >
+                NPM Link
+            </a>
              <A.ButtonDownUp
-               style={S.BUTTON_DOWN_UP}
+               style={{...S.BUTTON_DOWN_UP, ...S.ML_16}}
                isUp={isShowNodeIco}
                caption="NodeICO"
                title="Package badge from Nodei.co"
                onClick={this._handlerClickNodeIco}
              />
              <A.ButtonDownUp
-               style={{ ...S.BUTTON_DOWN_UP, marginLeft: 32 }}
+               style={{ ...S.BUTTON_DOWN_UP, ...S.ML_16 }}
                isUp={isShowNmps}
                caption="NPMS.IO"
                title="Click to load package info from npms.io"
@@ -281,7 +275,13 @@ class NpmRecentDownloads extends Component {
 
           <div style={_infoStyle}>
             <A.ShowHide isShow={isShowNodeIco} style={S.MB_16}>
-              {isLoadNodeIco && this._renderNodeIcoBadge(packageName)}
+              {
+                isLoadNodeIco && <A.LinkImg
+                  href={packageLink}
+                  imgClass="node-ico"
+                  imgSrc={`${BASE_NODEICO}${packageName}${SUFFIX_NODEICO}`}
+                />
+              }
             </A.ShowHide>
             <A.ShowHide isShow={isShowNmps} style={S.MB_16}>
               {isLoadedNpms && <PackageDetails json={npmsJson} />}
@@ -294,4 +294,4 @@ class NpmRecentDownloads extends Component {
   }
 }
 
-export default NpmRecentDownloads
+export default NpmDownloads

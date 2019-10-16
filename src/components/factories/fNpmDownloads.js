@@ -1,7 +1,7 @@
 
 import DateUtils from '../../utils/DateUtils';
 
-import NpmRecentMonthDownloads from '../items/NpmRecentMonthDownloads';
+import NpmDownloads from '../items/NpmDownloads';
 
 const MAX_ITEMS = 30;
 
@@ -50,17 +50,14 @@ const fNpmDownloads = function({
   onMoveToTop, onCloseItem,
   onWatchItem
 }){
-  const { repo, requestType, chartType, browserType, key } = option
+  const { repo, requestType, chartType, browserType, key, packageLink } = option
   , { downloads, package:packageName } = json
   , { sumDownloads, fromDate, toDate, labels, data } = _fnTransformDownloads(downloads)
 
-
-  console.log(labels)
-  console.log(data)
-   
-  return factory.createElement(NpmRecentMonthDownloads, {
+  return factory.createElement(NpmDownloads, {
      key,
      packageName,
+     packageLink,
      caption: packageName,
      requestType,
      sumDownloads,

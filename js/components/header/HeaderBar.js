@@ -34,9 +34,9 @@ var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
 
 var _Type = require('../../constants/Type');
 
-var _FlatButton = require('../zhn-m/FlatButton');
+var _Comp = require('../Comp');
 
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
+var _Comp2 = _interopRequireDefault(_Comp);
 
 var _LoadingProgress = require('./LoadingProgress');
 
@@ -49,10 +49,6 @@ var _IconAppLogo2 = _interopRequireDefault(_IconAppLogo);
 var _AppLabel = require('./AppLabel');
 
 var _AppLabel2 = _interopRequireDefault(_AppLabel);
-
-var _ButtonSave = require('../zhn-moleculs/ButtonSave');
-
-var _ButtonSave2 = _interopRequireDefault(_ButtonSave);
 
 var _LimitRemainingLabel = require('./LimitRemainingLabel');
 
@@ -76,6 +72,13 @@ var S = {
   BT_ABOUT: {
     float: 'right',
     marginRight: 20
+  },
+  SVG_INFO: {
+    position: 'relative',
+    top: -2,
+    verticalAlign: 'middle',
+    marginLeft: 8,
+    marginRight: 8
   },
   BUTTON_SAVE: {
     marginLeft: 10
@@ -133,7 +136,7 @@ var HeaderBar = function (_Component) {
           className: CL.APP_LABEL,
           caption: TITLE
         }),
-        _react2.default.createElement(_FlatButton2.default, {
+        _react2.default.createElement(_Comp2.default.FlatButton, {
           className: CL.LIBRARY,
           caption: 'Library',
           title: 'Click to show library browser',
@@ -141,26 +144,29 @@ var HeaderBar = function (_Component) {
           timeout: 0,
           onClick: this._handleClickDynamic.bind(null, BrowserConfig.LIBRARY)
         }),
-        _react2.default.createElement(_FlatButton2.default, {
+        _react2.default.createElement(_Comp2.default.FlatButton, {
           caption: 'Watch',
           title: 'Click to show watch browser',
           accessKey: 'w',
           timeout: 0,
           onClick: this._handleClickWatch
         }),
-        _react2.default.createElement(_ButtonSave2.default, {
+        _react2.default.createElement(_Comp2.default.ButtonSave, {
           store: store,
           style: S.BUTTON_SAVE
         }),
-        _react2.default.createElement(_FlatButton2.default, {
-          className: CL.ABOUT,
-          rootStyle: S.BT_ABOUT,
-          caption: 'About',
-          title: 'Click to show about description',
-          accessKey: 'a',
-          timeout: 0,
-          onClick: _ComponentActions2.default.showAbout
-        }),
+        _react2.default.createElement(
+          _Comp2.default.FlatButton,
+          {
+            className: CL.ABOUT,
+            rootStyle: S.BT_ABOUT,
+            title: 'About web app Library Watch',
+            accessKey: 'a',
+            timeout: 0,
+            onClick: _ComponentActions2.default.showAbout
+          },
+          _react2.default.createElement(_Comp2.default.SvgInfo, { style: S.SVG_INFO })
+        ),
         _react2.default.createElement(_LimitRemainingLabel2.default, {
           store: store,
           style: S.LABEL_LIMIT

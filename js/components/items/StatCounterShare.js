@@ -61,13 +61,14 @@ var S = {
     marginBottom: 10,
     marginRight: 25
   },
-  CAPTION_OPEN: {
+  BT_CAPTION: {
     position: 'relative',
     top: -6,
     display: 'inline-block',
     color: '#a487d4',
     paddingLeft: 8,
     maxWidth: 500,
+    textAlign: 'left',
     fontWeight: 'bold',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
@@ -189,7 +190,7 @@ var NpmRecentDownloads = function (_Component) {
             {
               className: _CL2.default.NOT_SELECTED,
               title: caption,
-              style: S.CAPTION_OPEN,
+              style: S.BT_CAPTION,
               onClick: this._handlerToggleOpen
             },
             _react2.default.createElement(

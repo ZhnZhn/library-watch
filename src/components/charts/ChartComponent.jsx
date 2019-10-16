@@ -35,6 +35,7 @@ const DF_OPTIONS = {
 	tooltips: {
 		callbacks: {
 			labelTextColor: function(tooltipItem, chartInst) {
+				 //console.log(chartInst.data.datasets[tooltipItem.datasetIndex].borderColor);
 				 return chartInst.data.datasets[tooltipItem.datasetIndex].borderColor;
 			}
 		}

@@ -2,9 +2,20 @@
 import StringUtil from '../utils/StringUtil';
 
 const BASE = 'https://api.npmjs.org';
+const NPM_PACKAGE = 'https://www.npmjs.com/package/';
+const NPM = 'https://www.npmjs.com';
 const REQUEST_PACKAGE = 'Request Package';
 
 //https://api.npmjs.org/downloads/range/last-month
+
+const _crPackageLink = name => name
+  ? `${NPM_PACKAGE}${name}`
+  : NPM;
+
+const _addPackageLinkTo = (option) => {
+  const { repo } = option;
+  option.packageLink = _crPackageLink(repo);
+};
 
 const _rRequestTypeToUrl = {
   NPM_RECENT_VERSION : (option) => {
@@ -12,10 +23,12 @@ const _rRequestTypeToUrl = {
   },
 
   NPM_DOWNLOADS_RECENT_MONTH : (option) => {
+    _addPackageLinkTo(option);
     return `${BASE}/downloads/range/last-month/${option.repo}`;
   },
   NPM_DOWNLOADS : (option) => {
-    const { fromDate, toDate, repo } = option
+    const { fromDate, toDate, repo } = option;
+    _addPackageLinkTo(option)
     return `${BASE}/downloads/range/${fromDate}:${toDate}/${repo}`;
   }
 }
@@ -33,7 +46,7 @@ const NpmApi = {
    },
 
    checkResponse(json={}, option){
-      const { error } = json
+      const { error } = json;
       if (error){
         throw {
            errCaption: REQUEST_PACKAGE,

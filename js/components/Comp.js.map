@@ -1,0 +1,14 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/components/Comp.js"
+ ],
+ "file": "../../src/components/Comp.js",
+ "names": [
+  "Comp",
+  "A",
+  "ZhnM",
+  "ZhnM2"
+ ],
+ "mappings": ";;;;;;;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,kCACDC,WADC,EAEDC,WAFC,EAGDC,WAHC,CAAN;;kBAMeH,I"
+}

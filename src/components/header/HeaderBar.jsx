@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 
-import BrowserActions from '../../flux/actions/BrowserActions';
-import ComponentActions from '../../flux/actions/ComponentActions';
-import { BrowserType } from '../../constants/Type';
+import BA from '../../flux/actions/BrowserActions';
+import CA from '../../flux/actions/ComponentActions';
+import { BrowserType as BT } from '../../constants/Type';
 
-import FlatButton from '../zhn-m/FlatButton'
+import A from '../Comp'
 import LoadingProgress from './LoadingProgress';
 import IconAppLogo from './IconAppLogo';
 import AppLabel from './AppLabel';
-import ButtonSave from '../zhn-moleculs/ButtonSave';
 import LimitRemainingLabel from './LimitRemainingLabel';
 
 const TITLE = "Library Watch v0.12.0";
@@ -28,6 +27,13 @@ const S = {
     float: 'right',
     marginRight: 20
   },
+  SVG_INFO: {
+    position: 'relative',
+    top: -2,
+    verticalAlign: 'middle',
+    marginLeft: 8,
+    marginRight: 8
+  },
   BUTTON_SAVE : {
     marginLeft : 10
   },
@@ -39,7 +45,7 @@ const S = {
 
 const BrowserConfig = {
   LIBRARY : {
-    browserType: BrowserType.LIBRARY,
+    browserType: BT.LIBRARY,
     caption: 'Library',
     sourceMenuUrl : './data/github/source-menu.json',
     rowClass: 'row__library'
@@ -49,10 +55,10 @@ const BrowserConfig = {
 class HeaderBar extends Component {
 
   _handleClickDynamic = (browserConfig) => {
-    BrowserActions.showBrowserDynamic(browserConfig);
+    BA.showBrowserDynamic(browserConfig);
   }
   _handleClickWatch = () => {
-    BrowserActions.showBrowser(BrowserType.WATCH_LIST);
+    BA.showBrowser(BT.WATCH_LIST);
   }
 
   render(){
@@ -68,7 +74,7 @@ class HeaderBar extends Component {
            className={CL.APP_LABEL}
            caption={TITLE}
          />
-         <FlatButton
+         <A.FlatButton
             className={CL.LIBRARY}
             caption="Library"
             title="Click to show library browser"
@@ -76,26 +82,27 @@ class HeaderBar extends Component {
             timeout={0}
             onClick={this._handleClickDynamic.bind(null, BrowserConfig.LIBRARY)}
          />
-         <FlatButton
+         <A.FlatButton
             caption="Watch"
             title="Click to show watch browser"
             accessKey="w"
             timeout={0}
             onClick={this._handleClickWatch}
          />
-         <ButtonSave
+         <A.ButtonSave
             store={store}
             style={S.BUTTON_SAVE}
          />
-         <FlatButton
+         <A.FlatButton
             className={CL.ABOUT}
             rootStyle={S.BT_ABOUT}
-            caption="About"
-            title="Click to show about description"
+            title="About web app Library Watch"
             accessKey="a"
             timeout={0}
-            onClick={ComponentActions.showAbout}
-         />
+            onClick={CA.showAbout}
+         >
+            <A.SvgInfo style={S.SVG_INFO} />
+         </A.FlatButton>
          <LimitRemainingLabel
              store={store}
              style={S.LABEL_LIMIT}

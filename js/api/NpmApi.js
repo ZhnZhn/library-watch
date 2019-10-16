@@ -11,9 +11,21 @@ var _StringUtil2 = _interopRequireDefault(_StringUtil);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var BASE = 'https://api.npmjs.org';
+var NPM_PACKAGE = 'https://www.npmjs.com/package/';
+var NPM = 'https://www.npmjs.com';
 var REQUEST_PACKAGE = 'Request Package';
 
 //https://api.npmjs.org/downloads/range/last-month
+
+var _crPackageLink = function _crPackageLink(name) {
+  return name ? '' + NPM_PACKAGE + name : NPM;
+};
+
+var _addPackageLinkTo = function _addPackageLinkTo(option) {
+  var repo = option.repo;
+
+  option.packageLink = _crPackageLink(repo);
+};
 
 var _rRequestTypeToUrl = {
   NPM_RECENT_VERSION: function NPM_RECENT_VERSION(option) {
@@ -21,6 +33,7 @@ var _rRequestTypeToUrl = {
   },
 
   NPM_DOWNLOADS_RECENT_MONTH: function NPM_DOWNLOADS_RECENT_MONTH(option) {
+    _addPackageLinkTo(option);
     return BASE + '/downloads/range/last-month/' + option.repo;
   },
   NPM_DOWNLOADS: function NPM_DOWNLOADS(option) {
@@ -28,6 +41,7 @@ var _rRequestTypeToUrl = {
         toDate = option.toDate,
         repo = option.repo;
 
+    _addPackageLinkTo(option);
     return BASE + '/downloads/range/' + fromDate + ':' + toDate + '/' + repo;
   }
 };

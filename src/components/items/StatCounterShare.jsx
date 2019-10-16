@@ -19,13 +19,14 @@ const S = {
     marginBottom: 10,
     marginRight: 25
   },
-  CAPTION_OPEN: {
+  BT_CAPTION: {
     position: 'relative',
     top: -6,
     display: 'inline-block',
     color: '#a487d4',
     paddingLeft: 8,
     maxWidth: 500,
+    textAlign: 'left',
     fontWeight : 'bold',
     whiteSpace: 'nowrap',
     textOverflow : 'ellipsis',
@@ -130,7 +131,7 @@ class NpmRecentDownloads extends Component {
           <button
              className={CL.NOT_SELECTED}
              title={caption}
-             style={S.CAPTION_OPEN}
+             style={S.BT_CAPTION}
              onClick={this._handlerToggleOpen}
           >
             <span>

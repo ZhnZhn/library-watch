@@ -15,6 +15,7 @@ const _initFromDate = DateUtils.getFromDate(1)
 
 @Decor.withToolbar
 @Decor.withValidationLoad
+@Decor.withInitialState
 class DialogType3A extends Component {
   /*
   static propTypes = {
@@ -37,14 +38,9 @@ class DialogType3A extends Component {
       toggleLabels: this._clickLabelWithToolbar,
       toggleToolBar: this._toggleWithToolbar,
     })
-    this._commandButtons = crButtons({
-      inst: this, isDefault: true
-    })
+    this._commandButtons = crButtons({ inst: this })
     this.state = {
-      isToolbar: true,
-      isShowLabels: true,
-      isShowDate: true,
-      validationMessages: []
+      ...this._withInitialState()
     }
   }
 
@@ -56,10 +52,6 @@ class DialogType3A extends Component {
     }
     return true;
   }
-
- _handleDefault = () => {
-    this.datesFragment.setValues(_initFromDate, _initToDate)
- }
 
  _handleClear = () => {
     this.inputOne.setValue('')

@@ -4,6 +4,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _SvgIcons = require('./svg/SvgIcons');
+
+var _SvgIcons2 = _interopRequireDefault(_SvgIcons);
+
 var _ButtonCircle = require('./ButtonCircle');
 
 var _ButtonCircle2 = _interopRequireDefault(_ButtonCircle);
@@ -38,7 +46,7 @@ var _SvgMore2 = _interopRequireDefault(_SvgMore);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var A = {
+var A = (0, _extends3.default)({}, _SvgIcons2.default, {
   ButtonCircle: _ButtonCircle2.default,
   ButtonDownUp: _ButtonDownUp2.default,
   DateAgo: _DateAgo2.default,
@@ -47,7 +55,7 @@ var A = {
   OpenClose2: _OpenClose2.default,
   ShowHide: _ShowHide2.default,
   SvgMore: _SvgMore2.default
-};
+});
 
 exports.default = A;
 //# sourceMappingURL=A.js.map

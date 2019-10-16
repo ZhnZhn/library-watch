@@ -68,7 +68,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var BASE_NODEICO = "https://nodei.co/npm/",
     SUFFIX_NODEICO = ".png?downloads=true&downloadRank=true&stars=true",
-    BASE_NPM = "https://www.npmjs.com/package/",
     ITEM_DESCRIPTION = "Npm Recent Month Downloads";
 
 var S = {
@@ -111,9 +110,8 @@ var S = {
     top: -6,
     marginLeft: 10
   },
-
-  ML_32: {
-    marginLeft: 32
+  ML_16: {
+    marginLeft: 16
   },
   MT_16: {
     marginTop: 16
@@ -150,13 +148,13 @@ var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
 };
 
-var NpmRecentDownloads = function (_Component) {
-  (0, _inherits3.default)(NpmRecentDownloads, _Component);
+var NpmDownloads = function (_Component) {
+  (0, _inherits3.default)(NpmDownloads, _Component);
 
-  function NpmRecentDownloads(props) {
-    (0, _classCallCheck3.default)(this, NpmRecentDownloads);
+  function NpmDownloads(props) {
+    (0, _classCallCheck3.default)(this, NpmDownloads);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (NpmRecentDownloads.__proto__ || Object.getPrototypeOf(NpmRecentDownloads)).call(this, props));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (NpmDownloads.__proto__ || Object.getPrototypeOf(NpmDownloads)).call(this, props));
 
     _this._hClickMore = function () {
       _this.setState({ isMore: true });
@@ -237,19 +235,9 @@ var NpmRecentDownloads = function (_Component) {
     _this._renderButtonWatch = function () {
       return _react2.default.createElement(_A2.default.ButtonCircle, {
         caption: 'W',
-        title: 'Add to Watch',
+        title: 'Add to WatchList',
         style: S.BTN_CIRCLE,
         onClick: _this._handlerClickWatch
-      });
-    };
-
-    _this._renderNodeIcoBadge = function (packageName) {
-      var _href = BASE_NPM + packageName,
-          _imgSrc = BASE_NODEICO + packageName + SUFFIX_NODEICO;
-      return _react2.default.createElement(_A2.default.LinkImg, {
-        href: _href,
-        imgClass: 'node-ico',
-        imgSrc: _imgSrc
       });
     };
 
@@ -271,7 +259,7 @@ var NpmRecentDownloads = function (_Component) {
     return _this;
   }
 
-  (0, _createClass3.default)(NpmRecentDownloads, [{
+  (0, _createClass3.default)(NpmDownloads, [{
     key: 'render',
     value: function render() {
       var _props = this.props,
@@ -283,6 +271,7 @@ var NpmRecentDownloads = function (_Component) {
           toDate = _props.toDate,
           labels = _props.labels,
           data = _props.data,
+          packageLink = _props.packageLink,
           onCloseItem = _props.onCloseItem,
           onWatchItem = _props.onWatchItem,
           _state = this.state,
@@ -296,7 +285,7 @@ var NpmRecentDownloads = function (_Component) {
           npmsJson = _state.npmsJson,
           _lineChartConfig = _Chart2.default.fLineConfig({ labels: labels, data: data }),
           _onClickNpms = isLoadedNpms ? this._toggleNpms : this._hClickNpms,
-          _infoStyle = isButtons ? (0, _extends3.default)({}, S.ML_32, S.MT_16) : S.ML_32;
+          _infoStyle = isButtons ? (0, _extends3.default)({}, S.ML_16, S.MT_16) : S.ML_16;
 
       return _react2.default.createElement(
         'div',
@@ -356,16 +345,25 @@ var NpmRecentDownloads = function (_Component) {
             { isShow: isButtons },
             _react2.default.createElement(
               'div',
-              { style: S.ML_32 },
+              { style: S.ML_16 },
+              _react2.default.createElement(
+                'a',
+                {
+                  target: '_blank',
+                  className: _CL2.default.SOURCE_LINK,
+                  href: packageLink
+                },
+                'NPM Link'
+              ),
               _react2.default.createElement(_A2.default.ButtonDownUp, {
-                style: S.BUTTON_DOWN_UP,
+                style: (0, _extends3.default)({}, S.BUTTON_DOWN_UP, S.ML_16),
                 isUp: isShowNodeIco,
                 caption: 'NodeICO',
                 title: 'Package badge from Nodei.co',
                 onClick: this._handlerClickNodeIco
               }),
               _react2.default.createElement(_A2.default.ButtonDownUp, {
-                style: (0, _extends3.default)({}, S.BUTTON_DOWN_UP, { marginLeft: 32 }),
+                style: (0, _extends3.default)({}, S.BUTTON_DOWN_UP, S.ML_16),
                 isUp: isShowNmps,
                 caption: 'NPMS.IO',
                 title: 'Click to load package info from npms.io',
@@ -379,7 +377,11 @@ var NpmRecentDownloads = function (_Component) {
             _react2.default.createElement(
               _A2.default.ShowHide,
               { isShow: isShowNodeIco, style: S.MB_16 },
-              isLoadNodeIco && this._renderNodeIcoBadge(packageName)
+              isLoadNodeIco && _react2.default.createElement(_A2.default.LinkImg, {
+                href: packageLink,
+                imgClass: 'node-ico',
+                imgSrc: '' + BASE_NODEICO + packageName + SUFFIX_NODEICO
+              })
             ),
             _react2.default.createElement(
               _A2.default.ShowHide,
@@ -391,8 +393,8 @@ var NpmRecentDownloads = function (_Component) {
       );
     }
   }]);
-  return NpmRecentDownloads;
+  return NpmDownloads;
 }(_react.Component);
 
-exports.default = NpmRecentDownloads;
-//# sourceMappingURL=NpmRecentMonthDownloads.js.map
+exports.default = NpmDownloads;
+//# sourceMappingURL=NpmDownloads.js.map

@@ -16,9 +16,9 @@ var _DateUtils = require('../../utils/DateUtils');
 
 var _DateUtils2 = _interopRequireDefault(_DateUtils);
 
-var _NpmRecentMonthDownloads = require('../items/NpmRecentMonthDownloads');
+var _NpmDownloads = require('../items/NpmDownloads');
 
-var _NpmRecentMonthDownloads2 = _interopRequireDefault(_NpmRecentMonthDownloads);
+var _NpmDownloads2 = _interopRequireDefault(_NpmDownloads);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -84,6 +84,7 @@ var fNpmDownloads = function fNpmDownloads(_ref) {
       chartType = option.chartType,
       browserType = option.browserType,
       key = option.key,
+      packageLink = option.packageLink,
       downloads = json.downloads,
       packageName = json.package,
       _fnTransformDownloads2 = _fnTransformDownloads(downloads),
@@ -93,12 +94,10 @@ var fNpmDownloads = function fNpmDownloads(_ref) {
       labels = _fnTransformDownloads2.labels,
       data = _fnTransformDownloads2.data;
 
-  console.log(labels);
-  console.log(data);
-
-  return factory.createElement(_NpmRecentMonthDownloads2.default, (0, _extends3.default)({
+  return factory.createElement(_NpmDownloads2.default, (0, _extends3.default)({
     key: key,
     packageName: packageName,
+    packageLink: packageLink,
     caption: packageName,
     requestType: requestType,
     sumDownloads: sumDownloads,

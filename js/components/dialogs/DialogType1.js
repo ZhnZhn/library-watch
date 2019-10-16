@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -20,7 +24,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _dec, _dec2, _class;
+var _dec, _dec2, _dec3, _class;
 //import PropTypes from "prop-types";
 
 var _react = require('react');
@@ -43,7 +47,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var crMenuMore = _helperFns2.default.crMenuMore,
     crButtons = _helperFns2.default.crButtons;
-var DialogType1 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2.default.withValidationLoad, _dec(_class = _dec2(_class = function (_Component) {
+var DialogType1 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2.default.withValidationLoad, _dec3 = _Decorators2.default.withInitialState, _dec(_class = _dec2(_class = _dec3(_class = function (_Component) {
   (0, _inherits3.default)(DialogType1, _Component);
 
   /*
@@ -107,11 +111,7 @@ var DialogType1 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2
       toggleToolBar: _this._toggleWithToolbar
     });
     _this._commandButtons = crButtons({ inst: _this });
-    _this.state = {
-      isToolbar: true,
-      isShowLabels: true,
-      validationMessages: []
-    };
+    _this.state = (0, _extends3.default)({}, _this._withInitialState());
     return _this;
   }
 
@@ -168,6 +168,6 @@ var DialogType1 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2
     }
   }]);
   return DialogType1;
-}(_react.Component)) || _class) || _class);
+}(_react.Component)) || _class) || _class) || _class);
 exports.default = DialogType1;
 //# sourceMappingURL=DialogType1.js.map

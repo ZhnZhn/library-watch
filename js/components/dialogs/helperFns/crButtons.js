@@ -15,20 +15,14 @@ var _FlatButton2 = _interopRequireDefault(_FlatButton);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var crButtons = function crButtons(_ref) {
-  var inst = _ref.inst,
-      isDefault = _ref.isDefault;
+  var inst = _ref.inst;
 
-  return [isDefault && _react2.default.createElement(_FlatButton2.default, {
-    key: 'default',
-    caption: 'Default',
-    timeout: 0,
-    onClick: inst._handleDefault
-  }), _react2.default.createElement(_FlatButton2.default, {
+  return [_react2.default.createElement(_FlatButton2.default, {
     key: 'load',
     isPrimary: true,
     caption: 'Load',
     onClick: inst._handleLoad
-  })].filter(Boolean);
+  })];
 };
 
 exports.default = crButtons;

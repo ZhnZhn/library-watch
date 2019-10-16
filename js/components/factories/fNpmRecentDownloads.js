@@ -8,9 +8,9 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _NpmRecentMonthDownloads = require('../items/NpmRecentMonthDownloads');
+var _NpmDownloads = require('../items/NpmDownloads');
 
-var _NpmRecentMonthDownloads2 = _interopRequireDefault(_NpmRecentMonthDownloads);
+var _NpmDownloads2 = _interopRequireDefault(_NpmDownloads);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49,6 +49,7 @@ var fNpmRecentDownloads = function fNpmRecentDownloads(_ref) {
         chartType = option.chartType,
         browserType = option.browserType,
         key = option.key,
+        packageLink = option.packageLink,
         downloads = json.downloads,
         _fnTransformDownloads2 = _fnTransformDownloads(downloads),
         sumDownloads = _fnTransformDownloads2.sumDownloads,
@@ -56,13 +57,13 @@ var fNpmRecentDownloads = function fNpmRecentDownloads(_ref) {
         toDate = _fnTransformDownloads2.toDate,
         labels = _fnTransformDownloads2.labels,
         data = _fnTransformDownloads2.data;
-    //, key = `${repo}_${requestType}`
 
-    return factory.createElement(_NpmRecentMonthDownloads2.default, (0, _extends3.default)({
+    return factory.createElement(_NpmDownloads2.default, (0, _extends3.default)({
         key: key,
         packageName: json.package,
-        requestType: requestType,
         caption: json.package,
+        packageLink: packageLink,
+        requestType: requestType,
         sumDownloads: sumDownloads,
         fromDate: fromDate,
         toDate: toDate,

@@ -8,7 +8,10 @@
   "has",
   "HAS_TOUCH",
   "is",
-  "isTouchable"
+  "isTouchable",
+  "wideWidth",
+  "window",
+  "innerWidth"
  ],
- "mappings": ";;;;;;AACA;;;;;;AAEA,IAAMA,MAAM;AACVC,aAAWC,aAAGC,WAAH;AADD,CAAZ;;kBAIeH,G"
+ "mappings": ";;;;;;AACA;;;;;;AAEA,IAAMA,MAAM;AACVC,aAAWC,aAAGC,WAAH,EADD;;AAGVC,aAAW;AAAA,WAAMC,OAAOC,UAAP,GACbD,OAAOC,UAAP,GAAoB,GADP,GAEb,IAFO;AAAA;AAHD,CAAZ;;kBAQeN,G"
 }

@@ -24,6 +24,7 @@ const _initFromDate = DateUtils.getFromDate(1)
 
 @Decor.withToolbar
 @Decor.withValidationLoad
+@Decor.withInitialState
 class DialogType2 extends Component{
   /*
   static propTypes = {
@@ -47,14 +48,9 @@ class DialogType2 extends Component{
       toggleLabels: this._clickLabelWithToolbar,
       toggleToolBar: this._toggleWithToolbar,
     })
-    this._commandButtons = crButtons({
-      inst: this, isDefault: true
-    })
+    this._commandButtons = crButtons({ inst: this })
     this.state = {
-      isToolbar: true,
-      isShowLabels: true,
-      isShowDate: true,
-      validationMessages: []
+      ...this._withInitialState()      
     }
   }
 
@@ -70,11 +66,6 @@ class DialogType2 extends Component{
 
  _handleSelectSortBy = (item) => {
    this.sortByItem = item
- }
-
- _handleDefault = () => {
-    this.datesFragment.setValues(_initFromDate, _initToDate)
-    this.setState({ validationMessages: [] })
  }
 
  _handleClear = () => {

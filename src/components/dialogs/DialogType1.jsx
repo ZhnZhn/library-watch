@@ -9,6 +9,7 @@ const { crMenuMore, crButtons } = helperFns;
 
 @Decor.withToolbar
 @Decor.withValidationLoad
+@Decor.withInitialState
 class DialogType1 extends Component {
   /*
   static propTypes = {
@@ -31,9 +32,7 @@ class DialogType1 extends Component {
     })
     this._commandButtons = crButtons({ inst: this })
     this.state = {
-      isToolbar: true,
-      isShowLabels: true,
-      validationMessages: []
+      ...this._withInitialState()
     }
   }
 

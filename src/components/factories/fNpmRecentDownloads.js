@@ -1,5 +1,5 @@
 
-import NpmRecentMonthDownloads from '../items/NpmRecentMonthDownloads';
+import NpmDownloads from '../items/NpmDownloads';
 
 const _fnTransformDownloads = (downloads=[{ day: '0-0-0', downloads : 0}]) => {
     const labels = []
@@ -23,23 +23,23 @@ const _fnTransformDownloads = (downloads=[{ day: '0-0-0', downloads : 0}]) => {
 const fNpmRecentDownloads = function({
   factory, option, json, parentProps, onCloseItem, onWatchItem
 }){
-  const { requestType, chartType, browserType, key } = option
+  const { requestType, chartType, browserType, key, packageLink } = option
       , { downloads } = json
       , { sumDownloads, fromDate, toDate, labels, data } = _fnTransformDownloads(downloads);
-      //, key = `${repo}_${requestType}`
 
-  return factory.createElement(NpmRecentMonthDownloads, {
-     key : key,
-     packageName : json.package,
-     requestType : requestType,
-     caption : json.package,
-     sumDownloads : sumDownloads,
-     fromDate : fromDate,
-     toDate : toDate,
-     labels : labels,
-     data : data,
-     onCloseItem : onCloseItem.bind(null, chartType, browserType, key),
-     onWatchItem : onWatchItem,
+  return factory.createElement(NpmDownloads, {
+     key,
+     packageName: json.package,
+     caption: json.package,
+     packageLink,
+     requestType,
+     sumDownloads,
+     fromDate,
+     toDate,
+     labels,
+     data,
+     onCloseItem: onCloseItem.bind(null, chartType, browserType, key),
+     onWatchItem: onWatchItem,
      ...parentProps
   })
 };

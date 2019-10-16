@@ -22,11 +22,11 @@ const STYLE = {
   ITEM: {
     display: 'inline-block',
     paddingLeft: 5,
-    paddingRight: 20
+    paddingRight: 8
   },
   CIRCLE: {
     display: 'inline-block',
-    marginLeft: 15,
+    marginLeft: 8,
     backgroundColor: 'gray',
     width: 12,
     height: 12,
