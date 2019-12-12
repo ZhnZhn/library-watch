@@ -3,16 +3,16 @@ import React from 'react';
 import IconGitHub from './IconGitHub';
 import IconReact from './IconReact';
 
-const STYLE = {
-  ROOT : {
+const S = {
+  ROOT: {
     textAlign : 'center',
-    paddingTop: '20px'
+    paddingTop: 20
   }
-}
+};
 
 const IconLogoBar = (props) => {
   return (
-    <div style={STYLE.ROOT}>
+    <div style={S.ROOT}>
        <IconGitHub
            className="icon__github"
            title="GitHub Library Watch"

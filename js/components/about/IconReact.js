@@ -15,9 +15,9 @@ var IconReact = function IconReact() {
   }, _react["default"].createElement("svg", {
     viewBox: "0 0 600 600",
     xmlns: "http://www.w3.org/2000/svg",
-    "fill-rule": "evenodd",
-    "clip-rule": "evenodd",
-    "stroke-linejoin": "round"
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    strokeLinejoin: "round"
   }, _react["default"].createElement("circle", {
     cx: "299.529",
     cy: "299.628",

@@ -173,7 +173,7 @@ class About extends Component {
             <p style={S.MARGIN_BOTTOM}>
                After clicking a button Show in a Dialog opens Container with Items
                or empty. After closing a Container all Items remains.
-               In one-time max three Item Dialogs can be opened.
+               In one-time max three Item Dialogs can be opened.               
             </p>
             <p>
               <Token color="gray">

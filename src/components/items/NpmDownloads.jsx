@@ -13,30 +13,18 @@ import Caption from './ItemCaption'
 import PackageDetails from './PackageDetails'
 
 import CL from '../styles/CL'
+import STYLE from './Item.Style'
 
 const BASE_NODEICO = "https://nodei.co/npm/"
     , SUFFIX_NODEICO = ".png?downloads=true&downloadRank=true&stars=true"
     , ITEM_DESCRIPTION = "Npm Recent Month Downloads";
 
 const S = {
-  ROOT: {
-    position: 'relative',
-    lineHeight: 1.5,
-    marginBottom: 10,
-    marginRight: 25
-  },
+  ROOT: STYLE.ROOT,  
   CAPTION_OPEN: {
+    ...STYLE.CAPTION_OPEN,
     position: 'relative',
-    top: -6,
-    display: 'inline-block',
-    color: '#a487d4',
-    paddingLeft: 8,
-    maxWidth: 500,
-    fontWeight : 'bold',
-    whiteSpace: 'nowrap',
-    textOverflow : 'ellipsis',
-    overflow : 'hidden',
-    cursor: 'pointer'
+    top: -6
   },
   CAPTION: {
     paddingLeft: 4,

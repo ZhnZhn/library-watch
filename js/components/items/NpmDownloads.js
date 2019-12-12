@@ -7,9 +7,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -31,29 +31,17 @@ var _PackageDetails = _interopRequireDefault(require("./PackageDetails"));
 
 var _CL = _interopRequireDefault(require("../styles/CL"));
 
+var _Item = _interopRequireDefault(require("./Item.Style"));
+
 var BASE_NODEICO = "https://nodei.co/npm/",
     SUFFIX_NODEICO = ".png?downloads=true&downloadRank=true&stars=true",
     ITEM_DESCRIPTION = "Npm Recent Month Downloads";
 var S = {
-  ROOT: {
+  ROOT: _Item["default"].ROOT,
+  CAPTION_OPEN: (0, _extends2["default"])({}, _Item["default"].CAPTION_OPEN, {
     position: 'relative',
-    lineHeight: 1.5,
-    marginBottom: 10,
-    marginRight: 25
-  },
-  CAPTION_OPEN: {
-    position: 'relative',
-    top: -6,
-    display: 'inline-block',
-    color: '#a487d4',
-    paddingLeft: 8,
-    maxWidth: 500,
-    fontWeight: 'bold',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-    overflow: 'hidden',
-    cursor: 'pointer'
-  },
+    top: -6
+  }),
   CAPTION: {
     paddingLeft: 4
   },

@@ -1,1 +1,21 @@
-{"version":3,"sources":["../../../src/components/about/Step.jsx"],"names":["STYLES","STEP","display","color","border","borderRadius","width","height","textAlign","Step","props","step"],"mappings":";;;;;;;AAAA;;AAEA,IAAMA,MAAM,GAAG;AACbC,EAAAA,IAAI,EAAG;AACLC,IAAAA,OAAO,EAAG,cADL;AAELC,IAAAA,KAAK,EAAE,SAFF;AAGLC,IAAAA,MAAM,EAAG,mBAHJ;AAILC,IAAAA,YAAY,EAAG,KAJV;AAKLC,IAAAA,KAAK,EAAG,MALH;AAMLC,IAAAA,MAAM,EAAG,MANJ;AAOLC,IAAAA,SAAS,EAAE;AAPN;AADM,CAAf;;AAYA,IAAMC,IAAI,GAAG,SAAPA,IAAO,CAACC,KAAD,EAAW;AACpB,SACE;AAAM,IAAA,KAAK,EAAEV,MAAM,CAACC;AAApB,KACIS,KAAK,CAACC,IADV,CADF;AAKH,CAND;;eAQeF,I","sourcesContent":["import React from 'react';\r\n\r\nconst STYLES = {\r\n  STEP : {\r\n    display : 'inline-block',\r\n    color: '#80c040',\r\n    border : '2px solid #80c040',\r\n    borderRadius : '50%',\r\n    width : '22px',\r\n    height : '22px',\r\n    textAlign: 'center'\r\n  }\r\n}\r\n\r\nconst Step = (props) => {\r\n    return (\r\n      <span style={STYLES.STEP}>\r\n         {props.step}\r\n      </span>\r\n    );\r\n};\r\n\r\nexport default Step\r\n"],"file":"Step.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/about/Step.js"
+ ],
+ "file": "../../../src/components/about/Step.js",
+ "names": [
+  "S",
+  "STEP",
+  "display",
+  "color",
+  "width",
+  "height",
+  "border",
+  "borderRadius",
+  "textAlign",
+  "Step",
+  "step"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAG;AACLC,IAAAA,OAAO,EAAG,cADL;AAELC,IAAAA,KAAK,EAAE,SAFF;AAGLC,IAAAA,KAAK,EAAG,EAHH;AAILC,IAAAA,MAAM,EAAG,EAJJ;AAKLC,IAAAA,MAAM,EAAG,mBALJ;AAMLC,IAAAA,YAAY,EAAG,KANV;AAOLC,IAAAA,SAAS,EAAE;AAPN;AADC,CAAV;;AAYA,IAAMC,IAAI,GAAG,SAAPA,IAAO;AAAA,MAAGC,IAAH,QAAGA,IAAH;AAAA,SACX;AAAM,IAAA,KAAK,EAAEV,CAAC,CAACC;AAAf,KACIS,IADJ,CADW;AAAA,CAAb;;eAOeD,I"
+}

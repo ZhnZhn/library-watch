@@ -11,16 +11,16 @@ var _IconGitHub = _interopRequireDefault(require("./IconGitHub"));
 
 var _IconReact = _interopRequireDefault(require("./IconReact"));
 
-var STYLE = {
+var S = {
   ROOT: {
     textAlign: 'center',
-    paddingTop: '20px'
+    paddingTop: 20
   }
 };
 
 var IconLogoBar = function IconLogoBar(props) {
   return _react["default"].createElement("div", {
-    style: STYLE.ROOT
+    style: S.ROOT
   }, _react["default"].createElement(_IconGitHub["default"], {
     className: "icon__github",
     title: "GitHub Library Watch",

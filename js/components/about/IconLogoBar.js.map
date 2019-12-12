@@ -1,1 +1,16 @@
-{"version":3,"sources":["../../../src/components/about/IconLogoBar.jsx"],"names":["STYLE","ROOT","textAlign","paddingTop","IconLogoBar","props"],"mappings":";;;;;;;AAAA;;AAEA;;AACA;;AAEA,IAAMA,KAAK,GAAG;AACZC,EAAAA,IAAI,EAAG;AACLC,IAAAA,SAAS,EAAG,QADP;AAELC,IAAAA,UAAU,EAAE;AAFP;AADK,CAAd;;AAOA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CAACC,KAAD,EAAW;AAC7B,SACE;AAAK,IAAA,KAAK,EAAEL,KAAK,CAACC;AAAlB,KACG,gCAAC,sBAAD;AACI,IAAA,SAAS,EAAC,cADd;AAEI,IAAA,KAAK,EAAC,sBAFV;AAGI,IAAA,GAAG,EAAC;AAHR,IADH,EAMG,gCAAC,qBAAD,OANH,CADF;AAUD,CAXD;;eAaeG,W","sourcesContent":["import React from 'react';\r\n\r\nimport IconGitHub from './IconGitHub';\r\nimport IconReact from './IconReact';\r\n\r\nconst STYLE = {\r\n  ROOT : {\r\n    textAlign : 'center',\r\n    paddingTop: '20px'\r\n  }\r\n}\r\n\r\nconst IconLogoBar = (props) => {\r\n  return (\r\n    <div style={STYLE.ROOT}>\r\n       <IconGitHub\r\n           className=\"icon__github\"\r\n           title=\"GitHub Library Watch\"\r\n           uri=\"https://github.com/ZhnZhn/library-watch.git\"\r\n       />\r\n       <IconReact />\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default IconLogoBar\r\n"],"file":"IconLogoBar.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/about/IconLogoBar.js"
+ ],
+ "file": "../../../src/components/about/IconLogoBar.js",
+ "names": [
+  "S",
+  "ROOT",
+  "textAlign",
+  "paddingTop",
+  "IconLogoBar",
+  "props"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEA;;AACA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAE;AACJC,IAAAA,SAAS,EAAG,QADR;AAEJC,IAAAA,UAAU,EAAE;AAFR;AADE,CAAV;;AAOA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CAACC,KAAD,EAAW;AAC7B,SACE;AAAK,IAAA,KAAK,EAAEL,CAAC,CAACC;AAAd,KACG,gCAAC,sBAAD;AACI,IAAA,SAAS,EAAC,cADd;AAEI,IAAA,KAAK,EAAC,sBAFV;AAGI,IAAA,GAAG,EAAC;AAHR,IADH,EAMG,gCAAC,qBAAD,OANH,CADF;AAUD,CAXD;;eAaeG,W"
+}

@@ -9,12 +9,13 @@ const CL = {
   BT_CLEAR: 'm-field__bt-clear'
 };
 
-
 const { HAS_TOUCH } = has;
 
 const _isKeyClean = ({ keyCode }) => keyCode === 27
  || keyCode === 46;
 const _isKeyEnter = ({ keyCode }) => keyCode === 13;
+
+const _isStr = str => typeof str === 'string';
 
 const BtClear = ({ isValue, onClick }) => (
   <button
@@ -45,17 +46,16 @@ class InputText extends Component {
   }
 
   constructor(props){
-    super()
+    super(props)
     this.state = {
       value: props.initValue
     }
   }
 
   static getDerivedStateFromProps({ isUpdateInitValue, initValue }){
-    return isUpdateInitValue
-     && typeof initValue === "string"
+    return isUpdateInitValue && _isStr(initValue)
       ?  { value: initValue }
-      : void 0;
+      : null;
   }
 
   _hChange = (event) => {
@@ -85,14 +85,14 @@ class InputText extends Component {
     } = this.props
     , { value } = this.state;
     return (
-      <div class={CL.FIELD}>
+      <div className={CL.FIELD}>
         <input
           ref={this._refInput}
           type="text"
           autoCorrect="off"
           autoCapitalize="off"
           spellCheck={false}
-          class={CL.INPUT}
+          className={CL.INPUT}
           style={style}
           value={value}
           placeholder={placeholder}

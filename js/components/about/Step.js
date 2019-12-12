@@ -7,22 +7,23 @@ exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var STYLES = {
+var S = {
   STEP: {
     display: 'inline-block',
     color: '#80c040',
+    width: 22,
+    height: 22,
     border: '2px solid #80c040',
     borderRadius: '50%',
-    width: '22px',
-    height: '22px',
     textAlign: 'center'
   }
 };
 
-var Step = function Step(props) {
+var Step = function Step(_ref) {
+  var step = _ref.step;
   return _react["default"].createElement("span", {
-    style: STYLES.STEP
-  }, props.step);
+    style: S.STEP
+  }, step);
 };
 
 var _default = Step;

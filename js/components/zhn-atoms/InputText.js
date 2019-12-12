@@ -31,6 +31,10 @@ var _isKeyEnter = function _isKeyEnter(_ref2) {
   return keyCode === 13;
 };
 
+var _isStr = function _isStr(str) {
+  return typeof str === 'string';
+};
+
 var BtClear = function BtClear(_ref3) {
   var isValue = _ref3.isValue,
       onClick = _ref3.onClick;
@@ -58,7 +62,7 @@ function (_Component) {
   function InputText(props) {
     var _this;
 
-    _this = _Component.call(this) || this;
+    _this = _Component.call(this, props) || this;
 
     _this._hChange = function (event) {
       _this.setState({
@@ -97,9 +101,9 @@ function (_Component) {
   InputText.getDerivedStateFromProps = function getDerivedStateFromProps(_ref4) {
     var isUpdateInitValue = _ref4.isUpdateInitValue,
         initValue = _ref4.initValue;
-    return isUpdateInitValue && typeof initValue === "string" ? {
+    return isUpdateInitValue && _isStr(initValue) ? {
       value: initValue
-    } : void 0;
+    } : null;
   };
 
   var _proto = InputText.prototype;
@@ -111,14 +115,14 @@ function (_Component) {
         maxLength = _this$props.maxLength,
         value = this.state.value;
     return _react["default"].createElement("div", {
-      "class": CL.FIELD
+      className: CL.FIELD
     }, _react["default"].createElement("input", {
       ref: this._refInput,
       type: "text",
       autoCorrect: "off",
       autoCapitalize: "off",
       spellCheck: false,
-      "class": CL.INPUT,
+      className: CL.INPUT,
       style: style,
       value: value,
       placeholder: placeholder,

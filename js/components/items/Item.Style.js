@@ -11,14 +11,15 @@ var STYLE = {
   },
   CAPTION_OPEN: {
     display: 'inline-block',
-    color: 'rgba(164, 135, 212, 1)',
-    cursor: 'pointer',
+    color: '#a487d4',
+    paddingLeft: 8,
     maxWidth: 500,
+    textAlign: 'left',
     fontWeight: 'bold',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
     overflow: 'hidden',
-    "float": 'left'
+    cursor: 'pointer'
   },
   SPAN_VERSION: {
     color: '#80c040',
