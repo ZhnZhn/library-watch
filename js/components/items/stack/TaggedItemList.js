@@ -1,89 +1,69 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _TaggedItem = _interopRequireDefault(require("./TaggedItem"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp2;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _TaggedItem = require('./TaggedItem');
-
-var _TaggedItem2 = _interopRequireDefault(_TaggedItem);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var TaggedItemList = (_temp2 = _class = function (_Component) {
-  (0, _inherits3.default)(TaggedItemList, _Component);
+var TaggedItemList =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(TaggedItemList, _Component);
 
   function TaggedItemList() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, TaggedItemList);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = TaggedItemList.__proto__ || Object.getPrototypeOf(TaggedItemList)).call.apply(_ref, [this].concat(args))), _this), _this._renderItems = function () {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+    _this._renderItems = function () {
       var _this$props = _this.props,
           items = _this$props.items,
           onRemoveItem = _this$props.onRemoveItem;
-
       return items.map(function (item, index) {
         var question_id = item.question_id;
-
-        return _react2.default.createElement(_TaggedItem2.default, {
+        return _react["default"].createElement(_TaggedItem["default"], {
           key: question_id,
           item: item,
           onRemoveItem: onRemoveItem
         });
       });
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    return _this;
   }
 
-  (0, _createClass3.default)(TaggedItemList, [{
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps) {
-      if (nextProps.items === this.props.items) {
-        return false;
-      }
-      return true;
+  var _proto = TaggedItemList.prototype;
+
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
+    if (nextProps.items === this.props.items) {
+      return false;
     }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        _react.Fragment,
-        null,
-        this._renderItems()
-      );
-    }
-  }]);
+
+    return true;
+  };
+
+  _proto.render = function render() {
+    return _react["default"].createElement(_react.Fragment, null, this._renderItems());
+  };
+
   return TaggedItemList;
-}(_react.Component), _class.defaultProps = {
+}(_react.Component);
+
+TaggedItemList.defaultProps = {
   items: []
-}, _temp2);
-exports.default = TaggedItemList;
+};
+var _default = TaggedItemList;
+exports["default"] = _default;
 //# sourceMappingURL=TaggedItemList.js.map

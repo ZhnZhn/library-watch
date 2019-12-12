@@ -1,62 +1,39 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _FragmentSelectGroupList = _interopRequireDefault(require("./FragmentSelectGroupList"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _RowInputText = _interopRequireDefault(require("./RowInputText"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _ValidationMessagesFragment = _interopRequireDefault(require("../zhn-moleculs/ValidationMessagesFragment"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
-var _class, _temp, _initialiseProps;
 //import PropTypes from 'prop-types'
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _FragmentSelectGroupList = require('./FragmentSelectGroupList');
-
-var _FragmentSelectGroupList2 = _interopRequireDefault(_FragmentSelectGroupList);
-
-var _RowInputText = require('./RowInputText');
-
-var _RowInputText2 = _interopRequireDefault(_RowInputText);
-
-var _ValidationMessagesFragment = require('../zhn-moleculs/ValidationMessagesFragment');
-
-var _ValidationMessagesFragment2 = _interopRequireDefault(_ValidationMessagesFragment);
-
-var _FlatButton = require('../zhn-m/FlatButton');
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var S = {
   COMMAND_DIV: {
     cursor: 'default',
-    float: 'right',
+    "float": 'right',
     marginTop: '8px',
     marginBottom: '10px',
     marginRight: '4px'
   }
 };
 
-var ListEditPane = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(ListEditPane, _Component);
+var ListEditPane =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(ListEditPane, _Component);
 
   /*
   static propTypes = {
@@ -68,148 +45,144 @@ var ListEditPane = (_temp = _class = function (_Component) {
   },
   */
   function ListEditPane(props) {
-    (0, _classCallCheck3.default)(this, ListEditPane);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (ListEditPane.__proto__ || Object.getPrototypeOf(ListEditPane)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
-    _initialiseProps.call(_this);
+    _this._onStore = function (actionType, data) {
+      var _this$props = _this.props,
+          actionCompleted = _this$props.actionCompleted,
+          actionFailed = _this$props.actionFailed,
+          forActionType = _this$props.forActionType,
+          store = _this$props.store;
 
-    var store = props.store;
+      if (actionType === actionCompleted) {
+        if (data.forActionType === forActionType) {
+          _this._handlerClear();
+        }
 
+        _this.setState({
+          groupOptions: store.getWatchGroups()
+        });
+      } else if (actionType === actionFailed && data.forActionType === forActionType) {
+        _this.setState({
+          validationMessages: data.messages
+        });
+      }
+    };
+
+    _this._handlerClear = function (isFullClear) {
+      _this.inputText.setValue('');
+
+      if (_this.state.validationMessages.length > 0) {
+        _this.setState({
+          validationMessages: []
+        });
+      }
+    };
+
+    _this._handlerRename = function () {
+      var _this$selectGroupList = _this.selectGroupList.getValue(),
+          captionGroup = _this$selectGroupList.captionGroup,
+          captionList = _this$selectGroupList.captionList,
+          captionListTo = _this.inputText.getValue();
+
+      if (captionGroup && captionList && captionListTo) {
+        _this.props.onRename({
+          captionGroup: captionGroup,
+          captionListFrom: captionList,
+          captionListTo: captionListTo
+        });
+      } else {
+        var _this$props2 = _this.props,
+            msgOnIsEmptyName = _this$props2.msgOnIsEmptyName,
+            msgOnNotSelect = _this$props2.msgOnNotSelect,
+            msg = [];
+
+        if (!captionGroup) {
+          msg.push(msgOnNotSelect('Group'));
+        }
+
+        if (!captionList) {
+          msg.push(msgOnNotSelect('List From'));
+        }
+
+        if (!captionListTo) {
+          msg.push(msgOnIsEmptyName('List To'));
+        }
+
+        _this.setState({
+          validationMessages: msg
+        });
+      }
+    };
+
+    _this._refGroupList = function (c) {
+      return _this.selectGroupList = c;
+    };
+
+    _this._refInputText = function (c) {
+      return _this.inputText = c;
+    };
+
+    var _store = props.store;
     _this.state = {
-      groupOptions: store.getWatchGroups(),
+      groupOptions: _store.getWatchGroups(),
       listOptions: [],
       validationMessages: []
     };
     return _this;
   }
 
-  (0, _createClass3.default)(ListEditPane, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.unsubscribe = this.props.store.listen(this._onStore);
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.unsubscribe();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          store = _props.store,
-          onClose = _props.onClose,
-          _state = this.state,
-          groupOptions = _state.groupOptions,
-          validationMessages = _state.validationMessages;
+  var _proto = ListEditPane.prototype;
 
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(_FragmentSelectGroupList2.default, {
-          ref: this._refGroupList,
-          store: store,
-          groupCaption: 'In Group',
-          groupOptions: groupOptions,
-          listCaption: 'List From'
-        }),
-        _react2.default.createElement(_RowInputText2.default, {
-          ref: this._refInputText,
-          caption: 'List To'
-        }),
-        _react2.default.createElement(_ValidationMessagesFragment2.default, {
-          validationMessages: validationMessages
-        }),
-        _react2.default.createElement(
-          'div',
-          { style: S.COMMAND_DIV },
-          _react2.default.createElement(_FlatButton2.default, {
-            isPrimary: true,
-            caption: 'Rename',
-            timeout: 0,
-            onClick: this._handlerRename
-          }),
-          _react2.default.createElement(_FlatButton2.default, {
-            caption: 'Clear',
-            timeout: 0,
-            onClick: this._handlerClear
-          }),
-          _react2.default.createElement(_FlatButton2.default, {
-            caption: 'Close',
-            timeout: 0,
-            onClick: onClose
-          })
-        )
-      );
-    }
-  }]);
+  _proto.componentDidMount = function componentDidMount() {
+    this.unsubscribe = this.props.store.listen(this._onStore);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.unsubscribe();
+  };
+
+  _proto.render = function render() {
+    var _this$props3 = this.props,
+        store = _this$props3.store,
+        onClose = _this$props3.onClose,
+        _this$state = this.state,
+        groupOptions = _this$state.groupOptions,
+        validationMessages = _this$state.validationMessages;
+    return _react["default"].createElement("div", null, _react["default"].createElement(_FragmentSelectGroupList["default"], {
+      ref: this._refGroupList,
+      store: store,
+      groupCaption: "In Group",
+      groupOptions: groupOptions,
+      listCaption: "List From"
+    }), _react["default"].createElement(_RowInputText["default"], {
+      ref: this._refInputText,
+      caption: "List To"
+    }), _react["default"].createElement(_ValidationMessagesFragment["default"], {
+      validationMessages: validationMessages
+    }), _react["default"].createElement("div", {
+      style: S.COMMAND_DIV
+    }, _react["default"].createElement(_FlatButton["default"], {
+      isPrimary: true,
+      caption: "Rename",
+      timeout: 0,
+      onClick: this._handlerRename
+    }), _react["default"].createElement(_FlatButton["default"], {
+      caption: "Clear",
+      timeout: 0,
+      onClick: this._handlerClear
+    }), _react["default"].createElement(_FlatButton["default"], {
+      caption: "Close",
+      timeout: 0,
+      onClick: onClose
+    })));
+  };
+
   return ListEditPane;
-}(_react.Component), _initialiseProps = function _initialiseProps() {
-  var _this2 = this;
+}(_react.Component);
 
-  this._onStore = function (actionType, data) {
-    var _props2 = _this2.props,
-        actionCompleted = _props2.actionCompleted,
-        actionFailed = _props2.actionFailed,
-        forActionType = _props2.forActionType,
-        store = _props2.store;
-
-    if (actionType === actionCompleted) {
-      if (data.forActionType === forActionType) {
-        _this2._handlerClear();
-      }
-      _this2.setState({ groupOptions: store.getWatchGroups() });
-    } else if (actionType === actionFailed && data.forActionType === forActionType) {
-      _this2.setState({ validationMessages: data.messages });
-    }
-  };
-
-  this._handlerClear = function (isFullClear) {
-    _this2.inputText.setValue('');
-    if (_this2.state.validationMessages.length > 0) {
-      _this2.setState({ validationMessages: [] });
-    }
-  };
-
-  this._handlerRename = function () {
-    var _selectGroupList$getV = _this2.selectGroupList.getValue(),
-        captionGroup = _selectGroupList$getV.captionGroup,
-        captionList = _selectGroupList$getV.captionList,
-        captionListTo = _this2.inputText.getValue();
-
-    if (captionGroup && captionList && captionListTo) {
-      _this2.props.onRename({
-        captionGroup: captionGroup,
-        captionListFrom: captionList,
-        captionListTo: captionListTo
-      });
-    } else {
-      var _props3 = _this2.props,
-          msgOnIsEmptyName = _props3.msgOnIsEmptyName,
-          msgOnNotSelect = _props3.msgOnNotSelect,
-          msg = [];
-
-      if (!captionGroup) {
-        msg.push(msgOnNotSelect('Group'));
-      }
-      if (!captionList) {
-        msg.push(msgOnNotSelect('List From'));
-      }
-      if (!captionListTo) {
-        msg.push(msgOnIsEmptyName('List To'));
-      }
-      _this2.setState({ validationMessages: msg });
-    }
-  };
-
-  this._refGroupList = function (c) {
-    return _this2.selectGroupList = c;
-  };
-
-  this._refInputText = function (c) {
-    return _this2.inputText = c;
-  };
-}, _temp);
-exports.default = ListEditPane;
+var _default = ListEditPane;
+exports["default"] = _default;
 //# sourceMappingURL=ListEditPane.js.map

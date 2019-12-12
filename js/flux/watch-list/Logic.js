@@ -1,40 +1,25 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports["default"] = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _Fn = _interopRequireDefault(require("./Fn"));
+
+var _WithLogicGroup = _interopRequireDefault(require("./WithLogicGroup"));
+
+var _WithLogicList = _interopRequireDefault(require("./WithLogicList"));
+
+var _WithLogicItem = _interopRequireDefault(require("./WithLogicItem"));
+
+var _WithLogicDragDrop = _interopRequireDefault(require("./WithLogicDragDrop"));
+
+var Logic = (0, _extends2["default"])({}, _WithLogicGroup["default"], {}, _WithLogicList["default"], {}, _WithLogicItem["default"], {}, _WithLogicDragDrop["default"], {
+  findGroup: _Fn["default"].findGroup
 });
-
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _Fn = require('./Fn');
-
-var _Fn2 = _interopRequireDefault(_Fn);
-
-var _WithLogicGroup = require('./WithLogicGroup');
-
-var _WithLogicGroup2 = _interopRequireDefault(_WithLogicGroup);
-
-var _WithLogicList = require('./WithLogicList');
-
-var _WithLogicList2 = _interopRequireDefault(_WithLogicList);
-
-var _WithLogicItem = require('./WithLogicItem');
-
-var _WithLogicItem2 = _interopRequireDefault(_WithLogicItem);
-
-var _WithLogicDragDrop = require('./WithLogicDragDrop');
-
-var _WithLogicDragDrop2 = _interopRequireDefault(_WithLogicDragDrop);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Logic = (0, _extends3.default)({}, _WithLogicGroup2.default, _WithLogicList2.default, _WithLogicItem2.default, _WithLogicDragDrop2.default, {
-
-  findGroup: _Fn2.default.findGroup
-
-});
-
-exports.default = Logic;
+var _default = Logic;
+exports["default"] = _default;
 //# sourceMappingURL=Logic.js.map

@@ -1,59 +1,34 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _A = _interopRequireDefault(require("../zhn-atoms/A"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _ItemCaption = _interopRequireDefault(require("./ItemCaption"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _A = require('../zhn-atoms/A');
-
-var _A2 = _interopRequireDefault(_A);
-
-var _ItemCaption = require('./ItemCaption');
-
-var _ItemCaption2 = _interopRequireDefault(_ItemCaption);
-
-var _Item = require('./Item.Style');
-
-var _Item2 = _interopRequireDefault(_Item);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Item = _interopRequireDefault(require("./Item.Style"));
 
 var ITEM_DESCRIPTION = "GitHub Repository Issues";
-
 var CL_ITEM = 'row-item not-selected';
-
 var S = {
-  STATE: (0, _extends3.default)({}, _Item2.default.PR_8, {
+  STATE: (0, _extends2["default"])({}, _Item["default"].PR_8, {
     color: '#d7bb52'
   }),
-  NUMBER: (0, _extends3.default)({}, _Item2.default.PR_8, {
+  NUMBER: (0, _extends2["default"])({}, _Item["default"].PR_8, {
     color: '#80c040'
   }),
-  DATE: (0, _extends3.default)({}, _Item2.default.PR_8, {
+  DATE: (0, _extends2["default"])({}, _Item["default"].PR_8, {
     color: 'gray'
   })
 };
@@ -62,36 +37,38 @@ var _toDate = function _toDate(strDate) {
   return ('' + strDate).replace('T', ' ').replace('Z', '');
 };
 
-var GitHubIssues = function (_Component) {
-  (0, _inherits3.default)(GitHubIssues, _Component);
+var GitHubIssues =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(GitHubIssues, _Component);
 
   function GitHubIssues() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, GitHubIssues);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = GitHubIssues.__proto__ || Object.getPrototypeOf(GitHubIssues)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    _this.state = {
       isShow: true
-    }, _this._hToggleOpen = function () {
+    };
+
+    _this._hToggleOpen = function () {
       _this.setState(function (prevState) {
         return {
           isShow: !prevState.isShow
         };
       });
-    }, _this._hClickWatch = function () {
+    };
+
+    _this._hClickWatch = function () {
       var _this$props = _this.props,
           repo = _this$props.repo,
           requestType = _this$props.requestType,
           onWatchItem = _this$props.onWatchItem,
-          caption = '' + repo,
+          caption = "" + repo,
           descr = ITEM_DESCRIPTION;
-
       onWatchItem({
         caption: caption,
         config: {
@@ -102,7 +79,9 @@ var GitHubIssues = function (_Component) {
           descr: descr
         }
       });
-    }, _this._renderIssues = function (issues) {
+    };
+
+    _this._renderIssues = function (issues) {
       return issues.map(function (item, index) {
         var state = item.state,
             number = item.number,
@@ -113,102 +92,63 @@ var GitHubIssues = function (_Component) {
             _creadedAt = _toDate(created_at),
             _updatedAt = created_at !== updated_at ? _toDate(updated_at) : '';
 
-        return _react2.default.createElement(
-          'div',
-          { key: index, className: CL_ITEM },
-          _react2.default.createElement(
-            'a',
-            { href: html_url },
-            _react2.default.createElement(
-              'div',
-              { style: _Item2.default.PB_8 },
-              _react2.default.createElement(
-                'span',
-                { style: S.STATE },
-                state
-              ),
-              _react2.default.createElement(
-                'span',
-                { style: S.NUMBER },
-                '(#' + number + ')'
-              ),
-              _react2.default.createElement(
-                'span',
-                { style: S.DATE },
-                _creadedAt
-              ),
-              _react2.default.createElement(
-                'span',
-                { style: S.DATE },
-                _updatedAt
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              null,
-              title
-            )
-          )
-        );
+        return _react["default"].createElement("div", {
+          key: index,
+          className: CL_ITEM
+        }, _react["default"].createElement("a", {
+          href: html_url
+        }, _react["default"].createElement("div", {
+          style: _Item["default"].PB_8
+        }, _react["default"].createElement("span", {
+          style: S.STATE
+        }, state), _react["default"].createElement("span", {
+          style: S.NUMBER
+        }, "(#" + number + ")"), _react["default"].createElement("span", {
+          style: S.DATE
+        }, _creadedAt), _react["default"].createElement("span", {
+          style: S.DATE
+        }, _updatedAt)), _react["default"].createElement("div", null, title)));
       });
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    return _this;
   }
 
-  (0, _createClass3.default)(GitHubIssues, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          repo = _props.repo,
-          caption = _props.caption,
-          _props$issues = _props.issues,
-          issues = _props$issues === undefined ? [] : _props$issues,
-          onCloseItem = _props.onCloseItem,
-          _number = issues.length,
-          isShow = this.state.isShow;
+  var _proto = GitHubIssues.prototype;
 
+  _proto.render = function render() {
+    var _this$props2 = this.props,
+        repo = _this$props2.repo,
+        caption = _this$props2.caption,
+        _this$props2$issues = _this$props2.issues,
+        issues = _this$props2$issues === void 0 ? [] : _this$props2$issues,
+        onCloseItem = _this$props2.onCloseItem,
+        _number = issues.length,
+        isShow = this.state.isShow;
+    return _react["default"].createElement("div", {
+      style: _Item["default"].ROOT
+    }, _react["default"].createElement(_ItemCaption["default"], {
+      onClose: onCloseItem
+    }, _react["default"].createElement("button", {
+      className: "not-selected",
+      title: caption,
+      style: _Item["default"].CAPTION_OPEN,
+      onClick: this._hToggleOpen
+    }, _react["default"].createElement("span", {
+      style: _Item["default"].PR_8
+    }, repo), _react["default"].createElement("span", null, _number)), _react["default"].createElement(_A["default"].ButtonCircle, {
+      caption: "W",
+      title: "Add to Watch",
+      style: _Item["default"].BTN_CIRCLE,
+      onClick: this._hClickWatch
+    })), _react["default"].createElement(_A["default"].ShowHide, {
+      isShow: isShow
+    }, this._renderIssues(issues)));
+  };
 
-      return _react2.default.createElement(
-        'div',
-        { style: _Item2.default.ROOT },
-        _react2.default.createElement(
-          _ItemCaption2.default,
-          { onClose: onCloseItem },
-          _react2.default.createElement(
-            'button',
-            {
-              className: 'not-selected',
-              title: caption,
-              style: _Item2.default.CAPTION_OPEN,
-              onClick: this._hToggleOpen
-            },
-            _react2.default.createElement(
-              'span',
-              { style: _Item2.default.PR_8 },
-              repo
-            ),
-            _react2.default.createElement(
-              'span',
-              null,
-              _number
-            )
-          ),
-          _react2.default.createElement(_A2.default.ButtonCircle, {
-            caption: 'W',
-            title: 'Add to Watch',
-            style: _Item2.default.BTN_CIRCLE,
-            onClick: this._hClickWatch
-          })
-        ),
-        _react2.default.createElement(
-          _A2.default.ShowHide,
-          { isShow: isShow },
-          this._renderIssues(issues)
-        )
-      );
-    }
-  }]);
   return GitHubIssues;
 }(_react.Component);
 
-exports.default = GitHubIssues;
+var _default = GitHubIssues;
+exports["default"] = _default;
 //# sourceMappingURL=GitHubIssues.js.map

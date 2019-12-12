@@ -1,17 +1,13 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require("react");
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 var CL = "github-link";
-
 var S = {
   WRAPPER: {
     paddingLeft: 8,
@@ -25,22 +21,19 @@ var LinkToken = function LinkToken(_ref) {
       caption = _ref.caption,
       title = _ref.title,
       children = _ref.children;
-  return _react2.default.createElement(
-    "span",
-    { style: S.WRAPPER },
-    _react2.default.createElement(
-      "a",
-      {
-        className: CL,
-        style: { color: color },
-        target: "_blank",
-        href: href,
-        title: title
-      },
-      caption || children
-    )
-  );
+  return _react["default"].createElement("span", {
+    style: S.WRAPPER
+  }, _react["default"].createElement("a", {
+    className: CL,
+    style: {
+      color: color
+    },
+    target: "_blank",
+    href: href,
+    title: title
+  }, caption || children));
 };
 
-exports.default = LinkToken;
+var _default = LinkToken;
+exports["default"] = _default;
 //# sourceMappingURL=LinkToken.js.map

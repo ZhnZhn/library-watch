@@ -1,23 +1,18 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _CaptionInput = require('./CaptionInput');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _CaptionInput2 = _interopRequireDefault(_CaptionInput);
+var _CaptionInput = _interopRequireDefault(require("./CaptionInput"));
 
-var _FlatButton = require('./FlatButton');
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _FlatButton = _interopRequireDefault(require("./FlatButton"));
 
 var A = {
-  CaptionInput: _CaptionInput2.default,
-  FlatButton: _FlatButton2.default
+  CaptionInput: _CaptionInput["default"],
+  FlatButton: _FlatButton["default"]
 };
-
-exports.default = A;
+var _default = A;
+exports["default"] = _default;
 //# sourceMappingURL=A.js.map

@@ -1,21 +1,15 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _SvgClose = require('../zhn-atoms/SvgClose');
-
-var _SvgClose2 = _interopRequireDefault(_SvgClose);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
 
 var CL = "not-selected";
-
 var S = {
   ROOT: {
     color: 'silver',
@@ -34,19 +28,14 @@ var S = {
 var DialogCaption = function DialogCaption(_ref) {
   var caption = _ref.caption,
       onClose = _ref.onClose;
-  return _react2.default.createElement(
-    'div',
-    { style: S.ROOT },
-    _react2.default.createElement(
-      'span',
-      { className: CL },
-      caption
-    ),
-    _react2.default.createElement(_SvgClose2.default, {
-      style: S.SVG,
-      onClose: onClose
-    })
-  );
+  return _react["default"].createElement("div", {
+    style: S.ROOT
+  }, _react["default"].createElement("span", {
+    className: CL
+  }, caption), _react["default"].createElement(_SvgClose["default"], {
+    style: S.SVG,
+    onClose: onClose
+  }));
 };
 /*
 DialogCaption.propTypes = {
@@ -55,5 +44,7 @@ DialogCaption.propTypes = {
 }
 */
 
-exports.default = DialogCaption;
+
+var _default = DialogCaption;
+exports["default"] = _default;
 //# sourceMappingURL=DialogCaption.js.map

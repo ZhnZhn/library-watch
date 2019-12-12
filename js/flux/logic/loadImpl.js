@@ -1,47 +1,39 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _fnFetch = require('../../network/fnFetch');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _fnFetch2 = _interopRequireDefault(_fnFetch);
+var _fnFetch = _interopRequireDefault(require("../../network/fnFetch"));
 
-var _fnCatch = require('../../network/fnCatch');
+var _fnCatch = _interopRequireDefault(require("../../network/fnCatch"));
 
-var _fnCatch2 = _interopRequireDefault(_fnCatch);
-
-var _RestApi = require('../../api/RestApi');
-
-var _RestApi2 = _interopRequireDefault(_RestApi);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _RestApi = _interopRequireDefault(require("../../api/RestApi"));
 
 var _fnFetchToChartComp = function _fnFetchToChartComp(_ref) {
   var json = _ref.json,
       option = _ref.option,
       onCompleted = _ref.onCompleted;
-
   onCompleted(option, json);
 };
 
 var loadItem = function loadItem(option, onCompleted, onFailed) {
-  (0, _fnFetch2.default)({
-    uri: _RestApi2.default.getRequestUrl(option),
+  (0, _fnFetch["default"])({
+    uri: _RestApi["default"].getRequestUrl(option),
     option: option,
-    onCheckResponse: _RestApi2.default.getOnCheckResponse(option),
+    onCheckResponse: _RestApi["default"].getOnCheckResponse(option),
     onFetch: _fnFetchToChartComp,
     onCompleted: onCompleted,
-    onCatch: _fnCatch2.default,
+    onCatch: _fnCatch["default"],
     onFailed: onFailed
   });
 };
 
 var loadImpl = {
   loadItem: loadItem,
-  crKey: _RestApi2.default.crKey
+  crKey: _RestApi["default"].crKey
 };
-
-exports.default = loadImpl;
+var _default = loadImpl;
+exports["default"] = _default;
 //# sourceMappingURL=loadImpl.js.map

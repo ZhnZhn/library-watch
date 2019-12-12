@@ -1,16 +1,13 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _CL = require('../../styles/CL');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _CL2 = _interopRequireDefault(_CL);
+var _CL = _interopRequireDefault(require("../../styles/CL"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var CL_ROW = _CL2.default.ROW_MENU_MORE;
+var CL_ROW = _CL["default"].ROW_MENU_MORE;
 
 var _fSortByItem = function _fSortByItem(onClick) {
   return function (name, propName) {
@@ -22,12 +19,13 @@ var _fSortByItem = function _fSortByItem(onClick) {
   };
 };
 
-var crModelMore = function crModelMore() {
-  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+var crModelMore = function crModelMore(_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
       setSortByProp = _ref.setSortByProp,
       reverse = _ref.reverse;
 
   var _crSortByItem = _fSortByItem(setSortByProp);
+
   return {
     baseTitleCl: CL_ROW,
     pageWidth: 180,
@@ -36,13 +34,15 @@ var crModelMore = function crModelMore() {
       id: 'p1',
       type: 'sub',
       cn: CL_ROW,
-      name: 'Sort By, DESC' /*,{
-                             cn: CL_ROW,
-                             name: 'Remove Visited',
-                             onClick: onRemoveAll,
-                             isClose: true
-                            }*/
-    }],
+      name: 'Sort By, DESC'
+    }
+    /*,{
+     cn: CL_ROW,
+     name: 'Remove Visited',
+     onClick: onRemoveAll,
+     isClose: true
+    }*/
+    ],
     p1: [_crSortByItem('Answer Count', 'answer_count'), _crSortByItem('Score', 'score'), _crSortByItem('View Count', 'view_count'), _crSortByItem('Reputation', 'reputation'), {
       name: 'Reverse Items',
       onClick: reverse,
@@ -51,5 +51,6 @@ var crModelMore = function crModelMore() {
   };
 };
 
-exports.default = crModelMore;
+var _default = crModelMore;
+exports["default"] = _default;
 //# sourceMappingURL=crModelMore.js.map

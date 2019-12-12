@@ -1,31 +1,21 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.WatchActionTypes = undefined;
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+exports.__esModule = true;
+exports["default"] = exports.WatchActionTypes = void 0;
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _reflux = _interopRequireDefault(require("reflux"));
 
 var _Reflux$createActions;
 
-var _reflux = require('reflux');
-
-var _reflux2 = _interopRequireDefault(_reflux);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var WatchActionTypes = exports.WatchActionTypes = {
+var WatchActionTypes = {
   ADD_ITEM: 'addItem',
   REMOVE_ITEM: 'removeItem',
   SAVE_WATCH: 'saveWatch',
-
   DRAG_DROP_GROUP: 'dragDropGroup',
   DRAG_DROP_LIST: 'dragDropList',
   DRAG_DROP_ITEM: 'dragDropItem',
-
   ADD_GROUP: 'addGroup',
   RENAME_GROUP: 'renameGroup',
   DELETE_GROUP: 'deleteGroup',
@@ -34,14 +24,14 @@ var WatchActionTypes = exports.WatchActionTypes = {
   DELETE_LIST: 'deleteList',
   EDIT_WATCH_COMPLETED: 'editWatchCompleted',
   EDIT_WATCH_FAILED: 'editWatchFailed',
-
   BACKUP_TO_JSON: 'backupToJson',
   LOAD_FROM_JSON: 'loadFromJson',
-
   SET_WATCH_EDITED: 'setWatchEdited'
 };
+exports.WatchActionTypes = WatchActionTypes;
 
-var WatchActions = _reflux2.default.createActions((_Reflux$createActions = {}, (0, _defineProperty3.default)(_Reflux$createActions, WatchActionTypes.ADD_ITEM, {}), (0, _defineProperty3.default)(_Reflux$createActions, WatchActionTypes.REMOVE_ITEM, {}), (0, _defineProperty3.default)(_Reflux$createActions, WatchActionTypes.SAVE_WATCH, {}), (0, _defineProperty3.default)(_Reflux$createActions, WatchActionTypes.DRAG_DROP_GROUP, {}), (0, _defineProperty3.default)(_Reflux$createActions, WatchActionTypes.DRAG_DROP_LIST, {}), (0, _defineProperty3.default)(_Reflux$createActions, WatchActionTypes.DRAG_DROP_ITEM, {}), (0, _defineProperty3.default)(_Reflux$createActions, WatchActionTypes.ADD_GROUP, {}), (0, _defineProperty3.default)(_Reflux$createActions, WatchActionTypes.RENAME_GROUP, {}), (0, _defineProperty3.default)(_Reflux$createActions, WatchActionTypes.DELETE_GROUP, {}), (0, _defineProperty3.default)(_Reflux$createActions, WatchActionTypes.CREATE_LIST, {}), (0, _defineProperty3.default)(_Reflux$createActions, WatchActionTypes.RENAME_LIST, {}), (0, _defineProperty3.default)(_Reflux$createActions, WatchActionTypes.DELETE_LIST, {}), (0, _defineProperty3.default)(_Reflux$createActions, WatchActionTypes.EDIT_WATCH_COMPLETED, {}), (0, _defineProperty3.default)(_Reflux$createActions, WatchActionTypes.EDIT_WATCH_FAILED, {}), (0, _defineProperty3.default)(_Reflux$createActions, WatchActionTypes.BACKUP_TO_JSON, {}), (0, _defineProperty3.default)(_Reflux$createActions, WatchActionTypes.LOAD_FROM_JSON, {}), _Reflux$createActions));
+var WatchActions = _reflux["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[WatchActionTypes.ADD_ITEM] = {}, _Reflux$createActions[WatchActionTypes.REMOVE_ITEM] = {}, _Reflux$createActions[WatchActionTypes.SAVE_WATCH] = {}, _Reflux$createActions[WatchActionTypes.DRAG_DROP_GROUP] = {}, _Reflux$createActions[WatchActionTypes.DRAG_DROP_LIST] = {}, _Reflux$createActions[WatchActionTypes.DRAG_DROP_ITEM] = {}, _Reflux$createActions[WatchActionTypes.ADD_GROUP] = {}, _Reflux$createActions[WatchActionTypes.RENAME_GROUP] = {}, _Reflux$createActions[WatchActionTypes.DELETE_GROUP] = {}, _Reflux$createActions[WatchActionTypes.CREATE_LIST] = {}, _Reflux$createActions[WatchActionTypes.RENAME_LIST] = {}, _Reflux$createActions[WatchActionTypes.DELETE_LIST] = {}, _Reflux$createActions[WatchActionTypes.EDIT_WATCH_COMPLETED] = {}, _Reflux$createActions[WatchActionTypes.EDIT_WATCH_FAILED] = {}, _Reflux$createActions[WatchActionTypes.BACKUP_TO_JSON] = {}, _Reflux$createActions[WatchActionTypes.LOAD_FROM_JSON] = {}, _Reflux$createActions));
 
-exports.default = WatchActions;
+var _default = WatchActions;
+exports["default"] = _default;
 //# sourceMappingURL=WatchActions.js.map

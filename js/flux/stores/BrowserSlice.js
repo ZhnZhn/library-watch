@@ -1,40 +1,28 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _BrowserMenu = require('../../constants/BrowserMenu');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _BrowserMenu2 = _interopRequireDefault(_BrowserMenu);
+var _BrowserMenu = _interopRequireDefault(require("../../constants/BrowserMenu"));
 
-var _Factory = require('../logic/Factory');
+var _Factory = _interopRequireDefault(require("../logic/Factory"));
 
-var _Factory2 = _interopRequireDefault(_Factory);
+var _BrowserActions = require("../actions/BrowserActions");
 
-var _BrowserActions = require('../actions/BrowserActions');
+var _BrowserLogic = _interopRequireDefault(require("./browser/BrowserLogic"));
 
-var _BrowserLogic = require('./browser/BrowserLogic');
+var _DataWL = _interopRequireDefault(require("../../constants/DataWL"));
 
-var _BrowserLogic2 = _interopRequireDefault(_BrowserLogic);
-
-var _DataWL = require('../../constants/DataWL');
-
-var _DataWL2 = _interopRequireDefault(_DataWL);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var setIsOpen = _BrowserLogic2.default.setIsOpen,
-    plusCounter = _BrowserLogic2.default.plusCounter,
-    resetCounter = _BrowserLogic2.default.resetCounter;
-
-
+var setIsOpen = _BrowserLogic["default"].setIsOpen,
+    plusCounter = _BrowserLogic["default"].plusCounter,
+    resetCounter = _BrowserLogic["default"].resetCounter;
 var BrowserSlice = {
-  browserMenu: _BrowserMenu2.default,
+  browserMenu: _BrowserMenu["default"],
   routeDialog: {
-    WL: _DataWL2.default
+    WL: _DataWL["default"]
   },
-
   getBrowserMenu: function getBrowserMenu(browserType) {
     return this.browserMenu[browserType];
   },
@@ -60,7 +48,8 @@ var BrowserSlice = {
     var browserType = option.browserType;
 
     if (!this.browserMenu[browserType]) {
-      var elBrowser = _Factory2.default.createBrowserDynamic(option);
+      var elBrowser = _Factory["default"].createBrowserDynamic(option);
+
       this.browserMenu[browserType] = [];
       this.trigger(_BrowserActions.BrowserActionTypes.INIT_BROWSER_DYNAMIC, elBrowser);
     } else {
@@ -71,12 +60,13 @@ var BrowserSlice = {
     var menu = option.menu,
         items = option.items,
         browserType = option.browserType,
-        elMenu = _BrowserMenu2.default.createMenu(menu, items, browserType);
+        elMenu = _BrowserMenu["default"].createMenu(menu, items, browserType);
 
     this.routeDialog[browserType] = items;
     this.browserMenu[browserType] = elMenu;
     this.trigger(_BrowserActions.BrowserActionTypes.LOAD_BROWSER_DYNAMIC_COMPLETED, {
-      menuItems: elMenu, browserType: browserType
+      menuItems: elMenu,
+      browserType: browserType
     });
   },
   onLoadBrowserDynamicFailed: function onLoadBrowserDynamicFailed(option) {
@@ -90,6 +80,6 @@ var BrowserSlice = {
     resetCounter(this.browserMenu, bT, cT);
   }
 };
-
-exports.default = BrowserSlice;
+var _default = BrowserSlice;
+exports["default"] = _default;
 //# sourceMappingURL=BrowserSlice.js.map

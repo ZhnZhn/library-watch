@@ -1,8 +1,7 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 var STYLE = {
   ROOT: {
     display: 'inline-block',
@@ -23,7 +22,6 @@ var STYLE = {
     borderWidth: 1,
     fontWeight: 'normal'
   },
-
   ITEM: {
     display: 'inline-block',
     paddingLeft: 5,
@@ -47,6 +45,6 @@ var STYLE = {
     borderColor: 'gray'
   }
 };
-
-exports.default = STYLE;
+var _default = STYLE;
+exports["default"] = _default;
 //# sourceMappingURL=ButtonDownUp.Style.js.map

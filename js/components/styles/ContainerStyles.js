@@ -1,8 +1,7 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 var ContainerStyles = {
   browserRootDiv: {
     position: 'relative',
@@ -20,8 +19,8 @@ var ContainerStyles = {
     maxWidth: '400px',
     marginLeft: '10px',
     borderRadius: '4px',
-    boxShadow: '1px 4px 6px 1px rgba(0, 0, 0, 0.6)'
-    //paddingBottom: '32px'
+    boxShadow: '1px 4px 6px 1px rgba(0, 0, 0, 0.6)' //paddingBottom: '32px'
+
   },
   aboutRootDiv: {
     position: 'relative',
@@ -49,6 +48,6 @@ var ContainerStyles = {
     display: 'none'
   }
 };
-
-exports.default = ContainerStyles;
+var _default = ContainerStyles;
+exports["default"] = _default;
 //# sourceMappingURL=ContainerStyles.js.map

@@ -1,8 +1,7 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 var DialogStyles = {
   //Dialogs, DatesFragments
   rowDiv: {
@@ -20,7 +19,6 @@ var DialogStyles = {
     fontSize: '16px',
     fontWeight: 'bold'
   },
-
   //ValidationMessagesFragment
   validationContainer: {
     paddingLeft: '10px',
@@ -36,8 +34,7 @@ var DialogStyles = {
     textAlign: 'center',
     marginRight: '5px'
   }
-
 };
-
-exports.default = DialogStyles;
+var _default = DialogStyles;
+exports["default"] = _default;
 //# sourceMappingURL=DialogStyles.js.map

@@ -1,13 +1,10 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
+exports.__esModule = true;
+exports["default"] = void 0;
 var STYLE = {
   CL_CAPTION: "gap-right cont-caption",
   CL_NOT_SELECTED: "not-selected",
-
   SPAN: {
     paddingRight: 8,
     fontSize: '18px',
@@ -19,6 +16,6 @@ var STYLE = {
     right: 0
   }
 };
-
-exports.default = STYLE;
+var _default = STYLE;
+exports["default"] = _default;
 //# sourceMappingURL=CaptionRow.Style.js.map

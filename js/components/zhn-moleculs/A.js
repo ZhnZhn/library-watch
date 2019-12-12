@@ -1,18 +1,15 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _ButtonSave = require('./ButtonSave');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _ButtonSave2 = _interopRequireDefault(_ButtonSave);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _ButtonSave = _interopRequireDefault(require("./ButtonSave"));
 
 var A = {
-  ButtonSave: _ButtonSave2.default
+  ButtonSave: _ButtonSave["default"]
 };
-
-exports.default = A;
+var _default = A;
+exports["default"] = _default;
 //# sourceMappingURL=A.js.map

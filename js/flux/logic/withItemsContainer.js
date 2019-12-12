@@ -1,37 +1,28 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _ChartActions = require('../actions/ChartActions');
+var _ChartActions = _interopRequireDefault(require("../actions/ChartActions"));
 
-var _ChartActions2 = _interopRequireDefault(_ChartActions);
+var _ComponentActions = _interopRequireDefault(require("../actions/ComponentActions"));
 
-var _ComponentActions = require('../actions/ComponentActions');
-
-var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
-
-var _ChartContainer = require('../../components/zhn-containers/ChartContainer2');
-
-var _ChartContainer2 = _interopRequireDefault(_ChartContainer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _ChartContainer = _interopRequireDefault(require("../../components/zhn-containers/ChartContainer2"));
 
 var _createChartContainerComp = function _createChartContainerComp(conf, browserType) {
-  var Comp = conf.chartContainerComp ? conf.chartContainerComp : _ChartContainer2.default,
+  var Comp = conf.chartContainerComp ? conf.chartContainerComp : _ChartContainer["default"],
       _chartType = conf.type;
-  return _react2.default.createElement(Comp, {
+  return _react["default"].createElement(Comp, {
     key: _chartType,
     caption: conf.chartContainerCaption,
     chartType: _chartType,
     browserType: browserType,
-    onCloseContainer: _ComponentActions2.default.closeChartContainer.bind(null, _chartType, browserType),
-    onRemoveAll: _ChartActions2.default.removeAll.bind(null, _chartType, browserType)
+    onCloseContainer: _ComponentActions["default"].closeChartContainer.bind(null, _chartType, browserType),
+    onRemoveAll: _ChartActions["default"].removeAll.bind(null, _chartType, browserType)
   });
 };
 
@@ -40,6 +31,6 @@ var withItemsContainer = {
     return _createChartContainerComp(this.getDataConf(dialogType), browserType);
   }
 };
-
-exports.default = withItemsContainer;
+var _default = withItemsContainer;
+exports["default"] = _default;
 //# sourceMappingURL=withItemsContainer.js.map

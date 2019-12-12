@@ -1,28 +1,26 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-   value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 var Token = function Token(props) {
-   var isFirstBlank = props.isFirstBlank,
-       color = props.color,
-       children = props.children,
-       _firstChart = isFirstBlank ? ' ' : undefined;
+  var isFirstBlank = props.isFirstBlank,
+      color = props.color,
+      children = props.children,
+      _firstChart = isFirstBlank ? ' ' : undefined;
 
-   return _react2.default.createElement(
-      'span',
-      { style: { color: color, fontWeight: 'bold' } },
-      _firstChart,
-      children
-   );
+  return _react["default"].createElement("span", {
+    style: {
+      color: color,
+      fontWeight: 'bold'
+    }
+  }, _firstChart, children);
 };
 
-exports.default = Token;
+var _default = Token;
+exports["default"] = _default;
 //# sourceMappingURL=Token.js.map

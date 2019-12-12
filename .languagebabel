@@ -6,7 +6,7 @@
   "createMap": true,
   "createTargetDirectories": true,
   "createTranspiledCode": true,
-  "disableWhenNoBabelrcFileInPath": true,
+  "disableWhenNoBabelrcFileInPath": false,
   "suppressSourcePathMessages": false,
   "suppressTranspileOnSaveMessages": false,
   "transpileOnSave": true,

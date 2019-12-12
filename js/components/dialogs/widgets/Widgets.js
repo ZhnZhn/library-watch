@@ -1,18 +1,15 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _Toolbar = require('./Toolbar');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _Toolbar2 = _interopRequireDefault(_Toolbar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Toolbar = _interopRequireDefault(require("./Toolbar"));
 
 var Widgets = {
-  Toolbar: _Toolbar2.default
+  Toolbar: _Toolbar["default"]
 };
-
-exports.default = Widgets;
+var _default = Widgets;
+exports["default"] = _default;
 //# sourceMappingURL=Widgets.js.map

@@ -1,59 +1,37 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _RowInputSelect = _interopRequireDefault(require("./RowInputSelect"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _ValidationMessagesFragment = _interopRequireDefault(require("../zhn-moleculs/ValidationMessagesFragment"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp, _initialiseProps;
+var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
 //import PropTypes from 'prop-types'
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _RowInputSelect = require('./RowInputSelect');
-
-var _RowInputSelect2 = _interopRequireDefault(_RowInputSelect);
-
-var _ValidationMessagesFragment = require('../zhn-moleculs/ValidationMessagesFragment');
-
-var _ValidationMessagesFragment2 = _interopRequireDefault(_ValidationMessagesFragment);
-
-var _FlatButton = require('../zhn-m/FlatButton');
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var S = {
   COMMAND_DIV: {
     cursor: 'default',
-    float: 'right',
+    "float": 'right',
     marginTop: '8px',
     marginBottom: '10px',
     marginRight: '4px'
   }
 };
 
-var GroupDeletePane = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(GroupDeletePane, _Component);
+var GroupDeletePane =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(GroupDeletePane, _Component);
 
   /*
   statis propTypes = {
@@ -66,110 +44,103 @@ var GroupDeletePane = (_temp = _class = function (_Component) {
   }
   */
   function GroupDeletePane(props) {
-    (0, _classCallCheck3.default)(this, GroupDeletePane);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (GroupDeletePane.__proto__ || Object.getPrototypeOf(GroupDeletePane)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
-    _initialiseProps.call(_this);
+    _this._onStore = function (actionType, data) {
+      var _this$props = _this.props,
+          actionCompleted = _this$props.actionCompleted,
+          forActionType = _this$props.forActionType,
+          store = _this$props.store;
 
-    var store = props.store;
+      if (actionType === actionCompleted) {
+        if (data.forActionType === forActionType) {
+          _this._handlerClear();
+        }
 
+        _this.setState({
+          groupOptions: store.getWatchGroups()
+        });
+      }
+    };
+
+    _this._handlerSelectGroup = function (item) {
+      if (item && item.caption) {
+        _this.caption = item.caption;
+      } else {
+        _this.caption = null;
+      }
+    };
+
+    _this._handlerClear = function () {
+      if (_this.state.validationMessages.length > 0) {
+        _this.setState({
+          validationMessages: []
+        });
+      }
+    };
+
+    _this._handlerDeleteGroup = function () {
+      if (_this.caption) {
+        _this.props.onDelete({
+          caption: _this.caption
+        });
+      } else {
+        _this.setState({
+          validationMessages: [_this.props.msgOnNotSelect('Group')]
+        });
+      }
+    };
+
+    var _store = props.store;
     _this.caption = null;
     _this.state = {
-      groupOptions: store.getWatchGroups(),
+      groupOptions: _store.getWatchGroups(),
       validationMessages: []
     };
     return _this;
   }
 
-  (0, _createClass3.default)(GroupDeletePane, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.unsubscribe = this.props.store.listen(this._onStore);
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.unsubscribe();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var onClose = this.props.onClose,
-          _state = this.state,
-          groupOptions = _state.groupOptions,
-          validationMessages = _state.validationMessages;
+  var _proto = GroupDeletePane.prototype;
 
+  _proto.componentDidMount = function componentDidMount() {
+    this.unsubscribe = this.props.store.listen(this._onStore);
+  };
 
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(_RowInputSelect2.default, {
-          caption: 'Group',
-          options: groupOptions
-          //isUpdateOptions={true}
-          , onSelect: this._handlerSelectGroup
-        }),
-        _react2.default.createElement(_ValidationMessagesFragment2.default, {
-          validationMessages: validationMessages
-        }),
-        _react2.default.createElement(
-          'div',
-          { style: S.COMMAND_DIV },
-          _react2.default.createElement(_FlatButton2.default, {
-            isPrimary: true,
-            caption: 'Delete',
-            timeout: 0,
-            onClick: this._handlerDeleteGroup
-          }),
-          _react2.default.createElement(_FlatButton2.default, {
-            caption: 'Close',
-            timeout: 0,
-            onClick: onClose
-          })
-        )
-      );
-    }
-  }]);
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.unsubscribe();
+  };
+
+  _proto.render = function render() {
+    var onClose = this.props.onClose,
+        _this$state = this.state,
+        groupOptions = _this$state.groupOptions,
+        validationMessages = _this$state.validationMessages;
+    return _react["default"].createElement("div", null, _react["default"].createElement(_RowInputSelect["default"], {
+      caption: "Group",
+      options: groupOptions //isUpdateOptions={true}
+      ,
+      onSelect: this._handlerSelectGroup
+    }), _react["default"].createElement(_ValidationMessagesFragment["default"], {
+      validationMessages: validationMessages
+    }), _react["default"].createElement("div", {
+      style: S.COMMAND_DIV
+    }, _react["default"].createElement(_FlatButton["default"], {
+      isPrimary: true,
+      caption: "Delete",
+      timeout: 0,
+      onClick: this._handlerDeleteGroup
+    }), _react["default"].createElement(_FlatButton["default"], {
+      caption: "Close",
+      timeout: 0,
+      onClick: onClose
+    })));
+  };
+
   return GroupDeletePane;
-}(_react.Component), _initialiseProps = function _initialiseProps() {
-  var _this2 = this;
+}(_react.Component);
 
-  this._onStore = function (actionType, data) {
-    var _props = _this2.props,
-        actionCompleted = _props.actionCompleted,
-        forActionType = _props.forActionType,
-        store = _props.store;
-
-    if (actionType === actionCompleted) {
-      if (data.forActionType === forActionType) {
-        _this2._handlerClear();
-      }
-      _this2.setState({ groupOptions: store.getWatchGroups() });
-    }
-  };
-
-  this._handlerSelectGroup = function (item) {
-    if (item && item.caption) {
-      _this2.caption = item.caption;
-    } else {
-      _this2.caption = null;
-    }
-  };
-
-  this._handlerClear = function () {
-    if (_this2.state.validationMessages.length > 0) {
-      _this2.setState({ validationMessages: [] });
-    }
-  };
-
-  this._handlerDeleteGroup = function () {
-    if (_this2.caption) {
-      _this2.props.onDelete({ caption: _this2.caption });
-    } else {
-      _this2.setState({ validationMessages: [_this2.props.msgOnNotSelect('Group')] });
-    }
-  };
-}, _temp);
-exports.default = GroupDeletePane;
+var _default = GroupDeletePane;
+exports["default"] = _default;
 //# sourceMappingURL=GroupDeletePane.js.map

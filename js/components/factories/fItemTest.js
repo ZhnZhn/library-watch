@@ -1,18 +1,13 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _TestItem = require('../items/TestItem');
-
-var _TestItem2 = _interopRequireDefault(_TestItem);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _TestItem = _interopRequireDefault(require("../items/TestItem"));
 
 var fItemTest = function fItemTest(_ref) {
   var factory = _ref.factory,
@@ -21,11 +16,11 @@ var fItemTest = function fItemTest(_ref) {
       parentProps = _ref.parentProps;
   var repo = option.repo,
       requestType = option.requestType;
-
-  return factory.createElement(_TestItem2.default, (0, _extends3.default)({
-    key: repo + '_' + requestType
+  return factory.createElement(_TestItem["default"], (0, _extends2["default"])({
+    key: repo + "_" + requestType
   }, parentProps));
 };
 
-exports.default = fItemTest;
+var _default = fItemTest;
+exports["default"] = _default;
 //# sourceMappingURL=fItemTest.js.map

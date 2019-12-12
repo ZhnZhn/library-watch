@@ -1,22 +1,18 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _is = require('../utils/is');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _is2 = _interopRequireDefault(_is);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _is = _interopRequireDefault(require("../utils/is"));
 
 var has = {
-  HAS_TOUCH: _is2.default.isTouchable(),
-
+  HAS_TOUCH: _is["default"].isTouchable(),
   wideWidth: function wideWidth() {
     return window.innerWidth ? window.innerWidth > 700 : true;
   }
 };
-
-exports.default = has;
+var _default = has;
+exports["default"] = _default;
 //# sourceMappingURL=has.js.map

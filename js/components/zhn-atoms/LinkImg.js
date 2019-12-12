@@ -1,33 +1,26 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require("react");
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 //import PropTypes from "prop-types";
-
 var LinkImg = function LinkImg(_ref) {
   var href = _ref.href,
       imgClass = _ref.imgClass,
       imgSrc = _ref.imgSrc,
       onError = _ref.onError;
-  return _react2.default.createElement(
-    "a",
-    { href: href },
-    _react2.default.createElement("img", {
-      className: imgClass,
-      src: imgSrc,
-      onError: onError.bind(null, imgSrc)
-    })
-  );
+  return _react["default"].createElement("a", {
+    href: href
+  }, _react["default"].createElement("img", {
+    className: imgClass,
+    src: imgSrc,
+    onError: onError.bind(null, imgSrc)
+  }));
 };
-
 /*
 LinkImg.propTypes = {
   href: PropTypes.string,
@@ -36,11 +29,13 @@ LinkImg.propTypes = {
   onError: PropTypes.func
 }
 */
+
+
 LinkImg.defaultProps = {
   onError: function onError(imgSrc, event) {
     console.log("Failed to load image with src: " + imgSrc);
   }
 };
-
-exports.default = LinkImg;
+var _default = LinkImg;
+exports["default"] = _default;
 //# sourceMappingURL=LinkImg.js.map

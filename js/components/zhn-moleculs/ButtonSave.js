@@ -1,41 +1,21 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _WatchActions = _interopRequireWildcard(require("../../flux/actions/WatchActions"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _WatchActions = require('../../flux/actions/WatchActions');
-
-var _WatchActions2 = _interopRequireDefault(_WatchActions);
-
-var _ButtonCircle = require('../zhn-atoms/ButtonCircle');
-
-var _ButtonCircle2 = _interopRequireDefault(_ButtonCircle);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _ButtonCircle = _interopRequireDefault(require("../zhn-atoms/ButtonCircle"));
 
 //import PropTypes from "prop-types";
-
 var CAPTION = "S",
     TITLE = "Save Watch Items to Locale Storage",
     STYLE = {
@@ -45,8 +25,10 @@ var CAPTION = "S",
   }
 };
 
-var ButtonSave = function (_Component) {
-  (0, _inherits3.default)(ButtonSave, _Component);
+var ButtonSave =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(ButtonSave, _Component);
 
   /*
   static propTypes = {
@@ -54,15 +36,16 @@ var ButtonSave = function (_Component) {
     style : PropTypes.object
   }
   */
-
   function ButtonSave(props) {
-    (0, _classCallCheck3.default)(this, ButtonSave);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (ButtonSave.__proto__ || Object.getPrototypeOf(ButtonSave)).call(this));
+    _this = _Component.call(this) || this;
 
     _this._onStore = function (actionType, value) {
       if (actionType === _WatchActions.WatchActionTypes.SET_WATCH_EDITED) {
-        _this.setState({ isWatchEdited: value });
+        _this.setState({
+          isWatchEdited: value
+        });
       }
     };
 
@@ -72,47 +55,47 @@ var ButtonSave = function (_Component) {
     return _this;
   }
 
-  (0, _createClass3.default)(ButtonSave, [{
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (nextState.isWatchEdited === this.state.isWatchEdited) {
-        return false;
-      }
-      return true;
-    }
-  }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var store = this.props.store;
+  var _proto = ButtonSave.prototype;
 
-      this.unsubcribe = store.listen(this._onStore);
-      this.setState({ isWatchEdited: store.getWatchEdited() });
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+    if (nextState.isWatchEdited === this.state.isWatchEdited) {
+      return false;
     }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.unsubcribe();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          className = _props.className,
-          style = _props.style,
-          isWatchEdited = this.state.isWatchEdited,
-          _style = isWatchEdited ? style : Object.assign({}, style, STYLE.NOT_WATCH_EDITED);
 
-      return _react2.default.createElement(_ButtonCircle2.default, {
-        className: className,
-        caption: CAPTION,
-        title: TITLE,
-        style: _style,
-        onClick: _WatchActions2.default.saveWatch
-      });
-    }
-  }]);
+    return true;
+  };
+
+  _proto.componentDidMount = function componentDidMount() {
+    var store = this.props.store;
+    this.unsubcribe = store.listen(this._onStore);
+    this.setState({
+      isWatchEdited: store.getWatchEdited()
+    });
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.unsubcribe();
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        className = _this$props.className,
+        style = _this$props.style,
+        isWatchEdited = this.state.isWatchEdited,
+        _style = isWatchEdited ? style : Object.assign({}, style, STYLE.NOT_WATCH_EDITED);
+
+    return _react["default"].createElement(_ButtonCircle["default"], {
+      className: className,
+      caption: CAPTION,
+      title: TITLE,
+      style: _style,
+      onClick: _WatchActions["default"].saveWatch
+    });
+  };
+
   return ButtonSave;
 }(_react.Component);
 
-exports.default = ButtonSave;
+var _default = ButtonSave;
+exports["default"] = _default;
 //# sourceMappingURL=ButtonSave.js.map

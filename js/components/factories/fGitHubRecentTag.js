@@ -1,36 +1,28 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _GitHubRecentTag = require('../items/GitHubRecentTag');
+var _GitHubRecentTag = _interopRequireDefault(require("../items/GitHubRecentTag"));
 
-var _GitHubRecentTag2 = _interopRequireDefault(_GitHubRecentTag);
+var _fnFetchJson = _interopRequireDefault(require("../../network/fnFetchJson"));
 
-var _fnFetchJson = require('../../network/fnFetchJson');
-
-var _fnFetchJson2 = _interopRequireDefault(_fnFetchJson);
-
-var _fnCatch = require('../../network/fnCatch');
-
-var _fnCatch2 = _interopRequireDefault(_fnCatch);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _fnCatch = _interopRequireDefault(require("../../network/fnCatch"));
 
 //uri, option, onCheckResponse, onFetch, onCompleted, onFailed, onCatch
-
 var _base = 'https://api.github.com';
 
 var fGitHubRecentTag = function fGitHubRecentTag(_ref) {
   var factory = _ref.factory,
       option = _ref.option,
       _ref$json = _ref.json,
-      json = _ref$json === undefined ? [{ name: 'empty' }] : _ref$json,
+      json = _ref$json === void 0 ? [{
+    name: 'empty'
+  }] : _ref$json,
       parentProps = _ref.parentProps,
       onCloseItem = _ref.onCloseItem,
       onWatchItem = _ref.onWatchItem;
@@ -41,22 +33,23 @@ var fGitHubRecentTag = function fGitHubRecentTag(_ref) {
       browserType = option.browserType,
       key = option.key,
       tagItem = json[0],
-      _onClickDetail = _fnFetchJson2.default.bind(null, {
-    uri: _base + '/repos/' + option.repo + '/commits/' + tagItem.commit.sha,
-    onCatch: _fnCatch2.default
+      _onClickDetail = _fnFetchJson["default"].bind(null, {
+    uri: _base + "/repos/" + option.repo + "/commits/" + tagItem.commit.sha,
+    onCatch: _fnCatch["default"]
   });
 
-  return factory.createElement(_GitHubRecentTag2.default, (0, _extends3.default)({
+  return factory.createElement(_GitHubRecentTag["default"], (0, _extends2["default"])({
     key: key,
     repo: repo,
     requestType: requestType,
     version: tagItem.name,
-    caption: repo + ' ' + tagItem.name,
+    caption: repo + " " + tagItem.name,
     onCloseItem: onCloseItem.bind(null, chartType, browserType, key),
     onClickDetail: _onClickDetail,
     onWatchItem: onWatchItem
   }, parentProps));
 };
 
-exports.default = fGitHubRecentTag;
+var _default = fGitHubRecentTag;
+exports["default"] = _default;
 //# sourceMappingURL=fGitHubRecentTag.js.map

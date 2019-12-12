@@ -1,21 +1,17 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _RouterApi = require('./RouterApi');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _RouterApi2 = _interopRequireDefault(_RouterApi);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _RouterApi = _interopRequireDefault(require("./RouterApi"));
 
 var RestApi = {
   getApi: function getApi(option) {
     var requestType = option.requestType,
         id = requestType.split('_')[0];
-
-    return _RouterApi2.default[id];
+    return _RouterApi["default"][id];
   },
   getRequestUrl: function getRequestUrl(option) {
     var api = RestApi.getApi(option);
@@ -33,6 +29,6 @@ var RestApi = {
     return true;
   }
 };
-
-exports.default = RestApi;
+var _default = RestApi;
+exports["default"] = _default;
 //# sourceMappingURL=RestApi.js.map

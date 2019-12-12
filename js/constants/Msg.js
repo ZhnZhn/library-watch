@@ -1,49 +1,42 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 var Msg = {
   setAlertMsg: function setAlertMsg(option, msg) {
     var caption = msg.caption,
         descr = msg.descr;
-
     option.alertCaption = caption;
     option.alertDescr = descr;
   },
-
   WATCH_SAVED: 'Watch List has been saved.',
   WATCH_PREV: 'Watch List has not been edited\nfrom previous save.',
   WATCH_BACKUP_ZIP: function WATCH_BACKUP_ZIP(zipName) {
-    return 'Watch Items have been saved to\n' + zipName;
+    return "Watch Items have been saved to\n" + zipName;
   },
   WATCH_BACKUP_ZIP_FAILED: 'Watch Items Saving was Failed.',
-
   NOT_FOUND_ITEM: function NOT_FOUND_ITEM(itemType, captionGroup) {
-    return 'The ' + itemType + ' witn name ' + captionGroup + ' not found.';
+    return "The " + itemType + " witn name " + captionGroup + " not found.";
   },
   GROUP_EXISTED: function GROUP_EXISTED(caption) {
-    return 'Group with name ' + caption + ' is already existed.';
+    return "Group with name " + caption + " is already existed.";
   },
   LIST_EXISTED: function LIST_EXISTED(captionList, captionGroup) {
-    return 'List with name ' + captionList + '\n      In Group ' + captionGroup + ' is already existed.';
+    return "List with name " + captionList + "\n      In Group " + captionGroup + " is already existed.";
   },
   ITEM_EXISTED: function ITEM_EXISTED(caption, captionList) {
-    return 'Item with name ' + caption + '\n      In List ' + captionList + ' is already existed.';
+    return "Item with name " + caption + "\n      In List " + captionList + " is already existed.";
   },
-
   IS_EMPTY_NAME: function IS_EMPTY_NAME(item) {
-    return item + ' name can not be empty.';
+    return item + " name can not be empty.";
   },
   NOT_SELECTED: function NOT_SELECTED(item) {
-    return item + ' is not selected.';
+    return item + " is not selected.";
   },
-
   NOT_VALID_FORMAT: function NOT_VALID_FORMAT(item) {
-    return item + ' is not in valid format.';
+    return item + " is not in valid format.";
   },
   TEST_DATE_OR_EMPTY: "YYYY-MM-DD format must be OR Empty",
-
   Alert: {
     LOADING_IN_PROGRESS: {
       caption: 'Loading In Progress',
@@ -74,6 +67,6 @@ var Msg = {
     }
   }
 };
-
-exports.default = Msg;
+var _default = Msg;
+exports["default"] = _default;
 //# sourceMappingURL=Msg.js.map

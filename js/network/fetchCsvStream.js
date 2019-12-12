@@ -1,18 +1,11 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
-
-var _papaparse = require('papaparse');
-
-var _papaparse2 = _interopRequireDefault(_papaparse);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _papaparse = _interopRequireDefault(require("papaparse"));
 
 var fetchCsvStream = function fetchCsvStream(_ref) {
   var uri = _ref.uri,
@@ -30,25 +23,40 @@ var fetchCsvStream = function fetchCsvStream(_ref) {
   return fetch(uri).then(function (response) {
     if (response.body) {
       var _reader = response.body.getReader();
+
       return _reader.read();
     } else {
       throw _crErr(response);
     }
   }).then(function (result) {
-    var _str = String.fromCharCode.apply(String, (0, _toConsumableArray3.default)(result.value));
-    return _papaparse2.default.parse(_str, { header: true });
+    var _str = String.fromCharCode.apply(String, result.value);
+
+    return _papaparse["default"].parse(_str, {
+      header: true
+    });
   }).then(function (json) {
     if (onCheckResponse(json)) {
-      onFetch({ json: json, option: option, onCompleted: onCompleted });
+      onFetch({
+        json: json,
+        option: option,
+        onCompleted: onCompleted
+      });
+
       _doneOk(_nowTime);
     } else {
       throw _crErrResp();
     }
-  }).catch(function (error) {
-    onCatch({ error: error, option: option, onFailed: onFailed });
+  })["catch"](function (error) {
+    onCatch({
+      error: error,
+      option: option,
+      onFailed: onFailed
+    });
+
     _doneFailure(_nowTime);
   });
 };
 
-exports.default = fetchCsvStream;
+var _default = fetchCsvStream;
+exports["default"] = _default;
 //# sourceMappingURL=fetchCsvStream.js.map

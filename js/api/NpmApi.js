@@ -1,40 +1,34 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _StringUtil = require('../utils/StringUtil');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _StringUtil2 = _interopRequireDefault(_StringUtil);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _StringUtil = _interopRequireDefault(require("../utils/StringUtil"));
 
 var BASE = 'https://api.npmjs.org';
 var NPM_PACKAGE = 'https://www.npmjs.com/package/';
 var NPM = 'https://www.npmjs.com';
-var REQUEST_PACKAGE = 'Request Package';
-
-//https://api.npmjs.org/downloads/range/last-month
+var REQUEST_PACKAGE = 'Request Package'; //https://api.npmjs.org/downloads/range/last-month
 
 var _crPackageLink = function _crPackageLink(name) {
-  return name ? '' + NPM_PACKAGE + name : NPM;
+  return name ? "" + NPM_PACKAGE + name : NPM;
 };
 
 var _addPackageLinkTo = function _addPackageLinkTo(option) {
   var repo = option.repo;
-
   option.packageLink = _crPackageLink(repo);
 };
 
 var _rRequestTypeToUrl = {
   NPM_RECENT_VERSION: function NPM_RECENT_VERSION(option) {
-    return 'https://registry.npmjs.org/-/package/' + option.repo + '/dist-tags';
+    return "https://registry.npmjs.org/-/package/" + option.repo + "/dist-tags";
   },
-
   NPM_DOWNLOADS_RECENT_MONTH: function NPM_DOWNLOADS_RECENT_MONTH(option) {
     _addPackageLinkTo(option);
-    return BASE + '/downloads/range/last-month/' + option.repo;
+
+    return BASE + "/downloads/range/last-month/" + option.repo;
   },
   NPM_DOWNLOADS: function NPM_DOWNLOADS(option) {
     var fromDate = option.fromDate,
@@ -42,10 +36,10 @@ var _rRequestTypeToUrl = {
         repo = option.repo;
 
     _addPackageLinkTo(option);
-    return BASE + '/downloads/range/' + fromDate + ':' + toDate + '/' + repo;
+
+    return BASE + "/downloads/range/" + fromDate + ":" + toDate + "/" + repo;
   }
 };
-
 var NpmApi = {
   getRequestUrl: function getRequestUrl(option) {
     var fnFactory = _rRequestTypeToUrl[option.requestType];
@@ -58,24 +52,27 @@ var NpmApi = {
     var repo = _ref.repo,
         requestType = _ref.requestType,
         _ref$fromDate = _ref.fromDate,
-        fromDate = _ref$fromDate === undefined ? '' : _ref$fromDate;
-
-    return repo + '_' + requestType + '_' + fromDate;
+        fromDate = _ref$fromDate === void 0 ? '' : _ref$fromDate;
+    return repo + "_" + requestType + "_" + fromDate;
   },
-  checkResponse: function checkResponse() {
-    var json = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    var option = arguments[1];
-    var error = json.error;
+  checkResponse: function checkResponse(json, option) {
+    if (json === void 0) {
+      json = {};
+    }
+
+    var _json = json,
+        error = _json.error;
 
     if (error) {
       throw {
         errCaption: REQUEST_PACKAGE,
-        message: _StringUtil2.default.setFirstToUpperCase(error)
+        message: _StringUtil["default"].setFirstToUpperCase(error)
       };
     }
+
     return true;
   }
 };
-
-exports.default = NpmApi;
+var _default = NpmApi;
+exports["default"] = _default;
 //# sourceMappingURL=NpmApi.js.map

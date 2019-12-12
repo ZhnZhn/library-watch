@@ -1,22 +1,15 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
-
-var _StatCounterShare = require('../items/StatCounterShare');
-
-var _StatCounterShare2 = _interopRequireDefault(_StatCounterShare);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _StatCounterShare = _interopRequireDefault(require("../items/StatCounterShare"));
 
 var _filterEmptyDate = function _filterEmptyDate(json) {
   return json.data.filter(function (item) {
@@ -26,34 +19,42 @@ var _filterEmptyDate = function _filterEmptyDate(json) {
 
 var _crArrFromObj = function _crArrFromObj(obj) {
   var _arr = [];
+
   for (var propName in obj) {
     _arr.push({
       caption: propName,
       value: parseFloat(obj[propName])
     });
   }
+
   return _arr;
 };
 
-var _crTopN = function _crTopN(arr) {
-  var top = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 5;
+var _crTopN = function _crTopN(arr, top) {
+  if (top === void 0) {
+    top = 5;
+  }
 
   var _arr2 = arr[arr.length - 1],
       Date = _arr2.Date,
-      rest = (0, _objectWithoutProperties3.default)(_arr2, ['Date']),
+      rest = (0, _objectWithoutPropertiesLoose2["default"])(_arr2, ["Date"]),
       _arrRecent = _crArrFromObj(rest);
 
   _arrRecent.sort(function (a, b) {
     return b.value - a.value;
   });
+
   var _arrTop = [],
       _toIndex = _arrRecent.length;
+
   for (var i = 0; i < _toIndex; i++) {
     var caption = _arrRecent[i].caption;
+
     if (caption) {
       _arrTop.push(caption);
     }
   }
+
   return _arrTop;
 };
 
@@ -69,25 +70,26 @@ var _fnTransform = function _fnTransform(json) {
 
   json.forEach(function (row) {
     labels.push(row.Date);
+
     for (var i = 0; i < _maxSeria; i++) {
       var _arr = arrSeries[i];
+
       _arr.push(row[_arr.seriaName]);
     }
   });
-
   return {
     labels: labels,
     data: arrSeries
   };
 };
 
-var _crCaption = function _crCaption() {
-  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+var _crCaption = function _crCaption(_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
       caption = _ref.caption,
       _ref$region = _ref.region,
-      region = _ref$region === undefined ? {} : _ref$region;
+      region = _ref$region === void 0 ? {} : _ref$region;
 
-  return (region.caption || '') + ': ' + caption;
+  return (region.caption || '') + ": " + caption;
 };
 
 var fStatCounter = function fStatCounter(_ref2) {
@@ -112,7 +114,7 @@ var fStatCounter = function fStatCounter(_ref2) {
       toDate = labels[labels.length - 1],
       _caption = _crCaption(option);
 
-  return factory.createElement(_StatCounterShare2.default, (0, _extends3.default)({
+  return factory.createElement(_StatCounterShare["default"], (0, _extends2["default"])({
     key: key,
     caption: _caption,
     requestType: requestType,
@@ -126,5 +128,6 @@ var fStatCounter = function fStatCounter(_ref2) {
   }, parentProps));
 };
 
-exports.default = fStatCounter;
+var _default = fStatCounter;
+exports["default"] = _default;
 //# sourceMappingURL=fStatCounter.js.map

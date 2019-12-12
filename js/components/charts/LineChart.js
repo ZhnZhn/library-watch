@@ -1,69 +1,53 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _ChartComponent = _interopRequireDefault(require("./ChartComponent"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var LineChart =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(LineChart, _Component);
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+  function LineChart() {
+    var _this;
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
 
-var _react = require('react');
+    _this._refChart = function (node) {
+      return _this.chart_instance = node;
+    };
 
-var _react2 = _interopRequireDefault(_react);
+    return _this;
+  }
 
-var _ChartComponent = require('./ChartComponent');
+  var _proto = LineChart.prototype;
 
-var _ChartComponent2 = _interopRequireDefault(_ChartComponent);
+  _proto.render = function render() {
+    return _react["default"].createElement(_ChartComponent["default"], (0, _extends2["default"])({}, this.props, {
+      ref: this._refChart,
+      type: "line"
+    }));
+  };
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var LineChart = function (_Component) {
-	(0, _inherits3.default)(LineChart, _Component);
-
-	function LineChart() {
-		var _ref;
-
-		var _temp, _this, _ret;
-
-		(0, _classCallCheck3.default)(this, LineChart);
-
-		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-			args[_key] = arguments[_key];
-		}
-
-		return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = LineChart.__proto__ || Object.getPrototypeOf(LineChart)).call.apply(_ref, [this].concat(args))), _this), _this._refChart = function (node) {
-			return _this.chart_instance = node;
-		}, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
-	}
-
-	(0, _createClass3.default)(LineChart, [{
-		key: 'render',
-		value: function render() {
-			return _react2.default.createElement(_ChartComponent2.default, (0, _extends3.default)({}, this.props, {
-				ref: this._refChart,
-				type: 'line'
-			}));
-		}
-	}]);
-	return LineChart;
+  return LineChart;
 }(_react.Component);
 
-exports.default = LineChart;
+var _default = LineChart;
+exports["default"] = _default;
 //# sourceMappingURL=LineChart.js.map

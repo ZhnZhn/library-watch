@@ -1,18 +1,15 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _has = require('../../has');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _has2 = _interopRequireDefault(_has);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _has = _interopRequireDefault(require("../../has"));
 
 var _withInitialState = function _withInitialState() {
   return {
-    isShowLabels: _has2.default.wideWidth(),
+    isShowLabels: _has["default"].wideWidth(),
     isToolbar: true,
     isShowDate: false,
     validationMessages: []
@@ -25,5 +22,6 @@ var withInitialState = function withInitialState(target) {
   });
 };
 
-exports.default = withInitialState;
+var _default = withInitialState;
+exports["default"] = _default;
 //# sourceMappingURL=withInitialState.js.map

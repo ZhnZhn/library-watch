@@ -1,17 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/dialogs/RouterDialog.js"
- ],
- "file": "../../../src/components/dialogs/RouterDialog.js",
- "names": [
-  "RouterDialog",
-  "DEFAULT",
-  "DialogType1",
-  "DialogType1A",
-  "DialogType2",
-  "DialogType3",
-  "DialogType3A"
- ],
- "mappings": ";;;;;;AAAA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,eAAe;AACnBC,WAAUC,oBADS;;AAGnBA,mCAHmB,EAGNC,oCAHM;AAInBC,mCAJmB;AAKnBC,mCALmB,EAKNC;AALM,CAArB;;kBAQeN,Y"
-}
+{"version":3,"sources":["../../../src/components/dialogs/RouterDialog.js"],"names":["RouterDialog","DEFAULT","DialogType1","DialogType1A","DialogType2","DialogType3","DialogType3A"],"mappings":";;;;;;;AAAA;;AACA;;AACA;;AACA;;AACA;;AAEA,IAAMA,YAAY,GAAG;AACnBC,EAAAA,OAAO,EAAGC,sBADS;AAGnBA,EAAAA,WAAW,EAAXA,sBAHmB;AAGNC,EAAAA,YAAY,EAAZA,wBAHM;AAInBC,EAAAA,WAAW,EAAXA,uBAJmB;AAKnBC,EAAAA,WAAW,EAAXA,uBALmB;AAKNC,EAAAA,YAAY,EAAZA;AALM,CAArB;eAQeN,Y","sourcesContent":["import DialogType1 from './DialogType1';\r\nimport DialogType1A from './DialogType1A'\r\nimport DialogType2 from './DialogType2';\r\nimport DialogType3 from './DialogType3';\r\nimport DialogType3A from './DialogType3A';\r\n\r\nconst RouterDialog = {\r\n  DEFAULT : DialogType1,\r\n\r\n  DialogType1, DialogType1A,\r\n  DialogType2,\r\n  DialogType3, DialogType3A  \r\n};\r\n\r\nexport default RouterDialog\r\n"],"file":"RouterDialog.js"}

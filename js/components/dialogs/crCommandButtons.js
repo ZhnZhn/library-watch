@@ -1,35 +1,30 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _FlatButton = require('../zhn-m/FlatButton');
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
 var crCommandButtons = function crCommandButtons(_ref) {
   var inst = _ref.inst,
       isDefault = _ref.isDefault;
-
-  return [isDefault && _react2.default.createElement(_FlatButton2.default, {
-    key: 'default',
-    caption: 'Default',
+  return [isDefault && _react["default"].createElement(_FlatButton["default"], {
+    key: "default",
+    caption: "Default",
     timeout: 0,
     onClick: inst._handleDefault
-  }), _react2.default.createElement(_FlatButton2.default, {
-    key: 'load',
+  }), _react["default"].createElement(_FlatButton["default"], {
+    key: "load",
     isPrimary: true,
-    caption: 'Load',
+    caption: "Load",
     onClick: inst._handleLoad
   })].filter(Boolean);
 };
 
-exports.default = crCommandButtons;
+var _default = crCommandButtons;
+exports["default"] = _default;
 //# sourceMappingURL=crCommandButtons.js.map

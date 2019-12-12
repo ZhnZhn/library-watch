@@ -1,44 +1,33 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.BrowserActionTypes = undefined;
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+exports.__esModule = true;
+exports["default"] = exports.BrowserActionTypes = void 0;
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _reflux = _interopRequireDefault(require("reflux"));
+
+var _fnFetch = _interopRequireDefault(require("../../network/fnFetch"));
+
+var _fnCatch = _interopRequireDefault(require("../../network/fnCatch"));
 
 var _Reflux$createActions;
 
-var _reflux = require('reflux');
-
-var _reflux2 = _interopRequireDefault(_reflux);
-
-var _fnFetch = require('../../network/fnFetch');
-
-var _fnFetch2 = _interopRequireDefault(_fnFetch);
-
-var _fnCatch = require('../../network/fnCatch');
-
-var _fnCatch2 = _interopRequireDefault(_fnCatch);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var BrowserActionTypes = exports.BrowserActionTypes = {
+var BrowserActionTypes = {
   SHOW_BROWSER: 'showBrowser',
   UPDATE_BROWSER_MENU: 'updateBrowserMenu',
-
   SHOW_BROWSER_DYNAMIC: 'showBrowserDynamic',
   INIT_BROWSER_DYNAMIC: 'initBrowserDynamic',
   LOAD_BROWSER_DYNAMIC: 'loadBrowserDynamic',
   LOAD_BROWSER_DYNAMIC_COMPLETED: 'loadBrowserDynamicCompleted',
-
   UPDATE_WATCH_BROWSER: 'updateWatchBrowser',
   TOGGLE_WATCH_DB_BROWSER: 'toggleWatchDbBrowser'
 };
+exports.BrowserActionTypes = BrowserActionTypes;
 
-var BrowserActions = _reflux2.default.createActions((_Reflux$createActions = {}, (0, _defineProperty3.default)(_Reflux$createActions, BrowserActionTypes.SHOW_BROWSER, {}), (0, _defineProperty3.default)(_Reflux$createActions, BrowserActionTypes.UPDATE_BROWSER_MENU, {}), (0, _defineProperty3.default)(_Reflux$createActions, BrowserActionTypes.SHOW_BROWSER_DYNAMIC, {}), (0, _defineProperty3.default)(_Reflux$createActions, BrowserActionTypes.INIT_BROWSER_DYNAMIC, {}), (0, _defineProperty3.default)(_Reflux$createActions, BrowserActionTypes.LOAD_BROWSER_DYNAMIC, { children: ['completed', 'failed'] }), (0, _defineProperty3.default)(_Reflux$createActions, BrowserActionTypes.UPDATE_WATCH_BROWSER, {}), (0, _defineProperty3.default)(_Reflux$createActions, BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER, {}), _Reflux$createActions));
+var BrowserActions = _reflux["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[BrowserActionTypes.SHOW_BROWSER] = {}, _Reflux$createActions[BrowserActionTypes.UPDATE_BROWSER_MENU] = {}, _Reflux$createActions[BrowserActionTypes.SHOW_BROWSER_DYNAMIC] = {}, _Reflux$createActions[BrowserActionTypes.INIT_BROWSER_DYNAMIC] = {}, _Reflux$createActions[BrowserActionTypes.LOAD_BROWSER_DYNAMIC] = {
+  children: ['completed', 'failed']
+}, _Reflux$createActions[BrowserActionTypes.UPDATE_WATCH_BROWSER] = {}, _Reflux$createActions[BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER] = {}, _Reflux$createActions));
 
 var _fnFetchSourceMenu = function _fnFetchSourceMenu(_ref) {
   var json = _ref.json,
@@ -47,12 +36,15 @@ var _fnFetchSourceMenu = function _fnFetchSourceMenu(_ref) {
   var menu = json.menu,
       items = json.items,
       browserType = option.browserType;
-
-  onCompleted({ menu: menu, items: items, browserType: browserType });
+  onCompleted({
+    menu: menu,
+    items: items,
+    browserType: browserType
+  });
 };
 
 BrowserActions[BrowserActionTypes.LOAD_BROWSER_DYNAMIC].listen(function (option) {
-  (0, _fnFetch2.default)({
+  (0, _fnFetch["default"])({
     uri: option.sourceMenuUrl,
     option: option,
     onCheckResponse: function onCheckResponse(json) {
@@ -60,10 +52,10 @@ BrowserActions[BrowserActionTypes.LOAD_BROWSER_DYNAMIC].listen(function (option)
     },
     onFetch: _fnFetchSourceMenu,
     onCompleted: this.completed,
-    onCatch: _fnCatch2.default,
+    onCatch: _fnCatch["default"],
     onFailed: this.failed
   });
 });
-
-exports.default = BrowserActions;
+var _default = BrowserActions;
+exports["default"] = _default;
 //# sourceMappingURL=BrowserActions.js.map

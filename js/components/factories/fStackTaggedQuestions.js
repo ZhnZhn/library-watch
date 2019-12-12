@@ -1,45 +1,38 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _timeago2 = require('timeago.js');
+var _timeago2 = _interopRequireDefault(require("timeago.js"));
 
-var _timeago3 = _interopRequireDefault(_timeago2);
+var _DomUtil = _interopRequireDefault(require("../../utils/DomUtil"));
 
-var _DomUtil = require('../../utils/DomUtil');
-
-var _DomUtil2 = _interopRequireDefault(_DomUtil);
-
-var _TaggedQuestions = require('../items/stack/TaggedQuestions');
-
-var _TaggedQuestions2 = _interopRequireDefault(_TaggedQuestions);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _TaggedQuestions = _interopRequireDefault(require("../items/stack/TaggedQuestions"));
 
 var THREE_ZERO = '000';
 
-var _fnTransform = function _fnTransform() {
-  var items = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+var _fnTransform = function _fnTransform(items) {
+  if (items === void 0) {
+    items = [];
+  }
 
-  var _timeago = (0, _timeago3.default)(Date.now());
+  var _timeago = (0, _timeago2["default"])(Date.now());
+
   return items.map(function (item) {
     var title = item.title,
         last_activity_date = item.last_activity_date,
         _item$owner = item.owner,
-        owner = _item$owner === undefined ? {} : _item$owner,
+        owner = _item$owner === void 0 ? {} : _item$owner,
         display_name = owner.display_name,
         _millisUTC = last_activity_date + '' + THREE_ZERO;
 
     item.dateAgo = _timeago.format(_millisUTC);
-    item.title = _DomUtil2.default.htmlDecode(title);
-    item.owner.display_name = _DomUtil2.default.htmlDecode(display_name);
-
+    item.title = _DomUtil["default"].htmlDecode(title);
+    item.owner.display_name = _DomUtil["default"].htmlDecode(display_name);
     return item;
   });
 };
@@ -48,7 +41,7 @@ var fStackTaggedQuestions = function fStackTaggedQuestions(_ref) {
   var factory = _ref.factory,
       option = _ref.option,
       _ref$json = _ref.json,
-      json = _ref$json === undefined ? {} : _ref$json,
+      json = _ref$json === void 0 ? {} : _ref$json,
       parentProps = _ref.parentProps,
       onCloseItem = _ref.onCloseItem,
       onWatchItem = _ref.onWatchItem;
@@ -60,16 +53,17 @@ var fStackTaggedQuestions = function fStackTaggedQuestions(_ref) {
       key = option.key,
       _items = _fnTransform(json.items);
 
-  return factory.createElement(_TaggedQuestions2.default, (0, _extends3.default)({
+  return factory.createElement(_TaggedQuestions["default"], (0, _extends2["default"])({
     key: key,
     repo: repo,
     requestType: requestType,
-    caption: '' + repo,
+    caption: "" + repo,
     items: _items,
     onCloseItem: onCloseItem.bind(null, chartType, browserType, key),
     onWatchItem: onWatchItem
   }, parentProps));
 };
 
-exports.default = fStackTaggedQuestions;
+var _default = fStackTaggedQuestions;
+exports["default"] = _default;
 //# sourceMappingURL=fStackTaggedQuestions.js.map

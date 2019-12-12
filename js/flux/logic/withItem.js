@@ -1,43 +1,38 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _RouterItem = require('../../components/factories/RouterItem');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _RouterItem2 = _interopRequireDefault(_RouterItem);
+var _RouterItem = _interopRequireDefault(require("../../components/factories/RouterItem"));
 
-var _ChartActions = require('../actions/ChartActions');
+var _ChartActions = _interopRequireDefault(require("../actions/ChartActions"));
 
-var _ChartActions2 = _interopRequireDefault(_ChartActions);
+var _ComponentActions = _interopRequireDefault(require("../actions/ComponentActions"));
 
-var _ComponentActions = require('../actions/ComponentActions');
+var _Type = require("../../constants/Type");
 
-var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
-
-var _Type = require('../../constants/Type');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var onWatchItem = _ComponentActions2.default.showModalDialog.bind(null, _Type.ModalDialog.ADD_ITEM);
+var onWatchItem = _ComponentActions["default"].showModalDialog.bind(null, _Type.ModalDialog.ADD_ITEM);
 
 var withItem = {
   createItem: function createItem(option, json, parentProps) {
     var requestType = option.requestType,
         chartType = option.chartType,
         key = option.key,
-        _fnFactory = _RouterItem2.default[requestType] ? _RouterItem2.default[requestType] : _RouterItem2.default.DEFAULT;
+        _fnFactory = _RouterItem["default"][requestType] ? _RouterItem["default"][requestType] : _RouterItem["default"].DEFAULT;
 
     return _fnFactory({
       factory: this.getElementFactory(),
-      option: option, json: json, parentProps: parentProps,
-      onMoveToTop: _ChartActions2.default.moveToTop.bind(null, chartType, key),
-      onCloseItem: _ChartActions2.default.closeChart,
+      option: option,
+      json: json,
+      parentProps: parentProps,
+      onMoveToTop: _ChartActions["default"].moveToTop.bind(null, chartType, key),
+      onCloseItem: _ChartActions["default"].closeChart,
       onWatchItem: onWatchItem
     });
   }
 };
-
-exports.default = withItem;
+var _default = withItem;
+exports["default"] = _default;
 //# sourceMappingURL=withItem.js.map

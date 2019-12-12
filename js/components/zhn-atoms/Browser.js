@@ -1,44 +1,32 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-   value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require('react');
+var _react = _interopRequireDefault(require("react"));
 
-var _react2 = _interopRequireDefault(_react);
-
-var _ContainerStyles = require('../styles/ContainerStyles');
-
-var _ContainerStyles2 = _interopRequireDefault(_ContainerStyles);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var CL_OPEN = "show-popup";
+var _ContainerStyles = _interopRequireDefault(require("../styles/ContainerStyles"));
 
 //import PropTypes from "prop-types";
+var CL_OPEN = "show-popup";
 
 var Browser = function Browser(_ref) {
-   var isShow = _ref.isShow,
-       style = _ref.style,
-       children = _ref.children;
+  var isShow = _ref.isShow,
+      style = _ref.style,
+      children = _ref.children;
 
-   var _className = isShow ? CL_OPEN : null,
-       _style = isShow ? _ContainerStyles2.default.displayBlock : _ContainerStyles2.default.displayNone;
-   return _react2.default.createElement(
-      'div',
-      {
-         className: _className,
-         style: (0, _extends3.default)({}, _ContainerStyles2.default.browserRootDiv, style, _style)
-      },
-      children
-   );
+  var _className = isShow ? CL_OPEN : null,
+      _style = isShow ? _ContainerStyles["default"].displayBlock : _ContainerStyles["default"].displayNone;
+
+  return _react["default"].createElement("div", {
+    className: _className,
+    style: (0, _extends2["default"])({}, _ContainerStyles["default"].browserRootDiv, {}, style, {}, _style)
+  }, children);
 };
-
 /*
 Browser.propTypes = {
   isShow: PropTypes.bool,
@@ -50,5 +38,7 @@ Browser.propTypes = {
 }
 */
 
-exports.default = Browser;
+
+var _default = Browser;
+exports["default"] = _default;
 //# sourceMappingURL=Browser.js.map

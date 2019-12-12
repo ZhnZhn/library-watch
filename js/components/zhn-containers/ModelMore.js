@@ -1,16 +1,13 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _CL = require('../styles/CL');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _CL2 = _interopRequireDefault(_CL);
+var _CL = _interopRequireDefault(require("../styles/CL"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var CL_ROW = _CL2.default.ROW_MENU_MORE;
+var CL_ROW = _CL["default"].ROW_MENU_MORE;
 
 var crModelMore = function crModelMore(_ref) {
   var chartType = _ref.chartType,
@@ -49,5 +46,6 @@ var crModelMore = function crModelMore(_ref) {
   };
 };
 
-exports.default = crModelMore;
+var _default = crModelMore;
+exports["default"] = _default;
 //# sourceMappingURL=ModelMore.js.map

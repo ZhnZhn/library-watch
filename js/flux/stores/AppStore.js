@@ -1,87 +1,57 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _reflux = require('reflux');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _reflux2 = _interopRequireDefault(_reflux);
+var _reflux = _interopRequireDefault(require("reflux"));
 
-var _ComponentActions = require('../actions/ComponentActions');
+var _ComponentActions = _interopRequireWildcard(require("../actions/ComponentActions"));
 
-var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
+var _ChartActions = _interopRequireWildcard(require("../actions/ChartActions"));
 
-var _ChartActions = require('../actions/ChartActions');
+var _BrowserActions = _interopRequireWildcard(require("../actions/BrowserActions"));
 
-var _ChartActions2 = _interopRequireDefault(_ChartActions);
+var _LoadingProgressActions = _interopRequireDefault(require("../actions/LoadingProgressActions"));
 
-var _BrowserActions = require('../actions/BrowserActions');
+var _WatchActions = _interopRequireDefault(require("../actions/WatchActions"));
 
-var _BrowserActions2 = _interopRequireDefault(_BrowserActions);
+var _Type = require("../../constants/Type");
 
-var _LoadingProgressActions = require('../actions/LoadingProgressActions');
+var _Factory = _interopRequireDefault(require("../logic/Factory"));
 
-var _LoadingProgressActions2 = _interopRequireDefault(_LoadingProgressActions);
+var _ChartLogic = _interopRequireDefault(require("./chart/ChartLogic"));
 
-var _WatchActions = require('../actions/WatchActions');
+var _BrowserSlice = _interopRequireDefault(require("./BrowserSlice"));
 
-var _WatchActions2 = _interopRequireDefault(_WatchActions);
+var _ComponentSlice = _interopRequireDefault(require("./ComponentSlice"));
 
-var _Type = require('../../constants/Type');
+var _WatchListSlice = _interopRequireDefault(require("../watch-list/WatchListSlice"));
 
-var _Factory = require('../logic/Factory');
+var _WithLimitRemaining = _interopRequireDefault(require("./WithLimitRemaining"));
 
-var _Factory2 = _interopRequireDefault(_Factory);
+var _WithLoadingProgress = _interopRequireDefault(require("./WithLoadingProgress"));
 
-var _ChartLogic = require('./chart/ChartLogic');
-
-var _ChartLogic2 = _interopRequireDefault(_ChartLogic);
-
-var _BrowserSlice = require('./BrowserSlice');
-
-var _BrowserSlice2 = _interopRequireDefault(_BrowserSlice);
-
-var _ComponentSlice = require('./ComponentSlice');
-
-var _ComponentSlice2 = _interopRequireDefault(_ComponentSlice);
-
-var _WatchListSlice = require('../watch-list/WatchListSlice');
-
-var _WatchListSlice2 = _interopRequireDefault(_WatchListSlice);
-
-var _WithLimitRemaining = require('./WithLimitRemaining');
-
-var _WithLimitRemaining2 = _interopRequireDefault(_WithLimitRemaining);
-
-var _WithLoadingProgress = require('./WithLoadingProgress');
-
-var _WithLoadingProgress2 = _interopRequireDefault(_WithLoadingProgress);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var toTopByKey = _ChartLogic2.default.toTopByKey,
-    removeAll = _ChartLogic2.default.removeAll;
-
-
+var toTopByKey = _ChartLogic["default"].toTopByKey,
+    removeAll = _ChartLogic["default"].removeAll;
 var CONSOLE_LOG_STYLE = 'color:rgb(237, 88, 19);';
+
 var _logLoadError = function _logLoadError(_ref) {
   var alertCaption = _ref.alertCaption,
       alertDescr = _ref.alertDescr,
       alertItemId = _ref.alertItemId;
-
   console.log('%c' + alertCaption + ':' + alertItemId, CONSOLE_LOG_STYLE);
   console.log('%c' + alertDescr, CONSOLE_LOG_STYLE);
 };
 
-var AppStore = _reflux2.default.createStore((0, _extends3.default)({
-  listenables: [_BrowserActions2.default, _ComponentActions2.default, _ChartActions2.default, _WatchActions2.default, _LoadingProgressActions2.default],
+var AppStore = _reflux["default"].createStore((0, _extends2["default"])({
+  listenables: [_BrowserActions["default"], _ComponentActions["default"], _ChartActions["default"], _WatchActions["default"], _LoadingProgressActions["default"]],
   charts: {},
-
   init: function init() {
     this.initWatchList();
   },
@@ -95,8 +65,10 @@ var AppStore = _reflux2.default.createStore((0, _extends3.default)({
   getConfigs: function getConfigs(chartType) {
     return this.charts[chartType];
   },
-  showAlertDialog: function showAlertDialog() {
-    var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  showAlertDialog: function showAlertDialog(option) {
+    if (option === void 0) {
+      option = {};
+    }
 
     option.modalDialogType = _Type.ModalDialog.ALERT;
     option.alertItemId = option.alertItemId || option.repo || '';
@@ -105,23 +77,24 @@ var AppStore = _reflux2.default.createStore((0, _extends3.default)({
   isKeyTop: function isKeyTop(key, option) {
     var chartType = option.chartType,
         slice = this.charts[chartType];
-
     return toTopByKey(slice, key);
   },
   onMoveToTop: function onMoveToTop(chartType, key) {
     var slice = this.charts[chartType];
+
     if (toTopByKey(slice, key)) {
       this.trigger(_ChartActions.ChartActionTypes.SHOW_CHART, slice);
     }
   },
   onShowChart: function onShowChart(chartType, browserType) {
     var chartCont = this.charts[chartType];
+
     if (chartCont) {
       chartCont.isShow = true;
       this.trigger(_ChartActions.ChartActionTypes.SHOW_CHART, chartCont);
     } else {
       this.charts[chartType] = this.createInitConfig(chartType);
-      this.trigger(_ChartActions.ChartActionTypes.INIT_AND_SHOW_CHART, _Factory2.default.createChartContainer(chartType, browserType));
+      this.trigger(_ChartActions.ChartActionTypes.INIT_AND_SHOW_CHART, _Factory["default"].createChartContainer(chartType, browserType));
     }
 
     if (browserType !== _Type.BrowserType.WATCH_LIST) {
@@ -141,9 +114,13 @@ var AppStore = _reflux2.default.createStore((0, _extends3.default)({
     var chartType = option.chartType,
         browserType = option.browserType,
         limitRemaining = option.limitRemaining,
-        comp = _Factory2.default.createItem(option, json, { chartType: chartType, browserType: browserType });
+        comp = _Factory["default"].createItem(option, json, {
+      chartType: chartType,
+      browserType: browserType
+    });
 
     var chartCont = this.charts[chartType];
+
     if (chartCont) {
       chartCont.configs.unshift(comp);
       chartCont.isShow = true;
@@ -151,7 +128,7 @@ var AppStore = _reflux2.default.createStore((0, _extends3.default)({
     } else {
       this.charts[chartType] = this.createInitConfig(chartType);
       this.charts[chartType].configs.unshift(comp);
-      this.trigger(_ChartActions.ChartActionTypes.INIT_AND_SHOW_CHART, _Factory2.default.createChartContainer(chartType, browserType));
+      this.trigger(_ChartActions.ChartActionTypes.INIT_AND_SHOW_CHART, _Factory["default"].createChartContainer(chartType, browserType));
     }
 
     this.triggerLimitRemaining(limitRemaining);
@@ -163,9 +140,9 @@ var AppStore = _reflux2.default.createStore((0, _extends3.default)({
   },
   onLoadStockFailed: function onLoadStockFailed(option) {
     var limitRemaining = option.limitRemaining;
-
     this.triggerLimitRemaining(limitRemaining);
     this.showAlertDialog(option);
+
     _logLoadError(option);
   },
   onCloseChart: function onCloseChart(chartType, browserType, key) {
@@ -195,7 +172,8 @@ var AppStore = _reflux2.default.createStore((0, _extends3.default)({
     this.trigger(_ChartActions.ChartActionTypes.SHOW_CHART, chartSlice);
     this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_BROWSER_MENU, browserType);
   }
-}, _BrowserSlice2.default, _ComponentSlice2.default, _WatchListSlice2.default, _WithLimitRemaining2.default, _WithLoadingProgress2.default));
+}, _BrowserSlice["default"], {}, _ComponentSlice["default"], {}, _WatchListSlice["default"], {}, _WithLimitRemaining["default"], {}, _WithLoadingProgress["default"]));
 
-exports.default = AppStore;
+var _default = AppStore;
+exports["default"] = _default;
 //# sourceMappingURL=AppStore.js.map

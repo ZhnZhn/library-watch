@@ -1,36 +1,27 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require('react');
+var _react = _interopRequireDefault(require("react"));
 
-var _react2 = _interopRequireDefault(_react);
-
-var _DialogStyles = require('../../styles/DialogStyles');
-
-var _DialogStyles2 = _interopRequireDefault(_DialogStyles);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _DialogStyles = _interopRequireDefault(require("../../styles/DialogStyles"));
 
 var Plain = function Plain(_ref) {
   var style = _ref.style,
       children = _ref.children;
-  return _react2.default.createElement(
-    'div',
-    { style: (0, _extends3.default)({}, _DialogStyles2.default.rowDiv, style) },
-    children
-  );
+  return _react["default"].createElement("div", {
+    style: (0, _extends2["default"])({}, _DialogStyles["default"].rowDiv, {}, style)
+  }, children);
 };
 
 var Row = {
   Plain: Plain
 };
-
-exports.default = Row;
+var _default = Row;
+exports["default"] = _default;
 //# sourceMappingURL=Row.js.map

@@ -1,8 +1,7 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 
 var createHandlerDnDItem = function createHandlerDnDItem(DRAG, WatchActions) {
   return {
@@ -10,11 +9,10 @@ var createHandlerDnDItem = function createHandlerDnDItem(DRAG, WatchActions) {
       var groupCaption = _ref.groupCaption,
           listCaption = _ref.listCaption,
           caption = _ref.caption;
-
       this.dragStartWithDnDStyle(ev, [DRAG.LIST, DRAG.ITEM]);
       ev.dataTransfer.effectAllowed = "move";
-      ev.dataTransfer.dropEffect = "move";
-      //.setDragImage(img, 0, 0);
+      ev.dataTransfer.dropEffect = "move"; //.setDragImage(img, 0, 0);
+
       var _data = {
         dragId: groupCaption + ";" + listCaption + ";" + caption,
         xType: DRAG.ITEM
@@ -25,13 +23,11 @@ var createHandlerDnDItem = function createHandlerDnDItem(DRAG, WatchActions) {
       var groupCaption = _ref2.groupCaption,
           listCaption = _ref2.listCaption,
           caption = _ref2.caption;
-
       this.dropWithDnDStyle(ev);
       var data = JSON.parse(ev.dataTransfer.getData("text")),
           xType = data.xType,
           dragId = data.dragId,
           dropId = groupCaption + ";" + listCaption + ";" + caption;
-
 
       if (xType === DRAG.ITEM) {
         if (dragId !== dropId) {
@@ -59,5 +55,6 @@ var createHandlerDnDItem = function createHandlerDnDItem(DRAG, WatchActions) {
   };
 };
 
-exports.default = createHandlerDnDItem;
+var _default = createHandlerDnDItem;
+exports["default"] = _default;
 //# sourceMappingURL=createHandlerDnDItem.js.map

@@ -1,14 +1,11 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 var S = {
   CELL: {
@@ -25,81 +22,66 @@ var S = {
 
 var CellValue = function CellValue(_ref) {
   var _ref$caption = _ref.caption,
-      caption = _ref$caption === undefined ? '' : _ref$caption,
+      caption = _ref$caption === void 0 ? '' : _ref$caption,
       _ref$value = _ref.value,
-      value = _ref$value === undefined ? 'N/A' : _ref$value;
-  return _react2.default.createElement(
-    'div',
-    { style: S.CELL },
-    _react2.default.createElement(
-      'div',
-      { style: S.CAPTION },
-      caption
-    ),
-    _react2.default.createElement(
-      'div',
-      { style: S.VALUE },
-      value
-    )
-  );
+      value = _ref$value === void 0 ? 'N/A' : _ref$value;
+  return _react["default"].createElement("div", {
+    style: S.CELL
+  }, _react["default"].createElement("div", {
+    style: S.CAPTION
+  }, caption), _react["default"].createElement("div", {
+    style: S.VALUE
+  }, value));
 };
 
 var _trimTo5 = function _trimTo5(n) {
   return ('' + n).substr(0, 5);
 };
+
 var _toYear = function _toYear(strDate) {
   return ('' + strDate).split('T')[0] || '';
 };
 
 var PackageDetails = function PackageDetails(_ref2) {
   var _ref2$json = _ref2.json,
-      json = _ref2$json === undefined ? {} : _ref2$json;
+      json = _ref2$json === void 0 ? {} : _ref2$json;
   var analyzedAt = json.analyzedAt,
       _json$collected = json.collected,
-      collected = _json$collected === undefined ? {} : _json$collected,
+      collected = _json$collected === void 0 ? {} : _json$collected,
       _json$score = json.score,
-      score = _json$score === undefined ? {} : _json$score,
+      score = _json$score === void 0 ? {} : _json$score,
       _collected$github = collected.github,
-      github = _collected$github === undefined ? {} : _collected$github,
+      github = _collected$github === void 0 ? {} : _collected$github,
       _collected$metadata = collected.metadata,
-      metadata = _collected$metadata === undefined ? {} : _collected$metadata,
+      metadata = _collected$metadata === void 0 ? {} : _collected$metadata,
       starsCount = github.starsCount,
       _github$issues = github.issues,
-      issues = _github$issues === undefined ? {} : _github$issues,
+      issues = _github$issues === void 0 ? {} : _github$issues,
       openCount = issues.openCount,
       version = metadata.version,
       license = metadata.license,
-      final = score.final;
-
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(CellValue, {
-      caption: 'stars',
-      value: starsCount
-    }),
-    _react2.default.createElement(CellValue, {
-      caption: 'issues',
-      value: openCount
-    }),
-    _react2.default.createElement(CellValue, {
-      caption: 'version',
-      value: version
-    }),
-    _react2.default.createElement(CellValue, {
-      caption: 'score',
-      value: _trimTo5(final)
-    }),
-    _react2.default.createElement(CellValue, {
-      caption: 'license',
-      value: license
-    }),
-    _react2.default.createElement(CellValue, {
-      caption: 'onDate',
-      value: _toYear(analyzedAt)
-    })
-  );
+      _final = score["final"];
+  return _react["default"].createElement("div", null, _react["default"].createElement(CellValue, {
+    caption: "stars",
+    value: starsCount
+  }), _react["default"].createElement(CellValue, {
+    caption: "issues",
+    value: openCount
+  }), _react["default"].createElement(CellValue, {
+    caption: "version",
+    value: version
+  }), _react["default"].createElement(CellValue, {
+    caption: "score",
+    value: _trimTo5(_final)
+  }), _react["default"].createElement(CellValue, {
+    caption: "license",
+    value: license
+  }), _react["default"].createElement(CellValue, {
+    caption: "onDate",
+    value: _toYear(analyzedAt)
+  }));
 };
 
-exports.default = PackageDetails;
+var _default = PackageDetails;
+exports["default"] = _default;
 //# sourceMappingURL=PackageDetails.js.map

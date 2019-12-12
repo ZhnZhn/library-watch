@@ -1,34 +1,28 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _toConsumableArray2 = require("babel-runtime/helpers/toConsumableArray");
-
-var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+exports.__esModule = true;
+exports["default"] = void 0;
 var ImArrayUtil = {
   push: function push(arr, obj) {
-    return arr ? [].concat((0, _toConsumableArray3.default)(arr), [obj]) : [obj];
+    return arr ? [].concat(arr, [obj]) : [obj];
   },
   filterByProp: function filterByProp(prop, arr, value) {
     return arr.filter(function (obj, index) {
       return obj[prop] !== value;
     });
   },
-  insertItem: function insertItem(item, index) {
-    var arr = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+  insertItem: function insertItem(item, index, arr) {
+    if (arr === void 0) {
+      arr = [];
+    }
 
     if (index !== 0) {
-      return [].concat((0, _toConsumableArray3.default)(arr.slice(0, index)), [Object.assign({}, item)], (0, _toConsumableArray3.default)(arr.slice(index)));
+      return [].concat(arr.slice(0, index), [Object.assign({}, item)], arr.slice(index));
     } else {
-      return [Object.assign({}, item)].concat((0, _toConsumableArray3.default)(arr));
+      return [Object.assign({}, item)].concat(arr);
     }
   }
 };
-
-exports.default = ImArrayUtil;
+var _default = ImArrayUtil;
+exports["default"] = _default;
 //# sourceMappingURL=ImArrayUtil.js.map

@@ -1,9 +1,7 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
+exports.__esModule = true;
+exports["default"] = void 0;
 var C = {
   NPMS_URI: 'https://api.npms.io/v2/package/',
   ERR_RES: "Response isn't OK",
@@ -31,10 +29,11 @@ var loadNpms = function loadNpms(_ref) {
     } else {
       throw new Error(json.message || C.ERR_FORMAT_DF);
     }
-  }).catch(function (err) {
+  })["catch"](function (err) {
     console.log(err);
   });
 };
 
-exports.default = loadNpms;
+var _default = loadNpms;
+exports["default"] = _default;
 //# sourceMappingURL=loadNpms.js.map

@@ -1,54 +1,41 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp;
+var _DateAgo = _interopRequireDefault(require("./DateAgo.Style"));
 
 //import PropTypes from "prop-types";
+var DateAgo =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(DateAgo, _Component);
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _DateAgo = require('./DateAgo.Style');
-
-var _DateAgo2 = _interopRequireDefault(_DateAgo);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var DateAgo = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(DateAgo, _Component);
-
+  /*
+  static propTypes = {
+     isShowDate: PropTypes.bool,
+     style: PropTypes.object
+  }
+  */
   function DateAgo(props) {
-    (0, _classCallCheck3.default)(this, DateAgo);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (DateAgo.__proto__ || Object.getPrototypeOf(DateAgo)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
     _this._hClick = function (event) {
       event.preventDefault();
       event.stopPropagation();
+
       _this.setState(function (prevState) {
         return {
           isShowDate: !prevState.isShowDate
@@ -61,46 +48,31 @@ var DateAgo = (_temp = _class = function (_Component) {
     };
     return _this;
   }
-  /*
-  static propTypes = {
-     isShowDate: PropTypes.bool,
-     style: PropTypes.object
-  }
-  */
 
+  var _proto = DateAgo.prototype;
 
-  (0, _createClass3.default)(DateAgo, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          style = _props.style,
-          dateAgo = _props.dateAgo,
-          date = _props.date,
-          isShowDate = this.state.isShowDate,
-          _styleDate = isShowDate ? _DateAgo2.default.INLINE_BLOCK : _DateAgo2.default.NONE;
+  _proto.render = function render() {
+    var _this$props = this.props,
+        style = _this$props.style,
+        dateAgo = _this$props.dateAgo,
+        date = _this$props.date,
+        isShowDate = this.state.isShowDate,
+        _styleDate = isShowDate ? _DateAgo["default"].INLINE_BLOCK : _DateAgo["default"].NONE;
 
-      return _react2.default.createElement(
-        'span',
-        null,
-        _react2.default.createElement(
-          'span',
-          {
-            style: (0, _extends3.default)({}, _DateAgo2.default.DATE_AGO, style),
-            onClick: date ? this._hClick : void 0
-          },
-          dateAgo
-        ),
-        _react2.default.createElement(
-          'span',
-          { style: (0, _extends3.default)({}, _DateAgo2.default.DATE, _styleDate) },
-          date
-        )
-      );
-    }
-  }]);
+    return _react["default"].createElement("span", null, _react["default"].createElement("span", {
+      style: (0, _extends2["default"])({}, _DateAgo["default"].DATE_AGO, {}, style),
+      onClick: date ? this._hClick : void 0
+    }, dateAgo), _react["default"].createElement("span", {
+      style: (0, _extends2["default"])({}, _DateAgo["default"].DATE, {}, _styleDate)
+    }, date));
+  };
+
   return DateAgo;
-}(_react.Component), _class.defaultProps = {
+}(_react.Component);
+
+DateAgo.defaultProps = {
   date: ''
-}, _temp);
-exports.default = DateAgo;
+};
+var _default = DateAgo;
+exports["default"] = _default;
 //# sourceMappingURL=DateAgo.js.map

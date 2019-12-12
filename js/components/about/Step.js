@@ -1,14 +1,11 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 var STYLES = {
   STEP: {
@@ -23,12 +20,11 @@ var STYLES = {
 };
 
 var Step = function Step(props) {
-  return _react2.default.createElement(
-    'span',
-    { style: STYLES.STEP },
-    props.step
-  );
+  return _react["default"].createElement("span", {
+    style: STYLES.STEP
+  }, props.step);
 };
 
-exports.default = Step;
+var _default = Step;
+exports["default"] = _default;
 //# sourceMappingURL=Step.js.map

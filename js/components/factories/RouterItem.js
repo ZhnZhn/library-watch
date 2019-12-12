@@ -1,68 +1,44 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _fItemTest = require('./fItemTest');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _fItemTest2 = _interopRequireDefault(_fItemTest);
+var _fItemTest = _interopRequireDefault(require("./fItemTest"));
 
-var _fGitHubRecentRelease = require('./fGitHubRecentRelease');
+var _fGitHubRecentRelease = _interopRequireDefault(require("./fGitHubRecentRelease"));
 
-var _fGitHubRecentRelease2 = _interopRequireDefault(_fGitHubRecentRelease);
+var _fGitHubRecentTag = _interopRequireDefault(require("./fGitHubRecentTag"));
 
-var _fGitHubRecentTag = require('./fGitHubRecentTag');
+var _fGitHubSearchInfo = _interopRequireDefault(require("./fGitHubSearchInfo"));
 
-var _fGitHubRecentTag2 = _interopRequireDefault(_fGitHubRecentTag);
+var _fGitHubCommits = _interopRequireDefault(require("./fGitHubCommits"));
 
-var _fGitHubSearchInfo = require('./fGitHubSearchInfo');
+var _fGitHubIssues = _interopRequireDefault(require("./fGitHubIssues"));
 
-var _fGitHubSearchInfo2 = _interopRequireDefault(_fGitHubSearchInfo);
+var _fNpmRecentDownloads = _interopRequireDefault(require("./fNpmRecentDownloads"));
 
-var _fGitHubCommits = require('./fGitHubCommits');
+var _fNpmDownloads = _interopRequireDefault(require("./fNpmDownloads"));
 
-var _fGitHubCommits2 = _interopRequireDefault(_fGitHubCommits);
+var _fStackTaggedQuestions = _interopRequireDefault(require("./fStackTaggedQuestions"));
 
-var _fGitHubIssues = require('./fGitHubIssues');
-
-var _fGitHubIssues2 = _interopRequireDefault(_fGitHubIssues);
-
-var _fNpmRecentDownloads = require('./fNpmRecentDownloads');
-
-var _fNpmRecentDownloads2 = _interopRequireDefault(_fNpmRecentDownloads);
-
-var _fNpmDownloads = require('./fNpmDownloads');
-
-var _fNpmDownloads2 = _interopRequireDefault(_fNpmDownloads);
-
-var _fStackTaggedQuestions = require('./fStackTaggedQuestions');
-
-var _fStackTaggedQuestions2 = _interopRequireDefault(_fStackTaggedQuestions);
-
-var _fStatCounter = require('./fStatCounter');
-
-var _fStatCounter2 = _interopRequireDefault(_fStatCounter);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _fStatCounter = _interopRequireDefault(require("./fStatCounter"));
 
 var RouterItem = {
-  DEFAULT: _fItemTest2.default,
-  GH_RELEASE_RECENT: _fGitHubRecentRelease2.default,
-  GH_TAGS: _fGitHubRecentTag2.default,
-  GH_SEARCH_INFO: _fGitHubSearchInfo2.default,
-  GH_COMMITS: _fGitHubCommits2.default,
-  GH_ISSUES: _fGitHubIssues2.default,
-  GH_PULL_REQUESTS: _fGitHubIssues2.default,
-
-  NPM_DOWNLOADS_RECENT_MONTH: _fNpmRecentDownloads2.default,
-  NPM_DOWNLOADS: _fNpmDownloads2.default,
-
-  SE_QUESTIONS: _fStackTaggedQuestions2.default,
-  SE_SEARCH_QUESTIONS: _fStackTaggedQuestions2.default,
-
-  ST_OSVERSION: _fStatCounter2.default
+  DEFAULT: _fItemTest["default"],
+  GH_RELEASE_RECENT: _fGitHubRecentRelease["default"],
+  GH_TAGS: _fGitHubRecentTag["default"],
+  GH_SEARCH_INFO: _fGitHubSearchInfo["default"],
+  GH_COMMITS: _fGitHubCommits["default"],
+  GH_ISSUES: _fGitHubIssues["default"],
+  GH_PULL_REQUESTS: _fGitHubIssues["default"],
+  NPM_DOWNLOADS_RECENT_MONTH: _fNpmRecentDownloads["default"],
+  NPM_DOWNLOADS: _fNpmDownloads["default"],
+  SE_QUESTIONS: _fStackTaggedQuestions["default"],
+  SE_SEARCH_QUESTIONS: _fStackTaggedQuestions["default"],
+  ST_OSVERSION: _fStatCounter["default"]
 };
-
-exports.default = RouterItem;
+var _default = RouterItem;
+exports["default"] = _default;
 //# sourceMappingURL=RouterItem.js.map

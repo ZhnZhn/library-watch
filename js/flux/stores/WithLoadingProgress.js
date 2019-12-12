@@ -1,13 +1,11 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _LoadingProgressActions = require('../actions/LoadingProgressActions');
+var _LoadingProgressActions = require("../actions/LoadingProgressActions");
 
 var CHANNEL = 'WITH_LOADING_PROGRESS';
-
 var WithLoadingProgress = {
   listenLoadingProgress: function listenLoadingProgress(fnHandler) {
     var _this = this;
@@ -30,6 +28,6 @@ var WithLoadingProgress = {
     this.triggerLoadingProgress(_LoadingProgressActions.LoadingProgressActionTypes.LOADING_FAILED);
   }
 };
-
-exports.default = WithLoadingProgress;
+var _default = WithLoadingProgress;
+exports["default"] = _default;
 //# sourceMappingURL=WithLoadingProgress.js.map

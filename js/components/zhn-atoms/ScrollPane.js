@@ -1,95 +1,66 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp2;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireWildcard(require("react"));
 
 //import PropTypes from "prop-types";
 var CL = 'with-scroll';
 
-var ScrollPane = (_temp2 = _class = function (_Component) {
-  (0, _inherits3.default)(ScrollPane, _Component);
+var ScrollPane =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(ScrollPane, _Component);
 
   function ScrollPane() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, ScrollPane);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = ScrollPane.__proto__ || Object.getPrototypeOf(ScrollPane)).call.apply(_ref, [this].concat(args))), _this), _this._refNode = function (n) {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+    _this._refNode = function (n) {
       return _this._node = n;
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    return _this;
   }
-  /*
-  static propTypes = {
-    style : PropTypes.object,
-    className: PropTypes.string,
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node
-    ])
-  }
-  */
 
+  var _proto = ScrollPane.prototype;
 
-  (0, _createClass3.default)(ScrollPane, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          style = _props.style,
-          className = _props.className,
-          children = _props.children;
+  _proto.render = function render() {
+    var _this$props = this.props,
+        style = _this$props.style,
+        className = _this$props.className,
+        children = _this$props.children;
+    return _react["default"].createElement("div", {
+      ref: this._refNode,
+      className: CL + " " + className,
+      style: style
+    }, children);
+  };
 
-      return _react2.default.createElement(
-        'div',
-        {
-          ref: this._refNode,
-          className: CL + ' ' + className,
-          style: style
-        },
-        children
-      );
+  _proto.scrollTop = function scrollTop() {
+    if (this._node) {
+      this._node.scrollTop = 0;
     }
-  }, {
-    key: 'scrollTop',
-    value: function scrollTop() {
-      if (this._node) {
-        this._node.scrollTop = 0;
-      }
-    }
-  }]);
+  };
+
   return ScrollPane;
-}(_react.Component), _class.defaultProps = {
+}(_react.Component);
+
+ScrollPane.defaultProps = {
   className: ''
-}, _temp2);
-exports.default = ScrollPane;
+};
+var _default = ScrollPane;
+exports["default"] = _default;
 //# sourceMappingURL=ScrollPane.js.map

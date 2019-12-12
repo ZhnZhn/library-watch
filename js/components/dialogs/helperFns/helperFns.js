@@ -1,23 +1,18 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _crMenuMore = require('./crMenuMore');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _crMenuMore2 = _interopRequireDefault(_crMenuMore);
+var _crMenuMore = _interopRequireDefault(require("./crMenuMore"));
 
-var _crButtons = require('./crButtons');
-
-var _crButtons2 = _interopRequireDefault(_crButtons);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _crButtons = _interopRequireDefault(require("./crButtons"));
 
 var helperFns = {
-  crMenuMore: _crMenuMore2.default,
-  crButtons: _crButtons2.default
+  crMenuMore: _crMenuMore["default"],
+  crButtons: _crButtons["default"]
 };
-
-exports.default = helperFns;
+var _default = helperFns;
+exports["default"] = _default;
 //# sourceMappingURL=helperFns.js.map

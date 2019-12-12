@@ -1,25 +1,20 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _createReactClass = require('create-react-class');
+var _createReactClass = _interopRequireDefault(require("create-react-class"));
 
-var _createReactClass2 = _interopRequireDefault(_createReactClass);
+var _RowInputSelect = _interopRequireDefault(require("./RowInputSelect"));
 
-var _RowInputSelect = require('./RowInputSelect');
-
-var _RowInputSelect2 = _interopRequireDefault(_RowInputSelect);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var FragmentSelectGroupList = (0, _createReactClass2.default)({
+//import PropTypes from 'prop-types'
+var FragmentSelectGroupList = (0, _createReactClass["default"])({
   displayName: 'FragmentSelectGroupList',
+
   /*
   propTypes : {
     store : PropTypes.object,
@@ -28,7 +23,6 @@ var FragmentSelectGroupList = (0, _createReactClass2.default)({
     listCaption : PropTypes.string
   },
   */
-
   getInitialState: function getInitialState() {
     this.groupCaption = null;
     this.listCaption = null;
@@ -41,12 +35,16 @@ var FragmentSelectGroupList = (0, _createReactClass2.default)({
       if (nextProps.groupOptions !== this.props.groupOptions) {
         this.groupCaption = null;
         this.listCaption = null;
-        this.setState({ listOptions: [] });
+        this.setState({
+          listOptions: []
+        });
       } else {
         if (this.groupCaption) {
           var listOptions = this.props.store.getWatchListsByGroup(this.groupCaption);
           if (listOptions !== this.state.listOptions) this.listCaption = null;
-          this.setState({ listOptions: listOptions });
+          this.setState({
+            listOptions: listOptions
+          });
         }
       }
     }
@@ -54,10 +52,15 @@ var FragmentSelectGroupList = (0, _createReactClass2.default)({
   _handlerSelectGroup: function _handlerSelectGroup(item) {
     if (item && item.caption) {
       this.groupCaption = item.caption;
+
       if (item.lists) {
-        this.setState({ listOptions: item.lists });
+        this.setState({
+          listOptions: item.lists
+        });
       } else {
-        this.setState({ listOptions: [] });
+        this.setState({
+          listOptions: []
+        });
       }
     } else {
       this.groupCaption = null;
@@ -67,26 +70,20 @@ var FragmentSelectGroupList = (0, _createReactClass2.default)({
     this.listCaption = item && item.caption ? item.caption : null;
   },
   render: function render() {
-    var _props = this.props,
-        groupCaption = _props.groupCaption,
-        groupOptions = _props.groupOptions,
-        listCaption = _props.listCaption,
+    var _this$props = this.props,
+        groupCaption = _this$props.groupCaption,
+        groupOptions = _this$props.groupOptions,
+        listCaption = _this$props.listCaption,
         listOptions = this.state.listOptions;
-
-    return _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(_RowInputSelect2.default, {
-        caption: groupCaption,
-        options: groupOptions,
-        onSelect: this._handlerSelectGroup
-      }),
-      _react2.default.createElement(_RowInputSelect2.default, {
-        caption: listCaption,
-        options: listOptions,
-        onSelect: this._handlerSelectList
-      })
-    );
+    return _react["default"].createElement("div", null, _react["default"].createElement(_RowInputSelect["default"], {
+      caption: groupCaption,
+      options: groupOptions,
+      onSelect: this._handlerSelectGroup
+    }), _react["default"].createElement(_RowInputSelect["default"], {
+      caption: listCaption,
+      options: listOptions,
+      onSelect: this._handlerSelectList
+    }));
   },
   getValue: function getValue() {
     return {
@@ -99,8 +96,6 @@ var FragmentSelectGroupList = (0, _createReactClass2.default)({
     this.listCaption = null;
   }
 });
-
-//import PropTypes from 'prop-types'
-
-exports.default = FragmentSelectGroupList;
+var _default = FragmentSelectGroupList;
+exports["default"] = _default;
 //# sourceMappingURL=FragmentSelectGroupList.js.map

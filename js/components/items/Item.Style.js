@@ -1,9 +1,7 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
+exports.__esModule = true;
+exports["default"] = void 0;
 var STYLE = {
   ROOT: {
     position: 'relative',
@@ -20,7 +18,7 @@ var STYLE = {
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
     overflow: 'hidden',
-    float: 'left'
+    "float": 'left'
   },
   SPAN_VERSION: {
     color: '#80c040',
@@ -40,11 +38,10 @@ var STYLE = {
   PR_8: {
     paddingRight: 8
   },
-
   ML_8: {
     marginLeft: 8
   }
 };
-
-exports.default = STYLE;
+var _default = STYLE;
+exports["default"] = _default;
 //# sourceMappingURL=Item.Style.js.map

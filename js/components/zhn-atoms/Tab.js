@@ -1,27 +1,21 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 //import PropTypes from "prop-types";
-
 var STYLE = {
   LI: {
-    float: 'left',
+    "float": 'left',
     display: 'inline-block',
-
     backgroundColor: '#232F3B',
+
     /*color : 'rgba(164, 135, 212, 1)',*/
     color: 'gray',
     paddingLeft: '10px',
@@ -31,12 +25,11 @@ var STYLE = {
     borderTopLeftRadius: '8px',
     borderTopRightRadius: '8px',
     cursor: 'pointer',
-
     fontWeight: 'bold',
     //border: '2px solid rgb(44, 40, 40)',
     border: '2px solid gray',
-    borderBottom: 'none'
-    //borderTop : 'none'
+    borderBottom: 'none' //borderTop : 'none'
+
   },
   SELECTED: {
     borderColor: 'rgba(164, 135, 212, 1)',
@@ -50,20 +43,12 @@ var Tab = function Tab(_ref) {
       onClick = _ref.onClick;
 
   var _style = isSelected ? STYLE.SELECTED : null;
-  return _react2.default.createElement(
-    'li',
-    {
-      style: (0, _extends3.default)({}, STYLE.LI, _style),
-      onClick: onClick
-    },
-    _react2.default.createElement(
-      'span',
-      null,
-      title
-    )
-  );
-};
 
+  return _react["default"].createElement("li", {
+    style: (0, _extends2["default"])({}, STYLE.LI, {}, _style),
+    onClick: onClick
+  }, _react["default"].createElement("span", null, title));
+};
 /*
 Tab.propTypes = {
   title: PropTypes.string,
@@ -71,9 +56,11 @@ Tab.propTypes = {
   onClick: PropTypes.func
 }
 */
+
+
 Tab.defaultProps = {
   onClick: function onClick() {}
 };
-
-exports.default = Tab;
+var _default = Tab;
+exports["default"] = _default;
 //# sourceMappingURL=Tab.js.map

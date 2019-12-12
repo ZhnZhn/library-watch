@@ -1,14 +1,12 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 
 var createHandlerDnDGroup = function createHandlerDnDGroup(DRAG, WatchActions) {
   return {
     _handlerDragStartGroup: function _handlerDragStartGroup(_ref, ev) {
       var caption = _ref.caption;
-
       this.dragStartWithDnDStyle(ev, [DRAG.GROUP]);
       ev.dataTransfer.effectAllowed = "move";
       ev.dataTransfer.dropEffect = "move";
@@ -20,13 +18,11 @@ var createHandlerDnDGroup = function createHandlerDnDGroup(DRAG, WatchActions) {
     },
     _handlerDropGroup: function _handlerDropGroup(_ref2, ev) {
       var caption = _ref2.caption;
-
       this.dropWithDnDStyle(ev);
       var data = JSON.parse(ev.dataTransfer.getData("text")),
           xType = data.xType,
           dragId = data.dragId,
           dropId = caption + ";";
-
 
       if (xType === DRAG.GROUP) {
         if (dragId !== dropId) {
@@ -60,5 +56,6 @@ var createHandlerDnDGroup = function createHandlerDnDGroup(DRAG, WatchActions) {
   };
 };
 
-exports.default = createHandlerDnDGroup;
+var _default = createHandlerDnDGroup;
+exports["default"] = _default;
 //# sourceMappingURL=createHandlerDnDGroup.js.map

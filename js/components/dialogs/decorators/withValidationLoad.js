@@ -1,28 +1,39 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _handleLoadWithValidation = function _handleLoadWithValidation(validationMessages, fnCreateOption) {
-  var onLoad = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.props.onLoad;
+var _handleLoadWithValidation = function _handleLoadWithValidation(validationMessages, fnCreateOption, onLoad) {
+  if (onLoad === void 0) {
+    onLoad = this.props.onLoad;
+  }
 
   if (validationMessages.isValid) {
     onLoad(fnCreateOption());
+
     if (this.state.validationMessages.length !== 0) {
-      this.setState({ validationMessages: [] });
+      this.setState({
+        validationMessages: []
+      });
     }
   } else {
-    this.setState({ validationMessages: validationMessages });
+    this.setState({
+      validationMessages: validationMessages
+    });
   }
 };
 
-var _handleCloseWithValidation = function _handleCloseWithValidation(fnCreateMessages) {
-  var onClose = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.props.onClose;
+var _handleCloseWithValidation = function _handleCloseWithValidation(fnCreateMessages, onClose) {
+  if (onClose === void 0) {
+    onClose = this.props.onClose;
+  }
 
   if (this.state.validationMessages.length !== 0) {
-    this.setState({ validationMessages: fnCreateMessages() });
+    this.setState({
+      validationMessages: fnCreateMessages()
+    });
   }
+
   onClose();
 };
 
@@ -31,5 +42,6 @@ var withValidationLoad = function withValidationLoad(target) {
   target.prototype._handleCloseWithValidation = _handleCloseWithValidation;
 };
 
-exports.default = withValidationLoad;
+var _default = withValidationLoad;
+exports["default"] = _default;
 //# sourceMappingURL=withValidationLoad.js.map

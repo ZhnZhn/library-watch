@@ -1,54 +1,34 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _Decorators = _interopRequireDefault(require("./decorators/Decorators"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _helperFns = _interopRequireDefault(require("./helperFns/helperFns"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _DialogCell = _interopRequireDefault(require("./DialogCell"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _dec, _dec2, _dec3, _class, _temp;
 
-var _dec, _dec2, _dec3, _class;
-//import PropTypes from "prop-types";
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Decorators = require('./decorators/Decorators');
-
-var _Decorators2 = _interopRequireDefault(_Decorators);
-
-var _helperFns = require('./helperFns/helperFns');
-
-var _helperFns2 = _interopRequireDefault(_helperFns);
-
-var _DialogCell = require('./DialogCell');
-
-var _DialogCell2 = _interopRequireDefault(_DialogCell);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var crMenuMore = _helperFns2.default.crMenuMore,
-    crButtons = _helperFns2.default.crButtons;
-var DialogType1 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2.default.withValidationLoad, _dec3 = _Decorators2.default.withInitialState, _dec(_class = _dec2(_class = _dec3(_class = function (_Component) {
-  (0, _inherits3.default)(DialogType1, _Component);
+var crMenuMore = _helperFns["default"].crMenuMore,
+    crButtons = _helperFns["default"].crButtons;
+var DialogType1 = (_dec = _Decorators["default"].withToolbar, _dec2 = _Decorators["default"].withValidationLoad, _dec3 = _Decorators["default"].withInitialState, _dec(_class = _dec2(_class = _dec3(_class = (_temp =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(DialogType1, _Component);
 
   /*
   static propTypes = {
@@ -60,15 +40,17 @@ var DialogType1 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2
     onShow: PropTypes.func
   }
   */
-
   function DialogType1(props) {
-    (0, _classCallCheck3.default)(this, DialogType1);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (DialogType1.__proto__ || Object.getPrototypeOf(DialogType1)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
     _this._handleClear = function () {
       _this.inputOne.setValue('');
-      _this.setState({ validationMessages: [] });
+
+      _this.setState({
+        validationMessages: []
+      });
     };
 
     _this._handleLoad = function () {
@@ -79,8 +61,9 @@ var DialogType1 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2
       var msg = [];
 
       var value = _this.inputOne.getValue();
+
       if (!value) {
-        msg = msg.concat(_this.props.oneTitle + ' is required');
+        msg = msg.concat(_this.props.oneTitle + " is required");
       }
 
       msg.isValid = msg.length === 0 ? true : false;
@@ -89,7 +72,6 @@ var DialogType1 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2
 
     _this._createLoadOption = function () {
       var requestType = _this.props.requestType;
-
       return {
         repo: _this.inputOne.getValue(),
         requestType: requestType
@@ -106,68 +88,63 @@ var DialogType1 = (_dec = _Decorators2.default.withToolbar, _dec2 = _Decorators2
 
     _this.stock = null;
     _this.toolbarButtons = _this._createType2WithToolbar(props);
-    _this._menuMore = crMenuMore(_this, {
+    _this._menuMore = crMenuMore((0, _assertThisInitialized2["default"])(_this), {
       toggleLabels: _this._clickLabelWithToolbar,
       toggleToolBar: _this._toggleWithToolbar
     });
-    _this._commandButtons = crButtons({ inst: _this });
-    _this.state = (0, _extends3.default)({}, _this._withInitialState());
+    _this._commandButtons = crButtons({
+      inst: (0, _assertThisInitialized2["default"])(_this)
+    });
+    _this.state = (0, _extends2["default"])({}, _this._withInitialState());
     return _this;
   }
 
-  (0, _createClass3.default)(DialogType1, [{
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (this.props !== nextProps) {
-        if (this.props.isShow === nextProps.isShow) {
-          return false;
-        }
+  var _proto = DialogType1.prototype;
+
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+    if (this.props !== nextProps) {
+      if (this.props.isShow === nextProps.isShow) {
+        return false;
       }
-      return true;
     }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          caption = _props.caption,
-          isShow = _props.isShow,
-          onShow = _props.onShow,
-          oneTitle = _props.oneTitle,
-          onePlaceholder = _props.onePlaceholder,
-          _state = this.state,
-          isToolbar = _state.isToolbar,
-          isShowLabels = _state.isShowLabels,
-          validationMessages = _state.validationMessages;
 
+    return true;
+  };
 
-      return _react2.default.createElement(
-        _DialogCell2.default.DraggableDialog,
-        {
-          isShow: isShow,
-          caption: caption,
-          menuModel: this._menuMore,
-          commandButtons: this._commandButtons,
-          onShowChart: onShow,
-          onClose: this._handleClose
-        },
-        _react2.default.createElement(_DialogCell2.default.Toolbar, {
-          isShow: isToolbar,
-          buttons: this.toolbarButtons
-        }),
-        _react2.default.createElement(_DialogCell2.default.RowInputText, {
-          ref: this._refInputOne,
-          isShowLabel: isShowLabels,
-          caption: oneTitle,
-          placeholder: onePlaceholder,
-          onEnter: this._handleLoad
-        }),
-        _react2.default.createElement(_DialogCell2.default.ValidationMessages, {
-          validationMessages: validationMessages
-        })
-      );
-    }
-  }]);
+  _proto.render = function render() {
+    var _this$props = this.props,
+        caption = _this$props.caption,
+        isShow = _this$props.isShow,
+        onShow = _this$props.onShow,
+        oneTitle = _this$props.oneTitle,
+        onePlaceholder = _this$props.onePlaceholder,
+        _this$state = this.state,
+        isToolbar = _this$state.isToolbar,
+        isShowLabels = _this$state.isShowLabels,
+        validationMessages = _this$state.validationMessages;
+    return _react["default"].createElement(_DialogCell["default"].DraggableDialog, {
+      isShow: isShow,
+      caption: caption,
+      menuModel: this._menuMore,
+      commandButtons: this._commandButtons,
+      onShowChart: onShow,
+      onClose: this._handleClose
+    }, _react["default"].createElement(_DialogCell["default"].Toolbar, {
+      isShow: isToolbar,
+      buttons: this.toolbarButtons
+    }), _react["default"].createElement(_DialogCell["default"].RowInputText, {
+      ref: this._refInputOne,
+      isShowLabel: isShowLabels,
+      caption: oneTitle,
+      placeholder: onePlaceholder,
+      onEnter: this._handleLoad
+    }), _react["default"].createElement(_DialogCell["default"].ValidationMessages, {
+      validationMessages: validationMessages
+    }));
+  };
+
   return DialogType1;
-}(_react.Component)) || _class) || _class) || _class);
-exports.default = DialogType1;
+}(_react.Component), _temp)) || _class) || _class) || _class);
+var _default = DialogType1;
+exports["default"] = _default;
 //# sourceMappingURL=DialogType1.js.map

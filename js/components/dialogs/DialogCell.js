@@ -1,35 +1,24 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports["default"] = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _Rows = _interopRequireDefault(require("./rows/Rows"));
+
+var _Widgets = _interopRequireDefault(require("./widgets/Widgets"));
+
+var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
+
+var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/DraggableDialog"));
+
+var DialogCell = (0, _extends2["default"])({}, _Rows["default"], {}, _Widgets["default"], {
+  ShowHide: _ShowHide["default"],
+  DraggableDialog: _DraggableDialog["default"]
 });
-
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _Rows = require('./rows/Rows');
-
-var _Rows2 = _interopRequireDefault(_Rows);
-
-var _Widgets = require('./widgets/Widgets');
-
-var _Widgets2 = _interopRequireDefault(_Widgets);
-
-var _ShowHide = require('../zhn-atoms/ShowHide');
-
-var _ShowHide2 = _interopRequireDefault(_ShowHide);
-
-var _DraggableDialog = require('../zhn-moleculs/DraggableDialog');
-
-var _DraggableDialog2 = _interopRequireDefault(_DraggableDialog);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var DialogCell = (0, _extends3.default)({}, _Rows2.default, _Widgets2.default, {
-  ShowHide: _ShowHide2.default,
-  DraggableDialog: _DraggableDialog2.default
-});
-
-exports.default = DialogCell;
+var _default = DialogCell;
+exports["default"] = _default;
 //# sourceMappingURL=DialogCell.js.map

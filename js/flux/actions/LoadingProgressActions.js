@@ -1,29 +1,23 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.LoadingProgressActionTypes = undefined;
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+exports.__esModule = true;
+exports["default"] = exports.LoadingProgressActionTypes = void 0;
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _reflux = _interopRequireDefault(require("reflux"));
 
 var _Reflux$createActions;
 
-var _reflux = require('reflux');
-
-var _reflux2 = _interopRequireDefault(_reflux);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var LoadingProgressActionTypes = exports.LoadingProgressActionTypes = {
+var LoadingProgressActionTypes = {
   LOADING: 'loadingProgress',
   LOADING_COMPLETE: 'loadingProgressComplete',
   LOADING_FAILED: 'loadingProgressFailed'
 };
+exports.LoadingProgressActionTypes = LoadingProgressActionTypes;
 
-var LoadingProgressActions = _reflux2.default.createActions((_Reflux$createActions = {}, (0, _defineProperty3.default)(_Reflux$createActions, LoadingProgressActionTypes.LOADING, {}), (0, _defineProperty3.default)(_Reflux$createActions, LoadingProgressActionTypes.LOADING_COMPLETE, {}), (0, _defineProperty3.default)(_Reflux$createActions, LoadingProgressActionTypes.LOADING_FAILED, {}), _Reflux$createActions));
+var LoadingProgressActions = _reflux["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[LoadingProgressActionTypes.LOADING] = {}, _Reflux$createActions[LoadingProgressActionTypes.LOADING_COMPLETE] = {}, _Reflux$createActions[LoadingProgressActionTypes.LOADING_FAILED] = {}, _Reflux$createActions));
 
-exports.default = LoadingProgressActions;
+var _default = LoadingProgressActions;
+exports["default"] = _default;
 //# sourceMappingURL=LoadingProgressActions.js.map

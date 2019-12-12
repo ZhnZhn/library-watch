@@ -1,35 +1,17 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp, _initialiseProps;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireWildcard(require("react"));
 
 //import PropTypes from "prop-types";
-
 var STYLE = {
   UL: {
     listStyle: 'outside none none',
@@ -44,8 +26,10 @@ var STYLE = {
   }
 };
 
-var TabPane = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(TabPane, _Component);
+var TabPane =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(TabPane, _Component);
 
   /*
   static propTypes = {
@@ -54,84 +38,88 @@ var TabPane = (_temp = _class = function (_Component) {
      children: PropTypes.arrayOf(PropTypes.node)
   }
   */
-
   function TabPane(props) {
-    (0, _classCallCheck3.default)(this, TabPane);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (TabPane.__proto__ || Object.getPrototypeOf(TabPane)).call(this));
+    _this = _Component.call(this) || this;
 
-    _initialiseProps.call(_this);
+    _this._handlerClickTab = function (index) {
+      _this.setState({
+        selectedTabIndex: index
+      });
+    };
 
-    var components = props.children.map(function (tab, index) {
-      return _react2.default.cloneElement(tab.props.children, { key: 'comp' + index });
+    _this._renderTabs = function (children) {
+      var selectedTabIndex = _this.state.selectedTabIndex;
+      return children.map(function (tab, index) {
+        var isSelected = index === selectedTabIndex ? true : false;
+        return _react["default"].cloneElement(tab, {
+          key: index,
+          onClick: _this._handlerClickTab.bind(null, index),
+          isSelected: isSelected
+        });
+      });
+    };
+
+    _this._renderComponents = function () {
+      var _this$state = _this.state,
+          selectedTabIndex = _this$state.selectedTabIndex,
+          components = _this$state.components;
+      return components.map(function (comp, index) {
+        var divStyle = index === selectedTabIndex ? {
+          display: 'block',
+          width: "100%",
+          height: "100%"
+        } : {
+          display: 'none'
+        };
+        return _react["default"].createElement("div", {
+          style: divStyle,
+          key: 'a' + index
+        }, comp);
+      });
+    };
+
+    var _components = props.children.map(function (tab, index) {
+      return _react["default"].cloneElement(tab.props.children, {
+        key: 'comp' + index
+      });
     });
+
     _this.state = {
       selectedTabIndex: 0,
-      components: components
+      components: _components
     };
     return _this;
   }
 
-  (0, _createClass3.default)(TabPane, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          children = _props.children,
-          width = _props.width,
-          height = _props.height;
+  var _proto = TabPane.prototype;
 
-      return _react2.default.createElement(
-        'div',
-        { style: { width: width, height: height } },
-        _react2.default.createElement(
-          'ul',
-          { className: 'tabpane__tabs', style: STYLE.UL },
-          this._renderTabs(children)
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: STYLE.DIV },
-          this._renderComponents()
-        )
-      );
-    }
-  }, {
-    key: 'getSelectedTabIndex',
-    value: function getSelectedTabIndex() {
-      return this.state.selectedTabIndex;
-    }
-  }]);
+  _proto.render = function render() {
+    var _this$props = this.props,
+        children = _this$props.children,
+        width = _this$props.width,
+        height = _this$props.height;
+    return _react["default"].createElement("div", {
+      style: {
+        width: width,
+        height: height
+      }
+    }, _react["default"].createElement("ul", {
+      className: "tabpane__tabs",
+      style: STYLE.UL
+    }, this._renderTabs(children)), _react["default"].createElement("div", {
+      style: STYLE.DIV
+    }, this._renderComponents()));
+  };
+
+  _proto.getSelectedTabIndex = function getSelectedTabIndex() {
+    return this.state.selectedTabIndex;
+  };
+
   return TabPane;
-}(_react.Component), _initialiseProps = function _initialiseProps() {
-  var _this2 = this;
+}(_react.Component);
 
-  this._handlerClickTab = function (index) {
-    _this2.setState({ selectedTabIndex: index });
-  };
-
-  this._renderTabs = function (children) {
-    var selectedTabIndex = _this2.state.selectedTabIndex;
-
-    return children.map(function (tab, index) {
-      var isSelected = index === selectedTabIndex ? true : false;
-      return _react2.default.cloneElement(tab, { key: index, onClick: _this2._handlerClickTab.bind(null, index), isSelected: isSelected });
-    });
-  };
-
-  this._renderComponents = function () {
-    var _state = _this2.state,
-        selectedTabIndex = _state.selectedTabIndex,
-        components = _state.components;
-
-    return components.map(function (comp, index) {
-      var divStyle = index === selectedTabIndex ? { display: 'block', width: "100%", height: "100%" } : { display: 'none' };
-      return _react2.default.createElement(
-        'div',
-        { style: divStyle, key: 'a' + index },
-        comp
-      );
-    });
-  };
-}, _temp);
-exports.default = TabPane;
+var _default = TabPane;
+exports["default"] = _default;
 //# sourceMappingURL=TabPane.js.map

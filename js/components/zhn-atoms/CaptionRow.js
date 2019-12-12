@@ -1,48 +1,33 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _CaptionRow = require('./CaptionRow.Style');
+var _CaptionRow = _interopRequireDefault(require("./CaptionRow.Style"));
 
-var _CaptionRow2 = _interopRequireDefault(_CaptionRow);
-
-var _SvgClose = require('./SvgClose');
-
-var _SvgClose2 = _interopRequireDefault(_SvgClose);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _SvgClose = _interopRequireDefault(require("./SvgClose"));
 
 //import PropTypes from 'prop-types';
-
 var CaptionRow = function CaptionRow(_ref) {
   var _ref$caption = _ref.caption,
-      caption = _ref$caption === undefined ? '' : _ref$caption,
+      caption = _ref$caption === void 0 ? '' : _ref$caption,
       children = _ref.children,
       styleRoot = _ref.styleRoot,
       onClose = _ref.onClose;
-  return _react2.default.createElement(
-    'div',
-    { className: _CaptionRow2.default.CL_CAPTION, style: styleRoot },
-    _react2.default.createElement(
-      'span',
-      {
-        className: _CaptionRow2.default.CL_NOT_SELECTED,
-        style: _CaptionRow2.default.SPAN
-      },
-      caption
-    ),
-    children,
-    _react2.default.createElement(_SvgClose2.default, {
-      style: _CaptionRow2.default.SVG_CLOSE,
-      onClose: onClose
-    })
-  );
+  return _react["default"].createElement("div", {
+    className: _CaptionRow["default"].CL_CAPTION,
+    style: styleRoot
+  }, _react["default"].createElement("span", {
+    className: _CaptionRow["default"].CL_NOT_SELECTED,
+    style: _CaptionRow["default"].SPAN
+  }, caption), children, _react["default"].createElement(_SvgClose["default"], {
+    style: _CaptionRow["default"].SVG_CLOSE,
+    onClose: onClose
+  }));
 };
 /*
 CaptionRow.propTypes = {
@@ -56,5 +41,7 @@ CaptionRow.propTypes = {
 }
 */
 
-exports.default = CaptionRow;
+
+var _default = CaptionRow;
+exports["default"] = _default;
 //# sourceMappingURL=CaptionRow.js.map

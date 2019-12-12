@@ -1,8 +1,7 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 var LIMIT_REMAINING = 'X-RateLimit-Remaining';
 
 var fetchJson = function fetchJson(_ref) {
@@ -20,8 +19,8 @@ var fetchJson = function fetchJson(_ref) {
   return fetch(uri).then(function (response) {
     var status = response.status,
         headers = response.headers;
-
     option.limitRemaining = headers.get(LIMIT_REMAINING);
+
     if (status >= 200 && status <= 400) {
       return response.json();
     } else {
@@ -29,14 +28,25 @@ var fetchJson = function fetchJson(_ref) {
     }
   }).then(function (json) {
     if (onCheckResponse(json, option)) {
-      onFetch({ json: json, option: option, onCompleted: onCompleted });
+      onFetch({
+        json: json,
+        option: option,
+        onCompleted: onCompleted
+      });
     }
+
     _doneOk(_nowTime);
-  }).catch(function (error) {
-    onCatch({ error: error, option: option, onFailed: onFailed });
+  })["catch"](function (error) {
+    onCatch({
+      error: error,
+      option: option,
+      onFailed: onFailed
+    });
+
     _doneFailure(_nowTime);
   });
 };
 
-exports.default = fetchJson;
+var _default = fetchJson;
+exports["default"] = _default;
 //# sourceMappingURL=fetchJson.js.map

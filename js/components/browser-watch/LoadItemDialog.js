@@ -1,58 +1,31 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _ChartActions = _interopRequireDefault(require("../../flux/actions/ChartActions"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _Type = require("../../constants/Type");
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _ChartActions = require('../../flux/actions/ChartActions');
-
-var _ChartActions2 = _interopRequireDefault(_ChartActions);
-
-var _Type = require('../../constants/Type');
-
-var _ModalDialog = require('../zhn-moleculs/ModalDialog');
-
-var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
-
-var _FlatButton = require('../zhn-m/FlatButton');
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _DialogStyles = require('../styles/DialogStyles');
-
-var _DialogStyles2 = _interopRequireDefault(_DialogStyles);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = _DialogStyles2.default;
 //import PropTypes from 'prop-types'
-
+var styles = _DialogStyles["default"];
 var DIALOG_CAPTION = "Load Watch Item";
-
 var S = {
   ITEM_DESCRIPTION: {
     fontWeight: 'bold',
@@ -72,8 +45,10 @@ var S = {
   }
 };
 
-var LoadItemDialog = function (_Component) {
-  (0, _inherits3.default)(LoadItemDialog, _Component);
+var LoadItemDialog =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(LoadItemDialog, _Component);
 
   /*
    static propTypes = {
@@ -84,16 +59,17 @@ var LoadItemDialog = function (_Component) {
    },
    */
   function LoadItemDialog(props) {
-    (0, _classCallCheck3.default)(this, LoadItemDialog);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (LoadItemDialog.__proto__ || Object.getPrototypeOf(LoadItemDialog)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
     _this._handlerLoad = function () {
       var _this$props = _this.props,
           data = _this$props.data,
           onClose = _this$props.onClose;
 
-      _ChartActions2.default.loadStock(_Type.ChartType.WATCH_LIST, _Type.BrowserType.WATCH_LIST, data);
+      _ChartActions["default"].loadStock(_Type.ChartType.WATCH_LIST, _Type.BrowserType.WATCH_LIST, data);
+
       onClose();
     };
 
@@ -102,87 +78,65 @@ var LoadItemDialog = function (_Component) {
     };
 
     _this._renderDate = function (date) {
-      return _react2.default.createElement(
-        'div',
-        { style: (0, _extends3.default)({}, styles.rowDiv, S.LH_2), key: '3' },
-        _react2.default.createElement(
-          'span',
-          { style: styles.labelSpan },
-          'Date:'
-        ),
-        _react2.default.createElement(
-          'span',
-          { style: S.BOLD },
-          date
-        )
-      );
+      return _react["default"].createElement("div", {
+        style: (0, _extends2["default"])({}, styles.rowDiv, {}, S.LH_2),
+        key: "3"
+      }, _react["default"].createElement("span", {
+        style: styles.labelSpan
+      }, "Date:"), _react["default"].createElement("span", {
+        style: S.BOLD
+      }, date));
     };
 
-    _this._commandButtons = [_react2.default.createElement(_FlatButton2.default, {
-      key: 'load',
+    _this._commandButtons = [_react["default"].createElement(_FlatButton["default"], {
+      key: "load",
       isPrimary: true,
-      caption: 'Load',
+      caption: "Load",
       onClick: _this._handlerLoad
     })];
     return _this;
   }
 
-  (0, _createClass3.default)(LoadItemDialog, [{
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-        return false;
-      }
-      return true;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          isShow = _props.isShow,
-          data = _props.data,
-          caption = data.caption,
-          descr = data.descr,
-          date = data.date;
+  var _proto = LoadItemDialog.prototype;
 
-
-      return _react2.default.createElement(
-        _ModalDialog2.default,
-        {
-          caption: DIALOG_CAPTION,
-          isShow: isShow,
-          commandButtons: this._commandButtons,
-          onClose: this._handlerClose
-        },
-        _react2.default.createElement(
-          'div',
-          { style: (0, _extends3.default)({}, styles.rowDiv, S.LH_1_5), key: '1' },
-          _react2.default.createElement(
-            'span',
-            { style: S.ITEM_DESCRIPTION },
-            descr
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: (0, _extends3.default)({}, styles.rowDiv, S.LH_2), key: '2' },
-          _react2.default.createElement(
-            'span',
-            { style: styles.labelSpan },
-            'Item:'
-          ),
-          _react2.default.createElement(
-            'span',
-            { style: S.BOLD },
-            caption
-          )
-        ),
-        date && this._renderDate(date)
-      );
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
+      return false;
     }
-  }]);
+
+    return true;
+  };
+
+  _proto.render = function render() {
+    var _this$props2 = this.props,
+        isShow = _this$props2.isShow,
+        data = _this$props2.data,
+        caption = data.caption,
+        descr = data.descr,
+        date = data.date;
+    return _react["default"].createElement(_ModalDialog["default"], {
+      caption: DIALOG_CAPTION,
+      isShow: isShow,
+      commandButtons: this._commandButtons,
+      onClose: this._handlerClose
+    }, _react["default"].createElement("div", {
+      style: (0, _extends2["default"])({}, styles.rowDiv, {}, S.LH_1_5),
+      key: "1"
+    }, _react["default"].createElement("span", {
+      style: S.ITEM_DESCRIPTION
+    }, descr)), _react["default"].createElement("div", {
+      style: (0, _extends2["default"])({}, styles.rowDiv, {}, S.LH_2),
+      key: "2"
+    }, _react["default"].createElement("span", {
+      style: styles.labelSpan
+    }, "Item:"), _react["default"].createElement("span", {
+      style: S.BOLD
+    }, caption)), date && this._renderDate(date));
+  };
+
   return LoadItemDialog;
 }(_react.Component);
 
-exports.default = LoadItemDialog;
+var _default = LoadItemDialog;
+exports["default"] = _default;
 //# sourceMappingURL=LoadItemDialog.js.map

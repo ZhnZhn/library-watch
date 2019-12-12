@@ -1,72 +1,52 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _localforage = require('localforage');
+var _localforage = _interopRequireDefault(require("localforage"));
 
-var _localforage2 = _interopRequireDefault(_localforage);
+var _browserFilesaver = _interopRequireDefault(require("browser-filesaver"));
 
-var _browserFilesaver = require('browser-filesaver');
+var _lodash = _interopRequireDefault(require("lodash.merge"));
 
-var _browserFilesaver2 = _interopRequireDefault(_browserFilesaver);
+var _DateUtils = _interopRequireDefault(require("../../utils/DateUtils"));
 
-var _lodash = require('lodash.merge');
+var _ComponentActions = _interopRequireDefault(require("../actions/ComponentActions"));
 
-var _lodash2 = _interopRequireDefault(_lodash);
+var _BrowserActions = require("../actions/BrowserActions");
 
-var _DateUtils = require('../../utils/DateUtils');
+var _WatchActions = require("../actions/WatchActions");
 
-var _DateUtils2 = _interopRequireDefault(_DateUtils);
+var _WatchDefault = _interopRequireDefault(require("../../constants/WatchDefault"));
 
-var _ComponentActions = require('../actions/ComponentActions');
+var _Type = require("../../constants/Type");
 
-var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
+var _Msg = _interopRequireDefault(require("../../constants/Msg"));
 
-var _BrowserActions = require('../actions/BrowserActions');
-
-var _WatchActions = require('../actions/WatchActions');
-
-var _WatchDefault = require('../../constants/WatchDefault');
-
-var _WatchDefault2 = _interopRequireDefault(_WatchDefault);
-
-var _Type = require('../../constants/Type');
-
-var _Msg = require('../../constants/Msg');
-
-var _Msg2 = _interopRequireDefault(_Msg);
-
-var _Logic = require('./Logic');
-
-var _Logic2 = _interopRequireDefault(_Logic);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Logic = _interopRequireDefault(require("./Logic"));
 
 //import JSZip from 'jszip';
 var STORAGE_KEY = 'WATCH_LIST_PACKAGE',
     CAPTION_WATCH_SAVE = 'Watch List:',
     CAPTION_WATCH_EXPORT = "BackUp Watch Items:",
     WATCH_FILE_NAME = "WatchItems";
-
 var WatchListSlice = {
-
-  watchList: _WatchDefault2.default,
+  watchList: _WatchDefault["default"],
   isWatchEdited: false,
-
   initWatchList: function initWatchList() {
     var _this = this;
 
-    _localforage2.default.getItem(STORAGE_KEY).then(function (value) {
-      _this.watchList = value ? value : _WatchDefault2.default;
+    _localforage["default"].getItem(STORAGE_KEY).then(function (value) {
+      _this.watchList = value ? value : _WatchDefault["default"];
+
       _this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, _this.watchList);
-    }).catch(function () {
-      _this.watchList = _WatchDefault2.default;
+    })["catch"](function () {
+      _this.watchList = _WatchDefault["default"];
+
       _this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, _this.watchList);
     });
   },
@@ -84,17 +64,20 @@ var WatchListSlice = {
     return this.watchList.groups;
   },
   getWatchListsByGroup: function getWatchListsByGroup(groupCaption) {
-    var group = _Logic2.default.findGroup(this.watchList, groupCaption);
+    var group = _Logic["default"].findGroup(this.watchList, groupCaption);
+
     if (!group) {
       return [];
     }
+
     return group.lists;
   },
   onAddItem: function onAddItem(item) {
-    this._onEditWatch(_Logic2.default.addItem(this.watchList, item), _WatchActions.WatchActionTypes.ADD_ITEM);
+    this._onEditWatch(_Logic["default"].addItem(this.watchList, item), _WatchActions.WatchActionTypes.ADD_ITEM);
   },
   onRemoveItem: function onRemoveItem(option) {
-    _Logic2.default.removeItem(this.watchList, option);
+    _Logic["default"].removeItem(this.watchList, option);
+
     this.setWatchEdited(true);
     this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
   },
@@ -107,32 +90,34 @@ var WatchListSlice = {
     }
   },
   onDragDropItem: function onDragDropItem(option) {
-    this._onDragDrop(_Logic2.default.dragDropItem(this.watchList, option));
+    this._onDragDrop(_Logic["default"].dragDropItem(this.watchList, option));
   },
   onDragDropList: function onDragDropList(option) {
-    this._onDragDrop(_Logic2.default.dragDropList(this.watchList, option));
+    this._onDragDrop(_Logic["default"].dragDropList(this.watchList, option));
   },
   onDragDropGroup: function onDragDropGroup(option) {
-    this._onDragDrop(_Logic2.default.dragDropGroup(this.watchList, option));
+    this._onDragDrop(_Logic["default"].dragDropGroup(this.watchList, option));
   },
   onSaveWatch: function onSaveWatch() {
     var _this2 = this;
 
     if (this.isWatchEdited) {
-      _localforage2.default.setItem(STORAGE_KEY, this.watchList).then(function () {
+      _localforage["default"].setItem(STORAGE_KEY, this.watchList).then(function () {
         _this2.setWatchEdited(false);
+
         _this2.onShowModalDialog(_Type.ModalDialog.INFO, {
           caption: CAPTION_WATCH_SAVE,
-          descr: _Msg2.default.WATCH_SAVED
+          descr: _Msg["default"].WATCH_SAVED
         });
-        console.log(_Msg2.default.WATCH_SAVED);
-      }).catch(function (error) {
+
+        console.log(_Msg["default"].WATCH_SAVED);
+      })["catch"](function (error) {
         console.log(error);
       });
     } else {
       this.onShowModalDialog(_Type.ModalDialog.INFO, {
         caption: CAPTION_WATCH_SAVE,
-        descr: _Msg2.default.WATCH_PREV
+        descr: _Msg["default"].WATCH_PREV
       });
     }
   },
@@ -140,7 +125,9 @@ var WatchListSlice = {
     if (result.isDone) {
       this.setWatchEdited(true);
       this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
-      this.trigger(_WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED, { forActionType: forActionType });
+      this.trigger(_WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED, {
+        forActionType: forActionType
+      });
     } else {
       this.trigger(_WatchActions.WatchActionTypes.EDIT_WATCH_FAILED, {
         messages: [result.message],
@@ -149,46 +136,48 @@ var WatchListSlice = {
     }
   },
   onAddGroup: function onAddGroup(option) {
-    this._onEditWatch(_Logic2.default.addGroup(this.watchList, option), _WatchActions.WatchActionTypes.ADD_GROUP);
+    this._onEditWatch(_Logic["default"].addGroup(this.watchList, option), _WatchActions.WatchActionTypes.ADD_GROUP);
   },
   onRenameGroup: function onRenameGroup(option) {
-    this._onEditWatch(_Logic2.default.renameGroup(this.watchList, option), _WatchActions.WatchActionTypes.RENAME_GROUP);
+    this._onEditWatch(_Logic["default"].renameGroup(this.watchList, option), _WatchActions.WatchActionTypes.RENAME_GROUP);
   },
   onDeleteGroup: function onDeleteGroup(option) {
-    this._onEditWatch(_Logic2.default.deleteGroup(this.watchList, option), _WatchActions.WatchActionTypes.DELETE_GROUP);
+    this._onEditWatch(_Logic["default"].deleteGroup(this.watchList, option), _WatchActions.WatchActionTypes.DELETE_GROUP);
   },
   onCreateList: function onCreateList(option) {
-    this._onEditWatch(_Logic2.default.createList(this.watchList, option), _WatchActions.WatchActionTypes.CREATE_LIST);
+    this._onEditWatch(_Logic["default"].createList(this.watchList, option), _WatchActions.WatchActionTypes.CREATE_LIST);
   },
   onRenameList: function onRenameList(option) {
-    this._onEditWatch(_Logic2.default.renameList(this.watchList, option), _WatchActions.WatchActionTypes.RENAME_LIST);
+    this._onEditWatch(_Logic["default"].renameList(this.watchList, option), _WatchActions.WatchActionTypes.RENAME_LIST);
   },
   onDeleteList: function onDeleteList(option) {
-    this._onEditWatch(_Logic2.default.deleteList(this.watchList, option), _WatchActions.WatchActionTypes.DELETE_LIST);
+    this._onEditWatch(_Logic["default"].deleteList(this.watchList, option), _WatchActions.WatchActionTypes.DELETE_LIST);
   },
   onBackupToJson: function onBackupToJson() {
-    var yyyymmdd = _DateUtils2.default.formatToYYYYMMDD(Date.now()),
-        _blob = new Blob([JSON.stringify(this.watchList)], { type: "application/json" }),
-        _fileName = WATCH_FILE_NAME + '_' + yyyymmdd + '.json';
+    var yyyymmdd = _DateUtils["default"].formatToYYYYMMDD(Date.now()),
+        _blob = new Blob([JSON.stringify(this.watchList)], {
+      type: "application/json"
+    }),
+        _fileName = WATCH_FILE_NAME + "_" + yyyymmdd + ".json";
 
-    _browserFilesaver2.default.saveAs(_blob, _fileName);
-    _ComponentActions2.default.showModalDialog(_Type.ModalDialog.INFO, {
+    _browserFilesaver["default"].saveAs(_blob, _fileName);
+
+    _ComponentActions["default"].showModalDialog(_Type.ModalDialog.INFO, {
       caption: CAPTION_WATCH_EXPORT,
-      descr: _Msg2.default.WATCH_BACKUP_ZIP(_fileName)
+      descr: _Msg["default"].WATCH_BACKUP_ZIP(_fileName)
     });
   },
   onLoadFromJson: function onLoadFromJson(option) {
     try {
       var progressEvent = option.progressEvent;
-
-      (0, _lodash2.default)(this.watchList, JSON.parse(progressEvent.target.result));
+      (0, _lodash["default"])(this.watchList, JSON.parse(progressEvent.target.result));
       this.setWatchEdited(true);
       this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
     } catch (exc) {
-      _ComponentActions2.default.showModalDialog(_Type.ModalDialog.ALERT, (0, _extends3.default)({}, _Msg2.default.Alert.LOAD_FROM_JSON));
+      _ComponentActions["default"].showModalDialog(_Type.ModalDialog.ALERT, (0, _extends2["default"])({}, _Msg["default"].Alert.LOAD_FROM_JSON));
     }
   }
 };
-
-exports.default = WatchListSlice;
+var _default = WatchListSlice;
+exports["default"] = _default;
 //# sourceMappingURL=WatchListSlice.js.map

@@ -1,38 +1,32 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-   value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _SourceBrowserDynamic = require('../../components/browser-container/SourceBrowserDynamic');
-
-var _SourceBrowserDynamic2 = _interopRequireDefault(_SourceBrowserDynamic);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _SourceBrowserDynamic = _interopRequireDefault(require("../../components/browser-container/SourceBrowserDynamic"));
 
 var withDynamicBrowser = {
-   createBrowserDynamic: function createBrowserDynamic(_ref) {
-      var browserType = _ref.browserType,
-          _ref$caption = _ref.caption,
-          caption = _ref$caption === undefined ? '' : _ref$caption,
-          sourceMenuUrl = _ref.sourceMenuUrl,
-          rowClass = _ref.rowClass;
-
-      return _react2.default.createElement(_SourceBrowserDynamic2.default, {
-         key: browserType,
-         browserType: browserType,
-         store: this.getStore(),
-         isInitShow: true,
-         caption: caption,
-         sourceMenuUrl: sourceMenuUrl,
-         rowClass: rowClass
-      });
-   }
+  createBrowserDynamic: function createBrowserDynamic(_ref) {
+    var browserType = _ref.browserType,
+        _ref$caption = _ref.caption,
+        caption = _ref$caption === void 0 ? '' : _ref$caption,
+        sourceMenuUrl = _ref.sourceMenuUrl,
+        rowClass = _ref.rowClass;
+    return _react["default"].createElement(_SourceBrowserDynamic["default"], {
+      key: browserType,
+      browserType: browserType,
+      store: this.getStore(),
+      isInitShow: true,
+      caption: caption,
+      sourceMenuUrl: sourceMenuUrl,
+      rowClass: rowClass
+    });
+  }
 };
-
-exports.default = withDynamicBrowser;
+var _default = withDynamicBrowser;
+exports["default"] = _default;
 //# sourceMappingURL=withDynamicBrowser.js.map

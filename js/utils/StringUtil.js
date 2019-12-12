@@ -1,9 +1,7 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
+exports.__esModule = true;
+exports["default"] = void 0;
 var StringUtil = {
   setFirstToUpperCase: function setFirstToUpperCase(msg) {
     if (!msg) {
@@ -13,6 +11,6 @@ var StringUtil = {
     return msg.charAt(0).toUpperCase() + msg.substring(1);
   }
 };
-
-exports.default = StringUtil;
+var _default = StringUtil;
+exports["default"] = _default;
 //# sourceMappingURL=StringUtil.js.map

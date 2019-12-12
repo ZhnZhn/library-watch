@@ -1,17 +1,13 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 //import PropTypes from "prop-types";
-
 var REPLACER_PATTERN = /(.)(?=(\d{3})+$)/g;
 
 var FormattedInteger = function FormattedInteger(_ref) {
@@ -22,22 +18,21 @@ var FormattedInteger = function FormattedInteger(_ref) {
     value = ('' + value).replace(REPLACER_PATTERN, '$1,');
   }
 
-  return _react2.default.createElement(
-    'span',
-    { style: style },
-    value
-  );
+  return _react["default"].createElement("span", {
+    style: style
+  }, value);
 };
-
 /*
 FormattedInteger.propTypes = {
   value: PropTypes.number,
   style: PropTypes.object
 }
 */
+
+
 FormattedInteger.defaultProps = {
   value: 0
 };
-
-exports.default = FormattedInteger;
+var _default = FormattedInteger;
+exports["default"] = _default;
 //# sourceMappingURL=FormattedInteger.js.map

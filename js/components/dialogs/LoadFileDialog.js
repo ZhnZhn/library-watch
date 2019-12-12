@@ -1,67 +1,33 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _react = _interopRequireWildcard(require("react"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _InputFileReader = _interopRequireDefault(require("../zhn-atoms/InputFileReader"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _ValidationMessagesFragment = _interopRequireDefault(require("../zhn-moleculs/ValidationMessagesFragment"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _FlatButton = require('../zhn-m/FlatButton');
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _ModalDialog = require('../zhn-moleculs/ModalDialog');
-
-var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
-
-var _InputFileReader = require('../zhn-atoms/InputFileReader');
-
-var _InputFileReader2 = _interopRequireDefault(_InputFileReader);
-
-var _ValidationMessagesFragment = require('../zhn-moleculs/ValidationMessagesFragment');
-
-var _ValidationMessagesFragment2 = _interopRequireDefault(_ValidationMessagesFragment);
-
-var _DialogStyles = require('../styles/DialogStyles');
-
-var _DialogStyles2 = _interopRequireDefault(_DialogStyles);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = _DialogStyles2.default;
+var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
 
 //import PropTypes from "prop-types";
-
+var styles = _DialogStyles["default"];
 var C = {
   FILE_NOT_CHOOSED: 'Choose file with Watch Items for Load'
 };
-
 var STYLE = {
   MODAL_DIALOG: {
     minWidth: '320px'
@@ -75,8 +41,10 @@ var STYLE = {
   }
 };
 
-var LoadFileDialog = function (_Component) {
-  (0, _inherits3.default)(LoadFileDialog, _Component);
+var LoadFileDialog =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(LoadFileDialog, _Component);
 
   /*
   static propTypes = {
@@ -87,18 +55,16 @@ var LoadFileDialog = function (_Component) {
     onClose: PropTypes.func
   }
   */
-
   function LoadFileDialog(props) {
-    (0, _classCallCheck3.default)(this, LoadFileDialog);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (LoadFileDialog.__proto__ || Object.getPrototypeOf(LoadFileDialog)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
     _this._handleChange = function (results) {
       if (results && results[0]) {
-        var _results$ = (0, _slicedToArray3.default)(results[0], 2),
+        var _results$ = results[0],
             progressEvent = _results$[0],
             file = _results$[1];
-
         _this.progressEvent = progressEvent;
         _this.file = file;
       } else {
@@ -111,8 +77,10 @@ var LoadFileDialog = function (_Component) {
       if (_this.progressEvent && _this.file) {
         var data = _this.props.data,
             onLoad = data.onLoad;
+        onLoad({
+          progressEvent: _this.progressEvent
+        });
 
-        onLoad({ progressEvent: _this.progressEvent });
         _this.setState({
           validationMessages: []
         });
@@ -126,19 +94,21 @@ var LoadFileDialog = function (_Component) {
     _this._handleClose = function () {
       var onClose = _this.props.onClose;
 
-
       if (_this.state.validationMessages.length !== 0) {
-        _this.setState({ validationMessages: [] });
+        _this.setState({
+          validationMessages: []
+        });
       }
+
       onClose();
     };
 
     _this.progressEvent = null;
     _this.file = null;
-    _this._commandButtons = [_react2.default.createElement(_FlatButton2.default, {
-      key: 'load',
+    _this._commandButtons = [_react["default"].createElement(_FlatButton["default"], {
+      key: "load",
       isPrimary: true,
-      caption: 'Load',
+      caption: "Load",
       timeout: 2000,
       onClick: _this._handleLoad
     })];
@@ -148,49 +118,40 @@ var LoadFileDialog = function (_Component) {
     return _this;
   }
 
-  (0, _createClass3.default)(LoadFileDialog, [{
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-        return false;
-      }
-      return true;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var isShow = this.props.isShow,
-          validationMessages = this.state.validationMessages;
+  var _proto = LoadFileDialog.prototype;
 
-      return _react2.default.createElement(
-        _ModalDialog2.default,
-        {
-          style: STYLE.MODAL_DIALOG,
-          caption: 'Load Watch Items from File',
-          isShow: isShow,
-          commandButtons: this._commandButtons,
-          onClose: this._handleClose
-        },
-        _react2.default.createElement(
-          'div',
-          { style: (0, _extends3.default)({}, styles.rowDiv, STYLE.ROW_INPUT_FILE) },
-          _react2.default.createElement(_InputFileReader2.default, {
-            as: 'text',
-            onChange: this._handleChange
-          })
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: (0, _extends3.default)({}, styles.rowDiv, STYLE.ROW_VALIDATION) },
-          _react2.default.createElement(_ValidationMessagesFragment2.default, {
-            validationMessages: validationMessages
-          })
-        )
-      );
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
+      return false;
     }
-  }]);
+
+    return true;
+  };
+
+  _proto.render = function render() {
+    var isShow = this.props.isShow,
+        validationMessages = this.state.validationMessages;
+    return _react["default"].createElement(_ModalDialog["default"], {
+      style: STYLE.MODAL_DIALOG,
+      caption: "Load Watch Items from File",
+      isShow: isShow,
+      commandButtons: this._commandButtons,
+      onClose: this._handleClose
+    }, _react["default"].createElement("div", {
+      style: (0, _extends2["default"])({}, styles.rowDiv, {}, STYLE.ROW_INPUT_FILE)
+    }, _react["default"].createElement(_InputFileReader["default"], {
+      as: "text",
+      onChange: this._handleChange
+    })), _react["default"].createElement("div", {
+      style: (0, _extends2["default"])({}, styles.rowDiv, {}, STYLE.ROW_VALIDATION)
+    }, _react["default"].createElement(_ValidationMessagesFragment["default"], {
+      validationMessages: validationMessages
+    })));
+  };
+
   return LoadFileDialog;
 }(_react.Component);
 
-exports.default = LoadFileDialog;
+var _default = LoadFileDialog;
+exports["default"] = _default;
 //# sourceMappingURL=LoadFileDialog.js.map

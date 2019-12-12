@@ -1,14 +1,11 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _Fn = require('./Fn');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _Fn2 = _interopRequireDefault(_Fn);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Fn = _interopRequireDefault(require("./Fn"));
 
 var WithLogicItem = {
   addItem: function addItem(watchList, item) {
@@ -16,12 +13,12 @@ var WithLogicItem = {
         listCaption = item.listCaption,
         caption = item.caption,
         config = item.config,
-        toGroup = _Fn2.default.findGroup(watchList, groupCaption),
-        toList = _Fn2.default.findList(toGroup, listCaption),
+        toGroup = _Fn["default"].findGroup(watchList, groupCaption),
+        toList = _Fn["default"].findList(toGroup, listCaption),
         items = toList.items;
 
-    if (_Fn2.default.checkIsInArraySameCaption(items, caption)) {
-      return _Fn2.default.fResultItemExisted(caption, listCaption);
+    if (_Fn["default"].checkIsInArraySameCaption(items, caption)) {
+      return _Fn["default"].fResultItemExisted(caption, listCaption);
     }
 
     if (items) {
@@ -30,19 +27,21 @@ var WithLogicItem = {
       toList.items = [config];
     }
 
-    return { isDone: true };
+    return {
+      isDone: true
+    };
   },
   removeItem: function removeItem(watchList, _ref) {
     var groupCaption = _ref.groupCaption,
         listCaption = _ref.listCaption,
         caption = _ref.caption;
 
-    var groupFrom = _Fn2.default.findGroup(watchList, groupCaption),
-        listFrom = _Fn2.default.findList(groupFrom, listCaption);
+    var groupFrom = _Fn["default"].findGroup(watchList, groupCaption),
+        listFrom = _Fn["default"].findList(groupFrom, listCaption);
 
-    listFrom.items = _Fn2.default.filter(listFrom.items, caption);
+    listFrom.items = _Fn["default"].filter(listFrom.items, caption);
   }
 };
-
-exports.default = WithLogicItem;
+var _default = WithLogicItem;
+exports["default"] = _default;
 //# sourceMappingURL=WithLogicItem.js.map

@@ -1,18 +1,13 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _SvgClose = require('../zhn-atoms/SvgClose');
-
-var _SvgClose2 = _interopRequireDefault(_SvgClose);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
 
 var CL = {
   ROOT: 'item-caption',
@@ -23,16 +18,15 @@ var ItemCaption = function ItemCaption(_ref) {
   var style = _ref.style,
       children = _ref.children,
       onClose = _ref.onClose;
-  return _react2.default.createElement(
-    'div',
-    { className: CL.ROOT, style: style },
-    children,
-    _react2.default.createElement(_SvgClose2.default, {
-      className: CL.BT_CLOSE,
-      onClose: onClose
-    })
-  );
+  return _react["default"].createElement("div", {
+    className: CL.ROOT,
+    style: style
+  }, children, _react["default"].createElement(_SvgClose["default"], {
+    className: CL.BT_CLOSE,
+    onClose: onClose
+  }));
 };
 
-exports.default = ItemCaption;
+var _default = ItemCaption;
+exports["default"] = _default;
 //# sourceMappingURL=ItemCaption.js.map

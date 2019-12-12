@@ -1,20 +1,16 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _ComponentActions = require('../actions/ComponentActions');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _Factory = require('../logic/Factory');
+var _ComponentActions = require("../actions/ComponentActions");
 
-var _Factory2 = _interopRequireDefault(_Factory);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Factory = _interopRequireDefault(require("../logic/Factory"));
 
 var ComponentSlice = {
   dialogInit: {},
-
   onShowAbout: function onShowAbout() {
     this.trigger(_ComponentActions.ComponentActionTypes.SHOW_ABOUT);
   },
@@ -23,17 +19,24 @@ var ComponentSlice = {
       this.trigger(_ComponentActions.ComponentActionTypes.SHOW_DIALOG, dialogType);
     } else {
       this.dialogInit[dialogType] = true;
-      var dialogComp = _Factory2.default.createDialog(dialogType, browserType);
-      this.trigger(_ComponentActions.ComponentActionTypes.INIT_AND_SHOW_DIALOG, { dialogType: dialogType, dialogComp: dialogComp });
+
+      var dialogComp = _Factory["default"].createDialog(dialogType, browserType);
+
+      this.trigger(_ComponentActions.ComponentActionTypes.INIT_AND_SHOW_DIALOG, {
+        dialogType: dialogType,
+        dialogComp: dialogComp
+      });
     }
   },
-  onShowModalDialog: function onShowModalDialog(modalDialogType) {
-    var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  onShowModalDialog: function onShowModalDialog(modalDialogType, option) {
+    if (option === void 0) {
+      option = {};
+    }
 
     option.modalDialogType = modalDialogType;
     this.trigger(_ComponentActions.ComponentActionTypes.SHOW_MODAL_DIALOG, option);
   }
 };
-
-exports.default = ComponentSlice;
+var _default = ComponentSlice;
+exports["default"] = _default;
 //# sourceMappingURL=ComponentSlice.js.map

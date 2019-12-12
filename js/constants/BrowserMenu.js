@@ -1,29 +1,24 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _ComponentActions = require('../flux/actions/ComponentActions');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
+var _ComponentActions = _interopRequireDefault(require("../flux/actions/ComponentActions"));
 
-var _ChartActions = require('../flux/actions/ChartActions');
-
-var _ChartActions2 = _interopRequireDefault(_ChartActions);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _ChartActions = _interopRequireDefault(require("../flux/actions/ChartActions"));
 
 var _fnClick = function _fnClick(dialogType, browserType) {
-  return _ComponentActions2.default.showDialog.bind(null, dialogType, browserType);
+  return _ComponentActions["default"].showDialog.bind(null, dialogType, browserType);
 };
 
 var _fnBadgeOpen = function _fnBadgeOpen(dialogType, browserType) {
-  return _ChartActions2.default.showChart.bind(null, dialogType, browserType);
+  return _ChartActions["default"].showChart.bind(null, dialogType, browserType);
 };
 
 var _fnBadgeClose = function _fnBadgeClose(chartType) {
-  return _ComponentActions2.default.closeChartContainer2.bind(null, chartType);
+  return _ComponentActions["default"].closeChartContainer2.bind(null, chartType);
 };
 
 var fnCreateMenu = function fnCreateMenu(menu, data, browserType) {
@@ -50,6 +45,6 @@ var fnCreateMenu = function fnCreateMenu(menu, data, browserType) {
 var BrowserMenu = {
   createMenu: fnCreateMenu
 };
-
-exports.default = BrowserMenu;
+var _default = BrowserMenu;
+exports["default"] = _default;
 //# sourceMappingURL=BrowserMenu.js.map

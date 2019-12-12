@@ -1,71 +1,51 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _RowInputText = _interopRequireDefault(require("./RowInputText"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _ValidationMessagesFragment = _interopRequireDefault(require("../zhn-moleculs/ValidationMessagesFragment"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _RowInputText = require('./RowInputText');
-
-var _RowInputText2 = _interopRequireDefault(_RowInputText);
-
-var _FlatButton = require('../zhn-m/FlatButton');
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _ValidationMessagesFragment = require('../zhn-moleculs/ValidationMessagesFragment');
-
-var _ValidationMessagesFragment2 = _interopRequireDefault(_ValidationMessagesFragment);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+//import PropTypes from 'prop-types'
 var S = {
   COMMAND_DIV: {
     cursor: 'default',
-    float: 'right',
+    "float": 'right',
     marginTop: '8px',
     marginBottom: '10px',
     marginRight: '4px'
   }
 };
-//import PropTypes from 'prop-types'
 
-var GroupAddPane = function (_Component) {
-  (0, _inherits3.default)(GroupAddPane, _Component);
+var GroupAddPane =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(GroupAddPane, _Component);
 
   function GroupAddPane() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, GroupAddPane);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = GroupAddPane.__proto__ || Object.getPrototypeOf(GroupAddPane)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    _this.state = {
       validationMessages: []
-    }, _this._onStore = function (actionType, data) {
+    };
+
+    _this._onStore = function (actionType, data) {
       var _this$props = _this.props,
           actionCompleted = _this$props.actionCompleted,
           actionFailed = _this$props.actionFailed,
@@ -74,89 +54,84 @@ var GroupAddPane = function (_Component) {
       if (actionType === actionCompleted && data.forActionType === forActionType) {
         _this._handlerClear();
       } else if (actionType === actionFailed && data.forActionType === forActionType) {
-        _this.setState({ validationMessages: data.messages });
+        _this.setState({
+          validationMessages: data.messages
+        });
       }
-    }, _this._handlerClear = function () {
+    };
+
+    _this._handlerClear = function () {
       _this.inputText.setValue('');
+
       if (_this.state.validationMessages.length > 0) {
-        _this.setState({ validationMessages: [] });
+        _this.setState({
+          validationMessages: []
+        });
       }
-    }, _this._handlerCreate = function () {
+    };
+
+    _this._handlerCreate = function () {
       var caption = _this.inputText.getValue();
+
       if (caption) {
-        _this.props.onCreate({ caption: caption });
+        _this.props.onCreate({
+          caption: caption
+        });
       } else {
         _this.inputText.setValue('');
-        _this.setState({ validationMessages: [_this.props.msgOnIsEmptyName('Group')] });
+
+        _this.setState({
+          validationMessages: [_this.props.msgOnIsEmptyName('Group')]
+        });
       }
-    }, _this._refInputText = function (c) {
+    };
+
+    _this._refInputText = function (c) {
       return _this.inputText = c;
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    return _this;
   }
-  /*
-  static propTypes = {
-    store : PropTypes.object,
-    actionCompleted : PropTypes.string,
-    actionFailed : PropTypes.string,
-    forActionType : PropTypes.string,
-    msgOnIsEmptyName : PropTypes.func,
-    onCreate : PropTypes.func,
-    onClose : PropTypes.func
-  },
-  */
 
+  var _proto = GroupAddPane.prototype;
 
-  (0, _createClass3.default)(GroupAddPane, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.unsubscribe = this.props.store.listen(this._onStore);
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.unsubscribe();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var onClose = this.props.onClose,
-          validationMessages = this.state.validationMessages;
+  _proto.componentDidMount = function componentDidMount() {
+    this.unsubscribe = this.props.store.listen(this._onStore);
+  };
 
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(_RowInputText2.default, {
-          ref: this._refInputText,
-          caption: 'Group'
-        }),
-        _react2.default.createElement(_ValidationMessagesFragment2.default, {
-          validationMessages: validationMessages
-        }),
-        _react2.default.createElement(
-          'div',
-          { style: S.COMMAND_DIV },
-          _react2.default.createElement(_FlatButton2.default, {
-            isPrimary: true,
-            caption: 'Create',
-            timeout: 0,
-            onClick: this._handlerCreate
-          }),
-          _react2.default.createElement(_FlatButton2.default, {
-            caption: 'Clear',
-            timeout: 0,
-            onClick: this._handlerClear
-          }),
-          _react2.default.createElement(_FlatButton2.default, {
-            caption: 'Close',
-            timeout: 0,
-            onClick: onClose
-          })
-        )
-      );
-    }
-  }]);
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.unsubscribe();
+  };
+
+  _proto.render = function render() {
+    var onClose = this.props.onClose,
+        validationMessages = this.state.validationMessages;
+    return _react["default"].createElement("div", null, _react["default"].createElement(_RowInputText["default"], {
+      ref: this._refInputText,
+      caption: "Group"
+    }), _react["default"].createElement(_ValidationMessagesFragment["default"], {
+      validationMessages: validationMessages
+    }), _react["default"].createElement("div", {
+      style: S.COMMAND_DIV
+    }, _react["default"].createElement(_FlatButton["default"], {
+      isPrimary: true,
+      caption: "Create",
+      timeout: 0,
+      onClick: this._handlerCreate
+    }), _react["default"].createElement(_FlatButton["default"], {
+      caption: "Clear",
+      timeout: 0,
+      onClick: this._handlerClear
+    }), _react["default"].createElement(_FlatButton["default"], {
+      caption: "Close",
+      timeout: 0,
+      onClick: onClose
+    })));
+  };
+
   return GroupAddPane;
 }(_react.Component);
 
-exports.default = GroupAddPane;
+var _default = GroupAddPane;
+exports["default"] = _default;
 //# sourceMappingURL=GroupAddPane.js.map

@@ -1,58 +1,29 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _Chart = _interopRequireDefault(require("../charts/Chart"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _crNpmModelMore = _interopRequireDefault(require("./crNpmModelMore"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _A = _interopRequireDefault(require("../zhn-atoms/A"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _ModalSlider = _interopRequireDefault(require("../zhn-modal-slider/ModalSlider"));
 
-var _react = require('react');
+var _LineChart = _interopRequireDefault(require("../charts/LineChart"));
 
-var _react2 = _interopRequireDefault(_react);
+var _ItemCaption = _interopRequireDefault(require("./ItemCaption"));
 
-var _Chart = require('../charts/Chart');
-
-var _Chart2 = _interopRequireDefault(_Chart);
-
-var _crNpmModelMore = require('./crNpmModelMore');
-
-var _crNpmModelMore2 = _interopRequireDefault(_crNpmModelMore);
-
-var _A = require('../zhn-atoms/A');
-
-var _A2 = _interopRequireDefault(_A);
-
-var _ModalSlider = require('../zhn-modal-slider/ModalSlider');
-
-var _ModalSlider2 = _interopRequireDefault(_ModalSlider);
-
-var _LineChart = require('../charts/LineChart');
-
-var _LineChart2 = _interopRequireDefault(_LineChart);
-
-var _ItemCaption = require('./ItemCaption');
-
-var _ItemCaption2 = _interopRequireDefault(_ItemCaption);
-
-var _CL = require('../styles/CL');
-
-var _CL2 = _interopRequireDefault(_CL);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _CL = _interopRequireDefault(require("../styles/CL"));
 
 var S = {
   ROOT: {
@@ -81,7 +52,6 @@ var S = {
   BT_MORE: {
     verticalAlign: 'none'
   },
-
   SPAN_SUM: {
     color: '#80c040',
     paddingLeft: 10,
@@ -96,11 +66,9 @@ var S = {
     top: -6,
     marginLeft: 10
   },
-
   CHART_WRAPER: {
     paddingTop: 12
   },
-
   BUTTON_DOWN_UP: {
     paddingTop: 4,
     paddingBottom: 4
@@ -111,16 +79,20 @@ var S = {
   }
 };
 
-var NpmRecentDownloads = function (_Component) {
-  (0, _inherits3.default)(NpmRecentDownloads, _Component);
+var NpmRecentDownloads =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(NpmRecentDownloads, _Component);
 
   function NpmRecentDownloads(props) {
-    (0, _classCallCheck3.default)(this, NpmRecentDownloads);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (NpmRecentDownloads.__proto__ || Object.getPrototypeOf(NpmRecentDownloads)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
     _this._hClickMore = function () {
-      _this.setState({ isMore: true });
+      _this.setState({
+        isMore: true
+      });
     };
 
     _this._hToggleMore = function () {
@@ -140,8 +112,7 @@ var NpmRecentDownloads = function (_Component) {
     };
 
     var onMoveToTop = props.onMoveToTop;
-
-    _this._MORE = (0, _crNpmModelMore2.default)({
+    _this._MORE = (0, _crNpmModelMore["default"])({
       onMoveToTop: onMoveToTop
     });
     _this.state = {
@@ -151,83 +122,64 @@ var NpmRecentDownloads = function (_Component) {
     return _this;
   }
 
-  (0, _createClass3.default)(NpmRecentDownloads, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          caption = _props.caption,
-          fromDate = _props.fromDate,
-          toDate = _props.toDate,
-          labels = _props.labels,
-          data = _props.data,
-          sourceLink = _props.sourceLink,
-          onCloseItem = _props.onCloseItem,
-          _state = this.state,
-          isShow = _state.isShow,
-          isMore = _state.isMore,
-          _lineChartConfig = _Chart2.default.fLineConfigs({ labels: labels, data: data }),
-          _numSeries = _lineChartConfig.datasets.length,
-          _heigh = 150 + Math.floor(_numSeries / 5) * 16;
+  var _proto = NpmRecentDownloads.prototype;
 
-      return _react2.default.createElement(
-        'div',
-        { style: S.ROOT },
-        _react2.default.createElement(_ModalSlider2.default, {
-          isShow: isMore,
-          className: _CL2.default.MENU_MORE,
-          model: this._MORE,
-          onClose: this._hToggleMore
-        }),
-        _react2.default.createElement(
-          _ItemCaption2.default,
-          { style: S.CAPTION, onClose: onCloseItem },
-          _react2.default.createElement(_A2.default.SvgMore, {
-            style: S.BT_MORE,
-            onClick: this._hClickMore
-          }),
-          _react2.default.createElement(
-            'button',
-            {
-              className: _CL2.default.NOT_SELECTED,
-              title: caption,
-              style: S.BT_CAPTION,
-              onClick: this._handlerToggleOpen
-            },
-            _react2.default.createElement(
-              'span',
-              null,
-              caption
-            ),
-            _react2.default.createElement(
-              'span',
-              { style: S.SPAN_START },
-              fromDate
-            ),
-            _react2.default.createElement(
-              'span',
-              null,
-              toDate
-            )
-          )
-        ),
-        _react2.default.createElement(
-          _A2.default.ShowHide,
-          { isShow: isShow, style: S.CHART_WRAPER },
-          _react2.default.createElement(_LineChart2.default, {
-            data: _lineChartConfig,
-            height: _heigh
-          }),
-          _react2.default.createElement(
-            'a',
-            { className: _CL2.default.SOURCE_LINK, style: S.SOURCE_LINK, href: sourceLink, target: '_blank' },
-            'StatCounter Chart'
-          )
-        )
-      );
-    }
-  }]);
+  _proto.render = function render() {
+    var _this$props = this.props,
+        caption = _this$props.caption,
+        fromDate = _this$props.fromDate,
+        toDate = _this$props.toDate,
+        labels = _this$props.labels,
+        data = _this$props.data,
+        sourceLink = _this$props.sourceLink,
+        onCloseItem = _this$props.onCloseItem,
+        _this$state = this.state,
+        isShow = _this$state.isShow,
+        isMore = _this$state.isMore,
+        _lineChartConfig = _Chart["default"].fLineConfigs({
+      labels: labels,
+      data: data
+    }),
+        _numSeries = _lineChartConfig.datasets.length,
+        _heigh = 150 + Math.floor(_numSeries / 5) * 16;
+
+    return _react["default"].createElement("div", {
+      style: S.ROOT
+    }, _react["default"].createElement(_ModalSlider["default"], {
+      isShow: isMore,
+      className: _CL["default"].MENU_MORE,
+      model: this._MORE,
+      onClose: this._hToggleMore
+    }), _react["default"].createElement(_ItemCaption["default"], {
+      style: S.CAPTION,
+      onClose: onCloseItem
+    }, _react["default"].createElement(_A["default"].SvgMore, {
+      style: S.BT_MORE,
+      onClick: this._hClickMore
+    }), _react["default"].createElement("button", {
+      className: _CL["default"].NOT_SELECTED,
+      title: caption,
+      style: S.BT_CAPTION,
+      onClick: this._handlerToggleOpen
+    }, _react["default"].createElement("span", null, caption), _react["default"].createElement("span", {
+      style: S.SPAN_START
+    }, fromDate), _react["default"].createElement("span", null, toDate))), _react["default"].createElement(_A["default"].ShowHide, {
+      isShow: isShow,
+      style: S.CHART_WRAPER
+    }, _react["default"].createElement(_LineChart["default"], {
+      data: _lineChartConfig,
+      height: _heigh
+    }), _react["default"].createElement("a", {
+      className: _CL["default"].SOURCE_LINK,
+      style: S.SOURCE_LINK,
+      href: sourceLink,
+      target: "_blank"
+    }, "StatCounter Chart")));
+  };
+
   return NpmRecentDownloads;
 }(_react.Component);
 
-exports.default = NpmRecentDownloads;
+var _default = NpmRecentDownloads;
+exports["default"] = _default;
 //# sourceMappingURL=StatCounterShare.js.map

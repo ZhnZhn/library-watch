@@ -1,36 +1,35 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-   value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _Msg = require('../constants/Msg');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _Msg2 = _interopRequireDefault(_Msg);
+var _Msg = _interopRequireDefault(require("../constants/Msg"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _default = function _default(_ref) {
+  var error = _ref.error,
+      option = _ref.option,
+      onFailed = _ref.onFailed;
 
-exports.default = function (_ref) {
-   var error = _ref.error,
-       option = _ref.option,
-       onFailed = _ref.onFailed;
-
-   if (error instanceof TypeError) {
-      if (error.message.indexOf('code 503') !== -1) {
-         option.alertCaption = _Msg2.default.Alert.SERVICE_UNAVAILABLE.caption;
-         option.alertDescr = _Msg2.default.Alert.SERVICE_UNAVAILABLE.descr;
-      } else if (error.message.indexOf('fetch') !== -1) {
-         option.alertCaption = _Msg2.default.Alert.NETWORK_ERROR.caption;
-         option.alertDescr = _Msg2.default.Alert.NETWORK_ERROR.descr;
-      } else {
-         option.alertCaption = error.errCaption ? error.errCaption : _Msg2.default.Alert.RUNTIME_ERROR.caption;
-         option.alertDescr = error.message;
-      }
-   } else {
-      option.alertCaption = error.errCaption ? error.errCaption : _Msg2.default.Alert.RUNTIME_ERROR.caption;
+  if (error instanceof TypeError) {
+    if (error.message.indexOf('code 503') !== -1) {
+      option.alertCaption = _Msg["default"].Alert.SERVICE_UNAVAILABLE.caption;
+      option.alertDescr = _Msg["default"].Alert.SERVICE_UNAVAILABLE.descr;
+    } else if (error.message.indexOf('fetch') !== -1) {
+      option.alertCaption = _Msg["default"].Alert.NETWORK_ERROR.caption;
+      option.alertDescr = _Msg["default"].Alert.NETWORK_ERROR.descr;
+    } else {
+      option.alertCaption = error.errCaption ? error.errCaption : _Msg["default"].Alert.RUNTIME_ERROR.caption;
       option.alertDescr = error.message;
-   }
+    }
+  } else {
+    option.alertCaption = error.errCaption ? error.errCaption : _Msg["default"].Alert.RUNTIME_ERROR.caption;
+    option.alertDescr = error.message;
+  }
 
-   onFailed(option);
+  onFailed(option);
 };
+
+exports["default"] = _default;
 //# sourceMappingURL=fnCatch.js.map

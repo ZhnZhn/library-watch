@@ -1,18 +1,15 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _loadImpl = require('./loadImpl');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _loadImpl2 = _interopRequireDefault(_loadImpl);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _loadImpl = _interopRequireDefault(require("./loadImpl"));
 
 var RouterLoad = {
-  LW: _loadImpl2.default
+  LW: _loadImpl["default"]
 };
-
-exports.default = RouterLoad;
+var _default = RouterLoad;
+exports["default"] = _default;
 //# sourceMappingURL=RouterLoad.js.map

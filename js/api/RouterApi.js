@@ -1,33 +1,24 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _GitHubApi = require('./GitHubApi');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _GitHubApi2 = _interopRequireDefault(_GitHubApi);
+var _GitHubApi = _interopRequireDefault(require("./GitHubApi"));
 
-var _NpmApi = require('./NpmApi');
+var _NpmApi = _interopRequireDefault(require("./NpmApi"));
 
-var _NpmApi2 = _interopRequireDefault(_NpmApi);
+var _StackExchangeApi = _interopRequireDefault(require("./StackExchangeApi"));
 
-var _StackExchangeApi = require('./StackExchangeApi');
-
-var _StackExchangeApi2 = _interopRequireDefault(_StackExchangeApi);
-
-var _StatCounterApi = require('./StatCounterApi');
-
-var _StatCounterApi2 = _interopRequireDefault(_StatCounterApi);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _StatCounterApi = _interopRequireDefault(require("./StatCounterApi"));
 
 var RouterApi = {
-  GH: _GitHubApi2.default,
-  NPM: _NpmApi2.default,
-  SE: _StackExchangeApi2.default,
-  ST: _StatCounterApi2.default
+  GH: _GitHubApi["default"],
+  NPM: _NpmApi["default"],
+  SE: _StackExchangeApi["default"],
+  ST: _StatCounterApi["default"]
 };
-
-exports.default = RouterApi;
+var _default = RouterApi;
+exports["default"] = _default;
 //# sourceMappingURL=RouterApi.js.map

@@ -1,75 +1,39 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _Chart = _interopRequireDefault(require("../charts/Chart"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _crNpmModelMore = _interopRequireDefault(require("./crNpmModelMore"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _loadNpms = _interopRequireDefault(require("./loadNpms"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _A = _interopRequireDefault(require("../zhn-atoms/A"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _ModalSlider = _interopRequireDefault(require("../zhn-modal-slider/ModalSlider"));
 
-var _react = require('react');
+var _LineChart = _interopRequireDefault(require("../charts/LineChart"));
 
-var _react2 = _interopRequireDefault(_react);
+var _ItemCaption = _interopRequireDefault(require("./ItemCaption"));
 
-var _Chart = require('../charts/Chart');
+var _PackageDetails = _interopRequireDefault(require("./PackageDetails"));
 
-var _Chart2 = _interopRequireDefault(_Chart);
-
-var _crNpmModelMore = require('./crNpmModelMore');
-
-var _crNpmModelMore2 = _interopRequireDefault(_crNpmModelMore);
-
-var _loadNpms = require('./loadNpms');
-
-var _loadNpms2 = _interopRequireDefault(_loadNpms);
-
-var _A = require('../zhn-atoms/A');
-
-var _A2 = _interopRequireDefault(_A);
-
-var _ModalSlider = require('../zhn-modal-slider/ModalSlider');
-
-var _ModalSlider2 = _interopRequireDefault(_ModalSlider);
-
-var _LineChart = require('../charts/LineChart');
-
-var _LineChart2 = _interopRequireDefault(_LineChart);
-
-var _ItemCaption = require('./ItemCaption');
-
-var _ItemCaption2 = _interopRequireDefault(_ItemCaption);
-
-var _PackageDetails = require('./PackageDetails');
-
-var _PackageDetails2 = _interopRequireDefault(_PackageDetails);
-
-var _CL = require('../styles/CL');
-
-var _CL2 = _interopRequireDefault(_CL);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _CL = _interopRequireDefault(require("../styles/CL"));
 
 var BASE_NODEICO = "https://nodei.co/npm/",
     SUFFIX_NODEICO = ".png?downloads=true&downloadRank=true&stars=true",
     ITEM_DESCRIPTION = "Npm Recent Month Downloads";
-
 var S = {
   ROOT: {
     position: 'relative',
@@ -96,7 +60,6 @@ var S = {
   BT_MORE: {
     verticalAlign: 'none'
   },
-
   SPAN_SUM: {
     color: '#80c040',
     paddingLeft: 10,
@@ -119,25 +82,20 @@ var S = {
   MB_16: {
     marginBottom: 16
   },
-
   CHART_WRAPER: {
     paddingTop: 4
   },
-
   SPAN_NODEICO: {
     display: 'block',
     fontWeight: 'bold',
     color: '#3399FF',
     cursor: 'pointer'
   },
-
   BUTTON_DOWN_UP: {
     paddingTop: 4,
     paddingBottom: 4
   }
-
 };
-
 var CHART_OPTIONS = {
   legend: {
     position: 'top'
@@ -148,16 +106,20 @@ var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
 };
 
-var NpmDownloads = function (_Component) {
-  (0, _inherits3.default)(NpmDownloads, _Component);
+var NpmDownloads =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(NpmDownloads, _Component);
 
   function NpmDownloads(props) {
-    (0, _classCallCheck3.default)(this, NpmDownloads);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (NpmDownloads.__proto__ || Object.getPrototypeOf(NpmDownloads)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
     _this._hClickMore = function () {
-      _this.setState({ isMore: true });
+      _this.setState({
+        isMore: true
+      });
     };
 
     _this._hToggleMore = function () {
@@ -177,7 +139,9 @@ var NpmDownloads = function (_Component) {
     };
 
     _this._handlerToggleOpen = function () {
-      _this.setState({ isShow: !_this.state.isShow });
+      _this.setState({
+        isShow: !_this.state.isShow
+      });
     };
 
     _this._handlerClickWatch = function () {
@@ -187,7 +151,7 @@ var NpmDownloads = function (_Component) {
           sumDownloads = _this$props.sumDownloads,
           toDate = _this$props.toDate,
           onWatchItem = _this$props.onWatchItem,
-          _caption = packageName + ' ' + sumDownloads,
+          _caption = packageName + " " + sumDownloads,
           _descr = ITEM_DESCRIPTION;
 
       onWatchItem({
@@ -212,8 +176,10 @@ var NpmDownloads = function (_Component) {
 
     _this._hClickNpms = function () {
       var packageName = _this.props.packageName;
-
-      (0, _loadNpms2.default)({ packageName: packageName, onLoad: _this._onLoadNpms });
+      (0, _loadNpms["default"])({
+        packageName: packageName,
+        onLoad: _this._onLoadNpms
+      });
     };
 
     _this._onLoadNpms = function (json) {
@@ -233,17 +199,16 @@ var NpmDownloads = function (_Component) {
     };
 
     _this._renderButtonWatch = function () {
-      return _react2.default.createElement(_A2.default.ButtonCircle, {
-        caption: 'W',
-        title: 'Add to WatchList',
+      return _react["default"].createElement(_A["default"].ButtonCircle, {
+        caption: "W",
+        title: "Add to WatchList",
         style: S.BTN_CIRCLE,
         onClick: _this._handlerClickWatch
       });
     };
 
     var onMoveToTop = props.onMoveToTop;
-
-    _this._MORE = (0, _crNpmModelMore2.default)({
+    _this._MORE = (0, _crNpmModelMore["default"])({
       onMoveToTop: onMoveToTop,
       onToggleButtons: _this._toggleButtons
     });
@@ -259,142 +224,106 @@ var NpmDownloads = function (_Component) {
     return _this;
   }
 
-  (0, _createClass3.default)(NpmDownloads, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          packageName = _props.packageName,
-          caption = _props.caption,
-          _props$sumDownloads = _props.sumDownloads,
-          sumDownloads = _props$sumDownloads === undefined ? 0 : _props$sumDownloads,
-          fromDate = _props.fromDate,
-          toDate = _props.toDate,
-          labels = _props.labels,
-          data = _props.data,
-          packageLink = _props.packageLink,
-          onCloseItem = _props.onCloseItem,
-          onWatchItem = _props.onWatchItem,
-          _state = this.state,
-          isShow = _state.isShow,
-          isMore = _state.isMore,
-          isButtons = _state.isButtons,
-          isLoadNodeIco = _state.isLoadNodeIco,
-          isShowNodeIco = _state.isShowNodeIco,
-          isLoadedNpms = _state.isLoadedNpms,
-          isShowNmps = _state.isShowNmps,
-          npmsJson = _state.npmsJson,
-          _lineChartConfig = _Chart2.default.fLineConfig({ labels: labels, data: data }),
-          _onClickNpms = isLoadedNpms ? this._toggleNpms : this._hClickNpms,
-          _infoStyle = isButtons ? (0, _extends3.default)({}, S.ML_16, S.MT_16) : S.ML_16;
+  var _proto = NpmDownloads.prototype;
 
-      return _react2.default.createElement(
-        'div',
-        { style: S.ROOT },
-        _react2.default.createElement(_ModalSlider2.default, {
-          isShow: isMore,
-          className: _CL2.default.MENU_MORE,
-          model: this._MORE,
-          onClose: this._hToggleMore
-        }),
-        _react2.default.createElement(
-          _ItemCaption2.default,
-          { style: S.CAPTION, onClose: onCloseItem },
-          _react2.default.createElement(_A2.default.SvgMore, {
-            style: S.BT_MORE,
-            onClick: this._hClickMore
-          }),
-          _react2.default.createElement(
-            'button',
-            {
-              className: 'not-selected',
-              title: caption,
-              style: S.CAPTION_OPEN,
-              onClick: this._handlerToggleOpen
-            },
-            _react2.default.createElement(
-              'span',
-              null,
-              packageName
-            ),
-            _react2.default.createElement(_A2.default.FormattedInteger, {
-              value: sumDownloads,
-              style: S.SPAN_SUM
-            }),
-            _react2.default.createElement(
-              'span',
-              { style: S.SPAN_START },
-              fromDate
-            ),
-            _react2.default.createElement(
-              'span',
-              null,
-              toDate
-            )
-          ),
-          _isFn(onWatchItem) && this._renderButtonWatch()
-        ),
-        _react2.default.createElement(
-          _A2.default.ShowHide,
-          { isShow: isShow, style: S.CHART_WRAPER },
-          _react2.default.createElement(_LineChart2.default, {
-            data: _lineChartConfig,
-            options: CHART_OPTIONS
-          }),
-          _react2.default.createElement(
-            _A2.default.ShowHide,
-            { isShow: isButtons },
-            _react2.default.createElement(
-              'div',
-              { style: S.ML_16 },
-              _react2.default.createElement(
-                'a',
-                {
-                  target: '_blank',
-                  className: _CL2.default.SOURCE_LINK,
-                  href: packageLink
-                },
-                'NPM Link'
-              ),
-              _react2.default.createElement(_A2.default.ButtonDownUp, {
-                style: (0, _extends3.default)({}, S.BUTTON_DOWN_UP, S.ML_16),
-                isUp: isShowNodeIco,
-                caption: 'NodeICO',
-                title: 'Package badge from Nodei.co',
-                onClick: this._handlerClickNodeIco
-              }),
-              _react2.default.createElement(_A2.default.ButtonDownUp, {
-                style: (0, _extends3.default)({}, S.BUTTON_DOWN_UP, S.ML_16),
-                isUp: isShowNmps,
-                caption: 'NPMS.IO',
-                title: 'Click to load package info from npms.io',
-                onClick: _onClickNpms
-              })
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { style: _infoStyle },
-            _react2.default.createElement(
-              _A2.default.ShowHide,
-              { isShow: isShowNodeIco, style: S.MB_16 },
-              isLoadNodeIco && _react2.default.createElement(_A2.default.LinkImg, {
-                href: packageLink,
-                imgClass: 'node-ico',
-                imgSrc: '' + BASE_NODEICO + packageName + SUFFIX_NODEICO
-              })
-            ),
-            _react2.default.createElement(
-              _A2.default.ShowHide,
-              { isShow: isShowNmps, style: S.MB_16 },
-              isLoadedNpms && _react2.default.createElement(_PackageDetails2.default, { json: npmsJson })
-            )
-          )
-        )
-      );
-    }
-  }]);
+  _proto.render = function render() {
+    var _this$props2 = this.props,
+        packageName = _this$props2.packageName,
+        caption = _this$props2.caption,
+        _this$props2$sumDownl = _this$props2.sumDownloads,
+        sumDownloads = _this$props2$sumDownl === void 0 ? 0 : _this$props2$sumDownl,
+        fromDate = _this$props2.fromDate,
+        toDate = _this$props2.toDate,
+        labels = _this$props2.labels,
+        data = _this$props2.data,
+        packageLink = _this$props2.packageLink,
+        onCloseItem = _this$props2.onCloseItem,
+        onWatchItem = _this$props2.onWatchItem,
+        _this$state = this.state,
+        isShow = _this$state.isShow,
+        isMore = _this$state.isMore,
+        isButtons = _this$state.isButtons,
+        isLoadNodeIco = _this$state.isLoadNodeIco,
+        isShowNodeIco = _this$state.isShowNodeIco,
+        isLoadedNpms = _this$state.isLoadedNpms,
+        isShowNmps = _this$state.isShowNmps,
+        npmsJson = _this$state.npmsJson,
+        _lineChartConfig = _Chart["default"].fLineConfig({
+      labels: labels,
+      data: data
+    }),
+        _onClickNpms = isLoadedNpms ? this._toggleNpms : this._hClickNpms,
+        _infoStyle = isButtons ? (0, _extends2["default"])({}, S.ML_16, {}, S.MT_16) : S.ML_16;
+
+    return _react["default"].createElement("div", {
+      style: S.ROOT
+    }, _react["default"].createElement(_ModalSlider["default"], {
+      isShow: isMore,
+      className: _CL["default"].MENU_MORE,
+      model: this._MORE,
+      onClose: this._hToggleMore
+    }), _react["default"].createElement(_ItemCaption["default"], {
+      style: S.CAPTION,
+      onClose: onCloseItem
+    }, _react["default"].createElement(_A["default"].SvgMore, {
+      style: S.BT_MORE,
+      onClick: this._hClickMore
+    }), _react["default"].createElement("button", {
+      className: "not-selected",
+      title: caption,
+      style: S.CAPTION_OPEN,
+      onClick: this._handlerToggleOpen
+    }, _react["default"].createElement("span", null, packageName), _react["default"].createElement(_A["default"].FormattedInteger, {
+      value: sumDownloads,
+      style: S.SPAN_SUM
+    }), _react["default"].createElement("span", {
+      style: S.SPAN_START
+    }, fromDate), _react["default"].createElement("span", null, toDate)), _isFn(onWatchItem) && this._renderButtonWatch()), _react["default"].createElement(_A["default"].ShowHide, {
+      isShow: isShow,
+      style: S.CHART_WRAPER
+    }, _react["default"].createElement(_LineChart["default"], {
+      data: _lineChartConfig,
+      options: CHART_OPTIONS
+    }), _react["default"].createElement(_A["default"].ShowHide, {
+      isShow: isButtons
+    }, _react["default"].createElement("div", {
+      style: S.ML_16
+    }, _react["default"].createElement("a", {
+      target: "_blank",
+      className: _CL["default"].SOURCE_LINK,
+      href: packageLink
+    }, "NPM Link"), _react["default"].createElement(_A["default"].ButtonDownUp, {
+      style: (0, _extends2["default"])({}, S.BUTTON_DOWN_UP, {}, S.ML_16),
+      isUp: isShowNodeIco,
+      caption: "NodeICO",
+      title: "Package badge from Nodei.co",
+      onClick: this._handlerClickNodeIco
+    }), _react["default"].createElement(_A["default"].ButtonDownUp, {
+      style: (0, _extends2["default"])({}, S.BUTTON_DOWN_UP, {}, S.ML_16),
+      isUp: isShowNmps,
+      caption: "NPMS.IO",
+      title: "Click to load package info from npms.io",
+      onClick: _onClickNpms
+    }))), _react["default"].createElement("div", {
+      style: _infoStyle
+    }, _react["default"].createElement(_A["default"].ShowHide, {
+      isShow: isShowNodeIco,
+      style: S.MB_16
+    }, isLoadNodeIco && _react["default"].createElement(_A["default"].LinkImg, {
+      href: packageLink,
+      imgClass: "node-ico",
+      imgSrc: "" + BASE_NODEICO + packageName + SUFFIX_NODEICO
+    })), _react["default"].createElement(_A["default"].ShowHide, {
+      isShow: isShowNmps,
+      style: S.MB_16
+    }, isLoadedNpms && _react["default"].createElement(_PackageDetails["default"], {
+      json: npmsJson
+    })))));
+  };
+
   return NpmDownloads;
 }(_react.Component);
 
-exports.default = NpmDownloads;
+var _default = NpmDownloads;
+exports["default"] = _default;
 //# sourceMappingURL=NpmDownloads.js.map

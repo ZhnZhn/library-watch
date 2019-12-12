@@ -1,70 +1,50 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _MenuBrowserDynamic = _interopRequireDefault(require("../zhn-moleculs/MenuBrowserDynamic"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _BrowserActions = _interopRequireWildcard(require("../../flux/actions/BrowserActions"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _MenuBrowserDynamic = require('../zhn-moleculs/MenuBrowserDynamic');
-
-var _MenuBrowserDynamic2 = _interopRequireDefault(_MenuBrowserDynamic);
-
-var _BrowserActions = require('../../flux/actions/BrowserActions');
-
-var _BrowserActions2 = _interopRequireDefault(_BrowserActions);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SourceBrowserDynamic = function (_Component) {
-  (0, _inherits3.default)(SourceBrowserDynamic, _Component);
+var SourceBrowserDynamic =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(SourceBrowserDynamic, _Component);
 
   function SourceBrowserDynamic() {
-    (0, _classCallCheck3.default)(this, SourceBrowserDynamic);
-    return (0, _possibleConstructorReturn3.default)(this, (SourceBrowserDynamic.__proto__ || Object.getPrototypeOf(SourceBrowserDynamic)).apply(this, arguments));
+    return _Component.apply(this, arguments) || this;
   }
 
-  (0, _createClass3.default)(SourceBrowserDynamic, [{
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate() {
-      return false;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(_MenuBrowserDynamic2.default, (0, _extends3.default)({
-        caption: 'Source Browser',
-        showAction: _BrowserActions.BrowserActionTypes.SHOW_BROWSER_DYNAMIC,
-        loadCompletedAction: _BrowserActions.BrowserActionTypes.LOAD_BROWSER_DYNAMIC_COMPLETED,
-        updateAction: _BrowserActions.BrowserActionTypes.UPDATE_BROWSER_MENU,
-        onLoadMenu: _BrowserActions2.default.loadBrowserDynamic
-      }, this.props));
-    }
-  }]);
+  var _proto = SourceBrowserDynamic.prototype;
+
+  _proto.shouldComponentUpdate = function shouldComponentUpdate() {
+    return false;
+  };
+
+  _proto.render = function render() {
+    return _react["default"].createElement(_MenuBrowserDynamic["default"], (0, _extends2["default"])({
+      caption: "Source Browser",
+      showAction: _BrowserActions.BrowserActionTypes.SHOW_BROWSER_DYNAMIC,
+      loadCompletedAction: _BrowserActions.BrowserActionTypes.LOAD_BROWSER_DYNAMIC_COMPLETED,
+      updateAction: _BrowserActions.BrowserActionTypes.UPDATE_BROWSER_MENU,
+      onLoadMenu: _BrowserActions["default"].loadBrowserDynamic
+    }, this.props));
+  };
+
   return SourceBrowserDynamic;
 }(_react.Component);
 
-exports.default = SourceBrowserDynamic;
+var _default = SourceBrowserDynamic;
+exports["default"] = _default;
 //# sourceMappingURL=SourceBrowserDynamic.js.map

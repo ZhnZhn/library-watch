@@ -1,43 +1,21 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _ArrowCell = require('./ArrowCell');
-
-var _ArrowCell2 = _interopRequireDefault(_ArrowCell);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
 
 var MAX_WITHOUT_ANIMATION = 800;
-
 var styles = {
   rootDiv: {
     position: 'relative',
@@ -133,16 +111,19 @@ var styles = {
   }
 };
 
-var InputSearch = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(InputSearch, _Component);
+var InputSearch =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(InputSearch, _Component);
 
   function InputSearch(props) {
-    (0, _classCallCheck3.default)(this, InputSearch);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (InputSearch.__proto__ || Object.getPrototypeOf(InputSearch)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
     _this._setStateToInit = function (options) {
       _this.indexActiveOption = 0;
+
       _this.setState({
         value: '',
         isShowOption: false,
@@ -182,9 +163,11 @@ var InputSearch = (_temp = _class = function (_Component) {
       if (domActiveOption) {
         var offsetTop = domActiveOption.offsetTop;
         var scrollTop = _this.domOptions.scrollTop;
+
         if (offsetTop - scrollTop > 70) {
           _this.domOptions.scrollTop += offsetTop - scrollTop - 70;
         }
+
         if (offsetTop - scrollTop < 0) {
           _this.domOptions.scrollTop = 0;
         }
@@ -193,9 +176,9 @@ var InputSearch = (_temp = _class = function (_Component) {
 
     _this._makeVisibleActiveOption = function () {
       var domActiveOption = _this.refs["v" + _this.indexActiveOption];
-
       var offsetTop = domActiveOption.offsetTop;
       var scrollTop = _this.domOptions.scrollTop;
+
       if (offsetTop - scrollTop > 70) {
         _this.domOptions.scrollTop += offsetTop - scrollTop - 70;
       }
@@ -212,19 +195,24 @@ var InputSearch = (_temp = _class = function (_Component) {
     _this._handlerInputChange = function (event) {
       var value = event.target.value;
       var arr = [];
+
       if (value.length !== _this.state.value.length) {
         if (value.length > _this.state.value.length) {
           arr = _this._filterOptionsToState(_this.state.options, value);
         } else if (value.length < _this.state.value.length) {
           arr = _this._filterOptionsToState(_this.props.options, value);
         }
+
         if (arr.length === 0) {
           var _arr$push;
 
-          arr.push((_arr$push = {}, (0, _defineProperty3.default)(_arr$push, _this.propCaption, 'No results found'), (0, _defineProperty3.default)(_arr$push, 'value', 'noresult'), _arr$push));
+          arr.push((_arr$push = {}, _arr$push[_this.propCaption] = 'No results found', _arr$push.value = 'noresult', _arr$push));
         }
+
         _this._undecorateActiveOption();
+
         _this.indexActiveOption = 0;
+
         _this.setState({
           value: value,
           isShowOption: true,
@@ -264,25 +252,35 @@ var InputSearch = (_temp = _class = function (_Component) {
                 _this.props.onSelect(null);
               }
             }
+
             break;
           }
         //escape
+
         case 27:
           if (_this.state.isShowOption) {
-            _this.setState({ isShowOption: false });
+            _this.setState({
+              isShowOption: false
+            });
           } else {
             _this._undecorateActiveOption();
+
             _this._setStateToInit(_this.props.options);
+
             _this.props.onSelect(null);
           }
+
           break;
         //down
+
         case 40:
           if (!_this.state.isShowOption) {
-
             _this._startAfterInputAnimation();
+
             setTimeout(function () {
-              _this.setState({ isShowOption: true }, _this._stopAfterInputAnimation);
+              _this.setState({
+                isShowOption: true
+              }, _this._stopAfterInputAnimation);
             }, 0);
           } else {
             event.preventDefault();
@@ -293,32 +291,39 @@ var InputSearch = (_temp = _class = function (_Component) {
               _this._undecorateOfDomActiveOption(domActiveOption);
 
               _this.indexActiveOption += 1;
+
               if (_this.indexActiveOption >= _this.state.options.length) {
                 _this.indexActiveOption = 0;
                 _this.domOptions.scrollTop = 0;
               }
 
               domActiveOption = _this._getDomForActiveOption();
+
               _this._decorateOfDomActiveOption(domActiveOption);
 
               var offsetTop = _this.refs["v" + _this.indexActiveOption].offsetTop;
               var scrollTop = _this.domOptions.scrollTop;
+
               if (offsetTop - scrollTop > 70) {
                 _this.domOptions.scrollTop += offsetTop - scrollTop - 70;
               }
             }
           }
+
           break;
         //up
+
         case 38:
           if (_this.state.isShowOption) {
             event.preventDefault();
 
             var _domActiveOption = _this._getDomForActiveOption();
+
             if (_domActiveOption) {
               _this._undecorateOfDomActiveOption(_domActiveOption);
 
               _this.indexActiveOption -= 1;
+
               if (_this.indexActiveOption < 0) {
                 _this.indexActiveOption = _this.state.options.length - 1;
                 var offsetTop2 = _this.refs["v" + _this.indexActiveOption].offsetTop;
@@ -326,38 +331,50 @@ var InputSearch = (_temp = _class = function (_Component) {
               }
 
               _domActiveOption = _this._getDomForActiveOption();
+
               _this._decorateOfDomActiveOption(_domActiveOption);
 
               var _offsetTop = _domActiveOption.offsetTop;
               var _scrollTop = _this.domOptions.scrollTop;
+
               if (_offsetTop - _scrollTop < 70) {
                 _this.domOptions.scrollTop -= 70 - (_offsetTop - _scrollTop);
               }
             }
           }
+
           break;
+
         default:
-          /*console.log(event.keyCode);*/return;
+          /*console.log(event.keyCode);*/
+          return;
       }
     };
 
     _this._handlerToggleOptions = function () {
       if (_this.state.isShowOption) {
-        _this.setState({ isShowOption: false });
+        _this.setState({
+          isShowOption: false
+        });
       } else {
         _this._startAfterInputAnimation();
+
         setTimeout(function () {
-          return _this.setState({ isShowOption: true }, _this._stopAfterInputAnimation);
+          return _this.setState({
+            isShowOption: true
+          }, _this._stopAfterInputAnimation);
         }, 1);
       }
     };
 
     _this._handlerClickOption = function (item, index, event) {
       _this.indexActiveOption = index;
+
       _this.setState({
         value: item[_this.propCaption],
         isShowOption: false
       });
+
       _this.props.onSelect(item);
     };
 
@@ -368,27 +385,24 @@ var InputSearch = (_temp = _class = function (_Component) {
           options = _this$state.options,
           isValidDomOptionsCache = _this$state.isValidDomOptionsCache;
 
+      var _domOptions;
 
-      var _domOptions = void 0;
       if (options) {
         if (!isValidDomOptionsCache) {
           var _caption = _this.propCaption;
           _domOptions = options.map(function (item, index) {
             var _styleDiv = index % 2 === 0 ? styles.itemOdd : styles.itemEven;
-            return _react2.default.createElement(
-              'div',
-              {
-                key: index,
-                ref: "v" + index,
-                className: 'option-row',
-                style: Object.assign({}, styles.itemDiv, _styleDiv),
-                onClick: _this._handlerClickOption.bind(_this, item, index)
-              },
-              _react2.default.createElement(ItemOptionComp, {
-                item: item,
-                propCaption: _caption
-              })
-            );
+
+            return _react["default"].createElement("div", {
+              key: index,
+              ref: "v" + index,
+              className: "option-row",
+              style: Object.assign({}, styles.itemDiv, _styleDiv),
+              onClick: _this._handlerClickOption.bind((0, _assertThisInitialized2["default"])(_this), item, index)
+            }, _react["default"].createElement(ItemOptionComp, {
+              item: item,
+              propCaption: _caption
+            }));
           });
           _this.domOptionsCache = _domOptions;
         } else {
@@ -396,37 +410,28 @@ var InputSearch = (_temp = _class = function (_Component) {
         }
       }
 
-      var _styleOptions = isShowOption ? { display: 'block' } : { display: 'none' },
+      var _styleOptions = isShowOption ? {
+        display: 'block'
+      } : {
+        display: 'none'
+      },
           _numberFilteredItems = options[0] && options[0].value !== 'noresult' ? options.length : 0,
           _numberAllItems = _this.props.options ? _this.props.options.length : 0;
 
-      return _react2.default.createElement(
-        'div',
-        { style: Object.assign({}, styles.rootOptionDiv, _styleOptions) },
-        _react2.default.createElement(
-          'div',
-          {
-            ref: function ref(c) {
-              return _this.domOptions = c;
-            },
-            key: '1',
-            style: Object.assign({}, styles.optionDiv, _styleOptions)
-          },
-          _domOptions
-        ),
-        _react2.default.createElement(
-          'div',
-          { key: '2', style: styles.optionsFooter },
-          _react2.default.createElement(
-            'span',
-            { style: styles.fileredSpan },
-            'Filtered ',
-            _numberFilteredItems,
-            ' : ',
-            _numberAllItems
-          )
-        )
-      );
+      return _react["default"].createElement("div", {
+        style: Object.assign({}, styles.rootOptionDiv, _styleOptions)
+      }, _react["default"].createElement("div", {
+        ref: function ref(c) {
+          return _this.domOptions = c;
+        },
+        key: "1",
+        style: Object.assign({}, styles.optionDiv, _styleOptions)
+      }, _domOptions), _react["default"].createElement("div", {
+        key: "2",
+        style: styles.optionsFooter
+      }, _react["default"].createElement("span", {
+        style: styles.fileredSpan
+      }, "Filtered ", _numberFilteredItems, " : ", _numberAllItems)));
     };
 
     _this._refInput = function (c) {
@@ -456,120 +461,117 @@ var InputSearch = (_temp = _class = function (_Component) {
     return _this;
   }
 
-  (0, _createClass3.default)(InputSearch, [{
-    key: 'UNSAFE_componentWillReceiveProps',
-    value: function UNSAFE_componentWillReceiveProps(nextProps) {
-      if (this.props !== nextProps) {
-        if (this.props.options !== nextProps.options || nextProps.isUpdateOptions) {
-          //New options come from Parent - Clear domCache, Init State
-          this._setStateToInit(nextProps.options);
-        }
+  var _proto = InputSearch.prototype;
+
+  _proto.UNSAFE_componentWillReceiveProps = function UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props !== nextProps) {
+      if (this.props.options !== nextProps.options || nextProps.isUpdateOptions) {
+        //New options come from Parent - Clear domCache, Init State
+        this._setStateToInit(nextProps.options);
       }
     }
-  }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (this.props !== nextProps || nextProps.isUpdateOptions) {
-        nextState.isLocalMode = false;
-      } else {
-        nextState.isLocalMode = true;
-      }
+  };
 
-      return true;
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+    if (this.props !== nextProps || nextProps.isUpdateOptions) {
+      nextState.isLocalMode = false;
+    } else {
+      nextState.isLocalMode = true;
     }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      //Decorate Active Option
-      if (this.state.isShowOption) {
-        var domActiveOption = this._getDomForActiveOption();
-        this._decorateOfDomActiveOption(domActiveOption);
-        this._makeVisibleOfDomActiveOption(domActiveOption);
-      }
+
+    return true;
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate() {
+    //Decorate Active Option
+    if (this.state.isShowOption) {
+      var domActiveOption = this._getDomForActiveOption();
+
+      this._decorateOfDomActiveOption(domActiveOption);
+
+      this._makeVisibleOfDomActiveOption(domActiveOption);
     }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
+  };
 
-      var _state = this.state,
-          value = _state.value,
-          isLocalMode = _state.isLocalMode,
-          isShowOption = _state.isShowOption;
+  _proto.render = function render() {
+    var _this2 = this;
 
+    var _this$state2 = this.state,
+        value = _this$state2.value,
+        isLocalMode = _this$state2.isLocalMode,
+        isShowOption = _this$state2.isShowOption;
 
-      var _styleArrow = isShowOption ? styles.arrow_show : null;
-      var _domOptions = isLocalMode || isShowOption ? this.renderOptions() : null;
+    var _styleArrow = isShowOption ? styles.arrow_show : null;
 
-      var _props = this.props,
-          isLoading = _props.isLoading,
-          isLoadingFailed = _props.isLoadingFailed,
-          placeholder = _props.placeholder,
-          _state2 = this.state,
-          optionName = _state2.optionName,
-          optionNames = _state2.optionNames;
+    var _domOptions = isLocalMode || isShowOption ? this.renderOptions() : null;
 
+    var _this$props2 = this.props,
+        isLoading = _this$props2.isLoading,
+        isLoadingFailed = _this$props2.isLoadingFailed,
+        placeholder = _this$props2.placeholder,
+        _this$state3 = this.state,
+        optionName = _this$state3.optionName,
+        optionNames = _this$state3.optionNames;
 
-      var _domAfterInput = void 0,
-          _placeholder = void 0;
-      if (!isLoading && !isLoadingFailed) {
-        _placeholder = placeholder ? placeholder : 'Select' + optionName + '...';
-        _domAfterInput = _react2.default.createElement(_ArrowCell2.default, {
-          ref: function ref(c) {
-            return _this2.arrowCell = c;
-          },
-          styleArrow: _styleArrow,
-          onClick: this._handlerToggleOptions
-        });
-      } else if (isLoading) {
-        _placeholder = 'Loading' + optionNames + '...';
-        _domAfterInput = _react2.default.createElement('span', {
-          style: styles.spinnerCell,
-          'data-loader': 'circle'
-        });
-      } else if (isLoadingFailed) {
-        _placeholder = 'Loading' + optionNames + ' Failed';
-        _domAfterInput = _react2.default.createElement('span', {
-          style: styles.spinnerFailedCell,
-          'data-loader': 'circle-failed',
-          onClick: this.props.onLoadOption
-        });
-      }
+    var _domAfterInput, _placeholder;
 
-      return _react2.default.createElement(
-        'div',
-        { style: styles.rootDiv },
-        _react2.default.createElement('input', {
-          ref: this._refInput,
-          type: 'text',
-          value: value,
-          style: styles.inputText,
-          placeholder: _placeholder,
-          onChange: this._handlerInputChange,
-          onKeyDown: this._handlerInputKeyDown }),
-        _domAfterInput,
-        _react2.default.createElement('hr', { style: styles.inputHr }),
-        _domOptions
-      );
+    if (!isLoading && !isLoadingFailed) {
+      _placeholder = placeholder ? placeholder : "Select" + optionName + "...";
+      _domAfterInput = _react["default"].createElement(_ArrowCell["default"], {
+        ref: function ref(c) {
+          return _this2.arrowCell = c;
+        },
+        styleArrow: _styleArrow,
+        onClick: this._handlerToggleOptions
+      });
+    } else if (isLoading) {
+      _placeholder = "Loading" + optionNames + "...";
+      _domAfterInput = _react["default"].createElement("span", {
+        style: styles.spinnerCell,
+        "data-loader": "circle"
+      });
+    } else if (isLoadingFailed) {
+      _placeholder = "Loading" + optionNames + " Failed";
+      _domAfterInput = _react["default"].createElement("span", {
+        style: styles.spinnerFailedCell,
+        "data-loader": "circle-failed",
+        onClick: this.props.onLoadOption
+      });
     }
-  }, {
-    key: 'focusInput',
-    value: function focusInput() {
-      this.domInputText.focus();
-    }
-  }, {
-    key: 'focusNotValidInput',
-    value: function focusNotValidInput() {
-      this.domInputText.focus();
-    }
-  }]);
+
+    return _react["default"].createElement("div", {
+      style: styles.rootDiv
+    }, _react["default"].createElement("input", {
+      ref: this._refInput,
+      type: "text",
+      value: value,
+      style: styles.inputText,
+      placeholder: _placeholder,
+      onChange: this._handlerInputChange,
+      onKeyDown: this._handlerInputKeyDown
+    }), _domAfterInput, _react["default"].createElement("hr", {
+      style: styles.inputHr
+    }), _domOptions);
+  };
+
+  _proto.focusInput = function focusInput() {
+    this.domInputText.focus();
+  };
+
+  _proto.focusNotValidInput = function focusNotValidInput() {
+    this.domInputText.focus();
+  };
+
   return InputSearch;
-}(_react.Component), _class.defaultProps = {
+}(_react.Component);
+
+InputSearch.defaultProps = {
   options: [],
   optionName: '',
   optionNames: '',
   isUpdateOptions: false,
   propCaption: 'caption'
-}, _temp);
-exports.default = InputSearch;
+};
+var _default = InputSearch;
+exports["default"] = _default;
 //# sourceMappingURL=InputSearch.js.map

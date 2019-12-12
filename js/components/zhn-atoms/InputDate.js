@@ -1,39 +1,19 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireWildcard(require("react"));
 
 //import PropTypes from "prop-types";
-
 var STYLE = {
   ROOT: {
     position: 'relative',
@@ -77,13 +57,22 @@ var STYLE = {
   }
 };
 
-var InputDate = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(InputDate, _Component);
+var InputDate =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(InputDate, _Component);
 
+  /*
+  static propTypes = {
+    initValue: PropTypes.string,
+    errorMsg: PropTypes.string,
+    onTest: PropTypes.func
+  }
+  */
   function InputDate(props) {
-    (0, _classCallCheck3.default)(this, InputDate);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (InputDate.__proto__ || Object.getPrototypeOf(InputDate)).call(this));
+    _this = _Component.call(this) || this;
 
     _this.setValue = function (value) {
       if (!_this.props.onTest(value)) {
@@ -125,73 +114,61 @@ var InputDate = (_temp = _class = function (_Component) {
     };
     return _this;
   }
-  /*
-  static propTypes = {
-    initValue: PropTypes.string,
-    errorMsg: PropTypes.string,
-    onTest: PropTypes.func
-  }
-  */
 
+  var _proto = InputDate.prototype;
 
-  (0, _createClass3.default)(InputDate, [{
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
+  _proto.render = function render() {
+    var _this2 = this;
 
-      var _state = this.state,
-          value = _state.value,
-          isValid = _state.isValid,
-          errorInput = _state.errorInput,
-          _hrStyle = isValid ? STYLE.HR_VALID : STYLE.HR_NOT_VALID;
+    var _this$state = this.state,
+        value = _this$state.value,
+        isValid = _this$state.isValid,
+        errorInput = _this$state.errorInput,
+        _hrStyle = isValid ? STYLE.HR_VALID : STYLE.HR_NOT_VALID;
 
-      return _react2.default.createElement(
-        'div',
-        { style: STYLE.ROOT },
-        _react2.default.createElement('input', {
-          ref: function ref(c) {
-            return _this2.inputComp = c;
-          },
-          type: 'text',
-          name: 'date',
-          autoComplete: 'new-date',
-          autoCorrect: 'off',
-          autoCapitalize: 'off',
-          spellCheck: false,
-          style: STYLE.INPUT,
-          placeholder: 'YYYY-MM-DD',
-          value: value,
-          onChange: this._handleChangeValue,
-          onBlur: this._handleBlurValue
-        }),
-        _react2.default.createElement('hr', { style: (0, _extends3.default)({}, STYLE.HR, _hrStyle) }),
-        _react2.default.createElement(
-          'div',
-          { style: STYLE.ERR_MSG },
-          errorInput
-        )
-      );
-    }
-  }, {
-    key: 'getValue',
-    value: function getValue() {
-      return this.state.value;
-    }
-  }, {
-    key: 'isValid',
-    value: function isValid() {
-      return this.state.isValid;
-    }
-  }, {
-    key: 'focusInput',
-    value: function focusInput() {
-      this.inputComp.focus();
-    }
-  }]);
+    return _react["default"].createElement("div", {
+      style: STYLE.ROOT
+    }, _react["default"].createElement("input", {
+      ref: function ref(c) {
+        return _this2.inputComp = c;
+      },
+      type: "text",
+      name: "date",
+      autoComplete: "new-date",
+      autoCorrect: "off",
+      autoCapitalize: "off",
+      spellCheck: false,
+      style: STYLE.INPUT,
+      placeholder: "YYYY-MM-DD",
+      value: value,
+      onChange: this._handleChangeValue,
+      onBlur: this._handleBlurValue
+    }), _react["default"].createElement("hr", {
+      style: (0, _extends2["default"])({}, STYLE.HR, {}, _hrStyle)
+    }), _react["default"].createElement("div", {
+      style: STYLE.ERR_MSG
+    }, errorInput));
+  };
+
+  _proto.getValue = function getValue() {
+    return this.state.value;
+  };
+
+  _proto.isValid = function isValid() {
+    return this.state.isValid;
+  };
+
+  _proto.focusInput = function focusInput() {
+    this.inputComp.focus();
+  };
+
   return InputDate;
-}(_react.Component), _class.defaultProps = {
+}(_react.Component);
+
+InputDate.defaultProps = {
   initValue: '',
   onTest: function onTest() {}
-}, _temp);
-exports.default = InputDate;
+};
+var _default = InputDate;
+exports["default"] = _default;
 //# sourceMappingURL=InputDate.js.map

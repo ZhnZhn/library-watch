@@ -1,13 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/zhn-m/A.js"
- ],
- "file": "../../../src/components/zhn-m/A.js",
- "names": [
-  "A",
-  "CaptionInput",
-  "FlatButton"
- ],
- "mappings": ";;;;;;AAAA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,sCADQ;AAERC;AAFQ,CAAV;;kBAKeF,C"
-}
+{"version":3,"sources":["../../../src/components/zhn-m/A.js"],"names":["A","CaptionInput","FlatButton"],"mappings":";;;;;;;AAAA;;AACA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,YAAY,EAAZA,wBADQ;AAERC,EAAAA,UAAU,EAAVA;AAFQ,CAAV;eAKeF,C","sourcesContent":["import CaptionInput from './CaptionInput'\r\nimport FlatButton from './FlatButton'\r\n\r\nconst A = {\r\n  CaptionInput,\r\n  FlatButton\r\n};\r\n\r\nexport default A\r\n"],"file":"A.js"}

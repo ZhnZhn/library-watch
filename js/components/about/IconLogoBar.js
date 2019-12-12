@@ -1,22 +1,15 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _IconGitHub = require('./IconGitHub');
+var _IconGitHub = _interopRequireDefault(require("./IconGitHub"));
 
-var _IconGitHub2 = _interopRequireDefault(_IconGitHub);
-
-var _IconReact = require('./IconReact');
-
-var _IconReact2 = _interopRequireDefault(_IconReact);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _IconReact = _interopRequireDefault(require("./IconReact"));
 
 var STYLE = {
   ROOT: {
@@ -26,17 +19,15 @@ var STYLE = {
 };
 
 var IconLogoBar = function IconLogoBar(props) {
-  return _react2.default.createElement(
-    'div',
-    { style: STYLE.ROOT },
-    _react2.default.createElement(_IconGitHub2.default, {
-      className: 'icon__github',
-      title: 'GitHub Library Watch',
-      uri: 'https://github.com/ZhnZhn/library-watch.git'
-    }),
-    _react2.default.createElement(_IconReact2.default, null)
-  );
+  return _react["default"].createElement("div", {
+    style: STYLE.ROOT
+  }, _react["default"].createElement(_IconGitHub["default"], {
+    className: "icon__github",
+    title: "GitHub Library Watch",
+    uri: "https://github.com/ZhnZhn/library-watch.git"
+  }), _react["default"].createElement(_IconReact["default"], null));
 };
 
-exports.default = IconLogoBar;
+var _default = IconLogoBar;
+exports["default"] = _default;
 //# sourceMappingURL=IconLogoBar.js.map

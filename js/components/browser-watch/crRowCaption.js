@@ -1,14 +1,16 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
+
 var crRowCaption = function crRowCaption(str) {
   if (!str || typeof str !== 'string') {
     return '';
   }
+
   return str[str.length - 1] !== ':' ? str + ':' : str;
 };
 
-exports.default = crRowCaption;
+var _default = crRowCaption;
+exports["default"] = _default;
 //# sourceMappingURL=crRowCaption.js.map

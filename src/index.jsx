@@ -24,7 +24,7 @@ const _fnRenderApp = () => {
   const preloader = document.getElementById('preloader')
   if (preloader){
     document.body.removeChild(document.getElementById('preloader'));
-  }  
+  }
   render(<App />, document.getElementById("app"));
 }
 

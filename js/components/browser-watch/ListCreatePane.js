@@ -1,62 +1,39 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _RowInputSelect = _interopRequireDefault(require("./RowInputSelect"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _RowInputText = _interopRequireDefault(require("./RowInputText"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _ValidationMessagesFragment = _interopRequireDefault(require("../zhn-moleculs/ValidationMessagesFragment"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
-var _class, _temp, _initialiseProps;
 //import PropTypes from 'prop-types'
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _RowInputSelect = require('./RowInputSelect');
-
-var _RowInputSelect2 = _interopRequireDefault(_RowInputSelect);
-
-var _RowInputText = require('./RowInputText');
-
-var _RowInputText2 = _interopRequireDefault(_RowInputText);
-
-var _ValidationMessagesFragment = require('../zhn-moleculs/ValidationMessagesFragment');
-
-var _ValidationMessagesFragment2 = _interopRequireDefault(_ValidationMessagesFragment);
-
-var _FlatButton = require('../zhn-m/FlatButton');
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var S = {
   COMMAND_DIV: {
     cursor: 'default',
-    float: 'right',
+    "float": 'right',
     marginTop: '8px',
     marginBottom: '10px',
     marginRight: '4px'
   }
 };
 
-var ListCreatePane = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(ListCreatePane, _Component);
+var ListCreatePane =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(ListCreatePane, _Component);
 
   /*
   statis propTypes = {
@@ -71,150 +48,146 @@ var ListCreatePane = (_temp = _class = function (_Component) {
   },
   */
   function ListCreatePane(props) {
-    (0, _classCallCheck3.default)(this, ListCreatePane);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (ListCreatePane.__proto__ || Object.getPrototypeOf(ListCreatePane)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
-    _initialiseProps.call(_this);
+    _this._onStore = function (actionType, data) {
+      var _this$props = _this.props,
+          actionCompleted = _this$props.actionCompleted,
+          actionFailed = _this$props.actionFailed,
+          forActionType = _this$props.forActionType,
+          store = _this$props.store;
 
-    var store = props.store;
+      if (actionType === actionCompleted) {
+        var isUpdateGroup = true;
 
+        if (data.forActionType === forActionType) {
+          _this._handlerClear();
+
+          isUpdateGroup = false;
+        }
+
+        _this.setState({
+          groupOptions: store.getWatchGroups(),
+          isUpdateGroup: isUpdateGroup
+        });
+      } else if (actionType === actionFailed && data.forActionType === forActionType) {
+        _this.setState({
+          validationMessages: data.messages,
+          isUpdateGroup: false
+        });
+      }
+    };
+
+    _this._handlerSelectGroup = function (item) {
+      if (item && item.caption) {
+        _this.captionGroup = item.caption;
+      } else {
+        _this.captionGroup = null;
+      }
+    };
+
+    _this._handlerClear = function () {
+      _this.inputText.setValue('');
+
+      if (_this.state.validationMessages.length > 0) {
+        _this.setState({
+          validationMessages: [],
+          isUpdateGroup: false
+        });
+      }
+    };
+
+    _this._handlerCreate = function () {
+      var captionList = _this.inputText.getValue();
+
+      if (_this.captionGroup && captionList) {
+        _this.props.onCreate({
+          captionGroup: _this.captionGroup,
+          captionList: captionList
+        });
+      } else {
+        var _this$props2 = _this.props,
+            msgOnNotSelect = _this$props2.msgOnNotSelect,
+            msgOnIsEmptyName = _this$props2.msgOnIsEmptyName,
+            msg = [];
+
+        if (!_this.captionGroup) {
+          msg.push(msgOnNotSelect('In Group'));
+        }
+
+        if (!captionList) {
+          msg.push(msgOnIsEmptyName('List'));
+        }
+
+        _this.setState({
+          validationMessages: msg,
+          isUpdateGroup: false
+        });
+      }
+    };
+
+    _this._refInputText = function (c) {
+      return _this.inputText = c;
+    };
+
+    var _store = props.store;
     _this.captionGroup = null;
     _this.state = {
-      groupOptions: store.getWatchGroups(),
+      groupOptions: _store.getWatchGroups(),
       isUpdateGroup: false,
       validationMessages: []
     };
     return _this;
   }
 
-  (0, _createClass3.default)(ListCreatePane, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.unsubscribe = this.props.store.listen(this._onStore);
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.unsubscribe();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var onClose = this.props.onClose,
-          _state = this.state,
-          groupOptions = _state.groupOptions,
-          validationMessages = _state.validationMessages;
+  var _proto = ListCreatePane.prototype;
 
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(_RowInputSelect2.default, {
-          caption: 'In Group',
-          options: groupOptions
-          //isUpdateOptions={isUpdateGroup}
-          , onSelect: this._handlerSelectGroup
-        }),
-        _react2.default.createElement(_RowInputText2.default, {
-          ref: this._refInputText,
-          caption: 'List'
-        }),
-        _react2.default.createElement(_ValidationMessagesFragment2.default, {
-          validationMessages: validationMessages
-        }),
-        _react2.default.createElement(
-          'div',
-          { style: S.COMMAND_DIV },
-          _react2.default.createElement(_FlatButton2.default, {
-            isPrimary: true,
-            caption: 'Create',
-            timeout: 0,
-            onClick: this._handlerCreate
-          }),
-          _react2.default.createElement(_FlatButton2.default, {
-            caption: 'Clear',
-            timeout: 0,
-            onClick: this._handlerClear
-          }),
-          _react2.default.createElement(_FlatButton2.default, {
-            caption: 'Close',
-            timeout: 0,
-            onClick: onClose
-          })
-        )
-      );
-    }
-  }]);
+  _proto.componentDidMount = function componentDidMount() {
+    this.unsubscribe = this.props.store.listen(this._onStore);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.unsubscribe();
+  };
+
+  _proto.render = function render() {
+    var onClose = this.props.onClose,
+        _this$state = this.state,
+        groupOptions = _this$state.groupOptions,
+        validationMessages = _this$state.validationMessages;
+    return _react["default"].createElement("div", null, _react["default"].createElement(_RowInputSelect["default"], {
+      caption: "In Group",
+      options: groupOptions //isUpdateOptions={isUpdateGroup}
+      ,
+      onSelect: this._handlerSelectGroup
+    }), _react["default"].createElement(_RowInputText["default"], {
+      ref: this._refInputText,
+      caption: "List"
+    }), _react["default"].createElement(_ValidationMessagesFragment["default"], {
+      validationMessages: validationMessages
+    }), _react["default"].createElement("div", {
+      style: S.COMMAND_DIV
+    }, _react["default"].createElement(_FlatButton["default"], {
+      isPrimary: true,
+      caption: "Create",
+      timeout: 0,
+      onClick: this._handlerCreate
+    }), _react["default"].createElement(_FlatButton["default"], {
+      caption: "Clear",
+      timeout: 0,
+      onClick: this._handlerClear
+    }), _react["default"].createElement(_FlatButton["default"], {
+      caption: "Close",
+      timeout: 0,
+      onClick: onClose
+    })));
+  };
+
   return ListCreatePane;
-}(_react.Component), _initialiseProps = function _initialiseProps() {
-  var _this2 = this;
+}(_react.Component);
 
-  this._onStore = function (actionType, data) {
-    var _props = _this2.props,
-        actionCompleted = _props.actionCompleted,
-        actionFailed = _props.actionFailed,
-        forActionType = _props.forActionType,
-        store = _props.store;
-
-    if (actionType === actionCompleted) {
-      var isUpdateGroup = true;
-      if (data.forActionType === forActionType) {
-        _this2._handlerClear();
-        isUpdateGroup = false;
-      }
-      _this2.setState({ groupOptions: store.getWatchGroups(), isUpdateGroup: isUpdateGroup });
-    } else if (actionType === actionFailed && data.forActionType === forActionType) {
-      _this2.setState({ validationMessages: data.messages, isUpdateGroup: false });
-    }
-  };
-
-  this._handlerSelectGroup = function (item) {
-    if (item && item.caption) {
-      _this2.captionGroup = item.caption;
-    } else {
-      _this2.captionGroup = null;
-    }
-  };
-
-  this._handlerClear = function () {
-    _this2.inputText.setValue('');
-    if (_this2.state.validationMessages.length > 0) {
-      _this2.setState({
-        validationMessages: [],
-        isUpdateGroup: false
-      });
-    }
-  };
-
-  this._handlerCreate = function () {
-    var captionList = _this2.inputText.getValue();
-    if (_this2.captionGroup && captionList) {
-      _this2.props.onCreate({
-        captionGroup: _this2.captionGroup,
-        captionList: captionList
-      });
-    } else {
-      var _props2 = _this2.props,
-          msgOnNotSelect = _props2.msgOnNotSelect,
-          msgOnIsEmptyName = _props2.msgOnIsEmptyName,
-          msg = [];
-
-      if (!_this2.captionGroup) {
-        msg.push(msgOnNotSelect('In Group'));
-      }
-      if (!captionList) {
-        msg.push(msgOnIsEmptyName('List'));
-      }
-      _this2.setState({
-        validationMessages: msg,
-        isUpdateGroup: false
-      });
-    }
-  };
-
-  this._refInputText = function (c) {
-    return _this2.inputText = c;
-  };
-}, _temp);
-exports.default = ListCreatePane;
+var _default = ListCreatePane;
+exports["default"] = _default;
 //# sourceMappingURL=ListCreatePane.js.map

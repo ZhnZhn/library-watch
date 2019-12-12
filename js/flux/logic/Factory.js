@@ -1,51 +1,36 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require('react');
+var _react = _interopRequireDefault(require("react"));
 
-var _react2 = _interopRequireDefault(_react);
+var _AppStore = _interopRequireDefault(require("../stores/AppStore"));
 
-var _AppStore = require('../stores/AppStore');
+var _withDialog = _interopRequireDefault(require("./withDialog"));
 
-var _AppStore2 = _interopRequireDefault(_AppStore);
+var _withDynamicBrowser = _interopRequireDefault(require("./withDynamicBrowser"));
 
-var _withDialog = require('./withDialog');
+var _withItemsContainer = _interopRequireDefault(require("./withItemsContainer"));
 
-var _withDialog2 = _interopRequireDefault(_withDialog);
+var _withItem = _interopRequireDefault(require("./withItem"));
 
-var _withDynamicBrowser = require('./withDynamicBrowser');
-
-var _withDynamicBrowser2 = _interopRequireDefault(_withDynamicBrowser);
-
-var _withItemsContainer = require('./withItemsContainer');
-
-var _withItemsContainer2 = _interopRequireDefault(_withItemsContainer);
-
-var _withItem = require('./withItem');
-
-var _withItem2 = _interopRequireDefault(_withItem);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Factory = (0, _extends3.default)({}, _withDialog2.default, _withDynamicBrowser2.default, _withItemsContainer2.default, _withItem2.default, {
+var Factory = (0, _extends2["default"])({}, _withDialog["default"], {}, _withDynamicBrowser["default"], {}, _withItemsContainer["default"], {}, _withItem["default"], {
   getElementFactory: function getElementFactory() {
-    return _react2.default;
+    return _react["default"];
   },
   getStore: function getStore() {
-    return _AppStore2.default;
+    return _AppStore["default"];
   },
   getDataConf: function getDataConf(dialogType) {
     var dataId = dialogType.split('_')[0];
-    return _AppStore2.default.getSourceConfig(dataId, dialogType);
+    return _AppStore["default"].getSourceConfig(dataId, dialogType);
   }
 });
-
-exports.default = Factory;
+var _default = Factory;
+exports["default"] = _default;
 //# sourceMappingURL=Factory.js.map

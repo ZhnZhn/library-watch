@@ -1,31 +1,22 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _SvgMore = require('./SvgMore');
+var _SvgMore = _interopRequireDefault(require("./SvgMore"));
 
-var _SvgMore2 = _interopRequireDefault(_SvgMore);
+var _SvgClose = _interopRequireDefault(require("./SvgClose"));
 
-var _SvgClose = require('./SvgClose');
+var _CaptionRow = _interopRequireDefault(require("./CaptionRow.Style"));
 
-var _SvgClose2 = _interopRequireDefault(_SvgClose);
-
-var _CaptionRow = require('./CaptionRow.Style');
-
-var _CaptionRow2 = _interopRequireDefault(_CaptionRow);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+//import PropTypes from 'prop-types';
 var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
 };
-//import PropTypes from 'prop-types';
 
 var ContainerCaption = function ContainerCaption(_ref) {
   var style = _ref.style,
@@ -33,28 +24,19 @@ var ContainerCaption = function ContainerCaption(_ref) {
       children = _ref.children,
       onMore = _ref.onMore,
       onClose = _ref.onClose;
-  return _react2.default.createElement(
-    'div',
-    { className: _CaptionRow2.default.CL_CAPTION, style: style },
-    _isFn(onMore) && _react2.default.createElement(_SvgMore2.default, {
-      onClick: onMore
-    }),
-    _react2.default.createElement(
-      'span',
-      {
-        className: _CaptionRow2.default.CL_NOT_SELECTED,
-        style: _CaptionRow2.default.SPAN
-      },
-      caption
-    ),
-    children,
-    _react2.default.createElement(_SvgClose2.default, {
-      style: _CaptionRow2.default.SVG_CLOSE,
-      onClose: onClose
-    })
-  );
+  return _react["default"].createElement("div", {
+    className: _CaptionRow["default"].CL_CAPTION,
+    style: style
+  }, _isFn(onMore) && _react["default"].createElement(_SvgMore["default"], {
+    onClick: onMore
+  }), _react["default"].createElement("span", {
+    className: _CaptionRow["default"].CL_NOT_SELECTED,
+    style: _CaptionRow["default"].SPAN
+  }, caption), children, _react["default"].createElement(_SvgClose["default"], {
+    style: _CaptionRow["default"].SVG_CLOSE,
+    onClose: onClose
+  }));
 };
-
 /*
 ContainerCaption.propTypes = {
   caption: PropTypes.string,
@@ -67,9 +49,11 @@ ContainerCaption.propTypes = {
   onClose: PropTypes.func
 }
 */
+
+
 ContainerCaption.defaultProps = {
   caption: ''
 };
-
-exports.default = ContainerCaption;
+var _default = ContainerCaption;
+exports["default"] = _default;
 //# sourceMappingURL=ContainerCaption.js.map

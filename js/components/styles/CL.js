@@ -1,9 +1,7 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
+exports.__esModule = true;
+exports["default"] = void 0;
 var CL = {
   NOT_SELECTED: 'not-selected',
   SHOW_POPUP: 'show-popup',
@@ -12,5 +10,7 @@ var CL = {
   SOURCE_LINK: 'source-link'
 };
 
-exports.default = Object.freeze(CL);
+var _default = Object.freeze(CL);
+
+exports["default"] = _default;
 //# sourceMappingURL=CL.js.map

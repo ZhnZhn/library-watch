@@ -1,40 +1,19 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _ModalDialog = require('../zhn-moleculs/ModalDialog');
-
-var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
-
-var _DialogStyles = require('../styles/DialogStyles');
-
-var _DialogStyles2 = _interopRequireDefault(_DialogStyles);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
 
 var S = {
   CAPTION: {
@@ -59,104 +38,83 @@ var S = {
     whiteSpace: 'pre-line'
   }
 };
-
 var ELLIPSIS = '...';
+
 var _crItemId = function _crItemId(str) {
   return str ? str.substring(0, 20) + ELLIPSIS : '';
 };
 
-var AlertDialog = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(AlertDialog, _Component);
+var AlertDialog =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(AlertDialog, _Component);
 
   function AlertDialog() {
-    (0, _classCallCheck3.default)(this, AlertDialog);
-    return (0, _possibleConstructorReturn3.default)(this, (AlertDialog.__proto__ || Object.getPrototypeOf(AlertDialog)).apply(this, arguments));
+    return _Component.apply(this, arguments) || this;
   }
 
-  (0, _createClass3.default)(AlertDialog, [{
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-        return false;
-      }
-      return true;
-    }
-    /*
-    static propTypes = {
-      isShow: PropTypes.bool,
-      data: PropTypes.shape({
-        alertCaption: PropTypes.string,
-        alertItemId: PropTypes.string,
-        alertDescr: PropTypes.string
-      }),
-      onClose: PropTypes.func
-    }
-    */
+  var _proto = AlertDialog.prototype;
 
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          isShow = _props.isShow,
-          data = _props.data,
-          onClose = _props.onClose,
-          _ref = data || {},
-          alertCaption = _ref.alertCaption,
-          alertItemId = _ref.alertItemId,
-          alertDescr = _ref.alertDescr,
-          caption = _ref.caption,
-          itemId = _ref.itemId,
-          descr = _ref.descr,
-          _caption = alertCaption || caption || '',
-          _itemId = _crItemId(alertItemId || itemId),
-          _descr = alertDescr || descr || '';
-
-      return _react2.default.createElement(
-        _ModalDialog2.default,
-        {
-          caption: 'Alert',
-          isShow: isShow,
-          onClose: onClose
-        },
-        _react2.default.createElement(
-          'div',
-          { style: _DialogStyles2.default.rowDiv },
-          _react2.default.createElement(
-            'span',
-            { style: S.CAPTION },
-            _react2.default.createElement(
-              'span',
-              null,
-              _caption
-            ),
-            _react2.default.createElement(
-              'span',
-              null,
-              ':'
-            ),
-            _react2.default.createElement(
-              'span',
-              { style: S.ITEM_ID, title: _itemId },
-              _itemId
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: _DialogStyles2.default.rowDiv },
-          _react2.default.createElement(
-            'p',
-            { style: S.DESCR },
-            _descr
-          )
-        )
-      );
+  /*
+  static propTypes = {
+    isShow: PropTypes.bool,
+    data: PropTypes.shape({
+      alertCaption: PropTypes.string,
+      alertItemId: PropTypes.string,
+      alertDescr: PropTypes.string
+    }),
+    onClose: PropTypes.func
+  }
+  */
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
+      return false;
     }
-  }]);
+
+    return true;
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        isShow = _this$props.isShow,
+        data = _this$props.data,
+        onClose = _this$props.onClose,
+        _ref = data || {},
+        alertCaption = _ref.alertCaption,
+        alertItemId = _ref.alertItemId,
+        alertDescr = _ref.alertDescr,
+        caption = _ref.caption,
+        itemId = _ref.itemId,
+        descr = _ref.descr,
+        _caption = alertCaption || caption || '',
+        _itemId = _crItemId(alertItemId || itemId),
+        _descr = alertDescr || descr || '';
+
+    return _react["default"].createElement(_ModalDialog["default"], {
+      caption: "Alert",
+      isShow: isShow,
+      onClose: onClose
+    }, _react["default"].createElement("div", {
+      style: _DialogStyles["default"].rowDiv
+    }, _react["default"].createElement("span", {
+      style: S.CAPTION
+    }, _react["default"].createElement("span", null, _caption), _react["default"].createElement("span", null, ":"), _react["default"].createElement("span", {
+      style: S.ITEM_ID,
+      title: _itemId
+    }, _itemId))), _react["default"].createElement("div", {
+      style: _DialogStyles["default"].rowDiv
+    }, _react["default"].createElement("p", {
+      style: S.DESCR
+    }, _descr)));
+  };
+
   return AlertDialog;
-}(_react.Component), _class.defaultProps = {
+}(_react.Component);
+
+AlertDialog.defaultProps = {
   data: {},
   onClose: function onClose() {}
-}, _temp);
-exports.default = AlertDialog;
+};
+var _default = AlertDialog;
+exports["default"] = _default;
 //# sourceMappingURL=AlertDialog.js.map

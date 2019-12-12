@@ -1,19 +1,18 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
+
 var _isNaN = Number.isNaN || isNaN;
 
 var is = {
   isNumber: function isNumber(n) {
     return typeof n === 'number' && !_isNaN(n);
   },
-
   isTouchable: function isTouchable() {
     return document && 'ontouchstart' in document.documentElement;
   }
 };
-
-exports.default = is;
+var _default = is;
+exports["default"] = _default;
 //# sourceMappingURL=is.js.map
