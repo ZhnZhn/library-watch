@@ -16,7 +16,9 @@ const _crArrFromObj = obj => {
 }
 
 const _crTopN = (arr, top=5) => {
+  /*eslint-disable no-unused-vars */
   const { Date, ...rest } = arr[arr.length-1]
+  /*eslint-enable no-unused-vars */  
   , _arrRecent = _crArrFromObj(rest);
   _arrRecent.sort((a, b) => b.value - a.value)
   const _arrTop = []

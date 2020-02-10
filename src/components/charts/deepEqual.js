@@ -1,4 +1,4 @@
-let hasOwnProperty = Object.prototype.hasOwnProperty;
+const { hasOwnProperty } = Object.prototype;
 
 const is = (x, y) => {
 	// SameValue algorithm
@@ -31,7 +31,7 @@ const deepEqual = (objA, objB) => {
 	}
 
 	for (let propty in objA) {
-		if (objB.hasOwnProperty(propty)) {
+		if (hasOwnProperty.call(objB, propty)) {
 			if (!deepEqual(objA[propty], objB[propty])) {
 				return false;
 			}

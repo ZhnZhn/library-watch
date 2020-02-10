@@ -1,13 +1,14 @@
 
 const CL_ROW = 'row__pane-topic not-selected';
 
+const { hasOwnProperty } = Object.prototype;
 const _isFn = fn => typeof fn === 'function';
 
 const _addItemTo = (arr, comp, { name, onClick, isClose }) => {
   if (_isFn(onClick)) {
     arr.push({
       cn: CL_ROW,
-      onClick: onClick.hasOwnProperty('prototype')
+      onClick: hasOwnProperty.call(onClick, 'prototype')
         ? onClick.bind(comp)
         : onClick,
       name, isClose

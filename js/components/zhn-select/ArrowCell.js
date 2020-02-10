@@ -13,32 +13,31 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
-var STYLE = {
+var S = {
   ARROW_CELL: {
     position: 'absolute',
-    top: '10px',
-    right: '0px',
-    cursor: 'pointer',
+    top: 10,
+    right: 0,
+    width: 35,
+    paddingRight: 5,
     textAlign: 'center',
     verticalAlign: 'middle',
-    width: '35px',
-    paddingRight: '5px'
+    cursor: 'pointer'
   },
   ARROW: {
+    display: 'inline-block',
     position: 'relative',
-    top: '2px',
+    top: 2,
+    height: 0,
+    width: 0,
     borderColor: '#999 transparent transparent',
     borderStyle: 'solid',
-    //borderWidth: '5px 5px 2.5px',
-    borderWidth: '10px 8px 4px',
-    display: 'inline-block',
-    height: '0px',
-    width: '0px'
+    borderWidth: '10px 8px 4px'
   }
 };
 var C = {
   ANIMATION_CIRCLE: "circle infinite 1.25s linear",
-  BORDER_COLOR: "rgb(27, 117, 187) transparent transparent"
+  BORDER_COLOR: "#1b75bb transparent transparent"
 };
 
 var ArrowCell =
@@ -63,15 +62,6 @@ function (_Component) {
       return _this.arrow = n;
     };
 
-    _this.startAnimation = function () {
-      _this.arrowCell.style.animation = C.ANIMATION_CIRCLE;
-      _this.arrow.style.borderColor = C.BORDER_COLOR;
-    };
-
-    _this.stopAnimation = function () {
-      _this.arrowCell.style.animation = "";
-    };
-
     return _this;
   }
 
@@ -81,14 +71,28 @@ function (_Component) {
     var _this$props = this.props,
         arrowStyle = _this$props.arrowStyle,
         onClick = _this$props.onClick;
-    return _react["default"].createElement("span", {
+    return _react["default"].createElement("button", {
       ref: this._refArrowCell,
-      style: STYLE.ARROW_CELL,
+      style: S.ARROW_CELL,
+      tabIndex: "-1",
       onClick: onClick
     }, _react["default"].createElement("span", {
       ref: this._refArrow,
-      style: (0, _extends2["default"])({}, STYLE.ARROW, {}, arrowStyle)
+      style: (0, _extends2["default"])({}, S.ARROW, {}, arrowStyle)
     }));
+  };
+
+  _proto.startAnimation = function startAnimation() {
+    if (this.arrowCell && this.arrow) {
+      this.arrowCell.style.animation = C.ANIMATION_CIRCLE;
+      this.arrow.style.borderColor = C.BORDER_COLOR;
+    }
+  };
+
+  _proto.stopAnimation = function stopAnimation() {
+    if (this.arrowCell) {
+      this.arrowCell.style.animation = "";
+    }
   };
 
   return ArrowCell;

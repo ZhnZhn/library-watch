@@ -35,6 +35,7 @@ var _crTopN = function _crTopN(arr, top) {
     top = 5;
   }
 
+  /*eslint-disable no-unused-vars */
   var _arr2 = arr[arr.length - 1],
       Date = _arr2.Date,
       rest = (0, _objectWithoutPropertiesLoose2["default"])(_arr2, ["Date"]),

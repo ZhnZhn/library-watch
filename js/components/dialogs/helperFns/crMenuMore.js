@@ -3,6 +3,7 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 var CL_ROW = 'row__pane-topic not-selected';
+var hasOwnProperty = Object.prototype.hasOwnProperty;
 
 var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
@@ -16,7 +17,7 @@ var _addItemTo = function _addItemTo(arr, comp, _ref) {
   if (_isFn(onClick)) {
     arr.push({
       cn: CL_ROW,
-      onClick: onClick.hasOwnProperty('prototype') ? onClick.bind(comp) : onClick,
+      onClick: hasOwnProperty.call(onClick, 'prototype') ? onClick.bind(comp) : onClick,
       name: name,
       isClose: isClose
     });

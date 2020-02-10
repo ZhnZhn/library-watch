@@ -21,11 +21,14 @@
   margin-left: 5px;
   margin-right: 5px;
 }
-@media (hover: hover) {
+
+/*Level 4 Media Query*/
+@media (hover: hover) and (pointer: fine) {
   .m-field__input {
     padding-right: 10px;
   }
 }
+
 
 .m-field__bt-clear {
   position: absolute;

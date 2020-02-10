@@ -34,7 +34,7 @@ var deepEqual = function deepEqual(objA, objB) {
   }
 
   for (var propty in objA) {
-    if (objB.hasOwnProperty(propty)) {
+    if (hasOwnProperty.call(objB, propty)) {
       if (!deepEqual(objA[propty], objB[propty])) {
         return false;
       }
