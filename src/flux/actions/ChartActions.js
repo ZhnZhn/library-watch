@@ -1,4 +1,4 @@
-import Reflux from 'reflux';
+import Reflux from 'reflux-core';
 
 import RouterLoad from '../logic/RouterLoad';
 import Store from '../stores/AppStore'

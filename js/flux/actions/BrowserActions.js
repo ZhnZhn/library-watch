@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = exports.BrowserActionTypes = void 0;
 
-var _reflux = _interopRequireDefault(require("reflux"));
+var _refluxCore = _interopRequireDefault(require("reflux-core"));
 
 var _fnFetch = _interopRequireDefault(require("../../network/fnFetch"));
 
@@ -25,7 +25,7 @@ var BrowserActionTypes = {
 };
 exports.BrowserActionTypes = BrowserActionTypes;
 
-var BrowserActions = _reflux["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[BrowserActionTypes.SHOW_BROWSER] = {}, _Reflux$createActions[BrowserActionTypes.UPDATE_BROWSER_MENU] = {}, _Reflux$createActions[BrowserActionTypes.SHOW_BROWSER_DYNAMIC] = {}, _Reflux$createActions[BrowserActionTypes.INIT_BROWSER_DYNAMIC] = {}, _Reflux$createActions[BrowserActionTypes.LOAD_BROWSER_DYNAMIC] = {
+var BrowserActions = _refluxCore["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[BrowserActionTypes.SHOW_BROWSER] = {}, _Reflux$createActions[BrowserActionTypes.UPDATE_BROWSER_MENU] = {}, _Reflux$createActions[BrowserActionTypes.SHOW_BROWSER_DYNAMIC] = {}, _Reflux$createActions[BrowserActionTypes.INIT_BROWSER_DYNAMIC] = {}, _Reflux$createActions[BrowserActionTypes.LOAD_BROWSER_DYNAMIC] = {
   children: ['completed', 'failed']
 }, _Reflux$createActions[BrowserActionTypes.UPDATE_WATCH_BROWSER] = {}, _Reflux$createActions[BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER] = {}, _Reflux$createActions));
 

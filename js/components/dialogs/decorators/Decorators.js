@@ -12,9 +12,11 @@ var _withToolbar = _interopRequireDefault(require("./withToolbar"));
 var _withValidationLoad = _interopRequireDefault(require("./withValidationLoad"));
 
 var Decorators = {
-  withInitialState: _withInitialState["default"],
-  withToolbar: _withToolbar["default"],
-  withValidationLoad: _withValidationLoad["default"]
+  dialog: function dialog(_dialog) {
+    (0, _withInitialState["default"])(_dialog);
+    (0, _withValidationLoad["default"])(_dialog);
+    (0, _withToolbar["default"])(_dialog);
+  }
 };
 var _default = Decorators;
 exports["default"] = _default;

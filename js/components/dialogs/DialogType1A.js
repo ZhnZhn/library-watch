@@ -23,24 +23,24 @@ var _Decorators = _interopRequireDefault(require("./decorators/Decorators"));
 
 var _helperFns = _interopRequireDefault(require("./helperFns/helperFns"));
 
-var _dec, _dec2, _dec3, _class, _temp;
+var _dec, _class, _temp;
 
 var crMenuMore = _helperFns["default"].crMenuMore,
     crButtons = _helperFns["default"].crButtons;
 var MARKET_SHARES = [{
-  caption: "OS Desktop, Mobile, Tablet, Console",
+  caption: "OS: Desktop, Mobile, Tablet, Console",
   value: "os"
 }, {
-  caption: "Windows Desktop",
+  caption: "Windows: Desktop",
   value: "win-desktop"
 }, {
-  caption: "macOS Desktop",
+  caption: "macOS: Desktop",
   value: "mac-desktop"
 }, {
-  caption: "Android Mobile, Tablet",
+  caption: "Android: Mobile, Tablet",
   value: "android-mobile"
 }, {
-  caption: "IOS Mobile, Tablet",
+  caption: "IOS: Mobile, Tablet",
   value: "ios-mobile"
 }, {
   caption: "Browser: All Platforms",
@@ -88,7 +88,7 @@ var _initFromDate = _DateUtils["default"].getFromDate(1),
     _initToDate = _DateUtils["default"].getToDate(),
     _onTestDate = _DateUtils["default"].isValidDate;
 
-var DialogType3 = (_dec = _Decorators["default"].withToolbar, _dec2 = _Decorators["default"].withValidationLoad, _dec3 = _Decorators["default"].withInitialState, _dec(_class = _dec2(_class = _dec3(_class = (_temp =
+var DialogType3 = (_dec = _Decorators["default"].dialog, _dec(_class = (_temp =
 /*#__PURE__*/
 function (_Component) {
   (0, _inheritsLoose2["default"])(DialogType3, _Component);
@@ -144,9 +144,6 @@ function (_Component) {
     };
 
     _this._createLoadOption = function () {
-      //{ fromDate, toDate } = this.datesFragment.getValues()
-      //, _fromDate = DateUtils.toUTCMillis(fromDate)/1000
-      //, _toDate = DateUtils.toUTCMillis(toDate)/1000
       var requestType = _this.props.requestType,
           _this$_item = _this._item,
           value = _this$_item.value,
@@ -155,9 +152,7 @@ function (_Component) {
         requestType: requestType,
         value: value,
         caption: caption,
-        region: _this._region //fromdate : _fromDate,
-        //todate : _toDate
-
+        region: _this._region
       };
     };
 
@@ -245,7 +240,7 @@ function (_Component) {
   };
 
   return DialogType3;
-}(_react.Component), _temp)) || _class) || _class) || _class);
+}(_react.Component), _temp)) || _class);
 var _default = DialogType3;
 exports["default"] = _default;
 //# sourceMappingURL=DialogType1A.js.map

@@ -7,9 +7,7 @@ import D from './DialogCell'
 
 const { crMenuMore, crButtons } = helperFns;
 
-@Decor.withToolbar
-@Decor.withValidationLoad
-@Decor.withInitialState
+@Decor.dialog
 class DialogType1 extends Component {
   /*
   static propTypes = {

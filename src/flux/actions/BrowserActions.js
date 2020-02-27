@@ -1,4 +1,4 @@
-import Reflux from 'reflux';
+import Reflux from 'reflux-core';
 
 import fnFetch from '../../network/fnFetch';
 import fnCatch from '../../network/fnCatch';

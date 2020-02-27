@@ -97,6 +97,9 @@ var DateUtils = {
     var arr = strDate.split('-');
     return Date.UTC(arr[0], parseInt(arr[1], 10) - 1, arr[2]);
   },
+  toUTCSecond: function toUTCSecond(strDate) {
+    return DateUtils.toUTCMillis(strDate) / 1000;
+  },
 
   /* 1970-01-01 */
   isWeekend: function isWeekend(year, month, day) {

@@ -15,24 +15,21 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _DateUtils = _interopRequireDefault(require("../../utils/DateUtils"));
-
 var _DialogCell = _interopRequireDefault(require("./DialogCell"));
 
 var _Decorators = _interopRequireDefault(require("./decorators/Decorators"));
 
 var _helperFns = _interopRequireDefault(require("./helperFns/helperFns"));
 
-var _dec, _dec2, _dec3, _class, _temp;
+var _dec, _class, _temp;
 
-var crMenuMore = _helperFns["default"].crMenuMore,
+var dateConfig = _helperFns["default"].dateConfig,
+    crMenuMore = _helperFns["default"].crMenuMore,
     crButtons = _helperFns["default"].crButtons;
-
-var _initFromDate = _DateUtils["default"].getFromDate(1),
-    _initToDate = _DateUtils["default"].getToDate(),
-    _onTestDate = _DateUtils["default"].isValidDate;
-
-var DialogType3A = (_dec = _Decorators["default"].withToolbar, _dec2 = _Decorators["default"].withValidationLoad, _dec3 = _Decorators["default"].withInitialState, _dec(_class = _dec2(_class = _dec3(_class = (_temp =
+var _initFromDate = dateConfig._initFromDate,
+    _initToDate = dateConfig._initToDate,
+    _onTestDate = dateConfig._onTestDate;
+var DialogType3A = (_dec = _Decorators["default"].dialog, _dec(_class = (_temp =
 /*#__PURE__*/
 function (_Component) {
   (0, _inheritsLoose2["default"])(DialogType3A, _Component);
@@ -182,7 +179,7 @@ function (_Component) {
   };
 
   return DialogType3A;
-}(_react.Component), _temp)) || _class) || _class) || _class);
+}(_react.Component), _temp)) || _class);
 var _default = DialogType3A;
 exports["default"] = _default;
 //# sourceMappingURL=DialogType3A.js.map

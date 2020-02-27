@@ -9,7 +9,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _reflux = _interopRequireDefault(require("reflux"));
+var _refluxCore = _interopRequireDefault(require("reflux-core"));
 
 var _ComponentActions = _interopRequireWildcard(require("../actions/ComponentActions"));
 
@@ -49,7 +49,7 @@ var _logLoadError = function _logLoadError(_ref) {
   console.log('%c' + alertDescr, CONSOLE_LOG_STYLE);
 };
 
-var AppStore = _reflux["default"].createStore((0, _extends2["default"])({
+var AppStore = _refluxCore["default"].createStore((0, _extends2["default"])({
   listenables: [_BrowserActions["default"], _ComponentActions["default"], _ChartActions["default"], _WatchActions["default"], _LoadingProgressActions["default"]],
   charts: {},
   init: function init() {

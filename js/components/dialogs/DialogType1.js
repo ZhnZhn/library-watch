@@ -21,11 +21,11 @@ var _helperFns = _interopRequireDefault(require("./helperFns/helperFns"));
 
 var _DialogCell = _interopRequireDefault(require("./DialogCell"));
 
-var _dec, _dec2, _dec3, _class, _temp;
+var _dec, _class, _temp;
 
 var crMenuMore = _helperFns["default"].crMenuMore,
     crButtons = _helperFns["default"].crButtons;
-var DialogType1 = (_dec = _Decorators["default"].withToolbar, _dec2 = _Decorators["default"].withValidationLoad, _dec3 = _Decorators["default"].withInitialState, _dec(_class = _dec2(_class = _dec3(_class = (_temp =
+var DialogType1 = (_dec = _Decorators["default"].dialog, _dec(_class = (_temp =
 /*#__PURE__*/
 function (_Component) {
   (0, _inheritsLoose2["default"])(DialogType1, _Component);
@@ -144,7 +144,7 @@ function (_Component) {
   };
 
   return DialogType1;
-}(_react.Component), _temp)) || _class) || _class) || _class);
+}(_react.Component), _temp)) || _class);
 var _default = DialogType1;
 exports["default"] = _default;
 //# sourceMappingURL=DialogType1.js.map

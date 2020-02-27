@@ -1,1 +1,12 @@
-{"version":3,"sources":["../../../../src/components/dialogs/decorators/Decorators.js"],"names":["Decorators","withInitialState","withToolbar","withValidationLoad"],"mappings":";;;;;;;AAAA;;AACA;;AACA;;AAEA,IAAMA,UAAU,GAAG;AACjBC,EAAAA,gBAAgB,EAAhBA,4BADiB;AAEjBC,EAAAA,WAAW,EAAXA,uBAFiB;AAGjBC,EAAAA,kBAAkB,EAAlBA;AAHiB,CAAnB;eAMeH,U","sourcesContent":["import withInitialState from './withInitialState'\r\nimport withToolbar from './withToolbar'\r\nimport withValidationLoad from './withValidationLoad'\r\n\r\nconst Decorators = {\r\n  withInitialState,\r\n  withToolbar,\r\n  withValidationLoad\r\n};\r\n\r\nexport default Decorators\r\n"],"file":"Decorators.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/dialogs/decorators/Decorators.js"
+ ],
+ "file": "../../../../src/components/dialogs/decorators/Decorators.js",
+ "names": [
+  "Decorators",
+  "dialog"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;AACA;;AAEA,IAAMA,UAAU,GAAG;AACjBC,EAAAA,MAAM,EAAE,gBAACA,OAAD,EAAY;AAClB,sCAAiBA,OAAjB;AACA,wCAAmBA,OAAnB;AACA,iCAAYA,OAAZ;AACD;AALgB,CAAnB;eAQeD,U"
+}

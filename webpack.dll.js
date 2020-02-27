@@ -10,7 +10,7 @@ module.exports = {
   entry: {
      lib: [
             "react", "react-dom", "create-react-class",            
-            "reflux", 
+            "reflux-core", 
             "chart.js", "interactjs", "timeago.js", 
             "localforage", "browser-filesaver",
             "lodash.merge", "classnames",

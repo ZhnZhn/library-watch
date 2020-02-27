@@ -1,4 +1,4 @@
-import Reflux from 'reflux';
+import Reflux from 'reflux-core';
 
 import ComponentActions, { ComponentActionTypes as CAT } from '../actions/ComponentActions';
 import ChartActions from '../actions/ChartActions';
@@ -66,7 +66,7 @@ const AppStore = Reflux.createStore({
     return toTopByKey(slice, key);
   },
   onMoveToTop(chartType, key){
-    const slice = this.charts[chartType];    
+    const slice = this.charts[chartType];
     if (toTopByKey(slice, key)) {
       this.trigger(CHAT.SHOW_CHART, slice);
     }

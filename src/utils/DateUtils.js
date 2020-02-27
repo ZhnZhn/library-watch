@@ -90,6 +90,10 @@ toUTCMillis(strDate){
   return Date.UTC(arr[0], parseInt(arr[1],10)-1, arr[2]);
 },
 
+toUTCSecond(strDate){
+	return DateUtils.toUTCMillis(strDate)/1000;
+},
+
 /* 1970-01-01 */
 isWeekend(year, month, day){
 	const date = new Date(Date.UTC(parseInt(year+'', 10), (parseInt(month+'',10))-1, parseInt(day+'',10)))

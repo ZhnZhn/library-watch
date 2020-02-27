@@ -1,1 +1,25 @@
-{"version":3,"sources":["../../../src/flux/actions/ComponentActions.js"],"names":["ComponentActionTypes","SHOW_ABOUT","INIT_AND_SHOW_DIALOG","SHOW_DIALOG","CLOSE_CHART_CONTAINER","CLOSE_CHART_CONTAINER_2","SHOW_MODAL_DIALOG","ComponentActions","Reflux","createActions","showAlert","showModalDialog","bind","MD","ALERT"],"mappings":";;;;;;;AAAA;;AAEA;;;;AAEO,IAAMA,oBAAoB,GAAG;AAClCC,EAAAA,UAAU,EAAG,WADqB;AAGlCC,EAAAA,oBAAoB,EAAG,mBAHW;AAIlCC,EAAAA,WAAW,EAAG,YAJoB;AAKlCC,EAAAA,qBAAqB,EAAG,qBALU;AAMlCC,EAAAA,uBAAuB,EAAG,sBANQ;AAOlC;AAEAC,EAAAA,iBAAiB,EAAG;AATc,CAA7B;;;AAYP,IAAMC,gBAAgB,GAAGC,mBAAOC,aAAP,oDACtBT,oBAAoB,CAACC,UADC,IACa,EADb,wBAGtBD,oBAAoB,CAACE,oBAHC,IAGuB,EAHvB,wBAItBF,oBAAoB,CAACG,WAJC,IAIc,EAJd,wBAKtBH,oBAAoB,CAACI,qBALC,IAKwB,EALxB,wBAMtBJ,oBAAoB,CAACK,uBANC,IAM0B,EAN1B,wBAStBL,oBAAoB,CAACM,iBATC,IASoB,EATpB,yBAAzB;;AAWAC,gBAAgB,CAACG,SAAjB,GAA6BH,gBAAgB,CAC1CI,eAD0B,CACVC,IADU,CACL,IADK,EACCC,kBAAGC,KADJ,CAA7B;eAIeP,gB","sourcesContent":["import Reflux from 'reflux';\r\n\r\nimport { ModalDialog as MD } from '../../constants/Type'\r\n\r\nexport const ComponentActionTypes = {\r\n  SHOW_ABOUT : 'showAbout',\r\n\r\n  INIT_AND_SHOW_DIALOG : 'initAndShowDialog',\r\n  SHOW_DIALOG : 'showDialog',\r\n  CLOSE_CHART_CONTAINER : 'closeChartContainer',\r\n  CLOSE_CHART_CONTAINER_2 : 'closeChartContainer2',\r\n  //SET_ACTIVE_CHECKBOX : 'setActiveCheckbox',\r\n\r\n  SHOW_MODAL_DIALOG : 'showModalDialog'\r\n}\r\n\r\nconst ComponentActions = Reflux.createActions({\r\n  [ComponentActionTypes.SHOW_ABOUT] : {},\r\n\r\n  [ComponentActionTypes.INIT_AND_SHOW_DIALOG] : {},\r\n  [ComponentActionTypes.SHOW_DIALOG] : {},\r\n  [ComponentActionTypes.CLOSE_CHART_CONTAINER] : {},\r\n  [ComponentActionTypes.CLOSE_CHART_CONTAINER_2] : {},\r\n  //[ComponentActionTypes.SET_ACTIVE_CHECKBOX] : {},\r\n\r\n  [ComponentActionTypes.SHOW_MODAL_DIALOG] : {}\r\n});\r\nComponentActions.showAlert = ComponentActions\r\n  .showModalDialog.bind(null, MD.ALERT)\r\n\r\n\r\nexport default ComponentActions\r\n"],"file":"ComponentActions.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/actions/ComponentActions.js"
+ ],
+ "file": "../../../src/flux/actions/ComponentActions.js",
+ "names": [
+  "ComponentActionTypes",
+  "SHOW_ABOUT",
+  "INIT_AND_SHOW_DIALOG",
+  "SHOW_DIALOG",
+  "CLOSE_CHART_CONTAINER",
+  "CLOSE_CHART_CONTAINER_2",
+  "SHOW_MODAL_DIALOG",
+  "ComponentActions",
+  "Reflux",
+  "createActions",
+  "showAlert",
+  "showModalDialog",
+  "bind",
+  "MD",
+  "ALERT"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEA;;;;AAEO,IAAMA,oBAAoB,GAAG;AAClCC,EAAAA,UAAU,EAAG,WADqB;AAGlCC,EAAAA,oBAAoB,EAAG,mBAHW;AAIlCC,EAAAA,WAAW,EAAG,YAJoB;AAKlCC,EAAAA,qBAAqB,EAAG,qBALU;AAMlCC,EAAAA,uBAAuB,EAAG,sBANQ;AAOlC;AAEAC,EAAAA,iBAAiB,EAAG;AATc,CAA7B;;;AAYP,IAAMC,gBAAgB,GAAGC,uBAAOC,aAAP,oDACtBT,oBAAoB,CAACC,UADC,IACa,EADb,wBAGtBD,oBAAoB,CAACE,oBAHC,IAGuB,EAHvB,wBAItBF,oBAAoB,CAACG,WAJC,IAIc,EAJd,wBAKtBH,oBAAoB,CAACI,qBALC,IAKwB,EALxB,wBAMtBJ,oBAAoB,CAACK,uBANC,IAM0B,EAN1B,wBAStBL,oBAAoB,CAACM,iBATC,IASoB,EATpB,yBAAzB;;AAWAC,gBAAgB,CAACG,SAAjB,GAA6BH,gBAAgB,CAC1CI,eAD0B,CACVC,IADU,CACL,IADK,EACCC,kBAAGC,KADJ,CAA7B;eAIeP,gB"
+}

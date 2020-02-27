@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 //import PropTypes from "prop-types";
 
-import DateUtils from '../../utils/DateUtils'
-
 import D from './DialogCell'
 import Decor from './decorators/Decorators'
 import helperFns from './helperFns/helperFns'
 
-const { crMenuMore, crButtons } = helperFns;
+const {
+  dateConfig,
+  crMenuMore, crButtons,
+  toUTCSecond
+} = helperFns;
 
 const _sortOptions = [
   { caption: "Activity, Recent Day", value: "activity" },
@@ -18,13 +20,13 @@ const _sortOptions = [
   { caption: "Hot Month Tab", value: "month" }
 ];
 
-const _initFromDate = DateUtils.getFromDate(1)
-    , _initToDate = DateUtils.getToDate()
-    , _onTestDate = DateUtils.isValidDate;
+const {
+  _initFromDate,
+  _initToDate,
+  _onTestDate
+} = dateConfig;
 
-@Decor.withToolbar
-@Decor.withValidationLoad
-@Decor.withInitialState
+@Decor.dialog
 class DialogType2 extends Component{
   /*
   static propTypes = {
@@ -50,7 +52,7 @@ class DialogType2 extends Component{
     })
     this._commandButtons = crButtons({ inst: this })
     this.state = {
-      ...this._withInitialState()      
+      ...this._withInitialState()
     }
   }
 
@@ -92,8 +94,8 @@ class DialogType2 extends Component{
  _createLoadOption = () => {
    const repo = this.inputOne.getValue()
        , { fromDate, toDate } = this.datesFragment.getValues()
-       , _fromDate = DateUtils.toUTCMillis(fromDate)/1000
-       , _toDate = DateUtils.toUTCMillis(toDate)/1000
+       , _fromDate = toUTCSecond(fromDate)
+       , _toDate = toUTCSecond(toDate)
        , { requestType } = this.props
        , { value } = this.sortByItem;
 

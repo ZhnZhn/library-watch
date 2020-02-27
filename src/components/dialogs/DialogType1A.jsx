@@ -10,11 +10,11 @@ import helperFns from './helperFns/helperFns'
 const { crMenuMore, crButtons } = helperFns;
 
 const MARKET_SHARES = [
-  { caption: "OS Desktop, Mobile, Tablet, Console", value: "os"},
-  { caption: "Windows Desktop", value: "win-desktop"},
-  { caption: "macOS Desktop", value: "mac-desktop"},
-  { caption: "Android Mobile, Tablet", value: "android-mobile" },
-  { caption: "IOS Mobile, Tablet", value: "ios-mobile" },
+  { caption: "OS: Desktop, Mobile, Tablet, Console", value: "os"},
+  { caption: "Windows: Desktop", value: "win-desktop"},
+  { caption: "macOS: Desktop", value: "mac-desktop"},
+  { caption: "Android: Mobile, Tablet", value: "android-mobile" },
+  { caption: "IOS: Mobile, Tablet", value: "ios-mobile" },
   { caption: "Browser: All Platforms", value: "browser" }
 ];
 const REGIONS = [
@@ -33,9 +33,7 @@ const _initFromDate = DateUtils.getFromDate(1)
     , _initToDate = DateUtils.getToDate()
     , _onTestDate = DateUtils.isValidDate;
 
-@Decor.withToolbar
-@Decor.withValidationLoad
-@Decor.withInitialState
+@Decor.dialog
 class DialogType3 extends Component {
   /*
   static propTypes = {
@@ -64,7 +62,7 @@ class DialogType3 extends Component {
     })
     this._commandButtons = crButtons({ inst: this })
     this.state = {
-      ...this._withInitialState()      
+      ...this._withInitialState()
     }
   }
 
@@ -105,20 +103,13 @@ class DialogType3 extends Component {
       return msg;
   }
  _createLoadOption = () => {
-   const
-        //{ fromDate, toDate } = this.datesFragment.getValues()
-       //, _fromDate = DateUtils.toUTCMillis(fromDate)/1000
-       //, _toDate = DateUtils.toUTCMillis(toDate)/1000
-        { requestType } = this.props
-       , { value, caption } = this._item;
-
+   const { requestType } = this.props
+   , { value, caption } = this._item;
    return {
      requestType,
      value,
      caption: caption,
      region: this._region
-     //fromdate : _fromDate,
-     //todate : _toDate
    };
  }
 

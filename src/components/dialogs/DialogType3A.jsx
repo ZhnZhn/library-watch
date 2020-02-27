@@ -1,21 +1,22 @@
 import React, { Component } from 'react'
 //import PropTypes from "prop-types";
 
-import DateUtils from '../../utils/DateUtils'
-
 import D from './DialogCell'
 import Decor from './decorators/Decorators'
 import helperFns from './helperFns/helperFns'
 
-const { crMenuMore, crButtons } = helperFns;
+const {
+  dateConfig,
+  crMenuMore, crButtons
+  } = helperFns;
 
-const _initFromDate = DateUtils.getFromDate(1)
-    , _initToDate = DateUtils.getToDate()
-    , _onTestDate = DateUtils.isValidDate;
+const {
+  _initFromDate,
+  _initToDate,
+  _onTestDate
+} = dateConfig;
 
-@Decor.withToolbar
-@Decor.withValidationLoad
-@Decor.withInitialState
+@Decor.dialog
 class DialogType3A extends Component {
   /*
   static propTypes = {
