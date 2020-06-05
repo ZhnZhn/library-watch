@@ -84,9 +84,7 @@ var _toStyleWidth = function _toStyleWidth(width) {
   return width + 'px';
 };
 
-var ChartContainer2 =
-/*#__PURE__*/
-function (_Component) {
+var ChartContainer2 = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ChartContainer2, _Component);
 
   /*
@@ -221,24 +219,24 @@ function (_Component) {
         _styleOpen = isShow ? S.BLOCK : S.NONE,
         _classOpen = isShow ? _CL["default"].SHOW_POPUP : undefined;
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       ref: this._refRootNode,
       className: _classOpen,
-      style: (0, _extends2["default"])({}, S.ROOT, {}, _styleOpen)
-    }, _react["default"].createElement(_ModalSlider["default"], {
+      style: (0, _extends2["default"])({}, S.ROOT, _styleOpen)
+    }, /*#__PURE__*/_react["default"].createElement(_ModalSlider["default"], {
       isShow: isMore,
       className: _CL["default"].MENU_MORE,
       model: this._MORE,
       onClose: this._hToggleMore
-    }), _react["default"].createElement(_ContainerCaption["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_ContainerCaption["default"], {
       caption: caption,
       onMore: this._showMore,
       onClose: this._handleHide
-    }, _react["default"].createElement(_SvgHrzResize["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_SvgHrzResize["default"], {
       minWidth: RESIZE_MIN_WIDTH,
       maxWidth: RESIZE_MAX_WIDTH,
       comp: this
-    })), _react["default"].createElement(_ScrollPane["default"], {
+    })), /*#__PURE__*/_react["default"].createElement(_ScrollPane["default"], {
       ref: this._refScroll,
       style: S.SCROLL
     }, configs));

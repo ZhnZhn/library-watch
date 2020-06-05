@@ -19,9 +19,7 @@ var _Item = _interopRequireDefault(require("./Item.Style"));
 
 var ITEM_DESCRIPTION = "GitHub Repository Recent Release";
 
-var GitHubRecentRelease =
-/*#__PURE__*/
-function (_Component) {
+var GitHubRecentRelease = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(GitHubRecentRelease, _Component);
 
   function GitHubRecentRelease() {
@@ -80,26 +78,26 @@ function (_Component) {
         html_url = _this$props2.html_url,
         onCloseItem = _this$props2.onCloseItem,
         isShow = this.state.isShow;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       style: _Item["default"].ROOT
-    }, _react["default"].createElement(_ItemCaption["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
       onClose: onCloseItem
-    }, _react["default"].createElement("button", {
+    }, /*#__PURE__*/_react["default"].createElement("button", {
       className: "not-selected",
       title: caption,
       style: _Item["default"].CAPTION_OPEN,
       onClick: this._hToggleOpen
-    }, _react["default"].createElement("span", null, repo), _react["default"].createElement("span", {
+    }, /*#__PURE__*/_react["default"].createElement("span", null, repo), /*#__PURE__*/_react["default"].createElement("span", {
       style: _Item["default"].SPAN_VERSION
-    }, version), _react["default"].createElement("span", null, published_at)), _react["default"].createElement(_A["default"].ButtonCircle, {
+    }, version), /*#__PURE__*/_react["default"].createElement("span", null, published_at)), /*#__PURE__*/_react["default"].createElement(_A["default"].ButtonCircle, {
       caption: "W",
       title: "Add to Watch",
       style: _Item["default"].BTN_CIRCLE,
       onClick: this._hClickWatch
-    })), _react["default"].createElement(_A["default"].ShowHide, {
+    })), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
       isShow: isShow,
       style: _Item["default"].PT_8
-    }, _react["default"].createElement("a", {
+    }, /*#__PURE__*/_react["default"].createElement("a", {
       href: html_url,
       className: "github-link",
       style: _Item["default"].ML_8

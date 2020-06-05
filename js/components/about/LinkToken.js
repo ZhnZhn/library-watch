@@ -21,9 +21,9 @@ var LinkToken = function LinkToken(_ref) {
       caption = _ref.caption,
       title = _ref.title,
       children = _ref.children;
-  return _react["default"].createElement("span", {
+  return /*#__PURE__*/_react["default"].createElement("span", {
     style: S.WRAPPER
-  }, _react["default"].createElement("a", {
+  }, /*#__PURE__*/_react["default"].createElement("a", {
     className: CL,
     style: {
       color: color

@@ -33,9 +33,7 @@ var STYLE = {
   }
 };
 
-var MenuBrowserDynamic =
-/*#__PURE__*/
-function (_Component) {
+var MenuBrowserDynamic = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(MenuBrowserDynamic, _Component);
 
   /*
@@ -135,7 +133,7 @@ function (_Component) {
     }
 
     return menuItems.map(function (menuPart, index) {
-      return _react["default"].createElement(_MenuPart["default"], (0, _extends2["default"])({}, menuPart, {
+      return /*#__PURE__*/_react["default"].createElement(_MenuPart["default"], (0, _extends2["default"])({}, menuPart, {
         key: index,
         rowClass: rowClass
       }));
@@ -150,13 +148,13 @@ function (_Component) {
         _this$state = this.state,
         menuItems = _this$state.menuItems,
         isShow = _this$state.isShow;
-    return _react["default"].createElement(_Browser["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_Browser["default"], {
       isShow: isShow,
       style: STYLE.BROWSER
-    }, _react["default"].createElement(_CaptionRow["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_CaptionRow["default"], {
       caption: caption,
       onClose: this._handleHide
-    }), _react["default"].createElement(_ScrollPane["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_ScrollPane["default"], {
       style: STYLE.SCROLL_DIV
     }, this._renderMenuParts(rowClass, menuItems), children));
   };

@@ -14,8 +14,8 @@ var _DialogStyles = _interopRequireDefault(require("../../styles/DialogStyles"))
 var Plain = function Plain(_ref) {
   var style = _ref.style,
       children = _ref.children;
-  return _react["default"].createElement("div", {
-    style: (0, _extends2["default"])({}, _DialogStyles["default"].rowDiv, {}, style)
+  return /*#__PURE__*/_react["default"].createElement("div", {
+    style: (0, _extends2["default"])({}, _DialogStyles["default"].rowDiv, style)
   }, children);
 };
 

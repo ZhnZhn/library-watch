@@ -1,33 +1,36 @@
-import React from 'react';
-import createReactClass from 'create-react-class'
-import classNames from 'classnames';
+import React, { Component } from 'react';
+import clsx from 'clsx'
 
-import WithDnDStyle from './with/WithDnDStyle';
-import createHandlerDnDGroup from './with/createHandlerDnDGroup';
-import createHandlerDnDList from './with/createHandlerDnDList';
-import createHandlerDnDItem from './with/createHandlerDnDItem';
+import withWatchDnD from './decorators/withWatchDnD';
 
 import { ModalDialog } from '../../constants/Type';
 import ComponentActions from '../../flux/actions/ComponentActions';
 import BrowserActions from '../../flux/actions/BrowserActions';
 import WatchActions from '../../flux/actions/WatchActions';
 
-import Browser from '../zhn-atoms/Browser';
-import CaptionRow from '../zhn-atoms/CaptionRow';
-import ButtonSave from '../zhn-moleculs/ButtonSave';
-import ButtonCircle from '../zhn-atoms/ButtonCircle';
-import ShowHide from '../zhn-atoms/ShowHide';
-import WrapperInputSearch from './WrapperInputSearch';
+import Comp from '../Comp'
 
-import ScrollPane from '../zhn-atoms/ScrollPane';
-import OpenClose2 from '../zhn-atoms/OpenClose2';
+import WrapperInputSearch from './WrapperInputSearch';
 import WatchItem from './WatchItem';
 
+const {
+  Browser,
+  CaptionRow,
+  ButtonCircle,
+  ButtonSave,
+  ShowHide,
+  ScrollPane,
+  OpenClose2
+} = Comp;
 
+const C_GROUP_OPEN = '#1b2836';
+const C_LIST_OPEN = '#80c040';
 const DRAG = {
-  GROUP : 'GROUP',
-  LIST : 'LIST',
-  ITEM : 'ITEM'
+  GROUP: 'GROUP',
+  C_GROUP_ENTER: C_GROUP_OPEN,
+  LIST: 'LIST',
+  C_LIST_ENTER: C_LIST_OPEN,
+  ITEM: 'ITEM'
 };
 
 const CL = {
@@ -88,41 +91,41 @@ const styles = {
   }
 };
 
-const WatchBrowser = createReactClass({
-  ...WithDnDStyle,
-  ...createHandlerDnDGroup(DRAG, WatchActions),
-  ...createHandlerDnDList(DRAG, WatchActions),
-  ...createHandlerDnDItem(DRAG, WatchActions),
+const _calcScrollClass = (isShowFind, isModeEdit) => clsx({
+  [CL.BROWSER_WATCH] : !(isShowFind && isModeEdit),
+  [CL.BROWSER_WATCH__30] : (isShowFind && !isModeEdit) || (!isShowFind && isModeEdit),
+  [CL.BROWSER_WATCH__60] : (isShowFind && isModeEdit)
+});
 
-  getInitialState(){
-    const { isShow=false, isEditMode=false, store } = this.props;
+@withWatchDnD
+class WatchBrowser extends Component {
+
+  constructor(props){
+    super(props)
+    const { isShow=false, isEditMode=false, store } = props;
+
+    this._bindDnDGroup(DRAG, WatchActions)
+    this._bindDnDList(DRAG, WatchActions)
+    this._bindDnDItem(DRAG, WatchActions)
 
     this.isShouldUpdateFind = false;
 
-    return {
+    this.state = {
       isShow : isShow,
       isModeEdit : isEditMode,
       isShowFind : false,
-      scrollClass : this._calcScrollClass(false, isEditMode),
+      scrollClass : _calcScrollClass(false, isEditMode),
       watchList : store.getWatchList()
     }
-  },
-
-  _calcScrollClass(isShowFind, isModeEdit){
-    return classNames({
-      [CL.BROWSER_WATCH] : !(isShowFind && isModeEdit),
-      [CL.BROWSER_WATCH__30] : (isShowFind && !isModeEdit) || (!isShowFind && isModeEdit),
-      [CL.BROWSER_WATCH__60] : (isShowFind && isModeEdit)
-    });
-  },
+  }
 
   componentDidMount(){
     this.unsubscribe = this.props.store.listen(this._onStore);
-  },
+  }
   componentWillUnmount(){
     this.unsubscribe();
-  },
-  _onStore(actionType, data){
+  }
+  _onStore = (actionType, data) => {
      const { browserType, showAction, updateAction } = this.props;
      if (actionType === showAction && data === browserType ){
        this._handlerShow();
@@ -132,53 +135,53 @@ const WatchBrowser = createReactClass({
        this.setState({
          watchList: data,
          isShowFind : false,
-         scrollClass : this._calcScrollClass(false, isModeEdit)
+         scrollClass : _calcScrollClass(false, isModeEdit)
       })
     }
-  },
+  }
 
-  _handlerHide(){
+  _handlerHide = () => {
      if (!this.props.isDoubleWatch){
        this.setState({ isShow : false });
      } else {
        BrowserActions.toggleWatchDbBrowser();
      }
-  },
-  _handlerShow(){
+  }
+  _handlerShow = () => {
     if (!this.props.isDoubleWatch){
      this.setState({ isShow : true });
     }
-  },
+  }
 
-  _handlerToggleEditMode(){
+  _handlerToggleEditMode = () => {
     const { isShowFind, isModeEdit } = this.state
          , _isModeEdit = !isModeEdit
     this.setState({
       isModeEdit : _isModeEdit,
-      scrollClass : this._calcScrollClass(isShowFind, _isModeEdit)
+      scrollClass : _calcScrollClass(isShowFind, _isModeEdit)
     });
-  },
+  }
 
-  _handlerToggleFindInput(){
+  _handlerToggleFindInput = () => {
     const { isShowFind, isModeEdit } = this.state
          , _isShowFind = !isShowFind
     this.setState({
       isShowFind : _isShowFind,
-      scrollClass : this._calcScrollClass(_isShowFind, isModeEdit)
+      scrollClass : _calcScrollClass(_isShowFind, isModeEdit)
     })
-  },
+  }
 
   _handlerEditGroup(){
     ComponentActions.showModalDialog(ModalDialog.EDIT_WATCH_GROUP);
-  },
+  }
   _handlerEditList(){
     ComponentActions.showModalDialog(ModalDialog.EDIT_WATCH_LIST);
-  },
+  }
   _handlerDouble(){
     BrowserActions.toggleWatchDbBrowser();
-  },
+  }
 
-  _renderWatchList(watchList){
+  _renderWatchList = (watchList) => {
      const { isModeEdit } = this.state;
      return watchList.groups.map((group, index) => {
        const {caption, lists} = group;
@@ -190,53 +193,53 @@ const WatchBrowser = createReactClass({
                   isClose={true}
                   isDraggable={isModeEdit}
                   option={{ caption }}
-                  onDragStart={this._handlerDragStartGroup}
-                  onDragEnter={this._handlerDragEnterGroup}
-                  onDragOver={this._handlerDragOverGroup}
-                  onDragLeave={this._handlerDragLeaveGroup}
-                  onDrop={this._handlerDropGroup}
+                  onDragStart={this._hDragStartGroup}
+                  onDragEnter={this._hDragEnterGroup}
+                  onDragOver={this._hDragOverGroup}
+                  onDragLeave={this._hDragLeaveGroup}
+                  onDrop={this._hDropGroup}
                 >
                   {lists && this._renderLists(lists, caption)}
                 </OpenClose2>
               )
      })
-  },
+  }
 
-  _renderLists(lists, groupCaption){
+  _renderLists = (lists, groupCaption) => {
     const { isModeEdit } = this.state;
     return lists.map((list) => {
       const { caption, items } = list;
       return (
         <OpenClose2
            key={caption}
-           fillOpen={'#80c040'}
+           fillOpen="#80c040"
            style={styles.listDiv}
            styleNotSelected={styles.itemNotSelected}
            caption={caption}
            isClose={true}
            isDraggable={isModeEdit}
            option={{ groupCaption, caption }}
-           onDragStart={this._handlerDragStartList}
-           onDragEnter={this._handlerDragEnterList}
-           onDragOver={this._handlerDragOverList}
-           onDragLeave={this._handlerDragLeaveList}
-           onDrop={this._handlerDropList}
+           onDragStart={this._hDragStartList}
+           onDragEnter={this._hDragEnterList}
+           onDragOver={this._hDragOverList}
+           onDragLeave={this._hDragLeaveList}
+           onDrop={this._hDropList}
         >
           {items && this._renderItems(items, groupCaption, caption)}
         </OpenClose2>
       )
     })
-  },
+  }
 
   _handlerClickItem(item){
     ComponentActions.showModalDialog(ModalDialog.LOAD_WATCH_ITEM, item);
-  },
+  }
   _handlerRemoveItem(option, event){
     event.stopPropagation();
     WatchActions.removeItem(option);
-  },
+  }
 
-  _renderItems(items, groupCaption, listCaption) {
+  _renderItems = (items, groupCaption, listCaption) => {
       const {isModeEdit} = this.state;
       return items.map((item, index) => {
         const { caption } = item
@@ -252,17 +255,17 @@ const WatchBrowser = createReactClass({
               option={{ groupCaption, listCaption, caption }}
               onClick={this._handlerClickItem}
               onClose={this._handlerRemoveItem}
-              onDragStart={this._handlerDragStartItem}
-              onDragOver={this._handlerDragOverItem}
-              onDragEnter={this._handlerDragEnterItem}
-              onDragLeave={this._handlerDragLeaveItem}
-              onDrop={this._handlerDropItem}
+              onDragStart={this._hDragStartItem}
+              onDragOver={this._hDragOverItem}
+              onDragEnter={this._hDragEnterItem}
+              onDragLeave={this._hDragLeaveItem}
+              onDrop={this._hDropItem}
            />
         );
       })
-  },
+  }
 
-  _renderEditBar(isModeEdit){
+  _renderEditBar = (isModeEdit) => {
     if (isModeEdit){
       return (
         <div style={styles.editBarDiv}>
@@ -294,9 +297,9 @@ const WatchBrowser = createReactClass({
     } else {
       return null;
     }
-  },
+  }
 
-  _renderFindInput(watchList){
+  _renderFindInput = (watchList) => {
     const { isShowFind } = this.state
     const _isShouldUpdate = (isShowFind && this.isShouldUpdateFind)
              ? (()=>{ this.isShouldUpdateFind = false; return true; })
@@ -312,7 +315,7 @@ const WatchBrowser = createReactClass({
         />
       </ShowHide>
     );
-  },
+  }
 
   render(){
     const { caption, isDoubleWatch, store } = this.props
@@ -385,6 +388,6 @@ const WatchBrowser = createReactClass({
       </Browser>
     )
   }
-});
+}
 
 export default WatchBrowser

@@ -29,9 +29,7 @@ var S = {
 };
 var POINTER_EVENTS = 'pointer-events';
 
-var FlatButton =
-/*#__PURE__*/
-function (_Component) {
+var FlatButton = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(FlatButton, _Component);
 
   function FlatButton() {
@@ -84,11 +82,11 @@ function (_Component) {
         caption = _this$props2.caption,
         accessKey = _this$props2.accessKey,
         children = _this$props2.children,
-        _style = isPrimary ? (0, _extends2["default"])({}, rootStyle, {}, S.PRIMARY) : rootStyle,
+        _style = isPrimary ? (0, _extends2["default"])({}, rootStyle, S.PRIMARY) : rootStyle,
         _className = className ? CL.BT + " " + className : CL.BT,
         _title = accessKey ? title + " [" + accessKey + "]" : title;
 
-    return _react["default"].createElement("button", {
+    return /*#__PURE__*/_react["default"].createElement("button", {
       type: "button",
       ref: this._refNode,
       className: _className,
@@ -97,9 +95,9 @@ function (_Component) {
       tabIndex: 0,
       title: _title,
       onClick: this._hClick
-    }, _react["default"].createElement("div", {
+    }, /*#__PURE__*/_react["default"].createElement("div", {
       className: clDiv
-    }, _react["default"].createElement(_CaptionInput["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_CaptionInput["default"], {
       className: CL.BT_SPAN,
       caption: caption,
       accessKey: accessKey

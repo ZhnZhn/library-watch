@@ -23,9 +23,7 @@ var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
 };
 
-var WrapperInputSearch =
-/*#__PURE__*/
-function (_Component) {
+var WrapperInputSearch = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(WrapperInputSearch, _Component);
 
   function WrapperInputSearch() {
@@ -64,9 +62,9 @@ function (_Component) {
         data = _this$props.data,
         _options = _TransformFn["default"].fromLevel3(data);
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       style: style
-    }, _react["default"].createElement(_InputSearch["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_InputSearch["default"], {
       placeholder: SEARCH_PLACEHOLDER,
       propCaption: "caption",
       options: _options,

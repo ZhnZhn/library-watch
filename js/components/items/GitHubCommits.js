@@ -22,9 +22,7 @@ var _Item = _interopRequireDefault(require("./Item.Style"));
 var ITEM_DESCRIPTION = "GitHub Repository Commits";
 var CL_ITEM = 'row-item not-selected';
 
-var GitHubCommits =
-/*#__PURE__*/
-function (_Component) {
+var GitHubCommits = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(GitHubCommits, _Component);
 
   function GitHubCommits() {
@@ -84,19 +82,19 @@ function (_Component) {
             _dateTime = date.replace('T', ' ').replace('Z', ''),
             _dateAgo = _timeago.format(_dateTime);
 
-        return _react["default"].createElement("div", {
+        return /*#__PURE__*/_react["default"].createElement("div", {
           key: index,
           className: CL_ITEM
-        }, _react["default"].createElement("a", {
+        }, /*#__PURE__*/_react["default"].createElement("a", {
           href: html_url
-        }, _react["default"].createElement("div", {
+        }, /*#__PURE__*/_react["default"].createElement("div", {
           style: _Item["default"].PB_8
-        }, _react["default"].createElement("span", {
+        }, /*#__PURE__*/_react["default"].createElement("span", {
           style: _Item["default"].PR_8
-        }, name), _react["default"].createElement(_A["default"].DateAgo, {
+        }, name), /*#__PURE__*/_react["default"].createElement(_A["default"].DateAgo, {
           dateAgo: _dateAgo,
           date: _dateTime
-        })), _react["default"].createElement("div", null, message)));
+        })), /*#__PURE__*/_react["default"].createElement("div", null, message)));
       });
     };
 
@@ -112,21 +110,21 @@ function (_Component) {
         commits = _this$props2.commits,
         onCloseItem = _this$props2.onCloseItem,
         isShow = this.state.isShow;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       style: _Item["default"].ROOT
-    }, _react["default"].createElement(_ItemCaption["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
       onClose: onCloseItem
-    }, _react["default"].createElement("button", {
+    }, /*#__PURE__*/_react["default"].createElement("button", {
       className: "not-selected",
       title: caption,
       style: _Item["default"].CAPTION_OPEN,
       onClick: this._hToggleOpen
-    }, _react["default"].createElement("span", null, repo)), _react["default"].createElement(_A["default"].ButtonCircle, {
+    }, /*#__PURE__*/_react["default"].createElement("span", null, repo)), /*#__PURE__*/_react["default"].createElement(_A["default"].ButtonCircle, {
       caption: "W",
       title: "Add to Watch",
       style: _Item["default"].BTN_CIRCLE,
       onClick: this._hClickWatch
-    })), _react["default"].createElement(_A["default"].ShowHide, {
+    })), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
       isShow: isShow
     }, this._renderCommits(commits)));
   };

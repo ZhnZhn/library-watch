@@ -1,9 +1,7 @@
-import React from 'react'
-import createReactClass from 'create-react-class'
-
+import React, { Component } from 'react'
 //import PropTypes from 'prop-types'
 
-import WithValidation from '../dialogs/WithValidation'
+import withValidationLoad from '../dialogs/decorators/withValidationLoad'
 
 import WatchActions from '../../flux/actions/WatchActions'
 import { WatchActionTypes as WAT } from '../../flux/actions/WatchActions'
@@ -35,10 +33,8 @@ const S = {
   }
 };
 
-const AddToWatchDialog = createReactClass({
-  ...WithValidation,
-
-  displayName : 'AddToWatchDialog',
+@withValidationLoad
+class AddToWatchDialog extends Component {
   /*
   propTypes : {
     isShow  : PropTypes.bool.isRequired,
@@ -47,8 +43,10 @@ const AddToWatchDialog = createReactClass({
     onClose : PropTypes.func.isRequired
   },
   */
-  getInitialState(){
-    const { store } = this.props;
+  constructor(props){
+    super(props)
+    const { store } = props;
+
     this.groupCaption = null;
     this.listCaption = null;
     this._commandButtons = [
@@ -60,20 +58,21 @@ const AddToWatchDialog = createReactClass({
         onClick={this._handlerAdd}
       />
    ];
-    return {
+
+   this.state = {
       groupOptions: store.getWatchGroups(),
       listOptions: [],
       validationMessages: []
     }
-  },
+  }
 
   componentDidMount(){
     this.unsubscribe = this.props.store.listen(this._onStore);
-  },
+  }
   componetWillUnmount(){
     this.unsubscribe()
-  },
-  _onStore(actionType, data){
+  }
+  _onStore = (actionType, data) => {
     if (actionType === actionCompleted && data.forActionType === forActionType){
        if (this.state.validationMessages.length>0){
          this.setState({ validationMessages:[] });
@@ -82,7 +81,7 @@ const AddToWatchDialog = createReactClass({
     } else if (actionType === actionFailed && data.forActionType === forActionType){
        this.setState({ validationMessages:data.messages });
     }
-  },
+  }
 
   UNSAFE_componentWillReceiveProps(nextProps){
     if (nextProps !== this.props && nextProps.isShow !== this.props.isShow) {
@@ -99,18 +98,17 @@ const AddToWatchDialog = createReactClass({
         }
       }
     }
-  },
+  }
 
   shouldComponentUpdate(nextProps, nextState){
     if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
       return false;
     }
     return true;
-  },
+  }
 
-  _handlerSelectGroup(group){
+  _handlerSelectGroup = (group) => {
     if (group && group.caption){
-       //const {store} = this.props;
        this.groupCaption = group.caption;
        if (group.lists){
          this.setState({listOptions : group.lists})
@@ -120,16 +118,16 @@ const AddToWatchDialog = createReactClass({
     } else {
       this.groupCaption = null;
     }
-  },
-  _handlerSelectList(list){
+  }
+  _handlerSelectList = (list) => {
       if (list && list.caption){
         this.listCaption = list.caption;
       } else {
         this.listCaption = null;
       }
-  },
-  _handlerAdd(){
-    const validationMessages = this._getValidationMessages();
+  }
+  _handlerAdd = () => {
+    const validationMessages = this._crValidationMessages();
     if (validationMessages.isValid){
       //onClose
       const { data } = this.props
@@ -140,21 +138,21 @@ const AddToWatchDialog = createReactClass({
     } else {
       this._updateValidationMessages(validationMessages);
     }
-  },
-  _getValidationMessages(){
+  }
+  _crValidationMessages = () => {
     const msg = [];
     if (!this.groupCaption){ msg.push(Msg.NOT_SELECTED('Group'));}
     if (!this.listCaption) { msg.push(Msg.NOT_SELECTED('List'));}
     msg.isValid = (msg.length === 0) ? true : false;
     return msg;
-  },
+  }
 
-  _handlerClose(){
+  _handlerClose = () => {
     if (this.state.validationMessages.length>0){
       this.setState({validationMessages: []});
     }
     this.props.onClose();
-  },
+  }
 
   render(){
     const { isShow, data } = this.props
@@ -212,6 +210,6 @@ const AddToWatchDialog = createReactClass({
       </ModalDialog>
     );
   }
-});
+}
 
 export default AddToWatchDialog

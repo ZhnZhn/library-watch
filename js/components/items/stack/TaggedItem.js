@@ -92,19 +92,19 @@ var DELTA = HAS_TOUCH ? {
   REMOVE_ITEM: 35,
   REMOVE_UNDER: 150
 };
-var TOKEN_ANSWER = HAS_TOUCH ? 'A' : _react["default"].createElement("span", {
+var TOKEN_ANSWER = HAS_TOUCH ? 'A' : /*#__PURE__*/_react["default"].createElement("span", {
   role: "img",
   "arial-label": "hammer and pick"
 }, "\u2692");
-var TOKEN_SCORE = HAS_TOUCH ? 'S' : _react["default"].createElement("span", {
+var TOKEN_SCORE = HAS_TOUCH ? 'S' : /*#__PURE__*/_react["default"].createElement("span", {
   role: "img",
   "aria-label": "fish"
 }, "\uD83D\uDC1F");
-var TOKEN_VIEW = HAS_TOUCH ? 'V' : _react["default"].createElement("span", {
+var TOKEN_VIEW = HAS_TOUCH ? 'V' : /*#__PURE__*/_react["default"].createElement("span", {
   role: "img",
   "aria-label": "wheel of dharma"
 }, "\u2638");
-var TOKEN_REPUTATION = HAS_TOUCH ? 'R' : _react["default"].createElement("span", {
+var TOKEN_REPUTATION = HAS_TOUCH ? 'R' : /*#__PURE__*/_react["default"].createElement("span", {
   role: "img",
   "arial-label": "shamrock"
 }, "\u2618");
@@ -117,9 +117,7 @@ var _getChangedTouches = function _getChangedTouches(ev) {
   return (((ev || {}).changedTouches || [])[0] || {}).clientX || 0;
 };
 
-var TaggedItem = (0, _withDnDStyle["default"])(_class = (_temp = _class2 =
-/*#__PURE__*/
-function (_Component) {
+var TaggedItem = (0, _withDnDStyle["default"])(_class = (_temp = _class2 = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(TaggedItem, _Component);
 
   function TaggedItem(props) {
@@ -216,7 +214,7 @@ function (_Component) {
 
     _this._renderTags = function (tags) {
       return tags.map(function (tag, index) {
-        return _react["default"].createElement("span", {
+        return /*#__PURE__*/_react["default"].createElement("span", {
           key: index,
           style: S.SPAN_TAG
         }, tag);
@@ -263,31 +261,31 @@ function (_Component) {
         isClosed = this.state.isClosed,
         _style = isClosed ? S.NONE : void 0;
 
-    return _react["default"].createElement("div", (0, _extends2["default"])({
+    return /*#__PURE__*/_react["default"].createElement("div", (0, _extends2["default"])({
       key: question_id,
       className: CL,
       style: _style
-    }, this._itemHandlers), _react["default"].createElement("a", {
+    }, this._itemHandlers), /*#__PURE__*/_react["default"].createElement("a", {
       href: link
-    }, _react["default"].createElement("div", {
+    }, /*#__PURE__*/_react["default"].createElement("div", {
       style: S.ITEM_CAPTION
-    }, _react["default"].createElement("span", {
+    }, /*#__PURE__*/_react["default"].createElement("span", {
       style: is_answered ? S.GREEN_BADGE : S.FISH_BADGE
-    }, TOKEN_ANSWER, "\xA0", answer_count), _react["default"].createElement("span", {
+    }, TOKEN_ANSWER, "\xA0", answer_count), /*#__PURE__*/_react["default"].createElement("span", {
       style: S.FISH_BADGE
-    }, TOKEN_SCORE, "\xA0", score), _react["default"].createElement("span", {
+    }, TOKEN_SCORE, "\xA0", score), /*#__PURE__*/_react["default"].createElement("span", {
       style: S.BLACK_BAGDE
-    }, TOKEN_VIEW, "\xA0", view_count), _react["default"].createElement("span", {
+    }, TOKEN_VIEW, "\xA0", view_count), /*#__PURE__*/_react["default"].createElement("span", {
       style: S.GREEN_BADGE
-    }, TOKEN_REPUTATION, "\xA0", reputation), _react["default"].createElement("span", {
+    }, TOKEN_REPUTATION, "\xA0", reputation), /*#__PURE__*/_react["default"].createElement("span", {
       style: S.BLACK_BAGDE
-    }, display_name), _react["default"].createElement(_A["default"].DateAgo, {
+    }, display_name), /*#__PURE__*/_react["default"].createElement(_A["default"].DateAgo, {
       style: S.DATE_AGO,
       dateAgo: dateAgo,
       date: ""
-    })), _react["default"].createElement("div", {
+    })), /*#__PURE__*/_react["default"].createElement("div", {
       style: S.TITLE
-    }, title), _react["default"].createElement("div", null, this._renderTags(tags))));
+    }, title), /*#__PURE__*/_react["default"].createElement("div", null, this._renderTags(tags))));
   };
 
   return TaggedItem;

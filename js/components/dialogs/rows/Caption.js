@@ -20,7 +20,7 @@ var Caption = function Caption(_ref) {
     return null;
   }
 
-  return _react["default"].createElement("span", {
+  return /*#__PURE__*/_react["default"].createElement("span", {
     style: style
   }, _crCaption(caption));
 };

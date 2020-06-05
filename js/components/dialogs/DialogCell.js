@@ -15,7 +15,7 @@ var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
 
 var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/DraggableDialog"));
 
-var DialogCell = (0, _extends2["default"])({}, _Rows["default"], {}, _Widgets["default"], {
+var DialogCell = (0, _extends2["default"])({}, _Rows["default"], _Widgets["default"], {
   ShowHide: _ShowHide["default"],
   DraggableDialog: _DraggableDialog["default"]
 });

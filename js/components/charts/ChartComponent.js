@@ -68,9 +68,7 @@ var _crObjWithoutProperties = function _crObjWithoutProperties(obj, keys) {
   return target;
 };
 
-var ChartComponent =
-/*#__PURE__*/
-function (_Component) {
+var ChartComponent = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ChartComponent, _Component);
 
   function ChartComponent() {
@@ -92,7 +90,7 @@ function (_Component) {
         _this.chart_instance.options = _configMerge(_this.chart_instance.options, options);
       }
 
-      _this.chart_instance.config.data = (0, _extends2["default"])({}, _this.chart_instance.config.data, {}, data);
+      _this.chart_instance.config.data = (0, _extends2["default"])({}, _this.chart_instance.config.data, data);
 
       _this.chart_instance.update();
     };
@@ -163,7 +161,7 @@ function (_Component) {
         onElementsClick = _this$props3.onElementsClick,
         _onClick = _isFn(onElementsClick) ? this.handleOnClick : null;
 
-    return _react["default"].createElement("canvas", {
+    return /*#__PURE__*/_react["default"].createElement("canvas", {
       ref: this._refRoot,
       height: height,
       width: width,

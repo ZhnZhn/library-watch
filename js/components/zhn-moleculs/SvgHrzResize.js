@@ -36,9 +36,7 @@ var styles = {
   }
 };
 
-var SvgHrzResize =
-/*#__PURE__*/
-function (_Component) {
+var SvgHrzResize = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(SvgHrzResize, _Component);
 
   /*
@@ -158,42 +156,42 @@ function (_Component) {
   };
 
   _proto.render = function render() {
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       style: styles.rootDiv
-    }, _react["default"].createElement("div", (0, _extends2["default"])({
+    }, /*#__PURE__*/_react["default"].createElement("div", (0, _extends2["default"])({
       className: CL,
       style: styles.leftDiv,
       title: "Resize container horizontal left"
-    }, this._leftBtHandlers), _react["default"].createElement("svg", {
+    }, this._leftBtHandlers), /*#__PURE__*/_react["default"].createElement("svg", {
       viewBox: "0 0 12 12",
       width: "100%",
       height: "100%",
       preserveAspectRatio: "none",
       xmlns: "http://www.w3.org/2000/svg"
-    }, _react["default"].createElement("path", {
+    }, /*#__PURE__*/_react["default"].createElement("path", {
       d: "M 1,6 L 11,6",
       strokeWidth: "2",
       strokeLinecap: "round"
-    }), _react["default"].createElement("path", {
+    }), /*#__PURE__*/_react["default"].createElement("path", {
       d: "M 6,2 L 1,6 6,10",
       strokeWidth: "2",
       strokeLinecap: "round",
       fill: "none"
-    }))), _react["default"].createElement("div", (0, _extends2["default"])({
+    }))), /*#__PURE__*/_react["default"].createElement("div", (0, _extends2["default"])({
       className: CL,
       style: styles.leftDiv,
       title: "Resize container horizontal right"
-    }, this._rightBtHandlers), _react["default"].createElement("svg", {
+    }, this._rightBtHandlers), /*#__PURE__*/_react["default"].createElement("svg", {
       viewBox: "0 0 12 12",
       width: "100%",
       height: "100%",
       preserveAspectRatio: "none",
       xmlns: "http://www.w3.org/2000/svg"
-    }, _react["default"].createElement("path", {
+    }, /*#__PURE__*/_react["default"].createElement("path", {
       d: "M 1,6 L 11,6",
       strokeWidth: "2",
       strokeLinecap: "round"
-    }), _react["default"].createElement("path", {
+    }), /*#__PURE__*/_react["default"].createElement("path", {
       d: "M 6,2 L 11,6 6,10",
       strokeWidth: "2",
       strokeLinecap: "round",

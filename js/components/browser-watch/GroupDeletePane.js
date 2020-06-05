@@ -28,9 +28,7 @@ var S = {
   }
 };
 
-var GroupDeletePane =
-/*#__PURE__*/
-function (_Component) {
+var GroupDeletePane = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(GroupDeletePane, _Component);
 
   /*
@@ -117,21 +115,21 @@ function (_Component) {
         _this$state = this.state,
         groupOptions = _this$state.groupOptions,
         validationMessages = _this$state.validationMessages;
-    return _react["default"].createElement("div", null, _react["default"].createElement(_RowInputSelect["default"], {
+    return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_RowInputSelect["default"], {
       caption: "Group",
       options: groupOptions //isUpdateOptions={true}
       ,
       onSelect: this._handlerSelectGroup
-    }), _react["default"].createElement(_ValidationMessagesFragment["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_ValidationMessagesFragment["default"], {
       validationMessages: validationMessages
-    }), _react["default"].createElement("div", {
+    }), /*#__PURE__*/_react["default"].createElement("div", {
       style: S.COMMAND_DIV
-    }, _react["default"].createElement(_FlatButton["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
       isPrimary: true,
       caption: "Delete",
       timeout: 0,
       onClick: this._handlerDeleteGroup
-    }), _react["default"].createElement(_FlatButton["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
       caption: "Close",
       timeout: 0,
       onClick: onClose

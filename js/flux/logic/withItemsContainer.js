@@ -16,7 +16,7 @@ var _ChartContainer = _interopRequireDefault(require("../../components/zhn-conta
 var _createChartContainerComp = function _createChartContainerComp(conf, browserType) {
   var Comp = conf.chartContainerComp ? conf.chartContainerComp : _ChartContainer["default"],
       _chartType = conf.type;
-  return _react["default"].createElement(Comp, {
+  return /*#__PURE__*/_react["default"].createElement(Comp, {
     key: _chartType,
     caption: conf.chartContainerCaption,
     chartType: _chartType,

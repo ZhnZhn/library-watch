@@ -19,13 +19,13 @@ var S = {
 };
 
 var IconLogoBar = function IconLogoBar(props) {
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     style: S.ROOT
-  }, _react["default"].createElement(_IconGitHub["default"], {
+  }, /*#__PURE__*/_react["default"].createElement(_IconGitHub["default"], {
     className: "icon__github",
     title: "GitHub Library Watch",
     uri: "https://github.com/ZhnZhn/library-watch.git"
-  }), _react["default"].createElement(_IconReact["default"], null));
+  }), /*#__PURE__*/_react["default"].createElement(_IconReact["default"], null));
 };
 
 var _default = IconLogoBar;

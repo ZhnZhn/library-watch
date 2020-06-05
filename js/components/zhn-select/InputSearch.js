@@ -111,9 +111,7 @@ var styles = {
   }
 };
 
-var InputSearch =
-/*#__PURE__*/
-function (_Component) {
+var InputSearch = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(InputSearch, _Component);
 
   function InputSearch(props) {
@@ -393,13 +391,13 @@ function (_Component) {
           _domOptions = options.map(function (item, index) {
             var _styleDiv = index % 2 === 0 ? styles.itemOdd : styles.itemEven;
 
-            return _react["default"].createElement("div", {
+            return /*#__PURE__*/_react["default"].createElement("div", {
               key: index,
               ref: "v" + index,
               className: "option-row",
               style: Object.assign({}, styles.itemDiv, _styleDiv),
               onClick: _this._handlerClickOption.bind((0, _assertThisInitialized2["default"])(_this), item, index)
-            }, _react["default"].createElement(ItemOptionComp, {
+            }, /*#__PURE__*/_react["default"].createElement(ItemOptionComp, {
               item: item,
               propCaption: _caption
             }));
@@ -418,18 +416,18 @@ function (_Component) {
           _numberFilteredItems = options[0] && options[0].value !== 'noresult' ? options.length : 0,
           _numberAllItems = _this.props.options ? _this.props.options.length : 0;
 
-      return _react["default"].createElement("div", {
+      return /*#__PURE__*/_react["default"].createElement("div", {
         style: Object.assign({}, styles.rootOptionDiv, _styleOptions)
-      }, _react["default"].createElement("div", {
+      }, /*#__PURE__*/_react["default"].createElement("div", {
         ref: function ref(c) {
           return _this.domOptions = c;
         },
         key: "1",
         style: Object.assign({}, styles.optionDiv, _styleOptions)
-      }, _domOptions), _react["default"].createElement("div", {
+      }, _domOptions), /*#__PURE__*/_react["default"].createElement("div", {
         key: "2",
         style: styles.optionsFooter
-      }, _react["default"].createElement("span", {
+      }, /*#__PURE__*/_react["default"].createElement("span", {
         style: styles.fileredSpan
       }, "Filtered ", _numberFilteredItems, " : ", _numberAllItems)));
     };
@@ -517,7 +515,7 @@ function (_Component) {
 
     if (!isLoading && !isLoadingFailed) {
       _placeholder = placeholder ? placeholder : "Select" + optionName + "...";
-      _domAfterInput = _react["default"].createElement(_ArrowCell["default"], {
+      _domAfterInput = /*#__PURE__*/_react["default"].createElement(_ArrowCell["default"], {
         ref: function ref(c) {
           return _this2.arrowCell = c;
         },
@@ -526,22 +524,22 @@ function (_Component) {
       });
     } else if (isLoading) {
       _placeholder = "Loading" + optionNames + "...";
-      _domAfterInput = _react["default"].createElement("span", {
+      _domAfterInput = /*#__PURE__*/_react["default"].createElement("span", {
         style: styles.spinnerCell,
         "data-loader": "circle"
       });
     } else if (isLoadingFailed) {
       _placeholder = "Loading" + optionNames + " Failed";
-      _domAfterInput = _react["default"].createElement("span", {
+      _domAfterInput = /*#__PURE__*/_react["default"].createElement("span", {
         style: styles.spinnerFailedCell,
         "data-loader": "circle-failed",
         onClick: this.props.onLoadOption
       });
     }
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       style: styles.rootDiv
-    }, _react["default"].createElement("input", {
+    }, /*#__PURE__*/_react["default"].createElement("input", {
       ref: this._refInput,
       type: "text",
       value: value,
@@ -549,7 +547,7 @@ function (_Component) {
       placeholder: _placeholder,
       onChange: this._handlerInputChange,
       onKeyDown: this._handlerInputKeyDown
-    }), _domAfterInput, _react["default"].createElement("hr", {
+    }), _domAfterInput, /*#__PURE__*/_react["default"].createElement("hr", {
       style: styles.inputHr
     }), _domOptions);
   };

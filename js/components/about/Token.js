@@ -13,7 +13,7 @@ var Token = function Token(props) {
       children = props.children,
       _firstChart = isFirstBlank ? ' ' : undefined;
 
-  return _react["default"].createElement("span", {
+  return /*#__PURE__*/_react["default"].createElement("span", {
     style: {
       color: color,
       fontWeight: 'bold'

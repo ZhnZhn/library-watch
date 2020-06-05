@@ -15,9 +15,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _ChartComponent = _interopRequireDefault(require("./ChartComponent"));
 
-var LineChart =
-/*#__PURE__*/
-function (_Component) {
+var LineChart = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(LineChart, _Component);
 
   function LineChart() {
@@ -39,7 +37,7 @@ function (_Component) {
   var _proto = LineChart.prototype;
 
   _proto.render = function render() {
-    return _react["default"].createElement(_ChartComponent["default"], (0, _extends2["default"])({}, this.props, {
+    return /*#__PURE__*/_react["default"].createElement(_ChartComponent["default"], (0, _extends2["default"])({}, this.props, {
       ref: this._refChart,
       type: "line"
     }));

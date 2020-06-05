@@ -50,9 +50,7 @@ var S = {
   }
 };
 
-var StackTaggedQuestions =
-/*#__PURE__*/
-function (_Component) {
+var StackTaggedQuestions = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(StackTaggedQuestions, _Component);
 
   function StackTaggedQuestions(props) {
@@ -140,33 +138,33 @@ function (_Component) {
         _token_count = itemRemoved ? _items_count - itemRemoved + "/" + _items_count : "" + _items_count,
         _titleForSort = "Sorted By " + titleForSort;
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       style: _Item["default"].ROOT
-    }, _react["default"].createElement(_ItemCaption["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
       onClose: onCloseItem
-    }, _react["default"].createElement(_ModalSlider["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_ModalSlider["default"], {
       isShow: isMore,
       className: _CL["default"].MENU_MORE,
       model: this._MODEL_MORE,
       onClose: this._hToggleMore
-    }), _react["default"].createElement(_A["default"].SvgMore, {
+    }), /*#__PURE__*/_react["default"].createElement(_A["default"].SvgMore, {
       style: S.BT_MORE,
       onClick: this._hShowMore
-    }), _react["default"].createElement("button", {
+    }), /*#__PURE__*/_react["default"].createElement("button", {
       className: _CL["default"].NOT_SELECTED,
       title: caption,
-      style: (0, _extends2["default"])({}, _Item["default"].CAPTION_OPEN, {}, S.NOT_FLOAT),
+      style: (0, _extends2["default"])({}, _Item["default"].CAPTION_OPEN, S.NOT_FLOAT),
       onClick: this._hToggleOpen
-    }, _react["default"].createElement("span", null, repo), _react["default"].createElement("span", {
+    }, /*#__PURE__*/_react["default"].createElement("span", null, repo), /*#__PURE__*/_react["default"].createElement("span", {
       style: S.ITEM_COUNT
-    }, _token_count)), _react["default"].createElement("button", {
+    }, _token_count)), /*#__PURE__*/_react["default"].createElement("button", {
       className: _CL["default"].NOT_SELECTED,
       style: S.BT_REVERSE,
       title: "Reverse Items",
       onClick: this._reverseItems
-    }, _titleForSort)), _react["default"].createElement(_A["default"].ShowHide, {
+    }, _titleForSort)), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
       isShow: isShow
-    }, _react["default"].createElement(_TaggedItemList["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_TaggedItemList["default"], {
       items: items,
       onRemoveItem: this._onRemoveItem
     })));

@@ -14,9 +14,7 @@ var _react = _interopRequireWildcard(require("react"));
 var _ModalDialogContainer = _interopRequireDefault(require("./ModalDialogContainer"));
 
 //import PropTypes from "prop-types";
-var DialogContainer =
-/*#__PURE__*/
-function (_Component) {
+var DialogContainer = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DialogContainer, _Component);
 
   /*
@@ -91,7 +89,7 @@ function (_Component) {
       return _this.state.dialogs.map(function (dialog, index) {
         var type = dialog.type,
             comp = dialog.comp;
-        return _react["default"].createElement(comp, {
+        return /*#__PURE__*/_react["default"].createElement(comp, {
           key: type,
           isShow: shows[type],
           data: data[type],
@@ -126,7 +124,7 @@ function (_Component) {
     var _this$state3 = this.state,
         isShow = _this$state3.isShow,
         currentDialog = _this$state3.currentDialog;
-    return _react["default"].createElement(_ModalDialogContainer["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_ModalDialogContainer["default"], {
       isShow: isShow,
       onClose: this._handlerClose.bind(null, currentDialog)
     }, this._renderDialogs());

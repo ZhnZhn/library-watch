@@ -1,12 +1,9 @@
-import React from 'react';
-import createReactClass from 'create-react-class'
-
+import React, { Component } from 'react';
 //import PropTypes from 'prop-types'
 
 import RowInputSelect from './RowInputSelect';
 
-const FragmentSelectGroupList = createReactClass({
-  displayName : 'FragmentSelectGroupList',
+class FragmentSelectGroupList extends Component {
   /*
   propTypes : {
     store : PropTypes.object,
@@ -16,13 +13,15 @@ const FragmentSelectGroupList = createReactClass({
   },
   */
 
-  getInitialState(){
+  constructor(props){
+    super(props)
     this.groupCaption = null;
     this.listCaption = null;
-    return {
-       listOptions : []
+
+    this.state = {
+      listOptions: []
     }
-  },
+  }
 
   UNSAFE_componentWillReceiveProps(nextProps){
     if (nextProps !== this.props){
@@ -39,7 +38,7 @@ const FragmentSelectGroupList = createReactClass({
         }
       }
     }
-  },
+  }
 
   _handlerSelectGroup(item){
     if (item && item.caption){
@@ -52,11 +51,11 @@ const FragmentSelectGroupList = createReactClass({
     } else {
       this.groupCaption = null;
     }
-  },
+  }
 
   _handlerSelectList(item){
-     this.listCaption = (item && item.caption) ? item.caption : null;
-  },
+     this.listCaption = (item && item.caption) || null
+  }
 
   render(){
     const {groupCaption, groupOptions, listCaption} = this.props
@@ -75,18 +74,18 @@ const FragmentSelectGroupList = createReactClass({
          />
       </div>
     );
-  },
+  }
 
   getValue(){
     return {
       captionGroup: this.groupCaption,
       captionList: this.listCaption
     };
-  },
+  }
   setValueNull(){
     this.groupCaption = null;
     this.listCaption = null;
   }
-});
+}
 
 export default FragmentSelectGroupList

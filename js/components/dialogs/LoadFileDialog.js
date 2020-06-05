@@ -41,9 +41,7 @@ var STYLE = {
   }
 };
 
-var LoadFileDialog =
-/*#__PURE__*/
-function (_Component) {
+var LoadFileDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(LoadFileDialog, _Component);
 
   /*
@@ -105,7 +103,7 @@ function (_Component) {
 
     _this.progressEvent = null;
     _this.file = null;
-    _this._commandButtons = [_react["default"].createElement(_FlatButton["default"], {
+    _this._commandButtons = [/*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
       key: "load",
       isPrimary: true,
       caption: "Load",
@@ -131,20 +129,20 @@ function (_Component) {
   _proto.render = function render() {
     var isShow = this.props.isShow,
         validationMessages = this.state.validationMessages;
-    return _react["default"].createElement(_ModalDialog["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_ModalDialog["default"], {
       style: STYLE.MODAL_DIALOG,
       caption: "Load Watch Items from File",
       isShow: isShow,
       commandButtons: this._commandButtons,
       onClose: this._handleClose
-    }, _react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, styles.rowDiv, {}, STYLE.ROW_INPUT_FILE)
-    }, _react["default"].createElement(_InputFileReader["default"], {
+    }, /*#__PURE__*/_react["default"].createElement("div", {
+      style: (0, _extends2["default"])({}, styles.rowDiv, STYLE.ROW_INPUT_FILE)
+    }, /*#__PURE__*/_react["default"].createElement(_InputFileReader["default"], {
       as: "text",
       onChange: this._handleChange
-    })), _react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, styles.rowDiv, {}, STYLE.ROW_VALIDATION)
-    }, _react["default"].createElement(_ValidationMessagesFragment["default"], {
+    })), /*#__PURE__*/_react["default"].createElement("div", {
+      style: (0, _extends2["default"])({}, styles.rowDiv, STYLE.ROW_VALIDATION)
+    }, /*#__PURE__*/_react["default"].createElement(_ValidationMessagesFragment["default"], {
       validationMessages: validationMessages
     })));
   };

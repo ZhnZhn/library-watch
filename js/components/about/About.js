@@ -53,9 +53,7 @@ var S = {
   }
 };
 
-var About =
-/*#__PURE__*/
-function (_Component) {
+var About = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(About, _Component);
 
   function About(props) {
@@ -110,103 +108,103 @@ function (_Component) {
       display: 'none'
     };
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       className: _classOpen,
-      style: (0, _extends2["default"])({}, _ContainerStyles["default"].aboutRootDiv, {}, _styleOpen)
-    }, _react["default"].createElement(_CaptionRow["default"], {
+      style: (0, _extends2["default"])({}, _ContainerStyles["default"].aboutRootDiv, _styleOpen)
+    }, /*#__PURE__*/_react["default"].createElement(_CaptionRow["default"], {
       caption: "About",
       onClose: this._handlerClose
-    }), _react["default"].createElement(_ScrollPane["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_ScrollPane["default"], {
       style: S.SCROLL_DIV
-    }, _react["default"].createElement("div", {
+    }, /*#__PURE__*/_react["default"].createElement("div", {
       style: S.ROOT_DIV
-    }, _react["default"].createElement("p", null, _react["default"].createElement(_Token["default"], {
+    }, /*#__PURE__*/_react["default"].createElement("p", null, /*#__PURE__*/_react["default"].createElement(_Token["default"], {
       color: "#80c040"
-    }, "Library Watch"), _react["default"].createElement(_Token["default"], {
+    }, "Library Watch"), /*#__PURE__*/_react["default"].createElement(_Token["default"], {
       color: "gray",
       isFirstBlank: true
-    }, "is a SPA RESTful client.")), _react["default"].createElement("p", {
+    }, "is a SPA RESTful client.")), /*#__PURE__*/_react["default"].createElement("p", {
       style: S.MARGIN_BOTTOM
-    }, "By means of web app Library-Watch, it is possible to view information about GitHub's repositories, NPM's packages, StackOverflows's questions."), _react["default"].createElement("p", {
+    }, "By means of web app Library-Watch, it is possible to view information about GitHub's repositories, NPM's packages, StackOverflows's questions."), /*#__PURE__*/_react["default"].createElement("p", {
       style: S.MARGIN_BOTTOM
-    }, _react["default"].createElement(_Token["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_Token["default"], {
       color: "gray"
-    }, "Information API providers:"), _react["default"].createElement(_LinkToken["default"], {
+    }, "Information API providers:"), /*#__PURE__*/_react["default"].createElement(_LinkToken["default"], {
       href: "https://www.github.com/",
       color: "#009ae5",
       title: "GitHub",
       caption: "GitHub"
-    }), _react["default"].createElement(_LinkToken["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_LinkToken["default"], {
       href: "https://www.npmjs.com/",
       color: "#273547",
       title: "NPM",
       caption: "NPM"
-    }), _react["default"].createElement(_LinkToken["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_LinkToken["default"], {
       href: "https://api-docs.npms.io/",
       color: "#273547",
       title: "NPMS.IO",
       caption: "NPMS.IO"
-    }), _react["default"].createElement(_LinkToken["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_LinkToken["default"], {
       href: "https://stackexchange.com/",
       color: "#3186C9",
       title: "Stack Exchange",
       caption: "Stack Exchange"
-    }), _react["default"].createElement(_LinkToken["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_LinkToken["default"], {
       href: "https://gs.statcounter.com/",
       color: "#009ae5",
       title: "StatCounter",
       caption: "StatCounter"
-    })), _react["default"].createElement("p", null, _react["default"].createElement(_Step["default"], {
+    })), /*#__PURE__*/_react["default"].createElement("p", null, /*#__PURE__*/_react["default"].createElement(_Step["default"], {
       step: "1"
-    }), _react["default"].createElement(_Token["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_Token["default"], {
       color: "black",
       isFirstBlank: true
-    }, "Please, choose an information Browser from the header bar.")), _react["default"].createElement("p", {
+    }, "Please, choose an information Browser from the header bar.")), /*#__PURE__*/_react["default"].createElement("p", {
       style: S.MARGIN_TOP
-    }, _react["default"].createElement(_Step["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_Step["default"], {
       step: "2"
-    }), _react["default"].createElement(_Token["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_Token["default"], {
       color: "black",
       isFirstBlank: true
-    }, "Next, choose an information menu item in a Browser.")), _react["default"].createElement("p", {
+    }, "Next, choose an information menu item in a Browser.")), /*#__PURE__*/_react["default"].createElement("p", {
       style: S.MARGIN_TOP
-    }, _react["default"].createElement(_Step["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_Step["default"], {
       step: "3"
-    }), _react["default"].createElement(_Token["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_Token["default"], {
       color: "black",
       isFirstBlank: true
-    }, "Enter repository or package name in a draggable Dialog.")), _react["default"].createElement("p", {
+    }, "Enter repository or package name in a draggable Dialog.")), /*#__PURE__*/_react["default"].createElement("p", {
       style: S.MARGIN_TOP
-    }, _react["default"].createElement(_Step["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_Step["default"], {
       step: "4"
-    }), _react["default"].createElement(_Token["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_Token["default"], {
       color: "black",
       isFirstBlank: true
-    }, "Click a button Load.")), _react["default"].createElement("p", {
+    }, "Click a button Load.")), /*#__PURE__*/_react["default"].createElement("p", {
       style: S.MARGIN_TOP
-    }, _react["default"].createElement(_Token["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_Token["default"], {
       color: "gray"
-    }, "The result will be shown in an Item component in a Container.")), _react["default"].createElement("p", {
-      style: (0, _extends2["default"])({}, S.MARGIN_BOTTOM, {}, S.MARGIN_TOP)
-    }, _react["default"].createElement(_Token["default"], {
+    }, "The result will be shown in an Item component in a Container.")), /*#__PURE__*/_react["default"].createElement("p", {
+      style: (0, _extends2["default"])({}, S.MARGIN_BOTTOM, S.MARGIN_TOP)
+    }, /*#__PURE__*/_react["default"].createElement(_Token["default"], {
       color: "gray"
-    }, "Also, it possible to add an item to Watch Browser and save to LocalStorage.")), _react["default"].createElement("p", {
+    }, "Also, it possible to add an item to Watch Browser and save to LocalStorage.")), /*#__PURE__*/_react["default"].createElement("p", {
       style: S.MARGIN_BOTTOM
-    }, "After clicking a button Show in a Dialog opens Container with Items or empty. After closing a Container all Items remains. In one-time max three Item Dialogs can be opened."), _react["default"].createElement("p", null, _react["default"].createElement(_Token["default"], {
+    }, "After clicking a button Show in a Dialog opens Container with Items or empty. After closing a Container all Items remains. In one-time max three Item Dialogs can be opened."), /*#__PURE__*/_react["default"].createElement("p", null, /*#__PURE__*/_react["default"].createElement(_Token["default"], {
       color: "gray"
-    }, "In that case of using"), _react["default"].createElement(_LinkToken["default"], {
+    }, "In that case of using"), /*#__PURE__*/_react["default"].createElement(_LinkToken["default"], {
       href: "https://developer.github.com/v3/#rate-limiting",
       color: "#009ae5",
       isFirstBlank: true,
       title: "GitHub API v3 Rate Limiting"
-    }, "GitHub"), _react["default"].createElement(_Token["default"], {
+    }, "GitHub"), /*#__PURE__*/_react["default"].createElement(_Token["default"], {
       color: "gray",
       isFirstBlank: true
-    }, "API provider, exists some restriction on frequency and amount queries (", _react["default"].createElement(_Token["default"], {
+    }, "API provider, exists some restriction on frequency and amount queries (", /*#__PURE__*/_react["default"].createElement(_Token["default"], {
       color: "#2f7ed8"
-    }, "60 calls per hour, 10 requests per minute for Search API"), _react["default"].createElement(_Token["default"], {
+    }, "60 calls per hour, 10 requests per minute for Search API"), /*#__PURE__*/_react["default"].createElement(_Token["default"], {
       color: "gray"
-    }, ")."))), _react["default"].createElement(_IconLogoBar["default"], null))));
+    }, ")."))), /*#__PURE__*/_react["default"].createElement(_IconLogoBar["default"], null))));
   };
 
   return About;

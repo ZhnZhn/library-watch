@@ -32,9 +32,9 @@ var S = {
 var ValidationMessage = function ValidationMessage(_ref) {
   var index = _ref.index,
       msg = _ref.msg;
-  return _react["default"].createElement("div", null, _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
     style: S.NUMBER_DIV
-  }, index + 1), _react["default"].createElement("span", {
+  }, index + 1), /*#__PURE__*/_react["default"].createElement("span", {
     style: S.MSG_SPAN
   }, msg));
 };
@@ -55,7 +55,7 @@ var ValidationMessages = function ValidationMessages(props) {
 
   var _renderValidationMessages = function _renderValidationMessages(msgs) {
     return msgs.map(function (msg, index) {
-      return _react["default"].createElement(ValidationMessage, {
+      return /*#__PURE__*/_react["default"].createElement(ValidationMessage, {
         key: index,
         msg: msg,
         index: index
@@ -63,7 +63,7 @@ var ValidationMessages = function ValidationMessages(props) {
     });
   };
 
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     style: S.ROOT_DIV
   }, _renderValidationMessages(validationMessages));
 };

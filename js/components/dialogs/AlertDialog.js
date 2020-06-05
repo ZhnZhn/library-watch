@@ -44,9 +44,7 @@ var _crItemId = function _crItemId(str) {
   return str ? str.substring(0, 20) + ELLIPSIS : '';
 };
 
-var AlertDialog =
-/*#__PURE__*/
-function (_Component) {
+var AlertDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(AlertDialog, _Component);
 
   function AlertDialog() {
@@ -90,20 +88,20 @@ function (_Component) {
         _itemId = _crItemId(alertItemId || itemId),
         _descr = alertDescr || descr || '';
 
-    return _react["default"].createElement(_ModalDialog["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_ModalDialog["default"], {
       caption: "Alert",
       isShow: isShow,
       onClose: onClose
-    }, _react["default"].createElement("div", {
+    }, /*#__PURE__*/_react["default"].createElement("div", {
       style: _DialogStyles["default"].rowDiv
-    }, _react["default"].createElement("span", {
+    }, /*#__PURE__*/_react["default"].createElement("span", {
       style: S.CAPTION
-    }, _react["default"].createElement("span", null, _caption), _react["default"].createElement("span", null, ":"), _react["default"].createElement("span", {
+    }, /*#__PURE__*/_react["default"].createElement("span", null, _caption), /*#__PURE__*/_react["default"].createElement("span", null, ":"), /*#__PURE__*/_react["default"].createElement("span", {
       style: S.ITEM_ID,
       title: _itemId
-    }, _itemId))), _react["default"].createElement("div", {
+    }, _itemId))), /*#__PURE__*/_react["default"].createElement("div", {
       style: _DialogStyles["default"].rowDiv
-    }, _react["default"].createElement("p", {
+    }, /*#__PURE__*/_react["default"].createElement("p", {
       style: S.DESCR
     }, _descr)));
   };

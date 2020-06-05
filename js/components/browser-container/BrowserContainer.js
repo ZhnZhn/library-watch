@@ -20,9 +20,7 @@ var _DialogContainer = _interopRequireDefault(require("../zhn-containers/DialogC
 //import PropTypes from 'props-type'
 var CL = "hrz-container";
 
-var BrowserContainer =
-/*#__PURE__*/
-function (_Component) {
+var BrowserContainer = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(BrowserContainer, _Component);
 
   function BrowserContainer() {
@@ -56,7 +54,7 @@ function (_Component) {
 
     _this._renderEl = function (elBrowsers) {
       return elBrowsers.map(function (el) {
-        return _react["default"].cloneElement(el);
+        return /*#__PURE__*/_react["default"].cloneElement(el);
       });
     };
 
@@ -84,7 +82,7 @@ function (_Component) {
         _this$state = this.state,
         isDoubleWatch = _this$state.isDoubleWatch,
         elBrowsers = _this$state.elBrowsers,
-        _doubleWatch = isDoubleWatch ? _react["default"].createElement(_WatchBrowser["default"], {
+        _doubleWatch = isDoubleWatch ? /*#__PURE__*/_react["default"].createElement(_WatchBrowser["default"], {
       isShow: true,
       isEditMode: true,
       isDoubleWatch: true,
@@ -95,15 +93,15 @@ function (_Component) {
       updateAction: updateWatchAction
     }) : null;
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       className: CL
-    }, _react["default"].createElement(_WatchBrowser["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_WatchBrowser["default"], {
       browserType: _Type.BrowserType.WATCH_LIST,
       caption: "Watch",
       store: store,
       showAction: showBrowserAction,
       updateAction: updateWatchAction
-    }), _doubleWatch, this._renderEl(elBrowsers), _react["default"].createElement(_DialogContainer["default"], {
+    }), _doubleWatch, this._renderEl(elBrowsers), /*#__PURE__*/_react["default"].createElement(_DialogContainer["default"], {
       maxDialog: 3,
       store: store,
       initAction: initDialogAction,

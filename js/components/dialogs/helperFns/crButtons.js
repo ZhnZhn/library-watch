@@ -11,7 +11,7 @@ var _FlatButton = _interopRequireDefault(require("../../zhn-m/FlatButton"));
 
 var crButtons = function crButtons(_ref) {
   var inst = _ref.inst;
-  return [_react["default"].createElement(_FlatButton["default"], {
+  return [/*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
     key: "load",
     isPrimary: true,
     caption: "Load",

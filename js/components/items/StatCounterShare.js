@@ -79,9 +79,7 @@ var S = {
   }
 };
 
-var NpmRecentDownloads =
-/*#__PURE__*/
-function (_Component) {
+var NpmRecentDownloads = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(NpmRecentDownloads, _Component);
 
   function NpmRecentDownloads(props) {
@@ -143,33 +141,33 @@ function (_Component) {
         _numSeries = _lineChartConfig.datasets.length,
         _heigh = 150 + Math.floor(_numSeries / 5) * 16;
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       style: S.ROOT
-    }, _react["default"].createElement(_ModalSlider["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_ModalSlider["default"], {
       isShow: isMore,
       className: _CL["default"].MENU_MORE,
       model: this._MORE,
       onClose: this._hToggleMore
-    }), _react["default"].createElement(_ItemCaption["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
       style: S.CAPTION,
       onClose: onCloseItem
-    }, _react["default"].createElement(_A["default"].SvgMore, {
+    }, /*#__PURE__*/_react["default"].createElement(_A["default"].SvgMore, {
       style: S.BT_MORE,
       onClick: this._hClickMore
-    }), _react["default"].createElement("button", {
+    }), /*#__PURE__*/_react["default"].createElement("button", {
       className: _CL["default"].NOT_SELECTED,
       title: caption,
       style: S.BT_CAPTION,
       onClick: this._handlerToggleOpen
-    }, _react["default"].createElement("span", null, caption), _react["default"].createElement("span", {
+    }, /*#__PURE__*/_react["default"].createElement("span", null, caption), /*#__PURE__*/_react["default"].createElement("span", {
       style: S.SPAN_START
-    }, fromDate), _react["default"].createElement("span", null, toDate))), _react["default"].createElement(_A["default"].ShowHide, {
+    }, fromDate), /*#__PURE__*/_react["default"].createElement("span", null, toDate))), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
       isShow: isShow,
       style: S.CHART_WRAPER
-    }, _react["default"].createElement(_LineChart["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_LineChart["default"], {
       data: _lineChartConfig,
       height: _heigh
-    }), _react["default"].createElement("a", {
+    }), /*#__PURE__*/_react["default"].createElement("a", {
       className: _CL["default"].SOURCE_LINK,
       style: S.SOURCE_LINK,
       href: sourceLink,

@@ -18,7 +18,7 @@ var FormattedInteger = function FormattedInteger(_ref) {
     value = ('' + value).replace(REPLACER_PATTERN, '$1,');
   }
 
-  return _react["default"].createElement("span", {
+  return /*#__PURE__*/_react["default"].createElement("span", {
     style: style
   }, value);
 };

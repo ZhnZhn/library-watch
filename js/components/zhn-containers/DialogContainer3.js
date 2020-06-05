@@ -39,9 +39,7 @@ var getObjToFirst = function getObjToFirst(arr, keyValue) {
   return [].concat(arr.slice(0, index), arr.slice(index + 1), [arr[index]]);
 };
 
-var DialogContainer3 =
-/*#__PURE__*/
-function (_Component) {
+var DialogContainer3 = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DialogContainer3, _Component);
 
   /*
@@ -118,7 +116,7 @@ function (_Component) {
           dialog = _this$state.dialog,
           compDialogs = _this$state.compDialogs;
       return compDialogs.map(function (compDialog, index) {
-        return _react["default"].cloneElement(compDialog, {
+        return /*#__PURE__*/_react["default"].cloneElement(compDialog, {
           key: compDialog.key,
           isShow: dialog[compDialog.key],
           onClose: _this._handleToggleDialog.bind((0, _assertThisInitialized2["default"])(_this), compDialog.key)
@@ -145,7 +143,7 @@ function (_Component) {
   };
 
   _proto.render = function render() {
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       style: STYLE.ROOT
     }, this._renderDialogs());
   };

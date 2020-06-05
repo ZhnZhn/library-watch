@@ -28,11 +28,11 @@ var _DialogContainer = _interopRequireDefault(require("./zhn-containers/DialogCo
 var _RouterModalDialog = _interopRequireDefault(require("./dialogs/RouterModalDialog"));
 
 var AppLibraryWatch = function AppLibraryWatch(props) {
-  return _react["default"].createElement("div", null, _react["default"].createElement(_HeaderBar["default"], {
+  return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_HeaderBar["default"], {
     store: _AppStore["default"]
-  }), _react["default"].createElement("div", {
+  }), /*#__PURE__*/_react["default"].createElement("div", {
     className: "component-container"
-  }, _react["default"].createElement(_BrowserContainer["default"], {
+  }, /*#__PURE__*/_react["default"].createElement(_BrowserContainer["default"], {
     store: _AppStore["default"],
     showBrowserAction: _BrowserActions.BrowserActionTypes.SHOW_BROWSER,
     initBrowserAction: _BrowserActions.BrowserActionTypes.INIT_BROWSER_DYNAMIC,
@@ -40,12 +40,12 @@ var AppLibraryWatch = function AppLibraryWatch(props) {
     toggleWatchDbBrowserAction: _BrowserActions.BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER,
     initDialogAction: _ComponentActions.ComponentActionTypes.INIT_AND_SHOW_DIALOG,
     showDialogAction: _ComponentActions.ComponentActionTypes.SHOW_DIALOG
-  }), _react["default"].createElement(_About["default"], {
+  }), /*#__PURE__*/_react["default"].createElement(_About["default"], {
     store: _AppStore["default"]
-  }), _react["default"].createElement(_ComponentHrzContainer["default"], {
+  }), /*#__PURE__*/_react["default"].createElement(_ComponentHrzContainer["default"], {
     store: _AppStore["default"],
     initShowAction: _ChartActions.ChartActionTypes.INIT_AND_SHOW_CHART
-  })), _react["default"].createElement(_DialogContainer["default"], {
+  })), /*#__PURE__*/_react["default"].createElement(_DialogContainer["default"], {
     store: _AppStore["default"],
     showAction: _ComponentActions.ComponentActionTypes.SHOW_MODAL_DIALOG,
     routerDialog: _RouterModalDialog["default"]

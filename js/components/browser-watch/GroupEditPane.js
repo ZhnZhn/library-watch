@@ -30,9 +30,7 @@ var S = {
   }
 };
 
-var GroupEditPane =
-/*#__PURE__*/
-function (_Component) {
+var GroupEditPane = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(GroupEditPane, _Component);
 
   /*
@@ -145,27 +143,27 @@ function (_Component) {
         _this$state = this.state,
         groupOptions = _this$state.groupOptions,
         validationMessages = _this$state.validationMessages;
-    return _react["default"].createElement("div", null, _react["default"].createElement(_RowInputSelect["default"], {
+    return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_RowInputSelect["default"], {
       caption: "Group From",
       options: groupOptions,
       onSelect: this._handlerSelectGroup
-    }), _react["default"].createElement(_RowInputText["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_RowInputText["default"], {
       ref: this._refInputText,
       caption: "Group To"
-    }), _react["default"].createElement(_ValidationMessagesFragment["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_ValidationMessagesFragment["default"], {
       validationMessages: validationMessages
-    }), _react["default"].createElement("div", {
+    }), /*#__PURE__*/_react["default"].createElement("div", {
       style: S.COMMAND_DIV
-    }, _react["default"].createElement(_FlatButton["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
       isPrimary: true,
       caption: "Rename",
       timeout: 0,
       onClick: this._handlerRename
-    }), _react["default"].createElement(_FlatButton["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
       caption: "Clear",
       timeout: 0,
       onClick: this._handlerClear
-    }), _react["default"].createElement(_FlatButton["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
       caption: "Close",
       timeout: 0,
       onClick: onClose

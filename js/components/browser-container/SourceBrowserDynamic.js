@@ -17,9 +17,7 @@ var _MenuBrowserDynamic = _interopRequireDefault(require("../zhn-moleculs/MenuBr
 
 var _BrowserActions = _interopRequireWildcard(require("../../flux/actions/BrowserActions"));
 
-var SourceBrowserDynamic =
-/*#__PURE__*/
-function (_Component) {
+var SourceBrowserDynamic = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(SourceBrowserDynamic, _Component);
 
   function SourceBrowserDynamic() {
@@ -33,7 +31,7 @@ function (_Component) {
   };
 
   _proto.render = function render() {
-    return _react["default"].createElement(_MenuBrowserDynamic["default"], (0, _extends2["default"])({
+    return /*#__PURE__*/_react["default"].createElement(_MenuBrowserDynamic["default"], (0, _extends2["default"])({
       caption: "Source Browser",
       showAction: _BrowserActions.BrowserActionTypes.SHOW_BROWSER_DYNAMIC,
       loadCompletedAction: _BrowserActions.BrowserActionTypes.LOAD_BROWSER_DYNAMIC_COMPLETED,

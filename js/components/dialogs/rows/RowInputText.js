@@ -45,9 +45,7 @@ var S = {
   }
 };
 
-var RowInputText =
-/*#__PURE__*/
-function (_Component) {
+var RowInputText = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(RowInputText, _Component);
 
   function RowInputText() {
@@ -76,13 +74,13 @@ function (_Component) {
         onEnter = _this$props.onEnter,
         _placeholder = isShowLabel ? placeholder : placeholder || caption;
 
-    return _react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, S.ROW_DIV, {}, S.ROOT)
-    }, _react["default"].createElement(_Caption["default"], {
+    return /*#__PURE__*/_react["default"].createElement("div", {
+      style: (0, _extends2["default"])({}, S.ROW_DIV, S.ROOT)
+    }, /*#__PURE__*/_react["default"].createElement(_Caption["default"], {
       is: isShowLabel,
-      style: (0, _extends2["default"])({}, S.LABEL_SPAN, {}, S.CAPTION),
+      style: (0, _extends2["default"])({}, S.LABEL_SPAN, S.CAPTION),
       caption: caption
-    }), _react["default"].createElement(_InputText["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_InputText["default"], {
       ref: this._refInput,
       style: S.INPUT_TEXT,
       placeholder: _placeholder,

@@ -24,15 +24,15 @@ var ContainerCaption = function ContainerCaption(_ref) {
       children = _ref.children,
       onMore = _ref.onMore,
       onClose = _ref.onClose;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: _CaptionRow["default"].CL_CAPTION,
     style: style
-  }, _isFn(onMore) && _react["default"].createElement(_SvgMore["default"], {
+  }, _isFn(onMore) && /*#__PURE__*/_react["default"].createElement(_SvgMore["default"], {
     onClick: onMore
-  }), _react["default"].createElement("span", {
+  }), /*#__PURE__*/_react["default"].createElement("span", {
     className: _CaptionRow["default"].CL_NOT_SELECTED,
     style: _CaptionRow["default"].SPAN
-  }, caption), children, _react["default"].createElement(_SvgClose["default"], {
+  }, caption), children, /*#__PURE__*/_react["default"].createElement(_SvgClose["default"], {
     style: _CaptionRow["default"].SVG_CLOSE,
     onClose: onClose
   }));

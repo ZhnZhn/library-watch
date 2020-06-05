@@ -1,17 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/flux/actions/LoadingProgressActions.js"
- ],
- "file": "../../../src/flux/actions/LoadingProgressActions.js",
- "names": [
-  "LoadingProgressActionTypes",
-  "LOADING",
-  "LOADING_COMPLETE",
-  "LOADING_FAILED",
-  "LoadingProgressActions",
-  "Reflux",
-  "createActions"
- ],
- "mappings": ";;;;;;;AAAA;;;;AAEO,IAAMA,0BAA0B,GAAG;AACxCC,EAAAA,OAAO,EAAG,iBAD8B;AAExCC,EAAAA,gBAAgB,EAAG,yBAFqB;AAGxCC,EAAAA,cAAc,EAAG;AAHuB,CAAnC;;;AAMP,IAAMC,sBAAsB,GAAGC,uBAAOC,aAAP,oDAC5BN,0BAA0B,CAACC,OADC,IACU,EADV,wBAE5BD,0BAA0B,CAACE,gBAFC,IAEmB,EAFnB,wBAG5BF,0BAA0B,CAACG,cAHC,IAGiB,EAHjB,yBAA/B;;eAMeC,sB"
-}
+{"version":3,"sources":["../../../src/flux/actions/LoadingProgressActions.js"],"names":["LoadingProgressActionTypes","LOADING","LOADING_COMPLETE","LOADING_FAILED","LoadingProgressActions","Reflux","createActions"],"mappings":";;;;;;;AAAA;;;;AAEO,IAAMA,0BAA0B,GAAG;AACxCC,EAAAA,OAAO,EAAG,iBAD8B;AAExCC,EAAAA,gBAAgB,EAAG,yBAFqB;AAGxCC,EAAAA,cAAc,EAAG;AAHuB,CAAnC;;;AAMP,IAAMC,sBAAsB,GAAGC,uBAAOC,aAAP,oDAC5BN,0BAA0B,CAACC,OADC,IACU,EADV,wBAE5BD,0BAA0B,CAACE,gBAFC,IAEmB,EAFnB,wBAG5BF,0BAA0B,CAACG,cAHC,IAGiB,EAHjB,yBAA/B;;eAMeC,sB","sourcesContent":["import Reflux from 'reflux-core';\r\n\r\nexport const LoadingProgressActionTypes = {\r\n  LOADING : 'loadingProgress',\r\n  LOADING_COMPLETE : 'loadingProgressComplete',\r\n  LOADING_FAILED : 'loadingProgressFailed'\r\n}\r\n\r\nconst LoadingProgressActions = Reflux.createActions({\r\n  [LoadingProgressActionTypes.LOADING] : {},\r\n  [LoadingProgressActionTypes.LOADING_COMPLETE] : {},\r\n  [LoadingProgressActionTypes.LOADING_FAILED] : {}\r\n})\r\n\r\nexport default LoadingProgressActions\r\n"],"file":"LoadingProgressActions.js"}

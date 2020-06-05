@@ -22,9 +22,7 @@ var ERROR_FORMAT = "YYYY-MM-DD format must be",
     TO_DATE = "To Date",
     ERROR_FROM_NEAR_TO = "From Date is near that To Date";
 
-var Dates =
-/*#__PURE__*/
-function (_Component) {
+var Dates = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(Dates, _Component);
 
   function Dates() {
@@ -55,24 +53,24 @@ function (_Component) {
         initFromDate = _this$props.initFromDate,
         initToDate = _this$props.initToDate,
         onTestDate = _this$props.onTestDate;
-    return _react["default"].createElement("div", null, _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
       style: _DialogStyles["default"].rowDiv
-    }, _react["default"].createElement(_Caption["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_Caption["default"], {
       is: isShowLabels,
       style: _DialogStyles["default"].labelSpan,
       caption: "From Date"
-    }), _react["default"].createElement(_InputDate["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_InputDate["default"], {
       ref: this._refFromDate,
       initValue: initFromDate,
       errorMsg: ERROR_FORMAT,
       onTest: onTestDate
-    })), _react["default"].createElement("div", {
+    })), /*#__PURE__*/_react["default"].createElement("div", {
       style: _DialogStyles["default"].rowDiv
-    }, _react["default"].createElement(_Caption["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_Caption["default"], {
       is: isShowLabels,
       style: _DialogStyles["default"].labelSpan,
       caption: "To Date"
-    }), _react["default"].createElement(_InputDate["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_InputDate["default"], {
       ref: this._refToDate,
       initValue: initToDate,
       errorMsg: ERROR_FORMAT,

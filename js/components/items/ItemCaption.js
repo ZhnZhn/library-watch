@@ -18,10 +18,10 @@ var ItemCaption = function ItemCaption(_ref) {
   var style = _ref.style,
       children = _ref.children,
       onClose = _ref.onClose;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: CL.ROOT,
     style: style
-  }, children, _react["default"].createElement(_SvgClose["default"], {
+  }, children, /*#__PURE__*/_react["default"].createElement(_SvgClose["default"], {
     className: CL.BT_CLOSE,
     onClose: onClose
   }));

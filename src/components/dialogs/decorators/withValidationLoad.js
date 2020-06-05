@@ -20,8 +20,10 @@ const _handleCloseWithValidation = function(fnCreateMessages, onClose = this.pro
 }
 
 const withValidationLoad = (target) => {
-  target.prototype._handleLoadWithValidation = _handleLoadWithValidation
-  target.prototype._handleCloseWithValidation = _handleCloseWithValidation
+  Object.assign(target.prototype, {
+    _handleLoadWithValidation,
+    _handleCloseWithValidation
+  })
 }
 
 export default withValidationLoad

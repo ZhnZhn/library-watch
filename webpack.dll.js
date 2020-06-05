@@ -9,11 +9,11 @@ module.exports = {
   mode: "production",
   entry: {
      lib: [
-            "react", "react-dom", "create-react-class",            
+            "react", "react-dom", 
             "reflux-core", 
             "chart.js", "interactjs", "timeago.js", 
             "localforage", "browser-filesaver",
-            "lodash.merge", "classnames",
+            "lodash.merge", "clsx",
             "papaparse",
             "raven-js" 
           ]

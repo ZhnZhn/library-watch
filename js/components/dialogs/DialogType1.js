@@ -25,9 +25,7 @@ var _dec, _class, _temp;
 
 var crMenuMore = _helperFns["default"].crMenuMore,
     crButtons = _helperFns["default"].crButtons;
-var DialogType1 = (_dec = _Decorators["default"].dialog, _dec(_class = (_temp =
-/*#__PURE__*/
-function (_Component) {
+var DialogType1 = (_dec = _Decorators["default"].dialog, _dec(_class = (_temp = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DialogType1, _Component);
 
   /*
@@ -122,23 +120,23 @@ function (_Component) {
         isToolbar = _this$state.isToolbar,
         isShowLabels = _this$state.isShowLabels,
         validationMessages = _this$state.validationMessages;
-    return _react["default"].createElement(_DialogCell["default"].DraggableDialog, {
+    return /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].DraggableDialog, {
       isShow: isShow,
       caption: caption,
       menuModel: this._menuMore,
       commandButtons: this._commandButtons,
       onShowChart: onShow,
       onClose: this._handleClose
-    }, _react["default"].createElement(_DialogCell["default"].Toolbar, {
+    }, /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].Toolbar, {
       isShow: isToolbar,
       buttons: this.toolbarButtons
-    }), _react["default"].createElement(_DialogCell["default"].RowInputText, {
+    }), /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].RowInputText, {
       ref: this._refInputOne,
       isShowLabel: isShowLabels,
       caption: oneTitle,
       placeholder: onePlaceholder,
       onEnter: this._handleLoad
-    }), _react["default"].createElement(_DialogCell["default"].ValidationMessages, {
+    }), /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].ValidationMessages, {
       validationMessages: validationMessages
     }));
   };

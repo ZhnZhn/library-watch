@@ -2,24 +2,18 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
-var _createReactClass = _interopRequireDefault(require("create-react-class"));
+var _clsx2 = _interopRequireDefault(require("clsx"));
 
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _WithDnDStyle = _interopRequireDefault(require("./with/WithDnDStyle"));
-
-var _createHandlerDnDGroup = _interopRequireDefault(require("./with/createHandlerDnDGroup"));
-
-var _createHandlerDnDList = _interopRequireDefault(require("./with/createHandlerDnDList"));
-
-var _createHandlerDnDItem = _interopRequireDefault(require("./with/createHandlerDnDItem"));
+var _withWatchDnD = _interopRequireDefault(require("./decorators/withWatchDnD"));
 
 var _Type = require("../../constants/Type");
 
@@ -29,27 +23,28 @@ var _BrowserActions = _interopRequireDefault(require("../../flux/actions/Browser
 
 var _WatchActions = _interopRequireDefault(require("../../flux/actions/WatchActions"));
 
-var _Browser = _interopRequireDefault(require("../zhn-atoms/Browser"));
-
-var _CaptionRow = _interopRequireDefault(require("../zhn-atoms/CaptionRow"));
-
-var _ButtonSave = _interopRequireDefault(require("../zhn-moleculs/ButtonSave"));
-
-var _ButtonCircle = _interopRequireDefault(require("../zhn-atoms/ButtonCircle"));
-
-var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
+var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _WrapperInputSearch = _interopRequireDefault(require("./WrapperInputSearch"));
 
-var _ScrollPane = _interopRequireDefault(require("../zhn-atoms/ScrollPane"));
-
-var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose2"));
-
 var _WatchItem = _interopRequireDefault(require("./WatchItem"));
 
+var _class, _temp;
+
+var Browser = _Comp["default"].Browser,
+    CaptionRow = _Comp["default"].CaptionRow,
+    ButtonCircle = _Comp["default"].ButtonCircle,
+    ButtonSave = _Comp["default"].ButtonSave,
+    ShowHide = _Comp["default"].ShowHide,
+    ScrollPane = _Comp["default"].ScrollPane,
+    OpenClose2 = _Comp["default"].OpenClose2;
+var C_GROUP_OPEN = '#1b2836';
+var C_LIST_OPEN = '#80c040';
 var DRAG = {
   GROUP: 'GROUP',
+  C_GROUP_ENTER: C_GROUP_OPEN,
   LIST: 'LIST',
+  C_LIST_ENTER: C_LIST_OPEN,
   ITEM: 'ITEM'
 };
 var CL = {
@@ -107,241 +102,267 @@ var styles = {
     marginRight: 10
   }
 };
-var WatchBrowser = (0, _createReactClass["default"])((0, _extends2["default"])({
-  displayName: "WatchBrowser"
-}, _WithDnDStyle["default"], {}, (0, _createHandlerDnDGroup["default"])(DRAG, _WatchActions["default"]), {}, (0, _createHandlerDnDList["default"])(DRAG, _WatchActions["default"]), {}, (0, _createHandlerDnDItem["default"])(DRAG, _WatchActions["default"]), {
-  getInitialState: function getInitialState() {
-    var _this$props = this.props,
-        _this$props$isShow = _this$props.isShow,
-        isShow = _this$props$isShow === void 0 ? false : _this$props$isShow,
-        _this$props$isEditMod = _this$props.isEditMode,
-        isEditMode = _this$props$isEditMod === void 0 ? false : _this$props$isEditMod,
-        store = _this$props.store;
-    this.isShouldUpdateFind = false;
-    return {
+
+var _calcScrollClass = function _calcScrollClass(isShowFind, isModeEdit) {
+  var _clsx;
+
+  return (0, _clsx2["default"])((_clsx = {}, _clsx[CL.BROWSER_WATCH] = !(isShowFind && isModeEdit), _clsx[CL.BROWSER_WATCH__30] = isShowFind && !isModeEdit || !isShowFind && isModeEdit, _clsx[CL.BROWSER_WATCH__60] = isShowFind && isModeEdit, _clsx));
+};
+
+var WatchBrowser = (0, _withWatchDnD["default"])(_class = (_temp = /*#__PURE__*/function (_Component) {
+  (0, _inheritsLoose2["default"])(WatchBrowser, _Component);
+
+  function WatchBrowser(props) {
+    var _this;
+
+    _this = _Component.call(this, props) || this;
+
+    _this._onStore = function (actionType, data) {
+      var _this$props = _this.props,
+          browserType = _this$props.browserType,
+          showAction = _this$props.showAction,
+          updateAction = _this$props.updateAction;
+
+      if (actionType === showAction && data === browserType) {
+        _this._handlerShow();
+      } else if (actionType === updateAction) {
+        var isModeEdit = _this.state.isModeEdit;
+        _this.isShouldUpdateFind = true;
+
+        _this.setState({
+          watchList: data,
+          isShowFind: false,
+          scrollClass: _calcScrollClass(false, isModeEdit)
+        });
+      }
+    };
+
+    _this._handlerHide = function () {
+      if (!_this.props.isDoubleWatch) {
+        _this.setState({
+          isShow: false
+        });
+      } else {
+        _BrowserActions["default"].toggleWatchDbBrowser();
+      }
+    };
+
+    _this._handlerShow = function () {
+      if (!_this.props.isDoubleWatch) {
+        _this.setState({
+          isShow: true
+        });
+      }
+    };
+
+    _this._handlerToggleEditMode = function () {
+      var _this$state = _this.state,
+          isShowFind = _this$state.isShowFind,
+          isModeEdit = _this$state.isModeEdit,
+          _isModeEdit = !isModeEdit;
+
+      _this.setState({
+        isModeEdit: _isModeEdit,
+        scrollClass: _calcScrollClass(isShowFind, _isModeEdit)
+      });
+    };
+
+    _this._handlerToggleFindInput = function () {
+      var _this$state2 = _this.state,
+          isShowFind = _this$state2.isShowFind,
+          isModeEdit = _this$state2.isModeEdit,
+          _isShowFind = !isShowFind;
+
+      _this.setState({
+        isShowFind: _isShowFind,
+        scrollClass: _calcScrollClass(_isShowFind, isModeEdit)
+      });
+    };
+
+    _this._renderWatchList = function (watchList) {
+      var isModeEdit = _this.state.isModeEdit;
+      return watchList.groups.map(function (group, index) {
+        var caption = group.caption,
+            lists = group.lists;
+        return /*#__PURE__*/_react["default"].createElement(OpenClose2, {
+          key: caption,
+          style: styles.groupDiv,
+          caption: caption,
+          isClose: true,
+          isDraggable: isModeEdit,
+          option: {
+            caption: caption
+          },
+          onDragStart: _this._hDragStartGroup,
+          onDragEnter: _this._hDragEnterGroup,
+          onDragOver: _this._hDragOverGroup,
+          onDragLeave: _this._hDragLeaveGroup,
+          onDrop: _this._hDropGroup
+        }, lists && _this._renderLists(lists, caption));
+      });
+    };
+
+    _this._renderLists = function (lists, groupCaption) {
+      var isModeEdit = _this.state.isModeEdit;
+      return lists.map(function (list) {
+        var caption = list.caption,
+            items = list.items;
+        return /*#__PURE__*/_react["default"].createElement(OpenClose2, {
+          key: caption,
+          fillOpen: "#80c040",
+          style: styles.listDiv,
+          styleNotSelected: styles.itemNotSelected,
+          caption: caption,
+          isClose: true,
+          isDraggable: isModeEdit,
+          option: {
+            groupCaption: groupCaption,
+            caption: caption
+          },
+          onDragStart: _this._hDragStartList,
+          onDragEnter: _this._hDragEnterList,
+          onDragOver: _this._hDragOverList,
+          onDragLeave: _this._hDragLeaveList,
+          onDrop: _this._hDropList
+        }, items && _this._renderItems(items, groupCaption, caption));
+      });
+    };
+
+    _this._renderItems = function (items, groupCaption, listCaption) {
+      var isModeEdit = _this.state.isModeEdit;
+      return items.map(function (item, index) {
+        var caption = item.caption,
+            _className = index % 2 ? 'row__topic__even not-selected' : 'row__topic__odd not-selected';
+
+        return /*#__PURE__*/_react["default"].createElement(_WatchItem["default"], {
+          key: caption,
+          className: _className,
+          isModeEdit: isModeEdit,
+          item: item,
+          option: {
+            groupCaption: groupCaption,
+            listCaption: listCaption,
+            caption: caption
+          },
+          onClick: _this._handlerClickItem,
+          onClose: _this._handlerRemoveItem,
+          onDragStart: _this._hDragStartItem,
+          onDragOver: _this._hDragOverItem,
+          onDragEnter: _this._hDragEnterItem,
+          onDragLeave: _this._hDragLeaveItem,
+          onDrop: _this._hDropItem
+        });
+      });
+    };
+
+    _this._renderEditBar = function (isModeEdit) {
+      if (isModeEdit) {
+        return /*#__PURE__*/_react["default"].createElement("div", {
+          style: styles.editBarDiv
+        }, /*#__PURE__*/_react["default"].createElement(ButtonCircle, {
+          caption: "GROUP",
+          title: "Edit Group",
+          className: CL.BT_BAR,
+          isWithoutDefault: true,
+          onClick: _this._handlerEditGroup
+        }), /*#__PURE__*/_react["default"].createElement(ButtonCircle, {
+          caption: "LIST",
+          title: "Edit Group List",
+          className: CL.BT_BAR,
+          isWithoutDefault: true,
+          style: styles.btEditBarList,
+          onClick: _this._handlerEditList
+        }), /*#__PURE__*/_react["default"].createElement(ButtonCircle, {
+          caption: "DB",
+          title: "Double Watch Browser",
+          className: CL.BT_BAR,
+          isWithoutDefault: true,
+          style: styles.btEditBarList,
+          onClick: _this._handlerDouble
+        }));
+      } else {
+        return null;
+      }
+    };
+
+    _this._renderFindInput = function (watchList) {
+      var isShowFind = _this.state.isShowFind;
+
+      var _isShouldUpdate = isShowFind && _this.isShouldUpdateFind ? function () {
+        _this.isShouldUpdateFind = false;
+        return true;
+      } : false;
+
+      return /*#__PURE__*/_react["default"].createElement(ShowHide, {
+        isShow: isShowFind
+      }, /*#__PURE__*/_react["default"].createElement(_WrapperInputSearch["default"], {
+        style: styles.wrapperSearch,
+        data: watchList,
+        isShouldUpdate: _isShouldUpdate,
+        onSelect: _this._handlerClickItem
+      }));
+    };
+
+    var _props$isShow = props.isShow,
+        isShow = _props$isShow === void 0 ? false : _props$isShow,
+        _props$isEditMode = props.isEditMode,
+        isEditMode = _props$isEditMode === void 0 ? false : _props$isEditMode,
+        store = props.store;
+
+    _this._bindDnDGroup(DRAG, _WatchActions["default"]);
+
+    _this._bindDnDList(DRAG, _WatchActions["default"]);
+
+    _this._bindDnDItem(DRAG, _WatchActions["default"]);
+
+    _this.isShouldUpdateFind = false;
+    _this.state = {
       isShow: isShow,
       isModeEdit: isEditMode,
       isShowFind: false,
-      scrollClass: this._calcScrollClass(false, isEditMode),
+      scrollClass: _calcScrollClass(false, isEditMode),
       watchList: store.getWatchList()
     };
-  },
-  _calcScrollClass: function _calcScrollClass(isShowFind, isModeEdit) {
-    var _classNames;
+    return _this;
+  }
 
-    return (0, _classnames["default"])((_classNames = {}, _classNames[CL.BROWSER_WATCH] = !(isShowFind && isModeEdit), _classNames[CL.BROWSER_WATCH__30] = isShowFind && !isModeEdit || !isShowFind && isModeEdit, _classNames[CL.BROWSER_WATCH__60] = isShowFind && isModeEdit, _classNames));
-  },
-  componentDidMount: function componentDidMount() {
+  var _proto = WatchBrowser.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
     this.unsubscribe = this.props.store.listen(this._onStore);
-  },
-  componentWillUnmount: function componentWillUnmount() {
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
     this.unsubscribe();
-  },
-  _onStore: function _onStore(actionType, data) {
-    var _this$props2 = this.props,
-        browserType = _this$props2.browserType,
-        showAction = _this$props2.showAction,
-        updateAction = _this$props2.updateAction;
+  };
 
-    if (actionType === showAction && data === browserType) {
-      this._handlerShow();
-    } else if (actionType === updateAction) {
-      var isModeEdit = this.state.isModeEdit;
-      this.isShouldUpdateFind = true;
-      this.setState({
-        watchList: data,
-        isShowFind: false,
-        scrollClass: this._calcScrollClass(false, isModeEdit)
-      });
-    }
-  },
-  _handlerHide: function _handlerHide() {
-    if (!this.props.isDoubleWatch) {
-      this.setState({
-        isShow: false
-      });
-    } else {
-      _BrowserActions["default"].toggleWatchDbBrowser();
-    }
-  },
-  _handlerShow: function _handlerShow() {
-    if (!this.props.isDoubleWatch) {
-      this.setState({
-        isShow: true
-      });
-    }
-  },
-  _handlerToggleEditMode: function _handlerToggleEditMode() {
-    var _this$state = this.state,
-        isShowFind = _this$state.isShowFind,
-        isModeEdit = _this$state.isModeEdit,
-        _isModeEdit = !isModeEdit;
-
-    this.setState({
-      isModeEdit: _isModeEdit,
-      scrollClass: this._calcScrollClass(isShowFind, _isModeEdit)
-    });
-  },
-  _handlerToggleFindInput: function _handlerToggleFindInput() {
-    var _this$state2 = this.state,
-        isShowFind = _this$state2.isShowFind,
-        isModeEdit = _this$state2.isModeEdit,
-        _isShowFind = !isShowFind;
-
-    this.setState({
-      isShowFind: _isShowFind,
-      scrollClass: this._calcScrollClass(_isShowFind, isModeEdit)
-    });
-  },
-  _handlerEditGroup: function _handlerEditGroup() {
+  _proto._handlerEditGroup = function _handlerEditGroup() {
     _ComponentActions["default"].showModalDialog(_Type.ModalDialog.EDIT_WATCH_GROUP);
-  },
-  _handlerEditList: function _handlerEditList() {
+  };
+
+  _proto._handlerEditList = function _handlerEditList() {
     _ComponentActions["default"].showModalDialog(_Type.ModalDialog.EDIT_WATCH_LIST);
-  },
-  _handlerDouble: function _handlerDouble() {
+  };
+
+  _proto._handlerDouble = function _handlerDouble() {
     _BrowserActions["default"].toggleWatchDbBrowser();
-  },
-  _renderWatchList: function _renderWatchList(watchList) {
-    var _this = this;
+  };
 
-    var isModeEdit = this.state.isModeEdit;
-    return watchList.groups.map(function (group, index) {
-      var caption = group.caption,
-          lists = group.lists;
-      return _react["default"].createElement(_OpenClose["default"], {
-        key: caption,
-        style: styles.groupDiv,
-        caption: caption,
-        isClose: true,
-        isDraggable: isModeEdit,
-        option: {
-          caption: caption
-        },
-        onDragStart: _this._handlerDragStartGroup,
-        onDragEnter: _this._handlerDragEnterGroup,
-        onDragOver: _this._handlerDragOverGroup,
-        onDragLeave: _this._handlerDragLeaveGroup,
-        onDrop: _this._handlerDropGroup
-      }, lists && _this._renderLists(lists, caption));
-    });
-  },
-  _renderLists: function _renderLists(lists, groupCaption) {
-    var _this2 = this;
-
-    var isModeEdit = this.state.isModeEdit;
-    return lists.map(function (list) {
-      var caption = list.caption,
-          items = list.items;
-      return _react["default"].createElement(_OpenClose["default"], {
-        key: caption,
-        fillOpen: '#80c040',
-        style: styles.listDiv,
-        styleNotSelected: styles.itemNotSelected,
-        caption: caption,
-        isClose: true,
-        isDraggable: isModeEdit,
-        option: {
-          groupCaption: groupCaption,
-          caption: caption
-        },
-        onDragStart: _this2._handlerDragStartList,
-        onDragEnter: _this2._handlerDragEnterList,
-        onDragOver: _this2._handlerDragOverList,
-        onDragLeave: _this2._handlerDragLeaveList,
-        onDrop: _this2._handlerDropList
-      }, items && _this2._renderItems(items, groupCaption, caption));
-    });
-  },
-  _handlerClickItem: function _handlerClickItem(item) {
+  _proto._handlerClickItem = function _handlerClickItem(item) {
     _ComponentActions["default"].showModalDialog(_Type.ModalDialog.LOAD_WATCH_ITEM, item);
-  },
-  _handlerRemoveItem: function _handlerRemoveItem(option, event) {
+  };
+
+  _proto._handlerRemoveItem = function _handlerRemoveItem(option, event) {
     event.stopPropagation();
 
     _WatchActions["default"].removeItem(option);
-  },
-  _renderItems: function _renderItems(items, groupCaption, listCaption) {
-    var _this3 = this;
+  };
 
-    var isModeEdit = this.state.isModeEdit;
-    return items.map(function (item, index) {
-      var caption = item.caption,
-          _className = index % 2 ? 'row__topic__even not-selected' : 'row__topic__odd not-selected';
-
-      return _react["default"].createElement(_WatchItem["default"], {
-        key: caption,
-        className: _className,
-        isModeEdit: isModeEdit,
-        item: item,
-        option: {
-          groupCaption: groupCaption,
-          listCaption: listCaption,
-          caption: caption
-        },
-        onClick: _this3._handlerClickItem,
-        onClose: _this3._handlerRemoveItem,
-        onDragStart: _this3._handlerDragStartItem,
-        onDragOver: _this3._handlerDragOverItem,
-        onDragEnter: _this3._handlerDragEnterItem,
-        onDragLeave: _this3._handlerDragLeaveItem,
-        onDrop: _this3._handlerDropItem
-      });
-    });
-  },
-  _renderEditBar: function _renderEditBar(isModeEdit) {
-    if (isModeEdit) {
-      return _react["default"].createElement("div", {
-        style: styles.editBarDiv
-      }, _react["default"].createElement(_ButtonCircle["default"], {
-        caption: "GROUP",
-        title: "Edit Group",
-        className: CL.BT_BAR,
-        isWithoutDefault: true,
-        onClick: this._handlerEditGroup
-      }), _react["default"].createElement(_ButtonCircle["default"], {
-        caption: "LIST",
-        title: "Edit Group List",
-        className: CL.BT_BAR,
-        isWithoutDefault: true,
-        style: styles.btEditBarList,
-        onClick: this._handlerEditList
-      }), _react["default"].createElement(_ButtonCircle["default"], {
-        caption: "DB",
-        title: "Double Watch Browser",
-        className: CL.BT_BAR,
-        isWithoutDefault: true,
-        style: styles.btEditBarList,
-        onClick: this._handlerDouble
-      }));
-    } else {
-      return null;
-    }
-  },
-  _renderFindInput: function _renderFindInput(watchList) {
-    var _this4 = this;
-
-    var isShowFind = this.state.isShowFind;
-
-    var _isShouldUpdate = isShowFind && this.isShouldUpdateFind ? function () {
-      _this4.isShouldUpdateFind = false;
-      return true;
-    } : false;
-
-    return _react["default"].createElement(_ShowHide["default"], {
-      isShow: isShowFind
-    }, _react["default"].createElement(_WrapperInputSearch["default"], {
-      style: styles.wrapperSearch,
-      data: watchList,
-      isShouldUpdate: _isShouldUpdate,
-      onSelect: this._handlerClickItem
-    }));
-  },
-  render: function render() {
-    var _this$props3 = this.props,
-        caption = _this$props3.caption,
-        isDoubleWatch = _this$props3.isDoubleWatch,
-        store = _this$props3.store,
+  _proto.render = function render() {
+    var _this$props2 = this.props,
+        caption = _this$props2.caption,
+        isDoubleWatch = _this$props2.isDoubleWatch,
+        store = _this$props2.store,
         _this$state3 = this.state,
         isShow = _this$state3.isShow,
         isModeEdit = _this$state3.isModeEdit,
@@ -351,35 +372,35 @@ var WatchBrowser = (0, _createReactClass["default"])((0, _extends2["default"])({
         _captionEV = isModeEdit ? 'V' : 'E',
         _titleEV = isModeEdit ? "Toggle to View Mode" : "Toggle to Edit Mode";
 
-    return _react["default"].createElement(_Browser["default"], {
+    return /*#__PURE__*/_react["default"].createElement(Browser, {
       isShow: isShow,
       style: styles.browser
-    }, _react["default"].createElement(_CaptionRow["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(CaptionRow, {
       styleRoot: _styleCaption,
       caption: caption,
       onClose: this._handlerHide
-    }, _react["default"].createElement(_ButtonSave["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(ButtonSave, {
       className: CL.BT_CAPTION,
       store: store
-    }), _react["default"].createElement(_ButtonCircle["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(ButtonCircle, {
       className: CL.BT_CAPTION,
       caption: _captionEV,
       title: _titleEV,
       isWithoutDefault: true,
       onClick: this._handlerToggleEditMode
-    }), _react["default"].createElement(_ButtonCircle["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(ButtonCircle, {
       className: CL.BT_CAPTION,
       caption: "F",
       title: "Show/Hide : Find Item Input",
       isWithoutDefault: true,
       onClick: this._handlerToggleFindInput
-    }), !isDoubleWatch && _react["default"].createElement(_ButtonCircle["default"], {
+    }), !isDoubleWatch && /*#__PURE__*/_react["default"].createElement(ButtonCircle, {
       className: CL.BT_CAPTION,
       caption: "B",
       title: "BackUp Watch Items to JSON File",
       isWithoutDefault: true,
       onClick: _WatchActions["default"].backupToJson
-    }), !isDoubleWatch && _react["default"].createElement(_ButtonCircle["default"], {
+    }), !isDoubleWatch && /*#__PURE__*/_react["default"].createElement(ButtonCircle, {
       className: CL.BT_CAPTION,
       caption: "L",
       title: "Load Watch Items from JSON File",
@@ -387,11 +408,14 @@ var WatchBrowser = (0, _createReactClass["default"])((0, _extends2["default"])({
       onClick: _ComponentActions["default"].showModalDialog.bind(null, _Type.ModalDialog.LOAD_FILE, {
         onLoad: _WatchActions["default"].loadFromJson
       })
-    })), this._renderEditBar(isModeEdit), watchList && this._renderFindInput(watchList), _react["default"].createElement(_ScrollPane["default"], {
+    })), this._renderEditBar(isModeEdit), watchList && this._renderFindInput(watchList), /*#__PURE__*/_react["default"].createElement(ScrollPane, {
       className: scrollClass
     }, watchList && this._renderWatchList(watchList)));
-  }
-}));
+  };
+
+  return WatchBrowser;
+}(_react.Component), _temp)) || _class;
+
 var _default = WatchBrowser;
 exports["default"] = _default;
 //# sourceMappingURL=WatchBrowser.js.map

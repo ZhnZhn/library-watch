@@ -28,11 +28,11 @@ var S = {
 var DialogCaption = function DialogCaption(_ref) {
   var caption = _ref.caption,
       onClose = _ref.onClose;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     style: S.ROOT
-  }, _react["default"].createElement("span", {
+  }, /*#__PURE__*/_react["default"].createElement("span", {
     className: CL
-  }, caption), _react["default"].createElement(_SvgClose["default"], {
+  }, caption), /*#__PURE__*/_react["default"].createElement(_SvgClose["default"], {
     style: S.SVG,
     onClose: onClose
   }));

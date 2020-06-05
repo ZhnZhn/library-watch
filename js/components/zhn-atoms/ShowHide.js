@@ -30,9 +30,9 @@ var ShowHide = function ShowHide(_ref) {
   var _style = isShow ? STYLE.SHOW : STYLE.HIDE,
       _className = isShow ? className + " " + SHOW_POPUP : null;
 
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: _className,
-    style: (0, _extends2["default"])({}, style, {}, _style)
+    style: (0, _extends2["default"])({}, style, _style)
   }, children);
 };
 /*

@@ -18,13 +18,13 @@ var CaptionRow = function CaptionRow(_ref) {
       children = _ref.children,
       styleRoot = _ref.styleRoot,
       onClose = _ref.onClose;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: _CaptionRow["default"].CL_CAPTION,
     style: styleRoot
-  }, _react["default"].createElement("span", {
+  }, /*#__PURE__*/_react["default"].createElement("span", {
     className: _CaptionRow["default"].CL_NOT_SELECTED,
     style: _CaptionRow["default"].SPAN
-  }, caption), children, _react["default"].createElement(_SvgClose["default"], {
+  }, caption), children, /*#__PURE__*/_react["default"].createElement(_SvgClose["default"], {
     style: _CaptionRow["default"].SVG_CLOSE,
     onClose: onClose
   }));

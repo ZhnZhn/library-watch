@@ -45,9 +45,7 @@ var S = {
   }
 };
 
-var LoadItemDialog =
-/*#__PURE__*/
-function (_Component) {
+var LoadItemDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(LoadItemDialog, _Component);
 
   /*
@@ -78,17 +76,17 @@ function (_Component) {
     };
 
     _this._renderDate = function (date) {
-      return _react["default"].createElement("div", {
-        style: (0, _extends2["default"])({}, styles.rowDiv, {}, S.LH_2),
+      return /*#__PURE__*/_react["default"].createElement("div", {
+        style: (0, _extends2["default"])({}, styles.rowDiv, S.LH_2),
         key: "3"
-      }, _react["default"].createElement("span", {
+      }, /*#__PURE__*/_react["default"].createElement("span", {
         style: styles.labelSpan
-      }, "Date:"), _react["default"].createElement("span", {
+      }, "Date:"), /*#__PURE__*/_react["default"].createElement("span", {
         style: S.BOLD
       }, date));
     };
 
-    _this._commandButtons = [_react["default"].createElement(_FlatButton["default"], {
+    _this._commandButtons = [/*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
       key: "load",
       isPrimary: true,
       caption: "Load",
@@ -114,22 +112,22 @@ function (_Component) {
         caption = data.caption,
         descr = data.descr,
         date = data.date;
-    return _react["default"].createElement(_ModalDialog["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_ModalDialog["default"], {
       caption: DIALOG_CAPTION,
       isShow: isShow,
       commandButtons: this._commandButtons,
       onClose: this._handlerClose
-    }, _react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, styles.rowDiv, {}, S.LH_1_5),
+    }, /*#__PURE__*/_react["default"].createElement("div", {
+      style: (0, _extends2["default"])({}, styles.rowDiv, S.LH_1_5),
       key: "1"
-    }, _react["default"].createElement("span", {
+    }, /*#__PURE__*/_react["default"].createElement("span", {
       style: S.ITEM_DESCRIPTION
-    }, descr)), _react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, styles.rowDiv, {}, S.LH_2),
+    }, descr)), /*#__PURE__*/_react["default"].createElement("div", {
+      style: (0, _extends2["default"])({}, styles.rowDiv, S.LH_2),
       key: "2"
-    }, _react["default"].createElement("span", {
+    }, /*#__PURE__*/_react["default"].createElement("span", {
       style: styles.labelSpan
-    }, "Item:"), _react["default"].createElement("span", {
+    }, "Item:"), /*#__PURE__*/_react["default"].createElement("span", {
       style: S.BOLD
     }, caption)), date && this._renderDate(date));
   };

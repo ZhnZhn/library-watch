@@ -28,11 +28,11 @@ var RowInputSelect = function RowInputSelect(_ref) {
       options = _ref.options,
       isUpdateOptions = _ref.isUpdateOptions,
       onSelect = _ref.onSelect;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     style: styles.rowDiv
-  }, _react["default"].createElement("span", {
-    style: (0, _extends2["default"])({}, styles.labelSpan, {}, S.CAPTION)
-  }, (0, _crRowCaption["default"])(caption)), _react["default"].createElement(_InputSelect["default"], {
+  }, /*#__PURE__*/_react["default"].createElement("span", {
+    style: (0, _extends2["default"])({}, styles.labelSpan, S.CAPTION)
+  }, (0, _crRowCaption["default"])(caption)), /*#__PURE__*/_react["default"].createElement(_InputSelect["default"], {
     width: "250",
     options: options,
     isUpdateOptions: isUpdateOptions,

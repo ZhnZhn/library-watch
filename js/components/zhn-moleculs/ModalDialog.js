@@ -17,6 +17,7 @@ var _DialogCaption = _interopRequireDefault(require("./DialogCaption"));
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
+//import PropTypes from 'prop-types'
 var CL = {
   SHOWING: 'show-popup',
   HIDING: 'hide-popup'
@@ -52,9 +53,7 @@ var STYLE = {
   }
 };
 
-var ModalDialog =
-/*#__PURE__*/
-function (_Component) {
+var ModalDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ModalDialog, _Component);
 
   function ModalDialog() {
@@ -73,9 +72,9 @@ function (_Component) {
     };
 
     _this._renderCommandButton = function (commandButtons, onClose) {
-      return _react["default"].createElement("div", {
+      return /*#__PURE__*/_react["default"].createElement("div", {
         style: STYLE.COMMAND_DIV
-      }, commandButtons, _react["default"].createElement(_FlatButton["default"], {
+      }, commandButtons, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
         key: "close",
         caption: "Close",
         title: "Click to close modal dialog",
@@ -133,14 +132,14 @@ function (_Component) {
       }
     }
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       className: _className,
-      style: (0, _extends2["default"])({}, STYLE.ROOT_DIV, {}, style, {}, _style),
+      style: (0, _extends2["default"])({}, STYLE.ROOT_DIV, style, _style),
       onClick: this._handleClickDialog
-    }, _react["default"].createElement(_DialogCaption["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_DialogCaption["default"], {
       caption: caption,
       onClose: onClose
-    }), _react["default"].createElement("div", null, children), isWithButton && this._renderCommandButton(commandButtons, onClose));
+    }), /*#__PURE__*/_react["default"].createElement("div", null, children), isWithButton && this._renderCommandButton(commandButtons, onClose));
   };
 
   return ModalDialog;

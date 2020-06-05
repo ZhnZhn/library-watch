@@ -68,9 +68,7 @@ var BrowserConfig = {
   }
 };
 
-var HeaderBar =
-/*#__PURE__*/
-function (_Component) {
+var HeaderBar = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(HeaderBar, _Component);
 
   function HeaderBar() {
@@ -97,43 +95,43 @@ function (_Component) {
 
   _proto.render = function render() {
     var store = this.props.store;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       className: CL.HEADER,
       style: S.ROOT_DIV
-    }, _react["default"].createElement(_LoadingProgress["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_LoadingProgress["default"], {
       store: store
-    }), _react["default"].createElement(_IconAppLogo["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_IconAppLogo["default"], {
       className: CL.ICON,
       title: TITLE
-    }), _react["default"].createElement(_AppLabel["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_AppLabel["default"], {
       className: CL.APP_LABEL,
       caption: TITLE
-    }), _react["default"].createElement(_Comp["default"].FlatButton, {
+    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].FlatButton, {
       className: CL.LIBRARY,
       caption: "Library",
       title: "Click to show library browser",
       accessKey: "l",
       timeout: 0,
       onClick: this._handleClickDynamic.bind(null, BrowserConfig.LIBRARY)
-    }), _react["default"].createElement(_Comp["default"].FlatButton, {
+    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].FlatButton, {
       caption: "Watch",
       title: "Click to show watch browser",
       accessKey: "w",
       timeout: 0,
       onClick: this._handleClickWatch
-    }), _react["default"].createElement(_Comp["default"].ButtonSave, {
+    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].ButtonSave, {
       store: store,
       style: S.BUTTON_SAVE
-    }), _react["default"].createElement(_Comp["default"].FlatButton, {
+    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].FlatButton, {
       className: CL.ABOUT,
       rootStyle: S.BT_ABOUT,
       title: "About web app Library Watch",
       accessKey: "a",
       timeout: 0,
       onClick: _ComponentActions["default"].showAbout
-    }, _react["default"].createElement(_Comp["default"].SvgInfo, {
+    }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].SvgInfo, {
       style: S.SVG_INFO
-    })), _react["default"].createElement(_LimitRemainingLabel["default"], {
+    })), /*#__PURE__*/_react["default"].createElement(_LimitRemainingLabel["default"], {
       store: store,
       style: S.LABEL_LIMIT
     }));

@@ -54,9 +54,7 @@ var FILL_OPEN = 'yellow',
     PATH_OPEN = "M 2,14 L 14,14 14,2 2,14",
     PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
-var OpenClose2 =
-/*#__PURE__*/
-function (_Component) {
+var OpenClose2 = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(OpenClose2, _Component);
 
   /*
@@ -151,32 +149,32 @@ function (_Component) {
       _styleNotSelected = styleNotSelected;
     }
 
-    return _react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, STYLE.ROOT, {}, style)
-    }, _react["default"].createElement("div", (0, _extends2["default"])({
+    return /*#__PURE__*/_react["default"].createElement("div", {
+      style: (0, _extends2["default"])({}, STYLE.ROOT, style)
+    }, /*#__PURE__*/_react["default"].createElement("div", (0, _extends2["default"])({
       className: CL.ROW_CAPTION,
-      style: (0, _extends2["default"])({}, styleCaptionRow, {}, _styleNotSelected),
+      style: (0, _extends2["default"])({}, styleCaptionRow, _styleNotSelected),
       onClick: this._handleToggle,
       tabIndex: "0",
       role: "menuitem",
       onKeyDown: this._handleKeyDown
-    }, _dragOption), _react["default"].createElement("div", {
+    }, _dragOption), /*#__PURE__*/_react["default"].createElement("div", {
       style: STYLE.SVG
-    }, _react["default"].createElement("svg", {
+    }, /*#__PURE__*/_react["default"].createElement("svg", {
       viewBox: "0 0 16 16",
       width: "100%",
       height: "100%",
       preserveAspectRatio: "none",
       xmlns: "http://www.w3.org/2000/svg",
       style: STYLE.INLINE
-    }, _react["default"].createElement("path", {
+    }, /*#__PURE__*/_react["default"].createElement("path", {
       d: _pathV,
       fill: _fillV,
       strokeWidth: "1",
       stroke: fillOpen
-    }))), _react["default"].createElement("span", {
-      style: (0, _extends2["default"])({}, STYLE.CAPTION, {}, styleCaption)
-    }, caption)), _react["default"].createElement("div", {
+    }))), /*#__PURE__*/_react["default"].createElement("span", {
+      style: (0, _extends2["default"])({}, STYLE.CAPTION, styleCaption)
+    }, caption)), /*#__PURE__*/_react["default"].createElement("div", {
       className: _classShow,
       style: _styleCollapse
     }, children));

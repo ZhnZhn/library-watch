@@ -22,9 +22,9 @@ var Browser = function Browser(_ref) {
   var _className = isShow ? CL_OPEN : null,
       _style = isShow ? _ContainerStyles["default"].displayBlock : _ContainerStyles["default"].displayNone;
 
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: _className,
-    style: (0, _extends2["default"])({}, _ContainerStyles["default"].browserRootDiv, {}, style, {}, _style)
+    style: (0, _extends2["default"])({}, _ContainerStyles["default"].browserRootDiv, style, _style)
   }, children);
 };
 /*

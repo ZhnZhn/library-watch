@@ -21,9 +21,7 @@ var STYLE = {
   }
 };
 
-var MenuBadge =
-/*#__PURE__*/
-function (_Component) {
+var MenuBadge = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(MenuBadge, _Component);
 
   function MenuBadge() {
@@ -69,7 +67,7 @@ function (_Component) {
         isOpen = _this$props2.isOpen,
         _style = isOpen ? STYLE.OPEN : undefined;
 
-    return _react["default"].createElement(_ButtonCircle["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_ButtonCircle["default"], {
       className: CL,
       style: _style,
       caption: counter,

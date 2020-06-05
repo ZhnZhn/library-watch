@@ -19,7 +19,7 @@ var _withItemsContainer = _interopRequireDefault(require("./withItemsContainer")
 
 var _withItem = _interopRequireDefault(require("./withItem"));
 
-var Factory = (0, _extends2["default"])({}, _withDialog["default"], {}, _withDynamicBrowser["default"], {}, _withItemsContainer["default"], {}, _withItem["default"], {
+var Factory = (0, _extends2["default"])({}, _withDialog["default"], _withDynamicBrowser["default"], _withItemsContainer["default"], _withItem["default"], {
   getElementFactory: function getElementFactory() {
     return _react["default"];
   },

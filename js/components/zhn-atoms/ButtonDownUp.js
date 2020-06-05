@@ -23,13 +23,13 @@ var ButtonDownUp = function ButtonDownUp(props) {
       _style = isUp ? _ButtonDownUp["default"].ROOT_UP : _ButtonDownUp["default"].ROOT_DOWN,
       _circleStyle = isUp ? _ButtonDownUp["default"].CIRCLE_UP : _ButtonDownUp["default"].CIRCLE_DOWN;
 
-  return _react["default"].createElement("button", {
+  return /*#__PURE__*/_react["default"].createElement("button", {
     title: title,
-    style: (0, _extends2["default"])({}, _ButtonDownUp["default"].ROOT, {}, style, {}, _style),
+    style: (0, _extends2["default"])({}, _ButtonDownUp["default"].ROOT, style, _style),
     onClick: onClick
-  }, _react["default"].createElement("span", {
-    style: (0, _extends2["default"])({}, _ButtonDownUp["default"].CIRCLE, {}, _circleStyle)
-  }), _react["default"].createElement("span", {
+  }, /*#__PURE__*/_react["default"].createElement("span", {
+    style: (0, _extends2["default"])({}, _ButtonDownUp["default"].CIRCLE, _circleStyle)
+  }), /*#__PURE__*/_react["default"].createElement("span", {
     style: _ButtonDownUp["default"].ITEM
   }, caption));
 };

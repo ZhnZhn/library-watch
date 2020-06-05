@@ -28,13 +28,13 @@ var RowInputSelect = function RowInputSelect(_ref) {
       placeholder = _ref.placeholder,
       options = _ref.options,
       onSelect = _ref.onSelect;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     style: _DialogStyles["default"].rowDiv
-  }, _react["default"].createElement(_Caption["default"], {
+  }, /*#__PURE__*/_react["default"].createElement(_Caption["default"], {
     is: isShowLabel,
-    style: (0, _extends2["default"])({}, _DialogStyles["default"].labelSpan, {}, S.CAPTION),
+    style: (0, _extends2["default"])({}, _DialogStyles["default"].labelSpan, S.CAPTION),
     caption: caption
-  }), _react["default"].createElement(_InputSelect["default"], {
+  }), /*#__PURE__*/_react["default"].createElement(_InputSelect["default"], {
     width: "250",
     placeholder: placeholder,
     options: options,

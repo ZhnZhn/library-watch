@@ -14,9 +14,7 @@ var _react = _interopRequireWildcard(require("react"));
 //import PropTypes from "prop-types";
 var CL = "hrz-container";
 
-var ComponentHrzContainer =
-/*#__PURE__*/
-function (_Component) {
+var ComponentHrzContainer = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ComponentHrzContainer, _Component);
 
   function ComponentHrzContainer() {
@@ -62,7 +60,7 @@ function (_Component) {
 
   _proto.render = function render() {
     var containers = this.state.containers;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       className: CL
     }, containers);
   };

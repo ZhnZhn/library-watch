@@ -31,14 +31,14 @@ var _renderMenuItems = function _renderMenuItems(rowClass, items) {
 
   return items.map(function (item, index) {
     var _className = rowClass ? rowClass + ' ' + CL.NOT_SELECTED : index % 2 ? CL.ROW_EVEN : CL.ROW_ODD,
-        menuBadge = item.counter !== 0 ? _react["default"].createElement(_MenuBadge["default"], {
+        menuBadge = item.counter !== 0 ? /*#__PURE__*/_react["default"].createElement(_MenuBadge["default"], {
       counter: item.counter,
       isOpen: item.isOpen,
       onBadgeOpen: item.onBadgeOpen,
       onBadgeClose: item.onBadgeClose
     }) : null;
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       key: index,
       tabIndex: 0,
       className: _className,
@@ -53,7 +53,7 @@ var MenuPart = function MenuPart(_ref) {
       caption = _ref.caption,
       items = _ref.items,
       isInitClose = _ref.isInitClose;
-  return _react["default"].createElement(_OpenClose["default"], {
+  return /*#__PURE__*/_react["default"].createElement(_OpenClose["default"], {
     styleCaptionRow: S.CAPTION_ROW,
     fillOpen: FILL_OPEN,
     fillClose: FILL_CLOSE,

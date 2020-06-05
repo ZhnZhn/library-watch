@@ -38,16 +38,14 @@ var _isStr = function _isStr(str) {
 var BtClear = function BtClear(_ref3) {
   var isValue = _ref3.isValue,
       onClick = _ref3.onClick;
-  return _react["default"].createElement("button", {
+  return /*#__PURE__*/_react["default"].createElement("button", {
     "class": CL.BT_CLEAR,
     tabIndex: "-1",
     onClick: onClick
   }, isValue ? 'x' : '');
 };
 
-var InputText =
-/*#__PURE__*/
-function (_Component) {
+var InputText = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(InputText, _Component);
 
   /*
@@ -114,9 +112,9 @@ function (_Component) {
         placeholder = _this$props.placeholder,
         maxLength = _this$props.maxLength,
         value = this.state.value;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       className: CL.FIELD
-    }, _react["default"].createElement("input", {
+    }, /*#__PURE__*/_react["default"].createElement("input", {
       ref: this._refInput,
       type: "text",
       autoCorrect: "off",
@@ -129,7 +127,7 @@ function (_Component) {
       maxLength: maxLength,
       onChange: this._hChange,
       onKeyDown: this._hKeyDown
-    }), HAS_TOUCH && _react["default"].createElement(BtClear, {
+    }), HAS_TOUCH && /*#__PURE__*/_react["default"].createElement(BtClear, {
       isValue: Boolean(value),
       onClick: this._hClean
     }));

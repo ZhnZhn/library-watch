@@ -14,9 +14,7 @@ var _react = _interopRequireWildcard(require("react"));
 //import PropTypes from "prop-types";
 var CL = 'with-scroll';
 
-var ScrollPane =
-/*#__PURE__*/
-function (_Component) {
+var ScrollPane = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ScrollPane, _Component);
 
   function ScrollPane() {
@@ -42,7 +40,7 @@ function (_Component) {
         style = _this$props.style,
         className = _this$props.className,
         children = _this$props.children;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       ref: this._refNode,
       className: CL + " " + className,
       style: style

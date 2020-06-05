@@ -13,9 +13,9 @@ var LinkImg = function LinkImg(_ref) {
       imgClass = _ref.imgClass,
       imgSrc = _ref.imgSrc,
       onError = _ref.onError;
-  return _react["default"].createElement("a", {
+  return /*#__PURE__*/_react["default"].createElement("a", {
     href: href
-  }, _react["default"].createElement("img", {
+  }, /*#__PURE__*/_react["default"].createElement("img", {
     className: imgClass,
     src: imgSrc,
     onError: onError.bind(null, imgSrc)

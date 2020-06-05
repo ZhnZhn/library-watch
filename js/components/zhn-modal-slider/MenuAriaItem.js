@@ -26,9 +26,7 @@ var _fKeyPressed = function _fKeyPressed(onClick) {
   };
 };
 
-var MenuAriaItem =
-/*#__PURE__*/
-function (_Component) {
+var MenuAriaItem = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(MenuAriaItem, _Component);
 
   function MenuAriaItem() {
@@ -69,7 +67,7 @@ function (_Component) {
         onClick = _this$props.onClick,
         onReg = _this$props.onReg,
         rest = (0, _objectWithoutPropertiesLoose2["default"])(_this$props, ["children", "onClick", "onReg"]);
-    return _react["default"].createElement("div", (0, _extends2["default"])({}, rest, {
+    return /*#__PURE__*/_react["default"].createElement("div", (0, _extends2["default"])({}, rest, {
       ref: onReg ? this._ref : void 0,
       role: "menuitem",
       tabIndex: "0",

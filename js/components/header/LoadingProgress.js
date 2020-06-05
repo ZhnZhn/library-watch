@@ -20,9 +20,7 @@ var COLOR = {
   FAILED: '#ed5813'
 };
 
-var LoadingProgress =
-/*#__PURE__*/
-function (_Component) {
+var LoadingProgress = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(LoadingProgress, _Component);
 
   function LoadingProgress() {
@@ -74,7 +72,7 @@ function (_Component) {
     var _this$state = this.state,
         completed = _this$state.completed,
         color = _this$state.color;
-    return _react["default"].createElement(_ProgressLine["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_ProgressLine["default"], {
       height: 3,
       color: color,
       completed: completed

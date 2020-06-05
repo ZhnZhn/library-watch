@@ -49,9 +49,7 @@ var _sortOptions = [{
 var _initFromDate = dateConfig._initFromDate,
     _initToDate = dateConfig._initToDate,
     _onTestDate = dateConfig._onTestDate;
-var DialogType2 = (_dec = _Decorators["default"].dialog, _dec(_class = (_temp =
-/*#__PURE__*/
-function (_Component) {
+var DialogType2 = (_dec = _Decorators["default"].dialog, _dec(_class = (_temp = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DialogType2, _Component);
 
   /*
@@ -172,37 +170,37 @@ function (_Component) {
         isShowLabels = _this$state.isShowLabels,
         isShowDate = _this$state.isShowDate,
         validationMessages = _this$state.validationMessages;
-    return _react["default"].createElement(_DialogCell["default"].DraggableDialog, {
+    return /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].DraggableDialog, {
       isShow: isShow,
       caption: caption,
       menuModel: this._menuMore,
       commandButtons: this._commandButtons,
       onShowChart: onShow,
       onClose: this._handleClose
-    }, _react["default"].createElement(_DialogCell["default"].Toolbar, {
+    }, /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].Toolbar, {
       isShow: isToolbar,
       buttons: this.toolbarButtons
-    }), _react["default"].createElement(_DialogCell["default"].RowInputText, {
+    }), /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].RowInputText, {
       ref: this._refInputOne,
       isShowLabel: isShowLabels,
       caption: oneTitle,
       placeholder: onePlaceholder,
       onEnter: this._handleLoad
-    }), _react["default"].createElement(_DialogCell["default"].RowInputSelect, {
+    }), /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].RowInputSelect, {
       isShowLabel: isShowLabels,
       caption: "Sort By",
       placeholder: "Default: Hot Week Tab",
       options: _sortOptions,
       onSelect: this._handleSelectSortBy
-    }), _react["default"].createElement(_DialogCell["default"].ShowHide, {
+    }), /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].ShowHide, {
       isShow: isShowDate
-    }, _react["default"].createElement(_DialogCell["default"].Dates, {
+    }, /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].Dates, {
       ref: this._refDatesFragment,
       isShowLabels: isShowLabels,
       initFromDate: _initFromDate,
       initToDate: _initToDate,
       onTestDate: _onTestDate
-    })), _react["default"].createElement(_DialogCell["default"].ValidationMessages, {
+    })), /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].ValidationMessages, {
       validationMessages: validationMessages
     }));
   };

@@ -94,9 +94,7 @@ var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
 };
 
-var NpmDownloads =
-/*#__PURE__*/
-function (_Component) {
+var NpmDownloads = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(NpmDownloads, _Component);
 
   function NpmDownloads(props) {
@@ -187,7 +185,7 @@ function (_Component) {
     };
 
     _this._renderButtonWatch = function () {
-      return _react["default"].createElement(_A["default"].ButtonCircle, {
+      return /*#__PURE__*/_react["default"].createElement(_A["default"].ButtonCircle, {
         caption: "W",
         title: "Add to WatchList",
         style: S.BTN_CIRCLE,
@@ -241,70 +239,70 @@ function (_Component) {
       data: data
     }),
         _onClickNpms = isLoadedNpms ? this._toggleNpms : this._hClickNpms,
-        _infoStyle = isButtons ? (0, _extends2["default"])({}, S.ML_16, {}, S.MT_16) : S.ML_16;
+        _infoStyle = isButtons ? (0, _extends2["default"])({}, S.ML_16, S.MT_16) : S.ML_16;
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       style: S.ROOT
-    }, _react["default"].createElement(_ModalSlider["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_ModalSlider["default"], {
       isShow: isMore,
       className: _CL["default"].MENU_MORE,
       model: this._MORE,
       onClose: this._hToggleMore
-    }), _react["default"].createElement(_ItemCaption["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
       style: S.CAPTION,
       onClose: onCloseItem
-    }, _react["default"].createElement(_A["default"].SvgMore, {
+    }, /*#__PURE__*/_react["default"].createElement(_A["default"].SvgMore, {
       style: S.BT_MORE,
       onClick: this._hClickMore
-    }), _react["default"].createElement("button", {
+    }), /*#__PURE__*/_react["default"].createElement("button", {
       className: "not-selected",
       title: caption,
       style: S.CAPTION_OPEN,
       onClick: this._handlerToggleOpen
-    }, _react["default"].createElement("span", null, packageName), _react["default"].createElement(_A["default"].FormattedInteger, {
+    }, /*#__PURE__*/_react["default"].createElement("span", null, packageName), /*#__PURE__*/_react["default"].createElement(_A["default"].FormattedInteger, {
       value: sumDownloads,
       style: S.SPAN_SUM
-    }), _react["default"].createElement("span", {
+    }), /*#__PURE__*/_react["default"].createElement("span", {
       style: S.SPAN_START
-    }, fromDate), _react["default"].createElement("span", null, toDate)), _isFn(onWatchItem) && this._renderButtonWatch()), _react["default"].createElement(_A["default"].ShowHide, {
+    }, fromDate), /*#__PURE__*/_react["default"].createElement("span", null, toDate)), _isFn(onWatchItem) && this._renderButtonWatch()), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
       isShow: isShow,
       style: S.CHART_WRAPER
-    }, _react["default"].createElement(_LineChart["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_LineChart["default"], {
       data: _lineChartConfig,
       options: CHART_OPTIONS
-    }), _react["default"].createElement(_A["default"].ShowHide, {
+    }), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
       isShow: isButtons
-    }, _react["default"].createElement("div", {
+    }, /*#__PURE__*/_react["default"].createElement("div", {
       style: S.ML_16
-    }, _react["default"].createElement("a", {
+    }, /*#__PURE__*/_react["default"].createElement("a", {
       target: "_blank",
       className: _CL["default"].SOURCE_LINK,
       href: packageLink
-    }, "NPM Link"), _react["default"].createElement(_A["default"].ButtonDownUp, {
-      style: (0, _extends2["default"])({}, S.BUTTON_DOWN_UP, {}, S.ML_16),
+    }, "NPM Link"), /*#__PURE__*/_react["default"].createElement(_A["default"].ButtonDownUp, {
+      style: (0, _extends2["default"])({}, S.BUTTON_DOWN_UP, S.ML_16),
       isUp: isShowNodeIco,
       caption: "NodeICO",
       title: "Package badge from Nodei.co",
       onClick: this._handlerClickNodeIco
-    }), _react["default"].createElement(_A["default"].ButtonDownUp, {
-      style: (0, _extends2["default"])({}, S.BUTTON_DOWN_UP, {}, S.ML_16),
+    }), /*#__PURE__*/_react["default"].createElement(_A["default"].ButtonDownUp, {
+      style: (0, _extends2["default"])({}, S.BUTTON_DOWN_UP, S.ML_16),
       isUp: isShowNmps,
       caption: "NPMS.IO",
       title: "Click to load package info from npms.io",
       onClick: _onClickNpms
-    }))), _react["default"].createElement("div", {
+    }))), /*#__PURE__*/_react["default"].createElement("div", {
       style: _infoStyle
-    }, _react["default"].createElement(_A["default"].ShowHide, {
+    }, /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
       isShow: isShowNodeIco,
       style: S.MB_16
-    }, isLoadNodeIco && _react["default"].createElement(_A["default"].LinkImg, {
+    }, isLoadNodeIco && /*#__PURE__*/_react["default"].createElement(_A["default"].LinkImg, {
       href: packageLink,
       imgClass: "node-ico",
       imgSrc: "" + BASE_NODEICO + packageName + SUFFIX_NODEICO
-    })), _react["default"].createElement(_A["default"].ShowHide, {
+    })), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
       isShow: isShowNmps,
       style: S.MB_16
-    }, isLoadedNpms && _react["default"].createElement(_PackageDetails["default"], {
+    }, isLoadedNpms && /*#__PURE__*/_react["default"].createElement(_PackageDetails["default"], {
       json: npmsJson
     })))));
   };

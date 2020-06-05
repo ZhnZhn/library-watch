@@ -1,12 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../../src/components/dialogs/decorators/Decorators.js"
- ],
- "file": "../../../../src/components/dialogs/decorators/Decorators.js",
- "names": [
-  "Decorators",
-  "dialog"
- ],
- "mappings": ";;;;;;;AAAA;;AACA;;AACA;;AAEA,IAAMA,UAAU,GAAG;AACjBC,EAAAA,MAAM,EAAE,gBAACA,OAAD,EAAY;AAClB,sCAAiBA,OAAjB;AACA,wCAAmBA,OAAnB;AACA,iCAAYA,OAAZ;AACD;AALgB,CAAnB;eAQeD,U"
-}
+{"version":3,"sources":["../../../../src/components/dialogs/decorators/Decorators.js"],"names":["Decorators","dialog"],"mappings":";;;;;;;AAAA;;AACA;;AACA;;AAEA,IAAMA,UAAU,GAAG;AACjBC,EAAAA,MAAM,EAAE,gBAACA,OAAD,EAAY;AAClB,sCAAiBA,OAAjB;AACA,wCAAmBA,OAAnB;AACA,iCAAYA,OAAZ;AACD;AALgB,CAAnB;eAQeD,U","sourcesContent":["import withInitialState from './withInitialState'\r\nimport withToolbar from './withToolbar'\r\nimport withValidationLoad from './withValidationLoad'\r\n\r\nconst Decorators = {\r\n  dialog: (dialog) => {\r\n    withInitialState(dialog)\r\n    withValidationLoad(dialog)\r\n    withToolbar(dialog)\r\n  }\r\n};\r\n\r\nexport default Decorators\r\n"],"file":"Decorators.js"}

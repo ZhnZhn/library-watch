@@ -20,11 +20,11 @@ var SvgClose = function SvgClose(_ref) {
   var className = _ref.className,
       style = _ref.style,
       onClose = _ref.onClose;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: CL + " " + className,
     style: style,
     onClick: onClose
-  }, _react["default"].createElement("svg", {
+  }, /*#__PURE__*/_react["default"].createElement("svg", {
     preserveAspectRatio: "none",
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 12 12",
@@ -34,9 +34,9 @@ var SvgClose = function SvgClose(_ref) {
     stroke: STYLE.COLOR,
     strokeWidth: "2",
     strokeLinecap: "round"
-  }, _react["default"].createElement("path", {
+  }, /*#__PURE__*/_react["default"].createElement("path", {
     d: "M 0,0 L 12,12"
-  }), _react["default"].createElement("path", {
+  }), /*#__PURE__*/_react["default"].createElement("path", {
     d: "M 12,0 L 0,12"
   })));
 };

@@ -25,9 +25,7 @@ var CAPTION = "S",
   }
 };
 
-var ButtonSave =
-/*#__PURE__*/
-function (_Component) {
+var ButtonSave = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ButtonSave, _Component);
 
   /*
@@ -84,7 +82,7 @@ function (_Component) {
         isWatchEdited = this.state.isWatchEdited,
         _style = isWatchEdited ? style : Object.assign({}, style, STYLE.NOT_WATCH_EDITED);
 
-    return _react["default"].createElement(_ButtonCircle["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_ButtonCircle["default"], {
       className: className,
       caption: CAPTION,
       title: TITLE,

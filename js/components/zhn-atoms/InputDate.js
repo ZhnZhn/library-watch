@@ -57,9 +57,7 @@ var STYLE = {
   }
 };
 
-var InputDate =
-/*#__PURE__*/
-function (_Component) {
+var InputDate = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(InputDate, _Component);
 
   /*
@@ -126,9 +124,9 @@ function (_Component) {
         errorInput = _this$state.errorInput,
         _hrStyle = isValid ? STYLE.HR_VALID : STYLE.HR_NOT_VALID;
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       style: STYLE.ROOT
-    }, _react["default"].createElement("input", {
+    }, /*#__PURE__*/_react["default"].createElement("input", {
       ref: function ref(c) {
         return _this2.inputComp = c;
       },
@@ -143,9 +141,9 @@ function (_Component) {
       value: value,
       onChange: this._handleChangeValue,
       onBlur: this._handleBlurValue
-    }), _react["default"].createElement("hr", {
-      style: (0, _extends2["default"])({}, STYLE.HR, {}, _hrStyle)
-    }), _react["default"].createElement("div", {
+    }), /*#__PURE__*/_react["default"].createElement("hr", {
+      style: (0, _extends2["default"])({}, STYLE.HR, _hrStyle)
+    }), /*#__PURE__*/_react["default"].createElement("div", {
       style: STYLE.ERR_MSG
     }, errorInput));
   };

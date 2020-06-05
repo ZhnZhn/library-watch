@@ -13,9 +13,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _TaggedItem = _interopRequireDefault(require("./TaggedItem"));
 
-var TaggedItemList =
-/*#__PURE__*/
-function (_Component) {
+var TaggedItemList = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(TaggedItemList, _Component);
 
   function TaggedItemList() {
@@ -33,7 +31,7 @@ function (_Component) {
           onRemoveItem = _this$props.onRemoveItem;
       return items.map(function (item, index) {
         var question_id = item.question_id;
-        return _react["default"].createElement(_TaggedItem["default"], {
+        return /*#__PURE__*/_react["default"].createElement(_TaggedItem["default"], {
           key: question_id,
           item: item,
           onRemoveItem: onRemoveItem
@@ -55,7 +53,7 @@ function (_Component) {
   };
 
   _proto.render = function render() {
-    return _react["default"].createElement(_react.Fragment, null, this._renderItems());
+    return /*#__PURE__*/_react["default"].createElement(_react.Fragment, null, this._renderItems());
   };
 
   return TaggedItemList;

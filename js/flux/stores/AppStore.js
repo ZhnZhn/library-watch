@@ -172,7 +172,7 @@ var AppStore = _refluxCore["default"].createStore((0, _extends2["default"])({
     this.trigger(_ChartActions.ChartActionTypes.SHOW_CHART, chartSlice);
     this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_BROWSER_MENU, browserType);
   }
-}, _BrowserSlice["default"], {}, _ComponentSlice["default"], {}, _WatchListSlice["default"], {}, _WithLimitRemaining["default"], {}, _WithLoadingProgress["default"]));
+}, _BrowserSlice["default"], _ComponentSlice["default"], _WatchListSlice["default"], _WithLimitRemaining["default"], _WithLoadingProgress["default"]));
 
 var _default = AppStore;
 exports["default"] = _default;

@@ -38,8 +38,10 @@ var _handleCloseWithValidation = function _handleCloseWithValidation(fnCreateMes
 };
 
 var withValidationLoad = function withValidationLoad(target) {
-  target.prototype._handleLoadWithValidation = _handleLoadWithValidation;
-  target.prototype._handleCloseWithValidation = _handleCloseWithValidation;
+  Object.assign(target.prototype, {
+    _handleLoadWithValidation: _handleLoadWithValidation,
+    _handleCloseWithValidation: _handleCloseWithValidation
+  });
 };
 
 var _default = withValidationLoad;

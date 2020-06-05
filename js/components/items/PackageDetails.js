@@ -25,11 +25,11 @@ var CellValue = function CellValue(_ref) {
       caption = _ref$caption === void 0 ? '' : _ref$caption,
       _ref$value = _ref.value,
       value = _ref$value === void 0 ? 'N/A' : _ref$value;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     style: S.CELL
-  }, _react["default"].createElement("div", {
+  }, /*#__PURE__*/_react["default"].createElement("div", {
     style: S.CAPTION
-  }, caption), _react["default"].createElement("div", {
+  }, caption), /*#__PURE__*/_react["default"].createElement("div", {
     style: S.VALUE
   }, value));
 };
@@ -61,22 +61,22 @@ var PackageDetails = function PackageDetails(_ref2) {
       version = metadata.version,
       license = metadata.license,
       _final = score["final"];
-  return _react["default"].createElement("div", null, _react["default"].createElement(CellValue, {
+  return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(CellValue, {
     caption: "stars",
     value: starsCount
-  }), _react["default"].createElement(CellValue, {
+  }), /*#__PURE__*/_react["default"].createElement(CellValue, {
     caption: "issues",
     value: openCount
-  }), _react["default"].createElement(CellValue, {
+  }), /*#__PURE__*/_react["default"].createElement(CellValue, {
     caption: "version",
     value: version
-  }), _react["default"].createElement(CellValue, {
+  }), /*#__PURE__*/_react["default"].createElement(CellValue, {
     caption: "score",
     value: _trimTo5(_final)
-  }), _react["default"].createElement(CellValue, {
+  }), /*#__PURE__*/_react["default"].createElement(CellValue, {
     caption: "license",
     value: license
-  }), _react["default"].createElement(CellValue, {
+  }), /*#__PURE__*/_react["default"].createElement(CellValue, {
     caption: "onDate",
     value: _toYear(analyzedAt)
   }));

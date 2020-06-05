@@ -20,7 +20,7 @@ var _createDialogComp = function _createDialogComp(conf, browserType) {
   var dialogType = conf.type,
       props = conf.dialogProps ? conf.dialogProps : {},
       Comp = conf.dialogType ? _RouterDialog["default"][conf.dialogType] ? _RouterDialog["default"][conf.dialogType] : _RouterDialog["default"].DEFAULT : _RouterDialog["default"].DEFAULT;
-  return _react["default"].createElement(Comp, (0, _extends2["default"])({
+  return /*#__PURE__*/_react["default"].createElement(Comp, (0, _extends2["default"])({
     key: dialogType,
     caption: conf.dialogCaption,
     optionURI: conf.optionURI,

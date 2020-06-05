@@ -8,7 +8,7 @@ exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 
 var TestItem = function TestItem() {
-  return _react["default"].createElement("span", null, "TestItem");
+  return /*#__PURE__*/_react["default"].createElement("span", null, "TestItem");
 };
 
 var _default = TestItem;

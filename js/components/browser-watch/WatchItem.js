@@ -43,7 +43,7 @@ var VersionDateRow = function VersionDateRow(props) {
     return undefined;
   }
 
-  return _react["default"].createElement("div", null, _react["default"].createElement("span", null, version), _react["default"].createElement("span", {
+  return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("span", null, version), /*#__PURE__*/_react["default"].createElement("span", {
     style: STYLE.DATE_SPAN
   }, date.split(' ')[0]));
 };
@@ -64,16 +64,16 @@ var WatchItem = function WatchItem(props) {
   var repo = item.repo,
       version = item.version,
       date = item.date,
-      _compBtClose = isModeEdit ? _react["default"].createElement(_SvgClose["default"], {
+      _compBtClose = isModeEdit ? /*#__PURE__*/_react["default"].createElement(_SvgClose["default"], {
     style: STYLE.SVG_CLOSE,
     onClose: onClose.bind(null, option)
   }) : undefined,
-      _compVersionDateRow = version ? _react["default"].createElement(VersionDateRow, {
+      _compVersionDateRow = version ? /*#__PURE__*/_react["default"].createElement(VersionDateRow, {
     version: version,
     date: date
   }) : undefined;
 
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: className,
     style: STYLE.ITEM_DIV,
     onClick: onClick.bind(null, item),
@@ -83,7 +83,7 @@ var WatchItem = function WatchItem(props) {
     onDragOver: isModeEdit && onDragOver,
     onDragEnter: isModeEdit && onDragEnter,
     onDragLeave: isModeEdit && onDragLeave
-  }, _react["default"].createElement("div", null, _react["default"].createElement("span", {
+  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("span", {
     style: STYLE.ITEM_SPAN
   }, repo), _compBtClose), _compVersionDateRow);
 };

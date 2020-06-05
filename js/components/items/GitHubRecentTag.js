@@ -26,25 +26,25 @@ var _formatDate = function _formatDate(strDate) {
 var Token = function Token(_ref) {
   var caption = _ref.caption,
       value = _ref.value;
-  return _react["default"].createElement(_react.Fragment, null, _react["default"].createElement("span", {
+  return /*#__PURE__*/_react["default"].createElement(_react.Fragment, null, /*#__PURE__*/_react["default"].createElement("span", {
     className: "library__value-title"
-  }, caption + ':'), _react["default"].createElement("span", {
+  }, caption + ':'), /*#__PURE__*/_react["default"].createElement("span", {
     className: "library__value"
   }, value));
 };
 
 var CellValue = function CellValue(props) {
-  return _react["default"].createElement("div", null, _react["default"].createElement(Token, props));
+  return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(Token, props));
 };
 
 var CellValueDate = function CellValueDate(_ref2) {
   var caption = _ref2.caption,
       value = _ref2.value,
       date = _ref2.date;
-  return _react["default"].createElement("div", null, _react["default"].createElement(Token, {
+  return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(Token, {
     caption: caption,
     value: value
-  }), _react["default"].createElement(Token, {
+  }), /*#__PURE__*/_react["default"].createElement(Token, {
     caption: "Date",
     value: _formatDate(date)
   }));
@@ -75,47 +75,45 @@ var Detail = function Detail(props) {
     return files.map(function (file, index) {
       var className = index % 2 ? 'row__topic__even not-selected' : 'row__topic__odd not-selected',
           filename = file.filename;
-      return _react["default"].createElement("div", {
+      return /*#__PURE__*/_react["default"].createElement("div", {
         key: index,
         className: className
       }, filename);
     });
   };
 
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: "library"
-  }, _react["default"].createElement(CellValue, {
+  }, /*#__PURE__*/_react["default"].createElement(CellValue, {
     caption: "Message",
     value: message
-  }), _react["default"].createElement(CellValueDate, {
+  }), /*#__PURE__*/_react["default"].createElement(CellValueDate, {
     caption: "Author",
     value: authorName,
     date: authorDate
-  }), _react["default"].createElement(CellValueDate, {
+  }), /*#__PURE__*/_react["default"].createElement(CellValueDate, {
     caption: "Committer",
     value: committerName,
     date: committerDate
-  }), _react["default"].createElement("div", null, _react["default"].createElement(Token, {
+  }), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(Token, {
     caption: "Total",
     value: total
-  }), _react["default"].createElement(Token, {
+  }), /*#__PURE__*/_react["default"].createElement(Token, {
     caption: "Additions",
     value: additions
-  }), _react["default"].createElement(Token, {
+  }), /*#__PURE__*/_react["default"].createElement(Token, {
     caption: "Deletions",
     value: deletions
-  })), _react["default"].createElement(_A["default"].OpenClose2, {
+  })), /*#__PURE__*/_react["default"].createElement(_A["default"].OpenClose2, {
     caption: "Files (" + files.length + ")",
     isClose: true
-  }, _renderFiles(files)), _react["default"].createElement("a", {
+  }, _renderFiles(files)), /*#__PURE__*/_react["default"].createElement("a", {
     href: html_url,
     className: "github-link"
   }, "Link to description of commit"));
 };
 
-var GitHubRecentTag =
-/*#__PURE__*/
-function (_Component) {
+var GitHubRecentTag = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(GitHubRecentTag, _Component);
 
   function GitHubRecentTag() {
@@ -195,30 +193,30 @@ function (_Component) {
         isShow = _this$state.isShow,
         isDetail = _this$state.isDetail,
         json = _this$state.json;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       style: _Item["default"].ROOT
-    }, _react["default"].createElement(_ItemCaption["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
       onClose: onCloseItem
-    }, _react["default"].createElement("button", {
+    }, /*#__PURE__*/_react["default"].createElement("button", {
       className: "not-selected",
       title: caption,
       style: _Item["default"].CAPTION_OPEN,
       onClick: this._hToggleOpen
-    }, _react["default"].createElement("span", null, repo), _react["default"].createElement("span", {
+    }, /*#__PURE__*/_react["default"].createElement("span", null, repo), /*#__PURE__*/_react["default"].createElement("span", {
       style: _Item["default"].SPAN_VERSION
-    }, version)), _react["default"].createElement(_A["default"].ButtonCircle, {
+    }, version)), /*#__PURE__*/_react["default"].createElement(_A["default"].ButtonCircle, {
       caption: "W",
       title: "Add to Watch",
       style: _Item["default"].BTN_CIRCLE,
       onClick: this._hClickWatch
-    }), _react["default"].createElement(_A["default"].ButtonCircle, {
+    }), /*#__PURE__*/_react["default"].createElement(_A["default"].ButtonCircle, {
       caption: "D",
       title: "Load Tag Details",
       style: _Item["default"].BTN_CIRCLE,
       onClick: this._hClickDetail
-    })), _react["default"].createElement(_A["default"].ShowHide, {
+    })), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
       isShow: isShow
-    }, isDetail && _react["default"].createElement(Detail, {
+    }, isDetail && /*#__PURE__*/_react["default"].createElement(Detail, {
       json: json
     })));
   };

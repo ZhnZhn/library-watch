@@ -16,7 +16,7 @@ var withDynamicBrowser = {
         caption = _ref$caption === void 0 ? '' : _ref$caption,
         sourceMenuUrl = _ref.sourceMenuUrl,
         rowClass = _ref.rowClass;
-    return _react["default"].createElement(_SourceBrowserDynamic["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_SourceBrowserDynamic["default"], {
       key: browserType,
       browserType: browserType,
       store: this.getStore(),
