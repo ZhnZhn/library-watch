@@ -1,1 +1,25 @@
-{"version":3,"sources":["../../../src/components/zhn-atoms/ContainerCaption.jsx"],"names":["_isFn","fn","ContainerCaption","style","caption","children","onMore","onClose","STYLE","CL_CAPTION","CL_NOT_SELECTED","SPAN","SVG_CLOSE","defaultProps"],"mappings":";;;;;;;AAAA;;AAGA;;AACA;;AACA;;AAJA;AAOA,IAAMA,KAAK,GAAG,SAARA,KAAQ,CAAAC,EAAE;AAAA,SAAI,OAAOA,EAAP,KAAc,UAAlB;AAAA,CAAhB;;AAEA,IAAMC,gBAAgB,GAAG,SAAnBA,gBAAmB;AAAA,MACvBC,KADuB,QACvBA,KADuB;AAAA,MAEvBC,OAFuB,QAEvBA,OAFuB;AAAA,MAGvBC,QAHuB,QAGvBA,QAHuB;AAAA,MAIvBC,MAJuB,QAIvBA,MAJuB;AAAA,MAKvBC,OALuB,QAKvBA,OALuB;AAAA,sBAOvB;AAAK,IAAA,SAAS,EAAEC,uBAAMC,UAAtB;AAAkC,IAAA,KAAK,EAAEN;AAAzC,KAEKH,KAAK,CAACM,MAAD,CAAL,iBACA,gCAAC,mBAAD;AACE,IAAA,OAAO,EAAEA;AADX,IAHL,eAOG;AACG,IAAA,SAAS,EAAEE,uBAAME,eADpB;AAEG,IAAA,KAAK,EAAEF,uBAAMG;AAFhB,KAIGP,OAJH,CAPH,EAaGC,QAbH,eAcE,gCAAC,oBAAD;AACG,IAAA,KAAK,EAAEG,uBAAMI,SADhB;AAEG,IAAA,OAAO,EAAEL;AAFZ,IAdF,CAPuB;AAAA,CAAzB;AA4BA;;;;;;;;;;;;;;AAYAL,gBAAgB,CAACW,YAAjB,GAAgC;AAC9BT,EAAAA,OAAO,EAAE;AADqB,CAAhC;eAKeF,gB","sourcesContent":["import React from 'react';\r\n//import PropTypes from 'prop-types';\r\n\r\nimport SvgMore from './SvgMore';\r\nimport SvgClose from './SvgClose';\r\nimport STYLE from './CaptionRow.Style';\r\n\r\n\r\nconst _isFn = fn => typeof fn === 'function';\r\n\r\nconst ContainerCaption = ({\r\n  style,\r\n  caption,\r\n  children,\r\n  onMore,\r\n  onClose\r\n}) => (\r\n  <div className={STYLE.CL_CAPTION} style={style}>\r\n    {\r\n       _isFn(onMore) &&\r\n       <SvgMore\r\n         onClick={onMore}\r\n       />\r\n     }\r\n     <span\r\n        className={STYLE.CL_NOT_SELECTED}\r\n        style={STYLE.SPAN}\r\n     >\r\n       {caption}\r\n    </span>\r\n    {children}\r\n    <SvgClose\r\n       style={STYLE.SVG_CLOSE}\r\n       onClose={onClose}\r\n    />\r\n  </div>\r\n);\r\n\r\n/*\r\nContainerCaption.propTypes = {\r\n  caption: PropTypes.string,\r\n  styleRoot: PropTypes.object,\r\n  children: PropTypes.oneOfType([\r\n    PropTypes.arrayOf(PropTypes.node),\r\n    PropTypes.node\r\n  ]),\r\n  onMore: PropTypes.func,\r\n  onClose: PropTypes.func\r\n}\r\n*/\r\nContainerCaption.defaultProps = {\r\n  caption: ''\r\n}\r\n\r\n\r\nexport default ContainerCaption;\r\n"],"file":"ContainerCaption.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-atoms/ContainerCaption.js"
+ ],
+ "file": "../../../src/components/zhn-atoms/ContainerCaption.js",
+ "names": [
+  "_isFn",
+  "fn",
+  "ContainerCaption",
+  "style",
+  "moreStyle",
+  "caption",
+  "children",
+  "onMore",
+  "onClose",
+  "STYLE",
+  "CL_CAPTION",
+  "CL_NOT_SELECTED",
+  "SPAN",
+  "SVG_CLOSE",
+  "defaultProps"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAGA;;AACA;;AACA;;AAJA;AAOA,IAAMA,KAAK,GAAG,SAARA,KAAQ,CAAAC,EAAE;AAAA,SAAI,OAAOA,EAAP,KAAc,UAAlB;AAAA,CAAhB;;AAEA,IAAMC,gBAAgB,GAAG,SAAnBA,gBAAmB;AAAA,MACvBC,KADuB,QACvBA,KADuB;AAAA,MAChBC,SADgB,QAChBA,SADgB;AAAA,MAEvBC,OAFuB,QAEvBA,OAFuB;AAAA,MAGvBC,QAHuB,QAGvBA,QAHuB;AAAA,MAIvBC,MAJuB,QAIvBA,MAJuB;AAAA,MAKvBC,OALuB,QAKvBA,OALuB;AAAA,sBAOvB;AAAK,IAAA,SAAS,EAAEC,uBAAMC,UAAtB;AAAkC,IAAA,KAAK,EAAEP;AAAzC,KAEKH,KAAK,CAACO,MAAD,CAAL,iBACA,gCAAC,mBAAD;AACE,IAAA,KAAK,EAAEH,SADT;AAEE,IAAA,OAAO,EAAEG;AAFX,IAHL,eAQG;AACG,IAAA,SAAS,EAAEE,uBAAME,eADpB;AAEG,IAAA,KAAK,EAAEF,uBAAMG;AAFhB,KAIGP,OAJH,CARH,EAcGC,QAdH,eAeE,gCAAC,oBAAD;AACG,IAAA,KAAK,EAAEG,uBAAMI,SADhB;AAEG,IAAA,OAAO,EAAEL;AAFZ,IAfF,CAPuB;AAAA,CAAzB;AA6BA;;;;;;;;;;;;;;AAYAN,gBAAgB,CAACY,YAAjB,GAAgC;AAC9BT,EAAAA,OAAO,EAAE;AADqB,CAAhC;eAKeH,gB"
+}

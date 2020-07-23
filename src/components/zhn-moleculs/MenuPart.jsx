@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import isKeyEnter from '../zhn-atoms/isKeyEnter'
 import MenuBadge from '../zhn-atoms/MenuBadge';
 import OpenClose2 from '../zhn-atoms/OpenClose2';
 
@@ -18,17 +19,38 @@ const S = {
   }
 };
 
+const MenuItem = ({ title, className, menuBadge, onClick }) => {
+  const _hKeyDown = useCallback((event)=>{
+    if(isKeyEnter(event)) {
+      onClick()
+    }
+  }, []);
+  return (
+    <div
+      role="menuitem"
+      tabIndex={0}
+      className={className}
+      onClick={onClick}
+      onKeyDown={_hKeyDown}
+     >
+       {title}
+       {menuBadge}
+    </div>
+  );
+}
+
 const _renderMenuItems = function(rowClass, items=[]){
   return items.map((item, index) => {
-    const _className = (rowClass)
+    const { counter, title, onClick } = item
+    const _className = rowClass
              ? rowClass + ' ' + CL.NOT_SELECTED
              : (index % 2)
                  ? CL.ROW_EVEN
                  : CL.ROW_ODD
-        , menuBadge = (item.counter !== 0)
+        , menuBadge = (counter !== 0)
              ? (
                   <MenuBadge
-                    counter={item.counter}
+                    counter={counter}
                     isOpen={item.isOpen}
                     onBadgeOpen={item.onBadgeOpen}
                     onBadgeClose={item.onBadgeClose}
@@ -36,16 +58,13 @@ const _renderMenuItems = function(rowClass, items=[]){
                 )
               : null;
     return (
-       <div
+      <MenuItem
          key={index}
-         tabIndex={0}
          className={_className}
-         onClick={item.onClick}
-         //onKeyPress={item.onClick}
-        >
-          {item.title}
-          {menuBadge}
-       </div>
+         title={title}
+         menuBadge={menuBadge}
+         onClick={onClick}
+      />
     )
   })
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import A from '../zhn-atoms/A'
 import Caption from './ItemCaption'
+import CL from '../styles/CL'
 import STYLE from './Item.Style'
 
 const _formatDate = strDate => (''+strDate)
@@ -101,7 +102,7 @@ class GitHubSearchInfo extends Component {
       <div style={STYLE.ROOT}>
         <Caption onClose={onCloseItem}>
           <button
-             className="not-selected"
+             className={CL.BT_ITEM}
              title={caption}
              style={STYLE.CAPTION_OPEN}
              onClick={this._hToggleOpen}

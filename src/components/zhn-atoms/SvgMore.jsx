@@ -1,17 +1,7 @@
 import React from 'react'
 
-const CL = 'focusable';
+const CL = 'bt-more';
 
-const S = {
-  BT: {
-    verticalAlign: 'middle',
-    paddingLeft: 6,
-    paddingRight: 6,
-    fill: 'silver',
-    stroke: 'silver',
-    cursor: 'pointer'
-  }
-};
 
 const SvgMore = ({
   style, svgStyle,
@@ -21,7 +11,7 @@ const SvgMore = ({
   <button
     ref={btRef}
     className={CL}
-    style={{...S.BT, ...style }}
+    style={style}
     onClick={onClick}
   >
     <svg

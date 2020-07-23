@@ -15,6 +15,8 @@ var _A = _interopRequireDefault(require("../zhn-atoms/A"));
 
 var _ItemCaption = _interopRequireDefault(require("./ItemCaption"));
 
+var _CL = _interopRequireDefault(require("../styles/CL"));
+
 var _Item = _interopRequireDefault(require("./Item.Style"));
 
 var ITEM_DESCRIPTION = "GitHub Likely Recent Version Tag";
@@ -198,7 +200,7 @@ var GitHubRecentTag = /*#__PURE__*/function (_Component) {
     }, /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
       onClose: onCloseItem
     }, /*#__PURE__*/_react["default"].createElement("button", {
-      className: "not-selected",
+      className: _CL["default"].BT_ITEM,
       title: caption,
       style: _Item["default"].CAPTION_OPEN,
       onClick: this._hToggleOpen

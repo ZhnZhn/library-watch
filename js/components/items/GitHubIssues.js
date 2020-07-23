@@ -17,10 +17,11 @@ var _A = _interopRequireDefault(require("../zhn-atoms/A"));
 
 var _ItemCaption = _interopRequireDefault(require("./ItemCaption"));
 
+var _CL = _interopRequireDefault(require("../styles/CL"));
+
 var _Item = _interopRequireDefault(require("./Item.Style"));
 
 var ITEM_DESCRIPTION = "GitHub Repository Issues";
-var CL_ITEM = 'row-item not-selected';
 var S = {
   STATE: (0, _extends2["default"])({}, _Item["default"].PR_8, {
     color: '#d7bb52'
@@ -92,7 +93,7 @@ var GitHubIssues = /*#__PURE__*/function (_Component) {
 
         return /*#__PURE__*/_react["default"].createElement("div", {
           key: index,
-          className: CL_ITEM
+          className: _CL["default"].ROW_ITEM
         }, /*#__PURE__*/_react["default"].createElement("a", {
           href: html_url
         }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -128,7 +129,7 @@ var GitHubIssues = /*#__PURE__*/function (_Component) {
     }, /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
       onClose: onCloseItem
     }, /*#__PURE__*/_react["default"].createElement("button", {
-      className: "not-selected",
+      className: _CL["default"].BT_ITEM,
       title: caption,
       style: _Item["default"].CAPTION_OPEN,
       onClick: this._hToggleOpen

@@ -36,9 +36,6 @@ const S = {
   CAPTION: {
     paddingLeft: 4,
   },
-  BT_MORE: {
-    verticalAlign: 'none'
-  },
 
   SPAN_SUM: {
     color: '#80c040',
@@ -125,11 +122,10 @@ class NpmRecentDownloads extends Component {
         />
         <Caption style={S.CAPTION} onClose={onCloseItem}>
           <A.SvgMore
-            style={S.BT_MORE}
             onClick={this._hClickMore}
           />
           <button
-             className={CL.NOT_SELECTED}
+             className={CL.BT_ITEM}             
              title={caption}
              style={S.BT_CAPTION}
              onClick={this._handlerToggleOpen}

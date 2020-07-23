@@ -2,10 +2,14 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
+
+var _isKeyEnter = _interopRequireDefault(require("../zhn-atoms/isKeyEnter"));
 
 var _MenuBadge = _interopRequireDefault(require("../zhn-atoms/MenuBadge"));
 
@@ -24,35 +28,60 @@ var S = {
   }
 };
 
+var MenuItem = function MenuItem(_ref) {
+  var title = _ref.title,
+      className = _ref.className,
+      menuBadge = _ref.menuBadge,
+      onClick = _ref.onClick;
+
+  var _hKeyDown = (0, _react.useCallback)(function (event) {
+    if ((0, _isKeyEnter["default"])(event)) {
+      onClick();
+    }
+  }, []);
+
+  return /*#__PURE__*/_react["default"].createElement("div", {
+    role: "menuitem",
+    tabIndex: 0,
+    className: className,
+    onClick: onClick,
+    onKeyDown: _hKeyDown
+  }, title, menuBadge);
+};
+
 var _renderMenuItems = function _renderMenuItems(rowClass, items) {
   if (items === void 0) {
     items = [];
   }
 
   return items.map(function (item, index) {
+    var counter = item.counter,
+        title = item.title,
+        onClick = item.onClick;
+
     var _className = rowClass ? rowClass + ' ' + CL.NOT_SELECTED : index % 2 ? CL.ROW_EVEN : CL.ROW_ODD,
-        menuBadge = item.counter !== 0 ? /*#__PURE__*/_react["default"].createElement(_MenuBadge["default"], {
-      counter: item.counter,
+        menuBadge = counter !== 0 ? /*#__PURE__*/_react["default"].createElement(_MenuBadge["default"], {
+      counter: counter,
       isOpen: item.isOpen,
       onBadgeOpen: item.onBadgeOpen,
       onBadgeClose: item.onBadgeClose
     }) : null;
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement(MenuItem, {
       key: index,
-      tabIndex: 0,
       className: _className,
-      onClick: item.onClick //onKeyPress={item.onClick}
-
-    }, item.title, menuBadge);
+      title: title,
+      menuBadge: menuBadge,
+      onClick: onClick
+    });
   });
 };
 
-var MenuPart = function MenuPart(_ref) {
-  var rowClass = _ref.rowClass,
-      caption = _ref.caption,
-      items = _ref.items,
-      isInitClose = _ref.isInitClose;
+var MenuPart = function MenuPart(_ref2) {
+  var rowClass = _ref2.rowClass,
+      caption = _ref2.caption,
+      items = _ref2.items,
+      isInitClose = _ref2.isInitClose;
   return /*#__PURE__*/_react["default"].createElement(_OpenClose["default"], {
     styleCaptionRow: S.CAPTION_ROW,
     fillOpen: FILL_OPEN,

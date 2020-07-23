@@ -64,7 +64,7 @@ var BrowserConfig = {
     browserType: _Type.BrowserType.LIBRARY,
     caption: 'Library',
     sourceMenuUrl: './data/github/source-menu.json',
-    rowClass: 'row__library'
+    rowClass: 'menu-item'
   }
 };
 

@@ -20,6 +20,7 @@ var _isFn = function _isFn(fn) {
 
 var ContainerCaption = function ContainerCaption(_ref) {
   var style = _ref.style,
+      moreStyle = _ref.moreStyle,
       caption = _ref.caption,
       children = _ref.children,
       onMore = _ref.onMore,
@@ -28,6 +29,7 @@ var ContainerCaption = function ContainerCaption(_ref) {
     className: _CaptionRow["default"].CL_CAPTION,
     style: style
   }, _isFn(onMore) && /*#__PURE__*/_react["default"].createElement(_SvgMore["default"], {
+    style: moreStyle,
     onClick: onMore
   }), /*#__PURE__*/_react["default"].createElement("span", {
     className: _CaptionRow["default"].CL_NOT_SELECTED,

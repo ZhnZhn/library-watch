@@ -20,7 +20,7 @@ const BASE_NODEICO = "https://nodei.co/npm/"
     , ITEM_DESCRIPTION = "Npm Recent Month Downloads";
 
 const S = {
-  ROOT: STYLE.ROOT,  
+  ROOT: STYLE.ROOT,
   CAPTION_OPEN: {
     ...STYLE.CAPTION_OPEN,
     position: 'relative',
@@ -28,9 +28,6 @@ const S = {
   },
   CAPTION: {
     paddingLeft: 4,
-  },
-  BT_MORE: {
-    verticalAlign: 'none'
   },
 
   SPAN_SUM: {
@@ -205,11 +202,10 @@ class NpmDownloads extends Component {
         />
         <Caption style={S.CAPTION} onClose={onCloseItem}>
           <A.SvgMore
-            style={S.BT_MORE}
             onClick={this._hClickMore}
           />
           <button
-             className="not-selected"
+             className={CL.BT_ITEM}
              title={caption}
              style={S.CAPTION_OPEN}
              onClick={this._handlerToggleOpen}

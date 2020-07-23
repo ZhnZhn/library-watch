@@ -5,21 +5,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
 var _react = _interopRequireDefault(require("react"));
 
-var CL = 'focusable';
-var S = {
-  BT: {
-    verticalAlign: 'middle',
-    paddingLeft: 6,
-    paddingRight: 6,
-    fill: 'silver',
-    stroke: 'silver',
-    cursor: 'pointer'
-  }
-};
+var CL = 'bt-more';
 
 var SvgMore = function SvgMore(_ref) {
   var style = _ref.style,
@@ -29,7 +17,7 @@ var SvgMore = function SvgMore(_ref) {
   return /*#__PURE__*/_react["default"].createElement("button", {
     ref: btRef,
     className: CL,
-    style: (0, _extends2["default"])({}, S.BT, style),
+    style: style,
     onClick: onClick
   }, /*#__PURE__*/_react["default"].createElement("svg", {
     style: svgStyle,

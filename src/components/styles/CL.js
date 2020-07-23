@@ -1,10 +1,12 @@
 
 const CL = {
   NOT_SELECTED: 'not-selected',
+  BT_ITEM: 'not-selected bt-item',
+  ROW_ITEM: 'row-item not-selected',
   SHOW_POPUP: 'show-popup',
   MENU_MORE: 'popup-menu charts__menu-more',
   ROW_MENU_MORE: 'row__pane-topic not-selected',
-  SOURCE_LINK: 'source-link'  
+  SOURCE_LINK: 'source-link'
 };
 
 export default Object.freeze(CL);

@@ -3,11 +3,10 @@ import timeago from 'timeago.js';
 
 import A from '../zhn-atoms/A';
 import Caption from './ItemCaption'
+import CL from '../styles/CL'
 import STYLE from './Item.Style'
 
 const ITEM_DESCRIPTION = "GitHub Repository Commits";
-
-const CL_ITEM = 'row-item not-selected';
 
 class GitHubCommits extends Component {
   state = {
@@ -40,7 +39,7 @@ class GitHubCommits extends Component {
         , _dateAgo = _timeago.format(_dateTime)
 
         return (
-           <div key={index} className={CL_ITEM}>
+           <div key={index} className={CL.ROW_ITEM}>
               <a href={html_url}>
               <div style={STYLE.PB_8}>
                 <span style={STYLE.PR_8}>
@@ -71,7 +70,7 @@ class GitHubCommits extends Component {
        <div style={STYLE.ROOT}>
          <Caption onClose={onCloseItem}>
            <button
-              className="not-selected"
+              className={CL.BT_ITEM}              
               title={caption}
               style={STYLE.CAPTION_OPEN}
               onClick={this._hToggleOpen}

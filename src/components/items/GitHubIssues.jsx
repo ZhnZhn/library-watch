@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 
 import A from '../zhn-atoms/A';
 import Caption from './ItemCaption'
+
+import CL from '../styles/CL'
 import STYLE from './Item.Style'
 
 const ITEM_DESCRIPTION = "GitHub Repository Issues";
-
-const CL_ITEM = 'row-item not-selected';
-
 
 const S = {
   STATE: {
@@ -63,7 +62,7 @@ class GitHubIssues extends Component {
              ? _toDate(updated_at)
              : '';
         return (
-           <div key={index} className={CL_ITEM}>
+           <div key={index} className={CL.ROW_ITEM}>
              <a href={html_url}>
                 <div style={STYLE.PB_8}>
                   <span style={S.STATE}>
@@ -100,7 +99,7 @@ class GitHubIssues extends Component {
        <div style={STYLE.ROOT}>
          <Caption onClose={onCloseItem}>
            <button
-              className="not-selected"
+              className={CL.BT_ITEM}
               title={caption}
               style={STYLE.CAPTION_OPEN}
               onClick={this._hToggleOpen}

@@ -32,7 +32,8 @@ const S = {
   },
   BT_MORE: {
     position: 'absolute',
-    left: 0
+    top: 2,
+    left: 0    
   },
   BT_MORE_SVG: {
     stroke: 'inherit',
@@ -95,7 +96,7 @@ class DraggableDialog extends Component {
      this.focusPrev()
   }
 
-  _toggleMore = () => {    
+  _toggleMore = () => {
     this.setState(prevState => ({
       isMore: !prevState.isMore
     }))

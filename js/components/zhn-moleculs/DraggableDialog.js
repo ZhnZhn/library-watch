@@ -43,6 +43,7 @@ var S = (0, _extends2["default"])({}, _Dialog["default"], {
   },
   BT_MORE: {
     position: 'absolute',
+    top: 2,
     left: 0
   },
   BT_MORE_SVG: {

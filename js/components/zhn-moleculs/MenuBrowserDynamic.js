@@ -23,7 +23,7 @@ var _MenuPart = _interopRequireDefault(require("./MenuPart"));
 
 var STYLE = {
   BROWSER: {
-    paddingRight: '0'
+    paddingRight: 0
   },
   SCROLL_DIV: {
     overflowY: 'auto',

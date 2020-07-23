@@ -45,9 +45,6 @@ var S = {
   CAPTION: {
     paddingLeft: 4
   },
-  BT_MORE: {
-    verticalAlign: 'none'
-  },
   SPAN_SUM: {
     color: '#80c040',
     paddingLeft: 10,
@@ -252,10 +249,9 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
       style: S.CAPTION,
       onClose: onCloseItem
     }, /*#__PURE__*/_react["default"].createElement(_A["default"].SvgMore, {
-      style: S.BT_MORE,
       onClick: this._hClickMore
     }), /*#__PURE__*/_react["default"].createElement("button", {
-      className: "not-selected",
+      className: _CL["default"].BT_ITEM,
       title: caption,
       style: S.CAPTION_OPEN,
       onClick: this._handlerToggleOpen

@@ -42,6 +42,11 @@ const S = {
     overflowY: 'auto',
     height: '92%',
     paddingRight: 10
+  },
+  BT_MORE: {
+    position: 'relative',
+    top: 3,
+    marginRight: 6
   }
 };
 
@@ -167,6 +172,7 @@ class ChartContainer2 extends Component {
             onClose={this._hToggleMore}
           />
           <ContainerCaption
+             moreStyle={S.BT_MORE}
              caption={caption}
              onMore={this._showMore}
              onClose={this._handleHide}

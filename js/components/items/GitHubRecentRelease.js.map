@@ -1,1 +1,41 @@
-{"version":3,"sources":["../../../src/components/items/GitHubRecentRelease.jsx"],"names":["ITEM_DESCRIPTION","GitHubRecentRelease","state","isShow","_hToggleOpen","setState","prevState","_hClickWatch","props","repo","requestType","version","published_at","onWatchItem","caption","descr","config","date","render","html_url","onCloseItem","STYLE","ROOT","CAPTION_OPEN","SPAN_VERSION","BTN_CIRCLE","PT_8","ML_8","Component"],"mappings":";;;;;;;;;;;AAAA;;AAEA;;AACA;;AACA;;AAEA,IAAMA,gBAAgB,GAAG,kCAAzB;;IAEMC,mB;;;;;;;;;;;UACJC,K,GAAQ;AACNC,MAAAA,MAAM,EAAE;AADF,K;;UAIRC,Y,GAAe,YAAM;AAClB,YAAKC,QAAL,CAAc,UAAAC,SAAS;AAAA,eAAK;AAC1BH,UAAAA,MAAM,EAAE,CAACG,SAAS,CAACH;AADO,SAAL;AAAA,OAAvB;AAGF,K;;UAEDI,Y,GAAe,YAAM;AAAA,wBACgD,MAAKC,KADrD;AAAA,UACVC,IADU,eACVA,IADU;AAAA,UACJC,WADI,eACJA,WADI;AAAA,UACSC,OADT,eACSA,OADT;AAAA,UACkBC,YADlB,eACkBA,YADlB;AAAA,UACgCC,WADhC,eACgCA,WADhC;AAAA,UAEZC,OAFY,GAECL,IAFD,SAESE,OAFT;AAAA,UAGZI,KAHY,GAGJf,gBAHI;AAIlBa,MAAAA,WAAW,CAAC;AACTC,QAAAA,OAAO,EAAGA,OADD;AAETE,QAAAA,MAAM,EAAG;AAAEP,UAAAA,IAAI,EAAJA,IAAF;AAAQC,UAAAA,WAAW,EAAXA,WAAR;AAAqBC,UAAAA,OAAO,EAAPA,OAArB;AAA8BG,UAAAA,OAAO,EAAPA,OAA9B;AAAuCC,UAAAA,KAAK,EAALA,KAAvC;AAA8CE,UAAAA,IAAI,EAAGL;AAArD;AAFA,OAAD,CAAX;AAIF,K;;;;;;;SAEDM,M,GAAA,kBAAQ;AAAA,uBAIA,KAAKV,KAJL;AAAA,QAEFM,OAFE,gBAEFA,OAFE;AAAA,QAEOL,IAFP,gBAEOA,IAFP;AAAA,QAEaE,OAFb,gBAEaA,OAFb;AAAA,QAEsBC,YAFtB,gBAEsBA,YAFtB;AAAA,QAEoCO,QAFpC,gBAEoCA,QAFpC;AAAA,QAGFC,WAHE,gBAGFA,WAHE;AAAA,QAKFjB,MALE,GAKS,KAAKD,KALd,CAKFC,MALE;AAMN,wBACE;AAAK,MAAA,KAAK,EAAEkB,iBAAMC;AAAlB,oBACE,gCAAC,uBAAD;AAAS,MAAA,OAAO,EAAEF;AAAlB,oBACE;AACG,MAAA,SAAS,EAAC,cADb;AAEG,MAAA,KAAK,EAAEN,OAFV;AAGG,MAAA,KAAK,EAAEO,iBAAME,YAHhB;AAIG,MAAA,OAAO,EAAE,KAAKnB;AAJjB,oBAME,8CACGK,IADH,CANF,eASE;AAAM,MAAA,KAAK,EAAEY,iBAAMG;AAAnB,OACIb,OADJ,CATF,eAYE,8CACIC,YADJ,CAZF,CADF,eAiBE,gCAAC,aAAD,CAAG,YAAH;AACG,MAAA,OAAO,EAAC,GADX;AAEG,MAAA,KAAK,EAAC,cAFT;AAGG,MAAA,KAAK,EAAES,iBAAMI,UAHhB;AAIG,MAAA,OAAO,EAAE,KAAKlB;AAJjB,MAjBF,CADF,eAyBE,gCAAC,aAAD,CAAG,QAAH;AAAY,MAAA,MAAM,EAAEJ,MAApB;AAA4B,MAAA,KAAK,EAAEkB,iBAAMK;AAAzC,oBACE;AACG,MAAA,IAAI,EAAEP,QADT;AAEG,MAAA,SAAS,EAAC,aAFb;AAGG,MAAA,KAAK,EAAEE,iBAAMM;AAHhB,mDADF,CAzBF,CADF;AAqCD,G;;;EAhE+BC,gB;;eAmEnB3B,mB","sourcesContent":["import React, { Component } from 'react';\r\n\r\nimport A from '../zhn-atoms/A';\r\nimport Caption from './ItemCaption'\r\nimport STYLE from './Item.Style'\r\n\r\nconst ITEM_DESCRIPTION = \"GitHub Repository Recent Release\";\r\n\r\nclass GitHubRecentRelease extends Component {\r\n  state = {\r\n    isShow: true\r\n  }\r\n\r\n  _hToggleOpen = () => {\r\n     this.setState(prevState => ({\r\n       isShow: !prevState.isShow\r\n     }))\r\n  }\r\n\r\n  _hClickWatch = () => {\r\n     const { repo, requestType, version, published_at, onWatchItem } = this.props\r\n         , caption = `${repo} ${version}`\r\n         , descr = ITEM_DESCRIPTION\r\n     onWatchItem({\r\n        caption : caption,\r\n        config : { repo, requestType, version, caption, descr, date : published_at }\r\n     });\r\n  }\r\n\r\n  render(){\r\n    const {\r\n        caption, repo, version, published_at, html_url,\r\n        onCloseItem\r\n      } = this.props\r\n    , { isShow } = this.state;\r\n    return (\r\n      <div style={STYLE.ROOT}>\r\n        <Caption onClose={onCloseItem}>\r\n          <button\r\n             className=\"not-selected\"\r\n             title={caption}\r\n             style={STYLE.CAPTION_OPEN}\r\n             onClick={this._hToggleOpen}\r\n          >\r\n            <span>\r\n              {repo}\r\n            </span>\r\n            <span style={STYLE.SPAN_VERSION}>\r\n               {version}\r\n            </span>\r\n            <span>\r\n               {published_at}\r\n            </span>\r\n          </button>\r\n          <A.ButtonCircle\r\n             caption=\"W\"\r\n             title=\"Add to Watch\"\r\n             style={STYLE.BTN_CIRCLE}\r\n             onClick={this._hClickWatch}\r\n          />\r\n        </Caption>\r\n        <A.ShowHide isShow={isShow} style={STYLE.PT_8}>\r\n          <a\r\n             href={html_url}\r\n             className=\"github-link\"\r\n             style={STYLE.ML_8}\r\n          >\r\n             Link to description of recent release tag\r\n          </a>\r\n        </A.ShowHide>\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nexport default GitHubRecentRelease\r\n"],"file":"GitHubRecentRelease.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/GitHubRecentRelease.js"
+ ],
+ "file": "../../../src/components/items/GitHubRecentRelease.js",
+ "names": [
+  "ITEM_DESCRIPTION",
+  "GitHubRecentRelease",
+  "state",
+  "isShow",
+  "_hToggleOpen",
+  "setState",
+  "prevState",
+  "_hClickWatch",
+  "props",
+  "repo",
+  "requestType",
+  "version",
+  "published_at",
+  "onWatchItem",
+  "caption",
+  "descr",
+  "config",
+  "date",
+  "render",
+  "html_url",
+  "onCloseItem",
+  "STYLE",
+  "ROOT",
+  "CL",
+  "BT_ITEM",
+  "CAPTION_OPEN",
+  "SPAN_VERSION",
+  "BTN_CIRCLE",
+  "PT_8",
+  "ML_8",
+  "Component"
+ ],
+ "mappings": ";;;;;;;;;;;AAAA;;AAEA;;AACA;;AACA;;AACA;;AAEA,IAAMA,gBAAgB,GAAG,kCAAzB;;IAEMC,mB;;;;;;;;;;;UACJC,K,GAAQ;AACNC,MAAAA,MAAM,EAAE;AADF,K;;UAIRC,Y,GAAe,YAAM;AAClB,YAAKC,QAAL,CAAc,UAAAC,SAAS;AAAA,eAAK;AAC1BH,UAAAA,MAAM,EAAE,CAACG,SAAS,CAACH;AADO,SAAL;AAAA,OAAvB;AAGF,K;;UAEDI,Y,GAAe,YAAM;AAAA,wBACgD,MAAKC,KADrD;AAAA,UACVC,IADU,eACVA,IADU;AAAA,UACJC,WADI,eACJA,WADI;AAAA,UACSC,OADT,eACSA,OADT;AAAA,UACkBC,YADlB,eACkBA,YADlB;AAAA,UACgCC,WADhC,eACgCA,WADhC;AAAA,UAEZC,OAFY,GAECL,IAFD,SAESE,OAFT;AAAA,UAGZI,KAHY,GAGJf,gBAHI;AAIlBa,MAAAA,WAAW,CAAC;AACTC,QAAAA,OAAO,EAAGA,OADD;AAETE,QAAAA,MAAM,EAAG;AAAEP,UAAAA,IAAI,EAAJA,IAAF;AAAQC,UAAAA,WAAW,EAAXA,WAAR;AAAqBC,UAAAA,OAAO,EAAPA,OAArB;AAA8BG,UAAAA,OAAO,EAAPA,OAA9B;AAAuCC,UAAAA,KAAK,EAALA,KAAvC;AAA8CE,UAAAA,IAAI,EAAGL;AAArD;AAFA,OAAD,CAAX;AAIF,K;;;;;;;SAEDM,M,GAAA,kBAAQ;AAAA,uBAIA,KAAKV,KAJL;AAAA,QAEFM,OAFE,gBAEFA,OAFE;AAAA,QAEOL,IAFP,gBAEOA,IAFP;AAAA,QAEaE,OAFb,gBAEaA,OAFb;AAAA,QAEsBC,YAFtB,gBAEsBA,YAFtB;AAAA,QAEoCO,QAFpC,gBAEoCA,QAFpC;AAAA,QAGFC,WAHE,gBAGFA,WAHE;AAAA,QAKFjB,MALE,GAKS,KAAKD,KALd,CAKFC,MALE;AAMN,wBACE;AAAK,MAAA,KAAK,EAAEkB,iBAAMC;AAAlB,oBACE,gCAAC,uBAAD;AAAS,MAAA,OAAO,EAAEF;AAAlB,oBACE;AACG,MAAA,SAAS,EAAEG,eAAGC,OADjB;AAEG,MAAA,KAAK,EAAEV,OAFV;AAGG,MAAA,KAAK,EAAEO,iBAAMI,YAHhB;AAIG,MAAA,OAAO,EAAE,KAAKrB;AAJjB,oBAME,8CACGK,IADH,CANF,eASE;AAAM,MAAA,KAAK,EAAEY,iBAAMK;AAAnB,OACIf,OADJ,CATF,eAYE,8CACIC,YADJ,CAZF,CADF,eAiBE,gCAAC,aAAD,CAAG,YAAH;AACG,MAAA,OAAO,EAAC,GADX;AAEG,MAAA,KAAK,EAAC,cAFT;AAGG,MAAA,KAAK,EAAES,iBAAMM,UAHhB;AAIG,MAAA,OAAO,EAAE,KAAKpB;AAJjB,MAjBF,CADF,eAyBE,gCAAC,aAAD,CAAG,QAAH;AAAY,MAAA,MAAM,EAAEJ,MAApB;AAA4B,MAAA,KAAK,EAAEkB,iBAAMO;AAAzC,oBACE;AACG,MAAA,IAAI,EAAET,QADT;AAEG,MAAA,SAAS,EAAC,aAFb;AAGG,MAAA,KAAK,EAAEE,iBAAMQ;AAHhB,mDADF,CAzBF,CADF;AAqCD,G;;;EAhE+BC,gB;;eAmEnB7B,mB"
+}

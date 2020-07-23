@@ -9,7 +9,7 @@ import STYLE from './CaptionRow.Style';
 const _isFn = fn => typeof fn === 'function';
 
 const ContainerCaption = ({
-  style,
+  style, moreStyle,
   caption,
   children,
   onMore,
@@ -19,6 +19,7 @@ const ContainerCaption = ({
     {
        _isFn(onMore) &&
        <SvgMore
+         style={moreStyle}
          onClick={onMore}
        />
      }

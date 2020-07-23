@@ -7,7 +7,7 @@ import MenuPart from './MenuPart';
 
 const STYLE = {
   BROWSER : {
-    paddingRight: '0'
+    paddingRight: 0
   },
   SCROLL_DIV : {
     overflowY: 'auto',
