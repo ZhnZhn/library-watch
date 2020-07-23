@@ -2,7 +2,7 @@
 .item-caption {
   background-color: #232f3b;
   width: 100%;
-  height: 34px; 
+  min-height: 34px; 
   padding-left: 8px;
   padding-top: 4px;
   padding-right: 42px;
