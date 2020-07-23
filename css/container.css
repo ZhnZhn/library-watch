@@ -53,23 +53,22 @@
   background: inherit;
 }
 
-.row__library {
+.menu-item {
   line-height: 2;
   color: black;
   font-size: 16px;
-  font-weight: bold;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  padding-left: 16px;
-  border-bottom: 1px solid transparent;
+  font-weight: bold; 
+  padding-left: 12px;
+  border-left: 4px solid transparent;
   cursor: pointer;
 }
-.row__library:hover {
-  border-bottom: 1px solid #1B75BB;
+.menu-item:hover {
+  border-left: 4px solid #1b75bb;
 }
-.row__library:focus {
+.menu-item:active,
+.menu-item:focus {
   outline: 0;
-  border-bottom: 1px solid #1B75BB;
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 
@@ -147,8 +146,8 @@
 
 .svg-close {
   display: inline-block;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   padding: 2px;
   margin-right: 10px;
   cursor: pointer;

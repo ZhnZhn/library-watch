@@ -62,7 +62,6 @@
 
 .charts__menu-more {
   top: 36px;
-  left: 8px;
+  left: 0;
   z-index: 2000;
-  //border: 2px solid rgb(27, 40, 54);
 }

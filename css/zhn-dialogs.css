@@ -4,7 +4,7 @@
 
 .dialog__menu-more {
   top: 30px;
-  left: 4px;
+  left: -2px;
   z-index: 10;
   text-align: left;
 }
@@ -12,12 +12,13 @@
 .row__pane-topic {
   line-height: 2.2;
   color: black;
+  padding: 1px 16px;
+  border-bottom: 2px solid transparent;
   font-size: 16px;
   font-weight: bold;
-  padding: 1px 16px;
   outline: none;
   user-select: none;
   cursor: pointer; }
 
 .row__pane-topic:focus {
-  border-bottom: 1px solid #1b75bb; }
+  border-bottom: 2px solid #1b75bb; }

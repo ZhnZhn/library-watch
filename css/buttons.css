@@ -189,3 +189,32 @@ button::-moz-focus-inner {
   text-transform: uppercase;
   user-select: none;
 }
+
+.bt-more {
+  height: 26px;
+  padding: 2px 6px;
+  border-radius: 2px;
+  fill: silver;
+  stroke: silver;
+  cursor: pointer;
+}
+.bt-more:hover,
+.bt-more:focus {
+  outline: 0;
+  background: rgba(164, 164, 164, 0.3);
+}
+
+.bt-item {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 4px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.bt-item:hover {
+  outline: 0;
+}
+.bt-item:focus {
+  outline: 0;
+  background: rgba(164, 164, 164, 0.3);
+}
