@@ -12,15 +12,17 @@ var CL = "svg-close";
 var STYLE = {
   COLOR: "#ed5813",
   SVG: {
-    padding: '3px'
+    padding: 3
   }
 };
 
 var SvgClose = function SvgClose(_ref) {
-  var className = _ref.className,
+  var _ref$className = _ref.className,
+      className = _ref$className === void 0 ? '' : _ref$className,
       style = _ref.style,
       onClose = _ref.onClose;
-  return /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("button", {
+    tabIndex: "-1",
     className: CL + " " + className,
     style: style,
     onClick: onClose
@@ -42,15 +44,13 @@ var SvgClose = function SvgClose(_ref) {
 };
 /*
 SvgClose.propTypes = {
+  className: PropTypes.string,
   style: PropTypes.object,
   onClose: PropTypes.func
 }
 */
 
 
-SvgClose.defaultProps = {
-  className: ''
-};
 var _default = SvgClose;
 exports["default"] = _default;
 //# sourceMappingURL=SvgClose.js.map
