@@ -42,8 +42,8 @@ var CHILD_MARGIN = 36,
 var S = {
   ROOT: {
     position: 'relative',
-    backgroundColor: '#4D4D4D',
-    padding: '0px 0px 3px 0px',
+    backgroundColor: '#4d4d4d',
+    padding: '0px 0px 16px',
     width: 635,
     height: 'calc(100vh - 71px)',
     minHeight: 500,
