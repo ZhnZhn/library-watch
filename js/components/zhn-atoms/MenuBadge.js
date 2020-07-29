@@ -1,13 +1,11 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
 exports.__esModule = true;
 exports["default"] = void 0;
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -15,68 +13,48 @@ var _ButtonCircle = _interopRequireDefault(require("./ButtonCircle2"));
 
 //import PropTypes from 'prop-types'
 var CL = "menu__badge";
-var STYLE = {
+var S = {
   OPEN: {
-    color: 'rgb(164, 135, 212)'
+    color: '#a487d4'
   }
 };
 
-var MenuBadge = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(MenuBadge, _Component);
+var MenuBadge = function MenuBadge(_ref) {
+  var isOpen = _ref.isOpen,
+      counter = _ref.counter,
+      onBadgeOpen = _ref.onBadgeOpen,
+      onBadgeClose = _ref.onBadgeClose;
 
-  function MenuBadge() {
-    var _this;
+  var _hClickBadge = (0, _react.useCallback)(function (event) {
+    event.preventDefault();
+    event.stopPropagation();
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
+    if (isOpen) {
+      onBadgeClose();
+    } else {
+      onBadgeOpen();
     }
+  }, [isOpen, onBadgeOpen, onBadgeClose]),
+      _style = isOpen ? S.OPEN : void 0;
 
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+  return /*#__PURE__*/_react["default"].createElement(_ButtonCircle["default"], {
+    className: CL,
+    style: _style,
+    caption: counter,
+    onClick: _hClickBadge
+  });
+};
+/*
+MenuBadge.propTypes = {
+  isOpen : PropTypes.bool,
+  counter : PropTypes.oneOfType([
+      PropTypes.number, PropTypes.string
+  ]),
+  onBadgeOpen : PropTypes.func,
+  onBadgeClose : PropTypes.func
+}
+*/
 
-    _this._handleClickBadge = function (event) {
-      event.stopPropagation();
-      var _this$props = _this.props,
-          isOpen = _this$props.isOpen,
-          onBadgeOpen = _this$props.onBadgeOpen,
-          onBadgeClose = _this$props.onBadgeClose;
-
-      if (isOpen) {
-        onBadgeClose();
-      } else {
-        onBadgeOpen();
-      }
-    };
-
-    return _this;
-  }
-
-  var _proto = MenuBadge.prototype;
-
-  /*
-  <span
-     className={CL}
-     style={_style}
-     onClick={this._handleClickBadge}
-  >
-     {counter}
-  </span>
-  */
-  _proto.render = function render() {
-    var _this$props2 = this.props,
-        counter = _this$props2.counter,
-        isOpen = _this$props2.isOpen,
-        _style = isOpen ? STYLE.OPEN : undefined;
-
-    return /*#__PURE__*/_react["default"].createElement(_ButtonCircle["default"], {
-      className: CL,
-      style: _style,
-      caption: counter,
-      onClick: this._handleClickBadge
-    });
-  };
-
-  return MenuBadge;
-}(_react.Component);
 
 var _default = MenuBadge;
 exports["default"] = _default;

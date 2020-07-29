@@ -1,61 +1,51 @@
-import React, { Component } from 'react';
+import React, { useCallback } from 'react';
 //import PropTypes from 'prop-types'
 import Button from './ButtonCircle2'
 
-
 const CL = "menu__badge";
 
-const STYLE = {
+const S = {
   OPEN : {
-    color: 'rgb(164, 135, 212)'
+    color: '#a487d4'
   }
 }
 
-class MenuBadge extends Component {
-  /*
-  static propTypes = {
-    counter : PropTypes.oneOfType([
-                 PropTypes.number, PropTypes.string
-              ]),
-    isOpen : PropTypes.bool,
-    onBadgeOpen : PropTypes.func,
-    onBadgeClose : PropTypes.func
-  }
-  */
-
-  _handleClickBadge = (event) => {
-     event.stopPropagation()
-     const { isOpen, onBadgeOpen, onBadgeClose } = this.props
-     if (isOpen){
-       onBadgeClose()
-     } else {
-       onBadgeOpen()
-     }
-  }
-
-  /*
-  <span
-     className={CL}
-     style={_style}
-     onClick={this._handleClickBadge}
-  >
-     {counter}
-  </span>
-  */
-
-  render(){
-    const { counter, isOpen } = this.props
-         , _style = isOpen
-             ? STYLE.OPEN : undefined;
-    return (
-      <Button
-        className={CL}
-        style={_style}
-        caption={counter}
-        onClick={this._handleClickBadge}
-      />
-    );
-  }
+const MenuBadge = ({
+  isOpen,
+  counter,
+  onBadgeOpen,
+  onBadgeClose
+}) => {
+  const _hClickBadge = useCallback(event => {
+    event.preventDefault()
+    event.stopPropagation()
+    if (isOpen){
+      onBadgeClose()
+    } else {
+      onBadgeOpen()
+    }
+  }, [isOpen, onBadgeOpen, onBadgeClose])
+  , _style = isOpen ? S.OPEN : void 0;
+  return (
+    <Button
+      className={CL}
+      style={_style}
+      caption={counter}
+      onClick={_hClickBadge}
+    />
+  );
 }
+
+/*
+MenuBadge.propTypes = {
+  isOpen : PropTypes.bool,
+  counter : PropTypes.oneOfType([
+      PropTypes.number, PropTypes.string
+  ]),
+  onBadgeOpen : PropTypes.func,
+  onBadgeClose : PropTypes.func
+}
+*/
+
 
 export default MenuBadge
