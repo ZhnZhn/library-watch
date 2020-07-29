@@ -12,16 +12,16 @@ var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
 var STYLE = {
   ITEM_DIV: {
     position: 'relative',
-    paddingRight: '40px',
-    lineHeight: 1.4,
-    paddingTop: '5px',
-    paddingBottom: '5px'
+    paddingRight: 40,
+    paddingTop: 5,
+    paddingBottom: 5,
+    lineHeight: 1.4
   },
   ITEM_SPAN: {
     display: 'inline-block',
     verticalAlign: 'middle',
     width: '100%',
-    maxWidth: '250px',
+    maxWidth: 250,
     textOverflow: 'ellipsis',
     overflow: 'hidden'
   },
@@ -40,7 +40,7 @@ var VersionDateRow = function VersionDateRow(props) {
       date = _props$date === void 0 ? '' : _props$date;
 
   if (!version) {
-    return undefined;
+    return;
   }
 
   return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("span", null, version), /*#__PURE__*/_react["default"].createElement("span", {
@@ -48,18 +48,18 @@ var VersionDateRow = function VersionDateRow(props) {
   }, date.split(' ')[0]));
 };
 
-var WatchItem = function WatchItem(props) {
-  var item = props.item,
-      className = props.className,
-      isModeEdit = props.isModeEdit,
-      option = props.option,
-      onClick = props.onClick,
-      onClose = props.onClose,
-      onDragStart = props.onDragStart,
-      onDragEnter = props.onDragEnter,
-      onDragOver = props.onDragOver,
-      onDragLeave = props.onDragLeave,
-      onDrop = props.onDrop;
+var WatchItem = function WatchItem(_ref) {
+  var item = _ref.item,
+      className = _ref.className,
+      isModeEdit = _ref.isModeEdit,
+      option = _ref.option,
+      onClick = _ref.onClick,
+      onClose = _ref.onClose,
+      onDragStart = _ref.onDragStart,
+      onDragEnter = _ref.onDragEnter,
+      onDragOver = _ref.onDragOver,
+      onDragLeave = _ref.onDragLeave,
+      onDrop = _ref.onDrop;
 
   var repo = item.repo,
       version = item.version,
@@ -67,11 +67,11 @@ var WatchItem = function WatchItem(props) {
       _compBtClose = isModeEdit ? /*#__PURE__*/_react["default"].createElement(_SvgClose["default"], {
     style: STYLE.SVG_CLOSE,
     onClose: onClose.bind(null, option)
-  }) : undefined,
+  }) : null,
       _compVersionDateRow = version ? /*#__PURE__*/_react["default"].createElement(VersionDateRow, {
     version: version,
     date: date
-  }) : undefined;
+  }) : null;
 
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: className,

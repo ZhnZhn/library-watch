@@ -5,16 +5,16 @@ import SvgClose from '../zhn-atoms/SvgClose';
 const STYLE = {
   ITEM_DIV : {
     position: 'relative',
-    paddingRight: '40px',
-    lineHeight : 1.4,
-    paddingTop : '5px',
-    paddingBottom: '5px'
+    paddingRight: 40,
+    paddingTop : 5,
+    paddingBottom: 5,
+    lineHeight : 1.4
   },
   ITEM_SPAN : {
     display: 'inline-block',
     verticalAlign : 'middle',
     width: '100%',
-    maxWidth: '250px',
+    maxWidth: 250,
     textOverflow: 'ellipsis',
     overflow: 'hidden'
   },
@@ -33,7 +33,7 @@ const STYLE = {
 const VersionDateRow = (props) => {
    const { version, date='' } = props
    if (!version) {
-     return undefined;
+     return;
    }
    return (
      <div>
@@ -47,30 +47,28 @@ const VersionDateRow = (props) => {
    );
 }
 
-const WatchItem = (props) => {
-  const {
-           item, className, isModeEdit, option,
-           onClick, onClose,
-           onDragStart, onDragEnter, onDragOver, onDragLeave, onDrop
-         } = props
-
+const WatchItem = ({
+  item, className, isModeEdit, option,
+  onClick, onClose,
+  onDragStart, onDragEnter, onDragOver, onDragLeave, onDrop
+}) => {
   const { repo, version, date } = item
-      , _compBtClose = (isModeEdit)
-           ? (
-               <SvgClose
-                 style={STYLE.SVG_CLOSE}
-                 onClose={onClose.bind(null, option)}
-               />
-            )
-          : undefined
-      , _compVersionDateRow = (version)
-           ? (
-               <VersionDateRow
-                  version={version}
-                  date={date}
-               />
-             )
-           : undefined
+  , _compBtClose = isModeEdit
+       ? (
+           <SvgClose
+             style={STYLE.SVG_CLOSE}
+             onClose={onClose.bind(null, option)}
+           />
+        )
+      : null
+  , _compVersionDateRow = (version)
+       ? (
+           <VersionDateRow
+              version={version}
+              date={date}
+           />
+         )
+       : null;
 
   return (
      <div
@@ -81,7 +79,7 @@ const WatchItem = (props) => {
        onDragStart={isModeEdit && onDragStart.bind(null, option)}
        onDrop={isModeEdit && onDrop.bind(null, option)}
        onDragOver={isModeEdit && onDragOver}
-       onDragEnter={isModeEdit && onDragEnter}       
+       onDragEnter={isModeEdit && onDragEnter}
        onDragLeave={isModeEdit && onDragLeave}
      >
        <div>
