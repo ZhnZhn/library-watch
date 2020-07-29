@@ -1,10 +1,11 @@
 
 .item-caption {
+  position: relative;
   background-color: #232f3b;
   width: 100%;
-  min-height: 34px; 
+  min-height: 38px;
   padding-left: 8px;
-  padding-top: 4px;
+  padding-top: 2px;
   padding-right: 42px;
   overflow-x: hidden;
   border-top-right-radius: 2px;
