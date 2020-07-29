@@ -10,7 +10,7 @@ const STYLE = {
   DATE : {
     display : 'inline-block',
     color : 'black',
-    marginLeft : '10px'
+    marginLeft : 10
   },
   INLINE_BLOCK : {
     display : 'inline-block'

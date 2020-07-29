@@ -1,1 +1,20 @@
-{"version":3,"sources":["../../../src/components/zhn-atoms/DateAgo.Style.js"],"names":["STYLE","ROOT","display","cursor","DATE_AGO","color","DATE","marginLeft","INLINE_BLOCK","NONE"],"mappings":";;;;AACA,IAAMA,KAAK,GAAG;AACZC,EAAAA,IAAI,EAAG;AACLC,IAAAA,OAAO,EAAG,cADL;AAELC,IAAAA,MAAM,EAAG;AAFJ,GADK;AAKZC,EAAAA,QAAQ,EAAG;AACTC,IAAAA,KAAK,EAAG;AADC,GALC;AAQZC,EAAAA,IAAI,EAAG;AACLJ,IAAAA,OAAO,EAAG,cADL;AAELG,IAAAA,KAAK,EAAG,OAFH;AAGLE,IAAAA,UAAU,EAAG;AAHR,GARK;AAaZC,EAAAA,YAAY,EAAG;AACbN,IAAAA,OAAO,EAAG;AADG,GAbH;AAgBZO,EAAAA,IAAI,EAAG;AACLP,IAAAA,OAAO,EAAG;AADL;AAhBK,CAAd;eAqBeF,K","sourcesContent":["\r\nconst STYLE = {\r\n  ROOT : {\r\n    display : 'inline-block',\r\n    cursor : 'pointer'\r\n  },\r\n  DATE_AGO : {\r\n    color : 'gray'\r\n  },\r\n  DATE : {\r\n    display : 'inline-block',\r\n    color : 'black',\r\n    marginLeft : '10px'\r\n  },\r\n  INLINE_BLOCK : {\r\n    display : 'inline-block'\r\n  },\r\n  NONE : {\r\n    display : 'none'\r\n  }\r\n}\r\n\r\nexport default STYLE\r\n"],"file":"DateAgo.Style.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-atoms/DateAgo.Style.js"
+ ],
+ "file": "../../../src/components/zhn-atoms/DateAgo.Style.js",
+ "names": [
+  "STYLE",
+  "ROOT",
+  "display",
+  "cursor",
+  "DATE_AGO",
+  "color",
+  "DATE",
+  "marginLeft",
+  "INLINE_BLOCK",
+  "NONE"
+ ],
+ "mappings": ";;;;AACA,IAAMA,KAAK,GAAG;AACZC,EAAAA,IAAI,EAAG;AACLC,IAAAA,OAAO,EAAG,cADL;AAELC,IAAAA,MAAM,EAAG;AAFJ,GADK;AAKZC,EAAAA,QAAQ,EAAG;AACTC,IAAAA,KAAK,EAAG;AADC,GALC;AAQZC,EAAAA,IAAI,EAAG;AACLJ,IAAAA,OAAO,EAAG,cADL;AAELG,IAAAA,KAAK,EAAG,OAFH;AAGLE,IAAAA,UAAU,EAAG;AAHR,GARK;AAaZC,EAAAA,YAAY,EAAG;AACbN,IAAAA,OAAO,EAAG;AADG,GAbH;AAgBZO,EAAAA,IAAI,EAAG;AACLP,IAAAA,OAAO,EAAG;AADL;AAhBK,CAAd;eAqBeF,K"
+}
