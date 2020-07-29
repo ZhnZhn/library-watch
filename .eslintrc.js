@@ -6,8 +6,9 @@ module.exports = {
         "jest": true
     },
     "plugins" : [
-          "react",
-          "jsx-a11y"
+       "react",
+       "react-hooks",
+       "jsx-a11y"
     ],
 
     "extends": [
@@ -54,8 +55,11 @@ module.exports = {
     "react/sort-comp": 0,
     "react/jsx-wrap-multilines": [1, {"declaration": false, "assignment": false}],
 
+    //set react-hooks rules
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
 
-      "jsx-a11y/no-access-key": 0
+    "jsx-a11y/no-access-key": 0
 
     }
 
