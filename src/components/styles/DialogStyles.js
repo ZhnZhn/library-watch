@@ -3,35 +3,33 @@ const DialogStyles = {
   rowDiv: {
     display: 'flex',
     alignItems: 'center',
-    margin: '5px'
+    margin: 5
   },
   labelSpan : {
-    color: '#1B75BB',
+    color: '#1b75bb',
     display: 'inline-block',
-    //verticalAlign: 'top',
+    width: 120,
+    paddingRight: 5,
     textAlign: 'right',
-    width: '120px',
-    paddingRight: '5px',
     fontSize: '16px',
     fontWeight: 'bold'
   },
 
   //ValidationMessagesFragment
   validationContainer: {
-    paddingLeft: '10px',
-    paddingTop: '5px',
-    color: '#F44336'
+    color: '#f44336',
+    paddingLeft: 10,
+    paddingTop: 5
   },
   validationMessageNumber : {
     display: 'inline-block',
-    width: '22px',
-    height: '22px',
-    border: 'solid 2px #F44336',
-    borderRadius: '50%',
+    width: 22,
+    height: 22,
+    marginRight: 5,
     textAlign: 'center',
-    marginRight: '5px'
+    borderRadius: '50%',
+    border: 'solid 2px #f44336'
   }
-
 }
 
 export default DialogStyles;

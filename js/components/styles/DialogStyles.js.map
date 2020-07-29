@@ -1,1 +1,30 @@
-{"version":3,"sources":["../../../src/components/styles/DialogStyles.js"],"names":["DialogStyles","rowDiv","display","alignItems","margin","labelSpan","color","textAlign","width","paddingRight","fontSize","fontWeight","validationContainer","paddingLeft","paddingTop","validationMessageNumber","height","border","borderRadius","marginRight"],"mappings":";;;;AAAA,IAAMA,YAAY,GAAG;AACnB;AACAC,EAAAA,MAAM,EAAE;AACNC,IAAAA,OAAO,EAAE,MADH;AAENC,IAAAA,UAAU,EAAE,QAFN;AAGNC,IAAAA,MAAM,EAAE;AAHF,GAFW;AAOnBC,EAAAA,SAAS,EAAG;AACVC,IAAAA,KAAK,EAAE,SADG;AAEVJ,IAAAA,OAAO,EAAE,cAFC;AAGV;AACAK,IAAAA,SAAS,EAAE,OAJD;AAKVC,IAAAA,KAAK,EAAE,OALG;AAMVC,IAAAA,YAAY,EAAE,KANJ;AAOVC,IAAAA,QAAQ,EAAE,MAPA;AAQVC,IAAAA,UAAU,EAAE;AARF,GAPO;AAkBnB;AACAC,EAAAA,mBAAmB,EAAE;AACnBC,IAAAA,WAAW,EAAE,MADM;AAEnBC,IAAAA,UAAU,EAAE,KAFO;AAGnBR,IAAAA,KAAK,EAAE;AAHY,GAnBF;AAwBnBS,EAAAA,uBAAuB,EAAG;AACxBb,IAAAA,OAAO,EAAE,cADe;AAExBM,IAAAA,KAAK,EAAE,MAFiB;AAGxBQ,IAAAA,MAAM,EAAE,MAHgB;AAIxBC,IAAAA,MAAM,EAAE,mBAJgB;AAKxBC,IAAAA,YAAY,EAAE,KALU;AAMxBX,IAAAA,SAAS,EAAE,QANa;AAOxBY,IAAAA,WAAW,EAAE;AAPW;AAxBP,CAArB;eAoCenB,Y","sourcesContent":["const DialogStyles = {\r\n  //Dialogs, DatesFragments\r\n  rowDiv: {\r\n    display: 'flex',\r\n    alignItems: 'center',\r\n    margin: '5px'\r\n  },\r\n  labelSpan : {\r\n    color: '#1B75BB',\r\n    display: 'inline-block',\r\n    //verticalAlign: 'top',\r\n    textAlign: 'right',\r\n    width: '120px',\r\n    paddingRight: '5px',\r\n    fontSize: '16px',\r\n    fontWeight: 'bold'\r\n  },\r\n\r\n  //ValidationMessagesFragment\r\n  validationContainer: {\r\n    paddingLeft: '10px',\r\n    paddingTop: '5px',\r\n    color: '#F44336'\r\n  },\r\n  validationMessageNumber : {\r\n    display: 'inline-block',\r\n    width: '22px',\r\n    height: '22px',\r\n    border: 'solid 2px #F44336',\r\n    borderRadius: '50%',\r\n    textAlign: 'center',\r\n    marginRight: '5px'\r\n  }\r\n\r\n}\r\n\r\nexport default DialogStyles;\r\n"],"file":"DialogStyles.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/styles/DialogStyles.js"
+ ],
+ "file": "../../../src/components/styles/DialogStyles.js",
+ "names": [
+  "DialogStyles",
+  "rowDiv",
+  "display",
+  "alignItems",
+  "margin",
+  "labelSpan",
+  "color",
+  "width",
+  "paddingRight",
+  "textAlign",
+  "fontSize",
+  "fontWeight",
+  "validationContainer",
+  "paddingLeft",
+  "paddingTop",
+  "validationMessageNumber",
+  "height",
+  "marginRight",
+  "borderRadius",
+  "border"
+ ],
+ "mappings": ";;;;AAAA,IAAMA,YAAY,GAAG;AACnB;AACAC,EAAAA,MAAM,EAAE;AACNC,IAAAA,OAAO,EAAE,MADH;AAENC,IAAAA,UAAU,EAAE,QAFN;AAGNC,IAAAA,MAAM,EAAE;AAHF,GAFW;AAOnBC,EAAAA,SAAS,EAAG;AACVC,IAAAA,KAAK,EAAE,SADG;AAEVJ,IAAAA,OAAO,EAAE,cAFC;AAGVK,IAAAA,KAAK,EAAE,GAHG;AAIVC,IAAAA,YAAY,EAAE,CAJJ;AAKVC,IAAAA,SAAS,EAAE,OALD;AAMVC,IAAAA,QAAQ,EAAE,MANA;AAOVC,IAAAA,UAAU,EAAE;AAPF,GAPO;AAiBnB;AACAC,EAAAA,mBAAmB,EAAE;AACnBN,IAAAA,KAAK,EAAE,SADY;AAEnBO,IAAAA,WAAW,EAAE,EAFM;AAGnBC,IAAAA,UAAU,EAAE;AAHO,GAlBF;AAuBnBC,EAAAA,uBAAuB,EAAG;AACxBb,IAAAA,OAAO,EAAE,cADe;AAExBK,IAAAA,KAAK,EAAE,EAFiB;AAGxBS,IAAAA,MAAM,EAAE,EAHgB;AAIxBC,IAAAA,WAAW,EAAE,CAJW;AAKxBR,IAAAA,SAAS,EAAE,QALa;AAMxBS,IAAAA,YAAY,EAAE,KANU;AAOxBC,IAAAA,MAAM,EAAE;AAPgB;AAvBP,CAArB;eAkCenB,Y"
+}
