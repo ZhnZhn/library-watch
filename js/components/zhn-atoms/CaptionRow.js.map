@@ -1,1 +1,20 @@
-{"version":3,"sources":["../../../src/components/zhn-atoms/CaptionRow.jsx"],"names":["CaptionRow","caption","children","styleRoot","onClose","STYLE","CL_CAPTION","CL_NOT_SELECTED","SPAN","SVG_CLOSE"],"mappings":";;;;;;;AAAA;;AAGA;;AACA;;AAHA;AAKA,IAAMA,UAAU,GAAG,SAAbA,UAAa;AAAA,0BAAGC,OAAH;AAAA,MAAGA,OAAH,6BAAW,EAAX;AAAA,MAAeC,QAAf,QAAeA,QAAf;AAAA,MAAyBC,SAAzB,QAAyBA,SAAzB;AAAA,MAAoCC,OAApC,QAAoCA,OAApC;AAAA,sBACjB;AAAK,IAAA,SAAS,EAAEC,uBAAMC,UAAtB;AAAkC,IAAA,KAAK,EAAEH;AAAzC,kBACG;AACG,IAAA,SAAS,EAAEE,uBAAME,eADpB;AAEG,IAAA,KAAK,EAAEF,uBAAMG;AAFhB,KAIGP,OAJH,CADH,EAOGC,QAPH,eAQE,gCAAC,oBAAD;AACG,IAAA,KAAK,EAAEG,uBAAMI,SADhB;AAEG,IAAA,OAAO,EAAEL;AAFZ,IARF,CADiB;AAAA,CAAnB;AAeA;;;;;;;;;;;;;eAYeJ,U","sourcesContent":["import React from 'react';\r\n//import PropTypes from 'prop-types';\r\n\r\nimport STYLE from './CaptionRow.Style';\r\nimport SvgClose from './SvgClose';\r\n\r\nconst CaptionRow = ({ caption='', children, styleRoot, onClose }) => (\r\n  <div className={STYLE.CL_CAPTION} style={styleRoot}>\r\n     <span\r\n        className={STYLE.CL_NOT_SELECTED}\r\n        style={STYLE.SPAN}\r\n     >\r\n       {caption}\r\n    </span>\r\n    {children}\r\n    <SvgClose\r\n       style={STYLE.SVG_CLOSE}\r\n       onClose={onClose}\r\n    />\r\n  </div>\r\n);\r\n/*\r\nCaptionRow.propTypes = {\r\n  caption: PropTypes.string,\r\n  styleRoot: PropTypes.object,\r\n  children: PropTypes.oneOfType([\r\n    PropTypes.arrayOf(PropTypes.node),\r\n    PropTypes.node\r\n  ]),\r\n  onClose: PropTypes.func\r\n}\r\n*/\r\n\r\nexport default CaptionRow;\r\n"],"file":"CaptionRow.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-atoms/CaptionRow.js"
+ ],
+ "file": "../../../src/components/zhn-atoms/CaptionRow.js",
+ "names": [
+  "CaptionRow",
+  "caption",
+  "children",
+  "styleRoot",
+  "onClose",
+  "STYLE",
+  "CL_CAPTION",
+  "CL_NOT_SELECTED",
+  "CAPTION",
+  "SVG_CLOSE"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAGA;;AACA;;AAHA;AAKA,IAAMA,UAAU,GAAG,SAAbA,UAAa;AAAA,0BAAGC,OAAH;AAAA,MAAGA,OAAH,6BAAW,EAAX;AAAA,MAAeC,QAAf,QAAeA,QAAf;AAAA,MAAyBC,SAAzB,QAAyBA,SAAzB;AAAA,MAAoCC,OAApC,QAAoCA,OAApC;AAAA,sBACjB;AAAK,IAAA,SAAS,EAAEC,uBAAMC,UAAtB;AAAkC,IAAA,KAAK,EAAEH;AAAzC,kBACG;AACG,IAAA,SAAS,EAAEE,uBAAME,eADpB;AAEG,IAAA,KAAK,EAAEF,uBAAMG;AAFhB,KAIGP,OAJH,CADH,EAOGC,QAPH,eAQE,gCAAC,oBAAD;AACG,IAAA,KAAK,EAAEG,uBAAMI,SADhB;AAEG,IAAA,OAAO,EAAEL;AAFZ,IARF,CADiB;AAAA,CAAnB;AAeA;;;;;;;;;;;;;eAYeJ,U"
+}

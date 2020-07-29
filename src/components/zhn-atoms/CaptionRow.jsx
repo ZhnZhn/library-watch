@@ -1,14 +1,14 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
 
-import STYLE from './CaptionRow.Style';
 import SvgClose from './SvgClose';
+import STYLE from './CaptionRow.Style'
 
 const CaptionRow = ({ caption='', children, styleRoot, onClose }) => (
   <div className={STYLE.CL_CAPTION} style={styleRoot}>
      <span
         className={STYLE.CL_NOT_SELECTED}
-        style={STYLE.SPAN}
+        style={STYLE.CAPTION}
      >
        {caption}
     </span>

@@ -5,7 +5,8 @@ exports["default"] = void 0;
 var STYLE = {
   CL_CAPTION: "gap-right cont-caption",
   CL_NOT_SELECTED: "not-selected",
-  SPAN: {
+  CAPTION: {
+    paddingLeft: 6,
     paddingRight: 8,
     fontSize: '18px',
     fontWeight: '500'

@@ -7,9 +7,9 @@ exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _CaptionRow = _interopRequireDefault(require("./CaptionRow.Style"));
-
 var _SvgClose = _interopRequireDefault(require("./SvgClose"));
+
+var _CaptionRow = _interopRequireDefault(require("./CaptionRow.Style"));
 
 //import PropTypes from 'prop-types';
 var CaptionRow = function CaptionRow(_ref) {
@@ -23,7 +23,7 @@ var CaptionRow = function CaptionRow(_ref) {
     style: styleRoot
   }, /*#__PURE__*/_react["default"].createElement("span", {
     className: _CaptionRow["default"].CL_NOT_SELECTED,
-    style: _CaptionRow["default"].SPAN
+    style: _CaptionRow["default"].CAPTION
   }, caption), children, /*#__PURE__*/_react["default"].createElement(_SvgClose["default"], {
     style: _CaptionRow["default"].SVG_CLOSE,
     onClose: onClose
