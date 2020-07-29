@@ -8,14 +8,22 @@ exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 
 //import PropTypes from "prop-types";
+var _onError = function _onError(imgSrc, event) {
+  console.log("Failed to load image with src: " + imgSrc);
+};
+
 var LinkImg = function LinkImg(_ref) {
-  var href = _ref.href,
+  var _ref$alt = _ref.alt,
+      alt = _ref$alt === void 0 ? '' : _ref$alt,
+      href = _ref.href,
       imgClass = _ref.imgClass,
       imgSrc = _ref.imgSrc,
-      onError = _ref.onError;
+      _ref$onError = _ref.onError,
+      onError = _ref$onError === void 0 ? _onError : _ref$onError;
   return /*#__PURE__*/_react["default"].createElement("a", {
     href: href
   }, /*#__PURE__*/_react["default"].createElement("img", {
+    alt: alt,
     className: imgClass,
     src: imgSrc,
     onError: onError.bind(null, imgSrc)
@@ -23,6 +31,7 @@ var LinkImg = function LinkImg(_ref) {
 };
 /*
 LinkImg.propTypes = {
+  alt: PropTypes.string,
   href: PropTypes.string,
   imgClass: PropTypes.string,
   imgSrc: PropTypes.string,
@@ -31,11 +40,6 @@ LinkImg.propTypes = {
 */
 
 
-LinkImg.defaultProps = {
-  onError: function onError(imgSrc, event) {
-    console.log("Failed to load image with src: " + imgSrc);
-  }
-};
 var _default = LinkImg;
 exports["default"] = _default;
 //# sourceMappingURL=LinkImg.js.map
