@@ -9,8 +9,6 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _react = _interopRequireWildcard(require("react"));
 
 var _isKeyEnter = _interopRequireDefault(require("./isKeyEnter"));
@@ -22,18 +20,18 @@ var CL = {
 };
 var STYLE = {
   ROOT: {
-    backgroundColor: '#4D4D4D',
+    backgroundColor: '#4d4d4d',
     lineHeight: 2
   },
   SVG: {
-    width: '16px',
-    height: '16px',
-    display: 'inline-block'
+    display: 'inline-block',
+    width: 16,
+    height: 16
   },
   CAPTION: {
-    paddingLeft: '4px',
-    verticalAlign: 'top',
     color: '#1b2836',
+    paddingLeft: 4,
+    verticalAlign: 'top',
     fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
     fontWeight: 'bold',
     fontSize: '16px',
@@ -54,140 +52,124 @@ var FILL_OPEN = 'yellow',
     PATH_OPEN = "M 2,14 L 14,14 14,2 2,14",
     PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
-var OpenClose2 = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(OpenClose2, _Component);
+var OpenClose2 = function OpenClose2(_ref) {
+  var _ref$isClose = _ref.isClose,
+      isClose = _ref$isClose === void 0 ? true : _ref$isClose,
+      style = _ref.style,
+      styleNotSelected = _ref.styleNotSelected,
+      styleCaptionRow = _ref.styleCaptionRow,
+      styleCaption = _ref.styleCaption,
+      caption = _ref.caption,
+      _ref$fillOpen = _ref.fillOpen,
+      fillOpen = _ref$fillOpen === void 0 ? FILL_OPEN : _ref$fillOpen,
+      _ref$fillClose = _ref.fillClose,
+      fillClose = _ref$fillClose === void 0 ? FILL_CLOSE : _ref$fillClose,
+      isDraggable = _ref.isDraggable,
+      option = _ref.option,
+      onDragStart = _ref.onDragStart,
+      onDragEnter = _ref.onDragEnter,
+      onDragOver = _ref.onDragOver,
+      onDragLeave = _ref.onDragLeave,
+      onDrop = _ref.onDrop,
+      children = _ref.children;
 
-  /*
-  static propTypes = {
-    isClose: PropTypes.bool,
-      style: PropTypes.object,
-    styleNotSelected: PropTypes.object,
-    styleCpationRow: PropTypes.object,
-    styleCaption: PropTypes.object,
-      caption: PropTypes.string,
-    fillOpen: PropTypes.string,
-    fillClose: PropTypes.string,
-      isDraggable: PropTypes.bool,
-    option: PropTypes.object,
-    onDragStart: PropTypes.func,
-    onDragEnter: PropTypes.func,
-    onDragOver: PropTypes.func,
-    onDragLeave: PropTypes.func,
-    onDrop: PropTypes.func,
-      children: PropTypes.oneOfType([
-       PropTypes.arrayOf(PropTypes.node),
-       PropTypes.node
-    ])
-  }
-  */
-  function OpenClose2(props) {
-    var _this;
-
-    _this = _Component.call(this, props) || this;
-
-    _this._handleToggle = function () {
-      _this.setState(function (prevState) {
-        return {
-          isOpen: !prevState.isOpen
-        };
-      });
-    };
-
-    _this._handleKeyDown = function (event) {
-      if ((0, _isKeyEnter["default"])(event)) {
-        _this._handleToggle();
-      }
-    };
-
-    _this.state = {
-      isOpen: !props.isClose
-    };
-    return _this;
-  }
-
-  var _proto = OpenClose2.prototype;
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        style = _this$props.style,
-        styleNotSelected = _this$props.styleNotSelected,
-        styleCaptionRow = _this$props.styleCaptionRow,
-        styleCaption = _this$props.styleCaption,
-        caption = _this$props.caption,
-        fillOpen = _this$props.fillOpen,
-        fillClose = _this$props.fillClose,
-        isDraggable = _this$props.isDraggable,
-        option = _this$props.option,
-        onDragStart = _this$props.onDragStart,
-        onDragEnter = _this$props.onDragEnter,
-        onDragOver = _this$props.onDragOver,
-        onDragLeave = _this$props.onDragLeave,
-        onDrop = _this$props.onDrop,
-        children = _this$props.children,
-        _dragOption = isDraggable ? {
-      draggable: true,
-      onDragStart: onDragStart.bind(null, option),
-      onDrop: onDrop.bind(null, option),
-      onDragEnter: onDragEnter,
-      onDragOver: onDragOver,
-      onDragLeave: onDragLeave
-    } : undefined;
-
-    var _pathV, _fillV, _styleCollapse, _classShow, _styleNotSelected;
-
-    if (this.state.isOpen) {
-      _pathV = PATH_OPEN;
-      _fillV = fillOpen;
-      _styleCollapse = STYLE.BLOCK;
-      _classShow = CL.SHOW_POPUP;
-      _styleNotSelected = null;
-    } else {
-      _pathV = PATH_CLOSE;
-      _fillV = fillClose;
-      _styleCollapse = STYLE.NONE;
-      _classShow = null;
-      _styleNotSelected = styleNotSelected;
+  var _useState = (0, _react.useState)(!isClose),
+      isOpen = _useState[0],
+      setIsOpen = _useState[1],
+      _hToggle = (0, _react.useCallback)(function () {
+    setIsOpen(function (is) {
+      return !is;
+    });
+  }, []),
+      _hKeyDown = (0, _react.useCallback)(function (event) {
+    if ((0, _isKeyEnter["default"])(event)) {
+      _hToggle();
     }
+  }, []),
+      _dragOption = isDraggable ? {
+    draggable: true,
+    onDragStart: onDragStart.bind(null, option),
+    onDrop: onDrop.bind(null, option),
+    onDragEnter: onDragEnter,
+    onDragOver: onDragOver,
+    onDragLeave: onDragLeave
+  } : void 0;
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, STYLE.ROOT, style)
-    }, /*#__PURE__*/_react["default"].createElement("div", (0, _extends2["default"])({
-      className: CL.ROW_CAPTION,
-      style: (0, _extends2["default"])({}, styleCaptionRow, _styleNotSelected),
-      onClick: this._handleToggle,
-      tabIndex: "0",
-      role: "menuitem",
-      onKeyDown: this._handleKeyDown
-    }, _dragOption), /*#__PURE__*/_react["default"].createElement("div", {
-      style: STYLE.SVG
-    }, /*#__PURE__*/_react["default"].createElement("svg", {
-      viewBox: "0 0 16 16",
-      width: "100%",
-      height: "100%",
-      preserveAspectRatio: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      style: STYLE.INLINE
-    }, /*#__PURE__*/_react["default"].createElement("path", {
-      d: _pathV,
-      fill: _fillV,
-      strokeWidth: "1",
-      stroke: fillOpen
-    }))), /*#__PURE__*/_react["default"].createElement("span", {
-      style: (0, _extends2["default"])({}, STYLE.CAPTION, styleCaption)
-    }, caption)), /*#__PURE__*/_react["default"].createElement("div", {
-      className: _classShow,
-      style: _styleCollapse
-    }, children));
-  };
+  var _pathV, _fillV, _styleCollapse, _classShow, _styleNotSelected;
 
-  return OpenClose2;
-}(_react.Component);
+  if (isOpen) {
+    _pathV = PATH_OPEN;
+    _fillV = fillOpen;
+    _styleCollapse = STYLE.BLOCK;
+    _classShow = CL.SHOW_POPUP;
+    _styleNotSelected = null;
+  } else {
+    _pathV = PATH_CLOSE;
+    _fillV = fillClose;
+    _styleCollapse = STYLE.NONE;
+    _classShow = null;
+    _styleNotSelected = styleNotSelected;
+  }
 
-OpenClose2.defaultProps = {
-  isClose: true,
-  fillOpen: FILL_OPEN,
-  fillClose: FILL_CLOSE
+  return /*#__PURE__*/_react["default"].createElement("div", {
+    style: (0, _extends2["default"])({}, STYLE.ROOT, style)
+  }, /*#__PURE__*/_react["default"].createElement("div", (0, _extends2["default"])({
+    className: CL.ROW_CAPTION,
+    style: (0, _extends2["default"])({}, styleCaptionRow, _styleNotSelected),
+    onClick: _hToggle,
+    tabIndex: "0",
+    role: "menuitem",
+    onKeyDown: _hKeyDown
+  }, _dragOption), /*#__PURE__*/_react["default"].createElement("div", {
+    style: STYLE.SVG
+  }, /*#__PURE__*/_react["default"].createElement("svg", {
+    viewBox: "0 0 16 16",
+    width: "100%",
+    height: "100%",
+    preserveAspectRatio: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    style: STYLE.INLINE
+  }, /*#__PURE__*/_react["default"].createElement("path", {
+    d: _pathV,
+    fill: _fillV,
+    strokeWidth: "1",
+    stroke: fillOpen
+  }))), /*#__PURE__*/_react["default"].createElement("span", {
+    style: (0, _extends2["default"])({}, STYLE.CAPTION, styleCaption)
+  }, caption)), /*#__PURE__*/_react["default"].createElement("div", {
+    className: _classShow,
+    style: _styleCollapse
+  }, children));
 };
+/*
+OpenClose2.propTypes = {
+  isClose: PropTypes.bool,
+
+  style: PropTypes.object,
+  styleNotSelected: PropTypes.object,
+  styleCpationRow: PropTypes.object,
+  styleCaption: PropTypes.object,
+
+  caption: PropTypes.string,
+  fillOpen: PropTypes.string,
+  fillClose: PropTypes.string,
+
+  isDraggable: PropTypes.bool,
+  option: PropTypes.object,
+  onDragStart: PropTypes.func,
+  onDragEnter: PropTypes.func,
+  onDragOver: PropTypes.func,
+  onDragLeave: PropTypes.func,
+  onDrop: PropTypes.func,
+
+  children: PropTypes.oneOfType([
+     PropTypes.arrayOf(PropTypes.node),
+     PropTypes.node
+  ])
+}
+*/
+
+
 var _default = OpenClose2;
 exports["default"] = _default;
 //# sourceMappingURL=OpenClose2.js.map
