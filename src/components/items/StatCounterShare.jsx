@@ -14,14 +14,13 @@ import CL from '../styles/CL'
 
 const S = {
   ROOT: {
-    position: 'relative',
     lineHeight: 1.5,
     marginBottom: 10,
     marginRight: 25
   },
   BT_CAPTION: {
     position: 'relative',
-    top: -6,
+    top: -3,
     display: 'inline-block',
     color: '#a487d4',
     paddingLeft: 8,
@@ -125,7 +124,7 @@ class NpmRecentDownloads extends Component {
             onClick={this._hClickMore}
           />
           <button
-             className={CL.BT_ITEM}             
+             className={CL.BT_ITEM}
              title={caption}
              style={S.BT_CAPTION}
              onClick={this._handlerToggleOpen}

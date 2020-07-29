@@ -1,7 +1,6 @@
 
 const STYLE = {
-  ROOT: {
-    position: 'relative',
+  ROOT: {    
     lineHeight: 1.5,
     marginBottom: 10,
     marginRight: 25

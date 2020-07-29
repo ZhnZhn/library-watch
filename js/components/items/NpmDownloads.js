@@ -40,7 +40,7 @@ var S = {
   ROOT: _Item["default"].ROOT,
   CAPTION_OPEN: (0, _extends2["default"])({}, _Item["default"].CAPTION_OPEN, {
     position: 'relative',
-    top: -6
+    top: -3
   }),
   CAPTION: {
     paddingLeft: 4

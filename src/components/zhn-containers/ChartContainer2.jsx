@@ -187,7 +187,9 @@ class ChartContainer2 extends Component {
             ref={this._refScroll}
             style={S.SCROLL}
           >
-            {configs}
+            <div>
+              {configs}
+            </div>
           </ScrollPane>
         </div>
      );

@@ -27,14 +27,13 @@ var _CL = _interopRequireDefault(require("../styles/CL"));
 
 var S = {
   ROOT: {
-    position: 'relative',
     lineHeight: 1.5,
     marginBottom: 10,
     marginRight: 25
   },
   BT_CAPTION: {
     position: 'relative',
-    top: -6,
+    top: -3,
     display: 'inline-block',
     color: '#a487d4',
     paddingLeft: 8,

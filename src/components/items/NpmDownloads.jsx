@@ -24,7 +24,7 @@ const S = {
   CAPTION_OPEN: {
     ...STYLE.CAPTION_OPEN,
     position: 'relative',
-    top: -6
+    top: -3
   },
   CAPTION: {
     paddingLeft: 4,

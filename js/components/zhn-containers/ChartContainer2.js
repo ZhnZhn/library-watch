@@ -245,7 +245,7 @@ var ChartContainer2 = /*#__PURE__*/function (_Component) {
     })), /*#__PURE__*/_react["default"].createElement(_ScrollPane["default"], {
       ref: this._refScroll,
       style: S.SCROLL
-    }, configs));
+    }, /*#__PURE__*/_react["default"].createElement("div", null, configs)));
   };
 
   return ChartContainer2;

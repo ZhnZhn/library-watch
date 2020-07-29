@@ -4,7 +4,6 @@ exports.__esModule = true;
 exports["default"] = void 0;
 var STYLE = {
   ROOT: {
-    position: 'relative',
     lineHeight: 1.5,
     marginBottom: 10,
     marginRight: 25
