@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _CL = _interopRequireDefault(require("../styles/CL"));
+
 var S = {
   CELL: {
     display: 'inline-block',
@@ -17,6 +19,13 @@ var S = {
   },
   VALUE: {
     textAlign: 'center'
+  },
+  REPO: {
+    paddingTop: 4,
+    paddingLeft: 8
+  },
+  REPO_LINK: {
+    marginRight: 24
   }
 };
 
@@ -34,6 +43,42 @@ var CellValue = function CellValue(_ref) {
   }, value));
 };
 
+var Link = function Link(_ref2) {
+  var style = _ref2.style,
+      href = _ref2.href,
+      caption = _ref2.caption;
+  return href ? /*#__PURE__*/_react["default"].createElement("a", {
+    target: "_blank",
+    className: _CL["default"].SOURCE_LINK,
+    style: style,
+    href: href
+  }, caption) : null;
+};
+
+var _crRepositoryCaption = function _crRepositoryCaption(href) {
+  return href.indexOf('github.com') !== -1 ? 'GitHub Repository' : 'Repository';
+};
+
+var RowLinks = function RowLinks(_ref3) {
+  var repoHref = _ref3.repoHref,
+      hpHref = _ref3.hpHref;
+
+  if (!repoHref && !hpHref) {
+    return null;
+  }
+
+  return /*#__PURE__*/_react["default"].createElement("div", {
+    style: S.REPO
+  }, /*#__PURE__*/_react["default"].createElement(Link, {
+    style: S.REPO_LINK,
+    href: repoHref,
+    caption: _crRepositoryCaption(repoHref)
+  }), /*#__PURE__*/_react["default"].createElement(Link, {
+    href: hpHref,
+    caption: "HomePage"
+  }));
+};
+
 var _trimTo5 = function _trimTo5(n) {
   return ('' + n).substr(0, 5);
 };
@@ -42,26 +87,37 @@ var _toYear = function _toYear(strDate) {
   return ('' + strDate).split('T')[0] || '';
 };
 
-var PackageDetails = function PackageDetails(_ref2) {
-  var _ref2$json = _ref2.json,
-      json = _ref2$json === void 0 ? {} : _ref2$json;
-  var analyzedAt = json.analyzedAt,
-      _json$collected = json.collected,
-      collected = _json$collected === void 0 ? {} : _json$collected,
-      _json$score = json.score,
-      score = _json$score === void 0 ? {} : _json$score,
-      _collected$github = collected.github,
-      github = _collected$github === void 0 ? {} : _collected$github,
-      _collected$metadata = collected.metadata,
-      metadata = _collected$metadata === void 0 ? {} : _collected$metadata,
-      starsCount = github.starsCount,
-      _github$issues = github.issues,
-      issues = _github$issues === void 0 ? {} : _github$issues,
-      openCount = issues.openCount,
-      version = metadata.version,
-      license = metadata.license,
-      _final = score["final"];
-  return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(CellValue, {
+var _crRepositoryHref = function _crRepositoryHref(_ref4) {
+  var type = _ref4.type,
+      url = _ref4.url;
+  return type === 'git' ? url.replace('git+', '').replace('.git', '') : void 0;
+};
+
+var PackageDetails = function PackageDetails(_ref5) {
+  var json = _ref5.json;
+
+  var _ref6 = json || {},
+      analyzedAt = _ref6.analyzedAt,
+      collected = _ref6.collected,
+      score = _ref6.score,
+      _ref7 = collected || {},
+      github = _ref7.github,
+      metadata = _ref7.metadata,
+      _ref8 = github || {},
+      starsCount = _ref8.starsCount,
+      issues = _ref8.issues,
+      homepage = _ref8.homepage,
+      _ref9 = issues || {},
+      openCount = _ref9.openCount,
+      _ref10 = metadata || {},
+      version = _ref10.version,
+      license = _ref10.license,
+      repository = _ref10.repository,
+      _ref11 = score || {},
+      _final = _ref11["final"],
+      _repositoryHref = _crRepositoryHref(repository || {});
+
+  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(CellValue, {
     caption: "stars",
     value: starsCount
   }), /*#__PURE__*/_react["default"].createElement(CellValue, {
@@ -79,6 +135,9 @@ var PackageDetails = function PackageDetails(_ref2) {
   }), /*#__PURE__*/_react["default"].createElement(CellValue, {
     caption: "onDate",
     value: _toYear(analyzedAt)
+  })), /*#__PURE__*/_react["default"].createElement(RowLinks, {
+    repoHref: _repositoryHref,
+    hpHref: homepage
   }));
 };
 

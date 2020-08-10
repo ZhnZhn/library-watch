@@ -1,5 +1,7 @@
 import React from 'react'
 
+import CL from '../styles/CL'
+
 const S = {
   CELL: {
     display: 'inline-block',
@@ -10,6 +12,13 @@ const S = {
   },
   VALUE: {
     textAlign: 'center'
+  },
+  REPO: {
+    paddingTop: 4,
+    paddingLeft: 8
+  },
+  REPO_LINK: {
+    marginRight: 24
   }
 };
 
@@ -20,44 +29,87 @@ const CellValue = ({ caption='', value='N/A' }) => (
   </div>
 );
 
+const Link = ({ style, href, caption}) => href
+ ? (<a target="_blank"
+     className={CL.SOURCE_LINK}
+     style={style}
+     href={href}
+    >{caption}</a>)
+ : null;
+
+const _crRepositoryCaption = href =>
+  href.indexOf('github.com') !== -1
+    ? 'GitHub Repository'
+    : 'Repository';
+
+const RowLinks = ({ repoHref, hpHref }) => {
+ if (!repoHref && !hpHref) {
+   return null;
+ }
+ return (
+   <div style={S.REPO}>
+     <Link
+        style={S.REPO_LINK}
+        href={repoHref}
+        caption={_crRepositoryCaption(repoHref)}
+     />
+     <Link
+        href={hpHref}
+        caption="HomePage"
+     />
+   </div>
+ );
+}
+
 const _trimTo5 = n => (''+n).substr(0, 5);
 const _toYear = strDate => (''+strDate)
  .split('T')[0] || '';
 
-const PackageDetails = ({ json={} }) => {
-  const { analyzedAt, collected={}, score={} } = json
-  , { github={}, metadata={} } = collected
-  , { starsCount, issues={} } = github
-  , { openCount } = issues
-  , { version, license } = metadata
-  , { final } = score;
+const _crRepositoryHref = ({ type, url }) => type === 'git'
+ ? url.replace('git+','').replace('.git', '')
+ : void 0;
+
+const PackageDetails = ({ json }) => {
+  const { analyzedAt, collected, score } = json || {}
+  , { github, metadata } = collected || {}
+  , { starsCount, issues, homepage } = github || {}
+  , { openCount } = issues || {}
+  , { version, license, repository } = metadata || {}
+  , { final } = score || {}
+  , _repositoryHref = _crRepositoryHref(repository || {})
   return (
-    <div>
-      <CellValue
-        caption="stars"
-        value={starsCount}
+    <>
+      <div>
+        <CellValue
+          caption="stars"
+          value={starsCount}
+        />
+        <CellValue
+          caption="issues"
+          value={openCount}
+        />
+        <CellValue
+          caption="version"
+          value={version}
+        />
+        <CellValue
+          caption="score"
+          value={_trimTo5(final)}
+        />
+        <CellValue
+          caption="license"
+          value={license}
+        />
+        <CellValue
+          caption="onDate"
+          value={_toYear(analyzedAt)}
+        />
+      </div>
+      <RowLinks
+        repoHref={_repositoryHref}
+        hpHref={homepage}
       />
-      <CellValue
-        caption="issues"
-        value={openCount}
-      />
-      <CellValue
-        caption="version"
-        value={version}
-      />
-      <CellValue
-        caption="score"
-        value={_trimTo5(final)}
-      />
-      <CellValue
-        caption="license"
-        value={license}
-      />
-      <CellValue
-        caption="onDate"
-        value={_toYear(analyzedAt)}
-      />
-    </div>
+    </>
   );
 }
 
