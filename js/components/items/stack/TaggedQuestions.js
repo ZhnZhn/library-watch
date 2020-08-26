@@ -33,6 +33,8 @@ var _CL = _interopRequireDefault(require("../../styles/CL"));
 
 var S = {
   BT_MORE: {
+    position: 'relative',
+    top: 3,
     marginRight: 12
   },
   ITEM_COUNT: {
@@ -140,14 +142,14 @@ var StackTaggedQuestions = /*#__PURE__*/function (_Component) {
 
     return /*#__PURE__*/_react["default"].createElement("div", {
       style: _Item["default"].ROOT
-    }, /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
-      onClose: onCloseItem
     }, /*#__PURE__*/_react["default"].createElement(_ModalSlider["default"], {
       isShow: isMore,
       className: _CL["default"].MENU_MORE,
       model: this._MODEL_MORE,
       onClose: this._hToggleMore
-    }), /*#__PURE__*/_react["default"].createElement(_A["default"].SvgMore, {
+    }), /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
+      onClose: onCloseItem
+    }, /*#__PURE__*/_react["default"].createElement(_A["default"].SvgMore, {
       style: S.BT_MORE,
       onClick: this._hShowMore
     }), /*#__PURE__*/_react["default"].createElement("button", {

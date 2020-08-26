@@ -9,28 +9,16 @@ import ModalSlider from '../zhn-modal-slider/ModalSlider'
 import LineChart from '../charts/LineChart'
 import Caption from './ItemCaption'
 
-
+import STYLE from './Item.Style'
 import CL from '../styles/CL'
 
 const S = {
-  ROOT: {
-    lineHeight: 1.5,
-    marginBottom: 10,
-    marginRight: 25
-  },
+  ROOT: STYLE.ROOT,
+  BT_MORE: STYLE.BT_MORE,
   BT_CAPTION: {
+    ...STYLE.CAPTION_OPEN,
     position: 'relative',
-    top: -3,
-    display: 'inline-block',
-    color: '#a487d4',
-    paddingLeft: 8,
-    maxWidth: 500,
-    textAlign: 'left',
-    fontWeight : 'bold',
-    whiteSpace: 'nowrap',
-    textOverflow : 'ellipsis',
-    overflow : 'hidden',
-    cursor: 'pointer'
+    top: -3
   },
   CAPTION: {
     paddingLeft: 4,
@@ -121,6 +109,7 @@ class NpmRecentDownloads extends Component {
         />
         <Caption style={S.CAPTION} onClose={onCloseItem}>
           <A.SvgMore
+            style={S.BT_MORE}
             onClick={this._hClickMore}
           />
           <button

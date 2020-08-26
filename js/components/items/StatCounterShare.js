@@ -9,6 +9,8 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
 var _react = _interopRequireWildcard(require("react"));
 
 var _Chart = _interopRequireDefault(require("../charts/Chart"));
@@ -23,28 +25,17 @@ var _LineChart = _interopRequireDefault(require("../charts/LineChart"));
 
 var _ItemCaption = _interopRequireDefault(require("./ItemCaption"));
 
+var _Item = _interopRequireDefault(require("./Item.Style"));
+
 var _CL = _interopRequireDefault(require("../styles/CL"));
 
 var S = {
-  ROOT: {
-    lineHeight: 1.5,
-    marginBottom: 10,
-    marginRight: 25
-  },
-  BT_CAPTION: {
+  ROOT: _Item["default"].ROOT,
+  BT_MORE: _Item["default"].BT_MORE,
+  BT_CAPTION: (0, _extends2["default"])({}, _Item["default"].CAPTION_OPEN, {
     position: 'relative',
-    top: -3,
-    display: 'inline-block',
-    color: '#a487d4',
-    paddingLeft: 8,
-    maxWidth: 500,
-    textAlign: 'left',
-    fontWeight: 'bold',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-    overflow: 'hidden',
-    cursor: 'pointer'
-  },
+    top: -3
+  }),
   CAPTION: {
     paddingLeft: 4
   },
@@ -148,6 +139,7 @@ var NpmRecentDownloads = /*#__PURE__*/function (_Component) {
       style: S.CAPTION,
       onClose: onCloseItem
     }, /*#__PURE__*/_react["default"].createElement(_A["default"].SvgMore, {
+      style: S.BT_MORE,
       onClick: this._hClickMore
     }), /*#__PURE__*/_react["default"].createElement("button", {
       className: _CL["default"].BT_ITEM,

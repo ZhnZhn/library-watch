@@ -1,9 +1,14 @@
 
 const STYLE = {
-  ROOT: {    
+  ROOT: {
+    position: 'relative',
     lineHeight: 1.5,
-    marginBottom: 10,
-    marginRight: 25
+    marginBottom: 10
+  },
+  BT_MORE: {
+    position: 'relative',
+    top: 3,
+    marginRight: 4
   },
   CAPTION_OPEN: {
     display: 'inline-block',

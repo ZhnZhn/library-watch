@@ -4,8 +4,8 @@ exports.__esModule = true;
 exports["default"] = void 0;
 var C = {
   NPMS_URI: 'https://api.npms.io/v2/package/',
-  ERR_RES: "Response isn't OK",
-  ERR_FORMAT_DF: "Response isn't valid"
+  ERR_RES: "Npms.io response isn't OK",
+  ERR_FORMAT_DF: "Npms.io response isn't valid"
 };
 
 var _crNpmsUri = function _crNpmsUri(packageName) {
@@ -31,6 +31,9 @@ var loadNpms = function loadNpms(_ref) {
     }
   })["catch"](function (err) {
     console.log(err);
+    onLoad({
+      errMsg: err.message
+    });
   });
 };
 

@@ -11,6 +11,8 @@ import CL from '../../styles/CL'
 
 const S = {
   BT_MORE: {
+    position: 'relative',
+    top: 3,
     marginRight: 12
   },
   ITEM_COUNT: {
@@ -106,13 +108,13 @@ class StackTaggedQuestions extends Component {
 
      return (
        <div style={STYLE.ROOT}>
+         <ModalSlider
+           isShow={isMore}
+           className={CL.MENU_MORE}
+           model={this._MODEL_MORE}
+           onClose={this._hToggleMore}
+         />
          <Caption onClose={onCloseItem}>
-           <ModalSlider
-             isShow={isMore}
-             className={CL.MENU_MORE}
-             model={this._MODEL_MORE}
-             onClose={this._hToggleMore}
-           />
            <A.SvgMore
              style={S.BT_MORE}
              onClick={this._hShowMore}

@@ -26,6 +26,7 @@ const S = {
     position: 'relative',
     top: -3
   },
+  BT_MORE: STYLE.BT_MORE,
   CAPTION: {
     paddingLeft: 4,
   },
@@ -202,6 +203,7 @@ class NpmDownloads extends Component {
         />
         <Caption style={S.CAPTION} onClose={onCloseItem}>
           <A.SvgMore
+            style={S.BT_MORE}
             onClick={this._hClickMore}
           />
           <button

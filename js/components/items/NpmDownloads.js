@@ -42,6 +42,7 @@ var S = {
     position: 'relative',
     top: -3
   }),
+  BT_MORE: _Item["default"].BT_MORE,
   CAPTION: {
     paddingLeft: 4
   },
@@ -249,6 +250,7 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
       style: S.CAPTION,
       onClose: onCloseItem
     }, /*#__PURE__*/_react["default"].createElement(_A["default"].SvgMore, {
+      style: S.BT_MORE,
       onClick: this._hClickMore
     }), /*#__PURE__*/_react["default"].createElement("button", {
       className: _CL["default"].BT_ITEM,

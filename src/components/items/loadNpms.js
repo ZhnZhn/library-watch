@@ -1,8 +1,8 @@
 
 const C = {
   NPMS_URI: 'https://api.npms.io/v2/package/',
-  ERR_RES: "Response isn't OK",
-  ERR_FORMAT_DF: "Response isn't valid"
+  ERR_RES: "Npms.io response isn't OK",
+  ERR_FORMAT_DF: "Npms.io response isn't valid"
 };
 
 const _crNpmsUri = packageName => `${C.NPMS_URI}${packageName}`;
@@ -25,6 +25,7 @@ const loadNpms = ({ packageName, onLoad }) => fetch(_crNpmsUri(packageName))
   })
   .catch(err => {
     console.log(err)
+    onLoad({ errMsg: err.message })
   })
 
   export default loadNpms

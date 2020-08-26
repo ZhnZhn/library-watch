@@ -3,6 +3,10 @@ import React from 'react'
 import CL from '../styles/CL'
 
 const S = {
+  ERR: {
+    color: '#f44336',
+    fontWeight: 'bold'
+  },
   CELL: {
     display: 'inline-block',
     marginLeft: 8
@@ -22,6 +26,10 @@ const S = {
   }
 };
 
+const ErrMsg = ({ errMsg }) => (
+  <div style={S.ERR}>{errMsg}</div>
+);
+
 const CellValue = ({ caption='', value='N/A' }) => (
   <div style={S.CELL}>
     <div style={S.CAPTION}>{caption}</div>
@@ -38,7 +46,7 @@ const Link = ({ style, href, caption}) => href
  : null;
 
 const _crRepositoryCaption = href =>
-  href.indexOf('github.com') !== -1
+  href.indexOf('https://github.com') !== -1
     ? 'GitHub Repository'
     : 'Repository';
 
@@ -66,12 +74,17 @@ const _toYear = strDate => (''+strDate)
  .split('T')[0] || '';
 
 const _crRepositoryHref = ({ type, url }) => type === 'git'
- ? url.replace('git+','').replace('.git', '')
+ ? url.replace('git+','').replace('.git', '').replace('git://','https://')
  : void 0;
 
 const PackageDetails = ({ json }) => {
-  const { analyzedAt, collected, score } = json || {}
-  , { github, metadata } = collected || {}
+  const { errMsg, analyzedAt, collected, score } = json || {}
+
+  if (errMsg) {
+    return (<ErrMsg errMsg={errMsg} />);
+  }
+
+  const { github, metadata } = collected || {}
   , { starsCount, issues, homepage } = github || {}
   , { openCount } = issues || {}
   , { version, license, repository } = metadata || {}
