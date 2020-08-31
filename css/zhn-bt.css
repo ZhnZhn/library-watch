@@ -59,6 +59,6 @@
   transition: background-color 200ms ease-out;
 }
 .zhn-bt-circle2:hover > div,
-.zhn-bt-circle2:hover > div {
+.zhn-bt-circle2:focus > div {
   background-color: rgba(0, 0, 0, 0.3);
 }

@@ -10,7 +10,7 @@
   overflow-x: hidden;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 5px 11px 0px, rgba(0, 0, 0, 0.15) 0px 4px 15px 0px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0 5px 11px 0, rgba(0, 0, 0, 0.15) 0 4px 15px 0;
 }
 
 .item-caption__bt-close {

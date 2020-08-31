@@ -19,7 +19,7 @@ html {
 a {
   text-decoration: none;
   color: black;
-  outline: 0px none;
+  outline: 0;
 }
 a:visited {
   /*color : #551a8b;*/

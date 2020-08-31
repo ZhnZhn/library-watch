@@ -17,23 +17,21 @@
 
 .inputfile + label {
   max-width: 90%;
-    font-size: 1.25rem;
-    font-weight: 700;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    cursor: pointer;
-    display: inline-block;
-    overflow: hidden;
+  font-size: 1.25rem;
+  font-weight: 700;
   padding: 0.625rem 1.25rem;
 
-  /*color: #d3394c;*/
-  color: rgb(128, 192, 64);
+  color: #80c040;
   border: 2px solid currentColor;
 
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .inputfile + label * {
@@ -42,13 +40,12 @@
 
 .inputfile:focus + label,
 .inputfile + label:hover {
-    /*color: #722040;*/
     color: green;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .inputfile:focus + label {
-	outline: 1px dotted #000;
-	outline: -webkit-focus-ring-color auto 5px;
+  outline: 0;	
 }
 
 .inputfile + label svg {
