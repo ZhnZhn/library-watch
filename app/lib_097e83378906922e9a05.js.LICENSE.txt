@@ -12,18 +12,15 @@ License: MIT
 */
 
 /*!
- * Chart.js
- * http://chartjs.org/
- * Version: 2.2.2
- *
- * Copyright 2016 Nick Downie
- * Released under the MIT license
- * https://github.com/chartjs/Chart.js/blob/master/LICENSE.md
+ * Chart.js v2.9.4
+ * https://www.chartjs.org
+ * (c) 2020 Chart.js Contributors
+ * Released under the MIT License
  */
 
 /*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
 
-/** @license React v0.19.1
+/** @license React v0.20.1
  * scheduler.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -32,7 +29,7 @@ License: MIT
  * LICENSE file in the root directory of this source tree.
  */
 
-/** @license React v16.13.1
+/** @license React v17.0.1
  * react-dom.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -41,7 +38,7 @@ License: MIT
  * LICENSE file in the root directory of this source tree.
  */
 
-/** @license React v16.13.1
+/** @license React v17.0.1
  * react.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -49,5 +46,3 @@ License: MIT
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-//! @see http://stackoverflow.com/a/14853974
