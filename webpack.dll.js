@@ -18,6 +18,9 @@ module.exports = {
             "raven-js" 
           ]
   },
+  externals: {
+     moment: 'moment'
+  },
   output: {
       path: path.resolve('app'),
       filename: "[name]_[chunkhash].js",
