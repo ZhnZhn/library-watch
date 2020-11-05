@@ -218,6 +218,7 @@
    <div id="app">
    </div>
 
+   <!--googleoff: snippet-->
    <noscript>
       <div class="noscript__root">
         <div class="noscript__header">
@@ -235,13 +236,13 @@
         </div>
       </div>
    </noscript>
-   <!--lib-->
+   <!--googleoff: snippet-->
+   
+  <!--script src="app/lib"></script-->
  <%
  for (var index in htmlWebpackPlugin.files.js ) {
     var fileName = htmlWebpackPlugin.files.js[index];
-    if (fileName.indexOf('lib_') !== -1) { %>
-      <script src="<%=fileName %>" defer></script>
-    <% } else if (fileName.indexOf('app_') !== -1) { %>
+    if (fileName.indexOf('app_') !== -1) { %>
       <script src="<%=fileName %>" defer></script>
     <% }
  } %>

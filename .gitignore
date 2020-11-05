@@ -1,16 +1,7 @@
 .languagebabel
-jspm_packages
 node_modules
 local_modules
 _start_server.bat
-bundle.min.js
-bundle.min.js.map
-config.js
-dependency-bundle.js
-dependency-bundle.js.map
-github.html
-github-hot.html
-index_jspm.html
 lint.txt
 npm-debug.log
 lib-dev
