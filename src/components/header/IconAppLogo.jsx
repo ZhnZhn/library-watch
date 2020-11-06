@@ -1,5 +1,3 @@
-import React from 'react';
-
 
 const IconAppLogo = ({ className, title }) => (
   <span
@@ -47,6 +45,5 @@ const IconAppLogo = ({ className, title }) => (
     </svg>
   </span>
 );
-
 
 export default IconAppLogo

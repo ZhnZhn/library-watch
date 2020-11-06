@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,9 +7,9 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+var _react = require("react");
 
-var _react = _interopRequireWildcard(require("react"));
+var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
 var WITHOUT_LIMIT = '';
 var S = {
@@ -27,57 +25,23 @@ var S = {
   }
 };
 
-var LimitRemainingLabel = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(LimitRemainingLabel, _Component);
+var LimitRemainingLabel = function LimitRemainingLabel(_ref) {
+  var style = _ref.style,
+      store = _ref.store;
 
-  function LimitRemainingLabel() {
-    var _this;
+  var _useState = (0, _react.useState)(''),
+      value = _useState[0],
+      setValue = _useState[1];
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+  (0, _useListen["default"])(store, function (limitValue) {
+    var _value = limitValue != null ? limitValue : WITHOUT_LIMIT;
 
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-    _this.state = {
-      value: ''
-    };
-
-    _this._onStore = function (value) {
-      if (!(value == null)) {
-        _this.setState({
-          value: value
-        });
-      } else if (_this.state.value !== WITHOUT_LIMIT) {
-        _this.setState({
-          value: WITHOUT_LIMIT
-        });
-      }
-    };
-
-    return _this;
-  }
-
-  var _proto = LimitRemainingLabel.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    var store = this.props.store;
-    this.unsubscribe = store.listenLimitRemaining(this._onStore);
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.unsubscribe();
-  };
-
-  _proto.render = function render() {
-    var style = this.props.style,
-        value = this.state.value;
-    return /*#__PURE__*/_react["default"].createElement("span", {
-      style: (0, _extends2["default"])({}, S.LABEL, style)
-    }, value);
-  };
-
-  return LimitRemainingLabel;
-}(_react.Component);
+    setValue(_value);
+  }, 'listenLimitRemaining');
+  return /*#__PURE__*/React.createElement("span", {
+    style: (0, _extends2["default"])({}, S.LABEL, style)
+  }, value);
+};
 
 var _default = LimitRemainingLabel;
 exports["default"] = _default;

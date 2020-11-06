@@ -1,17 +1,13 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
-
-var _react = _interopRequireDefault(require("react"));
 
 var AppLabel = function AppLabel(_ref) {
   var className = _ref.className,
       caption = _ref.caption,
       title = _ref.title;
-  return /*#__PURE__*/_react["default"].createElement("span", {
+  return /*#__PURE__*/React.createElement("span", {
     className: className,
     title: title
   }, caption);

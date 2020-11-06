@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
+
+import useListen from '../hooks/useListen'
 
 const WITHOUT_LIMIT = '';
 const S = {
@@ -14,37 +16,22 @@ const S = {
   }
 };
 
-class LimitRemainingLabel extends Component {
-  state = {
-    value: ''
-  }
+const LimitRemainingLabel  = ({ style, store }) => {
+  const [value, setValue] = useState('');
 
-  componentDidMount(){
-    const { store } = this.props;
-    this.unsubscribe = store.listenLimitRemaining(this._onStore);
-  }
-  componentWillUnmount(){
-    this.unsubscribe();
-  }
+  useListen(store, (limitValue) => {
+    const _value = limitValue != null
+      ? limitValue
+      : WITHOUT_LIMIT;
+    setValue(_value)
+  }, 'listenLimitRemaining')
 
-  _onStore = (value) => {
-    if ( !(value == null) ) {
-      this.setState({ value: value });
-    } else if (this.state.value !== WITHOUT_LIMIT){
-      this.setState({ value: WITHOUT_LIMIT });
-    }
-  }
-
-  render(){
-    const { style } = this.props
-        , { value } = this.state;
-
-    return (
-       <span style={{ ...S.LABEL, ...style}}>
-         {value}
-       </span>
-    );
-  }
+  return (
+    <span style={{...S.LABEL, ...style}}>
+      {value}
+    </span>
+  );
 }
+
 
 export default LimitRemainingLabel

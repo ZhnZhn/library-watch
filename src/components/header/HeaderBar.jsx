@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { useCallback } from 'react';
 
 import BA from '../../flux/actions/BrowserActions';
 import CA from '../../flux/actions/ComponentActions';
@@ -43,7 +43,7 @@ const S = {
   }
 };
 
-const BrowserConfig = {
+const BROWSER_CONFIG = {
   LIBRARY : {
     browserType: BT.LIBRARY,
     caption: 'Library',
@@ -52,64 +52,61 @@ const BrowserConfig = {
   }
 };
 
-class HeaderBar extends Component {
 
-  _handleClickDynamic = (browserConfig) => {
-    BA.showBrowserDynamic(browserConfig);
-  }
-  _handleClickWatch = () => {
+const HeaderBar = ({ store })  => {
+  const _hClickLibrary = useCallback(() => {
+    BA.showBrowserDynamic(BROWSER_CONFIG.LIBRARY);
+  }, [])
+  , _hClickWatch = useCallback(() => {
     BA.showBrowser(BT.WATCH_LIST);
-  }
+  }, []);
 
-  render(){
-    const { store } = this.props;
-    return (
-      <div className={CL.HEADER} style={S.ROOT_DIV}>
-         <LoadingProgress store={store} />
-         <IconAppLogo
-           className={CL.ICON}
-           title={TITLE}
-         />
-         <AppLabel
-           className={CL.APP_LABEL}
-           caption={TITLE}
-         />
-         <A.FlatButton
-            className={CL.LIBRARY}
-            caption="Library"
-            title="Click to show library browser"
-            accessKey="l"
-            timeout={0}
-            onClick={this._handleClickDynamic.bind(null, BrowserConfig.LIBRARY)}
-         />
-         <A.FlatButton
-            caption="Watch"
-            title="Click to show watch browser"
-            accessKey="w"
-            timeout={0}
-            onClick={this._handleClickWatch}
-         />
-         <A.ButtonSave
-            store={store}
-            style={S.BUTTON_SAVE}
-         />
-         <A.FlatButton
-            className={CL.ABOUT}
-            rootStyle={S.BT_ABOUT}
-            title="About web app Library Watch"
-            accessKey="a"
-            timeout={0}
-            onClick={CA.showAbout}
-         >
-            <A.SvgInfo style={S.SVG_INFO} />
-         </A.FlatButton>
-         <LimitRemainingLabel
-             store={store}
-             style={S.LABEL_LIMIT}
-         />
-      </div>
-    );
-  }
-}
+  return (
+  <div className={CL.HEADER} style={S.ROOT_DIV}>
+     <LoadingProgress store={store} />
+     <IconAppLogo
+       className={CL.ICON}
+       title={TITLE}
+     />
+     <AppLabel
+       className={CL.APP_LABEL}
+       caption={TITLE}
+     />
+     <A.FlatButton
+        className={CL.LIBRARY}
+        caption="Library"
+        title="Click to show library browser"
+        accessKey="l"
+        timeout={0}
+        onClick={_hClickLibrary}
+     />
+     <A.FlatButton
+        caption="Watch"
+        title="Click to show watch browser"
+        accessKey="w"
+        timeout={0}
+        onClick={_hClickWatch}
+     />
+     <A.ButtonSave
+        store={store}
+        style={S.BUTTON_SAVE}
+     />
+     <A.FlatButton
+        className={CL.ABOUT}
+        rootStyle={S.BT_ABOUT}
+        title="About web app Library Watch"
+        accessKey="a"
+        timeout={0}
+        onClick={CA.showAbout}
+     >
+        <A.SvgInfo style={S.SVG_INFO} />
+     </A.FlatButton>
+     <LimitRemainingLabel
+        store={store}
+        style={S.LABEL_LIMIT}
+     />
+  </div>
+ );
+};
 
 export default HeaderBar
