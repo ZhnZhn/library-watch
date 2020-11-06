@@ -55,6 +55,10 @@ module.exports = {
     "react/sort-comp": 0,
     "react/jsx-wrap-multilines": [1, {"declaration": false, "assignment": false}],
 
+    //jsx transformer
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off", 
+
     //set react-hooks rules
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
