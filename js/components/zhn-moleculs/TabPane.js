@@ -11,6 +11,8 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var STYLE = {
   UL: {
@@ -71,10 +73,10 @@ var TabPane = /*#__PURE__*/function (_Component) {
         } : {
           display: 'none'
         };
-        return /*#__PURE__*/_react["default"].createElement("div", {
+        return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
           style: divStyle,
-          key: 'a' + index
-        }, comp);
+          children: comp
+        }, 'a' + index);
       });
     };
 
@@ -98,17 +100,20 @@ var TabPane = /*#__PURE__*/function (_Component) {
         children = _this$props.children,
         width = _this$props.width,
         height = _this$props.height;
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       style: {
         width: width,
         height: height
-      }
-    }, /*#__PURE__*/_react["default"].createElement("ul", {
-      className: "tabpane__tabs",
-      style: STYLE.UL
-    }, this._renderTabs(children)), /*#__PURE__*/_react["default"].createElement("div", {
-      style: STYLE.DIV
-    }, this._renderComponents()));
+      },
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("ul", {
+        className: "tabpane__tabs",
+        style: STYLE.UL,
+        children: this._renderTabs(children)
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: STYLE.DIV,
+        children: this._renderComponents()
+      })]
+    });
   };
 
   _proto.getSelectedTabIndex = function getSelectedTabIndex() {

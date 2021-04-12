@@ -15,6 +15,8 @@ var _DialogStyles = _interopRequireDefault(require("../../styles/DialogStyles"))
 
 var _Caption = _interopRequireDefault(require("./Caption"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var S = {
   CAPTION: {
@@ -28,18 +30,19 @@ var RowInputSelect = function RowInputSelect(_ref) {
       placeholder = _ref.placeholder,
       options = _ref.options,
       onSelect = _ref.onSelect;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    style: _DialogStyles["default"].rowDiv
-  }, /*#__PURE__*/_react["default"].createElement(_Caption["default"], {
-    is: isShowLabel,
-    style: (0, _extends2["default"])({}, _DialogStyles["default"].labelSpan, S.CAPTION),
-    caption: caption
-  }), /*#__PURE__*/_react["default"].createElement(_InputSelect["default"], {
-    width: "250",
-    placeholder: placeholder,
-    options: options,
-    onSelect: onSelect
-  }));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: _DialogStyles["default"].rowDiv,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Caption["default"], {
+      is: isShowLabel,
+      style: (0, _extends2["default"])({}, _DialogStyles["default"].labelSpan, S.CAPTION),
+      caption: caption
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputSelect["default"], {
+      width: "250",
+      placeholder: placeholder,
+      options: options,
+      onSelect: onSelect
+    })]
+  });
 };
 
 RowInputSelect.defaultProps = {

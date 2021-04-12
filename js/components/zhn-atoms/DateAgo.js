@@ -15,6 +15,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _DateAgo = _interopRequireDefault(require("./DateAgo.Style"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var DateAgo = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DateAgo, _Component);
@@ -57,12 +59,16 @@ var DateAgo = /*#__PURE__*/function (_Component) {
         isShowDate = this.state.isShowDate,
         _styleDate = isShowDate ? _DateAgo["default"].INLINE_BLOCK : _DateAgo["default"].NONE;
 
-    return /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement("span", {
-      style: (0, _extends2["default"])({}, _DateAgo["default"].DATE_AGO, style),
-      onClick: date ? this._hClick : void 0
-    }, dateAgo), /*#__PURE__*/_react["default"].createElement("span", {
-      style: (0, _extends2["default"])({}, _DateAgo["default"].DATE, _styleDate)
-    }, date));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: (0, _extends2["default"])({}, _DateAgo["default"].DATE_AGO, style),
+        onClick: date ? this._hClick : void 0,
+        children: dateAgo
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: (0, _extends2["default"])({}, _DateAgo["default"].DATE, _styleDate),
+        children: date
+      })]
+    });
   };
 
   return DateAgo;

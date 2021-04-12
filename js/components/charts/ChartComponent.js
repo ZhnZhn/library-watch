@@ -17,6 +17,8 @@ var _chart = _interopRequireDefault(require("chart.js"));
 
 var _deepEqual = _interopRequireDefault(require("./deepEqual"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import ReactDOM from 'react-dom';
 var IGNORED_PROPERTIES = ['id', 'width', 'height', 'onElementsClick'];
 var _configMerge = _chart["default"].helpers.configMerge;
@@ -161,7 +163,7 @@ var ChartComponent = /*#__PURE__*/function (_Component) {
         onElementsClick = _this$props3.onElementsClick,
         _onClick = _isFn(onElementsClick) ? this.handleOnClick : null;
 
-    return /*#__PURE__*/_react["default"].createElement("canvas", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("canvas", {
       ref: this._refRoot,
       height: height,
       width: width,

@@ -31,7 +31,9 @@ var _ValidationMessagesFragment = _interopRequireDefault(require("../zhn-molecul
 
 var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
 
-var _class, _temp;
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _class;
 
 var styles = _DialogStyles["default"];
 var actionCompleted = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
@@ -50,7 +52,7 @@ var S = {
   }
 };
 
-var AddToWatchDialog = (0, _withValidationLoad["default"])(_class = (_temp = /*#__PURE__*/function (_Component) {
+var AddToWatchDialog = (0, _withValidationLoad["default"])(_class = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(AddToWatchDialog, _Component);
 
   /*
@@ -159,13 +161,12 @@ var AddToWatchDialog = (0, _withValidationLoad["default"])(_class = (_temp = /*#
     var store = props.store;
     _this.groupCaption = null;
     _this.listCaption = null;
-    _this._commandButtons = [/*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-      key: "add",
+    _this._commandButtons = [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
       caption: "Add",
       title: "Click to add to watch list",
       timeout: 0,
       onClick: _this._handlerAdd
-    })];
+    }, "add")];
     _this.state = {
       groupOptions: store.getWatchGroups(),
       listOptions: [],
@@ -228,51 +229,57 @@ var AddToWatchDialog = (0, _withValidationLoad["default"])(_class = (_temp = /*#
         groupOptions = _this$state.groupOptions,
         listOptions = _this$state.listOptions,
         validationMessages = _this$state.validationMessages;
-    return /*#__PURE__*/_react["default"].createElement(_ModalDialog["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalDialog["default"], {
       caption: "Add To Watch List",
       isShow: isShow,
       commandButtons: this._commandButtons,
-      onClose: this._handlerClose
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      style: styles.rowDiv,
-      key: "1"
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      style: styles.labelSpan
-    }, "Group:"), /*#__PURE__*/_react["default"].createElement(_InputSelect["default"], {
-      width: "250",
-      options: groupOptions,
-      onSelect: this._handlerSelectGroup
-    })), /*#__PURE__*/_react["default"].createElement("div", {
-      style: styles.rowDiv,
-      key: "2"
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      style: styles.labelSpan
-    }, "List:"), /*#__PURE__*/_react["default"].createElement(_InputSelect["default"], {
-      width: "250",
-      options: listOptions,
-      onSelect: this._handlerSelectList
-    })), /*#__PURE__*/_react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, styles.rowDiv, S.LH),
-      key: "3"
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      style: styles.labelSpan
-    }, "Item:"), /*#__PURE__*/_react["default"].createElement("span", {
-      style: S.BOLD
-    }, caption)), /*#__PURE__*/_react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, styles.rowDiv, S.LH),
-      key: "4"
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      style: styles.labelSpan
-    }, "Descr:"), /*#__PURE__*/_react["default"].createElement("span", {
-      style: S.DESCR
-    }, descr)), /*#__PURE__*/_react["default"].createElement(_ValidationMessagesFragment["default"], {
-      key: "5",
-      validationMessages: validationMessages
-    }));
+      onClose: this._handlerClose,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: styles.rowDiv,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: styles.labelSpan,
+          children: "Group:"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputSelect["default"], {
+          width: "250",
+          options: groupOptions,
+          onSelect: this._handlerSelectGroup
+        })]
+      }, "1"), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: styles.rowDiv,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: styles.labelSpan,
+          children: "List:"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputSelect["default"], {
+          width: "250",
+          options: listOptions,
+          onSelect: this._handlerSelectList
+        })]
+      }, "2"), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: (0, _extends2["default"])({}, styles.rowDiv, S.LH),
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: styles.labelSpan,
+          children: "Item:"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: S.BOLD,
+          children: caption
+        })]
+      }, "3"), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: (0, _extends2["default"])({}, styles.rowDiv, S.LH),
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: styles.labelSpan,
+          children: "Descr:"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: S.DESCR,
+          children: descr
+        })]
+      }, "4"), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessagesFragment["default"], {
+        validationMessages: validationMessages
+      }, "5")]
+    });
   };
 
   return AddToWatchDialog;
-}(_react.Component), _temp)) || _class;
+}(_react.Component)) || _class;
 
 var _default = AddToWatchDialog;
 exports["default"] = _default;

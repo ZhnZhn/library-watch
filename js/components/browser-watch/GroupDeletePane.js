@@ -17,6 +17,8 @@ var _ValidationMessagesFragment = _interopRequireDefault(require("../zhn-molecul
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from 'prop-types'
 var S = {
   COMMAND_DIV: {
@@ -115,25 +117,28 @@ var GroupDeletePane = /*#__PURE__*/function (_Component) {
         _this$state = this.state,
         groupOptions = _this$state.groupOptions,
         validationMessages = _this$state.validationMessages;
-    return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_RowInputSelect["default"], {
-      caption: "Group",
-      options: groupOptions //isUpdateOptions={true}
-      ,
-      onSelect: this._handlerSelectGroup
-    }), /*#__PURE__*/_react["default"].createElement(_ValidationMessagesFragment["default"], {
-      validationMessages: validationMessages
-    }), /*#__PURE__*/_react["default"].createElement("div", {
-      style: S.COMMAND_DIV
-    }, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-      isPrimary: true,
-      caption: "Delete",
-      timeout: 0,
-      onClick: this._handlerDeleteGroup
-    }), /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-      caption: "Close",
-      timeout: 0,
-      onClick: onClose
-    })));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputSelect["default"], {
+        caption: "Group",
+        options: groupOptions //isUpdateOptions={true}
+        ,
+        onSelect: this._handlerSelectGroup
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessagesFragment["default"], {
+        validationMessages: validationMessages
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: S.COMMAND_DIV,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+          isPrimary: true,
+          caption: "Delete",
+          timeout: 0,
+          onClick: this._handlerDeleteGroup
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+          caption: "Close",
+          timeout: 0,
+          onClick: onClose
+        })]
+      })]
+    });
   };
 
   return GroupDeletePane;

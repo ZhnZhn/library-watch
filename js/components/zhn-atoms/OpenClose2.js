@@ -13,6 +13,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _isKeyEnter = _interopRequireDefault(require("./isKeyEnter"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from 'prop-types'
 var CL = {
   ROW_CAPTION: 'zhn-oc not-selected',
@@ -111,35 +113,42 @@ var OpenClose2 = function OpenClose2(_ref) {
     _styleNotSelected = styleNotSelected;
   }
 
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    style: (0, _extends2["default"])({}, STYLE.ROOT, style)
-  }, /*#__PURE__*/_react["default"].createElement("div", (0, _extends2["default"])({
-    className: CL.ROW_CAPTION,
-    style: (0, _extends2["default"])({}, styleCaptionRow, _styleNotSelected),
-    onClick: _hToggle,
-    tabIndex: "0",
-    role: "menuitem",
-    onKeyDown: _hKeyDown
-  }, _dragOption), /*#__PURE__*/_react["default"].createElement("div", {
-    style: STYLE.SVG
-  }, /*#__PURE__*/_react["default"].createElement("svg", {
-    viewBox: "0 0 16 16",
-    width: "100%",
-    height: "100%",
-    preserveAspectRatio: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    style: STYLE.INLINE
-  }, /*#__PURE__*/_react["default"].createElement("path", {
-    d: _pathV,
-    fill: _fillV,
-    strokeWidth: "1",
-    stroke: fillOpen
-  }))), /*#__PURE__*/_react["default"].createElement("span", {
-    style: (0, _extends2["default"])({}, STYLE.CAPTION, styleCaption)
-  }, caption)), /*#__PURE__*/_react["default"].createElement("div", {
-    className: _classShow,
-    style: _styleCollapse
-  }, children));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: (0, _extends2["default"])({}, STYLE.ROOT, style),
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", (0, _extends2["default"])({
+      className: CL.ROW_CAPTION,
+      style: (0, _extends2["default"])({}, styleCaptionRow, _styleNotSelected),
+      onClick: _hToggle,
+      tabIndex: "0",
+      role: "menuitem",
+      onKeyDown: _hKeyDown
+    }, _dragOption, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: STYLE.SVG,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
+          viewBox: "0 0 16 16",
+          width: "100%",
+          height: "100%",
+          preserveAspectRatio: "none",
+          xmlns: "http://www.w3.org/2000/svg",
+          style: STYLE.INLINE,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+            d: _pathV,
+            fill: _fillV,
+            strokeWidth: "1",
+            stroke: fillOpen
+          })
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: (0, _extends2["default"])({}, STYLE.CAPTION, styleCaption),
+        children: caption
+      })]
+    })), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: _classShow,
+      style: _styleCollapse,
+      children: children
+    })]
+  });
 };
 /*
 OpenClose2.propTypes = {

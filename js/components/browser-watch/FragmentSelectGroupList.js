@@ -13,6 +13,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _RowInputSelect = _interopRequireDefault(require("./RowInputSelect"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from 'prop-types'
 var FragmentSelectGroupList = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(FragmentSelectGroupList, _Component);
@@ -87,15 +89,17 @@ var FragmentSelectGroupList = /*#__PURE__*/function (_Component) {
         groupOptions = _this$props.groupOptions,
         listCaption = _this$props.listCaption,
         listOptions = this.state.listOptions;
-    return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_RowInputSelect["default"], {
-      caption: groupCaption,
-      options: groupOptions,
-      onSelect: this._handlerSelectGroup
-    }), /*#__PURE__*/_react["default"].createElement(_RowInputSelect["default"], {
-      caption: listCaption,
-      options: listOptions,
-      onSelect: this._handlerSelectList
-    }));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputSelect["default"], {
+        caption: groupCaption,
+        options: groupOptions,
+        onSelect: this._handlerSelectGroup
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputSelect["default"], {
+        caption: listCaption,
+        options: listOptions,
+        onSelect: this._handlerSelectList
+      })]
+    });
   };
 
   _proto.getValue = function getValue() {

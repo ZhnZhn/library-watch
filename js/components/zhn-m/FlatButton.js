@@ -17,6 +17,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _CaptionInput = _interopRequireDefault(require("./CaptionInput"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var CL = {
   BT: 'bt-flat',
   BT_DIV: 'bt-flat__div',
@@ -86,7 +88,7 @@ var FlatButton = /*#__PURE__*/function (_Component) {
         _className = className ? CL.BT + " " + className : CL.BT,
         _title = accessKey ? title + " [" + accessKey + "]" : title;
 
-    return /*#__PURE__*/_react["default"].createElement("button", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
       type: "button",
       ref: this._refNode,
       className: _className,
@@ -94,14 +96,16 @@ var FlatButton = /*#__PURE__*/function (_Component) {
       accessKey: accessKey,
       tabIndex: 0,
       title: _title,
-      onClick: this._hClick
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: clDiv
-    }, /*#__PURE__*/_react["default"].createElement(_CaptionInput["default"], {
-      className: CL.BT_SPAN,
-      caption: caption,
-      accessKey: accessKey
-    }), children));
+      onClick: this._hClick,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        className: clDiv,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_CaptionInput["default"], {
+          className: CL.BT_SPAN,
+          caption: caption,
+          accessKey: accessKey
+        }), children]
+      })
+    });
   };
 
   return FlatButton;

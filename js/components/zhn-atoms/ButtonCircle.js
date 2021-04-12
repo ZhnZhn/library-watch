@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var CL = {
   ROOT: 'zhn-bt-circle',
@@ -24,12 +26,15 @@ var ButtonCircle = function ButtonCircle(props) {
       onClick = props.onClick,
       _className = isWithoutDefault ? className + " " + CL.NOT : CL.ROOT + " " + className + " " + CL.NOT;
 
-  return /*#__PURE__*/_react["default"].createElement("button", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     className: _className,
     style: style,
     title: title,
-    onClick: onClick
-  }, /*#__PURE__*/_react["default"].createElement("div", null, caption));
+    onClick: onClick,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      children: caption
+    })
+  });
 };
 /*
 ButtonCircle.propTypes = {

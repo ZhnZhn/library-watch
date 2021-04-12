@@ -1,16 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/items/ErrMsg.js"
- ],
- "file": "../../../src/components/items/ErrMsg.js",
- "names": [
-  "S",
-  "ERR",
-  "color",
-  "fontWeight",
-  "ErrMsg",
-  "errMsg"
- ],
- "mappings": ";;;;;;;AAAA,IAAMA,CAAC,GAAG;AACRC,EAAAA,GAAG,EAAE;AACHC,IAAAA,KAAK,EAAE,SADJ;AAEHC,IAAAA,UAAU,EAAE;AAFT;AADG,CAAV;;AAOA,IAAMC,MAAM,GAAG,SAATA,MAAS;AAAA,MAAGC,MAAH,QAAGA,MAAH;AAAA,sBACb;AAAK,IAAA,KAAK,EAAEL,CAAC,CAACC,GAAd;AAAA,cAAoBI;AAApB,IADa;AAAA,CAAf;;eAIeD,M"
-}
+{"version":3,"sources":["../../../src/components/items/ErrMsg.jsx"],"names":["S","ERR","color","fontWeight","ErrMsg","errMsg"],"mappings":";;;;;;;AAAA,IAAMA,CAAC,GAAG;AACRC,EAAAA,GAAG,EAAE;AACHC,IAAAA,KAAK,EAAE,SADJ;AAEHC,IAAAA,UAAU,EAAE;AAFT;AADG,CAAV;;AAOA,IAAMC,MAAM,GAAG,SAATA,MAAS;AAAA,MAAGC,MAAH,QAAGA,MAAH;AAAA,sBACb;AAAK,IAAA,KAAK,EAAEL,CAAC,CAACC,GAAd;AAAA,cAAoBI;AAApB,IADa;AAAA,CAAf;;eAIeD,M","sourcesContent":["const S = {\r\n  ERR: {\r\n    color: '#f44336',\r\n    fontWeight: 'bold'\r\n  }\r\n};\r\n\r\nconst ErrMsg = ({ errMsg }) => (\r\n  <div style={S.ERR}>{errMsg}</div>\r\n);\r\n\r\nexport default ErrMsg\r\n"],"file":"ErrMsg.js"}

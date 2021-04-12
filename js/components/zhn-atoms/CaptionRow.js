@@ -11,6 +11,8 @@ var _SvgClose = _interopRequireDefault(require("./SvgClose"));
 
 var _CaptionRow = _interopRequireDefault(require("./CaptionRow.Style"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from 'prop-types';
 var CaptionRow = function CaptionRow(_ref) {
   var _ref$caption = _ref.caption,
@@ -18,16 +20,18 @@ var CaptionRow = function CaptionRow(_ref) {
       children = _ref.children,
       styleRoot = _ref.styleRoot,
       onClose = _ref.onClose;
-  return /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: _CaptionRow["default"].CL_CAPTION,
-    style: styleRoot
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    className: _CaptionRow["default"].CL_NOT_SELECTED,
-    style: _CaptionRow["default"].CAPTION
-  }, caption), children, /*#__PURE__*/_react["default"].createElement(_SvgClose["default"], {
-    style: _CaptionRow["default"].SVG_CLOSE,
-    onClose: onClose
-  }));
+    style: styleRoot,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      className: _CaptionRow["default"].CL_NOT_SELECTED,
+      style: _CaptionRow["default"].CAPTION,
+      children: caption
+    }), children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose["default"], {
+      style: _CaptionRow["default"].SVG_CLOSE,
+      onClose: onClose
+    })]
+  });
 };
 /*
 CaptionRow.propTypes = {

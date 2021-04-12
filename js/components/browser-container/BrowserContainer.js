@@ -17,6 +17,8 @@ var _WatchBrowser = _interopRequireDefault(require("../browser-watch/WatchBrowse
 
 var _DialogContainer = _interopRequireDefault(require("../zhn-containers/DialogContainer3"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from 'props-type'
 var CL = "hrz-container";
 
@@ -82,7 +84,7 @@ var BrowserContainer = /*#__PURE__*/function (_Component) {
         _this$state = this.state,
         isDoubleWatch = _this$state.isDoubleWatch,
         elBrowsers = _this$state.elBrowsers,
-        _doubleWatch = isDoubleWatch ? /*#__PURE__*/_react["default"].createElement(_WatchBrowser["default"], {
+        _doubleWatch = isDoubleWatch ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchBrowser["default"], {
       isShow: true,
       isEditMode: true,
       isDoubleWatch: true,
@@ -93,20 +95,21 @@ var BrowserContainer = /*#__PURE__*/function (_Component) {
       updateAction: updateWatchAction
     }) : null;
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: CL
-    }, /*#__PURE__*/_react["default"].createElement(_WatchBrowser["default"], {
-      browserType: _Type.BrowserType.WATCH_LIST,
-      caption: "Watch",
-      store: store,
-      showAction: showBrowserAction,
-      updateAction: updateWatchAction
-    }), _doubleWatch, this._renderEl(elBrowsers), /*#__PURE__*/_react["default"].createElement(_DialogContainer["default"], {
-      maxDialog: 3,
-      store: store,
-      initAction: initDialogAction,
-      showAction: showDialogAction
-    }));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: CL,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchBrowser["default"], {
+        browserType: _Type.BrowserType.WATCH_LIST,
+        caption: "Watch",
+        store: store,
+        showAction: showBrowserAction,
+        updateAction: updateWatchAction
+      }), _doubleWatch, this._renderEl(elBrowsers), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogContainer["default"], {
+        maxDialog: 3,
+        store: store,
+        initAction: initDialogAction,
+        showAction: showDialogAction
+      })]
+    });
   };
 
   return BrowserContainer;

@@ -13,6 +13,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _TaggedItem = _interopRequireDefault(require("./TaggedItem"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var TaggedItemList = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(TaggedItemList, _Component);
 
@@ -31,11 +33,10 @@ var TaggedItemList = /*#__PURE__*/function (_Component) {
           onRemoveItem = _this$props.onRemoveItem;
       return items.map(function (item, index) {
         var question_id = item.question_id;
-        return /*#__PURE__*/_react["default"].createElement(_TaggedItem["default"], {
-          key: question_id,
+        return /*#__PURE__*/(0, _jsxRuntime.jsx)(_TaggedItem["default"], {
           item: item,
           onRemoveItem: onRemoveItem
-        });
+        }, question_id);
       });
     };
 
@@ -53,7 +54,9 @@ var TaggedItemList = /*#__PURE__*/function (_Component) {
   };
 
   _proto.render = function render() {
-    return /*#__PURE__*/_react["default"].createElement(_react.Fragment, null, this._renderItems());
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_react.Fragment, {
+      children: this._renderItems()
+    });
   };
 
   return TaggedItemList;

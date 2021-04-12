@@ -11,6 +11,8 @@ var _react = require("react");
 
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var WITHOUT_LIMIT = '';
 var S = {
   LABEL: {
@@ -38,9 +40,10 @@ var LimitRemainingLabel = function LimitRemainingLabel(_ref) {
 
     setValue(_value);
   }, 'listenLimitRemaining');
-  return /*#__PURE__*/React.createElement("span", {
-    style: (0, _extends2["default"])({}, S.LABEL, style)
-  }, value);
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    style: (0, _extends2["default"])({}, S.LABEL, style),
+    children: value
+  });
 };
 
 var _default = LimitRemainingLabel;

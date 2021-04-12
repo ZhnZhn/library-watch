@@ -11,6 +11,8 @@ var _IconGitHub = _interopRequireDefault(require("./IconGitHub"));
 
 var _IconReact = _interopRequireDefault(require("./IconReact"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var S = {
   ROOT: {
     textAlign: 'center',
@@ -19,13 +21,14 @@ var S = {
 };
 
 var IconLogoBar = function IconLogoBar(props) {
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    style: S.ROOT
-  }, /*#__PURE__*/_react["default"].createElement(_IconGitHub["default"], {
-    className: "icon__github",
-    title: "GitHub Library Watch",
-    uri: "https://github.com/ZhnZhn/library-watch.git"
-  }), /*#__PURE__*/_react["default"].createElement(_IconReact["default"], null));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: S.ROOT,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_IconGitHub["default"], {
+      className: "icon__github",
+      title: "GitHub Library Watch",
+      uri: "https://github.com/ZhnZhn/library-watch.git"
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconReact["default"], {})]
+  });
 };
 
 var _default = IconLogoBar;

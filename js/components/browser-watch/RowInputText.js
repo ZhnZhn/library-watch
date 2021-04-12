@@ -19,6 +19,8 @@ var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
 
 var _crRowCaption = _interopRequireDefault(require("./crRowCaption"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var styles = _DialogStyles["default"];
 var S = {
   ROOT: {
@@ -58,14 +60,16 @@ var RowInputText = /*#__PURE__*/function (_Component) {
   var _proto = RowInputText.prototype;
 
   _proto.render = function render() {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, styles.rowDiv, S.ROOT)
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      style: (0, _extends2["default"])({}, styles.labelSpan, S.CAPTION)
-    }, (0, _crRowCaption["default"])(this.props.caption)), /*#__PURE__*/_react["default"].createElement(_InputText["default"], {
-      ref: this._refInput,
-      style: S.INPUT_TEXT
-    }));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: (0, _extends2["default"])({}, styles.rowDiv, S.ROOT),
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: (0, _extends2["default"])({}, styles.labelSpan, S.CAPTION),
+        children: (0, _crRowCaption["default"])(this.props.caption)
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputText["default"], {
+        ref: this._refInput,
+        style: S.INPUT_TEXT
+      })]
+    });
   };
 
   _proto.getValue = function getValue() {

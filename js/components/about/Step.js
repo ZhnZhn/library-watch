@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var S = {
   STEP: {
     display: 'inline-block',
@@ -21,9 +23,10 @@ var S = {
 
 var Step = function Step(_ref) {
   var step = _ref.step;
-  return /*#__PURE__*/_react["default"].createElement("span", {
-    style: S.STEP
-  }, step);
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    style: S.STEP,
+    children: step
+  });
 };
 
 var _default = Step;

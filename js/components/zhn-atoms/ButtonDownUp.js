@@ -11,6 +11,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _ButtonDownUp = _interopRequireDefault(require("./ButtonDownUp.Style"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var ButtonDownUp = function ButtonDownUp(props) {
   var style = props.style,
@@ -23,15 +25,17 @@ var ButtonDownUp = function ButtonDownUp(props) {
       _style = isUp ? _ButtonDownUp["default"].ROOT_UP : _ButtonDownUp["default"].ROOT_DOWN,
       _circleStyle = isUp ? _ButtonDownUp["default"].CIRCLE_UP : _ButtonDownUp["default"].CIRCLE_DOWN;
 
-  return /*#__PURE__*/_react["default"].createElement("button", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
     title: title,
     style: (0, _extends2["default"])({}, _ButtonDownUp["default"].ROOT, style, _style),
-    onClick: onClick
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    style: (0, _extends2["default"])({}, _ButtonDownUp["default"].CIRCLE, _circleStyle)
-  }), /*#__PURE__*/_react["default"].createElement("span", {
-    style: _ButtonDownUp["default"].ITEM
-  }, caption));
+    onClick: onClick,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: (0, _extends2["default"])({}, _ButtonDownUp["default"].CIRCLE, _circleStyle)
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: _ButtonDownUp["default"].ITEM,
+      children: caption
+    })]
+  });
 };
 /*
 ButtonDownUp.propTypes = {

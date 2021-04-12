@@ -23,7 +23,9 @@ var _Decorators = _interopRequireDefault(require("./decorators/Decorators"));
 
 var _helperFns = _interopRequireDefault(require("./helperFns/helperFns"));
 
-var _dec, _class, _temp;
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _dec, _class;
 
 var crMenuMore = _helperFns["default"].crMenuMore,
     crButtons = _helperFns["default"].crButtons;
@@ -88,7 +90,7 @@ var _initFromDate = _DateUtils["default"].getFromDate(1),
     _initToDate = _DateUtils["default"].getToDate(),
     _onTestDate = _DateUtils["default"].isValidDate;
 
-var DialogType3 = (_dec = _Decorators["default"].dialog, _dec(_class = (_temp = /*#__PURE__*/function (_Component) {
+var DialogType3 = (_dec = _Decorators["default"].dialog, _dec(_class = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DialogType3, _Component);
 
   /*
@@ -202,43 +204,45 @@ var DialogType3 = (_dec = _Decorators["default"].dialog, _dec(_class = (_temp = 
         isShowLabels = _this$state.isShowLabels,
         isShowDate = _this$state.isShowDate,
         validationMessages = _this$state.validationMessages;
-    return /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].DraggableDialog, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_DialogCell["default"].DraggableDialog, {
       isShow: isShow,
       caption: caption,
       menuModel: this._menuMore,
       commandButtons: this._commandButtons,
       onShowChart: onShow,
-      onClose: this._handleClose
-    }, /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].Toolbar, {
-      isShow: isToolbar,
-      buttons: this.toolbarButtons
-    }), /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].RowInputSelect, {
-      isShowLabel: isShowLabels,
-      caption: "Item",
-      placeholder: MARKET_SHARES[0].caption,
-      options: MARKET_SHARES,
-      onSelect: this._hSelectItem
-    }), /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].RowInputSelect, {
-      isShowLabel: isShowLabels,
-      caption: "Region",
-      placeholder: REGIONS[0].caption,
-      options: REGIONS,
-      onSelect: this._hSelectRegion
-    }), /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].ShowHide, {
-      isShow: isShowDate
-    }, /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].Dates, {
-      ref: this._refDatesFragment,
-      isShowLabels: isShowLabels,
-      initFromDate: _initFromDate,
-      initToDate: _initToDate,
-      onTestDate: _onTestDate
-    })), /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].ValidationMessages, {
-      validationMessages: validationMessages
-    }));
+      onClose: this._handleClose,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].Toolbar, {
+        isShow: isToolbar,
+        buttons: this.toolbarButtons
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].RowInputSelect, {
+        isShowLabel: isShowLabels,
+        caption: "Item",
+        placeholder: MARKET_SHARES[0].caption,
+        options: MARKET_SHARES,
+        onSelect: this._hSelectItem
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].RowInputSelect, {
+        isShowLabel: isShowLabels,
+        caption: "Region",
+        placeholder: REGIONS[0].caption,
+        options: REGIONS,
+        onSelect: this._hSelectRegion
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].ShowHide, {
+        isShow: isShowDate,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].Dates, {
+          ref: this._refDatesFragment,
+          isShowLabels: isShowLabels,
+          initFromDate: _initFromDate,
+          initToDate: _initToDate,
+          onTestDate: _onTestDate
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].ValidationMessages, {
+        validationMessages: validationMessages
+      })]
+    });
   };
 
   return DialogType3;
-}(_react.Component), _temp)) || _class);
+}(_react.Component)) || _class);
 var _default = DialogType3;
 exports["default"] = _default;
 //# sourceMappingURL=DialogType1A.js.map

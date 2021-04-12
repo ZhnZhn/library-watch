@@ -1,14 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/header/AppLabel.js"
- ],
- "file": "../../../src/components/header/AppLabel.js",
- "names": [
-  "AppLabel",
-  "className",
-  "caption",
-  "title"
- ],
- "mappings": ";;;;;AAAA,IAAMA,QAAQ,GAAG,SAAXA,QAAW;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,OAAd,QAAcA,OAAd;AAAA,MAAuBC,KAAvB,QAAuBA,KAAvB;AAAA,sBACf;AACE,IAAA,SAAS,EAAEF,SADb;AAEE,IAAA,KAAK,EAAEE;AAFT,KAIGD,OAJH,CADe;AAAA,CAAjB;;eASeF,Q"
-}
+{"version":3,"sources":["../../../src/components/header/AppLabel.jsx"],"names":["AppLabel","className","caption","title"],"mappings":";;;;;;;AAAA,IAAMA,QAAQ,GAAG,SAAXA,QAAW;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,OAAd,QAAcA,OAAd;AAAA,MAAuBC,KAAvB,QAAuBA,KAAvB;AAAA,sBACf;AACE,IAAA,SAAS,EAAEF,SADb;AAEE,IAAA,KAAK,EAAEE,KAFT;AAAA,cAIGD;AAJH,IADe;AAAA,CAAjB;;eASeF,Q","sourcesContent":["const AppLabel = ({ className, caption, title }) => (\r\n  <span\r\n    className={className}\r\n    title={title}\r\n  >\r\n    {caption}\r\n  </span>\r\n);\r\n\r\nexport default AppLabel\r\n"],"file":"AppLabel.js"}

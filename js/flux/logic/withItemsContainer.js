@@ -33,4 +33,4 @@ var withItemsContainer = {
 };
 var _default = withItemsContainer;
 exports["default"] = _default;
-//# sourceMappingURL=withItemsContainer.js.map
+//# sourceMappingURL=WithItemsContainer.js.map

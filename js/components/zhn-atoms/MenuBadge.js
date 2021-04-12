@@ -11,6 +11,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _ButtonCircle = _interopRequireDefault(require("./ButtonCircle2"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from 'prop-types'
 var CL = "menu__badge";
 var S = {
@@ -37,7 +39,7 @@ var MenuBadge = function MenuBadge(_ref) {
   }, [isOpen, onBadgeOpen, onBadgeClose]),
       _style = isOpen ? S.OPEN : void 0;
 
-  return /*#__PURE__*/_react["default"].createElement(_ButtonCircle["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle["default"], {
     className: CL,
     style: _style,
     caption: counter,

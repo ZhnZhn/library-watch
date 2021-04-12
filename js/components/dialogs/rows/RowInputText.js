@@ -17,6 +17,8 @@ var _InputText = _interopRequireDefault(require("../../zhn-atoms/InputText"));
 
 var _Caption = _interopRequireDefault(require("./Caption"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var S = {
   ROW_DIV: {
     margin: 5
@@ -74,18 +76,19 @@ var RowInputText = /*#__PURE__*/function (_Component) {
         onEnter = _this$props.onEnter,
         _placeholder = isShowLabel ? placeholder : placeholder || caption;
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, S.ROW_DIV, S.ROOT)
-    }, /*#__PURE__*/_react["default"].createElement(_Caption["default"], {
-      is: isShowLabel,
-      style: (0, _extends2["default"])({}, S.LABEL_SPAN, S.CAPTION),
-      caption: caption
-    }), /*#__PURE__*/_react["default"].createElement(_InputText["default"], {
-      ref: this._refInput,
-      style: S.INPUT_TEXT,
-      placeholder: _placeholder,
-      onEnter: onEnter
-    }));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: (0, _extends2["default"])({}, S.ROW_DIV, S.ROOT),
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Caption["default"], {
+        is: isShowLabel,
+        style: (0, _extends2["default"])({}, S.LABEL_SPAN, S.CAPTION),
+        caption: caption
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputText["default"], {
+        ref: this._refInput,
+        style: S.INPUT_TEXT,
+        placeholder: _placeholder,
+        onEnter: onEnter
+      })]
+    });
   };
 
   _proto.getValue = function getValue() {

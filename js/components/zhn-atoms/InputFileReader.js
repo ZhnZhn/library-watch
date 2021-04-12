@@ -11,6 +11,8 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var InputFileReader = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(InputFileReader, _Component);
@@ -95,25 +97,30 @@ var InputFileReader = /*#__PURE__*/function (_Component) {
   _proto.render = function render() {
     var as = this.props.as,
         labelText = this.state.labelText;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "_react-file-reader-input"
-    }, /*#__PURE__*/_react["default"].createElement("input", {
-      className: "inputfile",
-      type: "file",
-      id: "file",
-      name: "file",
-      as: as,
-      onChange: this._handleChange
-    }), /*#__PURE__*/_react["default"].createElement("label", {
-      htmlFor: "file"
-    }, /*#__PURE__*/_react["default"].createElement("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      width: "20",
-      height: "17",
-      viewBox: "0 0 20 17"
-    }, /*#__PURE__*/_react["default"].createElement("path", {
-      d: "M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"
-    })), /*#__PURE__*/_react["default"].createElement("span", null, labelText)));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: "_react-file-reader-input",
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+        className: "inputfile",
+        type: "file",
+        id: "file",
+        name: "file",
+        as: as,
+        onChange: this._handleChange
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("label", {
+        htmlFor: "file",
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
+          xmlns: "http://www.w3.org/2000/svg",
+          width: "20",
+          height: "17",
+          viewBox: "0 0 20 17",
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+            d: "M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          children: labelText
+        })]
+      })]
+    });
   };
 
   return InputFileReader;

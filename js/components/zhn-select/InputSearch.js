@@ -15,6 +15,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var MAX_WITHOUT_ANIMATION = 800;
 var styles = {
   rootDiv: {
@@ -391,16 +393,16 @@ var InputSearch = /*#__PURE__*/function (_Component) {
           _domOptions = options.map(function (item, index) {
             var _styleDiv = index % 2 === 0 ? styles.itemOdd : styles.itemEven;
 
-            return /*#__PURE__*/_react["default"].createElement("div", {
-              key: index,
+            return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
               ref: "v" + index,
               className: "option-row",
               style: Object.assign({}, styles.itemDiv, _styleDiv),
-              onClick: _this._handlerClickOption.bind((0, _assertThisInitialized2["default"])(_this), item, index)
-            }, /*#__PURE__*/_react["default"].createElement(ItemOptionComp, {
-              item: item,
-              propCaption: _caption
-            }));
+              onClick: _this._handlerClickOption.bind((0, _assertThisInitialized2["default"])(_this), item, index),
+              children: /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemOptionComp, {
+                item: item,
+                propCaption: _caption
+              })
+            }, index);
           });
           _this.domOptionsCache = _domOptions;
         } else {
@@ -416,20 +418,22 @@ var InputSearch = /*#__PURE__*/function (_Component) {
           _numberFilteredItems = options[0] && options[0].value !== 'noresult' ? options.length : 0,
           _numberAllItems = _this.props.options ? _this.props.options.length : 0;
 
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        style: Object.assign({}, styles.rootOptionDiv, _styleOptions)
-      }, /*#__PURE__*/_react["default"].createElement("div", {
-        ref: function ref(c) {
-          return _this.domOptions = c;
-        },
-        key: "1",
-        style: Object.assign({}, styles.optionDiv, _styleOptions)
-      }, _domOptions), /*#__PURE__*/_react["default"].createElement("div", {
-        key: "2",
-        style: styles.optionsFooter
-      }, /*#__PURE__*/_react["default"].createElement("span", {
-        style: styles.fileredSpan
-      }, "Filtered ", _numberFilteredItems, " : ", _numberAllItems)));
+      return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: Object.assign({}, styles.rootOptionDiv, _styleOptions),
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          ref: function ref(c) {
+            return _this.domOptions = c;
+          },
+          style: Object.assign({}, styles.optionDiv, _styleOptions),
+          children: _domOptions
+        }, "1"), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          style: styles.optionsFooter,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+            style: styles.fileredSpan,
+            children: ["Filtered ", _numberFilteredItems, " : ", _numberAllItems]
+          })
+        }, "2")]
+      });
     };
 
     _this._refInput = function (c) {
@@ -515,7 +519,7 @@ var InputSearch = /*#__PURE__*/function (_Component) {
 
     if (!isLoading && !isLoadingFailed) {
       _placeholder = placeholder ? placeholder : "Select" + optionName + "...";
-      _domAfterInput = /*#__PURE__*/_react["default"].createElement(_ArrowCell["default"], {
+      _domAfterInput = /*#__PURE__*/(0, _jsxRuntime.jsx)(_ArrowCell["default"], {
         ref: function ref(c) {
           return _this2.arrowCell = c;
         },
@@ -524,32 +528,33 @@ var InputSearch = /*#__PURE__*/function (_Component) {
       });
     } else if (isLoading) {
       _placeholder = "Loading" + optionNames + "...";
-      _domAfterInput = /*#__PURE__*/_react["default"].createElement("span", {
+      _domAfterInput = /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
         style: styles.spinnerCell,
         "data-loader": "circle"
       });
     } else if (isLoadingFailed) {
       _placeholder = "Loading" + optionNames + " Failed";
-      _domAfterInput = /*#__PURE__*/_react["default"].createElement("span", {
+      _domAfterInput = /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
         style: styles.spinnerFailedCell,
         "data-loader": "circle-failed",
         onClick: this.props.onLoadOption
       });
     }
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: styles.rootDiv
-    }, /*#__PURE__*/_react["default"].createElement("input", {
-      ref: this._refInput,
-      type: "text",
-      value: value,
-      style: styles.inputText,
-      placeholder: _placeholder,
-      onChange: this._handlerInputChange,
-      onKeyDown: this._handlerInputKeyDown
-    }), _domAfterInput, /*#__PURE__*/_react["default"].createElement("hr", {
-      style: styles.inputHr
-    }), _domOptions);
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: styles.rootDiv,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+        ref: this._refInput,
+        type: "text",
+        value: value,
+        style: styles.inputText,
+        placeholder: _placeholder,
+        onChange: this._handlerInputChange,
+        onKeyDown: this._handlerInputKeyDown
+      }), _domAfterInput, /*#__PURE__*/(0, _jsxRuntime.jsx)("hr", {
+        style: styles.inputHr
+      }), _domOptions]
+    });
   };
 
   _proto.focusInput = function focusInput() {

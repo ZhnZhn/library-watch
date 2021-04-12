@@ -9,8 +9,6 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _ComponentActions = require("../../flux/actions/ComponentActions");
@@ -30,6 +28,8 @@ var _LinkToken = _interopRequireDefault(require("./LinkToken"));
 var _IconLogoBar = _interopRequireDefault(require("./IconLogoBar"));
 
 var _ContainerStyles = _interopRequireDefault(require("../styles/ContainerStyles"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var S = {
   BLOCK: {

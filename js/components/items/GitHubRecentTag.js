@@ -9,6 +9,8 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
 var _react = _interopRequireWildcard(require("react"));
 
 var _A = _interopRequireDefault(require("../zhn-atoms/A"));
@@ -19,6 +21,8 @@ var _CL = _interopRequireDefault(require("../styles/CL"));
 
 var _Item = _interopRequireDefault(require("./Item.Style"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var ITEM_DESCRIPTION = "GitHub Likely Recent Version Tag";
 
 var _formatDate = function _formatDate(strDate) {
@@ -28,28 +32,36 @@ var _formatDate = function _formatDate(strDate) {
 var Token = function Token(_ref) {
   var caption = _ref.caption,
       value = _ref.value;
-  return /*#__PURE__*/_react["default"].createElement(_react.Fragment, null, /*#__PURE__*/_react["default"].createElement("span", {
-    className: "library__value-title"
-  }, caption + ':'), /*#__PURE__*/_react["default"].createElement("span", {
-    className: "library__value"
-  }, value));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_react.Fragment, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      className: "library__value-title",
+      children: caption + ':'
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      className: "library__value",
+      children: value
+    })]
+  });
 };
 
 var CellValue = function CellValue(props) {
-  return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(Token, props));
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(Token, (0, _extends2["default"])({}, props))
+  });
 };
 
 var CellValueDate = function CellValueDate(_ref2) {
   var caption = _ref2.caption,
       value = _ref2.value,
       date = _ref2.date;
-  return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(Token, {
-    caption: caption,
-    value: value
-  }), /*#__PURE__*/_react["default"].createElement(Token, {
-    caption: "Date",
-    value: _formatDate(date)
-  }));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(Token, {
+      caption: caption,
+      value: value
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(Token, {
+      caption: "Date",
+      value: _formatDate(date)
+    })]
+  });
 };
 
 var Detail = function Detail(props) {
@@ -77,42 +89,47 @@ var Detail = function Detail(props) {
     return files.map(function (file, index) {
       var className = index % 2 ? 'row__topic__even not-selected' : 'row__topic__odd not-selected',
           filename = file.filename;
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        key: index,
-        className: className
-      }, filename);
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: className,
+        children: filename
+      }, index);
     });
   };
 
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "library"
-  }, /*#__PURE__*/_react["default"].createElement(CellValue, {
-    caption: "Message",
-    value: message
-  }), /*#__PURE__*/_react["default"].createElement(CellValueDate, {
-    caption: "Author",
-    value: authorName,
-    date: authorDate
-  }), /*#__PURE__*/_react["default"].createElement(CellValueDate, {
-    caption: "Committer",
-    value: committerName,
-    date: committerDate
-  }), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(Token, {
-    caption: "Total",
-    value: total
-  }), /*#__PURE__*/_react["default"].createElement(Token, {
-    caption: "Additions",
-    value: additions
-  }), /*#__PURE__*/_react["default"].createElement(Token, {
-    caption: "Deletions",
-    value: deletions
-  })), /*#__PURE__*/_react["default"].createElement(_A["default"].OpenClose2, {
-    caption: "Files (" + files.length + ")",
-    isClose: true
-  }, _renderFiles(files)), /*#__PURE__*/_react["default"].createElement("a", {
-    href: html_url,
-    className: "github-link"
-  }, "Link to description of commit"));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    className: "library",
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(CellValue, {
+      caption: "Message",
+      value: message
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(CellValueDate, {
+      caption: "Author",
+      value: authorName,
+      date: authorDate
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(CellValueDate, {
+      caption: "Committer",
+      value: committerName,
+      date: committerDate
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(Token, {
+        caption: "Total",
+        value: total
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(Token, {
+        caption: "Additions",
+        value: additions
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(Token, {
+        caption: "Deletions",
+        value: deletions
+      })]
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].OpenClose2, {
+      caption: "Files (" + files.length + ")",
+      isClose: true,
+      children: _renderFiles(files)
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+      href: html_url,
+      className: "github-link",
+      children: "Link to description of commit"
+    })]
+  });
 };
 
 var GitHubRecentTag = /*#__PURE__*/function (_Component) {
@@ -195,32 +212,39 @@ var GitHubRecentTag = /*#__PURE__*/function (_Component) {
         isShow = _this$state.isShow,
         isDetail = _this$state.isDetail,
         json = _this$state.json;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: _Item["default"].ROOT
-    }, /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
-      onClose: onCloseItem
-    }, /*#__PURE__*/_react["default"].createElement("button", {
-      className: _CL["default"].BT_ITEM,
-      title: caption,
-      style: _Item["default"].CAPTION_OPEN,
-      onClick: this._hToggleOpen
-    }, /*#__PURE__*/_react["default"].createElement("span", null, repo), /*#__PURE__*/_react["default"].createElement("span", {
-      style: _Item["default"].SPAN_VERSION
-    }, version)), /*#__PURE__*/_react["default"].createElement(_A["default"].ButtonCircle, {
-      caption: "W",
-      title: "Add to Watch",
-      style: _Item["default"].BTN_CIRCLE,
-      onClick: this._hClickWatch
-    }), /*#__PURE__*/_react["default"].createElement(_A["default"].ButtonCircle, {
-      caption: "D",
-      title: "Load Tag Details",
-      style: _Item["default"].BTN_CIRCLE,
-      onClick: this._hClickDetail
-    })), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
-      isShow: isShow
-    }, isDetail && /*#__PURE__*/_react["default"].createElement(Detail, {
-      json: json
-    })));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: _Item["default"].ROOT,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption["default"], {
+        onClose: onCloseItem,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+          className: _CL["default"].BT_ITEM,
+          title: caption,
+          style: _Item["default"].CAPTION_OPEN,
+          onClick: this._hToggleOpen,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            children: repo
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            style: _Item["default"].SPAN_VERSION,
+            children: version
+          })]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ButtonCircle, {
+          caption: "W",
+          title: "Add to Watch",
+          style: _Item["default"].BTN_CIRCLE,
+          onClick: this._hClickWatch
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ButtonCircle, {
+          caption: "D",
+          title: "Load Tag Details",
+          style: _Item["default"].BTN_CIRCLE,
+          onClick: this._hClickDetail
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ShowHide, {
+        isShow: isShow,
+        children: isDetail && /*#__PURE__*/(0, _jsxRuntime.jsx)(Detail, {
+          json: json
+        })
+      })]
+    });
   };
 
   return GitHubRecentTag;

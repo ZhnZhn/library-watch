@@ -13,6 +13,8 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var STYLE = {
   ROOT: {
@@ -124,28 +126,30 @@ var InputDate = /*#__PURE__*/function (_Component) {
         errorInput = _this$state.errorInput,
         _hrStyle = isValid ? STYLE.HR_VALID : STYLE.HR_NOT_VALID;
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: STYLE.ROOT
-    }, /*#__PURE__*/_react["default"].createElement("input", {
-      ref: function ref(c) {
-        return _this2.inputComp = c;
-      },
-      type: "text",
-      name: "date",
-      autoComplete: "new-date",
-      autoCorrect: "off",
-      autoCapitalize: "off",
-      spellCheck: false,
-      style: STYLE.INPUT,
-      placeholder: "YYYY-MM-DD",
-      value: value,
-      onChange: this._handleChangeValue,
-      onBlur: this._handleBlurValue
-    }), /*#__PURE__*/_react["default"].createElement("hr", {
-      style: (0, _extends2["default"])({}, STYLE.HR, _hrStyle)
-    }), /*#__PURE__*/_react["default"].createElement("div", {
-      style: STYLE.ERR_MSG
-    }, errorInput));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: STYLE.ROOT,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+        ref: function ref(c) {
+          return _this2.inputComp = c;
+        },
+        type: "text",
+        name: "date",
+        autoComplete: "new-date",
+        autoCorrect: "off",
+        autoCapitalize: "off",
+        spellCheck: false,
+        style: STYLE.INPUT,
+        placeholder: "YYYY-MM-DD",
+        value: value,
+        onChange: this._handleChangeValue,
+        onBlur: this._handleBlurValue
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("hr", {
+        style: (0, _extends2["default"])({}, STYLE.HR, _hrStyle)
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: STYLE.ERR_MSG,
+        children: errorInput
+      })]
+    });
   };
 
   _proto.getValue = function getValue() {

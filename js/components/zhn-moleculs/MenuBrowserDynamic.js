@@ -21,6 +21,8 @@ var _ScrollPane = _interopRequireDefault(require("../zhn-atoms/ScrollPane"));
 
 var _MenuPart = _interopRequireDefault(require("./MenuPart"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var STYLE = {
   BROWSER: {
     paddingRight: 0
@@ -133,7 +135,7 @@ var MenuBrowserDynamic = /*#__PURE__*/function (_Component) {
     }
 
     return menuItems.map(function (menuPart, index) {
-      return /*#__PURE__*/_react["default"].createElement(_MenuPart["default"], (0, _extends2["default"])({}, menuPart, {
+      return /*#__PURE__*/(0, _react.createElement)(_MenuPart["default"], (0, _extends2["default"])({}, menuPart, {
         key: index,
         rowClass: rowClass
       }));
@@ -148,15 +150,17 @@ var MenuBrowserDynamic = /*#__PURE__*/function (_Component) {
         _this$state = this.state,
         menuItems = _this$state.menuItems,
         isShow = _this$state.isShow;
-    return /*#__PURE__*/_react["default"].createElement(_Browser["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Browser["default"], {
       isShow: isShow,
-      style: STYLE.BROWSER
-    }, /*#__PURE__*/_react["default"].createElement(_CaptionRow["default"], {
-      caption: caption,
-      onClose: this._handleHide
-    }), /*#__PURE__*/_react["default"].createElement(_ScrollPane["default"], {
-      style: STYLE.SCROLL_DIV
-    }, this._renderMenuParts(rowClass, menuItems), children));
+      style: STYLE.BROWSER,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_CaptionRow["default"], {
+        caption: caption,
+        onClose: this._handleHide
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ScrollPane["default"], {
+        style: STYLE.SCROLL_DIV,
+        children: [this._renderMenuParts(rowClass, menuItems), children]
+      })]
+    });
   };
 
   return MenuBrowserDynamic;

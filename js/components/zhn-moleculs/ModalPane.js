@@ -11,6 +11,8 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from 'prop-types'
 var S = {
   DIV: {
@@ -77,10 +79,11 @@ var ModalPane = /*#__PURE__*/function (_Component) {
 
   _proto.render = function render() {
     var children = this.props.children;
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       ref: this._refRootNode,
-      style: S.DIV
-    }, children);
+      style: S.DIV,
+      children: children
+    });
   };
 
   return ModalPane;

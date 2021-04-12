@@ -13,6 +13,8 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var STYLE = {
   ROOT: {
@@ -143,9 +145,10 @@ var DialogContainer3 = /*#__PURE__*/function (_Component) {
   };
 
   _proto.render = function render() {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: STYLE.ROOT
-    }, this._renderDialogs());
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      style: STYLE.ROOT,
+      children: this._renderDialogs()
+    });
   };
 
   return DialogContainer3;

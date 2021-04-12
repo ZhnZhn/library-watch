@@ -11,6 +11,8 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var CL = "progress-line";
 var T = {
   WIDTH: 'width 500ms ease-out',
@@ -99,7 +101,7 @@ var ProgressLine = /*#__PURE__*/function (_Component) {
       _style = _crStyle(color, 1, completed + '%', T.WIDTH);
     }
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: CL,
       style: _style
     });

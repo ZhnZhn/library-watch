@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var S = {
   KEY: {
     textDecoration: 'underline'
@@ -31,17 +33,24 @@ var CaptionInput = function CaptionInput(_ref) {
         _key = caption.substring(_index, _index + 1),
         _after = caption.substring(_index + 1);
 
-    return /*#__PURE__*/_react["default"].createElement("span", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
       className: className,
-      style: rootStyle
-    }, /*#__PURE__*/_react["default"].createElement("span", null, _before), /*#__PURE__*/_react["default"].createElement("span", {
-      style: S.KEY
-    }, _key), /*#__PURE__*/_react["default"].createElement("span", null, _after), children);
+      style: rootStyle,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        children: _before
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: S.KEY,
+        children: _key
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        children: _after
+      }), children]
+    });
   } else {
-    return /*#__PURE__*/_react["default"].createElement("span", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
       className: className,
-      style: rootStyle
-    }, caption, children);
+      style: rootStyle,
+      children: [caption, children]
+    });
   }
 };
 

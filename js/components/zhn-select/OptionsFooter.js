@@ -11,6 +11,8 @@ var _ButtonCircle = _interopRequireDefault(require("../zhn-atoms/ButtonCircle2")
 
 var _CL = _interopRequireDefault(require("./CL"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var S = {
   BT_CIRCLE: {
     backgroundColor: '#949ab4'
@@ -24,29 +26,35 @@ var OptionsFooter = /*#__PURE__*/_react["default"].forwardRef(function (_ref, re
       onStepDown = _ref.onStepDown,
       onStepUp = _ref.onStepUp,
       onClear = _ref.onClear;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: _CL["default"].FOOTER + " " + _CL["default"].NOT_SELECTED
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    className: _CL["default"].FOOTER_INDEX
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    ref: ref
-  }, indexActiveOption), /*#__PURE__*/_react["default"].createElement("span", null, ": ", nFiltered, ": ", nAll)), /*#__PURE__*/_react["default"].createElement("span", {
-    className: _CL["default"].FOOTER_BTS
-  }, /*#__PURE__*/_react["default"].createElement(_ButtonCircle["default"], {
-    className: _CL["default"].FOOTER_MARGIN,
-    style: S.BT_CIRCLE,
-    caption: "Dn",
-    onClick: onStepDown
-  }), /*#__PURE__*/_react["default"].createElement(_ButtonCircle["default"], {
-    className: _CL["default"].FOOTER_MARGIN,
-    style: S.BT_CIRCLE,
-    caption: "Up",
-    onClick: onStepUp
-  }), /*#__PURE__*/_react["default"].createElement(_ButtonCircle["default"], {
-    style: S.BT_CIRCLE,
-    caption: "CL",
-    onClick: onClear
-  })));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    className: _CL["default"].FOOTER + " " + _CL["default"].NOT_SELECTED,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+      className: _CL["default"].FOOTER_INDEX,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        ref: ref,
+        children: indexActiveOption
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+        children: [": ", nFiltered, ": ", nAll]
+      })]
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+      className: _CL["default"].FOOTER_BTS,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle["default"], {
+        className: _CL["default"].FOOTER_MARGIN,
+        style: S.BT_CIRCLE,
+        caption: "Dn",
+        onClick: onStepDown
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle["default"], {
+        className: _CL["default"].FOOTER_MARGIN,
+        style: S.BT_CIRCLE,
+        caption: "Up",
+        onClick: onStepUp
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle["default"], {
+        style: S.BT_CIRCLE,
+        caption: "CL",
+        onClick: onClear
+      })]
+    })]
+  });
 });
 
 var _default = OptionsFooter;

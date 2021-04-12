@@ -15,6 +15,8 @@ var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog")
 
 var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var styles = _DialogStyles["default"];
 var STYLE = {
   CAPTION: {
@@ -69,19 +71,24 @@ var InfoDialog = /*#__PURE__*/function (_Component) {
         onClose = _this$props.onClose,
         caption = data.caption,
         descr = data.descr;
-    return /*#__PURE__*/_react["default"].createElement(_ModalDialog["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalDialog["default"], {
       caption: "Information",
       isShow: isShow,
-      onClose: onClose
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      style: styles.rowDiv
-    }, /*#__PURE__*/_react["default"].createElement("p", {
-      style: STYLE.CAPTION
-    }, caption)), /*#__PURE__*/_react["default"].createElement("div", {
-      style: styles.rowDiv
-    }, /*#__PURE__*/_react["default"].createElement("p", {
-      style: STYLE.DESCR
-    }, descr)));
+      onClose: onClose,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: styles.rowDiv,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          style: STYLE.CAPTION,
+          children: caption
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: styles.rowDiv,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          style: STYLE.DESCR,
+          children: descr
+        })
+      })]
+    });
   };
 
   return InfoDialog;

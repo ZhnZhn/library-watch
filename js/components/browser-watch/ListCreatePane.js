@@ -19,6 +19,8 @@ var _ValidationMessagesFragment = _interopRequireDefault(require("../zhn-molecul
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from 'prop-types'
 var S = {
   COMMAND_DIV: {
@@ -155,32 +157,35 @@ var ListCreatePane = /*#__PURE__*/function (_Component) {
         _this$state = this.state,
         groupOptions = _this$state.groupOptions,
         validationMessages = _this$state.validationMessages;
-    return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_RowInputSelect["default"], {
-      caption: "In Group",
-      options: groupOptions //isUpdateOptions={isUpdateGroup}
-      ,
-      onSelect: this._handlerSelectGroup
-    }), /*#__PURE__*/_react["default"].createElement(_RowInputText["default"], {
-      ref: this._refInputText,
-      caption: "List"
-    }), /*#__PURE__*/_react["default"].createElement(_ValidationMessagesFragment["default"], {
-      validationMessages: validationMessages
-    }), /*#__PURE__*/_react["default"].createElement("div", {
-      style: S.COMMAND_DIV
-    }, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-      isPrimary: true,
-      caption: "Create",
-      timeout: 0,
-      onClick: this._handlerCreate
-    }), /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-      caption: "Clear",
-      timeout: 0,
-      onClick: this._handlerClear
-    }), /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-      caption: "Close",
-      timeout: 0,
-      onClick: onClose
-    })));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputSelect["default"], {
+        caption: "In Group",
+        options: groupOptions //isUpdateOptions={isUpdateGroup}
+        ,
+        onSelect: this._handlerSelectGroup
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputText["default"], {
+        ref: this._refInputText,
+        caption: "List"
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessagesFragment["default"], {
+        validationMessages: validationMessages
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: S.COMMAND_DIV,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+          isPrimary: true,
+          caption: "Create",
+          timeout: 0,
+          onClick: this._handlerCreate
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+          caption: "Clear",
+          timeout: 0,
+          onClick: this._handlerClear
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+          caption: "Close",
+          timeout: 0,
+          onClick: onClose
+        })]
+      })]
+    });
   };
 
   return ListCreatePane;

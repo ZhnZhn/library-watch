@@ -21,6 +21,8 @@ var _CL = _interopRequireDefault(require("../styles/CL"));
 
 var _Item = _interopRequireDefault(require("./Item.Style"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var ITEM_DESCRIPTION = "GitHub Repository Commits";
 
 var GitHubCommits = /*#__PURE__*/function (_Component) {
@@ -83,19 +85,24 @@ var GitHubCommits = /*#__PURE__*/function (_Component) {
             _dateTime = date.replace('T', ' ').replace('Z', ''),
             _dateAgo = _timeago.format(_dateTime);
 
-        return /*#__PURE__*/_react["default"].createElement("div", {
-          key: index,
-          className: _CL["default"].ROW_ITEM
-        }, /*#__PURE__*/_react["default"].createElement("a", {
-          href: html_url
-        }, /*#__PURE__*/_react["default"].createElement("div", {
-          style: _Item["default"].PB_8
-        }, /*#__PURE__*/_react["default"].createElement("span", {
-          style: _Item["default"].PR_8
-        }, name), /*#__PURE__*/_react["default"].createElement(_A["default"].DateAgo, {
-          dateAgo: _dateAgo,
-          date: _dateTime
-        })), /*#__PURE__*/_react["default"].createElement("div", null, message)));
+        return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: _CL["default"].ROW_ITEM,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("a", {
+            href: html_url,
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+              style: _Item["default"].PB_8,
+              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+                style: _Item["default"].PR_8,
+                children: name
+              }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].DateAgo, {
+                dateAgo: _dateAgo,
+                date: _dateTime
+              })]
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+              children: message
+            })]
+          })
+        }, index);
       });
     };
 
@@ -111,23 +118,29 @@ var GitHubCommits = /*#__PURE__*/function (_Component) {
         commits = _this$props2.commits,
         onCloseItem = _this$props2.onCloseItem,
         isShow = this.state.isShow;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: _Item["default"].ROOT
-    }, /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
-      onClose: onCloseItem
-    }, /*#__PURE__*/_react["default"].createElement("button", {
-      className: _CL["default"].BT_ITEM,
-      title: caption,
-      style: _Item["default"].CAPTION_OPEN,
-      onClick: this._hToggleOpen
-    }, /*#__PURE__*/_react["default"].createElement("span", null, repo)), /*#__PURE__*/_react["default"].createElement(_A["default"].ButtonCircle, {
-      caption: "W",
-      title: "Add to Watch",
-      style: _Item["default"].BTN_CIRCLE,
-      onClick: this._hClickWatch
-    })), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
-      isShow: isShow
-    }, this._renderCommits(commits)));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: _Item["default"].ROOT,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption["default"], {
+        onClose: onCloseItem,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+          className: _CL["default"].BT_ITEM,
+          title: caption,
+          style: _Item["default"].CAPTION_OPEN,
+          onClick: this._hToggleOpen,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            children: repo
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ButtonCircle, {
+          caption: "W",
+          title: "Add to Watch",
+          style: _Item["default"].BTN_CIRCLE,
+          onClick: this._hClickWatch
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ShowHide, {
+        isShow: isShow,
+        children: this._renderCommits(commits)
+      })]
+    });
   };
 
   return GitHubCommits;

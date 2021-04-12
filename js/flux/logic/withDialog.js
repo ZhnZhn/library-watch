@@ -37,4 +37,4 @@ var withDialog = {
 };
 var _default = withDialog;
 exports["default"] = _default;
-//# sourceMappingURL=withDialog.js.map
+//# sourceMappingURL=WithDialog.js.map

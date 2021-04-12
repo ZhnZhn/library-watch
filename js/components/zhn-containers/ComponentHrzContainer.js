@@ -11,6 +11,8 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var CL = "hrz-container";
 
@@ -60,9 +62,10 @@ var ComponentHrzContainer = /*#__PURE__*/function (_Component) {
 
   _proto.render = function render() {
     var containers = this.state.containers;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: CL
-    }, containers);
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: CL,
+      children: containers
+    });
   };
 
   return ComponentHrzContainer;

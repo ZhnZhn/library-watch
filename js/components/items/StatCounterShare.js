@@ -29,6 +29,8 @@ var _Item = _interopRequireDefault(require("./Item.Style"));
 
 var _CL = _interopRequireDefault(require("../styles/CL"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var S = {
   ROOT: _Item["default"].ROOT,
   BT_MORE: _Item["default"].BT_MORE,
@@ -128,38 +130,48 @@ var NpmRecentDownloads = /*#__PURE__*/function (_Component) {
         _numSeries = _lineChartConfig.datasets.length,
         _heigh = 150 + Math.floor(_numSeries / 5) * 16;
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: S.ROOT
-    }, /*#__PURE__*/_react["default"].createElement(_ModalSlider["default"], {
-      isShow: isMore,
-      className: _CL["default"].MENU_MORE,
-      model: this._MORE,
-      onClose: this._hToggleMore
-    }), /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
-      style: S.CAPTION,
-      onClose: onCloseItem
-    }, /*#__PURE__*/_react["default"].createElement(_A["default"].SvgMore, {
-      style: S.BT_MORE,
-      onClick: this._hClickMore
-    }), /*#__PURE__*/_react["default"].createElement("button", {
-      className: _CL["default"].BT_ITEM,
-      title: caption,
-      style: S.BT_CAPTION,
-      onClick: this._handlerToggleOpen
-    }, /*#__PURE__*/_react["default"].createElement("span", null, caption), /*#__PURE__*/_react["default"].createElement("span", {
-      style: S.SPAN_START
-    }, fromDate), /*#__PURE__*/_react["default"].createElement("span", null, toDate))), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
-      isShow: isShow,
-      style: S.CHART_WRAPER
-    }, /*#__PURE__*/_react["default"].createElement(_LineChart["default"], {
-      data: _lineChartConfig,
-      height: _heigh
-    }), /*#__PURE__*/_react["default"].createElement("a", {
-      className: _CL["default"].SOURCE_LINK,
-      style: S.SOURCE_LINK,
-      href: sourceLink,
-      target: "_blank"
-    }, "StatCounter Chart")));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: S.ROOT,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider["default"], {
+        isShow: isMore,
+        className: _CL["default"].MENU_MORE,
+        model: this._MORE,
+        onClose: this._hToggleMore
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption["default"], {
+        style: S.CAPTION,
+        onClose: onCloseItem,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].SvgMore, {
+          style: S.BT_MORE,
+          onClick: this._hClickMore
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+          className: _CL["default"].BT_ITEM,
+          title: caption,
+          style: S.BT_CAPTION,
+          onClick: this._handlerToggleOpen,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            children: caption
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            style: S.SPAN_START,
+            children: fromDate
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            children: toDate
+          })]
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_A["default"].ShowHide, {
+        isShow: isShow,
+        style: S.CHART_WRAPER,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LineChart["default"], {
+          data: _lineChartConfig,
+          height: _heigh
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+          className: _CL["default"].SOURCE_LINK,
+          style: S.SOURCE_LINK,
+          href: sourceLink,
+          target: "_blank",
+          children: "StatCounter Chart"
+        })]
+      })]
+    });
   };
 
   return NpmRecentDownloads;

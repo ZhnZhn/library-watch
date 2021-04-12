@@ -17,6 +17,8 @@ var _DialogStyles = _interopRequireDefault(require("../../styles/DialogStyles"))
 
 var _Caption = _interopRequireDefault(require("./Caption"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var ERROR_FORMAT = "YYYY-MM-DD format must be",
     FROM_DATE = "From Date",
     TO_DATE = "To Date",
@@ -53,29 +55,33 @@ var Dates = /*#__PURE__*/function (_Component) {
         initFromDate = _this$props.initFromDate,
         initToDate = _this$props.initToDate,
         onTestDate = _this$props.onTestDate;
-    return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-      style: _DialogStyles["default"].rowDiv
-    }, /*#__PURE__*/_react["default"].createElement(_Caption["default"], {
-      is: isShowLabels,
-      style: _DialogStyles["default"].labelSpan,
-      caption: "From Date"
-    }), /*#__PURE__*/_react["default"].createElement(_InputDate["default"], {
-      ref: this._refFromDate,
-      initValue: initFromDate,
-      errorMsg: ERROR_FORMAT,
-      onTest: onTestDate
-    })), /*#__PURE__*/_react["default"].createElement("div", {
-      style: _DialogStyles["default"].rowDiv
-    }, /*#__PURE__*/_react["default"].createElement(_Caption["default"], {
-      is: isShowLabels,
-      style: _DialogStyles["default"].labelSpan,
-      caption: "To Date"
-    }), /*#__PURE__*/_react["default"].createElement(_InputDate["default"], {
-      ref: this._refToDate,
-      initValue: initToDate,
-      errorMsg: ERROR_FORMAT,
-      onTest: onTestDate
-    })));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: _DialogStyles["default"].rowDiv,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Caption["default"], {
+          is: isShowLabels,
+          style: _DialogStyles["default"].labelSpan,
+          caption: "From Date"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputDate["default"], {
+          ref: this._refFromDate,
+          initValue: initFromDate,
+          errorMsg: ERROR_FORMAT,
+          onTest: onTestDate
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: _DialogStyles["default"].rowDiv,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Caption["default"], {
+          is: isShowLabels,
+          style: _DialogStyles["default"].labelSpan,
+          caption: "To Date"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputDate["default"], {
+          ref: this._refToDate,
+          initValue: initToDate,
+          errorMsg: ERROR_FORMAT,
+          onTest: onTestDate
+        })]
+      })]
+    });
   };
 
   _proto.getValues = function getValues() {

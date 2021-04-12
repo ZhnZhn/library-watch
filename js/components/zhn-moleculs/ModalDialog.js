@@ -17,6 +17,8 @@ var _DialogCaption = _interopRequireDefault(require("./DialogCaption"));
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from 'prop-types'
 var CL = {
   SHOWING: 'show-popup',
@@ -72,15 +74,15 @@ var ModalDialog = /*#__PURE__*/function (_Component) {
     };
 
     _this._renderCommandButton = function (commandButtons, onClose) {
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        style: STYLE.COMMAND_DIV
-      }, commandButtons, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-        key: "close",
-        caption: "Close",
-        title: "Click to close modal dialog",
-        timeout: 0,
-        onClick: onClose
-      }));
+      return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: STYLE.COMMAND_DIV,
+        children: [commandButtons, /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+          caption: "Close",
+          title: "Click to close modal dialog",
+          timeout: 0,
+          onClick: onClose
+        }, "close")]
+      });
     };
 
     return _this;
@@ -132,14 +134,17 @@ var ModalDialog = /*#__PURE__*/function (_Component) {
       }
     }
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: _className,
       style: (0, _extends2["default"])({}, STYLE.ROOT_DIV, style, _style),
-      onClick: this._handleClickDialog
-    }, /*#__PURE__*/_react["default"].createElement(_DialogCaption["default"], {
-      caption: caption,
-      onClose: onClose
-    }), /*#__PURE__*/_react["default"].createElement("div", null, children), isWithButton && this._renderCommandButton(commandButtons, onClose));
+      onClick: this._handleClickDialog,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCaption["default"], {
+        caption: caption,
+        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        children: children
+      }), isWithButton && this._renderCommandButton(commandButtons, onClose)]
+    });
   };
 
   return ModalDialog;

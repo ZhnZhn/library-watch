@@ -15,6 +15,8 @@ var _MenuTitle = _interopRequireDefault(require("./MenuTitle"));
 
 var _MenuItemList = _interopRequireDefault(require("./MenuItemList"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var MenuPage = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(MenuPage, _Component);
 
@@ -78,22 +80,23 @@ var MenuPage = /*#__PURE__*/function (_Component) {
         onPrevPage = _this$props2.onPrevPage,
         onClose = _this$props2.onClose,
         children = _this$props2.children;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: style
-    }, /*#__PURE__*/_react["default"].createElement(_MenuTitle["default"], {
-      baseTitleCl: baseTitleCl,
-      title: title,
-      pageNumber: pageNumber,
-      onPrevPage: onPrevPage,
-      onReg: this._onRegTitle
-    }), /*#__PURE__*/_react["default"].createElement(_MenuItemList["default"], {
-      items: items,
-      itemCl: itemCl || baseTitleCl,
-      pageNumber: pageNumber,
-      onNextPage: onNextPage,
-      onReg: this._onRegFirst,
-      onClose: onClose
-    }), children);
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: style,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuTitle["default"], {
+        baseTitleCl: baseTitleCl,
+        title: title,
+        pageNumber: pageNumber,
+        onPrevPage: onPrevPage,
+        onReg: this._onRegTitle
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuItemList["default"], {
+        items: items,
+        itemCl: itemCl || baseTitleCl,
+        pageNumber: pageNumber,
+        onNextPage: onNextPage,
+        onReg: this._onRegFirst,
+        onClose: onClose
+      }), children]
+    });
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {

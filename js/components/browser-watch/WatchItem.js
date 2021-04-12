@@ -9,6 +9,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var STYLE = {
   ITEM_DIV: {
     position: 'relative',
@@ -43,9 +45,14 @@ var VersionDateRow = function VersionDateRow(props) {
     return;
   }
 
-  return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("span", null, version), /*#__PURE__*/_react["default"].createElement("span", {
-    style: STYLE.DATE_SPAN
-  }, date.split(' ')[0]));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      children: version
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: STYLE.DATE_SPAN,
+      children: date.split(' ')[0]
+    })]
+  });
 };
 
 var WatchItem = function WatchItem(_ref) {
@@ -64,16 +71,16 @@ var WatchItem = function WatchItem(_ref) {
   var repo = item.repo,
       version = item.version,
       date = item.date,
-      _compBtClose = isModeEdit ? /*#__PURE__*/_react["default"].createElement(_SvgClose["default"], {
+      _compBtClose = isModeEdit ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose["default"], {
     style: STYLE.SVG_CLOSE,
     onClose: onClose.bind(null, option)
   }) : null,
-      _compVersionDateRow = version ? /*#__PURE__*/_react["default"].createElement(VersionDateRow, {
+      _compVersionDateRow = version ? /*#__PURE__*/(0, _jsxRuntime.jsx)(VersionDateRow, {
     version: version,
     date: date
   }) : null;
 
-  return /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: className,
     style: STYLE.ITEM_DIV,
     onClick: onClick.bind(null, item),
@@ -82,10 +89,14 @@ var WatchItem = function WatchItem(_ref) {
     onDrop: isModeEdit && onDrop.bind(null, option),
     onDragOver: isModeEdit && onDragOver,
     onDragEnter: isModeEdit && onDragEnter,
-    onDragLeave: isModeEdit && onDragLeave
-  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("span", {
-    style: STYLE.ITEM_SPAN
-  }, repo), _compBtClose), _compVersionDateRow);
+    onDragLeave: isModeEdit && onDragLeave,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: STYLE.ITEM_SPAN,
+        children: repo
+      }), _compBtClose]
+    }), _compVersionDateRow]
+  });
 };
 
 var _default = WatchItem;

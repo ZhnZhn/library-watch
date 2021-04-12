@@ -33,6 +33,8 @@ var _ScrollPane = _interopRequireDefault(require("../zhn-atoms/ScrollPane"));
 
 var _CL = _interopRequireDefault(require("../styles/CL"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var CHILD_MARGIN = 36,
     RESIZE_INIT_WIDTH = 635,
@@ -224,28 +226,33 @@ var ChartContainer2 = /*#__PURE__*/function (_Component) {
         _styleOpen = isShow ? S.BLOCK : S.NONE,
         _classOpen = isShow ? _CL["default"].SHOW_POPUP : undefined;
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       ref: this._refRootNode,
       className: _classOpen,
-      style: (0, _extends2["default"])({}, S.ROOT, _styleOpen)
-    }, /*#__PURE__*/_react["default"].createElement(_ModalSlider["default"], {
-      isShow: isMore,
-      className: _CL["default"].MENU_MORE,
-      model: this._MORE,
-      onClose: this._hToggleMore
-    }), /*#__PURE__*/_react["default"].createElement(_ContainerCaption["default"], {
-      moreStyle: S.BT_MORE,
-      caption: caption,
-      onMore: this._showMore,
-      onClose: this._handleHide
-    }, /*#__PURE__*/_react["default"].createElement(_SvgHrzResize["default"], {
-      minWidth: RESIZE_MIN_WIDTH,
-      maxWidth: RESIZE_MAX_WIDTH,
-      comp: this
-    })), /*#__PURE__*/_react["default"].createElement(_ScrollPane["default"], {
-      ref: this._refScroll,
-      style: S.SCROLL
-    }, /*#__PURE__*/_react["default"].createElement("div", null, configs)));
+      style: (0, _extends2["default"])({}, S.ROOT, _styleOpen),
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider["default"], {
+        isShow: isMore,
+        className: _CL["default"].MENU_MORE,
+        model: this._MORE,
+        onClose: this._hToggleMore
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ContainerCaption["default"], {
+        moreStyle: S.BT_MORE,
+        caption: caption,
+        onMore: this._showMore,
+        onClose: this._handleHide,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgHrzResize["default"], {
+          minWidth: RESIZE_MIN_WIDTH,
+          maxWidth: RESIZE_MAX_WIDTH,
+          comp: this
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ScrollPane["default"], {
+        ref: this._refScroll,
+        style: S.SCROLL,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          children: configs
+        })
+      })]
+    });
   };
 
   return ChartContainer2;

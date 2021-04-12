@@ -11,6 +11,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _ContainerStyles = _interopRequireDefault(require("../styles/ContainerStyles"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var CL_OPEN = "show-popup";
 
@@ -22,10 +24,11 @@ var Browser = function Browser(_ref) {
   var _className = isShow ? CL_OPEN : null,
       _style = isShow ? _ContainerStyles["default"].displayBlock : _ContainerStyles["default"].displayNone;
 
-  return /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     className: _className,
-    style: (0, _extends2["default"])({}, _ContainerStyles["default"].browserRootDiv, style, _style)
-  }, children);
+    style: (0, _extends2["default"])({}, _ContainerStyles["default"].browserRootDiv, style, _style),
+    children: children
+  });
 };
 /*
 Browser.propTypes = {

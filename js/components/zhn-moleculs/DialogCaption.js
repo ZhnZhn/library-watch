@@ -9,6 +9,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var CL = "not-selected";
 var S = {
   ROOT: {
@@ -28,14 +30,16 @@ var S = {
 var DialogCaption = function DialogCaption(_ref) {
   var caption = _ref.caption,
       onClose = _ref.onClose;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    style: S.ROOT
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    className: CL
-  }, caption), /*#__PURE__*/_react["default"].createElement(_SvgClose["default"], {
-    style: S.SVG,
-    onClose: onClose
-  }));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: S.ROOT,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      className: CL,
+      children: caption
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose["default"], {
+      style: S.SVG,
+      onClose: onClose
+    })]
+  });
 };
 /*
 DialogCaption.propTypes = {

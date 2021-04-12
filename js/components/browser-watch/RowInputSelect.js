@@ -15,6 +15,8 @@ var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
 
 var _crRowCaption = _interopRequireDefault(require("./crRowCaption"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from 'prop-types'
 var styles = _DialogStyles["default"];
 var S = {
@@ -28,16 +30,18 @@ var RowInputSelect = function RowInputSelect(_ref) {
       options = _ref.options,
       isUpdateOptions = _ref.isUpdateOptions,
       onSelect = _ref.onSelect;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    style: styles.rowDiv
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    style: (0, _extends2["default"])({}, styles.labelSpan, S.CAPTION)
-  }, (0, _crRowCaption["default"])(caption)), /*#__PURE__*/_react["default"].createElement(_InputSelect["default"], {
-    width: "250",
-    options: options,
-    isUpdateOptions: isUpdateOptions,
-    onSelect: onSelect
-  }));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: styles.rowDiv,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: (0, _extends2["default"])({}, styles.labelSpan, S.CAPTION),
+      children: (0, _crRowCaption["default"])(caption)
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputSelect["default"], {
+      width: "250",
+      options: options,
+      isUpdateOptions: isUpdateOptions,
+      onSelect: onSelect
+    })]
+  });
 };
 /*
 RowInputSelect.propTypes = {

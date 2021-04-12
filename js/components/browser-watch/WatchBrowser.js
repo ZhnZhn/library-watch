@@ -29,7 +29,9 @@ var _WrapperInputSearch = _interopRequireDefault(require("./WrapperInputSearch")
 
 var _WatchItem = _interopRequireDefault(require("./WatchItem"));
 
-var _class, _temp;
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _class;
 
 var Browser = _Comp["default"].Browser,
     CaptionRow = _Comp["default"].CaptionRow,
@@ -109,7 +111,7 @@ var _calcScrollClass = function _calcScrollClass(isShowFind, isModeEdit) {
   return (0, _clsx2["default"])((_clsx = {}, _clsx[CL.BROWSER_WATCH] = !(isShowFind && isModeEdit), _clsx[CL.BROWSER_WATCH__30] = isShowFind && !isModeEdit || !isShowFind && isModeEdit, _clsx[CL.BROWSER_WATCH__60] = isShowFind && isModeEdit, _clsx));
 };
 
-var WatchBrowser = (0, _withWatchDnD["default"])(_class = (_temp = /*#__PURE__*/function (_Component) {
+var WatchBrowser = (0, _withWatchDnD["default"])(_class = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(WatchBrowser, _Component);
 
   function WatchBrowser(props) {
@@ -184,8 +186,7 @@ var WatchBrowser = (0, _withWatchDnD["default"])(_class = (_temp = /*#__PURE__*/
       return watchList.groups.map(function (group, index) {
         var caption = group.caption,
             lists = group.lists;
-        return /*#__PURE__*/_react["default"].createElement(OpenClose2, {
-          key: caption,
+        return /*#__PURE__*/(0, _jsxRuntime.jsx)(OpenClose2, {
           style: styles.groupDiv,
           caption: caption,
           isClose: true,
@@ -197,8 +198,9 @@ var WatchBrowser = (0, _withWatchDnD["default"])(_class = (_temp = /*#__PURE__*/
           onDragEnter: _this._hDragEnterGroup,
           onDragOver: _this._hDragOverGroup,
           onDragLeave: _this._hDragLeaveGroup,
-          onDrop: _this._hDropGroup
-        }, lists && _this._renderLists(lists, caption));
+          onDrop: _this._hDropGroup,
+          children: lists && _this._renderLists(lists, caption)
+        }, caption);
       });
     };
 
@@ -207,8 +209,7 @@ var WatchBrowser = (0, _withWatchDnD["default"])(_class = (_temp = /*#__PURE__*/
       return lists.map(function (list) {
         var caption = list.caption,
             items = list.items;
-        return /*#__PURE__*/_react["default"].createElement(OpenClose2, {
-          key: caption,
+        return /*#__PURE__*/(0, _jsxRuntime.jsx)(OpenClose2, {
           fillOpen: "#80c040",
           style: styles.listDiv,
           styleNotSelected: styles.itemNotSelected,
@@ -223,8 +224,9 @@ var WatchBrowser = (0, _withWatchDnD["default"])(_class = (_temp = /*#__PURE__*/
           onDragEnter: _this._hDragEnterList,
           onDragOver: _this._hDragOverList,
           onDragLeave: _this._hDragLeaveList,
-          onDrop: _this._hDropList
-        }, items && _this._renderItems(items, groupCaption, caption));
+          onDrop: _this._hDropList,
+          children: items && _this._renderItems(items, groupCaption, caption)
+        }, caption);
       });
     };
 
@@ -234,8 +236,7 @@ var WatchBrowser = (0, _withWatchDnD["default"])(_class = (_temp = /*#__PURE__*/
         var caption = item.caption,
             _className = index % 2 ? 'row__topic__even not-selected' : 'row__topic__odd not-selected';
 
-        return /*#__PURE__*/_react["default"].createElement(_WatchItem["default"], {
-          key: caption,
+        return /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchItem["default"], {
           className: _className,
           isModeEdit: isModeEdit,
           item: item,
@@ -251,35 +252,36 @@ var WatchBrowser = (0, _withWatchDnD["default"])(_class = (_temp = /*#__PURE__*/
           onDragEnter: _this._hDragEnterItem,
           onDragLeave: _this._hDragLeaveItem,
           onDrop: _this._hDropItem
-        });
+        }, caption);
       });
     };
 
     _this._renderEditBar = function (isModeEdit) {
       if (isModeEdit) {
-        return /*#__PURE__*/_react["default"].createElement("div", {
-          style: styles.editBarDiv
-        }, /*#__PURE__*/_react["default"].createElement(ButtonCircle, {
-          caption: "GROUP",
-          title: "Edit Group",
-          className: CL.BT_BAR,
-          isWithoutDefault: true,
-          onClick: _this._handlerEditGroup
-        }), /*#__PURE__*/_react["default"].createElement(ButtonCircle, {
-          caption: "LIST",
-          title: "Edit Group List",
-          className: CL.BT_BAR,
-          isWithoutDefault: true,
-          style: styles.btEditBarList,
-          onClick: _this._handlerEditList
-        }), /*#__PURE__*/_react["default"].createElement(ButtonCircle, {
-          caption: "DB",
-          title: "Double Watch Browser",
-          className: CL.BT_BAR,
-          isWithoutDefault: true,
-          style: styles.btEditBarList,
-          onClick: _this._handlerDouble
-        }));
+        return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          style: styles.editBarDiv,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(ButtonCircle, {
+            caption: "GROUP",
+            title: "Edit Group",
+            className: CL.BT_BAR,
+            isWithoutDefault: true,
+            onClick: _this._handlerEditGroup
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ButtonCircle, {
+            caption: "LIST",
+            title: "Edit Group List",
+            className: CL.BT_BAR,
+            isWithoutDefault: true,
+            style: styles.btEditBarList,
+            onClick: _this._handlerEditList
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ButtonCircle, {
+            caption: "DB",
+            title: "Double Watch Browser",
+            className: CL.BT_BAR,
+            isWithoutDefault: true,
+            style: styles.btEditBarList,
+            onClick: _this._handlerDouble
+          })]
+        });
       } else {
         return null;
       }
@@ -293,14 +295,15 @@ var WatchBrowser = (0, _withWatchDnD["default"])(_class = (_temp = /*#__PURE__*/
         return true;
       } : false;
 
-      return /*#__PURE__*/_react["default"].createElement(ShowHide, {
-        isShow: isShowFind
-      }, /*#__PURE__*/_react["default"].createElement(_WrapperInputSearch["default"], {
-        style: styles.wrapperSearch,
-        data: watchList,
-        isShouldUpdate: _isShouldUpdate,
-        onSelect: _this._handlerClickItem
-      }));
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)(ShowHide, {
+        isShow: isShowFind,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_WrapperInputSearch["default"], {
+          style: styles.wrapperSearch,
+          data: watchList,
+          isShouldUpdate: _isShouldUpdate,
+          onSelect: _this._handlerClickItem
+        })
+      });
     };
 
     var _props$isShow = props.isShow,
@@ -372,49 +375,52 @@ var WatchBrowser = (0, _withWatchDnD["default"])(_class = (_temp = /*#__PURE__*/
         _captionEV = isModeEdit ? 'V' : 'E',
         _titleEV = isModeEdit ? "Toggle to View Mode" : "Toggle to Edit Mode";
 
-    return /*#__PURE__*/_react["default"].createElement(Browser, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(Browser, {
       isShow: isShow,
-      style: styles.browser
-    }, /*#__PURE__*/_react["default"].createElement(CaptionRow, {
-      styleRoot: _styleCaption,
-      caption: caption,
-      onClose: this._handlerHide
-    }, /*#__PURE__*/_react["default"].createElement(ButtonSave, {
-      className: CL.BT_CAPTION,
-      store: store
-    }), /*#__PURE__*/_react["default"].createElement(ButtonCircle, {
-      className: CL.BT_CAPTION,
-      caption: _captionEV,
-      title: _titleEV,
-      isWithoutDefault: true,
-      onClick: this._handlerToggleEditMode
-    }), /*#__PURE__*/_react["default"].createElement(ButtonCircle, {
-      className: CL.BT_CAPTION,
-      caption: "F",
-      title: "Show/Hide : Find Item Input",
-      isWithoutDefault: true,
-      onClick: this._handlerToggleFindInput
-    }), !isDoubleWatch && /*#__PURE__*/_react["default"].createElement(ButtonCircle, {
-      className: CL.BT_CAPTION,
-      caption: "B",
-      title: "BackUp Watch Items to JSON File",
-      isWithoutDefault: true,
-      onClick: _WatchActions["default"].backupToJson
-    }), !isDoubleWatch && /*#__PURE__*/_react["default"].createElement(ButtonCircle, {
-      className: CL.BT_CAPTION,
-      caption: "L",
-      title: "Load Watch Items from JSON File",
-      isWithoutDefault: true,
-      onClick: _ComponentActions["default"].showModalDialog.bind(null, _Type.ModalDialog.LOAD_FILE, {
-        onLoad: _WatchActions["default"].loadFromJson
-      })
-    })), this._renderEditBar(isModeEdit), watchList && this._renderFindInput(watchList), /*#__PURE__*/_react["default"].createElement(ScrollPane, {
-      className: scrollClass
-    }, watchList && this._renderWatchList(watchList)));
+      style: styles.browser,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(CaptionRow, {
+        styleRoot: _styleCaption,
+        caption: caption,
+        onClose: this._handlerHide,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(ButtonSave, {
+          className: CL.BT_CAPTION,
+          store: store
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ButtonCircle, {
+          className: CL.BT_CAPTION,
+          caption: _captionEV,
+          title: _titleEV,
+          isWithoutDefault: true,
+          onClick: this._handlerToggleEditMode
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ButtonCircle, {
+          className: CL.BT_CAPTION,
+          caption: "F",
+          title: "Show/Hide : Find Item Input",
+          isWithoutDefault: true,
+          onClick: this._handlerToggleFindInput
+        }), !isDoubleWatch && /*#__PURE__*/(0, _jsxRuntime.jsx)(ButtonCircle, {
+          className: CL.BT_CAPTION,
+          caption: "B",
+          title: "BackUp Watch Items to JSON File",
+          isWithoutDefault: true,
+          onClick: _WatchActions["default"].backupToJson
+        }), !isDoubleWatch && /*#__PURE__*/(0, _jsxRuntime.jsx)(ButtonCircle, {
+          className: CL.BT_CAPTION,
+          caption: "L",
+          title: "Load Watch Items from JSON File",
+          isWithoutDefault: true,
+          onClick: _ComponentActions["default"].showModalDialog.bind(null, _Type.ModalDialog.LOAD_FILE, {
+            onLoad: _WatchActions["default"].loadFromJson
+          })
+        })]
+      }), this._renderEditBar(isModeEdit), watchList && this._renderFindInput(watchList), /*#__PURE__*/(0, _jsxRuntime.jsx)(ScrollPane, {
+        className: scrollClass,
+        children: watchList && this._renderWatchList(watchList)
+      })]
+    });
   };
 
   return WatchBrowser;
-}(_react.Component), _temp)) || _class;
+}(_react.Component)) || _class;
 
 var _default = WatchBrowser;
 exports["default"] = _default;

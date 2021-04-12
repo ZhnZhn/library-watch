@@ -19,6 +19,8 @@ var _CL = _interopRequireDefault(require("../styles/CL"));
 
 var _Item = _interopRequireDefault(require("./Item.Style"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var ITEM_DESCRIPTION = "GitHub Repository Recent Release";
 
 var GitHubRecentRelease = /*#__PURE__*/function (_Component) {
@@ -80,30 +82,40 @@ var GitHubRecentRelease = /*#__PURE__*/function (_Component) {
         html_url = _this$props2.html_url,
         onCloseItem = _this$props2.onCloseItem,
         isShow = this.state.isShow;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: _Item["default"].ROOT
-    }, /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
-      onClose: onCloseItem
-    }, /*#__PURE__*/_react["default"].createElement("button", {
-      className: _CL["default"].BT_ITEM,
-      title: caption,
-      style: _Item["default"].CAPTION_OPEN,
-      onClick: this._hToggleOpen
-    }, /*#__PURE__*/_react["default"].createElement("span", null, repo), /*#__PURE__*/_react["default"].createElement("span", {
-      style: _Item["default"].SPAN_VERSION
-    }, version), /*#__PURE__*/_react["default"].createElement("span", null, published_at)), /*#__PURE__*/_react["default"].createElement(_A["default"].ButtonCircle, {
-      caption: "W",
-      title: "Add to Watch",
-      style: _Item["default"].BTN_CIRCLE,
-      onClick: this._hClickWatch
-    })), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
-      isShow: isShow,
-      style: _Item["default"].PT_8
-    }, /*#__PURE__*/_react["default"].createElement("a", {
-      href: html_url,
-      className: "github-link",
-      style: _Item["default"].ML_8
-    }, "Link to description of recent release tag")));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: _Item["default"].ROOT,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption["default"], {
+        onClose: onCloseItem,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+          className: _CL["default"].BT_ITEM,
+          title: caption,
+          style: _Item["default"].CAPTION_OPEN,
+          onClick: this._hToggleOpen,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            children: repo
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            style: _Item["default"].SPAN_VERSION,
+            children: version
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            children: published_at
+          })]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ButtonCircle, {
+          caption: "W",
+          title: "Add to Watch",
+          style: _Item["default"].BTN_CIRCLE,
+          onClick: this._hClickWatch
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ShowHide, {
+        isShow: isShow,
+        style: _Item["default"].PT_8,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+          href: html_url,
+          className: "github-link",
+          style: _Item["default"].ML_8,
+          children: "Link to description of recent release tag"
+        })
+      })]
+    });
   };
 
   return GitHubRecentRelease;

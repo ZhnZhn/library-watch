@@ -5,13 +5,13 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _ErrMsg = _interopRequireDefault(require("./ErrMsg"));
 
 var _CellValue = _interopRequireDefault(require("./CellValue"));
 
 var _Link = _interopRequireDefault(require("./Link"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var S = {
   REPO: {

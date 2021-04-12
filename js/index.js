@@ -10,6 +10,8 @@ var _ravenJs = _interopRequireDefault(require("raven-js"));
 
 var _AppLibraryWatch = _interopRequireDefault(require("./components/AppLibraryWatch"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 /* eslint-disable no-undef */
 if (process.env.NODE_ENV !== 'production') {
   /* eslint-disable no-undef */
@@ -33,7 +35,7 @@ var _fnRenderApp = function _fnRenderApp() {
     document.body.removeChild(document.getElementById('preloader'));
   }
 
-  (0, _reactDom.render)( /*#__PURE__*/_react["default"].createElement(_AppLibraryWatch["default"], null), document.getElementById("app"));
+  (0, _reactDom.render)( /*#__PURE__*/(0, _jsxRuntime.jsx)(_AppLibraryWatch["default"], {}), document.getElementById("app"));
 };
 
 var _fnLoading = function _fnLoading() {

@@ -11,6 +11,8 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var CLASS = {
   INIT: 'modal-root',
@@ -85,11 +87,12 @@ var ModalDialogContainer = /*#__PURE__*/function (_Component) {
       }
     }
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: _className,
       style: _style,
-      onClick: onClose
-    }, children);
+      onClick: onClose,
+      children: children
+    });
   };
 
   return ModalDialogContainer;

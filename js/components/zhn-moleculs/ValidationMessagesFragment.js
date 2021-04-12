@@ -13,6 +13,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var styles = _DialogStyles["default"];
 var Styles = {
@@ -38,21 +40,24 @@ var ValidationMessagesFragment = /*#__PURE__*/function (_Component) {
    */
   _proto._renderValidationMessages = function _renderValidationMessages(validationMessages) {
     return validationMessages.map(function (msg, index) {
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        key: index
-      }, /*#__PURE__*/_react["default"].createElement("div", {
-        style: styles.validationMessageNumber
-      }, index + 1), /*#__PURE__*/_react["default"].createElement("span", {
-        style: Styles.MSG_SPAN
-      }, msg));
+      return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          style: styles.validationMessageNumber,
+          children: index + 1
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: Styles.MSG_SPAN,
+          children: msg
+        })]
+      }, index);
     });
   };
 
   _proto.render = function render() {
     var validationMessages = this.props.validationMessages;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: styles.validationContainer
-    }, this._renderValidationMessages(validationMessages));
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      style: styles.validationContainer,
+      children: this._renderValidationMessages(validationMessages)
+    });
   };
 
   return ValidationMessagesFragment;

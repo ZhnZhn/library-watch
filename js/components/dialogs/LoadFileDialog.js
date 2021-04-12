@@ -23,6 +23,8 @@ var _ValidationMessagesFragment = _interopRequireDefault(require("../zhn-molecul
 
 var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var styles = _DialogStyles["default"];
 var C = {
@@ -103,13 +105,12 @@ var LoadFileDialog = /*#__PURE__*/function (_Component) {
 
     _this.progressEvent = null;
     _this.file = null;
-    _this._commandButtons = [/*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-      key: "load",
+    _this._commandButtons = [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
       isPrimary: true,
       caption: "Load",
       timeout: 2000,
       onClick: _this._handleLoad
-    })];
+    }, "load")];
     _this.state = {
       validationMessages: []
     };
@@ -129,22 +130,25 @@ var LoadFileDialog = /*#__PURE__*/function (_Component) {
   _proto.render = function render() {
     var isShow = this.props.isShow,
         validationMessages = this.state.validationMessages;
-    return /*#__PURE__*/_react["default"].createElement(_ModalDialog["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalDialog["default"], {
       style: STYLE.MODAL_DIALOG,
       caption: "Load Watch Items from File",
       isShow: isShow,
       commandButtons: this._commandButtons,
-      onClose: this._handleClose
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, styles.rowDiv, STYLE.ROW_INPUT_FILE)
-    }, /*#__PURE__*/_react["default"].createElement(_InputFileReader["default"], {
-      as: "text",
-      onChange: this._handleChange
-    })), /*#__PURE__*/_react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, styles.rowDiv, STYLE.ROW_VALIDATION)
-    }, /*#__PURE__*/_react["default"].createElement(_ValidationMessagesFragment["default"], {
-      validationMessages: validationMessages
-    })));
+      onClose: this._handleClose,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: (0, _extends2["default"])({}, styles.rowDiv, STYLE.ROW_INPUT_FILE),
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputFileReader["default"], {
+          as: "text",
+          onChange: this._handleChange
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: (0, _extends2["default"])({}, styles.rowDiv, STYLE.ROW_VALIDATION),
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessagesFragment["default"], {
+          validationMessages: validationMessages
+        })
+      })]
+    });
   };
 
   return LoadFileDialog;

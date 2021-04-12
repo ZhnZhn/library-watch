@@ -9,8 +9,6 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _Chart = _interopRequireDefault(require("../charts/Chart"));
@@ -36,6 +34,8 @@ var _BundleInfo = _interopRequireDefault(require("./BundleInfo"));
 var _CL = _interopRequireDefault(require("../styles/CL"));
 
 var _Item = _interopRequireDefault(require("./Item.Style"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var BASE_NODEICO = "https://nodei.co/npm/",
     SUFFIX_NODEICO = ".png?downloads=true&downloadRank=true&stars=true",

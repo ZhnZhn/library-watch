@@ -21,11 +21,13 @@ var _helperFns = _interopRequireDefault(require("./helperFns/helperFns"));
 
 var _DialogCell = _interopRequireDefault(require("./DialogCell"));
 
-var _dec, _class, _temp;
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _dec, _class;
 
 var crMenuMore = _helperFns["default"].crMenuMore,
     crButtons = _helperFns["default"].crButtons;
-var DialogType1 = (_dec = _Decorators["default"].dialog, _dec(_class = (_temp = /*#__PURE__*/function (_Component) {
+var DialogType1 = (_dec = _Decorators["default"].dialog, _dec(_class = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DialogType1, _Component);
 
   /*
@@ -120,29 +122,30 @@ var DialogType1 = (_dec = _Decorators["default"].dialog, _dec(_class = (_temp = 
         isToolbar = _this$state.isToolbar,
         isShowLabels = _this$state.isShowLabels,
         validationMessages = _this$state.validationMessages;
-    return /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].DraggableDialog, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_DialogCell["default"].DraggableDialog, {
       isShow: isShow,
       caption: caption,
       menuModel: this._menuMore,
       commandButtons: this._commandButtons,
       onShowChart: onShow,
-      onClose: this._handleClose
-    }, /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].Toolbar, {
-      isShow: isToolbar,
-      buttons: this.toolbarButtons
-    }), /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].RowInputText, {
-      ref: this._refInputOne,
-      isShowLabel: isShowLabels,
-      caption: oneTitle,
-      placeholder: onePlaceholder,
-      onEnter: this._handleLoad
-    }), /*#__PURE__*/_react["default"].createElement(_DialogCell["default"].ValidationMessages, {
-      validationMessages: validationMessages
-    }));
+      onClose: this._handleClose,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].Toolbar, {
+        isShow: isToolbar,
+        buttons: this.toolbarButtons
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].RowInputText, {
+        ref: this._refInputOne,
+        isShowLabel: isShowLabels,
+        caption: oneTitle,
+        placeholder: onePlaceholder,
+        onEnter: this._handleLoad
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].ValidationMessages, {
+        validationMessages: validationMessages
+      })]
+    });
   };
 
   return DialogType1;
-}(_react.Component), _temp)) || _class);
+}(_react.Component)) || _class);
 var _default = DialogType1;
 exports["default"] = _default;
 //# sourceMappingURL=DialogType1.js.map

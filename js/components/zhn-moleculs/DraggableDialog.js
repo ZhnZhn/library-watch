@@ -27,6 +27,8 @@ var _Interact = _interopRequireDefault(require("../../utils/Interact"));
 
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var CL = {
   ROOT: "draggable-dialog",
@@ -98,7 +100,7 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
     };
 
     _this._renderMenuMore = function (menuModel, isMore) {
-      return menuModel && /*#__PURE__*/_react["default"].createElement(_ModalSlider["default"], {
+      return menuModel && /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider["default"], {
         isShow: isMore,
         className: CL.MENU_MORE //style={TS.EL_BORDER}
         ,
@@ -108,7 +110,7 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
     };
 
     _this._renderBtMore = function (menuModel) {
-      return menuModel && /*#__PURE__*/_react["default"].createElement(_SvgMore["default"], {
+      return menuModel && /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore["default"], {
         btRef: _this._refBtMore,
         style: S.BT_MORE,
         svgStyle: S.BT_MORE_SVG,
@@ -117,23 +119,22 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
     };
 
     _this._renderCommandButton = function (commandButtons, onShowChart, onClose) {
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        style: S.COMMAND_DIV
-      }, commandButtons, _isFn(onShowChart) && /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-        key: "show",
-        rootStyle: S.BT_ROOT,
-        caption: "Show",
-        title: "Show Pane Container" //accessKey="s"
-        ,
-        onClick: onShowChart
-      }), /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-        key: "close",
-        rootStyle: S.BT_ROOT,
-        caption: "Close",
-        title: "Close Draggable Dialog" //accessKey="c"
-        ,
-        onClick: onClose
-      }));
+      return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: S.COMMAND_DIV,
+        children: [commandButtons, _isFn(onShowChart) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+          rootStyle: S.BT_ROOT,
+          caption: "Show",
+          title: "Show Pane Container" //accessKey="s"
+          ,
+          onClick: onShowChart
+        }, "show"), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+          rootStyle: S.BT_ROOT,
+          caption: "Close",
+          title: "Close Draggable Dialog" //accessKey="c"
+          ,
+          onClick: onClose
+        }, "close")]
+      });
     };
 
     _this._refBtMore = function (node) {
@@ -183,7 +184,7 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
       /*#__PURE__*/
 
       /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
-      _react["default"].createElement("div", {
+      (0, _jsxRuntime.jsxs)("div", {
         ref: this._refRootDiv,
         role: "dialog",
         tabIndex: "-1",
@@ -192,17 +193,21 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
         className: _className,
         style: (0, _extends2["default"])({}, S.ROOT_DIV, S.ROOT_DIV_DRAG, _styleShow),
         onClick: onFront,
-        onKeyDown: this._hKeyDown
-      }, /*#__PURE__*/_react["default"].createElement("div", {
-        style: S.CAPTION_DIV
-      }, this._renderMenuMore(menuModel, isMore), this._renderBtMore(menuModel), /*#__PURE__*/_react["default"].createElement("span", {
-        className: CL.NOT_SELECTED
-      }, caption), /*#__PURE__*/_react["default"].createElement(_SvgClose["default"], {
-        style: S.SVG_CLOSE,
-        onClose: this._hClose
-      })), /*#__PURE__*/_react["default"].createElement("div", {
-        style: S.CHILDREN_DIV
-      }, children), this._renderCommandButton(commandButtons, onShowChart, this._hClose))
+        onKeyDown: this._hKeyDown,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          style: S.CAPTION_DIV,
+          children: [this._renderMenuMore(menuModel, isMore), this._renderBtMore(menuModel), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            className: CL.NOT_SELECTED,
+            children: caption
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose["default"], {
+            style: S.SVG_CLOSE,
+            onClose: this._hClose
+          })]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          style: S.CHILDREN_DIV,
+          children: children
+        }), this._renderCommandButton(commandButtons, onShowChart, this._hClose)]
+      })
     );
   };
 

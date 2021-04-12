@@ -17,6 +17,8 @@ var _InputSearch = _interopRequireDefault(require("../zhn-select/InputSearch"));
 
 var _ItemTopicOption = _interopRequireDefault(require("../zhn-select/ItemTopicOption"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var SEARCH_PLACEHOLDER = 'Find Item';
 
 var _isFn = function _isFn(fn) {
@@ -62,15 +64,16 @@ var WrapperInputSearch = /*#__PURE__*/function (_Component) {
         data = _this$props.data,
         _options = _TransformFn["default"].fromLevel3(data);
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: style
-    }, /*#__PURE__*/_react["default"].createElement(_InputSearch["default"], {
-      placeholder: SEARCH_PLACEHOLDER,
-      propCaption: "caption",
-      options: _options,
-      ItemOptionComp: _ItemTopicOption["default"],
-      onSelect: this._handlerSelectItem
-    }));
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      style: style,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputSearch["default"], {
+        placeholder: SEARCH_PLACEHOLDER,
+        propCaption: "caption",
+        options: _options,
+        ItemOptionComp: _ItemTopicOption["default"],
+        onSelect: this._handlerSelectItem
+      })
+    });
   };
 
   return WrapperInputSearch;

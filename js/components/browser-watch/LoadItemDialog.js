@@ -23,6 +23,8 @@ var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
 var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from 'prop-types'
 var styles = _DialogStyles["default"];
 var DIALOG_CAPTION = "Load Watch Item";
@@ -76,22 +78,23 @@ var LoadItemDialog = /*#__PURE__*/function (_Component) {
     };
 
     _this._renderDate = function (date) {
-      return /*#__PURE__*/_react["default"].createElement("div", {
+      return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         style: (0, _extends2["default"])({}, styles.rowDiv, S.LH_2),
-        key: "3"
-      }, /*#__PURE__*/_react["default"].createElement("span", {
-        style: styles.labelSpan
-      }, "Date:"), /*#__PURE__*/_react["default"].createElement("span", {
-        style: S.BOLD
-      }, date));
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: styles.labelSpan,
+          children: "Date:"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: S.BOLD,
+          children: date
+        })]
+      }, "3");
     };
 
-    _this._commandButtons = [/*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-      key: "load",
+    _this._commandButtons = [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
       isPrimary: true,
       caption: "Load",
       onClick: _this._handlerLoad
-    })];
+    }, "load")];
     return _this;
   }
 
@@ -112,24 +115,28 @@ var LoadItemDialog = /*#__PURE__*/function (_Component) {
         caption = data.caption,
         descr = data.descr,
         date = data.date;
-    return /*#__PURE__*/_react["default"].createElement(_ModalDialog["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalDialog["default"], {
       caption: DIALOG_CAPTION,
       isShow: isShow,
       commandButtons: this._commandButtons,
-      onClose: this._handlerClose
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, styles.rowDiv, S.LH_1_5),
-      key: "1"
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      style: S.ITEM_DESCRIPTION
-    }, descr)), /*#__PURE__*/_react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, styles.rowDiv, S.LH_2),
-      key: "2"
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      style: styles.labelSpan
-    }, "Item:"), /*#__PURE__*/_react["default"].createElement("span", {
-      style: S.BOLD
-    }, caption)), date && this._renderDate(date));
+      onClose: this._handlerClose,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: (0, _extends2["default"])({}, styles.rowDiv, S.LH_1_5),
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: S.ITEM_DESCRIPTION,
+          children: descr
+        })
+      }, "1"), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: (0, _extends2["default"])({}, styles.rowDiv, S.LH_2),
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: styles.labelSpan,
+          children: "Item:"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: S.BOLD,
+          children: caption
+        })]
+      }, "2"), date && this._renderDate(date)]
+    });
   };
 
   return LoadItemDialog;

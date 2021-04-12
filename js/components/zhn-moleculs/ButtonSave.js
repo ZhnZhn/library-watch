@@ -15,6 +15,8 @@ var _WatchActions = _interopRequireWildcard(require("../../flux/actions/WatchAct
 
 var _ButtonCircle = _interopRequireDefault(require("../zhn-atoms/ButtonCircle"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var CAPTION = "S",
     TITLE = "Save Watch Items to Locale Storage",
@@ -82,7 +84,7 @@ var ButtonSave = /*#__PURE__*/function (_Component) {
         isWatchEdited = this.state.isWatchEdited,
         _style = isWatchEdited ? style : Object.assign({}, style, STYLE.NOT_WATCH_EDITED);
 
-    return /*#__PURE__*/_react["default"].createElement(_ButtonCircle["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle["default"], {
       className: className,
       caption: CAPTION,
       title: TITLE,

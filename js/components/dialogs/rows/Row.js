@@ -11,12 +11,15 @@ var _react = _interopRequireDefault(require("react"));
 
 var _DialogStyles = _interopRequireDefault(require("../../styles/DialogStyles"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var Plain = function Plain(_ref) {
   var style = _ref.style,
       children = _ref.children;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    style: (0, _extends2["default"])({}, _DialogStyles["default"].rowDiv, style)
-  }, children);
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    style: (0, _extends2["default"])({}, _DialogStyles["default"].rowDiv, style),
+    children: children
+  });
 };
 
 var Row = {

@@ -31,6 +31,8 @@ var _Item = _interopRequireDefault(require("../Item.Style"));
 
 var _CL = _interopRequireDefault(require("../../styles/CL"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var S = {
   BT_MORE: {
     position: 'relative',
@@ -140,36 +142,44 @@ var StackTaggedQuestions = /*#__PURE__*/function (_Component) {
         _token_count = itemRemoved ? _items_count - itemRemoved + "/" + _items_count : "" + _items_count,
         _titleForSort = "Sorted By " + titleForSort;
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: _Item["default"].ROOT
-    }, /*#__PURE__*/_react["default"].createElement(_ModalSlider["default"], {
-      isShow: isMore,
-      className: _CL["default"].MENU_MORE,
-      model: this._MODEL_MORE,
-      onClose: this._hToggleMore
-    }), /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
-      onClose: onCloseItem
-    }, /*#__PURE__*/_react["default"].createElement(_A["default"].SvgMore, {
-      style: S.BT_MORE,
-      onClick: this._hShowMore
-    }), /*#__PURE__*/_react["default"].createElement("button", {
-      className: _CL["default"].NOT_SELECTED,
-      title: caption,
-      style: (0, _extends2["default"])({}, _Item["default"].CAPTION_OPEN, S.NOT_FLOAT),
-      onClick: this._hToggleOpen
-    }, /*#__PURE__*/_react["default"].createElement("span", null, repo), /*#__PURE__*/_react["default"].createElement("span", {
-      style: S.ITEM_COUNT
-    }, _token_count)), /*#__PURE__*/_react["default"].createElement("button", {
-      className: _CL["default"].NOT_SELECTED,
-      style: S.BT_REVERSE,
-      title: "Reverse Items",
-      onClick: this._reverseItems
-    }, _titleForSort)), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
-      isShow: isShow
-    }, /*#__PURE__*/_react["default"].createElement(_TaggedItemList["default"], {
-      items: items,
-      onRemoveItem: this._onRemoveItem
-    })));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: _Item["default"].ROOT,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider["default"], {
+        isShow: isMore,
+        className: _CL["default"].MENU_MORE,
+        model: this._MODEL_MORE,
+        onClose: this._hToggleMore
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption["default"], {
+        onClose: onCloseItem,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].SvgMore, {
+          style: S.BT_MORE,
+          onClick: this._hShowMore
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+          className: _CL["default"].NOT_SELECTED,
+          title: caption,
+          style: (0, _extends2["default"])({}, _Item["default"].CAPTION_OPEN, S.NOT_FLOAT),
+          onClick: this._hToggleOpen,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            children: repo
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            style: S.ITEM_COUNT,
+            children: _token_count
+          })]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+          className: _CL["default"].NOT_SELECTED,
+          style: S.BT_REVERSE,
+          title: "Reverse Items",
+          onClick: this._reverseItems,
+          children: _titleForSort
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ShowHide, {
+        isShow: isShow,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_TaggedItemList["default"], {
+          items: items,
+          onRemoveItem: this._onRemoveItem
+        })
+      })]
+    });
   };
 
   return StackTaggedQuestions;

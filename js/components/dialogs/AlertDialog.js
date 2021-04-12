@@ -15,6 +15,8 @@ var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog")
 
 var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var S = {
   CAPTION: {
     display: 'inline-block',
@@ -88,22 +90,32 @@ var AlertDialog = /*#__PURE__*/function (_Component) {
         _itemId = _crItemId(alertItemId || itemId),
         _descr = alertDescr || descr || '';
 
-    return /*#__PURE__*/_react["default"].createElement(_ModalDialog["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalDialog["default"], {
       caption: "Alert",
       isShow: isShow,
-      onClose: onClose
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      style: _DialogStyles["default"].rowDiv
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      style: S.CAPTION
-    }, /*#__PURE__*/_react["default"].createElement("span", null, _caption), /*#__PURE__*/_react["default"].createElement("span", null, ":"), /*#__PURE__*/_react["default"].createElement("span", {
-      style: S.ITEM_ID,
-      title: _itemId
-    }, _itemId))), /*#__PURE__*/_react["default"].createElement("div", {
-      style: _DialogStyles["default"].rowDiv
-    }, /*#__PURE__*/_react["default"].createElement("p", {
-      style: S.DESCR
-    }, _descr)));
+      onClose: onClose,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: _DialogStyles["default"].rowDiv,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+          style: S.CAPTION,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            children: _caption
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            children: ":"
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            style: S.ITEM_ID,
+            title: _itemId,
+            children: _itemId
+          })]
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: _DialogStyles["default"].rowDiv,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          style: S.DESCR,
+          children: _descr
+        })
+      })]
+    });
   };
 
   return AlertDialog;

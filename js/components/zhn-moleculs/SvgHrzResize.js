@@ -19,6 +19,8 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _has = _interopRequireDefault(require("../has"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var CL = "svg-resize";
 var HAS_TOUCH = _has["default"].HAS_TOUCH;
@@ -156,47 +158,54 @@ var SvgHrzResize = /*#__PURE__*/function (_Component) {
   };
 
   _proto.render = function render() {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: styles.rootDiv
-    }, /*#__PURE__*/_react["default"].createElement("div", (0, _extends2["default"])({
-      className: CL,
-      style: styles.leftDiv,
-      title: "Resize container horizontal left"
-    }, this._leftBtHandlers), /*#__PURE__*/_react["default"].createElement("svg", {
-      viewBox: "0 0 12 12",
-      width: "100%",
-      height: "100%",
-      preserveAspectRatio: "none",
-      xmlns: "http://www.w3.org/2000/svg"
-    }, /*#__PURE__*/_react["default"].createElement("path", {
-      d: "M 1,6 L 11,6",
-      strokeWidth: "2",
-      strokeLinecap: "round"
-    }), /*#__PURE__*/_react["default"].createElement("path", {
-      d: "M 6,2 L 1,6 6,10",
-      strokeWidth: "2",
-      strokeLinecap: "round",
-      fill: "none"
-    }))), /*#__PURE__*/_react["default"].createElement("div", (0, _extends2["default"])({
-      className: CL,
-      style: styles.leftDiv,
-      title: "Resize container horizontal right"
-    }, this._rightBtHandlers), /*#__PURE__*/_react["default"].createElement("svg", {
-      viewBox: "0 0 12 12",
-      width: "100%",
-      height: "100%",
-      preserveAspectRatio: "none",
-      xmlns: "http://www.w3.org/2000/svg"
-    }, /*#__PURE__*/_react["default"].createElement("path", {
-      d: "M 1,6 L 11,6",
-      strokeWidth: "2",
-      strokeLinecap: "round"
-    }), /*#__PURE__*/_react["default"].createElement("path", {
-      d: "M 6,2 L 11,6 6,10",
-      strokeWidth: "2",
-      strokeLinecap: "round",
-      fill: "none"
-    }))));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: styles.rootDiv,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", (0, _extends2["default"])({
+        className: CL,
+        style: styles.leftDiv,
+        title: "Resize container horizontal left"
+      }, this._leftBtHandlers, {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("svg", {
+          viewBox: "0 0 12 12",
+          width: "100%",
+          height: "100%",
+          preserveAspectRatio: "none",
+          xmlns: "http://www.w3.org/2000/svg",
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+            d: "M 1,6 L 11,6",
+            strokeWidth: "2",
+            strokeLinecap: "round"
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+            d: "M 6,2 L 1,6 6,10",
+            strokeWidth: "2",
+            strokeLinecap: "round",
+            fill: "none"
+          })]
+        })
+      })), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", (0, _extends2["default"])({
+        className: CL,
+        style: styles.leftDiv,
+        title: "Resize container horizontal right"
+      }, this._rightBtHandlers, {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("svg", {
+          viewBox: "0 0 12 12",
+          width: "100%",
+          height: "100%",
+          preserveAspectRatio: "none",
+          xmlns: "http://www.w3.org/2000/svg",
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+            d: "M 1,6 L 11,6",
+            strokeWidth: "2",
+            strokeLinecap: "round"
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+            d: "M 6,2 L 11,6 6,10",
+            strokeWidth: "2",
+            strokeLinecap: "round",
+            fill: "none"
+          })]
+        })
+      }))]
+    });
   };
 
   return SvgHrzResize;

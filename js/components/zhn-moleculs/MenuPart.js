@@ -15,6 +15,8 @@ var _MenuBadge = _interopRequireDefault(require("../zhn-atoms/MenuBadge"));
 
 var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose2"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var CL = {
   NOT_SELECTED: 'not-selected',
   ROW_EVEN: 'row__topic__even not-selected',
@@ -40,13 +42,14 @@ var MenuItem = function MenuItem(_ref) {
     }
   }, []);
 
-  return /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     role: "menuitem",
     tabIndex: 0,
     className: className,
     onClick: onClick,
-    onKeyDown: _hKeyDown
-  }, title, menuBadge);
+    onKeyDown: _hKeyDown,
+    children: [title, menuBadge]
+  });
 };
 
 var _renderMenuItems = function _renderMenuItems(rowClass, items) {
@@ -60,20 +63,19 @@ var _renderMenuItems = function _renderMenuItems(rowClass, items) {
         onClick = item.onClick;
 
     var _className = rowClass ? rowClass + ' ' + CL.NOT_SELECTED : index % 2 ? CL.ROW_EVEN : CL.ROW_ODD,
-        menuBadge = counter !== 0 ? /*#__PURE__*/_react["default"].createElement(_MenuBadge["default"], {
+        menuBadge = counter !== 0 ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuBadge["default"], {
       counter: counter,
       isOpen: item.isOpen,
       onBadgeOpen: item.onBadgeOpen,
       onBadgeClose: item.onBadgeClose
     }) : null;
 
-    return /*#__PURE__*/_react["default"].createElement(MenuItem, {
-      key: index,
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(MenuItem, {
       className: _className,
       title: title,
       menuBadge: menuBadge,
       onClick: onClick
-    });
+    }, index);
   });
 };
 
@@ -82,13 +84,14 @@ var MenuPart = function MenuPart(_ref2) {
       caption = _ref2.caption,
       items = _ref2.items,
       isInitClose = _ref2.isInitClose;
-  return /*#__PURE__*/_react["default"].createElement(_OpenClose["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_OpenClose["default"], {
     styleCaptionRow: S.CAPTION_ROW,
     fillOpen: FILL_OPEN,
     fillClose: FILL_CLOSE,
     caption: caption,
-    isClose: isInitClose
-  }, _renderMenuItems(rowClass, items));
+    isClose: isInitClose,
+    children: _renderMenuItems(rowClass, items)
+  });
 };
 /*
 MenuPart.propTypes = {

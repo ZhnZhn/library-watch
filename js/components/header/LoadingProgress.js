@@ -13,6 +13,8 @@ var _LoadingProgressActions = require("../../flux/actions/LoadingProgressActions
 
 var _ProgressLine = _interopRequireDefault(require("../zhn-atoms/ProgressLine"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var COLOR = {
   LOADING: '#2f7ed8',
   FAILED: '#ed5813'
@@ -48,7 +50,7 @@ var LoadingProgress = function LoadingProgress(_ref) {
       });
     }
   }, 'listenLoadingProgress');
-  return /*#__PURE__*/React.createElement(_ProgressLine["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ProgressLine["default"], {
     height: 3,
     color: color,
     completed: completed

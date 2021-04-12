@@ -19,6 +19,8 @@ var _CL = _interopRequireDefault(require("../styles/CL"));
 
 var _Item = _interopRequireDefault(require("./Item.Style"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var _formatDate = function _formatDate(strDate) {
   return ('' + strDate).replace('T', ' ').replace('Z', '');
 };
@@ -38,38 +40,67 @@ var ItemDescription = function ItemDescription(props) {
       _dateCreatedAt = _formatDate(created_at),
       _datePushedAt = _formatDate(pushed_at);
 
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "library"
-  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("span", {
-    className: "library__title"
-  }, name)), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("span", null, description)), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("span", {
-    className: "library__value-title"
-  }, "Size:"), /*#__PURE__*/_react["default"].createElement("span", {
-    className: "library__value"
-  }, size)), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("span", {
-    className: "library__value-title"
-  }, "Created At:"), /*#__PURE__*/_react["default"].createElement("span", {
-    className: "library__value"
-  }, _dateCreatedAt), /*#__PURE__*/_react["default"].createElement("span", {
-    className: "library__value-title"
-  }, "Pushed At:"), /*#__PURE__*/_react["default"].createElement("span", {
-    className: "library__value"
-  }, _datePushedAt)), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("span", {
-    className: "library__value-title"
-  }, "Stars:"), /*#__PURE__*/_react["default"].createElement("span", {
-    className: "library__value"
-  }, stargazers_count), /*#__PURE__*/_react["default"].createElement("span", {
-    className: "library__value-title"
-  }, "Issues:"), /*#__PURE__*/_react["default"].createElement("span", {
-    className: "library__value"
-  }, open_issues), /*#__PURE__*/_react["default"].createElement("span", {
-    className: "library__value-title"
-  }, "Watchers:"), /*#__PURE__*/_react["default"].createElement("span", {
-    className: "library__value"
-  }, watchers_count)), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("a", {
-    className: "library__link",
-    href: html_url
-  }, "Link to GitHub Repository")));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    className: "library",
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: "library__title",
+        children: name
+      })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        children: description
+      })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: "library__value-title",
+        children: "Size:"
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: "library__value",
+        children: size
+      })]
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: "library__value-title",
+        children: "Created At:"
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: "library__value",
+        children: _dateCreatedAt
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: "library__value-title",
+        children: "Pushed At:"
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: "library__value",
+        children: _datePushedAt
+      })]
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: "library__value-title",
+        children: "Stars:"
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: "library__value",
+        children: stargazers_count
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: "library__value-title",
+        children: "Issues:"
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: "library__value",
+        children: open_issues
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: "library__value-title",
+        children: "Watchers:"
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: "library__value",
+        children: watchers_count
+      })]
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+        className: "library__link",
+        href: html_url,
+        children: "Link to GitHub Repository"
+      })
+    })]
+  });
 };
 
 var GitHubSearchInfo = /*#__PURE__*/function (_Component) {
@@ -109,22 +140,31 @@ var GitHubSearchInfo = /*#__PURE__*/function (_Component) {
         library = _this$props.library,
         onCloseItem = _this$props.onCloseItem,
         isShow = this.state.isShow;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: _Item["default"].ROOT
-    }, /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
-      onClose: onCloseItem
-    }, /*#__PURE__*/_react["default"].createElement("button", {
-      className: _CL["default"].BT_ITEM,
-      title: caption,
-      style: _Item["default"].CAPTION_OPEN,
-      onClick: this._hToggleOpen
-    }, /*#__PURE__*/_react["default"].createElement("span", null, repo), /*#__PURE__*/_react["default"].createElement("span", {
-      style: _Item["default"].SPAN_VERSION
-    }, stars_count), /*#__PURE__*/_react["default"].createElement("span", null, pushed_at))), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
-      isShow: isShow
-    }, /*#__PURE__*/_react["default"].createElement(ItemDescription, {
-      library: library
-    })));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: _Item["default"].ROOT,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemCaption["default"], {
+        onClose: onCloseItem,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+          className: _CL["default"].BT_ITEM,
+          title: caption,
+          style: _Item["default"].CAPTION_OPEN,
+          onClick: this._hToggleOpen,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            children: repo
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            style: _Item["default"].SPAN_VERSION,
+            children: stars_count
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            children: pushed_at
+          })]
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ShowHide, {
+        isShow: isShow,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemDescription, {
+          library: library
+        })
+      })]
+    });
   };
 
   return GitHubSearchInfo;

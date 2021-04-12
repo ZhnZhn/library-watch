@@ -13,6 +13,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _has = _interopRequireDefault(require("../has"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var CL = {
   FIELD: 'm-field',
@@ -38,11 +40,12 @@ var _isStr = function _isStr(str) {
 var BtClear = function BtClear(_ref3) {
   var isValue = _ref3.isValue,
       onClick = _ref3.onClick;
-  return /*#__PURE__*/_react["default"].createElement("button", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     "class": CL.BT_CLEAR,
     tabIndex: "-1",
-    onClick: onClick
-  }, isValue ? 'x' : '');
+    onClick: onClick,
+    children: isValue ? 'x' : ''
+  });
 };
 
 var InputText = /*#__PURE__*/function (_Component) {
@@ -112,25 +115,26 @@ var InputText = /*#__PURE__*/function (_Component) {
         placeholder = _this$props.placeholder,
         maxLength = _this$props.maxLength,
         value = this.state.value;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: CL.FIELD
-    }, /*#__PURE__*/_react["default"].createElement("input", {
-      ref: this._refInput,
-      type: "text",
-      autoCorrect: "off",
-      autoCapitalize: "off",
-      spellCheck: false,
-      className: CL.INPUT,
-      style: style,
-      value: value,
-      placeholder: placeholder,
-      maxLength: maxLength,
-      onChange: this._hChange,
-      onKeyDown: this._hKeyDown
-    }), HAS_TOUCH && /*#__PURE__*/_react["default"].createElement(BtClear, {
-      isValue: Boolean(value),
-      onClick: this._hClean
-    }));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: CL.FIELD,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+        ref: this._refInput,
+        type: "text",
+        autoCorrect: "off",
+        autoCapitalize: "off",
+        spellCheck: false,
+        className: CL.INPUT,
+        style: style,
+        value: value,
+        placeholder: placeholder,
+        maxLength: maxLength,
+        onChange: this._hChange,
+        onKeyDown: this._hKeyDown
+      }), HAS_TOUCH && /*#__PURE__*/(0, _jsxRuntime.jsx)(BtClear, {
+        isValue: Boolean(value),
+        onClick: this._hClean
+      })]
+    });
   };
 
   _proto.getValue = function getValue() {

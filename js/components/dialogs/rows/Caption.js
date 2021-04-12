@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var _crCaption = function _crCaption(caption) {
   return caption && caption.indexOf(':') === -1 ? caption + ':' : '';
 };
@@ -20,9 +22,10 @@ var Caption = function Caption(_ref) {
     return null;
   }
 
-  return /*#__PURE__*/_react["default"].createElement("span", {
-    style: style
-  }, _crCaption(caption));
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    style: style,
+    children: _crCaption(caption)
+  });
 };
 
 var _default = Caption;

@@ -15,6 +15,8 @@ var _Row = _interopRequireDefault(require("../rows/Row"));
 
 var _ButtonCircle = _interopRequireDefault(require("../../zhn-atoms/ButtonCircle"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var S = {
   ROW: {
     paddingTop: '4px',
@@ -46,13 +48,12 @@ var ToolbarButtonCircle = /*#__PURE__*/function (_Component) {
         var caption = button.caption,
             title = button.title,
             onClick = button.onClick;
-        return /*#__PURE__*/_react["default"].createElement(_ButtonCircle["default"], {
-          key: caption + index,
+        return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle["default"], {
           caption: caption,
           title: title,
           style: S.BUTTON_CIRCLE,
           onClick: onClick
-        });
+        }, caption + index);
       });
     };
 
@@ -71,9 +72,10 @@ var ToolbarButtonCircle = /*#__PURE__*/function (_Component) {
 
   _proto.render = function render() {
     var buttons = this.props.buttons;
-    return /*#__PURE__*/_react["default"].createElement(_Row["default"].Plain, {
-      style: S.ROW
-    }, this._renderButtons(buttons));
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Row["default"].Plain, {
+      style: S.ROW,
+      children: this._renderButtons(buttons)
+    });
   };
 
   return ToolbarButtonCircle;

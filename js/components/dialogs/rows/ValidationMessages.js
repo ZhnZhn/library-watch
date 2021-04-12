@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var S = {
   ROOT_DIV: {
@@ -32,11 +34,15 @@ var S = {
 var ValidationMessage = function ValidationMessage(_ref) {
   var index = _ref.index,
       msg = _ref.msg;
-  return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    style: S.NUMBER_DIV
-  }, index + 1), /*#__PURE__*/_react["default"].createElement("span", {
-    style: S.MSG_SPAN
-  }, msg));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      style: S.NUMBER_DIV,
+      children: index + 1
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: S.MSG_SPAN,
+      children: msg
+    })]
+  });
 };
 /*
 ValidationMessage.propTypes = {
@@ -55,17 +61,17 @@ var ValidationMessages = function ValidationMessages(props) {
 
   var _renderValidationMessages = function _renderValidationMessages(msgs) {
     return msgs.map(function (msg, index) {
-      return /*#__PURE__*/_react["default"].createElement(ValidationMessage, {
-        key: index,
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)(ValidationMessage, {
         msg: msg,
         index: index
-      });
+      }, index);
     });
   };
 
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    style: S.ROOT_DIV
-  }, _renderValidationMessages(validationMessages));
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    style: S.ROOT_DIV,
+    children: _renderValidationMessages(validationMessages)
+  });
 };
 /*
 ValidationMessagesFragment.propTypes = {

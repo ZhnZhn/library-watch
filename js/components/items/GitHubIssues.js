@@ -21,6 +21,8 @@ var _CL = _interopRequireDefault(require("../styles/CL"));
 
 var _Item = _interopRequireDefault(require("./Item.Style"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var ITEM_DESCRIPTION = "GitHub Repository Issues";
 var S = {
   STATE: (0, _extends2["default"])({}, _Item["default"].PR_8, {
@@ -91,22 +93,30 @@ var GitHubIssues = /*#__PURE__*/function (_Component) {
             _creadedAt = _toDate(created_at),
             _updatedAt = created_at !== updated_at ? _toDate(updated_at) : '';
 
-        return /*#__PURE__*/_react["default"].createElement("div", {
-          key: index,
-          className: _CL["default"].ROW_ITEM
-        }, /*#__PURE__*/_react["default"].createElement("a", {
-          href: html_url
-        }, /*#__PURE__*/_react["default"].createElement("div", {
-          style: _Item["default"].PB_8
-        }, /*#__PURE__*/_react["default"].createElement("span", {
-          style: S.STATE
-        }, state), /*#__PURE__*/_react["default"].createElement("span", {
-          style: S.NUMBER
-        }, "(#" + number + ")"), /*#__PURE__*/_react["default"].createElement("span", {
-          style: S.DATE
-        }, _creadedAt), /*#__PURE__*/_react["default"].createElement("span", {
-          style: S.DATE
-        }, _updatedAt)), /*#__PURE__*/_react["default"].createElement("div", null, title)));
+        return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: _CL["default"].ROW_ITEM,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("a", {
+            href: html_url,
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+              style: _Item["default"].PB_8,
+              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+                style: S.STATE,
+                children: state
+              }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+                style: S.NUMBER,
+                children: "(#" + number + ")"
+              }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+                style: S.DATE,
+                children: _creadedAt
+              }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+                style: S.DATE,
+                children: _updatedAt
+              })]
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+              children: title
+            })]
+          })
+        }, index);
       });
     };
 
@@ -124,25 +134,32 @@ var GitHubIssues = /*#__PURE__*/function (_Component) {
         onCloseItem = _this$props2.onCloseItem,
         _number = issues.length,
         isShow = this.state.isShow;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: _Item["default"].ROOT
-    }, /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
-      onClose: onCloseItem
-    }, /*#__PURE__*/_react["default"].createElement("button", {
-      className: _CL["default"].BT_ITEM,
-      title: caption,
-      style: _Item["default"].CAPTION_OPEN,
-      onClick: this._hToggleOpen
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      style: _Item["default"].PR_8
-    }, repo), /*#__PURE__*/_react["default"].createElement("span", null, _number)), /*#__PURE__*/_react["default"].createElement(_A["default"].ButtonCircle, {
-      caption: "W",
-      title: "Add to Watch",
-      style: _Item["default"].BTN_CIRCLE,
-      onClick: this._hClickWatch
-    })), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
-      isShow: isShow
-    }, this._renderIssues(issues)));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: _Item["default"].ROOT,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption["default"], {
+        onClose: onCloseItem,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+          className: _CL["default"].BT_ITEM,
+          title: caption,
+          style: _Item["default"].CAPTION_OPEN,
+          onClick: this._hToggleOpen,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            style: _Item["default"].PR_8,
+            children: repo
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            children: _number
+          })]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ButtonCircle, {
+          caption: "W",
+          title: "Add to Watch",
+          style: _Item["default"].BTN_CIRCLE,
+          onClick: this._hClickWatch
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ShowHide, {
+        isShow: isShow,
+        children: this._renderIssues(issues)
+      })]
+    });
   };
 
   return GitHubIssues;

@@ -23,6 +23,8 @@ var _AppLabel = _interopRequireDefault(require("./AppLabel"));
 
 var _LimitRemainingLabel = _interopRequireDefault(require("./LimitRemainingLabel"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var TITLE = "Library Watch v0.12.0";
 var CL = {
   HEADER: "header",
@@ -74,46 +76,48 @@ var HeaderBar = function HeaderBar(_ref) {
     _BrowserActions["default"].showBrowser(_Type.BrowserType.WATCH_LIST);
   }, []);
 
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: CL.HEADER,
-    style: S.ROOT_DIV
-  }, /*#__PURE__*/React.createElement(_LoadingProgress["default"], {
-    store: store
-  }), /*#__PURE__*/React.createElement(_IconAppLogo["default"], {
-    className: CL.ICON,
-    title: TITLE
-  }), /*#__PURE__*/React.createElement(_AppLabel["default"], {
-    className: CL.APP_LABEL,
-    caption: TITLE
-  }), /*#__PURE__*/React.createElement(_Comp["default"].FlatButton, {
-    className: CL.LIBRARY,
-    caption: "Library",
-    title: "Click to show library browser",
-    accessKey: "l",
-    timeout: 0,
-    onClick: _hClickLibrary
-  }), /*#__PURE__*/React.createElement(_Comp["default"].FlatButton, {
-    caption: "Watch",
-    title: "Click to show watch browser",
-    accessKey: "w",
-    timeout: 0,
-    onClick: _hClickWatch
-  }), /*#__PURE__*/React.createElement(_Comp["default"].ButtonSave, {
-    store: store,
-    style: S.BUTTON_SAVE
-  }), /*#__PURE__*/React.createElement(_Comp["default"].FlatButton, {
-    className: CL.ABOUT,
-    rootStyle: S.BT_ABOUT,
-    title: "About web app Library Watch",
-    accessKey: "a",
-    timeout: 0,
-    onClick: _ComponentActions["default"].showAbout
-  }, /*#__PURE__*/React.createElement(_Comp["default"].SvgInfo, {
-    style: S.SVG_INFO
-  })), /*#__PURE__*/React.createElement(_LimitRemainingLabel["default"], {
-    store: store,
-    style: S.LABEL_LIMIT
-  }));
+    style: S.ROOT_DIV,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LoadingProgress["default"], {
+      store: store
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconAppLogo["default"], {
+      className: CL.ICON,
+      title: TITLE
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_AppLabel["default"], {
+      className: CL.APP_LABEL,
+      caption: TITLE
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
+      className: CL.LIBRARY,
+      caption: "Library",
+      title: "Click to show library browser",
+      accessKey: "l",
+      timeout: 0,
+      onClick: _hClickLibrary
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
+      caption: "Watch",
+      title: "Click to show watch browser",
+      accessKey: "w",
+      timeout: 0,
+      onClick: _hClickWatch
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ButtonSave, {
+      store: store,
+      style: S.BUTTON_SAVE
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
+      className: CL.ABOUT,
+      rootStyle: S.BT_ABOUT,
+      title: "About web app Library Watch",
+      accessKey: "a",
+      timeout: 0,
+      onClick: _ComponentActions["default"].showAbout,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].SvgInfo, {
+        style: S.SVG_INFO
+      })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_LimitRemainingLabel["default"], {
+      store: store,
+      style: S.LABEL_LIMIT
+    })]
+  });
 };
 
 var _default = HeaderBar;

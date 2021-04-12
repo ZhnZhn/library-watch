@@ -9,6 +9,8 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _react = _interopRequireDefault(require("react"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var STYLE = {
   LI: {
@@ -44,10 +46,13 @@ var Tab = function Tab(_ref) {
 
   var _style = isSelected ? STYLE.SELECTED : null;
 
-  return /*#__PURE__*/_react["default"].createElement("li", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("li", {
     style: (0, _extends2["default"])({}, STYLE.LI, _style),
-    onClick: onClick
-  }, /*#__PURE__*/_react["default"].createElement("span", null, title));
+    onClick: onClick,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      children: title
+    })
+  });
 };
 /*
 Tab.propTypes = {

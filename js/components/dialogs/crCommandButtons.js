@@ -9,20 +9,20 @@ var _react = _interopRequireDefault(require("react"));
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var crCommandButtons = function crCommandButtons(_ref) {
   var inst = _ref.inst,
       isDefault = _ref.isDefault;
-  return [isDefault && /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-    key: "default",
+  return [isDefault && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
     caption: "Default",
     timeout: 0,
     onClick: inst._handleDefault
-  }), /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-    key: "load",
+  }, "default"), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
     isPrimary: true,
     caption: "Load",
     onClick: inst._handleLoad
-  })].filter(Boolean);
+  }, "load")].filter(Boolean);
 };
 
 var _default = crCommandButtons;

@@ -13,6 +13,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _ModalDialogContainer = _interopRequireDefault(require("./ModalDialogContainer"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 //import PropTypes from "prop-types";
 var DialogContainer = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DialogContainer, _Component);
@@ -124,10 +126,11 @@ var DialogContainer = /*#__PURE__*/function (_Component) {
     var _this$state3 = this.state,
         isShow = _this$state3.isShow,
         currentDialog = _this$state3.currentDialog;
-    return /*#__PURE__*/_react["default"].createElement(_ModalDialogContainer["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialogContainer["default"], {
       isShow: isShow,
-      onClose: this._handlerClose.bind(null, currentDialog)
-    }, this._renderDialogs());
+      onClose: this._handlerClose.bind(null, currentDialog),
+      children: this._renderDialogs()
+    });
   };
 
   return DialogContainer;
