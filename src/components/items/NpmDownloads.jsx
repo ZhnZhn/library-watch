@@ -1,16 +1,18 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import Chart from '../charts/Chart'
 
 import crModelMore from './crNpmModelMore'
 
 import loadNpms from './loadNpms'
+import loadBundle from './loadBundle'
 
 import A from '../zhn-atoms/A'
 import ModalSlider from '../zhn-modal-slider/ModalSlider'
 import LineChart from '../charts/LineChart'
 import Caption from './ItemCaption'
 import PackageDetails from './PackageDetails'
+import BundleInfo from './BundleInfo'
 
 import CL from '../styles/CL'
 import STYLE from './Item.Style'
@@ -97,7 +99,8 @@ class NpmDownloads extends Component {
       isLoadNodeIco: false,
       isShowNodeIco: false,
       isLoadedNpms: false,
-      isShowNmps: false
+      isShowNmps: false,
+      isShowBundle: false
     }
   }
 
@@ -154,11 +157,28 @@ class NpmDownloads extends Component {
       isShowNmps: true
     })
   }
-
   _toggleNpms = () => {
     this.setState(prevState => ({
       isShowNmps: !prevState.isShowNmps
     }))
+  }
+
+  _hClickBundle = () => {
+    const { bundleJson } = this.state;    
+    if (bundleJson) {
+      this.setState(prevState => ({
+        isShowBundle: !prevState.isShowBundle
+      }))
+    } else {
+      const { packageName } = this.props;
+      loadBundle({ packageName, onLoad: this._onLoadBundle })
+    }
+  }
+  _onLoadBundle = (json) => {
+    this.setState({
+      bundleJson: json,
+      isShowBundle: true
+    })
   }
 
   _renderButtonWatch = () => {
@@ -184,7 +204,8 @@ class NpmDownloads extends Component {
       isShow, isMore,
       isButtons,
       isLoadNodeIco, isShowNodeIco,
-      isLoadedNpms, isShowNmps, npmsJson
+      isLoadedNpms, isShowNmps, npmsJson,
+      isShowBundle, bundleJson
     } = this.state
     , _lineChartConfig = Chart.fLineConfig({ labels, data })
     , _onClickNpms = isLoadedNpms
@@ -256,6 +277,13 @@ class NpmDownloads extends Component {
                title="Click to load package info from npms.io"
                onClick={_onClickNpms}
              />
+             <A.ButtonDownUp
+               style={{ ...S.BUTTON_DOWN_UP, ...S.ML_16 }}
+               isUp={isShowBundle}
+               caption="Bundlephobia.com"
+               title="Click to load package info from bundlephobia.com"
+               onClick={this._hClickBundle}
+             />
            </div>
           </A.ShowHide>
 
@@ -271,6 +299,9 @@ class NpmDownloads extends Component {
             </A.ShowHide>
             <A.ShowHide isShow={isShowNmps} style={S.MB_16}>
               {isLoadedNpms && <PackageDetails json={npmsJson} />}
+            </A.ShowHide>
+            <A.ShowHide isShow={isShowBundle} style={S.MB_16}>
+               <BundleInfo json={bundleJson} />
             </A.ShowHide>
           </div>
 

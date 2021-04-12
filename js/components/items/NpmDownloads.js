@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,13 +9,17 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _Chart = _interopRequireDefault(require("../charts/Chart"));
 
 var _crNpmModelMore = _interopRequireDefault(require("./crNpmModelMore"));
 
 var _loadNpms = _interopRequireDefault(require("./loadNpms"));
+
+var _loadBundle = _interopRequireDefault(require("./loadBundle"));
 
 var _A = _interopRequireDefault(require("../zhn-atoms/A"));
 
@@ -28,6 +30,8 @@ var _LineChart = _interopRequireDefault(require("../charts/LineChart"));
 var _ItemCaption = _interopRequireDefault(require("./ItemCaption"));
 
 var _PackageDetails = _interopRequireDefault(require("./PackageDetails"));
+
+var _BundleInfo = _interopRequireDefault(require("./BundleInfo"));
 
 var _CL = _interopRequireDefault(require("../styles/CL"));
 
@@ -182,8 +186,33 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
       });
     };
 
+    _this._hClickBundle = function () {
+      var bundleJson = _this.state.bundleJson;
+
+      if (bundleJson) {
+        _this.setState(function (prevState) {
+          return {
+            isShowBundle: !prevState.isShowBundle
+          };
+        });
+      } else {
+        var packageName = _this.props.packageName;
+        (0, _loadBundle["default"])({
+          packageName: packageName,
+          onLoad: _this._onLoadBundle
+        });
+      }
+    };
+
+    _this._onLoadBundle = function (json) {
+      _this.setState({
+        bundleJson: json,
+        isShowBundle: true
+      });
+    };
+
     _this._renderButtonWatch = function () {
-      return /*#__PURE__*/_react["default"].createElement(_A["default"].ButtonCircle, {
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ButtonCircle, {
         caption: "W",
         title: "Add to WatchList",
         style: S.BTN_CIRCLE,
@@ -203,7 +232,8 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
       isLoadNodeIco: false,
       isShowNodeIco: false,
       isLoadedNpms: false,
-      isShowNmps: false
+      isShowNmps: false,
+      isShowBundle: false
     };
     return _this;
   }
@@ -232,6 +262,8 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
         isLoadedNpms = _this$state.isLoadedNpms,
         isShowNmps = _this$state.isShowNmps,
         npmsJson = _this$state.npmsJson,
+        isShowBundle = _this$state.isShowBundle,
+        bundleJson = _this$state.bundleJson,
         _lineChartConfig = _Chart["default"].fLineConfig({
       labels: labels,
       data: data
@@ -239,70 +271,97 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
         _onClickNpms = isLoadedNpms ? this._toggleNpms : this._hClickNpms,
         _infoStyle = isButtons ? (0, _extends2["default"])({}, S.ML_16, S.MT_16) : S.ML_16;
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: S.ROOT
-    }, /*#__PURE__*/_react["default"].createElement(_ModalSlider["default"], {
-      isShow: isMore,
-      className: _CL["default"].MENU_MORE,
-      model: this._MORE,
-      onClose: this._hToggleMore
-    }), /*#__PURE__*/_react["default"].createElement(_ItemCaption["default"], {
-      style: S.CAPTION,
-      onClose: onCloseItem
-    }, /*#__PURE__*/_react["default"].createElement(_A["default"].SvgMore, {
-      style: S.BT_MORE,
-      onClick: this._hClickMore
-    }), /*#__PURE__*/_react["default"].createElement("button", {
-      className: _CL["default"].BT_ITEM,
-      title: caption,
-      style: S.CAPTION_OPEN,
-      onClick: this._handlerToggleOpen
-    }, /*#__PURE__*/_react["default"].createElement("span", null, packageName), /*#__PURE__*/_react["default"].createElement(_A["default"].FormattedInteger, {
-      value: sumDownloads,
-      style: S.SPAN_SUM
-    }), /*#__PURE__*/_react["default"].createElement("span", {
-      style: S.SPAN_START
-    }, fromDate), /*#__PURE__*/_react["default"].createElement("span", null, toDate)), _isFn(onWatchItem) && this._renderButtonWatch()), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
-      isShow: isShow,
-      style: S.CHART_WRAPER
-    }, /*#__PURE__*/_react["default"].createElement(_LineChart["default"], {
-      data: _lineChartConfig,
-      options: CHART_OPTIONS
-    }), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
-      isShow: isButtons
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      style: S.ML_16
-    }, /*#__PURE__*/_react["default"].createElement("a", {
-      target: "_blank",
-      className: _CL["default"].SOURCE_LINK,
-      href: packageLink
-    }, "NPM Link"), /*#__PURE__*/_react["default"].createElement(_A["default"].ButtonDownUp, {
-      style: (0, _extends2["default"])({}, S.BUTTON_DOWN_UP, S.ML_16),
-      isUp: isShowNodeIco,
-      caption: "NodeICO",
-      title: "Package badge from Nodei.co",
-      onClick: this._handlerClickNodeIco
-    }), /*#__PURE__*/_react["default"].createElement(_A["default"].ButtonDownUp, {
-      style: (0, _extends2["default"])({}, S.BUTTON_DOWN_UP, S.ML_16),
-      isUp: isShowNmps,
-      caption: "NPMS.IO",
-      title: "Click to load package info from npms.io",
-      onClick: _onClickNpms
-    }))), /*#__PURE__*/_react["default"].createElement("div", {
-      style: _infoStyle
-    }, /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
-      isShow: isShowNodeIco,
-      style: S.MB_16
-    }, isLoadNodeIco && /*#__PURE__*/_react["default"].createElement(_A["default"].LinkImg, {
-      href: packageLink,
-      imgClass: "node-ico",
-      imgSrc: "" + BASE_NODEICO + packageName + SUFFIX_NODEICO
-    })), /*#__PURE__*/_react["default"].createElement(_A["default"].ShowHide, {
-      isShow: isShowNmps,
-      style: S.MB_16
-    }, isLoadedNpms && /*#__PURE__*/_react["default"].createElement(_PackageDetails["default"], {
-      json: npmsJson
-    })))));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: S.ROOT,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider["default"], {
+        isShow: isMore,
+        className: _CL["default"].MENU_MORE,
+        model: this._MORE,
+        onClose: this._hToggleMore
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption["default"], {
+        style: S.CAPTION,
+        onClose: onCloseItem,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].SvgMore, {
+          style: S.BT_MORE,
+          onClick: this._hClickMore
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+          className: _CL["default"].BT_ITEM,
+          title: caption,
+          style: S.CAPTION_OPEN,
+          onClick: this._handlerToggleOpen,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            children: packageName
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].FormattedInteger, {
+            value: sumDownloads,
+            style: S.SPAN_SUM
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            style: S.SPAN_START,
+            children: fromDate
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            children: toDate
+          })]
+        }), _isFn(onWatchItem) && this._renderButtonWatch()]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_A["default"].ShowHide, {
+        isShow: isShow,
+        style: S.CHART_WRAPER,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LineChart["default"], {
+          data: _lineChartConfig,
+          options: CHART_OPTIONS
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ShowHide, {
+          isShow: isButtons,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+            style: S.ML_16,
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+              target: "_blank",
+              className: _CL["default"].SOURCE_LINK,
+              href: packageLink,
+              children: "NPM Link"
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ButtonDownUp, {
+              style: (0, _extends2["default"])({}, S.BUTTON_DOWN_UP, S.ML_16),
+              isUp: isShowNodeIco,
+              caption: "NodeICO",
+              title: "Package badge from Nodei.co",
+              onClick: this._handlerClickNodeIco
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ButtonDownUp, {
+              style: (0, _extends2["default"])({}, S.BUTTON_DOWN_UP, S.ML_16),
+              isUp: isShowNmps,
+              caption: "NPMS.IO",
+              title: "Click to load package info from npms.io",
+              onClick: _onClickNpms
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ButtonDownUp, {
+              style: (0, _extends2["default"])({}, S.BUTTON_DOWN_UP, S.ML_16),
+              isUp: isShowBundle,
+              caption: "Bundlephobia.com",
+              title: "Click to load package info from bundlephobia.com",
+              onClick: this._hClickBundle
+            })]
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          style: _infoStyle,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ShowHide, {
+            isShow: isShowNodeIco,
+            style: S.MB_16,
+            children: isLoadNodeIco && /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].LinkImg, {
+              href: packageLink,
+              imgClass: "node-ico",
+              imgSrc: "" + BASE_NODEICO + packageName + SUFFIX_NODEICO
+            })
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ShowHide, {
+            isShow: isShowNmps,
+            style: S.MB_16,
+            children: isLoadedNpms && /*#__PURE__*/(0, _jsxRuntime.jsx)(_PackageDetails["default"], {
+              json: npmsJson
+            })
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ShowHide, {
+            isShow: isShowBundle,
+            style: S.MB_16,
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_BundleInfo["default"], {
+              json: bundleJson
+            })
+          })]
+        })]
+      })]
+    });
   };
 
   return NpmDownloads;

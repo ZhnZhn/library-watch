@@ -1,0 +1,19 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/loadBundle.js"
+ ],
+ "file": "../../../src/components/items/loadBundle.js",
+ "names": [
+  "C",
+  "NAME",
+  "URI",
+  "_crBundleUri",
+  "packageName",
+  "loadBundle",
+  "onLoad",
+  "name",
+  "uri"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAE,kBADE;AAERC,EAAAA,GAAG,EAAE;AAFG,CAAV;;AAKA,IAAMC,YAAY,GAAG,SAAfA,YAAe,CAAAC,WAAW;AAAA,cAAOJ,CAAC,CAACE,GAAT,GAAeE,WAAf;AAAA,CAAhC;;AAEA,IAAMC,UAAU,GAAG,SAAbA,UAAa;AAAA,MAAGD,WAAH,QAAGA,WAAH;AAAA,MAAgBE,MAAhB,QAAgBA,MAAhB;AAAA,SAA6B,0BAAS;AACvDC,IAAAA,IAAI,EAAEP,CAAC,CAACC,IAD+C;AAEvDO,IAAAA,GAAG,EAAEL,YAAY,CAACC,WAAD,CAFsC;AAGvDE,IAAAA,MAAM,EAANA;AAHuD,GAAT,CAA7B;AAAA,CAAnB;;eAMeD,U"
+}
