@@ -1,22 +1,8 @@
-import React from 'react'
-
-import CL from '../styles/CL'
+import ErrMsg from './ErrMsg';
+import CellValue from './CellValue';
+import Link from './Link';
 
 const S = {
-  ERR: {
-    color: '#f44336',
-    fontWeight: 'bold'
-  },
-  CELL: {
-    display: 'inline-block',
-    marginLeft: 8
-  },
-  CAPTION: {
-    fontWeight: 600
-  },
-  VALUE: {
-    textAlign: 'center'
-  },
   REPO: {
     paddingTop: 4,
     paddingLeft: 8
@@ -25,25 +11,6 @@ const S = {
     marginRight: 24
   }
 };
-
-const ErrMsg = ({ errMsg }) => (
-  <div style={S.ERR}>{errMsg}</div>
-);
-
-const CellValue = ({ caption='', value='N/A' }) => (
-  <div style={S.CELL}>
-    <div style={S.CAPTION}>{caption}</div>
-    <div style={S.VALUE}>{value}</div>
-  </div>
-);
-
-const Link = ({ style, href, caption}) => href
- ? (<a target="_blank"
-     className={CL.SOURCE_LINK}
-     style={style}
-     href={href}
-    >{caption}</a>)
- : null;
 
 const _crRepositoryCaption = href =>
   href.indexOf('https://github.com') !== -1

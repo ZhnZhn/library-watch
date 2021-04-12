@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/ErrMsg.js"
+ ],
+ "file": "../../../src/components/items/ErrMsg.js",
+ "names": [
+  "S",
+  "ERR",
+  "color",
+  "fontWeight",
+  "ErrMsg",
+  "errMsg"
+ ],
+ "mappings": ";;;;;;;AAAA,IAAMA,CAAC,GAAG;AACRC,EAAAA,GAAG,EAAE;AACHC,IAAAA,KAAK,EAAE,SADJ;AAEHC,IAAAA,UAAU,EAAE;AAFT;AADG,CAAV;;AAOA,IAAMC,MAAM,GAAG,SAATA,MAAS;AAAA,MAAGC,MAAH,QAAGA,MAAH;AAAA,sBACb;AAAK,IAAA,KAAK,EAAEL,CAAC,CAACC,GAAd;AAAA,cAAoBI;AAApB,IADa;AAAA,CAAf;;eAIeD,M"
+}
