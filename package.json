@@ -63,8 +63,8 @@
     "lodash.merge": "^4.6.2",
     "papaparse": "^5.2.0",
     "raven-js": "^3.27.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "reflux-core": "^1.0.0",
     "timeago.js": "^2.0.5"
   }
