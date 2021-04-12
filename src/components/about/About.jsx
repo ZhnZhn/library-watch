@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 import { ComponentActionTypes as CAT } from '../../flux/actions/ComponentActions';
 import { ChartActionTypes as CHAT } from '../../flux/actions/ChartActions';
@@ -14,6 +14,12 @@ import IconLogoBar from './IconLogoBar';
 import STYLE from '../styles/ContainerStyles';
 
 const S = {
+  BLOCK: {
+    display: 'block'
+  },
+  NONE : {
+    display: 'none'
+  },
   SCROLL_DIV : {
     overflowY: 'auto',
     height: '92%',
@@ -70,12 +76,12 @@ class About extends Component {
 
   render(){
     const { isShow } = this.state
-        , _classOpen = isShow
-              ? "show-popup"
-              : null
-        , _styleOpen = isShow
-              ? {display: 'block'}
-              : {display: 'none'};
+    , _classOpen = isShow
+          ? "show-popup"
+          : null
+    , _styleOpen = isShow
+          ? S.BLOCK
+          : S.NONE;
 
     return (
       <div
@@ -124,10 +130,16 @@ class About extends Component {
                caption="NPMS.IO"
             />
             <LinkToken
+               href="https://bundlephobia.com/"
+               color="#273547"
+               title="Bundlephobia.com"
+               caption="Bundlephobia.com"
+            />
+            <LinkToken
                href="https://stackexchange.com/"
                color="#3186C9"
-               title="Stack Exchange"
-               caption="Stack Exchange"
+               title="StackExchange"
+               caption="StackExchange"
             />
             <LinkToken
                href="https://gs.statcounter.com/"
@@ -173,7 +185,7 @@ class About extends Component {
             <p style={S.MARGIN_BOTTOM}>
                After clicking a button Show in a Dialog opens Container with Items
                or empty. After closing a Container all Items remains.
-               In one-time max three Item Dialogs can be opened.               
+               In one-time max three Item Dialogs can be opened.
             </p>
             <p>
               <Token color="gray">
