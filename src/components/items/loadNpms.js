@@ -1,31 +1,16 @@
+import loadJson from './loadJson';
 
 const C = {
-  NPMS_URI: 'https://api.npms.io/v2/package/',
-  ERR_RES: "Npms.io response isn't OK",
-  ERR_FORMAT_DF: "Npms.io response isn't valid"
+  NAME: 'Npms.io',
+  NPMS_URI: 'https://api.npms.io/v2/package/'
 };
 
 const _crNpmsUri = packageName => `${C.NPMS_URI}${packageName}`;
 
-const loadNpms = ({ packageName, onLoad }) => fetch(_crNpmsUri(packageName))
-  .then(res => {
-     const { status } = res;
-     if (status>199 && status<300) {
-       return res.json();
-     } else {
-       throw new Error(C.ERR_RES);
-     }
-  })
-  .then(json => {
-    if (json && !json.code) {
-      onLoad(json)
-    } else {
-      throw new Error(json.message || C.ERR_FORMAT_DF)
-    }
-  })
-  .catch(err => {
-    console.log(err)
-    onLoad({ errMsg: err.message })
-  })
+const loadNpms = ({ packageName, onLoad }) => loadJson({
+  name: C.NAME,
+  uri: _crNpmsUri(packageName),
+  onLoad
+});
 
-  export default loadNpms
+export default loadNpms
