@@ -1,15 +1,14 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL = "github-link";
 var S = {
   WRAPPER: {
+    display: 'inline-block',
     paddingLeft: 8,
     paddingRight: 8
   }
@@ -21,17 +20,19 @@ var LinkToken = function LinkToken(_ref) {
       caption = _ref.caption,
       title = _ref.title,
       children = _ref.children;
-  return /*#__PURE__*/_react["default"].createElement("span", {
-    style: S.WRAPPER
-  }, /*#__PURE__*/_react["default"].createElement("a", {
-    className: CL,
-    style: {
-      color: color
-    },
-    target: "_blank",
-    href: href,
-    title: title
-  }, caption || children));
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    style: S.WRAPPER,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+      className: CL,
+      style: {
+        color: color
+      },
+      target: "_blank",
+      href: href,
+      title: title,
+      children: caption || children
+    })
+  });
 };
 
 var _default = LinkToken;
