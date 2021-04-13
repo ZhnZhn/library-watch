@@ -5,7 +5,11 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _ErrMsg = _interopRequireDefault(require("./ErrMsg"));
+var _crGitRepositoryHref = _interopRequireDefault(require("./crGitRepositoryHref"));
+
+var _crGitRepositoryCaption = _interopRequireDefault(require("./crGitRepositoryCaption"));
+
+var _checkResponseJson = _interopRequireDefault(require("./checkResponseJson"));
 
 var _CellValue = _interopRequireDefault(require("./CellValue"));
 
@@ -16,13 +20,16 @@ var _jsxRuntime = require("react/jsx-runtime");
 var S = {
   ML_8: {
     marginLeft: 8
+  },
+  MR_24: {
+    marginRight: 24
   }
 };
 var C = {
   URI: 'https://bundlephobia.com/result?p='
 };
 
-var _crHref = function _crHref(name, version) {
+var _crBundleHref = function _crBundleHref(name, version) {
   return "" + C.URI + name + "@" + version;
 };
 
@@ -32,17 +39,10 @@ var _toKbStr = function _toKbStr(sizeByte) {
 
 var BundleInfo = function BundleInfo(_ref) {
   var json = _ref.json;
+  var result = (0, _checkResponseJson["default"])(json);
 
-  if (!json) {
-    return null;
-  }
-
-  var errMsg = json.errMsg;
-
-  if (errMsg) {
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ErrMsg["default"], {
-      errMsg: errMsg
-    });
+  if (result !== true) {
+    return result;
   }
 
   var name = json.name,
@@ -51,7 +51,10 @@ var BundleInfo = function BundleInfo(_ref) {
       size = json.size,
       dependencyCount = json.dependencyCount,
       description = json.description,
-      href = _crHref(name, version);
+      repository = json.repository,
+      gitHref = (0, _crGitRepositoryHref["default"])(repository),
+      gitCaption = (0, _crGitRepositoryCaption["default"])(gitHref),
+      bundleHref = _crBundleHref(name, version);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
@@ -74,12 +77,16 @@ var BundleInfo = function BundleInfo(_ref) {
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       style: S.ML_8,
       children: description
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       style: S.ML_8,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Link["default"], {
-        href: href,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Link["default"], {
+        href: gitHref,
+        caption: gitCaption,
+        style: S.MR_24
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Link["default"], {
+        href: bundleHref,
         caption: "Bundelphobia Link"
-      })
+      })]
     })]
   });
 };
