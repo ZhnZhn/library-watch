@@ -1,1 +1,21 @@
-{"version":3,"sources":["../../../src/components/items/loadNpms.js"],"names":["C","NAME","NPMS_URI","_crNpmsUri","packageName","loadNpms","onLoad","name","uri"],"mappings":";;;;;;;AAAA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAE,SADE;AAERC,EAAAA,QAAQ,EAAE;AAFF,CAAV;;AAKA,IAAMC,UAAU,GAAG,SAAbA,UAAa,CAAAC,WAAW;AAAA,cAAOJ,CAAC,CAACE,QAAT,GAAoBE,WAApB;AAAA,CAA9B;;AAEA,IAAMC,QAAQ,GAAG,SAAXA,QAAW;AAAA,MAAGD,WAAH,QAAGA,WAAH;AAAA,MAAgBE,MAAhB,QAAgBA,MAAhB;AAAA,SAA6B,0BAAS;AACrDC,IAAAA,IAAI,EAAEP,CAAC,CAACC,IAD6C;AAErDO,IAAAA,GAAG,EAAEL,UAAU,CAACC,WAAD,CAFsC;AAGrDE,IAAAA,MAAM,EAANA;AAHqD,GAAT,CAA7B;AAAA,CAAjB;;eAMeD,Q","sourcesContent":["import loadJson from './loadJson';\r\n\r\nconst C = {\r\n  NAME: 'Npms.io',\r\n  NPMS_URI: 'https://api.npms.io/v2/package/'\r\n};\r\n\r\nconst _crNpmsUri = packageName => `${C.NPMS_URI}${packageName}`;\r\n\r\nconst loadNpms = ({ packageName, onLoad }) => loadJson({\r\n  name: C.NAME,\r\n  uri: _crNpmsUri(packageName),\r\n  onLoad\r\n});\r\n\r\nexport default loadNpms\r\n"],"file":"loadNpms.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/loadNpms.js"
+ ],
+ "file": "../../../src/components/items/loadNpms.js",
+ "names": [
+  "C",
+  "NAME",
+  "NPMS_URI",
+  "WAIT",
+  "_crNpmsUri",
+  "packageName",
+  "_loadNpms",
+  "onLoad",
+  "name",
+  "uri",
+  "loadNpms"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAE,SADE;AAERC,EAAAA,QAAQ,EAAE,iCAFF;AAGRC,EAAAA,IAAI,EAAE;AAHE,CAAV;;AAMA,IAAMC,UAAU,GAAG,SAAbA,UAAa,CAAAC,WAAW;AAAA,cAAOL,CAAC,CAACE,QAAT,GAAoBG,WAApB;AAAA,CAA9B;;AAEA,IAAMC,SAAS,GAAG,SAAZA,SAAY;AAAA,MAAGD,WAAH,QAAGA,WAAH;AAAA,MAAgBE,MAAhB,QAAgBA,MAAhB;AAAA,SAA6B,0BAAS;AACtDC,IAAAA,IAAI,EAAER,CAAC,CAACC,IAD8C;AAEtDQ,IAAAA,GAAG,EAAEL,UAAU,CAACC,WAAD,CAFuC;AAGtDE,IAAAA,MAAM,EAANA;AAHsD,GAAT,CAA7B;AAAA,CAAlB;;AAMA,IAAMG,QAAQ,GAAG,8BAAaJ,SAAb,EAAwBN,CAAC,CAACG,IAA1B,CAAjB;eAEeO,Q"
+}

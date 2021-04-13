@@ -1,1 +1,21 @@
-{"version":3,"sources":["../../../src/components/items/loadBundle.js"],"names":["C","NAME","URI","_crBundleUri","packageName","loadBundle","onLoad","name","uri"],"mappings":";;;;;;;AAAA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAE,kBADE;AAERC,EAAAA,GAAG,EAAE;AAFG,CAAV;;AAKA,IAAMC,YAAY,GAAG,SAAfA,YAAe,CAAAC,WAAW;AAAA,cAAOJ,CAAC,CAACE,GAAT,GAAeE,WAAf;AAAA,CAAhC;;AAEA,IAAMC,UAAU,GAAG,SAAbA,UAAa;AAAA,MAAGD,WAAH,QAAGA,WAAH;AAAA,MAAgBE,MAAhB,QAAgBA,MAAhB;AAAA,SAA6B,0BAAS;AACvDC,IAAAA,IAAI,EAAEP,CAAC,CAACC,IAD+C;AAEvDO,IAAAA,GAAG,EAAEL,YAAY,CAACC,WAAD,CAFsC;AAGvDE,IAAAA,MAAM,EAANA;AAHuD,GAAT,CAA7B;AAAA,CAAnB;;eAMeD,U","sourcesContent":["import loadJson from './loadJson'\r\n\r\nconst C = {\r\n  NAME: 'Bundlephobia.com',\r\n  URI: 'https://bundlephobia.com/api/size?package='\r\n};\r\n\r\nconst _crBundleUri = packageName => `${C.URI}${packageName}`;\r\n\r\nconst loadBundle = ({ packageName, onLoad }) => loadJson({\r\n  name: C.NAME,\r\n  uri: _crBundleUri(packageName),\r\n  onLoad\r\n});\r\n\r\nexport default loadBundle\r\n"],"file":"loadBundle.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/loadBundle.js"
+ ],
+ "file": "../../../src/components/items/loadBundle.js",
+ "names": [
+  "C",
+  "NAME",
+  "URI",
+  "WAIT",
+  "_crBundleUri",
+  "packageName",
+  "_loadBundle",
+  "onLoad",
+  "name",
+  "uri",
+  "loadBundle"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAE,kBADE;AAERC,EAAAA,GAAG,EAAE,4CAFG;AAGRC,EAAAA,IAAI,EAAE;AAHE,CAAV;;AAMA,IAAMC,YAAY,GAAG,SAAfA,YAAe,CAAAC,WAAW;AAAA,cAAOL,CAAC,CAACE,GAAT,GAAeG,WAAf;AAAA,CAAhC;;AAEA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,MAAGD,WAAH,QAAGA,WAAH;AAAA,MAAgBE,MAAhB,QAAgBA,MAAhB;AAAA,SAA6B,0BAAS;AACxDC,IAAAA,IAAI,EAAER,CAAC,CAACC,IADgD;AAExDQ,IAAAA,GAAG,EAAEL,YAAY,CAACC,WAAD,CAFuC;AAGxDE,IAAAA,MAAM,EAANA;AAHwD,GAAT,CAA7B;AAAA,CAApB;;AAMA,IAAMG,UAAU,GAAG,8BAAaJ,WAAb,EAA0BN,CAAC,CAACG,IAA5B,CAAnB;eAEeO,U"
+}
