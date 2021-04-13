@@ -162,27 +162,36 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
       });
     };
 
-    _this._hClickNpms = function () {
-      var packageName = _this.props.packageName;
-      (0, _loadNpms["default"])({
-        packageName: packageName,
-        onLoad: _this._onLoadNpms
+    _this._toggleByPropName = function (propName) {
+      _this.setState(function (prevState) {
+        var _ref;
+
+        return _ref = {}, _ref[propName] = !prevState[propName], _ref;
       });
+    };
+
+    _this._loadJson = function (load, onLoad) {
+      var packageName = _this.props.packageName;
+      load({
+        packageName: packageName,
+        onLoad: onLoad
+      });
+    };
+
+    _this._hClickNpms = function () {
+      var npmsJson = _this.state.npmsJson;
+
+      if (npmsJson) {
+        _this._toggleByPropName('isShowNmps');
+      } else {
+        _this._loadJson(_loadNpms["default"], _this._onLoadNpms);
+      }
     };
 
     _this._onLoadNpms = function (json) {
       _this.setState({
         npmsJson: json,
-        isLoadedNpms: true,
         isShowNmps: true
-      });
-    };
-
-    _this._toggleNpms = function () {
-      _this.setState(function (prevState) {
-        return {
-          isShowNmps: !prevState.isShowNmps
-        };
       });
     };
 
@@ -190,17 +199,9 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
       var bundleJson = _this.state.bundleJson;
 
       if (bundleJson) {
-        _this.setState(function (prevState) {
-          return {
-            isShowBundle: !prevState.isShowBundle
-          };
-        });
+        _this._toggleByPropName('isShowBundle');
       } else {
-        var packageName = _this.props.packageName;
-        (0, _loadBundle["default"])({
-          packageName: packageName,
-          onLoad: _this._onLoadBundle
-        });
+        _this._loadJson(_loadBundle["default"], _this._onLoadBundle);
       }
     };
 
@@ -231,7 +232,6 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
       isButtons: true,
       isLoadNodeIco: false,
       isShowNodeIco: false,
-      isLoadedNpms: false,
       isShowNmps: false,
       isShowBundle: false
     };
@@ -259,7 +259,6 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
         isButtons = _this$state.isButtons,
         isLoadNodeIco = _this$state.isLoadNodeIco,
         isShowNodeIco = _this$state.isShowNodeIco,
-        isLoadedNpms = _this$state.isLoadedNpms,
         isShowNmps = _this$state.isShowNmps,
         npmsJson = _this$state.npmsJson,
         isShowBundle = _this$state.isShowBundle,
@@ -268,7 +267,6 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
       labels: labels,
       data: data
     }),
-        _onClickNpms = isLoadedNpms ? this._toggleNpms : this._hClickNpms,
         _infoStyle = isButtons ? (0, _extends2["default"])({}, S.ML_16, S.MT_16) : S.ML_16;
 
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
@@ -327,7 +325,7 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
               isUp: isShowNmps,
               caption: "NPMS.IO",
               title: "Click to load package info from npms.io",
-              onClick: _onClickNpms
+              onClick: this._hClickNpms
             }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ButtonDownUp, {
               style: (0, _extends2["default"])({}, S.BUTTON_DOWN_UP, S.ML_16),
               isUp: isShowBundle,
@@ -349,7 +347,7 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ShowHide, {
             isShow: isShowNmps,
             style: S.MB_16,
-            children: isLoadedNpms && /*#__PURE__*/(0, _jsxRuntime.jsx)(_PackageDetails["default"], {
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_PackageDetails["default"], {
               json: npmsJson
             })
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ShowHide, {

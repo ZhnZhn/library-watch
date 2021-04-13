@@ -98,7 +98,6 @@ class NpmDownloads extends Component {
       isButtons: true,
       isLoadNodeIco: false,
       isShowNodeIco: false,
-      isLoadedNpms: false,
       isShowNmps: false,
       isShowBundle: false
     }
@@ -145,33 +144,39 @@ class NpmDownloads extends Component {
     });
   }
 
-  _hClickNpms = () => {
+  _toggleByPropName = propName => {
+    this.setState(prevState => ({
+      [propName]: !prevState[propName]
+    }))
+  }
+  _loadJson = (load, onLoad) => {
     const { packageName } = this.props;
-    loadNpms({ packageName, onLoad: this._onLoadNpms })
+    load({ packageName, onLoad })
   }
 
+
+ _hClickNpms = () => {
+    const { npmsJson } = this.state;
+    if (npmsJson) {
+      this._toggleByPropName('isShowNmps')
+    } else {
+      this._loadJson(loadNpms, this._onLoadNpms)
+    }
+  }
   _onLoadNpms = (json) => {
     this.setState({
       npmsJson: json,
-      isLoadedNpms: true,
       isShowNmps: true
     })
   }
-  _toggleNpms = () => {
-    this.setState(prevState => ({
-      isShowNmps: !prevState.isShowNmps
-    }))
-  }
+
 
   _hClickBundle = () => {
-    const { bundleJson } = this.state;    
+    const { bundleJson } = this.state;
     if (bundleJson) {
-      this.setState(prevState => ({
-        isShowBundle: !prevState.isShowBundle
-      }))
+      this._toggleByPropName('isShowBundle')
     } else {
-      const { packageName } = this.props;
-      loadBundle({ packageName, onLoad: this._onLoadBundle })
+      this._loadJson(loadBundle, this._onLoadBundle)
     }
   }
   _onLoadBundle = (json) => {
@@ -204,13 +209,10 @@ class NpmDownloads extends Component {
       isShow, isMore,
       isButtons,
       isLoadNodeIco, isShowNodeIco,
-      isLoadedNpms, isShowNmps, npmsJson,
+      isShowNmps, npmsJson,
       isShowBundle, bundleJson
     } = this.state
     , _lineChartConfig = Chart.fLineConfig({ labels, data })
-    , _onClickNpms = isLoadedNpms
-        ? this._toggleNpms
-        : this._hClickNpms
     , _infoStyle = isButtons
           ? { ...S.ML_16, ...S.MT_16 }
           : S.ML_16;
@@ -275,7 +277,7 @@ class NpmDownloads extends Component {
                isUp={isShowNmps}
                caption="NPMS.IO"
                title="Click to load package info from npms.io"
-               onClick={_onClickNpms}
+               onClick={this._hClickNpms}
              />
              <A.ButtonDownUp
                style={{ ...S.BUTTON_DOWN_UP, ...S.ML_16 }}
@@ -298,7 +300,7 @@ class NpmDownloads extends Component {
               }
             </A.ShowHide>
             <A.ShowHide isShow={isShowNmps} style={S.MB_16}>
-              {isLoadedNpms && <PackageDetails json={npmsJson} />}
+              <PackageDetails json={npmsJson} />
             </A.ShowHide>
             <A.ShowHide isShow={isShowBundle} style={S.MB_16}>
                <BundleInfo json={bundleJson} />
