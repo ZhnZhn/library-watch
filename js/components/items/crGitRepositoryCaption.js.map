@@ -1,0 +1,13 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/crGitRepositoryCaption.js"
+ ],
+ "file": "../../../src/components/items/crGitRepositoryCaption.js",
+ "names": [
+  "crGitRepositoryCaption",
+  "href",
+  "indexOf"
+ ],
+ "mappings": ";;;;;AAAA,IAAMA,sBAAsB,GAAG,SAAzBA,sBAAyB,CAAAC,IAAI;AAAA,SACjC,CAACA,IAAI,IAAI,EAAT,EAAaC,OAAb,CAAqB,oBAArB,MAA+C,CAAC,CAAhD,GACI,mBADJ,GAEI,YAH6B;AAAA,CAAnC;;eAKeF,sB"
+}

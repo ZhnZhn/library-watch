@@ -1,0 +1,13 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/crGitRepositoryHref.js"
+ ],
+ "file": "../../../src/components/items/crGitRepositoryHref.js",
+ "names": [
+  "crGitRepositoryHref",
+  "url",
+  "replace"
+ ],
+ "mappings": ";;;;;AAAA,IAAMA,mBAAmB,GAAG,SAAtBA,mBAAsB,CAAAC,GAAG;AAAA,SAAI,CAACA,GAAG,IAAI,EAAR,EACjCC,OADiC,CACzB,MADyB,EAClB,EADkB,EAEjCA,OAFiC,CAEzB,MAFyB,EAEjB,EAFiB,EAGjCA,OAHiC,CAGzB,QAHyB,EAGhB,UAHgB,CAAJ;AAAA,CAA/B;;eAKeF,mB"
+}

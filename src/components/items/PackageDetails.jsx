@@ -1,4 +1,7 @@
-import ErrMsg from './ErrMsg';
+import crGitRepositoryHref from './crGitRepositoryHref';
+import crGitRepositoryCaption from './crGitRepositoryCaption';
+
+import checkResponseJson from './checkResponseJson';
 import CellValue from './CellValue';
 import Link from './Link';
 
@@ -12,11 +15,6 @@ const S = {
   }
 };
 
-const _crRepositoryCaption = href =>
-  href.indexOf('https://github.com') !== -1
-    ? 'GitHub Repository'
-    : 'Repository';
-
 const RowLinks = ({ repoHref, hpHref }) => {
  if (!repoHref && !hpHref) {
    return null;
@@ -26,7 +24,7 @@ const RowLinks = ({ repoHref, hpHref }) => {
      <Link
         style={S.REPO_LINK}
         href={repoHref}
-        caption={_crRepositoryCaption(repoHref)}
+        caption={crGitRepositoryCaption(repoHref)}
      />
      <Link
         href={hpHref}
@@ -36,27 +34,33 @@ const RowLinks = ({ repoHref, hpHref }) => {
  );
 }
 
-const _trimTo5 = n => (''+n).substr(0, 5);
-const _toYear = strDate => (''+strDate)
- .split('T')[0] || '';
+const _isStr = str => typeof str === 'string';
+const _isNumber = n => typeof n === 'number';
+const _trimTo5 = n => _isNumber(n)
+  ? (''+n).substring(0, 5)
+  : '';
+const _toYear = strDate => _isStr(strDate)
+  ? strDate.split('T')[0]
+  : '';
 
 const _crRepositoryHref = ({ type, url }) => type === 'git'
- ? url.replace('git+','').replace('.git', '').replace('git://','https://')
+ ? crGitRepositoryHref(url)
  : void 0;
 
 const PackageDetails = ({ json }) => {
-  const { errMsg, analyzedAt, collected, score } = json || {}
-
-  if (errMsg) {
-    return (<ErrMsg errMsg={errMsg} />);
+  const result = checkResponseJson(json);
+  if (result !== true) {
+    return result;
   }
 
-  const { github, metadata } = collected || {}
+  const { analyzedAt, collected, score } = json
+  , { github, metadata } = collected || {}
   , { starsCount, issues, homepage } = github || {}
   , { openCount } = issues || {}
   , { version, license, repository } = metadata || {}
   , { final } = score || {}
-  , _repositoryHref = _crRepositoryHref(repository || {})
+  , _repositoryHref = _crRepositoryHref(repository || {});
+
   return (
     <>
       <div>

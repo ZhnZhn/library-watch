@@ -5,7 +5,11 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _ErrMsg = _interopRequireDefault(require("./ErrMsg"));
+var _crGitRepositoryHref = _interopRequireDefault(require("./crGitRepositoryHref"));
+
+var _crGitRepositoryCaption = _interopRequireDefault(require("./crGitRepositoryCaption"));
+
+var _checkResponseJson = _interopRequireDefault(require("./checkResponseJson"));
 
 var _CellValue = _interopRequireDefault(require("./CellValue"));
 
@@ -23,10 +27,6 @@ var S = {
   }
 };
 
-var _crRepositoryCaption = function _crRepositoryCaption(href) {
-  return href.indexOf('https://github.com') !== -1 ? 'GitHub Repository' : 'Repository';
-};
-
 var RowLinks = function RowLinks(_ref) {
   var repoHref = _ref.repoHref,
       hpHref = _ref.hpHref;
@@ -40,7 +40,7 @@ var RowLinks = function RowLinks(_ref) {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Link["default"], {
       style: S.REPO_LINK,
       href: repoHref,
-      caption: _crRepositoryCaption(repoHref)
+      caption: (0, _crGitRepositoryCaption["default"])(repoHref)
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Link["default"], {
       href: hpHref,
       caption: "HomePage"
@@ -48,50 +48,54 @@ var RowLinks = function RowLinks(_ref) {
   });
 };
 
+var _isStr = function _isStr(str) {
+  return typeof str === 'string';
+};
+
+var _isNumber = function _isNumber(n) {
+  return typeof n === 'number';
+};
+
 var _trimTo5 = function _trimTo5(n) {
-  return ('' + n).substr(0, 5);
+  return _isNumber(n) ? ('' + n).substring(0, 5) : '';
 };
 
 var _toYear = function _toYear(strDate) {
-  return ('' + strDate).split('T')[0] || '';
+  return _isStr(strDate) ? strDate.split('T')[0] : '';
 };
 
 var _crRepositoryHref = function _crRepositoryHref(_ref2) {
   var type = _ref2.type,
       url = _ref2.url;
-  return type === 'git' ? url.replace('git+', '').replace('.git', '').replace('git://', 'https://') : void 0;
+  return type === 'git' ? (0, _crGitRepositoryHref["default"])(url) : void 0;
 };
 
 var PackageDetails = function PackageDetails(_ref3) {
   var json = _ref3.json;
+  var result = (0, _checkResponseJson["default"])(json);
 
-  var _ref4 = json || {},
-      errMsg = _ref4.errMsg,
-      analyzedAt = _ref4.analyzedAt,
-      collected = _ref4.collected,
-      score = _ref4.score;
-
-  if (errMsg) {
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ErrMsg["default"], {
-      errMsg: errMsg
-    });
+  if (result !== true) {
+    return result;
   }
 
-  var _ref5 = collected || {},
-      github = _ref5.github,
-      metadata = _ref5.metadata,
-      _ref6 = github || {},
-      starsCount = _ref6.starsCount,
-      issues = _ref6.issues,
-      homepage = _ref6.homepage,
-      _ref7 = issues || {},
-      openCount = _ref7.openCount,
-      _ref8 = metadata || {},
-      version = _ref8.version,
-      license = _ref8.license,
-      repository = _ref8.repository,
-      _ref9 = score || {},
-      _final = _ref9["final"],
+  var analyzedAt = json.analyzedAt,
+      collected = json.collected,
+      score = json.score,
+      _ref4 = collected || {},
+      github = _ref4.github,
+      metadata = _ref4.metadata,
+      _ref5 = github || {},
+      starsCount = _ref5.starsCount,
+      issues = _ref5.issues,
+      homepage = _ref5.homepage,
+      _ref6 = issues || {},
+      openCount = _ref6.openCount,
+      _ref7 = metadata || {},
+      version = _ref7.version,
+      license = _ref7.license,
+      repository = _ref7.repository,
+      _ref8 = score || {},
+      _final = _ref8["final"],
       _repositoryHref = _crRepositoryHref(repository || {});
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
