@@ -73,14 +73,13 @@ var Chart = {
         data = _ref3$data === void 0 ? [[0, 0]] : _ref3$data,
         _ref3$numVisible = _ref3.numVisible,
         numVisible = _ref3$numVisible === void 0 ? 5 : _ref3$numVisible;
-    var datasets = [],
-        numColors = COLORS.length;
-    data.forEach(function (arr, index) {
-      datasets.push(_crDataset({
+    var numColors = COLORS.length,
+        datasets = data.map(function (arr, index) {
+      return _crDataset({
         data: arr,
         strColor: COLORS[index % numColors],
         hidden: index >= numVisible ? true : false
-      }));
+      });
     });
     return {
       labels: labels,

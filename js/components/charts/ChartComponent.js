@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,42 +9,26 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = require("react");
 
 var _chart = _interopRequireDefault(require("chart.js"));
 
-var _deepEqual = _interopRequireDefault(require("./deepEqual"));
+var _configChart = _interopRequireDefault(require("./configChart"));
+
+var _deepEqual = _interopRequireDefault(require("../../utils/deepEqual"));
+
+var _omit = _interopRequireDefault(require("../../utils/omit"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-//import ReactDOM from 'react-dom';
 var IGNORED_PROPERTIES = ['id', 'width', 'height', 'onElementsClick'];
-var _configMerge = _chart["default"].helpers.configMerge;
 
 var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
-};
+},
+    _configMerge = _chart["default"].helpers.configMerge;
 
-var _assign = Object.assign;
-
-_assign(_chart["default"].defaults.global, {
-  defaultFontColor: 'black',
-  defaultFontSize: 14,
-  defaultFontStyle: 'bold'
-});
-
-_assign(_chart["default"].defaults.global.tooltips, {
-  titleFontColor: '#a487d4',
-  titleFontSize: 16,
-  bodyFontColor: '#80c040',
-  bodyFontSize: 16
-});
-
-_assign(_chart["default"].defaults.global.legend, {
-  display: true,
-  position: 'bottom'
-});
-
+(0, _configChart["default"])(_chart["default"]);
 var DF_OPTIONS = {
   tooltips: {
     callbacks: {
@@ -56,18 +38,6 @@ var DF_OPTIONS = {
       }
     }
   }
-};
-
-var _crObjWithoutProperties = function _crObjWithoutProperties(obj, keys) {
-  var target = {};
-
-  for (var propName in obj) {
-    if (keys.indexOf(propName) >= 0) continue;
-    if (!Object.prototype.hasOwnProperty.call(obj, propName)) continue;
-    target[propName] = obj[propName];
-  }
-
-  return target;
 };
 
 var ChartComponent = /*#__PURE__*/function (_Component) {
@@ -82,7 +52,7 @@ var ChartComponent = /*#__PURE__*/function (_Component) {
 
     _this = _Component.call.apply(_Component, [this].concat(args)) || this;
 
-    _this.updateChart = function () {
+    _this._updateChart = function () {
       var _this$props = _this.props,
           data = _this$props.data,
           options = _this$props.options;
@@ -97,7 +67,7 @@ var ChartComponent = /*#__PURE__*/function (_Component) {
       _this.chart_instance.update();
     };
 
-    _this.renderChart = function () {
+    _this._renderChart = function () {
       var _this$props2 = _this.props,
           data = _this$props2.data,
           options = _this$props2.options,
@@ -111,12 +81,11 @@ var ChartComponent = /*#__PURE__*/function (_Component) {
       });
     };
 
-    _this.handleOnClick = function (evt) {
+    _this._hClick = function (evt) {
       var elems = _this.chart_instance.getElementsAtEvent(evt);
 
       if (elems.length) {
-        var onElementsClick = _this.props.onElementsClick;
-        onElementsClick(elems);
+        _this.props.onElementsClick(elems);
       }
     };
 
@@ -130,23 +99,22 @@ var ChartComponent = /*#__PURE__*/function (_Component) {
   var _proto = ChartComponent.prototype;
 
   _proto.componentDidMount = function componentDidMount() {
-    this.chart_instance = void 0;
-    this.renderChart();
+    this._renderChart();
   };
 
   _proto.componentDidUpdate = function componentDidUpdate() {
     if (this.props.redraw) {
       this.chart_instance.destroy();
-      this.renderChart();
+
+      this._renderChart();
     } else {
-      this.updateChart();
+      this._updateChart();
     }
   };
 
   _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
-    var compareNext = _crObjWithoutProperties(nextProps, IGNORED_PROPERTIES),
-        compareNow = _crObjWithoutProperties(this.props, IGNORED_PROPERTIES);
-
+    var compareNext = (0, _omit["default"])(nextProps, IGNORED_PROPERTIES),
+        compareNow = (0, _omit["default"])(this.props, IGNORED_PROPERTIES);
     return !(0, _deepEqual["default"])(compareNext, compareNow, {
       strict: true
     });
@@ -161,7 +129,7 @@ var ChartComponent = /*#__PURE__*/function (_Component) {
         height = _this$props3.height,
         width = _this$props3.width,
         onElementsClick = _this$props3.onElementsClick,
-        _onClick = _isFn(onElementsClick) ? this.handleOnClick : null;
+        _onClick = _isFn(onElementsClick) ? this._hClick : null;
 
     return /*#__PURE__*/(0, _jsxRuntime.jsx)("canvas", {
       ref: this._refRoot,
