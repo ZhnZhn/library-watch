@@ -1,0 +1,18 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/items/hooks/crItemWatch.js"
+ ],
+ "file": "../../../../src/components/items/hooks/crItemWatch.js",
+ "names": [
+  "crItemWatch",
+  "repo",
+  "requestType",
+  "itemDesription",
+  "caption",
+  "config",
+  "version",
+  "descr"
+ ],
+ "mappings": ";;;;;AAAA,IAAMA,WAAW,GAAG,SAAdA,WAAc,CAACC,IAAD,EAAOC,WAAP,EAAoBC,cAApB,EAAuC;AACzD,MAAMC,OAAO,QAAMH,IAAnB;AACA,SAAO;AACLG,IAAAA,OAAO,EAAPA,OADK;AAELC,IAAAA,MAAM,EAAE;AACNC,MAAAA,OAAO,EAAE,EADH;AAENC,MAAAA,KAAK,EAAEJ,cAFD;AAGNF,MAAAA,IAAI,EAAJA,IAHM;AAGAC,MAAAA,WAAW,EAAXA,WAHA;AAGaE,MAAAA,OAAO,EAAPA;AAHb;AAFH,GAAP;AAQD,CAVD;;eAYeJ,W"
+}

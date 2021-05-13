@@ -1,0 +1,15 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/items/hooks/useWatchItem.js"
+ ],
+ "file": "../../../../src/components/items/hooks/useWatchItem.js",
+ "names": [
+  "useWatchItem",
+  "itemDescription",
+  "onWatchItem",
+  "repo",
+  "requestType"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEA;;AAEA,IAAMA,YAAY,GAAG,SAAfA,YAAe,OAIlBC,eAJkB;AAAA,MACnBC,WADmB,QACnBA,WADmB;AAAA,MAEnBC,IAFmB,QAEnBA,IAFmB;AAAA,MAGnBC,WAHmB,QAGnBA,WAHmB;AAAA,SAIE,wBAAY,YAAM;AACnCF,IAAAA,WAAW,CAAC,6BAAYC,IAAZ,EAAkBC,WAAlB,EAA+BH,eAA/B,CAAD,CAAX,CADmC,CAEzC;AACC,GAHsB,EAGpB,EAHoB,CAJF;AAAA,CAArB;;eASeD,Y"
+}
