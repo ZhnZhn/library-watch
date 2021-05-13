@@ -1,0 +1,20 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/omit.js"
+ ],
+ "file": "../../src/utils/omit.js",
+ "names": [
+  "omit",
+  "obj",
+  "keys",
+  "target",
+  "propName",
+  "indexOf",
+  "Object",
+  "prototype",
+  "hasOwnProperty",
+  "call"
+ ],
+ "mappings": ";;;;;AAAA,IAAMA,IAAI,GAAG,SAAPA,IAAO,CAACC,GAAD,EAAMC,IAAN,EAAe;AAC3B,MAAMC,MAAM,GAAG,EAAf;;AACA,OAAK,IAAIC,QAAT,IAAqBH,GAArB,EAA0B;AACzB,QAAIC,IAAI,CAACG,OAAL,CAAaD,QAAb,KAA0B,CAA9B,EAAiC;AACjC,QAAI,CAACE,MAAM,CAACC,SAAP,CAAiBC,cAAjB,CAAgCC,IAAhC,CAAqCR,GAArC,EAA0CG,QAA1C,CAAL,EAA0D;AAC1DD,IAAAA,MAAM,CAACC,QAAD,CAAN,GAAmBH,GAAG,CAACG,QAAD,CAAtB;AACA;;AACD,SAAOD,MAAP;AACA,CARD;;eAUeH,I"
+}
