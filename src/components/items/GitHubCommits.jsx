@@ -1,4 +1,5 @@
-import { useState, useCallback } from 'react';
+import useToggle from '../hooks/useToggle';
+import useWatchItem from './hooks/useWatchItem';
 
 import A from '../zhn-atoms/A';
 import Caption from './ItemCaption';
@@ -8,31 +9,15 @@ import STYLE from './Item.Style';
 
 const ITEM_DESCRIPTION = "GitHub Repository Commits";
 
-const _crItemWatch = (repo, requestType) => {
-  const caption = `${repo}`;
-  return {
-    caption,
-    config: {
-      version: '', descr: ITEM_DESCRIPTION,
-      repo, requestType, caption
-    }
-  };
-};
+/*
+repo, caption, commits, onCloseItem,
+onWatchItem, requestType,
+*/
 
-const GitHubCommits = ({
-  repo, caption,
-  commits,
-  requestType,
-  onCloseItem,
-  onWatchItem
-}) => {
-  const [isShow, setIsShow] = useState(true)
-  , _hToggle = useCallback(() => setIsShow(is => !is), [])
-  /*eslint-disable react-hooks/exhaustive-deps*/
-  , _hClickWatch = useCallback(() => {
-      onWatchItem(_crItemWatch(repo, requestType));
-  }, []);
-  /*eslint-enable react-hooks/exhaustive-deps*/
+const GitHubCommits = (props) => {
+  const { caption, repo, commits, onCloseItem } = props
+  , [isShow, _hToggle] = useToggle(true)
+  , _hClickWatch = useWatchItem(props, ITEM_DESCRIPTION);
 
   return (
     <div style={STYLE.ROOT}>

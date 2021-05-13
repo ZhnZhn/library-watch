@@ -5,7 +5,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
+
+var _useWatchItem = _interopRequireDefault(require("./hooks/useWatchItem"));
 
 var _A = _interopRequireDefault(require("../zhn-atoms/A"));
 
@@ -20,42 +22,20 @@ var _Item = _interopRequireDefault(require("./Item.Style"));
 var _jsxRuntime = require("react/jsx-runtime");
 
 var ITEM_DESCRIPTION = "GitHub Repository Commits";
+/*
+repo, caption, commits, onCloseItem,
+onWatchItem, requestType,
+*/
 
-var _crItemWatch = function _crItemWatch(repo, requestType) {
-  var caption = "" + repo;
-  return {
-    caption: caption,
-    config: {
-      version: '',
-      descr: ITEM_DESCRIPTION,
-      repo: repo,
-      requestType: requestType,
-      caption: caption
-    }
-  };
-};
-
-var GitHubCommits = function GitHubCommits(_ref) {
-  var repo = _ref.repo,
-      caption = _ref.caption,
-      commits = _ref.commits,
-      requestType = _ref.requestType,
-      onCloseItem = _ref.onCloseItem,
-      onWatchItem = _ref.onWatchItem;
-
-  var _useState = (0, _react.useState)(true),
-      isShow = _useState[0],
-      setIsShow = _useState[1],
-      _hToggle = (0, _react.useCallback)(function () {
-    return setIsShow(function (is) {
-      return !is;
-    });
-  }, []),
-      _hClickWatch = (0, _react.useCallback)(function () {
-    onWatchItem(_crItemWatch(repo, requestType));
-  }, []);
-  /*eslint-enable react-hooks/exhaustive-deps*/
-
+var GitHubCommits = function GitHubCommits(props) {
+  var caption = props.caption,
+      repo = props.repo,
+      commits = props.commits,
+      onCloseItem = props.onCloseItem,
+      _useToggle = (0, _useToggle2["default"])(true),
+      isShow = _useToggle[0],
+      _hToggle = _useToggle[1],
+      _hClickWatch = (0, _useWatchItem["default"])(props, ITEM_DESCRIPTION);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: _Item["default"].ROOT,
