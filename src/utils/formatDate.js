@@ -1,6 +1,5 @@
-import timeago from 'timeago.js';
+import { format } from 'timeago.js';
 
-const formatDate = (mlsOrStr) => timeago(Date.now())
-  .format(mlsOrStr);
+const formatDate = format;
 
 export default formatDate

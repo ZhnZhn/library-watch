@@ -6,10 +6,7 @@
  "file": "../../src/utils/formatDate.js",
  "names": [
   "formatDate",
-  "mlsOrStr",
-  "Date",
-  "now",
   "format"
  ],
- "mappings": ";;;;;;;AAAA;;AAEA,IAAMA,UAAU,GAAG,SAAbA,UAAa,CAACC,QAAD;AAAA,SAAc,yBAAQC,IAAI,CAACC,GAAL,EAAR,EAC9BC,MAD8B,CACvBH,QADuB,CAAd;AAAA,CAAnB;;eAGeD,U"
+ "mappings": ";;;;;AAAA;;AAEA,IAAMA,UAAU,GAAGC,eAAnB;eAEeD,U"
 }
