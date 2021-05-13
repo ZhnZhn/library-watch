@@ -1,98 +1,64 @@
-import { Component } from 'react';
-import formatDate from '../../utils/formatDate';
+import { useState, useCallback } from 'react';
 
 import A from '../zhn-atoms/A';
-import Caption from './ItemCaption'
-import CL from '../styles/CL'
-import STYLE from './Item.Style'
+import Caption from './ItemCaption';
+import CommitList from './CommitList';
+import CL from '../styles/CL';
+import STYLE from './Item.Style';
 
 const ITEM_DESCRIPTION = "GitHub Repository Commits";
 
-class GitHubCommits extends Component {
-  state = {
-    isShow: true
-  }
+const _crItemWatch = (repo, requestType) => {
+  const caption = `${repo}`;
+  return {
+    caption,
+    config: {
+      version: '', descr: ITEM_DESCRIPTION,
+      repo, requestType, caption
+    }
+  };
+};
 
-  _hToggleOpen = () => {
-    this.setState( prevState => ({
-      isShow: !prevState.isShow
-    }))
-  }
+const GitHubCommits = ({
+  repo, caption,
+  commits,
+  requestType,
+  onCloseItem,
+  onWatchItem
+}) => {
+  const [isShow, setIsShow] = useState(true)
+  , _hToggle = useCallback(() => setIsShow(is => !is), [])
+  /*eslint-disable react-hooks/exhaustive-deps*/
+  , _hClickWatch = useCallback(() => {
+      onWatchItem(_crItemWatch(repo, requestType));
+  }, []);
+  /*eslint-enable react-hooks/exhaustive-deps*/
 
-  _hClickWatch = () => {
-    const { repo, requestType, onWatchItem } = this.props
-        , caption = `${repo}`
-        , descr = ITEM_DESCRIPTION
-    onWatchItem({
-       caption: caption,
-       config: { repo, requestType, version : '', caption, descr }
-    });
-  }
-
-  _renderCommits = (commits) => {
-
-     return commits.map((item, index) => {
-        const { commit={}, html_url } = item
-        , { message='', committer={} } = commit
-        , { date='', name='' } = committer
-        , _dateTime = date.replace('T', ' ').replace('Z', '')
-        , _dateAgo = formatDate(_dateTime);
-
-
-        return (
-           <div key={index} className={CL.ROW_ITEM}>
-              <a href={html_url}>
-              <div style={STYLE.PB_8}>
-                <span style={STYLE.PR_8}>
-                  {name}
-                </span>
-                <A.DateAgo
-                   dateAgo={_dateAgo}
-                   date={_dateTime}
-                />
-              </div>
-                <div>
-                  {message}
-                </div>
-              </a>
-           </div>
-        );
-     })
-  }
-
-  render(){
-    const {
-        repo, caption, commits,
-        onCloseItem
-       } = this.props
-    , { isShow } = this.state;
-
-     return (
-       <div style={STYLE.ROOT}>
-         <Caption onClose={onCloseItem}>
-           <button
-              className={CL.BT_ITEM}
-              title={caption}
-              style={STYLE.CAPTION_OPEN}
-              onClick={this._hToggleOpen}
-           >
-             <span>
-               {repo}
-             </span>
-           </button>
-           <A.ButtonCircle
-              caption="W"
-              title="Add to Watch"
-              style={STYLE.BTN_CIRCLE}
-              onClick={this._hClickWatch}
-           />
-         </Caption>
-         <A.ShowHide isShow={isShow}>
-           {this._renderCommits(commits)}
-         </A.ShowHide>
-       </div>
-     );
-  }
-}
+  return (
+    <div style={STYLE.ROOT}>
+      <Caption onClose={onCloseItem}>
+        <button
+           className={CL.BT_ITEM}
+           title={caption}
+           style={STYLE.CAPTION_OPEN}
+           onClick={_hToggle}
+        >
+          <span>
+            {repo}
+          </span>
+        </button>
+        <A.ButtonCircle
+           caption="W"
+           title="Add to Watch"
+           style={STYLE.BTN_CIRCLE}
+           onClick={_hClickWatch}
+        />
+      </Caption>
+      <A.ShowHide isShow={isShow}>
+        <CommitList commits={commits} />
+      </A.ShowHide>
+    </div>
+  );
+};
 
 export default GitHubCommits
