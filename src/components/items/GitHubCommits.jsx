@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import timeago from 'timeago.js';
+import { Component } from 'react';
+import formatDate from '../../utils/formatDate';
 
 import A from '../zhn-atoms/A';
 import Caption from './ItemCaption'
@@ -30,13 +30,14 @@ class GitHubCommits extends Component {
   }
 
   _renderCommits = (commits) => {
-     const _timeago = timeago(Date.now());
+
      return commits.map((item, index) => {
         const { commit={}, html_url } = item
         , { message='', committer={} } = commit
         , { date='', name='' } = committer
         , _dateTime = date.replace('T', ' ').replace('Z', '')
-        , _dateAgo = _timeago.format(_dateTime)
+        , _dateAgo = formatDate(_dateTime);
+
 
         return (
            <div key={index} className={CL.ROW_ITEM}>
@@ -70,7 +71,7 @@ class GitHubCommits extends Component {
        <div style={STYLE.ROOT}>
          <Caption onClose={onCloseItem}>
            <button
-              className={CL.BT_ITEM}              
+              className={CL.BT_ITEM}
               title={caption}
               style={STYLE.CAPTION_OPEN}
               onClick={this._hToggleOpen}

@@ -7,22 +7,16 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _timeago2 = _interopRequireDefault(require("timeago.js"));
-
 var _DomUtil = _interopRequireDefault(require("../../utils/DomUtil"));
+
+var _formatDate = _interopRequireDefault(require("../../utils/formatDate"));
 
 var _TaggedQuestions = _interopRequireDefault(require("../items/stack/TaggedQuestions"));
 
 var THREE_ZERO = '000';
 
 var _fnTransform = function _fnTransform(items) {
-  if (items === void 0) {
-    items = [];
-  }
-
-  var _timeago = (0, _timeago2["default"])(Date.now());
-
-  return items.map(function (item) {
+  return (items || []).map(function (item) {
     var title = item.title,
         last_activity_date = item.last_activity_date,
         _item$owner = item.owner,
@@ -30,7 +24,7 @@ var _fnTransform = function _fnTransform(items) {
         display_name = owner.display_name,
         _millisUTC = last_activity_date + '' + THREE_ZERO;
 
-    item.dateAgo = _timeago.format(_millisUTC);
+    item.dateAgo = (0, _formatDate["default"])(_millisUTC);
     item.title = _DomUtil["default"].htmlDecode(title);
     item.owner.display_name = _DomUtil["default"].htmlDecode(display_name);
     return item;

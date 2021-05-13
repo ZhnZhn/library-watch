@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,9 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = require("react");
 
-var _timeago2 = _interopRequireDefault(require("timeago.js"));
+var _formatDate = _interopRequireDefault(require("../../utils/formatDate"));
 
 var _A = _interopRequireDefault(require("../zhn-atoms/A"));
 
@@ -68,8 +66,6 @@ var GitHubCommits = /*#__PURE__*/function (_Component) {
     };
 
     _this._renderCommits = function (commits) {
-      var _timeago = (0, _timeago2["default"])(Date.now());
-
       return commits.map(function (item, index) {
         var _item$commit = item.commit,
             commit = _item$commit === void 0 ? {} : _item$commit,
@@ -83,7 +79,7 @@ var GitHubCommits = /*#__PURE__*/function (_Component) {
             _committer$name = committer.name,
             name = _committer$name === void 0 ? '' : _committer$name,
             _dateTime = date.replace('T', ' ').replace('Z', ''),
-            _dateAgo = _timeago.format(_dateTime);
+            _dateAgo = (0, _formatDate["default"])(_dateTime);
 
         return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
           className: _CL["default"].ROW_ITEM,
