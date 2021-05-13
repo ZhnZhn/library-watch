@@ -11,13 +11,13 @@ const ITEM_DESCRIPTION = "GitHub Repository Commits";
 
 /*
 repo, caption, commits, onCloseItem,
-onWatchItem, requestType,
+onWatchItem, requestType
 */
 
 const GitHubCommits = (props) => {
-  const { caption, repo, commits, onCloseItem } = props
+  const { caption, repo, commits, onCloseItem, onWatchItem } = props
   , [isShow, _hToggle] = useToggle(true)
-  , _hClickWatch = useWatchItem(props, ITEM_DESCRIPTION);
+  , _hClickWatch = useWatchItem(onWatchItem, props, ITEM_DESCRIPTION);
 
   return (
     <div style={STYLE.ROOT}>

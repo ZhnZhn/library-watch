@@ -6,10 +6,10 @@
  "file": "../../../../src/components/items/hooks/useWatchItem.js",
  "names": [
   "useWatchItem",
-  "itemDescription",
   "onWatchItem",
-  "repo",
-  "requestType"
+  "props",
+  "itemDescription",
+  "crCaption"
  ],
- "mappings": ";;;;;;;AAAA;;AAEA;;AAEA,IAAMA,YAAY,GAAG,SAAfA,YAAe,OAIlBC,eAJkB;AAAA,MACnBC,WADmB,QACnBA,WADmB;AAAA,MAEnBC,IAFmB,QAEnBA,IAFmB;AAAA,MAGnBC,WAHmB,QAGnBA,WAHmB;AAAA,SAIE,wBAAY,YAAM;AACnCF,IAAAA,WAAW,CAAC,6BAAYC,IAAZ,EAAkBC,WAAlB,EAA+BH,eAA/B,CAAD,CAAX,CADmC,CAEzC;AACC,GAHsB,EAGpB,EAHoB,CAJF;AAAA,CAArB;;eASeD,Y"
+ "mappings": ";;;;;;;AAAA;;AAEA;;AAEA,IAAMA,YAAY,GAAG,SAAfA,YAAe,CACnBC,WADmB,EAEnBC,KAFmB,EAGnBC,eAHmB,EAInBC,SAJmB;AAAA,SAKhB,wBAAY,YAAM;AACpBH,IAAAA,WAAW,CAAC,6BAAYC,KAAZ,EAAmBC,eAAnB,EAAoCC,SAApC,CAAD,CAAX,CADoB,CAEvB;AACC,GAHI,EAGF,EAHE,CALgB;AAAA,CAArB;;eAUeJ,Y"
 }

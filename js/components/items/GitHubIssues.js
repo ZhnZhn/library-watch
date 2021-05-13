@@ -24,7 +24,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 var ITEM_DESCRIPTION = "GitHub Repository Issues";
 /*
 repo, caption, issues, onCloseItem,
-onWatchItem, requestType,
+onWatchItem, requestType
 */
 
 var GitHubIssues = function GitHubIssues(props) {
@@ -32,10 +32,11 @@ var GitHubIssues = function GitHubIssues(props) {
       repo = props.repo,
       issues = props.issues,
       onCloseItem = props.onCloseItem,
+      onWatchItem = props.onWatchItem,
       _useToggle = (0, _useToggle2["default"])(true),
       isShow = _useToggle[0],
       _hToggle = _useToggle[1],
-      _hClickWatch = (0, _useWatchItem["default"])(props, ITEM_DESCRIPTION),
+      _hClickWatch = (0, _useWatchItem["default"])(onWatchItem, props, ITEM_DESCRIPTION),
       _number = issues.length;
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {

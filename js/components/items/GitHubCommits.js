@@ -24,7 +24,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 var ITEM_DESCRIPTION = "GitHub Repository Commits";
 /*
 repo, caption, commits, onCloseItem,
-onWatchItem, requestType,
+onWatchItem, requestType
 */
 
 var GitHubCommits = function GitHubCommits(props) {
@@ -32,10 +32,11 @@ var GitHubCommits = function GitHubCommits(props) {
       repo = props.repo,
       commits = props.commits,
       onCloseItem = props.onCloseItem,
+      onWatchItem = props.onWatchItem,
       _useToggle = (0, _useToggle2["default"])(true),
       isShow = _useToggle[0],
       _hToggle = _useToggle[1],
-      _hClickWatch = (0, _useWatchItem["default"])(props, ITEM_DESCRIPTION);
+      _hClickWatch = (0, _useWatchItem["default"])(onWatchItem, props, ITEM_DESCRIPTION);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: _Item["default"].ROOT,

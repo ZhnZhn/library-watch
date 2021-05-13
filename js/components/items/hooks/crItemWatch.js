@@ -3,16 +3,29 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var crItemWatch = function crItemWatch(repo, requestType, itemDesription) {
-  var caption = "" + repo;
+var _crCaption = function _crCaption(props) {
+  return props.repo;
+};
+
+var crItemWatch = function crItemWatch(props, itemDesription, crCaption) {
+  if (crCaption === void 0) {
+    crCaption = _crCaption;
+  }
+
+  var repo = props.repo,
+      requestType = props.requestType,
+      _props$version = props.version,
+      version = _props$version === void 0 ? '' : _props$version,
+      caption = _crCaption(props);
+
   return {
     caption: caption,
     config: {
-      version: '',
       descr: itemDesription,
+      caption: caption,
+      version: version,
       repo: repo,
-      requestType: requestType,
-      caption: caption
+      requestType: requestType
     }
   };
 };

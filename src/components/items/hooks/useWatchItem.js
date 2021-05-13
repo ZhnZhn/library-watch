@@ -1,13 +1,14 @@
 import { useCallback } from 'react';
 
-import crItemWatch from './crItemWatch'
+import crItemWatch from './crItemWatch';
 
-const useWatchItem = ({
+const useWatchItem = (
   onWatchItem,
-  repo,
-  requestType,  
-}, itemDescription) => useCallback(() => {
-      onWatchItem(crItemWatch(repo, requestType, itemDescription));
+  props,
+  itemDescription,
+  crCaption
+) => useCallback(() => {
+   onWatchItem(crItemWatch(props, itemDescription, crCaption));
 //eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
 
