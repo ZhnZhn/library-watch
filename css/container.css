@@ -71,6 +71,13 @@
   background-color: rgba(0, 0, 0, 0.15);
 }
 
+.row__item {
+  line-height: 1.9;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 4px;
+}
 
 .row__topic__odd {
   line-height: 1.5;
