@@ -12,7 +12,7 @@ const _crCaption = ({ repo, version }) => `${repo} ${version}`;
 
 /*
 caption, repo, version,
-published_at, html_url, 
+published_at, html_url,
 onCloseItem,
 onWatchItem, requestType
 */
@@ -54,7 +54,7 @@ const GitHubRecentRelease = (props) => {
       <A.ShowHide isShow={isShow} style={STYLE.PT_8}>
         <a
            href={html_url}
-           className="github-link"
+           className={CL.SOURCE_LINK}           
            style={STYLE.ML_8}
         >
            Link to description of recent release tag

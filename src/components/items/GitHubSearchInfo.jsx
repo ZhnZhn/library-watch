@@ -1,26 +1,23 @@
-import React, { Component } from 'react';
+import useToggle from '../hooks/useToggle'
 
-import A from '../zhn-atoms/A'
-import Caption from './ItemCaption'
-import CL from '../styles/CL'
-import STYLE from './Item.Style'
+import formatStrDate from '../../utils/formatStrDate';
 
-const _formatDate = strDate => (''+strDate)
- .replace('T', ' ')
- .replace('Z', '');
+import A from '../zhn-atoms/A';
+import Caption from './ItemCaption';
+import CL from '../styles/CL';
+import STYLE from './Item.Style';
 
-const ItemDescription = (props) => {
-  const { library={} } = props
-  , {
-      name, description, size, created_at, pushed_at, stargazers_count,
-      open_issues, watchers_count, html_url
-    } = library
-  , _dateCreatedAt = _formatDate(created_at)
-  , _datePushedAt = _formatDate(pushed_at);
+const ItemDescription = ({ library }) => {
+  const {
+    name, description, size, created_at, pushed_at, stargazers_count,
+    open_issues, watchers_count, html_url
+  } = library || {}
+  , _dateCreatedAt = formatStrDate(created_at)
+  , _datePushedAt = formatStrDate(pushed_at);
   return (
-    <div className="library">
+    <div className={CL.LIB}>
           <div>
-             <span className="library__title">
+             <span className={CL.LIB_T}>
                {name}
              </span>
           </div>
@@ -30,50 +27,50 @@ const ItemDescription = (props) => {
             </span>
           </div>
           <div>
-            <span className="library__value-title">
+            <span className={CL.LIB_VT}>
               Size:
             </span>
-            <span className="library__value">
+            <span className={CL.LIB_V}>
               {size}
             </span>
           </div>
           <div>
-             <span className="library__value-title">
+             <span className={CL.LIB_VT}>
                Created At:
              </span>
-             <span className="library__value">
+             <span className={CL.LIB_V}>
                {_dateCreatedAt}
              </span>
-             <span className="library__value-title">
+             <span className={CL.LIB_VT}>
               Pushed At:
              </span>
-             <span className="library__value">
+             <span className={CL.LIB_V}>
                {_datePushedAt}
              </span>
           </div>
           <div>
-            <span className="library__value-title">
+            <span className={CL.LIB_VT}>
               Stars:
             </span>
-            <span className="library__value">
+            <span className={CL.LIB_V}>
               {stargazers_count}
             </span>
-            <span className="library__value-title">
+            <span className={CL.LIB_VT}>
               Issues:
             </span>
-            <span className="library__value">
+            <span className={CL.LIB_V}>
               {open_issues}
             </span>
-            <span className="library__value-title">
+            <span className={CL.LIB_VT}>
               Watchers:
             </span>
-            <span className="library__value">
+            <span className={CL.LIB_V}>
               {watchers_count}
             </span>
           </div>
           <div>
              <a
-                className="library__link"
+                className={CL.SOURCE_LINK}
                 href={html_url}
               >
                 Link to GitHub Repository
@@ -81,51 +78,44 @@ const ItemDescription = (props) => {
           </div>
         </div>
   );
-}
+};
 
 
-class GitHubSearchInfo extends Component {
-  state = {
-    isShow: true
-  }
+const GitHubSearchInfo = ({
+  repo,
+  stars_count, pushed_at, caption,
+  library,
+  onCloseItem
+}) => {
+  const [isShow, _hToggle] = useToggle(true);
 
-  _hToggleOpen = () => {
-    this.setState(prevState => ({
-      isShow: !prevState.isShow
-    }))
-  }
-
-  render(){
-    const { repo, stars_count, pushed_at, caption, library, onCloseItem } = this.props
-    , { isShow } = this.state;
-    return (
-      <div style={STYLE.ROOT}>
-        <Caption onClose={onCloseItem}>
-          <button
-             className={CL.BT_ITEM}
-             title={caption}
-             style={STYLE.CAPTION_OPEN}
-             onClick={this._hToggleOpen}
-          >
-            <span>
-              {repo}
-            </span>
-            <span style={STYLE.SPAN_VERSION}>
-              {stars_count}
-            </span>
-            <span>
-              {pushed_at}
-            </span>
-          </button>
-        </Caption>
-        <A.ShowHide isShow={isShow}>
-          <ItemDescription
-            library={library}
-          />
-        </A.ShowHide>
-      </div>
-    );
-  }
-}
+  return (
+    <div style={STYLE.ROOT}>
+      <Caption onClose={onCloseItem}>
+        <button
+           className={CL.BT_ITEM}
+           title={caption}
+           style={STYLE.CAPTION_OPEN}
+           onClick={_hToggle}
+        >
+          <span>
+            {repo}
+          </span>
+          <span style={STYLE.SPAN_VERSION}>
+            {stars_count}
+          </span>
+          <span>
+            {pushed_at}
+          </span>
+        </button>
+      </Caption>
+      <A.ShowHide isShow={isShow}>
+        <ItemDescription
+          library={library}
+        />
+      </A.ShowHide>
+    </div>
+  );
+};
 
 export default GitHubSearchInfo

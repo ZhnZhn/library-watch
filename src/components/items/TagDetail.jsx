@@ -1,12 +1,7 @@
 import A from '../zhn-atoms/A';
+import CL from '../styles/CL';
 
 import formatStrDate from '../../utils/formatStrDate';
-
-const CL = {
-  LIB_VT: "library__value-title",
-  LIB_V: "library__value",
-  ROW_ITEM: "row__item"
-};
 
 const Token = ({ caption, value }) => (
   <>
@@ -43,7 +38,7 @@ const FileList = ({ files }) => (files || [])
  .map((file, index) => {
    const { filename } = file;
    return (
-     <div key={index} className={CL.ROW_ITEM}>
+     <div key={index} className={CL.FILE_ITEM}>
        {filename}
      </div>
    );
@@ -58,7 +53,7 @@ const TagDetail = ({ json }) => {
   , { total, additions, deletions } = stats || {};
 
   return (
-    <div className="library">
+    <div className={CL.LIB}>
       <CellValue
         caption="Message"
         value={message}
@@ -92,7 +87,7 @@ const TagDetail = ({ json }) => {
       </A.OpenClose2>
       <a
          href={html_url}
-         className="github-link"
+         className={CL.SOURCE_LINK}         
       >
          Link to description of commit
       </a>

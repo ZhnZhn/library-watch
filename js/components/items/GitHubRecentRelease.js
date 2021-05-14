@@ -28,7 +28,7 @@ var _crCaption = function _crCaption(_ref) {
 };
 /*
 caption, repo, version,
-published_at, html_url, 
+published_at, html_url,
 onCloseItem,
 onWatchItem, requestType
 */
@@ -75,7 +75,7 @@ var GitHubRecentRelease = function GitHubRecentRelease(props) {
       style: _Item["default"].PT_8,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
         href: html_url,
-        className: "github-link",
+        className: _CL["default"].SOURCE_LINK,
         style: _Item["default"].ML_8,
         children: "Link to description of recent release tag"
       })

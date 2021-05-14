@@ -9,25 +9,21 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _A = _interopRequireDefault(require("../zhn-atoms/A"));
 
+var _CL = _interopRequireDefault(require("../styles/CL"));
+
 var _formatStrDate = _interopRequireDefault(require("../../utils/formatStrDate"));
 
 var _jsxRuntime = require("react/jsx-runtime");
-
-var CL = {
-  LIB_VT: "library__value-title",
-  LIB_V: "library__value",
-  ROW_ITEM: "row__item"
-};
 
 var Token = function Token(_ref) {
   var caption = _ref.caption,
       value = _ref.value;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      className: CL.LIB_VT,
+      className: _CL["default"].LIB_VT,
       children: caption + ':'
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      className: CL.LIB_V,
+      className: _CL["default"].LIB_V,
       children: value
     })]
   });
@@ -59,7 +55,7 @@ var FileList = function FileList(_ref3) {
   return (files || []).map(function (file, index) {
     var filename = file.filename;
     return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      className: CL.ROW_ITEM,
+      className: _CL["default"].FILE_ITEM,
       children: filename
     }, index);
   });
@@ -92,7 +88,7 @@ var TagDetail = function TagDetail(_ref4) {
       deletions = _ref8.deletions;
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    className: "library",
+    className: _CL["default"].LIB,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(CellValue, {
       caption: "Message",
       value: message
@@ -123,7 +119,7 @@ var TagDetail = function TagDetail(_ref4) {
       })
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
       href: html_url,
-      className: "github-link",
+      className: _CL["default"].SOURCE_LINK,
       children: "Link to description of commit"
     })]
   });
