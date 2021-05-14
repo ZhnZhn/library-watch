@@ -42,6 +42,7 @@ var GitHubIssues = function GitHubIssues(props) {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: _Item["default"].ROOT,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption["default"], {
+      style: _Item["default"].PT_8,
       onClose: onCloseItem,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
         className: _CL["default"].BT_ITEM,

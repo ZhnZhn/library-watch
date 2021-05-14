@@ -21,7 +21,7 @@ const GitHubCommits = (props) => {
 
   return (
     <div style={STYLE.ROOT}>
-      <Caption onClose={onCloseItem}>
+      <Caption style={STYLE.PT_8} onClose={onCloseItem}>
         <button
            className={CL.BT_ITEM}
            title={caption}

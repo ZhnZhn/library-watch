@@ -1,5 +1,3 @@
-import React from 'react';
-
 import SvgClose from '../zhn-atoms/SvgClose';
 
 const STYLE = {
@@ -54,21 +52,21 @@ const WatchItem = ({
 }) => {
   const { repo, version, date } = item
   , _compBtClose = isModeEdit
-       ? (
-           <SvgClose
+       ? (<SvgClose
              style={STYLE.SVG_CLOSE}
              onClose={onClose.bind(null, option)}
-           />
-        )
+          />)
       : null
-  , _compVersionDateRow = (version)
-       ? (
-           <VersionDateRow
-              version={version}
-              date={date}
-           />
-         )
-       : null;
+  , _compVersionDateRow = version
+       ? <VersionDateRow version={version} date={date} />
+       : null
+  , _itemHandlers = isModeEdit ? {
+       onDragStart: onDragStart.bind(null, option),
+          onDrop: onDrop.bind(null, option),
+          onDragOver,
+          onDragEnter,
+          onDragLeave,
+     } : void 0;
 
   return (
      <div
@@ -76,11 +74,7 @@ const WatchItem = ({
        style={STYLE.ITEM_DIV}
        onClick={onClick.bind(null, item)}
        draggable={isModeEdit}
-       onDragStart={isModeEdit && onDragStart.bind(null, option)}
-       onDrop={isModeEdit && onDrop.bind(null, option)}
-       onDragOver={isModeEdit && onDragOver}
-       onDragEnter={isModeEdit && onDragEnter}
-       onDragLeave={isModeEdit && onDragLeave}
+       {..._itemHandlers}
      >
        <div>
          <span style={STYLE.ITEM_SPAN}>

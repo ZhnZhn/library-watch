@@ -27,7 +27,7 @@ const GitHubRecentRelease = (props) => {
 
   return (
     <div style={STYLE.ROOT}>
-      <Caption onClose={onCloseItem}>
+      <Caption style={STYLE.PT_8} onClose={onCloseItem}>
         <button
            className={CL.BT_ITEM}
            title={caption}
@@ -54,7 +54,7 @@ const GitHubRecentRelease = (props) => {
       <A.ShowHide isShow={isShow} style={STYLE.PT_8}>
         <a
            href={html_url}
-           className={CL.SOURCE_LINK}           
+           className={CL.SOURCE_LINK}
            style={STYLE.ML_8}
         >
            Link to description of recent release tag

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import SvgClose from '../zhn-atoms/SvgClose';
 
 const CL = {

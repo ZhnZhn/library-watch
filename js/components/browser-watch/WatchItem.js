@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
 
@@ -78,25 +78,28 @@ var WatchItem = function WatchItem(_ref) {
       _compVersionDateRow = version ? /*#__PURE__*/(0, _jsxRuntime.jsx)(VersionDateRow, {
     version: version,
     date: date
-  }) : null;
+  }) : null,
+      _itemHandlers = isModeEdit ? {
+    onDragStart: onDragStart.bind(null, option),
+    onDrop: onDrop.bind(null, option),
+    onDragOver: onDragOver,
+    onDragEnter: onDragEnter,
+    onDragLeave: onDragLeave
+  } : void 0;
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", (0, _extends2["default"])({
     className: className,
     style: STYLE.ITEM_DIV,
     onClick: onClick.bind(null, item),
-    draggable: isModeEdit,
-    onDragStart: isModeEdit && onDragStart.bind(null, option),
-    onDrop: isModeEdit && onDrop.bind(null, option),
-    onDragOver: isModeEdit && onDragOver,
-    onDragEnter: isModeEdit && onDragEnter,
-    onDragLeave: isModeEdit && onDragLeave,
+    draggable: isModeEdit
+  }, _itemHandlers, {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
         style: STYLE.ITEM_SPAN,
         children: repo
       }), _compBtClose]
     }), _compVersionDateRow]
-  });
+  }));
 };
 
 var _default = WatchItem;
