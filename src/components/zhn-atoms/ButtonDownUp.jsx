@@ -1,29 +1,44 @@
-import React from 'react';
-
 //import PropTypes from "prop-types";
 
 import STYLE from './ButtonDownUp.Style';
 
-const ButtonDownUp = (props) => {
-    const {
-      style, isUp,
-      caption='', title='',
-      onClick
-    } = props
-    , _style = isUp ? STYLE.ROOT_UP : STYLE.ROOT_DOWN
-    , _circleStyle = isUp ? STYLE.CIRCLE_UP : STYLE.CIRCLE_DOWN;
+import SpinnerLoading from './SpinnerLoading';
 
-    return (
-      <button
-         title={title}
-         style={{...STYLE.ROOT, ...style, ..._style}}
-         onClick={onClick}
-      >
-        <span style={{...STYLE.CIRCLE, ..._circleStyle}} />
-        <span style={STYLE.ITEM}>
-           {caption}
-        </span>
-     </button>
+const _crStateComp = (isUp, isLoading) => {
+  let _spinner = null;
+  if (isLoading) {
+    _spinner = <SpinnerLoading style={STYLE.SPINNER} />
+  }
+  const _circleStyle = isLoading
+    ? STYLE.CIRCLE_LOADING
+    : isUp ? STYLE.CIRCLE_UP : STYLE.CIRCLE_DOWN;
+  return (
+    <>
+      {_spinner}
+      <span style={{...STYLE.CIRCLE, ..._circleStyle}} />
+    </>
+  );
+};
+
+const ButtonDownUp = ({
+  style, isUp,
+  isLoading,
+  caption='', title='',
+  onClick
+}) => {
+   const _style = isUp ? STYLE.ROOT_UP : STYLE.ROOT_DOWN;
+
+   return (
+     <button
+        title={title}
+        style={{...STYLE.ROOT, ...style, ..._style}}
+        onClick={onClick}
+     >
+       {_crStateComp(isUp, isLoading)}
+       <span style={STYLE.ITEM}>
+          {caption}
+       </span>
+    </button>
    );
 }
 
@@ -31,6 +46,7 @@ const ButtonDownUp = (props) => {
 ButtonDownUp.propTypes = {
   style: PropTypes.object,
   isUp: PropTypes.bool,
+  isLoading: PropTypes.bool,
   caption: PropTypes.string,
   title: PropTypes.string,
   onClick: PropTypes.func

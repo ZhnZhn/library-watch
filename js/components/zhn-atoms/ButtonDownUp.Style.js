@@ -4,6 +4,7 @@ exports.__esModule = true;
 exports["default"] = void 0;
 var STYLE = {
   ROOT: {
+    position: 'relative',
     display: 'inline-block',
     height: 36,
     border: '1px solid',
@@ -36,6 +37,10 @@ var STYLE = {
     border: '1px solid gray',
     borderRadius: '50%'
   },
+  CIRCLE_LOADING: {
+    backgroundColor: 'transparent',
+    border: 'none'
+  },
   CIRCLE_UP: {
     backgroundColor: '#a487d4',
     borderColor: '#a487d4'
@@ -43,6 +48,10 @@ var STYLE = {
   CIRCLE_DOWN: {
     backgroundColor: 'gray',
     borderColor: 'gray'
+  },
+  SPINNER: {
+    top: 5,
+    left: 2
   }
 };
 var _default = STYLE;

@@ -138,10 +138,10 @@ class NpmDownloads extends Component {
   }
 
   _handlerClickNodeIco = () => {
-    this.setState({
+    this.setState(prevState => ({
       isLoadNodeIco : true,
-      isShowNodeIco : !this.state.isShowNodeIco
-    });
+      isShowNodeIco : !prevState.isShowNodeIco
+    }));
   }
 
   _toggleByPropName = propName => {
@@ -161,12 +161,14 @@ class NpmDownloads extends Component {
       this._toggleByPropName('isShowNmps')
     } else {
       this._loadJson(loadNpms, this._onLoadNpms)
+      this.setState({ isLoadingNpms: true })
     }
   }
   _onLoadNpms = (json) => {
     this.setState({
       npmsJson: json,
-      isShowNmps: true
+      isShowNmps: true,
+      isLoadingNpms: false
     })
   }
 
@@ -177,12 +179,14 @@ class NpmDownloads extends Component {
       this._toggleByPropName('isShowBundle')
     } else {
       this._loadJson(loadBundle, this._onLoadBundle)
+      this.setState({ isLoadingBundle: true })
     }
   }
   _onLoadBundle = (json) => {
     this.setState({
       bundleJson: json,
-      isShowBundle: true
+      isShowBundle: true,
+      isLoadingBundle: false
     })
   }
 
@@ -209,8 +213,8 @@ class NpmDownloads extends Component {
       isShow, isMore,
       isButtons,
       isLoadNodeIco, isShowNodeIco,
-      isShowNmps, npmsJson,
-      isShowBundle, bundleJson
+      isLoadingNpms, isShowNmps, npmsJson,
+      isLoadingBundle, isShowBundle, bundleJson
     } = this.state
     , _lineChartConfig = Chart.fLineConfig({ labels, data })
     , _infoStyle = isButtons
@@ -275,6 +279,7 @@ class NpmDownloads extends Component {
              <A.ButtonDownUp
                style={{ ...S.BUTTON_DOWN_UP, ...S.ML_16 }}
                isUp={isShowNmps}
+               isLoading={isLoadingNpms}
                caption="NPMS.IO"
                title="Click to load package info from npms.io"
                onClick={this._hClickNpms}
@@ -282,6 +287,7 @@ class NpmDownloads extends Component {
              <A.ButtonDownUp
                style={{ ...S.BUTTON_DOWN_UP, ...S.ML_16 }}
                isUp={isShowBundle}
+               isLoading={isLoadingBundle}
                caption="Bundlephobia.com"
                title="Click to load package info from bundlephobia.com"
                onClick={this._hClickBundle}

@@ -156,9 +156,11 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
     };
 
     _this._handlerClickNodeIco = function () {
-      _this.setState({
-        isLoadNodeIco: true,
-        isShowNodeIco: !_this.state.isShowNodeIco
+      _this.setState(function (prevState) {
+        return {
+          isLoadNodeIco: true,
+          isShowNodeIco: !prevState.isShowNodeIco
+        };
       });
     };
 
@@ -185,13 +187,18 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
         _this._toggleByPropName('isShowNmps');
       } else {
         _this._loadJson(_loadNpms["default"], _this._onLoadNpms);
+
+        _this.setState({
+          isLoadingNpms: true
+        });
       }
     };
 
     _this._onLoadNpms = function (json) {
       _this.setState({
         npmsJson: json,
-        isShowNmps: true
+        isShowNmps: true,
+        isLoadingNpms: false
       });
     };
 
@@ -202,13 +209,18 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
         _this._toggleByPropName('isShowBundle');
       } else {
         _this._loadJson(_loadBundle["default"], _this._onLoadBundle);
+
+        _this.setState({
+          isLoadingBundle: true
+        });
       }
     };
 
     _this._onLoadBundle = function (json) {
       _this.setState({
         bundleJson: json,
-        isShowBundle: true
+        isShowBundle: true,
+        isLoadingBundle: false
       });
     };
 
@@ -259,8 +271,10 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
         isButtons = _this$state.isButtons,
         isLoadNodeIco = _this$state.isLoadNodeIco,
         isShowNodeIco = _this$state.isShowNodeIco,
+        isLoadingNpms = _this$state.isLoadingNpms,
         isShowNmps = _this$state.isShowNmps,
         npmsJson = _this$state.npmsJson,
+        isLoadingBundle = _this$state.isLoadingBundle,
         isShowBundle = _this$state.isShowBundle,
         bundleJson = _this$state.bundleJson,
         _lineChartConfig = _Chart["default"].fLineConfig({
@@ -323,12 +337,14 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
             }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ButtonDownUp, {
               style: (0, _extends2["default"])({}, S.BUTTON_DOWN_UP, S.ML_16),
               isUp: isShowNmps,
+              isLoading: isLoadingNpms,
               caption: "NPMS.IO",
               title: "Click to load package info from npms.io",
               onClick: this._hClickNpms
             }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ButtonDownUp, {
               style: (0, _extends2["default"])({}, S.BUTTON_DOWN_UP, S.ML_16),
               isUp: isShowBundle,
+              isLoading: isLoadingBundle,
               caption: "Bundlephobia.com",
               title: "Click to load package info from bundlephobia.com",
               onClick: this._hClickBundle
