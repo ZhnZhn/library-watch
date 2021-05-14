@@ -1,4 +1,4 @@
-const CL = "github-link";
+const CL = "source-link";
 
 const S = {
   WRAPPER: {

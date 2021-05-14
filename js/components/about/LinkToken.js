@@ -5,7 +5,7 @@ exports["default"] = void 0;
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL = "github-link";
+var CL = "source-link";
 var S = {
   WRAPPER: {
     display: 'inline-block',

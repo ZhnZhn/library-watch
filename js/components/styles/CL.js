@@ -9,7 +9,12 @@ var CL = {
   SHOW_POPUP: 'show-popup',
   MENU_MORE: 'popup-menu charts__menu-more',
   ROW_MENU_MORE: 'row__pane-topic not-selected',
-  SOURCE_LINK: 'source-link'
+  SOURCE_LINK: 'source-link',
+  LIB: "library",
+  LIB_T: "library__title",
+  LIB_VT: "library__value-title",
+  LIB_V: "library__value",
+  FILE_ITEM: "row__item"
 };
 
 var _default = Object.freeze(CL);

@@ -1,12 +1,10 @@
 
-.source-link,
-.github-link {
+.source-link {
   color: #009ae5 !important;
   font-weight: bold;
   border-bottom: thin solid;
   text-decoration: none;
 }
-.source-link:hover,
-.github-link:hover {
+.source-link:hover {
   border-bottom-width: medium;
 }

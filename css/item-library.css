@@ -24,11 +24,4 @@
 .library__value{
   padding-right: 20px;
 }
-.library__link{
-  text-decoration: none;
-  color: rgb(0, 154, 229);
-  border-bottom: thin solid;
-}
-.library__link:hover{
-  border-bottom-width: medium;
-}
+
