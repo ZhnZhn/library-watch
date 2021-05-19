@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 //import PropTypes from 'prop-types'
 
 import RowInputSelect from './RowInputSelect';
-import ValidationMessagesFragment from '../zhn-moleculs/ValidationMessagesFragment';
+import ValidationMessages from '../dialogs/rows/ValidationMessages';
 import FlatButton from '../zhn-m/FlatButton'
 
 const S = {
   COMMAND_DIV : {
      cursor: 'default',
      float: 'right',
-     marginTop: '8px',
-     marginBottom: '10px',
-     marginRight: '4px'
+     marginTop: 8,
+     marginBottom: 10,
+     marginRight: 4
   }
-}
+};
 
 class GroupDeletePane extends Component {
 
@@ -89,7 +89,7 @@ class GroupDeletePane extends Component {
              //isUpdateOptions={true}
              onSelect={this._handlerSelectGroup}
            />
-           <ValidationMessagesFragment
+           <ValidationMessages
              validationMessages={validationMessages}
            />
            <div style={S.COMMAND_DIV}>

@@ -37,10 +37,25 @@ var _handleCloseWithValidation = function _handleCloseWithValidation(fnCreateMes
   onClose();
 };
 
+var _updateValidationMessages = function _updateValidationMessages(validationMessages) {
+  if (validationMessages.isValid) {
+    if (this.state.validationMessages.length > 0) {
+      this.setState({
+        validationMessages: validationMessages
+      });
+    }
+  } else {
+    this.setState({
+      validationMessages: validationMessages
+    });
+  }
+};
+
 var withValidationLoad = function withValidationLoad(target) {
   Object.assign(target.prototype, {
     _handleLoadWithValidation: _handleLoadWithValidation,
-    _handleCloseWithValidation: _handleCloseWithValidation
+    _handleCloseWithValidation: _handleCloseWithValidation,
+    _updateValidationMessages: _updateValidationMessages
   });
 };
 

@@ -13,7 +13,7 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = require("react");
 
 var _withValidationLoad = _interopRequireDefault(require("../dialogs/decorators/withValidationLoad"));
 
@@ -27,7 +27,7 @@ var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
 var _InputSelect = _interopRequireDefault(require("../zhn-select/InputSelect"));
 
-var _ValidationMessagesFragment = _interopRequireDefault(require("../zhn-moleculs/ValidationMessagesFragment"));
+var _ValidationMessages = _interopRequireDefault(require("../dialogs/rows/ValidationMessages"));
 
 var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
 
@@ -222,13 +222,14 @@ var AddToWatchDialog = (0, _withValidationLoad["default"])(_class = /*#__PURE__*
         isShow = _this$props.isShow,
         data = _this$props.data,
         caption = data.caption,
-        _data$config = data.config,
-        config = _data$config === void 0 ? {} : _data$config,
-        descr = config.descr,
+        config = data.config,
+        _ref = config || {},
+        descr = _ref.descr,
         _this$state = this.state,
         groupOptions = _this$state.groupOptions,
         listOptions = _this$state.listOptions,
         validationMessages = _this$state.validationMessages;
+
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalDialog["default"], {
       caption: "Add To Watch List",
       isShow: isShow,
@@ -244,7 +245,7 @@ var AddToWatchDialog = (0, _withValidationLoad["default"])(_class = /*#__PURE__*
           options: groupOptions,
           onSelect: this._handlerSelectGroup
         })]
-      }, "1"), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         style: styles.rowDiv,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           style: styles.labelSpan,
@@ -254,7 +255,7 @@ var AddToWatchDialog = (0, _withValidationLoad["default"])(_class = /*#__PURE__*
           options: listOptions,
           onSelect: this._handlerSelectList
         })]
-      }, "2"), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         style: (0, _extends2["default"])({}, styles.rowDiv, S.LH),
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           style: styles.labelSpan,
@@ -263,7 +264,7 @@ var AddToWatchDialog = (0, _withValidationLoad["default"])(_class = /*#__PURE__*
           style: S.BOLD,
           children: caption
         })]
-      }, "3"), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         style: (0, _extends2["default"])({}, styles.rowDiv, S.LH),
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           style: styles.labelSpan,
@@ -272,9 +273,9 @@ var AddToWatchDialog = (0, _withValidationLoad["default"])(_class = /*#__PURE__*
           style: S.DESCR,
           children: descr
         })]
-      }, "4"), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessagesFragment["default"], {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessages["default"], {
         validationMessages: validationMessages
-      }, "5")]
+      })]
     });
   };
 

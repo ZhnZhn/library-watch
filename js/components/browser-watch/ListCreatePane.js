@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,13 +7,13 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = require("react");
 
 var _RowInputSelect = _interopRequireDefault(require("./RowInputSelect"));
 
 var _RowInputText = _interopRequireDefault(require("./RowInputText"));
 
-var _ValidationMessagesFragment = _interopRequireDefault(require("../zhn-moleculs/ValidationMessagesFragment"));
+var _ValidationMessages = _interopRequireDefault(require("../dialogs/rows/ValidationMessages"));
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
@@ -26,9 +24,9 @@ var S = {
   COMMAND_DIV: {
     cursor: 'default',
     "float": 'right',
-    marginTop: '8px',
-    marginBottom: '10px',
-    marginRight: '4px'
+    marginTop: 8,
+    marginBottom: 10,
+    marginRight: 4
   }
 };
 
@@ -166,7 +164,7 @@ var ListCreatePane = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputText["default"], {
         ref: this._refInputText,
         caption: "List"
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessagesFragment["default"], {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessages["default"], {
         validationMessages: validationMessages
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         style: S.COMMAND_DIV,

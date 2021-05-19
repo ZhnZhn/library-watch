@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 //import PropTypes from 'prop-types'
 
 import RowInputSelect from './RowInputSelect';
 
-class FragmentSelectGroupList extends Component {
+class SelectGroupList extends Component {
   /*
   propTypes : {
     store : PropTypes.object,
@@ -40,7 +40,7 @@ class FragmentSelectGroupList extends Component {
     }
   }
 
-  _handlerSelectGroup(item){
+  _hSelectGroup = (item) => {
     if (item && item.caption){
       this.groupCaption = item.caption;
       if (item.lists){
@@ -53,7 +53,7 @@ class FragmentSelectGroupList extends Component {
     }
   }
 
-  _handlerSelectList(item){
+  _hSelectList = (item) => {
      this.listCaption = (item && item.caption) || null
   }
 
@@ -65,12 +65,12 @@ class FragmentSelectGroupList extends Component {
          <RowInputSelect
            caption={groupCaption}
            options={groupOptions}
-           onSelect={this._handlerSelectGroup}
+           onSelect={this._hSelectGroup}
          />
          <RowInputSelect
            caption={listCaption}
            options={listOptions}
-           onSelect={this._handlerSelectList}
+           onSelect={this._hSelectList}
          />
       </div>
     );
@@ -88,4 +88,4 @@ class FragmentSelectGroupList extends Component {
   }
 }
 
-export default FragmentSelectGroupList
+export default SelectGroupList

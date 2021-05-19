@@ -1,33 +1,31 @@
-import React from 'react';
 //import PropTypes from "prop-types";
 
 const S = {
   ROOT_DIV : {
-    paddingLeft: '10px',
-    paddingTop: '5px',
-    color: '#F44336'
+    color: '#f44336',
+    paddingLeft: 10,
+    paddingTop: 5,
   },
 
-  NUMBER_DIV : {
+  NUMBER : {
     display: 'inline-block',
-    width: '22px',
-    height: '22px',
-    border: 'solid 2px #F44336',
+    width: 22,
+    height: 22,
+    marginRight: 5,
+    border: 'solid 2px #f44336',
     borderRadius: '50%',
-    textAlign: 'center',
-    marginRight: '5px'
+    textAlign: 'center'
   },
-
-  MSG_SPAN : {
-    whiteSpace : 'pre',
-    fontWeight : 'bold'
+  MSG : {
+    whiteSpace: 'pre',
+    fontWeight: 'bold'
   }
-}
+};
 
 const ValidationMessage = ({ index, msg }) => (
   <div>
-    <div style={S.NUMBER_DIV}>{index+1}</div>
-    <span style={S.MSG_SPAN}>{msg}</span>
+    <span style={S.NUMBER}>{index}</span>
+    <span style={S.MSG}>{msg}</span>
   </div>
 );
 /*
@@ -37,30 +35,25 @@ ValidationMessage.propTypes = {
 }
 */
 
-const ValidationMessages = (props) => {
-   const { validationMessages } = props;
-
-   if (!Array.isArray(validationMessages)){
+const ValidationMessages = ({ validationMessages }) => {
+  if (!Array.isArray(validationMessages)){
      return null;
-   }
-
-  const _renderValidationMessages = (msgs) => {
-    return msgs.map((msg, index)=>{
-      return (
-        <ValidationMessage key={index} msg={msg} index={index} />
-      );
-    });
   }
-
   return (
       <div style={S.ROOT_DIV}>
-        {_renderValidationMessages(validationMessages)}
+        {validationMessages.map((msg, index) => (
+           <ValidationMessage
+              key={index}
+              msg={msg}
+              index={index+1}
+            />
+        ))}
       </div>
   );
 };
 
 /*
-ValidationMessagesFragment.propTypes = {
+ValidationMessages.propTypes = {
   validationMessages: PropTypes.arrayOf(
     PropTypes.shape({
       msg: PropTypes.string

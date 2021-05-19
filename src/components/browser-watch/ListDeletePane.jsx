@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 //import PropTypes from 'prop-types'
 
-import FragmentSelectGroupList from './FragmentSelectGroupList';
-import ValidationMessagesFragment from '../zhn-moleculs/ValidationMessagesFragment';
-import FlatButton from '../zhn-m/FlatButton'
+import SelectGroupList from './SelectGroupList';
+import ValidationMessages from '../dialogs/rows/ValidationMessages';
+import FlatButton from '../zhn-m/FlatButton';
 
 const S = {
   COMMAND_DIV : {
      cursor: 'default',
      float: 'right',
-     marginTop: '8px',
-     marginBottom: '10px',
-     marginRight: '4px'
+     marginTop: 8,
+     marginBottom: 10,
+     marginRight: 4
   }
-}
+};
 
 class ListDeletePane extends Component {
   /*
@@ -80,14 +80,14 @@ class ListDeletePane extends Component {
         , {groupOptions, validationMessages} = this.state;
     return (
       <div>
-         <FragmentSelectGroupList
+         <SelectGroupList
            ref={this._refGroupList}
            store={store}
            groupCaption="In Group"
            groupOptions={groupOptions}
            listCaption="List"
          />
-         <ValidationMessagesFragment
+         <ValidationMessages
             validationMessages={validationMessages}
          />
          <div style={S.COMMAND_DIV}>

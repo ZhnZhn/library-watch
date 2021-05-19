@@ -1,24 +1,24 @@
-import React, { Component } from 'react'
+import { Component } from 'react';
 //import PropTypes from 'prop-types'
 
-import withValidationLoad from '../dialogs/decorators/withValidationLoad'
+import withValidationLoad from '../dialogs/decorators/withValidationLoad';
 
-import WatchActions from '../../flux/actions/WatchActions'
-import { WatchActionTypes as WAT } from '../../flux/actions/WatchActions'
-import Msg from '../../constants/Msg'
+import WatchActions from '../../flux/actions/WatchActions';
+import { WatchActionTypes as WAT } from '../../flux/actions/WatchActions';
+import Msg from '../../constants/Msg';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
-import FlatButton from '../zhn-m/FlatButton'
-import InputSelect from '../zhn-select/InputSelect'
-import ValidationMessagesFragment from '../zhn-moleculs/ValidationMessagesFragment';
+import FlatButton from '../zhn-m/FlatButton';
+import InputSelect from '../zhn-select/InputSelect';
+import ValidationMessages from '../dialogs/rows/ValidationMessages';
 
-import DialogStyles from '../styles/DialogStyles'
+import DialogStyles from '../styles/DialogStyles';
 
 const styles = DialogStyles;
 
 const actionCompleted = WAT.EDIT_WATCH_COMPLETED
-    , actionFailed =  WAT.EDIT_WATCH_FAILED
-    , forActionType = WAT.ADD_ITEM
+, actionFailed =  WAT.EDIT_WATCH_FAILED
+, forActionType = WAT.ADD_ITEM;
 
 const S = {
   BOLD: {
@@ -156,9 +156,9 @@ class AddToWatchDialog extends Component {
 
   render(){
     const { isShow, data } = this.props
-        , { caption, config={} } = data
-        , { descr } = config
-        , { groupOptions, listOptions, validationMessages } = this.state;
+    , { caption, config } = data
+    , { descr } = config || {}
+    , { groupOptions, listOptions, validationMessages } = this.state;
 
     return (
       <ModalDialog
@@ -167,7 +167,7 @@ class AddToWatchDialog extends Component {
          commandButtons={this._commandButtons}
          onClose={this._handlerClose}
       >
-        <div style={styles.rowDiv} key="1">
+        <div style={styles.rowDiv}>
           <span style={styles.labelSpan}>
             Group:
           </span>
@@ -177,7 +177,7 @@ class AddToWatchDialog extends Component {
              onSelect={this._handlerSelectGroup}
            />
         </div>
-        <div style={styles.rowDiv} key="2">
+        <div style={styles.rowDiv}>
           <span style={styles.labelSpan}>
             List:
           </span>
@@ -187,7 +187,7 @@ class AddToWatchDialog extends Component {
              onSelect={this._handlerSelectList}
            />
         </div>
-        <div style={{...styles.rowDiv, ...S.LH}} key="3">
+        <div style={{...styles.rowDiv, ...S.LH}}>
           <span style={styles.labelSpan}>
             Item:
           </span>
@@ -195,7 +195,7 @@ class AddToWatchDialog extends Component {
              {caption}
           </span>
         </div>
-        <div style={{...styles.rowDiv, ...S.LH}} key="4">
+        <div style={{...styles.rowDiv, ...S.LH}}>
           <span style={styles.labelSpan}>
              Descr:
           </span>
@@ -203,8 +203,7 @@ class AddToWatchDialog extends Component {
              {descr}
           </span>
         </div>
-        <ValidationMessagesFragment
-           key="5"
+        <ValidationMessages
            validationMessages={validationMessages}
          />
       </ModalDialog>

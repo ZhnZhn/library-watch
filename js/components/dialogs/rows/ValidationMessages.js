@@ -1,31 +1,27 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
-
-var _react = _interopRequireDefault(require("react"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
 var S = {
   ROOT_DIV: {
-    paddingLeft: '10px',
-    paddingTop: '5px',
-    color: '#F44336'
+    color: '#f44336',
+    paddingLeft: 10,
+    paddingTop: 5
   },
-  NUMBER_DIV: {
+  NUMBER: {
     display: 'inline-block',
-    width: '22px',
-    height: '22px',
-    border: 'solid 2px #F44336',
+    width: 22,
+    height: 22,
+    marginRight: 5,
+    border: 'solid 2px #f44336',
     borderRadius: '50%',
-    textAlign: 'center',
-    marginRight: '5px'
+    textAlign: 'center'
   },
-  MSG_SPAN: {
+  MSG: {
     whiteSpace: 'pre',
     fontWeight: 'bold'
   }
@@ -35,11 +31,11 @@ var ValidationMessage = function ValidationMessage(_ref) {
   var index = _ref.index,
       msg = _ref.msg;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      style: S.NUMBER_DIV,
-      children: index + 1
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: S.NUMBER,
+      children: index
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      style: S.MSG_SPAN,
+      style: S.MSG,
       children: msg
     })]
   });
@@ -52,29 +48,25 @@ ValidationMessage.propTypes = {
 */
 
 
-var ValidationMessages = function ValidationMessages(props) {
-  var validationMessages = props.validationMessages;
+var ValidationMessages = function ValidationMessages(_ref2) {
+  var validationMessages = _ref2.validationMessages;
 
   if (!Array.isArray(validationMessages)) {
     return null;
   }
 
-  var _renderValidationMessages = function _renderValidationMessages(msgs) {
-    return msgs.map(function (msg, index) {
-      return /*#__PURE__*/(0, _jsxRuntime.jsx)(ValidationMessage, {
-        msg: msg,
-        index: index
-      }, index);
-    });
-  };
-
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     style: S.ROOT_DIV,
-    children: _renderValidationMessages(validationMessages)
+    children: validationMessages.map(function (msg, index) {
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)(ValidationMessage, {
+        msg: msg,
+        index: index + 1
+      }, index);
+    })
   });
 };
 /*
-ValidationMessagesFragment.propTypes = {
+ValidationMessages.propTypes = {
   validationMessages: PropTypes.arrayOf(
     PropTypes.shape({
       msg: PropTypes.string

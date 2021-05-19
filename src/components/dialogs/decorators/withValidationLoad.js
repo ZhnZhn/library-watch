@@ -19,10 +19,21 @@ const _handleCloseWithValidation = function(fnCreateMessages, onClose = this.pro
     onClose();
 }
 
+const _updateValidationMessages = function(validationMessages){
+  if (validationMessages.isValid){
+    if (this.state.validationMessages.length > 0){
+      this.setState({ validationMessages })
+    }
+  } else {
+    this.setState({ validationMessages })
+  }
+};
+
 const withValidationLoad = (target) => {
   Object.assign(target.prototype, {
     _handleLoadWithValidation,
-    _handleCloseWithValidation
+    _handleCloseWithValidation,
+    _updateValidationMessages
   })
 }
 

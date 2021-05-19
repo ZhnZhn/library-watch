@@ -1,29 +1,30 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 //import PropTypes from "prop-types";
 
-import FlatButton from '../zhn-m/FlatButton'
+import FlatButton from '../zhn-m/FlatButton';
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import InputFileReader from '../zhn-atoms/InputFileReader';
-import ValidationMessagesFragment from '../zhn-moleculs/ValidationMessagesFragment';
-import DialogStyles from '../styles/DialogStyles'
+import ValidationMessages from './rows/ValidationMessages';
+import DialogStyles from '../styles/DialogStyles';
 
-const styles = DialogStyles
+const styles = DialogStyles;
 
 const C = {
-  FILE_NOT_CHOOSED : 'Choose file with Watch Items for Load'
-}
+  FILE_NOT_CHOOSED : 'Please choose file for loading.'
+};
 
 const STYLE = {
   MODAL_DIALOG : {
-    minWidth: '320px'
+    minWidth: 320
   },
   ROW_INPUT_FILE : {
-    marginTop: '16px',
-    marginBottom: '16px'
+    marginTop: 16,
+    marginBottom: 16
   },
   ROW_VALIDATION : {
-    marginRight: '16px'
+    width: '100%',
+    marginRight: 16
   }
 }
 
@@ -117,8 +118,8 @@ class LoadFileDialog extends Component {
             />
          </div>
          <div style={{ ...styles.rowDiv, ...STYLE.ROW_VALIDATION }}>
-           <ValidationMessagesFragment
-              validationMessages={validationMessages}
+           <ValidationMessages
+             validationMessages={validationMessages}
            />
          </div>
       </ModalDialog>

@@ -1,1 +1,28 @@
-{"version":3,"sources":["../../../../src/components/dialogs/decorators/withValidationLoad.js"],"names":["_handleLoadWithValidation","validationMessages","fnCreateOption","onLoad","props","isValid","state","length","setState","_handleCloseWithValidation","fnCreateMessages","onClose","withValidationLoad","target","Object","assign","prototype"],"mappings":";;;;;AACA,IAAMA,yBAAyB,GAAG,SAA5BA,yBAA4B,CAC9BC,kBAD8B,EACVC,cADU,EACMC,MADN,EAEjC;AAAA,MADuCA,MACvC;AADuCA,IAAAA,MACvC,GADgD,KAAKC,KAAL,CAAWD,MAC3D;AAAA;;AACC,MAAIF,kBAAkB,CAACI,OAAvB,EAA+B;AAC7BF,IAAAA,MAAM,CAACD,cAAc,EAAf,CAAN;;AACA,QAAI,KAAKI,KAAL,CAAWL,kBAAX,CAA8BM,MAA9B,KAAyC,CAA7C,EAA+C;AAC7C,WAAKC,QAAL,CAAc;AAAEP,QAAAA,kBAAkB,EAAG;AAAvB,OAAd;AACD;AACF,GALD,MAKO;AACL,SAAKO,QAAL,CAAc;AAAEP,MAAAA,kBAAkB,EAAlBA;AAAF,KAAd;AACD;AACF,CAXD;;AAaA,IAAMQ,0BAA0B,GAAG,SAA7BA,0BAA6B,CAASC,gBAAT,EAA2BC,OAA3B,EAAwD;AAAA,MAA7BA,OAA6B;AAA7BA,IAAAA,OAA6B,GAAnB,KAAKP,KAAL,CAAWO,OAAQ;AAAA;;AACvF,MAAI,KAAKL,KAAL,CAAWL,kBAAX,CAA8BM,MAA9B,KAAyC,CAA7C,EAA+C;AAC7C,SAAKC,QAAL,CAAc;AAAEP,MAAAA,kBAAkB,EAAGS,gBAAgB;AAAvC,KAAd;AACD;;AACDC,EAAAA,OAAO;AACV,CALD;;AAOA,IAAMC,kBAAkB,GAAG,SAArBA,kBAAqB,CAACC,MAAD,EAAY;AACrCC,EAAAA,MAAM,CAACC,MAAP,CAAcF,MAAM,CAACG,SAArB,EAAgC;AAC9BhB,IAAAA,yBAAyB,EAAzBA,yBAD8B;AAE9BS,IAAAA,0BAA0B,EAA1BA;AAF8B,GAAhC;AAID,CALD;;eAOeG,kB","sourcesContent":["\r\nconst _handleLoadWithValidation = function(\r\n    validationMessages, fnCreateOption, onLoad = this.props.onLoad\r\n){\r\n  if (validationMessages.isValid){\r\n    onLoad(fnCreateOption());\r\n    if (this.state.validationMessages.length !== 0){\r\n      this.setState({ validationMessages : [] });\r\n    }\r\n  } else {\r\n    this.setState({ validationMessages });\r\n  }\r\n}\r\n\r\nconst _handleCloseWithValidation = function(fnCreateMessages, onClose = this.props.onClose){\r\n    if (this.state.validationMessages.length !== 0){\r\n      this.setState({ validationMessages : fnCreateMessages() });\r\n    }\r\n    onClose();\r\n}\r\n\r\nconst withValidationLoad = (target) => {\r\n  Object.assign(target.prototype, {\r\n    _handleLoadWithValidation,\r\n    _handleCloseWithValidation\r\n  })\r\n}\r\n\r\nexport default withValidationLoad\r\n"],"file":"withValidationLoad.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/dialogs/decorators/withValidationLoad.js"
+ ],
+ "file": "../../../../src/components/dialogs/decorators/withValidationLoad.js",
+ "names": [
+  "_handleLoadWithValidation",
+  "validationMessages",
+  "fnCreateOption",
+  "onLoad",
+  "props",
+  "isValid",
+  "state",
+  "length",
+  "setState",
+  "_handleCloseWithValidation",
+  "fnCreateMessages",
+  "onClose",
+  "_updateValidationMessages",
+  "withValidationLoad",
+  "target",
+  "Object",
+  "assign",
+  "prototype"
+ ],
+ "mappings": ";;;;;AACA,IAAMA,yBAAyB,GAAG,SAA5BA,yBAA4B,CAC9BC,kBAD8B,EACVC,cADU,EACMC,MADN,EAEjC;AAAA,MADuCA,MACvC;AADuCA,IAAAA,MACvC,GADgD,KAAKC,KAAL,CAAWD,MAC3D;AAAA;;AACC,MAAIF,kBAAkB,CAACI,OAAvB,EAA+B;AAC7BF,IAAAA,MAAM,CAACD,cAAc,EAAf,CAAN;;AACA,QAAI,KAAKI,KAAL,CAAWL,kBAAX,CAA8BM,MAA9B,KAAyC,CAA7C,EAA+C;AAC7C,WAAKC,QAAL,CAAc;AAAEP,QAAAA,kBAAkB,EAAG;AAAvB,OAAd;AACD;AACF,GALD,MAKO;AACL,SAAKO,QAAL,CAAc;AAAEP,MAAAA,kBAAkB,EAAlBA;AAAF,KAAd;AACD;AACF,CAXD;;AAaA,IAAMQ,0BAA0B,GAAG,SAA7BA,0BAA6B,CAASC,gBAAT,EAA2BC,OAA3B,EAAwD;AAAA,MAA7BA,OAA6B;AAA7BA,IAAAA,OAA6B,GAAnB,KAAKP,KAAL,CAAWO,OAAQ;AAAA;;AACvF,MAAI,KAAKL,KAAL,CAAWL,kBAAX,CAA8BM,MAA9B,KAAyC,CAA7C,EAA+C;AAC7C,SAAKC,QAAL,CAAc;AAAEP,MAAAA,kBAAkB,EAAGS,gBAAgB;AAAvC,KAAd;AACD;;AACDC,EAAAA,OAAO;AACV,CALD;;AAOA,IAAMC,yBAAyB,GAAG,SAA5BA,yBAA4B,CAASX,kBAAT,EAA4B;AAC5D,MAAIA,kBAAkB,CAACI,OAAvB,EAA+B;AAC7B,QAAI,KAAKC,KAAL,CAAWL,kBAAX,CAA8BM,MAA9B,GAAuC,CAA3C,EAA6C;AAC3C,WAAKC,QAAL,CAAc;AAAEP,QAAAA,kBAAkB,EAAlBA;AAAF,OAAd;AACD;AACF,GAJD,MAIO;AACL,SAAKO,QAAL,CAAc;AAAEP,MAAAA,kBAAkB,EAAlBA;AAAF,KAAd;AACD;AACF,CARD;;AAUA,IAAMY,kBAAkB,GAAG,SAArBA,kBAAqB,CAACC,MAAD,EAAY;AACrCC,EAAAA,MAAM,CAACC,MAAP,CAAcF,MAAM,CAACG,SAArB,EAAgC;AAC9BjB,IAAAA,yBAAyB,EAAzBA,yBAD8B;AAE9BS,IAAAA,0BAA0B,EAA1BA,0BAF8B;AAG9BG,IAAAA,yBAAyB,EAAzBA;AAH8B,GAAhC;AAKD,CAND;;eAQeC,kB"
+}

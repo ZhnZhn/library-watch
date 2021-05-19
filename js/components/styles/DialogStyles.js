@@ -17,21 +17,6 @@ var DialogStyles = {
     textAlign: 'right',
     fontSize: '16px',
     fontWeight: 'bold'
-  },
-  //ValidationMessagesFragment
-  validationContainer: {
-    color: '#f44336',
-    paddingLeft: 10,
-    paddingTop: 5
-  },
-  validationMessageNumber: {
-    display: 'inline-block',
-    width: 22,
-    height: 22,
-    marginRight: 5,
-    textAlign: 'center',
-    borderRadius: '50%',
-    border: 'solid 2px #f44336'
   }
 };
 var _default = DialogStyles;

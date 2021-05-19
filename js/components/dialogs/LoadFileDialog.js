@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = require("react");
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
@@ -19,7 +17,7 @@ var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog")
 
 var _InputFileReader = _interopRequireDefault(require("../zhn-atoms/InputFileReader"));
 
-var _ValidationMessagesFragment = _interopRequireDefault(require("../zhn-moleculs/ValidationMessagesFragment"));
+var _ValidationMessages = _interopRequireDefault(require("./rows/ValidationMessages"));
 
 var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
 
@@ -28,18 +26,19 @@ var _jsxRuntime = require("react/jsx-runtime");
 //import PropTypes from "prop-types";
 var styles = _DialogStyles["default"];
 var C = {
-  FILE_NOT_CHOOSED: 'Choose file with Watch Items for Load'
+  FILE_NOT_CHOOSED: 'Please choose file for loading.'
 };
 var STYLE = {
   MODAL_DIALOG: {
-    minWidth: '320px'
+    minWidth: 320
   },
   ROW_INPUT_FILE: {
-    marginTop: '16px',
-    marginBottom: '16px'
+    marginTop: 16,
+    marginBottom: 16
   },
   ROW_VALIDATION: {
-    marginRight: '16px'
+    width: '100%',
+    marginRight: 16
   }
 };
 
@@ -144,7 +143,7 @@ var LoadFileDialog = /*#__PURE__*/function (_Component) {
         })
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         style: (0, _extends2["default"])({}, styles.rowDiv, STYLE.ROW_VALIDATION),
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessagesFragment["default"], {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessages["default"], {
           validationMessages: validationMessages
         })
       })]
