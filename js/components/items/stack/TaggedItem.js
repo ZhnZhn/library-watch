@@ -2,8 +2,6 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
@@ -13,7 +11,7 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = require("react");
 
 var _has = _interopRequireDefault(require("../../has"));
 
@@ -35,14 +33,6 @@ var S = {
     display: 'flex',
     flexWrap: 'wrap'
   },
-
-  /*
-  PURPLE_BADGE : {
-    color: '#a487d4',
-    fontSize: 18,
-    paddingRight: 8
-  },
-  */
   FISH_BADGE: {
     display: 'inline-block',
     color: '#d7bb52',
@@ -123,6 +113,20 @@ var _getChangedTouches = function _getChangedTouches(ev) {
   return (((ev || {}).changedTouches || [])[0] || {}).clientX || 0;
 };
 
+var TagList = function TagList(_ref) {
+  var tags = _ref.tags;
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    children: (tags || []).map(function (tag, index) {
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: S.SPAN_TAG,
+        children: tag
+      }, index);
+    })
+  });
+};
+
+var _noopFn = function _noopFn() {};
+
 var TaggedItem = (0, _withDnDStyle["default"])(_class = (_temp = _class2 = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(TaggedItem, _Component);
 
@@ -132,7 +136,6 @@ var TaggedItem = (0, _withDnDStyle["default"])(_class = (_temp = _class2 = /*#__
     _this = _Component.call(this, props) || this;
 
     _this._dragStart = function (ev) {
-      ev.persist();
       _this._clientX = ev.clientX;
 
       _this.dragStartWithDnDStyle(ev);
@@ -144,8 +147,6 @@ var TaggedItem = (0, _withDnDStyle["default"])(_class = (_temp = _class2 = /*#__
     };
 
     _this._onTouchStart = function (ev) {
-      ev.persist();
-
       var _clientX = _getTouchesClientX(ev);
 
       if (_clientX) {
@@ -154,8 +155,6 @@ var TaggedItem = (0, _withDnDStyle["default"])(_class = (_temp = _class2 = /*#__
     };
 
     _this._onTouchMove = function (ev) {
-      ev.persist();
-
       var _clientX = _getTouchesClientX(ev);
 
       if (_clientX && Math.abs(_this._clientX - _clientX) > DELTA.MARK_REMOVE) {
@@ -165,7 +164,6 @@ var TaggedItem = (0, _withDnDStyle["default"])(_class = (_temp = _class2 = /*#__
 
     _this._dragEnd = function (ev) {
       ev.preventDefault();
-      ev.persist();
 
       _this.dragEndWithDnDStyle();
 
@@ -183,8 +181,6 @@ var TaggedItem = (0, _withDnDStyle["default"])(_class = (_temp = _class2 = /*#__
 
     _this._onTouchEnd = function (ev) {
       //ev.preventDefault()
-      ev.persist();
-
       _this.dragEndWithDnDStyle();
 
       var _clientX = _getChangedTouches(ev);
@@ -215,15 +211,6 @@ var TaggedItem = (0, _withDnDStyle["default"])(_class = (_temp = _class2 = /*#__
 
       _this.setState({
         isClosed: true
-      });
-    };
-
-    _this._renderTags = function (tags) {
-      return tags.map(function (tag, index) {
-        return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-          style: S.SPAN_TAG,
-          children: tag
-        }, index);
       });
     };
 
@@ -258,12 +245,11 @@ var TaggedItem = (0, _withDnDStyle["default"])(_class = (_temp = _class2 = /*#__
         title = item.title,
         dateAgo = item.dateAgo,
         link = item.link,
-        _item$owner = item.owner,
-        owner = _item$owner === void 0 ? {} : _item$owner,
-        _item$tags = item.tags,
-        tags = _item$tags === void 0 ? [] : _item$tags,
-        reputation = owner.reputation,
-        display_name = owner.display_name,
+        owner = item.owner,
+        tags = item.tags,
+        _ref2 = owner || {},
+        reputation = _ref2.reputation,
+        display_name = _ref2.display_name,
         isClosed = this.state.isClosed,
         _style = isClosed ? S.NONE : void 0;
 
@@ -292,14 +278,13 @@ var TaggedItem = (0, _withDnDStyle["default"])(_class = (_temp = _class2 = /*#__
             children: display_name
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].DateAgo, {
             style: S.DATE_AGO,
-            dateAgo: dateAgo,
-            date: ""
+            dateAgo: dateAgo
           })]
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
           style: S.TITLE,
           children: title
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-          children: this._renderTags(tags)
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(TagList, {
+          tags: tags
         })]
       })
     }), question_id);
@@ -307,8 +292,8 @@ var TaggedItem = (0, _withDnDStyle["default"])(_class = (_temp = _class2 = /*#__
 
   return TaggedItem;
 }(_react.Component), _class2.defaultProps = {
-  onRemoveUnder: function onRemoveUnder() {},
-  onRemoveItem: function onRemoveItem() {}
+  onRemoveUnder: _noopFn,
+  onRemoveItem: _noopFn
 }, _temp)) || _class;
 
 var _default = TaggedItem;

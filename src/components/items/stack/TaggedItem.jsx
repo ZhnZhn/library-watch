@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import { Component } from 'react';
 
-import has from '../../has'
-import withDnDStyle from '../decorators/withDnDStyle'
-import A from '../../zhn-atoms/A'
+import has from '../../has';
+import withDnDStyle from '../decorators/withDnDStyle';
+import A from '../../zhn-atoms/A';
 
 const CL = 'row-item not-selected';
 
@@ -15,13 +15,6 @@ const S = {
     display: 'flex',
     flexWrap: 'wrap'
   },
-  /*
-  PURPLE_BADGE : {
-    color: '#a487d4',
-    fontSize: 18,
-    paddingRight: 8
-  },
-  */
   FISH_BADGE: {
     display: 'inline-block',
     color: '#d7bb52',
@@ -74,7 +67,7 @@ const DELTA = HAS_TOUCH ? {
   MARK_REMOVE: 25,
   REMOVE_ITEM: 35,
   REMOVE_UNDER: 150
-}
+};
 
 const TOKEN_ANSWER = HAS_TOUCH ? 'A' : (
   <span role="img" arial-label="hammer and pick">&#x2692;</span>
@@ -96,11 +89,25 @@ const _getChangedTouches = (ev) =>
   (((ev || {}).changedTouches || [])[0] || {}).clientX || 0;
 
 
+const TagList = ({ tags }) => (
+  <div>
+    {(tags || []).map((tag, index) => (
+        <span key={index} style={S.SPAN_TAG}>
+          {tag}
+        </span>
+    ))}
+  </div>
+);
+
+
+const _noopFn = () => {};
+
+
 @withDnDStyle
 class TaggedItem extends Component {
   static defaultProps = {
-    onRemoveUnder: () => {},
-    onRemoveItem: () => {}
+    onRemoveUnder: _noopFn,
+    onRemoveItem: _noopFn
   }
 
   constructor(props){
@@ -127,7 +134,6 @@ class TaggedItem extends Component {
   }
 
   _dragStart = (ev) => {
-    ev.persist()
     this._clientX = ev.clientX
     this.dragStartWithDnDStyle(ev)
     if (ev && ev.dataTransfer) {
@@ -136,27 +142,24 @@ class TaggedItem extends Component {
     }
   }
   _onTouchStart = (ev) => {
-    ev.persist()
     const _clientX = _getTouchesClientX(ev);
     if (_clientX) {
       this._clientX = _clientX
     }
   }
   _onTouchMove = (ev) => {
-    ev.persist()
     const _clientX = _getTouchesClientX(ev);
     if (_clientX
-       && Math.abs(this._clientX -  _clientX) > DELTA.MARK_REMOVE) {
+        && Math.abs(this._clientX -  _clientX) > DELTA.MARK_REMOVE) {
       this.dragStartWithDnDStyle(ev)
     }
 
   }
   _dragEnd = (ev) => {
     ev.preventDefault()
-    ev.persist()
     this.dragEndWithDnDStyle()
     const _deltaX = Math.abs(this._clientX - ev.clientX)
-        , { item, onRemoveUnder } = this.props;
+    , { item, onRemoveUnder } = this.props;
     if (_deltaX > DELTA.REMOVE_UNDER) {
       onRemoveUnder(item)
     } else if (_deltaX > DELTA.REMOVE_ITEM){
@@ -165,7 +168,6 @@ class TaggedItem extends Component {
   }
   _onTouchEnd = (ev) => {
     //ev.preventDefault()
-    ev.persist()
     this.dragEndWithDnDStyle()
     const _clientX = _getChangedTouches(ev);
     if (_clientX) {
@@ -188,15 +190,6 @@ class TaggedItem extends Component {
      this.setState({ isClosed: true })
    }
 
-  _renderTags = (tags) => {
-    return tags.map((tag, index) => {
-       return (
-         <span key={index} style={S.SPAN_TAG}>
-            {tag}
-         </span>
-       );
-    })
-  }
 
   render(){
     const { item } = this.props
@@ -205,9 +198,9 @@ class TaggedItem extends Component {
        is_answered,
        answer_count, score, view_count,
        title, dateAgo, link,
-       owner={}, tags=[]
+       owner, tags
     } = item
-    , { reputation, display_name } = owner
+    , { reputation, display_name } = owner || {}
     , { isClosed } = this.state
     , _style = isClosed ? S.NONE : void 0;
     return (
@@ -218,34 +211,31 @@ class TaggedItem extends Component {
         {...this._itemHandlers}
       >
          <a href={link}>
-         <div style={S.ITEM_CAPTION}>
-           <span style={is_answered ? S.GREEN_BADGE: S.FISH_BADGE}>
-             {TOKEN_ANSWER}&nbsp;{answer_count}
-           </span>
-           <span style={S.FISH_BADGE}>
-             {TOKEN_SCORE}&nbsp;{score}
-           </span>
-           <span style={S.BLACK_BAGDE}>
-             {TOKEN_VIEW}&nbsp;{view_count}
-           </span>
-           <span style={S.GREEN_BADGE}>
-             {TOKEN_REPUTATION}&nbsp;{reputation}
-           </span>
-           <span style={S.BLACK_BAGDE}>
-             {display_name}
-           </span>
-           <A.DateAgo
-              style={S.DATE_AGO}
-              dateAgo={dateAgo}
-              date=""
-           />
-         </div>
+           <div style={S.ITEM_CAPTION}>
+             <span style={is_answered ? S.GREEN_BADGE: S.FISH_BADGE}>
+               {TOKEN_ANSWER}&nbsp;{answer_count}
+             </span>
+             <span style={S.FISH_BADGE}>
+               {TOKEN_SCORE}&nbsp;{score}
+             </span>
+             <span style={S.BLACK_BAGDE}>
+               {TOKEN_VIEW}&nbsp;{view_count}
+             </span>
+             <span style={S.GREEN_BADGE}>
+               {TOKEN_REPUTATION}&nbsp;{reputation}
+             </span>
+             <span style={S.BLACK_BAGDE}>
+               {display_name}
+             </span>
+             <A.DateAgo
+                style={S.DATE_AGO}
+                dateAgo={dateAgo}
+             />
+           </div>
            <div style={S.TITLE}>
              {title}
            </div>
-           <div>
-             {this._renderTags(tags)}
-           </div>
+           <TagList tags={tags} />
          </a>
       </div>
     );
