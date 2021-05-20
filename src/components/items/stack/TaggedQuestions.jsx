@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
-import A from '../../zhn-atoms/A'
-import Caption from '../ItemCaption'
-import ModalSlider from '../../zhn-modal-slider/ModalSlider'
-import crModelMore from './crModelMore'
-import sortItemsBy from './sortItemsBy'
-import TaggedItemList from './TaggedItemList'
-import STYLE from '../Item.Style'
-import CL from '../../styles/CL'
+import A from '../../zhn-atoms/A';
+import Caption from '../ItemCaption';
+import ModalSlider from '../../zhn-modal-slider/ModalSlider';
+import crModelMore from './crModelMore';
+import sortItemsBy from './sortItemsBy';
+import TaggedItemList from './TaggedItemList';
+import STYLE from '../Item.Style';
+import CL from '../../styles/CL';
 
 const S = {
   BT_MORE: {

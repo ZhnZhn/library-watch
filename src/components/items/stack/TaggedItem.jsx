@@ -193,8 +193,7 @@ class TaggedItem extends Component {
 
   render(){
     const { item } = this.props
-    , {
-       question_id,
+    , {       
        is_answered,
        answer_count, score, view_count,
        title, dateAgo, link,
@@ -205,7 +204,6 @@ class TaggedItem extends Component {
     , _style = isClosed ? S.NONE : void 0;
     return (
       <div
-        key={question_id}
         className={CL}
         style={_style}
         {...this._itemHandlers}

@@ -107,13 +107,18 @@
   {
     width: 2.5em;
     height: 2.5em;
+    -webkit-animation: circle infinite 1.25s linear;
     -o-animation: circle infinite 1.25s linear;
     animation: circle infinite 1.25s linear;
    border: 3px solid #009ae5;
    border-top-color: transparent;
    border-radius: 100%;
  }
-
+@-webkit-keyframes circle
+{ 100% {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+} }
 @-o-keyframes circle
 { 100% {
   -o-transform: rotate(360deg);
@@ -167,7 +172,7 @@
 
   </style>
 
-  <link rel="stylesheet" href="css/app-30e7c2180d.min.css">
+  <link rel="stylesheet" href="css/app-ab1c46df29.min.css">
 
 
 </head>
@@ -231,7 +236,7 @@
    <!--googleoff: snippet-->
 
    <script src="app/lib_80320c8ace262a56854d.js" defer></script>
-   <script src="app/app_f142e8065d1c0845f2cc.js" defer></script>    
+   <script src="app/app_e39d018a99e0e3da9cb0.js" defer></script>    
 
 </body>
 </html>

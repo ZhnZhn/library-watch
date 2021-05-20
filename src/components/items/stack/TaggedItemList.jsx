@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react'
+import { Component } from 'react';
 
-import TaggedItem from './TaggedItem'
+import TaggedItem from './TaggedItem';
 
 
 class TaggedItemList extends Component {
@@ -31,9 +31,9 @@ class TaggedItemList extends Component {
 
   render(){
     return (
-      <Fragment>
+      <>
         {this._renderItems()}
-      </Fragment>
+      </>
     );
   }
 }

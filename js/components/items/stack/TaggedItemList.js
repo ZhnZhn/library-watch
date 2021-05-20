@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,7 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = require("react");
 
 var _TaggedItem = _interopRequireDefault(require("./TaggedItem"));
 
@@ -54,7 +52,7 @@ var TaggedItemList = /*#__PURE__*/function (_Component) {
   };
 
   _proto.render = function render() {
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_react.Fragment, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
       children: this._renderItems()
     });
   };

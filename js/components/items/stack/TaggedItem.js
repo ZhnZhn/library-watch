@@ -237,7 +237,6 @@ var TaggedItem = (0, _withDnDStyle["default"])(_class = (_temp = _class2 = /*#__
 
   _proto.render = function render() {
     var item = this.props.item,
-        question_id = item.question_id,
         is_answered = item.is_answered,
         answer_count = item.answer_count,
         score = item.score,
@@ -287,7 +286,7 @@ var TaggedItem = (0, _withDnDStyle["default"])(_class = (_temp = _class2 = /*#__
           tags: tags
         })]
       })
-    }), question_id);
+    }));
   };
 
   return TaggedItem;
