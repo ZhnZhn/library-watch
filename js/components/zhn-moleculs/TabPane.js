@@ -14,17 +14,24 @@ var _react = _interopRequireWildcard(require("react"));
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
-var STYLE = {
-  UL: {
-    listStyle: 'outside none none',
-    marginTop: '10px',
-    marginLeft: '10px',
-    marginRight: '5px',
-    borderBottom: '2px solid rgba(164, 135, 212, 1)'
+var S = {
+  TABS: {
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 5,
+    borderBottom: '2px solid #a487d4'
   },
-  DIV: {
+  TABPANES: {
     width: "100%",
     height: "100%"
+  },
+  TABPANE_SELECTED: {
+    display: 'block',
+    width: "100%",
+    height: "100%"
+  },
+  TABPANE_HIDED: {
+    display: 'none'
   }
 };
 
@@ -41,7 +48,7 @@ var TabPane = /*#__PURE__*/function (_Component) {
   function TabPane(props) {
     var _this;
 
-    _this = _Component.call(this) || this;
+    _this = _Component.call(this, props) || this;
 
     _this._handlerClickTab = function (index) {
       _this.setState({
@@ -66,13 +73,7 @@ var TabPane = /*#__PURE__*/function (_Component) {
           selectedTabIndex = _this$state.selectedTabIndex,
           components = _this$state.components;
       return components.map(function (comp, index) {
-        var divStyle = index === selectedTabIndex ? {
-          display: 'block',
-          width: "100%",
-          height: "100%"
-        } : {
-          display: 'none'
-        };
+        var divStyle = index === selectedTabIndex ? S.TABPANE_SELECTED : S.TABPANE_HIDED;
         return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
           style: divStyle,
           children: comp
@@ -105,12 +106,11 @@ var TabPane = /*#__PURE__*/function (_Component) {
         width: width,
         height: height
       },
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("ul", {
-        className: "tabpane__tabs",
-        style: STYLE.UL,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: S.TABS,
         children: this._renderTabs(children)
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        style: STYLE.DIV,
+        style: S.TABPANES,
         children: this._renderComponents()
       })]
     });

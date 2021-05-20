@@ -1,45 +1,28 @@
-import React from 'react';
-
 //import PropTypes from "prop-types";
 
-const STYLE = {
-  LI : {
-    float : 'left',
-    display : 'inline-block',
+const CL = "tab";
 
-    backgroundColor : '#232F3B',
-    /*color : 'rgba(164, 135, 212, 1)',*/
-    color : 'gray',
-    paddingLeft : '10px',
-    paddingRight : '10px',
-    paddingTop : '6px',
-    paddingBottom : '6px',
-    borderTopLeftRadius : '8px',
-    borderTopRightRadius : '8px',
-    cursor : 'pointer',
-
-    fontWeight : 'bold',
-    //border: '2px solid rgb(44, 40, 40)',
-    border: '2px solid gray',
-    borderBottom : 'none'
-    //borderTop : 'none'
-  },
+const S = {
   SELECTED : {
-    borderColor : 'rgba(164, 135, 212, 1)',
-    color : 'rgba(164, 135, 212, 1)'
+    borderColor : '#a487d4',
+    color : '#a487d4'
   }
-}
+};
 
 const Tab = ({ title, isSelected, onClick }) => {
-    const _style = (isSelected) ? STYLE.SELECTED : null;
-    return (
-       <li
-          style={{ ...STYLE.LI, ..._style }}
-          onClick={onClick}
-       >
-          <span>{title}</span>
-       </li>
-    )
+  const _style = isSelected ? S.SELECTED : void 0;
+  return (
+     <button
+        role="tab"
+        aria-selected={isSelected}
+        tabIndex="0"
+        className={CL}
+        style={_style}
+        onClick={onClick}
+     >
+        <span>{title}</span>
+     </button>
+  );
 }
 
 /*
@@ -49,8 +32,5 @@ Tab.propTypes = {
   onClick: PropTypes.func
 }
 */
-Tab.defaultProps = {
-  onClick: () => {}
-}
 
 export default Tab

@@ -1,41 +1,16 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _react = _interopRequireDefault(require("react"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
-var STYLE = {
-  LI: {
-    "float": 'left',
-    display: 'inline-block',
-    backgroundColor: '#232F3B',
-
-    /*color : 'rgba(164, 135, 212, 1)',*/
-    color: 'gray',
-    paddingLeft: '10px',
-    paddingRight: '10px',
-    paddingTop: '6px',
-    paddingBottom: '6px',
-    borderTopLeftRadius: '8px',
-    borderTopRightRadius: '8px',
-    cursor: 'pointer',
-    fontWeight: 'bold',
-    //border: '2px solid rgb(44, 40, 40)',
-    border: '2px solid gray',
-    borderBottom: 'none' //borderTop : 'none'
-
-  },
+var CL = "tab";
+var S = {
   SELECTED: {
-    borderColor: 'rgba(164, 135, 212, 1)',
-    color: 'rgba(164, 135, 212, 1)'
+    borderColor: '#a487d4',
+    color: '#a487d4'
   }
 };
 
@@ -44,10 +19,14 @@ var Tab = function Tab(_ref) {
       isSelected = _ref.isSelected,
       onClick = _ref.onClick;
 
-  var _style = isSelected ? STYLE.SELECTED : null;
+  var _style = isSelected ? S.SELECTED : void 0;
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("li", {
-    style: (0, _extends2["default"])({}, STYLE.LI, _style),
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+    role: "tab",
+    "aria-selected": isSelected,
+    tabIndex: "0",
+    className: CL,
+    style: _style,
     onClick: onClick,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       children: title
@@ -63,9 +42,6 @@ Tab.propTypes = {
 */
 
 
-Tab.defaultProps = {
-  onClick: function onClick() {}
-};
 var _default = Tab;
 exports["default"] = _default;
 //# sourceMappingURL=Tab.js.map

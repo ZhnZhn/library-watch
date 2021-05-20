@@ -2,17 +2,24 @@ import React, { Component } from 'react';
 
 //import PropTypes from "prop-types";
 
-const STYLE = {
-  UL : {
-    listStyle : 'outside none none',
-    marginTop: '10px',
-    marginLeft: '10px',
-    marginRight: '5px',
-    borderBottom : '2px solid rgba(164, 135, 212, 1)'
+const S = {
+  TABS : {
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 5,
+    borderBottom : '2px solid #a487d4'
   },
-  DIV : {
+  TABPANES : {
     width: "100%",
     height : "100%"
+  },
+  TABPANE_SELECTED: {
+    display: 'block',
+    width: "100%",
+    height : "100%"
+  },
+  TABPANE_HIDED: {
+    display : 'none'
   }
 };
 
@@ -26,7 +33,7 @@ class TabPane extends Component {
   */
 
   constructor(props){
-    super()
+    super(props)
     const components = props.children.map((tab, index) => {
        return  React.cloneElement(tab.props.children, { key : 'comp' + index });
     })
@@ -41,35 +48,35 @@ class TabPane extends Component {
   }
 
   _renderTabs = (children) => {
-       const {selectedTabIndex} = this.state;
-       return children.map((tab, index) => {
-          const isSelected = (index === selectedTabIndex) ? true : false;
-          return React.cloneElement(tab, { key : index, onClick : this._handlerClickTab.bind(null, index), isSelected })
-       })
+      const {selectedTabIndex} = this.state;
+      return children.map((tab, index) => {
+        const isSelected = (index === selectedTabIndex) ? true : false;
+        return React.cloneElement(tab, { key : index, onClick : this._handlerClickTab.bind(null, index), isSelected })
+      })
   }
 
   _renderComponents = () => {
-      const {selectedTabIndex, components} = this.state;
-      return components.map((comp, index) => {
-         const divStyle = (index === selectedTabIndex)
-                    ? {display: 'block', width: "100%", height : "100%"}
-                    : {display : 'none'};
-          return (
-             <div style={divStyle} key={'a'+index}>
-                {comp}
-             </div>
-           )
-      })
+     const {selectedTabIndex, components} = this.state;
+     return components.map((comp, index) => {
+        const divStyle = (index === selectedTabIndex)
+           ? S.TABPANE_SELECTED
+           : S.TABPANE_HIDED;
+         return (
+            <div style={divStyle} key={'a'+index}>
+               {comp}
+            </div>
+          )
+     })
   }
 
   render(){
     const { children, width, height } = this.props;
     return (
       <div style={{ width, height }}>
-        <ul className="tabpane__tabs" style={STYLE.UL}>
+        <div style={S.TABS}>
            {this._renderTabs(children)}
-        </ul>
-        <div style={STYLE.DIV}>
+        </div>
+        <div style={S.TABPANES}>
            {this._renderComponents()}
         </div>
       </div>
@@ -80,5 +87,6 @@ class TabPane extends Component {
     return this.state.selectedTabIndex;
   }
 }
+
 
 export default TabPane
