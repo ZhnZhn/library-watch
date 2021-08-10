@@ -1,8 +1,10 @@
 .languagebabel
 node_modules
-local_modules
 _start_server.bat
 lint.txt
 npm-debug.log
 lib-dev
 _codemods
+stats.json
+report.html
+

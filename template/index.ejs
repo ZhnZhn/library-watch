@@ -234,8 +234,16 @@
       </div>
    </noscript>
    <!--googleoff: snippet-->
+
+
+ <%
+ for (var index in htmlWebpackPlugin.files.js ) {
+    var fileName = htmlWebpackPlugin.files.js[index];
+    if (fileName.indexOf('lib_') !== -1) { %>
+      <script src="<%=fileName %>" defer></script>
+    <% }
+ } %>   
    
-   <!--script src="app/lib"></script-->
  <%
  for (var index in htmlWebpackPlugin.files.js ) {
     var fileName = htmlWebpackPlugin.files.js[index];

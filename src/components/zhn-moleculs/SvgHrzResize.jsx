@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 //import PropTypes from "prop-types";
 import ReactDOM from 'react-dom'
 
@@ -52,10 +52,7 @@ class SvgHrzResize extends Component {
     } : {
       onMouseDown: this._hStartResize.bind(this, this._resizeRight),
       onMouseUp: this._hStopResize.bind(this, true)
-    }
-
-
-    this.state = {}
+    }    
   }
 
   componentDidMount(){
@@ -104,7 +101,6 @@ class SvgHrzResize extends Component {
     }
   }
   _hStartResize = (fnResize) => {
-    //evt.preventDefault()
     this._updateDelta()
     if (this.id !== null){
       this._hStopResize(false);
@@ -112,7 +108,6 @@ class SvgHrzResize extends Component {
     this.id = setInterval(fnResize, 5);
   }
   _hStopResize = (isOnResizeAfter, evt) => {
-    evt.preventDefault()
     clearInterval(this.id);
     this.id = null;
     this.step = 1;

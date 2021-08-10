@@ -63,6 +63,9 @@ var S = {
     top: -6,
     marginLeft: 10
   },
+  ML_8: {
+    marginLeft: 8
+  },
   ML_16: {
     marginLeft: 16
   },
@@ -281,7 +284,7 @@ var NpmDownloads = /*#__PURE__*/function (_Component) {
       labels: labels,
       data: data
     }),
-        _infoStyle = isButtons ? (0, _extends2["default"])({}, S.ML_16, S.MT_16) : S.ML_16;
+        _infoStyle = isButtons ? (0, _extends2["default"])({}, S.ML_8, S.MT_16) : S.ML_8;
 
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       style: S.ROOT,

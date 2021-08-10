@@ -46,6 +46,9 @@ const S = {
     top: -6,
     marginLeft: 10
   },
+  ML_8: {
+    marginLeft: 8
+  },
   ML_16: {
     marginLeft: 16
   },
@@ -218,8 +221,8 @@ class NpmDownloads extends Component {
     } = this.state
     , _lineChartConfig = Chart.fLineConfig({ labels, data })
     , _infoStyle = isButtons
-          ? { ...S.ML_16, ...S.MT_16 }
-          : S.ML_16;
+          ? { ...S.ML_8, ...S.MT_16 }
+          : S.ML_8;
     return (
       <div style={S.ROOT}>
         <ModalSlider

@@ -4,8 +4,7 @@ const path = require('path')
 , webpack = require('webpack')
 , babelDevConfig = require('./babel.dev.config')
 , ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-, HtmlWebpackPlugin = require('html-webpack-plugin')
-, HtmlProcessingWebpackPlugin = require('./plugins/html-processing-webpack-plugin');
+, HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: "development",
@@ -27,7 +26,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -43,7 +42,7 @@ module.exports = {
     ]
   },
   resolve: {
-    modules: ['local_modules','node_modules'],
+    modules: ['node_modules'],
     extensions: ['.js', '.jsx']
   },
   plugins : [
@@ -53,7 +52,6 @@ module.exports = {
         filename: path.resolve('dev', 'index.html'),
         template: path.resolve('template', 'index.ejs'),
         inject: false
-    }),
-    new HtmlProcessingWebpackPlugin()
+    })
   ]
 }

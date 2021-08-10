@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -13,7 +11,7 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = require("react");
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
@@ -97,7 +95,6 @@ var SvgHrzResize = /*#__PURE__*/function (_Component) {
     };
 
     _this._hStartResize = function (fnResize) {
-      //evt.preventDefault()
       _this._updateDelta();
 
       if (_this.id !== null) {
@@ -108,7 +105,6 @@ var SvgHrzResize = /*#__PURE__*/function (_Component) {
     };
 
     _this._hStopResize = function (isOnResizeAfter, evt) {
-      evt.preventDefault();
       clearInterval(_this.id);
       _this.id = null;
       _this.step = 1;
@@ -139,7 +135,6 @@ var SvgHrzResize = /*#__PURE__*/function (_Component) {
       onMouseDown: _this._hStartResize.bind((0, _assertThisInitialized2["default"])(_this), _this._resizeRight),
       onMouseUp: _this._hStopResize.bind((0, _assertThisInitialized2["default"])(_this), true)
     };
-    _this.state = {};
     return _this;
   }
 
