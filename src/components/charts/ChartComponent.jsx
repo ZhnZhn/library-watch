@@ -1,6 +1,18 @@
 import { Component } from 'react';
-import Chart from 'chart.js';
+
+import {
+	Chart,
+	LineElement,
+	LineController,
+	Legend,
+  Tooltip,
+	CategoryScale,
+	LinearScale,
+	PointElement
+} from 'chart.js';
+
 import configChart from './configChart';
+import merge from '../../utils/merge';
 import deepEqual from '../../utils/deepEqual';
 import omit from '../../utils/omit';
 
@@ -8,8 +20,19 @@ const IGNORED_PROPERTIES = [
 	'id', 'width', 'height', 'onElementsClick'
 ];
 
+Chart.register(
+	LineElement,
+  LineController,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  Legend,
+  Tooltip
+)
+
+
 const _isFn = fn => typeof fn === 'function'
-, _configMerge = Chart.helpers.configMerge;
+, _configMerge = merge;
 
 configChart(Chart)
 
@@ -17,7 +40,6 @@ const DF_OPTIONS = {
 	tooltips: {
 		callbacks: {
 			labelTextColor: function(tooltipItem, chartInst) {
-				 //console.log(chartInst.data.datasets[tooltipItem.datasetIndex].borderColor);
 				 return chartInst.data.datasets[tooltipItem.datasetIndex].borderColor;
 			}
 		}
@@ -43,7 +65,7 @@ class ChartComponent extends Component {
 	*/
 
 	static defaultProps = {
-			type: 'doughnut',
+			type: 'line',
 			height: 150,
 			width: 300,
 			redraw: false,
@@ -103,7 +125,7 @@ class ChartComponent extends Component {
 
 	_hClick = (evt) => {
 		const elems = this.chart_instance.getElementsAtEvent(evt);
-		if (elems.length) {			
+		if (elems.length) {
 			this.props.onElementsClick(elems);
 		}
 	}

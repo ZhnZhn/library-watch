@@ -11,9 +11,11 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = require("react");
 
-var _chart = _interopRequireDefault(require("chart.js"));
+var _chart = require("chart.js");
 
 var _configChart = _interopRequireDefault(require("./configChart"));
+
+var _merge = _interopRequireDefault(require("../../utils/merge"));
 
 var _deepEqual = _interopRequireDefault(require("../../utils/deepEqual"));
 
@@ -23,17 +25,18 @@ var _jsxRuntime = require("react/jsx-runtime");
 
 var IGNORED_PROPERTIES = ['id', 'width', 'height', 'onElementsClick'];
 
+_chart.Chart.register(_chart.LineElement, _chart.LineController, _chart.CategoryScale, _chart.LinearScale, _chart.PointElement, _chart.Legend, _chart.Tooltip);
+
 var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
 },
-    _configMerge = _chart["default"].helpers.configMerge;
+    _configMerge = _merge["default"];
 
-(0, _configChart["default"])(_chart["default"]);
+(0, _configChart["default"])(_chart.Chart);
 var DF_OPTIONS = {
   tooltips: {
     callbacks: {
       labelTextColor: function labelTextColor(tooltipItem, chartInst) {
-        //console.log(chartInst.data.datasets[tooltipItem.datasetIndex].borderColor);
         return chartInst.data.datasets[tooltipItem.datasetIndex].borderColor;
       }
     }
@@ -74,7 +77,7 @@ var ChartComponent = /*#__PURE__*/function (_Component) {
           type = _this$props2.type,
           _options = _configMerge(DF_OPTIONS, options);
 
-      _this.chart_instance = new _chart["default"](_this.rootNode, {
+      _this.chart_instance = new _chart.Chart(_this.rootNode, {
         type: type,
         data: data,
         options: _options
@@ -143,7 +146,7 @@ var ChartComponent = /*#__PURE__*/function (_Component) {
 }(_react.Component);
 
 ChartComponent.defaultProps = {
-  type: 'doughnut',
+  type: 'line',
   height: 150,
   width: 300,
   redraw: false

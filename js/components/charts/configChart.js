@@ -5,22 +5,19 @@ exports["default"] = void 0;
 var _assign = Object.assign;
 
 var configChart = function configChart(Chart) {
-  _assign(Chart.defaults.global, {
-    defaultFontColor: 'black',
-    defaultFontSize: 14,
-    defaultFontStyle: 'bold'
-  });
-
-  _assign(Chart.defaults.global.tooltips, {
-    titleFontColor: '#a487d4',
-    titleFontSize: 16,
-    bodyFontColor: '#80c040',
-    bodyFontSize: 16
-  });
-
-  _assign(Chart.defaults.global.legend, {
-    display: true,
-    position: 'bottom'
+  var _d = Chart.defaults;
+  _d.color = 'black';
+  _d.font.size = 14;
+  _d.font.weight = 'bold';
+  _d.plugins.tooltip = _assign(_d.plugins.tooltip || {}, {
+    titleColor: '#a487d4',
+    titleFont: {
+      size: 16
+    },
+    bodyColor: '#80c040',
+    bodyFont: {
+      size: 16
+    }
   });
 };
 
