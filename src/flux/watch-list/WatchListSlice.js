@@ -2,8 +2,9 @@
 import LocalForage from 'localforage';
 //import JSZip from 'jszip';
 import FileSaver from 'browser-filesaver';
-import merge from 'lodash.merge';
+//import merge from 'lodash.merge';
 
+import merge from '../../utils/merge';
 import DateUtils from '../../utils/DateUtils';
 
 import ComponentActions from '../actions/ComponentActions';

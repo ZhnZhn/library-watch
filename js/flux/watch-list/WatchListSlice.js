@@ -11,7 +11,7 @@ var _localforage = _interopRequireDefault(require("localforage"));
 
 var _browserFilesaver = _interopRequireDefault(require("browser-filesaver"));
 
-var _lodash = _interopRequireDefault(require("lodash.merge"));
+var _merge = _interopRequireDefault(require("../../utils/merge"));
 
 var _DateUtils = _interopRequireDefault(require("../../utils/DateUtils"));
 
@@ -30,6 +30,7 @@ var _Msg = _interopRequireDefault(require("../../constants/Msg"));
 var _Logic = _interopRequireDefault(require("./Logic"));
 
 //import JSZip from 'jszip';
+//import merge from 'lodash.merge';
 var STORAGE_KEY = 'WATCH_LIST_PACKAGE',
     CAPTION_WATCH_SAVE = 'Watch List:',
     CAPTION_WATCH_EXPORT = "BackUp Watch Items:",
@@ -170,7 +171,7 @@ var WatchListSlice = {
   onLoadFromJson: function onLoadFromJson(option) {
     try {
       var progressEvent = option.progressEvent;
-      (0, _lodash["default"])(this.watchList, JSON.parse(progressEvent.target.result));
+      (0, _merge["default"])(this.watchList, JSON.parse(progressEvent.target.result));
       this.setWatchEdited(true);
       this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
     } catch (exc) {
