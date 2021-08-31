@@ -1,25 +1,21 @@
-import React, { Component } from 'react';
+import { memo } from 'react';
 
 import MenuBrowserDynamic from '../zhn-moleculs/MenuBrowserDynamic';
 import BA, {BrowserActionTypes as BAT} from '../../flux/actions/BrowserActions';
 
-class SourceBrowserDynamic extends Component {
-  shouldComponentUpdate(){
-    return false;
-  }
+const _isNotRequireRerender = () => true;
 
-  render(){
-    return (
-       <MenuBrowserDynamic
-          caption="Source Browser"
-          showAction={BAT.SHOW_BROWSER_DYNAMIC}
-          loadCompletedAction={BAT.LOAD_BROWSER_DYNAMIC_COMPLETED}
-          updateAction={BAT.UPDATE_BROWSER_MENU}
-          onLoadMenu={BA.loadBrowserDynamic}
-          {...this.props}
-       />
-    );
-  }
-}
+const SourceBrowserDynamic = memo(props => (
+  <MenuBrowserDynamic
+     caption="Source Browser"
+     showAction={BAT.SHOW_BROWSER_DYNAMIC}
+     loadCompletedAction={BAT.LOAD_BROWSER_DYNAMIC_COMPLETED}
+     updateAction={BAT.UPDATE_BROWSER_MENU}
+     onLoadMenu={BA.loadBrowserDynamic}
+     {...props}
+  />
+ ),
+ _isNotRequireRerender
+);
 
 export default SourceBrowserDynamic

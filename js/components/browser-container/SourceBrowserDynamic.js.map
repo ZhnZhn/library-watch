@@ -1,1 +1,19 @@
-{"version":3,"sources":["../../../src/components/browser-container/SourceBrowserDynamic.jsx"],"names":["SourceBrowserDynamic","shouldComponentUpdate","render","BAT","SHOW_BROWSER_DYNAMIC","LOAD_BROWSER_DYNAMIC_COMPLETED","UPDATE_BROWSER_MENU","BA","loadBrowserDynamic","props","Component"],"mappings":";;;;;;;;;;;;;AAAA;;AAEA;;AACA;;;;IAEMA,oB;;;;;;;;;SACJC,qB,GAAA,iCAAuB;AACrB,WAAO,KAAP;AACD,G;;SAEDC,M,GAAA,kBAAQ;AACN,wBACG,qBAAC,8BAAD;AACG,MAAA,OAAO,EAAC,gBADX;AAEG,MAAA,UAAU,EAAEC,mCAAIC,oBAFnB;AAGG,MAAA,mBAAmB,EAAED,mCAAIE,8BAH5B;AAIG,MAAA,YAAY,EAAEF,mCAAIG,mBAJrB;AAKG,MAAA,UAAU,EAAEC,2BAAGC;AALlB,OAMO,KAAKC,KANZ,EADH;AAUD,G;;;EAhBgCC,gB;;eAmBpBV,oB","sourcesContent":["import React, { Component } from 'react';\r\n\r\nimport MenuBrowserDynamic from '../zhn-moleculs/MenuBrowserDynamic';\r\nimport BA, {BrowserActionTypes as BAT} from '../../flux/actions/BrowserActions';\r\n\r\nclass SourceBrowserDynamic extends Component {\r\n  shouldComponentUpdate(){\r\n    return false;\r\n  }\r\n\r\n  render(){\r\n    return (\r\n       <MenuBrowserDynamic\r\n          caption=\"Source Browser\"\r\n          showAction={BAT.SHOW_BROWSER_DYNAMIC}\r\n          loadCompletedAction={BAT.LOAD_BROWSER_DYNAMIC_COMPLETED}\r\n          updateAction={BAT.UPDATE_BROWSER_MENU}\r\n          onLoadMenu={BA.loadBrowserDynamic}\r\n          {...this.props}\r\n       />\r\n    );\r\n  }\r\n}\r\n\r\nexport default SourceBrowserDynamic\r\n"],"file":"SourceBrowserDynamic.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/browser-container/SourceBrowserDynamic.js"
+ ],
+ "file": "../../../src/components/browser-container/SourceBrowserDynamic.js",
+ "names": [
+  "_isNotRequireRerender",
+  "SourceBrowserDynamic",
+  "props",
+  "BAT",
+  "SHOW_BROWSER_DYNAMIC",
+  "LOAD_BROWSER_DYNAMIC_COMPLETED",
+  "UPDATE_BROWSER_MENU",
+  "BA",
+  "loadBrowserDynamic"
+ ],
+ "mappings": ";;;;;;;;;AAAA;;AAEA;;AACA;;;;;;;;AAEA,IAAMA,qBAAqB,GAAG,SAAxBA,qBAAwB;AAAA,SAAM,IAAN;AAAA,CAA9B;;AAEA,IAAMC,oBAAoB,gBAAG,iBAAK,UAAAC,KAAK;AAAA,sBACrC,qBAAC,8BAAD;AACG,IAAA,OAAO,EAAC,gBADX;AAEG,IAAA,UAAU,EAAEC,mCAAIC,oBAFnB;AAGG,IAAA,mBAAmB,EAAED,mCAAIE,8BAH5B;AAIG,IAAA,YAAY,EAAEF,mCAAIG,mBAJrB;AAKG,IAAA,UAAU,EAAEC,2BAAGC;AALlB,KAMON,KANP,EADqC;AAAA,CAAV,EAU5BF,qBAV4B,CAA7B;eAaeC,oB"
+}
