@@ -1,3 +1,5 @@
+import { forwardRef } from 'react';
+
 import MenuAriaItem from './MenuAriaItem';
 
 const S = {
@@ -14,20 +16,19 @@ const S = {
   }
 };
 
-const MenuTitle = ({
-  baseTitleCl,
+const MenuTitle = forwardRef(({
+  titleCl,
   title,
   pageNumber,
-  onPrevPage,
-  onReg
-}) => {
+  onClick,
+}, ref) => {
   if (!title) { return null; }
   return (
     <MenuAriaItem
-      className={baseTitleCl}
+      ref={ref}
+      className={titleCl}
       style={S.ITEM}
-      onClick={onPrevPage.bind(null, pageNumber)}
-      onReg={onReg}
+      onClick={onClick}
     >
       <span style={S.PREV_PAGE}>
         {'<'}
@@ -37,7 +38,7 @@ const MenuTitle = ({
       </span>
     </MenuAriaItem>
   );
-}
+})
 
 /*
 MenuTitle.propTypes = {

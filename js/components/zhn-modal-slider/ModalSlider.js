@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -24,6 +22,10 @@ var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
 var _MenuPage = _interopRequireDefault(require("./MenuPage"));
 
 var _jsxRuntime = require("react/jsx-runtime");
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var PERIOD_MS = 750;
 var S = {
@@ -136,13 +138,14 @@ var ModalSlider = /*#__PURE__*/function (_Component) {
       return _this._pagesNode = n;
     };
 
-    _this._renderPages = function () {
+    _this._renderPages = function (isShow) {
       var _this$state = _this.state,
           pages = _this$state.pages,
           pageCurrent = _this$state.pageCurrent;
       return pages.map(function (Page, index) {
         return /*#__PURE__*/_react["default"].cloneElement(Page, {
           pageCurrent: pageCurrent,
+          isShow: isShow,
           //pageNumber: index,
           pageNumber: index + 1
         });
@@ -211,7 +214,7 @@ var ModalSlider = /*#__PURE__*/function (_Component) {
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
           ref: this._refPages,
           style: _divStyle,
-          children: this._renderPages()
+          children: this._renderPages(isShow)
         })
       })
     });

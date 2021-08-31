@@ -174,11 +174,12 @@ class ModalSlider extends Component {
 
   _refPages = n => this._pagesNode = n
 
-  _renderPages = () => {
+  _renderPages = (isShow) => {
     const { pages, pageCurrent } = this.state;
     return pages.map((Page, index) => {
       return React.cloneElement(Page, {
         pageCurrent,
+        isShow,
         //pageNumber: index,
         pageNumber: index + 1,
       });
@@ -198,7 +199,7 @@ class ModalSlider extends Component {
              ...S.PAGES,
              ..._pagesStyle,
              ..._transform
-           };    
+           };
     return (
       <ModalPane
         isShow={isShow}
@@ -214,7 +215,7 @@ class ModalSlider extends Component {
             ref={this._refPages}
             style={_divStyle}
           >
-            {this._renderPages()}
+            {this._renderPages(isShow)}
           </div>
         </ShowHide>
       </ModalPane>

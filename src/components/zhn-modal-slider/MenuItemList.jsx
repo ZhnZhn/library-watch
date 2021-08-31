@@ -1,3 +1,5 @@
+import { forwardRef } from 'react';
+
 import MenuAriaItem from './MenuAriaItem';
 
 const SUB_MENU = 'sub';
@@ -35,10 +37,10 @@ const NextPageArrow = ({ type }) => {
   );
 }
 
-const _renderMenuItems = (props) => {
+const _renderMenuItems = (props, ref) => {
   const {
     items, itemCl, pageNumber,
-    onNextPage, onReg,
+    onNextPage,
     onClose
   } = props;
   return items.map((item, index) => {
@@ -46,16 +48,14 @@ const _renderMenuItems = (props) => {
     , _onClick = type === SUB_MENU
          ? onNextPage.bind(null, id, name, pageNumber)
          : _fClick({ isClose, onClick, onClose })
-    , _onReg = index === 0
-         ? onReg
-         : void 0;
+    , _ref = index === 0 ? ref : void 0;
     return (
       <MenuAriaItem
+        ref={_ref}
         key={name}
         className={cn || itemCl}
         style={S.ITEM}
         onClick={_onClick}
-        onReg={_onReg}
       >
         <span>{name}</span>
         <NextPageArrow type={type} />
@@ -65,19 +65,18 @@ const _renderMenuItems = (props) => {
 }
 
 
-const MenuItemList = props => (
+const MenuItemList = forwardRef((props, ref) => (
   <>
-    {_renderMenuItems(props)}
+    {_renderMenuItems(props, ref)}
   </>
-);
+));
 
 /*
 MenuAriaItem.propTypes = {
   items: PropTypes.array,
   itemCl: PropTypes.string
   pageNumber: PropTypes.number,
-  onNextPage: PropTypes.func,
-  onReg: PropTypes.func,
+  onNextPage: PropTypes.func,  
   onClose: PropTypes.func
 }
 */

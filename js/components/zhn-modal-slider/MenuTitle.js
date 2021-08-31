@@ -5,6 +5,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
+var _react = require("react");
+
 var _MenuAriaItem = _interopRequireDefault(require("./MenuAriaItem"));
 
 var _jsxRuntime = require("react/jsx-runtime");
@@ -22,23 +24,21 @@ var S = {
     paddingLeft: 16
   }
 };
-
-var MenuTitle = function MenuTitle(_ref) {
-  var baseTitleCl = _ref.baseTitleCl,
+var MenuTitle = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
+  var titleCl = _ref.titleCl,
       title = _ref.title,
       pageNumber = _ref.pageNumber,
-      onPrevPage = _ref.onPrevPage,
-      onReg = _ref.onReg;
+      onClick = _ref.onClick;
 
   if (!title) {
     return null;
   }
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_MenuAriaItem["default"], {
-    className: baseTitleCl,
+    ref: ref,
+    className: titleCl,
     style: S.ITEM,
-    onClick: onPrevPage.bind(null, pageNumber),
-    onReg: onReg,
+    onClick: onClick,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       style: S.PREV_PAGE,
       children: '<'
@@ -47,7 +47,7 @@ var MenuTitle = function MenuTitle(_ref) {
       children: title
     })]
   });
-};
+});
 /*
 MenuTitle.propTypes = {
   baseTitleCl: PropTypes.string,
@@ -57,7 +57,6 @@ MenuTitle.propTypes = {
   onReg: PropTypes.func
 }
 */
-
 
 var _default = MenuTitle;
 exports["default"] = _default;
