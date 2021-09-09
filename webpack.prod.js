@@ -19,7 +19,7 @@ module.exports = {
             "reflux-core", 
             "chart.js", "interactjs", "timeago.js", 
             "localforage", 
-            "clsx", "papaparse",
+            "papaparse",
             "raven-js" 
     ],
   },

@@ -2,16 +2,12 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
-
-var _clsx2 = _interopRequireDefault(require("clsx"));
+var _react = require("react");
 
 var _withWatchDnD = _interopRequireDefault(require("./decorators/withWatchDnD"));
 
@@ -105,10 +101,8 @@ var styles = {
   }
 };
 
-var _calcScrollClass = function _calcScrollClass(isShowFind, isModeEdit) {
-  var _clsx;
-
-  return (0, _clsx2["default"])((_clsx = {}, _clsx[CL.BROWSER_WATCH] = !(isShowFind && isModeEdit), _clsx[CL.BROWSER_WATCH__30] = isShowFind && !isModeEdit || !isShowFind && isModeEdit, _clsx[CL.BROWSER_WATCH__60] = isShowFind && isModeEdit, _clsx));
+var _crScrollClass = function _crScrollClass(isShowFind, isModeEdit) {
+  return isShowFind && isModeEdit ? CL.BROWSER_WATCH__60 : isShowFind || isModeEdit ? CL.BROWSER_WATCH__30 : CL.BROWSER_WATCH;
 };
 
 var WatchBrowser = (0, _withWatchDnD["default"])(_class = /*#__PURE__*/function (_Component) {
@@ -128,13 +122,11 @@ var WatchBrowser = (0, _withWatchDnD["default"])(_class = /*#__PURE__*/function 
       if (actionType === showAction && data === browserType) {
         _this._handlerShow();
       } else if (actionType === updateAction) {
-        var isModeEdit = _this.state.isModeEdit;
         _this.isShouldUpdateFind = true;
 
         _this.setState({
           watchList: data,
-          isShowFind: false,
-          scrollClass: _calcScrollClass(false, isModeEdit)
+          isShowFind: false
         });
       }
     };
@@ -158,26 +150,18 @@ var WatchBrowser = (0, _withWatchDnD["default"])(_class = /*#__PURE__*/function 
     };
 
     _this._handlerToggleEditMode = function () {
-      var _this$state = _this.state,
-          isShowFind = _this$state.isShowFind,
-          isModeEdit = _this$state.isModeEdit,
-          _isModeEdit = !isModeEdit;
-
-      _this.setState({
-        isModeEdit: _isModeEdit,
-        scrollClass: _calcScrollClass(isShowFind, _isModeEdit)
+      _this.setState(function (prevState) {
+        return {
+          isModeEdit: !prevState.isModeEdit
+        };
       });
     };
 
     _this._handlerToggleFindInput = function () {
-      var _this$state2 = _this.state,
-          isShowFind = _this$state2.isShowFind,
-          isModeEdit = _this$state2.isModeEdit,
-          _isShowFind = !isShowFind;
-
-      _this.setState({
-        isShowFind: _isShowFind,
-        scrollClass: _calcScrollClass(_isShowFind, isModeEdit)
+      _this.setState(function (prevState) {
+        return {
+          isShowFind: !prevState.isShowFind
+        };
       });
     };
 
@@ -323,7 +307,6 @@ var WatchBrowser = (0, _withWatchDnD["default"])(_class = /*#__PURE__*/function 
       isShow: isShow,
       isModeEdit: isEditMode,
       isShowFind: false,
-      scrollClass: _calcScrollClass(false, isEditMode),
       watchList: store.getWatchList()
     };
     return _this;
@@ -366,14 +349,15 @@ var WatchBrowser = (0, _withWatchDnD["default"])(_class = /*#__PURE__*/function 
         caption = _this$props2.caption,
         isDoubleWatch = _this$props2.isDoubleWatch,
         store = _this$props2.store,
-        _this$state3 = this.state,
-        isShow = _this$state3.isShow,
-        isModeEdit = _this$state3.isModeEdit,
-        scrollClass = _this$state3.scrollClass,
-        watchList = _this$state3.watchList,
+        _this$state = this.state,
+        isShow = _this$state.isShow,
+        isModeEdit = _this$state.isModeEdit,
+        isShowFind = _this$state.isShowFind,
+        watchList = _this$state.watchList,
         _styleCaption = isDoubleWatch ? styles.captionRootDouble : styles.captionRoot,
         _captionEV = isModeEdit ? 'V' : 'E',
-        _titleEV = isModeEdit ? "Toggle to View Mode" : "Toggle to Edit Mode";
+        _titleEV = isModeEdit ? "Toggle to View Mode" : "Toggle to Edit Mode",
+        _scrollClass = _crScrollClass(isShowFind, isModeEdit);
 
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)(Browser, {
       isShow: isShow,
@@ -413,7 +397,7 @@ var WatchBrowser = (0, _withWatchDnD["default"])(_class = /*#__PURE__*/function 
           })
         })]
       }), this._renderEditBar(isModeEdit), watchList && this._renderFindInput(watchList), /*#__PURE__*/(0, _jsxRuntime.jsx)(ScrollPane, {
-        className: scrollClass,
+        className: _scrollClass,
         children: watchList && this._renderWatchList(watchList)
       })]
     });

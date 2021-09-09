@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import clsx from 'clsx'
+import { Component } from 'react';
 
 import withWatchDnD from './decorators/withWatchDnD';
 
@@ -91,11 +90,12 @@ const styles = {
   }
 };
 
-const _calcScrollClass = (isShowFind, isModeEdit) => clsx({
-  [CL.BROWSER_WATCH] : !(isShowFind && isModeEdit),
-  [CL.BROWSER_WATCH__30] : (isShowFind && !isModeEdit) || (!isShowFind && isModeEdit),
-  [CL.BROWSER_WATCH__60] : (isShowFind && isModeEdit)
-});
+const _crScrollClass = (isShowFind, isModeEdit) =>
+isShowFind && isModeEdit
+  ? CL.BROWSER_WATCH__60
+  : isShowFind || isModeEdit
+      ? CL.BROWSER_WATCH__30
+      : CL.BROWSER_WATCH;
 
 @withWatchDnD
 class WatchBrowser extends Component {
@@ -114,7 +114,6 @@ class WatchBrowser extends Component {
       isShow : isShow,
       isModeEdit : isEditMode,
       isShowFind : false,
-      scrollClass : _calcScrollClass(false, isEditMode),
       watchList : store.getWatchList()
     }
   }
@@ -130,12 +129,10 @@ class WatchBrowser extends Component {
      if (actionType === showAction && data === browserType ){
        this._handlerShow();
      } else if (actionType === updateAction) {
-       const { isModeEdit } = this.state
        this.isShouldUpdateFind = true;
        this.setState({
          watchList: data,
          isShowFind : false,
-         scrollClass : _calcScrollClass(false, isModeEdit)
       })
     }
   }
@@ -154,21 +151,15 @@ class WatchBrowser extends Component {
   }
 
   _handlerToggleEditMode = () => {
-    const { isShowFind, isModeEdit } = this.state
-         , _isModeEdit = !isModeEdit
-    this.setState({
-      isModeEdit : _isModeEdit,
-      scrollClass : _calcScrollClass(isShowFind, _isModeEdit)
-    });
+    this.setState(prevState => ({
+      isModeEdit: !prevState.isModeEdit
+    }))
   }
 
   _handlerToggleFindInput = () => {
-    const { isShowFind, isModeEdit } = this.state
-         , _isShowFind = !isShowFind
-    this.setState({
-      isShowFind : _isShowFind,
-      scrollClass : _calcScrollClass(_isShowFind, isModeEdit)
-    })
+    this.setState(prevState => ({
+      isShowFind: !prevState.isShowFind
+    }))
   }
 
   _handlerEditGroup(){
@@ -320,8 +311,10 @@ class WatchBrowser extends Component {
   render(){
     const { caption, isDoubleWatch, store } = this.props
         , {
-            isShow, isModeEdit,
-            scrollClass, watchList
+            isShow,
+            isModeEdit,
+            isShowFind,
+            watchList
           } = this.state
         , _styleCaption = (isDoubleWatch)
                ? styles.captionRootDouble
@@ -329,7 +322,8 @@ class WatchBrowser extends Component {
         , _captionEV = (isModeEdit) ? 'V' : 'E'
         , _titleEV = (isModeEdit)
               ? "Toggle to View Mode"
-              : "Toggle to Edit Mode";
+              : "Toggle to Edit Mode"
+        , _scrollClass = _crScrollClass(isShowFind, isModeEdit);
 
     return (
        <Browser
@@ -382,7 +376,7 @@ class WatchBrowser extends Component {
          </CaptionRow>
          {this._renderEditBar(isModeEdit)}
          {watchList && this._renderFindInput(watchList)}
-         <ScrollPane className={scrollClass}>
+         <ScrollPane className={_scrollClass}>
            {watchList && this._renderWatchList(watchList)}
          </ScrollPane>
       </Browser>
