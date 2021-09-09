@@ -9,11 +9,11 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _localforage = _interopRequireDefault(require("localforage"));
 
-var _browserFilesaver = _interopRequireDefault(require("browser-filesaver"));
-
 var _merge = _interopRequireDefault(require("../../utils/merge"));
 
 var _DateUtils = _interopRequireDefault(require("../../utils/DateUtils"));
+
+var _saveJsonToFile = _interopRequireDefault(require("./saveJsonToFile"));
 
 var _ComponentActions = _interopRequireDefault(require("../actions/ComponentActions"));
 
@@ -29,11 +29,8 @@ var _Msg = _interopRequireDefault(require("../../constants/Msg"));
 
 var _Logic = _interopRequireDefault(require("./Logic"));
 
-//import JSZip from 'jszip';
-//import merge from 'lodash.merge';
 var STORAGE_KEY = 'WATCH_LIST_PACKAGE',
     CAPTION_WATCH_SAVE = 'Watch List:',
-    CAPTION_WATCH_EXPORT = "BackUp Watch Items:",
     WATCH_FILE_NAME = "WatchItems";
 var WatchListSlice = {
   watchList: _WatchDefault["default"],
@@ -156,17 +153,9 @@ var WatchListSlice = {
   },
   onBackupToJson: function onBackupToJson() {
     var yyyymmdd = _DateUtils["default"].formatToYYYYMMDD(Date.now()),
-        _blob = new Blob([JSON.stringify(this.watchList)], {
-      type: "application/json"
-    }),
         _fileName = WATCH_FILE_NAME + "_" + yyyymmdd + ".json";
 
-    _browserFilesaver["default"].saveAs(_blob, _fileName);
-
-    _ComponentActions["default"].showModalDialog(_Type.ModalDialog.INFO, {
-      caption: CAPTION_WATCH_EXPORT,
-      descr: _Msg["default"].WATCH_BACKUP_ZIP(_fileName)
-    });
+    (0, _saveJsonToFile["default"])(this.watchList, _fileName);
   },
   onLoadFromJson: function onLoadFromJson(option) {
     try {

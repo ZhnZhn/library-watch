@@ -18,7 +18,7 @@ module.exports = {
             "react", "react-dom", 
             "reflux-core", 
             "chart.js", "interactjs", "timeago.js", 
-            "localforage", "browser-filesaver",
+            "localforage", 
             "clsx", "papaparse",
             "raven-js" 
     ],

@@ -1,0 +1,36 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/watch-list/saveJsonToFile.js"
+ ],
+ "file": "../../../src/flux/watch-list/saveJsonToFile.js",
+ "names": [
+  "_isFn",
+  "fn",
+  "saveJsonToFile",
+  "json",
+  "fileName",
+  "_blob",
+  "Blob",
+  "JSON",
+  "stringify",
+  "type",
+  "a",
+  "document",
+  "createElement",
+  "href",
+  "URL",
+  "createObjectURL",
+  "rel",
+  "target",
+  "download",
+  "click",
+  "revokeObjectURL",
+  "remove",
+  "err",
+  "console",
+  "log",
+  "message"
+ ],
+ "mappings": ";;;;;AACA,IAAMA,KAAK,GAAG,SAARA,KAAQ,CAAAC,EAAE;AAAA,SAAI,OAAOA,EAAP,KAAc,UAAlB;AAAA,CAAhB;;AAEA,IAAMC,cAAc,GAAG,SAAjBA,cAAiB,CAACC,IAAD,EAAOC,QAAP,EAAoB;AACzC,MAAI;AACF,QAAMC,KAAK,GAAG,IAAIC,IAAJ,CAAS,CAACC,IAAI,CAACC,SAAL,CAAeL,IAAf,CAAD,CAAT,EAAiC;AAACM,MAAAA,IAAI,EAAE;AAAP,KAAjC,CAAd;AAAA,QACEC,CAAC,GAAGC,QAAQ,CAACC,aAAT,CAAuB,GAAvB,CADN;;AAGAF,IAAAA,CAAC,CAACG,IAAF,GAASC,GAAG,CAACC,eAAJ,CAAoBV,KAApB,CAAT;AACAK,IAAAA,CAAC,CAACM,GAAF,GAAQ,UAAR,CALE,CAKiB;;AACnBN,IAAAA,CAAC,CAACO,MAAF,GAAW,QAAX;AACAP,IAAAA,CAAC,CAACQ,QAAF,GAAad,QAAb;AACAM,IAAAA,CAAC,CAACS,KAAF;;AAEA,QAAInB,KAAK,CAACc,GAAG,CAACM,eAAL,CAAT,EAAgC;AAC9BN,MAAAA,GAAG,CAACM,eAAJ,CAAoBV,CAAC,CAACG,IAAtB;AACD;;AACDH,IAAAA,CAAC,CAACW,MAAF;AACD,GAdD,CAcE,OAAOC,GAAP,EAAY;AACZC,IAAAA,OAAO,CAACC,GAAR,CAAYF,GAAG,CAACG,OAAhB;AACD;AACF,CAlBD;;eAoBevB,c"
+}

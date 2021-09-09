@@ -1,11 +1,9 @@
 
 import LocalForage from 'localforage';
-//import JSZip from 'jszip';
-import FileSaver from 'browser-filesaver';
-//import merge from 'lodash.merge';
 
 import merge from '../../utils/merge';
 import DateUtils from '../../utils/DateUtils';
+import saveJsonToFile from './saveJsonToFile';
 
 import ComponentActions from '../actions/ComponentActions';
 import { BrowserActionTypes } from '../actions/BrowserActions';
@@ -17,9 +15,8 @@ import Msg from '../../constants/Msg';
 import Logic from './Logic';
 
 const STORAGE_KEY = 'WATCH_LIST_PACKAGE'
-    , CAPTION_WATCH_SAVE ='Watch List:'
-    , CAPTION_WATCH_EXPORT = "BackUp Watch Items:"
-    , WATCH_FILE_NAME = "WatchItems"
+, CAPTION_WATCH_SAVE ='Watch List:'
+, WATCH_FILE_NAME = "WatchItems"
 
 const WatchListSlice = {
 
@@ -161,14 +158,9 @@ const WatchListSlice = {
 
   onBackupToJson(){
     const yyyymmdd = DateUtils.formatToYYYYMMDD(Date.now())
-        , _blob = new Blob([JSON.stringify(this.watchList)], {type: "application/json"})
-        , _fileName = `${WATCH_FILE_NAME}_${yyyymmdd}.json`
+    , _fileName = `${WATCH_FILE_NAME}_${yyyymmdd}.json`;
 
-    FileSaver.saveAs(_blob, _fileName);
-    ComponentActions.showModalDialog(ModalDialog.INFO, {
-      caption : CAPTION_WATCH_EXPORT,
-      descr : Msg.WATCH_BACKUP_ZIP(_fileName)
-    })
+    saveJsonToFile(this.watchList, _fileName)
   },
 
   onLoadFromJson(option){
