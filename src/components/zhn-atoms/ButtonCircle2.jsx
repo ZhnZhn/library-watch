@@ -1,16 +1,16 @@
-import React from 'react'
+import crCn from '../zhn-utils/crCn';
 
-const CL = 'zhn-bt-circle2';
+const CL_BT_CIRCLE_2 = 'zhn-bt-circle2';
 
 const ButtonCircle2 = ({
   className,
   style,
-  caption,
+  caption='',
   onClick,
   ...rest
 }) => (
   <button
-     className={`${CL} ${className}`}
+     className={crCn(CL_BT_CIRCLE_2, className)}
      style={style}
      onClick={onClick}
      {...rest}
@@ -20,10 +20,5 @@ const ButtonCircle2 = ({
     </div>
   </button>
 );
-ButtonCircle2.defaultProp = {
-  className: '',
-  caption: ''
-}
-
 
 export default ButtonCircle2
