@@ -5,26 +5,22 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-//import PropTypes from "prop-types";
-var CL = {
-  ROOT: 'zhn-bt-circle',
-  NOT: 'not-selected'
-};
+var CL_BT_CIRCLE = 'zhn-bt-circle';
 
-var ButtonCircle = function ButtonCircle(props) {
-  var isWithoutDefault = props.isWithoutDefault,
-      _props$className = props.className,
-      className = _props$className === void 0 ? '' : _props$className,
-      style = props.style,
-      _props$caption = props.caption,
-      caption = _props$caption === void 0 ? '' : _props$caption,
-      title = props.title,
-      onClick = props.onClick,
-      _className = isWithoutDefault ? className + " " + CL.NOT : CL.ROOT + " " + className + " " + CL.NOT;
+var ButtonCircle = function ButtonCircle(_ref) {
+  var isWithoutDefault = _ref.isWithoutDefault,
+      className = _ref.className,
+      style = _ref.style,
+      _ref$caption = _ref.caption,
+      caption = _ref$caption === void 0 ? '' : _ref$caption,
+      title = _ref.title,
+      onClick = _ref.onClick;
+
+  var _className = (0, _crCn["default"])([!isWithoutDefault, CL_BT_CIRCLE], className);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     className: _className,
@@ -36,17 +32,6 @@ var ButtonCircle = function ButtonCircle(props) {
     })
   });
 };
-/*
-ButtonCircle.propTypes = {
-  caption : PropTypes.string,
-  title : PropTypes.string,
-  className : PropTypes.string,
-  style : PropTypes.object,
-  isWithoutDefault : PropTypes.bool,
-  onClick : PropTypes.func
-}
-*/
-
 
 var _default = ButtonCircle;
 exports["default"] = _default;

@@ -34,6 +34,7 @@ button {
   font-size: inherit;
   -webkit-appearance: none;
   -moz-appearance: none;
+  user-select: none;
   cursor: pointer;
 }
 button:focus,
