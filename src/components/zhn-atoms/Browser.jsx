@@ -1,34 +1,25 @@
-import React from 'react';
 
-//import PropTypes from "prop-types";
+import { S_BROWSER } from '../styles/ContainerStyles';
 
-import STYLE from '../styles/ContainerStyles';
+const CL_OPEN = "show-popup"
+, S_BLOCK = { display: 'block' }
+, S_NONE = { display: 'none' };
 
-const CL_OPEN = "show-popup";
-
-const Browser = ({ isShow, style, children }) => {
+const Browser = ({
+  isShow,
+  style,
+  children
+}) => {
     const _className = isShow ? CL_OPEN : null
-        , _style = isShow 
-             ? STYLE.displayBlock : STYLE.displayNone;
+    , _style = isShow ? S_BLOCK : S_NONE;
     return (
-       <div
-          className={_className}
-          style={{ ...STYLE.browserRootDiv, ...style, ..._style}}
-        >
-          {children}
-       </div>
-    )
-}
-
-/*
-Browser.propTypes = {
-  isShow: PropTypes.bool,
-  style: PropTypes.object,
-  children: PropTypes.oneOfType([
-     PropTypes.arrayOf(PropTypes.node),
-     PropTypes.node
-  ])
-}
-*/
+      <div
+        className={_className}
+        style={{ ...S_BROWSER, ...style, ..._style}}
+      >
+        {children}
+      </div>
+    );
+};
 
 export default Browser

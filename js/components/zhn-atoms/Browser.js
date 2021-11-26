@@ -7,14 +7,17 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireDefault(require("react"));
-
-var _ContainerStyles = _interopRequireDefault(require("../styles/ContainerStyles"));
+var _ContainerStyles = require("../styles/ContainerStyles");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-//import PropTypes from "prop-types";
-var CL_OPEN = "show-popup";
+var CL_OPEN = "show-popup",
+    S_BLOCK = {
+  display: 'block'
+},
+    S_NONE = {
+  display: 'none'
+};
 
 var Browser = function Browser(_ref) {
   var isShow = _ref.isShow,
@@ -22,25 +25,14 @@ var Browser = function Browser(_ref) {
       children = _ref.children;
 
   var _className = isShow ? CL_OPEN : null,
-      _style = isShow ? _ContainerStyles["default"].displayBlock : _ContainerStyles["default"].displayNone;
+      _style = isShow ? S_BLOCK : S_NONE;
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     className: _className,
-    style: (0, _extends2["default"])({}, _ContainerStyles["default"].browserRootDiv, style, _style),
+    style: (0, _extends2["default"])({}, _ContainerStyles.S_BROWSER, style, _style),
     children: children
   });
 };
-/*
-Browser.propTypes = {
-  isShow: PropTypes.bool,
-  style: PropTypes.object,
-  children: PropTypes.oneOfType([
-     PropTypes.arrayOf(PropTypes.node),
-     PropTypes.node
-  ])
-}
-*/
-
 
 var _default = Browser;
 exports["default"] = _default;

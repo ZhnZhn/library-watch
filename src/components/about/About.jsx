@@ -11,7 +11,7 @@ import Token from './Token';
 import LinkToken from './LinkToken';
 import IconLogoBar from './IconLogoBar';
 
-import STYLE from '../styles/ContainerStyles';
+import { S_ABOUT } from '../styles/ContainerStyles';
 
 const S = {
   BLOCK: {
@@ -86,7 +86,7 @@ class About extends Component {
     return (
       <div
          className={_classOpen}
-         style={{ ...STYLE.aboutRootDiv, ..._styleOpen }}
+         style={{ ...S_ABOUT, ..._styleOpen }}
       >
          <CaptionRow
             caption="About"

@@ -27,7 +27,7 @@ var _LinkToken = _interopRequireDefault(require("./LinkToken"));
 
 var _IconLogoBar = _interopRequireDefault(require("./IconLogoBar"));
 
-var _ContainerStyles = _interopRequireDefault(require("../styles/ContainerStyles"));
+var _ContainerStyles = require("../styles/ContainerStyles");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -112,7 +112,7 @@ var About = /*#__PURE__*/function (_Component) {
 
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: _classOpen,
-      style: (0, _extends2["default"])({}, _ContainerStyles["default"].aboutRootDiv, _styleOpen),
+      style: (0, _extends2["default"])({}, _ContainerStyles.S_ABOUT, _styleOpen),
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_CaptionRow["default"], {
         caption: "About",
         onClose: this._handlerClose
