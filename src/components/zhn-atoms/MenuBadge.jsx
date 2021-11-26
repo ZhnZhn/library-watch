@@ -1,14 +1,9 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 //import PropTypes from 'prop-types'
-import Button from './ButtonCircle2'
+import ButtonCircle2 from './ButtonCircle2';
 
-const CL = "menu__badge";
-
-const S = {
-  OPEN : {
-    color: '#a487d4'
-  }
-}
+const CL_MENU_BADGE = "menu__badge"
+, S_OPEN = { color: '#a487d4' }
 
 const MenuBadge = ({
   isOpen,
@@ -25,16 +20,16 @@ const MenuBadge = ({
       onBadgeOpen()
     }
   }, [isOpen, onBadgeOpen, onBadgeClose])
-  , _style = isOpen ? S.OPEN : void 0;
+  , _style = isOpen ? S_OPEN : null;
   return (
-    <Button
-      className={CL}
+    <ButtonCircle2
+      className={CL_MENU_BADGE}
       style={_style}
       caption={counter}
       onClick={_hClickBadge}
     />
   );
-}
+};
 
 /*
 MenuBadge.propTypes = {
@@ -46,6 +41,5 @@ MenuBadge.propTypes = {
   onBadgeClose : PropTypes.func
 }
 */
-
 
 export default MenuBadge

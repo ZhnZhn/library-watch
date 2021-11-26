@@ -1,1 +1,23 @@
-{"version":3,"sources":["../../../src/components/zhn-atoms/MenuBadge.jsx"],"names":["CL","S","OPEN","color","MenuBadge","isOpen","counter","onBadgeOpen","onBadgeClose","_hClickBadge","event","preventDefault","stopPropagation","_style"],"mappings":";;;;;;;;;AAAA;;AAEA;;;;AADA;AAGA,IAAMA,EAAE,GAAG,aAAX;AAEA,IAAMC,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAG;AACLC,IAAAA,KAAK,EAAE;AADF;AADC,CAAV;;AAMA,IAAMC,SAAS,GAAG,SAAZA,SAAY,OAKZ;AAAA,MAJJC,MAII,QAJJA,MAII;AAAA,MAHJC,OAGI,QAHJA,OAGI;AAAA,MAFJC,WAEI,QAFJA,WAEI;AAAA,MADJC,YACI,QADJA,YACI;;AACJ,MAAMC,YAAY,GAAG,wBAAY,UAAAC,KAAK,EAAI;AACxCA,IAAAA,KAAK,CAACC,cAAN;AACAD,IAAAA,KAAK,CAACE,eAAN;;AACA,QAAIP,MAAJ,EAAW;AACTG,MAAAA,YAAY;AACb,KAFD,MAEO;AACLD,MAAAA,WAAW;AACZ;AACF,GARoB,EAQlB,CAACF,MAAD,EAASE,WAAT,EAAsBC,YAAtB,CARkB,CAArB;AAAA,MASEK,MAAM,GAAGR,MAAM,GAAGJ,CAAC,CAACC,IAAL,GAAY,KAAK,CATlC;;AAUA,sBACE,qBAAC,wBAAD;AACE,IAAA,SAAS,EAAEF,EADb;AAEE,IAAA,KAAK,EAAEa,MAFT;AAGE,IAAA,OAAO,EAAEP,OAHX;AAIE,IAAA,OAAO,EAAEG;AAJX,IADF;AAQD,CAxBD;AA0BA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;;eAGeL,S","sourcesContent":["import React, { useCallback } from 'react';\r\n//import PropTypes from 'prop-types'\r\nimport Button from './ButtonCircle2'\r\n\r\nconst CL = \"menu__badge\";\r\n\r\nconst S = {\r\n  OPEN : {\r\n    color: '#a487d4'\r\n  }\r\n}\r\n\r\nconst MenuBadge = ({\r\n  isOpen,\r\n  counter,\r\n  onBadgeOpen,\r\n  onBadgeClose\r\n}) => {\r\n  const _hClickBadge = useCallback(event => {\r\n    event.preventDefault()\r\n    event.stopPropagation()\r\n    if (isOpen){\r\n      onBadgeClose()\r\n    } else {\r\n      onBadgeOpen()\r\n    }\r\n  }, [isOpen, onBadgeOpen, onBadgeClose])\r\n  , _style = isOpen ? S.OPEN : void 0;\r\n  return (\r\n    <Button\r\n      className={CL}\r\n      style={_style}\r\n      caption={counter}\r\n      onClick={_hClickBadge}\r\n    />\r\n  );\r\n}\r\n\r\n/*\r\nMenuBadge.propTypes = {\r\n  isOpen : PropTypes.bool,\r\n  counter : PropTypes.oneOfType([\r\n      PropTypes.number, PropTypes.string\r\n  ]),\r\n  onBadgeOpen : PropTypes.func,\r\n  onBadgeClose : PropTypes.func\r\n}\r\n*/\r\n\r\n\r\nexport default MenuBadge\r\n"],"file":"MenuBadge.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-atoms/MenuBadge.js"
+ ],
+ "file": "../../../src/components/zhn-atoms/MenuBadge.js",
+ "names": [
+  "CL_MENU_BADGE",
+  "S_OPEN",
+  "color",
+  "MenuBadge",
+  "isOpen",
+  "counter",
+  "onBadgeOpen",
+  "onBadgeClose",
+  "_hClickBadge",
+  "event",
+  "preventDefault",
+  "stopPropagation",
+  "_style"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEA;;;;AADA;AAGA,IAAMA,aAAa,GAAG,aAAtB;AAAA,IACEC,MAAM,GAAG;AAAEC,EAAAA,KAAK,EAAE;AAAT,CADX;;AAGA,IAAMC,SAAS,GAAG,SAAZA,SAAY,OAKZ;AAAA,MAJJC,MAII,QAJJA,MAII;AAAA,MAHJC,OAGI,QAHJA,OAGI;AAAA,MAFJC,WAEI,QAFJA,WAEI;AAAA,MADJC,YACI,QADJA,YACI;;AACJ,MAAMC,YAAY,GAAG,wBAAY,UAAAC,KAAK,EAAI;AACxCA,IAAAA,KAAK,CAACC,cAAN;AACAD,IAAAA,KAAK,CAACE,eAAN;;AACA,QAAIP,MAAJ,EAAW;AACTG,MAAAA,YAAY;AACb,KAFD,MAEO;AACLD,MAAAA,WAAW;AACZ;AACF,GARoB,EAQlB,CAACF,MAAD,EAASE,WAAT,EAAsBC,YAAtB,CARkB,CAArB;AAAA,MASEK,MAAM,GAAGR,MAAM,GAAGH,MAAH,GAAY,IAT7B;;AAUA,sBACE,qBAAC,wBAAD;AACE,IAAA,SAAS,EAAED,aADb;AAEE,IAAA,KAAK,EAAEY,MAFT;AAGE,IAAA,OAAO,EAAEP,OAHX;AAIE,IAAA,OAAO,EAAEG;AAJX,IADF;AAQD,CAxBD;AA0BA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;;eAEeL,S"
+}

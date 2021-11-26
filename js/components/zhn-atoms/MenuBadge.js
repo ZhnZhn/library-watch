@@ -2,23 +2,19 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = require("react");
 
 var _ButtonCircle = _interopRequireDefault(require("./ButtonCircle2"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
-var CL = "menu__badge";
-var S = {
-  OPEN: {
-    color: '#a487d4'
-  }
+var CL_MENU_BADGE = "menu__badge",
+    S_OPEN = {
+  color: '#a487d4'
 };
 
 var MenuBadge = function MenuBadge(_ref) {
@@ -37,10 +33,10 @@ var MenuBadge = function MenuBadge(_ref) {
       onBadgeOpen();
     }
   }, [isOpen, onBadgeOpen, onBadgeClose]),
-      _style = isOpen ? S.OPEN : void 0;
+      _style = isOpen ? S_OPEN : null;
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle["default"], {
-    className: CL,
+    className: CL_MENU_BADGE,
     style: _style,
     caption: counter,
     onClick: _hClickBadge
