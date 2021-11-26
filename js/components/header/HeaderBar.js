@@ -25,70 +25,64 @@ var _LimitRemainingLabel = _interopRequireDefault(require("./LimitRemainingLabel
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var TITLE = "Library Watch v0.12.0";
-var CL = {
-  HEADER: "header",
-  ICON: "header__icon-app",
-  ABOUT: "header__bt-about",
-  APP_LABEL: "header__app-label",
-  LIBRARY: "header__bt-library"
-};
-var S = {
-  ROOT_DIV: {
-    position: 'relative',
-    zIndex: 50
-  },
-  BT_ABOUT: {
-    "float": 'right',
-    marginRight: 20
-  },
-  SVG_INFO: {
-    position: 'relative',
-    top: -2,
-    verticalAlign: 'middle',
-    marginLeft: 8,
-    marginRight: 8
-  },
-  BUTTON_SAVE: {
-    marginLeft: 10
-  },
-  LABEL_LIMIT: {
-    "float": 'right',
-    paddingTop: 5
-  }
-};
-var BROWSER_CONFIG = {
-  LIBRARY: {
-    browserType: _Type.BrowserType.LIBRARY,
-    caption: 'Library',
-    sourceMenuUrl: './data/github/source-menu.json',
-    rowClass: 'menu-item'
-  }
+var TITLE = "Library Watch v0.12.0",
+    CL_HEADER = "header",
+    CL_ICON = "header__icon-app",
+    CL_ABOUT = "header__bt-about",
+    CL_APP_LABEL = "header__app-label",
+    CL_LIBRARY = "header__bt-library",
+    S_ROOT_DIV = {
+  position: 'relative',
+  zIndex: 50
+},
+    S_BT_ABOUT = {
+  "float": 'right',
+  marginRight: 20
+},
+    S_SVG_INFO = {
+  position: 'relative',
+  top: -2,
+  verticalAlign: 'middle',
+  marginLeft: 8,
+  marginRight: 8
+},
+    S_BUTTON_SAVE = {
+  marginLeft: 10
+},
+    S_LABEL_LIMIT = {
+  "float": 'right',
+  paddingTop: 5
+},
+    BROWSER_CONFIG_LIBRARY = {
+  browserType: _Type.BrowserType.LIBRARY,
+  caption: 'Library',
+  sourceMenuUrl: './data/github/source-menu.json',
+  rowClass: 'menu-item'
 };
 
 var HeaderBar = function HeaderBar(_ref) {
   var store = _ref.store;
 
   var _hClickLibrary = (0, _react.useCallback)(function () {
-    _BrowserActions["default"].showBrowserDynamic(BROWSER_CONFIG.LIBRARY);
+    _BrowserActions["default"].showBrowserDynamic(BROWSER_CONFIG_LIBRARY);
   }, []),
       _hClickWatch = (0, _react.useCallback)(function () {
     _BrowserActions["default"].showBrowser(_Type.BrowserType.WATCH_LIST);
   }, []);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    className: CL.HEADER,
-    style: S.ROOT_DIV,
+    className: CL_HEADER,
+    style: S_ROOT_DIV,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LoadingProgress["default"], {
       store: store
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconAppLogo["default"], {
-      className: CL.ICON,
+      className: CL_ICON,
       title: TITLE
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_AppLabel["default"], {
-      className: CL.APP_LABEL,
+      className: CL_APP_LABEL,
       caption: TITLE
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
-      className: CL.LIBRARY,
+      className: CL_LIBRARY,
       caption: "Library",
       title: "Click to show library browser",
       accessKey: "l",
@@ -102,20 +96,20 @@ var HeaderBar = function HeaderBar(_ref) {
       onClick: _hClickWatch
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ButtonSave, {
       store: store,
-      style: S.BUTTON_SAVE
+      style: S_BUTTON_SAVE
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
-      className: CL.ABOUT,
-      rootStyle: S.BT_ABOUT,
+      className: CL_ABOUT,
+      style: S_BT_ABOUT,
       title: "About web app Library Watch",
       accessKey: "a",
       timeout: 0,
       onClick: _ComponentActions["default"].showAbout,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].SvgInfo, {
-        style: S.SVG_INFO
+        style: S_SVG_INFO
       })
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_LimitRemainingLabel["default"], {
       store: store,
-      style: S.LABEL_LIMIT
+      style: S_LABEL_LIMIT
     })]
   });
 };
