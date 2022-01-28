@@ -363,7 +363,7 @@ var WatchBrowser = (0, _withWatchDnD["default"])(_class = /*#__PURE__*/function 
       isShow: isShow,
       style: styles.browser,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(CaptionRow, {
-        styleRoot: _styleCaption,
+        style: _styleCaption,
         caption: caption,
         onClose: this._handlerHide,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(ButtonSave, {

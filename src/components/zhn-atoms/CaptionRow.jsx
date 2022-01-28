@@ -1,11 +1,16 @@
-import React from 'react';
-//import PropTypes from 'prop-types';
-
 import SvgClose from './SvgClose';
 import STYLE from './CaptionRow.Style'
 
-const CaptionRow = ({ caption='', children, styleRoot, onClose }) => (
-  <div className={STYLE.CL_CAPTION} style={styleRoot}>
+const CaptionRow = ({
+  style,
+  caption='',
+  onClose,
+  children,
+}) => (
+  <div
+    className={STYLE.CL_CAPTION}
+    style={style}
+  >
      <span
         className={STYLE.CL_NOT_SELECTED}
         style={STYLE.CAPTION}
@@ -19,16 +24,5 @@ const CaptionRow = ({ caption='', children, styleRoot, onClose }) => (
     />
   </div>
 );
-/*
-CaptionRow.propTypes = {
-  caption: PropTypes.string,
-  styleRoot: PropTypes.object,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]),
-  onClose: PropTypes.func
-}
-*/
 
 export default CaptionRow;

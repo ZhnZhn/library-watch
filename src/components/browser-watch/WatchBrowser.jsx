@@ -331,7 +331,7 @@ class WatchBrowser extends Component {
           style={styles.browser}
         >
          <CaptionRow
-            styleRoot={_styleCaption}
+            style={_styleCaption}
             caption={caption}
             onClose={this._handlerHide}
          >
