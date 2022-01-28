@@ -1,6 +1,4 @@
-import React from 'react'
-
-import SvgIcon from './SvgIcon'
+import SvgIcon from './SvgIcon';
 
 const SvgInfo = (props) => (
   <SvgIcon {...props}>

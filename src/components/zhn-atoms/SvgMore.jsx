@@ -1,16 +1,14 @@
-import React from 'react'
-
-const CL = 'bt-more';
-
+const CL_BT_MORE = 'bt-more';
 
 const SvgMore = ({
-  style, svgStyle,
+  style,
+  svgStyle,
   btRef,
   onClick
 }) => (
   <button
     ref={btRef}
-    className={CL}
+    className={CL_BT_MORE}
     style={style}
     onClick={onClick}
   >

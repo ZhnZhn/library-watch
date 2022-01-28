@@ -1,15 +1,11 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
-
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL = 'bt-more';
+var CL_BT_MORE = 'bt-more';
 
 var SvgMore = function SvgMore(_ref) {
   var style = _ref.style,
@@ -18,7 +14,7 @@ var SvgMore = function SvgMore(_ref) {
       onClick = _ref.onClick;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     ref: btRef,
-    className: CL,
+    className: CL_BT_MORE,
     style: style,
     onClick: onClick,
     children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("svg", {

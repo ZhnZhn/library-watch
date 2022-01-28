@@ -1,6 +1,10 @@
-import React from 'react'
 
-const SvgIcon = ({ color, size, children, ...restProps }) => (
+const SvgIcon = ({ 
+  color='currentColor',
+  size='24',
+  children,
+  ...restProps
+}) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
@@ -16,11 +20,5 @@ const SvgIcon = ({ color, size, children, ...restProps }) => (
       {children}
     </svg>
 );
-
-
-SvgIcon.defaultProps = {
-  color: 'currentColor',
-  size: '24',
-};
 
 export default SvgIcon
