@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,48 +7,46 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = require("react");
+
+var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
 
 var _isKeyEnter = _interopRequireDefault(require("./isKeyEnter"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
-var CL = {
-  ROW_CAPTION: 'zhn-oc not-selected',
-  SHOW_POPUP: 'show-popup'
-};
-var STYLE = {
-  ROOT: {
-    backgroundColor: '#4d4d4d',
-    lineHeight: 2
-  },
-  SVG: {
-    display: 'inline-block',
-    width: 16,
-    height: 16
-  },
-  CAPTION: {
-    color: '#1b2836',
-    paddingLeft: 4,
-    verticalAlign: 'top',
-    fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
-    fontWeight: 'bold',
-    fontSize: '16px',
-    cursor: 'pointer'
-  },
-  INLINE: {
-    display: 'inline-block'
-  },
-  BLOCK: {
-    display: 'block'
-  },
-  NONE: {
-    display: 'none'
-  }
+var CL_ROW_CAPTION = 'zhn-oc not-selected',
+    CL_SHOW_POPUP = 'show-popup',
+    S_ROOT = {
+  backgroundColor: '#4d4d4d',
+  lineHeight: 2
+},
+    S_SVG = {
+  display: 'inline-block',
+  width: 16,
+  height: 16
+},
+    S_CAPTION = {
+  color: '#1b2836',
+  paddingLeft: 4,
+  verticalAlign: 'top',
+  fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
+  fontWeight: 'bold',
+  fontSize: '16px',
+  cursor: 'pointer'
+},
+    S_INLINE = {
+  display: 'inline-block'
+},
+    S_BLOCK = {
+  display: 'block'
+},
+    S_NONE = {
+  display: 'none'
 };
 var FILL_OPEN = 'yellow',
-    FILL_CLOSE = '#4D4D4D',
+    FILL_CLOSE = '#4d4d4d',
     PATH_OPEN = "M 2,14 L 14,14 14,2 2,14",
     PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
@@ -75,14 +71,9 @@ var OpenClose2 = function OpenClose2(_ref) {
       onDrop = _ref.onDrop,
       children = _ref.children;
 
-  var _useState = (0, _react.useState)(!isClose),
-      isOpen = _useState[0],
-      setIsOpen = _useState[1],
-      _hToggle = (0, _react.useCallback)(function () {
-    setIsOpen(function (is) {
-      return !is;
-    });
-  }, []),
+  var _useToggle = (0, _useToggle2["default"])(!isClose),
+      isOpen = _useToggle[0],
+      _hToggle = _useToggle[1],
       _hKeyDown = (0, _react.useCallback)(function (event) {
     if ((0, _isKeyEnter["default"])(event)) {
       _hToggle();
@@ -102,21 +93,21 @@ var OpenClose2 = function OpenClose2(_ref) {
   if (isOpen) {
     _pathV = PATH_OPEN;
     _fillV = fillOpen;
-    _styleCollapse = STYLE.BLOCK;
-    _classShow = CL.SHOW_POPUP;
+    _styleCollapse = S_BLOCK;
+    _classShow = CL_SHOW_POPUP;
     _styleNotSelected = null;
   } else {
     _pathV = PATH_CLOSE;
     _fillV = fillClose;
-    _styleCollapse = STYLE.NONE;
+    _styleCollapse = S_NONE;
     _classShow = null;
     _styleNotSelected = styleNotSelected;
   }
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: (0, _extends2["default"])({}, STYLE.ROOT, style),
+    style: (0, _extends2["default"])({}, S_ROOT, style),
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", (0, _extends2["default"])({
-      className: CL.ROW_CAPTION,
+      className: CL_ROW_CAPTION,
       style: (0, _extends2["default"])({}, styleCaptionRow, _styleNotSelected),
       onClick: _hToggle,
       tabIndex: "0",
@@ -124,14 +115,14 @@ var OpenClose2 = function OpenClose2(_ref) {
       onKeyDown: _hKeyDown
     }, _dragOption, {
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        style: STYLE.SVG,
+        style: S_SVG,
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
           viewBox: "0 0 16 16",
           width: "100%",
           height: "100%",
           preserveAspectRatio: "none",
           xmlns: "http://www.w3.org/2000/svg",
-          style: STYLE.INLINE,
+          style: S_INLINE,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
             d: _pathV,
             fill: _fillV,
@@ -140,7 +131,7 @@ var OpenClose2 = function OpenClose2(_ref) {
           })
         })
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-        style: (0, _extends2["default"])({}, STYLE.CAPTION, styleCaption),
+        style: (0, _extends2["default"])({}, S_CAPTION, styleCaption),
         children: caption
       })]
     })), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
