@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import ButtonCircle2 from './ButtonCircle2';
 
 const CL_MENU_BADGE = "menu__badge"
-, S_OPEN = { color: '#a487d4' }
+, S_OPEN = { color: '#a487d4' };
 
 const MenuBadge = ({
   isOpen,
@@ -35,7 +35,8 @@ const MenuBadge = ({
 MenuBadge.propTypes = {
   isOpen : PropTypes.bool,
   counter : PropTypes.oneOfType([
-      PropTypes.number, PropTypes.string
+      PropTypes.number,
+      PropTypes.string
   ]),
   onBadgeOpen : PropTypes.func,
   onBadgeClose : PropTypes.func

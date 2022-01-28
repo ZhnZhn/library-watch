@@ -1,10 +1,7 @@
-import React from 'react';
-
-//import PropTypes from "prop-types";
 
 const _onError = (imgSrc, event) => {
   console.log("Failed to load image with src: " + imgSrc);
-}
+};
 
 const LinkImg = ({
   alt='',
@@ -22,16 +19,5 @@ const LinkImg = ({
      />
   </a>
 );
-
-/*
-LinkImg.propTypes = {
-  alt: PropTypes.string,
-  href: PropTypes.string,
-  imgClass: PropTypes.string,
-  imgSrc: PropTypes.string,
-  onError: PropTypes.func
-}
-*/
-
 
 export default LinkImg

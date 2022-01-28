@@ -46,7 +46,8 @@ var MenuBadge = function MenuBadge(_ref) {
 MenuBadge.propTypes = {
   isOpen : PropTypes.bool,
   counter : PropTypes.oneOfType([
-      PropTypes.number, PropTypes.string
+      PropTypes.number,
+      PropTypes.string
   ]),
   onBadgeOpen : PropTypes.func,
   onBadgeClose : PropTypes.func

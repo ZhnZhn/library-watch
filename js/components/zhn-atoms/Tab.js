@@ -5,27 +5,25 @@ exports["default"] = void 0;
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-//import PropTypes from "prop-types";
-var CL = "tab";
-var S = {
-  SELECTED: {
-    borderColor: '#a487d4',
-    color: '#a487d4'
-  }
+var CL_TAB = "tab",
+    SELECTED_COLOR = '#a487d4',
+    S_SELECTED = {
+  borderColor: SELECTED_COLOR,
+  color: SELECTED_COLOR
 };
 
 var Tab = function Tab(_ref) {
-  var title = _ref.title,
-      isSelected = _ref.isSelected,
+  var isSelected = _ref.isSelected,
+      title = _ref.title,
       onClick = _ref.onClick;
 
-  var _style = isSelected ? S.SELECTED : void 0;
+  var _style = isSelected ? S_SELECTED : void 0;
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     role: "tab",
     "aria-selected": isSelected,
     tabIndex: "0",
-    className: CL,
+    className: CL_TAB,
     style: _style,
     onClick: onClick,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
@@ -33,14 +31,6 @@ var Tab = function Tab(_ref) {
     })
   });
 };
-/*
-Tab.propTypes = {
-  title: PropTypes.string,
-  isSelected: PropTypes.bool,
-  onClick: PropTypes.func
-}
-*/
-
 
 var _default = Tab;
 exports["default"] = _default;

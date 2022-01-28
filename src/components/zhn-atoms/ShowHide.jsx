@@ -1,22 +1,17 @@
-import React from 'react';
+const CL_SHOW_POPUP = "show-popup"
+, S_SHOW = { display: 'block' }
+, S_HIDE = { display: 'none' };
 
-//import PropTypes from "prop-types";
-
-const SHOW_POPUP = "show-popup"
-    , STYLE = {
-        SHOW : {
-          display: 'block'
-        },
-        HIDE : {
-          display : 'none'
-        }
-};
-
-const ShowHide = ({ isShow, style, className='', children }) => {
-    const _style = isShow ? STYLE.SHOW : STYLE.HIDE
-        , _className = isShow
-              ? `${className} ${SHOW_POPUP}`
-              : null;
+const ShowHide = ({
+  isShow,
+  style,
+  className='',
+  children
+}) => {
+    const _style = isShow ? S_SHOW : S_HIDE
+    , _className = isShow
+        ? `${className} ${CL_SHOW_POPUP}`
+        : null;
 
     return (
       <div
@@ -25,18 +20,7 @@ const ShowHide = ({ isShow, style, className='', children }) => {
         >
         {children}
       </div>
-    )
+    );
 };
-
-/*
-ShowHide.propTypes = {
-  isShow: PropTypes.bool,
-  style: PropTypes.object,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ])
-}
-*/
 
 export default ShowHide

@@ -1,1 +1,21 @@
-{"version":3,"sources":["../../../src/components/zhn-atoms/ShowHide.jsx"],"names":["SHOW_POPUP","STYLE","SHOW","display","HIDE","ShowHide","isShow","style","className","children","_style","_className"],"mappings":";;;;;;;;;AAAA;;;;AAEA;AAEA,IAAMA,UAAU,GAAG,YAAnB;AAAA,IACMC,KAAK,GAAG;AACNC,EAAAA,IAAI,EAAG;AACLC,IAAAA,OAAO,EAAE;AADJ,GADD;AAINC,EAAAA,IAAI,EAAG;AACLD,IAAAA,OAAO,EAAG;AADL;AAJD,CADd;;AAUA,IAAME,QAAQ,GAAG,SAAXA,QAAW,OAA+C;AAAA,MAA5CC,MAA4C,QAA5CA,MAA4C;AAAA,MAApCC,KAAoC,QAApCA,KAAoC;AAAA,4BAA7BC,SAA6B;AAAA,MAA7BA,SAA6B,+BAAnB,EAAmB;AAAA,MAAfC,QAAe,QAAfA,QAAe;;AAC5D,MAAMC,MAAM,GAAGJ,MAAM,GAAGL,KAAK,CAACC,IAAT,GAAgBD,KAAK,CAACG,IAA3C;AAAA,MACMO,UAAU,GAAGL,MAAM,GACVE,SADU,SACGR,UADH,GAEb,IAHZ;;AAKA,sBACE;AACG,IAAA,SAAS,EAAEW,UADd;AAEG,IAAA,KAAK,gCAAOJ,KAAP,EAAiBG,MAAjB,CAFR;AAAA,cAIGD;AAJH,IADF;AAQH,CAdD;AAgBA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;;eAEeJ,Q","sourcesContent":["import React from 'react';\r\n\r\n//import PropTypes from \"prop-types\";\r\n\r\nconst SHOW_POPUP = \"show-popup\"\r\n    , STYLE = {\r\n        SHOW : {\r\n          display: 'block'\r\n        },\r\n        HIDE : {\r\n          display : 'none'\r\n        }\r\n};\r\n\r\nconst ShowHide = ({ isShow, style, className='', children }) => {\r\n    const _style = isShow ? STYLE.SHOW : STYLE.HIDE\r\n        , _className = isShow\r\n              ? `${className} ${SHOW_POPUP}`\r\n              : null;\r\n\r\n    return (\r\n      <div\r\n         className={_className}\r\n         style={{ ...style, ..._style }}\r\n        >\r\n        {children}\r\n      </div>\r\n    )\r\n};\r\n\r\n/*\r\nShowHide.propTypes = {\r\n  isShow: PropTypes.bool,\r\n  style: PropTypes.object,\r\n  children: PropTypes.oneOfType([\r\n    PropTypes.arrayOf(PropTypes.node),\r\n    PropTypes.node\r\n  ])\r\n}\r\n*/\r\n\r\nexport default ShowHide\r\n"],"file":"ShowHide.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-atoms/ShowHide.js"
+ ],
+ "file": "../../../src/components/zhn-atoms/ShowHide.js",
+ "names": [
+  "CL_SHOW_POPUP",
+  "S_SHOW",
+  "display",
+  "S_HIDE",
+  "ShowHide",
+  "isShow",
+  "style",
+  "className",
+  "children",
+  "_style",
+  "_className"
+ ],
+ "mappings": ";;;;;;;;;;;AAAA,IAAMA,aAAa,GAAG,YAAtB;AAAA,IACEC,MAAM,GAAG;AAAEC,EAAAA,OAAO,EAAE;AAAX,CADX;AAAA,IAEEC,MAAM,GAAG;AAAED,EAAAA,OAAO,EAAE;AAAX,CAFX;;AAIA,IAAME,QAAQ,GAAG,SAAXA,QAAW,OAKX;AAAA,MAJJC,MAII,QAJJA,MAII;AAAA,MAHJC,KAGI,QAHJA,KAGI;AAAA,4BAFJC,SAEI;AAAA,MAFJA,SAEI,+BAFM,EAEN;AAAA,MADJC,QACI,QADJA,QACI;;AACF,MAAMC,MAAM,GAAGJ,MAAM,GAAGJ,MAAH,GAAYE,MAAjC;AAAA,MACEO,UAAU,GAAGL,MAAM,GACZE,SADY,SACCP,aADD,GAEf,IAHN;;AAKA,sBACE;AACG,IAAA,SAAS,EAAEU,UADd;AAEG,IAAA,KAAK,gCAAOJ,KAAP,EAAiBG,MAAjB,CAFR;AAAA,cAIGD;AAJH,IADF;AAQH,CAnBD;;eAqBeJ,Q"
+}

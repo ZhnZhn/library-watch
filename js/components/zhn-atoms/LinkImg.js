@@ -1,15 +1,10 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
-
 var _jsxRuntime = require("react/jsx-runtime");
 
-//import PropTypes from "prop-types";
 var _onError = function _onError(imgSrc, event) {
   console.log("Failed to load image with src: " + imgSrc);
 };
@@ -32,16 +27,6 @@ var LinkImg = function LinkImg(_ref) {
     })
   });
 };
-/*
-LinkImg.propTypes = {
-  alt: PropTypes.string,
-  href: PropTypes.string,
-  imgClass: PropTypes.string,
-  imgSrc: PropTypes.string,
-  onError: PropTypes.func
-}
-*/
-
 
 var _default = LinkImg;
 exports["default"] = _default;
