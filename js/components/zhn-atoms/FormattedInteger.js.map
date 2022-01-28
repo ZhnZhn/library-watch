@@ -1,1 +1,16 @@
-{"version":3,"sources":["../../../src/components/zhn-atoms/FormattedInteger.jsx"],"names":["REPLACER_PATTERN","FormattedInteger","value","style","replace","defaultProps"],"mappings":";;;;;;;AAAA;;;;AAEA;AAEA,IAAMA,gBAAgB,GAAG,mBAAzB;;AAEA,IAAMC,gBAAgB,GAAG,SAAnBA,gBAAmB,OAAsB;AAAA,MAAnBC,KAAmB,QAAnBA,KAAmB;AAAA,MAAZC,KAAY,QAAZA,KAAY;;AAC7C,MAAID,KAAK,IAAI,IAAb,EAAmB;AACjBA,IAAAA,KAAK,GAAG,CAAC,KAAKA,KAAN,EAAaE,OAAb,CAAqBJ,gBAArB,EAAuC,KAAvC,CAAR;AACD;;AAED,sBACE;AAAM,IAAA,KAAK,EAAEG,KAAb;AAAA,cACGD;AADH,IADF;AAKD,CAVD;AAYA;AACA;AACA;AACA;AACA;AACA;;;AACAD,gBAAgB,CAACI,YAAjB,GAAgC;AAC9BH,EAAAA,KAAK,EAAE;AADuB,CAAhC;eAIeD,gB","sourcesContent":["import React from 'react';\r\n\r\n//import PropTypes from \"prop-types\";\r\n\r\nconst REPLACER_PATTERN = /(.)(?=(\\d{3})+$)/g;\r\n\r\nconst FormattedInteger = ({ value, style }) => {\r\n  if (value >= 1000) {\r\n    value = ('' + value).replace(REPLACER_PATTERN, '$1,');\r\n  }\r\n\r\n  return (\r\n    <span style={style}>\r\n      {value}\r\n    </span>\r\n  );\r\n}\r\n\r\n/*\r\nFormattedInteger.propTypes = {\r\n  value: PropTypes.number,\r\n  style: PropTypes.object\r\n}\r\n*/\r\nFormattedInteger.defaultProps = {\r\n  value: 0\r\n}\r\n\r\nexport default FormattedInteger\r\n"],"file":"FormattedInteger.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-atoms/FormattedInteger.js"
+ ],
+ "file": "../../../src/components/zhn-atoms/FormattedInteger.js",
+ "names": [
+  "REPLACER_PATTERN",
+  "_formatValue",
+  "value",
+  "replace",
+  "FormattedInteger",
+  "style"
+ ],
+ "mappings": ";;;;;;;AACA,IAAMA,gBAAgB,GAAG,mBAAzB;AAAA,IACEC,YAAY,GAAG,SAAfA,YAAe,CAAAC,KAAK;AAAA,SAAIA,KAAK,IAAI,IAAT,GACrB,CAAC,KAAKA,KAAN,EAAaC,OAAb,CAAqBH,gBAArB,EAAuC,KAAvC,CADqB,GAErBE,KAFiB;AAAA,CADtB;;AAKA,IAAME,gBAAgB,GAAG,SAAnBA,gBAAmB;AAAA,MACvBC,KADuB,QACvBA,KADuB;AAAA,wBAEvBH,KAFuB;AAAA,MAEvBA,KAFuB,2BAEjB,CAFiB;AAAA,sBAIvB;AAAM,IAAA,KAAK,EAAEG,KAAb;AAAA,cACGJ,YAAY,CAACC,KAAD;AADf,IAJuB;AAAA,CAAzB;;eASeE,gB"
+}
