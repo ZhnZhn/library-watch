@@ -1,31 +1,30 @@
-import React from 'react';
-//import PropTypes from 'prop-types';
 
 import SvgMore from './SvgMore';
 import SvgClose from './SvgClose';
-import STYLE from './CaptionRow.Style';
+import {
+  CL_CAPTION,
+  CL_NOT_SELECTED,
+  S_CAPTION,
+  S_SVG_CLOSE
+} from './CaptionRow.Style';
 
-const S = {
-  CAPTION: {
-    paddingLeft: 0
-  }
-};
-
-const _isFn = fn => typeof fn === 'function';
+const SL_CAPTION = { paddingLeft: 0 }
+, _isFn = fn => typeof fn === 'function';
 
 const ContainerCaption = ({
-  style, moreStyle,
+  style,
+  moreStyle,
   caption='',
-  children,
   onMore,
-  onClose
+  onClose,
+  children
 }) => {
   const _captionStyle = _isFn(onMore)
-     ? { ...STYLE.CAPTION, ...S.CAPTION }
-     : STYLE.CAPTION;
+     ? {...S_CAPTION, ...SL_CAPTION}
+     : S_CAPTION;
   return (
-    <div className={STYLE.CL_CAPTION} style={style}>
-      {
+    <div className={CL_CAPTION} style={style}>
+       {
          _isFn(onMore) &&
          <SvgMore
            style={moreStyle}
@@ -33,31 +32,18 @@ const ContainerCaption = ({
          />
        }
        <span
-          className={STYLE.CL_NOT_SELECTED}
+          className={CL_NOT_SELECTED}
           style={_captionStyle}
        >
          {caption}
       </span>
       {children}
       <SvgClose
-         style={STYLE.SVG_CLOSE}
+         style={S_SVG_CLOSE}
          onClose={onClose}
       />
     </div>
   );
-}
-
-/*
-ContainerCaption.propTypes = {
-  caption: PropTypes.string,
-  styleRoot: PropTypes.object,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]),
-  onMore: PropTypes.func,
-  onClose: PropTypes.func
-}
-*/
+};
 
 export default ContainerCaption;

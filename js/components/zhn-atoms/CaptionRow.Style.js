@@ -1,22 +1,21 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-var STYLE = {
-  CL_CAPTION: "gap-right cont-caption",
-  CL_NOT_SELECTED: "not-selected",
-  CAPTION: {
-    paddingLeft: 6,
-    paddingRight: 8,
-    fontSize: '18px',
-    fontWeight: '500'
-  },
-  SVG_CLOSE: {
-    position: 'absolute',
-    top: 6,
-    right: 0
-  }
+exports.S_SVG_CLOSE = exports.S_CAPTION = exports.CL_NOT_SELECTED = exports.CL_CAPTION = void 0;
+var CL_CAPTION = "gap-right cont-caption";
+exports.CL_CAPTION = CL_CAPTION;
+var CL_NOT_SELECTED = "not-selected";
+exports.CL_NOT_SELECTED = CL_NOT_SELECTED;
+var S_CAPTION = {
+  padding: '0 8px 0 6px',
+  fontSize: '18px',
+  fontWeight: '500'
 };
-var _default = STYLE;
-exports["default"] = _default;
+exports.S_CAPTION = S_CAPTION;
+var S_SVG_CLOSE = {
+  position: 'absolute',
+  top: 6,
+  right: 0
+};
+exports.S_SVG_CLOSE = S_SVG_CLOSE;
 //# sourceMappingURL=CaptionRow.Style.js.map

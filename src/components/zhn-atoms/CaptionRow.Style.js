@@ -1,18 +1,15 @@
-const STYLE =  {
-  CL_CAPTION: "gap-right cont-caption",
-  CL_NOT_SELECTED: "not-selected",
 
-  CAPTION: {
-    paddingLeft: 6,
-    paddingRight: 8,
-    fontSize: '18px',
-    fontWeight: '500'
-  },
-  SVG_CLOSE: {
-    position: 'absolute',
-    top: 6,
-    right: 0
-  }
-};
+export const CL_CAPTION = "gap-right cont-caption"
+export const CL_NOT_SELECTED = "not-selected"
 
-export default STYLE
+export const S_CAPTION = {
+  padding: '0 8px 0 6px',    
+  fontSize: '18px',
+  fontWeight: '500'
+}
+
+export const S_SVG_CLOSE = {
+  position: 'absolute',
+  top: 6,
+  right: 0
+}

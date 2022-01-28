@@ -1,5 +1,10 @@
 import SvgClose from './SvgClose';
-import STYLE from './CaptionRow.Style'
+import {
+  CL_CAPTION,
+  CL_NOT_SELECTED,
+  S_CAPTION,
+  S_SVG_CLOSE
+} from './CaptionRow.Style';
 
 const CaptionRow = ({
   style,
@@ -8,18 +13,18 @@ const CaptionRow = ({
   children,
 }) => (
   <div
-    className={STYLE.CL_CAPTION}
+    className={CL_CAPTION}
     style={style}
   >
      <span
-        className={STYLE.CL_NOT_SELECTED}
-        style={STYLE.CAPTION}
+        className={CL_NOT_SELECTED}
+        style={S_CAPTION}
      >
        {caption}
     </span>
     {children}
     <SvgClose
-       style={STYLE.SVG_CLOSE}
+       style={S_SVG_CLOSE}
        onClose={onClose}
     />
   </div>
