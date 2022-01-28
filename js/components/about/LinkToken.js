@@ -5,25 +5,22 @@ exports["default"] = void 0;
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL = "source-link";
-var S = {
-  WRAPPER: {
-    display: 'inline-block',
-    paddingLeft: 8,
-    paddingRight: 8
-  }
+var CL_SOURCE_LINK = "source-link",
+    S_WRAPPER = {
+  display: 'inline-block',
+  padding: '0 8px'
 };
 
 var LinkToken = function LinkToken(_ref) {
   var color = _ref.color,
       href = _ref.href,
-      caption = _ref.caption,
       title = _ref.title,
+      caption = _ref.caption,
       children = _ref.children;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-    style: S.WRAPPER,
+    style: S_WRAPPER,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
-      className: CL,
+      className: CL_SOURCE_LINK,
       style: {
         color: color
       },

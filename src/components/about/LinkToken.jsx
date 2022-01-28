@@ -1,21 +1,19 @@
-const CL = "source-link";
-
-const S = {
-  WRAPPER: {
-    display: 'inline-block',
-    paddingLeft: 8,
-    paddingRight: 8
-  }
+const CL_SOURCE_LINK = "source-link"
+, S_WRAPPER = {
+   display: 'inline-block',
+   padding: '0 8px'
 };
 
 const LinkToken = ({
-  color, href,
-  caption, title,
+  color,
+  href,
+  title,
+  caption,
   children
 }) => (
-  <span style={S.WRAPPER}>
+  <span style={S_WRAPPER}>
     <a
-      className={CL}
+      className={CL_SOURCE_LINK}
       style={{ color }}
       target="_blank"
       href={href}

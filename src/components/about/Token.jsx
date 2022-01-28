@@ -1,14 +1,13 @@
-import React from 'react';
 
-const Token = (props) => {
-  const { isFirstBlank, color, children } = props
-      , _firstChart = (isFirstBlank) ? ' ' : undefined
-  return (
-     <span style={{ color: color, fontWeight: 'bold' }}>
-        {_firstChart}
-        {children}
-     </span>
-  );
-};
+const Token = ({
+  isFirstBlank,
+  color,
+  children
+}) => (
+  <span style={{ color, fontWeight: 'bold' }}>
+    {isFirstBlank ? ' ' : null}
+    {children}
+  </span>
+);
 
 export default Token
