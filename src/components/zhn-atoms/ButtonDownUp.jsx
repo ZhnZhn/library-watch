@@ -1,46 +1,96 @@
 //import PropTypes from "prop-types";
-
-import STYLE from './ButtonDownUp.Style';
-
 import SpinnerLoading from './SpinnerLoading';
 
-const _crStateComp = (isUp, isLoading) => {
+const S_ROOT = {
+  position: 'relative',
+  display: 'inline-block',
+  height: 36,
+  border: '1px solid',
+  borderRadius: 10,
+  cursor: 'pointer'
+}
+, S_ROOT_UP = {
+  color: '#a487d4',
+  borderColor: '#a487d4',
+  borderWidth: 2,
+  fontWeight: 'bold'
+}
+, S_ROOT_DOWN = {
+  color: 'gray',
+  borderColor: 'gray',
+  borderWidth: 1,
+  fontWeight: 'normal'
+}
+, S_ITEM = {
+  display: 'inline-block',
+  padding: '0 8px 0 5px'
+}
+, S_CIRCLE = {
+  display: 'inline-block',
+  marginLeft: 8,
+  backgroundColor: 'gray',
+  width: 12,
+  height: 12,
+  border: '1px solid gray',
+  borderRadius: '50%'
+}
+, S_CIRCLE_LOADING = {
+  backgroundColor: 'transparent',
+  border: 'none'
+}
+, S_CIRCLE_UP = {
+  backgroundColor: '#a487d4',
+  borderColor: '#a487d4'
+}
+, S_CIRCLE_DOWN = {
+  backgroundColor: 'gray',
+  borderColor: 'gray'
+}
+, S_SPINNER = {
+  top: 5,
+  left: 2
+};
+
+const _crStateEl = (isUp, isLoading) => {
   let _spinner = null;
   if (isLoading) {
-    _spinner = <SpinnerLoading style={STYLE.SPINNER} />
+    _spinner = <SpinnerLoading style={S_SPINNER} />
   }
   const _circleStyle = isLoading
-    ? STYLE.CIRCLE_LOADING
-    : isUp ? STYLE.CIRCLE_UP : STYLE.CIRCLE_DOWN;
+    ? S_CIRCLE_LOADING
+    : isUp ? S_CIRCLE_UP : S_CIRCLE_DOWN;
   return (
     <>
       {_spinner}
-      <span style={{...STYLE.CIRCLE, ..._circleStyle}} />
+      <span style={{...S_CIRCLE, ..._circleStyle}} />
     </>
   );
 };
 
 const ButtonDownUp = ({
-  style, isUp,
+  style,
+  isUp,
   isLoading,
-  caption='', title='',
+  caption='',
+  title='',
   onClick
 }) => {
-   const _style = isUp ? STYLE.ROOT_UP : STYLE.ROOT_DOWN;
+   const _style = isUp
+     ? S_ROOT_UP : S_ROOT_DOWN;
 
    return (
      <button
         title={title}
-        style={{...STYLE.ROOT, ...style, ..._style}}
+        style={{...S_ROOT, ...style, ..._style}}
         onClick={onClick}
      >
-       {_crStateComp(isUp, isLoading)}
-       <span style={STYLE.ITEM}>
+       {_crStateEl(isUp, isLoading)}
+       <span style={S_ITEM}>
           {caption}
        </span>
     </button>
    );
-}
+};
 
 /*
 ButtonDownUp.propTypes = {
@@ -52,6 +102,5 @@ ButtonDownUp.propTypes = {
   onClick: PropTypes.func
 }
 */
-
 
 export default ButtonDownUp
