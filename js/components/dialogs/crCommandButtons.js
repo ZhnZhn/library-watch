@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
-
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
 var _jsxRuntime = require("react/jsx-runtime");

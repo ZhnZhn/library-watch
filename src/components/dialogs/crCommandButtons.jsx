@@ -1,6 +1,4 @@
-import React from 'react'
-
-import FlatButton from '../zhn-m/FlatButton'
+import FlatButton from '../zhn-m/FlatButton';
 
 const crCommandButtons = ({
   inst,
@@ -12,7 +10,7 @@ const crCommandButtons = ({
       caption="Default"
       timeout={0}
       onClick={inst._handleDefault}
-     />,     
+     />,
      <FlatButton
        key="load"
        isPrimary={true}

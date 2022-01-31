@@ -1,34 +1,27 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import InputText from '../../zhn-atoms/InputText';
 import Caption from './Caption'
 
-const S = {
-  ROW_DIV: {
-    margin: 5
-  },
-  LABEL_SPAN : {
-    color: '#1b75bb',
-    display: 'inline-block',
-    width: 100,
-    paddingRight: 5,
-    textAlign: 'right',
-    fontSize: '16px',
-    fontWeight: 'bold'
-  },
-  ROOT : {
-    lineHeight: 2
-  },
-  CAPTION : {
-    width: 120
-  },
-  INPUT_TEXT : {
-    width: 250,
-    height: 30,
-    paddingLeft: 10,
-    marginLeft: 0,
-    marginRight: 0
-  }
+const S_ROW_DIV = { margin: 5 }
+, S_LABEL_SPAN = {
+  color: '#1b75bb',
+  display: 'inline-block',
+  width: 100,
+  paddingRight: 5,
+  textAlign: 'right',
+  fontSize: '16px',
+  fontWeight: 'bold'
+}
+, S_ROOT = { lineHeight: 2 }
+, S_CAPTION = { width: 120 }
+, S_INPUT_TEXT = {
+  width: 250,
+  height: 30,
+  paddingLeft: 10,
+  marginLeft: 0,
+  marginRight: 0
 };
+
 
 class RowInputText extends Component {
   /*
@@ -55,15 +48,15 @@ class RowInputText extends Component {
         ? placeholder
         : placeholder || caption;
     return (
-      <div style={{ ...S.ROW_DIV, ...S.ROOT }}>
+      <div style={{...S_ROW_DIV, ...S_ROOT}}>
          <Caption
            is={isShowLabel}
-           style={{ ...S.LABEL_SPAN, ...S.CAPTION }}
+           style={{...S_LABEL_SPAN, ...S_CAPTION}}
            caption={caption}
          />
          <InputText
             ref={this._refInput}
-            style={S.INPUT_TEXT}            
+            style={S_INPUT_TEXT}            
             placeholder={_placeholder}
             onEnter={onEnter}
          />

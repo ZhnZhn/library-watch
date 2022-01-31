@@ -1,8 +1,9 @@
-import React from 'react'
-
 import STYLE from '../../styles/DialogStyles'
 
-const Plain = ({ style, children }) => (
+const Plain = ({
+  style,
+  children
+}) => (
   <div style={{ ...STYLE.rowDiv, ...style }}>
     {children}
   </div>
@@ -11,6 +12,5 @@ const Plain = ({ style, children }) => (
 const Row = {
   Plain
 };
-
 
 export default Row

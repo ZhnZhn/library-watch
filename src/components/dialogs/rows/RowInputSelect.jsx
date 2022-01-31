@@ -1,25 +1,20 @@
-import React from 'react';
-//import PropTypes from "prop-types";
-
 import InputSelect from '../../zhn-select/InputSelect'
 import STYLE from '../../styles/DialogStyles'
 import Caption from './Caption'
 
-const S = {
-  CAPTION : {
-    width: '120px'
-  }
-};
+const S_CAPTION = { width: 120 };
 
 const RowInputSelect = ({
-  isShowLabel, caption,
-  placeholder, options,
+  isShowLabel=true,
+  caption,
+  placeholder,
+  options,
   onSelect
 }) => (
   <div style={STYLE.rowDiv}>
     <Caption
       is={isShowLabel}
-      style={{ ...STYLE.labelSpan, ...S.CAPTION }}
+      style={{...STYLE.labelSpan, ...S_CAPTION}}
       caption={caption}
     />
      <InputSelect
@@ -30,18 +25,5 @@ const RowInputSelect = ({
      />
   </div>
 );
-
-RowInputSelect.defaultProps = {
-  isShowLabel: true
-};
-
-/*
-RowInputSelect.propTypes = {
-  caption : PropTypes.string,
-  placeholder: PropTypes.string,
-  options : PropTypes.array,
-  onSelect : PropTypes.func
-}
-*/
 
 export default RowInputSelect

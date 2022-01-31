@@ -25,21 +25,16 @@ var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
 var styles = _DialogStyles["default"];
-var C = {
-  FILE_NOT_CHOOSED: 'Please choose file for loading.'
-};
-var STYLE = {
-  MODAL_DIALOG: {
-    minWidth: 320
-  },
-  ROW_INPUT_FILE: {
-    marginTop: 16,
-    marginBottom: 16
-  },
-  ROW_VALIDATION: {
-    width: '100%',
-    marginRight: 16
-  }
+var MSG_FILE_NOT_CHOOSED = 'Please choose file for loading.',
+    S_MODAL_DIALOG = {
+  minWidth: 320
+},
+    S_ROW_INPUT_FILE = {
+  margin: '16px 0'
+},
+    S_ROW_VALIDATION = {
+  width: '100%',
+  marginRight: 16
 };
 
 var LoadFileDialog = /*#__PURE__*/function (_Component) {
@@ -85,7 +80,7 @@ var LoadFileDialog = /*#__PURE__*/function (_Component) {
         });
       } else {
         _this.setState({
-          validationMessages: [C.FILE_NOT_CHOOSED]
+          validationMessages: [MSG_FILE_NOT_CHOOSED]
         });
       }
     };
@@ -130,19 +125,19 @@ var LoadFileDialog = /*#__PURE__*/function (_Component) {
     var isShow = this.props.isShow,
         validationMessages = this.state.validationMessages;
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalDialog["default"], {
-      style: STYLE.MODAL_DIALOG,
+      style: S_MODAL_DIALOG,
       caption: "Load Watch Items from File",
       isShow: isShow,
       commandButtons: this._commandButtons,
       onClose: this._handleClose,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        style: (0, _extends2["default"])({}, styles.rowDiv, STYLE.ROW_INPUT_FILE),
+        style: (0, _extends2["default"])({}, styles.rowDiv, S_ROW_INPUT_FILE),
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputFileReader["default"], {
           as: "text",
           onChange: this._handleChange
         })
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        style: (0, _extends2["default"])({}, styles.rowDiv, STYLE.ROW_VALIDATION),
+        style: (0, _extends2["default"])({}, styles.rowDiv, S_ROW_VALIDATION),
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessages["default"], {
           validationMessages: validationMessages
         })

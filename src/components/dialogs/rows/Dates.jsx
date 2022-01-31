@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import InputDate from '../../zhn-atoms/InputDate';
 import styles from '../../styles/DialogStyles'
 import Caption from './Caption'

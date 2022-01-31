@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
-
 var _ShowHide = _interopRequireDefault(require("../../zhn-atoms/ShowHide"));
 
 var _ToolbarButtonCircle = _interopRequireDefault(require("./ToolbarButtonCircle"));

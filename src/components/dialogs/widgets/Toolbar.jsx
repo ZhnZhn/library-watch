@@ -1,9 +1,10 @@
-import React from 'react'
-
 import ShowHide from '../../zhn-atoms/ShowHide';
-import ToolbarButtonCircle from './ToolbarButtonCircle'
+import ToolbarButtonCircle from './ToolbarButtonCircle';
 
-const Toolbar = ({ isShow,  buttons }) => (
+const Toolbar = ({
+  isShow,
+  buttons
+}) => (
   <ShowHide isShow={isShow}>
     <ToolbarButtonCircle
       buttons={buttons}

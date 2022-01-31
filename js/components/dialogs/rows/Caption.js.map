@@ -1,1 +1,16 @@
-{"version":3,"sources":["../../../../src/components/dialogs/rows/Caption.jsx"],"names":["_crCaption","caption","indexOf","Caption","is","style"],"mappings":";;;;;;;AAAA;;;;AAEA,IAAMA,UAAU,GAAG,SAAbA,UAAa,CAAAC,OAAO;AAAA,SAAIA,OAAO,IACjCA,OAAO,CAACC,OAAR,CAAgB,GAAhB,MAAyB,CAAC,CADA,GAE3BD,OAAO,GAAG,GAFiB,GAG3B,EAHuB;AAAA,CAA1B;;AAKA,IAAME,OAAO,GAAG,SAAVA,OAAU,OAA4B;AAAA,MAAzBC,EAAyB,QAAzBA,EAAyB;AAAA,MAArBC,KAAqB,QAArBA,KAAqB;AAAA,MAAdJ,OAAc,QAAdA,OAAc;;AAC1C,MAAI,CAACG,EAAL,EAAS;AACP,WAAO,IAAP;AACD;;AACD,sBACE;AAAM,IAAA,KAAK,EAAEC,KAAb;AAAA,cACKL,UAAU,CAACC,OAAD;AADf,IADF;AAKD,CATD;;eAYeE,O","sourcesContent":["import React from 'react'\r\n\r\nconst _crCaption = caption => caption\r\n && caption.indexOf(':') === -1\r\n ? caption + ':'\r\n : '';\r\n\r\nconst Caption = ({ is, style, caption }) => {\r\n  if (!is) {\r\n    return null;\r\n  }\r\n  return (\r\n    <span style={style}>\r\n        {_crCaption(caption)}\r\n    </span>\r\n  );\r\n}\r\n\r\n\r\nexport default Caption\r\n"],"file":"Caption.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/dialogs/rows/Caption.js"
+ ],
+ "file": "../../../../src/components/dialogs/rows/Caption.js",
+ "names": [
+  "_crCaption",
+  "caption",
+  "indexOf",
+  "Caption",
+  "is",
+  "style"
+ ],
+ "mappings": ";;;;;;;AACA,IAAMA,UAAU,GAAG,SAAbA,UAAa,CAAAC,OAAO;AAAA,SAAIA,OAAO,IACjCA,OAAO,CAACC,OAAR,CAAgB,GAAhB,MAAyB,CAAC,CADA,GAEzBD,OAAO,GAAG,GAFe,GAGzB,EAHqB;AAAA,CAA1B;;AAKA,IAAME,OAAO,GAAG,SAAVA,OAAU,OAIV;AAAA,MAHJC,EAGI,QAHJA,EAGI;AAAA,MAFJC,KAEI,QAFJA,KAEI;AAAA,MADJJ,OACI,QADJA,OACI;;AACJ,MAAI,CAACG,EAAL,EAAS;AACP,WAAO,IAAP;AACD;;AACD,sBACE;AAAM,IAAA,KAAK,EAAEC,KAAb;AAAA,cACGL,UAAU,CAACC,OAAD;AADb,IADF;AAKD,CAbD;;eAeeE,O"
+}

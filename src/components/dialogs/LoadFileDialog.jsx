@@ -10,23 +10,14 @@ import DialogStyles from '../styles/DialogStyles';
 
 const styles = DialogStyles;
 
-const C = {
-  FILE_NOT_CHOOSED : 'Please choose file for loading.'
+const MSG_FILE_NOT_CHOOSED = 'Please choose file for loading.'
+, S_MODAL_DIALOG = { minWidth: 320 }
+, S_ROW_INPUT_FILE = { margin: '16px 0' }
+, S_ROW_VALIDATION = {
+  width: '100%',
+  marginRight: 16
 };
 
-const STYLE = {
-  MODAL_DIALOG : {
-    minWidth: 320
-  },
-  ROW_INPUT_FILE : {
-    marginTop: 16,
-    marginBottom: 16
-  },
-  ROW_VALIDATION : {
-    width: '100%',
-    marginRight: 16
-  }
-}
 
 class LoadFileDialog extends Component {
   /*
@@ -80,13 +71,13 @@ class LoadFileDialog extends Component {
     if (this.progressEvent && this.file){
       const { data } = this.props
           , { onLoad } = data
-      onLoad({ progressEvent : this.progressEvent });
+      onLoad({ progressEvent: this.progressEvent });
       this.setState({
-        validationMessages : []
+        validationMessages: []
       })
     } else {
       this.setState({
-        validationMessages : [C.FILE_NOT_CHOOSED]
+        validationMessages: [MSG_FILE_NOT_CHOOSED]
       })
     }
   }
@@ -105,19 +96,19 @@ class LoadFileDialog extends Component {
         , { validationMessages } = this.state;
     return (
       <ModalDialog
-        style={STYLE.MODAL_DIALOG}
+        style={S_MODAL_DIALOG}
         caption="Load Watch Items from File"
         isShow={isShow}
         commandButtons={this._commandButtons}
         onClose={this._handleClose}
       >
-         <div style={{ ...styles.rowDiv, ...STYLE.ROW_INPUT_FILE }}>
+         <div style={{...styles.rowDiv, ...S_ROW_INPUT_FILE}}>
             <InputFileReader
                as="text"
                onChange={this._handleChange}
             />
          </div>
-         <div style={{ ...styles.rowDiv, ...STYLE.ROW_VALIDATION }}>
+         <div style={{...styles.rowDiv, ...S_ROW_VALIDATION}}>
            <ValidationMessages
              validationMessages={validationMessages}
            />

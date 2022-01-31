@@ -13,19 +13,16 @@ var _ButtonCircle = _interopRequireDefault(require("../../zhn-atoms/ButtonCircle
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  ROW: {
-    paddingTop: 4,
-    paddingBottom: 8
-  },
-  BUTTON_CIRCLE: {
-    marginLeft: 20
-  }
+var S_ROW = {
+  padding: '4px 0 8px 0'
+},
+    S_BUTTON_CIRCLE = {
+  marginLeft: 20
 };
 var ToolbarButtonCircle = /*#__PURE__*/(0, _react.memo)(function (_ref) {
   var buttons = _ref.buttons;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Row["default"].Plain, {
-    style: S.ROW,
+    style: S_ROW,
     children: (buttons || []).map(function (_ref2, index) {
       var caption = _ref2.caption,
           title = _ref2.title,
@@ -33,7 +30,7 @@ var ToolbarButtonCircle = /*#__PURE__*/(0, _react.memo)(function (_ref) {
       return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle["default"], {
         caption: caption,
         title: title,
-        style: S.BUTTON_CIRCLE,
+        style: S_BUTTON_CIRCLE,
         onClick: onClick
       }, caption + index);
     })

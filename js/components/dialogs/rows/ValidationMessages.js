@@ -6,25 +6,23 @@ exports["default"] = void 0;
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
-var S = {
-  ROOT_DIV: {
-    color: '#f44336',
-    paddingLeft: 10,
-    paddingTop: 5
-  },
-  NUMBER: {
-    display: 'inline-block',
-    width: 22,
-    height: 22,
-    marginRight: 5,
-    border: 'solid 2px #f44336',
-    borderRadius: '50%',
-    textAlign: 'center'
-  },
-  MSG: {
-    whiteSpace: 'pre',
-    fontWeight: 'bold'
-  }
+var _isArr = Array.isArray,
+    S_ROOT_DIV = {
+  color: '#f44336',
+  padding: '5px 0 0 10px'
+},
+    S_NUMBER = {
+  display: 'inline-block',
+  width: 22,
+  height: 22,
+  marginRight: 5,
+  border: 'solid 2px #f44336',
+  borderRadius: '50%',
+  textAlign: 'center'
+},
+    S_MSG = {
+  whiteSpace: 'pre',
+  fontWeight: 'bold'
 };
 
 var ValidationMessage = function ValidationMessage(_ref) {
@@ -32,31 +30,24 @@ var ValidationMessage = function ValidationMessage(_ref) {
       msg = _ref.msg;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      style: S.NUMBER,
+      style: S_NUMBER,
       children: index
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      style: S.MSG,
+      style: S_MSG,
       children: msg
     })]
   });
 };
-/*
-ValidationMessage.propTypes = {
-  index: PropTypes.number,
-  msg: PropTypes.string
-}
-*/
-
 
 var ValidationMessages = function ValidationMessages(_ref2) {
   var validationMessages = _ref2.validationMessages;
 
-  if (!Array.isArray(validationMessages)) {
+  if (!_isArr(validationMessages)) {
     return null;
   }
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    style: S.ROOT_DIV,
+    style: S_ROOT_DIV,
     children: validationMessages.map(function (msg, index) {
       return /*#__PURE__*/(0, _jsxRuntime.jsx)(ValidationMessage, {
         msg: msg,

@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireDefault(require("react"));
-
 var _DialogStyles = _interopRequireDefault(require("../../styles/DialogStyles"));
 
 var _jsxRuntime = require("react/jsx-runtime");
