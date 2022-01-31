@@ -43,8 +43,7 @@ var TITLE = "Library Watch v0.12.0",
   position: 'relative',
   top: -2,
   verticalAlign: 'middle',
-  marginLeft: 8,
-  marginRight: 8
+  margin: '0 8px'
 },
     S_BUTTON_SAVE = {
   marginLeft: 10

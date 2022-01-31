@@ -1,28 +1,28 @@
 import { useState } from 'react';
-import useListen from '../hooks/useListen'
+import useListen from '../hooks/useListen';
 
 import { LoadingProgressActionTypes as Action } from '../../flux/actions/LoadingProgressActions';
 import ProgressLine from '../zhn-atoms/ProgressLine';
 
-const COLOR = {
-  LOADING: '#2f7ed8',
-  FAILED: '#ed5813'
-};
+const COLOR_LOADING = '#2f7ed8'
+, COLOR_FAILED = '#ed5813';
 
-const LoadingProgress = ({ store }) => {
+const LoadingProgress = ({
+  store
+}) => {
   const [state, setState] = useState({
     completed: 0,
-    color: COLOR.LOADING
+    color: COLOR_LOADING
   })
   , { completed, color } = state;
 
   useListen(store, (actionType, option) => {
     if (actionType === Action.LOADING){
-      setState({ completed: 35, color: COLOR.LOADING });
+      setState({ completed: 35, color: COLOR_LOADING });
     } else if (actionType === Action.LOADING_COMPLETE){
-      setState({ completed: 100, color: COLOR.LOADING });
+      setState({ completed: 100, color: COLOR_LOADING });
     } else if (actionType === Action.LOADING_FAILED){
-      setState({ completed: 100, color: COLOR.FAILED })
+      setState({ completed: 100, color: COLOR_FAILED })
     }
   }, 'listenLoadingProgress')
 
@@ -33,6 +33,6 @@ const LoadingProgress = ({ store }) => {
        completed={completed}
     />
   );
-}
+};
 
 export default LoadingProgress

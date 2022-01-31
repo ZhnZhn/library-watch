@@ -30,15 +30,13 @@ const TITLE = "Library Watch v0.12.0"
   position: 'relative',
   top: -2,
   verticalAlign: 'middle',
-  marginLeft: 8,
-  marginRight: 8
+  margin: '0 8px'
 }
 , S_BUTTON_SAVE = { marginLeft : 10 }
 , S_LABEL_LIMIT = {
   float: 'right',
   paddingTop: 5
 }
-
 , BROWSER_CONFIG_LIBRARY = {
   browserType: BT.LIBRARY,
   caption: 'Library',

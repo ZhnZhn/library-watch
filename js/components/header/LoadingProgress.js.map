@@ -1,1 +1,24 @@
-{"version":3,"sources":["../../../src/components/header/LoadingProgress.jsx"],"names":["COLOR","LOADING","FAILED","LoadingProgress","store","completed","color","state","setState","actionType","option","Action","LOADING_COMPLETE","LOADING_FAILED"],"mappings":";;;;;;;AAAA;;AACA;;AAEA;;AACA;;;;AAEA,IAAMA,KAAK,GAAG;AACZC,EAAAA,OAAO,EAAE,SADG;AAEZC,EAAAA,MAAM,EAAE;AAFI,CAAd;;AAKA,IAAMC,eAAe,GAAG,SAAlBA,eAAkB,OAAe;AAAA,MAAZC,KAAY,QAAZA,KAAY;;AAAA,kBACX,qBAAS;AACjCC,IAAAA,SAAS,EAAE,CADsB;AAEjCC,IAAAA,KAAK,EAAEN,KAAK,CAACC;AAFoB,GAAT,CADW;AAAA,MAC9BM,KAD8B;AAAA,MACvBC,QADuB;AAAA,MAKjCH,SALiC,GAKZE,KALY,CAKjCF,SALiC;AAAA,MAKtBC,KALsB,GAKZC,KALY,CAKtBD,KALsB;;AAOrC,6BAAUF,KAAV,EAAiB,UAACK,UAAD,EAAaC,MAAb,EAAwB;AACvC,QAAID,UAAU,KAAKE,mDAAOV,OAA1B,EAAkC;AAChCO,MAAAA,QAAQ,CAAC;AAAEH,QAAAA,SAAS,EAAE,EAAb;AAAiBC,QAAAA,KAAK,EAAEN,KAAK,CAACC;AAA9B,OAAD,CAAR;AACD,KAFD,MAEO,IAAIQ,UAAU,KAAKE,mDAAOC,gBAA1B,EAA2C;AAChDJ,MAAAA,QAAQ,CAAC;AAAEH,QAAAA,SAAS,EAAE,GAAb;AAAkBC,QAAAA,KAAK,EAAEN,KAAK,CAACC;AAA/B,OAAD,CAAR;AACD,KAFM,MAEA,IAAIQ,UAAU,KAAKE,mDAAOE,cAA1B,EAAyC;AAC9CL,MAAAA,QAAQ,CAAC;AAAEH,QAAAA,SAAS,EAAE,GAAb;AAAkBC,QAAAA,KAAK,EAAEN,KAAK,CAACE;AAA/B,OAAD,CAAR;AACD;AACF,GARD,EAQG,uBARH;AAUA,sBACE,qBAAC,wBAAD;AACG,IAAA,MAAM,EAAE,CADX;AAEG,IAAA,KAAK,EAAEI,KAFV;AAGG,IAAA,SAAS,EAAED;AAHd,IADF;AAOD,CAxBD;;eA0BeF,e","sourcesContent":["import { useState } from 'react';\r\nimport useListen from '../hooks/useListen'\r\n\r\nimport { LoadingProgressActionTypes as Action } from '../../flux/actions/LoadingProgressActions';\r\nimport ProgressLine from '../zhn-atoms/ProgressLine';\r\n\r\nconst COLOR = {\r\n  LOADING: '#2f7ed8',\r\n  FAILED: '#ed5813'\r\n};\r\n\r\nconst LoadingProgress = ({ store }) => {\r\n  const [state, setState] = useState({\r\n    completed: 0,\r\n    color: COLOR.LOADING\r\n  })\r\n  , { completed, color } = state;\r\n\r\n  useListen(store, (actionType, option) => {\r\n    if (actionType === Action.LOADING){\r\n      setState({ completed: 35, color: COLOR.LOADING });\r\n    } else if (actionType === Action.LOADING_COMPLETE){\r\n      setState({ completed: 100, color: COLOR.LOADING });\r\n    } else if (actionType === Action.LOADING_FAILED){\r\n      setState({ completed: 100, color: COLOR.FAILED })\r\n    }\r\n  }, 'listenLoadingProgress')\r\n\r\n  return (\r\n    <ProgressLine\r\n       height={3}\r\n       color={color}\r\n       completed={completed}\r\n    />\r\n  );\r\n}\r\n\r\nexport default LoadingProgress\r\n"],"file":"LoadingProgress.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/header/LoadingProgress.js"
+ ],
+ "file": "../../../src/components/header/LoadingProgress.js",
+ "names": [
+  "COLOR_LOADING",
+  "COLOR_FAILED",
+  "LoadingProgress",
+  "store",
+  "completed",
+  "color",
+  "state",
+  "setState",
+  "actionType",
+  "option",
+  "Action",
+  "LOADING",
+  "LOADING_COMPLETE",
+  "LOADING_FAILED"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;AAEA;;AACA;;;;AAEA,IAAMA,aAAa,GAAG,SAAtB;AAAA,IACEC,YAAY,GAAG,SADjB;;AAGA,IAAMC,eAAe,GAAG,SAAlBA,eAAkB,OAElB;AAAA,MADJC,KACI,QADJA,KACI;;AACJ,kBAA0B,qBAAS;AACjCC,IAAAA,SAAS,EAAE,CADsB;AAEjCC,IAAAA,KAAK,EAAEL;AAF0B,GAAT,CAA1B;AAAA,MAAOM,KAAP;AAAA,MAAcC,QAAd;AAAA,MAIIH,SAJJ,GAIyBE,KAJzB,CAIIF,SAJJ;AAAA,MAIeC,KAJf,GAIyBC,KAJzB,CAIeD,KAJf;;AAMA,6BAAUF,KAAV,EAAiB,UAACK,UAAD,EAAaC,MAAb,EAAwB;AACvC,QAAID,UAAU,KAAKE,mDAAOC,OAA1B,EAAkC;AAChCJ,MAAAA,QAAQ,CAAC;AAAEH,QAAAA,SAAS,EAAE,EAAb;AAAiBC,QAAAA,KAAK,EAAEL;AAAxB,OAAD,CAAR;AACD,KAFD,MAEO,IAAIQ,UAAU,KAAKE,mDAAOE,gBAA1B,EAA2C;AAChDL,MAAAA,QAAQ,CAAC;AAAEH,QAAAA,SAAS,EAAE,GAAb;AAAkBC,QAAAA,KAAK,EAAEL;AAAzB,OAAD,CAAR;AACD,KAFM,MAEA,IAAIQ,UAAU,KAAKE,mDAAOG,cAA1B,EAAyC;AAC9CN,MAAAA,QAAQ,CAAC;AAAEH,QAAAA,SAAS,EAAE,GAAb;AAAkBC,QAAAA,KAAK,EAAEJ;AAAzB,OAAD,CAAR;AACD;AACF,GARD,EAQG,uBARH;AAUA,sBACE,qBAAC,wBAAD;AACG,IAAA,MAAM,EAAE,CADX;AAEG,IAAA,KAAK,EAAEI,KAFV;AAGG,IAAA,SAAS,EAAED;AAHd,IADF;AAOD,CA1BD;;eA4BeF,e"
+}

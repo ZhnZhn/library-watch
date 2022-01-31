@@ -15,17 +15,15 @@ var _ProgressLine = _interopRequireDefault(require("../zhn-atoms/ProgressLine"))
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var COLOR = {
-  LOADING: '#2f7ed8',
-  FAILED: '#ed5813'
-};
+var COLOR_LOADING = '#2f7ed8',
+    COLOR_FAILED = '#ed5813';
 
 var LoadingProgress = function LoadingProgress(_ref) {
   var store = _ref.store;
 
   var _useState = (0, _react.useState)({
     completed: 0,
-    color: COLOR.LOADING
+    color: COLOR_LOADING
   }),
       state = _useState[0],
       setState = _useState[1],
@@ -36,17 +34,17 @@ var LoadingProgress = function LoadingProgress(_ref) {
     if (actionType === _LoadingProgressActions.LoadingProgressActionTypes.LOADING) {
       setState({
         completed: 35,
-        color: COLOR.LOADING
+        color: COLOR_LOADING
       });
     } else if (actionType === _LoadingProgressActions.LoadingProgressActionTypes.LOADING_COMPLETE) {
       setState({
         completed: 100,
-        color: COLOR.LOADING
+        color: COLOR_LOADING
       });
     } else if (actionType === _LoadingProgressActions.LoadingProgressActionTypes.LOADING_FAILED) {
       setState({
         completed: 100,
-        color: COLOR.FAILED
+        color: COLOR_FAILED
       });
     }
   }, 'listenLoadingProgress');

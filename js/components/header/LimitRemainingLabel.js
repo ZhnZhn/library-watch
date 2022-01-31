@@ -13,18 +13,15 @@ var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var WITHOUT_LIMIT = '';
-var S = {
-  LABEL: {
-    position: 'relative',
-    top: 4,
-    display: 'inline-block',
-    color: '#2f7ed8',
-    paddingLeft: 10,
-    paddingRight: 10,
-    fontSize: '16px',
-    fontWeight: 'bold'
-  }
+var WITHOUT_LIMIT = '',
+    S_LABEL = {
+  position: 'relative',
+  top: 4,
+  display: 'inline-block',
+  color: '#2f7ed8',
+  padding: '0 10px',
+  fontSize: '16px',
+  fontWeight: 'bold'
 };
 
 var LimitRemainingLabel = function LimitRemainingLabel(_ref) {
@@ -41,7 +38,7 @@ var LimitRemainingLabel = function LimitRemainingLabel(_ref) {
     setValue(_value);
   }, 'listenLimitRemaining');
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-    style: (0, _extends2["default"])({}, S.LABEL, style),
+    style: (0, _extends2["default"])({}, S_LABEL, style),
     children: value
   });
 };
