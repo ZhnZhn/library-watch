@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,74 +7,57 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+var _react = require("react");
 
-var _react = _interopRequireWildcard(require("react"));
-
-var _DateAgo = _interopRequireDefault(require("./DateAgo.Style"));
+var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-//import PropTypes from "prop-types";
-var DateAgo = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(DateAgo, _Component);
-
-  /*
-  static propTypes = {
-     isShowDate: PropTypes.bool,
-     style: PropTypes.object
-  }
-  */
-  function DateAgo(props) {
-    var _this;
-
-    _this = _Component.call(this, props) || this;
-
-    _this._hClick = function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-
-      _this.setState(function (prevState) {
-        return {
-          isShowDate: !prevState.isShowDate
-        };
-      });
-    };
-
-    _this.state = {
-      isShowDate: !!props.isShowDate
-    };
-    return _this;
-  }
-
-  var _proto = DateAgo.prototype;
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        style = _this$props.style,
-        dateAgo = _this$props.dateAgo,
-        date = _this$props.date,
-        isShowDate = this.state.isShowDate,
-        _styleDate = isShowDate ? _DateAgo["default"].INLINE_BLOCK : _DateAgo["default"].NONE;
-
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-        style: (0, _extends2["default"])({}, _DateAgo["default"].DATE_AGO, style),
-        onClick: date ? this._hClick : void 0,
-        children: dateAgo
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-        style: (0, _extends2["default"])({}, _DateAgo["default"].DATE, _styleDate),
-        children: date
-      })]
-    });
-  };
-
-  return DateAgo;
-}(_react.Component);
-
-DateAgo.defaultProps = {
-  date: ''
+var S_DATE_AGO = {
+  color: 'gray'
+},
+    S_DATE = {
+  display: 'inline-block',
+  color: 'black',
+  marginLeft: 10
+},
+    S_INLINE_BLOCK = {
+  display: 'inline-block'
+},
+    S_NONE = {
+  display: 'none'
 };
+
+var DateAgo = function DateAgo(_ref) {
+  var isShowDate = _ref.isShowDate,
+      style = _ref.style,
+      dateAgo = _ref.dateAgo,
+      _ref$date = _ref.date,
+      date = _ref$date === void 0 ? '' : _ref$date;
+
+  var _useToggle = (0, _useToggle2["default"])(isShowDate),
+      isShow = _useToggle[0],
+      toggleDateAgo = _useToggle[1],
+      _hClick = (0, _react.useCallback)(function (event) {
+    event.stopPropagation();
+    toggleDateAgo();
+  }, []),
+      _styleDate = isShow ? S_INLINE_BLOCK : S_NONE;
+
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      role: "button",
+      tabIndex: "-1",
+      style: (0, _extends2["default"])({}, S_DATE_AGO, style),
+      onClick: date ? _hClick : void 0,
+      children: dateAgo
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: (0, _extends2["default"])({}, S_DATE, _styleDate),
+      children: date
+    })]
+  });
+};
+
 var _default = DateAgo;
 exports["default"] = _default;
 //# sourceMappingURL=DateAgo.js.map
