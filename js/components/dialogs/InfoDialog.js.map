@@ -1,1 +1,27 @@
-{"version":3,"sources":["../../../src/components/dialogs/InfoDialog.jsx"],"names":["styles","DialogStyles","STYLE","CAPTION","width","paddingLeft","color","fontSize","fontWeight","lineHeight","DESCR","whiteSpace","InfoDialog","shouldComponentUpdate","nextProps","nextState","props","isShow","render","data","onClose","caption","descr","rowDiv","Component"],"mappings":";;;;;;;;;;;AAAA;;AAEA;;AACA;;;;AAEA,IAAMA,MAAM,GAAGC,wBAAf;AAEA,IAAMC,KAAK,GAAG;AACZC,EAAAA,OAAO,EAAG;AACRC,IAAAA,KAAK,EAAG,OADA;AAERC,IAAAA,WAAW,EAAG,MAFN;AAGRC,IAAAA,KAAK,EAAG,uBAHA;AAIRC,IAAAA,QAAQ,EAAE,MAJF;AAKRC,IAAAA,UAAU,EAAG,MALL;AAMRC,IAAAA,UAAU,EAAG;AANL,GADE;AASZC,EAAAA,KAAK,EAAG;AACNJ,IAAAA,KAAK,EAAE,MADD;AAENF,IAAAA,KAAK,EAAG,OAFF;AAGNC,IAAAA,WAAW,EAAG,MAHR;AAING,IAAAA,UAAU,EAAE,MAJN;AAKNC,IAAAA,UAAU,EAAG,GALP;AAMNE,IAAAA,UAAU,EAAG;AANP;AATI,CAAd;;IAmBMC,U;;;;;;;;;AACJ;AACF;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;SAEEC,qB,GAAA,+BAAsBC,SAAtB,EAAiCC,SAAjC,EAA2C;AACzC,QAAID,SAAS,KAAK,KAAKE,KAAnB,IAA4BF,SAAS,CAACG,MAAV,KAAqB,KAAKD,KAAL,CAAWC,MAAhE,EAAwE;AACtE,aAAO,KAAP;AACD;;AACD,WAAO,IAAP;AACD,G;;SAEDC,M,GAAA,kBAAQ;AAAA,sBAC4B,KAAKF,KADjC;AAAA,QACEC,MADF,eACEA,MADF;AAAA,QACUE,IADV,eACUA,IADV;AAAA,QACgBC,OADhB,eACgBA,OADhB;AAAA,QAEEC,OAFF,GAEqBF,IAFrB,CAEEE,OAFF;AAAA,QAEWC,KAFX,GAEqBH,IAFrB,CAEWG,KAFX;AAGN,wBACE,sBAAC,uBAAD;AACE,MAAA,OAAO,EAAC,aADV;AAEE,MAAA,MAAM,EAAEL,MAFV;AAGE,MAAA,OAAO,EAAEG,OAHX;AAAA,8BAKG;AAAK,QAAA,KAAK,EAAEpB,MAAM,CAACuB,MAAnB;AAAA,+BACG;AAAG,UAAA,KAAK,EAAErB,KAAK,CAACC,OAAhB;AAAA,oBACGkB;AADH;AADH,QALH,eAUG;AAAK,QAAA,KAAK,EAAErB,MAAM,CAACuB,MAAnB;AAAA,+BACG;AAAG,UAAA,KAAK,EAAErB,KAAK,CAACQ,KAAhB;AAAA,oBAAwBY;AAAxB;AADH,QAVH;AAAA,MADF;AAgBD,G;;;EAtCsBE,gB;;eAyCVZ,U","sourcesContent":["import React, { Component } from 'react';\r\n\r\nimport ModalDialog from '../zhn-moleculs/ModalDialog';\r\nimport DialogStyles from '../styles/DialogStyles'\r\n\r\nconst styles = DialogStyles;\r\n\r\nconst STYLE = {\r\n  CAPTION : {\r\n    width : '400px',\r\n    paddingLeft : '10px',\r\n    color : 'rgba(164, 135, 212,1)',\r\n    fontSize: '18px',\r\n    fontWeight : 'bold',\r\n    lineHeight : 2\r\n  },\r\n  DESCR : {\r\n    color: 'gray',\r\n    width : '400px',\r\n    paddingLeft : '10px',\r\n    fontWeight: 'bold',\r\n    lineHeight : 1.4,\r\n    whiteSpace : 'pre'\r\n  }\r\n}\r\n\r\nclass InfoDialog extends Component {\r\n  /*\r\n  static propTypes = {\r\n    isShow: PropTypes.bool,\r\n    data: PropTypes.shape({\r\n      caption: PropTypes.string,\r\n      descr: PropTypes.string\r\n    }),\r\n    onClose: PropTypes.func\r\n  }\r\n  */\r\n\r\n  shouldComponentUpdate(nextProps, nextState){\r\n    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {\r\n      return false;\r\n    }\r\n    return true;\r\n  }\r\n\r\n  render(){\r\n    const { isShow, data, onClose } = this.props\r\n        , { caption, descr } = data;\r\n    return (\r\n      <ModalDialog\r\n        caption=\"Information\"\r\n        isShow={isShow}\r\n        onClose={onClose}\r\n      >\r\n         <div style={styles.rowDiv}>\r\n            <p style={STYLE.CAPTION}>\r\n              {caption}\r\n            </p>\r\n         </div>\r\n         <div style={styles.rowDiv}>\r\n            <p style={STYLE.DESCR}>{descr}</p>\r\n         </div>\r\n      </ModalDialog>\r\n    );\r\n  }\r\n}\r\n\r\nexport default InfoDialog\r\n"],"file":"InfoDialog.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/InfoDialog.js"
+ ],
+ "file": "../../../src/components/dialogs/InfoDialog.js",
+ "names": [
+  "S_CAPTION",
+  "color",
+  "width",
+  "paddingLeft",
+  "lineHeight",
+  "fontSize",
+  "fontWeight",
+  "S_DESCR",
+  "whiteSpace",
+  "InfoDialog",
+  "isShow",
+  "data",
+  "onClose",
+  "caption",
+  "descr",
+  "STYLE",
+  "rowDiv"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEA;;AACA;;;;AAEA,IAAMA,SAAS,GAAG;AAChBC,EAAAA,KAAK,EAAE,wBADS;AAEhBC,EAAAA,KAAK,EAAE,GAFS;AAGhBC,EAAAA,WAAW,EAAE,EAHG;AAIhBC,EAAAA,UAAU,EAAE,CAJI;AAKhBC,EAAAA,QAAQ,EAAE,MALM;AAMhBC,EAAAA,UAAU,EAAE;AANI,CAAlB;AAAA,IAQEC,OAAO,GAAG;AACVN,EAAAA,KAAK,EAAE,MADG;AAEVC,EAAAA,KAAK,EAAE,GAFG;AAGVC,EAAAA,WAAW,EAAE,EAHH;AAIVC,EAAAA,UAAU,EAAE,GAJF;AAKVI,EAAAA,UAAU,EAAE,KALF;AAMVF,EAAAA,UAAU,EAAE;AANF,CARZ;;AAiBA,IAAMG,UAAU,GAAG,SAAbA,UAAa,OAIb;AAAA,MAHJC,MAGI,QAHJA,MAGI;AAAA,MAFJC,IAEI,QAFJA,IAEI;AAAA,MADJC,OACI,QADJA,OACI;AACJ,MAAQC,OAAR,GAA2BF,IAA3B,CAAQE,OAAR;AAAA,MAAiBC,KAAjB,GAA2BH,IAA3B,CAAiBG,KAAjB;AACA,sBACE,sBAAC,uBAAD;AACE,IAAA,OAAO,EAAC,aADV;AAEE,IAAA,MAAM,EAAEJ,MAFV;AAGE,IAAA,OAAO,EAAEE,OAHX;AAAA,4BAKG;AAAK,MAAA,KAAK,EAAEG,yBAAMC,MAAlB;AAAA,6BACG;AAAG,QAAA,KAAK,EAAEhB,SAAV;AAAA,kBACGa;AADH;AADH,MALH,eAUG;AAAK,MAAA,KAAK,EAAEE,yBAAMC,MAAlB;AAAA,6BACG;AAAG,QAAA,KAAK,EAAET,OAAV;AAAA,kBAAoBO;AAApB;AADH,MAVH;AAAA,IADF;AAgBD,CAtBD;AAwBA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;;eAEe,4BAAWL,UAAX,C"
+}

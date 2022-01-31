@@ -1,68 +1,58 @@
-import React, { Component } from 'react';
+import memoIsShow from './memoIsShow';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
-import DialogStyles from '../styles/DialogStyles'
+import STYLE from '../styles/DialogStyles';
 
-const styles = DialogStyles;
-
-const STYLE = {
-  CAPTION : {
-    width : '400px',
-    paddingLeft : '10px',
-    color : 'rgba(164, 135, 212,1)',
-    fontSize: '18px',
-    fontWeight : 'bold',
-    lineHeight : 2
-  },
-  DESCR : {
-    color: 'gray',
-    width : '400px',
-    paddingLeft : '10px',
-    fontWeight: 'bold',
-    lineHeight : 1.4,
-    whiteSpace : 'pre'
-  }
+const S_CAPTION = {
+  color: 'rgba(164, 135, 212, 1)',
+  width: 400,
+  paddingLeft: 10,
+  lineHeight: 2,
+  fontSize: '18px',
+  fontWeight: 'bold'
 }
+, S_DESCR = {
+  color: 'gray',
+  width: 400,
+  paddingLeft: 10,
+  lineHeight: 1.4,
+  whiteSpace: 'pre',
+  fontWeight: 'bold',
+};
 
-class InfoDialog extends Component {
-  /*
-  static propTypes = {
-    isShow: PropTypes.bool,
-    data: PropTypes.shape({
-      caption: PropTypes.string,
-      descr: PropTypes.string
-    }),
-    onClose: PropTypes.func
-  }
-  */
+const InfoDialog = ({
+  isShow,
+  data,
+  onClose
+}) => {
+  const { caption, descr } = data;
+  return (
+    <ModalDialog
+      caption="Information"
+      isShow={isShow}
+      onClose={onClose}
+    >
+       <div style={STYLE.rowDiv}>
+          <p style={S_CAPTION}>
+            {caption}
+          </p>
+       </div>
+       <div style={STYLE.rowDiv}>
+          <p style={S_DESCR}>{descr}</p>
+       </div>
+    </ModalDialog>
+  );
+};
 
-  shouldComponentUpdate(nextProps, nextState){
-    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-      return false;
-    }
-    return true;
-  }
-
-  render(){
-    const { isShow, data, onClose } = this.props
-        , { caption, descr } = data;
-    return (
-      <ModalDialog
-        caption="Information"
-        isShow={isShow}
-        onClose={onClose}
-      >
-         <div style={styles.rowDiv}>
-            <p style={STYLE.CAPTION}>
-              {caption}
-            </p>
-         </div>
-         <div style={styles.rowDiv}>
-            <p style={STYLE.DESCR}>{descr}</p>
-         </div>
-      </ModalDialog>
-    );
-  }
+/*
+InfoDialog.propTypes = {
+  isShow: PropTypes.bool,
+  data: PropTypes.shape({
+    caption: PropTypes.string,
+    descr: PropTypes.string
+  }),
+  onClose: PropTypes.func
 }
+*/
 
-export default InfoDialog
+export default memoIsShow(InfoDialog)
