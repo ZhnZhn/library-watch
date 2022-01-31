@@ -5,24 +5,17 @@ import checkResponseJson from './checkResponseJson';
 import CellValue from './CellValue';
 import Link from './Link';
 
-const S = {
-  REPO: {
-    paddingTop: 4,
-    paddingLeft: 8
-  },
-  REPO_LINK: {
-    marginRight: 24
-  }
-};
+const S_REPO = { padding: '4px 0 0 8px' }
+, S_REPO_LINK = { marginRight: 24 };
 
 const RowLinks = ({ repoHref, hpHref }) => {
  if (!repoHref && !hpHref) {
    return null;
  }
  return (
-   <div style={S.REPO}>
+   <div style={S_REPO}>
      <Link
-        style={S.REPO_LINK}
+        style={S_REPO_LINK}
         href={repoHref}
         caption={crGitRepositoryCaption(repoHref)}
      />
@@ -95,6 +88,6 @@ const PackageDetails = ({ json }) => {
       />
     </>
   );
-}
+};
 
 export default PackageDetails

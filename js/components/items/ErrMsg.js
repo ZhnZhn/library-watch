@@ -5,17 +5,15 @@ exports["default"] = void 0;
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  ERR: {
-    color: '#f44336',
-    fontWeight: 'bold'
-  }
+var S_ERR = {
+  color: '#f44336',
+  fontWeight: 'bold'
 };
 
 var ErrMsg = function ErrMsg(_ref) {
   var errMsg = _ref.errMsg;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    style: S.ERR,
+    style: S_ERR,
     children: errMsg
   });
 };

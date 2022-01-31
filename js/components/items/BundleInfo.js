@@ -17,20 +17,16 @@ var _Link = _interopRequireDefault(require("./Link"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  ML_8: {
-    marginLeft: 8
-  },
-  MR_24: {
-    marginRight: 24
-  }
+var S_ML_8 = {
+  marginLeft: 8
+},
+    S_MR_24 = {
+  marginRight: 24
 };
-var C = {
-  URI: 'https://bundlephobia.com/result?p='
-};
+var API_URL = 'https://bundlephobia.com/result?p=';
 
 var _crBundleHref = function _crBundleHref(name, version) {
-  return "" + C.URI + name + "@" + version;
+  return "" + API_URL + name + "@" + version;
 };
 
 var _toKbStr = function _toKbStr(sizeByte) {
@@ -75,14 +71,14 @@ var BundleInfo = function BundleInfo(_ref) {
         value: dependencyCount
       })]
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      style: S.ML_8,
+      style: S_ML_8,
       children: description
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      style: S.ML_8,
+      style: S_ML_8,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Link["default"], {
         href: gitHref,
         caption: gitCaption,
-        style: S.MR_24
+        style: S_MR_24
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Link["default"], {
         href: bundleHref,
         caption: "Bundelphobia Link"

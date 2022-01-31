@@ -17,14 +17,11 @@ var _Link = _interopRequireDefault(require("./Link"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  REPO: {
-    paddingTop: 4,
-    paddingLeft: 8
-  },
-  REPO_LINK: {
-    marginRight: 24
-  }
+var S_REPO = {
+  padding: '4px 0 0 8px'
+},
+    S_REPO_LINK = {
+  marginRight: 24
 };
 
 var RowLinks = function RowLinks(_ref) {
@@ -36,9 +33,9 @@ var RowLinks = function RowLinks(_ref) {
   }
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: S.REPO,
+    style: S_REPO,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Link["default"], {
-      style: S.REPO_LINK,
+      style: S_REPO_LINK,
       href: repoHref,
       caption: (0, _crGitRepositoryCaption["default"])(repoHref)
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Link["default"], {

@@ -1,19 +1,17 @@
 import SvgClose from '../zhn-atoms/SvgClose';
 
-const CL = {
-  ROOT: 'item-caption',
-  BT_CLOSE: 'item-caption__bt-close'
-};
+const CL_ROOT = 'item-caption'
+, CL_BT_CLOSE = 'item-caption__bt-close';
 
 const ItemCaption = ({
   style,
   children,
   onClose
 }) => (
-  <div className={CL.ROOT} style={style}>
+  <div className={CL_ROOT} style={style}>
     {children}
     <SvgClose
-      className={CL.BT_CLOSE}
+      className={CL_BT_CLOSE}
       onClose={onClose}
     />
   </div>

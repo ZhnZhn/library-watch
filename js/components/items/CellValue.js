@@ -5,17 +5,15 @@ exports["default"] = void 0;
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  CELL: {
-    display: 'inline-block',
-    marginLeft: 8
-  },
-  CAPTION: {
-    fontWeight: 600
-  },
-  VALUE: {
-    textAlign: 'center'
-  }
+var S_CELL = {
+  display: 'inline-block',
+  marginLeft: 8
+},
+    S_CAPTION = {
+  fontWeight: 600
+},
+    S_VALUE = {
+  textAlign: 'center'
 };
 
 var CellValue = function CellValue(_ref) {
@@ -24,12 +22,12 @@ var CellValue = function CellValue(_ref) {
       _ref$value = _ref.value,
       value = _ref$value === void 0 ? 'N/A' : _ref$value;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: S.CELL,
+    style: S_CELL,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      style: S.CAPTION,
+      style: S_CAPTION,
       children: caption
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      style: S.VALUE,
+      style: S_VALUE,
       children: value
     })]
   });
