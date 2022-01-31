@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,18 +7,16 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = require("react");
 
 var _has = _interopRequireDefault(require("../has"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
-var CL = {
-  FIELD: 'm-field',
-  INPUT: 'm-field__input',
-  BT_CLEAR: 'm-field__bt-clear'
-};
+var CL_FIELD = 'm-field',
+    CL_INPUT = 'm-field__input',
+    CL_BT_CLEAR = 'm-field__bt-clear';
 var HAS_TOUCH = _has["default"].HAS_TOUCH;
 
 var _isKeyClean = function _isKeyClean(_ref) {
@@ -41,7 +37,7 @@ var BtClear = function BtClear(_ref3) {
   var isValue = _ref3.isValue,
       onClick = _ref3.onClick;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
-    "class": CL.BT_CLEAR,
+    "class": CL_BT_CLEAR,
     tabIndex: "-1",
     onClick: onClick,
     children: isValue ? 'x' : ''
@@ -116,14 +112,14 @@ var InputText = /*#__PURE__*/function (_Component) {
         maxLength = _this$props.maxLength,
         value = this.state.value;
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      className: CL.FIELD,
+      className: CL_FIELD,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
         ref: this._refInput,
         type: "text",
         autoCorrect: "off",
         autoCapitalize: "off",
         spellCheck: false,
-        className: CL.INPUT,
+        className: CL_INPUT,
         style: style,
         value: value,
         placeholder: placeholder,

@@ -1,48 +1,38 @@
-import React, { Component } from 'react';
-
 //import PropTypes from "prop-types";
+import { Component } from 'react';
 
-const STYLE = {
-  ROOT: {
-    position: 'relative',
-    display: 'inline-block',
-    backgroundColor: '#E1E1CB',
-    width: '250px'
-  },
-  INPUT: {
-    background: 'transparent none repeat scroll 0 0',
-    border: 'medium none',
-    outline: 'medium none',
-    height: '30px',
-    paddingLeft: '10px',
-    color: 'green',
-    width: '100%',
-    fontSize: '16px',
-    fontWeight: 'bold'
-  },
-  HR: {
-    borderWidth: 'medium medium 1px',
-    borderStyle: 'none none solid',
-    borderColor: 'red',
-    borderImage: 'none',
-    margin: 0,
-    marginLeft: '10px',
-    marginBottom: '5px',
-    width: '230px'
-  },
-  HR_VALID : {
-    borderColor: '#1B75BB'
-  },
-  HR_NOT_VALID : {
-    borderColor: '#F44336'
-  },
-  ERR_MSG: {
-    color: '#F44336',
-    paddingLeft: '10px',
-    paddingBottom: '5px',
-    fontSize: '12px',
-    fontWeight: 'bold'
-  }
+const S_ROOT = {
+  position: 'relative',
+  display: 'inline-block',
+  width: 250,
+  backgroundColor: '#e1e1cb',
+}
+, S_INPUT = {
+  background: 'transparent none repeat scroll 0 0',
+  border: 'medium none',
+  outline: 'medium none',
+  color: 'green',
+  width: '100%',
+  height: 30,
+  paddingLeft: 10,
+  fontSize: '16px',
+  fontWeight: 'bold'
+}
+, S_HR = {
+  borderWidth: 'medium medium 1px',
+  borderStyle: 'none none solid',
+  borderColor: 'red',
+  borderImage: 'none',
+  width: 230,
+  margin: '0 0 5px 10px'
+}
+, S_HR_VALID = { borderColor: '#1b75bb' }
+, S_HR_NOT_VALID = { borderColor: '#f44336' }
+, S_ERR_MSG = {
+  color: '#f44336',
+  padding: '0 0 5px 10px',
+  fontSize: '12px',
+  fontWeight: 'bold'
 };
 
 class InputDate extends Component {
@@ -101,11 +91,17 @@ class InputDate extends Component {
   }
 
   render(){
-    const { value, isValid, errorInput } = this.state
-        , _hrStyle = isValid ? STYLE.HR_VALID : STYLE.HR_NOT_VALID;
+    const {
+      value,
+      isValid,
+      errorInput
+    } = this.state
+    , _hrStyle = isValid
+        ? S_HR_VALID
+        : S_HR_NOT_VALID;
 
     return (
-      <div style={STYLE.ROOT}>
+      <div style={S_ROOT}>
         <input
            ref={c => this.inputComp = c}
            type="text"
@@ -114,15 +110,14 @@ class InputDate extends Component {
            autoCorrect="off"
            autoCapitalize="off"
            spellCheck={false}
-           style={STYLE.INPUT}
+           style={S_INPUT}
            placeholder="YYYY-MM-DD"
            value={value}
            onChange={this._handleChangeValue}
            onBlur={this._handleBlurValue}
-        >
-        </input>
-        <hr style={{...STYLE.HR, ..._hrStyle}}></hr>
-        <div style={STYLE.ERR_MSG}>
+        />
+        <hr style={{...S_HR, ..._hrStyle}} />
+        <div style={S_ERR_MSG}>
           {errorInput}
         </div>
       </div>

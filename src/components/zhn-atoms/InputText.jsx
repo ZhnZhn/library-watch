@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
 //import PropTypes from "prop-types";
+import { Component } from 'react';
 
-import has from '../has'
+import has from '../has';
 
-const CL = {
-  FIELD: 'm-field',
-  INPUT:  'm-field__input',
-  BT_CLEAR: 'm-field__bt-clear'
-};
+const CL_FIELD = 'm-field'
+, CL_INPUT = 'm-field__input'
+, CL_BT_CLEAR = 'm-field__bt-clear';
 
 const { HAS_TOUCH } = has;
 
@@ -17,13 +15,16 @@ const _isKeyEnter = ({ keyCode }) => keyCode === 13;
 
 const _isStr = str => typeof str === 'string';
 
-const BtClear = ({ isValue, onClick }) => (
+const BtClear = ({
+  isValue,
+  onClick
+}) => (
   <button
-    class={CL.BT_CLEAR}
+    class={CL_BT_CLEAR}
     tabIndex="-1"
     onClick={onClick}
   >
-    { isValue ? 'x' : '' }
+    {isValue ? 'x' : ''}
   </button>
 );
 
@@ -85,14 +86,14 @@ class InputText extends Component {
     } = this.props
     , { value } = this.state;
     return (
-      <div className={CL.FIELD}>
+      <div className={CL_FIELD}>
         <input
           ref={this._refInput}
           type="text"
           autoCorrect="off"
           autoCapitalize="off"
           spellCheck={false}
-          className={CL.INPUT}
+          className={CL_INPUT}
           style={style}
           value={value}
           placeholder={placeholder}

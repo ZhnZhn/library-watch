@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,52 +9,47 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = require("react");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
-var STYLE = {
-  ROOT: {
-    position: 'relative',
-    display: 'inline-block',
-    backgroundColor: '#E1E1CB',
-    width: '250px'
-  },
-  INPUT: {
-    background: 'transparent none repeat scroll 0 0',
-    border: 'medium none',
-    outline: 'medium none',
-    height: '30px',
-    paddingLeft: '10px',
-    color: 'green',
-    width: '100%',
-    fontSize: '16px',
-    fontWeight: 'bold'
-  },
-  HR: {
-    borderWidth: 'medium medium 1px',
-    borderStyle: 'none none solid',
-    borderColor: 'red',
-    borderImage: 'none',
-    margin: 0,
-    marginLeft: '10px',
-    marginBottom: '5px',
-    width: '230px'
-  },
-  HR_VALID: {
-    borderColor: '#1B75BB'
-  },
-  HR_NOT_VALID: {
-    borderColor: '#F44336'
-  },
-  ERR_MSG: {
-    color: '#F44336',
-    paddingLeft: '10px',
-    paddingBottom: '5px',
-    fontSize: '12px',
-    fontWeight: 'bold'
-  }
+var S_ROOT = {
+  position: 'relative',
+  display: 'inline-block',
+  width: 250,
+  backgroundColor: '#e1e1cb'
+},
+    S_INPUT = {
+  background: 'transparent none repeat scroll 0 0',
+  border: 'medium none',
+  outline: 'medium none',
+  color: 'green',
+  width: '100%',
+  height: 30,
+  paddingLeft: 10,
+  fontSize: '16px',
+  fontWeight: 'bold'
+},
+    S_HR = {
+  borderWidth: 'medium medium 1px',
+  borderStyle: 'none none solid',
+  borderColor: 'red',
+  borderImage: 'none',
+  width: 230,
+  margin: '0 0 5px 10px'
+},
+    S_HR_VALID = {
+  borderColor: '#1b75bb'
+},
+    S_HR_NOT_VALID = {
+  borderColor: '#f44336'
+},
+    S_ERR_MSG = {
+  color: '#f44336',
+  padding: '0 0 5px 10px',
+  fontSize: '12px',
+  fontWeight: 'bold'
 };
 
 var InputDate = /*#__PURE__*/function (_Component) {
@@ -124,10 +117,10 @@ var InputDate = /*#__PURE__*/function (_Component) {
         value = _this$state.value,
         isValid = _this$state.isValid,
         errorInput = _this$state.errorInput,
-        _hrStyle = isValid ? STYLE.HR_VALID : STYLE.HR_NOT_VALID;
+        _hrStyle = isValid ? S_HR_VALID : S_HR_NOT_VALID;
 
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      style: STYLE.ROOT,
+      style: S_ROOT,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
         ref: function ref(c) {
           return _this2.inputComp = c;
@@ -138,15 +131,15 @@ var InputDate = /*#__PURE__*/function (_Component) {
         autoCorrect: "off",
         autoCapitalize: "off",
         spellCheck: false,
-        style: STYLE.INPUT,
+        style: S_INPUT,
         placeholder: "YYYY-MM-DD",
         value: value,
         onChange: this._handleChangeValue,
         onBlur: this._handleBlurValue
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("hr", {
-        style: (0, _extends2["default"])({}, STYLE.HR, _hrStyle)
+        style: (0, _extends2["default"])({}, S_HR, _hrStyle)
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        style: STYLE.ERR_MSG,
+        style: S_ERR_MSG,
         children: errorInput
       })]
     });
