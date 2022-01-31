@@ -1,43 +1,34 @@
-import React, { Component } from 'react';
+import { forwardRef, useRef, useImperativeHandle } from 'react';
+import crCn from '../zhn-utils/crCn';
 
-//import PropTypes from "prop-types";
-const CL = 'with-scroll';
+const CL_SCROLL = 'with-scroll';
 
-class ScrollPane extends Component {
-  /*
-  static propTypes = {
-    style : PropTypes.object,
-    className: PropTypes.string,
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node
-    ])
-  }
-  */
-  static defaultProps = {
-    className: ''
-  }
+const ScrollPane = forwardRef(({
+  style,
+  className,
+  children
+}, ref) => {
+  const _refNode = useRef()
+  , _className = crCn(CL_SCROLL, className);
 
-  _refNode = n => this._node = n
-
-  render(){
-    const { style, className, children } = this.props;
-    return (
-      <div
-        ref={this._refNode}
-        className={`${CL} ${className}`}
-        style={style}
-      >
-         {children}
-      </div>
-    );
-  }
-
-  scrollTop(){
-    if (this._node) {
-      this._node.scrollTop = 0
+  useImperativeHandle(ref, () => ({
+    scrollTop: () => {
+      const { current } = _refNode;
+      if (current) {
+        current.scrollTop = 0
+      }
     }
-  }
-}
+  }), [])
+
+  return (
+    <div
+      ref={_refNode}
+      className={_className}
+      style={style}
+    >
+       {children}
+    </div>
+  );
+});
 
 export default ScrollPane
