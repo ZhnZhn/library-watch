@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _react = require("react");
 
 var _InputText = _interopRequireDefault(require("../../zhn-atoms/InputText"));
@@ -42,66 +40,30 @@ var S_ROW_DIV = {
   marginLeft: 0,
   marginRight: 0
 };
+var RowInputText = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
+  var _ref$isShowLabel = _ref.isShowLabel,
+      isShowLabel = _ref$isShowLabel === void 0 ? true : _ref$isShowLabel,
+      _ref$caption = _ref.caption,
+      caption = _ref$caption === void 0 ? '' : _ref$caption,
+      placeholder = _ref.placeholder,
+      onEnter = _ref.onEnter;
 
-var RowInputText = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(RowInputText, _Component);
+  var _placeholder = isShowLabel ? placeholder : placeholder || caption;
 
-  function RowInputText() {
-    var _this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-
-    _this._refInput = function (c) {
-      return _this.inputText = c;
-    };
-
-    return _this;
-  }
-
-  var _proto = RowInputText.prototype;
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        isShowLabel = _this$props.isShowLabel,
-        caption = _this$props.caption,
-        placeholder = _this$props.placeholder,
-        onEnter = _this$props.onEnter,
-        _placeholder = isShowLabel ? placeholder : placeholder || caption;
-
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      style: (0, _extends2["default"])({}, S_ROW_DIV, S_ROOT),
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Caption["default"], {
-        is: isShowLabel,
-        style: (0, _extends2["default"])({}, S_LABEL_SPAN, S_CAPTION),
-        caption: caption
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputText["default"], {
-        ref: this._refInput,
-        style: S_INPUT_TEXT,
-        placeholder: _placeholder,
-        onEnter: onEnter
-      })]
-    });
-  };
-
-  _proto.getValue = function getValue() {
-    return this.inputText.getValue().trim();
-  };
-
-  _proto.setValue = function setValue(value) {
-    this.inputText.setValue(value);
-  };
-
-  return RowInputText;
-}(_react.Component);
-
-RowInputText.defaultProps = {
-  isShowLabel: true,
-  caption: ''
-};
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: (0, _extends2["default"])({}, S_ROW_DIV, S_ROOT),
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Caption["default"], {
+      is: isShowLabel,
+      style: (0, _extends2["default"])({}, S_LABEL_SPAN, S_CAPTION),
+      caption: caption
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputText["default"], {
+      ref: ref,
+      style: S_INPUT_TEXT,
+      placeholder: _placeholder,
+      onEnter: onEnter
+    })]
+  });
+});
 var _default = RowInputText;
 exports["default"] = _default;
 //# sourceMappingURL=RowInputText.js.map

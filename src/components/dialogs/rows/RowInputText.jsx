@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { forwardRef } from 'react';
 import InputText from '../../zhn-atoms/InputText';
 import Caption from './Caption'
 
@@ -22,54 +22,31 @@ const S_ROW_DIV = { margin: 5 }
   marginRight: 0
 };
 
+const RowInputText = forwardRef(({
+  isShowLabel=true,
+  caption='',
+  placeholder,
+  onEnter
+}, ref) => {
+  const _placeholder = isShowLabel
+    ? placeholder
+    : placeholder || caption;
 
-class RowInputText extends Component {
-  /*
-  static propTypes = {
-    isShowLabel: true,
-    caption: PropTypes.string,
-    placeholder: PropTypes.string,
-    onEnter: PropTypes.function
-  }
-  */
-  static defaultProps = {
-    isShowLabel: true,
-    caption: ''
-  }
-
-  _refInput = c => this.inputText = c
-
-  render(){
-    const {
-      isShowLabel, caption,
-      placeholder, onEnter
-    } = this.props
-    , _placeholder = isShowLabel
-        ? placeholder
-        : placeholder || caption;
-    return (
-      <div style={{...S_ROW_DIV, ...S_ROOT}}>
-         <Caption
-           is={isShowLabel}
-           style={{...S_LABEL_SPAN, ...S_CAPTION}}
-           caption={caption}
-         />
-         <InputText
-            ref={this._refInput}
-            style={S_INPUT_TEXT}            
-            placeholder={_placeholder}
-            onEnter={onEnter}
-         />
-      </div>
-    )
-  }
-
-  getValue(){
-    return this.inputText.getValue().trim();
-  }
-  setValue(value){
-    this.inputText.setValue(value)
-  }
-}
+  return (
+    <div style={{...S_ROW_DIV, ...S_ROOT}}>
+       <Caption
+         is={isShowLabel}
+         style={{...S_LABEL_SPAN, ...S_CAPTION}}
+         caption={caption}
+       />
+       <InputText
+          ref={ref}
+          style={S_INPUT_TEXT}
+          placeholder={_placeholder}
+          onEnter={onEnter}
+       />
+    </div>
+  );
+});
 
 export default RowInputText
