@@ -7,20 +7,17 @@ import ShowHide from '../zhn-atoms/ShowHide';
 
 import MenuPage from './MenuPage'
 
-const PERIOD_MS = 750;
-
-const S = {
-  SHOW_HIDE: {
-    position: 'absolute',
-    overflow: 'hidden'
-  },
-  PAGES: {
-    display: 'flex',
-    flexFlow: 'row nowrap',
-    alignItems: 'flex-start',
-    overflowX: 'hidden',
-    transition: `all ${PERIOD_MS}ms ease-out`
-  }
+const PERIOD_MS = 750
+, S_SHOW_HIDE = {
+  position: 'absolute',
+  overflow: 'hidden'
+}
+, S_PAGES = {
+  display: 'flex',
+  flexFlow: 'row nowrap',
+  alignItems: 'flex-start',
+  overflowX: 'hidden',
+  transition: `all ${PERIOD_MS}ms ease-out`
 };
 
 const _getTranslateX = (node) => {
@@ -192,11 +189,11 @@ class ModalSlider extends Component {
         , _transform = this._crTransform()
         , _showHideStyle = {
             ...style,
-            ...S.SHOW_HIDE,
+            ...S_SHOW_HIDE,
             ..._pageStyle
           }
         , _divStyle = {
-             ...S.PAGES,
+             ...S_PAGES,
              ..._pagesStyle,
              ..._transform
            };

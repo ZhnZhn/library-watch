@@ -4,42 +4,43 @@ import MenuAriaItem from './MenuAriaItem';
 
 const SUB_MENU = 'sub';
 
-const S = {
-  ITEM: {
-    position: 'relative'
-  },
-  NEXT_PAGE: {
-    position: 'absolute',
-    display: 'inline-block',
-    top : 0,
-    right: 4,
-    color: 'inherit',
-    padding: '1px 16px 1px 0px',
-    fontWeight: 'bold'
-  }
+const S_ITEM = { position: 'relative' }
+, S_NEXT_PAGE = {
+  position: 'absolute',
+  display: 'inline-block',
+  top : 0,
+  right: 4,
+  color: 'inherit',
+  padding: '1px 16px 1px 0px',
+  fontWeight: 'bold'
 };
 
-const _fClick = ({ isClose, onClick, onClose }) => {
-  return typeof onClick === 'function'
-    ? isClose
-        ? () => { onClick(); onClose() }
-        : onClick
-    : void 0;
-}
+const _fClick = ({ 
+  isClose,
+  onClick,
+  onClose
+}) => typeof onClick === 'function'
+  ? isClose
+      ? () => { onClick(); onClose() }
+      : onClick
+  : void 0;
+
 
 const NextPageArrow = ({ type }) => {
   if (type !== SUB_MENU) return null;
 
   return (
-    <span style={S.NEXT_PAGE}>
+    <span style={S_NEXT_PAGE}>
       {'>'}
     </span>
   );
-}
+};
 
 const _renderMenuItems = (props, ref) => {
   const {
-    items, itemCl, pageNumber,
+    items,
+    itemCl,
+    pageNumber,
     onNextPage,
     onClose
   } = props;
@@ -54,7 +55,7 @@ const _renderMenuItems = (props, ref) => {
         ref={_ref}
         key={name}
         className={cn || itemCl}
-        style={S.ITEM}
+        style={S_ITEM}
         onClick={_onClick}
       >
         <span>{name}</span>
@@ -76,7 +77,7 @@ MenuAriaItem.propTypes = {
   items: PropTypes.array,
   itemCl: PropTypes.string
   pageNumber: PropTypes.number,
-  onNextPage: PropTypes.func,  
+  onNextPage: PropTypes.func,
   onClose: PropTypes.func
 }
 */

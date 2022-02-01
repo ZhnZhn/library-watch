@@ -27,19 +27,17 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-var PERIOD_MS = 750;
-var S = {
-  SHOW_HIDE: {
-    position: 'absolute',
-    overflow: 'hidden'
-  },
-  PAGES: {
-    display: 'flex',
-    flexFlow: 'row nowrap',
-    alignItems: 'flex-start',
-    overflowX: 'hidden',
-    transition: "all " + PERIOD_MS + "ms ease-out"
-  }
+var PERIOD_MS = 750,
+    S_SHOW_HIDE = {
+  position: 'absolute',
+  overflow: 'hidden'
+},
+    S_PAGES = {
+  display: 'flex',
+  flexFlow: 'row nowrap',
+  alignItems: 'flex-start',
+  overflowX: 'hidden',
+  transition: "all " + PERIOD_MS + "ms ease-out"
 };
 
 var _getTranslateX = function _getTranslateX(node) {
@@ -200,8 +198,8 @@ var ModalSlider = /*#__PURE__*/function (_Component) {
         style = _this$props2.style,
         onClose = _this$props2.onClose,
         _transform = this._crTransform(),
-        _showHideStyle = (0, _extends2["default"])({}, style, S.SHOW_HIDE, _pageStyle),
-        _divStyle = (0, _extends2["default"])({}, S.PAGES, _pagesStyle, _transform);
+        _showHideStyle = (0, _extends2["default"])({}, style, S_SHOW_HIDE, _pageStyle),
+        _divStyle = (0, _extends2["default"])({}, S_PAGES, _pagesStyle, _transform);
 
     return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalPane["default"], {
       isShow: isShow,

@@ -11,18 +11,16 @@ var _MenuAriaItem = _interopRequireDefault(require("./MenuAriaItem"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  ITEM: {
-    position: 'relative'
-  },
-  PREV_PAGE: {
-    position: 'absolute',
-    top: 0,
-    left: 16
-  },
-  TITLE: {
-    paddingLeft: 16
-  }
+var S_ITEM = {
+  position: 'relative'
+},
+    S_PREV_PAGE = {
+  position: 'absolute',
+  top: 0,
+  left: 16
+},
+    S_TITLE = {
+  paddingLeft: 16
 };
 var MenuTitle = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
   var titleCl = _ref.titleCl,
@@ -37,27 +35,17 @@ var MenuTitle = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_MenuAriaItem["default"], {
     ref: ref,
     className: titleCl,
-    style: S.ITEM,
+    style: S_ITEM,
     onClick: onClick,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      style: S.PREV_PAGE,
+      style: S_PREV_PAGE,
       children: '<'
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      style: S.TITLE,
+      style: S_TITLE,
       children: title
     })]
   });
 });
-/*
-MenuTitle.propTypes = {
-  baseTitleCl: PropTypes.string,
-  title: PropTypes.string,
-  pageNumber: PropTypes.number,
-  onPrevPage: PropTypes.func,
-  onReg: PropTypes.func
-}
-*/
-
 var _default = MenuTitle;
 exports["default"] = _default;
 //# sourceMappingURL=MenuTitle.js.map
