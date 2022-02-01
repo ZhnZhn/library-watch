@@ -1,18 +1,18 @@
-import React from 'react';
-
-const S = {
-  CAPTION : {
-    width: '100%',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis'
-  }
+const S_CAPTION = {
+  width: '100%',
+  whiteSpace: 'nowrap',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis'
 }
+, DF_ITEM = {};
 
-const ItemOption = ({ item={}, propCaption }) => (
-  <div style={S.CAPTION}>
+const ItemOption = ({ 
+  item=DF_ITEM,
+  propCaption
+}) => (
+  <div style={S_CAPTION}>
     {item[propCaption]}
   </div>
-)
+);
 
 export default ItemOption

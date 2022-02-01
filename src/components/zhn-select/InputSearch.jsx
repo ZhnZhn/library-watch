@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 import ArrowCell from './ArrowCell';
 
@@ -472,8 +472,7 @@ class InputSearch extends Component {
         <span
           style={styles.spinnerCell}
           data-loader="circle"
-        >
-        </span>
+        />
       );
     } else if (isLoadingFailed) {
        _placeholder=`Loading${optionNames} Failed`;
@@ -482,8 +481,7 @@ class InputSearch extends Component {
           style={styles.spinnerFailedCell}
           data-loader="circle-failed"
           onClick={this.props.onLoadOption}
-         >
-        </span>
+        />
       )
     }
 
@@ -497,10 +495,10 @@ class InputSearch extends Component {
            style={styles.inputText}
            placeholder={_placeholder}
            onChange={this._handlerInputChange}
-           onKeyDown={this._handlerInputKeyDown}>
-        </input>
+           onKeyDown={this._handlerInputKeyDown}
+        />
         {_domAfterInput}
-        <hr style={styles.inputHr}></hr>
+        <hr style={styles.inputHr} />
         {_domOptions}
 
       </div>
