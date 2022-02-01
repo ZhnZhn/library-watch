@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = require("react");
 
 var _ButtonCircle = _interopRequireDefault(require("../zhn-atoms/ButtonCircle2"));
 
@@ -13,13 +13,10 @@ var _CL = _interopRequireDefault(require("./CL"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  BT_CIRCLE: {
-    backgroundColor: '#949ab4'
-  }
+var S_BT_CIRCLE = {
+  backgroundColor: '#949ab4'
 };
-
-var OptionsFooter = /*#__PURE__*/_react["default"].forwardRef(function (_ref, ref) {
+var OptionsFooter = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
   var indexActiveOption = _ref.indexActiveOption,
       nFiltered = _ref.nFiltered,
       nAll = _ref.nAll,
@@ -40,23 +37,22 @@ var OptionsFooter = /*#__PURE__*/_react["default"].forwardRef(function (_ref, re
       className: _CL["default"].FOOTER_BTS,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle["default"], {
         className: _CL["default"].FOOTER_MARGIN,
-        style: S.BT_CIRCLE,
+        style: S_BT_CIRCLE,
         caption: "Dn",
         onClick: onStepDown
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle["default"], {
         className: _CL["default"].FOOTER_MARGIN,
-        style: S.BT_CIRCLE,
+        style: S_BT_CIRCLE,
         caption: "Up",
         onClick: onStepUp
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle["default"], {
-        style: S.BT_CIRCLE,
+        style: S_BT_CIRCLE,
         caption: "CL",
         onClick: onClear
       })]
     })]
   });
 });
-
 var _default = OptionsFooter;
 exports["default"] = _default;
 //# sourceMappingURL=OptionsFooter.js.map
