@@ -19,6 +19,7 @@ gulp.task('styles', gulp.series('clean', function stylesImpl(){
    .pipe(cleanCss())
    .pipe(rev())
    .pipe(gulp.dest('./css'))
+   .pipe(gulp.dest('./dev/css'))
 }));
 
 const _isMinCssFileName = name =>
@@ -26,12 +27,12 @@ const _isMinCssFileName = name =>
 const _getCssMinFileName = () => fs
    .readdirSync('./css')
    .filter(_isMinCssFileName)[0];
-const _crCssMinLink = fileName => 
+const _crCssMinLink = fileName =>
    `<link rel="stylesheet" href="css/${fileName}">`;
 const _crCssLink = () => _crCssMinLink(_getCssMinFileName());
 
 
-gulp.task('template', gulp.series('styles', function templateImpl(){  
+gulp.task('template', gulp.series('styles', function templateImpl(){
   return gulp.src('./template/gulp.ejs')
     .pipe(replace('<!-- REPLACE_BY_CSS_MIN_LINK -->', _crCssLink()))
     .pipe(rename('index.ejs'))

@@ -13,7 +13,12 @@ module.exports = {
     app: path.resolve('src', 'index.jsx')
   },
   devtool: 'inline-source-map',
-  devServer: {
+  devServer: {        
+    hot: true,
+    static: {
+      directory: path.resolve(__dirname, 'dev')
+    },        
+    allowedHosts: ['localhost','client.webSocketURL.hostname'],
     port: 8084
   },
 
@@ -46,7 +51,7 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   plugins : [
-    new webpack.HotModuleReplacementPlugin(),
+    //new webpack.HotModuleReplacementPlugin(),
     new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
         filename: path.resolve('dev', 'index.html'),
