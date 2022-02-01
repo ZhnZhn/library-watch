@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,15 +7,13 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = require("react");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
-var S = {
-  DIV: {
-    backgroundColor: '#4d4d4d'
-  }
+var S_DIV = {
+  backgroundColor: '#4d4d4d'
 };
 
 var ModalPane = /*#__PURE__*/function (_Component) {
@@ -81,7 +77,7 @@ var ModalPane = /*#__PURE__*/function (_Component) {
     var children = this.props.children;
     return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       ref: this._refRootNode,
-      style: S.DIV,
+      style: S_DIV,
       children: children
     });
   };

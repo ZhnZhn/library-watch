@@ -1,1 +1,24 @@
-{"version":3,"sources":["../../../src/components/zhn-moleculs/DialogCaption.jsx"],"names":["CL","S","ROOT","color","backgroundColor","padding","textAlign","fontSize","SVG","position","top","right","DialogCaption","caption","onClose"],"mappings":";;;;;;;AAAA;;AACA;;;;AAEA,IAAMA,EAAE,GAAG,cAAX;AAEA,IAAMC,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAE;AACJC,IAAAA,KAAK,EAAE,QADH;AAEJC,IAAAA,eAAe,EAAE,SAFb;AAGJC,IAAAA,OAAO,EAAE,CAHL;AAIJC,IAAAA,SAAS,EAAE,QAJP;AAKJC,IAAAA,QAAQ,EAAE;AALN,GADE;AAQRC,EAAAA,GAAG,EAAE;AACHC,IAAAA,QAAQ,EAAE,UADP;AAEHC,IAAAA,GAAG,EAAE,CAFF;AAGHC,IAAAA,KAAK,EAAE;AAHJ;AARG,CAAV;;AAeA,IAAMC,aAAa,GAAG,SAAhBA,aAAgB;AAAA,MACpBC,OADoB,QACpBA,OADoB;AAAA,MAEpBC,OAFoB,QAEpBA,OAFoB;AAAA,sBAIpB;AAAK,IAAA,KAAK,EAAEb,CAAC,CAACC,IAAd;AAAA,4BACG;AAAM,MAAA,SAAS,EAAEF,EAAjB;AAAA,gBACGa;AADH,MADH,eAIG,qBAAC,oBAAD;AACG,MAAA,KAAK,EAAEZ,CAAC,CAACO,GADZ;AAEG,MAAA,OAAO,EAAEM;AAFZ,MAJH;AAAA,IAJoB;AAAA,CAAtB;AAcA;AACA;AACA;AACA;AACA;AACA;;;eAEeF,a","sourcesContent":["import React from 'react';\r\nimport SvgClose from '../zhn-atoms/SvgClose';\r\n\r\nconst CL = \"not-selected\";\r\n\r\nconst S = {\r\n  ROOT: {\r\n    color: 'silver',\r\n    backgroundColor: '#232f3b',\r\n    padding: 5,\r\n    textAlign: 'center',\r\n    fontSize: 18\r\n  },\r\n  SVG: {\r\n    position: 'absolute',\r\n    top: 6,\r\n    right: 0\r\n  }\r\n};\r\n\r\nconst DialogCaption = ({\r\n  caption,\r\n  onClose\r\n}) => (\r\n  <div style={S.ROOT}>\r\n     <span className={CL}>\r\n       {caption}\r\n     </span>\r\n     <SvgClose\r\n        style={S.SVG}\r\n        onClose={onClose}\r\n      />\r\n  </div>\r\n);\r\n/*\r\nDialogCaption.propTypes = {\r\n  caption: PropTypes.string,\r\n  onClose: PropTypes.func\r\n}\r\n*/\r\n\r\nexport default DialogCaption\r\n"],"file":"DialogCaption.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-moleculs/DialogCaption.js"
+ ],
+ "file": "../../../src/components/zhn-moleculs/DialogCaption.js",
+ "names": [
+  "CL_NOT_SELECTED",
+  "S_ROOT",
+  "color",
+  "backgroundColor",
+  "padding",
+  "textAlign",
+  "fontSize",
+  "S_SVG",
+  "position",
+  "top",
+  "right",
+  "DialogCaption",
+  "caption",
+  "onClose"
+ ],
+ "mappings": ";;;;;;;AAAA;;;;AAEA,IAAMA,eAAe,GAAG,cAAxB;AAAA,IACEC,MAAM,GAAG;AACTC,EAAAA,KAAK,EAAE,QADE;AAETC,EAAAA,eAAe,EAAE,SAFR;AAGTC,EAAAA,OAAO,EAAE,CAHA;AAITC,EAAAA,SAAS,EAAE,QAJF;AAKTC,EAAAA,QAAQ,EAAE;AALD,CADX;AAAA,IAQEC,KAAK,GAAG;AACRC,EAAAA,QAAQ,EAAE,UADF;AAERC,EAAAA,GAAG,EAAE,CAFG;AAGRC,EAAAA,KAAK,EAAE;AAHC,CARV;;AAcA,IAAMC,aAAa,GAAG,SAAhBA,aAAgB;AAAA,MACpBC,OADoB,QACpBA,OADoB;AAAA,MAEpBC,OAFoB,QAEpBA,OAFoB;AAAA,sBAIpB;AAAK,IAAA,KAAK,EAAEZ,MAAZ;AAAA,4BACG;AAAM,MAAA,SAAS,EAAED,eAAjB;AAAA,gBACGY;AADH,MADH,eAIG,qBAAC,oBAAD;AACG,MAAA,KAAK,EAAEL,KADV;AAEG,MAAA,OAAO,EAAEM;AAFZ,MAJH;AAAA,IAJoB;AAAA,CAAtB;;eAeeF,a"
+}

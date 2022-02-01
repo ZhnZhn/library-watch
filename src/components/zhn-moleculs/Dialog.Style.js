@@ -14,9 +14,7 @@ const STYLE = {
   },
   CAPTION_DIV:{
     position: 'relative',
-    padding: '5px',
-    paddingLeft: '16px',
-    paddingRight: '35px',
+    padding: '5px 35px 5px 16px',
     color: '#c0c0c0',
     backgroundColor: '#1b2836',
     textAlign: 'center',
@@ -26,18 +24,16 @@ const STYLE = {
   COMMAND_DIV: {
      cursor: 'default',
      float: 'right',
-     marginTop: '8px',
-     marginBottom: '10px',
-     marginRight: '4px'
+     margin: '8px 4px 10px 0'
   },
   BT_ROOT: {
     color: '#1b2836'
   },
   SVG_CLOSE: {
     position: 'absolute',
-    top: '4px',
+    top: 4,
     right: 0,
-    marginRight: '6px'
+    marginRight: 6
   }
 };
 

@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -13,26 +11,26 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
 //import PropTypes from "prop-types";
-var S = {
-  TABS: {
-    marginTop: 10,
-    marginLeft: 10,
-    marginRight: 5,
-    borderBottom: '2px solid #a487d4'
-  },
-  TABPANES: {
-    width: "100%",
-    height: "100%"
-  },
-  TABPANE_SELECTED: {
-    display: 'block',
-    width: "100%",
-    height: "100%"
-  },
-  TABPANE_HIDED: {
-    display: 'none'
-  }
+var S_TABS = {
+  margin: '10px 5px 0 10px',
+  borderBottom: '2px solid #a487d4'
+},
+    S_TABPANES = {
+  width: "100%",
+  height: "100%"
+},
+    S_TABPANE_SELECTED = {
+  display: 'block',
+  width: "100%",
+  height: "100%"
+},
+    S_TABPANE_HIDED = {
+  display: 'none'
 };
 
 var TabPane = /*#__PURE__*/function (_Component) {
@@ -73,7 +71,7 @@ var TabPane = /*#__PURE__*/function (_Component) {
           selectedTabIndex = _this$state.selectedTabIndex,
           components = _this$state.components;
       return components.map(function (comp, index) {
-        var divStyle = index === selectedTabIndex ? S.TABPANE_SELECTED : S.TABPANE_HIDED;
+        var divStyle = index === selectedTabIndex ? S_TABPANE_SELECTED : S_TABPANE_HIDED;
         return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
           style: divStyle,
           children: comp
@@ -107,10 +105,10 @@ var TabPane = /*#__PURE__*/function (_Component) {
         height: height
       },
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        style: S.TABS,
+        style: S_TABS,
         children: this._renderTabs(children)
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        style: S.TABPANES,
+        style: S_TABPANES,
         children: this._renderComponents()
       })]
     });

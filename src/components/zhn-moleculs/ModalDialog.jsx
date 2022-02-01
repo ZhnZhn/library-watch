@@ -1,44 +1,35 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 //import PropTypes from 'prop-types'
 
 import Caption from './DialogCaption'
 import FlatButton from '../zhn-m/FlatButton'
 
-const CL = {
-  SHOWING: 'show-popup',
-  HIDING: 'hide-popup'
+const CL_SHOWING = 'show-popup'
+, CL_HIDING = 'hide-popup'
+
+, S_SHOW = { display: 'block' }
+, S_HIDE = { display: 'none' }
+, S_HIDE_POPUP = {
+  opacity: 0,
+  transform : 'scaleY(0)'
+}
+, S_ROOT_DIV = {
+  position: 'absolute',
+  top: '20%',
+  left: '40%',
+  display: 'block',
+  backgroundColor: '#4D4D4D',
+  border: 'solid 2px #232F3B',
+  borderRadius: '5px',
+  boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
+  zIndex: 10
+}
+, S_COMMAND_DIV = {
+   cursor: 'default',
+   float: 'right',
+   margin: '8px 4px 10px 0'
 };
 
-const STYLE = {
-  SHOW : {
-    display : 'block'
-  },
-  HIDE : {
-    display : 'none'
-  },
-  HIDE_POPUP : {
-    opacity: 0,
-    transform : 'scaleY(0)'
-  },
-  ROOT_DIV: {
-    position: 'absolute',
-    top: '20%',
-    left: '40%',
-    display: 'block',
-    backgroundColor: '#4D4D4D',
-    border: 'solid 2px #232F3B',
-    borderRadius: '5px',
-    boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
-    zIndex: 10
-  },
-  COMMAND_DIV : {
-     cursor: 'default',
-     float: 'right',
-     marginTop: '8px',
-     marginBottom: '10px',
-     marginRight: '4px'
-  }
-};
 
 class ModalDialog extends Component {
   /*
@@ -90,7 +81,7 @@ class ModalDialog extends Component {
   }
 
   _renderCommandButton = (commandButtons, onClose) => (
-      <div style={STYLE.COMMAND_DIV}>
+      <div style={S_COMMAND_DIV}>
         {commandButtons}
         <FlatButton
           key="close"
@@ -104,18 +95,23 @@ class ModalDialog extends Component {
 
   render(){
     const {
-            isShow, isWithButton, caption, style,
-            children, commandButtons, onClose
-          } = this.props;
+      isShow,
+      isWithButton,
+      caption,
+      style,
+      children,
+      commandButtons,
+      onClose
+    } = this.props;
 
     let _className, _style;
 
     if (this.wasClosing){
-      _style = STYLE.HIDE;
+      _style = S_HIDE;
       this.wasClosing = false;
     } else {
-      _className = isShow ? CL.SHOWING : CL.HIDING;
-      _style = isShow ? STYLE.SHOW : STYLE.HIDE_POPUP;
+      _className = isShow ? CL_SHOWING : CL_HIDING;
+      _style = isShow ? S_SHOW : S_HIDE_POPUP;
       if (!isShow){
         this.wasClosing = true;
       }
@@ -124,7 +120,7 @@ class ModalDialog extends Component {
     return (
          <div
              className={_className}
-             style={{ ...STYLE.ROOT_DIV, ...style, ..._style }}
+             style={{ ...S_ROOT_DIV, ...style, ..._style }}
              onClick={this._handleClickDialog}
          >
              <Caption

@@ -4,20 +4,13 @@ import ReactDOM from 'react-dom'
 
 import has from '../has'
 
-const CL = "svg-resize";
+const CL_SVG_RESIZE = "svg-resize";
 
 const { HAS_TOUCH } = has;
 
-const _isFn = fn => typeof fn === 'function';
-
-const styles = {
-  rootDiv : {
-    display : 'inline-block'
-  },
-  leftDiv : {
-    marginLeft : 10
-  }
-};
+const _isFn = fn => typeof fn === 'function'
+, S_ROOT_DIV = { display: 'inline-block' }
+, S_LEFT_DIV = { marginLeft: 10 }
 
 class SvgHrzResize extends Component {
   /*
@@ -52,7 +45,7 @@ class SvgHrzResize extends Component {
     } : {
       onMouseDown: this._hStartResize.bind(this, this._resizeRight),
       onMouseUp: this._hStopResize.bind(this, true)
-    }    
+    }
   }
 
   componentDidMount(){
@@ -120,10 +113,10 @@ class SvgHrzResize extends Component {
 
   render(){
     return (
-      <div style={styles.rootDiv}>
+      <div style={S_ROOT_DIV}>
         <div
-           className={CL}
-           style={styles.leftDiv}
+           className={CL_SVG_RESIZE}
+           style={S_LEFT_DIV}
            title="Resize container horizontal left"
            {...this._leftBtHandlers}
         >
@@ -143,8 +136,8 @@ class SvgHrzResize extends Component {
           </svg>
       </div>
       <div
-         className={CL}
-         style={styles.leftDiv}
+         className={CL_SVG_RESIZE}
+         style={S_LEFT_DIV}
          title="Resize container horizontal right"
          {...this._rightBtHandlers}
       >

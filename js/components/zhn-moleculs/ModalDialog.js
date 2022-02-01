@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = require("react");
 
 var _DialogCaption = _interopRequireDefault(require("./DialogCaption"));
 
@@ -20,39 +18,33 @@ var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
-var CL = {
-  SHOWING: 'show-popup',
-  HIDING: 'hide-popup'
-};
-var STYLE = {
-  SHOW: {
-    display: 'block'
-  },
-  HIDE: {
-    display: 'none'
-  },
-  HIDE_POPUP: {
-    opacity: 0,
-    transform: 'scaleY(0)'
-  },
-  ROOT_DIV: {
-    position: 'absolute',
-    top: '20%',
-    left: '40%',
-    display: 'block',
-    backgroundColor: '#4D4D4D',
-    border: 'solid 2px #232F3B',
-    borderRadius: '5px',
-    boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
-    zIndex: 10
-  },
-  COMMAND_DIV: {
-    cursor: 'default',
-    "float": 'right',
-    marginTop: '8px',
-    marginBottom: '10px',
-    marginRight: '4px'
-  }
+var CL_SHOWING = 'show-popup',
+    CL_HIDING = 'hide-popup',
+    S_SHOW = {
+  display: 'block'
+},
+    S_HIDE = {
+  display: 'none'
+},
+    S_HIDE_POPUP = {
+  opacity: 0,
+  transform: 'scaleY(0)'
+},
+    S_ROOT_DIV = {
+  position: 'absolute',
+  top: '20%',
+  left: '40%',
+  display: 'block',
+  backgroundColor: '#4D4D4D',
+  border: 'solid 2px #232F3B',
+  borderRadius: '5px',
+  boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
+  zIndex: 10
+},
+    S_COMMAND_DIV = {
+  cursor: 'default',
+  "float": 'right',
+  margin: '8px 4px 10px 0'
 };
 
 var ModalDialog = /*#__PURE__*/function (_Component) {
@@ -75,7 +67,7 @@ var ModalDialog = /*#__PURE__*/function (_Component) {
 
     _this._renderCommandButton = function (commandButtons, onClose) {
       return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        style: STYLE.COMMAND_DIV,
+        style: S_COMMAND_DIV,
         children: [commandButtons, /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
           caption: "Close",
           title: "Click to close modal dialog",
@@ -123,11 +115,11 @@ var ModalDialog = /*#__PURE__*/function (_Component) {
     var _className, _style;
 
     if (this.wasClosing) {
-      _style = STYLE.HIDE;
+      _style = S_HIDE;
       this.wasClosing = false;
     } else {
-      _className = isShow ? CL.SHOWING : CL.HIDING;
-      _style = isShow ? STYLE.SHOW : STYLE.HIDE_POPUP;
+      _className = isShow ? CL_SHOWING : CL_HIDING;
+      _style = isShow ? S_SHOW : S_HIDE_POPUP;
 
       if (!isShow) {
         this.wasClosing = true;
@@ -136,7 +128,7 @@ var ModalDialog = /*#__PURE__*/function (_Component) {
 
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: _className,
-      style: (0, _extends2["default"])({}, STYLE.ROOT_DIV, style, _style),
+      style: (0, _extends2["default"])({}, S_ROOT_DIV, style, _style),
       onClick: this._handleClickDialog,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCaption["default"], {
         caption: caption,

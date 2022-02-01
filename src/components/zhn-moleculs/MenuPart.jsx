@@ -1,25 +1,23 @@
-import React, { useCallback } from 'react';
-import isKeyEnter from '../zhn-atoms/isKeyEnter'
+import { useCallback } from 'react';
+import isKeyEnter from '../zhn-atoms/isKeyEnter';
 import MenuBadge from '../zhn-atoms/MenuBadge';
 import OpenClose2 from '../zhn-atoms/OpenClose2';
 
-const CL = {
-  NOT_SELECTED: 'not-selected',
-  ROW_EVEN: 'row__topic__even not-selected',
-  ROW_ODD: 'row__topic__odd not-selected'
-};
+const CL_NOT_SELECTED = 'not-selected'
+, CL_ROW_EVEN = 'row__topic__even not-selected'
+, CL_ROW_ODD = 'row__topic__odd not-selected'
 
-const FILL_OPEN = '#1b2836';
-const FILL_CLOSE = 'transparent';
+, FILL_OPEN = '#1b2836'
+, FILL_CLOSE = 'transparent'
 
+, S_CAPTION_ROW = { paddingLeft: 6 };
 
-const S = {
-  CAPTION_ROW: {
-    paddingLeft: 6
-  }
-};
-
-const MenuItem = ({ title, className, menuBadge, onClick }) => {
+const MenuItem = ({
+  title,
+  className,
+  menuBadge,
+  onClick
+}) => {
   const _hKeyDown = useCallback((event)=>{
     if(isKeyEnter(event)) {
       onClick()
@@ -43,10 +41,10 @@ const _renderMenuItems = function(rowClass, items=[]){
   return items.map((item, index) => {
     const { counter, title, onClick } = item
     const _className = rowClass
-             ? rowClass + ' ' + CL.NOT_SELECTED
+             ? rowClass + ' ' + CL_NOT_SELECTED
              : (index % 2)
-                 ? CL.ROW_EVEN
-                 : CL.ROW_ODD
+                 ? CL_ROW_EVEN
+                 : CL_ROW_ODD
         , menuBadge = (counter !== 0)
              ? (
                   <MenuBadge
@@ -69,9 +67,14 @@ const _renderMenuItems = function(rowClass, items=[]){
   })
 }
 
-const MenuPart = ({ rowClass, caption, items, isInitClose }) => (
+const MenuPart = ({
+  rowClass,
+  caption,
+  items,
+  isInitClose
+}) => (
   <OpenClose2
-     styleCaptionRow={S.CAPTION_ROW}
+     styleCaptionRow={S_CAPTION_ROW}
      fillOpen={FILL_OPEN}
      fillClose={FILL_CLOSE}
      caption={caption}
@@ -79,7 +82,7 @@ const MenuPart = ({ rowClass, caption, items, isInitClose }) => (
   >
      {_renderMenuItems(rowClass, items)}
   </OpenClose2>
-)
+);
 
 /*
 MenuPart.propTypes = {

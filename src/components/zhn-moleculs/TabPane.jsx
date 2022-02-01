@@ -1,27 +1,21 @@
+//import PropTypes from "prop-types";
 import React, { Component } from 'react';
 
-//import PropTypes from "prop-types";
+const S_TABS = {
+  margin: '10px 5px 0 10px',
+  borderBottom: '2px solid #a487d4'
+}
+, S_TABPANES = {
+  width: "100%",
+  height: "100%"
+}
+, S_TABPANE_SELECTED = {
+  display: 'block',
+  width: "100%",
+  height: "100%"
+}
+, S_TABPANE_HIDED = { display: 'none' };
 
-const S = {
-  TABS : {
-    marginTop: 10,
-    marginLeft: 10,
-    marginRight: 5,
-    borderBottom : '2px solid #a487d4'
-  },
-  TABPANES : {
-    width: "100%",
-    height : "100%"
-  },
-  TABPANE_SELECTED: {
-    display: 'block',
-    width: "100%",
-    height : "100%"
-  },
-  TABPANE_HIDED: {
-    display : 'none'
-  }
-};
 
 class TabPane extends Component {
   /*
@@ -59,8 +53,8 @@ class TabPane extends Component {
      const {selectedTabIndex, components} = this.state;
      return components.map((comp, index) => {
         const divStyle = (index === selectedTabIndex)
-           ? S.TABPANE_SELECTED
-           : S.TABPANE_HIDED;
+           ? S_TABPANE_SELECTED
+           : S_TABPANE_HIDED;
          return (
             <div style={divStyle} key={'a'+index}>
                {comp}
@@ -73,10 +67,10 @@ class TabPane extends Component {
     const { children, width, height } = this.props;
     return (
       <div style={{ width, height }}>
-        <div style={S.TABS}>
+        <div style={S_TABS}>
            {this._renderTabs(children)}
         </div>
-        <div style={S.TABPANES}>
+        <div style={S_TABPANES}>
            {this._renderComponents()}
         </div>
       </div>

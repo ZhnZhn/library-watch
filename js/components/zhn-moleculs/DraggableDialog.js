@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,7 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = require("react");
 
 var _utils = require("../zhn-utils/utils");
 
@@ -30,12 +28,10 @@ var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
-var CL = {
-  ROOT: "draggable-dialog",
-  SHOWING: 'show-popup',
-  NOT_SELECTED: 'not-selected',
-  MENU_MORE: 'popup-menu dialog__menu-more'
-};
+var CL_ROOT = "draggable-dialog",
+    CL_SHOWING = 'show-popup',
+    CL_NOT_SELECTED = 'not-selected',
+    CL_MENU_MORE = 'popup-menu dialog__menu-more';
 var S = (0, _extends2["default"])({}, _Dialog["default"], {
   ROOT_DIV_DRAG: {
     position: 'absolute',
@@ -102,8 +98,7 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
     _this._renderMenuMore = function (menuModel, isMore) {
       return menuModel && /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider["default"], {
         isShow: isMore,
-        className: CL.MENU_MORE //style={TS.EL_BORDER}
-        ,
+        className: CL_MENU_MORE,
         model: menuModel,
         onClose: _this._toggleMore
       });
@@ -177,8 +172,8 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
         onFront = _this$props.onFront,
         isMore = this.state.isMore,
         _styleShow = isShow ? S.SHOW : S.HIDE,
-        _classShow = isShow ? CL.SHOWING : '',
-        _className = CL.ROOT + " " + _classShow;
+        _classShow = isShow ? CL_SHOWING : '',
+        _className = CL_ROOT + " " + _classShow;
 
     return (
       /*#__PURE__*/
@@ -197,7 +192,7 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
           style: S.CAPTION_DIV,
           children: [this._renderMenuMore(menuModel, isMore), this._renderBtMore(menuModel), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            className: CL.NOT_SELECTED,
+            className: CL_NOT_SELECTED,
             children: caption
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose["default"], {
             style: S.SVG_CLOSE,

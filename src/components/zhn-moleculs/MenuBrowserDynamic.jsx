@@ -1,20 +1,16 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 import Browser from '../zhn-atoms/Browser';
 import CaptionRow from '../zhn-atoms/CaptionRow';
 import ScrollPane from '../zhn-atoms/ScrollPane';
 import MenuPart from './MenuPart';
 
-const STYLE = {
-  BROWSER : {
-    paddingRight: 0
-  },
-  SCROLL_DIV : {
-    overflowY: 'auto',
-    height: '92%',
-    //height: 'calc(100vh - 90px)',
-    paddingRight: 10
-  }
+const S_BROWSER = { paddingRight: 0 }
+, S_SCROLL_DIV = {
+  overflowY: 'auto',
+  height: '92%',
+  //height: 'calc(100vh - 90px)',
+  paddingRight: 10
 };
 
 class MenuBrowserDynamic extends Component {
@@ -101,21 +97,28 @@ class MenuBrowserDynamic extends Component {
   }
 
   render(){
-    const { caption, children, rowClass } = this.props
-        , { menuItems, isShow } = this.state;
+    const {
+      caption,
+      children,
+      rowClass
+    } = this.props
+    , {
+      menuItems,
+      isShow
+    } = this.state;
 
     return (
-       <Browser isShow={isShow} style={STYLE.BROWSER}>
-          <CaptionRow
-             caption={caption}
-             onClose={this._handleHide}
-          />
-          <ScrollPane style={STYLE.SCROLL_DIV}>
-            {this._renderMenuParts(rowClass, menuItems)}
-            {children}
-          </ScrollPane>
-       </Browser>
-    )
+      <Browser isShow={isShow} style={S_BROWSER}>
+        <CaptionRow
+           caption={caption}
+           onClose={this._handleHide}
+        />
+        <ScrollPane style={S_SCROLL_DIV}>
+          {this._renderMenuParts(rowClass, menuItems)}
+          {children}
+        </ScrollPane>
+      </Browser>
+    );
   }
 }
 

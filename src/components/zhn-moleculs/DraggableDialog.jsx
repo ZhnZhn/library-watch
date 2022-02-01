@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 //import PropTypes from "prop-types";
 
 import {
@@ -15,12 +15,10 @@ import Interact from '../../utils/Interact'
 
 import STYLE from './Dialog.Style'
 
-const CL = {
-  ROOT: "draggable-dialog",
-  SHOWING: 'show-popup',
-  NOT_SELECTED: 'not-selected',
-  MENU_MORE: 'popup-menu dialog__menu-more'
-};
+const CL_ROOT = "draggable-dialog"
+, CL_SHOWING = 'show-popup'
+, CL_NOT_SELECTED = 'not-selected'
+, CL_MENU_MORE = 'popup-menu dialog__menu-more'
 
 const S = {
   ...STYLE,
@@ -33,7 +31,7 @@ const S = {
   BT_MORE: {
     position: 'absolute',
     top: 2,
-    left: 0    
+    left: 0
   },
   BT_MORE_SVG: {
     stroke: 'inherit',
@@ -105,8 +103,7 @@ class DraggableDialog extends Component {
   _renderMenuMore = (menuModel, isMore) => {
      return menuModel && <ModalSlider
       isShow={isMore}
-      className={CL.MENU_MORE}
-      //style={TS.EL_BORDER}
+      className={CL_MENU_MORE}
       model={menuModel}
       onClose={this._toggleMore}
     />
@@ -160,8 +157,8 @@ class DraggableDialog extends Component {
      } = this.props
     , { isMore } = this.state
     , _styleShow = isShow ? S.SHOW : S.HIDE
-    , _classShow = isShow ? CL.SHOWING : ''
-    , _className = `${CL.ROOT} ${_classShow}`;
+    , _classShow = isShow ? CL_SHOWING : ''
+    , _className = `${CL_ROOT} ${_classShow}`;
     return (
   /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
       <div
@@ -182,7 +179,7 @@ class DraggableDialog extends Component {
         <div style={S.CAPTION_DIV}>
           { this._renderMenuMore(menuModel, isMore) }
           { this._renderBtMore(menuModel) }
-          <span className={CL.NOT_SELECTED}>
+          <span className={CL_NOT_SELECTED}>
             {caption}
           </span>
           <SvgClose

@@ -1,11 +1,8 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 //import PropTypes from 'prop-types'
 
-const S = {
-  DIV: {
-    backgroundColor: '#4d4d4d'
-  }
-};
+const S_DIV = { backgroundColor: '#4d4d4d' };
+
 
 class ModalPane extends Component {
   /*
@@ -66,7 +63,7 @@ class ModalPane extends Component {
     return (
       <div
          ref={this._refRootNode}
-         style={S.DIV}
+         style={S_DIV}
       >
         {children}
       </div>

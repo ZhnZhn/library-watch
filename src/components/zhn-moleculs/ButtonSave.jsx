@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 //import PropTypes from "prop-types";
 
 import WatchActions, { WatchActionTypes } from '../../flux/actions/WatchActions';
 import ButtonCircle from '../zhn-atoms/ButtonCircle';
 
 const CAPTION = "S"
-    , TITLE = "Save Watch Items to Locale Storage"
-    , STYLE = {
-        NOT_WATCH_EDITED : {
-          borderColor : 'gray',
-          color : 'gray'
-      }
-}
+, TITLE = "Save Watch Items to Locale Storage"
+, S_NOT_WATCH_EDITED = {
+   borderColor : 'gray',
+   color : 'gray'
+};
 
 class ButtonSave extends Component {
   /*
@@ -51,10 +49,10 @@ class ButtonSave extends Component {
 
   render(){
     const { className, style } = this.props
-        , { isWatchEdited } = this.state
-        , _style = (isWatchEdited)
-             ? style
-             : Object.assign({}, style, STYLE.NOT_WATCH_EDITED)
+    , { isWatchEdited } = this.state
+    , _style = isWatchEdited
+        ? style
+        : {...style, ...S_NOT_WATCH_EDITED}
 
     return (
       <ButtonCircle

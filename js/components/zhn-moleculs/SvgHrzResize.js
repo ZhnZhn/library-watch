@@ -20,20 +20,17 @@ var _has = _interopRequireDefault(require("../has"));
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
-var CL = "svg-resize";
+var CL_SVG_RESIZE = "svg-resize";
 var HAS_TOUCH = _has["default"].HAS_TOUCH;
 
 var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
-};
-
-var styles = {
-  rootDiv: {
-    display: 'inline-block'
-  },
-  leftDiv: {
-    marginLeft: 10
-  }
+},
+    S_ROOT_DIV = {
+  display: 'inline-block'
+},
+    S_LEFT_DIV = {
+  marginLeft: 10
 };
 
 var SvgHrzResize = /*#__PURE__*/function (_Component) {
@@ -154,10 +151,10 @@ var SvgHrzResize = /*#__PURE__*/function (_Component) {
 
   _proto.render = function render() {
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      style: styles.rootDiv,
+      style: S_ROOT_DIV,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", (0, _extends2["default"])({
-        className: CL,
-        style: styles.leftDiv,
+        className: CL_SVG_RESIZE,
+        style: S_LEFT_DIV,
         title: "Resize container horizontal left"
       }, this._leftBtHandlers, {
         children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("svg", {
@@ -178,8 +175,8 @@ var SvgHrzResize = /*#__PURE__*/function (_Component) {
           })]
         })
       })), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", (0, _extends2["default"])({
-        className: CL,
-        style: styles.leftDiv,
+        className: CL_SVG_RESIZE,
+        style: S_LEFT_DIV,
         title: "Resize container horizontal right"
       }, this._rightBtHandlers, {
         children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("svg", {

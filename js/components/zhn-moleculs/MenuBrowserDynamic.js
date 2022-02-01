@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = require("react");
 
 var _Browser = _interopRequireDefault(require("../zhn-atoms/Browser"));
 
@@ -23,16 +21,14 @@ var _MenuPart = _interopRequireDefault(require("./MenuPart"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var STYLE = {
-  BROWSER: {
-    paddingRight: 0
-  },
-  SCROLL_DIV: {
-    overflowY: 'auto',
-    height: '92%',
-    //height: 'calc(100vh - 90px)',
-    paddingRight: 10
-  }
+var S_BROWSER = {
+  paddingRight: 0
+},
+    S_SCROLL_DIV = {
+  overflowY: 'auto',
+  height: '92%',
+  //height: 'calc(100vh - 90px)',
+  paddingRight: 10
 };
 
 var MenuBrowserDynamic = /*#__PURE__*/function (_Component) {
@@ -152,12 +148,12 @@ var MenuBrowserDynamic = /*#__PURE__*/function (_Component) {
         isShow = _this$state.isShow;
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Browser["default"], {
       isShow: isShow,
-      style: STYLE.BROWSER,
+      style: S_BROWSER,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_CaptionRow["default"], {
         caption: caption,
         onClose: this._handleHide
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ScrollPane["default"], {
-        style: STYLE.SCROLL_DIV,
+        style: S_SCROLL_DIV,
         children: [this._renderMenuParts(rowClass, menuItems), children]
       })]
     });
