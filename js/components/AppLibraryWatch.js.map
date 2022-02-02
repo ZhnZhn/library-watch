@@ -1,1 +1,25 @@
-{"version":3,"sources":["../../src/components/AppLibraryWatch.jsx"],"names":["AppLibraryWatch","props","Store","BrowserActionTypes","SHOW_BROWSER","INIT_BROWSER_DYNAMIC","UPDATE_WATCH_BROWSER","TOGGLE_WATCH_DB_BROWSER","ComponentActionTypes","INIT_AND_SHOW_DIALOG","SHOW_DIALOG","ChartActionTypes","INIT_AND_SHOW_CHART","SHOW_MODAL_DIALOG","RouterModalDialog"],"mappings":";;;;;;;AAAA;;AAEA;;AACA;;AACA;;AACA;;AAEA;;AACA;;AACA;;AACA;;AACA;;AAEA;;;;AAEA,IAAMA,eAAe,GAAG,SAAlBA,eAAkB,CAACC,KAAD;AAAA,sBACtB;AAAA,4BACE,qBAAC,qBAAD;AAAW,MAAA,KAAK,EAAEC;AAAlB,MADF,eAEE;AAAK,MAAA,SAAS,EAAC,qBAAf;AAAA,8BACG,qBAAC,4BAAD;AACG,QAAA,KAAK,EAAEA,oBADV;AAEG,QAAA,iBAAiB,EAAEC,mCAAmBC,YAFzC;AAGG,QAAA,iBAAiB,EAAED,mCAAmBE,oBAHzC;AAIG,QAAA,iBAAiB,EAAEF,mCAAmBG,oBAJzC;AAKG,QAAA,0BAA0B,EAAEH,mCAAmBI,uBALlD;AAMG,QAAA,gBAAgB,EAAEC,uCAAqBC,oBAN1C;AAOG,QAAA,gBAAgB,EAAED,uCAAqBE;AAP1C,QADH,eAUG,qBAAC,iBAAD;AAAO,QAAA,KAAK,EAAER;AAAd,QAVH,eAWG,qBAAC,iCAAD;AACG,QAAA,KAAK,EAAEA,oBADV;AAEG,QAAA,cAAc,EAAES,+BAAiBC;AAFpC,QAXH;AAAA,MAFF,eAkBE,qBAAC,2BAAD;AACG,MAAA,KAAK,EAAEV,oBADV;AAEG,MAAA,UAAU,EAAEM,uCAAqBK,iBAFpC;AAGG,MAAA,YAAY,EAAEC;AAHjB,MAlBF;AAAA,IADsB;AAAA,CAAxB;;eA4Bed,e","sourcesContent":["import React from 'react';\r\n\r\nimport Store from '../flux/stores/AppStore';\r\nimport { BrowserActionTypes } from '../flux/actions/BrowserActions';\r\nimport { ChartActionTypes } from '../flux/actions/ChartActions';\r\nimport { ComponentActionTypes } from '../flux/actions/ComponentActions';\r\n\r\nimport HeaderBar from './header/HeaderBar';\r\nimport About from './about/About';\r\nimport BrowserContainer from './browser-container/BrowserContainer';\r\nimport ComponentHrzContainer from './zhn-containers/ComponentHrzContainer';\r\nimport DialogContainer from './zhn-containers/DialogContainer';\r\n\r\nimport RouterModalDialog from './dialogs/RouterModalDialog';\r\n\r\nconst AppLibraryWatch = (props) => (\r\n  <div>\r\n    <HeaderBar store={Store} />\r\n    <div className=\"component-container\">\r\n       <BrowserContainer\r\n          store={Store}\r\n          showBrowserAction={BrowserActionTypes.SHOW_BROWSER}\r\n          initBrowserAction={BrowserActionTypes.INIT_BROWSER_DYNAMIC}\r\n          updateWatchAction={BrowserActionTypes.UPDATE_WATCH_BROWSER}\r\n          toggleWatchDbBrowserAction={BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER}\r\n          initDialogAction={ComponentActionTypes.INIT_AND_SHOW_DIALOG}\r\n          showDialogAction={ComponentActionTypes.SHOW_DIALOG}\r\n       />\r\n       <About store={Store} />\r\n       <ComponentHrzContainer\r\n          store={Store}\r\n          initShowAction={ChartActionTypes.INIT_AND_SHOW_CHART}\r\n       />\r\n    </div>\r\n    <DialogContainer\r\n       store={Store}\r\n       showAction={ComponentActionTypes.SHOW_MODAL_DIALOG}\r\n       routerDialog={RouterModalDialog}\r\n    />\r\n  </div>    \r\n);\r\n\r\n\r\nexport default AppLibraryWatch\r\n"],"file":"AppLibraryWatch.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/components/AppLibraryWatch.js"
+ ],
+ "file": "../../src/components/AppLibraryWatch.js",
+ "names": [
+  "AppLibraryWatch",
+  "props",
+  "Store",
+  "BrowserActionTypes",
+  "SHOW_BROWSER",
+  "INIT_BROWSER_DYNAMIC",
+  "UPDATE_WATCH_BROWSER",
+  "TOGGLE_WATCH_DB_BROWSER",
+  "ComponentActionTypes",
+  "INIT_AND_SHOW_DIALOG",
+  "SHOW_DIALOG",
+  "ChartActionTypes",
+  "INIT_AND_SHOW_CHART",
+  "SHOW_MODAL_DIALOG",
+  "RouterModalDialog"
+ ],
+ "mappings": ";;;;;;;AACA;;AACA;;AACA;;AACA;;AAEA;;AACA;;AACA;;AACA;;AACA;;AAEA;;;;AAEA,IAAMA,eAAe,GAAG,SAAlBA,eAAkB,CAACC,KAAD;AAAA,sBACtB;AAAA,4BACE,qBAAC,qBAAD;AAAW,MAAA,KAAK,EAAEC;AAAlB,MADF,eAEE;AAAK,MAAA,SAAS,EAAC,qBAAf;AAAA,8BACG,qBAAC,4BAAD;AACG,QAAA,KAAK,EAAEA,oBADV;AAEG,QAAA,iBAAiB,EAAEC,mCAAmBC,YAFzC;AAGG,QAAA,iBAAiB,EAAED,mCAAmBE,oBAHzC;AAIG,QAAA,iBAAiB,EAAEF,mCAAmBG,oBAJzC;AAKG,QAAA,0BAA0B,EAAEH,mCAAmBI,uBALlD;AAMG,QAAA,gBAAgB,EAAEC,uCAAqBC,oBAN1C;AAOG,QAAA,gBAAgB,EAAED,uCAAqBE;AAP1C,QADH,eAUG,qBAAC,iBAAD;AAAO,QAAA,KAAK,EAAER;AAAd,QAVH,eAWG,qBAAC,iCAAD;AACG,QAAA,KAAK,EAAEA,oBADV;AAEG,QAAA,cAAc,EAAES,+BAAiBC;AAFpC,QAXH;AAAA,MAFF,eAkBE,qBAAC,2BAAD;AACG,MAAA,KAAK,EAAEV,oBADV;AAEG,MAAA,UAAU,EAAEM,uCAAqBK,iBAFpC;AAGG,MAAA,YAAY,EAAEC;AAHjB,MAlBF;AAAA,IADsB;AAAA,CAAxB;;eA4Bed,e"
+}

@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
-
 var _AppStore = _interopRequireDefault(require("../flux/stores/AppStore"));
 
 var _BrowserActions = require("../flux/actions/BrowserActions");

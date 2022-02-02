@@ -1,4 +1,3 @@
-import React from 'react';
 
 import Store from '../flux/stores/AppStore';
 import { BrowserActionTypes } from '../flux/actions/BrowserActions';
@@ -37,7 +36,7 @@ const AppLibraryWatch = (props) => (
        showAction={ComponentActionTypes.SHOW_MODAL_DIALOG}
        routerDialog={RouterModalDialog}
     />
-  </div>    
+  </div>
 );
 
 
