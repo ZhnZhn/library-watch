@@ -1,51 +1,25 @@
-import React, { Component } from 'react';
-
-//import PropTypes from "prop-types";
+import { useState } from '../uiApi';
+import useListen from '../hooks/useListen';
 
 const CL = "hrz-container";
 
-class ComponentHrzContainer extends Component {
-  /*
-  static propTypes = {
-    store: PropTypes.shape({
-      listen: PropTypes.func
-    }),
-    initShowAction: PropTypes.string
-  }
-  */
-  state = {
-    containers : []
-  }
+const ComponentHrzContainer = ({
+  store,
+  initShowAction
+}) => {
+  const [comps, setComps] = useState([]);
 
-  componentDidMount(){
-    const { store } = this.props;
-    this.unsubscribe = store.listen(this._onStore);
-  }
-  componentWillUnmount(){
-    this.unsubscribe();
-  }
-  _onStore = (actionType, data) => {
-     const { initShowAction } = this.props;
-     if (actionType === initShowAction){
-       this.setState(prevState => {
-         prevState.containers.unshift(data)
-         return {
-           containers: [...prevState.containers]
-         };
-       })
-       //this.state.containers.unshift(data);
-       //this.setState(this.state);
-     }
-  }
+  useListen(store, (actionType, Comp) => {
+    if (actionType === initShowAction && Comp){
+      setComps(prevComps => [Comp, ...prevComps])
+    }
+  })
 
-  render(){
-    const { containers } = this.state;
-    return (
-       <div className={CL}>
-          {containers}
-       </div>
-    );
-  }
-}
+  return (
+    <div className={CL}>
+       {comps}
+    </div>
+  );
+};
 
 export default ComponentHrzContainer
