@@ -1,41 +1,26 @@
-import { Component } from 'react';
+import { memo } from '../../uiApi';
 
 import TaggedItem from './TaggedItem';
 
+const _isNotShouldRerender = (prevProps, nextProps) =>
+ prevProps.items === nextProps.items;
 
-class TaggedItemList extends Component {
-  static defaultProps = {
-    items: []
-  }
-
-  shouldComponentUpdate(nextProps){
-    if (nextProps.items === this.props.items) {
-      return false;
-    }
-    return true;
-  }
-
-  _renderItems = () => {
-    const { items, onRemoveItem } = this.props;
-     return items.map((item, index) => {
-        const { question_id } = item;
-        return (
-          <TaggedItem
-             key={question_id}
-             item={item}
-             onRemoveItem={onRemoveItem}
-           />
-        );
-     })
-  }
-
-  render(){
-    return (
-      <>
-        {this._renderItems()}
-      </>
-    );
-  }
-}
+const TaggedItemList = memo(({
+  items,
+  onRemoveItem
+}) => (
+  <>
+    {(items || []).map((item, index) => {
+       const { question_id } = item;
+       return (
+         <TaggedItem
+            key={question_id}
+            item={item}
+            onRemoveItem={onRemoveItem}
+          />
+       );
+    })}
+  </>
+), _isNotShouldRerender);
 
 export default TaggedItemList
