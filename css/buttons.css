@@ -37,10 +37,12 @@
   margin-left: 6px;
   border-width: 5px;
   border-style : solid;
+  /* clean-css ignore:start */
   border-top-color: inherit;
   border-bottom-color: transparent;
   border-left-color: transparent;
   border-right-color: transparent;
+  /* clean-css ignore:end */
 }
 
 .button-circle {
