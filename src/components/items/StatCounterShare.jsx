@@ -1,146 +1,113 @@
-import { Component } from 'react'
+import { useCallback } from '../uiApi';
+import useRefInit from '../hooks/useRefInit';
+import useToggle from '../hooks/useToggle';
 
-import Chart from '../charts/Chart'
+import Chart from '../charts/Chart';
+import crModelMore from './crNpmModelMore';
 
-import crModelMore from './crNpmModelMore'
+import A from '../zhn-atoms/A';
+import ModalSlider from '../zhn-modal-slider/ModalSlider';
+import LineChart from '../charts/LineChart';
+import Caption from './ItemCaption';
 
-import A from '../zhn-atoms/A'
-import ModalSlider from '../zhn-modal-slider/ModalSlider'
-import LineChart from '../charts/LineChart'
-import Caption from './ItemCaption'
+import STYLE from './Item.Style';
+import CL from '../styles/CL';
 
-import STYLE from './Item.Style'
-import CL from '../styles/CL'
+const S_BT_CAPTION = {
+  ...STYLE.CAPTION_OPEN,
+  position: 'relative',
+  top: -3
+}
+, S_CAPTION = { paddingLeft: 4 }
+, S_SPAN_START = { padding: "0 10px" }
+, S_CHART_WRAPER = { paddingTop: 12 }
+, S_SOURCE_LINK = { margin: "4px 0 0 16px" };
 
-const S = {
-  ROOT: STYLE.ROOT,
-  BT_MORE: STYLE.BT_MORE,
-  BT_CAPTION: {
-    ...STYLE.CAPTION_OPEN,
-    position: 'relative',
-    top: -3
-  },
-  CAPTION: {
-    paddingLeft: 4,
-  },
-
-  SPAN_SUM: {
-    color: '#80c040',
-    paddingLeft: 10,
-    paddingRight: 10
-  },
-  SPAN_START: {
-    paddingLeft: 10,
-    paddingRight: 10
-  },
-  BTN_CIRCLE: {
-    position: 'relative',
-    top: -6,
-    marginLeft: 10
-  },
-
-
-  CHART_WRAPER: {
-    paddingTop: 12
-  },
-
-  BUTTON_DOWN_UP: {
-    paddingTop: 4,
-    paddingBottom: 4
-  },
-  SOURCE_LINK: {
-    marginTop: 4,
-    marginLeft: 16
-  }
+const _crChartConfig = (labels, data) => {
+  const _lineChartConfig = Chart.fLineConfigs({ labels, data })
+  , _numSeries = _lineChartConfig.datasets.length
+  , _height = 150 + Math.floor(_numSeries / 5) * 16;
+  return [_lineChartConfig, _height];
 };
 
-class NpmRecentDownloads extends Component {
+const StatCounterShare = ({
+  caption,
+  fromDate,
+  toDate,
+  labels,
+  data,
+  sourceLink,
+  onMoveToTop,
+  onCloseItem
+}) => {
+  const _MODAL_SLIDER_MODEL = useRefInit(() =>
+    crModelMore({ onMoveToTop})
+  )
+  , [_isShow, _toggleIsShow] = useToggle(true)
+  , [_isMore, _toggleIsMore] = useToggle(false)
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hClickMore = useCallback(() => {
+      _toggleIsMore(true)
+  }, [])
+  // _toggleIsMore
+  /*eslint-enable react-hooks/exhaustive-deps */
+  , [
+      _lineChartConfig,
+      _height
+  ] = _crChartConfig(labels, data);
 
-  constructor(props){
-    super(props)
-    const { onMoveToTop } = props;
-    this._MORE = crModelMore({
-      onMoveToTop
-    })
-    this.state = {
-      isShow: true,
-      isMore: false
-    }
-  }
-
-  _hClickMore = () => {
-    this.setState({ isMore: true })
-  }
-  _hToggleMore = () => {
-    this.setState(prevState => ({
-      isMore: !prevState.isMore
-    }))
-  }
-
-  _handlerToggleOpen = () => {
-    this.setState(prevState => ({
-      isShow: !prevState.isShow
-    }))
-  }
-
-
-  render(){
-    const {
-      caption,
-      fromDate, toDate,
-      labels, data,
-      sourceLink,
-      onCloseItem
-    } = this.props
-    , {
-      isShow, isMore,
-    } = this.state
-    , _lineChartConfig = Chart.fLineConfigs({ labels, data })
-    , _numSeries = _lineChartConfig.datasets.length
-    , _heigh = 150 + Math.floor(_numSeries / 5) * 16
-
-    return (
-      <div style={S.ROOT}>
-        <ModalSlider
-          isShow={isMore}
-          className={CL.MENU_MORE}
-          model={this._MORE}
-          onClose={this._hToggleMore}
+  return (
+    <div style={STYLE.ROOT}>
+      <ModalSlider
+        isShow={_isMore}
+        className={CL.MENU_MORE}
+        model={_MODAL_SLIDER_MODEL}
+        onClose={_toggleIsMore}
+      />
+      <Caption
+        style={S_CAPTION}
+        onClose={onCloseItem}
+      >
+        <A.SvgMore
+          style={STYLE.BT_MORE}
+          onClick={_hClickMore}
         />
-        <Caption style={S.CAPTION} onClose={onCloseItem}>
-          <A.SvgMore
-            style={S.BT_MORE}
-            onClick={this._hClickMore}
-          />
-          <button
-             className={CL.BT_ITEM}
-             title={caption}
-             style={S.BT_CAPTION}
-             onClick={this._handlerToggleOpen}
-          >
-            <span>
-              {caption}
-            </span>
-            <span style={S.SPAN_START}>
-              {fromDate}
-            </span>
-            <span>
-              {toDate}
-            </span>
-          </button>
-        </Caption>
-        <A.ShowHide isShow={isShow} style={S.CHART_WRAPER}>
-          <LineChart
-             data={_lineChartConfig}
-             height={_heigh}
-          />
-          <a className={CL.SOURCE_LINK} style={S.SOURCE_LINK} href={sourceLink} target="_blank">
-              StatCounter Chart
-          </a>
-        </A.ShowHide>
-      </div>
-    );
-  }
-}
+        <button
+           className={CL.BT_ITEM}
+           title={caption}
+           style={S_BT_CAPTION}
+           onClick={_toggleIsShow}
+        >
+          <span>
+            {caption}
+          </span>
+          <span style={S_SPAN_START}>
+            {fromDate}
+          </span>
+          <span>
+            {toDate}
+          </span>
+        </button>
+      </Caption>
+      <A.ShowHide
+        isShow={_isShow}
+        style={S_CHART_WRAPER}
+      >
+        <LineChart
+           data={_lineChartConfig}
+           height={_height}
+        />
+        <a
+          className={CL.SOURCE_LINK}
+          style={S_SOURCE_LINK}
+          href={sourceLink}
+          target="_blank"
+        >
+            StatCounter Chart
+        </a>
+      </A.ShowHide>
+    </div>
+  );
+};
 
-export default NpmRecentDownloads
+export default StatCounterShare
