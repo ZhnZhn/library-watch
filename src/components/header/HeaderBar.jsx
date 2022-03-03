@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback } from '../uiApi';
 
 import BA from '../../flux/actions/BrowserActions';
 import CA from '../../flux/actions/ComponentActions';
