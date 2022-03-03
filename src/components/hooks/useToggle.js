@@ -1,8 +1,22 @@
-import { useState, useCallback } from '../uiApi';
+import {
+  useState,
+  useCallback
+} from '../uiApi';
 
-const useToggle = (initialValue) => {
-  const [is, setIs] = useState(()=>!!initialValue)
-  , toggle = useCallback(() => setIs(is => !is), []);
+const _isBool = v => typeof v === "boolean";
+
+const useToggle = initialValue => {
+  const [
+    is,
+    setIs
+  ] = useState(()=>!!initialValue)
+  , toggle = useCallback(v => {
+     if (_isBool(v)) {
+       setIs(v)
+     } else {
+       setIs(is => !is)
+     }
+  }, []);
   return [is, toggle];
 };
 
