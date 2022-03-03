@@ -132,7 +132,7 @@ class InputDate extends Component {
     return this.state.isValid;
   }
 
-  focusInput(){
+  focus(){
     this.inputComp.focus()
   }
 }
