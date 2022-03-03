@@ -2,10 +2,10 @@
 const S_STEP = {
   display: 'inline-block',
   color: '#80c040',
-  width : 22,
-  height : 22,
-  border : '2px solid #80c040',
-  borderRadius : '50%',
+  width: 22,
+  height: 22,
+  border: '2px solid #80c040',
+  borderRadius: '50%',
   textAlign: 'center'
 };
 

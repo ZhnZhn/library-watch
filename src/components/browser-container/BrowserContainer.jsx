@@ -1,4 +1,7 @@
-import { cloneElement, useState } from '../uiApi'
+import {
+  cloneElement,
+  useState
+} from '../uiApi';
 import useToggle from '../hooks/useToggle';
 import useListen from '../hooks/useListen';
 

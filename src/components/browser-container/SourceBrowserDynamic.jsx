@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo } from '../uiApi';
 
 import MenuBrowserDynamic from '../zhn-moleculs/MenuBrowserDynamic';
 import BA, {BrowserActionTypes as BAT} from '../../flux/actions/BrowserActions';
