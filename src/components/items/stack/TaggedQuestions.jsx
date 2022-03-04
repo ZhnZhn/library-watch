@@ -1,4 +1,9 @@
-import { Component } from 'react';
+import {
+  useState,
+  useCallback
+} from '../../uiApi';
+import useToggle from '../../hooks/useToggle';
+import useRefInit from '../../hooks/useRefInit';
 
 import A from '../../zhn-atoms/A';
 import Caption from '../ItemCaption';
@@ -9,147 +14,121 @@ import TaggedItemList from './TaggedItemList';
 import STYLE from '../Item.Style';
 import CL from '../../styles/CL';
 
-const S = {
-  BT_MORE: {
-    position: 'relative',
-    top: 3,
-    marginRight: 12
-  },
-  ITEM_COUNT: {
-    color: '#a9a9a9',
-    paddingLeft: 12,
-    paddingRight: 12
-  },
-  BT_REVERSE: {
-    color: '#a487d4',
-    fontWeight: 'bold',
-    cursor: 'pointer'
-  },
-  NOT_FLOAT: {
-    float: 'none'
-  }
-};
+const S_BT_MORE = {
+  position: 'relative',
+  top: 3,
+  marginRight: 12
+}
+, S_ITEM_COUNT = {
+  color: '#a9a9a9',
+  padding: '0 12px'
+}
+, S_BT_REVERSE = {
+  color: '#a487d4',
+  fontWeight: 'bold',
+  cursor: 'pointer'
+}
+, S_NOT_FLOAT = { float: 'none' }
+, DF_ITEMS = [];
 
-class StackTaggedQuestions extends Component {
-
-  static defaultProps = {
-    items: []
-  }
-
-  constructor(props){
-    super(props)
-
-    this._MODEL_MORE = crModelMore({
-      setSortByProp: this._sortItemsByPropName.bind(this),
-      reverse: this._reverseItems.bind(this)
-    })
-
-    this.state = {
-      isShow: true,
-      isMore: false,
-      pnForSort: '',
-      titleForSort: '',
-      items: props.items,
-      itemRemoved: 0
-    }
-  }
-
-  _sortItemsByPropName = (propName, title) => {
-    this.setState(prevState => ({
+const StackTaggedQuestions = (props) => {
+  const {
+    repo,
+    caption,
+    onCloseItem
+  } = props
+  , [state, setState] = useState(() => ({
+     items: props.items || DF_ITEMS,
+     pnForSort: '',
+     titleForSort: '',
+     itemRemoved: 0
+  }))
+  , {
+      items,
+      titleForSort,
+      itemRemoved
+    } = state
+  , [isShow, _toggleIsShow] = useToggle(true)
+  , [isMore, _toggleIsMore] = useToggle(false)
+    /*eslint-disable react-hooks/exhaustive-deps */
+  , _hShowMore = useCallback(() => {
+    _toggleIsMore(true)
+  }, [])
+  // _toggleIsMore
+  /*eslint-enable react-hooks/exhaustive-deps */
+  , _reverseItems = useCallback(() => {
+    setState(prevState => ({
+      ...prevState,
+      items: [...prevState.items.reverse()]
+    }))
+  }, [])
+  , _sortItemsByPropName = useCallback((propName, title) => {
+    setState(prevState => ({
+      ...prevState,
       pnForSort: propName,
       titleForSort: title,
       items: [...sortItemsBy(prevState.items, propName)]
     }))
-  }
-  _reverseItems = () => {
-    this.setState(prevState => ({
-      items: [...prevState.items.reverse()]
-    }))
-  }
-
-  _hToggleOpen = () => {
-    this.setState(prevState => ({
-      isShow: !prevState.isShow
-    }))
-  }
-
-  _hShowMore = () => {
-    this.setState({ isMore: true })
-  }
-
-  _hToggleMore = () => {
-    this.setState(prevState => ({
-      isMore: !prevState.isMore
-    }))
-  }
-
-  _onRemoveItem = () => {
-    this.setState(prevState => ({
+  }, [])
+  , _onRemoveItem = useCallback(() => {
+    setState(prevState => ({
+      ...prevState,
       itemRemoved: prevState.itemRemoved + 1
     }))
-  }
+  }, [])
+  , _MODEL_MORE = useRefInit(() => crModelMore({
+     setSortByProp: _sortItemsByPropName,
+     reverse: _reverseItems
+  }))
+  , _items_count = items.length
+  , _token_count = itemRemoved
+      ? `${_items_count - itemRemoved}/${_items_count}`
+      : `${_items_count}`
+  , _titleForSort = `Sorted By ${titleForSort}`;
 
-
-  render(){
-    const {
-      repo, caption,
-      onCloseItem
-     } = this.props
-    , {
-        isShow, isMore,
-        items, titleForSort,
-        itemRemoved
-      } = this.state
-    , _items_count = items.length
-    , _token_count = itemRemoved
-        ? `${_items_count - itemRemoved}/${_items_count}`
-        : `${_items_count}`
-    , _titleForSort = `Sorted By ${titleForSort}`;
-
-     return (
-       <div style={STYLE.ROOT}>
-         <ModalSlider
-           isShow={isMore}
-           className={CL.MENU_MORE}
-           model={this._MODEL_MORE}
-           onClose={this._hToggleMore}
-         />
-         <Caption onClose={onCloseItem}>
-           <A.SvgMore
-             style={S.BT_MORE}
-             onClick={this._hShowMore}
-           />
-           <button
-              className={CL.NOT_SELECTED}
-              title={caption}
-              style={{...STYLE.CAPTION_OPEN, ...S.NOT_FLOAT}}
-              onClick={this._hToggleOpen}
-           >
-             <span>
-               {repo}
-             </span>
-             <span style={S.ITEM_COUNT}>
-                {_token_count}
-             </span>
-           </button>
-           <button
-             className={CL.NOT_SELECTED}
-             style={S.BT_REVERSE}
-             title="Reverse Items"
-             onClick={this._reverseItems}
-           >
-              {_titleForSort}
-           </button>
-         </Caption>
-         <A.ShowHide isShow={isShow}>
-           <TaggedItemList
-             items={items}
-             onRemoveItem={this._onRemoveItem}
-           />
-         </A.ShowHide>
-       </div>
-     );
-  }
-}
+  return (
+    <div style={STYLE.ROOT}>
+      <ModalSlider
+        isShow={isMore}
+        className={CL.MENU_MORE}
+        model={_MODEL_MORE}
+        onClose={_toggleIsMore}
+      />
+      <Caption onClose={onCloseItem}>
+        <A.SvgMore
+          style={S_BT_MORE}
+          onClick={_hShowMore}
+        />
+        <button
+           className={CL.NOT_SELECTED}
+           title={caption}
+           style={{...STYLE.CAPTION_OPEN, ...S_NOT_FLOAT}}
+           onClick={_toggleIsShow}
+        >
+          <span>
+            {repo}
+          </span>
+          <span style={S_ITEM_COUNT}>
+             {_token_count}
+          </span>
+        </button>
+        <button
+          className={CL.NOT_SELECTED}
+          style={S_BT_REVERSE}
+          title="Reverse Items"
+          onClick={_reverseItems}
+        >
+           {_titleForSort}
+        </button>
+      </Caption>
+      <A.ShowHide isShow={isShow}>
+        <TaggedItemList
+          items={items}
+          onRemoveItem={_onRemoveItem}
+        />
+      </A.ShowHide>
+    </div>
+  );
+};
 
 export default StackTaggedQuestions
