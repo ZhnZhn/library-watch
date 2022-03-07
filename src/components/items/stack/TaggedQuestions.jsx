@@ -3,7 +3,7 @@ import {
   useCallback
 } from '../../uiApi';
 import useToggle from '../../hooks/useToggle';
-import useRefInit from '../../hooks/useRefInit';
+import useMenuMore from '../../hooks/useMenuMore';
 
 import A from '../../zhn-atoms/A';
 import Caption from '../ItemCaption';
@@ -49,13 +49,6 @@ const StackTaggedQuestions = (props) => {
       itemRemoved
     } = state
   , [isShow, _toggleIsShow] = useToggle(true)
-  , [isMore, _toggleIsMore] = useToggle(false)
-    /*eslint-disable react-hooks/exhaustive-deps */
-  , _hShowMore = useCallback(() => {
-    _toggleIsMore(true)
-  }, [])
-  // _toggleIsMore
-  /*eslint-enable react-hooks/exhaustive-deps */
   , _reverseItems = useCallback(() => {
     setState(prevState => ({
       ...prevState,
@@ -76,28 +69,33 @@ const StackTaggedQuestions = (props) => {
       itemRemoved: prevState.itemRemoved + 1
     }))
   }, [])
-  , _MODEL_MORE = useRefInit(() => crModelMore({
-     setSortByProp: _sortItemsByPropName,
-     reverse: _reverseItems
-  }))
-  , _items_count = items.length
-  , _token_count = itemRemoved
-      ? `${_items_count - itemRemoved}/${_items_count}`
-      : `${_items_count}`
+  , [
+      _MODEL_MORE,
+      _isMenuMore,
+      _toggleMenuMore,
+      _showMenuMore
+    ] = useMenuMore(crModelMore, {
+      setSortByProp: _sortItemsByPropName,
+      reverse: _reverseItems
+  })
+  , _itemsLength = items.length
+  , _tokenItemsCount = itemRemoved
+      ? `${_itemsLength - itemRemoved}/${_itemsLength}`
+      : `${_itemsLength}`
   , _titleForSort = `Sorted By ${titleForSort}`;
 
   return (
     <div style={STYLE.ROOT}>
       <ModalSlider
-        isShow={isMore}
+        isShow={_isMenuMore}
         className={CL.MENU_MORE}
         model={_MODEL_MORE}
-        onClose={_toggleIsMore}
+        onClose={_toggleMenuMore}
       />
       <Caption onClose={onCloseItem}>
         <A.SvgMore
           style={S_BT_MORE}
-          onClick={_hShowMore}
+          onClick={_showMenuMore}
         />
         <button
            className={CL.NOT_SELECTED}
@@ -109,7 +107,7 @@ const StackTaggedQuestions = (props) => {
             {repo}
           </span>
           <span style={S_ITEM_COUNT}>
-             {_token_count}
+             {_tokenItemsCount}
           </span>
         </button>
         <button
