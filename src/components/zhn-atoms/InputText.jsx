@@ -1,19 +1,21 @@
-//import PropTypes from "prop-types";
-import { Component } from 'react';
+import {
+  forwardRef,
+  useRef,
+  useState,
+  useCallback,
+  useImperativeHandle
+} from '../uiApi';
 
 import has from '../has';
 
-const CL_FIELD = 'm-field'
+const { HAS_TOUCH } = has
+, CL_FIELD = 'm-field'
 , CL_INPUT = 'm-field__input'
 , CL_BT_CLEAR = 'm-field__bt-clear';
-
-const { HAS_TOUCH } = has;
 
 const _isKeyClean = ({ keyCode }) => keyCode === 27
  || keyCode === 46;
 const _isKeyEnter = ({ keyCode }) => keyCode === 13;
-
-const _isStr = str => typeof str === 'string';
 
 const BtClear = ({
   isValue,
@@ -28,101 +30,73 @@ const BtClear = ({
   </button>
 );
 
-class InputText extends Component {
-  /*
-  static propTypes = {
-    isUpdateInitValue: PropTypes.bool,
-    initValue: PropTypes.string,
-    placeholder: PropTypes.string,
-    style: PropTypes.object
-    onEnter: PropTypes.func
-  }
-  */
-  static defaultProps = {
-    isUpdateInitValue: false,
-    initValue: '',
-    placeholder: '',
-    maxLength: 50,
-    onEnter: () => {}
-  }
+const FN_NOOP = () => {}
+, _getRefValue = ref => ref.current;
 
-  constructor(props){
-    super(props)
-    this.state = {
-      value: props.initValue
+const InputText = forwardRef(({
+  style,
+  initValue,
+  placeholder,
+  maxLength=50,
+  onEnter=FN_NOOP
+}, ref) => {
+  const _refInput = useRef()
+  , [value,  setValue] = useState(() => initValue || '')
+  , _hChange = useCallback(event => {
+    setValue(event.target.value)
+  }, [])
+  , _hKeyDown = useCallback(event => {
+    if (_isKeyClean(event)){
+      setValue('')
+    } else if (_isKeyEnter(event)) {
+      onEnter(event.target.value)
     }
-  }
+  }, [onEnter])
+  , _hClean = useCallback(() => {
+    setValue('')
+    _getRefValue(_refInput).focus()
+  }, []);
 
-  static getDerivedStateFromProps({ isUpdateInitValue, initValue }){
-    return isUpdateInitValue && _isStr(initValue)
-      ?  { value: initValue }
-      : null;
-  }
-
-  _hChange = (event) => {
-    this.setState({ value: event.target.value })
-  }
-
-  _hKeyDown = (event) => {
-     if ( _isKeyClean(event) ){
-       this.setState({ value: '' })
-     } else if ( _isKeyEnter(event) ) {
-       this.props.onEnter(event.target.value)
+  useImperativeHandle(ref, () => ({
+     getValue: () => {
+       const _inputEl = _getRefValue(_refInput)
+       return _inputEl
+         ? _inputEl.value.trim()
+         : void 0;
+     },
+     setValue: (value) => setValue(value),
+     focus: () => {
+       const _inputEl = _getRefValue(_refInput)
+       if (_inputEl) {
+         _inputEl.focus()
+       }
      }
-  }
+  }), [])
 
-  _hClean = () => {
-    this.setState({ value: '' })
-    this.focus()
-  }
-
-  _refInput = element => this._inputElement = element
-
-  render(){
-    const {
-      style,
-      placeholder,
-      maxLength
-    } = this.props
-    , { value } = this.state;
-    return (
-      <div className={CL_FIELD}>
-        <input
-          ref={this._refInput}
-          type="text"
-          autoCorrect="off"
-          autoCapitalize="off"
-          spellCheck={false}
-          className={CL_INPUT}
-          style={style}
-          value={value}
-          placeholder={placeholder}
-          maxLength={maxLength}
-          onChange={this._hChange}
-          onKeyDown={this._hKeyDown}
+  return (
+    <div className={CL_FIELD}>
+      <input
+        ref={_refInput}
+        type="text"
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck={false}
+        className={CL_INPUT}
+        style={style}
+        value={value}
+        placeholder={placeholder}
+        maxLength={maxLength}
+        onChange={_hChange}
+        onKeyDown={_hKeyDown}
+      />
+      {
+        HAS_TOUCH && <BtClear
+          isValue={Boolean(value)}
+          onClick={_hClean}
         />
-        {
-          HAS_TOUCH && <BtClear
-            isValue={Boolean(value)}
-            onClick={this._hClean}
-          />
-        }
-     </div>
-   );
-  }
-
-  getValue(){
-    return this.state.value.trim();
-  }
-  setValue(value){
-    this.setState({ value });
-  }
-  focus(){
-    if (this._inputElement) {
-      this._inputElement.focus()
-    }
-  }
-}
-
+      }
+   </div>
+  );
+});
 
 export default InputText
