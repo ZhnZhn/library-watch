@@ -1,19 +1,20 @@
-import { Component } from 'react';
-//import PropTypes from "prop-types";
+import {
+  forwardRef,
+  useEffect
+} from '../uiApi';
+
+import useKeyEscape from '../hooks/useKeyEscape';
+import useToggle from '../hooks/useToggle';
+import useDialogFocus from './useDialogFocus';
 
 import crCn from '../zhn-utils/crCn';
-import {
-  isKeyEscape,
-  focusNode
-} from '../zhn-utils/utils';
 
 import ModalSlider from '../zhn-modal-slider/ModalSlider';
 import SvgMore from '../zhn-atoms/SvgMore';
 import SvgClose from '../zhn-atoms/SvgClose';
-import FlatButton from '../zhn-m/FlatButton'
+import FlatButton from '../zhn-m/FlatButton';
 
 import Interact from '../../utils/Interact';
-
 import STYLE from './Dialog.Style';
 
 const CL_DRAGGABLE_DIALOG = "draggable-dialog"
@@ -39,165 +40,106 @@ const CL_DRAGGABLE_DIALOG = "draggable-dialog"
 }
 , S_CHILDREN_DIV = { cursor: 'default' }
 
+, FN_NOOP = () => {}
 , _isFn = fn => typeof fn === 'function';
 
-class DraggableDialog extends Component {
-  /*
-  static propTypes = {
-    isShow: PropTypes.bool,
-    caption: PropTypes.string,
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node
-    ]),
-    commandButtons: PropTypes.arrayOf(PropTypes.element),
-    onShowChart: PropTypes.func,
-    onClose: PropTypes.func
-  }
-  */
-  static defaultProps = {
-    onClose: () => {}
-  }
+const DraggableDialog = forwardRef(({
+  menuModel,
+  isShow,
+  caption,
+  children,
+  commandButtons,
+  onShowChart,
+  onClose=FN_NOOP
+}, ref) => {
+  const [
+    _refRootDiv,
+    _refBtMore
+  ] = useDialogFocus(ref, isShow)
+  , [
+    _isMore,
+    _toggleMore
+  ] = useToggle()
+  , _hKeyDown = useKeyEscape(onClose)
+  , _className = crCn(
+      CL_DRAGGABLE_DIALOG,
+      [isShow, CL_SHOW_POPUP]
+  )
+  , _styleShow = isShow
+      ? STYLE.SHOW
+      : STYLE.HIDE;
 
-  state = {
-    isMore: false
-  }
+  /*eslint-disable react-hooks/exhaustive-deps */
+  useEffect(()=>{
+    Interact.makeDragable(_refRootDiv.current);
+  }, [])
+  // _refRootDiv
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  componentDidMount(){
-     Interact.makeDragable(this.rootDiv);
-     this.focus()
-  }
-
-  _hasShowed(prevProps) {
-    return !prevProps.isShow
-      && this.props.isShow;
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this._hasShowed(prevProps)) {
-      this.focus()
-    }
-  }
-
-  _hKeyDown = evt => {
-    if (isKeyEscape(evt)) {
-      evt.preventDefault()
-      evt.stopPropagation()
-      this._hClose()
-    }
-  }
-  _hClose = () => {
-     this.props.onClose()
-     this.focusPrev()
-  }
-
-  _toggleMore = () => {
-    this.setState(prevState => ({
-      isMore: !prevState.isMore
-    }))
-  }
-
-  _refBtMore = node => this.btMore = node
-  _refRootDiv = node => this.rootDiv = node
-
-  render(){
-    const {
-       menuModel,
-       isShow,
-       caption,
-       children,
-       commandButtons,
-       onShowChart,
-       onFront
-     } = this.props
-    , { isMore } = this.state
-    , _styleShow = isShow
-        ? STYLE.SHOW
-        : STYLE.HIDE
-    , _className = crCn(
-        CL_DRAGGABLE_DIALOG,
-        [isShow, CL_SHOW_POPUP]
-    );
-
-    return (
-      /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
-      <div
-        ref={this._refRootDiv}
-        role="dialog"
-        tabIndex="-1"
-        aria-label={caption}
-        aria-hidden={!isShow}
-        className={_className}
-        style={{
-          ...S_ROOT_DIV_DRAG,
-          ..._styleShow
-        }}
-        onClick={onFront}
-        onKeyDown={this._hKeyDown}
-       >
-       {/*eslint-enable jsx-a11y/no-noninteractive-element-interactions*/}
-        <div style={STYLE.CAPTION_DIV}>
-          { menuModel && <>
-             <ModalSlider
-               isShow={isMore}
-               className={CL_MENU_MORE}
-               model={menuModel}
-               onClose={this._toggleMore}
-             />
-             <SvgMore
-               btRef={this._refBtMore}
-               style={S_BT_MORE}
-               svgStyle={S_BT_MORE_SVG}
-               onClick={this._toggleMore}
-             />
-           </>
-          }
-          <span className={CL_NOT_SELECTED}>
-            {caption}
-          </span>
-          <SvgClose
-             style={STYLE.SVG_CLOSE}
-             onClose={this._hClose}
-          />
-        </div>
-        <div style={S_CHILDREN_DIV}>
-           {children}
-        </div>
-        <div style={STYLE.COMMAND_DIV}>
-          {commandButtons}
-          {
-            _isFn(onShowChart) && <FlatButton
-              key="show"
-              rootStyle={STYLE.BT_ROOT}
-              caption="Show"
-              title="Show Pane Container"
-              //accessKey="s"
-              onClick={onShowChart}
-            />
-          }
-          <FlatButton
-            key="close"
-            rootStyle={STYLE.BT_ROOT}
-            caption="Close"
-            title="Close Draggable Dialog"
-            //accessKey="c"
-            onClick={this._hClose}
-          />
-        </div>
+  return (
+    /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
+    <div
+       ref={_refRootDiv}
+       role="dialog"
+       tabIndex="-1"
+       aria-label={caption}
+       aria-hidden={!isShow}
+       className={_className}
+       style={{
+       ...S_ROOT_DIV_DRAG,
+       ..._styleShow
+       }}
+       onKeyDown={_hKeyDown}
+     >
+     {/*eslint-enable jsx-a11y/no-noninteractive-element-interactions*/}
+      <div style={STYLE.CAPTION_DIV}>
+        { menuModel && <>
+           <ModalSlider
+             isShow={_isMore}
+             className={CL_MENU_MORE}
+             model={menuModel}
+             onClose={_toggleMore}
+           />
+           <SvgMore
+             btRef={_refBtMore}
+             style={S_BT_MORE}
+             svgStyle={S_BT_MORE_SVG}
+             onClick={_toggleMore}
+           />
+         </>
+        }
+        <span className={CL_NOT_SELECTED}>
+          {caption}
+        </span>
+        <SvgClose
+           style={STYLE.SVG_CLOSE}
+           onClose={onClose}
+        />
       </div>
-    );
-  }
-
-  focus() {
-    this._prevFocused = document.activeElement
-    focusNode(this.btMore || this.rootDiv)
-  }
-
-  focusPrev() {
-    focusNode(this._prevFocused)
-    this._prevFocused = null
-  }
-
-}
+      <div style={S_CHILDREN_DIV}>
+         {children}
+      </div>
+      <div style={STYLE.COMMAND_DIV}>
+        {commandButtons}
+        {
+          _isFn(onShowChart) && <FlatButton
+            key="show"
+            rootStyle={STYLE.BT_ROOT}
+            caption="Show"
+            title="Show Pane Container"
+            onClick={onShowChart}
+          />
+        }
+        <FlatButton
+          key="close"
+          rootStyle={STYLE.BT_ROOT}
+          caption="Close"
+          title="Close Draggable Dialog"
+          onClick={onClose}
+        />
+      </div>
+    </div>
+  );
+});
 
 export default DraggableDialog
