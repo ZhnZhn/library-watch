@@ -2,19 +2,13 @@
 .show-modal {
   animation: showing-modal 400ms linear;
 }
-.hide-modal {
-  animation: hiding-modal 400ms linear;
-}
+
 @keyframes showing-modal {
   0%   { background-color: rgba(0,0,0, 0);}
   100% { background-color: rgba(0,0,0, 0.35);}
 }
-@keyframes hiding-modal {
-  0%   { background-color: rgba(0,0,0, 0.35);}
-  100% { background-color: rgba(0,0,0, 0);}
-}
 
-.show-popup{
+.show-popup {
   transform-origin: 50% 0;
   animation: showing-popup 400ms ease-out;
   /*animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);*/
@@ -45,4 +39,4 @@
   transition: transform, opacity 400ms ease-out;
 }
 .scaleY-leave{}
-.scaleY-leave.scaleY-leave-active{}  
+.scaleY-leave.scaleY-leave-active{}
