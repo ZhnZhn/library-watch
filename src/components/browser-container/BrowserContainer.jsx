@@ -8,7 +8,7 @@ import useListen from '../hooks/useListen';
 import { BrowserType } from '../../constants/Type';
 
 import WatchBrowser from '../browser-watch/WatchBrowser';
-import DialogContainer3 from '../zhn-containers/DialogContainer3';
+import DialogStack from '../zhn-containers/DialogStack';
 
 const CL = "hrz-container";
 
@@ -58,7 +58,7 @@ const BrowserContainer = ({
       />
       {_doubleWatch}
       {elBrowsers.map(el => cloneElement(el))}
-      <DialogContainer3
+      <DialogStack
          maxDialog={3}
          store={store}
          initAction={initDialogAction}
