@@ -23,21 +23,23 @@ const CL_SHOW_POPUP = "show-popup"
   //height: 'calc(100vh - 90px)',
   paddingRight: 10
 }
-, S_ROOT_DIV = {
-  color: 'gray',
-  fontWeight: 'bold',
-  paddingLeft: 16,
-  paddingRight: 5,
-  lineHeight : 1.4
+, S_ABOUT_DIV = {
+  color: 'grey',
+  padding: '0 5px 0 16px',
+  lineHeight: 1.4,
+  fontWeight: 'bold'
 }
 , S_MARGIN_BOTTOM = { marginBottom: '1em' }
 , S_MARGIN_TOP = { marginTop: 3 };
 
 const About = ({
-  isShowInit = true,
-  store,
+  store
 }) => {
-  const [isShow, showAbout, hideAbout] = useBool(isShowInit);
+  const [
+    isShow,
+    showAbout,
+    hideAbout
+  ] = useBool(true);
 
   useListen(store, (actionType, data) => {
     if (actionType === CAT.SHOW_ABOUT){
@@ -48,12 +50,12 @@ const About = ({
     }
   })
 
-  const _className = isShow
-     ? CL_SHOW_POPUP
-     : null
-  , _style = isShow
-     ? S_BLOCK
-     : S_NONE;
+  const [
+    _style,
+    _className
+  ] = isShow
+     ? [S_BLOCK, CL_SHOW_POPUP]
+     : [S_NONE];
 
   return (
     <div
@@ -67,12 +69,12 @@ const About = ({
 
        <ScrollPane style={S_SCROLL_DIV}>
 
-       <div style={S_ROOT_DIV}>
+       <div style={S_ABOUT_DIV}>
          <p>
            <Token color="#80c040">
              Library Watch
            </Token>
-           <Token color="gray" isFirstBlank={true}>
+           <Token color="grey" isFirstBlank={true}>
              is a SPA RESTful client.
            </Token>
          </p>
@@ -80,7 +82,7 @@ const About = ({
             By means of web app Library-Watch, it is possible to view information about GitHub's repositories, NPM's packages, StackOverflows's questions.
          </p>
          <p style={S_MARGIN_BOTTOM}>
-          <Token color="gray">
+          <Token color="grey">
             Information API providers:
           </Token>
           <LinkToken
@@ -145,12 +147,12 @@ const About = ({
              </Token>
           </p>
           <p style={S_MARGIN_TOP}>
-             <Token color="gray">
+             <Token color="grey">
                 The result will be shown in an Item component in a Container.
              </Token>
           </p>
           <p style={{...S_MARGIN_BOTTOM, ...S_MARGIN_TOP}}>
-             <Token color="gray">
+             <Token color="grey">
                 Also, it possible to add an item to Watch Browser and save to LocalStorage.
              </Token>
           </p>
@@ -160,7 +162,7 @@ const About = ({
              In one-time max three Item Dialogs can be opened.
           </p>
           <p>
-            <Token color="gray">
+            <Token color="grey">
               In that case of using
             </Token>
             <LinkToken
@@ -171,9 +173,9 @@ const About = ({
             >
                GitHub
             </LinkToken>
-            <Token color="gray" isFirstBlank={true}>
+            <Token color="grey" isFirstBlank={true}>
                API provider, exists some restriction on frequency
-               and amount queries (<Token color="#2f7ed8">60 calls per hour, 10 requests per minute for Search API</Token><Token color="gray">).</Token>
+               and amount queries (<Token color="#2f7ed8">60 calls per hour, 10 requests per minute for Search API</Token><Token color="grey">).</Token>
             </Token>
           </p>
           <IconLogoBar />
