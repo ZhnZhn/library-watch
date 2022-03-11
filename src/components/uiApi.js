@@ -5,6 +5,7 @@ export {
   forwardRef,
   useRef,
   useState,
+  useReducer,
   useCallback,
   useLayoutEffect,
   useEffect,
