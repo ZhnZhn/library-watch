@@ -1,4 +1,10 @@
-import { Component } from 'react';
+import {
+  useRef,
+  useState,
+  useEffect
+} from '../uiApi';
+import useBool from '../hooks/useBool';
+import useListen from '../hooks/useListen';
 
 import Browser from '../zhn-atoms/Browser';
 import CaptionRow from '../zhn-atoms/CaptionRow';
@@ -11,115 +17,81 @@ const S_BROWSER = { paddingRight: 0 }
   height: '92%',
   //height: 'calc(100vh - 90px)',
   paddingRight: 10
-};
-
-class MenuBrowserDynamic extends Component {
-  /*
-  static propTypes = {
-    isInitShow: PropTypes.bool,
-    browserType: PropTypes.string,
-    caption: PropTypes.string,
-    sourceMenuUrl: PropTypes.string,
-    onLoadMenu: PropTypes.func,
-
-    store: PropTypes.object,
-    showAction: PropTypes.string,
-    updateAction: PropTypes.string,
-    loadCompletedAction: PropTypes.string
-  }
-  */
-
-  constructor(props){
-    super(props)
-    this.state = {
-      isShow : !!props.isInitShow,
-      isLoaded : false,
-      menuItems: []
-    }
-  }
-
-
-  componentDidMount(){
-    this.unsubscribe = this.props.store.listen(this._onStore);
-    this._loadMenu();
-  }
-  UNSAFE_componentWillUpdate(nextProps, nextState){
-     if (!nextState.isLoaded && nextState.isShow){
-       this._loadMenu();
-     }
-  }
-  componentWillUnmount(){
-    this.unsubscribe();
-  }
-
-  _loadMenu = () => {
-    const {
-      browserType,
-      caption,
-      sourceMenuUrl,
-      onLoadMenu
-    } = this.props;
-    onLoadMenu({ browserType, caption, sourceMenuUrl });
-  }
-
-  _onStore = (actionType, data) => {
-    const { browserType, store, showAction, updateAction, loadCompletedAction } = this.props;
-    if (actionType === showAction && data === browserType){
-      this._handleShow();
-    } else if (actionType === loadCompletedAction && data.browserType === browserType){
-      this.setState({
-        menuItems: data.menuItems,
-        isLoaded : true
-      });
-    } else if (actionType === updateAction && data === browserType){
-      this.setState({
-        menuItems: store.getBrowserMenu(browserType)
-      });
-    }
-  }
-
-  _handleHide = () => {
-    this.setState({ isShow : false })
-  }
-  _handleShow = () => {
-    this.setState({ isShow : true })
-  }
-
-  _renderMenuParts(rowClass, menuItems=[]){
-    return menuItems.map((menuPart, index) => {
-      return (
-         <MenuPart
-            {...menuPart}
-            key={index}
-            rowClass={rowClass}
-        />);
-    });
-  }
-
-  render(){
-    const {
-      caption,
-      children,
-      rowClass
-    } = this.props
-    , {
-      menuItems,
-      isShow
-    } = this.state;
-
-    return (
-      <Browser isShow={isShow} style={S_BROWSER}>
-        <CaptionRow
-           caption={caption}
-           onClose={this._handleHide}
-        />
-        <ScrollPane style={S_SCROLL_DIV}>
-          {this._renderMenuParts(rowClass, menuItems)}
-          {children}
-        </ScrollPane>
-      </Browser>
-    );
-  }
 }
+, _getRefValue = ref => ref.current
+, _setRefValue = (ref, value) => ref.current = value
+
+const MenuBrowserDynamic = ({
+  isInitShow,
+  caption,
+  rowClass,
+  store,
+  browserType,
+  showAction,
+  updateAction,
+  loadCompletedAction,
+  sourceMenuUrl,
+  onLoadMenu,
+  children
+}) => {
+  const _refIsLoaded = useRef(false)
+  , _refIsMounted = useRef(false)
+  , [isShow, _hShow, _hHide] = useBool(isInitShow)
+  , [menuItems, setMenuItems] = useState([]);
+
+  useListen(store, (actionType, data) => {
+    if (actionType === showAction && data === browserType){
+      _hShow();
+    } else if (actionType === loadCompletedAction && data.browserType === browserType){
+      _setRefValue(_refIsLoaded, true)
+      setMenuItems(data.menuItems)
+    } else if (actionType === updateAction && data === browserType){
+      setMenuItems(store.getBrowserMenu(browserType))
+    }
+  })
+
+  useEffect(() => {
+    _setRefValue(_refIsMounted, true)
+  }, [])
+
+  /*eslint-disable react-hooks/exhaustive-deps */
+  useEffect(() => {
+    if (_getRefValue(_refIsMounted)
+     || (!_getRefValue(_refIsLoaded) && isShow)) {
+      _setRefValue(_refIsMounted, false)
+      onLoadMenu({
+        browserType,
+        caption,
+        sourceMenuUrl
+      })
+    }
+  }, [isShow])
+  //onLoadMenu, browserType, caption, sourceMenuUrl
+  /*eslint-enable react-hooks/exhaustive-deps */
+
+  return (
+    <Browser
+       isShow={isShow}
+       style={S_BROWSER}
+    >
+      <CaptionRow
+         caption={caption}
+         onClose={_hHide}
+      />
+      <ScrollPane style={S_SCROLL_DIV}>
+        {
+          menuItems.map((menuPart, index) => (
+            <MenuPart
+               {...menuPart}
+               key={index}
+               rowClass={rowClass}
+            />)
+          )
+        }
+        {children}
+      </ScrollPane>
+    </Browser>
+  );
+};
 
 export default MenuBrowserDynamic
