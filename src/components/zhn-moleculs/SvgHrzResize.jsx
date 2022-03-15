@@ -1,21 +1,19 @@
 import { Component } from 'react';
 //import PropTypes from "prop-types";
-import ReactDOM from 'react-dom'
 
-import has from '../has'
+import has from '../has';
 
-const CL_SVG_RESIZE = "svg-resize";
-
-const { HAS_TOUCH } = has;
-
-const _isFn = fn => typeof fn === 'function'
+const CL_SVG_RESIZE = "svg-resize"
+, { HAS_TOUCH } = has
 , S_ROOT_DIV = { display: 'inline-block' }
 , S_LEFT_DIV = { marginLeft: 10 }
+, _isFn = fn => typeof fn === 'function';
 
 class SvgHrzResize extends Component {
   /*
   static propTypes = {
-    comp: PropTypes.element,
+    elementRef: PropTypes.ref,
+    initWidth: PropTypes.number,
     minWidth: PropTypes.number,
     maxWidth: PropTypes.number,
     onResizeAfter: PropTypes.func
@@ -25,7 +23,6 @@ class SvgHrzResize extends Component {
   constructor(props){
     super(props)
     this.id = null
-    this.domNode = null
     this.delta = 0
     this.step = 1
     this.countStep = 0
@@ -46,15 +43,16 @@ class SvgHrzResize extends Component {
       onMouseDown: this._hStartResize.bind(this, this._resizeRight),
       onMouseUp: this._hStopResize.bind(this, true)
     }
-  }
 
-  componentDidMount(){
-     const {comp, minWidth, maxWidth} = this.props;
-     this.domNode = ReactDOM.findDOMNode(comp);
-     this.initWidth = this.domNode.getBoundingClientRect().width;
-     this.currentWidth = this.initWidth;
-     this.minDelta = minWidth - this.initWidth;
-     this.maxDelta = maxWidth - this.initWidth;
+    const {
+      initWidth,
+      minWidth,
+      maxWidth
+    } = props;
+    this.initWidth = initWidth;
+    this.currentWidth = this.initWidth;
+    this.minDelta = minWidth - this.initWidth;
+    this.maxDelta = maxWidth - this.initWidth;
   }
 
   _increaseStepValue = () => {
@@ -70,11 +68,18 @@ class SvgHrzResize extends Component {
     }
   }
 
+  _getElementStyle = () => {
+    const { elementRef } = this.props
+    , { current } = elementRef
+    , { style } = current || {}
+    return style || {};
+  }
+
   _resizeLeft = () => {
     if (this.delta > this.minDelta){
       this.delta -= this.step;
       this.currentWidth = this.initWidth + this.delta;
-      this.domNode.style.width = this.currentWidth + 'px';
+      this._getElementStyle().width = this.currentWidth + 'px';
       this._increaseStepValue();
     }
   }
@@ -82,13 +87,13 @@ class SvgHrzResize extends Component {
     if (this.delta < this.maxDelta){
       this.delta += this.step;
       this.currentWidth = this.initWidth + this.delta;
-      this.domNode.style.width = this.currentWidth + 'px';
+      this._getElementStyle().width = this.currentWidth + 'px';
       this._increaseStepValue();
     }
   }
 
   _updateDelta = () => {
-    const w = parseInt(this.domNode.style.width);
+    const w = parseInt(this._getElementStyle().width);
     if (!isNaN(w)) {
       this.delta = w - this.initWidth
     }

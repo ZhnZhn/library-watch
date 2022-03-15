@@ -1,42 +1,49 @@
 import ComponentActions from '../flux/actions/ComponentActions';
 import ChartActions from '../flux/actions/ChartActions';
 
-const _fnClick = function(dialogType, browserType){
-  return ComponentActions.showDialog.bind(null, dialogType, browserType);
-}
+const _crOnClick = (
+  dialogType,
+  browserType
+) => ComponentActions.showDialog
+  .bind(null, dialogType, browserType);
 
-const _fnBadgeOpen = function(dialogType, browserType){
-  return ChartActions.showChart.bind(null, dialogType, browserType);
-}
+const _crOnBadgeOpen = (
+  dialogType,
+  browserType
+) => ChartActions.showChart
+  .bind(null, dialogType, browserType);
 
-const _fnBadgeClose = function(chartType){
-  return ComponentActions.closeChartContainer2.bind(null, chartType);
-}
+const _crOnBadgeClose = (
+  chartType
+) => ComponentActions.closeCompItemList
+  .bind(null, chartType);
 
-
-const fnCreateMenu = function(menu, data, browserType){
-  return menu.map((menuPart) => {
-     const items = menuPart.items.map((item, index) =>{
-        return {
-                 id: item.id,
-                 title: data[item.id].menuTitle,
-                 counter: 0,
-                 isOpen: false,
-                 onClick: _fnClick(item.id, browserType),
-                 onBadgeOpen: _fnBadgeOpen(item.id, browserType),
-                 onBadgeClose : _fnBadgeClose(item.id)
-               }
-     });          
+const createMenu = (
+  menu,
+  data,
+  browserType
+) => {
+  return menu.map(menuPart => {
+     const items = menuPart
+       .items.map(item => ({
+          id: item.id,
+          title: data[item.id].menuTitle,
+          counter: 0,
+          isOpen: false,
+          onClick: _crOnClick(item.id, browserType),
+          onBadgeOpen: _crOnBadgeOpen(item.id, browserType),
+          onBadgeClose: _crOnBadgeClose(item.id)
+       }));
      return {
         caption: menuPart.caption,
         isInitClose: menuPart.isInitClose,
-        items: items
+        items
      }
   })
-}
+};
 
 const BrowserMenu = {
-  createMenu : fnCreateMenu
-}
+  createMenu
+};
 
 export default BrowserMenu

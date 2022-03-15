@@ -153,8 +153,8 @@ const AppStore = Reflux.createStore({
      this.trigger(BAT.UPDATE_BROWSER_MENU, browserType);
    }
  },
- onCloseChartContainer2(chartType, browserType){
-   this.trigger(CAT.CLOSE_CHART_CONTAINER_2, chartType);
+ onCloseCompItemList(chartType, browserType){
+   this.trigger(CAT.CLOSE_COMP_ITEM_LIST, chartType);
  },
 
  onRemoveAll(chartType, browserType){
