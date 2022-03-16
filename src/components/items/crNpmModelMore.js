@@ -24,7 +24,7 @@ const crNpmModelMore = ({
   ].filter(Boolean);
 
   return {
-    baseTitleCl: CL_ROW,
+    titleCl: CL_ROW,
     pageWidth: 150,
     maxPages: 1,
     p0

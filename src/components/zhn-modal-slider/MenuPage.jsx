@@ -1,4 +1,8 @@
-import { useRef, useCallback, useEffect } from 'react';
+import { 
+  useRef,
+  useCallback,
+  useEffect
+} from '../uiApi';
 
 import MenuTitle from './MenuTitle';
 import MenuItemList from './MenuItemList';
@@ -14,7 +18,8 @@ const MenuPage = ({
   items=[],
   style,
   title,
-  baseTitleCl, itemCl,
+  titleCl,
+  itemCl,
   pageCurrent,
   pageNumber,
   onClose,
@@ -43,14 +48,14 @@ const MenuPage = ({
     <div style={style}>
       <MenuTitle
         ref={_refTitle}
-        titleCl={baseTitleCl}
+        titleCl={titleCl}
         title={title}
         onClick={_hClickTitle}
       />
       <MenuItemList
         ref={_refFirst}
         items={items}
-        itemCl={itemCl || baseTitleCl}
+        itemCl={itemCl || titleCl}
         pageNumber={pageNumber}
         onNextPage={onNextPage}
         onClose={onClose}

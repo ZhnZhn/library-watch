@@ -16,7 +16,7 @@ const crModelMore = ({
 }={}) => {
   const _crSortByItem = _fSortByItem(setSortByProp);
   return {
-    baseTitleCl: CL_ROW,
+    titleCl: CL_ROW,
     pageWidth: 180,
     maxPages: 2,
     p0: [

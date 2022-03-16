@@ -39,7 +39,7 @@ const crMenuMore = (comp, {
   })
 
   return {
-    baseTitleCl: CL_ROW,
+    titleCl: CL_ROW,
     pageWidth: 160,
     maxPages: 1,
     p0: p0

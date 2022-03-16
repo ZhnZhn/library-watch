@@ -1,10 +1,10 @@
-import { forwardRef } from 'react';
+import { forwardRef } from '../uiApi';
 
-const _fnNoop = () => {};
+const FN_NOOP = () => {};
 
 const MenuAriaItem = forwardRef(({
   onClick,
-  onReg=_fnNoop,
+  onReg=FN_NOOP,
   children,
   ...rest
 }, ref) => {
@@ -13,7 +13,7 @@ const MenuAriaItem = forwardRef(({
       onClick()
     }
   };
-  
+
   return (
     <div
       {...rest}

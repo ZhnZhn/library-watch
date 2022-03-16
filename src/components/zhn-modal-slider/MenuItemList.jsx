@@ -1,10 +1,9 @@
-import { forwardRef } from 'react';
+import { forwardRef } from '../uiApi';
 
 import MenuAriaItem from './MenuAriaItem';
 
-const SUB_MENU = 'sub';
-
-const S_ITEM = { position: 'relative' }
+const SUB_MENU = 'sub'
+, S_ITEM = { position: 'relative' }
 , S_NEXT_PAGE = {
   position: 'absolute',
   display: 'inline-block',
@@ -15,7 +14,7 @@ const S_ITEM = { position: 'relative' }
   fontWeight: 'bold'
 };
 
-const _fClick = ({ 
+const _fClick = ({
   isClose,
   onClick,
   onClose
@@ -25,61 +24,48 @@ const _fClick = ({
       : onClick
   : void 0;
 
-
-const NextPageArrow = ({ type }) => {
-  if (type !== SUB_MENU) return null;
-
-  return (
+const NextPageArrow = ({ type }) =>
+  type === SUB_MENU ? (
     <span style={S_NEXT_PAGE}>
       {'>'}
     </span>
-  );
-};
+  ) : null;
 
-const _renderMenuItems = (props, ref) => {
-  const {
-    items,
-    itemCl,
-    pageNumber,
-    onNextPage,
-    onClose
-  } = props;
-  return items.map((item, index) => {
-    const { cn, name, type, id, isClose, onClick } = item
-    , _onClick = type === SUB_MENU
-         ? onNextPage.bind(null, id, name, pageNumber)
-         : _fClick({ isClose, onClick, onClose })
-    , _ref = index === 0 ? ref : void 0;
-    return (
-      <MenuAriaItem
-        ref={_ref}
-        key={name}
-        className={cn || itemCl}
-        style={S_ITEM}
-        onClick={_onClick}
-      >
-        <span>{name}</span>
-        <NextPageArrow type={type} />
-      </MenuAriaItem>
-    );
-  });
-}
-
-
-const MenuItemList = forwardRef((props, ref) => (
+const MenuItemList = forwardRef(({
+  items,
+  itemCl,
+  pageNumber,
+  onNextPage,
+  onClose
+}, ref) => (
   <>
-    {_renderMenuItems(props, ref)}
+    {items.map((item, index) => {
+      const {
+        cn,
+        name,
+        type,
+        id,
+        isClose,
+        onClick
+      } = item
+      , _onClick = type === SUB_MENU
+           ? onNextPage.bind(null, id, name, pageNumber)
+           : _fClick({ isClose, onClick, onClose })
+      , _ref = index === 0 ? ref : void 0;
+      return (
+        <MenuAriaItem
+          ref={_ref}
+          key={name}
+          className={cn || itemCl}
+          style={S_ITEM}
+          onClick={_onClick}
+        >
+          <span>{name}</span>
+          <NextPageArrow type={type} />
+        </MenuAriaItem>
+      );
+    })}
   </>
 ));
-
-/*
-MenuAriaItem.propTypes = {
-  items: PropTypes.array,
-  itemCl: PropTypes.string
-  pageNumber: PropTypes.number,
-  onNextPage: PropTypes.func,
-  onClose: PropTypes.func
-}
-*/
 
 export default MenuItemList
