@@ -1,9 +1,8 @@
 import {
   useState,
-  useCallback,
-  useEffect
+  useCallback
 } from '../uiApi';
-import useHasMounted from '../hooks/useHasMounted';
+import useDidUpdate from '../hooks/useDidUpdate';
 
 import throttleOnce from '../../utils/throttleOnce';
 
@@ -136,17 +135,11 @@ const ModalSlider = ({
      })
   }), [model])
   /*eslint-enable react-hooks/exhaustive-deps */
-  , _hasMounted = useHasMounted();
 
-  /*eslint-disable react-hooks/exhaustive-deps */
-  useEffect(() => {
-    if (!_hasMounted) {
-      setState(_initState(model))
-    }
-  }, [model])
-  // _hasMounted
-  /*eslint-enable react-hooks/exhaustive-deps */
-
+  useDidUpdate(
+    () => setState(_initState(model)),
+    [model]
+  )
 
   const _showHideStyle = {
     ...style,
