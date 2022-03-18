@@ -1,91 +1,101 @@
-import { Component } from 'react';
 //import PropTypes from 'prop-types'
+import {
+  forwardRef,
+  useRef,
+  useState,
+  useCallback,
+  useEffect,
+  useImperativeHandle
+} from '../uiApi';
+import usePrevValue from '../hooks/usePrevValue';
 
 import RowInputSelect from './RowInputSelect';
 
-class SelectGroupList extends Component {
-  /*
-  propTypes : {
-    store : PropTypes.object,
-    groupCaption : PropTypes.string,
-    groupOptions : PropTypes.array,
-    listCaption : PropTypes.string
-  },
-  */
+const _getRefValue = ref => ref.current
+, _setRefValue = (ref, value) => ref.current = value
 
-  constructor(props){
-    super(props)
-    this.groupCaption = null;
-    this.listCaption = null;
-
-    this.state = {
-      listOptions: []
-    }
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps){
-    if (nextProps !== this.props){
-      if (nextProps.groupOptions !== this.props.groupOptions){
-          this.groupCaption = null;
-          this.listCaption = null;
-          this.setState({listOptions: []});
-      } else {
-        if (this.groupCaption){
-          const listOptions = this.props.store.getWatchListsByGroup(this.groupCaption);
-          if (listOptions !== this.state.listOptions)
-            this.listCaption = null;
-            this.setState({listOptions});
-        }
-      }
-    }
-  }
-
-  _hSelectGroup = (item) => {
+const SelectGroupList = forwardRef((props, ref) => {
+  const _prevProps = usePrevValue(props)
+  , _refGroupCaption = useRef(null)
+  , _refListCaption = useRef(null)
+  , [
+    listOptions,
+    setListOptions
+  ] = useState([])
+  , _hSelectGroup = useCallback(item => {
     if (item && item.caption){
-      this.groupCaption = item.caption;
-      if (item.lists){
-        this.setState({listOptions : item.lists})
-      }  else {
-        this.setState({listOptions : []})
-      }
+      _setRefValue(_refGroupCaption, item.caption)
+      setListOptions(item.lists || [])
     } else {
-      this.groupCaption = null;
+      _setRefValue(_refGroupCaption, null)
     }
-  }
+  }, [])
+  , _hSelectList = useCallback(item => {
+     _setRefValue(_refListCaption, (item && item.caption) || null)
+  }, [])
+  , {
+    store,
+    groupCaption,
+    groupOptions,
+    listCaption
+  } = props
 
-  _hSelectList = (item) => {
-     this.listCaption = (item && item.caption) || null
-  }
+  /*eslint-disable react-hooks/exhaustive-deps */
+  useEffect(() => {
+    if (_prevProps && props !== _prevProps) {
+      const _groupCaption = _getRefValue(_refGroupCaption);
+      if (props.groupOptions !== _prevProps.groupOptions){
+          _setRefValue(_refGroupCaption, null)
+          _setRefValue(_refListCaption, null)
+          setListOptions([]);
+      } else if (_groupCaption) {
+        setListOptions(prevListOptions => {
+          const listOptions = store.getWatchListsByGroup(_groupCaption);
+          if (listOptions !== prevListOptions) {
+            _setRefValue(_refListCaption, null)
+            return listOptions;
+          }
+          return prevListOptions;
+        })
+      }
+    }
+  })
+  /*eslint-disable react-hooks/exhaustive-deps */
 
-  render(){
-    const {groupCaption, groupOptions, listCaption} = this.props
-        , {listOptions} = this.state;
-    return (
-      <div>
-         <RowInputSelect
-           caption={groupCaption}
-           options={groupOptions}
-           onSelect={this._hSelectGroup}
-         />
-         <RowInputSelect
-           caption={listCaption}
-           options={listOptions}
-           onSelect={this._hSelectList}
-         />
-      </div>
-    );
-  }
+  useImperativeHandle(ref, () => ({
+    getValue: () => ({
+      captionGroup: _getRefValue(_refGroupCaption),
+      captionList: _getRefValue(_refListCaption)
+    }),
+    setValueNull: () => {
+      _setRefValue(_refGroupCaption, null)
+      _setRefValue(_refListCaption, null)
+    }
+  }))
 
-  getValue(){
-    return {
-      captionGroup: this.groupCaption,
-      captionList: this.listCaption
-    };
-  }
-  setValueNull(){
-    this.groupCaption = null;
-    this.listCaption = null;
-  }
+  return (
+    <div>
+       <RowInputSelect
+         caption={groupCaption}
+         options={groupOptions}
+         onSelect={_hSelectGroup}
+       />
+       <RowInputSelect
+         caption={listCaption}
+         options={listOptions}
+         onSelect={_hSelectList}
+       />
+    </div>
+  );
+});
+
+/*
+SelectGroupList.propTypes = {
+  store: PropTypes.object,
+  groupCaption: PropTypes.string,
+  groupOptions: PropTypes.array,
+  listCaption: PropTypes.string
 }
+*/
 
 export default SelectGroupList
