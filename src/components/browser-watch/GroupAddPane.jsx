@@ -1,9 +1,9 @@
 import {
   useRef,
-  useState,
   useCallback
 } from '../uiApi';
 import useListen from '../hooks/useListen';
+import useValidationMessages from './useValidationMessages';
 
 import RowInputText from './RowInputText';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
@@ -23,12 +23,11 @@ const GroupAddPane = ({
   const _refInputText = useRef()
   , [
     validationMessages,
-    setValidationMesages
-  ] = useState([])
-  , _hClear = useCallback(() => {
-    _getRefValue(_refInputText).setValue("")
-    setValidationMesages([])
-  }, [])
+    setValidationMessages,
+    _hClear
+  ] = useValidationMessages(
+    () => _getRefValue(_refInputText).setValue("")
+  )
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hCreate = useCallback(() => {
     const _inputComp = _getRefValue(_refInputText)
@@ -37,7 +36,7 @@ const GroupAddPane = ({
       onCreate({ caption });
     } else {
       _inputComp.setValue('')
-      setValidationMesages([msgOnIsEmptyName('Group')])
+      setValidationMessages([msgOnIsEmptyName('Group')])
     }
   }, [])
   // msgOnIsEmptyName, onCreate
@@ -48,7 +47,7 @@ const GroupAddPane = ({
       if (actionType === actionCompleted) {
         _hClear()
       } else if (actionType === actionFailed) {
-        setValidationMesages(data.messages)
+        setValidationMessages(data.messages)
       }
     }
   })
