@@ -4,17 +4,7 @@ import { Component } from 'react';
 import RowInputSelect from './RowInputSelect';
 import RowInputText from './RowInputText';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
-import FlatButton from '../zhn-m/FlatButton';
-
-const S = {
-  COMMAND_DIV : {
-     cursor: 'default',
-     float: 'right',
-     marginTop: 8,
-     marginBottom: 10,
-     marginRight: 4
-  }
-};
+import RowButtons from './RowButtons';
 
 class GroupEditPane extends Component {
   /*
@@ -108,24 +98,12 @@ class GroupEditPane extends Component {
          <ValidationMessages
            validationMessages={validationMessages}
          />
-         <div style={S.COMMAND_DIV}>
-           <FlatButton
-             isPrimary={true}
-             caption="Rename"
-             timeout={0}
-             onClick={this._handlerRename}
-           />
-           <FlatButton
-             caption="Clear"
-             timeout={0}
-             onClick={this._handlerClear}
-           />
-          <FlatButton
-             caption="Close"
-             timeout={0}
-             onClick={onClose}
-          />
-         </div>
+         <RowButtons
+           caption="Rename"
+           onClick={this._handlerRename}
+           onClear={this._handlerClear}
+           onClose={onClose}
+         />
        </div>
     );
   }

@@ -1,5 +1,5 @@
 import {
-  useRef,  
+  useRef,
   useCallback
 } from '../uiApi';
 import useRefInit from '../hooks/useRefInit';
@@ -9,14 +9,9 @@ import useValidationMessages from './useValidationMessages';
 
 import SelectGroupList from './SelectGroupList';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
-import FlatButton from '../zhn-m/FlatButton';
+import RowButtons from './RowButtons';
 
-const S_DIV_BTS = {
-  textAlign: 'right',
-  margin: '8px 4px 10px 0',
-  cursor: 'default'
-}
-, _getRefValue = ref => ref.current
+const _getRefValue = ref => ref.current
 , _setRefValue = (ref, value) => ref.current = value;
 
 const ListDeletePane = ({
@@ -82,24 +77,12 @@ const ListDeletePane = ({
        <ValidationMessages
           validationMessages={validationMessages}
        />
-       <div style={S_DIV_BTS}>
-          <FlatButton
-             isPrimary={true}
-             caption="Delete"
-             timeout={0}
-             onClick={_hDelete}
-          />
-          <FlatButton
-             caption="Clear"
-             timeout={0}
-             onClick={_hClear}
-          />
-          <FlatButton
-             caption="Close"
-             timeout={0}
-             onClick={onClose}
-          />
-      </div>
+       <RowButtons
+         caption="Delete"
+         onClick={_hDelete}
+         onClear={_hClear}
+         onClose={onClose}
+       />
     </div>
   );
 };

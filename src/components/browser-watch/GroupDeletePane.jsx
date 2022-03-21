@@ -9,14 +9,9 @@ import useValidationMessages from './useValidationMessages';
 
 import RowInputSelect from './RowInputSelect';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
-import FlatButton from '../zhn-m/FlatButton';
+import RowButtons from './RowButtons';
 
-const S_DIV_BTS = {
-  textAlign: 'right',
-  margin: '8px 4px 10px 0',
-  cursor: 'default'
-}
-, _getRefValue = ref => ref.current
+const _getRefValue = ref => ref.current
 , _setRefValue = (ref, value) => ref.current = value;
 
 const GroupDeletePane = ({
@@ -71,19 +66,11 @@ const GroupDeletePane = ({
       <ValidationMessages
         validationMessages={validationMessages}
       />
-      <div style={S_DIV_BTS}>
-        <FlatButton
-          isPrimary={true}
-          caption="Delete"
-          timeout={0}
-          onClick={_hDeleteGroup}
-        />
-        <FlatButton
-          caption="Close"
-          timeout={0}
-          onClick={onClose}
-        />
-      </div>
+      <RowButtons
+        caption="Delete"
+        onClick={_hDeleteGroup}
+        onClose={onClose}
+      />
    </div>
   );
 };

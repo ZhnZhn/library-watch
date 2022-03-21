@@ -4,17 +4,7 @@ import { Component } from 'react';
 import RowInputSelect from './RowInputSelect';
 import RowInputText from './RowInputText';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
-import FlatButton from '../zhn-m/FlatButton';
-
-const S = {
-  COMMAND_DIV : {
-     cursor: 'default',
-     float: 'right',
-     marginTop: 8,
-     marginBottom: 10,
-     marginRight: 4
-  }
-}
+import RowButtons from './RowButtons';
 
 class ListCreatePane extends Component {
   /*
@@ -109,7 +99,6 @@ class ListCreatePane extends Component {
         <RowInputSelect
            caption="In Group"
            options={groupOptions}
-           //isUpdateOptions={isUpdateGroup}
            onSelect={this._handlerSelectGroup}
         />
         <RowInputText
@@ -117,30 +106,17 @@ class ListCreatePane extends Component {
            caption="List"
         />
         <ValidationMessages
-          validationMessages={validationMessages}
+           validationMessages={validationMessages}
         />
-        <div style={S.COMMAND_DIV}>
-         <FlatButton
-            isPrimary={true}
-            caption="Create"
-            timeout={0}
-            onClick={this._handlerCreate}
-         />
-         <FlatButton
-            caption="Clear"
-            timeout={0}
-            onClick={this._handlerClear}
-         />
-         <FlatButton
-            caption="Close"
-            timeout={0}
-            onClick={onClose}
-         />
-       </div>
+        <RowButtons
+           caption="Create"
+           onClick={this._handlerCreate}
+           onClear={this._handlerClear}
+           onClose={onClose}
+        />
       </div>
-    )
+    );
   }
-
 }
 
 export default ListCreatePane
