@@ -27,7 +27,7 @@ const TabPane = ({
   const components = useRefInit(() => children
     .map((tab, index) => cloneElement(
         tab.props.children, { key: index }
-    )))
+    )))[0]
   , [
      selectedTabIndex,
      setSelectedTabIndex

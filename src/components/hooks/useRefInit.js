@@ -5,7 +5,10 @@ const useRefInit = crValue => {
   if (ref.current === null) {
     ref.current = crValue()
   }
-  return ref.current;
+  return [
+    ref.current,
+    ref
+  ];
 };
 
 export default useRefInit

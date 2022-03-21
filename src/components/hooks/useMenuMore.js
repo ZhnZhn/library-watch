@@ -18,7 +18,7 @@ const useMenuMore = (
   /*eslint-enable react-hooks/exhaustive-deps */
   , _MENU_MODEL = useRefInit(
     () => crMenuModel(modelOptions)
-  );
+  )[0];
   return [
     _MENU_MODEL,
     _isMenuMore,
