@@ -1,113 +1,107 @@
-import { Component } from 'react';
-
 //import PropTypes from 'prop-types'
+import {
+  useRef,
+  useState,
+  useCallback
+} from '../uiApi';
+import useListen from '../hooks/useListen';
 
 import RowInputSelect from './RowInputSelect';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
-import FlatButton from '../zhn-m/FlatButton'
+import FlatButton from '../zhn-m/FlatButton';
 
-const S = {
-  COMMAND_DIV : {
-     cursor: 'default',
-     float: 'right',
-     marginTop: 8,
-     marginBottom: 10,
-     marginRight: 4
-  }
-};
+const S_DIV_BTS = {
+  textAlign: 'right',
+  margin: '8px 4px 10px 0',
+  cursor: 'default'
+}
+, _getRefValue = ref => ref.current
+, _setRefValue = (ref, value) => ref.current = value;
 
-class GroupDeletePane extends Component {
-
-  /*
-  statis propTypes = {
-    store : PropTypes.object,
-    actionCompleted : PropTypes.string,
-    forActionType : PropTypes.string,
-    msgOnNotSelect : PropTypes.func,
-    onDelete : PropTypes.func,
-    onClose : PropTypes.func
-  }
-  */
-  constructor(props){
-    super(props)
-    const { store } = props;
-    this.caption = null;
-    this.state = {
-      groupOptions: store.getWatchGroups(),
-      validationMessages: []
+const GroupDeletePane = ({
+  store,
+  actionCompleted,
+  forActionType,
+  msgOnNotSelect,
+  onDelete,
+  onClose
+}) => {
+  const _refCaption = useRef(null)
+  , [
+    groupOptions,
+    setGroupOptions
+  ] = useState(store.getWatchGroups)
+  , [
+    validationMessages,
+    setValidationMesages
+  ] = useState([])
+  , _hSelectGroup = useCallback(item => {
+     _setRefValue(_refCaption, item && item.caption || null)
+  }, [])
+  , _hClear = useCallback(() => {
+    setValidationMesages(
+      prevState => prevState.length > 0
+        ? []
+        : prevState
+    )
+  }, [])
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hDeleteGroup = useCallback(() => {
+    const caption = _getRefValue(_refCaption);
+    if (caption) {
+      onDelete({ caption })
+    } else {
+      setValidationMesages([msgOnNotSelect('Group')])
     }
-  }
+  }, [])
+  // onDelete, msgOnNotSelect
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  componentDidMount(){
-    this.unsubscribe = this.props
-      .store.listen(this._onStore);
-  }
-  componentWillUnmount(){
-    this.unsubscribe();
-  }
-  _onStore = (actionType, data) => {
-    const {actionCompleted, forActionType, store} = this.props;
+  useListen(store, (actionType, data) => {
     if (actionType === actionCompleted) {
       if (data.forActionType === forActionType){
-        this._handlerClear();
+        _hClear();
       }
-      this.setState({ groupOptions: store.getWatchGroups() })
+      setGroupOptions(store.getWatchGroups())
     }
-  }
+  })
 
-  _handlerSelectGroup = (item) => {
-     if (item && item.caption){
-       this.caption = item.caption;
-     } else {
-       this.caption = null;
-     }
-  }
+  return (
+    <div>
+      <RowInputSelect
+        caption="Group"
+        options={groupOptions}
+        onSelect={_hSelectGroup}
+      />
+      <ValidationMessages
+        validationMessages={validationMessages}
+      />
+      <div style={S_DIV_BTS}>
+        <FlatButton
+          isPrimary={true}
+          caption="Delete"
+          timeout={0}
+          onClick={_hDeleteGroup}
+        />
+        <FlatButton
+          caption="Close"
+          timeout={0}
+          onClick={onClose}
+        />
+      </div>
+   </div>
+  );
+};
 
-  _handlerClear = () => {
-    if (this.state.validationMessages.length>0){
-      this.setState({ validationMessages: [] })
-    }
-  }
-
-  _handlerDeleteGroup = () => {
-     if (this.caption){
-       this.props.onDelete({caption: this.caption})
-     } else {
-       this.setState({ validationMessages: [this.props.msgOnNotSelect('Group')] });
-     }
-  }
-
-  render(){
-      const {onClose} = this.props
-          , {groupOptions, validationMessages} = this.state;
-
-      return (
-         <div>
-           <RowInputSelect
-             caption="Group"
-             options={groupOptions}
-             //isUpdateOptions={true}
-             onSelect={this._handlerSelectGroup}
-           />
-           <ValidationMessages
-             validationMessages={validationMessages}
-           />
-           <div style={S.COMMAND_DIV}>
-             <FlatButton
-               isPrimary={true}
-               caption="Delete"
-               timeout={0}
-               onClick={this._handlerDeleteGroup}
-             />
-             <FlatButton
-               caption="Close"
-               timeout={0}
-               onClick={onClose}
-             />
-           </div>
-        </div>
-    );
-  }
+/*
+GroupDeletePane.propTypes = {
+  store: PropTypes.object,
+  actionCompleted: PropTypes.string,
+  forActionType: PropTypes.string,
+  msgOnNotSelect: PropTypes.func,
+  onDelete: PropTypes.func,
+  onClose: PropTypes.func
 }
+*/
 
 export default GroupDeletePane
