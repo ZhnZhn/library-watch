@@ -5,6 +5,7 @@ import {
   useCallback
 } from '../uiApi';
 import useListen from '../hooks/useListen';
+import useValidationMessages from './useValidationMessages';
 
 import RowInputSelect from './RowInputSelect';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
@@ -33,17 +34,11 @@ const GroupDeletePane = ({
   ] = useState(store.getWatchGroups)
   , [
     validationMessages,
-    setValidationMesages
-  ] = useState([])
+    setValidationMessages,
+    _hClear
+  ] = useValidationMessages()
   , _hSelectGroup = useCallback(item => {
      _setRefValue(_refCaption, item && item.caption || null)
-  }, [])
-  , _hClear = useCallback(() => {
-    setValidationMesages(
-      prevState => prevState.length > 0
-        ? []
-        : prevState
-    )
   }, [])
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hDeleteGroup = useCallback(() => {
@@ -51,7 +46,7 @@ const GroupDeletePane = ({
     if (caption) {
       onDelete({ caption })
     } else {
-      setValidationMesages([msgOnNotSelect('Group')])
+      setValidationMessages([msgOnNotSelect('Group')])
     }
   }, [])
   // onDelete, msgOnNotSelect
