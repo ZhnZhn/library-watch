@@ -2,8 +2,7 @@ import {
   useRef,
   useCallback
 } from '../uiApi';
-import useRefInit from '../hooks/useRefInit';
-import useRerender from '../hooks/useRerender';
+import useGroupOptions from './useGroupOptions';
 import useListen from '../hooks/useListen';
 import useValidationMessages from './useValidationMessages';
 
@@ -11,8 +10,7 @@ import SelectGroupList from './SelectGroupList';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
 import RowButtons from './RowButtons';
 
-const _getRefValue = ref => ref.current
-, _setRefValue = (ref, value) => ref.current = value;
+const _getRefValue = ref => ref.current;
 
 const ListDeletePane = ({
   store,
@@ -25,9 +23,8 @@ const ListDeletePane = ({
   const _refGroupList = useRef()
   , [
     groupOptions,
-    _refGroupOptions
-  ] = useRefInit(store.getWatchGroups)
-  , _rerenderComp = useRerender()
+    updateGroupOptions
+  ] = useGroupOptions(store)
   , [
     validationMessages,
     setValidationMessages,
@@ -60,8 +57,7 @@ const ListDeletePane = ({
       if (data && data.forActionType === forActionType) {
         _hClear()
       }
-      _setRefValue(_refGroupOptions, store.getWatchGroups())
-      _rerenderComp()
+      updateGroupOptions()
     }
   })
 
