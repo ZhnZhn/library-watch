@@ -1,112 +1,102 @@
-import { Component } from 'react';
-//import PropTypes from 'prop-types'
+import {
+  useRef,
+  useState,
+  useCallback
+} from '../uiApi';
+import useListen from '../hooks/useListen'
+import useValidationMessages from './useValidationMessages';
 
 import RowInputSelect from './RowInputSelect';
 import RowInputText from './RowInputText';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
 import RowButtons from './RowButtons';
 
-class GroupEditPane extends Component {
-  /*
-  statis propTypes = {
-    store : PropTypes.object,
-    actionCompleted : PropTypes.string,
-    actionFailed : PropTypes.string,
-    forActionType : PropTypes.string,
-    msgOnIsEmptyName : PropTypes.func,
-    msgOnNotSelect : PropTypes.func,
-    onRename : PropTypes.func,
-    onClose : PropTypes.func
-  },
-  */
-  constructor(props){
-    super(props)
-    const { store } = props;
-    this.captionFrom = null;
-    this.state = {
-      groupOptions: store.getWatchGroups(),
-      validationMessages: []
-    }
-  }
+const _getRefValue = ref => ref.current
+, _setRefValue = (ref, value) => ref.current = value
 
-  componentDidMount(){
-    this.unsubscribe = this.props
-      .store.listen(this._onStore)
-  }
-  componentWillUnmount(){
-    this.unsubscribe()
-  }
-  _onStore = (actionType, data) => {
-    const {actionCompleted, actionFailed, forActionType, store} = this.props;
-    if (actionType === actionCompleted){
-      if (data.forActionType === forActionType){
-        this._handlerClear();
+const GroupEditPane = ({
+  store,
+  actionCompleted,
+  actionFailed,
+  forActionType,
+  msgOnNotSelect,
+  msgOnIsEmptyName,
+  onRename,
+  onClose
+}) => {
+  const _refInputText = useRef()
+  , _refCaptionFrom = useRef(null)
+  , [
+    groupOptions,
+    setGroupOptions
+  ] = useState(store.getWatchGroups)
+  , [
+    validationMessages,
+    setValidationMessages,
+    _hClear
+  ] = useValidationMessages(
+    () => _getRefValue(_refInputText).setValue('')
+  )
+  , _hSelectGroup = useCallback(item => {
+    _setRefValue(_refCaptionFrom, item && item.caption || null)
+  }, [])
+  /* eslint-disable react-hooks/exhaustive-deps */
+  , _hRename = useCallback(() => {
+    const captionTo = _getRefValue(_refInputText).getValue()
+    , captionFrom = _getRefValue(_refCaptionFrom);
+    if (captionTo && captionFrom) {
+      onRename({
+        captionFrom,
+        captionTo
+      });
+    } else {
+      const msg = [];
+      if (!captionFrom){
+        msg.push(msgOnNotSelect('Group From'));
       }
-      this.setState({groupOptions : store.getWatchGroups()});
-    } else if (actionType === actionFailed && data.forActionType === forActionType){
-      this.setState({validationMessages: data.messages});
+      if (!captionTo){
+        msg.push(msgOnIsEmptyName('Group To'));
+      }
+      setValidationMessages(msg)
     }
-  }
+  }, [])
+  // onRename, msgOnNotSelect, msgOnIsEmptyName, setValidationMessages
+  /* eslint-enable react-hooks/exhaustive-deps */
 
-  _handlerSelectGroup = (item) => {
-     if (item && item.caption){
-       this.captionFrom = item.caption;
-     } else {
-       this.captionFrom = null;
-     }
-  }
-
-  _handlerClear = () => {
-    this.inputText.setValue('');
-    if (this.state.validationMessages.length>0){
-      this.setState({validationMessages:[]});
+  useListen(store, (actionType, data) => {
+    if (actionType === actionCompleted){
+      if (data && data.forActionType === forActionType){
+        _hClear();
+      }
+      setGroupOptions(store.getWatchGroups())
+    } else if (actionType === actionFailed
+         && data.forActionType === forActionType) {
+      setValidationMessages(data.messages)
     }
-  }
-  _handlerRename = () => {
-     const captionTo = this.inputText.getValue();
-     if (captionTo && this.captionFrom) {
-       this.props.onRename({captionFrom: this.captionFrom, captionTo});
-     } else {
-       const msg = [];
-       if (!this.captionFrom){
-         msg.push(this.props.msgOnNotSelect('Group From'));
-       }
-       if (!captionTo){
-         msg.push(this.props.msgOnIsEmptyName('Group To'));
-       }
-       this.setState({validationMessages: msg});
-     }
-  }
+  })
 
-  _refInputText = c => this.inputText = c
-
-  render(){
-    const { onClose } = this.props
-        , { groupOptions, validationMessages} = this.state;
-
-    return (
-       <div>
-          <RowInputSelect
-             caption="Group From"
-             options={groupOptions}
-             onSelect={this._handlerSelectGroup}
-          />
-         <RowInputText
-           ref={this._refInputText}
-           caption="Group To"
-         />
-         <ValidationMessages
-           validationMessages={validationMessages}
-         />
-         <RowButtons
-           caption="Rename"
-           onClick={this._handlerRename}
-           onClear={this._handlerClear}
-           onClose={onClose}
-         />
-       </div>
-    );
-  }
-}
+  return (
+    <div>
+       <RowInputSelect
+          caption="Group From"
+          options={groupOptions}
+          onSelect={_hSelectGroup}
+       />
+      <RowInputText
+        ref={_refInputText}
+        caption="Group To"
+      />
+      <ValidationMessages
+        validationMessages={validationMessages}
+      />
+      <RowButtons
+        caption="Rename"
+        onClick={_hRename}
+        onClear={_hClear}
+        onClose={onClose}
+      />
+    </div>
+  );
+};
 
 export default GroupEditPane
