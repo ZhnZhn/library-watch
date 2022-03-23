@@ -1,117 +1,82 @@
-import React, { Component } from 'react';
-//import PropTypes from 'prop-types'
+import { memo } from '../uiApi';
 
 import ChartActions from '../../flux/actions/ChartActions';
-import { BrowserType, ChartType } from '../../constants/Type';
+import {
+  BrowserType,
+  ChartType
+} from '../../constants/Type';
 import ModalDialog from '../zhn-moleculs/ModalDialog';
-import FlatButton from '../zhn-m/FlatButton'
+import FlatButton from '../zhn-m/FlatButton';
 
+import styles from '../styles/DialogStyles';
 
-import DialogStyles from '../styles/DialogStyles'
-
-const styles = DialogStyles;
-
-const DIALOG_CAPTION = "Load Watch Item";
-
-const S = {
-  ITEM_DESCRIPTION : {
-    fontWeight: 'bold',
-    color: 'gray',
-    paddingTop : '8px',
-    paddingLeft : '8px',
-    paddingRight : '8px'
-  },
-  LH_2: {
-    lineHeight: 2
-  },
-  LH_1_5: {
-    lineHeight: 1.5
-  },
-  BOLD: {
-    fontWeight: 'bold'
-  }
+const DIALOG_CAPTION = "Load Watch Item"
+, S_ITEM_DESCRIPTION = {
+  fontWeight: 'bold',
+  color: 'gray',
+  padding: '8 8 0 8'
 }
+, S_LH_2 = { lineHeight: 2 }
+, S_LH_1_5 = { lineHeight: 1.5 }
+, S_BOLD = { fontWeight: 'bold' };
 
-class LoadItemDialog extends Component {
-  /*
-   static propTypes = {
-     isShow  : PropTypes.bool.isRequired,
-     data    : PropTypes.object.isRequired,
-     store   : PropTypes.object,
-     onClose : PropTypes.func.isRequired
-   },
-   */
-   constructor(props){
-     super(props)
-     this._commandButtons = [
-      <FlatButton
-        key="load"
-        isPrimary={true}
-        caption="Load"
-        onClick={this._handlerLoad}
-      />
-     ]
-   }
+const _isNotShouldRerender = (props, nextProps) =>
+  props.isShow === nextProps.isShow;
 
-   shouldComponentUpdate(nextProps, nextState){
-     if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-       return false;
-     }
-     return true;
-   }
-
-  _handlerLoad = () => {
-     const { data, onClose } = this.props
-     ChartActions.loadStock(ChartType.WATCH_LIST, BrowserType.WATCH_LIST, data);
-     onClose();
+const LoadItemDialog = memo(({
+  isShow,
+  data,
+  onClose
+}) => {
+  const _hLoad = () => {
+    ChartActions.loadStock(ChartType.WATCH_LIST, BrowserType.WATCH_LIST, data);
+    onClose();
   }
+  , _commandButtons = [
+    <FlatButton
+      key="load"
+      isPrimary={true}
+      caption="Load"
+      onClick={_hLoad}
+    />
+   ]
+  , {
+    caption,
+    descr,
+    date
+  } = data;
 
-  _handlerClose = () => {
-     this.props.onClose();
-  }
-
-  _renderDate = (date) => {
-    return (
-      <div style={{ ...styles.rowDiv, ...S.LH_2 }} key="3">
-        <span style={styles.labelSpan}>
-           Date:
-        </span>
-        <span style={S.BOLD}>
-           {date}
+  return (
+    <ModalDialog
+       caption={DIALOG_CAPTION}
+       isShow={isShow}
+       commandButtons={_commandButtons}
+       onClose={onClose}
+    >
+      <div style={{...styles.rowDiv, ...S_LH_1_5}} key="1">
+        <span style={S_ITEM_DESCRIPTION}>
+           {descr}
         </span>
       </div>
-    );
-  }
-
-  render(){
-    const { isShow, data } = this.props
-        , { caption, descr, date } = data;
-
-    return (
-      <ModalDialog
-         caption={DIALOG_CAPTION}
-         isShow={isShow}
-         commandButtons={this._commandButtons}
-         onClose={this._handlerClose}
-      >
-        <div style={{ ...styles.rowDiv, ...S.LH_1_5 }} key="1">
-          <span style={S.ITEM_DESCRIPTION}>
-             {descr}
-          </span>
-        </div>
-        <div style={{ ...styles.rowDiv, ...S.LH_2 }} key="2">
+      <div style={{...styles.rowDiv, ...S_LH_2}} key="2">
+        <span style={styles.labelSpan}>
+          Item:
+        </span>
+        <span style={S_BOLD}>
+           {caption}
+        </span>
+      </div>
+      { date && <div style={{...styles.rowDiv, ...S_LH_2}} key="3">
           <span style={styles.labelSpan}>
-            Item:
+             Date:
           </span>
-          <span style={S.BOLD}>
-             {caption}
+          <span style={S_BOLD}>
+             {date}
           </span>
         </div>
-        { date && this._renderDate(date) }
-
-      </ModalDialog>
-    )
-  }
-}
+      }
+    </ModalDialog>
+  );
+}, _isNotShouldRerender);
 
 export default LoadItemDialog
