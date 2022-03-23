@@ -1,14 +1,15 @@
-import { Component } from 'react';
-
-//import PropTypes from "prop-types";
+import {
+  memo,
+  useRef,
+  useState,
+  useCallback
+} from '../uiApi';
 
 import FlatButton from '../zhn-m/FlatButton';
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import InputFileReader from '../zhn-atoms/InputFileReader';
 import ValidationMessages from './rows/ValidationMessages';
-import DialogStyles from '../styles/DialogStyles';
-
-const styles = DialogStyles;
+import styles from '../styles/DialogStyles';
 
 const MSG_FILE_NOT_CHOOSED = 'Please choose file for loading.'
 , S_MODAL_DIALOG = { minWidth: 320 }
@@ -18,104 +19,86 @@ const MSG_FILE_NOT_CHOOSED = 'Please choose file for loading.'
   marginRight: 16
 };
 
+const _getRefValue = ref => ref.current
+, _setRefValue = (ref, value) => ref.current = value
+, _isNotShouldRerender = (props, nextProps) =>
+  props.isShow === nextProps.isShow;
 
-class LoadFileDialog extends Component {
-  /*
-  static propTypes = {
-    isShow: PropTypes.bool,
-    data: PropTypes.shape({
-      onLoad: PropTypes.func
-    }),
-    onClose: PropTypes.func
-  }
-  */
-
-  constructor(props){
-    super(props)
-    this.progressEvent = null
-    this.file = null
-    this._commandButtons = [
-      <FlatButton
-        key="load"
-        isPrimary={true}
-        caption="Load"
-        timeout={2000}
-        onClick={this._handleLoad}
-     />
-   ]
-   this.state = {
-     validationMessages: []
-   }
-  }
-
-
-  shouldComponentUpdate(nextProps, nextState){
-    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-      return false;
-    }
-    return true;
-  }
-
-  _handleChange = (results) => {
-    if (results && results[0] ){
-      const [progressEvent, file] = results[0]
-      this.progressEvent = progressEvent
-      this.file = file
+const LoadFileDialog = memo(({
+  isShow,
+  data,
+  onClose
+}) => {
+  const _refTupleEventFile = useRef(null)
+  , [
+    validationMessages,
+    setValidationMessages
+  ] = useState([])
+  , _hChange = useCallback(results => {
+    const [_results] = results || []
+    , _tupleEventFile = _results
+         //progressEvent, file
+       ? [_results[0], _results[1]]
+       : null
+    _setRefValue(_refTupleEventFile, _tupleEventFile)
+  }, [])
+  , _hLoad = () => {
+    const [
+      progressEvent,
+      file
+    ] = _getRefValue(_refTupleEventFile) || [];
+    if (progressEvent && file){
+      const { onLoad } = data;
+      onLoad({ progressEvent });
+      setValidationMessages([])
     } else {
-      this.progressEvent = null
-      this.file = null
+      setValidationMessages([MSG_FILE_NOT_CHOOSED])
     }
   }
-
-  _handleLoad = () => {
-    if (this.progressEvent && this.file){
-      const { data } = this.props
-          , { onLoad } = data
-      onLoad({ progressEvent: this.progressEvent });
-      this.setState({
-        validationMessages: []
-      })
-    } else {
-      this.setState({
-        validationMessages: [MSG_FILE_NOT_CHOOSED]
-      })
-    }
-  }
-
-  _handleClose = () => {
-    const { onClose } = this.props;
-
-    if (this.state.validationMessages.length !== 0){
-      this.setState({ validationMessages : [] });
-    }
-    onClose()
-  }
-
-  render(){
-    const { isShow } = this.props
-        , { validationMessages } = this.state;
-    return (
-      <ModalDialog
-        style={S_MODAL_DIALOG}
-        caption="Load Watch Items from File"
-        isShow={isShow}
-        commandButtons={this._commandButtons}
-        onClose={this._handleClose}
-      >
-         <div style={{...styles.rowDiv, ...S_ROW_INPUT_FILE}}>
-            <InputFileReader
-               as="text"
-               onChange={this._handleChange}
-            />
-         </div>
-         <div style={{...styles.rowDiv, ...S_ROW_VALIDATION}}>
-           <ValidationMessages
-             validationMessages={validationMessages}
-           />
-         </div>
-      </ModalDialog>
+  , _hClose = useCallback(() => {
+    setValidationMessages(prevState =>
+      prevState.length !== 0
+        ? [] : prevState
     )
-  }
-}
+    onClose()
+  }, [onClose])
+  , _commandButtons = [
+     <FlatButton
+       key="load"
+       isPrimary={true}
+       caption="Load"
+       timeout={2000}
+       onClick={_hLoad}
+     />
+  ];
+
+  return (
+    <ModalDialog
+      style={S_MODAL_DIALOG}
+      caption="Load Watch Items from File"
+      isShow={isShow}
+      commandButtons={_commandButtons}
+      onClose={_hClose}
+    >
+       <div style={{
+         ...styles.rowDiv,
+         ...S_ROW_INPUT_FILE
+       }}>
+          <InputFileReader
+             as="text"
+             onChange={_hChange}
+          />
+       </div>
+       <div style={{
+         ...styles.rowDiv,
+         ...S_ROW_VALIDATION
+       }}>
+         <ValidationMessages
+            validationMessages={validationMessages}
+         />
+       </div>
+    </ModalDialog>
+  );
+}, _isNotShouldRerender)
 
 export default LoadFileDialog
