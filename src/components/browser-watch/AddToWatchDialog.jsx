@@ -1,8 +1,6 @@
 import { Component } from 'react';
 //import PropTypes from 'prop-types'
 
-import withValidationLoad from '../dialogs/decorators/withValidationLoad';
-
 import WatchActions from '../../flux/actions/WatchActions';
 import { WatchActionTypes as WAT } from '../../flux/actions/WatchActions';
 import Msg from '../../constants/Msg';
@@ -12,28 +10,19 @@ import FlatButton from '../zhn-m/FlatButton';
 import InputSelect from '../zhn-select/InputSelect';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
 
-import DialogStyles from '../styles/DialogStyles';
-
-const styles = DialogStyles;
+import styles from '../styles/DialogStyles';
 
 const actionCompleted = WAT.EDIT_WATCH_COMPLETED
 , actionFailed =  WAT.EDIT_WATCH_FAILED
-, forActionType = WAT.ADD_ITEM;
+, forActionType = WAT.ADD_ITEM
 
-const S = {
-  BOLD: {
-    fontWeight: 'bold'
-  },
-  LH: {
-    lineHeight: 2
-  },
-  DESCR: {
-    fontWeight: 'bold',
-    color: 'gray'
-  }
+, S_BOLD = { fontWeight: 'bold' }
+, S_LH = { lineHeight: 2 }
+, S_DESCR = {
+  fontWeight: 'bold',
+  color: 'gray'
 };
 
-@withValidationLoad
 class AddToWatchDialog extends Component {
   /*
   propTypes : {
@@ -85,16 +74,19 @@ class AddToWatchDialog extends Component {
 
   UNSAFE_componentWillReceiveProps(nextProps){
     if (nextProps !== this.props && nextProps.isShow !== this.props.isShow) {
-      const groups = nextProps.store.getWatchGroups();
-      if (groups !== this.state.groupOptions){
+      const groupOptions = nextProps.store.getWatchGroups();
+      if (groupOptions !== this.state.groupOptions){
         this.groupCaption = null;
         this.listCaption = null;
-        this.setState({groupOptions:groups, listOptions:[]});
+        this.setState({
+          groupOptions,
+          listOptions: []
+        });
       } else if (this.groupCaption){
-        const lists = nextProps.store.getWatchListsByGroup(this.groupCaption);
-        if (lists !== this.state.listOptions){
+        const listOptions = nextProps.store.getWatchListsByGroup(this.groupCaption);
+        if (listOptions !== this.state.listOptions){
           this.listCaption = null;
-          this.setState({listOptions:lists})
+          this.setState({ listOptions })
         }
       }
     }
@@ -110,41 +102,45 @@ class AddToWatchDialog extends Component {
   _handlerSelectGroup = (group) => {
     if (group && group.caption){
        this.groupCaption = group.caption;
-       if (group.lists){
-         this.setState({listOptions : group.lists})
-       }  else {
-         this.setState({listOptions : []})
-       }
+       this.setState({
+         listOptions: group.lists || []
+       })
     } else {
       this.groupCaption = null;
     }
   }
+
   _handlerSelectList = (list) => {
-      if (list && list.caption){
-        this.listCaption = list.caption;
-      } else {
-        this.listCaption = null;
-      }
+    this.listCaption = list && list.caption
+      || null
   }
+
   _handlerAdd = () => {
-    const validationMessages = this._crValidationMessages();
-    if (validationMessages.isValid){
+    const {
+      groupCaption,
+      listCaption
+    } = this
+    , validationMessages = [];
+    if (!groupCaption){
+      validationMessages.push(Msg.NOT_SELECTED('Group'));
+    }
+    if (!listCaption) {
+      validationMessages.push(Msg.NOT_SELECTED('List'));
+    }
+    if (validationMessages.length === 0){
       //onClose
       const { data } = this.props
-          , { caption, config } = data
-          , { groupCaption, listCaption } = this;
+      , { caption, config } = data;
 
-      WatchActions.addItem({ caption, groupCaption, listCaption, config });
+      WatchActions.addItem({
+        caption,
+        groupCaption,
+        listCaption,
+        config
+      });
     } else {
-      this._updateValidationMessages(validationMessages);
+      this.setState({ validationMessages });
     }
-  }
-  _crValidationMessages = () => {
-    const msg = [];
-    if (!this.groupCaption){ msg.push(Msg.NOT_SELECTED('Group'));}
-    if (!this.listCaption) { msg.push(Msg.NOT_SELECTED('List'));}
-    msg.isValid = (msg.length === 0) ? true : false;
-    return msg;
   }
 
   _handlerClose = () => {
@@ -187,19 +183,19 @@ class AddToWatchDialog extends Component {
              onSelect={this._handlerSelectList}
            />
         </div>
-        <div style={{...styles.rowDiv, ...S.LH}}>
+        <div style={{...styles.rowDiv, ...S_LH}}>
           <span style={styles.labelSpan}>
             Item:
           </span>
-          <span style={S.BOLD}>
+          <span style={S_BOLD}>
              {caption}
           </span>
         </div>
-        <div style={{...styles.rowDiv, ...S.LH}}>
+        <div style={{...styles.rowDiv, ...S_LH}}>
           <span style={styles.labelSpan}>
              Descr:
           </span>
-          <span style={S.DESCR}>
+          <span style={S_DESCR}>
              {descr}
           </span>
         </div>
