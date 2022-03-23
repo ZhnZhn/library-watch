@@ -1,5 +1,9 @@
-//import PropTypes from "prop-types";
-import { Component } from 'react';
+import {
+  forwardRef,
+  useRef,
+  useState,
+  useImperativeHandle
+} from '../uiApi';
 
 const S_ROOT = {
   position: 'relative',
@@ -8,133 +12,107 @@ const S_ROOT = {
   backgroundColor: '#e1e1cb',
 }
 , S_INPUT = {
-  background: 'transparent none repeat scroll 0 0',
-  border: 'medium none',
-  outline: 'medium none',
   color: 'green',
   width: '100%',
   height: 30,
   paddingLeft: 10,
   fontSize: '16px',
-  fontWeight: 'bold'
+  fontWeight: 'bold',
+  background: 'transparent none repeat scroll 0 0',
+  border: 'medium none',
+  outline: 'medium none',
 }
 , S_HR = {
+  width: 230,
+  margin: '0 0 5px 10px',
   borderWidth: 'medium medium 1px',
   borderStyle: 'none none solid',
   borderColor: 'red',
   borderImage: 'none',
-  width: 230,
-  margin: '0 0 5px 10px'
 }
-, S_HR_VALID = { borderColor: '#1b75bb' }
-, S_HR_NOT_VALID = { borderColor: '#f44336' }
+, COLOR_VALID = '#1b75bb'
+, COLOR_NOT_VALID = '#f44336'
+, S_HR_VALID = { borderColor: COLOR_VALID }
+, S_HR_NOT_VALID = { borderColor: COLOR_NOT_VALID }
 , S_ERR_MSG = {
-  color: '#f44336',
+  color: COLOR_NOT_VALID,
   padding: '0 0 5px 10px',
   fontSize: '12px',
   fontWeight: 'bold'
-};
+}
+, FN_NOOP = () => {};
 
-class InputDate extends Component {
-  /*
-  static propTypes = {
-    initValue: PropTypes.string,
-    errorMsg: PropTypes.string,
-    onTest: PropTypes.func
+const InputDate = forwardRef(({
+  initValue='',
+  errorMsg,
+  onTest=FN_NOOP
+}, ref) => {
+  const _refInput = useRef()
+  , [state, setState] = useState({
+    value: initValue,
+    isValid: true,
+    errMsg: null
+  })
+  , {
+    value,
+    isValid,
+    errMsg
+  } = state
+  , _hChangeValue = (event) => {
+    const { value } = event.target;
+    setState(prevState => {
+      const [isValid, errMsg] = onTest(value)
+        ? [true, null]
+        : [false, prevState.errMsg];
+      return {
+        value,
+        isValid,
+        errMsg
+      };
+    })
   }
-  */
-  static defaultProps = {
-    initValue: '',
-    onTest: () => {}
-  }
-
-  constructor(props){
-    super()
-    this.state = {
-      value: props.initValue,
-      errorInput: null,
-      isValid: true
-    }
-  }
-
-  setValue = (value) => {
-    if (!this.props.onTest(value)) {
-      this.setState({
-         value : value,
-         isValid : false
-      });
-    } else {
-      this.setState({
-        value: value,
-        isValid : true,
-        errorInput : null
-      });
-    }
-  }
-
-  _handleChangeValue = (event) => {
-    this.setValue(event.target.value);
-  }
-
-  _handleBlurValue = () => {
-    if (!this.props.onTest(this.state.value)) {
-      this.setState({
-          isValid : false,
-          errorInput : this.props.errorMsg
-      });
-    } else {
-      this.setState({
-          isValid : true,
-          errorInput : null
-      });
-    }
-  }
-
-  render(){
-    const {
+  , _hBlurValue = () => {
+    const [isValid, errMsg] = onTest(value)
+      ? [true, null]
+      : [false, errorMsg];
+    setState({
       value,
       isValid,
-      errorInput
-    } = this.state
-    , _hrStyle = isValid
-        ? S_HR_VALID
-        : S_HR_NOT_VALID;
+      errMsg
+    })
+  }
+  , _hrStyle = isValid
+      ? S_HR_VALID
+      : S_HR_NOT_VALID;
 
-    return (
-      <div style={S_ROOT}>
-        <input
-           ref={c => this.inputComp = c}
-           type="text"
-           name="date"
-           autoComplete="new-date"
-           autoCorrect="off"
-           autoCapitalize="off"
-           spellCheck={false}
-           style={S_INPUT}
-           placeholder="YYYY-MM-DD"
-           value={value}
-           onChange={this._handleChangeValue}
-           onBlur={this._handleBlurValue}
-        />
-        <hr style={{...S_HR, ..._hrStyle}} />
-        <div style={S_ERR_MSG}>
-          {errorInput}
-        </div>
+  useImperativeHandle(ref, () => ({
+    getValue: () => value,
+    isValid: () => isValid,
+    focus: () => _refInput.current.focus()
+  }), [isValid, value])
+
+  return (
+    <div style={S_ROOT}>
+      <input
+         ref={_refInput}
+         type="text"
+         name="date"
+         autoComplete="new-date"
+         autoCorrect="off"
+         autoCapitalize="off"
+         spellCheck={false}
+         style={S_INPUT}
+         placeholder="YYYY-MM-DD"
+         value={value}
+         onChange={_hChangeValue}
+         onBlur={_hBlurValue}
+      />
+      <hr style={{...S_HR, ..._hrStyle}} />
+      <div style={S_ERR_MSG}>
+        {errMsg}
       </div>
-    );
-  }
-
-  getValue(){
-    return this.state.value;
-  }
-
-  isValid(){
-    return this.state.isValid;
-  }
-
-  focus(){
-    this.inputComp.focus()
-  }
-}
+    </div>
+  );
+});
 
 export default InputDate
