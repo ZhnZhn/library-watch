@@ -2,13 +2,18 @@ import { Component } from 'react';
 
 import withWatchDnD from './decorators/withWatchDnD';
 
-import { ModalDialog } from '../../constants/Type';
-import ComponentActions from '../../flux/actions/ComponentActions';
-import BrowserActions from '../../flux/actions/BrowserActions';
 import WatchActions from '../../flux/actions/WatchActions';
+import {
+  showDialogLoadItemsFromFile,
+  showDialogWatchItem,
+  toggleWatchDbBrowser,
+  removeWatchItem,
+  backupWatchItemsToJson
+} from './WatchBarHandlers';
 
 import Comp from '../Comp'
 
+import EditBar from './EditBar';
 import WrapperInputSearch from './WrapperInputSearch';
 import WatchItem from './WatchItem';
 
@@ -22,87 +27,62 @@ const {
   OpenClose2
 } = Comp;
 
-const C_GROUP_OPEN = '#1b2836';
-const C_LIST_OPEN = '#80c040';
-const DRAG = {
+const C_GROUP_OPEN = '#1b2836'
+, C_LIST_OPEN = '#80c040'
+, DRAG = {
   GROUP: 'GROUP',
   C_GROUP_ENTER: C_GROUP_OPEN,
   LIST: 'LIST',
   C_LIST_ENTER: C_LIST_OPEN,
   ITEM: 'ITEM'
+}
+
+, CL_BROWSER_WATCH = "browser-watch"
+, CL_BROWSER_WATCH__30 = "browser-watch--1r"
+, CL_BROWSER_WATCH__60 = "browser-watch--2r"
+, CL_BT_CAPTION = "bt__watch__caption"
+
+, S_BROWSER = {
+  maxWidth: 500,
+  paddingRight: 0
+}
+, S_CAPTION_ROOT = { minWidth: 340 }
+, S_CAPTION_ROOT_DOUBLE = { minWidth: 310 }
+, S_WRAPPER_SEARCH = {
+   width: '100%',
+   padding: '0 24 8 0'
+}
+, S_GROUP_DIV = { lineHeight: 2 }
+, S_LIST_DIV = {
+  marginLeft: 8,
+  paddingLeft: 12,
+  lineHeight: 2,
+  borderLeft: '1px solid yellow',
+}
+, S_ITEM_NOT_SELECTED = {
+  marginRight: 10,
+  borderBottom: '1px solid rgba(128, 192, 64, 0.6)'
 };
 
-const CL = {
-  BROWSER_WATCH : "browser-watch",
-  BROWSER_WATCH__30 : "browser-watch--1r",
-  BROWSER_WATCH__60 : "browser-watch--2r",
-  BT_BAR: "bt__watch__bar",
-  BT_CAPTION: "bt__watch__caption",
-};
-
-
-const styles = {
-  browser : {
-    paddingRight: 0,
-    maxWidth: 500
-  },
-  captionRoot : {
-     minWidth: 340
-  },
-  captionRootDouble : {
-     minWidth: 310
-  },
-  editBarDiv : {
-    marginBottom: 10
-  },
-  btCircle : {
-    marginLeft: 20
-  },
-  btCircleRight : {
-    marginLeft: 20,
-    marginRight: 20
-  },
-  btEditBarList : {
-    marginLeft: 20
-  },
-  wrapperSearch : {
-     paddingBottom: 8,
-     width: '100%',
-     paddingRight: 24
-  },
-  scrollDiv : {
-    overflowY: 'auto',
-    height: '92%',
-    paddingRight: 10
-  },
-  groupDiv : {
-    lineHeight : 2
-  },
-  listDiv : {
-    marginLeft : 8,
-    paddingLeft : 12,
-    borderLeft : '1px solid yellow',
-    lineHeight : 2
-  },
-  itemNotSelected : {
-    borderBottom : '1px solid rgba(128, 192, 64, 0.6)',
-    marginRight : 10
-  }
-};
-
-const _crScrollClass = (isShowFind, isModeEdit) =>
-isShowFind && isModeEdit
-  ? CL.BROWSER_WATCH__60
+const _crScrollClass = (
+  isShowFind,
+  isModeEdit
+) => isShowFind && isModeEdit
+  ? CL_BROWSER_WATCH__60
   : isShowFind || isModeEdit
-      ? CL.BROWSER_WATCH__30
-      : CL.BROWSER_WATCH;
+      ? CL_BROWSER_WATCH__30
+      : CL_BROWSER_WATCH;
 
 @withWatchDnD
 class WatchBrowser extends Component {
 
   constructor(props){
     super(props)
-    const { isShow=false, isEditMode=false, store } = props;
+    const {
+      isShow=false,
+      isEditMode=false,
+      store
+    } = props;
 
     this._bindDnDGroup(DRAG, WatchActions)
     this._bindDnDList(DRAG, WatchActions)
@@ -141,7 +121,7 @@ class WatchBrowser extends Component {
      if (!this.props.isDoubleWatch){
        this.setState({ isShow : false });
      } else {
-       BrowserActions.toggleWatchDbBrowser();
+       toggleWatchDbBrowser()
      }
   }
   _handlerShow = () => {
@@ -162,16 +142,6 @@ class WatchBrowser extends Component {
     }))
   }
 
-  _handlerEditGroup(){
-    ComponentActions.showModalDialog(ModalDialog.EDIT_WATCH_GROUP);
-  }
-  _handlerEditList(){
-    ComponentActions.showModalDialog(ModalDialog.EDIT_WATCH_LIST);
-  }
-  _handlerDouble(){
-    BrowserActions.toggleWatchDbBrowser();
-  }
-
   _renderWatchList = (watchList) => {
      const { isModeEdit } = this.state;
      return watchList.groups.map((group, index) => {
@@ -179,7 +149,7 @@ class WatchBrowser extends Component {
        return (
                <OpenClose2
                   key={caption}
-                  style={styles.groupDiv}
+                  style={S_GROUP_DIV}
                   caption={caption}
                   isClose={true}
                   isDraggable={isModeEdit}
@@ -204,8 +174,8 @@ class WatchBrowser extends Component {
         <OpenClose2
            key={caption}
            fillOpen="#80c040"
-           style={styles.listDiv}
-           styleNotSelected={styles.itemNotSelected}
+           style={S_LIST_DIV}
+           styleNotSelected={S_ITEM_NOT_SELECTED}
            caption={caption}
            isClose={true}
            isDraggable={isModeEdit}
@@ -222,12 +192,9 @@ class WatchBrowser extends Component {
     })
   }
 
-  _handlerClickItem(item){
-    ComponentActions.showModalDialog(ModalDialog.LOAD_WATCH_ITEM, item);
-  }
   _handlerRemoveItem(option, event){
     event.stopPropagation();
-    WatchActions.removeItem(option);
+    removeWatchItem(option)
   }
 
   _renderItems = (items, groupCaption, listCaption) => {
@@ -244,7 +211,7 @@ class WatchBrowser extends Component {
               isModeEdit={isModeEdit}
               item={item}
               option={{ groupCaption, listCaption, caption }}
-              onClick={this._handlerClickItem}
+              onClick={showDialogWatchItem}
               onClose={this._handlerRemoveItem}
               onDragStart={this._hDragStartItem}
               onDragOver={this._hDragOverItem}
@@ -256,40 +223,6 @@ class WatchBrowser extends Component {
       })
   }
 
-  _renderEditBar = (isModeEdit) => {
-    if (isModeEdit){
-      return (
-        <div style={styles.editBarDiv}>
-           <ButtonCircle
-             caption="GROUP"
-             title="Edit Group"
-             className={CL.BT_BAR}
-             isWithoutDefault={true}
-             onClick={this._handlerEditGroup}
-          />
-          <ButtonCircle
-             caption="LIST"
-             title="Edit Group List"
-             className={CL.BT_BAR}
-             isWithoutDefault={true}
-             style={styles.btEditBarList}
-             onClick={this._handlerEditList}
-          />
-          <ButtonCircle
-             caption="DB"
-             title="Double Watch Browser"
-             className={CL.BT_BAR}
-             isWithoutDefault={true}
-             style={styles.btEditBarList}
-             onClick={this._handlerDouble}
-          />
-        </div>
-      )
-    } else {
-      return null;
-    }
-  }
-
   _renderFindInput = (watchList) => {
     const { isShowFind } = this.state
     const _isShouldUpdate = (isShowFind && this.isShouldUpdateFind)
@@ -299,36 +232,39 @@ class WatchBrowser extends Component {
     return (
       <ShowHide isShow={isShowFind}>
         <WrapperInputSearch
-            style={styles.wrapperSearch}
+            style={S_WRAPPER_SEARCH}
             data={watchList}
             isShouldUpdate={_isShouldUpdate}
-            onSelect={this._handlerClickItem}
+            onSelect={showDialogWatchItem}
         />
       </ShowHide>
     );
   }
 
   render(){
-    const { caption, isDoubleWatch, store } = this.props
-        , {
-            isShow,
-            isModeEdit,
-            isShowFind,
-            watchList
-          } = this.state
-        , _styleCaption = (isDoubleWatch)
-               ? styles.captionRootDouble
-               : styles.captionRoot
-        , _captionEV = (isModeEdit) ? 'V' : 'E'
-        , _titleEV = (isModeEdit)
-              ? "Toggle to View Mode"
-              : "Toggle to Edit Mode"
-        , _scrollClass = _crScrollClass(isShowFind, isModeEdit);
+    const {
+      caption,
+      isDoubleWatch,
+      store
+    } = this.props
+    , {
+        isShow,
+        isModeEdit,
+        isShowFind,
+        watchList
+     } = this.state
+    , _styleCaption = isDoubleWatch
+        ? S_CAPTION_ROOT_DOUBLE
+        : S_CAPTION_ROOT
+    , [_captionEV, _titleEV] = isModeEdit
+       ? ['V', 'Toggle to View Mode']
+       : ['E', 'Toggle to Edit Mode']
+    , _scrollClass = _crScrollClass(isShowFind, isModeEdit);
 
     return (
        <Browser
           isShow={isShow}
-          style={styles.browser}
+          style={S_BROWSER}
         >
          <CaptionRow
             style={_styleCaption}
@@ -336,18 +272,18 @@ class WatchBrowser extends Component {
             onClose={this._handlerHide}
          >
            <ButtonSave
-             className={CL.BT_CAPTION}
+             className={CL_BT_CAPTION}
              store={store}
            />
            <ButtonCircle
-              className={CL.BT_CAPTION}
+              className={CL_BT_CAPTION}
               caption={_captionEV}
               title={_titleEV}
               isWithoutDefault={true}
               onClick={this._handlerToggleEditMode}
            />
            <ButtonCircle
-             className={CL.BT_CAPTION}
+             className={CL_BT_CAPTION}
              caption="F"
              title="Show/Hide : Find Item Input"
              isWithoutDefault={true}
@@ -355,26 +291,24 @@ class WatchBrowser extends Component {
            />
            { !isDoubleWatch &&
              <ButtonCircle
-                className={CL.BT_CAPTION}
+                className={CL_BT_CAPTION}
                 caption="B"
                 title="BackUp Watch Items to JSON File"
                 isWithoutDefault={true}
-                onClick={WatchActions.backupToJson}
+                onClick={backupWatchItemsToJson}
               />
            }
            { !isDoubleWatch &&
              <ButtonCircle
-                className={CL.BT_CAPTION}
+                className={CL_BT_CAPTION}
                 caption="L"
                 title="Load Watch Items from JSON File"
                 isWithoutDefault={true}
-                onClick={ComponentActions.showModalDialog.bind(null, ModalDialog.LOAD_FILE, {
-                   onLoad : WatchActions.loadFromJson
-                })}
+                onClick={showDialogLoadItemsFromFile}
               />
            }
          </CaptionRow>
-         {this._renderEditBar(isModeEdit)}
+         <EditBar is={isModeEdit} />
          {watchList && this._renderFindInput(watchList)}
          <ScrollPane className={_scrollClass}>
            {watchList && this._renderWatchList(watchList)}
