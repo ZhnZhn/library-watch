@@ -10,12 +10,13 @@ const Browser = ({
   style,
   children
 }) => {
-    const _className = isShow ? CL_OPEN : null
-    , _style = isShow ? S_BLOCK : S_NONE;
+    const [_style, _className] = isShow
+      ? [S_BLOCK, CL_OPEN]
+      : [S_NONE];
     return (
       <div
         className={_className}
-        style={{ ...S_BROWSER, ...style, ..._style}}
+        style={{...S_BROWSER, ...style, ..._style}}
       >
         {children}
       </div>
