@@ -1,4 +1,11 @@
-import { Component } from 'react';
+import {
+  useRef,
+  useState,
+  useMemo
+} from '../uiApi';
+import useBool from '../hooks/useBool';
+import useToggle from '../hooks/useToggle';
+import useListen from '../hooks/useListen';
 
 import {
   showDialogLoadItemsFromFile,
@@ -21,10 +28,9 @@ const {
 } = Comp;
 
 const CL_BROWSER_WATCH = "browser-watch"
-, CL_BROWSER_WATCH__30 = "browser-watch--1r"
-, CL_BROWSER_WATCH__60 = "browser-watch--2r"
+, CL_BROWSER_WATCH__30 = `${CL_BROWSER_WATCH}--1r`
+, CL_BROWSER_WATCH__60 = `${CL_BROWSER_WATCH}--2r`
 , CL_BT_CAPTION = "bt__watch__caption"
-
 , S_BROWSER = {
   maxWidth: 500,
   paddingRight: 0
@@ -41,156 +47,124 @@ const _crScrollClass = (
       ? CL_BROWSER_WATCH__30
       : CL_BROWSER_WATCH;
 
-class WatchBrowser extends Component {
+const _getRefValue = ref => ref.current
+, _setRefValue = (ref, value) => ref.current = value;
 
-  constructor(props){
-    super(props)
-    const {
-      isShow,
-      isEditMode,
-      store
-    } = props;
-
-    this.isShouldUpdateFind = false;
-
-    this.state = {
-      isShow: !!isShow,
-      isModeEdit: !!isEditMode,
-      isShowFind: false,
-      watchList: store.getWatchList()
+const WatchBrowser = ({
+  isShow,
+  isEditMode,
+  isDoubleWatch,
+  caption,
+  store,
+  browserType,
+  showAction,
+  updateAction
+}) => {
+  const _refIsShouldUpdateFind = useRef(false)
+  , [isShowComp, showComp, hideComp] = useBool(isShow)
+  , [isModeEdit, _toggleEditMode] = useToggle(isEditMode)
+  , [isShowFind, _toggleFindInput] = useToggle()
+  , [watchList, setWatchList] = useState(store.getWatchList)
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , [_handlerHide, _handlerShow] = useMemo(() => [
+    () => {
+      if (isDoubleWatch) {
+        toggleWatchDbBrowser()
+      } else {
+        hideComp()
+      }
+    },
+    () => {
+      if (!isDoubleWatch) {
+        showComp()
+      }
     }
-  }
+  ], [isDoubleWatch])
+  // hideComp, showComp
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  componentDidMount(){
-    this.unsubscribe = this.props.store.listen(this._onStore);
-  }
-  componentWillUnmount(){
-    this.unsubscribe();
-  }
-  _onStore = (actionType, data) => {
-     const { browserType, showAction, updateAction } = this.props;
-     if (actionType === showAction && data === browserType ){
-       this._handlerShow();
-     } else if (actionType === updateAction) {
-       this.isShouldUpdateFind = true;
-       this.setState({
-         watchList: data,
-         isShowFind : false,
-      })
-    }
-  }
+  useListen(store, (actionType, data) => {
+    if (actionType === showAction && data === browserType ){
+      _handlerShow();
+    } else if (actionType === updateAction) {
+      _setRefValue(_refIsShouldUpdateFind, true)
+      setWatchList({...data})
+      _toggleFindInput(false)
+   }
+  })
 
-  _handlerHide = () => {
-     if (!this.props.isDoubleWatch){
-       this.setState({ isShow : false });
-     } else {
-       toggleWatchDbBrowser()
-     }
-  }
-  _handlerShow = () => {
-    if (!this.props.isDoubleWatch){
-     this.setState({ isShow : true });
-    }
-  }
+  const { groups } = watchList || {}
+  , _styleCaption = isDoubleWatch
+     ? S_CAPTION_ROOT_DOUBLE
+     : S_CAPTION_ROOT
+  , [_captionEV, _titleEV] = isModeEdit
+     ? ['V', 'Toggle to View Mode']
+     : ['E', 'Toggle to Edit Mode']
+ , _isShouldUpdateSearchInput = (isShowFind && _getRefValue(_refIsShouldUpdateFind))
+     ? (()=>{ _setRefValue(_refIsShouldUpdateFind, false); return true; })
+     : false
+ , _scrollClass = _crScrollClass(isShowFind, isModeEdit);
 
-  _handlerToggleEditMode = () => {
-    this.setState(prevState => ({
-      isModeEdit: !prevState.isModeEdit
-    }))
-  }
-
-  _handlerToggleFindInput = () => {
-    this.setState(prevState => ({
-      isShowFind: !prevState.isShowFind
-    }))
-  }
-
-  render(){
-    const {
-      caption,
-      isDoubleWatch,
-      store
-    } = this.props
-    , {
-        isShow,
-        isModeEdit,
-        isShowFind,
-        watchList
-     } = this.state
-     , { groups } = watchList || {}
-     , _styleCaption = isDoubleWatch
-        ? S_CAPTION_ROOT_DOUBLE
-        : S_CAPTION_ROOT
-     , [_captionEV, _titleEV] = isModeEdit
-        ? ['V', 'Toggle to View Mode']
-        : ['E', 'Toggle to Edit Mode']
-    , _isShouldUpdateSearchInput = (isShowFind && this.isShouldUpdateFind)
-        ? (()=>{ this.isShouldUpdateFind = false; return true; })
-        : false
-    , _scrollClass = _crScrollClass(isShowFind, isModeEdit);
-
-    return (
-       <Browser
-          isShow={isShow}
-          style={S_BROWSER}
-        >
-         <CaptionRow
-            style={_styleCaption}
-            caption={caption}
-            onClose={this._handlerHide}
-         >
-           <ButtonSave
-             className={CL_BT_CAPTION}
-             store={store}
-           />
-           <ButtonCircle
-              className={CL_BT_CAPTION}
-              caption={_captionEV}
-              title={_titleEV}
-              isWithoutDefault={true}
-              onClick={this._handlerToggleEditMode}
-           />
-           <ButtonCircle
-             className={CL_BT_CAPTION}
-             caption="F"
-             title="Show/Hide : Find Item Input"
-             isWithoutDefault={true}
-             onClick={this._handlerToggleFindInput}
-           />
-           { !isDoubleWatch && <>
-               <ButtonCircle
-                  className={CL_BT_CAPTION}
-                  caption="B"
-                  title="BackUp Watch Items to JSON File"
-                  isWithoutDefault={true}
-                  onClick={backupWatchItemsToJson}
-                />
-                <ButtonCircle
-                   className={CL_BT_CAPTION}
-                   caption="L"
-                   title="Load Watch Items from JSON File"
-                   isWithoutDefault={true}
-                   onClick={showDialogLoadItemsFromFile}
-                />
-              </>
-           }
-         </CaptionRow>
-         <EditBar is={isModeEdit} />
-         <SearchInput
-            isShow={isShowFind}
-            isShouldUpdate={_isShouldUpdateSearchInput}
-            data={watchList}
-         />
-         <ScrollPane className={_scrollClass}>
-           <WatchGroups
-              isModeEdit={isModeEdit}
-              groups={groups}
-           />
-         </ScrollPane>
-      </Browser>
-    )
-  }
-}
-
+  return (
+    <Browser
+       isShow={isShowComp}
+       style={S_BROWSER}
+     >
+      <CaptionRow
+         style={_styleCaption}
+         caption={caption}
+         onClose={_handlerHide}
+      >
+        <ButtonSave
+          className={CL_BT_CAPTION}
+          store={store}
+        />
+        <ButtonCircle
+           isWithoutDefault={true}
+           className={CL_BT_CAPTION}
+           caption={_captionEV}
+           title={_titleEV}
+           onClick={_toggleEditMode}
+        />
+        <ButtonCircle
+          isWithoutDefault={true}
+          className={CL_BT_CAPTION}
+          caption="F"
+          title="Show/Hide : Find Item Input"
+          onClick={_toggleFindInput}
+        />
+        { !isDoubleWatch && <>
+            <ButtonCircle
+               isWithoutDefault={true}
+               className={CL_BT_CAPTION}
+               caption="B"
+               title="BackUp Watch Items to JSON File"
+               onClick={backupWatchItemsToJson}
+             />
+             <ButtonCircle
+                isWithoutDefault={true}
+                className={CL_BT_CAPTION}
+                caption="L"
+                title="Load Watch Items from JSON File"
+                onClick={showDialogLoadItemsFromFile}
+             />
+           </>
+        }
+      </CaptionRow>
+      <EditBar is={isModeEdit} />
+      <SearchInput
+         isShow={isShowFind}
+         isShouldUpdate={_isShouldUpdateSearchInput}
+         data={watchList}
+      />
+      <ScrollPane className={_scrollClass}>
+        <WatchGroups
+           isModeEdit={isModeEdit}
+           groups={groups}
+        />
+      </ScrollPane>
+   </Browser>
+  );
+};
 
 export default WatchBrowser

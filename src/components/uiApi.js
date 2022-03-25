@@ -7,6 +7,7 @@ export {
   useState,
   useReducer,
   useCallback,
+  useMemo,
   useLayoutEffect,
   useEffect,
   useImperativeHandle
