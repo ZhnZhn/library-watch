@@ -19,8 +19,10 @@ export const showDialogLoadItemsFromFile = ComponentActions.showModalDialog.bind
    onLoad: WatchActions.loadFromJson
 });
 
-export const removeWatchItem = option =>
+export const removeWatchItem = (option, event) => {
+  event.stopPropagation()
   WatchActions.removeItem(option)
+}
 
 export const backupWatchItemsToJson =
-  WatchActions.backupToJson  
+  WatchActions.backupToJson

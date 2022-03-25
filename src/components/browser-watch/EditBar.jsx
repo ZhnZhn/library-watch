@@ -2,7 +2,7 @@ import {
   showDialogEditGroups,
   showDialogEditLists,
   toggleWatchDbBrowser
-} from './WatchBarHandlers';
+} from './Handlers';
 
 import Comp from '../Comp';
 
