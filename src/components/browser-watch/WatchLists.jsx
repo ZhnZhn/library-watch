@@ -1,17 +1,16 @@
-import { Component } from 'react'
+import {
+  hDragStartList,
+  hDragEnterList,
+  hDragOverList,
+  hDragLeaveList,
+  hDropList
+} from './dnd-handlers/DnDListHandlers';
 
-import withDnDStyle from './decorators/withDnDStyle';
-import withDnDList from './decorators/withDnDList';
-
-import WatchActions from '../../flux/actions/WatchActions';
 import Comp from '../Comp';
 import WatchItems from './WatchItems';
 
-import DRAG from './WatchDnDConfig';
-
-const { OpenClose2 } = Comp;
-
-const S_LIST_DIV = {
+const { OpenClose2 } = Comp
+, S_LIST_DIV = {
   marginLeft: 8,
   paddingLeft: 12,
   lineHeight: 2,
@@ -20,53 +19,37 @@ const S_LIST_DIV = {
 , S_ITEM_NOT_SELECTED = {
   marginRight: 10,
   borderBottom: '1px solid rgba(128, 192, 64, 0.6)'
-};
-
-const _isArr = Array.isArray;
-
-@withDnDStyle
-@withDnDList
-class WatchLists extends Component {
-
-  constructor(props){
-    super(props)
-    this._bindDnDList(DRAG, WatchActions)
-  }
-
-  render(){
-    const {
-      isModeEdit,
-      groupCaption,
-      lists  
-    } = this.props;
-    return _isArr(lists) ? lists.map(list => {
-      const { caption, items } = list;
-      return (
-        <OpenClose2
-           key={caption}
-           fillOpen="#80c040"
-           style={S_LIST_DIV}
-           styleNotSelected={S_ITEM_NOT_SELECTED}
-           caption={caption}
-           isClose={true}
-           isDraggable={isModeEdit}
-           option={{ groupCaption, caption }}
-           onDragStart={this._hDragStartList}
-           onDragEnter={this._hDragEnterList}
-           onDragOver={this._hDragOverList}
-           onDragLeave={this._hDragLeaveList}
-           onDrop={this._hDropList}
-        >
-          <WatchItems
-            isModeEdit={isModeEdit}
-            items={items}
-            groupCaption={groupCaption}
-            caption={caption}
-          />
-        </OpenClose2>
-      )
-    }) : null;
-  }
 }
+, _isArr = Array.isArray;
+
+const WatchLists = ({
+  isModeEdit,
+  groupCaption,
+  lists
+}) => _isArr(lists) ? lists
+  .map(({ caption, items }) => (
+    <OpenClose2
+       key={caption}
+       fillOpen="#80c040"
+       style={S_LIST_DIV}
+       styleNotSelected={S_ITEM_NOT_SELECTED}
+       caption={caption}
+       isClose={true}
+       isDraggable={isModeEdit}
+       option={{ groupCaption, caption }}
+       onDragStart={hDragStartList}
+       onDragEnter={hDragEnterList}
+       onDragOver={hDragOverList}
+       onDragLeave={hDragLeaveList}
+       onDrop={hDropList}
+    >
+      <WatchItems
+        isModeEdit={isModeEdit}
+        items={items}
+        groupCaption={groupCaption}
+        caption={caption}
+      />
+    </OpenClose2>
+  )) : null;
 
 export default WatchLists
