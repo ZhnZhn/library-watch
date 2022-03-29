@@ -19,10 +19,9 @@ import Msg from '../../constants/Msg';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import RowInputSelect from './RowInputSelect';
+import RowText from './RowText';
 import FlatButton from '../zhn-m/FlatButton';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
-
-import styles from '../styles/DialogStyles';
 
 const actionCompleted = WAT.EDIT_WATCH_COMPLETED
 , actionFailed =  WAT.EDIT_WATCH_FAILED
@@ -51,7 +50,10 @@ const AddToWatchDialog = memo((props) => {
     _refListCaption,
     _handlerSelectList
   ] = useRefItemCaption()
-  , [state, setState] = useState(() => ({
+  , [
+    state,
+    setState
+  ] = useState(() => ({
     groupOptions: store.getWatchGroups(),
     listOptions: []
   }))
@@ -175,22 +177,18 @@ const AddToWatchDialog = memo((props) => {
         options={listOptions}
         onSelect={_handlerSelectList}
       />
-      <div style={{...styles.rowDiv, ...S_LH}}>
-        <span style={styles.labelSpan}>
-          Item:
-        </span>
-        <span style={S_BOLD}>
-           {caption}
-        </span>
-      </div>
-      <div style={{...styles.rowDiv, ...S_LH}}>
-        <span style={styles.labelSpan}>
-           Descr:
-        </span>
-        <span style={S_DESCR}>
-           {descr}
-        </span>
-      </div>
+      <RowText
+        style={S_LH}
+        caption="Item"
+        textStyle={S_BOLD}
+        text={caption}
+      />
+      <RowText
+        style={S_LH}
+        caption="Descr"
+        textStyle={S_DESCR}
+        text={descr}
+      />
       <ValidationMessages
          validationMessages={validationMessages}
        />
