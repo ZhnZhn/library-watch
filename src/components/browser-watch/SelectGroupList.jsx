@@ -6,14 +6,13 @@ import {
   useCallback,
   useEffect,
   useImperativeHandle,
-  getRefValue
+  getRefValue,
+  setRefValue
 } from '../uiApi';
 import usePrevValue from '../hooks/usePrevValue';
 import useRefItemCaption from './useRefItemCaption';
 
 import RowInputSelect from './RowInputSelect';
-
-const _setRefValue = (ref, value) => ref.current = value;
 
 const SelectGroupList = forwardRef((props, ref) => {
   const _prevProps = usePrevValue(props)
@@ -28,10 +27,10 @@ const SelectGroupList = forwardRef((props, ref) => {
     ] = useState([])
   , _hSelectGroup = useCallback(item => {
     if (item && item.caption){
-      _setRefValue(_refGroupCaption, item.caption)
+      setRefValue(_refGroupCaption, item.caption)
       setListOptions(item.lists || [])
     } else {
-      _setRefValue(_refGroupCaption, null)
+      setRefValue(_refGroupCaption, null)
     }
   }, [])
   , {
@@ -46,14 +45,14 @@ const SelectGroupList = forwardRef((props, ref) => {
     if (_prevProps && props !== _prevProps) {
       const _groupCaption = getRefValue(_refGroupCaption);
       if (props.groupOptions !== _prevProps.groupOptions){
-          _setRefValue(_refGroupCaption, null)
-          _setRefValue(_refListCaption, null)
+          setRefValue(_refGroupCaption, null)
+          setRefValue(_refListCaption, null)
           setListOptions([]);
       } else if (_groupCaption) {
         setListOptions(prevListOptions => {
           const listOptions = store.getWatchListsByGroup(_groupCaption);
           if (listOptions !== prevListOptions) {
-            _setRefValue(_refListCaption, null)
+            setRefValue(_refListCaption, null)
             return listOptions;
           }
           return prevListOptions;
@@ -69,8 +68,8 @@ const SelectGroupList = forwardRef((props, ref) => {
       captionList: getRefValue(_refListCaption)
     }),
     setValueNull: () => {
-      _setRefValue(_refGroupCaption, null)
-      _setRefValue(_refListCaption, null)
+      setRefValue(_refGroupCaption, null)
+      setRefValue(_refListCaption, null)
     }
   }))
 
