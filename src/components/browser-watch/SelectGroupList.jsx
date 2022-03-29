@@ -8,6 +8,7 @@ import {
   useImperativeHandle
 } from '../uiApi';
 import usePrevValue from '../hooks/usePrevValue';
+import useRefItemCaption from './useRefItemCaption';
 
 import RowInputSelect from './RowInputSelect';
 
@@ -17,11 +18,14 @@ const _getRefValue = ref => ref.current
 const SelectGroupList = forwardRef((props, ref) => {
   const _prevProps = usePrevValue(props)
   , _refGroupCaption = useRef(null)
-  , _refListCaption = useRef(null)
   , [
-    listOptions,
-    setListOptions
-  ] = useState([])
+      _refListCaption,
+      _hSelectList
+    ] = useRefItemCaption()
+  , [
+      listOptions,
+      setListOptions
+    ] = useState([])
   , _hSelectGroup = useCallback(item => {
     if (item && item.caption){
       _setRefValue(_refGroupCaption, item.caption)
@@ -29,9 +33,6 @@ const SelectGroupList = forwardRef((props, ref) => {
     } else {
       _setRefValue(_refGroupCaption, null)
     }
-  }, [])
-  , _hSelectList = useCallback(item => {
-     _setRefValue(_refListCaption, (item && item.caption) || null)
   }, [])
   , {
     store,

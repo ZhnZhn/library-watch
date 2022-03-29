@@ -4,6 +4,7 @@ import {
   useCallback
 } from '../uiApi';
 import useListen from '../hooks/useListen'
+import useRefItemCaption from './useRefItemCaption';
 import useValidationMessages from './useValidationMessages';
 
 import RowInputSelect from './RowInputSelect';
@@ -12,7 +13,6 @@ import ValidationMessages from '../dialogs/rows/ValidationMessages';
 import RowButtons from './RowButtons';
 
 const _getRefValue = ref => ref.current
-, _setRefValue = (ref, value) => ref.current = value
 
 const GroupEditPane = ({
   store,
@@ -25,7 +25,10 @@ const GroupEditPane = ({
   onClose
 }) => {
   const _refInputText = useRef()
-  , _refCaptionFrom = useRef(null)
+  , [
+     _refCaptionFrom,
+     _hSelectGroup
+    ] = useRefItemCaption()
   , [
     groupOptions,
     setGroupOptions
@@ -37,9 +40,6 @@ const GroupEditPane = ({
   ] = useValidationMessages(
     () => _getRefValue(_refInputText).setValue('')
   )
-  , _hSelectGroup = useCallback(item => {
-    _setRefValue(_refCaptionFrom, item && item.caption || null)
-  }, [])
   /* eslint-disable react-hooks/exhaustive-deps */
   , _hRename = useCallback(() => {
     const captionTo = _getRefValue(_refInputText).getValue()
