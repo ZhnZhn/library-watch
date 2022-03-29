@@ -18,8 +18,8 @@ import { WatchActionTypes as WAT } from '../../flux/actions/WatchActions';
 import Msg from '../../constants/Msg';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
+import RowInputSelect from './RowInputSelect';
 import FlatButton from '../zhn-m/FlatButton';
-import InputSelect from '../zhn-select/InputSelect';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
 
 import styles from '../styles/DialogStyles';
@@ -165,26 +165,16 @@ const AddToWatchDialog = memo((props) => {
        commandButtons={_commandButtons}
        onClose={_hClose}
     >
-      <div style={styles.rowDiv}>
-        <span style={styles.labelSpan}>
-          Group:
-        </span>
-        <InputSelect
-           width="250"
-           options={groupOptions}
-           onSelect={_hSelectGroup}
-         />
-      </div>
-      <div style={styles.rowDiv}>
-        <span style={styles.labelSpan}>
-          List:
-        </span>
-        <InputSelect
-           width="250"
-           options={listOptions}
-           onSelect={_handlerSelectList}
-         />
-      </div>
+      <RowInputSelect
+        caption="Group"
+        options={groupOptions}
+        onSelect={_hSelectGroup}
+      />
+      <RowInputSelect
+        caption="List"
+        options={listOptions}
+        onSelect={_handlerSelectList}
+      />
       <div style={{...styles.rowDiv, ...S_LH}}>
         <span style={styles.labelSpan}>
           Item:
