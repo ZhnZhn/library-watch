@@ -1,6 +1,7 @@
 import {
   useRef,
-  useCallback
+  useCallback,
+  getRefValue
 } from '../uiApi';
 import useListen from '../hooks/useListen';
 import useValidationMessages from './useValidationMessages';
@@ -8,8 +9,6 @@ import useValidationMessages from './useValidationMessages';
 import RowInputText from './RowInputText';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
 import RowButtons from './RowButtons';
-
-const _getRefValue = ref => ref.current;
 
 const GroupAddPane = ({
   store,
@@ -26,11 +25,11 @@ const GroupAddPane = ({
     setValidationMessages,
     _hClear
   ] = useValidationMessages(
-    () => _getRefValue(_refInputText).setValue("")
+    () => getRefValue(_refInputText).setValue("")
   )
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hCreate = useCallback(() => {
-    const _inputComp = _getRefValue(_refInputText)
+    const _inputComp = getRefValue(_refInputText)
     , caption = _inputComp.getValue();
     if (caption){
       onCreate({ caption });

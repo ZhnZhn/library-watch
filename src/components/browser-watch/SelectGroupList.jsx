@@ -5,15 +5,15 @@ import {
   useState,
   useCallback,
   useEffect,
-  useImperativeHandle
+  useImperativeHandle,
+  getRefValue
 } from '../uiApi';
 import usePrevValue from '../hooks/usePrevValue';
 import useRefItemCaption from './useRefItemCaption';
 
 import RowInputSelect from './RowInputSelect';
 
-const _getRefValue = ref => ref.current
-, _setRefValue = (ref, value) => ref.current = value
+const _setRefValue = (ref, value) => ref.current = value;
 
 const SelectGroupList = forwardRef((props, ref) => {
   const _prevProps = usePrevValue(props)
@@ -44,7 +44,7 @@ const SelectGroupList = forwardRef((props, ref) => {
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (_prevProps && props !== _prevProps) {
-      const _groupCaption = _getRefValue(_refGroupCaption);
+      const _groupCaption = getRefValue(_refGroupCaption);
       if (props.groupOptions !== _prevProps.groupOptions){
           _setRefValue(_refGroupCaption, null)
           _setRefValue(_refListCaption, null)
@@ -65,8 +65,8 @@ const SelectGroupList = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     getValue: () => ({
-      captionGroup: _getRefValue(_refGroupCaption),
-      captionList: _getRefValue(_refListCaption)
+      captionGroup: getRefValue(_refGroupCaption),
+      captionList: getRefValue(_refListCaption)
     }),
     setValueNull: () => {
       _setRefValue(_refGroupCaption, null)

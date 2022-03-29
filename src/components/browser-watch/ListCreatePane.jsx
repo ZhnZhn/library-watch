@@ -1,7 +1,8 @@
 import {
   useRef,
   useState,
-  useCallback
+  useCallback,
+  getRefValue
 } from '../uiApi';
 import useListen from '../hooks/useListen';
 import useRefItemCaption from './useRefItemCaption';
@@ -11,8 +12,6 @@ import RowInputSelect from './RowInputSelect';
 import RowInputText from './RowInputText';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
 import RowButtons from './RowButtons';
-
-const _getRefValue = ref => ref.current
 
 const ListCreatePane = ({
   store,
@@ -38,12 +37,12 @@ const ListCreatePane = ({
     setValidationMessages,
     _hClear
   ] = useValidationMessages(
-    () => _getRefValue(_refInputText).setValue('')
+    () => getRefValue(_refInputText).setValue('')
   )
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hCreate = useCallback(() => {
-    const captionList = _getRefValue(_refInputText).getValue()
-    , captionGroup = _getRefValue(_refCaptionGroup);
+    const captionList = getRefValue(_refInputText).getValue()
+    , captionGroup = getRefValue(_refCaptionGroup);
     if (captionGroup && captionList){
       onCreate({
          captionGroup,

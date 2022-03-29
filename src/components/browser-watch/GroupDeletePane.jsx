@@ -1,7 +1,8 @@
 //import PropTypes from 'prop-types'
 import {
   useState,
-  useCallback
+  useCallback,
+  getRefValue
 } from '../uiApi';
 import useListen from '../hooks/useListen';
 import useRefItemCaption from './useRefItemCaption';
@@ -10,8 +11,6 @@ import useValidationMessages from './useValidationMessages';
 import RowInputSelect from './RowInputSelect';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
 import RowButtons from './RowButtons';
-
-const _getRefValue = ref => ref.current;
 
 const GroupDeletePane = ({
   store,
@@ -36,7 +35,7 @@ const GroupDeletePane = ({
   ] = useValidationMessages()
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hDeleteGroup = useCallback(() => {
-    const caption = _getRefValue(_refCaption);
+    const caption = getRefValue(_refCaption);
     if (caption) {
       onDelete({ caption })
     } else {

@@ -1,7 +1,8 @@
 import {
   forwardRef,
   useRef,
-  useImperativeHandle
+  useImperativeHandle,
+  getRefValue
 } from '../uiApi';
 import InputText from '../zhn-atoms/InputText';
 import styles from '../styles/DialogStyles';
@@ -15,8 +16,7 @@ const S_ROW_DIV = { lineHeight: 2 }
   marginRight: 0,
   paddingLeft: 10,
   height: 30
-}
-, _getRefValue = ref => ref.current;
+};
 
 const RowInputText = forwardRef(({
   caption
@@ -24,10 +24,10 @@ const RowInputText = forwardRef(({
   const _refInput = useRef();
 
   useImperativeHandle(ref, () => ({
-    getValue: () => _getRefValue(_refInput)
+    getValue: () => getRefValue(_refInput)
       .getValue()
       .trim(),
-    setValue: (value) => _getRefValue(_refInput)
+    setValue: (value) => getRefValue(_refInput)
       .setValue(value)
   }))
 

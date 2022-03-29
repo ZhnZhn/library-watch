@@ -1,7 +1,8 @@
 import {
   useRef,
   useState,
-  useMemo
+  useMemo,
+  getRefValue
 } from '../uiApi';
 import useBool from '../hooks/useBool';
 import useToggle from '../hooks/useToggle';
@@ -47,8 +48,7 @@ const _crScrollClass = (
       ? CL_BROWSER_WATCH__30
       : CL_BROWSER_WATCH;
 
-const _getRefValue = ref => ref.current
-, _setRefValue = (ref, value) => ref.current = value;
+const _setRefValue = (ref, value) => ref.current = value;
 
 const WatchBrowser = ({
   isShow,
@@ -100,7 +100,7 @@ const WatchBrowser = ({
   , [_captionEV, _titleEV] = isModeEdit
      ? ['V', 'Toggle to View Mode']
      : ['E', 'Toggle to Edit Mode']
- , _isShouldUpdateSearchInput = (isShowFind && _getRefValue(_refIsShouldUpdateFind))
+ , _isShouldUpdateSearchInput = (isShowFind && getRefValue(_refIsShouldUpdateFind))
      ? (()=>{ _setRefValue(_refIsShouldUpdateFind, false); return true; })
      : false
  , _scrollClass = _crScrollClass(isShowFind, isModeEdit);

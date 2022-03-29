@@ -1,6 +1,7 @@
 import {
   useRef,
-  useCallback
+  useCallback,
+  getRefValue
 } from '../uiApi';
 import useGroupOptions from './useGroupOptions';
 import useListen from '../hooks/useListen';
@@ -9,8 +10,6 @@ import useValidationMessages from './useValidationMessages';
 import SelectGroupList from './SelectGroupList';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
 import RowButtons from './RowButtons';
-
-const _getRefValue = ref => ref.current;
 
 const ListDeletePane = ({
   store,
@@ -32,7 +31,7 @@ const ListDeletePane = ({
   ] = useValidationMessages()
   /* eslint-disable react-hooks/exhaustive-deps */
   , _hDelete = useCallback(() => {
-     const _selectGroupListComp = _getRefValue(_refGroupList)
+     const _selectGroupListComp = getRefValue(_refGroupList)
      , {
        captionGroup,
        captionList

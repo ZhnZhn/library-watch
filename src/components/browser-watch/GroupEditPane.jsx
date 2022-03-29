@@ -1,7 +1,8 @@
 import {
   useRef,
   useState,
-  useCallback
+  useCallback,
+  getRefValue
 } from '../uiApi';
 import useListen from '../hooks/useListen'
 import useRefItemCaption from './useRefItemCaption';
@@ -11,8 +12,6 @@ import RowInputSelect from './RowInputSelect';
 import RowInputText from './RowInputText';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
 import RowButtons from './RowButtons';
-
-const _getRefValue = ref => ref.current
 
 const GroupEditPane = ({
   store,
@@ -38,12 +37,12 @@ const GroupEditPane = ({
     setValidationMessages,
     _hClear
   ] = useValidationMessages(
-    () => _getRefValue(_refInputText).setValue('')
+    () => getRefValue(_refInputText).setValue('')
   )
   /* eslint-disable react-hooks/exhaustive-deps */
   , _hRename = useCallback(() => {
-    const captionTo = _getRefValue(_refInputText).getValue()
-    , captionFrom = _getRefValue(_refCaptionFrom);
+    const captionTo = getRefValue(_refInputText).getValue()
+    , captionFrom = getRefValue(_refCaptionFrom);
     if (captionTo && captionFrom) {
       onRename({
         captionFrom,
