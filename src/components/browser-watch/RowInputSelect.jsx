@@ -1,16 +1,6 @@
-import React from 'react';
-//import PropTypes from 'prop-types'
-
 import InputSelect from '../zhn-select/InputSelect';
-import DialogStyles from '../styles/DialogStyles'
-import crRowCaption from './crRowCaption'
-
-const styles = DialogStyles;
-const S = {
-  CAPTION: {
-    width: '120px'
-  }
-};
+import styles from '../styles/DialogStyles';
+import crRowCaption from './crRowCaption';
 
 const RowInputSelect = ({
   caption,
@@ -19,7 +9,7 @@ const RowInputSelect = ({
   onSelect
 }) => (
   <div style={styles.rowDiv}>
-     <span style={{ ...styles.labelSpan, ...S.CAPTION }}>
+     <span style={styles.labelSpan}>
        {crRowCaption(caption)}
      </span>
      <InputSelect
@@ -30,14 +20,5 @@ const RowInputSelect = ({
      />
   </div>
 );
-
-/*
-RowInputSelect.propTypes = {
-  caption : PropTypes.string,
-  options : PropTypes.array,
-  isUpdateOptions : PropTypes.bool,
-  onSelect : PropTypes.func
-}
-*/
 
 export default RowInputSelect
