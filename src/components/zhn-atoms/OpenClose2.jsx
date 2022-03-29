@@ -1,8 +1,6 @@
-//import PropTypes from 'prop-types'
-import { useCallback } from 'react';
-
+//import PropTypes from "prop-types";
+import useKeyEnter from '../hooks/useKeyEnter';
 import useToggle from '../hooks/useToggle';
-import isKeyEnter from './isKeyEnter';
 
 const CL_ROW_CAPTION = 'zhn-oc not-selected'
 , CL_SHOW_POPUP = 'show-popup'
@@ -26,32 +24,36 @@ S_CAPTION = {
 }
 , S_INLINE = { display: 'inline-block' }
 , S_BLOCK = { display: 'block' }
-, S_NONE = { display: 'none' };
+, S_NONE = { display: 'none' }
 
-const FILL_OPEN = 'yellow'
+, FILL_OPEN = 'yellow'
 , FILL_CLOSE = '#4d4d4d'
 , PATH_OPEN = "M 2,14 L 14,14 14,2 2,14"
 , PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
 const OpenClose2 = ({
   isClose=true,
-  style, styleNotSelected,
-  styleCaptionRow, styleCaption, caption,
+  style,
+  styleNotSelected,
+  styleCaptionRow,
+  styleCaption,
+  caption,
   fillOpen=FILL_OPEN,
   fillClose=FILL_CLOSE,
   isDraggable,
-  option, onDragStart, onDragEnter, onDragOver, onDragLeave, onDrop,
+  option,
+  onDragStart,
+  onDragEnter,
+  onDragOver,
+  onDragLeave,
+  onDrop,
   children
 }) => {
-  const [isOpen, _hToggle] = useToggle(!isClose)
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _hKeyDown = useCallback(event => {
-      if (isKeyEnter(event)){
-        _hToggle()
-      }
-    }, [])
-  // _hToggle
-  /*eslint-enable react-hooks/exhaustive-deps */
+  const [
+    isOpen,
+    _hToggle
+  ] = useToggle(!isClose)
+  , _hKeyDown = useKeyEnter(_hToggle)
   , _dragOption = isDraggable
      ? {
          draggable: true,
@@ -60,32 +62,24 @@ const OpenClose2 = ({
          onDragEnter: onDragEnter,
          onDragOver: onDragOver,
          onDragLeave: onDragLeave
-     }
-   : void 0;
-
-  let _pathV, _fillV, _styleCollapse, _classShow, _styleNotSelected;
-  if (isOpen){
-    _pathV = PATH_OPEN;
-    _fillV = fillOpen;
-    _styleCollapse = S_BLOCK;
-    _classShow = CL_SHOW_POPUP;
-    _styleNotSelected = null;
-  } else {
-    _pathV = PATH_CLOSE;
-    _fillV = fillClose;
-    _styleCollapse = S_NONE;
-    _classShow = null;
-    _styleNotSelected = styleNotSelected;
-  }
+       }
+     : void 0
+  , [
+    _pathV, _fillV, _styleCollapse, _classShow, _styleNotSelected
+  ] = isOpen ? [
+    PATH_OPEN, fillOpen, S_BLOCK, CL_SHOW_POPUP, null
+  ] : [
+    PATH_CLOSE, fillClose, S_NONE, null, styleNotSelected
+  ];
 
   return (
     <div style={{...S_ROOT, ...style}}>
       <div
-         className={CL_ROW_CAPTION}
-         style={{ ...styleCaptionRow, ..._styleNotSelected }}
-         onClick={_hToggle}
          tabIndex="0"
          role="menuitem"
+         className={CL_ROW_CAPTION}
+         style={{...styleCaptionRow, ..._styleNotSelected}}
+         onClick={_hToggle}
          onKeyDown={_hKeyDown}
          {..._dragOption}
        >
