@@ -1,7 +1,7 @@
-import ChartComponent from './ChartComponent';
+import ChartComponet from './ChartComponent';
 
 const LineChart = (props) => (
-	<ChartComponent
+	<ChartComponet
 		 {...props}
 		 type="line"
 	/>

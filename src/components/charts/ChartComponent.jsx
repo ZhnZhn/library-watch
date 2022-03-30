@@ -1,4 +1,11 @@
-import { Component } from 'react';
+import {
+	memo,
+	useRef,
+	useMemo,
+	useEffect,
+	getRefValue,
+	setRefValue
+} from '../uiApi';
 
 import {
 	Chart,
@@ -17,7 +24,10 @@ import deepEqual from '../../utils/deepEqual';
 import omit from '../../utils/omit';
 
 const IGNORED_PROPERTIES = [
-	'id', 'width', 'height', 'onElementsClick'
+	'id',
+	'width',
+	'height',
+	'onElementsClick'
 ];
 
 Chart.register(
@@ -30,13 +40,10 @@ Chart.register(
   Tooltip
 )
 
-
-const _isFn = fn => typeof fn === 'function'
-, _configMerge = merge;
-
 configChart(Chart)
 
-const DF_OPTIONS = {
+const _isFn = fn => typeof fn === 'function'
+, DF_OPTIONS = {
 	tooltips: {
 		callbacks: {
 			labelTextColor: function(tooltipItem, chartInst) {
@@ -46,106 +53,118 @@ const DF_OPTIONS = {
 	}
 };
 
-
-class ChartComponent extends Component {
-
-
-  /*
-	static propTypes = {
-		data: PropTypes.object.isRequired,
-		height: PropTypes.number,
-		legend: PropTypes.object,
-		onElementsClick: PropTypes.func,
-		options: PropTypes.object,
-		redraw: PropTypes.bool,
-		type: PropTypes.oneOf(['doughnut', 'pie', 'line', 'bar', 'horizontalBar', 'radar', 'polarArea']),
-		width: PropTypes.number
-		legendOptions: PropTypes.object
-	},
-	*/
-
-	static defaultProps = {
-			type: 'line',
-			height: 150,
-			width: 300,
-			redraw: false,
-	}
-
-
-	componentDidMount() {
-		this._renderChart();
-	}
-
-	componentDidUpdate() {
-		if (this.props.redraw) {
-			this.chart_instance.destroy();
-			this._renderChart();
-		} else {
-			this._updateChart();
-		}
-	}
-
-
-	shouldComponentUpdate(nextProps, nextState) {
-		const compareNext = omit(nextProps, IGNORED_PROPERTIES)
-		, compareNow = omit(this.props, IGNORED_PROPERTIES);
-		return !deepEqual(compareNext, compareNow, { strict: true });
-	}
-
-	componentWillUnmount() {
-		this.chart_instance.destroy();
-	}
-
-	_updateChart = () => {
-		const { data, options } = this.props;
-
-		if (!this.chart_instance) return;
-
-		if (options) {
-			this.chart_instance.options = _configMerge(this.chart_instance.options, options);
-		}
-
-		this.chart_instance.config.data = {
-			...this.chart_instance.config.data,
-			...data
-		};
-
-		this.chart_instance.update();
-	}
-
-	_renderChart = () => {
-		const { data, options, type } = this.props
-		, _options = _configMerge(DF_OPTIONS, options);
-		this.chart_instance = new Chart(this.rootNode, {
-			type,
-			data,
-			options: _options
-		});
-	}
-
-	_hClick = (evt) => {
-		const elems = this.chart_instance.getElementsAtEvent(evt);
-		if (elems.length) {
-			this.props.onElementsClick(elems);
-		}
-	}
-
-  _refRoot = n => this.rootNode = n
-
-	render() {
-		const { height, width, onElementsClick } = this.props
-		, _onClick = _isFn(onElementsClick)
-		     ? this._hClick
-				 : null;
-		return (
-			<canvas
-				 ref={this._refRoot}
-				 height={height}
-				 width={width}
-				 onClick={_onClick}
-			/>
-		);
-	}
+const _isNotShouldRerender = (
+	prevProps,
+	nextProps
+) => deepEqual(
+	omit(prevProps, IGNORED_PROPERTIES),
+	omit(nextProps, IGNORED_PROPERTIES),
+	{ strict: true }
+)
+,  _renderChart = (
+	refChartInst,
+	refCanvas,
+	type,
+	data,
+	options
+) => {
+	 setRefValue(refChartInst, new Chart(getRefValue(refCanvas), {
+		 type,
+		 data,
+		 options: merge(DF_OPTIONS, options)
+	}));
 }
+, _updateChart = (
+	chartInst,
+	data,
+	options
+) => {
+	 if (options) {
+		 chartInst.options = merge(chartInst.options, options);
+	 }
+	 chartInst.config.data = {
+		 ...chartInst.config.data,
+		 ...data
+	 };
+	 chartInst.update();
+};
+
+const ChartComponent = memo(({
+	 type='line',
+	 height=150,
+	 width=300,
+	 redraw=false,
+	 data,
+	 options,
+	 onElementsClick
+}) => {
+  const _refCanvas = useRef()
+	, _refChartInst = useRef()
+	, _hClick = useMemo(() => _isFn(onElementsClick)
+	    ? event => {
+				  const elems = getRefValue(_refChartInst).getElementsAtEvent(event);
+				  if (elems.length) {
+					  onElementsClick(elems);
+				  }
+			  }
+			: null
+  , [onElementsClick]);
+
+	useEffect(() => {
+		const _chartInst = getRefValue(_refChartInst);
+		if (_chartInst) {
+			if (redraw) {
+				_chartInst.destroy()
+				_renderChart(_refChartInst, _refCanvas, type, data, options)
+			} else {
+				_updateChart(_chartInst, data, options)
+			}
+		}
+	})
+
+  /*eslint-disable react-hooks/exhaustive-deps */
+  useEffect(() => {
+		_renderChart(_refChartInst, _refCanvas, type, data, options)
+	  return () => {
+			getRefValue(_refChartInst).destroy()
+			setRefValue(_refChartInst, null)
+		}
+	}, [])
+	// type, data, options
+	/*eslint-enable react-hooks/exhaustive-deps */
+
+	return (
+		<canvas
+			 ref={_refCanvas}
+			 height={height}
+			 width={width}
+			 onClick={_hClick}
+		/>
+	);
+}, _isNotShouldRerender);
+
+/*
+ChartComp.propTypes = {
+  type: PropTypes.oneOf([
+	  'line',
+		'bar'
+		'horizontalBar',
+	  'doughnut',
+		'pie',
+		'scatter',
+		'bubble'						
+		'radar',
+		'polarArea'
+	]),
+	width: PropTypes.number,
+	height: PropTypes.number,
+	redraw: PropTypes.bool,
+	data: PropTypes.object.isRequired,
+	options: PropTypes.object,
+	legend: PropTypes.object,
+	legendOptions: PropTypes.object
+	onElementsClick: PropTypes.func
+},
+*/
 
 export default ChartComponent;
