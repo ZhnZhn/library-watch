@@ -1,7 +1,7 @@
 import useToggle from '../hooks/useToggle';
 import useMenuMore from '../hooks/useMenuMore';
 
-import Chart from '../charts/Chart';
+import { fLineConfigs } from '../charts/ChartConfigFactories'
 import crModelMore from './crNpmModelMore';
 
 import A from '../zhn-atoms/A';
@@ -26,7 +26,7 @@ const _crChartConfig = (
   labels,
   data
 ) => {
-  const _lineChartConfig = Chart.fLineConfigs({ labels, data })
+  const _lineChartConfig = fLineConfigs({ labels, data })
   , _numSeries = _lineChartConfig.datasets.length
   , _height = 150 + Math.floor(_numSeries / 5) * 16;
   return [_lineChartConfig, _height];

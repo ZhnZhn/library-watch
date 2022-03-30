@@ -11,13 +11,12 @@ const COLORS = [
 const _crBgColor = str => `rgba(${str}, 0.4)`;
 const _crBorderColor = str => `rgba(${str}, 1)`;
 
-const _crDataset = (
-  {
-    label, data,
-    strColor=COLORS[0],
-    hidden=false
-  }={}
-) => {
+const _crDataset = ({
+  label,
+  data,
+  strColor=COLORS[0],
+  hidden=false
+}={}) => {
   const _label = label || data.seriaName || 'Downloads'
   , _borderColor = _crBorderColor(strColor);
   return {
@@ -48,24 +47,27 @@ const _crDataset = (
   };
 };
 
-const Chart = {
-  fLineConfig: ({ labels=['1', '2'], data=[0, 0] }) => ({
-    labels: labels,
-    datasets: [_crDataset({ data })]
-  }),
+export const fLineConfig = ({
+  labels=['1', '2'],
+  data=[0, 0]
+}) => ({
+  labels,
+  datasets: [_crDataset({ data })]
+})
 
-  fLineConfigs: ({ labels=['1', '2'], data=[[0, 0]], numVisible=5 }) => {
-    const numColors = COLORS.length
-    , datasets = data.map((arr, index) => _crDataset({
-        data: arr,
-        strColor: COLORS[index % numColors],
-        hidden: index >= numVisible ? true : false
-    }));
-    return {
-      labels,
-      datasets
-    };
-  }
+export const fLineConfigs = ({
+  labels=['1', '2'],
+  data=[[0, 0]],
+  numVisible=5
+}) => {
+  const numColors = COLORS.length
+  , datasets = data.map((arr, index) => _crDataset({
+      data: arr,
+      strColor: COLORS[index % numColors],
+      hidden: index >= numVisible ? true : false
+  }));
+  return {
+    labels,
+    datasets
+  };
 };
-
-export default Chart

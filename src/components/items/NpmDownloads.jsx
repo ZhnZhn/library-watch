@@ -1,6 +1,6 @@
 import { Component } from 'react'
 
-import Chart from '../charts/Chart'
+import { fLineConfig } from '../charts/ChartConfigFactories'
 
 import crModelMore from './crNpmModelMore'
 
@@ -219,7 +219,7 @@ class NpmDownloads extends Component {
       isLoadingNpms, isShowNmps, npmsJson,
       isLoadingBundle, isShowBundle, bundleJson
     } = this.state
-    , _lineChartConfig = Chart.fLineConfig({ labels, data })
+    , _lineChartConfig = fLineConfig({ labels, data })
     , _infoStyle = isButtons
           ? { ...S.ML_8, ...S.MT_16 }
           : S.ML_8;
