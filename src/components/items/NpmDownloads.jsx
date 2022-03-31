@@ -1,19 +1,21 @@
-import { Component } from 'react'
+import { useCallback } from '../uiApi';
+import useToggle from '../hooks/useToggle';
+import useRefInit from '../hooks/useRefInit';
 
-import { fLineConfig } from '../charts/ChartConfigFactories'
+import { fLineConfig } from '../charts/ChartConfigFactories';
 
-import crModelMore from './crNpmModelMore'
+import crModelMore from './crNpmModelMore';
 
-import A from '../zhn-atoms/A'
-import ModalSlider from '../zhn-modal-slider/ModalSlider'
-import LineChart from '../charts/LineChart'
+import A from '../zhn-atoms/A';
+import ModalSlider from '../zhn-modal-slider/ModalSlider';
+import LineChart from '../charts/LineChart';
 import ButtonPackage from './ButtonPackage';
 import ButtonWatch from './ButtonWatch';
-import Caption from './ItemCaption'
-import NpmPackageInfo from './NpmPackageInfo'
+import Caption from './ItemCaption';
+import NpmPackageInfo from './NpmPackageInfo';
 
-import CL from '../styles/CL'
-import STYLE from './Item.Style'
+import CL from '../styles/CL';
+import STYLE from './Item.Style';
 
 const ITEM_DESCRIPTION = "Npm Recent Month Downloads"
 
@@ -30,51 +32,43 @@ const ITEM_DESCRIPTION = "Npm Recent Month Downloads"
 
 const _isFn = fn => typeof fn === 'function';
 
-class NpmDownloads extends Component {
-
-  constructor(props){
-    super(props)
-    const { onMoveToTop } = props;
-    this._MORE = crModelMore({
-      onMoveToTop,
-      onToggleButtons: this._toggleButtons
-    })
-    this.state = {
-      isShow: true,
-      isMore: false,
-      isButtons: true
-    }
-  }
-
-  _hClickMore = () => {
-    this.setState({ isMore: true })
-  }
-  _hToggleMore = () => {
-    this.setState(prevState => ({
-      isMore: !prevState.isMore
-    }))
-  }
-  _toggleButtons = () => {
-    this.setState(prevState => ({
-      isButtons: !prevState.isButtons
-    }))
-  }
-  _handlerToggleOpen = () => {
-    this.setState(prevState => ({
-      isShow: !prevState.isShow
-    }))
-  }
-
-  _hClickWatch = () => {
-    const {
-      packageName,
-      requestType,
-      sumDownloads,
-      toDate,
-      onWatchItem
-    } = this.props
-    , _caption = `${packageName} ${sumDownloads}`;
-
+const NpmDownloads = ({
+  caption,
+  packageName,
+  requestType,
+  sumDownloads=0,
+  toDate,
+  fromDate,
+  labels,
+  data,
+  packageLink,
+  onWatchItem,
+  onMoveToTop,
+  onCloseItem
+}) => {
+  const [
+    isShow,
+    toggleIsShow
+  ] = useToggle(true)
+  , [
+    isMore,
+    toggleIsMore
+  ] = useToggle()
+  , [
+    isButtons,
+    toggleIsButtons
+  ] = useToggle(true)
+  , _MODEL_MORE = useRefInit(() => crModelMore({
+    onMoveToTop,
+    onToggleButtons: toggleIsButtons
+  }))[0]
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hClickMore = useCallback(() => {
+    toggleIsMore(true)
+  }, [])
+  // toggleIsMore
+  , _hClickWatch = useCallback(() => {
+    const _caption = `${packageName} ${sumDownloads}`;
     onWatchItem({
        caption: _caption,
        config: {
@@ -86,73 +80,55 @@ class NpmDownloads extends Component {
           date: toDate
         }
     });
-  }
+  }, [])
+  // requestType, packageName, sumDownloads, toDate, onWatchItem
+  /*eslint-enable react-hooks/exhaustive-deps */
+  , _lineChartConfig = fLineConfig({ labels, data })
 
-  render(){
-    const {
-      packageName,
-      caption,
-      sumDownloads,
-      fromDate,
-      toDate,
-      labels,
-      data,
-      packageLink,
-      onCloseItem,
-      onWatchItem
-    } = this.props
-    , {
-      isShow,
-      isMore,
-      isButtons,
-    } = this.state
-    , _lineChartConfig = fLineConfig({ labels, data })
-
-    return (
-      <div style={S_ROOT}>
-        <ModalSlider
-           isShow={isMore}
-           className={CL.MENU_MORE}
-           model={this._MORE}
-           onClose={this._hToggleMore}
+  return (
+    <div style={S_ROOT}>
+      <ModalSlider
+         isShow={isMore}
+         className={CL.MENU_MORE}
+         model={_MODEL_MORE}
+         onClose={toggleIsMore}
+      />
+      <Caption
+         style={S_CAPTION}
+         onClose={onCloseItem}
+      >
+        <A.SvgMore
+          style={S_BT_MORE}
+          onClick={_hClickMore}
         />
-        <Caption
-           style={S_CAPTION}
-           onClose={onCloseItem}
-        >
-          <A.SvgMore
-            style={S_BT_MORE}
-            onClick={this._hClickMore}
-          />
-          <ButtonPackage
-             caption={caption}
-             packageName={packageName}
-             sumDownloads={sumDownloads}
-             fromDate={fromDate}
-             toDate={toDate}
-             onClick={this._handlerToggleOpen}
-          />
-          { _isFn(onWatchItem) && <ButtonWatch
-              onClick={this._hClickWatch}
-          />}
-        </Caption>
-        <A.ShowHide
-           isShow={isShow}
-           style={S_CHART_WRAPPER}
-        >
-          <LineChart
-             data={_lineChartConfig}
-             options={CHART_OPTIONS}
-          />
-          <NpmPackageInfo
-            isButtons={isButtons}
-            packageName={packageName}
-            packageLink={packageLink}
-          />
-        </A.ShowHide>
-      </div>
-    );
-  }
-}
+        <ButtonPackage
+           caption={caption}
+           packageName={packageName}
+           sumDownloads={sumDownloads}
+           fromDate={fromDate}
+           toDate={toDate}
+           onClick={toggleIsShow}
+        />
+        { _isFn(onWatchItem) && <ButtonWatch
+            onClick={_hClickWatch}
+        />}
+      </Caption>
+      <A.ShowHide
+         isShow={isShow}
+         style={S_CHART_WRAPPER}
+      >
+        <LineChart
+           data={_lineChartConfig}
+           options={CHART_OPTIONS}
+        />
+        <NpmPackageInfo
+          isButtons={isButtons}
+          packageName={packageName}
+          packageLink={packageLink}
+        />
+      </A.ShowHide>
+    </div>
+  );
+};
 
 export default NpmDownloads
