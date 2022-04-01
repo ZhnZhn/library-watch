@@ -4,18 +4,18 @@ const _crToolbarBt = (
   caption,
   title,
   onClick
-) => ({
+) => onClick ? ({
   caption,
   title,
   onClick
-});
+}) : null;
 
 const useToolbarButtons = (
   toggleIsLabels,
   toggleIsDates
 ) => useRefInit(() => [
     _crToolbarBt('L', "Click to toggle row's labels", toggleIsLabels),
-    toggleIsDates && _crToolbarBt('D', 'Click to toggle date input', toggleIsDates)
+    _crToolbarBt('D', 'Click to toggle date input', toggleIsDates)
   ].filter(Boolean)
 )[0]
 

@@ -1,14 +1,20 @@
-import { Component } from 'react'
-//import PropTypes from "prop-types";
+import {
+  useRef,
+  useCallback,
+  getRefValue
+} from '../uiApi';
+import useToggle from '../hooks/useToggle';
+import useValidationMessages from '../hooks/useValidationMessages';
+import useMenuMore from './useMenuMore';
+import useToolbarButtons from './useToolbarButtons';
+import useCommandButtons from './useCommandButtons';
+import memoIsShow from './memoIsShow';
 
-import D from './DialogCell'
-import Decor from './decorators/Decorators'
-import helperFns from './helperFns/helperFns'
+import has from '../has';
+import D from './DialogCell';
+import helperFns from './helperFns/helperFns';
 
-const {
-  dateConfig,
-  crMenuMore, crButtons
-  } = helperFns;
+const { dateConfig } = helperFns;
 
 const {
   _initFromDate,
@@ -16,136 +22,126 @@ const {
   _onTestDate
 } = dateConfig;
 
-@Decor.dialog
-class DialogType3A extends Component {
-  /*
-  static propTypes = {
-    caption: PropTypes.string,
-    requestType: PropTypes.string,
-    oneTitle: PropTypes.string,
-    onePlaceholder: PropTypes.string,
-    isShow: PropTypes.bool,
-    onShow: PropTypes.func
-  }
-  */
-  constructor(props){
-    super(props)
-    this.stock = null
-    this.toolbarButtons = this._createType2WithToolbar(props, {
-      hasDate: true
-    })
-    this._menuMore = crMenuMore(this, {
-      toggleDates: this._clickDateWithToolbar,
-      toggleLabels: this._clickLabelWithToolbar,
-      toggleToolBar: this._toggleWithToolbar,
-    })
-    this._commandButtons = crButtons({ inst: this })
-    this.state = {
-      ...this._withInitialState()
+const _createValidationMessages = (
+  repo,
+  isValid,
+  datesMsg,
+  oneTitle
+) => {
+    const msg = [];
+    if (!repo) {
+       msg.push(`${oneTitle} is required`);
     }
-  }
-
-  shouldComponentUpdate(nextProps, nextState){
-    if (this.props !== nextProps){
-       if (this.props.isShow === nextProps.isShow){
-          return false;
-       }
+    if (!isValid) {
+      msg.push(datesMsg);
     }
-    return true;
-  }
+    msg.isValid = (msg.length === 0)
+      ? true : false;
+    return msg;
+};
 
- _handleClear = () => {
-    this.inputOne.setValue('')
-    this.setState({ validationMessages: []})
- }
-
-  _handleLoad = () => {
-     this._handleLoadWithValidation(
-       this._createValidationMessages(),
-       this._createLoadOption
+const DialogType3A = memoIsShow(({
+  isShow,
+  caption,
+  requestType,
+  oneTitle,
+  onePlaceholder,
+  onLoad,
+  onShow,
+  onClose
+}) => {
+  const [
+    isShowLabels,
+    _toggleIsShowLabels
+  ] = useToggle(has.wideWidth)
+  , [
+    isToolbar,
+    _toggleIsToolbar
+  ] = useToggle(true)
+  , [
+    isShowDate,
+    _toggleIsShowDate
+  ] = useToggle()
+  , [
+    validationMessages,
+    setValidationMessages,
+    _clearValidationMessages
+  ] = useValidationMessages()
+  , _refInputOne = useRef()
+  , _refInputDates = useRef()
+  , _MENU_MORE = useMenuMore(
+     _toggleIsShowLabels,
+     _toggleIsToolbar,
+     _toggleIsShowDate
+  )
+  , _TOOLBAR_BUTTONS = useToolbarButtons(
+     _toggleIsShowLabels,
+     _toggleIsShowDate
+  )
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hLoad = useCallback(() => {
+     const repo = getRefValue(_refInputOne).getValue()
+     , _datesInst = getRefValue(_refInputDates)
+     , { isValid, datesMsg } = _datesInst.getValidation()
+     , { fromDate, toDate } = _datesInst.getValues()
+     , _validationMessage = _createValidationMessages(
+       repo, isValid, datesMsg, oneTitle
      )
-   }
-   _createValidationMessages = () => {
-       let msg = [];
+     if (_validationMessage.isValid){
+       onLoad({
+         repo,
+         requestType,
+         fromDate,
+         toDate
+       });
+       _clearValidationMessages()
+     } else {
+       setValidationMessages(_validationMessage)
+     }
+  }, [])
+  // oneTitle, requestType, onLoad, _clearValidationMessages
+  , _COMMAND_BUTTONS = useCommandButtons(_hLoad)
+  , _hClose = useCallback(() => {
+     _clearValidationMessages()
+     onClose();
+  }, [])
+  // onClose, _clearValidationMessages
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-       const repo = this.inputOne.getValue()
-       if (!repo) {
-          msg = msg.concat(`${this.props.oneTitle} is required`);
-       }
-
-       const { isValid, datesMsg } = this.datesFragment.getValidation();
-       if (!isValid) { msg = msg.concat(datesMsg); }
-
-       msg.isValid = (msg.length === 0) ? true : false;
-       return msg;
-   }
-   _createLoadOption = () => {
-     const repo = this.inputOne.getValue()
-         , { fromDate, toDate } = this.datesFragment.getValues()
-         , { requestType } = this.props;
-
-     return {
-       repo, requestType,
-       fromDate, toDate
-     };
-   }
-
-   _handleClose = () => {
-      this._handleCloseWithValidation(
-         this._createValidationMessages
-      );
-    }
-
-  _refInputOne = c => this.inputOne = c
-  _refInputDates = c => this.datesFragment = c
-
-   render(){
-     const {
-        caption, isShow, onShow,
-        oneTitle, onePlaceholder
-      } = this.props
-    , {
-      isToolbar,
-      isShowLabels,
-      isShowDate,
-      validationMessages
-    } = this.state;
-
-    return (
-       <D.DraggableDialog
-           isShow={isShow}
-           caption={caption}
-           menuModel={this._menuMore}
-           commandButtons={this._commandButtons}
-           onShowChart={onShow}
-           onClose={this._handleClose}
-       >
-         <D.Toolbar
-            isShow={isToolbar}
-            buttons={this.toolbarButtons}
-         />
-        <D.RowInputText
-           ref={this._refInputOne}
-           isShowLabel={isShowLabels}
-           caption={oneTitle}
-           placeholder={onePlaceholder}
-           onEnter={this._handleLoad}
-        />
-        <D.ShowHide isShow={isShowDate}>
-          <D.Dates
-              ref={this._refInputDates}
-              isShowLabels={isShowLabels}
-              initFromDate={_initFromDate}
-              initToDate={_initToDate}
-              onTestDate={_onTestDate}
-          />
-        </D.ShowHide>
-        <D.ValidationMessages
-           validationMessages={validationMessages}
-        />
-      </D.DraggableDialog>
-    );
-  }
-}
+  return (
+    <D.DraggableDialog
+        isShow={isShow}
+        caption={caption}
+        menuModel={_MENU_MORE}
+        commandButtons={_COMMAND_BUTTONS}
+        onShowChart={onShow}
+        onClose={_hClose}
+    >
+      <D.Toolbar
+         isShow={isToolbar}
+         buttons={_TOOLBAR_BUTTONS}
+      />
+     <D.RowInputText
+        ref={_refInputOne}
+        isShowLabel={isShowLabels}
+        caption={oneTitle}
+        placeholder={onePlaceholder}
+        onEnter={_hLoad}
+     />
+     <D.ShowHide isShow={isShowDate}>
+       <D.Dates
+           ref={_refInputDates}
+           isShowLabels={isShowLabels}
+           initFromDate={_initFromDate}
+           initToDate={_initToDate}
+           onTestDate={_onTestDate}
+       />
+     </D.ShowHide>
+     <D.ValidationMessages
+        validationMessages={validationMessages}
+     />
+   </D.DraggableDialog>
+  );
+});
 
 export default DialogType3A
