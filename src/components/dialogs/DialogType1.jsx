@@ -1,123 +1,146 @@
-import { Component } from 'react'
-//import PropTypes from "prop-types";
+import {
+  useRef,
+  useCallback,
+  getRefValue
+} from '../uiApi';
+import useToggle from '../hooks/useToggle';
+import useValidationMessages from '../hooks/useValidationMessages';
+import useRefInit from '../hooks/useRefInit';
+import memoIsShow from './memoIsShow';
 
-import Decor from './decorators/Decorators'
-import helperFns from './helperFns/helperFns'
-import D from './DialogCell'
+import has from '../has';
 
-const { crMenuMore, crButtons } = helperFns;
+import FlatButton from '../zhn-m/FlatButton';
+import D from './DialogCell';
 
-@Decor.dialog
-class DialogType1 extends Component {
-  /*
-  static propTypes = {
-    caption: PropTypes.string,
-    requestType: PropTypes.string,
-    oneTitle: PropTypes.string,
-    onePlaceholder: PropTypes.string,
-    isShow: PropTypes.bool,
-    onShow: PropTypes.func
+const CL_ROW = 'row__pane-topic not-selected';
+
+const _createValidationMessages = (
+  value,
+  oneTitle
+) => {
+  const msg = [];
+  if (!value) {
+    msg.push(`${oneTitle} is required`)
   }
-  */
+  msg.isValid = (msg.length === 0)
+    ? true : false;
+  return msg;
+};
 
-  constructor(props){
-    super(props)
-    this.stock = null
-    this.toolbarButtons = this._createType2WithToolbar(props)
-    this._menuMore = crMenuMore(this, {
-      toggleLabels: this._clickLabelWithToolbar,
-      toggleToolBar: this._toggleWithToolbar,
-    })
-    this._commandButtons = crButtons({ inst: this })
-    this.state = {
-      ...this._withInitialState()
+const _crMenuItem = (
+  name,
+  onClick
+) => ({
+  name,
+  onClick,
+  isClose: true
+});
+
+const _crToolbarBt = (
+  caption,
+  title,
+  onClick
+) => ({
+  caption,
+  title,
+  onClick
+});
+
+const DialogType1 = memoIsShow(({
+  isShow,
+  caption,
+  oneTitle,
+  onePlaceholder,
+  requestType,
+  onShow,
+  onLoad,
+  onClose
+}) => {
+  const [
+    isShowLabels,
+    _toggleIsShowLabels
+  ] = useToggle(has.wideWidth)
+  , [
+    isToolbar,
+    _toggleIsToolbar
+  ] = useToggle(true)
+  , [
+    validationMessages,
+    setValidationMessages,
+    _clearValidationMessages
+  ] = useValidationMessages()
+  , _refInputOne = useRef()
+  , _MENU_MORE = useRefInit(()=>({
+    titleCl: CL_ROW,
+    pageWidth: 160,
+    maxPages: 1,
+    p0: [
+      _crMenuItem('Toggle Labels', _toggleIsShowLabels),
+      _crMenuItem('Toggle ToolBar', _toggleIsToolbar)
+    ]
+  }))[0]
+  , _TOOLBAR_BUTTONS = useRefInit(()=>[
+     _crToolbarBt('L', "Click to toggle row's labels", _toggleIsShowLabels)
+  ])[0]
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hLoad = useCallback(() => {
+    const value = getRefValue(_refInputOne).getValue()
+    , _validationMessages = _createValidationMessages(value, oneTitle)
+
+    if (_validationMessages.isValid){
+      onLoad({
+        repo: value,
+        requestType
+      });
+      _clearValidationMessages()
+    } else {
+      setValidationMessages(_validationMessages)
     }
-  }
+  }, [])
+  // oneTitle, requestType, onLoad, _clearValidationMessages
+  /*eslint-enable react-hooks/exhaustive-deps */
+  , _COMMAND_BUTTONS = useRefInit(() => [
+     <FlatButton
+       key="load"
+       isPrimary={true}
+       caption="Load"
+       onClick={_hLoad}
+     />
+  ])[0]
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hClose = useCallback(() => {
+     _clearValidationMessages()
+     onClose();
+  }, [])
+  // _clearValidationMessages, onClose
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  shouldComponentUpdate(nextProps, nextState){
-    if (this.props !== nextProps){
-       if (this.props.isShow === nextProps.isShow){
-          return false;
-       }
-    }
-    return true;
-  }
-
- _handleClear = () => {
-   this.inputOne.setValue('');
-   this.setState({ validationMessages: [] });
- }
-
- _handleLoad = () => {
-    this._handleLoadWithValidation(
-      this._createValidationMessages(),
-      this._createLoadOption
-    )
-  }
-  _createValidationMessages = () => {
-    let msg = [];
-
-    const value = this.inputOne.getValue();
-    if (!value) {
-      msg = msg.concat(`${this.props.oneTitle} is required`)
-    }
-
-    msg.isValid = (msg.length === 0) ? true : false;
-    return msg;
-  }
-  _createLoadOption = () => {
-    const { requestType } = this.props;
-    return {
-      repo : this.inputOne.getValue(),
-      requestType
-    };
-  }
-
-  _handleClose = () => {
-     this._handleCloseWithValidation(
-        this._createValidationMessages
-     )
-   }
-
-  _refInputOne = c => this.inputOne = c
-
-  render(){
-    const {
-      caption, isShow, onShow,
-      oneTitle, onePlaceholder
-    } = this.props
-    , {
-      isToolbar,
-      isShowLabels,
-      validationMessages
-    } = this.state;
-
-    return (
-       <D.DraggableDialog
-           isShow={isShow}
-           caption={caption}
-           menuModel={this._menuMore}
-           commandButtons={this._commandButtons}
-           onShowChart={onShow}
-           onClose={this._handleClose}
-       >
-        <D.Toolbar
-           isShow={isToolbar}
-           buttons={this.toolbarButtons}
-        />
-        <D.RowInputText
-           ref={this._refInputOne}
-           isShowLabel={isShowLabels}
-           caption={oneTitle}
-           placeholder={onePlaceholder}
-           onEnter={this._handleLoad}
-        />
-        <D.ValidationMessages
-           validationMessages={validationMessages}
-        />
-      </D.DraggableDialog>
-    );
-  }
-}
+  return (
+    <D.DraggableDialog
+        isShow={isShow}
+        caption={caption}
+        menuModel={_MENU_MORE}
+        commandButtons={_COMMAND_BUTTONS}
+        onShowChart={onShow}
+        onClose={_hClose}
+    >
+     <D.Toolbar
+        isShow={isToolbar}
+        buttons={_TOOLBAR_BUTTONS}
+     />
+     <D.RowInputText
+        ref={_refInputOne}
+        isShowLabel={isShowLabels}
+        caption={oneTitle}
+        placeholder={onePlaceholder}
+        onEnter={_hLoad}
+     />
+     <D.ValidationMessages
+        validationMessages={validationMessages}
+     />
+   </D.DraggableDialog>
+  );
+});
 
 export default DialogType1
