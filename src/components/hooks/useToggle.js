@@ -3,13 +3,17 @@ import {
   useCallback
 } from '../uiApi';
 
+const _isFn = fn => typeof fn === "function";
 const _isBool = v => typeof v === "boolean";
 
 const useToggle = initialValue => {
   const [
     is,
     setIs
-  ] = useState(()=>!!initialValue)
+  ] = useState(() => _isFn(initialValue)
+     ? initialValue()
+     : !!initialValue
+   )
   , toggle = useCallback(v => {
      if (_isBool(v)) {
        setIs(v)
