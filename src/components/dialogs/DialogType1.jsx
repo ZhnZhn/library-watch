@@ -6,7 +6,8 @@ import {
 import useToggle from '../hooks/useToggle';
 import useValidationMessages from '../hooks/useValidationMessages';
 import useRefInit from '../hooks/useRefInit';
-import useCommandButtons from './useCommandButtons'
+import useToolbarButtons from './useToolbarButtons';
+import useCommandButtons from './useCommandButtons';
 import memoIsShow from './memoIsShow';
 
 import has from '../has';
@@ -34,16 +35,6 @@ const _crMenuItem = (
   name,
   onClick,
   isClose: true
-});
-
-const _crToolbarBt = (
-  caption,
-  title,
-  onClick
-) => ({
-  caption,
-  title,
-  onClick
 });
 
 const DialogType1 = memoIsShow(({
@@ -79,14 +70,11 @@ const DialogType1 = memoIsShow(({
       _crMenuItem('Toggle ToolBar', _toggleIsToolbar)
     ]
   }))[0]
-  , _TOOLBAR_BUTTONS = useRefInit(()=>[
-     _crToolbarBt('L', "Click to toggle row's labels", _toggleIsShowLabels)
-  ])[0]
+  , _TOOLBAR_BUTTONS = useToolbarButtons(_toggleIsShowLabels)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(() => {
     const value = getRefValue(_refInputOne).getValue()
     , _validationMessages = _createValidationMessages(value, oneTitle)
-
     if (_validationMessages.isValid){
       onLoad({
         repo: value,
