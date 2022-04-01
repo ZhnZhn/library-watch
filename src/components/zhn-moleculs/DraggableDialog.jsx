@@ -124,6 +124,7 @@ const DraggableDialog = forwardRef(({
         {
           _isFn(onShowChart) && <FlatButton
             key="show"
+            timeout={0}
             rootStyle={STYLE.BT_ROOT}
             caption="Show"
             title="Show Pane Container"
@@ -132,6 +133,7 @@ const DraggableDialog = forwardRef(({
         }
         <FlatButton
           key="close"
+          timeout={0}
           rootStyle={STYLE.BT_ROOT}
           caption="Close"
           title="Close Draggable Dialog"
