@@ -6,11 +6,10 @@ import {
 import useToggle from '../hooks/useToggle';
 import useValidationMessages from '../hooks/useValidationMessages';
 import useRefInit from '../hooks/useRefInit';
+import useCommandButtons from './useCommandButtons'
 import memoIsShow from './memoIsShow';
 
 import has from '../has';
-
-import FlatButton from '../zhn-m/FlatButton';
 import D from './DialogCell';
 
 const CL_ROW = 'row__pane-topic not-selected';
@@ -100,14 +99,7 @@ const DialogType1 = memoIsShow(({
   }, [])
   // oneTitle, requestType, onLoad, _clearValidationMessages
   /*eslint-enable react-hooks/exhaustive-deps */
-  , _COMMAND_BUTTONS = useRefInit(() => [
-     <FlatButton
-       key="load"
-       isPrimary={true}
-       caption="Load"
-       onClick={_hLoad}
-     />
-  ])[0]
+  , _COMMAND_BUTTONS = useCommandButtons(_hLoad)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hClose = useCallback(() => {
      _clearValidationMessages()
