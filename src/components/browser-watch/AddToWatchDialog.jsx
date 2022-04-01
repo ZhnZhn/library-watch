@@ -8,10 +8,10 @@ import {
   getRefValue,
   setRefValue
 } from '../uiApi';
-import useRefItemCaption from './useRefItemCaption';
-import useValidationMessages from './useValidationMessages';
+import useValidationMessages from '../hooks/useValidationMessages';
 import usePrevValue from '../hooks/usePrevValue';
 import useListen from '../hooks/useListen';
+import useRefItemCaption from './useRefItemCaption';
 
 import WatchActions from '../../flux/actions/WatchActions';
 import { WatchActionTypes as WAT } from '../../flux/actions/WatchActions';

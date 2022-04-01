@@ -3,8 +3,8 @@ import {
   useCallback,
   getRefValue
 } from '../uiApi';
+import useValidationMessages from '../hooks/useValidationMessages';
 import useListen from '../hooks/useListen';
-import useValidationMessages from './useValidationMessages';
 
 import RowInputText from './RowInputText';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';

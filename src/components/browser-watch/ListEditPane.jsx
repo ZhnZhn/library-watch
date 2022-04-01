@@ -3,9 +3,10 @@ import {
  useCallback,
  getRefValue
 } from '../uiApi';
-import useGroupOptions from './useGroupOptions';
+
+import useValidationMessages from '../hooks/useValidationMessages';
 import useListen from '../hooks/useListen';
-import useValidationMessages from './useValidationMessages';
+import useGroupOptions from './useGroupOptions';
 
 import SelectGroupList from './SelectGroupList';
 import RowInputText from './RowInputText';

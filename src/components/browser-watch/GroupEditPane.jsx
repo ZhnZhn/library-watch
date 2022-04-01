@@ -4,9 +4,9 @@ import {
   useCallback,
   getRefValue
 } from '../uiApi';
+import useValidationMessages from '../hooks/useValidationMessages';
 import useListen from '../hooks/useListen'
 import useRefItemCaption from './useRefItemCaption';
-import useValidationMessages from './useValidationMessages';
 
 import RowInputSelect from './RowInputSelect';
 import RowInputText from './RowInputText';
