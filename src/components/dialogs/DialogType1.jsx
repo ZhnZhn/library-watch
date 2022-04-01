@@ -5,15 +5,13 @@ import {
 } from '../uiApi';
 import useToggle from '../hooks/useToggle';
 import useValidationMessages from '../hooks/useValidationMessages';
-import useRefInit from '../hooks/useRefInit';
+import useMenuMore from './useMenuMore';
 import useToolbarButtons from './useToolbarButtons';
 import useCommandButtons from './useCommandButtons';
 import memoIsShow from './memoIsShow';
 
 import has from '../has';
 import D from './DialogCell';
-
-const CL_ROW = 'row__pane-topic not-selected';
 
 const _createValidationMessages = (
   value,
@@ -27,15 +25,6 @@ const _createValidationMessages = (
     ? true : false;
   return msg;
 };
-
-const _crMenuItem = (
-  name,
-  onClick
-) => ({
-  name,
-  onClick,
-  isClose: true
-});
 
 const DialogType1 = memoIsShow(({
   isShow,
@@ -61,15 +50,10 @@ const DialogType1 = memoIsShow(({
     _clearValidationMessages
   ] = useValidationMessages()
   , _refInputOne = useRef()
-  , _MENU_MORE = useRefInit(()=>({
-    titleCl: CL_ROW,
-    pageWidth: 160,
-    maxPages: 1,
-    p0: [
-      _crMenuItem('Toggle Labels', _toggleIsShowLabels),
-      _crMenuItem('Toggle ToolBar', _toggleIsToolbar)
-    ]
-  }))[0]
+  , _MENU_MORE = useMenuMore(
+     _toggleIsShowLabels,
+     _toggleIsToolbar
+  )
   , _TOOLBAR_BUTTONS = useToolbarButtons(_toggleIsShowLabels)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(() => {
