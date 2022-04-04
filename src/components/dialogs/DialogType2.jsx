@@ -5,9 +5,8 @@ import {
   setRefValue
 } from '../uiApi';
 import useToggle from '../hooks/useToggle';
-import useValidationMessages from '../hooks/useValidationMessages';
 import useDialog from './useDialog';
-import useCommandButtons from './useCommandButtons';
+import useDialogButtons from './useDialogButtons';
 import memoIsShow from './memoIsShow';
 
 import Dialog from './Dialog';
@@ -59,55 +58,49 @@ const DialogType2 = memoIsShow(({
 }) => {
   const [
     isShowDate,
-    _toggleIsShowDate
+    toggleIsShowDate
   ] = useToggle()
   , [
     MENU_MODEL,
     TOOLBAR_BUTTONS,
     isToolbar,
     isShowLabels
-  ] = useDialog(_toggleIsShowDate)
-  , [
-    validationMessages,
-    setValidationMessages,
-    _clearValidationMessages
-  ] = useValidationMessages()
+  ] = useDialog(toggleIsShowDate)
   , _refInputOne = useRef()
   , _refInputDates = useRef()
   , _refSortByItem = useRef({})
   , _hSelectSortBy = useCallback(item => {
     setRefValue(_refSortByItem, item)
   }, [])
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _hLoad = useCallback(() => {
-      const repo = getRefValue(_refInputOne).getValue()
-      , _datesInst = getRefValue(_refInputDates)
-      , { isValid, datesMsg } = _datesInst.getValidation()
-      , { fromDate, toDate } = _datesInst.getValues()
-      , _validationMessage = _createValidationMessages(
-        isValid, datesMsg
-      )
-      if (_validationMessage.isValid){
-        onLoad({
-          repo,
-          requestType,
-          sort: (getRefValue(_refSortByItem) || {}).value,
-          fromdate: toUTCSecond(fromDate),
-          todate: toUTCSecond(toDate)
-        });
-        _clearValidationMessages()
-      } else {
-        setValidationMessages(_validationMessage)
-      }
-  }, [])
-  // requestType, onLoad, _clearValidationMessages
-  , _COMMAND_BUTTONS = useCommandButtons(_hLoad)
-  , _hClose = useCallback(() => {
-     _clearValidationMessages()
-     onClose();
-  }, [])
-  // onClose, _clearValidationMessages
-  /*eslint-enable react-hooks/exhaustive-deps */
+  , [
+    validationMessages,
+    COMMAND_BUTTONS,
+    hClose,
+    hLoad
+  ] = useDialogButtons((
+    setValidationMessages,
+    clearValidationMessages
+  ) => {
+    const repo = getRefValue(_refInputOne).getValue()
+    , _datesInst = getRefValue(_refInputDates)
+    , { isValid, datesMsg } = _datesInst.getValidation()
+    , { fromDate, toDate } = _datesInst.getValues()
+    , _validationMessage = _createValidationMessages(
+      isValid, datesMsg
+    )
+    if (_validationMessage.isValid){
+      onLoad({
+        repo,
+        requestType,
+        sort: (getRefValue(_refSortByItem) || {}).value,
+        fromdate: toUTCSecond(fromDate),
+        todate: toUTCSecond(toDate)
+      });
+      clearValidationMessages()
+    } else {
+      setValidationMessages(_validationMessage)
+    }
+  }, onClose);
 
   return (
     <Dialog
@@ -116,17 +109,17 @@ const DialogType2 = memoIsShow(({
        caption={caption}
        menuModel={MENU_MODEL}
        toolbarButtons={TOOLBAR_BUTTONS}
-       commandButtons={_COMMAND_BUTTONS}
+       commandButtons={COMMAND_BUTTONS}
        validationMessages={validationMessages}
        onShow={onShow}
-       onClose={_hClose}
+       onClose={hClose}
     >
       <D.RowInputText
          ref={_refInputOne}
          isShowLabel={isShowLabels}
          caption={oneTitle}
          placeholder={onePlaceholder}
-         onEnter={_hLoad}
+         onEnter={hLoad}
       />
       <D.RowInputSelect
          isShowLabel={isShowLabels}
