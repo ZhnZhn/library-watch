@@ -12,8 +12,8 @@ const _crMenuItem = (
 }) : null;
 
 const useMenuMore = (
-  toggleIsLabels,
   toggleIsToolbar,
+  toggleIsLabels,
   toggleIsDates
 ) => useRefInit(()=>({
   titleCl: CL_ROW,
