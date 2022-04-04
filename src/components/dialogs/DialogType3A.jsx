@@ -9,6 +9,7 @@ import useDialog from './useDialog';
 import useCommandButtons from './useCommandButtons';
 import memoIsShow from './memoIsShow';
 
+import Dialog from './Dialog';
 import D from './DialogCell';
 import helperFns from './helperFns/helperFns';
 
@@ -20,7 +21,7 @@ const {
   _onTestDate
 } = dateConfig;
 
-const _createValidationMessages = (
+const _crValidationMessages = (
   repo,
   isValid,
   datesMsg,
@@ -34,7 +35,6 @@ const _createValidationMessages = (
       msg.push(datesMsg);
     }
     msg.isValid = (msg.length === 0)
-      ? true : false;
     return msg;
 };
 
@@ -53,8 +53,8 @@ const DialogType3A = memoIsShow(({
     _toggleIsShowDate
   ] = useToggle()
   , [
-    _MENU_MORE,
-    _TOOLBAR_BUTTONS,
+    MENU_MODEL,
+    TOOLBAR_BUTTONS,
     isToolbar,
     isShowLabels
   ] = useDialog(_toggleIsShowDate)
@@ -71,7 +71,7 @@ const DialogType3A = memoIsShow(({
      , _datesInst = getRefValue(_refInputDates)
      , { isValid, datesMsg } = _datesInst.getValidation()
      , { fromDate, toDate } = _datesInst.getValues()
-     , _validationMessage = _createValidationMessages(
+     , _validationMessage = _crValidationMessages(
        repo, isValid, datesMsg, oneTitle
      )
      if (_validationMessage.isValid){
@@ -96,38 +96,34 @@ const DialogType3A = memoIsShow(({
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
-    <D.DraggableDialog
-        isShow={isShow}
-        caption={caption}
-        menuModel={_MENU_MORE}
-        commandButtons={_COMMAND_BUTTONS}
-        onShowChart={onShow}
-        onClose={_hClose}
+    <Dialog
+       isShow={isShow}
+       isToolbar={isToolbar}
+       caption={caption}
+       menuModel={MENU_MODEL}
+       toolbarButtons={TOOLBAR_BUTTONS}
+       commandButtons={_COMMAND_BUTTONS}
+       validationMessages={validationMessages}
+       onShow={onShow}
+       onClose={_hClose}
     >
-      <D.Toolbar
-         isShow={isToolbar}
-         buttons={_TOOLBAR_BUTTONS}
+      <D.RowInputText
+         ref={_refInputOne}
+         isShowLabel={isShowLabels}
+         caption={oneTitle}
+         placeholder={onePlaceholder}
+         onEnter={_hLoad}
       />
-     <D.RowInputText
-        ref={_refInputOne}
-        isShowLabel={isShowLabels}
-        caption={oneTitle}
-        placeholder={onePlaceholder}
-        onEnter={_hLoad}
-     />
-     <D.ShowHide isShow={isShowDate}>
-       <D.Dates
-           ref={_refInputDates}
-           isShowLabels={isShowLabels}
-           initFromDate={_initFromDate}
-           initToDate={_initToDate}
-           onTestDate={_onTestDate}
-       />
-     </D.ShowHide>
-     <D.ValidationMessages
-        validationMessages={validationMessages}
-     />
-   </D.DraggableDialog>
+      <D.ShowHide isShow={isShowDate}>
+        <D.Dates
+            ref={_refInputDates}
+            isShowLabels={isShowLabels}
+            initFromDate={_initFromDate}
+            initToDate={_initToDate}
+            onTestDate={_onTestDate}
+        />
+      </D.ShowHide>
+    </Dialog>
   );
 });
 

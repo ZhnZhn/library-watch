@@ -9,8 +9,9 @@ import useCommandButtons from './useCommandButtons';
 import memoIsShow from './memoIsShow';
 
 import D from './DialogCell';
+import Dialog from './Dialog';
 
-const _createValidationMessages = (
+const _crValidationMessages = (
   value,
   oneTitle
 ) => {
@@ -19,7 +20,6 @@ const _createValidationMessages = (
     msg.push(`${oneTitle} is required`)
   }
   msg.isValid = (msg.length === 0)
-    ? true : false;
   return msg;
 };
 
@@ -34,8 +34,8 @@ const DialogType1 = memoIsShow(({
   onClose
 }) => {
   const [
-    _MENU_MORE,
-    _TOOLBAR_BUTTONS,
+    MENU_MODEL,
+    TOOLBAR_BUTTONS,
     isToolbar,
     isShowLabels
   ] = useDialog()
@@ -48,7 +48,7 @@ const DialogType1 = memoIsShow(({
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(() => {
     const value = getRefValue(_refInputOne).getValue()
-    , _validationMessages = _createValidationMessages(value, oneTitle)
+    , _validationMessages = _crValidationMessages(value, oneTitle)
     if (_validationMessages.isValid){
       onLoad({
         repo: value,
@@ -71,30 +71,26 @@ const DialogType1 = memoIsShow(({
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
-    <D.DraggableDialog
-        isShow={isShow}
-        caption={caption}
-        menuModel={_MENU_MORE}
-        commandButtons={_COMMAND_BUTTONS}
-        onShowChart={onShow}
-        onClose={_hClose}
+    <Dialog
+       isShow={isShow}
+       isToolbar={isToolbar}
+       caption={caption}
+       menuModel={MENU_MODEL}
+       toolbarButtons={TOOLBAR_BUTTONS}
+       commandButtons={_COMMAND_BUTTONS}
+       validationMessages={validationMessages}
+       onShow={onShow}
+       onClose={_hClose}
     >
-     <D.Toolbar
-        isShow={isToolbar}
-        buttons={_TOOLBAR_BUTTONS}
-     />
-     <D.RowInputText
-        ref={_refInputOne}
-        isShowLabel={isShowLabels}
-        caption={oneTitle}
-        placeholder={onePlaceholder}
-        onEnter={_hLoad}
-     />
-     <D.ValidationMessages
-        validationMessages={validationMessages}
-     />
-   </D.DraggableDialog>
-  );
-});
+      <D.RowInputText
+         ref={_refInputOne}
+         isShowLabel={isShowLabels}
+         caption={oneTitle}
+         placeholder={onePlaceholder}
+         onEnter={_hLoad}
+      />
+    </Dialog>
+   );
+ });
 
 export default DialogType1
