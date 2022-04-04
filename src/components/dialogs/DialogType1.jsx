@@ -3,14 +3,11 @@ import {
   useCallback,
   getRefValue
 } from '../uiApi';
-import useToggle from '../hooks/useToggle';
 import useValidationMessages from '../hooks/useValidationMessages';
-import useMenuMore from './useMenuMore';
-import useToolbarButtons from './useToolbarButtons';
+import useDialog from './useDialog';
 import useCommandButtons from './useCommandButtons';
 import memoIsShow from './memoIsShow';
 
-import has from '../has';
 import D from './DialogCell';
 
 const _createValidationMessages = (
@@ -37,24 +34,17 @@ const DialogType1 = memoIsShow(({
   onClose
 }) => {
   const [
-    isShowLabels,
-    _toggleIsShowLabels
-  ] = useToggle(has.wideWidth)
-  , [
+    _MENU_MORE,
+    _TOOLBAR_BUTTONS,
     isToolbar,
-    _toggleIsToolbar
-  ] = useToggle(true)
+    isShowLabels
+  ] = useDialog()
   , [
     validationMessages,
     setValidationMessages,
     _clearValidationMessages
   ] = useValidationMessages()
   , _refInputOne = useRef()
-  , _MENU_MORE = useMenuMore(
-     _toggleIsShowLabels,
-     _toggleIsToolbar
-  )
-  , _TOOLBAR_BUTTONS = useToolbarButtons(_toggleIsShowLabels)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(() => {
     const value = getRefValue(_refInputOne).getValue()

@@ -5,12 +5,10 @@ import {
 } from '../uiApi';
 import useToggle from '../hooks/useToggle';
 import useValidationMessages from '../hooks/useValidationMessages';
-import useMenuMore from './useMenuMore';
-import useToolbarButtons from './useToolbarButtons';
+import useDialog from './useDialog';
 import useCommandButtons from './useCommandButtons';
 import memoIsShow from './memoIsShow';
 
-import has from '../has';
 import D from './DialogCell';
 import helperFns from './helperFns/helperFns';
 
@@ -51,17 +49,15 @@ const DialogType3A = memoIsShow(({
   onClose
 }) => {
   const [
-    isShowLabels,
-    _toggleIsShowLabels
-  ] = useToggle(has.wideWidth)
-  , [
-    isToolbar,
-    _toggleIsToolbar
-  ] = useToggle(true)
-  , [
     isShowDate,
     _toggleIsShowDate
   ] = useToggle()
+  , [
+    _MENU_MORE,
+    _TOOLBAR_BUTTONS,
+    isToolbar,
+    isShowLabels
+  ] = useDialog(_toggleIsShowDate)
   , [
     validationMessages,
     setValidationMessages,
@@ -69,15 +65,6 @@ const DialogType3A = memoIsShow(({
   ] = useValidationMessages()
   , _refInputOne = useRef()
   , _refInputDates = useRef()
-  , _MENU_MORE = useMenuMore(
-     _toggleIsShowLabels,
-     _toggleIsToolbar,
-     _toggleIsShowDate
-  )
-  , _TOOLBAR_BUTTONS = useToolbarButtons(
-     _toggleIsShowLabels,
-     _toggleIsShowDate
-  )
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(() => {
      const repo = getRefValue(_refInputOne).getValue()
