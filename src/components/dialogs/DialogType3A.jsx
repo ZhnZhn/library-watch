@@ -9,15 +9,7 @@ import memoIsShow from './memoIsShow';
 
 import Dialog from './Dialog';
 import D from './DialogCell';
-import helperFns from './helperFns/helperFns';
-
-const { dateConfig } = helperFns;
-
-const {
-  _initFromDate,
-  _initToDate,
-  _onTestDate
-} = dateConfig;
+import RowInputDates from './RowInputDates';
 
 const _crValidationMessages = (
   repo,
@@ -106,15 +98,11 @@ const DialogType3A = memoIsShow(({
          placeholder={onePlaceholder}
          onEnter={hLoad}
       />
-      <D.ShowHide isShow={isShowDate}>
-        <D.Dates
-            ref={_refInputDates}
-            isShowLabels={isShowLabels}
-            initFromDate={_initFromDate}
-            initToDate={_initToDate}
-            onTestDate={_onTestDate}
-        />
-      </D.ShowHide>
+      <RowInputDates
+        ref={_refInputDates}
+        isShow={isShowDate}
+        isShowLabels={isShowLabels}
+      />
     </Dialog>
   );
 });

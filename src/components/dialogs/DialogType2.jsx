@@ -11,15 +11,13 @@ import memoIsShow from './memoIsShow';
 
 import Dialog from './Dialog';
 import D from './DialogCell';
+import RowInputDates from './RowInputDates';
 
 import helperFns from './helperFns/helperFns';
 
-const {
-  dateConfig,
-  toUTCSecond
-} = helperFns;
+const { toUTCSecond } = helperFns;
 
-const _sortOptions = [
+const _SORT_OPTIONS = [
   { caption: "Activity, Recent Day", value: "activity" },
   { caption: "Creation Date", value: "creation"},
   { caption: "Score", value: "votes" },
@@ -27,12 +25,6 @@ const _sortOptions = [
   { caption: "Hot Week Tab", value: "week" },
   { caption: "Hot Month Tab", value: "month" }
 ];
-
-const {
-  _initFromDate,
-  _initToDate,
-  _onTestDate
-} = dateConfig;
 
 const _createValidationMessages = (
   isValid,
@@ -125,18 +117,14 @@ const DialogType2 = memoIsShow(({
          isShowLabel={isShowLabels}
          caption="Sort By"
          placeholder="Default: Hot Week Tab"
-         options={_sortOptions}
+         options={_SORT_OPTIONS}
          onSelect={_hSelectSortBy}
       />
-      <D.ShowHide isShow={isShowDate}>
-        <D.Dates
-           ref={_refInputDates}
-           isShowLabels={isShowLabels}
-           initFromDate={_initFromDate}
-           initToDate={_initToDate}
-           onTestDate={_onTestDate}
-        />
-      </D.ShowHide>
+      <RowInputDates
+        ref={_refInputDates}
+        isShow={isShowDate}
+        isShowLabels={isShowLabels}
+      />
     </Dialog>
   );
 });

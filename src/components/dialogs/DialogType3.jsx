@@ -11,13 +11,11 @@ import memoIsShow from './memoIsShow';
 
 import Dialog from './Dialog';
 import D from './DialogCell';
+import RowInputDates from './RowInputDates';
 
 import helperFns from './helperFns/helperFns';
 
-const {
-  dateConfig,
-  toUTCSecond
-} = helperFns;
+const { toUTCSecond } = helperFns;
 
 const _SORT_OPTIONS = [
   { caption: "Activity, Recent Day", value: "activity" },
@@ -25,12 +23,6 @@ const _SORT_OPTIONS = [
   { caption: "Score", value: "votes" },
   { caption: "Relevance", value: "relevance" }
 ];
-
-const {
-  _initFromDate,
-  _initToDate,
-  _onTestDate
-} = dateConfig;
 
 const _createValidationMessages = (
   isValid,
@@ -136,15 +128,11 @@ const DialogType3 = memoIsShow(({
          options={_SORT_OPTIONS}
          onSelect={_hSelectSortBy}
       />
-      <D.ShowHide isShow={isShowDate}>
-        <D.Dates
-           ref={_refInputDates}
-           isShowLabels={isShowLabels}
-           initFromDate={_initFromDate}
-           initToDate={_initToDate}
-           onTestDate={_onTestDate}
-        />
-      </D.ShowHide>
+      <RowInputDates
+        ref={_refInputDates}
+        isShow={isShowDate}
+        isShowLabels={isShowLabels}
+      />
     </Dialog>
   );
 });
