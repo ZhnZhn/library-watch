@@ -1,12 +1,12 @@
 import {
   useRef,
-  useCallback,
-  getRefValue,
-  setRefValue
+  getRefValue
 } from '../uiApi';
 import useToggle from '../hooks/useToggle';
 import useDialog from './useDialog';
+import useSelectItem from './useSelectItem';
 import useDialogButtons from './useDialogButtons';
+import getRefItemValue from './getRefItemValue';
 import memoIsShow from './memoIsShow';
 
 import Dialog from './Dialog';
@@ -61,10 +61,10 @@ const DialogType3 = memoIsShow(({
   , _refInputOne = useRef()
   , _refInputTwo = useRef()
   , _refInputDates = useRef()
-  , _refSortByItem = useRef({})
-  , _hSelectSortBy = useCallback(item => {
-    setRefValue(_refSortByItem, item)
-  }, [])
+  , [
+    _refSortBy,
+    _hSelectSortBy
+  ] = useSelectItem()
   , [
     validationMessages,
     COMMAND_BUTTONS,
@@ -87,7 +87,7 @@ const DialogType3 = memoIsShow(({
         repo,
         requestType,
         intitle,
-        sort: (getRefValue(_refSortByItem) || {}).value,
+        sort: getRefItemValue(_refSortBy),
         fromdate: toUTCSecond(fromDate),
         todate: toUTCSecond(toDate)
       })
