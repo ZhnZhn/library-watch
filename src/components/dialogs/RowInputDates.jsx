@@ -1,12 +1,11 @@
 import { forwardRef } from '../uiApi';
 import D from './DialogCell';
-import helperFns from './helperFns/helperFns';
+import { dateConfig } from './helperFns';
 
-const { dateConfig } = helperFns
-, {
-  _initFromDate,
-  _initToDate,
-  _onTestDate
+const {
+  initialFromDate,
+  initialToDate,
+  onTestDate
 } = dateConfig;
 
 const RowInputDates = forwardRef(({
@@ -17,9 +16,9 @@ const RowInputDates = forwardRef(({
     <D.Dates
         ref={ref}
         isShowLabels={isShowLabels}
-        initFromDate={_initFromDate}
-        initToDate={_initToDate}
-        onTestDate={_onTestDate}
+        initFromDate={initialFromDate}
+        initToDate={initialToDate}
+        onTestDate={onTestDate}
     />
   </D.ShowHide>
 ));

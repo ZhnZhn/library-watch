@@ -13,9 +13,7 @@ import Dialog from './Dialog';
 import D from './DialogCell';
 import RowInputDates from './RowInputDates';
 
-import helperFns from './helperFns/helperFns';
-
-const { toUTCSecond } = helperFns;
+import { toUTCSecond } from './helperFns';
 
 const _SORT_OPTIONS = [
   { caption: "Activity, Recent Day", value: "activity" },
