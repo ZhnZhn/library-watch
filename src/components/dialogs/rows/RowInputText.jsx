@@ -1,6 +1,6 @@
-import { forwardRef } from 'react';
+import { forwardRef } from '../../uiApi';
 import InputText from '../../zhn-atoms/InputText';
-import Caption from './Caption'
+import Caption from './Caption';
 
 const S_ROW_DIV = { margin: 5 }
 , S_LABEL_SPAN = {
