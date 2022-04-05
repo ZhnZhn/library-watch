@@ -1,4 +1,4 @@
-import A from '../zhn-atoms/A';
+import A from '../../zhn-atoms/A';
 
 const S_BTN_CIRCLE = {
   position: 'relative',
@@ -16,6 +16,5 @@ const ButtonWatch = ({
      onClick={onClick}
    />
 );
-
 
 export default ButtonWatch

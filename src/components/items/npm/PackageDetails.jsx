@@ -2,13 +2,16 @@ import crGitRepositoryHref from './crGitRepositoryHref';
 import crGitRepositoryCaption from './crGitRepositoryCaption';
 
 import checkResponseJson from './checkResponseJson';
-import CellValue from './CellValue';
-import Link from './Link';
+import CellValue from '../CellValue';
+import Link from '../Link';
 
 const S_REPO = { padding: '4px 0 0 8px' }
 , S_REPO_LINK = { marginRight: 24 };
 
-const RowLinks = ({ repoHref, hpHref }) => {
+const RowLinks = ({
+  repoHref,
+  hpHref
+}) => {
  if (!repoHref && !hpHref) {
    return null;
  }
@@ -27,18 +30,20 @@ const RowLinks = ({ repoHref, hpHref }) => {
  );
 }
 
-const _isStr = str => typeof str === 'string';
-const _isNumber = n => typeof n === 'number';
-const _trimTo5 = n => _isNumber(n)
-  ? (''+n).substring(0, 5)
-  : '';
-const _toYear = strDate => _isStr(strDate)
-  ? strDate.split('T')[0]
-  : '';
-
-const _crRepositoryHref = ({ type, url }) => type === 'git'
- ? crGitRepositoryHref(url)
- : void 0;
+const _isStr = str => typeof str === 'string'
+, _isNumber = n => typeof n === 'number'
+, _trimTo5 = n => _isNumber(n)
+    ? (''+n).substring(0, 5)
+    : ''
+, _toYear = strDate => _isStr(strDate)
+    ? strDate.split('T')[0]
+    : ''
+, _crRepositoryHref = ({
+  type,
+  url
+}) => type === 'git'
+   ? crGitRepositoryHref(url)
+   : void 0;
 
 const PackageDetails = ({ json }) => {
   const result = checkResponseJson(json);

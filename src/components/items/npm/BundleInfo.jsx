@@ -2,16 +2,19 @@ import crGitRepositoryHref from './crGitRepositoryHref';
 import crGitRepositoryCaption from './crGitRepositoryCaption';
 
 import checkResponseJson from './checkResponseJson';
-import CellValue from './CellValue';
-import Link from './Link';
+import CellValue from '../CellValue';
+import Link from '../Link';
 
 const S_ML_8 = { marginLeft: 8 }
-, S_MR_24 = { marginRight: 24 };
+, S_MR_24 = { marginRight: 24 }
 
-const API_URL = 'https://bundlephobia.com/result?p='
+, API_URL = 'https://bundlephobia.com/result?p='
 
-const _crBundleHref = (name, version) => `${API_URL}${name}@${version}`;
-const _toKbStr = sizeByte => (sizeByte/1024).toFixed(1);
+, _crBundleHref = (
+  name,
+  version
+) => `${API_URL}${name}@${version}`
+, _toKbStr = sizeByte => (sizeByte/1024).toFixed(1);
 
 const BundleInfo = ({
   json

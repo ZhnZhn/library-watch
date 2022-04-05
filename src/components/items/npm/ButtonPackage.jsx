@@ -1,7 +1,7 @@
-import CL from '../styles/CL';
-import STYLE from './Item.Style';
+import CL from '../../styles/CL';
+import STYLE from '../Item.Style';
 
-import A from '../zhn-atoms/A';
+import A from '../../zhn-atoms/A';
 
 const S_CAPTION_OPEN = {
   ...STYLE.CAPTION_OPEN,
@@ -16,7 +16,7 @@ const S_CAPTION_OPEN = {
 const ButtonPackage = ({
   caption,
   packageName,
-  sumDownloads=0,
+  sumDownloads,
   fromDate,
   toDate,
   onClick

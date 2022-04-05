@@ -1,13 +1,15 @@
 
-const C = {
-  ERR_RES: "response isn't OK",
-  ERR_FORMAT: "response isn't valid"
-};
+const ERR_RES = "response isn't OK"
+, ERR_FORMAT = "response isn't valid"
 
-const _crResponseError = name => `${name} ${C.ERR_RES}`
-, _crFormatError = name => `${name} ${C.ERR_FORMAT}`;
+, _crResponseError = name => `${name} ${ERR_RES}`
+, _crFormatError = name => `${name} ${ERR_FORMAT}`;
 
-const loadJson = ({ name, uri, onLoad }) => fetch(uri)
+const loadJson = ({
+  name,
+  uri,
+  onLoad
+}) => fetch(uri)
   .then(res => {
      const { status } = res;
      if (status>199 && status<300) {

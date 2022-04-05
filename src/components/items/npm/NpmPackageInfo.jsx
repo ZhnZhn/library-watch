@@ -1,15 +1,15 @@
 import {
   useState,
   useCallback
-} from '../uiApi';
+} from '../../uiApi';
 
 import useButtonLoad from './useButtonLoad';
 
 import loadNpms from './loadNpms';
 import loadBundle from './loadBundle';
 
-import CL from '../styles/CL';
-import A from '../zhn-atoms/A';
+import CL from '../../styles/CL';
+import A from '../../zhn-atoms/A';
 import PackageDetails from './PackageDetails';
 import BundleInfo from './BundleInfo';
 

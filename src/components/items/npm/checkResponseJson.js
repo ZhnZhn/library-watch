@@ -1,4 +1,4 @@
-import ErrMsg from './ErrMsg';
+import ErrMsg from '../ErrMsg';
 
 const _isObj = obj => typeof obj === 'object'
  && obj !== null;

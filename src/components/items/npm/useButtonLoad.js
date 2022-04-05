@@ -1,7 +1,7 @@
 import {
   useState,
   useCallback
-} from '../uiApi';
+} from '../../uiApi';
 
 const useButtonLoad = (
   packageName,

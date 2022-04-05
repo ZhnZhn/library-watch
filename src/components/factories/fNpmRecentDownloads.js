@@ -1,31 +1,58 @@
 
-import NpmDownloads from '../items/NpmDownloads';
+import NpmDownloads from '../items/npm/NpmDownloads';
 
-const _fnTransformDownloads = (downloads=[{ day: '0-0-0', downloads : 0}]) => {
+const _transformDownloads = (
+  downloads=[{ day: '0-0-0', downloads: 0}]
+) => {
     const labels = []
-        , data = []
-        , fromDate = downloads[0].day
-        , toDate = downloads[downloads.length-1].day
+    , data = []
+    , fromDate = downloads[0].day
+    , toDate = downloads[downloads.length-1].day
     let sumDownloads = 0;
 
     downloads.forEach((item) => {
       const { day, downloads } = item
-          , arrDate = day.split('-');
+      , arrDate = day.split('-');
 
       labels.push(`${arrDate[2]}`);
       data.push(downloads);
       sumDownloads = sumDownloads + downloads;
     })
 
-    return {sumDownloads, fromDate, toDate, labels, data};
-}
+    return {
+      sumDownloads,
+      fromDate,
+      toDate,
+      labels,
+      data
+    };
+};
 
 const fNpmRecentDownloads = function({
-  factory, option, json, parentProps, onCloseItem, onWatchItem
+  factory,
+  option,
+  json,
+  parentProps,
+  onCloseItem,
+  onWatchItem
 }){
-  const { requestType, chartType, browserType, key, packageLink } = option
-      , { downloads } = json
-      , { sumDownloads, fromDate, toDate, labels, data } = _fnTransformDownloads(downloads);
+  const {
+    requestType,
+    chartType,
+    browserType,
+    key,
+    packageLink
+  } = option
+  , {
+    downloads
+  } = json
+  , {
+    sumDownloads,
+    fromDate,
+    toDate,
+    labels,
+    data
+  } = _transformDownloads(downloads);
 
   return factory.createElement(NpmDownloads, {
      key,
