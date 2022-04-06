@@ -1,4 +1,4 @@
-import { memo } from '../uiApi';
+import memoIsShow from '../dialogs/memoIsShow';
 
 import ChartActions from '../../flux/actions/ChartActions';
 import {
@@ -19,10 +19,7 @@ const DIALOG_CAPTION = "Load Watch Item"
 , S_LH_1_5 = { lineHeight: 1.5 }
 , S_BOLD = { fontWeight: 'bold' };
 
-const _isNotShouldRerender = (props, nextProps) =>
-  props.isShow === nextProps.isShow;
-
-const LoadItemDialog = memo(({
+const LoadItemDialog = memoIsShow(({
   isShow,
   data,
   onClose
@@ -76,6 +73,6 @@ const LoadItemDialog = memo(({
       }
     </ModalDialog>
   );
-}, _isNotShouldRerender);
+});
 
 export default LoadItemDialog

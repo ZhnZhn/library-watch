@@ -1,5 +1,4 @@
-import React from 'react';
-//import PropTypes from 'prop-types'
+import memoIsShow from '../dialogs/memoIsShow';
 
 import wa from '../../flux/actions/WatchActions';
 import { WatchActionTypes as WAT } from '../../flux/actions/WatchActions';
@@ -13,10 +12,11 @@ import ListCreatePane from './ListCreatePane';
 import ListEditPane from './ListEditPane';
 import ListDeletePane from './ListDeletePane';
 
-
-const _areEqual = (prevProps, nextProps) => prevProps.isShow === nextProps.isShow
-
-const EditListDialog = React.memo(({isShow, store, onClose}) => (
+const EditListDialog = memoIsShow(({
+  isShow,
+  store,
+  onClose
+}) => (
   <ModalDialog
      caption="Watch Lists Edit"
      isShow={isShow}
@@ -60,14 +60,6 @@ const EditListDialog = React.memo(({isShow, store, onClose}) => (
        </Tab>
     </TabPane>
   </ModalDialog>
-), _areEqual)
-
-  /*
-EditListDialog.propTypes : {
-  isShow : PropTypes.bool,
-  store : PropTypes.object,
-  onClose : PropTypes.func
-},
-*/
+));
 
 export default EditListDialog

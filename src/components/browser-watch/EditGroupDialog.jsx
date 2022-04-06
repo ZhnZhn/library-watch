@@ -1,5 +1,4 @@
-import React from 'react';
-//import PropTypes from 'prop-types'
+import memoIsShow from '../dialogs/memoIsShow';
 
 import wa from '../../flux/actions/WatchActions';
 import { WatchActionTypes as WAT } from '../../flux/actions/WatchActions';
@@ -13,10 +12,11 @@ import GroupAddPane from './GroupAddPane';
 import GroupEditPane from './GroupEditPane';
 import GroupDeletePane from './GroupDeletePane';
 
-
-const _areEqual = (prevProps, nextProps) => prevProps.isShow === nextProps.isShow
-
-const EditGroupDialog = React.memo(({isShow, store, onClose}) => (
+const EditGroupDialog = memoIsShow(({
+  isShow,
+  store,
+  onClose
+}) => (
   <ModalDialog
      caption="Watch Groups Edit"
      isShow={isShow}
@@ -59,15 +59,6 @@ const EditGroupDialog = React.memo(({isShow, store, onClose}) => (
        </Tab>
     </TabPane>
   </ModalDialog>
-  ), _areEqual
-);
-
-/*
-EditGroupDialog.propTypes : {
-  isShow : PropTypes.bool,
-  store : PropTypes.object,
-  onClose : PropTypes.func
-},
-*/
+));
 
 export default EditGroupDialog

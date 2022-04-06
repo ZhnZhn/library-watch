@@ -1,5 +1,4 @@
 import {
-  memo,
   useRef,
   useState,
   useMemo,
@@ -12,6 +11,7 @@ import useValidationMessages from '../hooks/useValidationMessages';
 import usePrevValue from '../hooks/usePrevValue';
 import useListen from '../hooks/useListen';
 import useRefItemCaption from './useRefItemCaption';
+import memoIsShow from '../dialogs/memoIsShow';
 
 import WatchActions from '../../flux/actions/WatchActions';
 import { WatchActionTypes as WAT } from '../../flux/actions/WatchActions';
@@ -34,10 +34,7 @@ const actionCompleted = WAT.EDIT_WATCH_COMPLETED
   color: 'gray'
 };
 
-const _isNotShouldRerender = (prevProps, nextProps) =>
-  prevProps.isShow === nextProps.isShow
-
-const AddToWatchDialog = memo((props) => {
+const AddToWatchDialog = memoIsShow((props) => {
   const _prevProps = usePrevValue(props)
   , {
     isShow,
@@ -194,6 +191,6 @@ const AddToWatchDialog = memo((props) => {
        />
     </ModalDialog>
   );
-}, _isNotShouldRerender);
+});
 
 export default AddToWatchDialog
