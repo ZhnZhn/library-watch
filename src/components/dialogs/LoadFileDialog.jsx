@@ -1,11 +1,12 @@
 import {
-  memo,
   useRef,
-  useState,
-  useCallback
+  useCallback,
+  getRefValue,
+  setRefValue
 } from '../uiApi';
+import useDialogButtons from './useDialogButtons';
+import memoIsShow from './memoIsShow';
 
-import FlatButton from '../zhn-m/FlatButton';
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import InputFileReader from '../zhn-atoms/InputFileReader';
 import ValidationMessages from './rows/ValidationMessages';
@@ -19,66 +20,48 @@ const MSG_FILE_NOT_CHOOSED = 'Please choose file for loading.'
   marginRight: 16
 };
 
-const _getRefValue = ref => ref.current
-, _setRefValue = (ref, value) => ref.current = value
-, _isNotShouldRerender = (props, nextProps) =>
-  props.isShow === nextProps.isShow;
-
-const LoadFileDialog = memo(({
+const LoadFileDialog = memoIsShow(({
   isShow,
   data,
   onClose
 }) => {
-  const _refTupleEventFile = useRef(null)
-  , [
-    validationMessages,
-    setValidationMessages
-  ] = useState([])
+  const { onLoad } = data
+  , _refTupleEventFile = useRef(null)
   , _hChange = useCallback(results => {
     const [_results] = results || []
     , _tupleEventFile = _results
          //progressEvent, file
        ? [_results[0], _results[1]]
        : null
-    _setRefValue(_refTupleEventFile, _tupleEventFile)
+    setRefValue(_refTupleEventFile, _tupleEventFile)
   }, [])
-  , _hLoad = () => {
+  , [
+    validationMessages,
+    COMMAND_BUTTONS,
+    hClose
+  ] = useDialogButtons((
+    setValidationMessages,
+    clearValidationMessages
+  ) => {
     const [
       progressEvent,
       file
-    ] = _getRefValue(_refTupleEventFile) || [];
+    ] = getRefValue(_refTupleEventFile) || [];
     if (progressEvent && file){
-      const { onLoad } = data;
       onLoad({ progressEvent });
-      setValidationMessages([])
+      clearValidationMessages()
     } else {
       setValidationMessages([MSG_FILE_NOT_CHOOSED])
     }
-  }
-  , _hClose = useCallback(() => {
-    setValidationMessages(prevState =>
-      prevState.length !== 0
-        ? [] : prevState
-    )
-    onClose()
-  }, [onClose])
-  , _commandButtons = [
-     <FlatButton
-       key="load"
-       isPrimary={true}
-       caption="Load"
-       timeout={2000}
-       onClick={_hLoad}
-     />
-  ];
+  }, onClose);
 
   return (
     <ModalDialog
       style={S_MODAL_DIALOG}
       caption="Load Watch Items from File"
       isShow={isShow}
-      commandButtons={_commandButtons}
-      onClose={_hClose}
+      commandButtons={COMMAND_BUTTONS}
+      onClose={hClose}
     >
        <div style={{
          ...styles.rowDiv,
@@ -99,6 +82,6 @@ const LoadFileDialog = memo(({
        </div>
     </ModalDialog>
   );
-}, _isNotShouldRerender)
+});
 
 export default LoadFileDialog
