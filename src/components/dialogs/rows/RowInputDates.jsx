@@ -1,6 +1,7 @@
-import { forwardRef } from '../uiApi';
-import D from './DialogCell';
-import { dateConfig } from './helperFns';
+import { forwardRef } from '../../uiApi';
+import ShowHide from '../../zhn-atoms/ShowHide';
+import Dates from './Dates';
+import { dateConfig } from '../helperFns';
 
 const {
   initialFromDate,
@@ -12,15 +13,15 @@ const RowInputDates = forwardRef(({
   isShow,
   isShowLabels
 }, ref) => (
-  <D.ShowHide isShow={isShow}>
-    <D.Dates
+  <ShowHide isShow={isShow}>
+    <Dates
         ref={ref}
         isShowLabels={isShowLabels}
         initFromDate={initialFromDate}
         initToDate={initialToDate}
         onTestDate={onTestDate}
     />
-  </D.ShowHide>
+  </ShowHide>
 ));
 
 export default RowInputDates

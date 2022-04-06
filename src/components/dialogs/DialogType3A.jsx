@@ -9,7 +9,6 @@ import memoIsShow from './memoIsShow';
 
 import Dialog from './Dialog';
 import D from './DialogCell';
-import RowInputDates from './RowInputDates';
 
 const _crValidationMessages = (
   repo,
@@ -98,7 +97,7 @@ const DialogType3A = memoIsShow(({
          placeholder={onePlaceholder}
          onEnter={hLoad}
       />
-      <RowInputDates
+      <D.RowInputDates
         ref={_refInputDates}
         isShow={isShowDate}
         isShowLabels={isShowLabels}

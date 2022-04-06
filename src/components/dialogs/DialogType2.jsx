@@ -11,7 +11,6 @@ import memoIsShow from './memoIsShow';
 
 import Dialog from './Dialog';
 import D from './DialogCell';
-import RowInputDates from './RowInputDates';
 
 import { toUTCSecond } from './helperFns';
 
@@ -118,7 +117,7 @@ const DialogType2 = memoIsShow(({
          options={_SORT_OPTIONS}
          onSelect={_hSelectSortBy}
       />
-      <RowInputDates
+      <D.RowInputDates
         ref={_refInputDates}
         isShow={isShowDate}
         isShowLabels={isShowLabels}
