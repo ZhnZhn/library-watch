@@ -1,12 +1,12 @@
 import Rows from './rows/Rows'
-import Widgets from './widgets/Widgets'
+import Toolbar from './widgets/Toolbar'
 
 import ShowHide from '../zhn-atoms/ShowHide';
 import DraggableDialog from '../zhn-moleculs/DraggableDialog';
 
 const DialogCell = {
   ...Rows,
-  ...Widgets,
+  Toolbar,
   ShowHide,
   DraggableDialog
 };
