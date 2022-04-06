@@ -7,8 +7,7 @@ import {
 } from '../../constants/Type';
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import FlatButton from '../zhn-m/FlatButton';
-
-import styles from '../styles/DialogStyles';
+import RowText from './RowText';
 
 const DIALOG_CAPTION = "Load Watch Item"
 , S_ITEM_DESCRIPTION = {
@@ -53,27 +52,27 @@ const LoadItemDialog = memo(({
        commandButtons={_commandButtons}
        onClose={onClose}
     >
-      <div style={{...styles.rowDiv, ...S_LH_1_5}} key="1">
-        <span style={S_ITEM_DESCRIPTION}>
-           {descr}
-        </span>
-      </div>
-      <div style={{...styles.rowDiv, ...S_LH_2}} key="2">
-        <span style={styles.labelSpan}>
-          Item:
-        </span>
-        <span style={S_BOLD}>
-           {caption}
-        </span>
-      </div>
-      { date && <div style={{...styles.rowDiv, ...S_LH_2}} key="3">
-          <span style={styles.labelSpan}>
-             Date:
-          </span>
-          <span style={S_BOLD}>
-             {date}
-          </span>
-        </div>
+      <RowText
+        key="1"
+        style={S_LH_1_5}
+        isCaption={false}
+        text={descr}
+        textStyle={S_ITEM_DESCRIPTION}
+      />
+      <RowText
+        key="2"
+        style={S_LH_2}
+        caption="Item"
+        text={caption}
+        textStyle={S_BOLD}
+      />
+      { date && <RowText
+          key="3"
+          style={S_LH_2}
+          caption="Date"
+          text={date}
+          textStyle={S_BOLD}
+        />
       }
     </ModalDialog>
   );
