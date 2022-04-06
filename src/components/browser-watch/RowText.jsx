@@ -1,20 +1,21 @@
-import styles from '../styles/DialogStyles';
-import crRowCaption from './crRowCaption';
+import D from '../dialogs/DialogCell';
 
 const RowText = ({
   style,
   caption,
+  isCaption=true,
   textStyle,
   text
 }) => (
-  <div style={{...styles.rowDiv, ...style}}>
-    <span style={styles.labelSpan}>
-     {crRowCaption(caption)}
-    </span>
+  <D.Row style={style}>
+    <D.Caption
+      is={isCaption}
+      caption={caption}
+    />
     <span style={textStyle}>
        {text}
     </span>
-  </div>
+  </D.Row>
 );
 
 export default RowText

@@ -1,16 +1,16 @@
-import STYLE from '../../styles/DialogStyles'
+const S_ROW_DIV = {
+  display: 'flex',
+  alignItems: 'center',
+  margin: 5
+};
 
-const Plain = ({
+const Row = ({
   style,
   children
 }) => (
-  <div style={{ ...STYLE.rowDiv, ...style }}>
+  <div style={{...S_ROW_DIV, ...style}}>
     {children}
   </div>
 );
-
-const Row = {
-  Plain
-};
 
 export default Row

@@ -9,8 +9,7 @@ import memoIsShow from './memoIsShow';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import InputFileReader from '../zhn-atoms/InputFileReader';
-import ValidationMessages from './rows/ValidationMessages';
-import styles from '../styles/DialogStyles';
+import D from './DialogCell';
 
 const MSG_FILE_NOT_CHOOSED = 'Please choose file for loading.'
 , S_MODAL_DIALOG = { minWidth: 320 }
@@ -63,23 +62,17 @@ const LoadFileDialog = memoIsShow(({
       commandButtons={COMMAND_BUTTONS}
       onClose={hClose}
     >
-       <div style={{
-         ...styles.rowDiv,
-         ...S_ROW_INPUT_FILE
-       }}>
+       <D.Row style={S_ROW_INPUT_FILE}>
           <InputFileReader
              as="text"
              onChange={_hChange}
           />
-       </div>
-       <div style={{
-         ...styles.rowDiv,
-         ...S_ROW_VALIDATION
-       }}>
-         <ValidationMessages
+       </D.Row>
+       <D.Row style={S_ROW_VALIDATION}>
+         <D.ValidationMessages
             validationMessages={validationMessages}
          />
-       </div>
+       </D.Row>
     </ModalDialog>
   );
 });

@@ -9,7 +9,7 @@ const S_ROW = { padding: '4px 0 8px 0' }
 const ToolbarButtonCircle = memo(({
   buttons
 }) => (
-  <Row.Plain style={S_ROW}>
+  <Row style={S_ROW}>
     {(buttons || []).map(
       ({caption, title, onClick}, index) => (
          <ButtonCircle
@@ -20,7 +20,7 @@ const ToolbarButtonCircle = memo(({
            onClick={onClick}
          />
      ))}
-  </Row.Plain>
+  </Row>
 ));
 
 export default ToolbarButtonCircle

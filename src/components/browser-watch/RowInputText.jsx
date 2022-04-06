@@ -5,11 +5,9 @@ import {
   getRefValue
 } from '../uiApi';
 import InputText from '../zhn-atoms/InputText';
-import styles from '../styles/DialogStyles';
-import crRowCaption from './crRowCaption';
+import D from '../dialogs/DialogCell';
 
 const S_ROW_DIV = { lineHeight: 2 }
-, S_CAPTION = { width: 120 }
 , S_INPUT_TEXT = {
   width: 250,
   marginLeft: 0,
@@ -32,15 +30,16 @@ const RowInputText = forwardRef(({
   }))
 
   return (
-    <div style={{...styles.rowDiv, ...S_ROW_DIV}}>
-       <span style={{...styles.labelSpan, ...S_CAPTION}}>
-         {crRowCaption(caption)}
-       </span>
+    <D.Row style={S_ROW_DIV}>
+       <D.Caption
+         is={true}
+         caption={caption}
+       />
        <InputText
           ref={_refInput}
           style={S_INPUT_TEXT}
        />
-    </div>
+    </D.Row>
   );
 });
 

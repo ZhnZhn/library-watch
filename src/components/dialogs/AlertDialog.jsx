@@ -1,7 +1,7 @@
 import memoIsShow from './memoIsShow';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
-import STYLE from '../styles/DialogStyles';
+import D from './DialogCell';
 
 const S_CAPTION = {
   color: '#f44336',
@@ -13,7 +13,7 @@ const S_CAPTION = {
   fontWeight: 'bold',
 }
 , S_ITEM_ID = {
-  color: 'rgba(164, 135, 212, 1)',
+  color: '#a487d4',
   fontWeight: 'bold'
 }
 , S_DESCR = {
@@ -33,7 +33,7 @@ const _crItemId = str => str
 
 const FN_NOOP = () => {};
 
-const AlertDialog = ({
+const AlertDialog = memoIsShow(({
   isShow,
   data,
   onClose=FN_NOOP
@@ -55,7 +55,7 @@ const AlertDialog = ({
       isShow={isShow}
       onClose={onClose}
     >
-       <div style={STYLE.rowDiv}>
+       <D.Row>
           <span style={S_CAPTION}>
             <span>{_caption}</span>
             <span>:</span>
@@ -63,24 +63,12 @@ const AlertDialog = ({
               {_itemId}
             </span>
           </span>
-       </div>
-       <div style={STYLE.rowDiv}>
+       </D.Row>
+       <D.Row>
           <p style={S_DESCR}>{_descr}</p>
-       </div>
+       </D.Row>
     </ModalDialog>
   );
-};
+});
 
-/*
-AlertDialog.propTypes = {
-  isShow: PropTypes.bool,
-  data: PropTypes.shape({
-    alertCaption: PropTypes.string,
-    alertItemId: PropTypes.string,
-    alertDescr: PropTypes.string
-  }),
-  onClose: PropTypes.func
-}
-*/
-
-export default memoIsShow(AlertDialog)
+export default AlertDialog

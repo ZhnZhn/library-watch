@@ -4,7 +4,7 @@ import {
   useImperativeHandle
 } from '../../uiApi';
 import InputDate from '../../zhn-atoms/InputDate';
-import styles from '../../styles/DialogStyles';
+import Row from './Row';
 import Caption from './Caption';
 
 const ERROR_FORMAT = "YYYY-MM-DD format must be"
@@ -80,11 +80,10 @@ const Dates = forwardRef(({
   }), [msgOnNotValidFormat])
 
   return (
-    <div>
-      <div style={styles.rowDiv}>
+    <>
+      <Row>
         <Caption
           is={isShowLabels}
-          style={styles.labelSpan}
           caption="From Date"
         />
         <InputDate
@@ -93,11 +92,10 @@ const Dates = forwardRef(({
            errorMsg={ERROR_FORMAT}
            onTest={onTestDate}
         />
-     </div>
-     <div style={styles.rowDiv}>
+     </Row>
+     <Row>
        <Caption
            is={isShowLabels}
-           style={styles.labelSpan}
            caption="To Date"
         />
         <InputDate
@@ -106,19 +104,9 @@ const Dates = forwardRef(({
            errorMsg={ERROR_FORMAT}
            onTest={onTestDate}
         />
-     </div>
-   </div>
+     </Row>
+   </>
   );
 });
-
-/*
-Dates.propTypes = {
-  isShowLabels: PropTypes.bool,
-  initFromDate: PropTypes.string,
-  initToDate: PropTypes.string,
-  onTestDate: PropTypes.func,
-  msgOnNotValidFormat: PropTypes.func
-}
-*/
 
 export default Dates

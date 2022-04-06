@@ -2,18 +2,10 @@ import { forwardRef } from '../../uiApi';
 import InputText from '../../zhn-atoms/InputText';
 import Caption from './Caption';
 
-const S_ROW_DIV = { margin: 5 }
-, S_LABEL_SPAN = {
-  color: '#1b75bb',
-  display: 'inline-block',
-  width: 100,
-  paddingRight: 5,
-  textAlign: 'right',
-  fontSize: '16px',
-  fontWeight: 'bold'
+const S_DIV = {
+  margin: 5,
+  lineHeight: 2
 }
-, S_ROOT = { lineHeight: 2 }
-, S_CAPTION = { width: 120 }
 , S_INPUT_TEXT = {
   width: 250,
   height: 30,
@@ -23,8 +15,8 @@ const S_ROW_DIV = { margin: 5 }
 };
 
 const RowInputText = forwardRef(({
-  isShowLabel=true,
-  caption='',
+  isShowLabel,
+  caption,
   placeholder,
   onEnter
 }, ref) => {
@@ -33,10 +25,9 @@ const RowInputText = forwardRef(({
     : placeholder || caption;
 
   return (
-    <div style={{...S_ROW_DIV, ...S_ROOT}}>
+    <div style={S_DIV}>
        <Caption
          is={isShowLabel}
-         style={{...S_LABEL_SPAN, ...S_CAPTION}}
          caption={caption}
        />
        <InputText

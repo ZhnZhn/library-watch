@@ -1,6 +1,5 @@
 import InputSelect from '../zhn-select/InputSelect';
-import styles from '../styles/DialogStyles';
-import crRowCaption from './crRowCaption';
+import D from '../dialogs/DialogCell';
 
 const RowInputSelect = ({
   caption,
@@ -8,17 +7,18 @@ const RowInputSelect = ({
   isUpdateOptions,
   onSelect
 }) => (
-  <div style={styles.rowDiv}>
-     <span style={styles.labelSpan}>
-       {crRowCaption(caption)}
-     </span>
+  <D.Row>
+     <D.Caption
+       is={true}
+       caption={caption}
+     />
      <InputSelect
         width="250"
         options={options}
         isUpdateOptions={isUpdateOptions}
         onSelect={onSelect}
      />
-  </div>
+  </D.Row>
 );
 
 export default RowInputSelect

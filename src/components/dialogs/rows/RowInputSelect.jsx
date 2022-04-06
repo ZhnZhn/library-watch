@@ -1,20 +1,17 @@
-import InputSelect from '../../zhn-select/InputSelect'
-import STYLE from '../../styles/DialogStyles'
-import Caption from './Caption'
-
-const S_CAPTION = { width: 120 };
+import InputSelect from '../../zhn-select/InputSelect';
+import Row from './Row';
+import Caption from './Caption';
 
 const RowInputSelect = ({
-  isShowLabel=true,
+  isShowLabel,
   caption,
   placeholder,
   options,
   onSelect
 }) => (
-  <div style={STYLE.rowDiv}>
+  <Row>
     <Caption
       is={isShowLabel}
-      style={{...STYLE.labelSpan, ...S_CAPTION}}
       caption={caption}
     />
      <InputSelect
@@ -23,7 +20,7 @@ const RowInputSelect = ({
         options={options}
         onSelect={onSelect}
      />
-  </div>
+  </Row>
 );
 
 export default RowInputSelect
