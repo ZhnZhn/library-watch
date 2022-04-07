@@ -2,11 +2,10 @@ import {
   useRef,
   useCallback,
   useEffect,
-  useImperativeHandle
+  useImperativeHandle,
+  getRefValue
 } from '../uiApi';
 import focusHtmlElement from '../zhn-utils/focusHtmlElement';
-
-const _getRefValue = ref => (ref || {}).current;
 
 const useDialogFocus = (ref, isShow) => {
   const refRoot = useRef()
@@ -15,16 +14,16 @@ const useDialogFocus = (ref, isShow) => {
   , _refIsShowPrev = useRef()
   , focus = useCallback(() => {
       _refPrevFocused.current = document.activeElement
-      focusHtmlElement(_getRefValue(refBtMore) || _getRefValue(refRoot))
+      focusHtmlElement(getRefValue(refBtMore) || getRefValue(refRoot))
   }, [])
   , focusPrev = useCallback(()=>{
-      focusHtmlElement(_getRefValue(_refPrevFocused))
+      focusHtmlElement(getRefValue(_refPrevFocused))
       _refPrevFocused.current = null
   }, []);
 
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(()=>{
-    const _isPrevShow = _getRefValue(_refIsShowPrev);
+    const _isPrevShow = getRefValue(_refIsShowPrev);
     if (isShow && !_isPrevShow) {
       focus()
     } else if (!isShow && _isPrevShow) {

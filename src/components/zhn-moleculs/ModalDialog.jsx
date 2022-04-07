@@ -1,7 +1,9 @@
 import {
   useRef,
   useCallback,
-  useEffect
+  useEffect,
+  getRefValue,
+  setRefValue
 } from '../uiApi';
 import useRerender from '../hooks/useRerender';
 import useKeyEscape from '../hooks/useKeyEscape';
@@ -33,9 +35,7 @@ const CL_SHOWING = 'show-popup'
    textAlign: 'right',
    margin: '8px 4px 10px 0',
    cursor: 'default'
-}
-, _getRefValue = ref => ref.current
-, _setRefValue = (ref, value) => ref.current = value;
+};
 
 const ModalDialog = ({
   isShow,
@@ -55,22 +55,21 @@ const ModalDialog = ({
   }, []);
 
   useEffect(() => {
-    if (_getRefValue(_refWasClosing)){
+    if (getRefValue(_refWasClosing)){
       setTimeout(_rerenderComp, timeout)
     }
   })
 
   let _className, _style;
-
-  if (_getRefValue(_refWasClosing)){
+  if (getRefValue(_refWasClosing)){
     _style = S_HIDE;
-    _setRefValue(_refWasClosing, false)
+    setRefValue(_refWasClosing, false)
   } else {
     [_className, _style] = isShow
       ? [CL_SHOWING, S_SHOW]
       : [CL_HIDING, S_HIDE_POPUP]
     if (!isShow){
-      _setRefValue(_refWasClosing, true)
+      setRefValue(_refWasClosing, true)
     }
   }
 

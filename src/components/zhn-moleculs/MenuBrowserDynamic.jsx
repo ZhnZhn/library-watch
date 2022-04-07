@@ -1,7 +1,9 @@
 import {
   useRef,
   useState,
-  useEffect
+  useEffect,
+  getRefValue,
+  setRefValue
 } from '../uiApi';
 import useBool from '../hooks/useBool';
 import useListen from '../hooks/useListen';
@@ -17,9 +19,7 @@ const S_BROWSER = { paddingRight: 0 }
   height: '92%',
   //height: 'calc(100vh - 90px)',
   paddingRight: 10
-}
-, _getRefValue = ref => ref.current
-, _setRefValue = (ref, value) => ref.current = value
+};
 
 const MenuBrowserDynamic = ({
   isInitShow,
@@ -43,7 +43,7 @@ const MenuBrowserDynamic = ({
     if (actionType === showAction && data === browserType){
       _hShow();
     } else if (actionType === loadCompletedAction && data.browserType === browserType){
-      _setRefValue(_refIsLoaded, true)
+      setRefValue(_refIsLoaded, true)
       setMenuItems(data.menuItems)
     } else if (actionType === updateAction && data === browserType){
       setMenuItems(store.getBrowserMenu(browserType))
@@ -51,14 +51,14 @@ const MenuBrowserDynamic = ({
   })
 
   useEffect(() => {
-    _setRefValue(_refIsMounted, true)
+    setRefValue(_refIsMounted, true)
   }, [])
 
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
-    if (_getRefValue(_refIsMounted)
-     || (!_getRefValue(_refIsLoaded) && isShow)) {
-      _setRefValue(_refIsMounted, false)
+    if (getRefValue(_refIsMounted)
+     || (!getRefValue(_refIsLoaded) && isShow)) {
+      setRefValue(_refIsMounted, false)
       onLoadMenu({
         browserType,
         caption,
