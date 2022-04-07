@@ -1,5 +1,4 @@
-import { useCallback } from 'react';
-import isKeyEnter from '../zhn-atoms/isKeyEnter';
+import useKeyEnter  from '../hooks/useKeyEnter';
 import MenuBadge from '../zhn-atoms/MenuBadge';
 import OpenClose2 from '../zhn-atoms/OpenClose2';
 
@@ -18,11 +17,7 @@ const MenuItem = ({
   menuBadge,
   onClick
 }) => {
-  const _hKeyDown = useCallback((event)=>{
-    if(isKeyEnter(event)) {
-      onClick()
-    }
-  }, []);
+  const _hKeyDown = useKeyEnter(onClick);
   return (
     <div
       role="menuitem"
@@ -35,26 +30,33 @@ const MenuItem = ({
        {menuBadge}
     </div>
   );
-}
+};
 
-const _renderMenuItems = function(rowClass, items=[]){
-  return items.map((item, index) => {
-    const { counter, title, onClick } = item
-    const _className = rowClass
-             ? rowClass + ' ' + CL_NOT_SELECTED
-             : (index % 2)
-                 ? CL_ROW_EVEN
-                 : CL_ROW_ODD
-        , menuBadge = (counter !== 0)
-             ? (
-                  <MenuBadge
-                    counter={counter}
-                    isOpen={item.isOpen}
-                    onBadgeOpen={item.onBadgeOpen}
-                    onBadgeClose={item.onBadgeClose}
-                 />
-                )
-              : null;
+const _renderMenuItems = (
+  rowClass,
+  items=[]
+) => {
+  return (items || []).map((item, index) => {
+    const {
+      counter,
+      title,
+      onClick
+    } = item
+    , _className = rowClass
+         ? rowClass + ' ' + CL_NOT_SELECTED
+         : (index % 2)
+             ? CL_ROW_EVEN
+             : CL_ROW_ODD
+    , menuBadge = (counter !== 0)
+         ? (
+              <MenuBadge
+                counter={counter}
+                isOpen={item.isOpen}
+                onBadgeOpen={item.onBadgeOpen}
+                onBadgeClose={item.onBadgeClose}
+             />
+            )
+          : null;
     return (
       <MenuItem
          key={index}
@@ -63,9 +65,9 @@ const _renderMenuItems = function(rowClass, items=[]){
          menuBadge={menuBadge}
          onClick={onClick}
       />
-    )
+    );
   })
-}
+};
 
 const MenuPart = ({
   rowClass,
