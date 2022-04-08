@@ -1,17 +1,21 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 //import PropTypes from 'prop-types'
 
 import ArrowCell from './ArrowCell';
 
 import BtCircle from '../zhn-atoms/ButtonCircle2';
-import ItemOptionDf from './ItemOptionDf'
-import OptionsFooter from './OptionsFooter'
-import CL from './CL'
+import ItemOptionDf from './ItemOptionDf';
+import OptionsFooter from './OptionsFooter';
+import CL from './CL';
 
 const MAX_WITHOUT_ANIMATION = 800;
 
 const INPUT_PREFIX = 'From input:';
-const _fnNoItem = (propCaption, inputValue, isWithInput) => {
+const _fnNoItem = (
+  propCaption,
+  inputValue,
+  isWithInput
+) => {
   const _inputValue = String(inputValue)
     .replace(INPUT_PREFIX,'').trim()
     , _caption = isWithInput
@@ -24,38 +28,41 @@ const _fnNoItem = (propCaption, inputValue, isWithInput) => {
   };
 };
 
-const _toItem = (item, propCaption) => ({
+const _toItem = (
+  item,
+  propCaption
+) => ({
   [propCaption]: 'From Input',
   value: item.inputValue
 });
 
-const _crWidthStyle = (width, style) => {
-  return width
-    ? ((''+width).indexOf('%') !== -1)
-        ? { ...style, width: width }
-        : { ...style, width: width + 'px'}
-    : null;
-};
+const _crWidthStyle = (
+  width,
+  style
+) => width
+  ? ((''+width).indexOf('%') !== -1)
+      ? {...style, width: width}
+      : {...style, width: width + 'px'}
+  : null;
 
-const _crFooterIndex = ({ options, initialOptions }) => ({
+const _crFooterIndex = ({
+  options,
+  initialOptions
+}) => ({
   _nFiltered: (options[0] && (options[0].value !== 'noresult'))
       ? options.length : 0,
   _nAll: initialOptions ? initialOptions.length : 0
 });
 
-const S = {
-  BLOCK: {
-    display: 'block'
-  },
-  NONE: {
-    display: 'none'
-  },
-  ARROW_SHOW: {
-    borderColor: '#1b75bb transparent transparent'
-  }
-};
+const S_BLOCK = { display: 'block' }
+, S_NONE = { display: 'none' }
+, S_ARROW_SHOW = { borderColor: '#1b75bb transparent transparent' }
 
-const _crInitialStateFromProps = ({ optionName, optionNames, options }) => ({
+const _crInitialStateFromProps = ({
+  optionName,
+  optionNames,
+  options
+}) => ({
   value: '',
   isShowOption: false,
   initialOptions: options,
@@ -397,7 +404,7 @@ class InputSelect extends Component {
     const { rootOptionsStyle, width } = this.props
     , { isShowOption } = this.state
     , _domOptions = this._createDomOptionsWithCache()
-    , _styleOptions = isShowOption ? S.BLOCK : S.NONE
+    , _styleOptions = isShowOption ? S_BLOCK : S_NONE
     , _rootWidthStyle = _crWidthStyle(width, _styleOptions)
     , { _nFiltered, _nAll } = _crFooterIndex(this.state);
 
@@ -442,7 +449,7 @@ class InputSelect extends Component {
        _afterInputEl = (
          <ArrowCell
            ref={this._refArrowCell}
-           arrowStyle={isShowOption ? S.ARROW_SHOW : void 0}
+           arrowStyle={isShowOption ? S_ARROW_SHOW : void 0}
            onClick={this._hToggleOptions}
          />
       );
