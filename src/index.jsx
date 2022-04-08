@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from 'react-dom';
 
 import Raven from 'raven-js';
@@ -20,7 +19,7 @@ if (process.env.NODE_ENV === 'production'){
    Raven.config('https://59cd430997004591af3320a9875237d7@sentry.io/99461').install();
 }
 
-const _fnRenderApp = () => {
+const _renderApp = () => {
   const preloader = document.getElementById('preloader')
   if (preloader){
     document.body.removeChild(document.getElementById('preloader'));
@@ -28,17 +27,17 @@ const _fnRenderApp = () => {
   render(<App />, document.getElementById("app"));
 }
 
-const _fnLoading = function(){
+const _loadingApp = function(){
   const preloader = window.preloader
   if (preloader) {
     if (!preloader.isErrCss && !preloader.isErrScript){
-      _fnRenderApp();
+      _renderApp();
     } else {
       preloader.stop();
     }
   } else {
-    _fnRenderApp()
+    _renderApp()
   }
 }
 
-_fnLoading();
+_loadingApp();
