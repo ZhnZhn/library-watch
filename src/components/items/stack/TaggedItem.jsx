@@ -3,70 +3,52 @@ import { Component } from 'react';
 import has from '../../has';
 import withDnDStyle from '../decorators/withDnDStyle';
 import A from '../../zhn-atoms/A';
+import TagList from './TagList';
 
-const CL = 'row-item not-selected';
+const CL = 'row-item not-selected'
 
-const S = {
-  NONE: {
-    display: 'none'
-  },
-  ITEM_CAPTION: {
-    paddingBottom: 8,
-    display: 'flex',
-    flexWrap: 'wrap'
-  },
-  FISH_BADGE: {
-    display: 'inline-block',
-    color: '#d7bb52',
-    fontSize: 18,
-    paddingRight: 8
-  },
-  GREEN_BADGE : {
-    display: 'inline-block',
-    color: '#80c040',
-    fontSize: 18,
-    paddingRight: 8
-  },
-  BLACK_BAGDE : {
-    display: 'inline-block',
-    color: 'black',
-    fontSize: 18,
-    paddingRight: 8
-  },
-  SPAN_TAG : {
-    display: 'inline-block',
-    color: 'black',
-    backgroundColor: 'gray',
-    paddingTop: 4,
-    paddingLeft: 8,
-    paddingRight: 8,
-    paddingBottom: 4,
-    marginLeft: 8,
-    marginRight: 8,
-    marginTop: 6,
-    marginBottom: 2,
-    borderRadius: 16
-  },
-  DATE_AGO: {
-    display: 'inline-block',
-    fontSize: '18px'
-  },
-  TITLE: {
-    paddingBottom: 8,
-    fontSize: '18px'
-  }
-};
+, S_NONE = { display: 'none' }
+, S_ITEM_CAPTION = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  paddingBottom: 8
+}
+, S_BADGE = {
+  display: 'inline-block',
+  fontSize: 18,
+  paddingRight: 8
+}
+, S_FISH_BADGE = {
+  ...S_BADGE,
+  color: '#d7bb52'
+}
+, S_GREEN_BADGE = {
+  ...S_BADGE,
+  color: '#80c040'
+}
+, S_BLACK_BAGDE = {
+  ...S_BADGE,
+  color: 'black'
+}
+, S_DATE_AGO = {
+  display: 'inline-block',
+  fontSize: '18px'
+}
+, S_TITLE = {
+  paddingBottom: 8,
+  fontSize: '18px'
+}
 
-const { HAS_TOUCH } = has;
+, { HAS_TOUCH } = has
 
-const DELTA = HAS_TOUCH ? {
-  MARK_REMOVE: 50,
-  REMOVE_ITEM: 90,
-  REMOVE_UNDER: 150
+, DELTA = HAS_TOUCH ? {
+   MARK_REMOVE: 50,
+   REMOVE_ITEM: 90,
+   REMOVE_UNDER: 150
 } : {
-  MARK_REMOVE: 25,
-  REMOVE_ITEM: 35,
-  REMOVE_UNDER: 150
+   MARK_REMOVE: 25,
+   REMOVE_ITEM: 35,
+   REMOVE_UNDER: 150
 };
 
 const TOKEN_ANSWER = HAS_TOUCH ? 'A' : (
@@ -82,32 +64,18 @@ const TOKEN_REPUTATION = HAS_TOUCH ? 'R' : (
   <span role="img" arial-label="shamrock">&#x2618;</span>
 );
 
-
 const _getTouchesClientX = (ev) =>
   (((ev || {}).touches || [])[0] || {}).clientX || 0;
 const _getChangedTouches = (ev) =>
   (((ev || {}).changedTouches || [])[0] || {}).clientX || 0;
 
-
-const TagList = ({ tags }) => (
-  <div>
-    {(tags || []).map((tag, index) => (
-        <span key={index} style={S.SPAN_TAG}>
-          {tag}
-        </span>
-    ))}
-  </div>
-);
-
-
-const _noopFn = () => {};
-
+const FN_NOOP = () => {};
 
 @withDnDStyle
 class TaggedItem extends Component {
   static defaultProps = {
-    onRemoveUnder: _noopFn,
-    onRemoveItem: _noopFn
+    onRemoveUnder: FN_NOOP,
+    onRemoveItem: FN_NOOP
   }
 
   constructor(props){
@@ -193,15 +161,23 @@ class TaggedItem extends Component {
 
   render(){
     const { item } = this.props
-    , {       
+    , {
        is_answered,
-       answer_count, score, view_count,
-       title, dateAgo, link,
-       owner, tags
+       answer_count,
+       score,
+       view_count,
+       title,
+       dateAgo,
+       link,
+       owner,
+       tags
     } = item
-    , { reputation, display_name } = owner || {}
+    , {
+      reputation,
+      display_name
+    } = owner || {}
     , { isClosed } = this.state
-    , _style = isClosed ? S.NONE : void 0;
+    , _style = isClosed ? S_NONE : void 0;
     return (
       <div
         className={CL}
@@ -209,28 +185,28 @@ class TaggedItem extends Component {
         {...this._itemHandlers}
       >
          <a href={link}>
-           <div style={S.ITEM_CAPTION}>
-             <span style={is_answered ? S.GREEN_BADGE: S.FISH_BADGE}>
+           <div style={S_ITEM_CAPTION}>
+             <span style={is_answered ? S_GREEN_BADGE: S_FISH_BADGE}>
                {TOKEN_ANSWER}&nbsp;{answer_count}
              </span>
-             <span style={S.FISH_BADGE}>
+             <span style={S_FISH_BADGE}>
                {TOKEN_SCORE}&nbsp;{score}
              </span>
-             <span style={S.BLACK_BAGDE}>
+             <span style={S_BLACK_BAGDE}>
                {TOKEN_VIEW}&nbsp;{view_count}
              </span>
-             <span style={S.GREEN_BADGE}>
+             <span style={S_GREEN_BADGE}>
                {TOKEN_REPUTATION}&nbsp;{reputation}
              </span>
-             <span style={S.BLACK_BAGDE}>
+             <span style={S_BLACK_BAGDE}>
                {display_name}
              </span>
              <A.DateAgo
-                style={S.DATE_AGO}
+                style={S_DATE_AGO}
                 dateAgo={dateAgo}
              />
            </div>
-           <div style={S.TITLE}>
+           <div style={S_TITLE}>
              {title}
            </div>
            <TagList tags={tags} />
