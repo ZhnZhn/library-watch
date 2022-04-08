@@ -1,4 +1,3 @@
-
 import fItemTest from './fItemTest';
 import fGitHubRecentRelease from './fGitHubRecentRelease';
 import fGitHubRecentTag from './fGitHubRecentTag';
@@ -28,7 +27,7 @@ const RouterItem = {
   SE_QUESTIONS : fStackTaggedQuestions,
   SE_SEARCH_QUESTIONS : fStackTaggedQuestions,
 
-  ST_OSVERSION: fStatCounter
+  ST_OSVERSION : fStatCounter
 };
 
 export default RouterItem

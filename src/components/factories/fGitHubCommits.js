@@ -1,21 +1,28 @@
 import GitHubCommits from '../items/GitHubCommits';
 
 const fGitHubCommits = function({
-  factory, option, json=[], parentProps, onCloseItem, onWatchItem
+  createElement,
+  option,
+  json=[],
+  parentProps,
+  onCloseItem,
+  onWatchItem
 }) {
   const {
-    repo, requestType,
-    chartType, browserType, 
+    repo,
+    requestType,
+    chartType,
+    browserType,
     key
   } = option;
-  return factory.createElement(GitHubCommits, {
-      key : key,
-      repo : repo,
-      requestType : requestType,
-      caption : `${repo}`,
-      commits : json,
-      onCloseItem : onCloseItem.bind(null, chartType, browserType, key),
-      onWatchItem : onWatchItem,
+  return createElement(GitHubCommits, {
+      key,
+      repo,
+      requestType,
+      caption: repo,
+      commits: json,
+      onCloseItem: onCloseItem.bind(null, chartType, browserType, key),
+      onWatchItem: onWatchItem,
       ...parentProps
   })
 }

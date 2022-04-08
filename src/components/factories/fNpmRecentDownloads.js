@@ -29,7 +29,7 @@ const _transformDownloads = (
 };
 
 const fNpmRecentDownloads = function({
-  factory,
+  createElement,
   option,
   json,
   parentProps,
@@ -54,7 +54,7 @@ const fNpmRecentDownloads = function({
     data
   } = _transformDownloads(downloads);
 
-  return factory.createElement(NpmDownloads, {
+  return createElement(NpmDownloads, {
      key,
      packageName: json.package,
      caption: json.package,

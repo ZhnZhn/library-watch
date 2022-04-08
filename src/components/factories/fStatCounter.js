@@ -18,7 +18,7 @@ const _crArrFromObj = obj => {
 const _crTopN = (arr, top=5) => {
   /*eslint-disable no-unused-vars */
   const { Date, ...rest } = arr[arr.length-1]
-  /*eslint-enable no-unused-vars */  
+  /*eslint-enable no-unused-vars */
   , _arrRecent = _crArrFromObj(rest);
   _arrRecent.sort((a, b) => b.value - a.value)
   const _arrTop = []
@@ -62,13 +62,19 @@ const _crCaption = ({
 ) => `${region.caption || ''}: ${caption}`;
 
 const fStatCounter = ({
-  factory, option, json,
+  createElement,
+  option,
+  json,
   parentProps,
-  onMoveToTop, onCloseItem,
+  onMoveToTop,
+  onCloseItem,
   onWatchItem
 }) => {
   const {
-    requestType, chartType, browserType, key,
+    requestType,
+    chartType,
+    browserType,
+    key,
     sourceLink
   } = option
   , _data = _filterEmptyDate(json)
@@ -77,8 +83,7 @@ const fStatCounter = ({
   , toDate = labels[labels.length - 1]
   , _caption = _crCaption(option);
 
-
-  return factory.createElement(StatCounterShare, {
+  return createElement(StatCounterShare, {
      key,
      caption: _caption,
      requestType,

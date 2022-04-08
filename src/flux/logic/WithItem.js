@@ -1,4 +1,3 @@
-
 import RouterItem from '../../components/factories/RouterItem';
 
 import CHA from '../actions/ChartActions';
@@ -12,14 +11,17 @@ const withItem = {
   createItem(option, json, parentProps){
     const {
       requestType,
-      chartType, key
+      chartType,
+      key
     } = option
     , _fnFactory= (RouterItem[requestType])
         ? RouterItem[requestType]
         : RouterItem.DEFAULT;
      return _fnFactory({
-       factory: this.getElementFactory(),
-       option, json, parentProps,
+       createElement: this.getElementFactory(),
+       option,
+       json,
+       parentProps,
        onMoveToTop: CHA.moveToTop.bind(null, chartType, key),
        onCloseItem: CHA.closeChart,
        onWatchItem

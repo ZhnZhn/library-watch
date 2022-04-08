@@ -1,15 +1,18 @@
-import React from 'react';
+import { createElement } from '../../components/uiApi';
 
 import CHA from '../actions/ChartActions';
 import CA from '../actions/ComponentActions';
 
 import CompItemList from '../../components/zhn-containers/CompItemList';
 
-const _createChartContainerComp = function(conf, browserType){
+const _createChartContainerComp = (
+  conf,
+  browserType
+) => {
   const Comp = conf.chartContainerComp
     || CompItemList
   , _chartType = conf.type;
-  return React.createElement(Comp, {
+  return createElement(Comp, {
     key: _chartType,
     caption: conf.chartContainerCaption,
     chartType: _chartType,

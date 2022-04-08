@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement } from '../../components/uiApi';
 
 import Store from '../stores/AppStore';
 
@@ -15,7 +15,7 @@ const Factory = {
   ...withItem,
 
   getElementFactory(){
-    return React;
+    return createElement;
   },
 
   getStore(){
@@ -26,7 +26,6 @@ const Factory = {
     const dataId = dialogType.split('_')[0];
     return Store.getSourceConfig(dataId, dialogType);
   }
-
 };
 
 export default Factory
