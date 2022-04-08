@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback } from '../uiApi';
 import useToggle from '../hooks/useToggle';
 
 const S_DATE_AGO = { color: 'gray' }

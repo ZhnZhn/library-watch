@@ -1,4 +1,7 @@
-import { useRef, useCallback } from 'react';
+import {
+  useRef,
+  useCallback
+} from '../uiApi';
 
 import crCn from '../zhn-utils/crCn';
 import BtCaption from './BtCaption';

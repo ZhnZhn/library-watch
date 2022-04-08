@@ -3,7 +3,8 @@ import {
   useRef,
   useState,
   useCallback,
-  useImperativeHandle
+  useImperativeHandle,
+  getRefValue
 } from '../uiApi';
 
 import has from '../has';
@@ -30,8 +31,14 @@ const BtClear = ({
   </button>
 );
 
-const FN_NOOP = () => {}
-, _getRefValue = ref => ref.current;
+const FN_NOOP = () => {};
+
+const _focusElement = ref => {
+  const _element = getRefValue(ref);
+  if (_element) {
+    _element.focus()
+  }
+};
 
 const InputText = forwardRef(({
   style,
@@ -54,22 +61,19 @@ const InputText = forwardRef(({
   }, [onEnter])
   , _hClean = useCallback(() => {
     setValue('')
-    _getRefValue(_refInput).focus()
+    _focusElement(_refInput)
   }, []);
 
   useImperativeHandle(ref, () => ({
      getValue: () => {
-       const _inputEl = _getRefValue(_refInput)
+       const _inputEl = getRefValue(_refInput)
        return _inputEl
          ? _inputEl.value.trim()
          : void 0;
      },
      setValue: (value) => setValue(value),
      focus: () => {
-       const _inputEl = _getRefValue(_refInput)
-       if (_inputEl) {
-         _inputEl.focus()
-       }
+       _focusElement(_refInput)
      }
   }), [])
 

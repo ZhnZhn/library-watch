@@ -1,4 +1,9 @@
-import { forwardRef, useRef, useImperativeHandle } from 'react';
+import {
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+  getRefValue
+} from '../uiApi';
 
 const S_ARROW_CELL = {
   position: 'absolute',
@@ -24,9 +29,6 @@ const S_ARROW_CELL = {
 , ANIMATION_CIRCLE = "circle infinite 1.25s linear"
 , BORDER_COLOR = "#1b75bb transparent transparent";
 
-
-const _getRefValue = ref => ref.current;
-
 const ArrowCell = forwardRef(({
   arrowStyle,
   onClick
@@ -36,15 +38,15 @@ const ArrowCell = forwardRef(({
 
   useImperativeHandle(ref, () => ({
     startAnimation: () => {
-      const _arrowCell = _getRefValue(_refArrowCell)
-      , _arrow = _getRefValue(_refArrow);
+      const _arrowCell = getRefValue(_refArrowCell)
+      , _arrow = getRefValue(_refArrow);
       if (_arrowCell && _arrow) {
         _arrowCell.style.animation = ANIMATION_CIRCLE;
         _arrow.style.borderColor = BORDER_COLOR;
       }
     },
     stopAnimation: () => {
-      const _arrowCell = _getRefValue(_refArrowCell);
+      const _arrowCell = getRefValue(_refArrowCell);
       if (_arrowCell) {
          _arrowCell.style.animation = "";
       }

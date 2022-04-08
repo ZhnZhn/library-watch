@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component } from '../uiApi';
 //import PropTypes from 'prop-types'
 
 import ArrowCell from './ArrowCell';

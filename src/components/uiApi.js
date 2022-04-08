@@ -1,4 +1,5 @@
 export {
+  Component,
   cloneElement,
   createElement,
   memo,

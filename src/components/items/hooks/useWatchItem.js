@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback } from '../../uiApi';
 
 import crItemWatch from './crItemWatch';
 

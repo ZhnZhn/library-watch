@@ -1,6 +1,8 @@
 import {
   useRef,
-  useEffect
+  useEffect,
+  getRefValue,
+  setRefValue
 } from '../uiApi';
 
 import useRerender from '../hooks/useRerender';
@@ -21,9 +23,7 @@ const _crStyle = (
    width,
    opacity,
    transition
-})
-, _getRefValue = ref => ref.current
-, _setRefValue = (ref, value) => ref.current = value;
+});
 
 const ProgressLine = ({
   color=DF_COLOR,
@@ -36,35 +36,35 @@ const ProgressLine = ({
   , _refIdOpacied = useRef(null);
 
   useEffect(()=>{
-    if (_getRefValue(_refWasCompleted)){
-      _setRefValue(_refIdCompleted, setTimeout(_rerenderComp, TM_PERIOD))
-    } else if (_getRefValue(_refWasOpacied)){
-      _setRefValue(_refIdOpacied, setTimeout(_rerenderComp, TM_PERIOD))
+    if (getRefValue(_refWasCompleted)){
+      setRefValue(_refIdCompleted, setTimeout(_rerenderComp, TM_PERIOD))
+    } else if (getRefValue(_refWasOpacied)){
+      setRefValue(_refIdOpacied, setTimeout(_rerenderComp, TM_PERIOD))
     }
   })
 
   useEffect(()=>{
     return () => {
-      clearTimeout(_getRefValue(_refIdCompleted))
-      clearTimeout(_getRefValue(_refIdOpacied))
+      clearTimeout(getRefValue(_refIdCompleted))
+      clearTimeout(getRefValue(_refIdOpacied))
     }
   }, [])
 
   let _style;
 
-  if (_getRefValue(_refWasOpacied)) {
+  if (getRefValue(_refWasOpacied)) {
     _style = _crStyle(color, 1, 0)
-    _setRefValue(_refWasOpacied, false);
-  } else if (_getRefValue(_refWasCompleted)) {
+    setRefValue(_refWasOpacied, false);
+  } else if (getRefValue(_refWasCompleted)) {
     _style = _crStyle(color, 0, '100%', T_OPACITY)
-    _setRefValue(_refWasCompleted, false);
-    _setRefValue(_refWasOpacied, true);
+    setRefValue(_refWasCompleted, false);
+    setRefValue(_refWasOpacied, true);
   } else {
      if (completed < 0) {
        completed = 0;
      } else if (completed >= 100) {
        completed = 100;
-       _setRefValue(_refWasCompleted, true)
+       setRefValue(_refWasCompleted, true)
      }
      _style = _crStyle(color, 1, completed+'%', T_WIDTH)
   }

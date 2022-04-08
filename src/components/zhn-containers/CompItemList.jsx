@@ -2,7 +2,8 @@ import {
   useRef,
   useState,
   useCallback,
-  useEffect
+  useEffect,
+  getRefValue
 } from '../uiApi';
 import useMenuMore from '../hooks/useMenuMore'
 import useListen from '../hooks/useListen'
@@ -63,24 +64,22 @@ const COMP_ACTIONS = [
 const _getWidth = style =>
   parseInt(style.width, 10) || RESIZE_INIT_WIDTH
 , _toStyleWidth = width => width + 'px'
-
-, _getRefValue = ref => ref.current
 , _getElementStyle = element => {
   const { style } = element || {};
   return style || {};
 }
 , _resizeTo = (ref, width) => {
-  _getElementStyle(_getRefValue(ref)).width = _toStyleWidth(width)
+  _getElementStyle(getRefValue(ref)).width = _toStyleWidth(width)
 }
 , _plusToWidth = ref => {
-  const style = _getElementStyle(_getRefValue(ref))
+  const style = _getElementStyle(getRefValue(ref))
   , w = _getWidth(style) + DELTA;
   if (w < RESIZE_MAX_WIDTH) {
      style.width = _toStyleWidth(w)
   }
 }
 , _minusToWidth = ref => {
-  const style = _getElementStyle(_getRefValue(ref))
+  const style = _getElementStyle(getRefValue(ref))
   , w = _getWidth(style) - DELTA;
   if (w > RESIZE_MIN_WIDTH) {
     style.width = _toStyleWidth(w)
@@ -145,7 +144,7 @@ const CompItemList = ({
   useListen(Store, (actionType, data) => {
     if (_isInArray(COMP_ACTIONS, actionType)) {
       if (data && data.chartType === chartType){
-        const _scrollEl = _getRefValue(_refScroll)
+        const _scrollEl = getRefValue(_refScroll)
         if (_scrollEl) {
           _scrollEl.scrollTop()
         }

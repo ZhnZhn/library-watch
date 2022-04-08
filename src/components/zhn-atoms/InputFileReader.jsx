@@ -1,5 +1,5 @@
 //import PropTypes from "prop-types";
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from '../uiApi';
 
 const CL_FILE_INPUT = "_react-file-reader-input"
 , INITIAL_FILE_LABEL = "Choose a file..."
