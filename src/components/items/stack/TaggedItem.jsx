@@ -1,7 +1,11 @@
 import { Component } from 'react';
 
 import has from '../../has';
-import withDnDStyle from '../decorators/withDnDStyle';
+import {
+  styleDragStart,
+  styleDragEnd,
+  preventDefault
+} from './dnd-handlers';
 import A from '../../zhn-atoms/A';
 import TagList from './TagList';
 
@@ -71,7 +75,6 @@ const _getChangedTouches = (ev) =>
 
 const FN_NOOP = () => {};
 
-@withDnDStyle
 class TaggedItem extends Component {
   static defaultProps = {
     onRemoveUnder: FN_NOOP,
@@ -90,10 +93,10 @@ class TaggedItem extends Component {
           draggable: true,
           onDragStart: this._dragStart.bind(this),
           onDragEnd: this._dragEnd.bind(this),
-          onDrop: this._preventDefault,
-          onDragOver: this._preventDefault,
-          onDragEnter: this._preventDefault,
-          onDragLeave: this._preventDefault
+          onDrop: preventDefault,
+          onDragOver: preventDefault,
+          onDragEnter: preventDefault,
+          onDragLeave: preventDefault
         }
 
     this.state = {
@@ -103,7 +106,7 @@ class TaggedItem extends Component {
 
   _dragStart = (ev) => {
     this._clientX = ev.clientX
-    this.dragStartWithDnDStyle(ev)
+    styleDragStart(ev)
     if (ev && ev.dataTransfer) {
       ev.dataTransfer.effectAllowed="move"
       ev.dataTransfer.dropEffect="move"
@@ -119,13 +122,13 @@ class TaggedItem extends Component {
     const _clientX = _getTouchesClientX(ev);
     if (_clientX
         && Math.abs(this._clientX -  _clientX) > DELTA.MARK_REMOVE) {
-      this.dragStartWithDnDStyle(ev)
+      styleDragStart(ev)
     }
 
   }
   _dragEnd = (ev) => {
     ev.preventDefault()
-    this.dragEndWithDnDStyle()
+    styleDragEnd()
     const _deltaX = Math.abs(this._clientX - ev.clientX)
     , { item, onRemoveUnder } = this.props;
     if (_deltaX > DELTA.REMOVE_UNDER) {
@@ -136,7 +139,7 @@ class TaggedItem extends Component {
   }
   _onTouchEnd = (ev) => {
     //ev.preventDefault()
-    this.dragEndWithDnDStyle()
+    styleDragEnd()
     const _clientX = _getChangedTouches(ev);
     if (_clientX) {
       const _deltaX = Math.abs(this._clientX - _clientX)
@@ -148,16 +151,12 @@ class TaggedItem extends Component {
       }
     }
   }
-  _preventDefault = (ev) => {
-    ev.preventDefault()
-  }
-
+  
   _onHide = () => {
      const { onRemoveItem, item } = this.props;
      onRemoveItem(item)
      this.setState({ isClosed: true })
    }
-
 
   render(){
     const { item } = this.props
