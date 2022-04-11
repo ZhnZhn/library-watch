@@ -51,8 +51,9 @@ const NpmDownloads = ({
     toggleIsShow
   ] = useToggle(true)
   , [
-    isMore,
-    toggleIsMore
+    isMenuMore,
+    toggleIsMenuMore,
+    setIsMenuMore
   ] = useToggle()
   , [
     isButtons,
@@ -63,8 +64,8 @@ const NpmDownloads = ({
     onToggleButtons: toggleIsButtons
   }))[0]
   /*eslint-disable react-hooks/exhaustive-deps */
-  , _hClickMore = useCallback(() => {
-    toggleIsMore(true)
+  , _showMenuMore = useCallback(() => {
+    setIsMenuMore(true)
   }, [])
   // toggleIsMore
   , _hClickWatch = useCallback(() => {
@@ -88,10 +89,10 @@ const NpmDownloads = ({
   return (
     <div style={S_ROOT}>
       <ModalSlider
-         isShow={isMore}
+         isShow={isMenuMore}
          className={CL.MENU_MORE}
          model={_MODEL_MORE}
-         onClose={toggleIsMore}
+         onClose={toggleIsMenuMore}
       />
       <Caption
          style={S_CAPTION}
@@ -99,7 +100,7 @@ const NpmDownloads = ({
       >
         <A.SvgMore
           style={S_BT_MORE}
-          onClick={_hClickMore}
+          onClick={_showMenuMore}
         />
         <ButtonPackage
            caption={caption}

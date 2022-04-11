@@ -29,12 +29,19 @@ const GitHubRecentTag = ({
   onClickDetail,
   onWatchItem
 }) => {
-  const [json, setJson] = useState()
-  , [isShow, toggleIsShow] = useToggle(true)
+  const [
+    json,
+    setJson
+  ] = useState()
+  , [
+    isShow,
+    toggleIsShow,
+    setIsShow
+  ] = useToggle(true)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hClickDetail = useCallback(() => {
      onClickDetail().then(json => {
-        toggleIsShow(true)
+        setIsShow(true)
         setJson(json)
      })
      .catch(err => console.log(err));

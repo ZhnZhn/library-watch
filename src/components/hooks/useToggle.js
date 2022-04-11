@@ -4,7 +4,6 @@ import {
 } from '../uiApi';
 
 const _isFn = fn => typeof fn === "function";
-const _isBool = v => typeof v === "boolean";
 
 const useToggle = (
   initialValue,
@@ -18,20 +17,20 @@ const useToggle = (
      : !!initialValue
    )
    /*eslint-disable react-hooks/exhaustive-deps */
-  , toggle = useCallback(valueOrEvent => {
-     if (_isBool(valueOrEvent)) {
-       setIs(valueOrEvent)
-     } else {
-       if (isEventStopPropagation) {
-         valueOrEvent.stopPropagation()
-       }
-       setIs(is => !is)
-     }
+  , toggle = useCallback(event => {
+      if (isEventStopPropagation && event) {
+        event.stopPropagation()
+      }
+      setIs(is => !is)
   }, []);
   // isEventStopPropagation
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  return [is, toggle];
+  return [
+    is,
+    toggle,
+    setIs
+  ];
 };
 
 export default useToggle

@@ -41,11 +41,11 @@ const CL_BROWSER_WATCH = "browser-watch"
 , S_CAPTION_ROOT_DOUBLE = { minWidth: 310 };
 
 const _crScrollClass = (
-  isShowFind,
+  isSearchInput,
   isModeEdit
-) => isShowFind && isModeEdit
+) => isSearchInput && isModeEdit
   ? CL_BROWSER_WATCH__60
-  : isShowFind || isModeEdit
+  : isSearchInput || isModeEdit
       ? CL_BROWSER_WATCH__30
       : CL_BROWSER_WATCH;
 
@@ -60,12 +60,28 @@ const WatchBrowser = ({
   updateAction
 }) => {
   const _refIsShouldUpdateFind = useRef(false)
-  , [isShowComp, showComp, hideComp] = useBool(isShow)
-  , [isModeEdit, _toggleEditMode] = useToggle(isEditMode)
-  , [isShowFind, _toggleFindInput] = useToggle()
-  , [watchList, setWatchList] = useState(store.getWatchList)
+  , [
+     isShowComp,
+     showComp,
+     hideComp] = useBool(isShow)
+  , [
+     isModeEdit,
+     _toggleEditMode
+  ] = useToggle(isEditMode)
+  , [
+     isSearchInput,
+     _toggleSearchInput,
+     _setIsSearchInput
+  ] = useToggle()
+  , [
+     watchList,
+     setWatchList
+  ] = useState(store.getWatchList)
   /*eslint-disable react-hooks/exhaustive-deps */
-  , [_handlerHide, _handlerShow] = useMemo(() => [
+  , [
+     _handlerHide,
+     _handlerShow
+  ] = useMemo(() => [
     () => {
       if (isDoubleWatch) {
         toggleWatchDbBrowser()
@@ -88,7 +104,7 @@ const WatchBrowser = ({
     } else if (actionType === updateAction) {
       setRefValue(_refIsShouldUpdateFind, true)
       setWatchList({...data})
-      _toggleFindInput(false)
+      _setIsSearchInput(false)
    }
   })
 
@@ -99,10 +115,10 @@ const WatchBrowser = ({
   , [_captionEV, _titleEV] = isModeEdit
      ? ['V', 'Toggle to View Mode']
      : ['E', 'Toggle to Edit Mode']
- , _isShouldUpdateSearchInput = (isShowFind && getRefValue(_refIsShouldUpdateFind))
+ , _isShouldUpdateSearchInput = (isSearchInput && getRefValue(_refIsShouldUpdateFind))
      ? (()=>{ setRefValue(_refIsShouldUpdateFind, false); return true; })
      : false
- , _scrollClass = _crScrollClass(isShowFind, isModeEdit);
+ , _scrollClass = _crScrollClass(isSearchInput, isModeEdit);
 
   return (
     <Browser
@@ -130,7 +146,7 @@ const WatchBrowser = ({
           className={CL_BT_CAPTION}
           caption="F"
           title="Show/Hide : Find Item Input"
-          onClick={_toggleFindInput}
+          onClick={_toggleSearchInput}
         />
         { !isDoubleWatch && <>
             <ButtonCircle
@@ -152,7 +168,7 @@ const WatchBrowser = ({
       </CaptionRow>
       <EditBar is={isModeEdit} />
       <SearchInput
-         isShow={isShowFind}
+         isShow={isSearchInput}
          isShouldUpdate={_isShouldUpdateSearchInput}
          data={watchList}
       />
