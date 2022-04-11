@@ -1,4 +1,3 @@
-import { useCallback } from '../uiApi';
 import useToggle from '../hooks/useToggle';
 
 const S_DATE_AGO = { color: 'gray' }
@@ -16,14 +15,10 @@ const DateAgo = ({
   dateAgo,
   date=''
 }) => {
-  const [isShow, toggleDateAgo] = useToggle(isShowDate)
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _hClick = useCallback(event => {
-      event.stopPropagation()
-      toggleDateAgo()
-    }, [])
-  // toggleDateAgo
-  /*eslint-enable react-hooks/exhaustive-deps */
+  const [
+    isShow,
+    toggleDateAgo
+  ] = useToggle(isShowDate, true)
   , _styleDate = isShow
       ? S_INLINE_BLOCK
       : S_NONE;
@@ -35,7 +30,7 @@ const DateAgo = ({
          role="button"
          tabIndex="-1"
          style={{...S_DATE_AGO, ...style}}
-         onClick={date ? _hClick : void 0}
+         onClick={date ? toggleDateAgo : void 0}
       >
         {dateAgo}
       </span>

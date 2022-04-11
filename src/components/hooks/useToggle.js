@@ -6,7 +6,10 @@ import {
 const _isFn = fn => typeof fn === "function";
 const _isBool = v => typeof v === "boolean";
 
-const useToggle = initialValue => {
+const useToggle = (
+  initialValue,
+  isEventStopPropagation
+) => {
   const [
     is,
     setIs
@@ -14,13 +17,20 @@ const useToggle = initialValue => {
      ? initialValue()
      : !!initialValue
    )
-  , toggle = useCallback(v => {
-     if (_isBool(v)) {
-       setIs(v)
+   /*eslint-disable react-hooks/exhaustive-deps */
+  , toggle = useCallback(valueOrEvent => {
+     if (_isBool(valueOrEvent)) {
+       setIs(valueOrEvent)
      } else {
+       if (isEventStopPropagation) {
+         valueOrEvent.stopPropagation()
+       }
        setIs(is => !is)
      }
   }, []);
+  // isEventStopPropagation
+  /*eslint-enable react-hooks/exhaustive-deps */
+
   return [is, toggle];
 };
 
