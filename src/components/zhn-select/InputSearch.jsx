@@ -4,108 +4,112 @@ import ArrowCell from './ArrowCell';
 
 const MAX_WITHOUT_ANIMATION = 800
 
-const styles = {
-  rootDiv: {
-    position: 'relative',
-    display: 'inline-block',
-    backgroundColor: '#E1E1CB',
-    width: '100%'
-  },
-  inputText: {
-    background: 'transparent none repeat scroll 0 0',
-    border: 'medium none',
-    outline: 'medium none',
-    height: 30,
-    paddingLeft: 10,
-    color: 'green',
-    width: '100%',
-    paddingRight: 40,
-    fontSize: '16px',
-    fontWeight: 'bold'
-  },
-  rootOptionDiv: {
-    position: 'absolute',
-    left: 0,
-    backgroundColor: '#E1E1CB',
-    color: 'green',
-    width: '100%',
-    //height: '160px',
-    zIndex: '10',
-    borderBottomLeftRadius: 5,
-    borderBottomRightRadius: 5
-  },
-  optionDiv: {
-    width: '100%',
-    //height: '160px',
-    minHeight: 160,
-    maxHeight: 200,
-    overflow: 'auto'
-  },
-  spinnerCell : {
-    display: 'inline-block',
-    position: 'relative',
-    left: 8,
-    top: 4,
-    width: 16,
-    height: 16
-  },
-  spinnerFailedCell : {
-    display: 'inline-block',
-    position: 'relative',
-    left: 8,
-    top: 4,
-    width: 16,
-    height: 16,
-    borderColor : '#f44336',
-    cursor : 'pointer'
-  },
- inputHr: {
-   borderWidth: 'medium medium 1px',
-   borderStyle: 'none none solid',
-   borderColor: '#1b75bb',
-   borderImage: 'none',
-   margin: 0,
-   marginLeft: 10,
-   marginBottom: 5,
-   marginRight: 40
- },
- arrow_show : {
+const S_ROOT_DIV = {
+  position: 'relative',
+  display: 'inline-block',
+  width: '100%',
+  backgroundColor: '#e1e1cb'
+}
+, S_INPUT_TEXT = {
+  color: 'green',
+  width: '100%',
+  height: 30,
+  paddingLeft: 10,
+  paddingRight: 40,
+  background: 'transparent none repeat scroll 0 0',
+  border: 'medium none',
+  outline: 'medium none',
+  fontSize: '16px',
+  fontWeight: 'bold'
+}
+, S_ROOT_OPTION_DIV = {
+  zIndex: '10',
+  position: 'absolute',
+  left: 0,
+  color: 'green',
+  width: '100%',
+  //height: '160px',
+  backgroundColor: '#e1e1cb',
+  borderBottomLeftRadius: 5,
+  borderBottomRightRadius: 5
+}
+, S_OPTION_DIV = {
+  width: '100%',
+  //height: '160px',
+  minHeight: 160,
+  maxHeight: 200,
+  overflow: 'auto'
+}
+, S_SPINNER_CELL = {
+  display: 'inline-block',
+  position: 'relative',
+  left: 8,
+  top: 4,
+  width: 16,
+  height: 16
+}
+, S_SPINNER_FAILED_CELL = {
+  ...S_SPINNER_CELL,
+  borderColor: '#f44336',
+  cursor: 'pointer'
+}
+, S_INPUT_HR = {
+  margin: '0 40 5 10',
+  borderWidth: 'medium medium 1px',
+  borderStyle: 'none none solid',
+  borderColor: '#1b75bb',
+  borderImage: 'none',
+ }
+ , S_ARROW_SHOW = {
     borderColor: '#1b75bb transparent transparent'
- },
-  itemDiv:{
-    paddingTop: 4,
-    paddingLeft: 5,
-    paddingBottom: 4,
-    cursor: 'pointer'
-  },
-  itemOdd: {
-    backgroundColor: '#c3c3ac'
-  },
-  itemEven: {
-    backgroundColor: '#d5d5bc'
-  },
-  optionsFooter : {
-    backgroundColor: 'silver',
-    borderBottomLeftRadius : 5,
-    borderBottomRightRadius : 5
-  },
-  fileredSpan : {
-    display: 'inline-block',
-    color: 'gray',
-    fontWeight : 'bold',
-    paddingLeft: 10,
-    paddingTop: 4,
-    paddingBottom : 4
+ }
+ , S_ITEM_DIV = {
+  padding: '4px 0 4px 5px',
+  cursor: 'pointer'
+}
+, S_ITEM_ODD = {
+  backgroundColor: '#c3c3ac'
+}
+, S_ITEM_EVEN = {
+  backgroundColor: '#d5d5bc'
+}
+, S_OPTIONS_FOOTER = {
+  backgroundColor: 'silver',
+  borderBottomLeftRadius: 5,
+  borderBottomRightRadius: 5
+}
+, S_FILTERED_SPAN = {
+  display: 'inline-block',
+  color: 'gray',
+  fontWeight: 'bold',
+  padding: '4px 0 4px 10px'
+}
+, S_BLOCK = { display: 'block' }
+, S_NONE = { display: 'none' }
+, CL_OPTION_ROW_ACTIVE = "option-row__active";
+
+const _decorateOfDomActiveOption = (
+  domActiveOption
+) => {
+  if (domActiveOption){
+    domActiveOption.classList.add(CL_OPTION_ROW_ACTIVE);
   }
 }
+, _undecorateOfDomActiveOption = (
+  domActiveOption
+) => {
+   if (domActiveOption){
+     domActiveOption.classList.remove(CL_OPTION_ROW_ACTIVE);
+  }
+};
 
 class InputSearch extends Component {
   static defaultProps = {
-    options : [],
-    optionName : '',
-    optionNames : '',
-    isUpdateOptions : false,
-    propCaption : 'caption'
+    options: [],
+    optionName: '',
+    optionNames: '',
+    isUpdateOptions: false,
+    propCaption: 'caption'
   }
 
   constructor(props){
@@ -114,32 +118,36 @@ class InputSearch extends Component {
     this.domOptionsCache = null;
     this.indexActiveOption = 0;
 
-    const { optionName, optionNames, propCaption } = this.props
-        , _optionName = (optionName)
-                 ? ' ' + optionName
-                 : ''
-        , _optionNames = (optionNames)
-                 ? ' ' + optionNames
-                 : (optionName) ? _optionName : '';
+    const {
+      options,
+      optionName,
+      optionNames,
+      propCaption
+    } = this.props
+    , _optionName = optionName
+         ? ' ' + optionName
+         : ''
+    , _optionNames = optionNames
+         ? ' ' + optionNames
+         : _optionName || '';
 
     this.propCaption = propCaption;
     this.state = {
-      value: '',
       isShowOption: false,
-      options: this.props.options,
-      optionName : _optionName,
-      optionNames : _optionNames,
       isValidDomOptionsCache: false,
-      isLocalMode: false
+      isLocalMode: false,
+      value: '',
+      options: options,
+      optionName: _optionName,
+      optionNames: _optionNames,
     }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps){
     if (this.props !== nextProps){
+      //New options come from Parent - Clear domCache, Init State
       if (this.props.options !== nextProps.options
-          || nextProps.isUpdateOptions)
-      {
-        //New options come from Parent - Clear domCache, Init State
+          || nextProps.isUpdateOptions) {
         this._setStateToInit(nextProps.options);
       }
     }
@@ -159,7 +167,7 @@ class InputSearch extends Component {
      //Decorate Active Option
      if (this.state.isShowOption){
        let domActiveOption = this._getDomForActiveOption();
-       this._decorateOfDomActiveOption(domActiveOption);
+       _decorateOfDomActiveOption(domActiveOption);
        this._makeVisibleOfDomActiveOption(domActiveOption);
     }
   }
@@ -167,10 +175,10 @@ class InputSearch extends Component {
   _setStateToInit = (options) => {
     this.indexActiveOption = 0;
     this.setState({
-      value : '',
-      isShowOption : false,
-      options : options,
-      isValidDomOptionsCache : false
+      isShowOption: false,
+      isValidDomOptionsCache: false,
+      value: '',
+      options: options
     });
   }
 
@@ -178,79 +186,62 @@ class InputSearch extends Component {
     return this.refs["v"+this.indexActiveOption];
   }
 
-  _decorateOfDomActiveOption = (domActiveOption) => {
-    if (domActiveOption){
-      domActiveOption.classList.add("option-row__active");
-    }
-  }
-
-  _decorateActiveOption = () => {
-    let domActiveOption = this.refs["v"+this.indexActiveOption];
-    domActiveOption.classList.add("option-row__active");
-  }
-
   _undecorateActiveOption = () => {
-    if (this.refs["v" + this.indexActiveOption]){
-      this.refs["v" + this.indexActiveOption].classList.remove("option-row__active");
-    }
-  }
-
-  _undecorateOfDomActiveOption = (domActiveOption) => {
-     if (domActiveOption){
-       domActiveOption.classList.remove("option-row__active");
-    }
+    _undecorateOfDomActiveOption(this._getDomForActiveOption())
   }
 
   _makeVisibleOfDomActiveOption = (domActiveOption) => {
     if (domActiveOption){
-      const offsetTop = domActiveOption.offsetTop;
-      const scrollTop = this.domOptions.scrollTop;
-      if ( (offsetTop - scrollTop) > 70){
+      const offsetTop = domActiveOption.offsetTop
+      , scrollTop = this.domOptions.scrollTop;
+      if ((offsetTop - scrollTop) > 70){
          this.domOptions.scrollTop += (offsetTop - scrollTop - 70);
       }
-      if ( (offsetTop - scrollTop) < 0){
+      if ((offsetTop - scrollTop) < 0){
         this.domOptions.scrollTop= 0;
       }
     }
-  }
+  } 
 
-  _makeVisibleActiveOption = () => {
-    let domActiveOption = this.refs["v"+this.indexActiveOption];
-
-    let offsetTop = domActiveOption.offsetTop;
-    let scrollTop = this.domOptions.scrollTop;
-    if ( (offsetTop - scrollTop) > 70){
-        this.domOptions.scrollTop += (offsetTop - scrollTop - 70);
-    }
-  }
-
-  _filterOptionsToState = (options, value) => {
+  _filterOptionsToState = (
+    options,
+    value
+  ) => {
      const valueFor = value.toLowerCase()
-         , _caption = this.propCaption;
-     return options.filter( (option, i) => {
-       return option[_caption].toLowerCase().indexOf(valueFor) !== -1;
-     })
+     , _caption = this.propCaption;
+     return options
+       .filter(option => option[_caption]
+         .toLowerCase()
+         .indexOf(valueFor) !== -1
+       );
   }
 
   _handlerInputChange = (event) => {
-    const value = event.target.value;
-    let arr = [];
-    if (value.length !== this.state.value.length){
-      if ( value.length>this.state.value.length){
-        arr = this._filterOptionsToState(this.state.options, value);
-      } else if ( value.length<this.state.value.length) {
-        arr = this._filterOptionsToState(this.props.options, value);
-      }
-      if (arr.length === 0){
-        arr.push({[this.propCaption]: 'No results found', value: 'noresult'});
+    const { value } = event.target
+    , _inputLength = value.length
+    , _stateLength = this.state.value.length;
+    if (_inputLength !== _stateLength){
+      const _options = _inputLength > _stateLength
+        ? this.state.options
+        : _inputLength < _stateLength
+            ? this.props.options
+            : void 0
+      , options = _options
+        ? this._filterOptionsToState(_options, value)
+        : [];
+      if (options.length === 0) {
+        options.push({
+          [this.propCaption]: 'No results found',
+          value: 'noresult'
+        })
       }
       this._undecorateActiveOption();
       this.indexActiveOption = 0;
       this.setState({
-        value : value,
-        isShowOption : true,
-        isValidDomOptionsCache : false,
-        options : arr
+        isShowOption: true,
+        isValidDomOptionsCache: false,
+        value,
+        options
       })
     }
   }
@@ -272,9 +263,9 @@ class InputSearch extends Component {
 
          if (item && item[this.propCaption]){
            this.setState({
-             value : item[this.propCaption],
-             isShowOption : false,
-             isValidDomOptionsCache : true
+             value: item[this.propCaption],
+             isShowOption: false,
+             isValidDomOptionsCache: true
            });
 
            if (item.value !== 'noresult'){
@@ -288,7 +279,7 @@ class InputSearch extends Component {
       //escape
       case 27:
         if (this.state.isShowOption){
-          this.setState({ isShowOption : false });
+          this.setState({ isShowOption: false });
         } else {
           this._undecorateActiveOption();
           this._setStateToInit(this.props.options);
@@ -298,20 +289,17 @@ class InputSearch extends Component {
       //down
       case 40:
         if (!this.state.isShowOption){
-
           this._startAfterInputAnimation();
           setTimeout(
              () => { this.setState({ isShowOption : true }, this._stopAfterInputAnimation) },
              0
           );
-
         } else {
           event.preventDefault();
 
           let domActiveOption = this._getDomForActiveOption();
-
           if (domActiveOption){
-             this._undecorateOfDomActiveOption(domActiveOption);
+             _undecorateOfDomActiveOption(domActiveOption);
 
              this.indexActiveOption += 1;
              if (this.indexActiveOption>=this.state.options.length){
@@ -320,9 +308,9 @@ class InputSearch extends Component {
              }
 
              domActiveOption = this._getDomForActiveOption();
-             this._decorateOfDomActiveOption(domActiveOption)
+             _decorateOfDomActiveOption(domActiveOption)
 
-             const offsetTop = this.refs["v"+this.indexActiveOption].offsetTop;
+             const offsetTop = this._getDomForActiveOption().offsetTop;
              const scrollTop = this.domOptions.scrollTop;
              if ( (offsetTop - scrollTop) > 70){
                 this.domOptions.scrollTop += (offsetTop - scrollTop - 70);
@@ -337,7 +325,7 @@ class InputSearch extends Component {
 
           let domActiveOption = this._getDomForActiveOption();
           if (domActiveOption){
-            this._undecorateOfDomActiveOption(domActiveOption);
+            _undecorateOfDomActiveOption(domActiveOption);
 
             this.indexActiveOption -= 1;
             if (this.indexActiveOption < 0){
@@ -347,17 +335,17 @@ class InputSearch extends Component {
             }
 
             domActiveOption = this._getDomForActiveOption();
-            this._decorateOfDomActiveOption(domActiveOption);
+            _decorateOfDomActiveOption(domActiveOption);
 
-            const offsetTop = domActiveOption.offsetTop;
-            const scrollTop = this.domOptions.scrollTop;
-            if ( (offsetTop - scrollTop) < 70){
+            const offsetTop = domActiveOption.offsetTop
+            , scrollTop = this.domOptions.scrollTop;
+            if ((offsetTop - scrollTop) < 70){
               this.domOptions.scrollTop -= ( 70 - (offsetTop - scrollTop) );
             }
           }
         }
       break;
-      default: /*console.log(event.keyCode);*/ return;
+      default: return;
     }
   }
 
@@ -373,34 +361,45 @@ class InputSearch extends Component {
     }
   }
 
-  _handlerClickOption = (item, index, event) => {
+  _handlerClickOption = (
+    item,
+    index,
+    event
+  ) => {
     this.indexActiveOption = index;
     this.setState({
-      value : item[this.propCaption],
-      isShowOption : false
+      value: item[this.propCaption],
+      isShowOption: false
     });
     this.props.onSelect(item);
   }
 
+  _refDomOptions = element => this.domOptions = element
+  _refInput = c => this.domInputText = c
+  _refArrowCell = c => this.arrowCell = c
 
   renderOptions = () => {
     const { ItemOptionComp } = this.props
-         , { isShowOption, options, isValidDomOptionsCache } = this.state;
+    , {
+      isShowOption,
+      options,
+      isValidDomOptionsCache
+    } = this.state;
 
     let _domOptions;
     if (options){
       if (!isValidDomOptionsCache){
          const _caption = this.propCaption;
          _domOptions = options.map((item, index)=>{
-            const _styleDiv = (index % 2 === 0)
-                     ? styles.itemOdd
-                     : styles.itemEven;
+            const _styleDiv = index % 2 === 0
+              ? S_ITEM_ODD
+              : S_ITEM_EVEN;
             return (
              <div
                 key={index}
                 ref={"v"+index}
                 className="option-row"
-                style={Object.assign({}, styles.itemDiv, _styleDiv)}
+                style={{...S_ITEM_DIV, ..._styleDiv}}
                 onClick={this._handlerClickOption.bind(this, item, index)}
               >
                 <ItemOptionComp
@@ -416,22 +415,28 @@ class InputSearch extends Component {
       }
     }
 
-    const _styleOptions = isShowOption ? {display: 'block'} : { display: 'none'}
-        , _numberFilteredItems = (options[0] && (options[0].value !== 'noresult') ) ?
-                                  options.length : 0
-        , _numberAllItems = this.props.options ? this.props.options.length : 0;
+    const _styleOptions = isShowOption
+      ? S_BLOCK
+      : S_NONE
+    , _item = options[0]
+    , _numberFilteredItems = _item  && _item.value !== 'noresult'
+        ? options.length
+        : 0
+    , _numberAllItems = this.props.options
+        ? this.props.options.length
+        : 0;
 
     return (
-        <div style={Object.assign({}, styles.rootOptionDiv, _styleOptions)}>
+        <div style={{...S_ROOT_OPTION_DIV, ..._styleOptions}}>
           <div
-             ref={c => this.domOptions = c}
+             ref={this._refDomOptions}
              key="1"
-             style={Object.assign({}, styles.optionDiv, _styleOptions)}
+             style={{...S_OPTION_DIV, ..._styleOptions}}
            >
             {_domOptions}
           </div>
-          <div key="2" style={styles.optionsFooter}>
-            <span style={styles.fileredSpan}>
+          <div key="2" style={S_OPTIONS_FOOTER}>
+            <span style={S_FILTERED_SPAN}>
               Filtered {_numberFilteredItems} : {_numberAllItems}
             </span>
           </div>
@@ -439,29 +444,36 @@ class InputSearch extends Component {
     )
   }
 
-  _refInput = c => this.domInputText = c
-
   render(){
-    const {value, isLocalMode, isShowOption } = this.state;
-
-    const _styleArrow = isShowOption
-              ? styles.arrow_show
-              : null;
-    const _domOptions = (isLocalMode || isShowOption)
-              ? this.renderOptions()
-              : null;
-
-    const  {isLoading, isLoadingFailed, placeholder} = this.props
-        ,  {optionName, optionNames} = this.state;
+    const {
+      value,
+      isLocalMode,
+      isShowOption
+    } = this.state
+    , _styleArrow = isShowOption
+        ? S_ARROW_SHOW
+        : null
+    , _domOptions = (isLocalMode || isShowOption)
+        ? this.renderOptions()
+        : null
+    , {
+      isLoading,
+      isLoadingFailed,
+      placeholder
+    } = this.props
+    , {
+      optionName,
+      optionNames
+    } = this.state;
 
     let _domAfterInput, _placeholder;
     if (!isLoading && !isLoadingFailed){
       _placeholder= (placeholder)
-            ? placeholder
-            : `Select${optionName}...`;
+         ? placeholder
+         : `Select${optionName}...`;
       _domAfterInput = (
         <ArrowCell
-           ref={ (c) => this.arrowCell = c}
+           ref={this._refArrowCell}
            styleArrow={_styleArrow}
            onClick={this._handlerToggleOptions}
         />
@@ -470,7 +482,7 @@ class InputSearch extends Component {
       _placeholder=`Loading${optionNames}...`;
       _domAfterInput = (
         <span
-          style={styles.spinnerCell}
+          style={S_SPINNER_CELL}
           data-loader="circle"
         />
       );
@@ -478,29 +490,27 @@ class InputSearch extends Component {
        _placeholder=`Loading${optionNames} Failed`;
        _domAfterInput = (
         <span
-          style={styles.spinnerFailedCell}
+          style={S_SPINNER_FAILED_CELL}
           data-loader="circle-failed"
           onClick={this.props.onLoadOption}
         />
       )
     }
 
-
     return (
-      <div style={styles.rootDiv}>
+      <div style={S_ROOT_DIV}>
         <input
            ref={this._refInput}
            type="text"
            value={value}
-           style={styles.inputText}
+           style={S_INPUT_TEXT}
            placeholder={_placeholder}
            onChange={this._handlerInputChange}
            onKeyDown={this._handlerInputKeyDown}
         />
         {_domAfterInput}
-        <hr style={styles.inputHr} />
+        <hr style={S_INPUT_HR} />
         {_domOptions}
-
       </div>
     )
   }
@@ -512,7 +522,6 @@ class InputSearch extends Component {
   focusNotValidInput(){
     this.domInputText.focus();
   }
-
 }
 
 export default InputSearch
