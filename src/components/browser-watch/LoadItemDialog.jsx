@@ -13,7 +13,7 @@ const DIALOG_CAPTION = "Load Watch Item"
 , S_ITEM_DESCRIPTION = {
   fontWeight: 'bold',
   color: 'gray',
-  padding: '8 8 0 8'
+  padding: '8px 8px 0 8px'
 }
 , S_LH_2 = { lineHeight: 2 }
 , S_LH_1_5 = { lineHeight: 1.5 }

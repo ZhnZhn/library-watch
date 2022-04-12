@@ -9,7 +9,7 @@ const S_CAPTION_OPEN = {
   top: -3
 }, S_SPAN_SUM = {
   color: '#80c040',
-  padding: '0 10'
+  padding: '0 10px'
 }
 , S_SPAN_FD = { paddingRight: 10 };
 

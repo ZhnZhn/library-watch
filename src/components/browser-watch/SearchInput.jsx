@@ -6,7 +6,7 @@ import WrapperInputSearch from './WrapperInputSearch';
 const { ShowHide } = Comp
 , S_WRAPPER_SEARCH = {
   width: '100%',
-  padding: '0 24 8 0'
+  padding: '0 24px 8px 0'
 };
 
 const SearchInput = ({

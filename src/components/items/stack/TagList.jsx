@@ -1,8 +1,8 @@
 const S_SPAN_TAG = {
   display: 'inline-block',
   color: 'black',
-  padding: '4 8',
-  margin: '6 8 2 8',
+  padding: '4px 8px',
+  margin: '6px 8px 2px 8px',
   borderRadius: 16,
   backgroundColor: 'gray'
 };

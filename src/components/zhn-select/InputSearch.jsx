@@ -54,7 +54,7 @@ const S_ROOT_DIV = {
   cursor: 'pointer'
 }
 , S_INPUT_HR = {
-  margin: '0 40 5 10',
+  margin: '0 40px 5px 10px',
   borderWidth: 'medium medium 1px',
   borderStyle: 'none none solid',
   borderColor: '#1b75bb',
@@ -201,7 +201,7 @@ class InputSearch extends Component {
         this.domOptions.scrollTop= 0;
       }
     }
-  } 
+  }
 
   _filterOptionsToState = (
     options,

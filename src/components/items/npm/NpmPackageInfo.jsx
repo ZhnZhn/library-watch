@@ -22,7 +22,7 @@ const BASE_NODEICO = "https://nodei.co/npm/"
 , S_MT_16 = { marginTop: 16 }
 , S_BTN_DOWN_UP = {
   marginLeft: 16,
-  padding: '4 0'
+  padding: '4px 0'
 };
 
 const NpmPackageInfo = ({
