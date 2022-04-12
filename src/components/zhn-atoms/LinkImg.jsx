@@ -1,23 +1,19 @@
-
-const _onError = (imgSrc, event) => {
-  console.log("Failed to load image with src: " + imgSrc);
-};
+import Link from './Link';
+import Img from './Img';
 
 const LinkImg = ({
-  alt='',
+  alt,
   href,
   imgClass,
-  imgSrc,
-  onError=_onError
+  imgSrc
 }) => (
-  <a href={href}>
-     <img
-        alt={alt}
-        className={imgClass}
-        src={imgSrc}
-        onError={onError.bind(null, imgSrc)}
+  <Link href={href}>
+     <Img
+       alt={alt}
+       className={imgClass}
+       src={imgSrc}
      />
-  </a>
+  </Link>
 );
 
 export default LinkImg

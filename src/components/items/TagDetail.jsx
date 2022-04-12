@@ -85,12 +85,12 @@ const TagDetail = ({ json }) => {
       <A.OpenClose2 caption={`Files (${files.length})`} isClose={true}>
         <FileList files={files} />
       </A.OpenClose2>
-      <a
-         href={html_url}
-         className={CL.SOURCE_LINK}         
+      <A.Link
+         className={CL.SOURCE_LINK}
+         href={html_url}               
       >
          Link to description of commit
-      </a>
+      </A.Link>
     </div>
   );
 };

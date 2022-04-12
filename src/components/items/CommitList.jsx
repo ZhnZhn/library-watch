@@ -14,20 +14,20 @@ const CommitList = ({ commits }) => (commits || [])
 
     return (
       <div key={index} className={CL.ROW_ITEM}>
-         <a href={html_url}>
-         <div style={STYLE.PB_8}>
-           <span style={STYLE.PR_8}>
-             {name}
-           </span>
-           <A.DateAgo
-              dateAgo={_dateAgo}
-              date={_dateTime}
-           />
-         </div>
+         <A.Link href={html_url}>
+           <div style={STYLE.PB_8}>
+             <span style={STYLE.PR_8}>
+               {name}
+             </span>
+             <A.DateAgo
+                dateAgo={_dateAgo}
+                date={_dateTime}
+             />
+           </div>
            <div>
              {message}
            </div>
-         </a>
+         </A.Link>
       </div>
    );
 })

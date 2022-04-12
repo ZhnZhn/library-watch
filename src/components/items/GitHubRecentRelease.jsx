@@ -52,13 +52,13 @@ const GitHubRecentRelease = (props) => {
         />
       </Caption>
       <A.ShowHide isShow={isShow} style={STYLE.PT_8}>
-        <a
-           href={html_url}
+        <A.Link           
            className={CL.SOURCE_LINK}
            style={STYLE.ML_8}
+           href={html_url}
         >
            Link to description of recent release tag
-        </a>
+        </A.Link>
       </A.ShowHide>
     </div>
   );

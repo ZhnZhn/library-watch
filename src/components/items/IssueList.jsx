@@ -1,3 +1,4 @@
+import A from '../zhn-atoms/A';
 import CL from '../styles/CL';
 import STYLE from './Item.Style';
 
@@ -29,7 +30,7 @@ const IssueList = ({ issues }) => (issues || [])
         : '';
    return (
       <div key={index} className={CL.ROW_ITEM}>
-        <a href={html_url}>
+        <A.Link href={html_url}>
            <div style={STYLE.PB_8}>
              <span style={S.STATE}>
                {state}
@@ -47,7 +48,7 @@ const IssueList = ({ issues }) => (issues || [])
            <div>
              {title}
            </div>
-        </a>
+        </A.Link>
       </div>
    );
 })

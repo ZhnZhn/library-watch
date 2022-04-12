@@ -98,14 +98,13 @@ const StatCounterShare = ({
            data={_lineChartConfig}
            height={_height}
         />
-        <a
+        <A.Link
           className={CL.SOURCE_LINK}
           style={S_SOURCE_LINK}
-          href={sourceLink}
-          target="_blank"
+          href={sourceLink}          
         >
             StatCounter Chart
-        </a>
+        </A.Link>
       </A.ShowHide>
     </div>
   );

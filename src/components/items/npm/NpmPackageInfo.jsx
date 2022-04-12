@@ -66,13 +66,12 @@ const NpmPackageInfo = ({
     <>
      <A.ShowHide isShow={isButtons}>
       <div style={S_ML_16}>
-        <a
-           target="_blank"
+        <A.Link
            className={CL.SOURCE_LINK}
            href={packageLink}
         >
            NPM Link
-        </a>
+        </A.Link>
         <A.ButtonDownUp
           style={S_BTN_DOWN_UP}
           isUp={isShowNodeIco}

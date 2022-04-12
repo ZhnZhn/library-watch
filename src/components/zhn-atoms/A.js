@@ -6,6 +6,7 @@ import ButtonDownUp from './ButtonDownUp'
 import CaptionRow from './CaptionRow'
 import DateAgo from './DateAgo'
 import FormattedInteger from './FormattedInteger'
+import Link from './Link';
 import LinkImg from './LinkImg'
 import OpenClose2 from './OpenClose2'
 import ScrollPane from './ScrollPane'
@@ -20,6 +21,7 @@ const A = {
   CaptionRow,
   DateAgo,
   FormattedInteger,
+  Link,
   LinkImg,
   OpenClose2,
   ScrollPane,

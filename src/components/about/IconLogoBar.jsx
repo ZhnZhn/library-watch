@@ -11,7 +11,7 @@ const IconLogoBar = () => (
      <IconGitHub
         className="icon__github"
         title="GitHub Library Watch"
-        uri="https://github.com/ZhnZhn/library-watch.git"
+        href="https://github.com/ZhnZhn/library-watch.git"
      />
      <IconReact />
   </div>

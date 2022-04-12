@@ -1,8 +1,10 @@
+import Link from '../zhn-atoms/Link'
+
 const IconReact = () => (
-  <a
-     className="icon__react"
-     title="React"
+  <Link
+     className="icon__react"     
      href="https://github.com/facebook/react"
+     title="React"
   >
     <svg viewBox="0 0 600 600"
          xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +28,7 @@ const IconReact = () => (
           c12.117,61.213,2.309,107.984-21.453,121.74c-23.057,13.348-65.249-0.784-110.239-39.499
           C285.567,460.886,244.898,410.344,210.821,351.482z"/>
     </svg>
-  </a>
+  </Link>
 );
 
 export default IconReact

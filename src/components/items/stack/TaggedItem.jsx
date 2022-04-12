@@ -93,7 +93,7 @@ const TaggedItem = ({
       style={_style}
       {..._itemHandlers}
     >
-       <a href={link}>
+       <A.Link href={link}>
          <div style={S_ITEM_CAPTION}>
            <span style={is_answered ? S_GREEN_BADGE: S_FISH_BADGE}>
              {TOKEN_ANSWER}&nbsp;{answer_count}
@@ -119,7 +119,7 @@ const TaggedItem = ({
            {title}
          </div>
          <TagList tags={tags} />
-       </a>
+       </A.Link>
     </div>
   );
 };

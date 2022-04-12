@@ -3,7 +3,8 @@ import crGitRepositoryCaption from './crGitRepositoryCaption';
 
 import checkResponseJson from './checkResponseJson';
 import CellValue from '../CellValue';
-import Link from '../Link';
+import Link from '../../zhn-atoms/Link';
+import CL from '../../styles/CL';
 
 const S_REPO = { padding: '4px 0 0 8px' }
 , S_REPO_LINK = { marginRight: 24 };
@@ -18,17 +19,21 @@ const RowLinks = ({
  return (
    <div style={S_REPO}>
      <Link
+        className={CL.SOURCE_LINK}
         style={S_REPO_LINK}
         href={repoHref}
-        caption={crGitRepositoryCaption(repoHref)}
-     />
+     >
+      {crGitRepositoryCaption(repoHref)}
+     </Link>
      <Link
+        className={CL.SOURCE_LINK}
         href={hpHref}
-        caption="HomePage"
-     />
+     >
+      Home Page
+     </Link>
    </div>
  );
-}
+};
 
 const _isStr = str => typeof str === 'string'
 , _isNumber = n => typeof n === 'number'
@@ -51,11 +56,26 @@ const PackageDetails = ({ json }) => {
     return result;
   }
 
-  const { analyzedAt, collected, score } = json
-  , { github, metadata } = collected || {}
-  , { starsCount, issues, homepage } = github || {}
+  const {
+    analyzedAt,
+    collected,
+    score
+  } = json
+  , {
+    github,
+    metadata
+  } = collected || {}
+  , {
+    starsCount,
+    issues,
+    homepage
+  } = github || {}
   , { openCount } = issues || {}
-  , { version, license, repository } = metadata || {}
+  , {
+    version,
+    license,
+    repository
+  } = metadata || {}
   , { final } = score || {}
   , _repositoryHref = _crRepositoryHref(repository || {});
 

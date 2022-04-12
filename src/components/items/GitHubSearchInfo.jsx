@@ -69,12 +69,12 @@ const ItemDescription = ({ library }) => {
             </span>
           </div>
           <div>
-             <a
+             <A.Link
                 className={CL.SOURCE_LINK}
                 href={html_url}
               >
                 Link to GitHub Repository
-             </a>
+             </A.Link>
           </div>
         </div>
   );
