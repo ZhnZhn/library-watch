@@ -2,6 +2,8 @@ import A from '../zhn-atoms/A';
 import CL from '../styles/CL';
 import STYLE from './Item.Style';
 
+import formatStrDate from '../../utils/formatStrDate';
+
 const S_STATE = {
   ...STYLE.PR_8,
   color: '#d7bb52'
@@ -15,10 +17,6 @@ const S_STATE = {
   color: 'gray'
 };
 
-const _toDate = strDate => (''+strDate)
-  .replace('T', ' ')
-  .replace('Z', '');
-
 const IssueList = ({ issues }) => (issues || [])
   .map((item, index) => {
     const {
@@ -29,9 +27,9 @@ const IssueList = ({ issues }) => (issues || [])
       title,
       html_url
     } = item
-    , _creadedAt = _toDate(created_at)
+    , _creadedAt = formatStrDate(created_at)
     , _updatedAt = created_at !== updated_at
-        ? _toDate(updated_at)
+        ? formatStrDate(updated_at)
         : '';
    return (
       <div key={index} className={CL.ROW_ITEM}>

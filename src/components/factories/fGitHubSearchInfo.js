@@ -1,4 +1,5 @@
 import GitHubSearchInfo from '../items/GitHubSearchInfo';
+import formatStrDate from '../../utils/formatStrDate';
 
 const fGitHubSearchInfo = function({
   createElement,
@@ -17,11 +18,9 @@ const fGitHubSearchInfo = function({
   , {
     full_name='empty',
     stargazers_count='',
-    pushed_at=''
+    pushed_at
   } = library
-  , _pushed_at = pushed_at
-      .replace('T', ' ')
-      .replace('Z', '');
+  , _pushed_at = formatStrDate(pushed_at);
 
   return createElement(GitHubSearchInfo, {
      key,

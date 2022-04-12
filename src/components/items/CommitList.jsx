@@ -3,13 +3,14 @@ import CL from '../styles/CL';
 import STYLE from './Item.Style';
 
 import formatDate from '../../utils/formatDate';
+import formatStrDate from '../../utils/formatStrDate';
 
 const CommitList = ({ commits }) => (commits || [])
  .map((item, index) => {
     const { commit, html_url } = item
     , { message='', committer } = commit || {}
-    , { date='', name='' } = committer || {}
-    , _dateTime = date.replace('T', ' ').replace('Z', '')
+    , { date, name='' } = committer || {}
+    , _dateTime = formatStrDate(date)
     , _dateAgo = formatDate(_dateTime);
 
     return (

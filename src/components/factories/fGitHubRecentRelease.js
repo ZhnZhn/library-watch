@@ -1,5 +1,5 @@
-
 import GitHubRecentRelease from '../items/GitHubRecentRelease';
+import formatStrDate from '../../utils/formatStrDate';
 
 const fGitHubRecentRelease = function({
   createElement,
@@ -19,13 +19,11 @@ const fGitHubRecentRelease = function({
   , {
     tag_name,
     name,
-    published_at='empty',
+    published_at,
     html_url
   } = json
   , _version = tag_name || name || 'empty'
-  , _published_at = published_at
-      .replace('T', ' ')
-      .replace('Z', '');
+  , _published_at = formatStrDate(published_at, 'empty');
   return createElement(GitHubRecentRelease, {
       key,
       repo,
