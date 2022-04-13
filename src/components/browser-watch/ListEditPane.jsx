@@ -9,7 +9,7 @@ import useListen from '../hooks/useListen';
 import useGroupOptions from './useGroupOptions';
 
 import SelectGroupList from './SelectGroupList';
-import RowInputText from './RowInputText';
+import RowInputText from '../dialogs/rows/RowInputText';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
 import RowButtons from './RowButtons';
 
