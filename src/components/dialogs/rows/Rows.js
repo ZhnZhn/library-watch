@@ -1,7 +1,7 @@
 
 import Caption from './Caption';
 import Row from './Row';
-import RowInputDates from './RowInputDates';
+import RowInputDatePeriod from './RowInputDatePeriod';
 import RowInputText from './RowInputText';
 import RowInputSelect from './RowInputSelect';
 import ValidationMessages from './ValidationMessages';
@@ -9,7 +9,7 @@ import ValidationMessages from './ValidationMessages';
 const Rows = {
   Caption,
   Row,
-  RowInputDates,
+  RowInputDatePeriod,
   RowInputText,
   RowInputSelect,
   ValidationMessages

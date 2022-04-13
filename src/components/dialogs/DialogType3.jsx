@@ -125,7 +125,7 @@ const DialogType3 = memoIsShow(({
          options={_SORT_OPTIONS}
          onSelect={_hSelectSortBy}
       />
-      <D.RowInputDates
+      <D.RowInputDatePeriod
         ref={_refInputDates}
         isShow={isShowDate}
         isShowLabels={isShowLabels}

@@ -43,13 +43,13 @@ const S_ROOT = {
 , FN_NOOP = () => {};
 
 const InputDate = forwardRef(({
-  initValue='',
+  initialValue,
   errorMsg,
   onTest=FN_NOOP
 }, ref) => {
   const _refInput = useRef()
   , [state, setState] = useState({
-    value: initValue,
+    value: initialValue || '',
     isValid: true,
     errMsg: null
   })
@@ -97,7 +97,7 @@ const InputDate = forwardRef(({
          ref={_refInput}
          type="text"
          name="date"
-         autoComplete="new-date"
+         //autoComplete="new-date"
          autoCorrect="off"
          autoCapitalize="off"
          spellCheck={false}

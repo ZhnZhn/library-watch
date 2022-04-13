@@ -3,11 +3,22 @@ import {
   useRef,
   useImperativeHandle
 } from '../../uiApi';
+import ShowHide from '../../zhn-atoms/ShowHide';
 import InputDate from '../../zhn-atoms/InputDate';
 import Row from './Row';
 import Caption from './Caption';
 
-const ERROR_FORMAT = "YYYY-MM-DD format must be"
+import DateUtils from '../../../utils/DateUtils';
+
+const {
+  getFromDate,
+  getToDate,
+  isValidDate,
+} = DateUtils
+, INITIAL_FROM_DATE = getFromDate(1)
+, INITIAL_TO_DATE = getToDate()
+
+, ERROR_FORMAT = "YYYY-MM-DD format must be"
 , FROM_DATE = "From Date"
 , TO_DATE = "To Date"
 , ERROR_FROM_NEAR_TO = "From Date is near that To Date"
@@ -21,12 +32,13 @@ const ERROR_FORMAT = "YYYY-MM-DD format must be"
 }
 , _getRefValue = ref => ref.current || DF_DATE_COMP;
 
-const Dates = forwardRef(({
+const RowInputDatePeriod = forwardRef(({
+  isShow,
   isShowLabels=true,
   msgOnNotValidFormat=DF_MSG_ON_NOT_VALID_FORMAT,
-  initFromDate,
-  initToDate,
-  onTestDate
+  initialFromDate=INITIAL_FROM_DATE,
+  initialToDate=INITIAL_TO_DATE,
+  onTestDate=isValidDate
 }, ref) => {
   const _refFromDate = useRef()
   , _refToDate = useRef();
@@ -80,7 +92,7 @@ const Dates = forwardRef(({
   }), [msgOnNotValidFormat])
 
   return (
-    <>
+    <ShowHide isShow={isShow}>
       <Row>
         <Caption
           is={isShowLabels}
@@ -88,7 +100,7 @@ const Dates = forwardRef(({
         />
         <InputDate
            ref={_refFromDate}
-           initValue={initFromDate}
+           initialValue={initialFromDate}
            errorMsg={ERROR_FORMAT}
            onTest={onTestDate}
         />
@@ -100,13 +112,13 @@ const Dates = forwardRef(({
         />
         <InputDate
            ref={_refToDate}
-           initValue={initToDate}
+           initialValue={initialToDate}
            errorMsg={ERROR_FORMAT}
            onTest={onTestDate}
         />
      </Row>
-   </>
+   </ShowHide>
   );
 });
 
-export default Dates
+export default RowInputDatePeriod
