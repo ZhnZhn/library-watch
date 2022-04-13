@@ -1,6 +1,6 @@
 import { useCallback } from '../../uiApi';
 import useToggle from '../../hooks/useToggle';
-import useRefInit from '../../hooks/useRefInit';
+import useMenuMore from '../../hooks/useMenuMore';
 
 import { fLineConfig } from '../../charts/ChartConfigFactories';
 
@@ -51,18 +51,18 @@ const NpmDownloads = ({
     toggleIsShow
   ] = useToggle(true)
   , [
-    isMenuMore,
-    toggleIsMenuMore,
-    setIsMenuMore
-  ] = useToggle()
-  , [
     isButtons,
     toggleIsButtons
   ] = useToggle(true)
-  , _MODEL_MORE = useRefInit(() => crModelMore({
+  , [
+    _MENU_MODEL,
+    isMenuMore,
+    toggleIsMenuMore,
+    setIsMenuMore
+  ] = useMenuMore(crModelMore, {
     onMoveToTop,
     onToggleButtons: toggleIsButtons
-  }))[0]
+  })
   /*eslint-disable react-hooks/exhaustive-deps */
   , _showMenuMore = useCallback(() => {
     setIsMenuMore(true)
@@ -84,14 +84,14 @@ const NpmDownloads = ({
   }, [])
   // requestType, packageName, sumDownloads, toDate, onWatchItem
   /*eslint-enable react-hooks/exhaustive-deps */
-  , _lineChartConfig = fLineConfig({ labels, data })
+  , _lineChartConfig = fLineConfig({ labels, data });
 
   return (
     <div style={S_ROOT}>
       <ModalSlider
          isShow={isMenuMore}
          className={CL.MENU_MORE}
-         model={_MODEL_MORE}
+         model={_MENU_MODEL}
          onClose={toggleIsMenuMore}
       />
       <Caption
