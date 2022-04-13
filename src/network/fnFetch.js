@@ -1,6 +1,8 @@
 //import csvtojson from 'csvtojson'
 
-import LPA from '../flux/actions/LoadingProgressActions';
+import {
+  LoadingProgressActions as LPA
+} from '../flux/actions/LoadingProgressActions';
 
 import fetchJson from './fetchJson'
 import fetchCsvStream from './fetchCsvStream'

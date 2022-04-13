@@ -1,7 +1,11 @@
 import { useState } from '../uiApi';
 import useListen from '../hooks/useListen';
 
-import { LoadingProgressActionTypes as Action } from '../../flux/actions/LoadingProgressActions';
+import {
+  LPAT_LOADING,
+  LPAT_LOADING_COMPLETE,
+  LPAT_LOADING_FAILED
+} from '../../flux/actions/LoadingProgressActions';
 import ProgressLine from '../zhn-atoms/ProgressLine';
 
 const COLOR_LOADING = '#2f7ed8'
@@ -17,11 +21,11 @@ const LoadingProgress = ({
   , { completed, color } = state;
 
   useListen(store, (actionType, option) => {
-    if (actionType === Action.LOADING){
+    if (actionType === LPAT_LOADING){
       setState({ completed: 35, color: COLOR_LOADING });
-    } else if (actionType === Action.LOADING_COMPLETE){
+    } else if (actionType === LPAT_LOADING_COMPLETE){
       setState({ completed: 100, color: COLOR_LOADING });
-    } else if (actionType === Action.LOADING_FAILED){
+    } else if (actionType === LPAT_LOADING_FAILED){
       setState({ completed: 100, color: COLOR_FAILED })
     }
   }, 'listenLoadingProgress')

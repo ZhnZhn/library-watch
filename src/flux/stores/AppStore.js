@@ -4,7 +4,7 @@ import ComponentActions, { ComponentActionTypes as CAT } from '../actions/Compon
 import ChartActions from '../actions/ChartActions';
 import BrowserActions, { BrowserActionTypes as BAT } from '../actions/BrowserActions';
 import { ChartActionTypes as CHAT } from '../actions/ChartActions';
-import LoadingProgressActions from '../actions/LoadingProgressActions';
+import { LoadingProgressActions } from '../actions/LoadingProgressActions';
 import WatchActions from '../actions/WatchActions';
 
 import { BrowserType as BT, ModalDialog as MD } from '../../constants/Type';

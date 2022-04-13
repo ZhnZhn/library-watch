@@ -1,4 +1,8 @@
-import { LoadingProgressActionTypes } from '../actions/LoadingProgressActions'
+import {
+  LPAT_LOADING,
+  LPAT_LOADING_COMPLETE,
+  LPAT_LOADING_FAILED
+} from '../actions/LoadingProgressActions'
 
 const CHANNEL = 'WITH_LOADING_PROGRESS';
 
@@ -16,13 +20,13 @@ const WithLoadingProgress = {
   },
 
   onLoadingProgress(){
-    this.triggerLoadingProgress(LoadingProgressActionTypes.LOADING);
+    this.triggerLoadingProgress(LPAT_LOADING);
   },
   onLoadingProgressComplete(){
-    this.triggerLoadingProgress(LoadingProgressActionTypes.LOADING_COMPLETE);
+    this.triggerLoadingProgress(LPAT_LOADING_COMPLETE);
   },
   onLoadingProgressFailed(){
-    this.triggerLoadingProgress(LoadingProgressActionTypes.LOADING_FAILED);
+    this.triggerLoadingProgress(LPAT_LOADING_FAILED);
   }
 
 };
