@@ -14,7 +14,7 @@ const _crCaption = caption => caption
    : '';
 
 const Caption = ({
-  is,
+  is=true,
   caption
 }) => is ? (
    <span style={S_LABEL_SPAN}>

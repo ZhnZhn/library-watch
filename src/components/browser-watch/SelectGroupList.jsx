@@ -12,7 +12,7 @@ import {
 import usePrevValue from '../hooks/usePrevValue';
 import useRefItemCaption from './useRefItemCaption';
 
-import RowInputSelect from './RowInputSelect';
+import RowInputSelect from '../dialogs/rows/RowInputSelect';
 
 const SelectGroupList = forwardRef((props, ref) => {
   const _prevProps = usePrevValue(props)

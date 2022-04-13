@@ -18,9 +18,9 @@ import { WatchActionTypes as WAT } from '../../flux/actions/WatchActions';
 import Msg from '../../constants/Msg';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
-import RowInputSelect from './RowInputSelect';
 import RowText from './RowText';
 import FlatButton from '../zhn-m/FlatButton';
+import RowInputSelect from '../dialogs/rows/RowInputSelect';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
 
 const actionCompleted = WAT.EDIT_WATCH_COMPLETED

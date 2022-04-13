@@ -8,7 +8,7 @@ import useValidationMessages from '../hooks/useValidationMessages';
 import useListen from '../hooks/useListen';
 import useRefItemCaption from './useRefItemCaption';
 
-import RowInputSelect from './RowInputSelect';
+import RowInputSelect from '../dialogs/rows/RowInputSelect';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
 import RowButtons from './RowButtons';
 
