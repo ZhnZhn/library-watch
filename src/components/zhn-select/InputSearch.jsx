@@ -3,8 +3,9 @@ import { Component } from '../uiApi';
 import ArrowCell from './ArrowCell';
 
 const MAX_WITHOUT_ANIMATION = 800
-
-const S_ROOT_DIV = {
+, CL_OPTION_ROW = "option-row"
+, CL_OPTION_ROW_ACTIVE = "option-row__active"
+, S_ROOT_DIV = {
   position: 'relative',
   display: 'inline-block',
   width: '100%',
@@ -40,19 +41,6 @@ const S_ROOT_DIV = {
   maxHeight: 200,
   overflow: 'auto'
 }
-, S_SPINNER_CELL = {
-  display: 'inline-block',
-  position: 'relative',
-  left: 8,
-  top: 4,
-  width: 16,
-  height: 16
-}
-, S_SPINNER_FAILED_CELL = {
-  ...S_SPINNER_CELL,
-  borderColor: '#f44336',
-  cursor: 'pointer'
-}
 , S_INPUT_HR = {
   margin: '0 40px 5px 10px',
   borderWidth: 'medium medium 1px',
@@ -67,12 +55,8 @@ const S_ROOT_DIV = {
   padding: '4px 0 4px 5px',
   cursor: 'pointer'
 }
-, S_ITEM_ODD = {
-  backgroundColor: '#c3c3ac'
-}
-, S_ITEM_EVEN = {
-  backgroundColor: '#d5d5bc'
-}
+, S_ITEM_ODD = { backgroundColor: '#c3c3ac' }
+, S_ITEM_EVEN = { backgroundColor: '#d5d5bc' }
 , S_OPTIONS_FOOTER = {
   backgroundColor: 'silver',
   borderBottomLeftRadius: 5,
@@ -81,12 +65,11 @@ const S_ROOT_DIV = {
 , S_FILTERED_SPAN = {
   display: 'inline-block',
   color: 'gray',
+  padding: '4px 0 4px 10px',
   fontWeight: 'bold',
-  padding: '4px 0 4px 10px'
 }
 , S_BLOCK = { display: 'block' }
-, S_NONE = { display: 'none' }
-, CL_OPTION_ROW_ACTIVE = "option-row__active";
+, S_NONE = { display: 'none' };
 
 const _decorateOfDomActiveOption = (
   domActiveOption
@@ -106,9 +89,6 @@ const _decorateOfDomActiveOption = (
 class InputSearch extends Component {
   static defaultProps = {
     options: [],
-    optionName: '',
-    optionNames: '',
-    isUpdateOptions: false,
     propCaption: 'caption'
   }
 
@@ -120,53 +100,22 @@ class InputSearch extends Component {
 
     const {
       options,
-      optionName,
-      optionNames,
       propCaption
-    } = this.props
-    , _optionName = optionName
-         ? ' ' + optionName
-         : ''
-    , _optionNames = optionNames
-         ? ' ' + optionNames
-         : _optionName || '';
+    } = this.props;
 
     this.propCaption = propCaption;
     this.state = {
       isShowOption: false,
       isValidDomOptionsCache: false,
-      isLocalMode: false,
       value: '',
-      options: options,
-      optionName: _optionName,
-      optionNames: _optionNames,
+      options: options
     }
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps){
-    if (this.props !== nextProps){
-      //New options come from Parent - Clear domCache, Init State
-      if (this.props.options !== nextProps.options
-          || nextProps.isUpdateOptions) {
-        this._setStateToInit(nextProps.options);
-      }
-    }
-  }
-
-  shouldComponentUpdate(nextProps, nextState){
-    if (this.props !== nextProps || nextProps.isUpdateOptions) {
-      nextState.isLocalMode = false;
-    } else {
-      nextState.isLocalMode = true;
-    }
-
-    return true;
   }
 
   componentDidUpdate(){
      //Decorate Active Option
      if (this.state.isShowOption){
-       let domActiveOption = this._getDomForActiveOption();
+       const domActiveOption = this._getDomForActiveOption();
        _decorateOfDomActiveOption(domActiveOption);
        this._makeVisibleOfDomActiveOption(domActiveOption);
     }
@@ -192,8 +141,8 @@ class InputSearch extends Component {
 
   _makeVisibleOfDomActiveOption = (domActiveOption) => {
     if (domActiveOption){
-      const offsetTop = domActiveOption.offsetTop
-      , scrollTop = this.domOptions.scrollTop;
+      const { offsetTop } = domActiveOption
+      , { scrollTop } = this.domOptions;
       if ((offsetTop - scrollTop) > 70){
          this.domOptions.scrollTop += (offsetTop - scrollTop - 70);
       }
@@ -216,7 +165,7 @@ class InputSearch extends Component {
        );
   }
 
-  _handlerInputChange = (event) => {
+  _hInputChange = (event) => {
     const { value } = event.target
     , _inputLength = value.length
     , _stateLength = this.state.value.length;
@@ -255,7 +204,7 @@ class InputSearch extends Component {
     this.arrowCell.stopAnimation();
   }
 
-  _handlerInputKeyDown = (event) => {
+  _hInputKeyDown = (event) => {
     switch(event.keyCode){
       // enter
       case 13:{
@@ -310,9 +259,9 @@ class InputSearch extends Component {
              domActiveOption = this._getDomForActiveOption();
              _decorateOfDomActiveOption(domActiveOption)
 
-             const offsetTop = this._getDomForActiveOption().offsetTop;
-             const scrollTop = this.domOptions.scrollTop;
-             if ( (offsetTop - scrollTop) > 70){
+             const { offsetTop } = this._getDomForActiveOption()
+             , { scrollTop } = this.domOptions;
+             if ((offsetTop - scrollTop) > 70){
                 this.domOptions.scrollTop += (offsetTop - scrollTop - 70);
              }
           }
@@ -330,15 +279,14 @@ class InputSearch extends Component {
             this.indexActiveOption -= 1;
             if (this.indexActiveOption < 0){
               this.indexActiveOption = this.state.options.length - 1;
-              const offsetTop2 = this.refs["v"+this.indexActiveOption].offsetTop;
-              this.domOptions.scrollTop = offsetTop2;
+              this.domOptions.scrollTop = this._getDomForActiveOption().offsetTop;
             }
 
             domActiveOption = this._getDomForActiveOption();
             _decorateOfDomActiveOption(domActiveOption);
 
-            const offsetTop = domActiveOption.offsetTop
-            , scrollTop = this.domOptions.scrollTop;
+            const { offsetTop } = domActiveOption
+            , { scrollTop } = this.domOptions;
             if ((offsetTop - scrollTop) < 70){
               this.domOptions.scrollTop -= ( 70 - (offsetTop - scrollTop) );
             }
@@ -349,7 +297,7 @@ class InputSearch extends Component {
     }
   }
 
-  _handlerToggleOptions = () => {
+  _hToggleOptions = () => {
     if (this.state.isShowOption){
        this.setState({ isShowOption: false });
     } else {
@@ -361,7 +309,7 @@ class InputSearch extends Component {
     }
   }
 
-  _handlerClickOption = (
+  _hClickOption = (
     item,
     index,
     event
@@ -375,11 +323,12 @@ class InputSearch extends Component {
   }
 
   _refDomOptions = element => this.domOptions = element
-  _refInput = c => this.domInputText = c
   _refArrowCell = c => this.arrowCell = c
 
-  renderOptions = () => {
-    const { ItemOptionComp } = this.props
+  _renderOptions = () => {
+    const {
+      ItemOptionComp
+    } = this.props
     , {
       isShowOption,
       options,
@@ -394,19 +343,24 @@ class InputSearch extends Component {
             const _styleDiv = index % 2 === 0
               ? S_ITEM_ODD
               : S_ITEM_EVEN;
+            /*eslint-disable jsx-a11y/click-events-have-key-events*/
             return (
              <div
+                role="option"
+                tabIndex="0"
+                aria-selected={this.indexActiveOption === index}
                 key={index}
                 ref={"v"+index}
-                className="option-row"
+                className={CL_OPTION_ROW}
                 style={{...S_ITEM_DIV, ..._styleDiv}}
-                onClick={this._handlerClickOption.bind(this, item, index)}
+                onClick={this._hClickOption.bind(this, item, index)}
               >
                 <ItemOptionComp
                    item={item}
                    propCaption={_caption}
                 />
             </div>
+            /*eslint-enable jsx-a11y/click-events-have-key-events*/
            )
         });
         this.domOptionsCache = _domOptions;
@@ -441,87 +395,45 @@ class InputSearch extends Component {
             </span>
           </div>
         </div>
-    )
+    );
   }
 
   render(){
     const {
-      value,
-      isLocalMode,
-      isShowOption
+      isShowOption,
+      value
     } = this.state
-    , _styleArrow = isShowOption
-        ? S_ARROW_SHOW
-        : null
-    , _domOptions = (isLocalMode || isShowOption)
-        ? this.renderOptions()
-        : null
+    , [
+       _styleArrow,
+       _domOptions
+     ] = isShowOption
+       ? [S_ARROW_SHOW, this._renderOptions()]
+       : [null, null]
     , {
-      isLoading,
-      isLoadingFailed,
       placeholder
-    } = this.props
-    , {
-      optionName,
-      optionNames
-    } = this.state;
-
-    let _domAfterInput, _placeholder;
-    if (!isLoading && !isLoadingFailed){
-      _placeholder= (placeholder)
-         ? placeholder
-         : `Select${optionName}...`;
-      _domAfterInput = (
-        <ArrowCell
-           ref={this._refArrowCell}
-           styleArrow={_styleArrow}
-           onClick={this._handlerToggleOptions}
-        />
-      );
-    } else if (isLoading){
-      _placeholder=`Loading${optionNames}...`;
-      _domAfterInput = (
-        <span
-          style={S_SPINNER_CELL}
-          data-loader="circle"
-        />
-      );
-    } else if (isLoadingFailed) {
-       _placeholder=`Loading${optionNames} Failed`;
-       _domAfterInput = (
-        <span
-          style={S_SPINNER_FAILED_CELL}
-          data-loader="circle-failed"
-          onClick={this.props.onLoadOption}
-        />
-      )
-    }
+    } = this.props;
 
     return (
       <div style={S_ROOT_DIV}>
         <input
-           ref={this._refInput}
            type="text"
-           value={value}
            style={S_INPUT_TEXT}
-           placeholder={_placeholder}
-           onChange={this._handlerInputChange}
-           onKeyDown={this._handlerInputKeyDown}
+           value={value}
+           placeholder={placeholder}
+           onChange={this._hInputChange}
+           onKeyDown={this._hInputKeyDown}
         />
-        {_domAfterInput}
+        <ArrowCell
+           ref={this._refArrowCell}
+           styleArrow={_styleArrow}
+           onClick={this._hToggleOptions}
+        />
         <hr style={S_INPUT_HR} />
         {_domOptions}
       </div>
-    )
+    );
   }
 
-  focusInput(){
-    this.domInputText.focus();
-  }
-
-  focusNotValidInput(){
-    this.domInputText.focus();
-  }
 }
 
 export default InputSearch
