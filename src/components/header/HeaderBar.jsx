@@ -1,6 +1,6 @@
 import { useCallback } from '../uiApi';
 
-import BA from '../../flux/actions/BrowserActions';
+import { BrowserActions } from '../../flux/actions/BrowserActions';
 import CA from '../../flux/actions/ComponentActions';
 import { BrowserType as BT } from '../../constants/Type';
 
@@ -48,10 +48,10 @@ const TITLE = "Library Watch v0.12.0"
 
 const HeaderBar = ({ store })  => {
   const _hClickLibrary = useCallback(() => {
-    BA.showBrowserDynamic(BROWSER_CONFIG_LIBRARY);
+    BrowserActions.showBrowserDynamic(BROWSER_CONFIG_LIBRARY);
   }, [])
   , _hClickWatch = useCallback(() => {
-    BA.showBrowser(BT.WATCH_LIST);
+    BrowserActions.showBrowser(BT.WATCH_LIST);
   }, []);
 
   return (

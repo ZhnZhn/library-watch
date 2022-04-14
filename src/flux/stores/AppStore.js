@@ -2,7 +2,10 @@ import Reflux from 'reflux-core';
 
 import ComponentActions, { ComponentActionTypes as CAT } from '../actions/ComponentActions';
 import ChartActions from '../actions/ChartActions';
-import BrowserActions, { BrowserActionTypes as BAT } from '../actions/BrowserActions';
+import {
+  BAT_UPDATE_BROWSER_MENU,
+  BrowserActions
+} from '../actions/BrowserActions';
 import { ChartActionTypes as CHAT } from '../actions/ChartActions';
 import { LoadingProgressActions } from '../actions/LoadingProgressActions';
 import WatchActions from '../actions/WatchActions';
@@ -33,8 +36,10 @@ const _logLoadError = function({
 
 const AppStore = Reflux.createStore({
   listenables: [
-    BrowserActions, ComponentActions,
-    ChartActions, WatchActions,
+    BrowserActions,
+    ComponentActions,
+    ChartActions,
+    WatchActions,
     LoadingProgressActions
   ],
   charts: {},
@@ -86,7 +91,7 @@ const AppStore = Reflux.createStore({
 
    if (browserType !== BT.WATCH_LIST){
      this.setMenuItemOpen(chartType, browserType);
-     this.trigger(BAT.UPDATE_BROWSER_MENU, browserType);
+     this.trigger(BAT_UPDATE_BROWSER_MENU, browserType);
    }
 
  },

@@ -1,6 +1,10 @@
-
 import Store from '../flux/stores/AppStore';
-import { BrowserActionTypes } from '../flux/actions/BrowserActions';
+import {
+  BAT_SHOW_BROWSER,
+  BAT_INIT_BROWSER_DYNAMIC,
+  BAT_UPDATE_WATCH_BROWSER,
+  BAT_TOGGLE_WATCH_DB_BROWSER
+ } from '../flux/actions/BrowserActions';
 import { ChartActionTypes } from '../flux/actions/ChartActions';
 import { ComponentActionTypes } from '../flux/actions/ComponentActions';
 
@@ -18,10 +22,10 @@ const AppLibraryWatch = (props) => (
     <div className="component-container">
        <BrowserContainer
           store={Store}
-          showBrowserAction={BrowserActionTypes.SHOW_BROWSER}
-          initBrowserAction={BrowserActionTypes.INIT_BROWSER_DYNAMIC}
-          updateWatchAction={BrowserActionTypes.UPDATE_WATCH_BROWSER}
-          toggleWatchDbBrowserAction={BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER}
+          showBrowserAction={BAT_SHOW_BROWSER}
+          initBrowserAction={BAT_INIT_BROWSER_DYNAMIC}
+          updateWatchAction={BAT_UPDATE_WATCH_BROWSER}
+          toggleWatchDbBrowserAction={BAT_TOGGLE_WATCH_DB_BROWSER}
           initDialogAction={ComponentActionTypes.INIT_AND_SHOW_DIALOG}
           showDialogAction={ComponentActionTypes.SHOW_DIALOG}
        />

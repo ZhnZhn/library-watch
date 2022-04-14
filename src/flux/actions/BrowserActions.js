@@ -3,48 +3,47 @@ import Reflux from 'reflux-core';
 import fnFetch from '../../network/fnFetch';
 import fnCatch from '../../network/fnCatch';
 
-export const BrowserActionTypes = {
-  SHOW_BROWSER : 'showBrowser',
-  UPDATE_BROWSER_MENU : 'updateBrowserMenu',
+export const BAT_SHOW_BROWSER = 'showBrowser'
+export const BAT_UPDATE_BROWSER_MENU = 'updateBrowserMenu'
+export const BAT_SHOW_BROWSER_DYNAMIC = 'showBrowserDynamic'
+export const BAT_INIT_BROWSER_DYNAMIC = 'initBrowserDynamic'
+export const BAT_LOAD_BROWSER_DYNAMIC = 'loadBrowserDynamic'
+export const BAT_LOAD_BROWSER_DYNAMIC_COMPLETED = 'loadBrowserDynamicCompleted'
+export const BAT_UPDATE_WATCH_BROWSER = 'updateWatchBrowser'
+export const BAT_TOGGLE_WATCH_DB_BROWSER = 'toggleWatchDbBrowser'
 
-  SHOW_BROWSER_DYNAMIC : 'showBrowserDynamic',
-  INIT_BROWSER_DYNAMIC : 'initBrowserDynamic',
-  LOAD_BROWSER_DYNAMIC : 'loadBrowserDynamic',
-  LOAD_BROWSER_DYNAMIC_COMPLETED : 'loadBrowserDynamicCompleted',
+const _BrowserActions = Reflux.createActions({
+  [BAT_SHOW_BROWSER]: {},
+  [BAT_UPDATE_BROWSER_MENU]: {},
 
-  UPDATE_WATCH_BROWSER : 'updateWatchBrowser',
-  TOGGLE_WATCH_DB_BROWSER : 'toggleWatchDbBrowser'
-}
+  [BAT_SHOW_BROWSER_DYNAMIC]: {},
+  [BAT_INIT_BROWSER_DYNAMIC]: {},
+  [BAT_LOAD_BROWSER_DYNAMIC]: { children: ['completed', 'failed']},
 
-const BrowserActions = Reflux.createActions({
-  [BrowserActionTypes.SHOW_BROWSER] : {},
-  [BrowserActionTypes.UPDATE_BROWSER_MENU] : {},
-
-  [BrowserActionTypes.SHOW_BROWSER_DYNAMIC] : {},
-  [BrowserActionTypes.INIT_BROWSER_DYNAMIC] : {},
-  [BrowserActionTypes.LOAD_BROWSER_DYNAMIC] : { children : ['completed', 'failed']},
-
-  [BrowserActionTypes.UPDATE_WATCH_BROWSER] : {},
-  [BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER] : {}
+  [BAT_UPDATE_WATCH_BROWSER]: {},
+  [BAT_TOGGLE_WATCH_DB_BROWSER]: {}
 });
 
-const _fnFetchSourceMenu = function({ json, option, onCompleted }){
+const _fnFetchSourceMenu = function({
+  json,
+  option,
+  onCompleted
+}){
   const { menu, items } = json
-      , { browserType } = option;
+  , { browserType } = option;
   onCompleted({ menu, items, browserType });
-}
+};
 
-BrowserActions[BrowserActionTypes.LOAD_BROWSER_DYNAMIC].listen(function(option){
+_BrowserActions[BAT_LOAD_BROWSER_DYNAMIC].listen(function(option){
    fnFetch({
-     uri : option.sourceMenuUrl,
-     option : option,
-     onCheckResponse : (json) => true,
-     onFetch : _fnFetchSourceMenu,
-     onCompleted : this.completed,
-     onCatch : fnCatch,
-     onFailed : this.failed
+     uri: option.sourceMenuUrl,
+     option: option,
+     onCheckResponse: (json) => true,
+     onFetch: _fnFetchSourceMenu,
+     onCompleted: this.completed,
+     onCatch: fnCatch,
+     onFailed: this.failed
    })
 })
 
-
-export default BrowserActions
+export const BrowserActions = _BrowserActions

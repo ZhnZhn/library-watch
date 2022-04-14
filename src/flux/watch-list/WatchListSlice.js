@@ -1,4 +1,3 @@
-
 import LocalForage from 'localforage';
 
 import merge from '../../utils/merge';
@@ -6,7 +5,9 @@ import DateUtils from '../../utils/DateUtils';
 import saveJsonToFile from './saveJsonToFile';
 
 import ComponentActions from '../actions/ComponentActions';
-import { BrowserActionTypes } from '../actions/BrowserActions';
+import {
+  BAT_UPDATE_WATCH_BROWSER
+} from '../actions/BrowserActions';
 import { WatchActionTypes } from '../actions/WatchActions';
 import WatchDefault from '../../constants/WatchDefault';
 import { ModalDialog }  from '../../constants/Type';
@@ -28,11 +29,11 @@ const WatchListSlice = {
       this.watchList = (value)
               ? value
               : WatchDefault;
-      this.trigger(BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
+      this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
     })
     .catch(() => {
       this.watchList = WatchDefault;
-      this.trigger(BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
+      this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
     })
   },
   getWatchEdited(){
@@ -62,13 +63,13 @@ const WatchListSlice = {
   onRemoveItem(option){
     Logic.removeItem(this.watchList, option);
     this.setWatchEdited(true);
-    this.trigger(BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
+    this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
   },
 
   _onDragDrop(result){
     if (result.isDone){
        this.setWatchEdited(true);
-       this.trigger(BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
+       this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
     } else {
       this.showAlertDialog(result);
     }
@@ -109,7 +110,7 @@ const WatchListSlice = {
   _onEditWatch(result, forActionType){
     if (result.isDone){
       this.setWatchEdited(true);
-      this.trigger(BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
+      this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
       this.trigger(WatchActionTypes.EDIT_WATCH_COMPLETED, {forActionType});
     } else {
       this.trigger(WatchActionTypes.EDIT_WATCH_FAILED, {
@@ -168,7 +169,7 @@ const WatchListSlice = {
       const { progressEvent } = option
       merge(this.watchList, JSON.parse(progressEvent.target.result));
       this.setWatchEdited(true);
-      this.trigger(BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
+      this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
     } catch(exc) {
       ComponentActions.showModalDialog(ModalDialog.ALERT, {...Msg.Alert.LOAD_FROM_JSON })
     }
