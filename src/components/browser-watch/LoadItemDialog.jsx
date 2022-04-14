@@ -1,6 +1,6 @@
 import memoIsShow from '../dialogs/memoIsShow';
 
-import ChartActions from '../../flux/actions/ChartActions';
+import { ChartActions } from '../../flux/actions/ChartActions';
 import {
   BrowserType,
   ChartType

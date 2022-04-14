@@ -5,7 +5,7 @@ import {
   BAT_UPDATE_WATCH_BROWSER,
   BAT_TOGGLE_WATCH_DB_BROWSER
  } from '../flux/actions/BrowserActions';
-import { ChartActionTypes } from '../flux/actions/ChartActions';
+import { CHAT_INIT_AND_SHOW_CHART } from '../flux/actions/ChartActions';
 import { ComponentActionTypes } from '../flux/actions/ComponentActions';
 
 import HeaderBar from './header/HeaderBar';
@@ -32,7 +32,7 @@ const AppLibraryWatch = (props) => (
        <About store={Store} />
        <ComponentHrzContainer
           store={Store}
-          initShowAction={ChartActionTypes.INIT_AND_SHOW_CHART}
+          initShowAction={CHAT_INIT_AND_SHOW_CHART}
        />
     </div>
     <DialogContainer

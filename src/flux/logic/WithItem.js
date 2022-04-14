@@ -1,6 +1,6 @@
 import RouterItem from '../../components/factories/RouterItem';
 
-import CHA from '../actions/ChartActions';
+import { ChartActions } from '../actions/ChartActions';
 import ComponentActions from '../actions/ComponentActions';
 
 import { ModalDialog } from '../../constants/Type';
@@ -22,8 +22,8 @@ const withItem = {
        option,
        json,
        parentProps,
-       onMoveToTop: CHA.moveToTop.bind(null, chartType, key),
-       onCloseItem: CHA.closeChart,
+       onMoveToTop: ChartActions.moveToTop.bind(null, chartType, key),
+       onCloseItem: ChartActions.closeChart,
        onWatchItem
      });
   }

@@ -1,12 +1,17 @@
 import Reflux from 'reflux-core';
 
 import ComponentActions, { ComponentActionTypes as CAT } from '../actions/ComponentActions';
-import ChartActions from '../actions/ChartActions';
+import {
+  CHAT_SHOW_CHART,
+  CHAT_INIT_AND_SHOW_CHART,
+  CHAT_LOAD_STOCK_COMPLETED,
+  CHAT_CLOSE_CHART,
+  ChartActions
+} from '../actions/ChartActions';
 import {
   BAT_UPDATE_BROWSER_MENU,
   BrowserActions
 } from '../actions/BrowserActions';
-import { ChartActionTypes as CHAT } from '../actions/ChartActions';
 import { LoadingProgressActions } from '../actions/LoadingProgressActions';
 import WatchActions from '../actions/WatchActions';
 
@@ -73,7 +78,7 @@ const AppStore = Reflux.createStore({
   onMoveToTop(chartType, key){
     const slice = this.charts[chartType];
     if (toTopByKey(slice, key)) {
-      this.trigger(CHAT.SHOW_CHART, slice);
+      this.trigger(CHAT_SHOW_CHART, slice);
     }
   },
 
@@ -81,10 +86,10 @@ const AppStore = Reflux.createStore({
    const chartCont = this.charts[chartType];
    if (chartCont){
      chartCont.isShow = true;
-     this.trigger(CHAT.SHOW_CHART, chartCont);
+     this.trigger(CHAT_SHOW_CHART, chartCont);
    } else {
      this.charts[chartType] = this.createInitConfig(chartType);
-     this.trigger(CHAT.INIT_AND_SHOW_CHART,
+     this.trigger(CHAT_INIT_AND_SHOW_CHART,
         Factory.createChartContainer(chartType, browserType)
      );
    }
@@ -101,7 +106,7 @@ const AppStore = Reflux.createStore({
  onLoadStockCompleted(option, json){
    /* eslint-disable no-undef */
    if (process.env.NODE_ENV !== 'production'){
-   /* eslint-disable no-undef */
+   /* eslint-enable no-undef */
      console.log(option);
      console.log(json);
    }
@@ -114,12 +119,12 @@ const AppStore = Reflux.createStore({
    if (chartCont){
      chartCont.configs.unshift(comp);
      chartCont.isShow = true;
-     this.trigger(CHAT.LOAD_STOCK_COMPLETED, chartCont);
+     this.trigger(CHAT_LOAD_STOCK_COMPLETED, chartCont);
    } else {
      this.charts[chartType] = this.createInitConfig(chartType);
      this.charts[chartType].configs.unshift(comp);
      this.trigger(
-        CHAT.INIT_AND_SHOW_CHART,
+        CHAT_INIT_AND_SHOW_CHART,
         Factory.createChartContainer(chartType, browserType)
      );
    }
@@ -128,7 +133,7 @@ const AppStore = Reflux.createStore({
 
    if (browserType !== BT.WATCH_LIST){
      this.addMenuItemCounter(chartType, browserType);
-     this.trigger(BAT.UPDATE_BROWSER_MENU, browserType);
+     this.trigger(BAT_UPDATE_BROWSER_MENU, browserType);
    }
   },
   onLoadStockFailed(option){
@@ -143,11 +148,11 @@ const AppStore = Reflux.createStore({
    chartCont.configs = chartCont.configs.filter((compObj, index) => {
       return compObj.key !== key;
    })
-   this.trigger(CHAT.CLOSE_CHART, chartCont);
+   this.trigger(CHAT_CLOSE_CHART, chartCont);
 
    if (browserType !== BT.WATCH_LIST){
      this.minusMenuItemCounter(chartType, browserType);
-     this.trigger(BAT.UPDATE_BROWSER_MENU, browserType);
+     this.trigger(BAT_UPDATE_BROWSER_MENU, browserType);
    }
 
  },
@@ -155,7 +160,7 @@ const AppStore = Reflux.createStore({
  onCloseChartContainer(chartType, browserType){
    if (browserType !== BT.WATCH_LIST){
      this.setMenuItemClose(chartType, browserType);
-     this.trigger(BAT.UPDATE_BROWSER_MENU, browserType);
+     this.trigger(BAT_UPDATE_BROWSER_MENU, browserType);
    }
  },
  onCloseCompItemList(chartType, browserType){
@@ -165,8 +170,8 @@ const AppStore = Reflux.createStore({
  onRemoveAll(chartType, browserType){
     const chartSlice = removeAll(this.charts, chartType);
     this.resetMenuItemCounter(chartType, browserType)
-    this.trigger(CHAT.SHOW_CHART, chartSlice);
-    this.trigger(BAT.UPDATE_BROWSER_MENU, browserType);
+    this.trigger(CHAT_SHOW_CHART, chartSlice);
+    this.trigger(BAT_UPDATE_BROWSER_MENU, browserType);
   },
 
  ...BrowserSlice,

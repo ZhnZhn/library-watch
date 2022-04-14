@@ -2,7 +2,10 @@ import useBool from '../hooks/useBool';
 import useListen from '../hooks/useListen';
 
 import { ComponentActionTypes as CAT } from '../../flux/actions/ComponentActions';
-import { ChartActionTypes as CHAT } from '../../flux/actions/ChartActions';
+import {
+  CHAT_INIT_AND_SHOW_CHART,
+  CHAT_SHOW_CHART
+} from '../../flux/actions/ChartActions';
 
 import ScrollPane from '../zhn-atoms/ScrollPane';
 import CaptionRow from '../zhn-atoms/CaptionRow';
@@ -44,8 +47,8 @@ const About = ({
   useListen(store, (actionType, data) => {
     if (actionType === CAT.SHOW_ABOUT){
       showAbout()
-    } else if (actionType === CHAT.INIT_AND_SHOW_CHART
-            || actionType === CHAT.SHOW_CHART){
+    } else if (actionType === CHAT_INIT_AND_SHOW_CHART
+            || actionType === CHAT_SHOW_CHART){
       hideAbout()
     }
   })

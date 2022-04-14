@@ -1,6 +1,6 @@
 import { createElement } from '../../components/uiApi';
 import RouterDialog from '../../components/dialogs/RouterDialog';
-import ChartActions from '../actions/ChartActions';
+import { ChartActions } from '../actions/ChartActions';
 
 const onLoadChart = ChartActions.loadStock
 , onShowChart = ChartActions.showChart;

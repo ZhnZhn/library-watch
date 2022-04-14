@@ -9,7 +9,11 @@ import useMenuMore from '../hooks/useMenuMore'
 import useListen from '../hooks/useListen'
 
 import Store from '../../flux/stores/AppStore';
-import { ChartActionTypes as CHAT } from '../../flux/actions/ChartActions';
+import {
+  CHAT_SHOW_CHART,
+  CHAT_LOAD_STOCK_COMPLETED,
+  CHAT_CLOSE_CHART
+} from '../../flux/actions/ChartActions';
 import { ComponentActionTypes as CAT } from '../../flux/actions/ComponentActions';
 
 import ModalSlider from '../zhn-modal-slider/ModalSlider'
@@ -56,9 +60,9 @@ const _isInArray = (
 ) => Boolean(~arr.indexOf(value));
 
 const COMP_ACTIONS = [
-  CHAT.SHOW_CHART,
-  CHAT.LOAD_STOCK_COMPLETED,
-  CHAT.CLOSE_CHART
+  CHAT_SHOW_CHART,
+  CHAT_LOAD_STOCK_COMPLETED,
+  CHAT_CLOSE_CHART
 ];
 
 const _getWidth = style =>

@@ -1,6 +1,6 @@
 import { createElement } from '../../components/uiApi';
 
-import CHA from '../actions/ChartActions';
+import { ChartActions } from '../actions/ChartActions';
 import CA from '../actions/ComponentActions';
 
 import CompItemList from '../../components/zhn-containers/CompItemList';
@@ -18,7 +18,7 @@ const _createChartContainerComp = (
     chartType: _chartType,
     browserType: browserType,
     onCloseContainer: CA.closeChartContainer.bind(null, _chartType, browserType),
-    onRemoveAll: CHA.removeAll.bind(null, _chartType, browserType)
+    onRemoveAll: ChartActions.removeAll.bind(null, _chartType, browserType)
   });
 }
 
