@@ -1,6 +1,6 @@
 import getTransferData from './getTransferData';
 
-import WatchActions from '../../../flux/actions/WatchActions';
+import { WatchActions } from '../../../flux/actions/WatchActions';
 import DRAG from '../WatchDnDConfig';
 
 import {

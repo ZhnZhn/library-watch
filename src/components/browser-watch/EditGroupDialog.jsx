@@ -1,7 +1,13 @@
 import memoIsShow from '../dialogs/memoIsShow';
 
-import wa from '../../flux/actions/WatchActions';
-import { WatchActionTypes as WAT } from '../../flux/actions/WatchActions';
+import {
+  WAT_EDIT_WATCH_COMPLETED,
+  WAT_EDIT_WATCH_FAILED,
+  WAT_ADD_GROUP,
+  WAT_RENAME_GROUP,
+  WAT_DELETE_GROUP,
+  WatchActions
+} from '../../flux/actions/WatchActions';
 
 import Msg from '../../constants/Msg';
 
@@ -27,33 +33,33 @@ const EditGroupDialog = memoIsShow(({
        <Tab title="Create">
          <GroupAddPane
             store={store}
-            actionCompleted={WAT.EDIT_WATCH_COMPLETED}
-            actionFailed={WAT.EDIT_WATCH_FAILED}
-            forActionType={WAT.ADD_GROUP}
+            actionCompleted={WAT_EDIT_WATCH_COMPLETED}
+            actionFailed={WAT_EDIT_WATCH_FAILED}
+            forActionType={WAT_ADD_GROUP}
             msgOnIsEmptyName={Msg.IS_EMPTY_NAME}
-            onCreate={wa.addGroup}
+            onCreate={WatchActions.addGroup}
             onClose={onClose}
           />
        </Tab>
        <Tab title="Rename">
          <GroupEditPane
             store={store}
-            actionCompleted={WAT.EDIT_WATCH_COMPLETED}
-            actionFailed={WAT.EDIT_WATCH_FAILED}
-            forActionType={WAT.RENAME_GROUP}
+            actionCompleted={WAT_EDIT_WATCH_COMPLETED}
+            actionFailed={WAT_EDIT_WATCH_FAILED}
+            forActionType={WAT_RENAME_GROUP}
             msgOnNotSelect={Msg.NOT_SELECTED}
             msgOnIsEmptyName={Msg.IS_EMPTY_NAME}
-            onRename={wa.renameGroup}
+            onRename={WatchActions.renameGroup}
             onClose={onClose}
          />
        </Tab>
        <Tab title="Delete">
          <GroupDeletePane
             store={store}
-            actionCompleted={WAT.EDIT_WATCH_COMPLETED}
-            forActionType={WAT.DELETE_GROUP}
+            actionCompleted={WAT_EDIT_WATCH_COMPLETED}
+            forActionType={WAT_DELETE_GROUP}
             msgOnNotSelect={Msg.NOT_SELECTED}
-            onDelete={wa.deleteGroup}
+            onDelete={WatchActions.deleteGroup}
             onClose={onClose}
          />
        </Tab>

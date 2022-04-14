@@ -1,50 +1,45 @@
 import Reflux from 'reflux-core';
 
-export const WatchActionTypes = {
-  ADD_ITEM : 'addItem',
-  REMOVE_ITEM : 'removeItem',
-  SAVE_WATCH : 'saveWatch',
+export const WAT_ADD_ITEM = 'addItem'
+export const WAT_REMOVE_ITEM = 'removeItem'
+export const WAT_SAVE_WATCH = 'saveWatch'
 
-  DRAG_DROP_GROUP : 'dragDropGroup',
-  DRAG_DROP_LIST : 'dragDropList',
-  DRAG_DROP_ITEM : 'dragDropItem',
+export const WAT_DRAG_DROP_GROUP = 'dragDropGroup'
+export const WAT_DRAG_DROP_LIST = 'dragDropList'
+export const WAT_DRAG_DROP_ITEM = 'dragDropItem'
 
-  ADD_GROUP : 'addGroup',
-  RENAME_GROUP : 'renameGroup',
-  DELETE_GROUP : 'deleteGroup',
-  CREATE_LIST : 'createList',
-  RENAME_LIST : 'renameList',
-  DELETE_LIST : 'deleteList',
-    EDIT_WATCH_COMPLETED : 'editWatchCompleted',
-    EDIT_WATCH_FAILED : 'editWatchFailed',
+export const WAT_ADD_GROUP = 'addGroup'
+export const WAT_RENAME_GROUP = 'renameGroup'
+export const WAT_DELETE_GROUP = 'deleteGroup'
+export const WAT_CREATE_LIST = 'createList'
+export const WAT_RENAME_LIST = 'renameList'
+export const WAT_DELETE_LIST = 'deleteList'
 
-  BACKUP_TO_JSON : 'backupToJson',
-  LOAD_FROM_JSON : 'loadFromJson',
+export const WAT_EDIT_WATCH_COMPLETED = 'editWatchCompleted'
+export const WAT_EDIT_WATCH_FAILED = 'editWatchFailed'
+export const WAT_BACKUP_TO_JSON = 'backupToJson'
+export const WAT_LOAD_FROM_JSON = 'loadFromJson'
 
-  SET_WATCH_EDITED : 'setWatchEdited'
-}
+export const WAT_SET_WATCH_EDITED = 'setWatchEdited'
 
-const WatchActions = Reflux.createActions({
-  [WatchActionTypes.ADD_ITEM] : {},
-  [WatchActionTypes.REMOVE_ITEM] : {},
-  [WatchActionTypes.SAVE_WATCH] : {},
+export const WatchActions = Reflux.createActions({
+  [WAT_ADD_ITEM]: {},
+  [WAT_REMOVE_ITEM]: {},
+  [WAT_SAVE_WATCH]: {},
 
-  [WatchActionTypes.DRAG_DROP_GROUP] : {},
-  [WatchActionTypes.DRAG_DROP_LIST] : {},
-  [WatchActionTypes.DRAG_DROP_ITEM] : {},
+  [WAT_DRAG_DROP_GROUP]: {},
+  [WAT_DRAG_DROP_LIST]: {},
+  [WAT_DRAG_DROP_ITEM]: {},
 
-  [WatchActionTypes.ADD_GROUP] : {},
-  [WatchActionTypes.RENAME_GROUP] : {},
-  [WatchActionTypes.DELETE_GROUP] : {},
-  [WatchActionTypes.CREATE_LIST] : {},
-  [WatchActionTypes.RENAME_LIST] : {},
-  [WatchActionTypes.DELETE_LIST] : {},
-      [WatchActionTypes.EDIT_WATCH_COMPLETED] : {},
-      [WatchActionTypes.EDIT_WATCH_FAILED] : {},
+  [WAT_ADD_GROUP]: {},
+  [WAT_RENAME_GROUP]: {},
+  [WAT_DELETE_GROUP]: {},
+  [WAT_CREATE_LIST]: {},
+  [WAT_RENAME_LIST]: {},
+  [WAT_DELETE_LIST]: {},
 
-  [WatchActionTypes.BACKUP_TO_JSON] : {},
-  [WatchActionTypes.LOAD_FROM_JSON] : {}
-
+  [WAT_EDIT_WATCH_COMPLETED]: {},
+  [WAT_EDIT_WATCH_FAILED]: {},
+  [WAT_BACKUP_TO_JSON]: {},
+  [WAT_LOAD_FROM_JSON]: {}
 })
-
-export default WatchActions

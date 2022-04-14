@@ -2,14 +2,17 @@ import { useState } from '../uiApi';
 
 import useListen from '../hooks/useListen';
 
-import WatchActions, { WatchActionTypes } from '../../flux/actions/WatchActions';
+import {
+  WAT_SET_WATCH_EDITED,
+  WatchActions
+} from '../../flux/actions/WatchActions';
 import ButtonCircle from '../zhn-atoms/ButtonCircle';
 
 const CAPTION = "S"
 , TITLE = "Save Watch Items to Locale Storage"
 , S_NOT_WATCH_EDITED = {
-   borderColor : 'gray',
-   color : 'gray'
+   borderColor: 'gray',
+   color: 'gray'
 };
 
 const ButtonSave = ({
@@ -23,7 +26,7 @@ const ButtonSave = ({
   ] = useState(() => store.getWatchEdited());
 
   useListen(store, (actionType, value) => {
-    if (actionType === WatchActionTypes.SET_WATCH_EDITED){
+    if (actionType === WAT_SET_WATCH_EDITED){
       setIsWatchEdited(value)
     }
   })

@@ -1,6 +1,6 @@
 import Reflux from 'reflux-core';
 
-import { 
+import {
   CAT_SHOW_MODAL_DIALOG,
   CAT_CLOSE_COMP_ITEM_LIST,
   ComponentActions
@@ -17,7 +17,7 @@ import {
   BrowserActions
 } from '../actions/BrowserActions';
 import { LoadingProgressActions } from '../actions/LoadingProgressActions';
-import WatchActions from '../actions/WatchActions';
+import { WatchActions } from '../actions/WatchActions';
 
 import { BrowserType as BT, ModalDialog as MD } from '../../constants/Type';
 

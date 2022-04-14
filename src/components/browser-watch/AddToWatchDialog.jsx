@@ -13,8 +13,13 @@ import useListen from '../hooks/useListen';
 import useRefItemCaption from './useRefItemCaption';
 import memoIsShow from '../dialogs/memoIsShow';
 
-import WatchActions from '../../flux/actions/WatchActions';
-import { WatchActionTypes as WAT } from '../../flux/actions/WatchActions';
+import {
+  WAT_EDIT_WATCH_COMPLETED,
+  WAT_EDIT_WATCH_FAILED,
+  WAT_ADD_ITEM,
+  WatchActions
+} from '../../flux/actions/WatchActions';
+
 import Msg from '../../constants/Msg';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
@@ -23,11 +28,7 @@ import FlatButton from '../zhn-m/FlatButton';
 import RowInputSelect from '../dialogs/rows/RowInputSelect';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
 
-const actionCompleted = WAT.EDIT_WATCH_COMPLETED
-, actionFailed =  WAT.EDIT_WATCH_FAILED
-, forActionType = WAT.ADD_ITEM
-
-, S_BOLD = { fontWeight: 'bold' }
+const S_BOLD = { fontWeight: 'bold' }
 , S_LH = { lineHeight: 2 }
 , S_DESCR = {
   fontWeight: 'bold',
@@ -117,9 +118,9 @@ const AddToWatchDialog = memoIsShow((props) => {
   ], [_hAdd]);
 
   useListen(store, (actionType, data) => {
-    if (actionType === actionCompleted && data.forActionType === forActionType){
+    if (actionType === WAT_EDIT_WATCH_COMPLETED && data.forActionType === WAT_ADD_ITEM){
        _hClose()
-    } else if (actionType === actionFailed && data.forActionType === forActionType){
+    } else if (actionType === WAT_EDIT_WATCH_FAILED && data.forActionType === WAT_ADD_ITEM){
        setValidationMessages(data.messages)
     }
   })

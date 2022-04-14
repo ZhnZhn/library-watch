@@ -8,7 +8,18 @@ import { ComponentActions } from '../actions/ComponentActions';
 import {
   BAT_UPDATE_WATCH_BROWSER
 } from '../actions/BrowserActions';
-import { WatchActionTypes } from '../actions/WatchActions';
+import {
+  WAT_SET_WATCH_EDITED,
+  WAT_ADD_ITEM,
+  WAT_EDIT_WATCH_COMPLETED,
+  WAT_EDIT_WATCH_FAILED,
+  WAT_ADD_GROUP,
+  WAT_RENAME_GROUP,
+  WAT_DELETE_GROUP,
+  WAT_CREATE_LIST,
+  WAT_RENAME_LIST,
+  WAT_DELETE_LIST
+} from '../actions/WatchActions';
 import WatchDefault from '../../constants/WatchDefault';
 import { ModalDialog }  from '../../constants/Type';
 import Msg from '../../constants/Msg';
@@ -41,7 +52,7 @@ const WatchListSlice = {
   },
   setWatchEdited(value){
     this.isWatchEdited = value;
-    this.trigger(WatchActionTypes.SET_WATCH_EDITED, this.isWatchEdited);
+    this.trigger(WAT_SET_WATCH_EDITED, this.isWatchEdited);
   },
   getWatchList(){
     return this.watchList;
@@ -57,7 +68,7 @@ const WatchListSlice = {
 
   onAddItem(item){
     this._onEditWatch(
-      Logic.addItem(this.watchList, item), WatchActionTypes.ADD_ITEM
+      Logic.addItem(this.watchList, item), WAT_ADD_ITEM
     );
   },
   onRemoveItem(option){
@@ -111,9 +122,9 @@ const WatchListSlice = {
     if (result.isDone){
       this.setWatchEdited(true);
       this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
-      this.trigger(WatchActionTypes.EDIT_WATCH_COMPLETED, {forActionType});
+      this.trigger(WAT_EDIT_WATCH_COMPLETED, {forActionType});
     } else {
-      this.trigger(WatchActionTypes.EDIT_WATCH_FAILED, {
+      this.trigger(WAT_EDIT_WATCH_FAILED, {
           messages:[result.message],
           forActionType
       });
@@ -122,38 +133,38 @@ const WatchListSlice = {
   onAddGroup(option){
     this._onEditWatch(
       Logic.addGroup(this.watchList, option),
-      WatchActionTypes.ADD_GROUP
+      WAT_ADD_GROUP
     );
   },
   onRenameGroup(option){
     this._onEditWatch(
       Logic.renameGroup(this.watchList, option),
-      WatchActionTypes.RENAME_GROUP
+      WAT_RENAME_GROUP
     );
   },
   onDeleteGroup(option){
     this._onEditWatch(
       Logic.deleteGroup(this.watchList, option),
-      WatchActionTypes.DELETE_GROUP
+      WAT_DELETE_GROUP
     );
   },
 
   onCreateList(option){
     this._onEditWatch(
       Logic.createList(this.watchList, option),
-      WatchActionTypes.CREATE_LIST
+      WAT_CREATE_LIST
     );
   },
   onRenameList(option){
     this._onEditWatch(
       Logic.renameList(this.watchList, option),
-      WatchActionTypes.RENAME_LIST
+      WAT_RENAME_LIST
     );
   },
   onDeleteList(option){
     this._onEditWatch(
       Logic.deleteList(this.watchList, option),
-      WatchActionTypes.DELETE_LIST
+      WAT_DELETE_LIST
     );
   },
 

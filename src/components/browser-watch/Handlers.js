@@ -1,7 +1,7 @@
 import { ModalDialog } from '../../constants/Type';
 import { ComponentActions } from '../../flux/actions/ComponentActions';
 import { BrowserActions } from '../../flux/actions/BrowserActions';
-import WatchActions from '../../flux/actions/WatchActions';
+import { WatchActions } from '../../flux/actions/WatchActions';
 
 export const showDialogEditGroups = () =>
   ComponentActions.showModalDialog(ModalDialog.EDIT_WATCH_GROUP);
