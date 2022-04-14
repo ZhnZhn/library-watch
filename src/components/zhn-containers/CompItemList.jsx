@@ -14,7 +14,7 @@ import {
   CHAT_LOAD_STOCK_COMPLETED,
   CHAT_CLOSE_CHART
 } from '../../flux/actions/ChartActions';
-import { ComponentActionTypes as CAT } from '../../flux/actions/ComponentActions';
+import { CAT_CLOSE_COMP_ITEM_LIST } from '../../flux/actions/ComponentActions';
 
 import ModalSlider from '../zhn-modal-slider/ModalSlider'
 import crModelMore from './ModelMore'
@@ -157,7 +157,7 @@ const CompItemList = ({
           ...data
         }))
       }
-    } else if (actionType === CAT.CLOSE_COMP_ITEM_LIST){
+    } else if (actionType === CAT_CLOSE_COMP_ITEM_LIST){
        if (data === chartType){
          _hClose();
        }

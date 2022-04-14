@@ -6,7 +6,11 @@ import {
   BAT_TOGGLE_WATCH_DB_BROWSER
  } from '../flux/actions/BrowserActions';
 import { CHAT_INIT_AND_SHOW_CHART } from '../flux/actions/ChartActions';
-import { ComponentActionTypes } from '../flux/actions/ComponentActions';
+import {
+  CAT_INIT_AND_SHOW_DIALOG,
+  CAT_SHOW_DIALOG,
+  CAT_SHOW_MODAL_DIALOG
+} from '../flux/actions/ComponentActions';
 
 import HeaderBar from './header/HeaderBar';
 import About from './about/About';
@@ -26,8 +30,8 @@ const AppLibraryWatch = (props) => (
           initBrowserAction={BAT_INIT_BROWSER_DYNAMIC}
           updateWatchAction={BAT_UPDATE_WATCH_BROWSER}
           toggleWatchDbBrowserAction={BAT_TOGGLE_WATCH_DB_BROWSER}
-          initDialogAction={ComponentActionTypes.INIT_AND_SHOW_DIALOG}
-          showDialogAction={ComponentActionTypes.SHOW_DIALOG}
+          initDialogAction={CAT_INIT_AND_SHOW_DIALOG}
+          showDialogAction={CAT_SHOW_DIALOG}
        />
        <About store={Store} />
        <ComponentHrzContainer
@@ -37,11 +41,10 @@ const AppLibraryWatch = (props) => (
     </div>
     <DialogContainer
        store={Store}
-       showAction={ComponentActionTypes.SHOW_MODAL_DIALOG}
+       showAction={CAT_SHOW_MODAL_DIALOG}
        routerDialog={RouterModalDialog}
     />
   </div>
 );
-
 
 export default AppLibraryWatch

@@ -4,7 +4,7 @@ import merge from '../../utils/merge';
 import DateUtils from '../../utils/DateUtils';
 import saveJsonToFile from './saveJsonToFile';
 
-import ComponentActions from '../actions/ComponentActions';
+import { ComponentActions } from '../actions/ComponentActions';
 import {
   BAT_UPDATE_WATCH_BROWSER
 } from '../actions/BrowserActions';

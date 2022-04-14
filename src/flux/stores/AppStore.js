@@ -1,6 +1,10 @@
 import Reflux from 'reflux-core';
 
-import ComponentActions, { ComponentActionTypes as CAT } from '../actions/ComponentActions';
+import { 
+  CAT_SHOW_MODAL_DIALOG,
+  CAT_CLOSE_COMP_ITEM_LIST,
+  ComponentActions
+} from '../actions/ComponentActions';
 import {
   CHAT_SHOW_CHART,
   CHAT_INIT_AND_SHOW_CHART,
@@ -67,7 +71,7 @@ const AppStore = Reflux.createStore({
    option.modalDialogType = MD.ALERT;
    option.alertItemId = option.alertItemId
      || option.repo || '';
-   this.trigger(CAT.SHOW_MODAL_DIALOG, option);
+   this.trigger(CAT_SHOW_MODAL_DIALOG, option);
  },
 
   isKeyTop(key, option){
@@ -164,7 +168,7 @@ const AppStore = Reflux.createStore({
    }
  },
  onCloseCompItemList(chartType, browserType){
-   this.trigger(CAT.CLOSE_COMP_ITEM_LIST, chartType);
+   this.trigger(CAT_CLOSE_COMP_ITEM_LIST, chartType);
  },
 
  onRemoveAll(chartType, browserType){

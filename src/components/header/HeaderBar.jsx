@@ -1,7 +1,7 @@
 import { useCallback } from '../uiApi';
 
 import { BrowserActions } from '../../flux/actions/BrowserActions';
-import CA from '../../flux/actions/ComponentActions';
+import { ComponentActions } from '../../flux/actions/ComponentActions';
 import { BrowserType as BT } from '../../constants/Type';
 
 import A from '../Comp'
@@ -90,7 +90,7 @@ const HeaderBar = ({ store })  => {
         title="About web app Library Watch"
         accessKey="a"
         timeout={0}
-        onClick={CA.showAbout}
+        onClick={ComponentActions.showAbout}
      >
         <A.SvgInfo style={S_SVG_INFO} />
      </A.FlatButton>

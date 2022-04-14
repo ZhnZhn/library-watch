@@ -1,7 +1,7 @@
 import RouterItem from '../../components/factories/RouterItem';
 
 import { ChartActions } from '../actions/ChartActions';
-import ComponentActions from '../actions/ComponentActions';
+import { ComponentActions } from '../actions/ComponentActions';
 
 import { ModalDialog } from '../../constants/Type';
 

@@ -2,31 +2,24 @@ import Reflux from 'reflux-core';
 
 import { ModalDialog as MD } from '../../constants/Type'
 
-export const ComponentActionTypes = {
-  SHOW_ABOUT : 'showAbout',
+export const CAT_SHOW_ABOUT = 'showAbout'
+export const CAT_INIT_AND_SHOW_DIALOG = 'initAndShowDialog'
+export const CAT_SHOW_DIALOG = 'showDialog'
+export const CAT_CLOSE_CHART_CONTAINER = 'closeChartContainer'
+export const CAT_CLOSE_COMP_ITEM_LIST = 'closeCompItemList'
+export const CAT_SHOW_MODAL_DIALOG = 'showModalDialog'
 
-  INIT_AND_SHOW_DIALOG : 'initAndShowDialog',
-  SHOW_DIALOG : 'showDialog',
-  CLOSE_CHART_CONTAINER : 'closeChartContainer',
-  CLOSE_COMP_ITEM_LIST : 'closeCompItemList',
-  //SET_ACTIVE_CHECKBOX : 'setActiveCheckbox',
+const _ComponentActions = Reflux.createActions({
+  [CAT_SHOW_ABOUT] : {},
 
-  SHOW_MODAL_DIALOG : 'showModalDialog'
-}
+  [CAT_INIT_AND_SHOW_DIALOG] : {},
+  [CAT_SHOW_DIALOG] : {},
+  [CAT_CLOSE_CHART_CONTAINER] : {},
+  [CAT_CLOSE_COMP_ITEM_LIST] : {},
 
-const ComponentActions = Reflux.createActions({
-  [ComponentActionTypes.SHOW_ABOUT] : {},
-
-  [ComponentActionTypes.INIT_AND_SHOW_DIALOG] : {},
-  [ComponentActionTypes.SHOW_DIALOG] : {},
-  [ComponentActionTypes.CLOSE_CHART_CONTAINER] : {},
-  [ComponentActionTypes.CLOSE_COMP_ITEM_LIST] : {},
-  //[ComponentActionTypes.SET_ACTIVE_CHECKBOX] : {},
-
-  [ComponentActionTypes.SHOW_MODAL_DIALOG] : {}
+  [CAT_SHOW_MODAL_DIALOG] : {}
 });
-ComponentActions.showAlert = ComponentActions
+_ComponentActions.showAlert = _ComponentActions
   .showModalDialog.bind(null, MD.ALERT)
 
-
-export default ComponentActions
+export const ComponentActions = _ComponentActions

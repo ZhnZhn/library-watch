@@ -1,7 +1,7 @@
 import useBool from '../hooks/useBool';
 import useListen from '../hooks/useListen';
 
-import { ComponentActionTypes as CAT } from '../../flux/actions/ComponentActions';
+import { CAT_SHOW_ABOUT } from '../../flux/actions/ComponentActions';
 import {
   CHAT_INIT_AND_SHOW_CHART,
   CHAT_SHOW_CHART
@@ -45,7 +45,7 @@ const About = ({
   ] = useBool(true);
 
   useListen(store, (actionType, data) => {
-    if (actionType === CAT.SHOW_ABOUT){
+    if (actionType === CAT_SHOW_ABOUT){
       showAbout()
     } else if (actionType === CHAT_INIT_AND_SHOW_CHART
             || actionType === CHAT_SHOW_CHART){

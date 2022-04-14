@@ -1,4 +1,4 @@
-import ComponentActions from '../flux/actions/ComponentActions';
+import { ComponentActions } from '../flux/actions/ComponentActions';
 import { ChartActions } from '../flux/actions/ChartActions';
 
 const _crOnClick = (

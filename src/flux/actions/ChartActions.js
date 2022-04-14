@@ -2,7 +2,7 @@ import Reflux from 'reflux-core';
 
 import RouterLoad from '../logic/RouterLoad';
 import Store from '../stores/AppStore';
-import ComponentActions from './ComponentActions';
+import { ComponentActions } from './ComponentActions';
 
 const ALREADY_LOADED = {
   caption: 'Already loaded',

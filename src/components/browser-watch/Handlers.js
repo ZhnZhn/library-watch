@@ -1,5 +1,5 @@
 import { ModalDialog } from '../../constants/Type';
-import ComponentActions from '../../flux/actions/ComponentActions';
+import { ComponentActions } from '../../flux/actions/ComponentActions';
 import { BrowserActions } from '../../flux/actions/BrowserActions';
 import WatchActions from '../../flux/actions/WatchActions';
 

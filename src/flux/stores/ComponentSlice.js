@@ -1,21 +1,26 @@
-import { ComponentActionTypes } from '../actions/ComponentActions';
+import {
+  CAT_SHOW_ABOUT,
+  CAT_SHOW_DIALOG,
+  CAT_INIT_AND_SHOW_DIALOG,
+  CAT_SHOW_MODAL_DIALOG
+} from '../actions/ComponentActions';
 import Factory from '../logic/Factory';
 
 const ComponentSlice = {
   dialogInit : {},
 
   onShowAbout(){
-    this.trigger(ComponentActionTypes.SHOW_ABOUT)
+    this.trigger(CAT_SHOW_ABOUT)
   },
 
   onShowDialog(dialogType, browserType){
     if (this.dialogInit[dialogType]) {
-      this.trigger(ComponentActionTypes.SHOW_DIALOG, dialogType);
+      this.trigger(CAT_SHOW_DIALOG, dialogType);
     } else {
       this.dialogInit[dialogType] = true;
       const dialogComp = Factory.createDialog(dialogType, browserType);
       this.trigger(
-        ComponentActionTypes.INIT_AND_SHOW_DIALOG,
+        CAT_INIT_AND_SHOW_DIALOG,
         { dialogType, dialogComp }
       );
     }
@@ -23,9 +28,8 @@ const ComponentSlice = {
 
   onShowModalDialog(modalDialogType, option={}){
     option.modalDialogType = modalDialogType;
-    this.trigger(ComponentActionTypes.SHOW_MODAL_DIALOG, option);
+    this.trigger(CAT_SHOW_MODAL_DIALOG, option);
   }
-
 }
 
 export default ComponentSlice
