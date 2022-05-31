@@ -1,30 +1,27 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _Fn = _interopRequireDefault(require("./Fn"));
+var _Fn = require("./Fn");
 
 var WithLogicList = {
   createList: function createList(watchList, _ref) {
     var captionGroup = _ref.captionGroup,
         captionList = _ref.captionList;
-
-    var groupTo = _Fn["default"].findGroup(watchList, captionGroup);
+    var groupTo = (0, _Fn.findGroup)(watchList, captionGroup);
 
     if (!groupTo) {
-      return _Fn["default"].fResultNotFound('group', captionGroup);
+      return (0, _Fn.fResultNotFound)('group', captionGroup);
     }
 
     var lists = groupTo.lists;
 
-    if (_Fn["default"].checkIsInArraySameCaption(lists, captionList)) {
-      return _Fn["default"].fResultListExisted(captionList, captionGroup);
+    if ((0, _Fn.checkIsInArraySameCaption)(lists, captionList)) {
+      return (0, _Fn.fResultListExisted)(captionList, captionGroup);
     }
 
-    groupTo.lists = _Fn["default"].getArrayWithObj(lists, {
+    groupTo.lists = (0, _Fn.getArrayWithObj)(lists, {
       caption: captionList
     });
     return {
@@ -35,26 +32,24 @@ var WithLogicList = {
     var captionGroup = _ref2.captionGroup,
         captionListFrom = _ref2.captionListFrom,
         captionListTo = _ref2.captionListTo;
-
-    var groupIn = _Fn["default"].findGroup(watchList, captionGroup);
+    var groupIn = (0, _Fn.findGroup)(watchList, captionGroup);
 
     if (!groupIn) {
-      return _Fn["default"].fResultNotFound('group', captionGroup);
+      return (0, _Fn.fResultNotFound)('group', captionGroup);
     }
 
     var lists = groupIn.lists;
-
-    var listIndex = _Fn["default"].findIndex(lists, captionListFrom);
+    var listIndex = (0, _Fn.findIndex)(lists, captionListFrom);
 
     if (listIndex === -1) {
-      return _Fn["default"].fResultNotFound('list', captionListFrom);
+      return (0, _Fn.fResultNotFound)('list', captionListFrom);
     }
 
-    if (_Fn["default"].checkIsInArraySameCaption(lists, captionListTo)) {
-      return _Fn["default"].fResultListExisted(captionListTo, captionGroup);
+    if ((0, _Fn.checkIsInArraySameCaption)(lists, captionListTo)) {
+      return (0, _Fn.fResultListExisted)(captionListTo, captionGroup);
     }
 
-    groupIn.lists = _Fn["default"].getArrayWithRename(lists, listIndex, captionListTo);
+    groupIn.lists = (0, _Fn.getArrayWithRename)(lists, listIndex, captionListTo);
     return {
       isDone: true
     };
@@ -62,14 +57,13 @@ var WithLogicList = {
   deleteList: function deleteList(watchList, _ref3) {
     var captionGroup = _ref3.captionGroup,
         captionList = _ref3.captionList;
-
-    var groupFrom = _Fn["default"].findGroup(watchList, captionGroup);
+    var groupFrom = (0, _Fn.findGroup)(watchList, captionGroup);
 
     if (!groupFrom) {
-      return _Fn["default"].fResultNotFound('group', captionGroup);
+      return (0, _Fn.fResultNotFound)('group', captionGroup);
     }
 
-    groupFrom.lists = _Fn["default"].filter(groupFrom.lists, captionList);
+    groupFrom.lists = (0, _Fn.filter)(groupFrom.lists, captionList);
     return {
       isDone: true
     };

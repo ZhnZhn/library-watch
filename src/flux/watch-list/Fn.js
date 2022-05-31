@@ -11,70 +11,78 @@ import ImArrayUtil from '../../utils/ImArrayUtil';
 import ObjUtil from '../../utils/ObjUtil';
 import ArrayUtil from '../../utils/ArrayUtil';
 
-const Fn = {
+export const fResultNotFound = (
+  itemType,
+  name
+) => ({
+  isDone: false,
+  message: MSG_NOT_FOUND_ITEM(itemType, name)
+})
 
-  fResultNotFound(itemType, name){
-    return {
-      isDone : false,
-      message : MSG_NOT_FOUND_ITEM(itemType, name)
-    }
-  },
-  fResultGroupExisted(caption){
-    return {
-      isDone : false,
-      message : MSG_GROUP_EXISTED(caption)
-    }
-  },
-  fResultListExisted(captionList, captionGroup){
-    return {
-      isDone : false,
-      message : MSG_LIST_EXISTED(captionList, captionGroup)}
-  },
-  fResultItemExisted(caption, captionList){
-    return {
-      isDone : false,
-      message : MSG_ITEM_EXISTED(caption, captionList)}
-  },
+export const fResultGroupExisted = (
+  caption
+) => ({
+  isDone: false,
+  message: MSG_GROUP_EXISTED(caption)
+})
 
-  /* for DragDrop */
-  fDragDropItemExisted(dropId, dragId){
-    return {
-      isDone : false,
-      alertItemId : `${dropId}:${dragId}`,
-      alertCaption : ALERT_DRAG_DROP_ITEM.caption,
-      alertDescr : ALERT_DRAG_DROP_ITEM.descr
-   };
- },
- fDragDropListExisted(dropGroupCaption, dragListCaption){
-   return {
-      isDone : false,
-      alertItemId : `${dropGroupCaption}:${dragListCaption}`,
-      alertCaption : ALERT_DRAG_DROP_LIST.caption,
-      alertDescr : ALERT_DRAG_DROP_LIST.descr
-   }
- },
+export const fResultListExisted = (
+  captionList,
+  captionGroup
+) => ({
+   isDone : false,
+   message : MSG_LIST_EXISTED(captionList, captionGroup)
+})
+
+export const fResultItemExisted = (
+  caption,
+  captionList
+) => ({
+   isDone: false,
+   message: MSG_ITEM_EXISTED(caption, captionList)
+})
+
+/* for DragDrop */
+export const fDragDropItemExisted = (
+  dropId,
+  dragId
+) => ({
+  isDone: false,
+  alertItemId: `${dropId}:${dragId}`,
+  alertCaption: ALERT_DRAG_DROP_ITEM.caption,
+  alertDescr: ALERT_DRAG_DROP_ITEM.descr
+})
+
+export const fDragDropListExisted = (
+  dropGroupCaption,
+  dragListCaption
+) => ({
+   isDone: false,
+   alertItemId: `${dropGroupCaption}:${dragListCaption}`,
+   alertCaption: ALERT_DRAG_DROP_LIST.caption,
+   alertDescr: ALERT_DRAG_DROP_LIST.descr
+ })
  /* for DragDrop */
 
-  filter : ImArrayUtil.filterByProp.bind(null, 'caption'),
-  getArrayWithObj : ImArrayUtil.push,
+export const filter = ImArrayUtil.filterByProp.bind(null, 'caption')
+export const getArrayWithObj = ImArrayUtil.push
 
-  getArrayWithRename(arr, index, caption){
-    return [
-      ...arr.slice(0, index),
-      Object.assign({}, arr[index], {caption}),
-      ...arr.slice(index+1)
-    ]
-  },
-  /* for DragDrop */
-  insertItemInArray : ImArrayUtil.insertItem,
-  /* for DragDrop */
+export const getArrayWithRename = (
+  arr,
+  index,
+  caption
+) => [
+   ...arr.slice(0, index),
+   Object.assign({}, arr[index], {caption}),
+   ...arr.slice(index+1)
+]
 
-  findGroup : ObjUtil.findInPropArrayByPropItem.bind(null, 'groups', 'caption'),
-  findList : ObjUtil.findInPropArrayByPropItem.bind(null, 'lists', 'caption'),
+/* for DragDrop */
+export const insertItemInArray = ImArrayUtil.insertItem
+/* for DragDrop */
 
-  findIndex : ArrayUtil.findIndexByProp.bind(null, 'caption'),
-  checkIsInArraySameCaption : ArrayUtil.checkSameByProp.bind(null, 'caption')
+export const findGroup = ObjUtil.findInPropArrayByPropItem.bind(null, 'groups', 'caption')
+export const findList = ObjUtil.findInPropArrayByPropItem.bind(null, 'lists', 'caption')
 
-};
-
-export default Fn
+export const findIndex = ArrayUtil.findIndexByProp.bind(null, 'caption')
+export const checkIsInArraySameCaption = ArrayUtil.checkSameByProp.bind(null, 'caption')

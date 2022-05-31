@@ -1,16 +1,21 @@
-
-import Fn from './Fn';
+import {
+  filter,
+  findGroup,
+  findList,
+  checkIsInArraySameCaption,
+  fResultItemExisted
+} from './Fn';
 
 const WithLogicItem = {
 
   addItem(watchList, item){
     const {groupCaption, listCaption, caption, config} = item
-        , toGroup = Fn.findGroup(watchList, groupCaption)
-        , toList = Fn.findList(toGroup, listCaption)
+        , toGroup = findGroup(watchList, groupCaption)
+        , toList = findList(toGroup, listCaption)
         , items = toList.items;
 
-    if ( Fn.checkIsInArraySameCaption(items, caption) ){
-      return Fn.fResultItemExisted(caption, listCaption);
+    if ( checkIsInArraySameCaption(items, caption) ){
+      return fResultItemExisted(caption, listCaption);
     }
 
     if (items) {
@@ -23,10 +28,10 @@ const WithLogicItem = {
   },
 
   removeItem(watchList, {groupCaption, listCaption, caption}){
-    const groupFrom = Fn.findGroup(watchList, groupCaption)
-        , listFrom = Fn.findList(groupFrom, listCaption);
+    const groupFrom = findGroup(watchList, groupCaption)
+        , listFrom = findList(groupFrom, listCaption);
 
-    listFrom.items = Fn.filter(listFrom.items, caption);
+    listFrom.items = filter(listFrom.items, caption);
   }
 
 };

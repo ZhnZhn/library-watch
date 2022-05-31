@@ -1,40 +1,47 @@
-
-import Fn from './Fn'
+import {
+  filter,
+  findIndex,
+  checkIsInArraySameCaption,
+  getArrayWithObj,
+  getArrayWithRename,
+  fResultGroupExisted,
+  fResultNotFound
+} from './Fn';
 
 const WithLogicGroup = {
 
   addGroup(watchList, { caption }){
     const groups = watchList.groups;
 
-    if ( Fn.checkIsInArraySameCaption(groups, caption)){
-      return Fn.fResultGroupExisted(caption);
+    if ( checkIsInArraySameCaption(groups, caption)){
+      return fResultGroupExisted(caption);
     }
 
     const _captionObj = (caption)
              ? { caption }
              : { caption: "Default" };
 
-    watchList.groups = Fn.getArrayWithObj(groups, _captionObj);
+    watchList.groups = getArrayWithObj(groups, _captionObj);
     return {isDone : true};
   },
 
   renameGroup(watchList, {captionFrom, captionTo}){
     const groups = watchList.groups
-        , groupIndex = Fn.findIndex(groups, captionFrom);
+        , groupIndex = findIndex(groups, captionFrom);
 
     if (groupIndex === -1){
-      return Fn.fResultNotFound('group', captionFrom);
+      return fResultNotFound('group', captionFrom);
     }
-    if ( Fn.checkIsInArraySameCaption(groups, captionTo) ){
-      return Fn.fResultGroupExisted(captionTo);
+    if ( checkIsInArraySameCaption(groups, captionTo) ){
+      return fResultGroupExisted(captionTo);
     }
 
-    watchList.groups = Fn.getArrayWithRename(groups, groupIndex, captionTo)
+    watchList.groups = getArrayWithRename(groups, groupIndex, captionTo)
     return {isDone : true}
   },
 
   deleteGroup(watchList, {caption}){
-    watchList.groups = Fn.filter(watchList.groups, caption);
+    watchList.groups = filter(watchList.groups, caption);
     return {isDone : true}
   }
 

@@ -1,1 +1,26 @@
-{"version":3,"sources":["../../../src/flux/watch-list/WithLogicItem.js"],"names":["WithLogicItem","addItem","watchList","item","groupCaption","listCaption","caption","config","toGroup","Fn","findGroup","toList","findList","items","checkIsInArraySameCaption","fResultItemExisted","push","isDone","removeItem","groupFrom","listFrom","filter"],"mappings":";;;;;;;AACA;;AAEA,IAAMA,aAAa,GAAG;AAEpBC,EAAAA,OAFoB,mBAEZC,SAFY,EAEDC,IAFC,EAEI;AAAA,QACfC,YADe,GAC+BD,IAD/B,CACfC,YADe;AAAA,QACDC,WADC,GAC+BF,IAD/B,CACDE,WADC;AAAA,QACYC,OADZ,GAC+BH,IAD/B,CACYG,OADZ;AAAA,QACqBC,MADrB,GAC+BJ,IAD/B,CACqBI,MADrB;AAAA,QAEhBC,OAFgB,GAENC,eAAGC,SAAH,CAAaR,SAAb,EAAwBE,YAAxB,CAFM;AAAA,QAGhBO,MAHgB,GAGPF,eAAGG,QAAH,CAAYJ,OAAZ,EAAqBH,WAArB,CAHO;AAAA,QAIhBQ,KAJgB,GAIRF,MAAM,CAACE,KAJC;;AAMtB,QAAKJ,eAAGK,yBAAH,CAA6BD,KAA7B,EAAoCP,OAApC,CAAL,EAAmD;AACjD,aAAOG,eAAGM,kBAAH,CAAsBT,OAAtB,EAA+BD,WAA/B,CAAP;AACD;;AAED,QAAIQ,KAAJ,EAAW;AACTF,MAAAA,MAAM,CAACE,KAAP,CAAaG,IAAb,CAAkBT,MAAlB;AACD,KAFD,MAEO;AACLI,MAAAA,MAAM,CAACE,KAAP,GAAe,CAACN,MAAD,CAAf;AACD;;AAED,WAAO;AAACU,MAAAA,MAAM,EAAG;AAAV,KAAP;AACD,GAnBmB;AAqBpBC,EAAAA,UArBoB,sBAqBThB,SArBS,QAqBuC;AAAA,QAApCE,YAAoC,QAApCA,YAAoC;AAAA,QAAtBC,WAAsB,QAAtBA,WAAsB;AAAA,QAATC,OAAS,QAATA,OAAS;;AACzD,QAAMa,SAAS,GAAGV,eAAGC,SAAH,CAAaR,SAAb,EAAwBE,YAAxB,CAAlB;AAAA,QACMgB,QAAQ,GAAGX,eAAGG,QAAH,CAAYO,SAAZ,EAAuBd,WAAvB,CADjB;;AAGAe,IAAAA,QAAQ,CAACP,KAAT,GAAiBJ,eAAGY,MAAH,CAAUD,QAAQ,CAACP,KAAnB,EAA0BP,OAA1B,CAAjB;AACD;AA1BmB,CAAtB;eA8BeN,a","sourcesContent":["\r\nimport Fn from './Fn';\r\n\r\nconst WithLogicItem = {\r\n\r\n  addItem(watchList, item){\r\n    const {groupCaption, listCaption, caption, config} = item\r\n        , toGroup = Fn.findGroup(watchList, groupCaption)\r\n        , toList = Fn.findList(toGroup, listCaption)\r\n        , items = toList.items;\r\n\r\n    if ( Fn.checkIsInArraySameCaption(items, caption) ){\r\n      return Fn.fResultItemExisted(caption, listCaption);\r\n    }\r\n\r\n    if (items) {\r\n      toList.items.push(config);\r\n    } else {\r\n      toList.items = [config];\r\n    }\r\n\r\n    return {isDone : true}\r\n  },\r\n\r\n  removeItem(watchList, {groupCaption, listCaption, caption}){\r\n    const groupFrom = Fn.findGroup(watchList, groupCaption)\r\n        , listFrom = Fn.findList(groupFrom, listCaption);\r\n\r\n    listFrom.items = Fn.filter(listFrom.items, caption);\r\n  }\r\n\r\n};\r\n\r\nexport default WithLogicItem\r\n"],"file":"WithLogicItem.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/watch-list/WithLogicItem.js"
+ ],
+ "file": "../../../src/flux/watch-list/WithLogicItem.js",
+ "names": [
+  "WithLogicItem",
+  "addItem",
+  "watchList",
+  "item",
+  "groupCaption",
+  "listCaption",
+  "caption",
+  "config",
+  "toGroup",
+  "toList",
+  "items",
+  "push",
+  "isDone",
+  "removeItem",
+  "groupFrom",
+  "listFrom"
+ ],
+ "mappings": ";;;;;AAAA;;AAQA,IAAMA,aAAa,GAAG;AAEpBC,EAAAA,OAFoB,mBAEZC,SAFY,EAEDC,IAFC,EAEI;AACtB,QAAOC,YAAP,GAAqDD,IAArD,CAAOC,YAAP;AAAA,QAAqBC,WAArB,GAAqDF,IAArD,CAAqBE,WAArB;AAAA,QAAkCC,OAAlC,GAAqDH,IAArD,CAAkCG,OAAlC;AAAA,QAA2CC,MAA3C,GAAqDJ,IAArD,CAA2CI,MAA3C;AAAA,QACMC,OADN,GACgB,mBAAUN,SAAV,EAAqBE,YAArB,CADhB;AAAA,QAEMK,MAFN,GAEe,kBAASD,OAAT,EAAkBH,WAAlB,CAFf;AAAA,QAGMK,KAHN,GAGcD,MAAM,CAACC,KAHrB;;AAKA,QAAK,mCAA0BA,KAA1B,EAAiCJ,OAAjC,CAAL,EAAgD;AAC9C,aAAO,4BAAmBA,OAAnB,EAA4BD,WAA5B,CAAP;AACD;;AAED,QAAIK,KAAJ,EAAW;AACTD,MAAAA,MAAM,CAACC,KAAP,CAAaC,IAAb,CAAkBJ,MAAlB;AACD,KAFD,MAEO;AACLE,MAAAA,MAAM,CAACC,KAAP,GAAe,CAACH,MAAD,CAAf;AACD;;AAED,WAAO;AAACK,MAAAA,MAAM,EAAG;AAAV,KAAP;AACD,GAnBmB;AAqBpBC,EAAAA,UArBoB,sBAqBTX,SArBS,QAqBuC;AAAA,QAApCE,YAAoC,QAApCA,YAAoC;AAAA,QAAtBC,WAAsB,QAAtBA,WAAsB;AAAA,QAATC,OAAS,QAATA,OAAS;AACzD,QAAMQ,SAAS,GAAG,mBAAUZ,SAAV,EAAqBE,YAArB,CAAlB;AAAA,QACMW,QAAQ,GAAG,kBAASD,SAAT,EAAoBT,WAApB,CADjB;AAGAU,IAAAA,QAAQ,CAACL,KAAT,GAAiB,gBAAOK,QAAQ,CAACL,KAAhB,EAAuBJ,OAAvB,CAAjB;AACD;AA1BmB,CAAtB;eA8BeN,a"
+}

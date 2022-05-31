@@ -1,50 +1,59 @@
 
-import Fn from './Fn';
+import {
+  filter,
+  findGroup,
+  findIndex,
+  checkIsInArraySameCaption,
+  getArrayWithObj,
+  getArrayWithRename,
+  fResultListExisted,
+  fResultNotFound
+} from './Fn';
 
 const WithLogicList = {
 
   createList(watchList, {captionGroup, captionList}){
-    const groupTo = Fn.findGroup(watchList, captionGroup)
+    const groupTo = findGroup(watchList, captionGroup)
 
     if (!groupTo){
-      return Fn.fResultNotFound('group', captionGroup);
+      return fResultNotFound('group', captionGroup);
     }
     const lists = groupTo.lists;
-    if (Fn.checkIsInArraySameCaption(lists, captionList)){
-      return Fn.fResultListExisted(captionList, captionGroup);
+    if (checkIsInArraySameCaption(lists, captionList)){
+      return fResultListExisted(captionList, captionGroup);
     }
 
-    groupTo.lists = Fn.getArrayWithObj(lists, {caption: captionList});
+    groupTo.lists = getArrayWithObj(lists, {caption: captionList});
     return {isDone : true};
   },
 
   renameList(watchList, {captionGroup, captionListFrom, captionListTo}){
-    const groupIn = Fn.findGroup(watchList, captionGroup);
+    const groupIn = findGroup(watchList, captionGroup);
 
     if (!groupIn){
-      return Fn.fResultNotFound('group', captionGroup);
+      return fResultNotFound('group', captionGroup);
     }
     const lists = groupIn.lists;
-    const listIndex = Fn.findIndex(lists, captionListFrom);
+    const listIndex = findIndex(lists, captionListFrom);
     if (listIndex === -1){
-      return Fn.fResultNotFound('list', captionListFrom);
+      return fResultNotFound('list', captionListFrom);
     }
-    if ( Fn.checkIsInArraySameCaption(lists, captionListTo) ){
-      return Fn.fResultListExisted(captionListTo, captionGroup);
+    if ( checkIsInArraySameCaption(lists, captionListTo) ){
+      return fResultListExisted(captionListTo, captionGroup);
     }
 
-    groupIn.lists = Fn.getArrayWithRename(lists, listIndex, captionListTo);
+    groupIn.lists = getArrayWithRename(lists, listIndex, captionListTo);
     return {isDone : true}
   },
 
   deleteList(watchList, {captionGroup, captionList}){
-    const groupFrom = Fn.findGroup(watchList, captionGroup);
+    const groupFrom = findGroup(watchList, captionGroup);
 
     if (!groupFrom){
-      return Fn.fResultNotFound('group', captionGroup);
+      return fResultNotFound('group', captionGroup);
     }
 
-    groupFrom.lists = Fn.filter(groupFrom.lists, captionList);
+    groupFrom.lists = filter(groupFrom.lists, captionList);
     return {isDone : true}
   }
 
