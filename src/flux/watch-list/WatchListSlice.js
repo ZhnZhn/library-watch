@@ -34,6 +34,11 @@ import {
   dragDropList,
   dragDropItem
 } from './DragDropFn';
+import {
+  addGroup,
+  renameGroup,
+  deleteGroup
+} from './GroupFn';
 
 const STORAGE_KEY = 'WATCH_LIST_PACKAGE'
 , CAPTION_WATCH_SAVE ='Watch List:'
@@ -141,19 +146,19 @@ const WatchListSlice = {
   },
   onAddGroup(option){
     this._onEditWatch(
-      Logic.addGroup(this.watchList, option),
+      addGroup(this.watchList, option),
       WAT_ADD_GROUP
     );
   },
   onRenameGroup(option){
     this._onEditWatch(
-      Logic.renameGroup(this.watchList, option),
+      renameGroup(this.watchList, option),
       WAT_RENAME_GROUP
     );
   },
   onDeleteGroup(option){
     this._onEditWatch(
-      Logic.deleteGroup(this.watchList, option),
+      deleteGroup(this.watchList, option),
       WAT_DELETE_GROUP
     );
   },
