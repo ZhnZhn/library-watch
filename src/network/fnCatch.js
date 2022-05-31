@@ -1,26 +1,39 @@
+import {
+  setAlertMsgTo,
+  ALERT_SERVICE_UNAVAILABLE,
+  ALERT_NETWORK_ERROR,
+  ALERT_RUNTIME_ERROR
+} from '../constants/Msg';
 
-import Msg from '../constants/Msg';
+const _hasToken = (
+  str,
+  token
+) => (str || '').indexOf(token) !== -1;
 
-export default ({ error, option, onFailed }) => {
+export default ({
+  error,
+  option,
+  onFailed
+}) => {
+  const {
+    errCaption,
+    message
+  } = error || {};
   if (error instanceof TypeError){
-    if (error.message.indexOf('code 503') !== -1){
-       option.alertCaption = Msg.Alert.SERVICE_UNAVAILABLE.caption;
-       option.alertDescr = Msg.Alert.SERVICE_UNAVAILABLE.descr;
-    } else if (error.message.indexOf('fetch') !== -1) {
-       option.alertCaption = Msg.Alert.NETWORK_ERROR.caption;
-       option.alertDescr = Msg.Alert.NETWORK_ERROR.descr;
+    if (_hasToken(message, 'code 503')){
+       setAlertMsgTo(option, ALERT_SERVICE_UNAVAILABLE)
+    } else if (_hasToken(message, 'fetch')) {
+       setAlertMsgTo(option, ALERT_NETWORK_ERROR)
     } else {
-       option.alertCaption = (error.errCaption)
-           ? error.errCaption
-           : Msg.Alert.RUNTIME_ERROR.caption;
-       option.alertDescr = error.message;
+       option.alertCaption = errCaption
+         || ALERT_RUNTIME_ERROR.caption
+       option.alertDescr = message;
     }
   } else {
-     option.alertCaption = (error.errCaption)
-        ? error.errCaption
-        : Msg.Alert.RUNTIME_ERROR.caption;
-     option.alertDescr = error.message;
+     option.alertCaption = errCaption
+        || ALERT_RUNTIME_ERROR.caption;
+     option.alertDescr = message;
   }
-  
+
   onFailed(option);
 }

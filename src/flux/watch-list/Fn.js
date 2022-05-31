@@ -1,4 +1,11 @@
-import Msg from '../../constants/Msg';
+import {
+  MSG_GROUP_EXISTED,
+  MSG_LIST_EXISTED,
+  MSG_ITEM_EXISTED,
+  MSG_NOT_FOUND_ITEM,
+  ALERT_DRAG_DROP_LIST,
+  ALERT_DRAG_DROP_ITEM
+} from '../../constants/Msg';
 
 import ImArrayUtil from '../../utils/ImArrayUtil';
 import ObjUtil from '../../utils/ObjUtil';
@@ -7,16 +14,26 @@ import ArrayUtil from '../../utils/ArrayUtil';
 const Fn = {
 
   fResultNotFound(itemType, name){
-    return {isDone : false, message : Msg.NOT_FOUND_ITEM(itemType, name)}
+    return {
+      isDone : false,
+      message : MSG_NOT_FOUND_ITEM(itemType, name)
+    }
   },
   fResultGroupExisted(caption){
-    return {isDone : false, message : Msg.GROUP_EXISTED(caption)}
+    return {
+      isDone : false,
+      message : MSG_GROUP_EXISTED(caption)
+    }
   },
   fResultListExisted(captionList, captionGroup){
-    return {isDone : false, message : Msg.LIST_EXISTED(captionList, captionGroup)}
+    return {
+      isDone : false,
+      message : MSG_LIST_EXISTED(captionList, captionGroup)}
   },
   fResultItemExisted(caption, captionList){
-    return {isDone : false, message : Msg.ITEM_EXISTED(caption, captionList)}
+    return {
+      isDone : false,
+      message : MSG_ITEM_EXISTED(caption, captionList)}
   },
 
   /* for DragDrop */
@@ -24,16 +41,16 @@ const Fn = {
     return {
       isDone : false,
       alertItemId : `${dropId}:${dragId}`,
-      alertCaption : Msg.Alert.DRAG_DROP_ITEM.caption,
-      alertDescr : Msg.Alert.DRAG_DROP_ITEM.descr
+      alertCaption : ALERT_DRAG_DROP_ITEM.caption,
+      alertDescr : ALERT_DRAG_DROP_ITEM.descr
    };
  },
  fDragDropListExisted(dropGroupCaption, dragListCaption){
    return {
       isDone : false,
       alertItemId : `${dropGroupCaption}:${dragListCaption}`,
-      alertCaption : Msg.Alert.DRAG_DROP_LIST.caption,
-      alertDescr : Msg.Alert.DRAG_DROP_LIST.descr
+      alertCaption : ALERT_DRAG_DROP_LIST.caption,
+      alertDescr : ALERT_DRAG_DROP_LIST.descr
    }
  },
  /* for DragDrop */

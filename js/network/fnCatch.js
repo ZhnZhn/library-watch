@@ -1,31 +1,35 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _Msg = _interopRequireDefault(require("../constants/Msg"));
+var _Msg = require("../constants/Msg");
+
+var _hasToken = function _hasToken(str, token) {
+  return (str || '').indexOf(token) !== -1;
+};
 
 var _default = function _default(_ref) {
   var error = _ref.error,
       option = _ref.option,
       onFailed = _ref.onFailed;
 
+  var _ref2 = error || {},
+      errCaption = _ref2.errCaption,
+      message = _ref2.message;
+
   if (error instanceof TypeError) {
-    if (error.message.indexOf('code 503') !== -1) {
-      option.alertCaption = _Msg["default"].Alert.SERVICE_UNAVAILABLE.caption;
-      option.alertDescr = _Msg["default"].Alert.SERVICE_UNAVAILABLE.descr;
-    } else if (error.message.indexOf('fetch') !== -1) {
-      option.alertCaption = _Msg["default"].Alert.NETWORK_ERROR.caption;
-      option.alertDescr = _Msg["default"].Alert.NETWORK_ERROR.descr;
+    if (_hasToken(message, 'code 503')) {
+      (0, _Msg.setAlertMsgTo)(option, _Msg.ALERT_SERVICE_UNAVAILABLE);
+    } else if (_hasToken(message, 'fetch')) {
+      (0, _Msg.setAlertMsgTo)(option, _Msg.ALERT_NETWORK_ERROR);
     } else {
-      option.alertCaption = error.errCaption ? error.errCaption : _Msg["default"].Alert.RUNTIME_ERROR.caption;
-      option.alertDescr = error.message;
+      option.alertCaption = errCaption || _Msg.ALERT_RUNTIME_ERROR.caption;
+      option.alertDescr = message;
     }
   } else {
-    option.alertCaption = error.errCaption ? error.errCaption : _Msg["default"].Alert.RUNTIME_ERROR.caption;
-    option.alertDescr = error.message;
+    option.alertCaption = errCaption || _Msg.ALERT_RUNTIME_ERROR.caption;
+    option.alertDescr = message;
   }
 
   onFailed(option);

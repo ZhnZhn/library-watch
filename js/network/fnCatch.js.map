@@ -1,1 +1,26 @@
-{"version":3,"sources":["../../src/network/fnCatch.js"],"names":["error","option","onFailed","TypeError","message","indexOf","alertCaption","Msg","Alert","SERVICE_UNAVAILABLE","caption","alertDescr","descr","NETWORK_ERROR","errCaption","RUNTIME_ERROR"],"mappings":";;;;;;;AACA;;eAEe,wBAAiC;AAAA,MAA9BA,KAA8B,QAA9BA,KAA8B;AAAA,MAAvBC,MAAuB,QAAvBA,MAAuB;AAAA,MAAfC,QAAe,QAAfA,QAAe;;AAC9C,MAAIF,KAAK,YAAYG,SAArB,EAA+B;AAC7B,QAAIH,KAAK,CAACI,OAAN,CAAcC,OAAd,CAAsB,UAAtB,MAAsC,CAAC,CAA3C,EAA6C;AAC1CJ,MAAAA,MAAM,CAACK,YAAP,GAAsBC,gBAAIC,KAAJ,CAAUC,mBAAV,CAA8BC,OAApD;AACAT,MAAAA,MAAM,CAACU,UAAP,GAAoBJ,gBAAIC,KAAJ,CAAUC,mBAAV,CAA8BG,KAAlD;AACF,KAHD,MAGO,IAAIZ,KAAK,CAACI,OAAN,CAAcC,OAAd,CAAsB,OAAtB,MAAmC,CAAC,CAAxC,EAA2C;AAC/CJ,MAAAA,MAAM,CAACK,YAAP,GAAsBC,gBAAIC,KAAJ,CAAUK,aAAV,CAAwBH,OAA9C;AACAT,MAAAA,MAAM,CAACU,UAAP,GAAoBJ,gBAAIC,KAAJ,CAAUK,aAAV,CAAwBD,KAA5C;AACF,KAHM,MAGA;AACJX,MAAAA,MAAM,CAACK,YAAP,GAAuBN,KAAK,CAACc,UAAP,GAChBd,KAAK,CAACc,UADU,GAEhBP,gBAAIC,KAAJ,CAAUO,aAAV,CAAwBL,OAF9B;AAGAT,MAAAA,MAAM,CAACU,UAAP,GAAoBX,KAAK,CAACI,OAA1B;AACF;AACF,GAbD,MAaO;AACJH,IAAAA,MAAM,CAACK,YAAP,GAAuBN,KAAK,CAACc,UAAP,GACjBd,KAAK,CAACc,UADW,GAEjBP,gBAAIC,KAAJ,CAAUO,aAAV,CAAwBL,OAF7B;AAGAT,IAAAA,MAAM,CAACU,UAAP,GAAoBX,KAAK,CAACI,OAA1B;AACF;;AAEDF,EAAAA,QAAQ,CAACD,MAAD,CAAR;AACD,C","sourcesContent":["\r\nimport Msg from '../constants/Msg';\r\n\r\nexport default ({ error, option, onFailed }) => {\r\n  if (error instanceof TypeError){\r\n    if (error.message.indexOf('code 503') !== -1){\r\n       option.alertCaption = Msg.Alert.SERVICE_UNAVAILABLE.caption;\r\n       option.alertDescr = Msg.Alert.SERVICE_UNAVAILABLE.descr;\r\n    } else if (error.message.indexOf('fetch') !== -1) {\r\n       option.alertCaption = Msg.Alert.NETWORK_ERROR.caption;\r\n       option.alertDescr = Msg.Alert.NETWORK_ERROR.descr;\r\n    } else {\r\n       option.alertCaption = (error.errCaption)\r\n           ? error.errCaption\r\n           : Msg.Alert.RUNTIME_ERROR.caption;\r\n       option.alertDescr = error.message;\r\n    }\r\n  } else {\r\n     option.alertCaption = (error.errCaption)\r\n        ? error.errCaption\r\n        : Msg.Alert.RUNTIME_ERROR.caption;\r\n     option.alertDescr = error.message;\r\n  }\r\n  \r\n  onFailed(option);\r\n}\r\n"],"file":"fnCatch.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/network/fnCatch.js"
+ ],
+ "file": "../../src/network/fnCatch.js",
+ "names": [
+  "_hasToken",
+  "str",
+  "token",
+  "indexOf",
+  "error",
+  "option",
+  "onFailed",
+  "errCaption",
+  "message",
+  "TypeError",
+  "ALERT_SERVICE_UNAVAILABLE",
+  "ALERT_NETWORK_ERROR",
+  "alertCaption",
+  "ALERT_RUNTIME_ERROR",
+  "caption",
+  "alertDescr"
+ ],
+ "mappings": ";;;;;AAAA;;AAOA,IAAMA,SAAS,GAAG,SAAZA,SAAY,CAChBC,GADgB,EAEhBC,KAFgB;AAAA,SAGb,CAACD,GAAG,IAAI,EAAR,EAAYE,OAAZ,CAAoBD,KAApB,MAA+B,CAAC,CAHnB;AAAA,CAAlB;;eAKe,wBAIT;AAAA,MAHJE,KAGI,QAHJA,KAGI;AAAA,MAFJC,MAEI,QAFJA,MAEI;AAAA,MADJC,QACI,QADJA,QACI;;AACJ,cAGIF,KAAK,IAAI,EAHb;AAAA,MACEG,UADF,SACEA,UADF;AAAA,MAEEC,OAFF,SAEEA,OAFF;;AAIA,MAAIJ,KAAK,YAAYK,SAArB,EAA+B;AAC7B,QAAIT,SAAS,CAACQ,OAAD,EAAU,UAAV,CAAb,EAAmC;AAChC,8BAAcH,MAAd,EAAsBK,8BAAtB;AACF,KAFD,MAEO,IAAIV,SAAS,CAACQ,OAAD,EAAU,OAAV,CAAb,EAAiC;AACrC,8BAAcH,MAAd,EAAsBM,wBAAtB;AACF,KAFM,MAEA;AACJN,MAAAA,MAAM,CAACO,YAAP,GAAsBL,UAAU,IAC3BM,yBAAoBC,OADzB;AAEAT,MAAAA,MAAM,CAACU,UAAP,GAAoBP,OAApB;AACF;AACF,GAVD,MAUO;AACJH,IAAAA,MAAM,CAACO,YAAP,GAAsBL,UAAU,IAC1BM,yBAAoBC,OAD1B;AAEAT,IAAAA,MAAM,CAACU,UAAP,GAAoBP,OAApB;AACF;;AAEDF,EAAAA,QAAQ,CAACD,MAAD,CAAR;AACD,C"
+}

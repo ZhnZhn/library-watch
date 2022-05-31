@@ -1,1 +1,42 @@
-{"version":3,"sources":["../../src/constants/Msg.js"],"names":["Msg","setAlertMsg","option","msg","caption","descr","alertCaption","alertDescr","WATCH_SAVED","WATCH_PREV","WATCH_BACKUP_ZIP","zipName","WATCH_BACKUP_ZIP_FAILED","NOT_FOUND_ITEM","itemType","captionGroup","GROUP_EXISTED","LIST_EXISTED","captionList","ITEM_EXISTED","IS_EMPTY_NAME","item","NOT_SELECTED","NOT_VALID_FORMAT","TEST_DATE_OR_EMPTY","Alert","LOADING_IN_PROGRESS","DRAG_DROP_ITEM","DRAG_DROP_LIST","LOAD_FROM_JSON","RUNTIME_ERROR","NETWORK_ERROR","SERVICE_UNAVAILABLE"],"mappings":";;;;AAAA,IAAMA,GAAG,GAAG;AACVC,EAAAA,WAAW,EAAG,qBAACC,MAAD,EAASC,GAAT,EAAiB;AAAA,QACtBC,OADsB,GACJD,GADI,CACtBC,OADsB;AAAA,QACbC,KADa,GACJF,GADI,CACbE,KADa;AAE7BH,IAAAA,MAAM,CAACI,YAAP,GAAsBF,OAAtB;AACAF,IAAAA,MAAM,CAACK,UAAP,GAAoBF,KAApB;AACD,GALS;AAOVG,EAAAA,WAAW,EAAG,4BAPJ;AAQVC,EAAAA,UAAU,EAAG,qDARH;AASVC,EAAAA,gBAAgB,EAAG,0BAACC,OAAD;AAAA,gDAAgDA,OAAhD;AAAA,GATT;AAUVC,EAAAA,uBAAuB,EAAG,gCAVhB;AAYVC,EAAAA,cAAc,EAAG,wBAACC,QAAD,EAAWC,YAAX;AAAA,oBAAmCD,QAAnC,mBAAyDC,YAAzD;AAAA,GAZP;AAaVC,EAAAA,aAAa,EAAG,uBAACZ,OAAD;AAAA,gCAAgCA,OAAhC;AAAA,GAbN;AAcVa,EAAAA,YAAY,EAAG,sBAACC,WAAD,EAAcH,YAAd;AAAA,+BAAiDG,WAAjD,yBAAgFH,YAAhF;AAAA,GAdL;AAeVI,EAAAA,YAAY,EAAG,sBAACf,OAAD,EAAUc,WAAV;AAAA,+BAA4Cd,OAA5C,wBAAsEc,WAAtE;AAAA,GAfL;AAiBVE,EAAAA,aAAa,EAAG,uBAACC,IAAD;AAAA,WAAaA,IAAb;AAAA,GAjBN;AAkBVC,EAAAA,YAAY,EAAG,sBAACD,IAAD;AAAA,WAAaA,IAAb;AAAA,GAlBL;AAoBVE,EAAAA,gBAAgB,EAAG,0BAACF,IAAD;AAAA,WAAaA,IAAb;AAAA,GApBT;AAqBVG,EAAAA,kBAAkB,EAAG,oCArBX;AAuBVC,EAAAA,KAAK,EAAG;AACLC,IAAAA,mBAAmB,EAAG;AACnBtB,MAAAA,OAAO,EAAG,qBADS;AAEnBC,MAAAA,KAAK,EAAE;AAFY,KADjB;AAKLsB,IAAAA,cAAc,EAAG;AACfvB,MAAAA,OAAO,EAAG,gBADK;AAEfC,MAAAA,KAAK,EAAG;AAFO,KALZ;AASLuB,IAAAA,cAAc,EAAG;AACfxB,MAAAA,OAAO,EAAG,gBADK;AAEfC,MAAAA,KAAK,EAAG;AAFO,KATZ;AAaLwB,IAAAA,cAAc,EAAG;AACfzB,MAAAA,OAAO,EAAG,qBADK;AAEfC,MAAAA,KAAK,EAAG;AAFO,KAbZ;AAiBLyB,IAAAA,aAAa,EAAG;AACb1B,MAAAA,OAAO,EAAG;AADG,KAjBX;AAoBL2B,IAAAA,aAAa,EAAG;AACb3B,MAAAA,OAAO,EAAG,eADG;AAEbC,MAAAA,KAAK,EAAE;AAFM,KApBX;AAwBL2B,IAAAA,mBAAmB,EAAG;AACpB5B,MAAAA,OAAO,EAAG,yBADU;AAEpBC,MAAAA,KAAK,EAAE;AAFa;AAxBjB;AAvBE,CAAZ;eAsDeL,G","sourcesContent":["const Msg = {\r\n  setAlertMsg : (option, msg) => {\r\n    const {caption, descr} = msg;\r\n    option.alertCaption = caption;\r\n    option.alertDescr = descr;\r\n  },\r\n\r\n  WATCH_SAVED : 'Watch List has been saved.',\r\n  WATCH_PREV : 'Watch List has not been edited\\nfrom previous save.',\r\n  WATCH_BACKUP_ZIP : (zipName) => `Watch Items have been saved to\\n${zipName}`,\r\n  WATCH_BACKUP_ZIP_FAILED : 'Watch Items Saving was Failed.',\r\n\r\n  NOT_FOUND_ITEM : (itemType, captionGroup) => `The ${itemType} witn name ${captionGroup} not found.`,\r\n  GROUP_EXISTED : (caption) => `Group with name ${caption} is already existed.`,\r\n  LIST_EXISTED : (captionList, captionGroup) => `List with name ${captionList}\\n      In Group ${captionGroup} is already existed.`,\r\n  ITEM_EXISTED : (caption, captionList) => `Item with name ${caption}\\n      In List ${captionList} is already existed.`,\r\n\r\n  IS_EMPTY_NAME : (item) => `${item} name can not be empty.`,\r\n  NOT_SELECTED : (item) => `${item} is not selected.`,\r\n\r\n  NOT_VALID_FORMAT : (item) => `${item} is not in valid format.`,\r\n  TEST_DATE_OR_EMPTY : \"YYYY-MM-DD format must be OR Empty\",\r\n\r\n  Alert : {\r\n     LOADING_IN_PROGRESS : {\r\n        caption : 'Loading In Progress',\r\n        descr: 'Loading the chart for this item-code in progress.\\nIt seems several clicks on button Load repeatedly happend.'\r\n     },     \r\n     DRAG_DROP_ITEM : {\r\n       caption : 'Drag Drop Item',\r\n       descr : 'Item in List already has been existed.'\r\n     },\r\n     DRAG_DROP_LIST : {\r\n       caption : 'Drag Drop List',\r\n       descr : 'List in Group already has been existed.'\r\n     },\r\n     LOAD_FROM_JSON : {\r\n       caption : 'Load from JSON File',\r\n       descr : 'Can not Load Watch Items from JSON File'\r\n     },\r\n     RUNTIME_ERROR : {\r\n        caption : 'Runtime Error'\r\n     },\r\n     NETWORK_ERROR : {\r\n        caption : 'Network Error',\r\n        descr: 'Network error is encountered. Failed to fetch. May be you are offline, a DNS lookup failure or a resource unreachable.'\r\n     },\r\n     SERVICE_UNAVAILABLE : {\r\n       caption : 'Service Unavailable 503',\r\n       descr: 'Back-end server is at capacity. HTTP Code 503'\r\n     }\r\n  }\r\n}\r\n\r\nexport default Msg\r\n"],"file":"Msg.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/constants/Msg.js"
+ ],
+ "file": "../../src/constants/Msg.js",
+ "names": [
+  "setAlertMsgTo",
+  "option",
+  "msg",
+  "caption",
+  "descr",
+  "alertCaption",
+  "alertDescr",
+  "MSG_WATCH_SAVED",
+  "MSG_WATCH_PREV",
+  "MSG_WATCH_BACKUP_ZIP_FAILED",
+  "MSG_WATCH_BACKUP_ZIP",
+  "zipName",
+  "MSG_NOT_FOUND_ITEM",
+  "itemType",
+  "captionGroup",
+  "MSG_GROUP_EXISTED",
+  "MSG_LIST_EXISTED",
+  "captionList",
+  "MSG_ITEM_EXISTED",
+  "MSG_EMPTY_NAME",
+  "item",
+  "MSG_NOT_SELECTED",
+  "MSG_TEST_DATE_OR_EMPTY",
+  "MSG_NOT_VALID_FORMAT",
+  "_crAlerDescr",
+  "ALERT_LOADING_IN_PROGRESS",
+  "ALERT_DRAG_DROP_ITEM",
+  "ALERT_DRAG_DROP_LIST",
+  "ALERT_LOAD_FROM_JSON",
+  "ALERT_RUNTIME_ERROR",
+  "ALERT_NETWORK_ERROR",
+  "ALERT_SERVICE_UNAVAILABLE"
+ ],
+ "mappings": ";;;;;AAAO,IAAMA,aAAa,GAAG,SAAhBA,aAAgB,CAC3BC,MAD2B,EAE3BC,GAF2B,EAGxB;AACH,MAAOC,OAAP,GAAyBD,GAAzB,CAAOC,OAAP;AAAA,MAAgBC,KAAhB,GAAyBF,GAAzB,CAAgBE,KAAhB;AACAH,EAAAA,MAAM,CAACI,YAAP,GAAsBF,OAAtB;AACAF,EAAAA,MAAM,CAACK,UAAP,GAAoBF,KAApB;AACD,CAPM;;;AASA,IAAMG,eAAe,GAAG,4BAAxB;;AACA,IAAMC,cAAc,GAAG,qDAAvB;;AACA,IAAMC,2BAA2B,GAAG,gCAApC;;;AACA,IAAMC,oBAAoB,GAAG,SAAvBA,oBAAuB,CAACC,OAAD;AAAA,8CAAgDA,OAAhD;AAAA,CAA7B;;;;AAEA,IAAMC,kBAAkB,GAAG,SAArBA,kBAAqB,CAACC,QAAD,EAAWC,YAAX;AAAA,kBAAmCD,QAAnC,mBAAyDC,YAAzD;AAAA,CAA3B;;;;AACA,IAAMC,iBAAiB,GAAG,SAApBA,iBAAoB,CAACZ,OAAD;AAAA,8BAAgCA,OAAhC;AAAA,CAA1B;;;;AACA,IAAMa,gBAAgB,GAAG,SAAnBA,gBAAmB,CAACC,WAAD,EAAcH,YAAd;AAAA,6BAAiDG,WAAjD,yBAAgFH,YAAhF;AAAA,CAAzB;;;;AACA,IAAMI,gBAAgB,GAAG,SAAnBA,gBAAmB,CAACf,OAAD,EAAUc,WAAV;AAAA,6BAA4Cd,OAA5C,wBAAsEc,WAAtE;AAAA,CAAzB;;;;AAEA,IAAME,cAAc,GAAG,SAAjBA,cAAiB,CAACC,IAAD;AAAA,SAAaA,IAAb;AAAA,CAAvB;;;;AACA,IAAMC,gBAAgB,GAAG,SAAnBA,gBAAmB,CAACD,IAAD;AAAA,SAAaA,IAAb;AAAA,CAAzB;;;AAEA,IAAME,sBAAsB,GAAG,oCAA/B;;;AACA,IAAMC,oBAAoB,GAAG,SAAvBA,oBAAuB,CAACH,IAAD;AAAA,SAAaA,IAAb;AAAA,CAA7B;;;;AAEP,IAAMI,YAAY,GAAG,SAAfA,YAAe,CACnBrB,OADmB,EAEnBC,KAFmB;AAAA,SAGf;AACJD,IAAAA,OAAO,EAAPA,OADI;AAEJC,IAAAA,KAAK,EAALA;AAFI,GAHe;AAAA,CAArB;;AAQO,IAAMqB,yBAAyB,GAAGD,YAAY,CACnD,qBADmD,EAEnD,+GAFmD,CAA9C;;;;AAIA,IAAME,oBAAoB,GAAGF,YAAY,CAC9C,gBAD8C,EAE9C,wCAF8C,CAAzC;;;;AAIA,IAAMG,oBAAoB,GAAGH,YAAY,CAC9C,gBAD8C,EAE9C,yCAF8C,CAAzC;;;;AAIA,IAAMI,oBAAoB,GAAGJ,YAAY,CAC9C,qBAD8C,EAE9C,yCAF8C,CAAzC;;;;AAIA,IAAMK,mBAAmB,GAAGL,YAAY,CAC7C,eAD6C,CAAxC;;;;AAGA,IAAMM,mBAAmB,GAAGN,YAAY,CAC7C,eAD6C,EAE7C,wHAF6C,CAAxC;;;;AAIA,IAAMO,yBAAyB,GAAGP,YAAY,CACnD,yBADmD,EAEnD,+CAFmD,CAA9C"
+}

@@ -22,7 +22,11 @@ import {
 } from '../actions/WatchActions';
 import WatchDefault from '../../constants/WatchDefault';
 import { ModalDialog }  from '../../constants/Type';
-import Msg from '../../constants/Msg';
+import {
+  MSG_WATCH_SAVED,
+  MSG_WATCH_PREV,
+  ALERT_LOAD_FROM_JSON
+} from '../../constants/Msg';
 
 import Logic from './Logic';
 
@@ -103,9 +107,9 @@ const WatchListSlice = {
              this.setWatchEdited(false);
              this.onShowModalDialog(ModalDialog.INFO, {
                 caption : CAPTION_WATCH_SAVE,
-                descr : Msg.WATCH_SAVED
+                descr : MSG_WATCH_SAVED
              })
-             console.log(Msg.WATCH_SAVED);
+             console.log(MSG_WATCH_SAVED);
           })
           .catch((error) => {
              console.log(error);
@@ -113,7 +117,7 @@ const WatchListSlice = {
     } else {
        this.onShowModalDialog(ModalDialog.INFO, {
           caption : CAPTION_WATCH_SAVE,
-          descr : Msg.WATCH_PREV
+          descr : MSG_WATCH_PREV
        })
     }
   },
@@ -182,7 +186,7 @@ const WatchListSlice = {
       this.setWatchEdited(true);
       this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
     } catch(exc) {
-      ComponentActions.showModalDialog(ModalDialog.ALERT, {...Msg.Alert.LOAD_FROM_JSON })
+      ComponentActions.showModalDialog(ModalDialog.ALERT, {...ALERT_LOAD_FROM_JSON })
     }
   }
 

@@ -9,7 +9,10 @@ import {
   WatchActions
 } from '../../flux/actions/WatchActions';
 
-import Msg from '../../constants/Msg';
+import {
+  MSG_EMPTY_NAME,
+  MSG_NOT_SELECTED
+} from '../../constants/Msg';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import TabPane from '../zhn-moleculs/TabPane';
@@ -36,8 +39,8 @@ const EditListDialog = memoIsShow(({
             actionCompleted={WAT_EDIT_WATCH_COMPLETED}
             actionFailed={WAT_EDIT_WATCH_FAILED}
             forActionType={WAT_CREATE_LIST}
-            msgOnNotSelect={Msg.NOT_SELECTED}
-            msgOnIsEmptyName={Msg.IS_EMPTY_NAME}
+            msgOnNotSelect={MSG_NOT_SELECTED}
+            msgOnIsEmptyName={MSG_EMPTY_NAME}
             onCreate={WatchActions.createList}
             onClose={onClose} />
        </Tab>
@@ -47,8 +50,8 @@ const EditListDialog = memoIsShow(({
             actionCompleted={WAT_EDIT_WATCH_COMPLETED}
             actionFailed={WAT_EDIT_WATCH_FAILED}
             forActionType={WAT_RENAME_LIST}
-            msgOnNotSelect={Msg.NOT_SELECTED}
-            msgOnIsEmptyName={Msg.IS_EMPTY_NAME}
+            msgOnNotSelect={MSG_NOT_SELECTED}
+            msgOnIsEmptyName={MSG_EMPTY_NAME}
             onRename={WatchActions.renameList}
             onClose={onClose}
          />
@@ -59,7 +62,7 @@ const EditListDialog = memoIsShow(({
             actionCompleted={WAT_EDIT_WATCH_COMPLETED}
             actionFailed={WAT_EDIT_WATCH_FAILED}
             forActionType={WAT_DELETE_LIST}
-            msgOnNotSelect={Msg.NOT_SELECTED}
+            msgOnNotSelect={MSG_NOT_SELECTED}
             onDelete={WatchActions.deleteList}
             onClose={onClose}
          />

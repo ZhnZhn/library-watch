@@ -15,7 +15,7 @@ var _DateUtils = _interopRequireDefault(require("../../utils/DateUtils"));
 
 var _saveJsonToFile = _interopRequireDefault(require("./saveJsonToFile"));
 
-var _ComponentActions = _interopRequireDefault(require("../actions/ComponentActions"));
+var _ComponentActions = require("../actions/ComponentActions");
 
 var _BrowserActions = require("../actions/BrowserActions");
 
@@ -25,7 +25,7 @@ var _WatchDefault = _interopRequireDefault(require("../../constants/WatchDefault
 
 var _Type = require("../../constants/Type");
 
-var _Msg = _interopRequireDefault(require("../../constants/Msg"));
+var _Msg = require("../../constants/Msg");
 
 var _Logic = _interopRequireDefault(require("./Logic"));
 
@@ -41,11 +41,11 @@ var WatchListSlice = {
     _localforage["default"].getItem(STORAGE_KEY).then(function (value) {
       _this.watchList = value ? value : _WatchDefault["default"];
 
-      _this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, _this.watchList);
+      _this.trigger(_BrowserActions.BAT_UPDATE_WATCH_BROWSER, _this.watchList);
     })["catch"](function () {
       _this.watchList = _WatchDefault["default"];
 
-      _this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, _this.watchList);
+      _this.trigger(_BrowserActions.BAT_UPDATE_WATCH_BROWSER, _this.watchList);
     });
   },
   getWatchEdited: function getWatchEdited() {
@@ -53,7 +53,7 @@ var WatchListSlice = {
   },
   setWatchEdited: function setWatchEdited(value) {
     this.isWatchEdited = value;
-    this.trigger(_WatchActions.WatchActionTypes.SET_WATCH_EDITED, this.isWatchEdited);
+    this.trigger(_WatchActions.WAT_SET_WATCH_EDITED, this.isWatchEdited);
   },
   getWatchList: function getWatchList() {
     return this.watchList;
@@ -71,18 +71,18 @@ var WatchListSlice = {
     return group.lists;
   },
   onAddItem: function onAddItem(item) {
-    this._onEditWatch(_Logic["default"].addItem(this.watchList, item), _WatchActions.WatchActionTypes.ADD_ITEM);
+    this._onEditWatch(_Logic["default"].addItem(this.watchList, item), _WatchActions.WAT_ADD_ITEM);
   },
   onRemoveItem: function onRemoveItem(option) {
     _Logic["default"].removeItem(this.watchList, option);
 
     this.setWatchEdited(true);
-    this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
+    this.trigger(_BrowserActions.BAT_UPDATE_WATCH_BROWSER, this.watchList);
   },
   _onDragDrop: function _onDragDrop(result) {
     if (result.isDone) {
       this.setWatchEdited(true);
-      this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
+      this.trigger(_BrowserActions.BAT_UPDATE_WATCH_BROWSER, this.watchList);
     } else {
       this.showAlertDialog(result);
     }
@@ -105,51 +105,51 @@ var WatchListSlice = {
 
         _this2.onShowModalDialog(_Type.ModalDialog.INFO, {
           caption: CAPTION_WATCH_SAVE,
-          descr: _Msg["default"].WATCH_SAVED
+          descr: _Msg.MSG_WATCH_SAVED
         });
 
-        console.log(_Msg["default"].WATCH_SAVED);
+        console.log(_Msg.MSG_WATCH_SAVED);
       })["catch"](function (error) {
         console.log(error);
       });
     } else {
       this.onShowModalDialog(_Type.ModalDialog.INFO, {
         caption: CAPTION_WATCH_SAVE,
-        descr: _Msg["default"].WATCH_PREV
+        descr: _Msg.MSG_WATCH_PREV
       });
     }
   },
   _onEditWatch: function _onEditWatch(result, forActionType) {
     if (result.isDone) {
       this.setWatchEdited(true);
-      this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
-      this.trigger(_WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED, {
+      this.trigger(_BrowserActions.BAT_UPDATE_WATCH_BROWSER, this.watchList);
+      this.trigger(_WatchActions.WAT_EDIT_WATCH_COMPLETED, {
         forActionType: forActionType
       });
     } else {
-      this.trigger(_WatchActions.WatchActionTypes.EDIT_WATCH_FAILED, {
+      this.trigger(_WatchActions.WAT_EDIT_WATCH_FAILED, {
         messages: [result.message],
         forActionType: forActionType
       });
     }
   },
   onAddGroup: function onAddGroup(option) {
-    this._onEditWatch(_Logic["default"].addGroup(this.watchList, option), _WatchActions.WatchActionTypes.ADD_GROUP);
+    this._onEditWatch(_Logic["default"].addGroup(this.watchList, option), _WatchActions.WAT_ADD_GROUP);
   },
   onRenameGroup: function onRenameGroup(option) {
-    this._onEditWatch(_Logic["default"].renameGroup(this.watchList, option), _WatchActions.WatchActionTypes.RENAME_GROUP);
+    this._onEditWatch(_Logic["default"].renameGroup(this.watchList, option), _WatchActions.WAT_RENAME_GROUP);
   },
   onDeleteGroup: function onDeleteGroup(option) {
-    this._onEditWatch(_Logic["default"].deleteGroup(this.watchList, option), _WatchActions.WatchActionTypes.DELETE_GROUP);
+    this._onEditWatch(_Logic["default"].deleteGroup(this.watchList, option), _WatchActions.WAT_DELETE_GROUP);
   },
   onCreateList: function onCreateList(option) {
-    this._onEditWatch(_Logic["default"].createList(this.watchList, option), _WatchActions.WatchActionTypes.CREATE_LIST);
+    this._onEditWatch(_Logic["default"].createList(this.watchList, option), _WatchActions.WAT_CREATE_LIST);
   },
   onRenameList: function onRenameList(option) {
-    this._onEditWatch(_Logic["default"].renameList(this.watchList, option), _WatchActions.WatchActionTypes.RENAME_LIST);
+    this._onEditWatch(_Logic["default"].renameList(this.watchList, option), _WatchActions.WAT_RENAME_LIST);
   },
   onDeleteList: function onDeleteList(option) {
-    this._onEditWatch(_Logic["default"].deleteList(this.watchList, option), _WatchActions.WatchActionTypes.DELETE_LIST);
+    this._onEditWatch(_Logic["default"].deleteList(this.watchList, option), _WatchActions.WAT_DELETE_LIST);
   },
   onBackupToJson: function onBackupToJson() {
     var yyyymmdd = _DateUtils["default"].formatToYYYYMMDD(Date.now()),
@@ -162,9 +162,9 @@ var WatchListSlice = {
       var progressEvent = option.progressEvent;
       (0, _merge["default"])(this.watchList, JSON.parse(progressEvent.target.result));
       this.setWatchEdited(true);
-      this.trigger(_BrowserActions.BrowserActionTypes.UPDATE_WATCH_BROWSER, this.watchList);
+      this.trigger(_BrowserActions.BAT_UPDATE_WATCH_BROWSER, this.watchList);
     } catch (exc) {
-      _ComponentActions["default"].showModalDialog(_Type.ModalDialog.ALERT, (0, _extends2["default"])({}, _Msg["default"].Alert.LOAD_FROM_JSON));
+      _ComponentActions.ComponentActions.showModalDialog(_Type.ModalDialog.ALERT, (0, _extends2["default"])({}, _Msg.ALERT_LOAD_FROM_JSON));
     }
   }
 };

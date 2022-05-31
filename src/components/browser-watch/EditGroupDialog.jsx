@@ -9,7 +9,10 @@ import {
   WatchActions
 } from '../../flux/actions/WatchActions';
 
-import Msg from '../../constants/Msg';
+import {
+  MSG_EMPTY_NAME,
+  MSG_NOT_SELECTED
+} from '../../constants/Msg';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import TabPane from '../zhn-moleculs/TabPane';
@@ -36,7 +39,7 @@ const EditGroupDialog = memoIsShow(({
             actionCompleted={WAT_EDIT_WATCH_COMPLETED}
             actionFailed={WAT_EDIT_WATCH_FAILED}
             forActionType={WAT_ADD_GROUP}
-            msgOnIsEmptyName={Msg.IS_EMPTY_NAME}
+            msgOnIsEmptyName={MSG_EMPTY_NAME}
             onCreate={WatchActions.addGroup}
             onClose={onClose}
           />
@@ -47,8 +50,8 @@ const EditGroupDialog = memoIsShow(({
             actionCompleted={WAT_EDIT_WATCH_COMPLETED}
             actionFailed={WAT_EDIT_WATCH_FAILED}
             forActionType={WAT_RENAME_GROUP}
-            msgOnNotSelect={Msg.NOT_SELECTED}
-            msgOnIsEmptyName={Msg.IS_EMPTY_NAME}
+            msgOnNotSelect={MSG_NOT_SELECTED}
+            msgOnIsEmptyName={MSG_EMPTY_NAME}
             onRename={WatchActions.renameGroup}
             onClose={onClose}
          />
@@ -58,7 +61,7 @@ const EditGroupDialog = memoIsShow(({
             store={store}
             actionCompleted={WAT_EDIT_WATCH_COMPLETED}
             forActionType={WAT_DELETE_GROUP}
-            msgOnNotSelect={Msg.NOT_SELECTED}
+            msgOnNotSelect={MSG_NOT_SELECTED}
             onDelete={WatchActions.deleteGroup}
             onClose={onClose}
          />

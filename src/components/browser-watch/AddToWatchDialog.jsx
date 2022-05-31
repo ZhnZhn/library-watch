@@ -20,7 +20,9 @@ import {
   WatchActions
 } from '../../flux/actions/WatchActions';
 
-import Msg from '../../constants/Msg';
+import {
+  MSG_NOT_SELECTED
+} from '../../constants/Msg';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import RowText from './RowText';
@@ -88,10 +90,10 @@ const AddToWatchDialog = memoIsShow((props) => {
      , listCaption = getRefValue(_refListCaption)
      , _validationMessages = [];
      if (!groupCaption){
-       _validationMessages.push(Msg.NOT_SELECTED('Group'));
+       _validationMessages.push(MSG_NOT_SELECTED('Group'));
      }
      if (!listCaption) {
-       _validationMessages.push(Msg.NOT_SELECTED('List'));
+       _validationMessages.push(MSG_NOT_SELECTED('List'));
      }
      if (_validationMessages.length === 0){
        const { caption, config } = data;
