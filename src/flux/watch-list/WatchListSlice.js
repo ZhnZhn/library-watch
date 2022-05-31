@@ -29,6 +29,11 @@ import {
 } from '../../constants/Msg';
 
 import Logic from './Logic';
+import {
+  dragDropGroup,
+  dragDropList,
+  dragDropItem
+} from './DragDropFn';
 
 const STORAGE_KEY = 'WATCH_LIST_PACKAGE'
 , CAPTION_WATCH_SAVE ='Watch List:'
@@ -91,13 +96,13 @@ const WatchListSlice = {
   },
 
   onDragDropItem(option){
-    this._onDragDrop(Logic.dragDropItem(this.watchList, option) );
+    this._onDragDrop(dragDropItem(this.watchList, option) );
   },
   onDragDropList(option){
-    this._onDragDrop(Logic.dragDropList(this.watchList, option) );
+    this._onDragDrop(dragDropList(this.watchList, option) );
   },
   onDragDropGroup(option){
-    this._onDragDrop(Logic.dragDropGroup(this.watchList, option));
+    this._onDragDrop(dragDropGroup(this.watchList, option));
   },
 
   onSaveWatch(){
