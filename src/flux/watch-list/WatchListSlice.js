@@ -39,6 +39,11 @@ import {
   renameGroup,
   deleteGroup
 } from './GroupFn';
+import {
+  createList,
+  renameList,
+  deleteList
+} from './ListFn';
 
 const STORAGE_KEY = 'WATCH_LIST_PACKAGE'
 , CAPTION_WATCH_SAVE ='Watch List:'
@@ -165,19 +170,19 @@ const WatchListSlice = {
 
   onCreateList(option){
     this._onEditWatch(
-      Logic.createList(this.watchList, option),
+      createList(this.watchList, option),
       WAT_CREATE_LIST
     );
   },
   onRenameList(option){
     this._onEditWatch(
-      Logic.renameList(this.watchList, option),
+      renameList(this.watchList, option),
       WAT_RENAME_LIST
     );
   },
   onDeleteList(option){
     this._onEditWatch(
-      Logic.deleteList(this.watchList, option),
+      deleteList(this.watchList, option),
       WAT_DELETE_LIST
     );
   },
