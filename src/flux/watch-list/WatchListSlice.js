@@ -28,7 +28,7 @@ import {
   ALERT_LOAD_FROM_JSON
 } from '../../constants/Msg';
 
-import Logic from './Logic';
+import { findGroup } from './Fn';
 import {
   dragDropGroup,
   dragDropList,
@@ -40,10 +40,14 @@ import {
   deleteGroup
 } from './GroupFn';
 import {
-  createList,
+  addList,
   renameList,
   deleteList
 } from './ListFn';
+import {
+  addItem,
+  deleteItem
+} from './ItemFn';
 
 const STORAGE_KEY = 'WATCH_LIST_PACKAGE'
 , CAPTION_WATCH_SAVE ='Watch List:'
@@ -80,18 +84,18 @@ const WatchListSlice = {
     return this.watchList.groups;
   },
   getWatchListsByGroup(groupCaption){
-    const group = Logic.findGroup(this.watchList, groupCaption);
+    const group = findGroup(this.watchList, groupCaption);
     if (!group) { return []; }
     return group.lists;
   },
 
   onAddItem(item){
     this._onEditWatch(
-      Logic.addItem(this.watchList, item), WAT_ADD_ITEM
+      addItem(this.watchList, item), WAT_ADD_ITEM
     );
   },
   onRemoveItem(option){
-    Logic.removeItem(this.watchList, option);
+    deleteItem(this.watchList, option);
     this.setWatchEdited(true);
     this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
   },
@@ -170,7 +174,7 @@ const WatchListSlice = {
 
   onCreateList(option){
     this._onEditWatch(
-      createList(this.watchList, option),
+      addList(this.watchList, option),
       WAT_CREATE_LIST
     );
   },

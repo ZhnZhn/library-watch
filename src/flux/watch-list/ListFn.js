@@ -9,7 +9,7 @@ import {
   fResultNotFound
 } from './Fn';
 
-export const createList = (
+export const addList = (
   watchList,
   {captionGroup, captionList}
 ) => {
