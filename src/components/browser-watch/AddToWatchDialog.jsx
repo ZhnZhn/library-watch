@@ -1,5 +1,4 @@
 import {
-  useRef,
   useState,
   useMemo,
   useCallback,
@@ -7,11 +6,13 @@ import {
   getRefValue,
   setRefValue
 } from '../uiApi';
+
+import memoIsShow from '../dialogs/memoIsShow';
 import useValidationMessages from '../hooks/useValidationMessages';
 import usePrevValue from '../hooks/usePrevValue';
+import useProperty from '../hooks/useProperty';
 import useListen from '../hooks/useListen';
 import useRefItemCaption from './useRefItemCaption';
-import memoIsShow from '../dialogs/memoIsShow';
 
 import {
   WAT_EDIT_WATCH_COMPLETED,
@@ -45,7 +46,10 @@ const AddToWatchDialog = memoIsShow((props) => {
     data,
     onClose
   } = props
-  , _refGroupCaption = useRef()
+  , [
+    setGroupCaption,
+    getGroupCaption
+  ] = useProperty(null)
   , [
     _refListCaption,
     _handlerSelectList
@@ -77,8 +81,8 @@ const AddToWatchDialog = memoIsShow((props) => {
            listOptions: lists || []
          })), caption)
        : null;
-    setRefValue(_refGroupCaption, _caption)
-  }, [])
+    setGroupCaption(_caption)
+  }, [setGroupCaption])
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hClose = useCallback(() => {
      _clearValidationMessages()
@@ -86,7 +90,7 @@ const AddToWatchDialog = memoIsShow((props) => {
   }, [])
   // _clearValidationMessages, onClose
   , _hAdd = useCallback(() => {
-     const groupCaption = getRefValue(_refGroupCaption)
+     const groupCaption = getGroupCaption()
      , listCaption = getRefValue(_refListCaption)
      , _validationMessages = [];
      if (!groupCaption){
@@ -131,17 +135,17 @@ const AddToWatchDialog = memoIsShow((props) => {
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (_prevProps && _prevProps !== props && _prevProps.isShow !== isShow) {
-      const _groupCaption = getRefValue(_refGroupCaption)
+      const _groupCaption = getGroupCaption()
       , _groupOptions = store.getWatchGroups();
       if (_groupOptions !== groupOptions){
-        setRefValue(_refGroupCaption, null)
+        setGroupCaption(null)
         setRefValue(_refListCaption, null)
         setState({
           groupOptions: _groupOptions,
           listOptions: []
         })
       } else if (_groupCaption){
-        const _listOptions = store.getWatchListsByGroup(this.groupCaption);
+        const _listOptions = store.getWatchListsByGroup(_groupCaption);
         if (_listOptions !== listOptions){
           setRefValue(_refListCaption, null)
           setState(prevState => ({

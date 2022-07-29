@@ -9,15 +9,17 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _uiApi = require("../uiApi");
 
+var _memoIsShow = _interopRequireDefault(require("../dialogs/memoIsShow"));
+
 var _useValidationMessages = _interopRequireDefault(require("../hooks/useValidationMessages"));
 
 var _usePrevValue = _interopRequireDefault(require("../hooks/usePrevValue"));
 
+var _useProperty2 = _interopRequireDefault(require("../hooks/useProperty"));
+
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
 var _useRefItemCaption2 = _interopRequireDefault(require("./useRefItemCaption"));
-
-var _memoIsShow = _interopRequireDefault(require("../dialogs/memoIsShow"));
 
 var _WatchActions = require("../../flux/actions/WatchActions");
 
@@ -35,8 +37,6 @@ var _ValidationMessages = _interopRequireDefault(require("../dialogs/rows/Valida
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var _this = void 0;
-
 var S_BOLD = {
   fontWeight: 'bold'
 },
@@ -53,7 +53,9 @@ var AddToWatchDialog = (0, _memoIsShow["default"])(function (props) {
       store = props.store,
       data = props.data,
       onClose = props.onClose,
-      _refGroupCaption = (0, _uiApi.useRef)(),
+      _useProperty = (0, _useProperty2["default"])(null),
+      setGroupCaption = _useProperty[0],
+      getGroupCaption = _useProperty[1],
       _useRefItemCaption = (0, _useRefItemCaption2["default"])(),
       _refListCaption = _useRefItemCaption[0],
       _handlerSelectList = _useRefItemCaption[1],
@@ -81,15 +83,15 @@ var AddToWatchDialog = (0, _memoIsShow["default"])(function (props) {
       });
     }), caption) : null;
 
-    (0, _uiApi.setRefValue)(_refGroupCaption, _caption);
-  }, []),
+    setGroupCaption(_caption);
+  }, [setGroupCaption]),
       _hClose = (0, _uiApi.useCallback)(function () {
     _clearValidationMessages();
 
     onClose();
   }, []),
       _hAdd = (0, _uiApi.useCallback)(function () {
-    var groupCaption = (0, _uiApi.getRefValue)(_refGroupCaption),
+    var groupCaption = getGroupCaption(),
         listCaption = (0, _uiApi.getRefValue)(_refListCaption),
         _validationMessages = [];
 
@@ -136,18 +138,18 @@ var AddToWatchDialog = (0, _memoIsShow["default"])(function (props) {
 
   (0, _uiApi.useEffect)(function () {
     if (_prevProps && _prevProps !== props && _prevProps.isShow !== isShow) {
-      var _groupCaption = (0, _uiApi.getRefValue)(_refGroupCaption),
+      var _groupCaption = getGroupCaption(),
           _groupOptions = store.getWatchGroups();
 
       if (_groupOptions !== groupOptions) {
-        (0, _uiApi.setRefValue)(_refGroupCaption, null);
+        setGroupCaption(null);
         (0, _uiApi.setRefValue)(_refListCaption, null);
         setState({
           groupOptions: _groupOptions,
           listOptions: []
         });
       } else if (_groupCaption) {
-        var _listOptions = store.getWatchListsByGroup(_this.groupCaption);
+        var _listOptions = store.getWatchListsByGroup(_groupCaption);
 
         if (_listOptions !== listOptions) {
           (0, _uiApi.setRefValue)(_refListCaption, null);
