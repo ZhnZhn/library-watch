@@ -18,11 +18,16 @@ const BASE_NODEICO = "https://nodei.co/npm/"
 
 , S_ML_8 = { marginLeft: 8 }
 , S_ML_16 = { marginLeft: 16 }
-, S_MB_16 = { marginBottom: 16 }
-, S_MT_16 = { marginTop: 16 }
+, S_MB_8 = { marginBottom: 8 }
+, S_SH_LINK_IMAGE = {
+  margin: '8px 0'
+}
 , S_BTN_DOWN_UP = {
+  height: 32,
   marginLeft: 16,
-  padding: '4px 0'
+  marginTop: 4,
+  marginBottom: 4,
+  padding: '2px 0'
 };
 
 const NpmPackageInfo = ({
@@ -57,10 +62,7 @@ const NpmPackageInfo = ({
        isLoadNodeIco: true,
        isShowNodeIco: !prevState.isShowNodeIco
      }))
-  }, [])
-  , _infoStyle = isButtons
-        ? {...S_ML_8, ...S_MT_16}
-        : S_ML_8;
+  }, []);
 
   return (
     <>
@@ -98,8 +100,8 @@ const NpmPackageInfo = ({
       </div>
      </A.ShowHide>
 
-     <div style={_infoStyle}>
-       <A.ShowHide isShow={isShowNodeIco} style={S_MB_16}>
+     <div style={S_ML_8}>
+       <A.ShowHide isShow={isShowNodeIco} style={S_SH_LINK_IMAGE}>
          {
            isLoadNodeIco && <A.LinkImg
              href={packageLink}
@@ -108,10 +110,10 @@ const NpmPackageInfo = ({
            />
          }
        </A.ShowHide>
-       <A.ShowHide isShow={isShowNmps} style={S_MB_16}>
+       <A.ShowHide isShow={isShowNmps} style={S_MB_8}>
          <PackageDetails json={npmsJson} />
        </A.ShowHide>
-       <A.ShowHide isShow={isShowBundle} style={S_MB_16}>
+       <A.ShowHide isShow={isShowBundle} style={S_MB_8}>
           <BundleInfo json={bundleJson} />
        </A.ShowHide>
      </div>
