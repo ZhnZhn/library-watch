@@ -4,6 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta http-equiv="Content-Security-Policy" content="
+default-src 'self'; 
+script-src 'self' 'sha256-eNw17CvskFhM0+lRvHA0RFUyv2OAR+g6w/fqMNHE36s='; 
+style-src 'self' 'sha256-qp2Jbti2jhbFmU9MB8cNvDt2ydPCdzi6WvY638wz/R8=' 'sha256-UqieFvMmS94HHJ6KCA+zBQjOdHixX8E4aqgi7yS6AVE='; 
+img-src 'self' https://nodei.co;
+connect-src 'self'
+https://api.github.com
+https://api.npmjs.org
+https://api.npms.io
+https://api.stackexchange.com
+https://gs.statcounter.com
+https://bundlephobia.com;
+form-action 'none'; 
+require-trusted-types-for 'script';"
+  >
   <meta name="referrer" content="no-referrer">
   <meta name="description" content="Web app Library Watch gives the ability to view information about GitHub's repositories, NPM's packages, StackOverflows's questions.">
   <meta name="application-name" content="Library Watch">
@@ -24,30 +39,9 @@
     }</script>
   <link rel="icon" href="/css/favicon.png" sizes="32x32" type="image/png">
   <base target="_blank">
-  
-  <script>
-    ;(function(){
-      var polyfill = {
-        add : function(path){
-          var js = document.createElement('script');
-          js.src = path;
-          document.head.appendChild(js);
-          return polyfill;
-        }
-      };
-      if (!Object.assign){
-        polyfill.add('lib/es6-shim.min.js')
-                .add('lib/es6-promise.min.js')
-                .add('lib/fetch.min.js');
-      }
-      if (!Array.isArray) {
-        Array.isArray = function(arg) {
-           return Object.prototype.toString.call(arg) === '[object Array]';
-        };
-      }
-    })();
 
-    var preloader = (function(n){
+  <script>
+      var preloader = (function(n){
       var obj, hm={};
       var _getEl = function(id){
         if (!hm[id]){hm[id] = document.getElementById(id);}
@@ -94,7 +88,7 @@
       };
        return obj;
     })(4);
-  </script>
+  </script>  
 
   <style>
   [data-loader='circle']
@@ -153,6 +147,9 @@
   height: 3px;
   background-color: #80c040;
 }
+#msg {
+  color: grey;
+}
 .wrapper__error {
   display: none;
   color: #f44336;
@@ -177,7 +174,7 @@
         <span class="wrapper__app">
           Library Watch&nbsp;
         </span>
-        <div id='msg' style="color:gray">
+        <div id='msg'>
           Loading 1%...
         </div>
         <div id="loaded" class="wrapper__loaded">
