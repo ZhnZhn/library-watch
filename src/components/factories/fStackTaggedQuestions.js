@@ -1,5 +1,5 @@
-import DomUtil from '../../utils/DomUtil';
-import formatDate from '../../utils/formatDate'
+import { htmlDecode } from '../../utils/DomUtil';
+import formatDate from '../../utils/formatDate';
 
 import StackTaggedQuestions from '../items/stack/TaggedQuestions';
 
@@ -12,8 +12,8 @@ const _fnTransform = items => {
      , _millisUTC = last_activity_date + '' + THREE_ZERO;
 
      item.dateAgo = formatDate(_millisUTC)
-     item.title = DomUtil.htmlDecode(title);
-     item.owner.display_name = DomUtil.htmlDecode(display_name);
+     item.title = htmlDecode(title);
+     item.owner.display_name = htmlDecode(display_name);
 
      return item;
   });
