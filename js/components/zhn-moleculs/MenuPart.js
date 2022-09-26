@@ -5,9 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
-
-var _isKeyEnter = _interopRequireDefault(require("../zhn-atoms/isKeyEnter"));
+var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
 
 var _MenuBadge = _interopRequireDefault(require("../zhn-atoms/MenuBadge"));
 
@@ -16,8 +14,7 @@ var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose2"));
 var _jsxRuntime = require("react/jsx-runtime");
 
 var CL_NOT_SELECTED = 'not-selected',
-    CL_ROW_EVEN = 'row__topic__even not-selected',
-    CL_ROW_ODD = 'row__topic__odd not-selected',
+    CL_ROW_ITEM = "row__topic " + CL_NOT_SELECTED,
     FILL_OPEN = '#1b2836',
     FILL_CLOSE = 'transparent',
     S_CAPTION_ROW = {
@@ -30,11 +27,7 @@ var MenuItem = function MenuItem(_ref) {
       menuBadge = _ref.menuBadge,
       onClick = _ref.onClick;
 
-  var _hKeyDown = (0, _react.useCallback)(function (event) {
-    if ((0, _isKeyEnter["default"])(event)) {
-      onClick();
-    }
-  }, []);
+  var _hKeyDown = (0, _useKeyEnter["default"])(onClick);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     role: "menuitem",
@@ -51,12 +44,11 @@ var _renderMenuItems = function _renderMenuItems(rowClass, items) {
     items = [];
   }
 
-  return items.map(function (item, index) {
+  return (items || []).map(function (item, index) {
     var counter = item.counter,
         title = item.title,
-        onClick = item.onClick;
-
-    var _className = rowClass ? rowClass + ' ' + CL_NOT_SELECTED : index % 2 ? CL_ROW_EVEN : CL_ROW_ODD,
+        onClick = item.onClick,
+        _className = rowClass ? rowClass + ' ' + CL_NOT_SELECTED : CL_ROW_ITEM,
         menuBadge = counter !== 0 ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuBadge["default"], {
       counter: counter,
       isOpen: item.isOpen,

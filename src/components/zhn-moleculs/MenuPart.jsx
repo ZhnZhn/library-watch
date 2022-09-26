@@ -3,9 +3,7 @@ import MenuBadge from '../zhn-atoms/MenuBadge';
 import OpenClose2 from '../zhn-atoms/OpenClose2';
 
 const CL_NOT_SELECTED = 'not-selected'
-, CL_ROW_EVEN = 'row__topic__even not-selected'
-, CL_ROW_ODD = 'row__topic__odd not-selected'
-
+, CL_ROW_ITEM = `row__topic ${CL_NOT_SELECTED}`
 , FILL_OPEN = '#1b2836'
 , FILL_CLOSE = 'transparent'
 
@@ -44,9 +42,8 @@ const _renderMenuItems = (
     } = item
     , _className = rowClass
          ? rowClass + ' ' + CL_NOT_SELECTED
-         : (index % 2)
-             ? CL_ROW_EVEN
-             : CL_ROW_ODD
+         : CL_ROW_ITEM
+
     , menuBadge = (counter !== 0)
          ? (
               <MenuBadge

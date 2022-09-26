@@ -79,19 +79,7 @@
   padding-left: 4px;
 }
 
-.row__topic__odd {
-  line-height: 1.5;
-  background-color: #404040;
-  color: black;
-  font-size: 16px;
-  font-weight: bold;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  padding-left: 4px;
-  border-bottom: 1px solid transparent;
-  cursor: pointer;
-}
-.row__topic__even {
+.row__topic {
   line-height: 1.5;
   color: black;
   font-size: 16px;
@@ -102,8 +90,7 @@
   border-bottom: 1px solid transparent;
   cursor: pointer;
 }
-.row__topic__odd:hover,
-.row__topic__even:hover {
+.row__topic:hover {
   border-bottom: 1px solid #1B75BB;
 }
 

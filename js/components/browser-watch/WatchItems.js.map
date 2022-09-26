@@ -1,0 +1,30 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/browser-watch/WatchItems.js"
+ ],
+ "file": "../../../src/components/browser-watch/WatchItems.js",
+ "names": [
+  "_isArr",
+  "Array",
+  "isArray",
+  "CL_WATCH_ITEM",
+  "WatchItems",
+  "isModeEdit",
+  "items",
+  "groupCaption",
+  "listCaption",
+  "map",
+  "item",
+  "index",
+  "caption",
+  "showDialogWatchItem",
+  "removeWatchItem",
+  "hDragStartItem",
+  "hDragOverItem",
+  "hDragEnterItem",
+  "hDragLeaveItem",
+  "hDropItem"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAKA;;AAQA;;;;AAEA,IAAMA,MAAM,GAAGC,KAAK,CAACC,OAArB;AAAA,IACEC,aAAa,GAAG,yBADlB;;AAGA,IAAMC,UAAU,GAAG,SAAbA,UAAa;EAAA,IACjBC,UADiB,QACjBA,UADiB;EAAA,IAEjBC,KAFiB,QAEjBA,KAFiB;EAAA,IAGjBC,YAHiB,QAGjBA,YAHiB;EAAA,IAIjBC,WAJiB,QAIjBA,WAJiB;EAAA,OAKbR,MAAM,CAACM,KAAD,CAAN,GAAgBA,KAAK,CACxBG,GADmB,CACf,UAACC,IAAD,EAAOC,KAAP,EAAiB;IACpB,IAAQC,OAAR,GAAoBF,IAApB,CAAQE,OAAR;IACA,oBACG,qBAAC,qBAAD;MAEG,SAAS,EAAET,aAFd;MAGG,UAAU,EAAEE,UAHf;MAIG,IAAI,EAAEK,IAJT;MAKG,MAAM,EAAE;QACNH,YAAY,EAAZA,YADM;QAENC,WAAW,EAAXA,WAFM;QAGNI,OAAO,EAAPA;MAHM,CALX;MAUG,OAAO,EAAEC,6BAVZ;MAWG,OAAO,EAAEC,yBAXZ;MAYG,WAAW,EAAEC,+BAZhB;MAaG,UAAU,EAAEC,8BAbf;MAcG,WAAW,EAAEC,+BAdhB;MAeG,WAAW,EAAEC,+BAfhB;MAgBG,MAAM,EAAEC;IAhBX,GACQP,OADR,CADH;EAoBD,CAvBmB,CAAhB,GAuBC,IA5BY;AAAA,CAAnB;;eA8BeR,U"
+}

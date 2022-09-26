@@ -13,7 +13,8 @@ import {
 
 import WatchItem from './WatchItem';
 
-const _isArr = Array.isArray;
+const _isArr = Array.isArray
+, CL_WATCH_ITEM = 'row__topic not-selected';
 
 const WatchItems = ({
   isModeEdit,
@@ -22,14 +23,11 @@ const WatchItems = ({
   listCaption
 }) => _isArr(items) ? items
   .map((item, index) => {
-    const { caption } = item
-    , _className = (index % 2)
-         ? 'row__topic__even not-selected'
-         : 'row__topic__odd not-selected'
+    const { caption } = item;
     return (
        <WatchItem
           key={caption}
-          className={_className}
+          className={CL_WATCH_ITEM}
           isModeEdit={isModeEdit}
           item={item}
           option={{

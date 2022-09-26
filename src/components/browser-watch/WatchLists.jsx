@@ -47,7 +47,7 @@ const WatchLists = ({
         isModeEdit={isModeEdit}
         items={items}
         groupCaption={groupCaption}
-        caption={caption}
+        listCaption={caption}
       />
     </OpenClose2>
   )) : null;
