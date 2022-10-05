@@ -5,7 +5,7 @@ import { ComponentActions } from '../actions/ComponentActions';
 
 import CompItemList from '../../components/zhn-containers/CompItemList';
 
-const _createChartContainerComp = (
+const createChartContainer = (
   conf,
   browserType
 ) => {
@@ -22,13 +22,4 @@ const _createChartContainerComp = (
   });
 }
 
-
-const withItemsContainer = {
-  createChartContainer(dialogType, browserType){
-    return _createChartContainerComp(
-      this.getDataConf(dialogType), browserType
-    );
-  }
-};
-
-export default withItemsContainer
+export default createChartContainer

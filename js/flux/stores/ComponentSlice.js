@@ -19,8 +19,7 @@ var ComponentSlice = {
       this.trigger(_ComponentActions.CAT_SHOW_DIALOG, dialogType);
     } else {
       this.dialogInit[dialogType] = true;
-      var dialogComp = (0, _createDialog["default"])(this.getSourceConfig(browserType, dialogType), //this.getDataConf(dialogType),
-      browserType);
+      var dialogComp = (0, _createDialog["default"])(this.getDataConf(dialogType), browserType);
       this.trigger(_ComponentActions.CAT_INIT_AND_SHOW_DIALOG, {
         dialogType: dialogType,
         dialogComp: dialogComp

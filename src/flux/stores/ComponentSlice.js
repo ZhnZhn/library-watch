@@ -18,9 +18,8 @@ const ComponentSlice = {
       this.trigger(CAT_SHOW_DIALOG, dialogType);
     } else {
       this.dialogInit[dialogType] = true;
-      const dialogComp = createDialog(
-        this.getSourceConfig(browserType, dialogType),
-        //this.getDataConf(dialogType),
+      const dialogComp = createDialog(        
+        this.getDataConf(dialogType),
         browserType
       );
       this.trigger(

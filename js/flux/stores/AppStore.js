@@ -21,7 +21,7 @@ var _WatchActions = require("../actions/WatchActions");
 
 var _Type = require("../../constants/Type");
 
-var _Factory = _interopRequireDefault(require("../logic/Factory"));
+var _createChartContainer = _interopRequireDefault(require("../logic/createChartContainer"));
 
 var _createItem = _interopRequireDefault(require("../logic/createItem"));
 
@@ -92,7 +92,7 @@ var AppStore = _refluxCore["default"].createStore((0, _extends2["default"])({
       this.trigger(_ChartActions.CHAT_SHOW_CHART, chartCont);
     } else {
       this.charts[chartType] = this.createInitConfig(chartType);
-      this.trigger(_ChartActions.CHAT_INIT_AND_SHOW_CHART, _Factory["default"].createChartContainer(chartType, browserType));
+      this.trigger(_ChartActions.CHAT_INIT_AND_SHOW_CHART, (0, _createChartContainer["default"])(this.getDataConf(chartType), browserType));
     }
 
     if (browserType !== _Type.BrowserType.WATCH_LIST) {
@@ -125,7 +125,7 @@ var AppStore = _refluxCore["default"].createStore((0, _extends2["default"])({
     } else {
       this.charts[chartType] = this.createInitConfig(chartType);
       this.charts[chartType].configs.unshift(comp);
-      this.trigger(_ChartActions.CHAT_INIT_AND_SHOW_CHART, _Factory["default"].createChartContainer(chartType, browserType));
+      this.trigger(_ChartActions.CHAT_INIT_AND_SHOW_CHART, (0, _createChartContainer["default"])(this.getDataConf(chartType), browserType));
     }
 
     this.triggerLimitRemaining(limitRemaining);

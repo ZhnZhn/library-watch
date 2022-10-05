@@ -19,9 +19,12 @@ import {
 import { LoadingProgressActions } from '../actions/LoadingProgressActions';
 import { WatchActions } from '../actions/WatchActions';
 
-import { BrowserType as BT, ModalDialog as MD } from '../../constants/Type';
+import {
+  BrowserType as BT,
+  ModalDialog as MD
+} from '../../constants/Type';
 
-import Factory from '../logic/Factory';
+import createChartContainer from '../logic/createChartContainer';
 import createItem from '../logic/createItem';
 
 import {
@@ -93,7 +96,10 @@ const AppStore = Reflux.createStore({
    } else {
      this.charts[chartType] = this.createInitConfig(chartType);
      this.trigger(CHAT_INIT_AND_SHOW_CHART,
-        Factory.createChartContainer(chartType, browserType)
+        createChartContainer(
+          this.getDataConf(chartType),
+          browserType
+        )
      );
    }
 
@@ -132,7 +138,10 @@ const AppStore = Reflux.createStore({
      this.charts[chartType].configs.unshift(comp);
      this.trigger(
         CHAT_INIT_AND_SHOW_CHART,
-        Factory.createChartContainer(chartType, browserType)
+        createChartContainer(
+          this.getDataConf(chartType),
+          browserType
+        )
      );
    }
 

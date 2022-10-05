@@ -41,12 +41,11 @@ const BrowserSlice = {
   getSourceConfig(browserId, sourceId){
     return this.routeDialog[browserId][sourceId];
   },
-  /*
   getDataConf(dialogType){
     const dataId = dialogType.split('_')[0];
     return this.getSourceConfig(dataId, dialogType);
   },
-  */
+
 
   onShowBrowser(browserType){
     this.trigger(BAT_SHOW_BROWSER, browserType);
