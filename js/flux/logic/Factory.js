@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireDefault(require("react"));
+var _uiApi = require("../../components/uiApi");
 
 var _AppStore = _interopRequireDefault(require("../stores/AppStore"));
 
@@ -17,11 +17,9 @@ var _withDynamicBrowser = _interopRequireDefault(require("./withDynamicBrowser")
 
 var _withItemsContainer = _interopRequireDefault(require("./withItemsContainer"));
 
-var _withItem = _interopRequireDefault(require("./withItem"));
-
-var Factory = (0, _extends2["default"])({}, _withDialog["default"], _withDynamicBrowser["default"], _withItemsContainer["default"], _withItem["default"], {
+var Factory = (0, _extends2["default"])({}, _withDialog["default"], _withDynamicBrowser["default"], _withItemsContainer["default"], {
   getElementFactory: function getElementFactory() {
-    return _react["default"];
+    return _uiApi.createElement;
   },
   getStore: function getStore() {
     return _AppStore["default"];

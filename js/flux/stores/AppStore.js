@@ -23,6 +23,8 @@ var _Type = require("../../constants/Type");
 
 var _Factory = _interopRequireDefault(require("../logic/Factory"));
 
+var _createItem = _interopRequireDefault(require("../logic/createItem"));
+
 var _ChartLogicFn = require("./chart/ChartLogicFn");
 
 var _BrowserSlice = _interopRequireDefault(require("./BrowserSlice"));
@@ -110,11 +112,10 @@ var AppStore = _refluxCore["default"].createStore((0, _extends2["default"])({
     var chartType = option.chartType,
         browserType = option.browserType,
         limitRemaining = option.limitRemaining,
-        comp = _Factory["default"].createItem(option, json, {
+        comp = (0, _createItem["default"])(option, json, {
       chartType: chartType,
       browserType: browserType
     });
-
     var chartCont = this.charts[chartType];
 
     if (chartCont) {

@@ -22,6 +22,7 @@ import { WatchActions } from '../actions/WatchActions';
 import { BrowserType as BT, ModalDialog as MD } from '../../constants/Type';
 
 import Factory from '../logic/Factory';
+import createItem from '../logic/createItem';
 
 import {
   toTopByKey,
@@ -113,8 +114,12 @@ const AppStore = Reflux.createStore({
      console.log(json);
    }
 
-   const { chartType, browserType, limitRemaining } = option
-       , comp = Factory.createItem(option, json, { chartType, browserType});
+   const {
+     chartType,
+     browserType,
+     limitRemaining
+   } = option
+  , comp = createItem(option, json, { chartType, browserType});
 
 
    const chartCont = this.charts[chartType];
