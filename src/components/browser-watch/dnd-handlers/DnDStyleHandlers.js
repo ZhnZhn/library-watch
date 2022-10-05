@@ -1,8 +1,8 @@
-
 const BORDER = 'border' // dragStart
 , BORDER_BOTTOM = 'border-bottom' // backup
 , BORDER_LEFT = 'border-left' // dragEnter
-, ENTER_BORDER_LEFT_STYLE_DENY = "4px solid red";
+, DF_COLOR_PERMITTED = 'green'
+, COLOR_NOT_PERMITTED = 'red';
 
 let sourcePermissions
 , nodeDragTarget
@@ -10,19 +10,25 @@ let sourcePermissions
 , borderLeftPreEnterStyle;
 
 const _getStyle = ev => ev.currentTarget.style;
+const _crBorderStyle = (
+  borderColor
+) => `4px solid ${borderColor}`;
+const _hasPermissionToAdd = (
+  sourceType
+) => sourcePermissions.indexOf(sourceType) !== -1;
 
 const _crBorderLeftEnterStyle = (
   sourceType,
-  borderColor="green"
-) => sourcePermissions.indexOf(sourceType) !== -1
-  ? `4px solid ${borderColor}`
-  : ENTER_BORDER_LEFT_STYLE_DENY;
+  borderColor
+) => _crBorderStyle(_hasPermissionToAdd(sourceType)
+  ? borderColor || DF_COLOR_PERMITTED
+  : COLOR_NOT_PERMITTED
+);
 
 export const dragStartWithDnDStyle = (
   event,
   permissions
 ) => {
-  event.persist()
   nodeDragTarget = event.currentTarget
   sourcePermissions = permissions
   borderBottomStyle = _getStyle(event)
