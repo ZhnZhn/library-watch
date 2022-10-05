@@ -13,11 +13,9 @@ var _AppStore = _interopRequireDefault(require("../stores/AppStore"));
 
 var _withDialog = _interopRequireDefault(require("./withDialog"));
 
-var _withDynamicBrowser = _interopRequireDefault(require("./withDynamicBrowser"));
-
 var _withItemsContainer = _interopRequireDefault(require("./withItemsContainer"));
 
-var Factory = (0, _extends2["default"])({}, _withDialog["default"], _withDynamicBrowser["default"], _withItemsContainer["default"], {
+var Factory = (0, _extends2["default"])({}, _withDialog["default"], _withItemsContainer["default"], {
   getElementFactory: function getElementFactory() {
     return _uiApi.createElement;
   },

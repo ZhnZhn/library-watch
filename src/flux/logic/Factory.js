@@ -3,13 +3,11 @@ import { createElement } from '../../components/uiApi';
 import Store from '../stores/AppStore';
 
 import withDialog from './withDialog';
-import withDynamicBrowser from './withDynamicBrowser';
 import withItemsContainer from './withItemsContainer';
 
 const Factory = {
 
   ...withDialog,
-  ...withDynamicBrowser,
   ...withItemsContainer,
 
   getElementFactory(){

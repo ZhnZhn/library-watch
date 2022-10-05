@@ -1,6 +1,6 @@
 import BrowserMenu from '../../constants/BrowserMenu';
 
-import Factory from '../logic/Factory';
+import createBrowserDynamic from '../logic/createBrowserDynamic';
 import {
   BAT_SHOW_BROWSER,
   BAT_INIT_BROWSER_DYNAMIC,
@@ -49,7 +49,7 @@ const BrowserSlice = {
   onShowBrowserDynamic(option){
     const { browserType } = option;
     if (!this.browserMenu[browserType]) {
-       const elBrowser = Factory.createBrowserDynamic(option);
+       const elBrowser = createBrowserDynamic({...option, store: this });
        this.browserMenu[browserType] = [];
        this.trigger(BAT_INIT_BROWSER_DYNAMIC, elBrowser);
     } else {

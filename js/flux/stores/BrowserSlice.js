@@ -5,9 +5,11 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
 var _BrowserMenu = _interopRequireDefault(require("../../constants/BrowserMenu"));
 
-var _Factory = _interopRequireDefault(require("../logic/Factory"));
+var _createBrowserDynamic = _interopRequireDefault(require("../logic/createBrowserDynamic"));
 
 var _BrowserActions = require("../actions/BrowserActions");
 
@@ -45,8 +47,9 @@ var BrowserSlice = {
     var browserType = option.browserType;
 
     if (!this.browserMenu[browserType]) {
-      var elBrowser = _Factory["default"].createBrowserDynamic(option);
-
+      var elBrowser = (0, _createBrowserDynamic["default"])((0, _extends2["default"])({}, option, {
+        store: this
+      }));
       this.browserMenu[browserType] = [];
       this.trigger(_BrowserActions.BAT_INIT_BROWSER_DYNAMIC, elBrowser);
     } else {

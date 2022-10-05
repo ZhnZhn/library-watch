@@ -1,0 +1,20 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/logic/createBrowserDynamic.js"
+ ],
+ "file": "../../../src/flux/logic/createBrowserDynamic.js",
+ "names": [
+  "createBrowserDynamic",
+  "store",
+  "caption",
+  "browserType",
+  "sourceMenuUrl",
+  "rowClass",
+  "createElement",
+  "SourceBrowserDynamic",
+  "key",
+  "isInitShow"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;AAEA,IAAMA,oBAAoB,GAAG,SAAvBA,oBAAuB;EAAA,IAC3BC,KAD2B,QAC3BA,KAD2B;EAAA,wBAE3BC,OAF2B;EAAA,IAE3BA,OAF2B,6BAEnB,EAFmB;EAAA,IAG3BC,WAH2B,QAG3BA,WAH2B;EAAA,IAI3BC,aAJ2B,QAI3BA,aAJ2B;EAAA,IAK3BC,QAL2B,QAK3BA,QAL2B;EAAA,OAMvB,IAAAC,oBAAA,EAAcC,gCAAd,EAAoC;IACvCC,GAAG,EAAEL,WADkC;IAEvCM,UAAU,EAAE,IAF2B;IAGvCR,KAAK,EAALA,KAHuC;IAIvCC,OAAO,EAAPA,OAJuC;IAKvCC,WAAW,EAAXA,WALuC;IAMvCC,aAAa,EAAbA,aANuC;IAOvCC,QAAQ,EAARA;EAPuC,CAApC,CANuB;AAAA,CAA7B;;eAgBeL,oB"
+}
