@@ -9,14 +9,12 @@ import {
   BAT_TOGGLE_WATCH_DB_BROWSER
 } from '../actions/BrowserActions';
 
-import Logic from './browser/BrowserLogic'
-import DataWL from '../../constants/DataWL';
-
-const {
+import {
   setIsOpen,
   plusCounter,
   resetCounter
-} = Logic;
+} from './browser/BrowserLogicFn';
+import DataWL from '../../constants/DataWL';
 
 const BrowserSlice = {
   browserMenu: BrowserMenu,

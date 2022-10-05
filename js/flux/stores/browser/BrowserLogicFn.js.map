@@ -1,0 +1,24 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/flux/stores/browser/BrowserLogicFn.js"
+ ],
+ "file": "../../../../src/flux/stores/browser/BrowserLogicFn.js",
+ "names": [
+  "setIsOpen",
+  "chartType",
+  "browserMenu",
+  "browserType",
+  "value",
+  "item",
+  "findItem",
+  "isOpen",
+  "plusCounter",
+  "counter",
+  "resetCounter",
+  "appMenu",
+  "bT",
+  "cT"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEO,IAAMA,SAAS,GAAG,SAAZA,SAAY,CACvBC,SADuB,EAEvBC,WAFuB,EAGvBC,WAHuB,EAIvBC,KAJuB,EAKpB;EACH,IAAMC,IAAI,GAAG,IAAAC,oBAAA,EAASJ,WAAW,CAACC,WAAD,CAApB,EAAmCF,SAAnC,CAAb;;EACA,IAAII,IAAJ,EAAU;IACRA,IAAI,CAACE,MAAL,GAAcH,KAAd;EACD;AACF,CAVM;;;;AAYA,IAAMI,WAAW,GAAG,SAAdA,WAAc,CACzBP,SADyB,EAEzBE,WAFyB,EAGzBD,WAHyB,EAIzBE,KAJyB,EAKtB;EACH,IAAMC,IAAI,GAAG,IAAAC,oBAAA,EAASJ,WAAW,CAACC,WAAD,CAApB,EAAmCF,SAAnC,CAAb;;EACA,IAAII,IAAJ,EAAU;IACRA,IAAI,CAACI,OAAL,IAAgBL,KAAhB;IACAC,IAAI,CAACE,MAAL,GAAc,IAAd;EACD;AACF,CAXM;;;;AAaA,IAAMG,YAAY,GAAG,SAAfA,YAAe,CAC1BC,OAD0B,EAE1BC,EAF0B,EAG1BC,EAH0B,EAIvB;EACH,IAAMR,IAAI,GAAG,IAAAC,oBAAA,EAASK,OAAO,CAACC,EAAD,CAAhB,EAAsBC,EAAtB,CAAb;;EACA,IAAIR,IAAJ,EAAU;IACRA,IAAI,CAACI,OAAL,GAAe,CAAf;EACD;AACF,CATM"
+}
