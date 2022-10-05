@@ -5,7 +5,7 @@ import { ChartActions } from '../actions/ChartActions';
 const onLoadChart = ChartActions.loadStock
 , onShowChart = ChartActions.showChart;
 
-const _createDialogComp = (
+const createDialog = (
   conf,
   browserType
 ) => {
@@ -13,8 +13,7 @@ const _createDialogComp = (
    , props = conf.dialogProps || {}
    , Comp = conf.dialogType
        ? RouterDialog[conf.dialogType]
-           ? RouterDialog[conf.dialogType]
-           : RouterDialog.DEFAULT
+          || RouterDialog.DEFAULT
        : RouterDialog.DEFAULT;
 
    return createElement(Comp, {
@@ -28,10 +27,4 @@ const _createDialogComp = (
   });
 }
 
-const withDialog = {
-  createDialog(dialogType, browserType){
-    return _createDialogComp(this.getDataConf(dialogType), browserType);
-  }
-};
-
-export default withDialog
+export default createDialog

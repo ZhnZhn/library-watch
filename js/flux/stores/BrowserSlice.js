@@ -40,6 +40,10 @@ var BrowserSlice = {
   getSourceConfig: function getSourceConfig(browserId, sourceId) {
     return this.routeDialog[browserId][sourceId];
   },
+  getDataConf: function getDataConf(dialogType) {
+    var dataId = dialogType.split('_')[0];
+    return this.getSourceConfig(dataId, dialogType);
+  },
   onShowBrowser: function onShowBrowser(browserType) {
     this.trigger(_BrowserActions.BAT_SHOW_BROWSER, browserType);
   },

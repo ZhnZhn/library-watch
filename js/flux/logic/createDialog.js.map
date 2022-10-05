@@ -1,0 +1,34 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/logic/createDialog.js"
+ ],
+ "file": "../../../src/flux/logic/createDialog.js",
+ "names": [
+  "onLoadChart",
+  "ChartActions",
+  "loadStock",
+  "onShowChart",
+  "showChart",
+  "createDialog",
+  "conf",
+  "browserType",
+  "dialogType",
+  "type",
+  "props",
+  "dialogProps",
+  "Comp",
+  "RouterDialog",
+  "DEFAULT",
+  "createElement",
+  "key",
+  "caption",
+  "dialogCaption",
+  "optionURI",
+  "optionsJsonProp",
+  "onLoad",
+  "bind",
+  "onShow"
+ ],
+ "mappings": ";;;;;;;;;AAAA;;AACA;;AACA;;AAEA,IAAMA,WAAW,GAAGC,0BAAA,CAAaC,SAAjC;AAAA,IACEC,WAAW,GAAGF,0BAAA,CAAaG,SAD7B;;AAGA,IAAMC,YAAY,GAAG,SAAfA,YAAe,CACnBC,IADmB,EAEnBC,WAFmB,EAGhB;EACF,IAAMC,UAAU,GAAGF,IAAI,CAACG,IAAxB;EAAA,IACEC,KAAK,GAAGJ,IAAI,CAACK,WAAL,IAAoB,EAD9B;EAAA,IAEEC,IAAI,GAAGN,IAAI,CAACE,UAAL,GACHK,wBAAA,CAAaP,IAAI,CAACE,UAAlB,KACIK,wBAAA,CAAaC,OAFd,GAGHD,wBAAA,CAAaC,OALnB;EAOA,OAAO,IAAAC,oBAAA,EAAcH,IAAd;IACLI,GAAG,EAAER,UADA;IAELS,OAAO,EAAEX,IAAI,CAACY,aAFT;IAGLC,SAAS,EAAEb,IAAI,CAACa,SAHX;IAILC,eAAe,EAAEd,IAAI,CAACc,eAJjB;IAKLC,MAAM,EAAErB,WAAW,CAACsB,IAAZ,CAAiB,IAAjB,EAAuBd,UAAvB,EAAmCD,WAAnC,CALH;IAMLgB,MAAM,EAAEpB,WAAW,CAACmB,IAAZ,CAAiB,IAAjB,EAAuBd,UAAvB,EAAmCD,WAAnC;EANH,GAOFG,KAPE,EAAP;AASF,CApBD;;eAsBeL,Y"
+}

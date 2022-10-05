@@ -4,7 +4,7 @@ import {
   CAT_INIT_AND_SHOW_DIALOG,
   CAT_SHOW_MODAL_DIALOG
 } from '../actions/ComponentActions';
-import Factory from '../logic/Factory';
+import createDialog from '../logic/createDialog';
 
 const ComponentSlice = {
   dialogInit : {},
@@ -18,7 +18,11 @@ const ComponentSlice = {
       this.trigger(CAT_SHOW_DIALOG, dialogType);
     } else {
       this.dialogInit[dialogType] = true;
-      const dialogComp = Factory.createDialog(dialogType, browserType);
+      const dialogComp = createDialog(
+        this.getSourceConfig(browserType, dialogType),
+        //this.getDataConf(dialogType),
+        browserType
+      );
       this.trigger(
         CAT_INIT_AND_SHOW_DIALOG,
         { dialogType, dialogComp }
