@@ -23,17 +23,15 @@ import { BrowserType as BT, ModalDialog as MD } from '../../constants/Type';
 
 import Factory from '../logic/Factory';
 
-import ChartLogic from './chart/ChartLogic';
+import {
+  toTopByKey,
+  removeAll
+} from './chart/ChartLogicFn';
 import BrowserSlice from './BrowserSlice';
 import ComponentSlice from './ComponentSlice';
 import WatchListSlice from '../watch-list/WatchListSlice';
 import WithLimitRemaining from './WithLimitRemaining';
 import WithLoadingProgress from './WithLoadingProgress';
-
-const {
-  toTopByKey,
-  removeAll
-} = ChartLogic;
 
 const CONSOLE_LOG_STYLE = 'color:rgb(237, 88, 19);';
 const _logLoadError = function({
