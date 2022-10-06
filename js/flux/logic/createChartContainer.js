@@ -5,25 +5,24 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _uiApi = require("../../components/uiApi");
-
 var _ChartActions = require("../actions/ChartActions");
 
 var _ComponentActions = require("../actions/ComponentActions");
 
 var _CompItemList = _interopRequireDefault(require("../../components/zhn-containers/CompItemList"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var createChartContainer = function createChartContainer(conf, browserType) {
   var Comp = conf.chartContainerComp || _CompItemList["default"],
-      _chartType = conf.type;
-  return (0, _uiApi.createElement)(Comp, {
-    key: _chartType,
+      chartType = conf.type;
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(Comp, {
     caption: conf.chartContainerCaption,
-    chartType: _chartType,
+    chartType: chartType,
     browserType: browserType,
-    onCloseContainer: _ComponentActions.ComponentActions.closeChartContainer.bind(null, _chartType, browserType),
-    onRemoveAll: _ChartActions.ChartActions.removeAll.bind(null, _chartType, browserType)
-  });
+    onCloseContainer: _ComponentActions.ComponentActions.closeChartContainer.bind(null, chartType, browserType),
+    onRemoveAll: _ChartActions.ChartActions.removeAll.bind(null, chartType, browserType)
+  }, chartType);
 };
 
 var _default = createChartContainer;

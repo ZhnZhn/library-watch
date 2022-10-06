@@ -5,26 +5,24 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _uiApi = require("../../components/uiApi");
-
 var _SourceBrowserDynamic = _interopRequireDefault(require("../../components/browser-container/SourceBrowserDynamic"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var createBrowserDynamic = function createBrowserDynamic(_ref) {
-  var store = _ref.store,
-      _ref$caption = _ref.caption,
-      caption = _ref$caption === void 0 ? '' : _ref$caption,
-      browserType = _ref.browserType,
+  var browserType = _ref.browserType,
+      store = _ref.store,
+      caption = _ref.caption,
       sourceMenuUrl = _ref.sourceMenuUrl,
       rowClass = _ref.rowClass;
-  return (0, _uiApi.createElement)(_SourceBrowserDynamic["default"], {
-    key: browserType,
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_SourceBrowserDynamic["default"], {
     isInitShow: true,
+    browserType: browserType,
     store: store,
     caption: caption,
-    browserType: browserType,
     sourceMenuUrl: sourceMenuUrl,
     rowClass: rowClass
-  });
+  }, browserType);
 };
 
 var _default = createBrowserDynamic;

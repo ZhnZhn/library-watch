@@ -1,20 +1,21 @@
-import { createElement } from '../../components/uiApi';
 import SourceBrowserDynamic from '../../components/browser-container/SourceBrowserDynamic';
 
 const createBrowserDynamic = ({
-  store,
-  caption='',
   browserType,
+  store,
+  caption,
   sourceMenuUrl,
   rowClass
-}) => createElement(SourceBrowserDynamic, {
-   key: browserType,
-   isInitShow: true,
-   store,
-   caption,
-   browserType,
-   sourceMenuUrl,
-   rowClass
-})
+}) => (
+  <SourceBrowserDynamic
+    isInitShow={true}
+    key={browserType}
+    browserType={browserType}
+    store={store}
+    caption={caption}
+    sourceMenuUrl={sourceMenuUrl}
+    rowClass={rowClass}
+ />
+);
 
 export default createBrowserDynamic
