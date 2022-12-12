@@ -4,26 +4,31 @@ import {
   useState,
   useCallback,
   useImperativeHandle,
-  getRefValue
+  getRefValue,
+  focusRefElement
 } from '../uiApi';
 
 import has from '../has';
 
-const { HAS_TOUCH } = has
+const HAS_TOUCH  = has.HAS_TOUCH
 , CL_FIELD = 'm-field'
-, CL_INPUT = 'm-field__input'
-, CL_BT_CLEAR = 'm-field__bt-clear';
+, CL_INPUT = `${CL_FIELD}__input`
+, CL_BT_CLEAR = `${CL_FIELD}__bt-clear`;
 
-const _isKeyClean = ({ keyCode }) => keyCode === 27
- || keyCode === 46;
-const _isKeyEnter = ({ keyCode }) => keyCode === 13;
+const _isKeyClean = ({
+  keyCode
+}) => keyCode === 27 || keyCode === 46;
+const _isKeyEnter = ({
+  keyCode
+}) => keyCode === 13;
 
 const BtClear = ({
   isValue,
   onClick
 }) => (
   <button
-    class={CL_BT_CLEAR}
+    type="button"
+    className={CL_BT_CLEAR}
     tabIndex="-1"
     onClick={onClick}
   >
@@ -33,12 +38,6 @@ const BtClear = ({
 
 const FN_NOOP = () => {};
 
-const _focusElement = ref => {
-  const _element = getRefValue(ref);
-  if (_element) {
-    _element.focus()
-  }
-};
 
 const InputText = forwardRef(({
   style,
@@ -61,19 +60,19 @@ const InputText = forwardRef(({
   }, [onEnter])
   , _hClean = useCallback(() => {
     setValue('')
-    _focusElement(_refInput)
+    focusRefElement(_refInput)
   }, []);
 
   useImperativeHandle(ref, () => ({
      getValue: () => {
-       const _inputEl = getRefValue(_refInput)
+       const _inputEl = getRefValue(_refInput);
        return _inputEl
          ? _inputEl.value.trim()
          : void 0;
      },
      setValue: (value) => setValue(value),
      focus: () => {
-       _focusElement(_refInput)
+       focusRefElement(_refInput)
      }
   }), [])
 
