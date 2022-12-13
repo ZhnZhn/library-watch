@@ -1,18 +1,11 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _is = _interopRequireDefault(require("../utils/is"));
-
-var has = {
-  HAS_TOUCH: _is["default"].isTouchable(),
-  wideWidth: function wideWidth() {
-    return window.innerWidth ? window.innerWidth > 700 : true;
-  }
+exports.isWideWidth = exports.HAS_TOUCH_EVENTS = void 0;
+var HAS_TOUCH_EVENTS = document && 'ontouchstart' in document.documentElement;
+exports.HAS_TOUCH_EVENTS = HAS_TOUCH_EVENTS;
+var isWideWidth = function isWideWidth() {
+  return window.innerWidth ? window.innerWidth > 700 : true;
 };
-var _default = has;
-exports["default"] = _default;
+exports.isWideWidth = isWideWidth;
 //# sourceMappingURL=has.js.map

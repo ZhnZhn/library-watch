@@ -1,0 +1,22 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/useDialog.js"
+ ],
+ "file": "../../../src/components/dialogs/useDialog.js",
+ "names": [
+  "useDialog",
+  "toggleIsShowDates",
+  "useToggle",
+  "isToolbar",
+  "_toggleIsToolbar",
+  "isWideWidth",
+  "isShowLabels",
+  "_toggleIsShowLabels",
+  "_MENU_MORE",
+  "useMenuMore",
+  "_TOOLBAR_BUTTONS",
+  "useToolbarButtons"
+ ],
+ "mappings": ";;;;;AAAA;AACA;AAEA;AACA;AAEA,IAAMA,SAAS,GAAG,SAAZA,SAAS,CACbC,iBAAiB,EACd;EACH,iBAGI,IAAAC,sBAAS,EAAC,IAAI,CAAC;IAFjBC,SAAS;IACTC,gBAAgB;IAAA,cAKd,IAAAF,sBAAS,EAACG,gBAAW,CAAC;IAFxBC,YAAY;IACZC,mBAAmB;IAEnBC,UAAU,GAAG,IAAAC,uBAAW,EACvBL,gBAAgB,EAChBG,mBAAmB,EACnBN,iBAAiB,CACnB;IACCS,gBAAgB,GAAG,IAAAC,6BAAiB,EACnCJ,mBAAmB,EACnBN,iBAAiB,CACnB;EAED,OAAO,CACLO,UAAU,EACVE,gBAAgB,EAChBP,SAAS,EACTG,YAAY,CACb;AACH,CAAC;AAAC,eAEaN,SAAS;AAAA"
+}

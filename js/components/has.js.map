@@ -1,1 +1,16 @@
-{"version":3,"sources":["../../src/components/has.js"],"names":["has","HAS_TOUCH","is","isTouchable","wideWidth","window","innerWidth"],"mappings":";;;;;;;AACA;;AAEA,IAAMA,GAAG,GAAG;AACVC,EAAAA,SAAS,EAAEC,eAAGC,WAAH,EADD;AAGVC,EAAAA,SAAS,EAAE;AAAA,WAAMC,MAAM,CAACC,UAAP,GACbD,MAAM,CAACC,UAAP,GAAoB,GADP,GAEb,IAFO;AAAA;AAHD,CAAZ;eAQeN,G","sourcesContent":["\r\nimport is from '../utils/is'\r\n\r\nconst has = {\r\n  HAS_TOUCH: is.isTouchable(),\r\n\r\n  wideWidth: () => window.innerWidth\r\n    ? window.innerWidth > 700\r\n    : true\r\n};\r\n\r\nexport default has\r\n"],"file":"has.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/components/has.js"
+ ],
+ "file": "../../src/components/has.js",
+ "names": [
+  "HAS_TOUCH_EVENTS",
+  "document",
+  "documentElement",
+  "isWideWidth",
+  "window",
+  "innerWidth"
+ ],
+ "mappings": ";;;;AAAO,IAAMA,gBAAgB,GAAGC,QAAQ,IACnC,cAAc,IAAIA,QAAQ,CAACC,eAAe;AAAA;AAExC,IAAMC,WAAW,GAAG,SAAdA,WAAW;EAAA,OAASC,MAAM,CAACC,UAAU,GAC9CD,MAAM,CAACC,UAAU,GAAG,GAAG,GACvB,IAAI;AAAA;AAAA"
+}

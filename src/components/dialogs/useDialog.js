@@ -1,4 +1,4 @@
-import has from '../has';
+import { isWideWidth } from '../has';
 import useToggle from '../hooks/useToggle';
 
 import useMenuMore from './useMenuMore';
@@ -14,7 +14,7 @@ const useDialog = (
   , [
     isShowLabels,
     _toggleIsShowLabels
-  ] = useToggle(has.wideWidth)
+  ] = useToggle(isWideWidth)
   , _MENU_MORE = useMenuMore(
      _toggleIsToolbar,
      _toggleIsShowLabels,

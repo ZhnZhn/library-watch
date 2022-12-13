@@ -1,12 +1,6 @@
+export const HAS_TOUCH_EVENTS = document
+  && 'ontouchstart' in document.documentElement
 
-import is from '../utils/is'
-
-const has = {
-  HAS_TOUCH: is.isTouchable(),
-
-  wideWidth: () => window.innerWidth
-    ? window.innerWidth > 700
-    : true
-};
-
-export default has
+export const isWideWidth = () => window.innerWidth
+  ? window.innerWidth > 700
+  : true

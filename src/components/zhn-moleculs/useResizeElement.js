@@ -2,9 +2,7 @@ import { useMemo } from '../uiApi';
 import useRefInit from '../hooks/useRefInit';
 import ResizeElementImpl from './ResizeElementImpl';
 
-import has from '../has';
-
-const { HAS_TOUCH } = has;
+import { HAS_TOUCH_EVENTS } from '../has';
 
 const useResizeElement = props => {
    const _resizeImpl = useRefInit(() => {
@@ -15,7 +13,7 @@ const useResizeElement = props => {
      const [
        _onStartResizePropName,
        _onStopResizePropName
-     ] = HAS_TOUCH ? [
+     ] = HAS_TOUCH_EVENTS ? [
        'onTouchStart',
        'onTouchEnd'
      ] : [

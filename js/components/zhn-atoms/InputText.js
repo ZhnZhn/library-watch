@@ -1,13 +1,11 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
 var _uiApi = require("../uiApi");
-var _has = _interopRequireDefault(require("../has"));
+var _has = require("../has");
 var _jsxRuntime = require("react/jsx-runtime");
-var HAS_TOUCH = _has["default"].HAS_TOUCH,
-  CL_FIELD = 'm-field',
+var CL_FIELD = 'm-field',
   CL_INPUT = CL_FIELD + "__input",
   CL_BT_CLEAR = CL_FIELD + "__bt-clear";
 var _isKeyClean = function _isKeyClean(_ref) {
@@ -87,7 +85,7 @@ var InputText = (0, _uiApi.forwardRef)(function (_ref4, ref) {
       maxLength: maxLength,
       onChange: _hChange,
       onKeyDown: _hKeyDown
-    }), HAS_TOUCH && /*#__PURE__*/(0, _jsxRuntime.jsx)(BtClear, {
+    }), _has.HAS_TOUCH_EVENTS && /*#__PURE__*/(0, _jsxRuntime.jsx)(BtClear, {
       isValue: Boolean(value),
       onClick: _hClean
     })]

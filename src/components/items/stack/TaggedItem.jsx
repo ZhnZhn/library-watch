@@ -1,7 +1,7 @@
 import { useState } from '../../uiApi';
 import useDnDHandlers from './useDnDHandlers';
 
-import has from '../../has';
+import { HAS_TOUCH_EVENTS } from '../../has';
 import A from '../../zhn-atoms/A';
 import TagList from './TagList';
 
@@ -37,19 +37,18 @@ const CL = 'row-item not-selected'
 , S_TITLE = {
   paddingBottom: 8,
   fontSize: '18px'
-}
-, { HAS_TOUCH } = has;
+};
 
-const TOKEN_ANSWER = HAS_TOUCH ? 'A' : (
+const TOKEN_ANSWER = HAS_TOUCH_EVENTS ? 'A' : (
   <span role="img" arial-label="hammer and pick">&#x2692;</span>
 );
-const TOKEN_SCORE = HAS_TOUCH ? 'S' : (
+const TOKEN_SCORE = HAS_TOUCH_EVENTS ? 'S' : (
   <span role="img" aria-label="fish">&#x1F41F;</span>
 );
-const TOKEN_VIEW = HAS_TOUCH ? 'V' : (
+const TOKEN_VIEW = HAS_TOUCH_EVENTS ? 'V' : (
   <span role="img" aria-label="wheel of dharma">&#x2638;</span>
 );
-const TOKEN_REPUTATION = HAS_TOUCH ? 'R' : (
+const TOKEN_REPUTATION = HAS_TOUCH_EVENTS ? 'R' : (
   <span role="img" arial-label="shamrock">&#x2618;</span>
 );
 

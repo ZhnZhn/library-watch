@@ -1,0 +1,22 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-moleculs/useResizeElement.js"
+ ],
+ "file": "../../../src/components/zhn-moleculs/useResizeElement.js",
+ "names": [
+  "useResizeElement",
+  "props",
+  "_resizeImpl",
+  "useRefInit",
+  "ResizeElementImpl",
+  "useMemo",
+  "HAS_TOUCH_EVENTS",
+  "_onStartResizePropName",
+  "_onStopResizePropName",
+  "onStopRezise",
+  "onStartResizeLeft",
+  "onStartResizeRight"
+ ],
+ "mappings": ";;;;;AAAA;AACA;AACA;AAEA;AAEA,IAAMA,gBAAgB,GAAG,SAAnBA,gBAAgB,CAAGC,KAAK,EAAI;EAC/B,IAAMC,WAAW,GAAG,IAAAC,sBAAU,EAAC,YAAM;IACnC,OAAO,IAAIC,6BAAiB,CAACH,KAAK,CAAC;EACrC,CAAC,CAAC,CAAC,CAAC,CAAC;EACL;EACA,OAAO,IAAAI,cAAO,EAAC,YAAM;IAAA;IACnB,WAGIC,qBAAgB,GAAG,CACrB,cAAc,EACd,YAAY,CACb,GAAG,CACF,aAAa,EACb,WAAW,CACZ;MARCC,sBAAsB;MACtBC,qBAAqB;MAQrBC,YAAY,GAGVP,WAAW,CAHbO,YAAY;MACZC,iBAAiB,GAEfR,WAAW,CAFbQ,iBAAiB;MACjBC,kBAAkB,GAChBT,WAAW,CADbS,kBAAkB;IAGpB,OAAO,oBAGFJ,sBAAsB,IAAGG,iBAAiB,QAC1CF,qBAAqB,IAAGC,YAAY,6BAIpCF,sBAAsB,IAAGI,kBAAkB,QAC3CH,qBAAqB,IAAGC,YAAY,SAExC;EACH,CAAC,EAAE,EAAE,CAAC;EACN;EACA;AACF,CAAC;AAAC,eAEaT,gBAAgB;AAAA"
+}

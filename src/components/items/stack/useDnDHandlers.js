@@ -5,15 +5,14 @@ import {
   setRefValue
 } from '../../uiApi';
 
-import has from '../../has';
+import { HAS_TOUCH_EVENTS } from '../../has';
 import {
   styleDragStart,
   styleDragEnd,
   preventDefault
 } from './dnd-handlers';
 
-const { HAS_TOUCH } = has
-, DELTA = HAS_TOUCH ? {
+const DELTA = HAS_TOUCH_EVENTS ? {
    MARK_REMOVE: 50,
    REMOVE_ITEM: 90,
    REMOVE_UNDER: 150
@@ -81,7 +80,7 @@ const useDnDHandlers = (
      styleDragEnd()
      _hEnd(_getChangedTouches(ev))
   };
-  return HAS_TOUCH
+  return HAS_TOUCH_EVENTS
     ? {
         onTouchStart,
         onTouchMove,

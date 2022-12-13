@@ -8,10 +8,9 @@ import {
   focusRefElement
 } from '../uiApi';
 
-import has from '../has';
+import { HAS_TOUCH_EVENTS } from '../has';
 
-const HAS_TOUCH  = has.HAS_TOUCH
-, CL_FIELD = 'm-field'
+const CL_FIELD = 'm-field'
 , CL_INPUT = `${CL_FIELD}__input`
 , CL_BT_CLEAR = `${CL_FIELD}__bt-clear`;
 
@@ -93,7 +92,7 @@ const InputText = forwardRef(({
         onKeyDown={_hKeyDown}
       />
       {
-        HAS_TOUCH && <BtClear
+        HAS_TOUCH_EVENTS && <BtClear
           isValue={Boolean(value)}
           onClick={_hClean}
         />
