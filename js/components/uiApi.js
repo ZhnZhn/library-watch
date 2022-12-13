@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.forwardRef = exports.focusRefElement = exports.createElement = exports.cloneElement = exports.Component = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefElement = exports.createElement = exports.cloneElement = exports.Component = void 0;
 var _react = require("react");
 exports.Component = _react.Component;
 exports.cloneElement = _react.cloneElement;
@@ -36,4 +36,21 @@ var focusRefElement = function focusRefElement(ref) {
   }
 };
 exports.focusRefElement = focusRefElement;
+var _getFirstTouches = function _getFirstTouches(touches) {
+  return touches && touches[0] || {};
+};
+var _getTouchClientX = function _getTouchClientX(touches) {
+  return _getFirstTouches(touches).clientX;
+};
+var _getTouchClientY = function _getTouchClientY(touches) {
+  return _getFirstTouches(touches).clientY;
+};
+var getClientX = function getClientX(evt) {
+  return evt.clientX || _getTouchClientX(evt.targetTouches) || _getTouchClientX(evt.changedTouches) || 0;
+};
+exports.getClientX = getClientX;
+var getClientY = function getClientY(evt) {
+  return evt.clientY || _getTouchClientY(evt.targetTouches) || _getTouchClientY(evt.changedTouches) || 0;
+};
+exports.getClientY = getClientY;
 //# sourceMappingURL=uiApi.js.map

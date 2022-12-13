@@ -15,9 +15,11 @@ module.exports = {
       dependOn: 'lib'
     },
     lib: [
-            "react", "react-dom", 
+            "react", 
+            "react-dom", 
             "reflux-core", 
-            "chart.js", "interactjs", "timeago.js", 
+            "chart.js", 
+            "timeago.js", 
             "localforage", 
             "papaparse",
             "raven-js" 

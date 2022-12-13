@@ -1,10 +1,8 @@
-import {
-  forwardRef,
-  useEffect
-} from '../uiApi';
+import { forwardRef } from '../uiApi';
 
 import useKeyEscape from '../hooks/useKeyEscape';
 import useToggle from '../hooks/useToggle';
+import useXYMovable from '../hooks/useXYMovable';
 import useDialogFocus from './useDialogFocus';
 
 import crCn from '../zhn-utils/crCn';
@@ -14,7 +12,6 @@ import SvgMore from '../zhn-atoms/SvgMore';
 import SvgClose from '../zhn-atoms/SvgClose';
 import FlatButton from '../zhn-m/FlatButton';
 
-import Interact from '../../utils/Interact';
 import STYLE from './Dialog.Style';
 
 const CL_DRAGGABLE_DIALOG = "draggable-dialog"
@@ -69,12 +66,7 @@ const DraggableDialog = forwardRef(({
       ? STYLE.SHOW
       : STYLE.HIDE;
 
-  /*eslint-disable react-hooks/exhaustive-deps */
-  useEffect(()=>{
-    Interact.makeDragable(_refRootDiv.current);
-  }, [])
-  // _refRootDiv
-  /*eslint-enable react-hooks/exhaustive-deps */
+  useXYMovable(_refRootDiv)
 
   return (
     /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
