@@ -1,6 +1,4 @@
-import is from '../../../utils/is'
-
-const { isNumber } = is;
+import { isNumber } from '../../../utils/is';
 
 const DF_RESULT = 2;
 const _compareNotNumber = (a, b, dfR=DF_RESULT) => {

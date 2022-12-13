@@ -1,1 +1,32 @@
-{"version":3,"sources":["../../../../src/components/items/stack/sortItemsBy.js"],"names":["isNumber","is","DF_RESULT","_compareNotNumber","a","b","dfR","isB","isA","_getReputation","item","owner","reputation","_compareByReputation","bN","aN","_notNumberResult","_fCompareBy","propName","sortItemsBy","items","_compare","sort"],"mappings":";;;;;;;AAAA;;IAEQA,Q,GAAaC,c,CAAbD,Q;AAER,IAAME,SAAS,GAAG,CAAlB;;AACA,IAAMC,iBAAiB,GAAG,SAApBA,iBAAoB,CAACC,CAAD,EAAIC,CAAJ,EAAOC,GAAP,EAAyB;AAAA,MAAlBA,GAAkB;AAAlBA,IAAAA,GAAkB,GAAdJ,SAAc;AAAA;;AACjD,MAAMK,GAAG,GAAGP,QAAQ,CAACK,CAAD,CAApB;AAAA,MACEG,GAAG,GAAGR,QAAQ,CAACI,CAAD,CADhB;AAGA,MAAI,CAACG,GAAD,IAAQ,CAACC,GAAb,EAAkB,OAAO,CAAP;AAClB,MAAID,GAAG,IAAI,CAACC,GAAZ,EAAiB,OAAO,CAAP;AACjB,MAAI,CAACD,GAAD,IAAQC,GAAZ,EAAiB,OAAO,CAAC,CAAR;AACjB,SAAOF,GAAP;AACD,CARD;;AAUA,IAAMG,cAAc,GAAG,SAAjBA,cAAiB,CAACC,IAAD,EAAU;AAAA,aACVA,IAAI,IAAI,EADE;AAAA,wBACvBC,KADuB;AAAA,MACvBA,KADuB,2BACjB,EADiB;;AAE/B,SAAOA,KAAK,CAACC,UAAN,IAAoB,CAA3B;AACD,CAHD;;AAIA,IAAMC,oBAAoB,GAAG,SAAvBA,oBAAuB,CAACT,CAAD,EAAIC,CAAJ,EAAU;AACrC,MAAMS,EAAE,GAAGL,cAAc,CAACJ,CAAD,CAAzB;AAAA,MACEU,EAAE,GAAGN,cAAc,CAACL,CAAD,CADrB;AAAA,MAEEY,gBAAgB,GAAGb,iBAAiB,CAACY,EAAD,EAAKD,EAAL,CAFtC;;AAGA,SAAOE,gBAAgB,KAAKd,SAArB,GACHY,EAAE,GAAGC,EADF,GAEHC,gBAFJ;AAGD,CAPD;;AAUA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CAACC,QAAD;AAAA,SAAc,UAACd,CAAD,EAAIC,CAAJ,EAAU;AAC1C,QAAMS,EAAE,GAAGT,CAAC,CAACa,QAAD,CAAZ;AAAA,QACEH,EAAE,GAAGX,CAAC,CAACc,QAAD,CADR;AAAA,QAEEF,gBAAgB,GAAGb,iBAAiB,CAACY,EAAD,EAAKD,EAAL,CAFtC,CAD0C,CAI1C;;;AACA,QAAIE,gBAAgB,KAAKd,SAAzB,EAAoC;AAClC,aAAOc,gBAAP;AACD,KAPyC,CAQ1C;;;AACA,QAAIF,EAAE,KAAKC,EAAX,EAAe;AACb,aAAOF,oBAAoB,CAACT,CAAD,EAAIC,CAAJ,CAA3B;AACD;;AACD,WAAOS,EAAE,GAAGC,EAAZ;AACD,GAbmB;AAAA,CAApB;;AAeA,IAAMI,WAAW,GAAG,SAAdA,WAAc,CAACC,KAAD,EAAQF,QAAR,EAAqB;AACvC,MAAI,CAACA,QAAL,EAAe,OAAOE,KAAP;;AACf,MAAMC,QAAQ,GAAGH,QAAQ,KAAK,YAAb,GACZL,oBADY,GAEZI,WAAW,CAACC,QAAD,CAFhB;;AAGA,SAAOE,KAAK,CAACE,IAAN,CAAWD,QAAX,CAAP;AACD,CAND;;eAQeF,W","sourcesContent":["import is from '../../../utils/is'\r\n\r\nconst { isNumber } = is;\r\n\r\nconst DF_RESULT = 2;\r\nconst _compareNotNumber = (a, b, dfR=DF_RESULT) => {\r\n  const isB = isNumber(b)\r\n  , isA = isNumber(a);\r\n\r\n  if (!isB && !isA) return 0;\r\n  if (isB && !isA) return 1;\r\n  if (!isB && isA) return -1;\r\n  return dfR;\r\n}\r\n\r\nconst _getReputation = (item) => {\r\n  const { owner={} } = item || {};\r\n  return owner.reputation || 0;\r\n}\r\nconst _compareByReputation = (a, b) => {\r\n  const bN = _getReputation(b)\r\n  , aN = _getReputation(a)\r\n  , _notNumberResult = _compareNotNumber(aN, bN);\r\n  return _notNumberResult === DF_RESULT\r\n    ? bN - aN\r\n    : _notNumberResult;\r\n};\r\n\r\n\r\nconst _fCompareBy = (propName) => (a, b) => {\r\n  const bN = b[propName]\r\n  , aN = a[propName]\r\n  , _notNumberResult = _compareNotNumber(aN, bN);\r\n  // guard for not numbers\r\n  if (_notNumberResult !== DF_RESULT) {\r\n    return _notNumberResult;\r\n  }\r\n  // secondary sort\r\n  if (bN === aN) {\r\n    return _compareByReputation(a, b);\r\n  }\r\n  return bN - aN;\r\n};\r\n\r\nconst sortItemsBy = (items, propName) => {\r\n  if (!propName) return items;\r\n  const _compare = propName === 'reputation'\r\n     ? _compareByReputation\r\n     : _fCompareBy(propName);\r\n  return items.sort(_compare);\r\n};\r\n\r\nexport default sortItemsBy\r\n"],"file":"sortItemsBy.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/items/stack/sortItemsBy.js"
+ ],
+ "file": "../../../../src/components/items/stack/sortItemsBy.js",
+ "names": [
+  "DF_RESULT",
+  "_compareNotNumber",
+  "a",
+  "b",
+  "dfR",
+  "isB",
+  "isNumber",
+  "isA",
+  "_getReputation",
+  "item",
+  "owner",
+  "reputation",
+  "_compareByReputation",
+  "bN",
+  "aN",
+  "_notNumberResult",
+  "_fCompareBy",
+  "propName",
+  "sortItemsBy",
+  "items",
+  "_compare",
+  "sort"
+ ],
+ "mappings": ";;;;AAAA;AAEA,IAAMA,SAAS,GAAG,CAAC;AACnB,IAAMC,iBAAiB,GAAG,SAApBA,iBAAiB,CAAIC,CAAC,EAAEC,CAAC,EAAEC,GAAG,EAAe;EAAA,IAAlBA,GAAG;IAAHA,GAAG,GAACJ,SAAS;EAAA;EAC5C,IAAMK,GAAG,GAAG,IAAAC,YAAQ,EAACH,CAAC,CAAC;IACrBI,GAAG,GAAG,IAAAD,YAAQ,EAACJ,CAAC,CAAC;EAEnB,IAAI,CAACG,GAAG,IAAI,CAACE,GAAG,EAAE,OAAO,CAAC;EAC1B,IAAIF,GAAG,IAAI,CAACE,GAAG,EAAE,OAAO,CAAC;EACzB,IAAI,CAACF,GAAG,IAAIE,GAAG,EAAE,OAAO,CAAC,CAAC;EAC1B,OAAOH,GAAG;AACZ,CAAC;AAED,IAAMI,cAAc,GAAG,SAAjBA,cAAc,CAAIC,IAAI,EAAK;EAC/B,WAAqBA,IAAI,IAAI,CAAC,CAAC;IAAA,kBAAvBC,KAAK;IAALA,KAAK,2BAAC,CAAC,CAAC;EAChB,OAAOA,KAAK,CAACC,UAAU,IAAI,CAAC;AAC9B,CAAC;AACD,IAAMC,oBAAoB,GAAG,SAAvBA,oBAAoB,CAAIV,CAAC,EAAEC,CAAC,EAAK;EACrC,IAAMU,EAAE,GAAGL,cAAc,CAACL,CAAC,CAAC;IAC1BW,EAAE,GAAGN,cAAc,CAACN,CAAC,CAAC;IACtBa,gBAAgB,GAAGd,iBAAiB,CAACa,EAAE,EAAED,EAAE,CAAC;EAC9C,OAAOE,gBAAgB,KAAKf,SAAS,GACjCa,EAAE,GAAGC,EAAE,GACPC,gBAAgB;AACtB,CAAC;AAGD,IAAMC,WAAW,GAAG,SAAdA,WAAW,CAAIC,QAAQ;EAAA,OAAK,UAACf,CAAC,EAAEC,CAAC,EAAK;IAC1C,IAAMU,EAAE,GAAGV,CAAC,CAACc,QAAQ,CAAC;MACpBH,EAAE,GAAGZ,CAAC,CAACe,QAAQ,CAAC;MAChBF,gBAAgB,GAAGd,iBAAiB,CAACa,EAAE,EAAED,EAAE,CAAC;IAC9C;IACA,IAAIE,gBAAgB,KAAKf,SAAS,EAAE;MAClC,OAAOe,gBAAgB;IACzB;IACA;IACA,IAAIF,EAAE,KAAKC,EAAE,EAAE;MACb,OAAOF,oBAAoB,CAACV,CAAC,EAAEC,CAAC,CAAC;IACnC;IACA,OAAOU,EAAE,GAAGC,EAAE;EAChB,CAAC;AAAA;AAED,IAAMI,WAAW,GAAG,SAAdA,WAAW,CAAIC,KAAK,EAAEF,QAAQ,EAAK;EACvC,IAAI,CAACA,QAAQ,EAAE,OAAOE,KAAK;EAC3B,IAAMC,QAAQ,GAAGH,QAAQ,KAAK,YAAY,GACrCL,oBAAoB,GACpBI,WAAW,CAACC,QAAQ,CAAC;EAC1B,OAAOE,KAAK,CAACE,IAAI,CAACD,QAAQ,CAAC;AAC7B,CAAC;AAAC,eAEaF,WAAW;AAAA"
+}
