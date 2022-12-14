@@ -8,6 +8,8 @@ import {
 import { HAS_TOUCH_EVENTS } from '../has';
 
 const _assign = Object.assign
+, _isArr = Array.isArray
+, _isFn = fn => typeof fn === 'function'
 , [
   INIT_EVENT,
   MOVE_EVENT,
@@ -39,17 +41,37 @@ const _crNextValue = (
 const START_EVENT_GAP = 22
 const _isValueInGapRange = (
   from,
-
   to,
   value
 ) => value - from > START_EVENT_GAP
   && to - value > START_EVENT_GAP;
+const _getComposedPath = (
+  evt
+) => _isFn(evt.composedPath)
+  ? evt.composedPath()
+  : void 0;
+
 const _isInitEvent = (
-  element,
+  evt,
   initialEvtClientX,
-  initialEvtClientY
+  initialEvtClientY,
+  element
 ) => {
+  const _composedPath = _getComposedPath(evt);
+  if (_isArr(_composedPath)) {
+    for(let i=0; i<_composedPath.length; i++){
+      const _el = _composedPath[i];
+      if (_el.tagName === 'BUTTON') {
+        return false;
+      }
+      if (_el === element) {
+        break;
+      }
+    }
+  }
+
   if (!HAS_TOUCH_EVENTS) { return true; }
+
   const {
     left,
     top,
@@ -129,7 +151,7 @@ const useXYMovable = (
     _element.addEventListener(INIT_EVENT, (evt) => {
       _initialEvtClientX = getClientX(evt)
       _initialEvtClientY = getClientY(evt)
-      if (_isInitEvent(_element, _initialEvtClientX, _initialEvtClientY)) {
+      if (_isInitEvent(evt, _initialEvtClientX, _initialEvtClientY, _element)) {
         _element.addEventListener(MOVE_EVENT, _hMove, MOVE_EVENT_OPTIONS)
         _element.addEventListener(CANCEL_EVENT, _hResetEvent, EVENT_OPTIONS)
         _element.addEventListener(RESET_EVENT, _hResetEvent, EVENT_OPTIONS)

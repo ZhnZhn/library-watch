@@ -5,6 +5,10 @@ exports["default"] = void 0;
 var _uiApi = require("../uiApi");
 var _has = require("../has");
 var _assign = Object.assign,
+  _isArr = Array.isArray,
+  _isFn = function _isFn(fn) {
+    return typeof fn === 'function';
+  },
   _ref = _has.HAS_TOUCH_EVENTS ? ['touchstart', 'touchmove', 'touchcancel', 'touchend'] : ['mousedown', 'mousemove', 'mouseleave', 'mouseup'],
   INIT_EVENT = _ref[0],
   MOVE_EVENT = _ref[1],
@@ -31,7 +35,22 @@ var START_EVENT_GAP = 22;
 var _isValueInGapRange = function _isValueInGapRange(from, to, value) {
   return value - from > START_EVENT_GAP && to - value > START_EVENT_GAP;
 };
-var _isInitEvent = function _isInitEvent(element, initialEvtClientX, initialEvtClientY) {
+var _getComposedPath = function _getComposedPath(evt) {
+  return _isFn(evt.composedPath) ? evt.composedPath() : void 0;
+};
+var _isInitEvent = function _isInitEvent(evt, initialEvtClientX, initialEvtClientY, element) {
+  var _composedPath = _getComposedPath(evt);
+  if (_isArr(_composedPath)) {
+    for (var i = 0; i < _composedPath.length; i++) {
+      var _el = _composedPath[i];
+      if (_el.tagName === 'BUTTON') {
+        return false;
+      }
+      if (_el === element) {
+        break;
+      }
+    }
+  }
   if (!_has.HAS_TOUCH_EVENTS) {
     return true;
   }
@@ -94,7 +113,7 @@ var useXYMovable = function useXYMovable(refElement) {
     _element.addEventListener(INIT_EVENT, function (evt) {
       _initialEvtClientX = (0, _uiApi.getClientX)(evt);
       _initialEvtClientY = (0, _uiApi.getClientY)(evt);
-      if (_isInitEvent(_element, _initialEvtClientX, _initialEvtClientY)) {
+      if (_isInitEvent(evt, _initialEvtClientX, _initialEvtClientY, _element)) {
         _element.addEventListener(MOVE_EVENT, _hMove, MOVE_EVENT_OPTIONS);
         _element.addEventListener(CANCEL_EVENT, _hResetEvent, EVENT_OPTIONS);
         _element.addEventListener(RESET_EVENT, _hResetEvent, EVENT_OPTIONS);
