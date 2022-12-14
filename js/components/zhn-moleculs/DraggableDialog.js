@@ -14,17 +14,19 @@ var _ModalSlider = _interopRequireDefault(require("../zhn-modal-slider/ModalSlid
 var _SvgMore = _interopRequireDefault(require("../zhn-atoms/SvgMore"));
 var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
-var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
+var _Dialog = require("./Dialog.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 var CL_DRAGGABLE_DIALOG = "draggable-dialog",
-  CL_SHOW_POPUP = 'show-popup',
   CL_NOT_SELECTED = 'not-selected',
   CL_MENU_MORE = 'popup-menu dialog__menu-more',
-  S_ROOT_DIV_DRAG = (0, _extends2["default"])({}, _Dialog["default"].ROOT_DIV, {
+  S_DRAGGABLE_DIALOG = (0, _extends2["default"])({}, _Dialog.S_DIALOG_DIV, {
     position: 'absolute',
     top: 30,
     left: 50,
     zIndex: 10
+  }),
+  S_CAPTION = (0, _extends2["default"])({}, _Dialog.S_CAPTION_DIV, {
+    cursor: 'move'
   }),
   S_BT_MORE = {
     position: 'absolute',
@@ -34,9 +36,6 @@ var CL_DRAGGABLE_DIALOG = "draggable-dialog",
   S_BT_MORE_SVG = {
     stroke: 'inherit',
     fill: 'inherit'
-  },
-  S_CHILDREN_DIV = {
-    cursor: 'default'
   },
   FN_NOOP = function FN_NOOP() {},
   _isFn = function _isFn(fn) {
@@ -58,8 +57,8 @@ var DraggableDialog = (0, _uiApi.forwardRef)(function (_ref, ref) {
     _isMore = _useToggle[0],
     _toggleMore = _useToggle[1],
     _hKeyDown = (0, _useKeyEscape["default"])(onClose),
-    _className = (0, _crCn["default"])(CL_DRAGGABLE_DIALOG, [isShow, CL_SHOW_POPUP]),
-    _styleShow = isShow ? _Dialog["default"].SHOW : _Dialog["default"].HIDE;
+    _className = (0, _crCn["default"])(CL_DRAGGABLE_DIALOG, [isShow, _Dialog.CL_SHOW_POPUP]),
+    _styleShow = isShow ? _Dialog.S_SHOW : _Dialog.S_HIDE;
   (0, _useXYMovable["default"])(_refRootDiv);
   return (
     /*#__PURE__*/
@@ -71,10 +70,10 @@ var DraggableDialog = (0, _uiApi.forwardRef)(function (_ref, ref) {
       "aria-label": caption,
       "aria-hidden": !isShow,
       className: _className,
-      style: (0, _extends2["default"])({}, S_ROOT_DIV_DRAG, _styleShow),
+      style: (0, _extends2["default"])({}, S_DRAGGABLE_DIALOG, _styleShow),
       onKeyDown: _hKeyDown,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        style: _Dialog["default"].CAPTION_DIV,
+        style: S_CAPTION,
         children: [menuModel && /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
           children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider["default"], {
             isShow: _isMore,
@@ -91,23 +90,22 @@ var DraggableDialog = (0, _uiApi.forwardRef)(function (_ref, ref) {
           className: CL_NOT_SELECTED,
           children: caption
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose["default"], {
-          style: _Dialog["default"].SVG_CLOSE,
+          style: _Dialog.S_SVG_CLOSE,
           onClose: onClose
         })]
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        style: S_CHILDREN_DIV,
         children: children
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        style: _Dialog["default"].COMMAND_DIV,
+        style: _Dialog.S_COMMAND_DIV,
         children: [commandButtons, _isFn(onShowChart) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
           timeout: 0,
-          rootStyle: _Dialog["default"].BT_ROOT,
+          rootStyle: _Dialog.S_BT_ROOT,
           caption: "Show",
           title: "Show Pane Container",
           onClick: onShowChart
         }, "show"), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
           timeout: 0,
-          rootStyle: _Dialog["default"].BT_ROOT,
+          rootStyle: _Dialog.S_BT_ROOT,
           caption: "Close",
           title: "Close Draggable Dialog",
           onClick: onClose

@@ -1,151 +1,89 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
-
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _react = require("react");
-
+var _uiApi = require("../uiApi");
+var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
+var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
 var _DialogCaption = _interopRequireDefault(require("./DialogCaption"));
-
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
-
+var _Dialog = require("./Dialog.Style");
 var _jsxRuntime = require("react/jsx-runtime");
-
-//import PropTypes from 'prop-types'
-var CL_SHOWING = 'show-popup',
-    CL_HIDING = 'hide-popup',
-    S_SHOW = {
-  display: 'block'
-},
-    S_HIDE = {
-  display: 'none'
-},
-    S_HIDE_POPUP = {
-  opacity: 0,
-  transform: 'scaleY(0)'
-},
-    S_ROOT_DIV = {
-  position: 'absolute',
-  top: '20%',
-  left: '40%',
-  display: 'block',
-  backgroundColor: '#4D4D4D',
-  border: 'solid 2px #232F3B',
-  borderRadius: '5px',
-  boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
-  zIndex: 10
-},
-    S_COMMAND_DIV = {
-  cursor: 'default',
-  "float": 'right',
-  margin: '8px 4px 10px 0'
-};
-
-var ModalDialog = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(ModalDialog, _Component);
-
-  function ModalDialog() {
-    var _this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-    _this.wasClosing = false;
-    _this.state = {};
-
-    _this._handleClickDialog = function (event) {
+var S_HIDE_POPUP = {
+    opacity: 0,
+    transform: 'scaleY(0)'
+  },
+  S_MODAL_DIALOG = (0, _extends2["default"])({}, _Dialog.S_DIALOG_DIV, {
+    position: 'absolute',
+    top: '20%',
+    left: '40%',
+    display: 'block',
+    zIndex: 10
+  });
+var ModalDialog = function ModalDialog(_ref) {
+  var isShow = _ref.isShow,
+    _ref$isWithButton = _ref.isWithButton,
+    isWithButton = _ref$isWithButton === void 0 ? true : _ref$isWithButton,
+    _ref$timeout = _ref.timeout,
+    timeout = _ref$timeout === void 0 ? 450 : _ref$timeout,
+    style = _ref.style,
+    caption = _ref.caption,
+    commandButtons = _ref.commandButtons,
+    onClose = _ref.onClose,
+    children = _ref.children;
+  var _rerenderComp = (0, _useRerender["default"])(),
+    _hKeyDown = (0, _useKeyEscape["default"])(onClose),
+    _refWasClosing = (0, _uiApi.useRef)(),
+    _hClickDialog = (0, _uiApi.useCallback)(function (event) {
       event.stopPropagation();
-    };
-
-    _this._renderCommandButton = function (commandButtons, onClose) {
-      return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        style: S_COMMAND_DIV,
+    }, []);
+  (0, _uiApi.useEffect)(function () {
+    if ((0, _uiApi.getRefValue)(_refWasClosing)) {
+      setTimeout(_rerenderComp, timeout);
+    }
+  });
+  var _className, _style;
+  if ((0, _uiApi.getRefValue)(_refWasClosing)) {
+    _style = _Dialog.S_HIDE;
+    (0, _uiApi.setRefValue)(_refWasClosing, false);
+  } else {
+    var _ref2 = isShow ? [_Dialog.CL_SHOW_POPUP, _Dialog.S_SHOW] : [_Dialog.CL_HIDE_POPUP, S_HIDE_POPUP];
+    _className = _ref2[0];
+    _style = _ref2[1];
+    if (!isShow) {
+      (0, _uiApi.setRefValue)(_refWasClosing, true);
+    }
+  }
+  return (
+    /*#__PURE__*/
+    /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
+    (0, _jsxRuntime.jsxs)("div", {
+      role: "dialog",
+      tabIndex: "-1",
+      "aria-label": caption,
+      "aria-hidden": !isShow,
+      className: _className,
+      style: (0, _extends2["default"])({}, S_MODAL_DIALOG, style, _style),
+      onClick: _hClickDialog,
+      onKeyDown: _hKeyDown,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCaption["default"], {
+        caption: caption,
+        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        children: children
+      }), isWithButton && /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: _Dialog.S_COMMAND_DIV,
         children: [commandButtons, /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
           caption: "Close",
           title: "Click to close modal dialog",
           timeout: 0,
           onClick: onClose
         }, "close")]
-      });
-    };
-
-    return _this;
-  }
-
-  var _proto = ModalDialog.prototype;
-
-  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps !== this.props) {
-      if (nextProps.isNotUpdate) {
-        return false;
-      }
-    }
-
-    return true;
-  };
-
-  _proto.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
-    var _this2 = this;
-
-    if (this.wasClosing) {
-      setTimeout(function () {
-        _this2.setState({});
-      }, this.props.timeout);
-    }
-  };
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        isShow = _this$props.isShow,
-        isWithButton = _this$props.isWithButton,
-        caption = _this$props.caption,
-        style = _this$props.style,
-        children = _this$props.children,
-        commandButtons = _this$props.commandButtons,
-        onClose = _this$props.onClose;
-
-    var _className, _style;
-
-    if (this.wasClosing) {
-      _style = S_HIDE;
-      this.wasClosing = false;
-    } else {
-      _className = isShow ? CL_SHOWING : CL_HIDING;
-      _style = isShow ? S_SHOW : S_HIDE_POPUP;
-
-      if (!isShow) {
-        this.wasClosing = true;
-      }
-    }
-
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      className: _className,
-      style: (0, _extends2["default"])({}, S_ROOT_DIV, style, _style),
-      onClick: this._handleClickDialog,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCaption["default"], {
-        caption: caption,
-        onClose: onClose
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        children: children
-      }), isWithButton && this._renderCommandButton(commandButtons, onClose)]
-    });
-  };
-
-  return ModalDialog;
-}(_react.Component);
-
-ModalDialog.defaultProps = {
-  isWithButton: true,
-  isNotUpdate: false,
-  timeout: 450
+      })]
+    })
+  );
 };
 var _default = ModalDialog;
 exports["default"] = _default;

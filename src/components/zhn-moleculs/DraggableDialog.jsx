@@ -12,19 +12,31 @@ import SvgMore from '../zhn-atoms/SvgMore';
 import SvgClose from '../zhn-atoms/SvgClose';
 import FlatButton from '../zhn-m/FlatButton';
 
-import STYLE from './Dialog.Style';
+import {
+  CL_SHOW_POPUP,
+  S_SHOW,
+  S_HIDE,
+  S_DIALOG_DIV,
+  S_CAPTION_DIV,
+  S_SVG_CLOSE,
+  S_COMMAND_DIV,
+  S_BT_ROOT
+} from './Dialog.Style';
 
 const CL_DRAGGABLE_DIALOG = "draggable-dialog"
-, CL_SHOW_POPUP = 'show-popup'
 , CL_NOT_SELECTED = 'not-selected'
 , CL_MENU_MORE = 'popup-menu dialog__menu-more'
 
-, S_ROOT_DIV_DRAG = {
-  ...STYLE.ROOT_DIV,
+, S_DRAGGABLE_DIALOG = {
+  ...S_DIALOG_DIV,
   position: 'absolute',
   top: 30,
   left: 50,
   zIndex: 10
+}
+, S_CAPTION = {
+  ...S_CAPTION_DIV,
+  cursor: 'move'
 }
 , S_BT_MORE = {
   position: 'absolute',
@@ -35,7 +47,6 @@ const CL_DRAGGABLE_DIALOG = "draggable-dialog"
   stroke: 'inherit',
   fill: 'inherit'
 }
-, S_CHILDREN_DIV = { cursor: 'default' }
 
 , FN_NOOP = () => {}
 , _isFn = fn => typeof fn === 'function';
@@ -63,8 +74,8 @@ const DraggableDialog = forwardRef(({
       [isShow, CL_SHOW_POPUP]
   )
   , _styleShow = isShow
-      ? STYLE.SHOW
-      : STYLE.HIDE;
+      ? S_SHOW
+      : S_HIDE;
 
   useXYMovable(_refRootDiv)
 
@@ -78,13 +89,13 @@ const DraggableDialog = forwardRef(({
        aria-hidden={!isShow}
        className={_className}
        style={{
-       ...S_ROOT_DIV_DRAG,
+       ...S_DRAGGABLE_DIALOG,
        ..._styleShow
        }}
        onKeyDown={_hKeyDown}
      >
      {/*eslint-enable jsx-a11y/no-noninteractive-element-interactions*/}
-      <div style={STYLE.CAPTION_DIV}>
+      <div style={S_CAPTION}>
         { menuModel && <>
            <ModalSlider
              isShow={_isMore}
@@ -104,20 +115,20 @@ const DraggableDialog = forwardRef(({
           {caption}
         </span>
         <SvgClose
-           style={STYLE.SVG_CLOSE}
+           style={S_SVG_CLOSE}
            onClose={onClose}
         />
       </div>
-      <div style={S_CHILDREN_DIV}>
+      <div>
          {children}
       </div>
-      <div style={STYLE.COMMAND_DIV}>
+      <div style={S_COMMAND_DIV}>
         {commandButtons}
         {
           _isFn(onShowChart) && <FlatButton
             key="show"
             timeout={0}
-            rootStyle={STYLE.BT_ROOT}
+            rootStyle={S_BT_ROOT}
             caption="Show"
             title="Show Pane Container"
             onClick={onShowChart}
@@ -126,7 +137,7 @@ const DraggableDialog = forwardRef(({
         <FlatButton
           key="close"
           timeout={0}
-          rootStyle={STYLE.BT_ROOT}
+          rootStyle={S_BT_ROOT}
           caption="Close"
           title="Close Draggable Dialog"
           onClick={onClose}

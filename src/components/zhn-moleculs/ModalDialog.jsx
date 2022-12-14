@@ -11,30 +11,26 @@ import useKeyEscape from '../hooks/useKeyEscape';
 import Caption from './DialogCaption'
 import FlatButton from '../zhn-m/FlatButton'
 
-const CL_SHOWING = 'show-popup'
-, CL_HIDING = 'hide-popup'
+import {
+  CL_SHOW_POPUP,
+  CL_HIDE_POPUP,
+  S_SHOW,
+  S_HIDE,
+  S_DIALOG_DIV,
+  S_COMMAND_DIV
+} from './Dialog.Style';
 
-, S_SHOW = { display: 'block' }
-, S_HIDE = { display: 'none' }
-, S_HIDE_POPUP = {
+const S_HIDE_POPUP = {
   opacity: 0,
   transform: 'scaleY(0)'
 }
-, S_DIALOG_DIV = {
+, S_MODAL_DIALOG = {
+  ...S_DIALOG_DIV,
   position: 'absolute',
   top: '20%',
   left: '40%',
   display: 'block',
-  backgroundColor: '#4d4d4d',
-  border: 'solid 2px #232f3b',
-  borderRadius: '5px',
-  boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
   zIndex: 10
-}
-, S_COMMAND_DIV = {
-   textAlign: 'right',
-   margin: '8px 4px 10px 0',
-   cursor: 'default'
 };
 
 const ModalDialog = ({
@@ -66,8 +62,8 @@ const ModalDialog = ({
     setRefValue(_refWasClosing, false)
   } else {
     [_className, _style] = isShow
-      ? [CL_SHOWING, S_SHOW]
-      : [CL_HIDING, S_HIDE_POPUP]
+      ? [CL_SHOW_POPUP, S_SHOW]
+      : [CL_HIDE_POPUP, S_HIDE_POPUP]
     if (!isShow){
       setRefValue(_refWasClosing, true)
     }
@@ -82,7 +78,7 @@ const ModalDialog = ({
        aria-hidden={!isShow}
        className={_className}
        style={{
-         ...S_DIALOG_DIV,
+         ...S_MODAL_DIALOG,
          ...style,
          ..._style
        }}
