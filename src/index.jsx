@@ -1,7 +1,5 @@
-import { render } from 'react-dom';
-
+import { createRoot } from 'react-dom/client';
 import Raven from 'raven-js';
-
 import App from './components/AppLibraryWatch';
 
 /* eslint-disable no-undef */
@@ -24,7 +22,8 @@ const _renderApp = () => {
   if (preloader){
     document.body.removeChild(document.getElementById('preloader'));
   }
-  render(<App />, document.getElementById("app"));
+  createRoot(document.getElementById("app"))
+    .render(<App />)
 }
 
 const _loadingApp = function(){
