@@ -1,10 +1,9 @@
 import {
-  useState,
-  useCallback
+  useState
 } from '../uiApi';
-import useDidUpdate from '../hooks/useDidUpdate';
 
-import throttleOnce from '../../utils/throttleOnce';
+import useThrottleCallback from '../hooks/useThrottleCallback';
+import useDidUpdate from '../hooks/useDidUpdate';
 
 import ModalPane from '../zhn-moleculs/ModalPane';
 import ShowHide from '../zhn-atoms/ShowHide';
@@ -104,37 +103,38 @@ const ModalSlider = ({
      pageCurrent,
      pages
    } = state
-   /*eslint-disable react-hooks/exhaustive-deps */
-  , hPrevPage = useCallback(throttleOnce((pageNumber) => {
+  , hPrevPage = useThrottleCallback(pageNumber => {
      setState(prevState => {
        prevState.pageCurrent = pageNumber - 1
        return {...prevState};
      })
-  }), [])
-
-  , hNextPage = useCallback(throttleOnce((id, title, pageNumber)=>{
+  })
+  , hNextPage = useThrottleCallback((
+      id,
+      title,
+      pageNumber
+    ) => {
      setState(prevState => {
        const { pages } = prevState
-          , _max = pages.length-1;
+       , _max = pages.length-1;
 
-      if ( (_max+1) > pageNumber) {
-        if (pages[pageNumber] && pages[pageNumber].key !== id) {
+       if ( (_max+1) > pageNumber) {
+         if (pages[pageNumber] && pages[pageNumber].key !== id) {
            if (pageNumber>0) {
              prevState.pages.splice(pageNumber)
            } else {
              prevState.pages = []
            }
            _addPage(prevState.pages, id, title, model)
-        }
-      } else {
-        _addPage(pages, id, title, model)
-      }
+         }
+       } else {
+         _addPage(pages, id, title, model)
+       }
 
-      prevState.pageCurrent = pageNumber + 1
-      return {...prevState};
+       prevState.pageCurrent = pageNumber + 1
+       return {...prevState};
      })
-  }), [model])
-  /*eslint-enable react-hooks/exhaustive-deps */
+  }, [model]);
 
   useDidUpdate(
     () => setState(_initState(model)),
