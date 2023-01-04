@@ -1,0 +1,22 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/items/npm/loadNpms.js"
+ ],
+ "file": "../../../../src/components/items/npm/loadNpms.js",
+ "names": [
+  "NAME",
+  "NPMS_URI",
+  "WAIT_MLS",
+  "_crNpmsUri",
+  "packageName",
+  "_loadNpms",
+  "onLoad",
+  "loadJson",
+  "name",
+  "uri",
+  "loadNpms",
+  "throttleFn"
+ ],
+ "mappings": ";;;;;AAAA;AACA;AAEA,IAAMA,IAAI,GAAG,SAAS;EACpBC,QAAQ,GAAG,iCAAiC;EAC5CC,QAAQ,GAAG,IAAI;EAEfC,UAAU,GAAG,SAAbA,UAAU,CAAGC,WAAW;IAAA,YAAOH,QAAQ,GAAGG,WAAW;EAAA,CAAE;EAEvDC,SAAS,GAAG,SAAZA,SAAS;IAAA,IACTD,WAAW,QAAXA,WAAW;MACXE,MAAM,QAANA,MAAM;IAAA,OACF,IAAAC,oBAAQ,EAAC;MACbC,IAAI,EAAER,IAAI;MACVS,GAAG,EAAEN,UAAU,CAACC,WAAW,CAAC;MAC5BE,MAAM,EAANA;IACF,CAAC,CAAC;EAAA;EAEAI,QAAQ,GAAG,IAAAC,sBAAU,EAACN,SAAS,EAAEH,QAAQ,CAAC;AAAC,eAE9BQ,QAAQ;AAAA"
+}

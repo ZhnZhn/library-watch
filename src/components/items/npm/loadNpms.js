@@ -1,4 +1,4 @@
-import throttleOnce from '../../../utils/throttleOnce';
+import throttleFn from '../../../utils/throttleFn';
 import loadJson from './loadJson';
 
 const NAME = 'Npms.io'
@@ -16,6 +16,6 @@ const NAME = 'Npms.io'
   onLoad
 })
 
-, loadNpms = throttleOnce(_loadNpms, WAIT_MLS);
+, loadNpms = throttleFn(_loadNpms, WAIT_MLS);
 
 export default loadNpms

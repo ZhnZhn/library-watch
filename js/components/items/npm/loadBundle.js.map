@@ -1,0 +1,22 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/items/npm/loadBundle.js"
+ ],
+ "file": "../../../../src/components/items/npm/loadBundle.js",
+ "names": [
+  "NAME",
+  "BUNDLE_URI",
+  "WAIT_MLS",
+  "_crBundleUri",
+  "packageName",
+  "_loadBundle",
+  "onLoad",
+  "loadJson",
+  "name",
+  "uri",
+  "loadBundle",
+  "throttleFn"
+ ],
+ "mappings": ";;;;;AAAA;AACA;AAEA,IAAMA,IAAI,GAAG,kBAAkB;EAC7BC,UAAU,GAAG,4CAA4C;EACzDC,QAAQ,GAAG,IAAI;AAEjB,IAAMC,YAAY,GAAG,SAAfA,YAAY,CAAGC,WAAW;EAAA,YAAOH,UAAU,GAAGG,WAAW;AAAA,CAAE;AAEjE,IAAMC,WAAW,GAAG,SAAdA,WAAW;EAAA,IACfD,WAAW,QAAXA,WAAW;IACXE,MAAM,QAANA,MAAM;EAAA,OACF,IAAAC,oBAAQ,EAAC;IACbC,IAAI,EAAER,IAAI;IACVS,GAAG,EAAEN,YAAY,CAACC,WAAW,CAAC;IAC9BE,MAAM,EAANA;EACF,CAAC,CAAC;AAAA;AAEF,IAAMI,UAAU,GAAG,IAAAC,sBAAU,EAACN,WAAW,EAAEH,QAAQ,CAAC;AAAC,eAEtCQ,UAAU;AAAA"
+}

@@ -1,4 +1,4 @@
-import throttleOnce from '../../../utils/throttleOnce';
+import throttleFn from '../../../utils/throttleFn';
 import loadJson from './loadJson';
 
 const NAME = 'Bundlephobia.com'
@@ -16,6 +16,6 @@ const _loadBundle = ({
   onLoad
 });
 
-const loadBundle = throttleOnce(_loadBundle, WAIT_MLS);
+const loadBundle = throttleFn(_loadBundle, WAIT_MLS);
 
 export default loadBundle
