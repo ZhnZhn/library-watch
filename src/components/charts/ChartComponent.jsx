@@ -2,7 +2,7 @@ import {
 	memo,
 	useRef,
 	useMemo,
-	useEffect,
+	useLayoutEffect,
 	getRefValue,
 	setRefValue
 } from '../uiApi';
@@ -110,7 +110,7 @@ const ChartComponent = memo(({
 			: null
   , [onElementsClick]);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const _chartInst = getRefValue(_refChartInst);
 		if (_chartInst) {
 			if (redraw) {
@@ -123,7 +123,7 @@ const ChartComponent = memo(({
 	})
 
   /*eslint-disable react-hooks/exhaustive-deps */
-  useEffect(() => {
+  useLayoutEffect(() => {
 		_renderChart(_refChartInst, _refCanvas, type, data, options)
 	  return () => {
 			getRefValue(_refChartInst).destroy()
@@ -152,7 +152,7 @@ ChartComp.propTypes = {
 	  'doughnut',
 		'pie',
 		'scatter',
-		'bubble'						
+		'bubble'
 		'radar',
 		'polarArea'
 	]),
