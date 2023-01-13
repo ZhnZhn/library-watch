@@ -9,7 +9,10 @@ import {
 
 import ImArrayUtil from '../../utils/ImArrayUtil';
 import ObjUtil from '../../utils/ObjUtil';
-import ArrayUtil from '../../utils/ArrayUtil';
+import {
+  findArrIndexByProp,
+  checkInArrSameByProp
+} from '../../utils/ArrayUtil';
 
 export const fResultNotFound = (
   itemType,
@@ -84,5 +87,5 @@ export const insertItemInArray = ImArrayUtil.insertItem
 export const findGroup = ObjUtil.findInPropArrayByPropItem.bind(null, 'groups', 'caption')
 export const findList = ObjUtil.findInPropArrayByPropItem.bind(null, 'lists', 'caption')
 
-export const findIndex = ArrayUtil.findIndexByProp.bind(null, 'caption')
-export const checkIsInArraySameCaption = ArrayUtil.checkSameByProp.bind(null, 'caption')
+export const findIndex = findArrIndexByProp.bind(null, 'caption')
+export const checkIsInArraySameCaption = checkInArrSameByProp.bind(null, 'caption')

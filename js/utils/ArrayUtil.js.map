@@ -1,1 +1,20 @@
-{"version":3,"sources":["../../src/utils/ArrayUtil.js"],"names":["ArrayUtil","findIndexByProp","propItem","arr","value","findIndex","item","index","checkSameByProp","i"],"mappings":";;;;AACA,IAAMA,SAAS,GAAG;AAEhBC,EAAAA,eAFgB,2BAECC,QAFD,EAEWC,GAFX,EAEgBC,KAFhB,EAEsB;AACnC,WAAOD,GAAG,CAACE,SAAJ,CAAc,UAACC,IAAD,EAAOC,KAAP,EAAiB;AACnC,aAAOD,IAAI,CAACJ,QAAD,CAAJ,KAAmBE,KAA1B;AACH,KAFO,CAAP;AAGF,GANe;AAShBI,EAAAA,eATgB,2BASAN,QATA,EASUC,GATV,EASeC,KATf,EASqB;AACjC,QAAMG,KAAK,GAAIJ,GAAD,GACLA,GAAG,CAACE,SAAJ,CAAc,UAACC,IAAD,EAAOG,CAAP,EAAa;AACxB,aAAOH,IAAI,CAACJ,QAAD,CAAJ,KAAmBE,KAA1B;AACF,KAFD,CADK,GAIL,CAAC,CAJV;;AAKA,QAAIG,KAAK,KAAK,CAAC,CAAf,EAAkB;AAAE,aAAO,KAAP;AAAc,KAAlC,MACK;AAAC,aAAO,IAAP;AAAa;AACtB;AAjBe,CAAlB;eAqBeP,S","sourcesContent":["\r\nconst ArrayUtil = {\r\n\r\n  findIndexByProp (propItem, arr, value){\r\n     return arr.findIndex((item, index) => {\r\n        return item[propItem] === value;\r\n    })\r\n  },\r\n\r\n\r\n  checkSameByProp(propItem, arr, value){\r\n      const index = (arr)\r\n             ? arr.findIndex((item, i) => {\r\n                  return item[propItem] === value;\r\n               })\r\n             : -1 ;\r\n      if (index === -1) { return false;}\r\n      else {return true;}\r\n  }\r\n\r\n};\r\n\r\nexport default ArrayUtil\r\n"],"file":"ArrayUtil.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/ArrayUtil.js"
+ ],
+ "file": "../../src/utils/ArrayUtil.js",
+ "names": [
+  "findArrIndexByProp",
+  "propItem",
+  "arr",
+  "value",
+  "findIndex",
+  "item",
+  "index",
+  "checkInArrSameByProp",
+  "_itemIndex",
+  "i"
+ ],
+ "mappings": ";;;;AACO,IAAMA,kBAAkB,GAAG,SAArBA,kBAAkB,CAC7BC,QAAQ,EACRC,GAAG,EACHC,KAAK;EAAA,OACFD,GAAG,CAACE,SAAS,CAChB,UAACC,IAAI,EAAEC,KAAK;IAAA,OAAKD,IAAI,CAACJ,QAAQ,CAAC,KAAKE,KAAK;EAAA,EAC1C;AAAA;AAAA;AAEM,IAAMI,oBAAoB,GAAG,SAAvBA,oBAAoB,CAC/BN,QAAQ,EACRC,GAAG,EACHC,KAAK,EACF;EACH,IAAMK,UAAU,GAAGN,GAAG,GAClBA,GAAG,CAACE,SAAS,CACZ,UAACC,IAAI,EAAEI,CAAC;IAAA,OAAKJ,IAAI,CAACJ,QAAQ,CAAC,KAAKE,KAAK;EAAA,EACtC,GACA,CAAC,CAAC;EACN,OAAOK,UAAU,KAAK,CAAC,CAAC;AAC1B,CAAC;AAAA"
+}
