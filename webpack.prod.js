@@ -19,8 +19,7 @@ module.exports = {
             "react-dom", 
             "reflux-core", 
             "chart.js", 
-            "timeago.js", 
-            "localforage", 
+            "timeago.js",             
             "papaparse",
             "raven-js" 
     ],

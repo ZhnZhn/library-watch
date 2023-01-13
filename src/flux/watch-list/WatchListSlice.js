@@ -1,5 +1,7 @@
-import LocalForage from 'localforage';
-
+import {
+  readFromLs,
+  writeToLs
+} from '../../utils/localStorageFn';
 import merge from '../../utils/merge';
 import DateUtils from '../../utils/DateUtils';
 import saveJsonToFile from './saveJsonToFile';
@@ -49,9 +51,16 @@ import {
   deleteItem
 } from './ItemFn';
 
-const STORAGE_KEY = 'WATCH_LIST_PACKAGE'
+const STORAGE_KEY = 'WATCH_LIST'
 , CAPTION_WATCH_SAVE ='Watch List:'
 , WATCH_FILE_NAME = "WatchItems"
+, _crInfoDialogProps = (
+  caption,
+  descr
+) => ({
+   caption,
+   descr
+});
 
 const WatchListSlice = {
 
@@ -59,16 +68,11 @@ const WatchListSlice = {
   isWatchEdited : false,
 
   initWatchList(){
-    LocalForage.getItem(STORAGE_KEY).then((value) => {
-      this.watchList = (value)
-              ? value
-              : WatchDefault;
-      this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
-    })
-    .catch(() => {
-      this.watchList = WatchDefault;
-      this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
-    })
+    const [
+      value
+    ] = readFromLs(STORAGE_KEY);
+    this.watchList = value || WatchDefault
+    this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
   },
   getWatchEdited(){
     return this.isWatchEdited;
@@ -121,23 +125,26 @@ const WatchListSlice = {
 
   onSaveWatch(){
     if (this.isWatchEdited){
-       LocalForage.setItem(STORAGE_KEY , this.watchList)
-          .then(()=>{
-             this.setWatchEdited(false);
-             this.onShowModalDialog(ModalDialog.INFO, {
-                caption : CAPTION_WATCH_SAVE,
-                descr : MSG_WATCH_SAVED
-             })
-             console.log(MSG_WATCH_SAVED);
-          })
-          .catch((error) => {
-             console.log(error);
-          })
+       const err = writeToLs(STORAGE_KEY , this.watchList);
+       if (err) {
+         console.log(err.message);
+       } else {
+         this.setWatchEdited(false);
+         this.onShowModalDialog(
+           ModalDialog.INFO,
+           _crInfoDialogProps(
+              CAPTION_WATCH_SAVE,
+              MSG_WATCH_SAVED
+         ))
+         console.log(MSG_WATCH_SAVED);
+       }
     } else {
-       this.onShowModalDialog(ModalDialog.INFO, {
-          caption : CAPTION_WATCH_SAVE,
-          descr : MSG_WATCH_PREV
-       })
+       this.onShowModalDialog(
+          ModalDialog.INFO,
+          _crInfoDialogProps(
+            CAPTION_WATCH_SAVE,
+            MSG_WATCH_PREV
+       ))
     }
   },
 
