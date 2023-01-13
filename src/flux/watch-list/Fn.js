@@ -7,7 +7,11 @@ import {
   ALERT_DRAG_DROP_ITEM
 } from '../../constants/Msg';
 
-import ImArrayUtil from '../../utils/ImArrayUtil';
+import {
+  imArrPush,
+  imArrInsertItem,
+  imArrFilterByProp  
+} from '../../utils/ImArrayUtil';
 import ObjUtil from '../../utils/ObjUtil';
 import {
   findArrIndexByProp,
@@ -67,8 +71,8 @@ export const fDragDropListExisted = (
  })
  /* for DragDrop */
 
-export const filter = ImArrayUtil.filterByProp.bind(null, 'caption')
-export const getArrayWithObj = ImArrayUtil.push
+export const filter = imArrFilterByProp.bind(null, 'caption')
+export const getArrayWithObj = imArrPush
 
 export const getArrayWithRename = (
   arr,
@@ -81,7 +85,7 @@ export const getArrayWithRename = (
 ]
 
 /* for DragDrop */
-export const insertItemInArray = ImArrayUtil.insertItem
+export const insertItemInArray = imArrInsertItem
 /* for DragDrop */
 
 export const findGroup = ObjUtil.findInPropArrayByPropItem.bind(null, 'groups', 'caption')

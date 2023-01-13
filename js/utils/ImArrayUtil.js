@@ -1,28 +1,25 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var ImArrayUtil = {
-  push: function push(arr, obj) {
-    return arr ? [].concat(arr, [obj]) : [obj];
-  },
-  filterByProp: function filterByProp(prop, arr, value) {
-    return arr.filter(function (obj, index) {
-      return obj[prop] !== value;
-    });
-  },
-  insertItem: function insertItem(item, index, arr) {
-    if (arr === void 0) {
-      arr = [];
-    }
-
-    if (index !== 0) {
-      return [].concat(arr.slice(0, index), [Object.assign({}, item)], arr.slice(index));
-    } else {
-      return [Object.assign({}, item)].concat(arr);
-    }
-  }
+exports.imArrPush = exports.imArrInsertItem = exports.imArrFilterByProp = void 0;
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+var _isArr = Array.isArray;
+var imArrPush = function imArrPush(arr, obj) {
+  return _isArr(arr) ? [].concat(arr, [obj]) : [obj];
 };
-var _default = ImArrayUtil;
-exports["default"] = _default;
+exports.imArrPush = imArrPush;
+var imArrFilterByProp = function imArrFilterByProp(prop, arr, value) {
+  return arr.filter(function (obj, index) {
+    return obj[prop] !== value;
+  });
+};
+exports.imArrFilterByProp = imArrFilterByProp;
+var imArrInsertItem = function imArrInsertItem(item, index, arr) {
+  if (arr === void 0) {
+    arr = [];
+  }
+  return index === 0 ? [(0, _extends2["default"])({}, item)].concat(arr) : [].concat(arr.slice(0, index), [(0, _extends2["default"])({}, item)], arr.slice(index));
+};
+exports.imArrInsertItem = imArrInsertItem;
 //# sourceMappingURL=ImArrayUtil.js.map
