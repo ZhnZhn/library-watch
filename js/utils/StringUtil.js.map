@@ -1,1 +1,15 @@
-{"version":3,"sources":["../../src/utils/StringUtil.js"],"names":["StringUtil","setFirstToUpperCase","msg","charAt","toUpperCase","substring"],"mappings":";;;;AACA,IAAMA,UAAU,GAAG;AAEjBC,EAAAA,mBAFiB,+BAEGC,GAFH,EAEO;AACtB,QAAI,CAACA,GAAL,EAAU;AACR,aAAOA,GAAP;AACD;;AAED,WAAOA,GAAG,CAACC,MAAJ,CAAW,CAAX,EAAcC,WAAd,KAA8BF,GAAG,CAACG,SAAJ,CAAc,CAAd,CAArC;AACD;AARgB,CAAnB;eAYeL,U","sourcesContent":["\r\nconst StringUtil = {\r\n\r\n  setFirstToUpperCase(msg){\r\n    if (!msg) {\r\n      return msg;\r\n    }\r\n    \r\n    return msg.charAt(0).toUpperCase() + msg.substring(1);\r\n  }\r\n\r\n};\r\n\r\nexport default StringUtil\r\n"],"file":"StringUtil.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/StringUtil.js"
+ ],
+ "file": "../../src/utils/StringUtil.js",
+ "names": [
+  "_isStr",
+  "str",
+  "setFirstToUpperCase",
+  "toUpperCase",
+  "substring"
+ ],
+ "mappings": ";;;;AACA,IAAMA,MAAM,GAAG,SAATA,MAAM,CAAGC,GAAG;EAAA,OAAI,OAAOA,GAAG,KAAK,QAAQ;AAAA;AAEtC,IAAMC,mBAAmB,GAAG,SAAtBA,mBAAmB,CAC9BD,GAAG;EAAA,OACAA,GAAG,IAAID,MAAM,CAACC,GAAG,CAAC,GACnBA,GAAG,CAAC,CAAC,CAAC,CAACE,WAAW,EAAE,GAAGF,GAAG,CAACG,SAAS,CAAC,CAAC,CAAC,GACvCH,GAAG;AAAA;AAAC"
+}

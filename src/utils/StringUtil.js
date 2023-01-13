@@ -1,14 +1,8 @@
 
-const StringUtil = {
+const _isStr = str => typeof str === 'string';
 
-  setFirstToUpperCase(msg){
-    if (!msg) {
-      return msg;
-    }
-    
-    return msg.charAt(0).toUpperCase() + msg.substring(1);
-  }
-
-};
-
-export default StringUtil
+export const setFirstToUpperCase = (
+  str
+) => str && _isStr(str)
+  ? str[0].toUpperCase() + str.substring(1)
+  : str;

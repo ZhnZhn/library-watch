@@ -1,5 +1,5 @@
 
-import StringUtil from '../utils/StringUtil';
+import { setFirstToUpperCase } from '../utils/StringUtil';
 
 const BASE = 'https://api.npmjs.org';
 const NPM_PACKAGE = 'https://www.npmjs.com/package/';
@@ -50,7 +50,7 @@ const NpmApi = {
       if (error){
         throw {
            errCaption: REQUEST_PACKAGE,
-           message: StringUtil.setFirstToUpperCase(error)
+           message: setFirstToUpperCase(error)
          };
       }
       return true;

@@ -1,5 +1,5 @@
 
-import StringUtil from '../utils/StringUtil';
+import { setFirstToUpperCase } from '../utils/StringUtil';
 
 const BASE_URL = "https://api.stackexchange.com/2.2"
 , DF_REQUEST_TYPE = 'SE_QUESTIONS';
@@ -45,8 +45,8 @@ const StackExchangeApi = {
      const { error_message, error_name='' } = json || {}
      if (error_message){
        throw {
-          errCaption: StringUtil.setFirstToUpperCase(error_name.replace('_', ' ')),
-          message: StringUtil.setFirstToUpperCase(error_message)
+          errCaption: setFirstToUpperCase(error_name.replace('_', ' ')),
+          message: setFirstToUpperCase(error_message)
        };
      }
      return true;

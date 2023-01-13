@@ -1,16 +1,12 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-var StringUtil = {
-  setFirstToUpperCase: function setFirstToUpperCase(msg) {
-    if (!msg) {
-      return msg;
-    }
-
-    return msg.charAt(0).toUpperCase() + msg.substring(1);
-  }
+exports.setFirstToUpperCase = void 0;
+var _isStr = function _isStr(str) {
+  return typeof str === 'string';
 };
-var _default = StringUtil;
-exports["default"] = _default;
+var setFirstToUpperCase = function setFirstToUpperCase(str) {
+  return str && _isStr(str) ? str[0].toUpperCase() + str.substring(1) : str;
+};
+exports.setFirstToUpperCase = setFirstToUpperCase;
 //# sourceMappingURL=StringUtil.js.map
