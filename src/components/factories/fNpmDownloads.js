@@ -1,6 +1,4 @@
-
-import DateUtils from '../../utils/DateUtils';
-
+import { isWeekend } from '../../utils/DateUtils';
 import NpmDownloads from '../items/npm/NpmDownloads';
 
 const MAX_ITEMS = 30;
@@ -26,7 +24,7 @@ const _transformDownloads = (
       , [y, m, d] = date.split('-');
 
       if ( index % itemStep === 0) {
-         if ( !DateUtils.isWeekend(y, m, d) ){
+         if ( !isWeekend(y, m, d) ){
            labels.push(`${m}-${d}`);
            data.push(value);
          } else if (index-2>-1) {

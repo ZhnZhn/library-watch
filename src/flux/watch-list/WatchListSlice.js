@@ -3,7 +3,7 @@ import {
   writeToLs
 } from '../../utils/localStorageFn';
 import merge from '../../utils/merge';
-import DateUtils from '../../utils/DateUtils';
+import { formatToYYYYMMDD } from '../../utils/DateUtils';
 import saveJsonToFile from './saveJsonToFile';
 
 import { ComponentActions } from '../actions/ComponentActions';
@@ -199,7 +199,7 @@ const WatchListSlice = {
   },
 
   onBackupToJson(){
-    const yyyymmdd = DateUtils.formatToYYYYMMDD(Date.now())
+    const yyyymmdd = formatToYYYYMMDD(Date.now())
     , _fileName = `${WATCH_FILE_NAME}_${yyyymmdd}.json`;
 
     saveJsonToFile(this.watchList, _fileName)

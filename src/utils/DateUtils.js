@@ -1,7 +1,7 @@
 
-const DateUtils = {
-
-isValidDate(str){
+export const isValidDate = (
+	str
+) => {
 	 // STRING FORMAT yyyy-mm-dd
 	 if (!str) { return false; }
 
@@ -27,19 +27,19 @@ isValidDate(str){
 	 if( (m[3].length < 2) || m[3] < 1 || m[3] > 31) { return false;}
 
 	 return true;
-},
+}
 
-isValidDateOrEmpty(str){
-	if ( str === '') {
-		return true;
-	} else {
-		return DateUtils.isValidDate(str);
-	}
-},
+export const isValidDateOrEmpty = (
+	str
+) => str === ''
+  ? true
+	: isValidDate(str)
 
-getFromDate(yearMinus){
+export const getFromDate = (
+	yearMinus
+) => {
 	const dateNow = new Date()
-	    , yearTo = dateNow.getUTCFullYear();
+	, yearTo = dateNow.getUTCFullYear();
 
 	let monthTo = dateNow.getUTCMonth() + 1;
 	if ( monthTo<10 ){
@@ -52,11 +52,11 @@ getFromDate(yearMinus){
 	}
 
 	return (yearTo-yearMinus) + "-" + monthTo + "-" + dayTo;
-},
+}
 
-getToDate(){
+export const getToDate = () => {
 	const dateNow = new Date()
-	    , yearTo = dateNow.getUTCFullYear();
+	, yearTo = dateNow.getUTCFullYear();
 
 	let monthTo = dateNow.getUTCMonth() + 1;
 	if ( monthTo<10 ){
@@ -69,43 +69,52 @@ getToDate(){
 	}
 
 	return yearTo + "-" + monthTo + "-" + dayTo;
-},
+}
 
-formatTo(millisUTC){
+export const formatTo = (millisUTC) => {
   const d = new Date(millisUTC);
   return ("0" + d.getUTCDate()).slice(-2)
-         + "-" + ("0" + (d.getUTCMonth() + 1) ).slice(-2)
-         + "-" + d.getUTCFullYear() ;
-},
+    + "-" + ("0" + (d.getUTCMonth() + 1) ).slice(-2)
+    + "-" + d.getUTCFullYear() ;
+}
 
-formatToYYYYMMDD(millisUTC){
+export const formatToYYYYMMDD = (
+	millisUTC
+) => {
 	const d = new Date(millisUTC);
 	return d.getUTCFullYear()
-	     + ("0" + (d.getUTCMonth() + 1) ).slice(-2)
-			 + ("0" + d.getUTCDate()).slice(-2);
-},
+	  + ("0" + (d.getUTCMonth() + 1) ).slice(-2)
+		+ ("0" + d.getUTCDate()).slice(-2);
+}
 
-toUTCMillis(strDate){
-  const arr = strDate.split('-')
-  return Date.UTC(arr[0], parseInt(arr[1],10)-1, arr[2]);
-},
+export const toUTCMillis = (
+	strDate
+) => {
+  const arr = strDate.split('-');
+  return Date.UTC(
+		arr[0],
+		parseInt(arr[1],10)-1,
+		arr[2]
+	);
+}
 
-toUTCSecond(strDate){
-	return DateUtils.toUTCMillis(strDate)/1000;
-},
+export const toUTCSecond = (
+	strDate
+) => toUTCMillis(strDate)/1000
 
 /* 1970-01-01 */
-isWeekend(year, month, day){
-	const date = new Date(Date.UTC(parseInt(year+'', 10), (parseInt(month+'',10))-1, parseInt(day+'',10)))
-      , weekday = date.getUTCDay() ;
+export const isWeekend = (
+	year,
+	month,
+	day
+) => {
+	const date = new Date(
+		Date.UTC(
+			 parseInt(year+'', 10),
+			 parseInt(month+'',10)-1,
+			 parseInt(day+'',10))
+		)
+  , weekday = date.getUTCDay();
 
-	if (weekday === 0 || weekday === 6){
-		return true;
-	} else {
-		return false;
-	}
+  return weekday === 0 || weekday === 6;
 }
-
-}
-
-export default DateUtils

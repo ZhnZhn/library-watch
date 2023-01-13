@@ -8,14 +8,13 @@ import InputDate from '../../zhn-atoms/InputDate';
 import Row from './Row';
 import Caption from './Caption';
 
-import DateUtils from '../../../utils/DateUtils';
-
-const {
+import {
   getFromDate,
   getToDate,
-  isValidDate,
-} = DateUtils
-, INITIAL_FROM_DATE = getFromDate(1)
+  isValidDate
+} from '../../../utils/DateUtils';
+
+const INITIAL_FROM_DATE = getFromDate(1)
 , INITIAL_TO_DATE = getToDate()
 
 , ERROR_FORMAT = "YYYY-MM-DD format must be"
