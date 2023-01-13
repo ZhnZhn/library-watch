@@ -3,9 +3,10 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.insertItemInArray = exports.getArrayWithRename = exports.getArrayWithObj = exports.findList = exports.findIndex = exports.findGroup = exports.filter = exports.fResultNotFound = exports.fResultListExisted = exports.fResultItemExisted = exports.fResultGroupExisted = exports.fDragDropListExisted = exports.fDragDropItemExisted = exports.checkIsInArraySameCaption = void 0;
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _Msg = require("../../constants/Msg");
 var _ImArrayUtil = require("../../utils/ImArrayUtil");
-var _ObjUtil = _interopRequireDefault(require("../../utils/ObjUtil"));
+var _ObjUtil = require("../../utils/ObjUtil");
 var _ArrayUtil = require("../../utils/ArrayUtil");
 var fResultNotFound = function fResultNotFound(itemType, name) {
   return {
@@ -61,7 +62,7 @@ exports.filter = filter;
 var getArrayWithObj = _ImArrayUtil.imArrPush;
 exports.getArrayWithObj = getArrayWithObj;
 var getArrayWithRename = function getArrayWithRename(arr, index, caption) {
-  return [].concat(arr.slice(0, index), [Object.assign({}, arr[index], {
+  return [].concat(arr.slice(0, index), [(0, _extends2["default"])({}, arr[index], {
     caption: caption
   })], arr.slice(index + 1));
 };
@@ -71,9 +72,9 @@ exports.getArrayWithRename = getArrayWithRename;
 var insertItemInArray = _ImArrayUtil.imArrInsertItem;
 /* for DragDrop */
 exports.insertItemInArray = insertItemInArray;
-var findGroup = _ObjUtil["default"].findInPropArrayByPropItem.bind(null, 'groups', 'caption');
+var findGroup = _ObjUtil.findInPropArrayByPropItem.bind(null, 'groups', 'caption');
 exports.findGroup = findGroup;
-var findList = _ObjUtil["default"].findInPropArrayByPropItem.bind(null, 'lists', 'caption');
+var findList = _ObjUtil.findInPropArrayByPropItem.bind(null, 'lists', 'caption');
 exports.findList = findList;
 var findIndex = _ArrayUtil.findArrIndexByProp.bind(null, 'caption');
 exports.findIndex = findIndex;

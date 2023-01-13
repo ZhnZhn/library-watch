@@ -10,9 +10,11 @@ import {
 import {
   imArrPush,
   imArrInsertItem,
-  imArrFilterByProp  
+  imArrFilterByProp
 } from '../../utils/ImArrayUtil';
-import ObjUtil from '../../utils/ObjUtil';
+import {
+  findInPropArrayByPropItem
+} from '../../utils/ObjUtil';
 import {
   findArrIndexByProp,
   checkInArrSameByProp
@@ -80,7 +82,7 @@ export const getArrayWithRename = (
   caption
 ) => [
    ...arr.slice(0, index),
-   Object.assign({}, arr[index], {caption}),
+   {...arr[index], caption},
    ...arr.slice(index+1)
 ]
 
@@ -88,8 +90,8 @@ export const getArrayWithRename = (
 export const insertItemInArray = imArrInsertItem
 /* for DragDrop */
 
-export const findGroup = ObjUtil.findInPropArrayByPropItem.bind(null, 'groups', 'caption')
-export const findList = ObjUtil.findInPropArrayByPropItem.bind(null, 'lists', 'caption')
+export const findGroup = findInPropArrayByPropItem.bind(null, 'groups', 'caption')
+export const findList = findInPropArrayByPropItem.bind(null, 'lists', 'caption')
 
 export const findIndex = findArrIndexByProp.bind(null, 'caption')
 export const checkIsInArraySameCaption = checkInArrSameByProp.bind(null, 'caption')

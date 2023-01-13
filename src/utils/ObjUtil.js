@@ -1,12 +1,10 @@
 
-const ObjUtil = {
-
-  findInPropArrayByPropItem(propArr, propItem, obj, value){
-    return obj[propArr].find((item, index) => {
-       return item[propItem] === value;
-    })
-  }
-
-};
-
-export default ObjUtil
+export const findInPropArrayByPropItem = (
+  propArr,
+  propItem,
+  obj,
+  value
+) => obj[propArr]
+ .find(
+   (item, index) => item[propItem] === value
+ )
