@@ -2,7 +2,7 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
-var _StringUtil = require("../utils/StringUtil");
+var _strFn = require("../utils/strFn");
 var BASE = 'https://api.npmjs.org';
 var NPM_PACKAGE = 'https://www.npmjs.com/package/';
 var NPM = 'https://www.npmjs.com';
@@ -57,7 +57,7 @@ var NpmApi = {
     if (error) {
       throw {
         errCaption: REQUEST_PACKAGE,
-        message: (0, _StringUtil.setFirstToUpperCase)(error)
+        message: (0, _strFn.setFirstToUpperCase)(error)
       };
     }
     return true;

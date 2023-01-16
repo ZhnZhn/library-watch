@@ -1,5 +1,5 @@
 
-import { setFirstToUpperCase } from '../utils/StringUtil';
+import { setFirstToUpperCase } from '../utils/strFn';
 
 const BASE = 'https://api.npmjs.org';
 const NPM_PACKAGE = 'https://www.npmjs.com/package/';

@@ -1,5 +1,5 @@
 
-import { setFirstToUpperCase } from '../utils/StringUtil';
+import { setFirstToUpperCase } from '../utils/strFn';
 
 const BASE_URL = "https://api.stackexchange.com/2.2"
 , DF_REQUEST_TYPE = 'SE_QUESTIONS';

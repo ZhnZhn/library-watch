@@ -2,7 +2,7 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
-var _StringUtil = require("../utils/StringUtil");
+var _strFn = require("../utils/strFn");
 var _rRequestTypeToUrl2;
 var BASE_URL = "https://api.stackexchange.com/2.2",
   DF_REQUEST_TYPE = 'SE_QUESTIONS';
@@ -52,8 +52,8 @@ var StackExchangeApi = {
       error_name = _ref4$error_name === void 0 ? '' : _ref4$error_name;
     if (error_message) {
       throw {
-        errCaption: (0, _StringUtil.setFirstToUpperCase)(error_name.replace('_', ' ')),
-        message: (0, _StringUtil.setFirstToUpperCase)(error_message)
+        errCaption: (0, _strFn.setFirstToUpperCase)(error_name.replace('_', ' ')),
+        message: (0, _strFn.setFirstToUpperCase)(error_message)
       };
     }
     return true;
