@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.insertItemInArray = exports.getArrayWithRename = exports.getArrayWithObj = exports.findList = exports.findIndex = exports.findGroup = exports.filter = exports.fResultNotFound = exports.fResultListExisted = exports.fResultItemExisted = exports.fResultGroupExisted = exports.fDragDropListExisted = exports.fDragDropItemExisted = exports.checkIsInArraySameCaption = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _Msg = require("../../constants/Msg");
-var _ImArrayUtil = require("../../utils/ImArrayUtil");
+var _imArrFn = require("../../utils/imArrFn");
 var _ObjUtil = require("../../utils/ObjUtil");
 var _arrFn = require("../../utils/arrFn");
 var fResultNotFound = function fResultNotFound(itemType, name) {
@@ -57,9 +57,9 @@ var fDragDropListExisted = function fDragDropListExisted(dropGroupCaption, dragL
 };
 /* for DragDrop */
 exports.fDragDropListExisted = fDragDropListExisted;
-var filter = _ImArrayUtil.imArrFilterByProp.bind(null, 'caption');
+var filter = _imArrFn.imArrFilterByProp.bind(null, 'caption');
 exports.filter = filter;
-var getArrayWithObj = _ImArrayUtil.imArrPush;
+var getArrayWithObj = _imArrFn.imArrPush;
 exports.getArrayWithObj = getArrayWithObj;
 var getArrayWithRename = function getArrayWithRename(arr, index, caption) {
   return [].concat(arr.slice(0, index), [(0, _extends2["default"])({}, arr[index], {
@@ -69,7 +69,7 @@ var getArrayWithRename = function getArrayWithRename(arr, index, caption) {
 
 /* for DragDrop */
 exports.getArrayWithRename = getArrayWithRename;
-var insertItemInArray = _ImArrayUtil.imArrInsertItem;
+var insertItemInArray = _imArrFn.imArrInsertItem;
 /* for DragDrop */
 exports.insertItemInArray = insertItemInArray;
 var findGroup = _ObjUtil.findInPropArrayByPropItem.bind(null, 'groups', 'caption');

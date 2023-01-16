@@ -11,7 +11,7 @@ import {
   imArrPush,
   imArrInsertItem,
   imArrFilterByProp
-} from '../../utils/ImArrayUtil';
+} from '../../utils/imArrFn';
 import {
   findInPropArrayByPropItem
 } from '../../utils/ObjUtil';

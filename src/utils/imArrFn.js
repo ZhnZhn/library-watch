@@ -1,7 +1,7 @@
 
 const _isArr = Array.isArray;
 
-export const  imArrPush = (
+export const imArrPush = (
   arr,
   obj
 ) => _isArr(arr)
@@ -9,14 +9,14 @@ export const  imArrPush = (
   : [obj]
 
 export const imArrFilterByProp = (
-  prop,
+  propName,
   arr,
   value
-) =>  arr.filter(
-  (obj, index) => obj[prop] !== value
+) => arr.filter(
+  (obj, index) => obj[propName] !== value
 )
 
-  export const  imArrInsertItem = (
+export const imArrInsertItem = (
   item,
   index,
   arr=[]
