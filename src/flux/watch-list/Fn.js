@@ -16,9 +16,9 @@ import {
   findInPropArrayByPropItem
 } from '../../utils/ObjUtil';
 import {
-  findArrIndexByProp,
-  checkInArrSameByProp
-} from '../../utils/ArrayUtil';
+  findByPropNameInArrIndex,
+  isInArrByPropName
+} from '../../utils/arrFn';
 
 export const fResultNotFound = (
   itemType,
@@ -93,5 +93,5 @@ export const insertItemInArray = imArrInsertItem
 export const findGroup = findInPropArrayByPropItem.bind(null, 'groups', 'caption')
 export const findList = findInPropArrayByPropItem.bind(null, 'lists', 'caption')
 
-export const findIndex = findArrIndexByProp.bind(null, 'caption')
-export const checkIsInArraySameCaption = checkInArrSameByProp.bind(null, 'caption')
+export const findIndex = findByPropNameInArrIndex.bind(null, 'caption')
+export const checkIsInArraySameCaption = isInArrByPropName.bind(null, 'caption')

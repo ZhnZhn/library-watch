@@ -7,7 +7,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 var _Msg = require("../../constants/Msg");
 var _ImArrayUtil = require("../../utils/ImArrayUtil");
 var _ObjUtil = require("../../utils/ObjUtil");
-var _ArrayUtil = require("../../utils/ArrayUtil");
+var _arrFn = require("../../utils/arrFn");
 var fResultNotFound = function fResultNotFound(itemType, name) {
   return {
     isDone: false,
@@ -76,8 +76,8 @@ var findGroup = _ObjUtil.findInPropArrayByPropItem.bind(null, 'groups', 'caption
 exports.findGroup = findGroup;
 var findList = _ObjUtil.findInPropArrayByPropItem.bind(null, 'lists', 'caption');
 exports.findList = findList;
-var findIndex = _ArrayUtil.findArrIndexByProp.bind(null, 'caption');
+var findIndex = _arrFn.findByPropNameInArrIndex.bind(null, 'caption');
 exports.findIndex = findIndex;
-var checkIsInArraySameCaption = _ArrayUtil.checkInArrSameByProp.bind(null, 'caption');
+var checkIsInArraySameCaption = _arrFn.isInArrByPropName.bind(null, 'caption');
 exports.checkIsInArraySameCaption = checkIsInArraySameCaption;
 //# sourceMappingURL=Fn.js.map
