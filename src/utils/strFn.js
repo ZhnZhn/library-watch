@@ -1,8 +1,10 @@
-
-const _isStr = str => typeof str === 'string';
+export const isNotEmptyStr = (
+  str
+) => typeof str === 'string'
+  && str !== '';
 
 export const setFirstToUpperCase = (
   str
-) => str && _isStr(str)
+) => isNotEmptyStr(str)
   ? str[0].toUpperCase() + str.substring(1)
   : str;

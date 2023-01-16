@@ -1,10 +1,9 @@
-const _isNotEmptyStr = str => str
-  && typeof str === 'string';
+import { isNotEmptyStr } from './strFn';
 
 const formatStrDate = (
   strDate,
   dfValue
-) => _isNotEmptyStr(strDate)
+) => isNotEmptyStr(strDate)
   ? strDate
      .replace('T', ' ')
      .replace('Z', '')

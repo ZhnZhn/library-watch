@@ -2,11 +2,10 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
-
-var formatStrDate = function formatStrDate(strDate) {
-  return ('' + strDate).replace('T', ' ').replace('Z', '');
+var _strFn = require("./strFn");
+var formatStrDate = function formatStrDate(strDate, dfValue) {
+  return (0, _strFn.isNotEmptyStr)(strDate) ? strDate.replace('T', ' ').replace('Z', '') : dfValue || '';
 };
-
 var _default = formatStrDate;
 exports["default"] = _default;
 //# sourceMappingURL=formatStrDate.js.map
