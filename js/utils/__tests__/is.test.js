@@ -44,6 +44,20 @@ describe('isRegularObj', function () {
   });
 });
 describe('isNotEmptyStr', function () {
+  var fn = _is.isStr;
+  test('shoult return true only for string type', function () {
+    expect(fn('str')).toBe(true);
+    expect(fn('')).toBe(true);
+    expect(fn(new String())).toBe(false);
+    expect(fn()).toBe(false);
+    expect(fn(null)).toBe(false);
+    expect(fn(0)).toBe(false);
+    expect(fn(true)).toBe(false);
+    expect(fn({})).toBe(false);
+    expect(fn(function () {})).toBe(false);
+  });
+});
+describe('isNotEmptyStr', function () {
   var fn = _is.isNotEmptyStr;
   test('shoult return true only for not empty string parameter', function () {
     expect(fn('a')).toBe(true);

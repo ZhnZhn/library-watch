@@ -1,4 +1,4 @@
-import { htmlDecode } from '../../utils/DomUtil';
+import { htmlDecode } from '../../utils/domFn';
 import formatDate from '../../utils/formatDate';
 
 import StackTaggedQuestions from '../items/stack/TaggedQuestions';

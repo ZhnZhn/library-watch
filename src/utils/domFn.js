@@ -1,3 +1,5 @@
+import { isStr } from './is';
+
 const HM_ENTITIES = {
   lt: 60,
   gt: 62,
@@ -34,6 +36,6 @@ const HM_ENTITIES = {
 
 export const htmlDecode = (
   rawStr
-) => typeof rawStr === 'string'
+) => isStr(rawStr)
   ? rawStr.replace(REG_EX_CHAR_CODE, _replaceCharCodeByChar)
   : '';

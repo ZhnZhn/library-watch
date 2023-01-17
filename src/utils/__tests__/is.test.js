@@ -2,6 +2,7 @@ import {
   isNumber,
   isArr,
   isRegularObj,
+  isStr,
   isNotEmptyStr
 } from '../is';
 
@@ -49,6 +50,22 @@ describe('isRegularObj',()=>{
     expect(fn('str')).toBe(false)
     expect(fn(true)).toBe(false)
     expect(fn([])).toBe(false)
+    expect(fn(()=>{})).toBe(false)
+  })
+})
+
+describe('isNotEmptyStr',()=>{
+  const fn = isStr;
+  test('shoult return true only for string type', ()=>{
+    expect(fn('str')).toBe(true)
+    expect(fn('')).toBe(true)
+
+    expect(fn(new String())).toBe(false)
+    expect(fn()).toBe(false)
+    expect(fn(null)).toBe(false)
+    expect(fn(0)).toBe(false)
+    expect(fn(true)).toBe(false)
+    expect(fn({})).toBe(false)
     expect(fn(()=>{})).toBe(false)
   })
 })

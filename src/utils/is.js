@@ -8,7 +8,9 @@ export const isRegularObj = (v) => !!v
   && typeof v === 'object'
   && !isArr(v);
 
+export const isStr = v => typeof v === 'string'
+
 export const isNotEmptyStr = (
   str
-) => typeof str === 'string'
+) => isStr(str)
   && str !== '';
