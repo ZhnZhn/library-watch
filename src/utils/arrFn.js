@@ -1,5 +1,4 @@
-
-const _isArr = Array.isArray;
+import { isArr } from './is';
 
 const _fFindInArray = (
   propNameArrFn
@@ -7,7 +6,7 @@ const _fFindInArray = (
   propName,
   arr,
   value
-) => _isArr(arr) ? arr[propNameArrFn](
+) => isArr(arr) ? arr[propNameArrFn](
   item => item[propName] === value
 ) : void 0;
 
@@ -19,7 +18,7 @@ export const isInArrByPropName = (
   arr,
   value
 ) => {
-  const _itemIndex = _isArr(arr)
+  const _itemIndex = isArr(arr)
     ? findByPropNameInArrIndex(propName, arr, value)
     : -1;
   return _itemIndex !== -1;

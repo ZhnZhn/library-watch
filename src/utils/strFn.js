@@ -1,7 +1,4 @@
-export const isNotEmptyStr = (
-  str
-) => typeof str === 'string'
-  && str !== '';
+import { isNotEmptyStr } from './is';
 
 export const setFirstToUpperCase = (
   str

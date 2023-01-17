@@ -1,10 +1,9 @@
-
-const _isArr = Array.isArray;
+import { isArr } from './is';
 
 export const imArrPush = (
   arr,
   obj
-) => _isArr(arr)
+) => isArr(arr)
   ? [...arr, obj]
   : [obj]
 

@@ -2,10 +2,10 @@
 
 exports.__esModule = true;
 exports.isInArrByPropName = exports.findByPropNameInArrItem = exports.findByPropNameInArrIndex = void 0;
-var _isArr = Array.isArray;
+var _is = require("./is");
 var _fFindInArray = function _fFindInArray(propNameArrFn) {
   return function (propName, arr, value) {
-    return _isArr(arr) ? arr[propNameArrFn](function (item) {
+    return (0, _is.isArr)(arr) ? arr[propNameArrFn](function (item) {
       return item[propName] === value;
     }) : void 0;
   };
@@ -15,7 +15,7 @@ exports.findByPropNameInArrIndex = findByPropNameInArrIndex;
 var findByPropNameInArrItem = _fFindInArray('find');
 exports.findByPropNameInArrItem = findByPropNameInArrItem;
 var isInArrByPropName = function isInArrByPropName(propName, arr, value) {
-  var _itemIndex = _isArr(arr) ? findByPropNameInArrIndex(propName, arr, value) : -1;
+  var _itemIndex = (0, _is.isArr)(arr) ? findByPropNameInArrIndex(propName, arr, value) : -1;
   return _itemIndex !== -1;
 };
 exports.isInArrByPropName = isInArrByPropName;

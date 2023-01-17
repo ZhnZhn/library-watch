@@ -1,20 +1,6 @@
 "use strict";
 
 var _strFn = require("../strFn");
-describe('isNotEmptyStr', function () {
-  var fn = _strFn.isNotEmptyStr;
-  test('shoult return true only for not empty string parameter', function () {
-    expect(fn('a')).toBe(true);
-    expect(fn(' ')).toBe(true);
-    expect(fn('')).toBe(false);
-    expect(fn()).toBe(false);
-    expect(fn(null)).toBe(false);
-    expect(fn(0)).toBe(false);
-    expect(fn(true)).toBe(false);
-    expect(fn({})).toBe(false);
-    expect(fn(function () {})).toBe(false);
-  });
-});
 describe('setFirstToUpperCase', function () {
   var fn = _strFn.setFirstToUpperCase;
   test('return str with upperCase first letter', function () {
