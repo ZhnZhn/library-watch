@@ -1,8 +1,16 @@
-const omit = (obj, keys) => {
+
+const _hasOwnProperty = Object.prototype.hasOwnProperty;
+
+const omit = (
+	obj,
+	keys
+) => {
 	const target = {};
 	for (let propName in obj) {
-		if (keys.indexOf(propName) >= 0) continue;
-		if (!Object.prototype.hasOwnProperty.call(obj, propName)) continue;
+		if (keys.indexOf(propName) >= 0
+	     || !_hasOwnProperty.call(obj, propName)) {
+			continue;
+		}
 		target[propName] = obj[propName];
 	}
 	return target;
