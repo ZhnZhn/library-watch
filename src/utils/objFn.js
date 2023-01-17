@@ -1,6 +1,6 @@
 import {
   isRegularObj
-} from './is';
+} from './isTypeFn';
 import {
   findByPropNameInArrItem
 } from './arrFn';

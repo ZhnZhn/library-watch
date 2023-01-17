@@ -1,9 +1,9 @@
 {
  "version": 3,
  "sources": [
-  "../../src/utils/is.js"
+  "../../src/utils/isTypeFn.js"
  ],
- "file": "../../src/utils/is.js",
+ "file": "../../src/utils/isTypeFn.js",
  "names": [
   "isNumber",
   "n",

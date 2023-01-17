@@ -20,4 +20,4 @@ var isNotEmptyStr = function isNotEmptyStr(str) {
   return isStr(str) && str !== '';
 };
 exports.isNotEmptyStr = isNotEmptyStr;
-//# sourceMappingURL=is.js.map
+//# sourceMappingURL=isTypeFn.js.map

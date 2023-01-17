@@ -1,4 +1,4 @@
-import { isStr } from './is';
+import { isStr } from './isTypeFn';
 
 const HM_ENTITIES = {
   lt: 60,

@@ -1,4 +1,4 @@
-import { isArr } from './is';
+import { isArr } from './isTypeFn';
 
 export const imArrPush = (
   arr,

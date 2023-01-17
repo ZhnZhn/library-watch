@@ -1,8 +1,8 @@
 "use strict";
 
-var _is = require("../is");
+var _isTypeFn = require("../isTypeFn");
 describe('isNumber', function () {
-  var fn = _is.isNumber;
+  var fn = _isTypeFn.isNumber;
   test('should return boolean is value type number', function () {
     expect(fn(0.1 + 0.2)).toBe(true);
     expect(fn(NaN)).toBe(false);
@@ -16,7 +16,7 @@ describe('isNumber', function () {
   });
 });
 describe('isArr', function () {
-  var fn = _is.isArr;
+  var fn = _isTypeFn.isArr;
   test('should return boolean is value type array', function () {
     expect(fn([])).toBe(true);
     expect(fn(1)).toBe(false);
@@ -30,7 +30,7 @@ describe('isArr', function () {
   });
 });
 describe('isRegularObj', function () {
-  var fn = _is.isRegularObj;
+  var fn = _isTypeFn.isRegularObj;
   test('should return boolean is value type regular object', function () {
     expect(fn({})).toBe(true);
     expect(fn(1)).toBe(false);
@@ -44,7 +44,7 @@ describe('isRegularObj', function () {
   });
 });
 describe('isNotEmptyStr', function () {
-  var fn = _is.isStr;
+  var fn = _isTypeFn.isStr;
   test('shoult return true only for string type', function () {
     expect(fn('str')).toBe(true);
     expect(fn('')).toBe(true);
@@ -58,7 +58,7 @@ describe('isNotEmptyStr', function () {
   });
 });
 describe('isNotEmptyStr', function () {
-  var fn = _is.isNotEmptyStr;
+  var fn = _isTypeFn.isNotEmptyStr;
   test('shoult return true only for not empty string parameter', function () {
     expect(fn('a')).toBe(true);
     expect(fn(' ')).toBe(true);
@@ -71,4 +71,4 @@ describe('isNotEmptyStr', function () {
     expect(fn(function () {})).toBe(false);
   });
 });
-//# sourceMappingURL=is.test.js.map
+//# sourceMappingURL=isTypeFn.test.js.map

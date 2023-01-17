@@ -4,9 +4,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.imArrPush = exports.imArrInsertItem = exports.imArrFilterByProp = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _is = require("./is");
+var _isTypeFn = require("./isTypeFn");
 var imArrPush = function imArrPush(arr, obj) {
-  return (0, _is.isArr)(arr) ? [].concat(arr, [obj]) : [obj];
+  return (0, _isTypeFn.isArr)(arr) ? [].concat(arr, [obj]) : [obj];
 };
 exports.imArrPush = imArrPush;
 var imArrFilterByProp = function imArrFilterByProp(propName, arr, value) {

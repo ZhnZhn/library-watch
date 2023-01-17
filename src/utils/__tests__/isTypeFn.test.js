@@ -4,7 +4,7 @@ import {
   isRegularObj,
   isStr,
   isNotEmptyStr
-} from '../is';
+} from '../isTypeFn';
 
 describe('isNumber',()=>{
   const fn = isNumber;

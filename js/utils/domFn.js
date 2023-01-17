@@ -2,7 +2,7 @@
 
 exports.__esModule = true;
 exports.htmlDecode = void 0;
-var _is = require("./is");
+var _isTypeFn = require("./isTypeFn");
 var HM_ENTITIES = {
     lt: 60,
     gt: 62,
@@ -24,7 +24,7 @@ var HM_ENTITIES = {
     return _decodeCode ? fromCharCode(_decodeCode) : "&" + decodeCode + ";";
   };
 var htmlDecode = function htmlDecode(rawStr) {
-  return (0, _is.isStr)(rawStr) ? rawStr.replace(REG_EX_CHAR_CODE, _replaceCharCodeByChar) : '';
+  return (0, _isTypeFn.isStr)(rawStr) ? rawStr.replace(REG_EX_CHAR_CODE, _replaceCharCodeByChar) : '';
 };
 exports.htmlDecode = htmlDecode;
 //# sourceMappingURL=domFn.js.map

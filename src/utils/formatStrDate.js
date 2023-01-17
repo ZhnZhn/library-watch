@@ -1,4 +1,4 @@
-import { isNotEmptyStr } from './is';
+import { isNotEmptyStr } from './isTypeFn';
 
 const formatStrDate = (
   strDate,

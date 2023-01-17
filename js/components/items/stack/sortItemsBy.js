@@ -2,14 +2,14 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
-var _is = require("../../../utils/is");
+var _isTypeFn = require("../../../utils/isTypeFn");
 var DF_RESULT = 2;
 var _compareNotNumber = function _compareNotNumber(a, b, dfR) {
   if (dfR === void 0) {
     dfR = DF_RESULT;
   }
-  var isB = (0, _is.isNumber)(b),
-    isA = (0, _is.isNumber)(a);
+  var isB = (0, _isTypeFn.isNumber)(b),
+    isA = (0, _isTypeFn.isNumber)(a);
   if (!isB && !isA) return 0;
   if (isB && !isA) return 1;
   if (!isB && isA) return -1;
@@ -17,9 +17,8 @@ var _compareNotNumber = function _compareNotNumber(a, b, dfR) {
 };
 var _getReputation = function _getReputation(item) {
   var _ref = item || {},
-    _ref$owner = _ref.owner,
-    owner = _ref$owner === void 0 ? {} : _ref$owner;
-  return owner.reputation || 0;
+    owner = _ref.owner;
+  return (owner || {}).reputation || 0;
 };
 var _compareByReputation = function _compareByReputation(a, b) {
   var bN = _getReputation(b),

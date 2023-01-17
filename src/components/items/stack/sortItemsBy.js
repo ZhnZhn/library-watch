@@ -1,7 +1,11 @@
-import { isNumber } from '../../../utils/is';
+import { isNumber } from '../../../utils/isTypeFn';
 
 const DF_RESULT = 2;
-const _compareNotNumber = (a, b, dfR=DF_RESULT) => {
+const _compareNotNumber = (
+  a,
+  b,
+  dfR=DF_RESULT
+) => {
   const isB = isNumber(b)
   , isA = isNumber(a);
 
@@ -11,11 +15,17 @@ const _compareNotNumber = (a, b, dfR=DF_RESULT) => {
   return dfR;
 }
 
-const _getReputation = (item) => {
-  const { owner={} } = item || {};
-  return owner.reputation || 0;
+const _getReputation = (
+  item
+) => {
+  const { owner } = item || {};
+  return (owner || {}).reputation || 0;
 }
-const _compareByReputation = (a, b) => {
+
+const _compareByReputation = (
+  a,
+  b
+) => {
   const bN = _getReputation(b)
   , aN = _getReputation(a)
   , _notNumberResult = _compareNotNumber(aN, bN);
@@ -25,7 +35,9 @@ const _compareByReputation = (a, b) => {
 };
 
 
-const _fCompareBy = (propName) => (a, b) => {
+const _fCompareBy = (
+  propName
+) => (a, b) => {
   const bN = b[propName]
   , aN = a[propName]
   , _notNumberResult = _compareNotNumber(aN, bN);
@@ -40,7 +52,10 @@ const _fCompareBy = (propName) => (a, b) => {
   return bN - aN;
 };
 
-const sortItemsBy = (items, propName) => {
+const sortItemsBy = (
+  items,
+  propName
+) => {
   if (!propName) return items;
   const _compare = propName === 'reputation'
      ? _compareByReputation
