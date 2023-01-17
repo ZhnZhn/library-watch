@@ -6,7 +6,7 @@ exports.insertItemInArray = exports.getArrayWithRename = exports.getArrayWithObj
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _Msg = require("../../constants/Msg");
 var _imArrFn = require("../../utils/imArrFn");
-var _ObjUtil = require("../../utils/ObjUtil");
+var _objFn = require("../../utils/objFn");
 var _arrFn = require("../../utils/arrFn");
 var fResultNotFound = function fResultNotFound(itemType, name) {
   return {
@@ -72,9 +72,9 @@ exports.getArrayWithRename = getArrayWithRename;
 var insertItemInArray = _imArrFn.imArrInsertItem;
 /* for DragDrop */
 exports.insertItemInArray = insertItemInArray;
-var findGroup = _ObjUtil.findInPropArrayByPropItem.bind(null, 'groups', 'caption');
+var findGroup = _objFn.findInPropArrayByPropItem.bind(null, 'groups', 'caption');
 exports.findGroup = findGroup;
-var findList = _ObjUtil.findInPropArrayByPropItem.bind(null, 'lists', 'caption');
+var findList = _objFn.findInPropArrayByPropItem.bind(null, 'lists', 'caption');
 exports.findList = findList;
 var findIndex = _arrFn.findByPropNameInArrIndex.bind(null, 'caption');
 exports.findIndex = findIndex;

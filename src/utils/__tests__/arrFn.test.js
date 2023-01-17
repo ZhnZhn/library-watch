@@ -1,14 +1,28 @@
 import {
   findByPropNameInArrIndex,
+  findByPropNameInArrItem,
   isInArrByPropName
 } from '../arrFn';
 
 const obj0 = {}
 , obj1 = {}
+, item0 = {p1: 'a', p2: 0, p3: obj0}
+, item1 = {p1: 'b', p2: 0, p3: obj1}
 , arr = [
-  {p1: 'a', p2: 0, p3: obj0},
-  {p1: 'b', p2: 0, p3: obj1}
+  item0,
+  item1
 ];
+
+const _testFindInArrEdgeCases = (fn) => {
+  expect(fn('p1', void 0, 'a')).toBe(void 0)
+  expect(fn('p1', null, 'a')).toBe(void 0)
+  expect(fn('p1', 'str', 'a')).toBe(void 0)
+  expect(fn('p1', 1, 'a')).toBe(void 0)
+  expect(fn('p1', true, 'a')).toBe(void 0)
+
+  expect(fn('p1', {}, 'a')).toBe(void 0)
+  expect(fn('p1', ()=>{}, 'a')).toBe(void 0)
+};
 
 describe('findByPropNameInArrIndex', ()=>{
   const fn = findByPropNameInArrIndex;
@@ -21,6 +35,26 @@ describe('findByPropNameInArrIndex', ()=>{
 
     expect(fn('p3', arr, obj0)).toBe(0)
     expect(fn('p3', arr, obj1)).toBe(1)
+  })
+  test('should return void 0 in edge cases',()=>{
+    _testFindInArrEdgeCases(fn)
+  })
+})
+
+describe('findByPropNameInArrItem', ()=>{
+  const fn = findByPropNameInArrItem;
+  test('should return first item by propName and value from array', ()=>{
+    expect(fn('p1', arr, 'a')).toBe(item0)
+    expect(fn('p1', arr, 'b')).toBe(item1)
+    expect(fn('p1', arr, 'c')).toBe(void 0)
+
+    expect(fn('p2', arr, 0)).toBe(item0)
+
+    expect(fn('p3', arr, obj0)).toBe(item0)
+    expect(fn('p3', arr, obj1)).toBe(item1)
+  })
+  test('should return void 0 in edge cases',()=>{
+    _testFindInArrEdgeCases(fn)
   })
 })
 

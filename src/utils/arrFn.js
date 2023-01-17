@@ -1,13 +1,18 @@
 
-export const findByPropNameInArrIndex = (
+const _isArr = Array.isArray;
+
+const _fFindInArray = (
+  propNameArrFn
+) => (
   propName,
   arr,
   value
-) => arr.findIndex(
+) => _isArr(arr) ? arr[propNameArrFn](
   item => item[propName] === value
-)
+) : void 0;
 
-const _isArr = Array.isArray;
+export const findByPropNameInArrIndex = _fFindInArray('findIndex')
+export const findByPropNameInArrItem = _fFindInArray('find')
 
 export const isInArrByPropName = (
   propName,

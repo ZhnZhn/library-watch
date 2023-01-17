@@ -1,14 +1,19 @@
 "use strict";
 
 exports.__esModule = true;
-exports.isInArrByPropName = exports.findByPropNameInArrIndex = void 0;
-var findByPropNameInArrIndex = function findByPropNameInArrIndex(propName, arr, value) {
-  return arr.findIndex(function (item) {
-    return item[propName] === value;
-  });
-};
-exports.findByPropNameInArrIndex = findByPropNameInArrIndex;
+exports.isInArrByPropName = exports.findByPropNameInArrItem = exports.findByPropNameInArrIndex = void 0;
 var _isArr = Array.isArray;
+var _fFindInArray = function _fFindInArray(propNameArrFn) {
+  return function (propName, arr, value) {
+    return _isArr(arr) ? arr[propNameArrFn](function (item) {
+      return item[propName] === value;
+    }) : void 0;
+  };
+};
+var findByPropNameInArrIndex = _fFindInArray('findIndex');
+exports.findByPropNameInArrIndex = findByPropNameInArrIndex;
+var findByPropNameInArrItem = _fFindInArray('find');
+exports.findByPropNameInArrItem = findByPropNameInArrItem;
 var isInArrByPropName = function isInArrByPropName(propName, arr, value) {
   var _itemIndex = _isArr(arr) ? findByPropNameInArrIndex(propName, arr, value) : -1;
   return _itemIndex !== -1;

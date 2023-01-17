@@ -14,7 +14,7 @@ import {
 } from '../../utils/imArrFn';
 import {
   findInPropArrayByPropItem
-} from '../../utils/ObjUtil';
+} from '../../utils/objFn';
 import {
   findByPropNameInArrIndex,
   isInArrByPropName
