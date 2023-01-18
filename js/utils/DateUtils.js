@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.toUTCSecond = exports.toUTCMillis = exports.mlsToDmy = exports.isYmd = exports.isWeekend = exports.getToDate = exports.getFromDate = exports.formatToYYYYMMDD = void 0;
+exports.toUTCSecond = exports.toUTCMillis = exports.mlsToYmd = exports.mlsToDmy = exports.isYmd = exports.isWeekend = exports.getToDate = exports.getFromDate = void 0;
 var _isTypeFn = require("./isTypeFn");
 var MIN_YEAR = 1999;
 var _notInIntervalStrict = function _notInIntervalStrict(n, min, max) {
@@ -76,19 +76,18 @@ var mlsToDmy = function mlsToDmy(mlsUTC) {
   return ("0" + d.getUTCDate()).slice(-2) + "-" + ("0" + (d.getUTCMonth() + 1)).slice(-2) + "-" + d.getUTCFullYear();
 };
 exports.mlsToDmy = mlsToDmy;
-var formatToYYYYMMDD = function formatToYYYYMMDD(mlsUTC) {
-  var _mlsToDmy$split = mlsToDmy(mlsUTC).split('-'),
-    d = _mlsToDmy$split[0],
-    m = _mlsToDmy$split[1],
-    y = _mlsToDmy$split[2];
+var mlsToYmd = function mlsToYmd(mlsUTC) {
+  var dmy = mlsToDmy(mlsUTC);
+  if (dmy === '') {
+    return '';
+  }
+  var _dmy$split = dmy.split('-'),
+    d = _dmy$split[0],
+    m = _dmy$split[1],
+    y = _dmy$split[2];
   return y + "-" + m + "-" + d;
-  /*
-  return d.getUTCFullYear()
-    + ("0" + (d.getUTCMonth() + 1) ).slice(-2)
-  	+ ("0" + d.getUTCDate()).slice(-2);
-  */
 };
-exports.formatToYYYYMMDD = formatToYYYYMMDD;
+exports.mlsToYmd = mlsToYmd;
 var toUTCMillis = function toUTCMillis(strDate) {
   var arr = strDate.split('-');
   return Date.UTC(arr[0], parseInt(arr[1], 10) - 1, arr[2]);

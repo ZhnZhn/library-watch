@@ -105,20 +105,19 @@ export const mlsToDmy = (
     + "-" + d.getUTCFullYear() ;
 }
 
-export const formatToYYYYMMDD = (
+export const mlsToYmd = (
 	mlsUTC
 ) => {
+	const dmy = mlsToDmy(mlsUTC);
+	if (dmy === '') {
+		return '';
+	}
 	const [
 		d,
 		m,
 		y
-	] = mlsToDmy(mlsUTC).split('-');
+	] = dmy.split('-');
 	return `${y}-${m}-${d}`;
-	/*
-	return d.getUTCFullYear()
-	  + ("0" + (d.getUTCMonth() + 1) ).slice(-2)
-		+ ("0" + d.getUTCDate()).slice(-2);
-	*/
 }
 
 export const toUTCMillis = (

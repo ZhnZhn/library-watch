@@ -129,7 +129,7 @@ var WatchListSlice = {
     this._onEditWatch((0, _ListFn.deleteList)(this.watchList, option), _WatchActions.WAT_DELETE_LIST);
   },
   onBackupToJson: function onBackupToJson() {
-    var yyyymmdd = (0, _DateUtils.formatToYYYYMMDD)(Date.now()),
+    var yyyymmdd = (0, _DateUtils.mlsToYmd)(Date.now()),
       _fileName = WATCH_FILE_NAME + "_" + yyyymmdd + ".json";
     (0, _saveJsonToFile["default"])(this.watchList, _fileName);
   },
