@@ -1,33 +1,20 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _react = require("react");
-
+var _uiApi = require("../uiApi");
+var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
+var _useDialog2 = _interopRequireDefault(require("./useDialog"));
+var _useSelectItem2 = _interopRequireDefault(require("./useSelectItem"));
+var _useDialogButtons2 = _interopRequireDefault(require("./useDialogButtons"));
+var _getRefItemValue = _interopRequireDefault(require("./getRefItemValue"));
+var _memoIsShow = _interopRequireDefault(require("./memoIsShow"));
+var _Dialog = _interopRequireDefault(require("./Dialog"));
 var _DialogCell = _interopRequireDefault(require("./DialogCell"));
-
-var _Decorators = _interopRequireDefault(require("./decorators/Decorators"));
-
-var _helperFns = _interopRequireDefault(require("./helperFns/helperFns"));
-
+var _helperFns = require("./helperFns");
 var _jsxRuntime = require("react/jsx-runtime");
-
-var _dec, _class;
-
-var dateConfig = _helperFns["default"].dateConfig,
-    crMenuMore = _helperFns["default"].crMenuMore,
-    crButtons = _helperFns["default"].crButtons,
-    toUTCSecond = _helperFns["default"].toUTCSecond;
-var _sortOptions = [{
+var _SORT_OPTIONS = [{
   caption: "Activity, Recent Day",
   value: "activity"
 }, {
@@ -46,169 +33,92 @@ var _sortOptions = [{
   caption: "Hot Month Tab",
   value: "month"
 }];
-var _initFromDate = dateConfig._initFromDate,
-    _initToDate = dateConfig._initToDate,
-    _onTestDate = dateConfig._onTestDate;
-var DialogType2 = (_dec = _Decorators["default"].dialog, _dec(_class = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(DialogType2, _Component);
-
-  /*
-  static propTypes = {
-    caption: PropTypes.string,
-    requestType: PropTypes.string,
-    oneTitle: PropTypes.string,
-    onePlaceholder: PropTypes.string,
-    isShow: PropTypes.bool,
-    onShow: PropTypes.func
+var _createValidationMessages = function _createValidationMessages(isValid, datesMsg) {
+  var msg = [];
+  if (!isValid) {
+    msg.push(datesMsg);
   }
-  */
-  function DialogType2(props) {
-    var _this;
-
-    _this = _Component.call(this, props) || this;
-
-    _this._handleSelectSortBy = function (item) {
-      _this.sortByItem = item;
-    };
-
-    _this._handleClear = function () {
-      _this.inputOne.setValue('');
-
-      _this.setState({
-        validationMessages: []
-      });
-    };
-
-    _this._handleLoad = function () {
-      _this._handleLoadWithValidation(_this._createValidationMessages(), _this._createLoadOption);
-    };
-
-    _this._createValidationMessages = function () {
-      var msg = [];
-
-      var _this$datesFragment$g = _this.datesFragment.getValidation(),
-          isValid = _this$datesFragment$g.isValid,
-          datesMsg = _this$datesFragment$g.datesMsg;
-
-      if (!isValid) {
-        msg = msg.concat(datesMsg);
+  msg.isValid = msg.length === 0;
+  return msg;
+};
+var DialogType2 = (0, _memoIsShow["default"])(function (_ref) {
+  var isShow = _ref.isShow,
+    caption = _ref.caption,
+    requestType = _ref.requestType,
+    oneTitle = _ref.oneTitle,
+    onePlaceholder = _ref.onePlaceholder,
+    onShow = _ref.onShow,
+    onLoad = _ref.onLoad,
+    onClose = _ref.onClose;
+  var _useToggle = (0, _useToggle2["default"])(),
+    isShowDate = _useToggle[0],
+    toggleIsShowDate = _useToggle[1],
+    _useDialog = (0, _useDialog2["default"])(toggleIsShowDate),
+    MENU_MODEL = _useDialog[0],
+    TOOLBAR_BUTTONS = _useDialog[1],
+    isToolbar = _useDialog[2],
+    isShowLabels = _useDialog[3],
+    _refInputOne = (0, _uiApi.useRef)(),
+    _refInputDates = (0, _uiApi.useRef)(),
+    _useSelectItem = (0, _useSelectItem2["default"])(),
+    _refSortBy = _useSelectItem[0],
+    _hSelectSortBy = _useSelectItem[1],
+    _useDialogButtons = (0, _useDialogButtons2["default"])(function (setValidationMessages, clearValidationMessages) {
+      var repo = (0, _uiApi.getRefValue)(_refInputOne).getValue(),
+        _datesInst = (0, _uiApi.getRefValue)(_refInputDates),
+        _datesInst$getValidat = _datesInst.getValidation(),
+        isValid = _datesInst$getValidat.isValid,
+        datesMsg = _datesInst$getValidat.datesMsg,
+        _datesInst$getValues = _datesInst.getValues(),
+        fromDate = _datesInst$getValues.fromDate,
+        toDate = _datesInst$getValues.toDate,
+        _validationMessage = _createValidationMessages(isValid, datesMsg);
+      if (_validationMessage.isValid) {
+        onLoad({
+          repo: repo,
+          requestType: requestType,
+          sort: (0, _getRefItemValue["default"])(_refSortBy),
+          fromdate: (0, _helperFns.ymdToUTCSecond)(fromDate),
+          todate: (0, _helperFns.ymdToUTCSecond)(toDate)
+        });
+        clearValidationMessages();
+      } else {
+        setValidationMessages(_validationMessage);
       }
-
-      msg.isValid = msg.length === 0 ? true : false;
-      return msg;
-    };
-
-    _this._createLoadOption = function () {
-      var repo = _this.inputOne.getValue(),
-          _this$datesFragment$g2 = _this.datesFragment.getValues(),
-          fromDate = _this$datesFragment$g2.fromDate,
-          toDate = _this$datesFragment$g2.toDate,
-          _fromDate = toUTCSecond(fromDate),
-          _toDate = toUTCSecond(toDate),
-          requestType = _this.props.requestType,
-          value = _this.sortByItem.value;
-
-      return {
-        repo: repo,
-        requestType: requestType,
-        sort: value,
-        fromdate: _fromDate,
-        todate: _toDate
-      };
-    };
-
-    _this._handleClose = function () {
-      _this._handleCloseWithValidation(_this._createValidationMessages);
-    };
-
-    _this._refInputOne = function (c) {
-      return _this.inputOne = c;
-    };
-
-    _this._refDatesFragment = function (c) {
-      return _this.datesFragment = c;
-    };
-
-    _this.stock = null;
-    _this.sortByItem = {};
-    _this.toolbarButtons = _this._createType2WithToolbar(props, {
-      hasDate: true
-    });
-    _this._menuMore = crMenuMore((0, _assertThisInitialized2["default"])(_this), {
-      toggleDates: _this._clickDateWithToolbar,
-      toggleLabels: _this._clickLabelWithToolbar,
-      toggleToolBar: _this._toggleWithToolbar
-    });
-    _this._commandButtons = crButtons({
-      inst: (0, _assertThisInitialized2["default"])(_this)
-    });
-    _this.state = (0, _extends2["default"])({}, _this._withInitialState());
-    return _this;
-  }
-
-  var _proto = DialogType2.prototype;
-
-  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
-    if (this.props !== nextProps) {
-      if (this.props.isShow === nextProps.isShow) {
-        return false;
-      }
-    }
-
-    return true;
-  };
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        caption = _this$props.caption,
-        isShow = _this$props.isShow,
-        onShow = _this$props.onShow,
-        oneTitle = _this$props.oneTitle,
-        onePlaceholder = _this$props.onePlaceholder,
-        _this$state = this.state,
-        isToolbar = _this$state.isToolbar,
-        isShowLabels = _this$state.isShowLabels,
-        isShowDate = _this$state.isShowDate,
-        validationMessages = _this$state.validationMessages;
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_DialogCell["default"].DraggableDialog, {
-      isShow: isShow,
-      caption: caption,
-      menuModel: this._menuMore,
-      commandButtons: this._commandButtons,
-      onShowChart: onShow,
-      onClose: this._handleClose,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].Toolbar, {
-        isShow: isToolbar,
-        buttons: this.toolbarButtons
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].RowInputText, {
-        ref: this._refInputOne,
-        isShowLabel: isShowLabels,
-        caption: oneTitle,
-        placeholder: onePlaceholder,
-        onEnter: this._handleLoad
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].RowInputSelect, {
-        isShowLabel: isShowLabels,
-        caption: "Sort By",
-        placeholder: "Default: Hot Week Tab",
-        options: _sortOptions,
-        onSelect: this._handleSelectSortBy
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].ShowHide, {
-        isShow: isShowDate,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].Dates, {
-          ref: this._refDatesFragment,
-          isShowLabels: isShowLabels,
-          initFromDate: _initFromDate,
-          initToDate: _initToDate,
-          onTestDate: _onTestDate
-        })
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].ValidationMessages, {
-        validationMessages: validationMessages
-      })]
-    });
-  };
-
-  return DialogType2;
-}(_react.Component)) || _class);
+    }, onClose),
+    validationMessages = _useDialogButtons[0],
+    COMMAND_BUTTONS = _useDialogButtons[1],
+    hClose = _useDialogButtons[2],
+    hLoad = _useDialogButtons[3];
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Dialog["default"], {
+    isShow: isShow,
+    isToolbar: isToolbar,
+    caption: caption,
+    menuModel: MENU_MODEL,
+    toolbarButtons: TOOLBAR_BUTTONS,
+    commandButtons: COMMAND_BUTTONS,
+    validationMessages: validationMessages,
+    onShow: onShow,
+    onClose: hClose,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].RowInputText, {
+      ref: _refInputOne,
+      isShowLabel: isShowLabels,
+      caption: oneTitle,
+      placeholder: onePlaceholder,
+      onEnter: hLoad
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].RowInputSelect, {
+      isShowLabel: isShowLabels,
+      caption: "Sort By",
+      placeholder: "Default: Hot Week Tab",
+      options: _SORT_OPTIONS,
+      onSelect: _hSelectSortBy
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].RowInputDatePeriod, {
+      ref: _refInputDates,
+      isShow: isShowDate,
+      isShowLabels: isShowLabels
+    })]
+  });
+});
 var _default = DialogType2;
 exports["default"] = _default;
 //# sourceMappingURL=DialogType2.js.map

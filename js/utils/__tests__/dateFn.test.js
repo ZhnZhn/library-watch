@@ -88,4 +88,21 @@ describe('ymdToMlsUTC', function () {
     expect(fn({})).toBe(NaN);
   });
 });
+describe('ymdToUTCSecond', function () {
+  var fn = _DateUtils.ymdToUTCSecond;
+  test('should return secondsUTC from YYYY-MM-DD string', function () {
+    expect(fn('2018-01-01')).toBe(1514764800);
+    expect(fn('2018-01-10')).toBe(1515542400);
+    expect(fn('2018-10-01')).toBe(1538352000);
+  });
+  test('should return NaN in edge cases', function () {
+    expect(fn('')).toBe(NaN);
+    expect(fn('abc')).toBe(NaN);
+    expect(fn()).toBe(NaN);
+    expect(fn(void 0)).toBe(NaN);
+    expect(fn(1)).toBe(NaN);
+    expect(fn([])).toBe(NaN);
+    expect(fn({})).toBe(NaN);
+  });
+});
 //# sourceMappingURL=dateFn.test.js.map

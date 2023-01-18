@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.ymdToMlsUTC = exports.toUTCSecond = exports.mlsToYmd = exports.mlsToDmy = exports.isYmd = exports.isWeekend = exports.getToDate = exports.getFromDate = void 0;
+exports.ymdToUTCSecond = exports.ymdToMlsUTC = exports.mlsToYmd = exports.mlsToDmy = exports.isYmd = exports.isWeekend = exports.getToDate = exports.getFromDate = void 0;
 var _isTypeFn = require("./isTypeFn");
 var MIN_YEAR = 1999;
 var _notInIntervalStrict = function _notInIntervalStrict(n, min, max) {
@@ -96,12 +96,12 @@ var ymdToMlsUTC = function ymdToMlsUTC(strDate) {
   return Date.UTC(arr[0], parseInt(arr[1], 10) - 1, arr[2]);
 };
 exports.ymdToMlsUTC = ymdToMlsUTC;
-var toUTCSecond = function toUTCSecond(strDate) {
+var ymdToUTCSecond = function ymdToUTCSecond(strDate) {
   return ymdToMlsUTC(strDate) / 1000;
 };
 
 /* 1970-01-01 */
-exports.toUTCSecond = toUTCSecond;
+exports.ymdToUTCSecond = ymdToUTCSecond;
 var isWeekend = function isWeekend(year, month, day) {
   var date = new Date(Date.UTC(parseInt(year + '', 10), parseInt(month + '', 10) - 1, parseInt(day + '', 10))),
     weekday = date.getUTCDay();

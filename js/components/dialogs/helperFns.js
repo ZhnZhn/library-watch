@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.toUTCSecond = void 0;
+exports.ymdToUTCSecond = void 0;
 var _DateUtils = require("../../utils/DateUtils");
-exports.toUTCSecond = _DateUtils.toUTCSecond;
+exports.ymdToUTCSecond = _DateUtils.ymdToUTCSecond;
 //# sourceMappingURL=helperFns.js.map

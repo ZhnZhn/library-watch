@@ -134,7 +134,7 @@ export const ymdToMlsUTC = (
 	);
 }
 
-export const toUTCSecond = (
+export const ymdToUTCSecond = (
 	strDate
 ) => ymdToMlsUTC(strDate)/1000
 

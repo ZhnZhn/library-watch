@@ -12,7 +12,7 @@ import memoIsShow from './memoIsShow';
 import Dialog from './Dialog';
 import D from './DialogCell';
 
-import { toUTCSecond } from './helperFns';
+import { ymdToUTCSecond } from './helperFns';
 
 const _SORT_OPTIONS = [
   { caption: "Activity, Recent Day", value: "activity" },
@@ -85,8 +85,8 @@ const DialogType3 = memoIsShow(({
         requestType,
         intitle,
         sort: getRefItemValue(_refSortBy),
-        fromdate: toUTCSecond(fromDate),
-        todate: toUTCSecond(toDate)
+        fromdate: ymdToUTCSecond(fromDate),
+        todate: ymdToUTCSecond(toDate)
       })
     } else {
       setValidationMessages(_validationMessage)

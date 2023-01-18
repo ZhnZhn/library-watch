@@ -1,1 +1,1 @@
-export { toUTCSecond } from '../../utils/DateUtils';
+export { ymdToUTCSecond } from '../../utils/DateUtils';
