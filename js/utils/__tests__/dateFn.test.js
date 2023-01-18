@@ -71,4 +71,21 @@ describe('mlsToYmd', function () {
     expect(fn(Number.MAX_SAFE_INTEGER)).toBe(EMPTY);
   });
 });
+describe('ymdToMlsUTC', function () {
+  var fn = _DateUtils.ymdToMlsUTC;
+  test('should return mlsUTC from YYYY-MM-DD string', function () {
+    expect(fn('2018-01-01')).toBe(1514764800000);
+    expect(fn('2018-01-10')).toBe(1515542400000);
+    expect(fn('2018-10-01')).toBe(1538352000000);
+  });
+  test('should return NaN in edge cases', function () {
+    expect(fn('')).toBe(NaN);
+    expect(fn('abc')).toBe(NaN);
+    expect(fn()).toBe(NaN);
+    expect(fn(void 0)).toBe(NaN);
+    expect(fn(1)).toBe(NaN);
+    expect(fn([])).toBe(NaN);
+    expect(fn({})).toBe(NaN);
+  });
+});
 //# sourceMappingURL=dateFn.test.js.map

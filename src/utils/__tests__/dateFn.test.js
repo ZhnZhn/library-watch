@@ -1,7 +1,8 @@
 import {
   isYmd,
   mlsToDmy,
-  mlsToYmd
+  mlsToYmd,
+  ymdToMlsUTC
 } from '../DateUtils';
 
 const MIN_YEAR = 1999;
@@ -76,5 +77,23 @@ describe('mlsToYmd',()=>{
     expect(fn('abc')).toBe(EMPTY)
     expect(fn(()=>{})).toBe(EMPTY)
     expect(fn(Number.MAX_SAFE_INTEGER)).toBe(EMPTY)
+  })
+})
+
+describe('ymdToMlsUTC',()=>{
+  const fn = ymdToMlsUTC;
+  test('should return mlsUTC from YYYY-MM-DD string',()=>{
+    expect(fn('2018-01-01')).toBe(1514764800000)
+    expect(fn('2018-01-10')).toBe(1515542400000)
+    expect(fn('2018-10-01')).toBe(1538352000000)
+  })
+  test('should return NaN in edge cases',()=>{
+    expect(fn('')).toBe(NaN)
+    expect(fn('abc')).toBe(NaN)
+    expect(fn()).toBe(NaN)
+    expect(fn(void 0)).toBe(NaN)
+    expect(fn(1)).toBe(NaN)
+    expect(fn([])).toBe(NaN)
+    expect(fn({})).toBe(NaN)
   })
 })

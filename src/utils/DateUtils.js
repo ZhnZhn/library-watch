@@ -120,9 +120,12 @@ export const mlsToYmd = (
 	return `${y}-${m}-${d}`;
 }
 
-export const toUTCMillis = (
+export const ymdToMlsUTC = (
 	strDate
 ) => {
+	if (!isStr(strDate)) {
+		return NaN;
+	}
   const arr = strDate.split('-');
   return Date.UTC(
 		arr[0],
@@ -133,7 +136,7 @@ export const toUTCMillis = (
 
 export const toUTCSecond = (
 	strDate
-) => toUTCMillis(strDate)/1000
+) => ymdToMlsUTC(strDate)/1000
 
 /* 1970-01-01 */
 export const isWeekend = (

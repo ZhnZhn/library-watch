@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.toUTCSecond = exports.toUTCMillis = exports.mlsToYmd = exports.mlsToDmy = exports.isYmd = exports.isWeekend = exports.getToDate = exports.getFromDate = void 0;
+exports.ymdToMlsUTC = exports.toUTCSecond = exports.mlsToYmd = exports.mlsToDmy = exports.isYmd = exports.isWeekend = exports.getToDate = exports.getFromDate = void 0;
 var _isTypeFn = require("./isTypeFn");
 var MIN_YEAR = 1999;
 var _notInIntervalStrict = function _notInIntervalStrict(n, min, max) {
@@ -88,13 +88,16 @@ var mlsToYmd = function mlsToYmd(mlsUTC) {
   return y + "-" + m + "-" + d;
 };
 exports.mlsToYmd = mlsToYmd;
-var toUTCMillis = function toUTCMillis(strDate) {
+var ymdToMlsUTC = function ymdToMlsUTC(strDate) {
+  if (!(0, _isTypeFn.isStr)(strDate)) {
+    return NaN;
+  }
   var arr = strDate.split('-');
   return Date.UTC(arr[0], parseInt(arr[1], 10) - 1, arr[2]);
 };
-exports.toUTCMillis = toUTCMillis;
+exports.ymdToMlsUTC = ymdToMlsUTC;
 var toUTCSecond = function toUTCSecond(strDate) {
-  return toUTCMillis(strDate) / 1000;
+  return ymdToMlsUTC(strDate) / 1000;
 };
 
 /* 1970-01-01 */
