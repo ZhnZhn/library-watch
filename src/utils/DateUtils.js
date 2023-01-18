@@ -138,6 +138,7 @@ export const ymdToUTCSecond = (
 	strDate
 ) => ymdToMlsUTC(strDate)/1000
 
+
 /* 1970-01-01 */
 export const isWeekend = (
 	year,
@@ -148,9 +149,12 @@ export const isWeekend = (
 		Date.UTC(
 			 parseInt(year+'', 10),
 			 parseInt(month+'',10)-1,
-			 parseInt(day+'',10))
-		)
-  , weekday = date.getUTCDay();
+			 parseInt(day+'',10)
+		));
+	if (isNaN(date)) {
+		return false;
+	}
+  const weekday = date.getUTCDay();
 
   return weekday === 0 || weekday === 6;
 }

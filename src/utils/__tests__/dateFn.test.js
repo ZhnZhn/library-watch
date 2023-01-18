@@ -3,7 +3,8 @@ import {
   mlsToDmy,
   mlsToYmd,
   ymdToMlsUTC,
-  ymdToUTCSecond
+  ymdToUTCSecond,
+  isWeekend
 } from '../DateUtils';
 
 const MIN_YEAR = 1999;
@@ -114,5 +115,23 @@ describe('ymdToUTCSecond',()=>{
     expect(fn(1)).toBe(NaN)
     expect(fn([])).toBe(NaN)
     expect(fn({})).toBe(NaN)
+  })
+})
+
+describe('isWeekend',()=>{
+  const fn = isWeekend;
+  test('should return boolean is y,m,d is weekend',()=>{
+    expect(fn(2018,10,6)).toBe(true)
+    expect(fn('2018',10,7)).toBe(true)
+    expect(fn(2018,10,'8')).toBe(false)
+    expect(fn(2018,'10',9)).toBe(false)
+    expect(fn(2018,10,10)).toBe(false)
+    expect(fn(2018,10,11)).toBe(false)
+    expect(fn(2018,10,12)).toBe(false)
+  })
+  test('should return false in edge cases',()=>{
+    expect(fn()).toBe(false)
+    expect(fn('abc','efg',{})).toBe(false)
+    expect(fn(null,null,null)).toBe(false)
   })
 })

@@ -103,8 +103,11 @@ var ymdToUTCSecond = function ymdToUTCSecond(strDate) {
 /* 1970-01-01 */
 exports.ymdToUTCSecond = ymdToUTCSecond;
 var isWeekend = function isWeekend(year, month, day) {
-  var date = new Date(Date.UTC(parseInt(year + '', 10), parseInt(month + '', 10) - 1, parseInt(day + '', 10))),
-    weekday = date.getUTCDay();
+  var date = new Date(Date.UTC(parseInt(year + '', 10), parseInt(month + '', 10) - 1, parseInt(day + '', 10)));
+  if ((0, _isTypeFn.isNaN)(date)) {
+    return false;
+  }
+  var weekday = date.getUTCDay();
   return weekday === 0 || weekday === 6;
 };
 exports.isWeekend = isWeekend;

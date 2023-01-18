@@ -105,4 +105,21 @@ describe('ymdToUTCSecond', function () {
     expect(fn({})).toBe(NaN);
   });
 });
+describe('isWeekend', function () {
+  var fn = _DateUtils.isWeekend;
+  test('should return boolean is y,m,d is weekend', function () {
+    expect(fn(2018, 10, 6)).toBe(true);
+    expect(fn('2018', 10, 7)).toBe(true);
+    expect(fn(2018, 10, '8')).toBe(false);
+    expect(fn(2018, '10', 9)).toBe(false);
+    expect(fn(2018, 10, 10)).toBe(false);
+    expect(fn(2018, 10, 11)).toBe(false);
+    expect(fn(2018, 10, 12)).toBe(false);
+  });
+  test('should return false in edge cases', function () {
+    expect(fn()).toBe(false);
+    expect(fn('abc', 'efg', {})).toBe(false);
+    expect(fn(null, null, null)).toBe(false);
+  });
+});
 //# sourceMappingURL=dateFn.test.js.map
