@@ -2,6 +2,8 @@
 export const isNumber = n => typeof n === 'number'
    && n-n===0
 
+export const isNaN = Number.isNaN   
+
 export const isArr = Array.isArray
 
 export const isRegularObj = (v) => !!v

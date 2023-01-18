@@ -1,5 +1,6 @@
 import {
   isNumber,
+  isNaN,
   isArr,
   isRegularObj,
   isStr,
@@ -12,6 +13,22 @@ describe('isNumber',()=>{
     expect(fn(0.1+0.2)).toBe(true)
 
     expect(fn(NaN)).toBe(false)
+    expect(fn()).toBe(false)
+    expect(fn(null)).toBe(false)
+    expect(fn('str')).toBe(false)
+    expect(fn(true)).toBe(false)
+    expect(fn({})).toBe(false)
+    expect(fn([])).toBe(false)
+    expect(fn(()=>{})).toBe(false)
+  })
+})
+
+describe('isNaN',()=>{
+  const fn = isNaN;
+  test('should return boolean is value NaN',()=>{
+    expect(fn(NaN)).toBe(true)
+
+    expect(fn(0.1)).toBe(false)
     expect(fn()).toBe(false)
     expect(fn(null)).toBe(false)
     expect(fn('str')).toBe(false)

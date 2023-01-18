@@ -1,11 +1,13 @@
 "use strict";
 
 exports.__esModule = true;
-exports.isStr = exports.isRegularObj = exports.isNumber = exports.isNotEmptyStr = exports.isArr = void 0;
+exports.isStr = exports.isRegularObj = exports.isNumber = exports.isNotEmptyStr = exports.isNaN = exports.isArr = void 0;
 var isNumber = function isNumber(n) {
   return typeof n === 'number' && n - n === 0;
 };
 exports.isNumber = isNumber;
+var isNaN = Number.isNaN;
+exports.isNaN = isNaN;
 var isArr = Array.isArray;
 exports.isArr = isArr;
 var isRegularObj = function isRegularObj(v) {
