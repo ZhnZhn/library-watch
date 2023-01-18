@@ -12,7 +12,7 @@ import {
   getFromDate,
   getToDate,
   isYmd
-} from '../../../utils/DateUtils';
+} from '../../../utils/dateFn';
 
 const INITIAL_FROM_DATE = getFromDate(1)
 , INITIAL_TO_DATE = getToDate()

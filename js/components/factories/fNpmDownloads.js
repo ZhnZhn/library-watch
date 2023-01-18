@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _DateUtils = require("../../utils/DateUtils");
+var _dateFn = require("../../utils/dateFn");
 var _NpmDownloads = _interopRequireDefault(require("../items/npm/NpmDownloads"));
 var MAX_ITEMS = 30;
 
@@ -31,7 +31,7 @@ var _transformDownloads = function _transformDownloads(downloads) {
       m = _date$split[1],
       d = _date$split[2];
     if (index % itemStep === 0) {
-      if (!(0, _DateUtils.isWeekend)(y, m, d)) {
+      if (!(0, _dateFn.isWeekend)(y, m, d)) {
         labels.push(m + "-" + d);
         data.push(value);
       } else if (index - 2 > -1) {

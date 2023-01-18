@@ -5,7 +5,7 @@ import {
   ymdToMlsUTC,
   ymdToUTCSecond,
   isWeekend
-} from '../DateUtils';
+} from '../dateFn';
 
 const MIN_YEAR = 1999;
 

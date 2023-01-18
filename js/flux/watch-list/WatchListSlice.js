@@ -6,7 +6,7 @@ exports["default"] = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _localStorageFn = require("../../utils/localStorageFn");
 var _merge = _interopRequireDefault(require("../../utils/merge"));
-var _DateUtils = require("../../utils/DateUtils");
+var _dateFn = require("../../utils/dateFn");
 var _saveJsonToFile = _interopRequireDefault(require("./saveJsonToFile"));
 var _ComponentActions = require("../actions/ComponentActions");
 var _BrowserActions = require("../actions/BrowserActions");
@@ -129,7 +129,7 @@ var WatchListSlice = {
     this._onEditWatch((0, _ListFn.deleteList)(this.watchList, option), _WatchActions.WAT_DELETE_LIST);
   },
   onBackupToJson: function onBackupToJson() {
-    var yyyymmdd = (0, _DateUtils.mlsToYmd)(Date.now()),
+    var yyyymmdd = (0, _dateFn.mlsToYmd)(Date.now()),
       _fileName = WATCH_FILE_NAME + "_" + yyyymmdd + ".json";
     (0, _saveJsonToFile["default"])(this.watchList, _fileName);
   },

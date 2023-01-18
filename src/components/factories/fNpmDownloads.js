@@ -1,4 +1,4 @@
-import { isWeekend } from '../../utils/DateUtils';
+import { isWeekend } from '../../utils/dateFn';
 import NpmDownloads from '../items/npm/NpmDownloads';
 
 const MAX_ITEMS = 30;

@@ -3,7 +3,7 @@ import {
   writeToLs
 } from '../../utils/localStorageFn';
 import merge from '../../utils/merge';
-import { mlsToYmd } from '../../utils/DateUtils';
+import { mlsToYmd } from '../../utils/dateFn';
 import saveJsonToFile from './saveJsonToFile';
 
 import { ComponentActions } from '../actions/ComponentActions';

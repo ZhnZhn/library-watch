@@ -1,9 +1,9 @@
 {
  "version": 3,
  "sources": [
-  "../../src/utils/DateUtils.js"
+  "../../src/utils/dateFn.js"
  ],
- "file": "../../src/utils/DateUtils.js",
+ "file": "../../src/utils/dateFn.js",
  "names": [
   "MIN_YEAR",
   "_notInIntervalStrict",

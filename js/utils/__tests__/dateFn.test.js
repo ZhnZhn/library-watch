@@ -1,9 +1,9 @@
 "use strict";
 
-var _DateUtils = require("../DateUtils");
+var _dateFn = require("../dateFn");
 var MIN_YEAR = 1999;
 describe('isYmd', function () {
-  var fn = _DateUtils.isYmd;
+  var fn = _dateFn.isYmd;
   test('should return true for valid YYYY-MM-DD', function () {
     expect(fn("2010-01-10")).toBe(true);
     expect(fn("2010-10-01")).toBe(true);
@@ -34,7 +34,7 @@ describe('isYmd', function () {
   });
 });
 describe('mlsToDmy', function () {
-  var fn = _DateUtils.mlsToDmy;
+  var fn = _dateFn.mlsToDmy;
   var EMPTY = '';
   test('should format mlsUTC to DD-MM-YYYY string format', function () {
     expect(fn(1514764800000)).toBe('01-01-2018');
@@ -53,7 +53,7 @@ describe('mlsToDmy', function () {
   });
 });
 describe('mlsToYmd', function () {
-  var fn = _DateUtils.mlsToYmd;
+  var fn = _dateFn.mlsToYmd;
   var EMPTY = '';
   test('should format mlsUTC to YYYY-MM-DD string format', function () {
     expect(fn(1514764800000)).toBe('2018-01-01');
@@ -72,7 +72,7 @@ describe('mlsToYmd', function () {
   });
 });
 describe('ymdToMlsUTC', function () {
-  var fn = _DateUtils.ymdToMlsUTC;
+  var fn = _dateFn.ymdToMlsUTC;
   test('should return mlsUTC from YYYY-MM-DD string', function () {
     expect(fn('2018-01-01')).toBe(1514764800000);
     expect(fn('2018-01-10')).toBe(1515542400000);
@@ -89,7 +89,7 @@ describe('ymdToMlsUTC', function () {
   });
 });
 describe('ymdToUTCSecond', function () {
-  var fn = _DateUtils.ymdToUTCSecond;
+  var fn = _dateFn.ymdToUTCSecond;
   test('should return secondsUTC from YYYY-MM-DD string', function () {
     expect(fn('2018-01-01')).toBe(1514764800);
     expect(fn('2018-01-10')).toBe(1515542400);
@@ -106,7 +106,7 @@ describe('ymdToUTCSecond', function () {
   });
 });
 describe('isWeekend', function () {
-  var fn = _DateUtils.isWeekend;
+  var fn = _dateFn.isWeekend;
   test('should return boolean is y,m,d is weekend', function () {
     expect(fn(2018, 10, 6)).toBe(true);
     expect(fn('2018', 10, 7)).toBe(true);

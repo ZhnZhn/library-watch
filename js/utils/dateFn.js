@@ -111,4 +111,4 @@ var isWeekend = function isWeekend(year, month, day) {
   return weekday === 0 || weekday === 6;
 };
 exports.isWeekend = isWeekend;
-//# sourceMappingURL=DateUtils.js.map
+//# sourceMappingURL=dateFn.js.map

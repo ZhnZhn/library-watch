@@ -8,10 +8,10 @@ var _ShowHide = _interopRequireDefault(require("../../zhn-atoms/ShowHide"));
 var _InputDate = _interopRequireDefault(require("../../zhn-atoms/InputDate"));
 var _Row = _interopRequireDefault(require("./Row"));
 var _Caption = _interopRequireDefault(require("./Caption"));
-var _DateUtils = require("../../../utils/DateUtils");
+var _dateFn = require("../../../utils/dateFn");
 var _jsxRuntime = require("react/jsx-runtime");
-var INITIAL_FROM_DATE = (0, _DateUtils.getFromDate)(1),
-  INITIAL_TO_DATE = (0, _DateUtils.getToDate)(),
+var INITIAL_FROM_DATE = (0, _dateFn.getFromDate)(1),
+  INITIAL_TO_DATE = (0, _dateFn.getToDate)(),
   ERROR_FORMAT = "YYYY-MM-DD format must be",
   FROM_DATE = "From Date",
   TO_DATE = "To Date",
@@ -42,7 +42,7 @@ var RowInputDatePeriod = (0, _uiApi.forwardRef)(function (_ref, ref) {
     _ref$initialToDate = _ref.initialToDate,
     initialToDate = _ref$initialToDate === void 0 ? INITIAL_TO_DATE : _ref$initialToDate,
     _ref$onTestDate = _ref.onTestDate,
-    onTestDate = _ref$onTestDate === void 0 ? _DateUtils.isYmd : _ref$onTestDate;
+    onTestDate = _ref$onTestDate === void 0 ? _dateFn.isYmd : _ref$onTestDate;
   var _refFromDate = (0, _uiApi.useRef)(),
     _refToDate = (0, _uiApi.useRef)();
   (0, _uiApi.useImperativeHandle)(ref, function () {
