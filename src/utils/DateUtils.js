@@ -1,5 +1,6 @@
 import {
 	isStr,
+	isNumber,
 	isNaN
 } from './isTypeFn';
 
@@ -89,20 +90,35 @@ export const getToDate = () => {
 	return yearTo + "-" + monthTo + "-" + dayTo;
 }
 
-export const formatTo = (millisUTC) => {
-  const d = new Date(millisUTC);
+export const mlsToDmy = (
+	mlsUTC
+) => {
+	if (!(isNumber(mlsUTC) && isFinite(mlsUTC))) {
+		return '';
+	}
+  const d = new Date(mlsUTC);
+	if (d.toString() === 'Invalid Date') {
+		return '';
+	}
   return ("0" + d.getUTCDate()).slice(-2)
     + "-" + ("0" + (d.getUTCMonth() + 1) ).slice(-2)
     + "-" + d.getUTCFullYear() ;
 }
 
 export const formatToYYYYMMDD = (
-	millisUTC
+	mlsUTC
 ) => {
-	const d = new Date(millisUTC);
+	const [
+		d,
+		m,
+		y
+	] = mlsToDmy(mlsUTC).split('-');
+	return `${y}-${m}-${d}`;
+	/*
 	return d.getUTCFullYear()
 	  + ("0" + (d.getUTCMonth() + 1) ).slice(-2)
 		+ ("0" + d.getUTCDate()).slice(-2);
+	*/
 }
 
 export const toUTCMillis = (

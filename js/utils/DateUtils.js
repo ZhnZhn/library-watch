@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.toUTCSecond = exports.toUTCMillis = exports.isYmd = exports.isWeekend = exports.getToDate = exports.getFromDate = exports.formatToYYYYMMDD = exports.formatTo = void 0;
+exports.toUTCSecond = exports.toUTCMillis = exports.mlsToDmy = exports.isYmd = exports.isWeekend = exports.getToDate = exports.getFromDate = exports.formatToYYYYMMDD = void 0;
 var _isTypeFn = require("./isTypeFn");
 var MIN_YEAR = 1999;
 var _notInIntervalStrict = function _notInIntervalStrict(n, min, max) {
@@ -65,14 +65,28 @@ var getToDate = function getToDate() {
   return yearTo + "-" + monthTo + "-" + dayTo;
 };
 exports.getToDate = getToDate;
-var formatTo = function formatTo(millisUTC) {
-  var d = new Date(millisUTC);
+var mlsToDmy = function mlsToDmy(mlsUTC) {
+  if (!((0, _isTypeFn.isNumber)(mlsUTC) && isFinite(mlsUTC))) {
+    return '';
+  }
+  var d = new Date(mlsUTC);
+  if (d.toString() === 'Invalid Date') {
+    return '';
+  }
   return ("0" + d.getUTCDate()).slice(-2) + "-" + ("0" + (d.getUTCMonth() + 1)).slice(-2) + "-" + d.getUTCFullYear();
 };
-exports.formatTo = formatTo;
-var formatToYYYYMMDD = function formatToYYYYMMDD(millisUTC) {
-  var d = new Date(millisUTC);
-  return d.getUTCFullYear() + ("0" + (d.getUTCMonth() + 1)).slice(-2) + ("0" + d.getUTCDate()).slice(-2);
+exports.mlsToDmy = mlsToDmy;
+var formatToYYYYMMDD = function formatToYYYYMMDD(mlsUTC) {
+  var _mlsToDmy$split = mlsToDmy(mlsUTC).split('-'),
+    d = _mlsToDmy$split[0],
+    m = _mlsToDmy$split[1],
+    y = _mlsToDmy$split[2];
+  return y + "-" + m + "-" + d;
+  /*
+  return d.getUTCFullYear()
+    + ("0" + (d.getUTCMonth() + 1) ).slice(-2)
+  	+ ("0" + d.getUTCDate()).slice(-2);
+  */
 };
 exports.formatToYYYYMMDD = formatToYYYYMMDD;
 var toUTCMillis = function toUTCMillis(strDate) {
