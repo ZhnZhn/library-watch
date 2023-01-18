@@ -42,7 +42,7 @@ var RowInputDatePeriod = (0, _uiApi.forwardRef)(function (_ref, ref) {
     _ref$initialToDate = _ref.initialToDate,
     initialToDate = _ref$initialToDate === void 0 ? INITIAL_TO_DATE : _ref$initialToDate,
     _ref$onTestDate = _ref.onTestDate,
-    onTestDate = _ref$onTestDate === void 0 ? _DateUtils.isValidDate : _ref$onTestDate;
+    onTestDate = _ref$onTestDate === void 0 ? _DateUtils.isYmd : _ref$onTestDate;
   var _refFromDate = (0, _uiApi.useRef)(),
     _refToDate = (0, _uiApi.useRef)();
   (0, _uiApi.useImperativeHandle)(ref, function () {

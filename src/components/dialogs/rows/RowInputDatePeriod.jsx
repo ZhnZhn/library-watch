@@ -11,7 +11,7 @@ import Caption from './Caption';
 import {
   getFromDate,
   getToDate,
-  isValidDate
+  isYmd
 } from '../../../utils/DateUtils';
 
 const INITIAL_FROM_DATE = getFromDate(1)
@@ -37,7 +37,7 @@ const RowInputDatePeriod = forwardRef(({
   msgOnNotValidFormat=DF_MSG_ON_NOT_VALID_FORMAT,
   initialFromDate=INITIAL_FROM_DATE,
   initialToDate=INITIAL_TO_DATE,
-  onTestDate=isValidDate
+  onTestDate=isYmd
 }, ref) => {
   const _refFromDate = useRef()
   , _refToDate = useRef();

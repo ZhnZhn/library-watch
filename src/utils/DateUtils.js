@@ -1,39 +1,57 @@
+import {
+	isStr,
+	isNaN
+} from './isTypeFn';
 
-export const isValidDate = (
-	str
+const MIN_YEAR = 1999;
+
+const _notInIntervalStrict = (
+	n,
+	min,
+	max
+) => isNaN(n) || (n<min || n>max);
+const _notInLengthMinMax = (
+	str,
+	length,
+	min,
+	max
+) =>
+ (isStr(str) && str.length !== length)
+ || _notInIntervalStrict(parseInt(str, 10), min, max);
+
+const _isYmd = (
+	dateStr,
+	nForecastDate=0,
+	minYear=MIN_YEAR
 ) => {
-	 // STRING FORMAT yyyy-mm-dd
-	 if (!str) { return false; }
+	const [
+		yStr,
+		mStr,
+		dStr
+	] = dateStr.split('-')
+  , _nowYear = new Date().getFullYear();
 
-	 if (str.trim().length !== 10) { return false; }
+  return !(_notInLengthMinMax(yStr, 4, minYear, _nowYear + nForecastDate)
+    || _notInLengthMinMax(mStr, 2, 1, 12)
+    || _notInLengthMinMax(dStr, 2, 1, 31));
+};
 
-	 // m[1] is year 'YYYY' * m[2] is month 'MM' * m[3] is day 'DD'
-	 let m = str.match(/(\d{4})-(\d{2})-(\d{2})/);
+//YYYY-MM-DD valid format
+export const isYmd = (
+  str,
+  nForecastDate,
+  minYear
+) => {
+  if (!isStr(str)) {
+	  return false;
+	}
+	const _str = str.trim();
+	if (_str.length !== 10) {
+	  return false;
+	}
 
-	 // STR IS NOT FIT m IS NOT OBJECT
-	 if( m === null || typeof m !== 'object') { return false; }
-
-	 // CHECK m TYPE
-	 if (typeof m !== 'object' && m !== null && m.size!==3) { return false; }
-
-	 let thisYear = new Date().getFullYear();
-	 let minYear = 1999;
-
-	// YEAR CHECK
-	 if( (m[1].length < 4) || m[1] < minYear || m[1] > thisYear) { return false; }
-	// MONTH CHECK
-	 if( (m[2].length < 2) || m[2] < 1 || m[2] > 12) { return false;}
-	// DAY CHECK
-	 if( (m[3].length < 2) || m[3] < 1 || m[3] > 31) { return false;}
-
-	 return true;
+  return _isYmd(_str, nForecastDate, minYear);
 }
-
-export const isValidDateOrEmpty = (
-	str
-) => str === ''
-  ? true
-	: isValidDate(str)
 
 export const getFromDate = (
 	yearMinus

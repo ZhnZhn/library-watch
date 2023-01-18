@@ -1,50 +1,42 @@
 "use strict";
 
 exports.__esModule = true;
-exports.toUTCSecond = exports.toUTCMillis = exports.isWeekend = exports.isValidDateOrEmpty = exports.isValidDate = exports.getToDate = exports.getFromDate = exports.formatToYYYYMMDD = exports.formatTo = void 0;
-var isValidDate = function isValidDate(str) {
-  // STRING FORMAT yyyy-mm-dd
-  if (!str) {
-    return false;
-  }
-  if (str.trim().length !== 10) {
-    return false;
-  }
-
-  // m[1] is year 'YYYY' * m[2] is month 'MM' * m[3] is day 'DD'
-  var m = str.match(/(\d{4})-(\d{2})-(\d{2})/);
-
-  // STR IS NOT FIT m IS NOT OBJECT
-  if (m === null || typeof m !== 'object') {
-    return false;
-  }
-
-  // CHECK m TYPE
-  if (typeof m !== 'object' && m !== null && m.size !== 3) {
-    return false;
-  }
-  var thisYear = new Date().getFullYear();
-  var minYear = 1999;
-
-  // YEAR CHECK
-  if (m[1].length < 4 || m[1] < minYear || m[1] > thisYear) {
-    return false;
-  }
-  // MONTH CHECK
-  if (m[2].length < 2 || m[2] < 1 || m[2] > 12) {
-    return false;
-  }
-  // DAY CHECK
-  if (m[3].length < 2 || m[3] < 1 || m[3] > 31) {
-    return false;
-  }
-  return true;
+exports.toUTCSecond = exports.toUTCMillis = exports.isYmd = exports.isWeekend = exports.getToDate = exports.getFromDate = exports.formatToYYYYMMDD = exports.formatTo = void 0;
+var _isTypeFn = require("./isTypeFn");
+var MIN_YEAR = 1999;
+var _notInIntervalStrict = function _notInIntervalStrict(n, min, max) {
+  return (0, _isTypeFn.isNaN)(n) || n < min || n > max;
 };
-exports.isValidDate = isValidDate;
-var isValidDateOrEmpty = function isValidDateOrEmpty(str) {
-  return str === '' ? true : isValidDate(str);
+var _notInLengthMinMax = function _notInLengthMinMax(str, length, min, max) {
+  return (0, _isTypeFn.isStr)(str) && str.length !== length || _notInIntervalStrict(parseInt(str, 10), min, max);
 };
-exports.isValidDateOrEmpty = isValidDateOrEmpty;
+var _isYmd = function _isYmd(dateStr, nForecastDate, minYear) {
+  if (nForecastDate === void 0) {
+    nForecastDate = 0;
+  }
+  if (minYear === void 0) {
+    minYear = MIN_YEAR;
+  }
+  var _dateStr$split = dateStr.split('-'),
+    yStr = _dateStr$split[0],
+    mStr = _dateStr$split[1],
+    dStr = _dateStr$split[2],
+    _nowYear = new Date().getFullYear();
+  return !(_notInLengthMinMax(yStr, 4, minYear, _nowYear + nForecastDate) || _notInLengthMinMax(mStr, 2, 1, 12) || _notInLengthMinMax(dStr, 2, 1, 31));
+};
+
+//YYYY-MM-DD valid format
+var isYmd = function isYmd(str, nForecastDate, minYear) {
+  if (!(0, _isTypeFn.isStr)(str)) {
+    return false;
+  }
+  var _str = str.trim();
+  if (_str.length !== 10) {
+    return false;
+  }
+  return _isYmd(_str, nForecastDate, minYear);
+};
+exports.isYmd = isYmd;
 var getFromDate = function getFromDate(yearMinus) {
   var dateNow = new Date(),
     yearTo = dateNow.getUTCFullYear();
