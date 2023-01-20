@@ -54,41 +54,22 @@ export const isYmd = (
   return _isYmd(_str, nForecastDate, minYear);
 }
 
+const _getYmdUTC = (
+  d,
+  yearFromDate
+) => (d.getUTCFullYear()-yearFromDate)
+  + "-" + ("0"+(d.getUTCMonth() + 1)).slice(-2)
+  + "-" + ("0"+d.getUTCDate()).slice(-2);
+
+const DF_YEAR_FROM_DATE = 2;
 export const getFromDate = (
-	yearMinus
+  yearFromDate=DF_YEAR_FROM_DATE
 ) => {
-	const dateNow = new Date()
-	, yearTo = dateNow.getUTCFullYear();
-
-	let monthTo = dateNow.getUTCMonth() + 1;
-	if ( monthTo<10 ){
-		monthTo = "0" + monthTo;
-	}
-
-	let dayTo = dateNow.getUTCDate();
-	if ( dayTo<10 ){
-		dayTo = "0" + dayTo;
-	}
-
-	return (yearTo-yearMinus) + "-" + monthTo + "-" + dayTo;
+	const dNow = new Date();
+	return _getYmdUTC(dNow, yearFromDate);
 }
 
-export const getToDate = () => {
-	const dateNow = new Date()
-	, yearTo = dateNow.getUTCFullYear();
-
-	let monthTo = dateNow.getUTCMonth() + 1;
-	if ( monthTo<10 ){
-		monthTo = "0" + monthTo;
-	}
-
-	let dayTo = dateNow.getUTCDate();
-	if ( dayTo<10 ){
-		dayTo = "0" + dayTo;
-	}
-
-	return yearTo + "-" + monthTo + "-" + dayTo;
-}
+export const getToDate = () => getFromDate(0)
 
 export const mlsToDmy = (
 	mlsUTC

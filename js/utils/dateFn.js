@@ -37,32 +37,20 @@ var isYmd = function isYmd(str, nForecastDate, minYear) {
   return _isYmd(_str, nForecastDate, minYear);
 };
 exports.isYmd = isYmd;
-var getFromDate = function getFromDate(yearMinus) {
-  var dateNow = new Date(),
-    yearTo = dateNow.getUTCFullYear();
-  var monthTo = dateNow.getUTCMonth() + 1;
-  if (monthTo < 10) {
-    monthTo = "0" + monthTo;
+var _getYmdUTC = function _getYmdUTC(d, yearFromDate) {
+  return d.getUTCFullYear() - yearFromDate + "-" + ("0" + (d.getUTCMonth() + 1)).slice(-2) + "-" + ("0" + d.getUTCDate()).slice(-2);
+};
+var DF_YEAR_FROM_DATE = 2;
+var getFromDate = function getFromDate(yearFromDate) {
+  if (yearFromDate === void 0) {
+    yearFromDate = DF_YEAR_FROM_DATE;
   }
-  var dayTo = dateNow.getUTCDate();
-  if (dayTo < 10) {
-    dayTo = "0" + dayTo;
-  }
-  return yearTo - yearMinus + "-" + monthTo + "-" + dayTo;
+  var dNow = new Date();
+  return _getYmdUTC(dNow, yearFromDate);
 };
 exports.getFromDate = getFromDate;
 var getToDate = function getToDate() {
-  var dateNow = new Date(),
-    yearTo = dateNow.getUTCFullYear();
-  var monthTo = dateNow.getUTCMonth() + 1;
-  if (monthTo < 10) {
-    monthTo = "0" + monthTo;
-  }
-  var dayTo = dateNow.getUTCDate();
-  if (dayTo < 10) {
-    dayTo = "0" + dayTo;
-  }
-  return yearTo + "-" + monthTo + "-" + dayTo;
+  return getFromDate(0);
 };
 exports.getToDate = getToDate;
 var mlsToDmy = function mlsToDmy(mlsUTC) {
