@@ -1,6 +1,8 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 var _dateFn = require("../dateFn");
+var _dateFnWithMock = _interopRequireDefault(require("./dateFnWithMock"));
 var MIN_YEAR = 1999;
 describe('isYmd', function () {
   var fn = _dateFn.isYmd;
@@ -122,4 +124,5 @@ describe('isWeekend', function () {
     expect(fn(null, null, null)).toBe(false);
   });
 });
+(0, _dateFnWithMock["default"])();
 //# sourceMappingURL=dateFn.test.js.map

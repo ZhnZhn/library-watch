@@ -7,6 +7,8 @@ import {
   isWeekend
 } from '../dateFn';
 
+import dateFnWithMock from './dateFnWithMock';
+
 const MIN_YEAR = 1999;
 
 describe('isYmd',()=>{
@@ -135,3 +137,5 @@ describe('isWeekend',()=>{
     expect(fn(null,null,null)).toBe(false)
   })
 })
+
+dateFnWithMock()
