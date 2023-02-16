@@ -1,4 +1,4 @@
-import { useCallback } from '../uiApi';
+import { useMemo } from '../uiApi';
 
 import { BrowserActions } from '../../flux/actions/BrowserActions';
 import { ComponentActions } from '../../flux/actions/ComponentActions';
@@ -9,6 +9,12 @@ import LoadingProgress from './LoadingProgress';
 import IconAppLogo from './IconAppLogo';
 import AppLabel from './AppLabel';
 import LimitRemainingLabel from './LimitRemainingLabel';
+
+import {
+  HK_LIBRARY,
+  HK_WATCH,
+  HK_ABOUT
+} from '../hotkeys/hotkeys';
 
 const TITLE = "Library Watch v0.12.0"
 
@@ -44,15 +50,20 @@ const TITLE = "Library Watch v0.12.0"
   rowClass: 'menu-item'
 };
 
-
-
-const HeaderBar = ({ store })  => {
-  const _hClickLibrary = useCallback(() => {
-    BrowserActions.showBrowserDynamic(BROWSER_CONFIG_LIBRARY);
-  }, [])
-  , _hClickWatch = useCallback(() => {
-    BrowserActions.showBrowser(BT.WATCH_LIST);
-  }, []);
+const HeaderBar = ({
+  store
+})  => {
+  const [
+    _hClickLibrary,
+    _hClickWatch
+  ] = useMemo(() => [
+    () => {
+      BrowserActions.showBrowserDynamic(BROWSER_CONFIG_LIBRARY);
+    },
+    () => {
+      BrowserActions.showBrowser(BT.WATCH_LIST);
+    }
+ ], []);
 
   return (
   <div className={CL_HEADER} style={S_ROOT_DIV}>
@@ -68,15 +79,15 @@ const HeaderBar = ({ store })  => {
      <A.FlatButton
         className={CL_LIBRARY}
         caption="Library"
-        title="Click to show library browser"
-        accessKey="l"
+        title="Library Browser"
+        hotKey={HK_LIBRARY}
         timeout={0}
         onClick={_hClickLibrary}
      />
      <A.FlatButton
         caption="Watch"
-        title="Click to show watch browser"
-        accessKey="w"
+        title="Watch Browser"
+        hotKey={HK_WATCH}
         timeout={0}
         onClick={_hClickWatch}
      />
@@ -87,8 +98,8 @@ const HeaderBar = ({ store })  => {
      <A.FlatButton
         className={CL_ABOUT}
         style={S_BT_ABOUT}
-        title="About web app Library Watch"
-        accessKey="a"
+        title="About webapp Library Watch"
+        hotKey={HK_ABOUT}
         timeout={0}
         onClick={ComponentActions.showAbout}
      >
