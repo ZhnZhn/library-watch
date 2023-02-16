@@ -1,0 +1,27 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hotkeys/useHotKeys.js"
+ ],
+ "file": "../../../src/components/hotkeys/useHotKeys.js",
+ "names": [
+  "_onKeyDown",
+  "evt",
+  "altKey",
+  "metaKey",
+  "key",
+  "_onKeyDownHotKey",
+  "hmHotKeys",
+  "toUpperCase",
+  "stopImmediatePropagation",
+  "useHotKeys",
+  "useEffect",
+  "HAS_HOT_KEYS",
+  "document",
+  "addEventListener",
+  "HOT_KEY_EVENT",
+  "clearHotKeys",
+  "removeEventListener"
+ ],
+ "mappings": ";;;;AAAA;AACA;AAOA,IAAMA,UAAU,GAAG,SAAbA,UAAU,CAAIC,GAAG,EAAK;EAC1B,IAAI,CAACA,GAAG,CAACC,MAAM,IAAID,GAAG,CAACE,OAAO,KAAKF,GAAG,CAACG,GAAG,EAAE;IAC1C,IAAMC,gBAAgB,GAAGC,oBAAS,CAACL,GAAG,CAACG,GAAG,CAACG,WAAW,EAAE,CAAC;IACzD,IAAI,OAAOF,gBAAgB,KAAK,UAAU,EAAE;MAC1CJ,GAAG,CAACO,wBAAwB,EAAE;MAC9BH,gBAAgB,EAAE;IACpB;EACF;AACF,CAAC;AAED,IAAMI,UAAU,GAAG,SAAbA,UAAU,GAAS;EACvB,IAAAC,gBAAS,EAAC;IAAA,OAAMC,uBAAY,IAEtBC,QAAQ,CAACC,gBAAgB,CAACC,wBAAa,EAAEd,UAAU,EAAE,KAAK,CAAC,EAC3D,YAAM;MACJ,IAAAe,uBAAY,GAAE;MACdH,QAAQ,CAACI,mBAAmB,CAACF,wBAAa,EAAEd,UAAU,EAAE,KAAK,CAAC;IAChE,CAAC,IAEF,KAAK,CAAC;EAAA,GACT,EAAE,CAAC;AACP,CAAC;AAAA,eAEcS,UAAU;AAAA"
+}

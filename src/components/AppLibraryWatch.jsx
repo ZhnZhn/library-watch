@@ -12,6 +12,8 @@ import {
   CAT_SHOW_MODAL_DIALOG
 } from '../flux/actions/ComponentActions';
 
+import useHotKeys from './hotkeys/useHotKeys';
+
 import HeaderBar from './header/HeaderBar';
 import About from './about/About';
 import BrowserContainer from './browser-container/BrowserContainer';
@@ -20,31 +22,34 @@ import DialogContainer from './zhn-containers/DialogContainer';
 
 import RouterModalDialog from './dialogs/RouterModalDialog';
 
-const AppLibraryWatch = (props) => (
-  <div>
-    <HeaderBar store={Store} />
-    <div className="component-container">
-       <BrowserContainer
-          store={Store}
-          showBrowserAction={BAT_SHOW_BROWSER}
-          initBrowserAction={BAT_INIT_BROWSER_DYNAMIC}
-          updateWatchAction={BAT_UPDATE_WATCH_BROWSER}
-          toggleWatchDbBrowserAction={BAT_TOGGLE_WATCH_DB_BROWSER}
-          initDialogAction={CAT_INIT_AND_SHOW_DIALOG}
-          showDialogAction={CAT_SHOW_DIALOG}
-       />
-       <About store={Store} />
-       <ComponentHrzContainer
-          store={Store}
-          initShowAction={CHAT_INIT_AND_SHOW_CHART}
-       />
+const AppLibraryWatch = (props) => {
+  useHotKeys()
+  return (
+    <div>
+      <HeaderBar store={Store} />
+      <div className="component-container">
+         <BrowserContainer
+            store={Store}
+            showBrowserAction={BAT_SHOW_BROWSER}
+            initBrowserAction={BAT_INIT_BROWSER_DYNAMIC}
+            updateWatchAction={BAT_UPDATE_WATCH_BROWSER}
+            toggleWatchDbBrowserAction={BAT_TOGGLE_WATCH_DB_BROWSER}
+            initDialogAction={CAT_INIT_AND_SHOW_DIALOG}
+            showDialogAction={CAT_SHOW_DIALOG}
+         />
+         <About store={Store} />
+         <ComponentHrzContainer
+            store={Store}
+            initShowAction={CHAT_INIT_AND_SHOW_CHART}
+         />
+      </div>
+      <DialogContainer
+         store={Store}
+         showAction={CAT_SHOW_MODAL_DIALOG}
+         routerDialog={RouterModalDialog}
+      />
     </div>
-    <DialogContainer
-       store={Store}
-       showAction={CAT_SHOW_MODAL_DIALOG}
-       routerDialog={RouterModalDialog}
-    />
-  </div>
-);
+  );
+}
 
 export default AppLibraryWatch
