@@ -4,12 +4,13 @@ import {
 } from '../uiApi';
 
 import crCn from '../zhn-utils/crCn';
+import useHotKey from '../hotkeys/useHotKey';
 import BtCaption from './BtCaption';
 
 const CL_ARROW = "arrow-down"
 , CL_BT_FLAT = 'bt-flat'
 , CL_BT_FLAT_CAPTION = 'bt-flat__caption'
-, S_PRIMARY = { color: '#607d8b' };
+, S_PRIMARY_COLOR = { color: '#607d8b' };
 
 const FlatButton = ({
   refBt,
@@ -20,7 +21,7 @@ const FlatButton = ({
   isPrimary,
   title='',
   caption,
-  accessKey,
+  hotKey,
   children,
   onClick
 }) => {
@@ -40,24 +41,27 @@ const FlatButton = ({
   }, [timeout, onClick])
   , _className = crCn(CL_BT_FLAT, className)
   , _style = isPrimary
-       ? {...style, ...S_PRIMARY}
+       ? {...style, ...S_PRIMARY_COLOR}
        : style
-  , _title = accessKey
-       ? `${title} [${accessKey}]`
+  , _title = hotKey
+       ? `${title} [${hotKey.toLowerCase()}]`
        : title;
+
+  useHotKey(hotKey, onClick)
+
   return (
     <button
       ref={refBt}
+      type="button"
       className={_className}
       style={_style}
-      accessKey={accessKey}
       title={_title}
       onClick={_hClick}
     >
       <BtCaption
         className={CL_BT_FLAT_CAPTION}
         caption={caption}
-        accessKey={accessKey}
+        hotKey={hotKey}
       >
         {isArrow && <span className={CL_ARROW} />}
       </BtCaption>

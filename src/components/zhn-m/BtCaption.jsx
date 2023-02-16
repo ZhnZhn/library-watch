@@ -1,12 +1,26 @@
+import { HAS_TOUCH_EVENTS } from '../has';
+
 const S_ACCESS_KEY = { textDecoration: 'underline' };
 
-const _crAccessKeyIndex = (accessKey, caption) => accessKey
-  ? caption.toLowerCase().indexOf(accessKey)
+const _crHotKeyIndex = (
+  hotKey,
+  caption
+) => hotKey
+  ? caption.toUpperCase().indexOf(hotKey)
   : -1;
 
-const _crCaption = (accessKey, caption) => {
-  const index = _crAccessKeyIndex(accessKey, caption);
-  if (index === -1) { return caption; }
+const _crCaption = (
+  hotKey,
+  caption
+) => {
+  if (HAS_TOUCH_EVENTS || !hotKey) {
+    return caption;
+  }
+
+  const index = _crHotKeyIndex(hotKey, caption);
+  if (index === -1) {
+    return caption;
+  }
 
   const _before = caption.substring(0, index)
   , _key = caption.substring(index, index+1)
@@ -23,14 +37,14 @@ const _crCaption = (accessKey, caption) => {
 const BtCaption = ({
   className,
   caption,
-  accessKey,
+  hotKey,
   children
 }) => {
   if (!caption) { return null; }
 
   return (
     <span className={className}>
-      {_crCaption(accessKey, caption)}
+      {_crCaption(hotKey, caption)}
       {children}
     </span>
   );

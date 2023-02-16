@@ -2,28 +2,25 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
-
+var _has = require("../has");
 var _jsxRuntime = require("react/jsx-runtime");
-
 var S_ACCESS_KEY = {
   textDecoration: 'underline'
 };
-
-var _crAccessKeyIndex = function _crAccessKeyIndex(accessKey, caption) {
-  return accessKey ? caption.toLowerCase().indexOf(accessKey) : -1;
+var _crHotKeyIndex = function _crHotKeyIndex(hotKey, caption) {
+  return hotKey ? caption.toUpperCase().indexOf(hotKey) : -1;
 };
-
-var _crCaption = function _crCaption(accessKey, caption) {
-  var index = _crAccessKeyIndex(accessKey, caption);
-
+var _crCaption = function _crCaption(hotKey, caption) {
+  if (_has.HAS_TOUCH_EVENTS || !hotKey) {
+    return caption;
+  }
+  var index = _crHotKeyIndex(hotKey, caption);
   if (index === -1) {
     return caption;
   }
-
   var _before = caption.substring(0, index),
-      _key = caption.substring(index, index + 1),
-      _after = caption.substring(index + 1);
-
+    _key = caption.substring(index, index + 1),
+    _after = caption.substring(index + 1);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       children: _before
@@ -35,23 +32,19 @@ var _crCaption = function _crCaption(accessKey, caption) {
     })]
   });
 };
-
 var BtCaption = function BtCaption(_ref) {
   var className = _ref.className,
-      caption = _ref.caption,
-      accessKey = _ref.accessKey,
-      children = _ref.children;
-
+    caption = _ref.caption,
+    hotKey = _ref.hotKey,
+    children = _ref.children;
   if (!caption) {
     return null;
   }
-
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
     className: className,
-    children: [_crCaption(accessKey, caption), children]
+    children: [_crCaption(hotKey, caption), children]
   });
 };
-
 var _default = BtCaption;
 exports["default"] = _default;
 //# sourceMappingURL=BtCaption.js.map
