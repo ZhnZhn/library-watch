@@ -1,30 +1,26 @@
 .header {
+  display: flex;
   position: relative;
   width: 100%;
   background-color: rgba(77, 77, 77, 1);
   min-height: 46px;
   max-height: 46px;
-  padding-top: 8px;
-  padding-left: 12px;
+  padding: 8px 10px 0 12px;  
   box-shadow: rgba(0,0,0, 0.14) 0 0 4px, rgba(0,0,0, 0.6) 0 4px 8px;
   z-index: 50;
 }
-.header__icon-app {
-  position: absolute;
-  top: 7px;
-  left: 16px;
+.header__icon-app { 
   display: inline-block;
   width: 32px;
   height: 32px;
+  margin-right: 10px;
   cursor: default;
 }
 
 .header__app-label {
   display: inline-block;
   color: #80c040;
-  margin-left: 35px;
-  padding-left: 10px;
-  padding-right: 10px;
+  margin: 9px 10px 0 0;  
   font-size: 16px;
   font-weight: bold;
 }
@@ -34,11 +30,8 @@
     display: none;
   }
 }
-@media screen and (max-width: 465px) {
+@media screen and (max-width: 475px) {
   .header__app-label {
     display: none;
-  }
-  .header__bt-library {
-    margin-left: 45px
-  }
+  }  
 }
