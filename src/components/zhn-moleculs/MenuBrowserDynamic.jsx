@@ -36,17 +36,24 @@ const MenuBrowserDynamic = ({
 }) => {
   const _refIsLoaded = useRef(false)
   , _refIsMounted = useRef(false)
-  , [isShow, _hShow, _hHide] = useBool(isInitShow)
-  , [menuItems, setMenuItems] = useState([]);
+  , [
+    isShow,
+    _hShow,
+    _hHide
+  ] = useBool(isInitShow)
+  , [
+    menuItems,
+    setMenuItems
+  ] = useState([]);
 
   useListen(store, (actionType, data) => {
     if (actionType === showAction && data === browserType){
       _hShow();
     } else if (actionType === loadCompletedAction && data.browserType === browserType){
       setRefValue(_refIsLoaded, true)
-      setMenuItems(data.menuItems)
+      setMenuItems([...data.menuItems])
     } else if (actionType === updateAction && data === browserType){
-      setMenuItems(store.getBrowserMenu(browserType))
+      setMenuItems([...store.getBrowserMenu(browserType)])
     }
   })
 
