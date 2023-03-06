@@ -2,31 +2,31 @@ import { useState } from '../uiApi';
 import useListen from '../hooks/useListen';
 
 const WITHOUT_LIMIT = ''
-, S_LABEL = {
-  position: 'relative',
-  top: 4,
+, S_LIMIT_VALUE = {
   display: 'inline-block',
   color:'#2f7ed8',
-  padding: '0 10px',
+  padding: '5px 10px 0',
   fontSize: '16px',
   fontWeight: 'bold'
 };
 
 const LimitRemainingLabel = ({
-  style,
   store
 }) => {
-  const [value, setValue] = useState('');
+  const [
+    value,
+    setValue
+  ] = useState('');
 
   useListen(store, (limitValue) => {
-    const _value = limitValue != null
+    setValue(limitValue != null
       ? limitValue
-      : WITHOUT_LIMIT;
-    setValue(_value)
+      : WITHOUT_LIMIT
+    )
   }, 'listenLimitRemaining')
 
   return (
-    <span style={{...S_LABEL, ...style}}>
+    <span style={S_LIMIT_VALUE}>
       {value}
     </span>
   );

@@ -1,10 +1,8 @@
-import { useMemo } from '../uiApi';
-
 import { BrowserActions } from '../../flux/actions/BrowserActions';
 import { ComponentActions } from '../../flux/actions/ComponentActions';
 import { BrowserType as BT } from '../../constants/Type';
 
-import A from '../Comp'
+import A from '../Comp';
 import LoadingProgress from './LoadingProgress';
 import IconAppLogo from './IconAppLogo';
 import AppLabel from './AppLabel';
@@ -19,30 +17,25 @@ import {
 const TITLE = "Library Watch v0.12.0"
 
 , CL_HEADER = "header"
-, CL_ICON = "header__icon-app"
-, CL_ABOUT = "header__bt-about"
-, CL_APP_LABEL = "header__app-label"
-, CL_LIBRARY = "header__bt-library"
+, CL_ICON = `${CL_HEADER}__icon-app`
+, CL_ABOUT = `${CL_HEADER}__bt-about`
+, CL_APP_LABEL = `${CL_HEADER}__app-label`
+, CL_LIBRARY = `${CL_HEADER}__bt-library`
 
-, S_ROOT_DIV = {
-  position : 'relative',
-  zIndex : 50
-}
-, S_BT_ABOUT = {
-  float: 'right',
-  marginRight: 20
-}
 , S_SVG_INFO = {
   position: 'relative',
   top: -2,
   verticalAlign: 'middle',
   margin: '0 8px'
 }
-, S_BUTTON_SAVE = { marginLeft : 10 }
-, S_LABEL_LIMIT = {
-  float: 'right',
-  paddingTop: 5
+, S_BUTTON_SAVE = {
+  marginTop: 4,
+  marginLeft: 10
 }
+, S_BTS_RIGHT = {
+  marginLeft: 'auto'
+}
+
 , BROWSER_CONFIG_LIBRARY = {
   browserType: BT.LIBRARY,
   caption: 'Library',
@@ -50,23 +43,13 @@ const TITLE = "Library Watch v0.12.0"
   rowClass: 'menu-item'
 };
 
+const _hClickLibrary = () => BrowserActions.showBrowserDynamic(BROWSER_CONFIG_LIBRARY);
+const _hClickWatch = () => BrowserActions.showBrowser(BT.WATCH_LIST);
+
 const HeaderBar = ({
   store
-})  => {
-  const [
-    _hClickLibrary,
-    _hClickWatch
-  ] = useMemo(() => [
-    () => {
-      BrowserActions.showBrowserDynamic(BROWSER_CONFIG_LIBRARY);
-    },
-    () => {
-      BrowserActions.showBrowser(BT.WATCH_LIST);
-    }
- ], []);
-
-  return (
-  <div className={CL_HEADER} style={S_ROOT_DIV}>
+}) => (
+  <header className={CL_HEADER}>
      <LoadingProgress store={store} />
      <IconAppLogo
        className={CL_ICON}
@@ -95,22 +78,21 @@ const HeaderBar = ({
         store={store}
         style={S_BUTTON_SAVE}
      />
-     <A.FlatButton
-        className={CL_ABOUT}
-        style={S_BT_ABOUT}
-        title="About webapp Library Watch"
-        hotKey={HK_ABOUT}
-        timeout={0}
-        onClick={ComponentActions.showAbout}
-     >
-        <A.SvgInfo style={S_SVG_INFO} />
-     </A.FlatButton>
-     <LimitRemainingLabel
-        store={store}
-        style={S_LABEL_LIMIT}
-     />
-  </div>
- );
-};
+     <div style={S_BTS_RIGHT}>
+       <LimitRemainingLabel
+          store={store}
+       />
+       <A.FlatButton
+          className={CL_ABOUT}          
+          title="About webapp Library Watch"
+          hotKey={HK_ABOUT}
+          timeout={0}
+          onClick={ComponentActions.showAbout}
+       >
+          <A.SvgInfo style={S_SVG_INFO} />
+       </A.FlatButton>
+     </div>
+  </header>
+);
 
 export default HeaderBar
