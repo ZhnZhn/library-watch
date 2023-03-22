@@ -1,6 +1,7 @@
 import { useState } from '../uiApi';
 
 import useListen from '../hooks/useListen';
+import { crStyle2 } from '../zhn-utils/crStyle';
 
 import {
   WAT_SET_WATCH_EDITED,
@@ -10,9 +11,10 @@ import ButtonCircle from '../zhn-atoms/ButtonCircle';
 
 const CAPTION = "S"
 , TITLE = "Save Watch Items to Locale Storage"
+, COLOR_NOT_WATCH_EDITED = 'grey'
 , S_NOT_WATCH_EDITED = {
-   borderColor: 'gray',
-   color: 'gray'
+   borderColor: COLOR_NOT_WATCH_EDITED,
+   color: COLOR_NOT_WATCH_EDITED
 };
 
 const ButtonSave = ({
@@ -31,9 +33,10 @@ const ButtonSave = ({
     }
   })
 
-  const _style = isWatchEdited
-    ? style
-    : {...style, ...S_NOT_WATCH_EDITED};
+  const _style = crStyle2(
+    style,
+    isWatchEdited && S_NOT_WATCH_EDITED
+  );
 
   return (
     <ButtonCircle
