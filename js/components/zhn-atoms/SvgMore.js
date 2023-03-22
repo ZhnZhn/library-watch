@@ -2,17 +2,15 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
-
 var _jsxRuntime = require("react/jsx-runtime");
-
 var CL_BT_MORE = 'bt-more';
-
 var SvgMore = function SvgMore(_ref) {
   var style = _ref.style,
-      svgStyle = _ref.svgStyle,
-      btRef = _ref.btRef,
-      onClick = _ref.onClick;
+    svgStyle = _ref.svgStyle,
+    btRef = _ref.btRef,
+    onClick = _ref.onClick;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+    type: "button",
     ref: btRef,
     className: CL_BT_MORE,
     style: style,
@@ -40,7 +38,6 @@ var SvgMore = function SvgMore(_ref) {
     })
   });
 };
-
 var _default = SvgMore;
 exports["default"] = _default;
 //# sourceMappingURL=SvgMore.js.map

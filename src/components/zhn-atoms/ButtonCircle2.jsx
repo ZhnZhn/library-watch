@@ -7,13 +7,14 @@ const ButtonCircle2 = ({
   style,
   caption='',
   onClick,
-  ...rest
+  ...restProps
 }) => (
   <button
+     type="button"
      className={crCn(CL_BT_CIRCLE_2, className)}
      style={style}
      onClick={onClick}
-     {...rest}
+     {...restProps}
   >
     <div>
       {caption}

@@ -16,6 +16,7 @@ const ButtonCircle = ({
   );
   return (
     <button
+       type="button"
        className={_className}
        style={style}
        title={title}

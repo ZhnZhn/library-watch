@@ -6,18 +6,17 @@ const S_ROOT = {
   display: 'inline-block',
   height: 36,
   border: '1px solid',
-  borderRadius: 10,
-  cursor: 'pointer'
+  borderRadius: 10
 }
-, S_ROOT_UP = {
+, S_BT_UP = {
   color: '#a487d4',
   borderColor: '#a487d4',
   borderWidth: 2,
   fontWeight: 'bold'
 }
-, S_ROOT_DOWN = {
-  color: 'gray',
-  borderColor: 'gray',
+, S_BT_DOWN = {
+  color: 'grey',
+  borderColor: 'grey',
   borderWidth: 1,
   fontWeight: 'normal'
 }
@@ -28,10 +27,10 @@ const S_ROOT = {
 , S_CIRCLE = {
   display: 'inline-block',
   marginLeft: 8,
-  backgroundColor: 'gray',
+  backgroundColor: 'grey',
   width: 12,
   height: 12,
-  border: '1px solid gray',
+  border: '1px solid grey',
   borderRadius: '50%'
 }
 , S_CIRCLE_LOADING = {
@@ -43,15 +42,18 @@ const S_ROOT = {
   borderColor: '#a487d4'
 }
 , S_CIRCLE_DOWN = {
-  backgroundColor: 'gray',
-  borderColor: 'gray'
+  backgroundColor: 'grey',
+  borderColor: 'grey'
 }
 , S_SPINNER = {
   top: 5,
   left: 2
 };
 
-const _crStateEl = (isUp, isLoading) => {
+const _crStateEl = (
+  isUp,
+  isLoading
+) => {
   let _spinner = null;
   if (isLoading) {
     _spinner = <SpinnerLoading style={S_SPINNER} />
@@ -76,10 +78,12 @@ const ButtonDownUp = ({
   onClick
 }) => {
    const _style = isUp
-     ? S_ROOT_UP : S_ROOT_DOWN;
+     ? S_BT_UP
+     : S_BT_DOWN;
 
    return (
      <button
+        type="button"
         title={title}
         style={{...S_ROOT, ...style, ..._style}}
         onClick={onClick}

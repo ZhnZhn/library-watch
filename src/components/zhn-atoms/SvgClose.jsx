@@ -1,16 +1,18 @@
+import crCn from '../zhn-utils/crCn';
 
 const COLOR = "#ed5813"
 , CL_SVG_CLOSE = "svg-close"
 , S_SVG = { padding: 3 };
 
 const SvgClose = ({
-  className='',
+  className,
   style,
   onClose
 }) => (
   <button
+      type="button"
       tabIndex="-1"
-      className={`${CL_SVG_CLOSE} ${className}`}
+      className={crCn(CL_SVG_CLOSE, className)}
       style={style}
       onClick={onClose}
    >

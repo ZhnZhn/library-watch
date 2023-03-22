@@ -7,6 +7,7 @@ const SvgMore = ({
   onClick
 }) => (
   <button
+    type="button"
     ref={btRef}
     className={CL_BT_MORE}
     style={style}
