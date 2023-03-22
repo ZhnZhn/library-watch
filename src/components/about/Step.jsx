@@ -1,10 +1,10 @@
-
-const S_STEP = {
+const COLOR_STEP = '#80c040'
+, S_STEP = {
   display: 'inline-block',
-  color: '#80c040',
-  width: 22,
-  height: 22,
-  border: '2px solid #80c040',
+  color: COLOR_STEP,
+  width: 24,
+  height: 24,
+  border: `2px solid ${COLOR_STEP}`,
   borderRadius: '50%',
   textAlign: 'center'
 };
