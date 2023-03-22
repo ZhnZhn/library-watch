@@ -8,11 +8,9 @@
   height: 26px;
   text-align: center;
   box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
-  cursor: pointer;
 }
 .zhn-bt-circle:hover,
-.zhn-bt-circle:focus {
-  outline: 0;
+.zhn-bt-circle:focus { 
   box-shadow: 0 5px 6px 0 rgba(0,0,0,0.3), 0 4px 15px 0 rgba(0,0,0,0.2);
 }
 
@@ -32,21 +30,18 @@
 
 
 .zhn-bt-circle2 {
-  display: inline-block;
-  /*background-color: #949ab4;*/
+  display: inline-block; 
   background-color: #1b2836;
   width: 32px;
   line-height: 2.0;
-  border-radius: 50%;
+  vertical-align: middle; 
   text-align: center;
   font-weight: bold;
-  vertical-align: middle;
-  box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
-  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15); 
 }
 .zhn-bt-circle2:hover,
 .zhn-bt-circle2:focus {
-  outline: 0;
   box-shadow: 0 5px 6px 0 rgba(0,0,0,0.3), 0 4px 15px 0 rgba(0,0,0,0.2);
 }
 

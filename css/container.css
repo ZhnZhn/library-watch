@@ -1,15 +1,12 @@
 
-
 .component-container {
-  display: flex;
-  flex-direction: row;
+  display: flex;  
   margin-top: 8px;
   margin-bottom: 10px;
 }
 
 .hrz-container {
-  display : flex;
-  flex-direction : row;
+  display: flex;
 }
 
 .modal-root {
@@ -130,9 +127,10 @@
 .menu__badge {
   display: inline-block;
   color: black;
-  background-color: #232F3B;
+  background-color: #232f3b;
   float: right;
-  border-radius: 30%; }
+  border-radius: 30%; 
+}
 
 .menu__badge:hover {
   color: #1b75bb;

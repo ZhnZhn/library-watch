@@ -7,9 +7,9 @@
 }
 
 body {
-    font-family: Roboto, Arial, Lato, sans-serif;
-    font-weight: 300;
-    background-color: gray;
+  font-family: Roboto, Arial, Lato, sans-serif;
+  font-weight: 300;
+  background-color: grey;
 }
 
 html {
@@ -22,9 +22,13 @@ a {
   outline: 0;
 }
 a:visited {
-  /*color : #551a8b;*/
-  color: gray;
+  color: grey;
 }
+a:focus-visible { 
+ outline: 2px solid #009ae5;
+ outline-offset: 3px; 
+}
+
 
 button {
   appearance: none;
