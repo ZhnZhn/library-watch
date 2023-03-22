@@ -26,11 +26,14 @@ export const setRefValue = (
   }
 }
 
-export const focusRefElement = ref => {
-  const _element = getRefValue(ref);
-  if (_element && _isFn(_element.focus)) {
-    _element.focus()
+export const focusHtmlElement = el => {
+  if (el && _isFn(el.focus)) {
+    el.focus()
   }
+};
+
+export const focusRefElement = ref => {
+  focusHtmlElement(getRefValue(ref));
 };
 
 const _getFirstTouches = (

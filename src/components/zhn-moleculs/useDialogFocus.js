@@ -3,9 +3,9 @@ import {
   useCallback,
   useEffect,
   useImperativeHandle,
-  getRefValue
+  getRefValue,
+  focusHtmlElement
 } from '../uiApi';
-import focusHtmlElement from '../zhn-utils/focusHtmlElement';
 
 const useDialogFocus = (ref, isShow) => {
   const refRoot = useRef()

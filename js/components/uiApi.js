@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefElement = exports.createElement = exports.cloneElement = exports.Component = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefElement = exports.focusHtmlElement = exports.createElement = exports.cloneElement = exports.Component = void 0;
 var _react = require("react");
 exports.Component = _react.Component;
 exports.cloneElement = _react.cloneElement;
@@ -29,11 +29,14 @@ var setRefValue = function setRefValue(ref, value) {
   }
 };
 exports.setRefValue = setRefValue;
-var focusRefElement = function focusRefElement(ref) {
-  var _element = getRefValue(ref);
-  if (_element && _isFn(_element.focus)) {
-    _element.focus();
+var focusHtmlElement = function focusHtmlElement(el) {
+  if (el && _isFn(el.focus)) {
+    el.focus();
   }
+};
+exports.focusHtmlElement = focusHtmlElement;
+var focusRefElement = function focusRefElement(ref) {
+  focusHtmlElement(getRefValue(ref));
 };
 exports.focusRefElement = focusRefElement;
 var _getFirstTouches = function _getFirstTouches(touches) {
