@@ -7,6 +7,13 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 var _dateFn = require("../../utils/dateFn");
 var _NpmDownloads = _interopRequireDefault(require("../items/npm/NpmDownloads"));
 var MAX_ITEMS = 30;
+var _trimRecentZeroValue = function _trimRecentZeroValue(data, labels) {
+  var _indexRecent = data.length - 1;
+  if (_indexRecent >= 0 && data[_indexRecent] === 0) {
+    data.splice(_indexRecent);
+    labels.splice(_indexRecent);
+  }
+};
 
 /* Irregular Time Inrevals */
 var _transformDownloads = function _transformDownloads(downloads) {
@@ -50,6 +57,7 @@ var _transformDownloads = function _transformDownloads(downloads) {
     }
     sumDownloads += value;
   });
+  _trimRecentZeroValue(data, labels);
   return {
     sumDownloads: sumDownloads,
     fromDate: fromDate,

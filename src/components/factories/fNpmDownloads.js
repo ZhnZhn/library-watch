@@ -3,6 +3,17 @@ import NpmDownloads from '../items/npm/NpmDownloads';
 
 const MAX_ITEMS = 30;
 
+const _trimRecentZeroValue = (
+  data,
+  labels
+) => {
+  const _indexRecent = data.length-1;
+  if (_indexRecent >= 0 && data[_indexRecent] === 0) {
+    data.splice(_indexRecent)
+    labels.splice(_indexRecent)
+  }
+};
+
 /* Irregular Time Inrevals */
 const _transformDownloads = (
   downloads=[{ day: '1970-01-01', downloads : 0}]
@@ -20,7 +31,10 @@ const _transformDownloads = (
     let sumDownloads = 0;
 
     downloads.forEach((item, index) => {
-      const { day:date, downloads:value } = item
+      const {
+        day:date,
+        downloads:value
+      } = item
       , [y, m, d] = date.split('-');
 
       if ( index % itemStep === 0) {
@@ -37,9 +51,10 @@ const _transformDownloads = (
            data.push(value);
          }
       }
-
       sumDownloads += value;
     })
+
+    _trimRecentZeroValue(data, labels)
 
     return {
       sumDownloads,
