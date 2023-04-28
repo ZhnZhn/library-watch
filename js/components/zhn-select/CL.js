@@ -1,24 +1,33 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
+exports.CL_SPINNER_FAILED = exports.CL_SPINNER = exports.CL_ROOT = exports.CL_OPTIONS_ROW_ACTIVE = exports.CL_OPTIONS_ROW = exports.CL_OPTIONS_DIV = exports.CL_OPTIONS = exports.CL_NOT_SELECTED = exports.CL_INPUT_HR = exports.CL_INPUT = exports.CL_FOOTER_MARGIN = exports.CL_FOOTER_INDEX = exports.CL_FOOTER_BTS = exports.CL_FOOTER = void 0;
 var CL_ROOT = 'zhn-select';
-var CL = {
-  ROOT: CL_ROOT,
-  INPUT: CL_ROOT + "__input",
-  SPINNER: CL_ROOT + "__spinner",
-  SPINNER_FAILED: CL_ROOT + "__spinner--failed",
-  INPUT_HR: CL_ROOT + "__input__hr",
-  OPTIONS: CL_ROOT + "__options",
-  OPTIONS_DIV: CL_ROOT + "__options__div",
-  OPTIONS_ROW: CL_ROOT + "__row",
-  OPTIONS_ROW_ACTIVE: CL_ROOT + "__row--active",
-  FOOTER: CL_ROOT + "__footer",
-  FOOTER_INDEX: CL_ROOT + "__footer__index",
-  FOOTER_BTS: CL_ROOT + "__footer__bts",
-  FOOTER_MARGIN: CL_ROOT + "__footer--margin",
-  NOT_SELECTED: 'not-selected'
-};
-var _default = CL;
-exports["default"] = _default;
+exports.CL_ROOT = CL_ROOT;
+var CL_INPUT = CL_ROOT + "__input";
+exports.CL_INPUT = CL_INPUT;
+var CL_SPINNER = CL_ROOT + "__spinner";
+exports.CL_SPINNER = CL_SPINNER;
+var CL_SPINNER_FAILED = CL_SPINNER + "--failed";
+exports.CL_SPINNER_FAILED = CL_SPINNER_FAILED;
+var CL_INPUT_HR = CL_ROOT + "__input__hr";
+exports.CL_INPUT_HR = CL_INPUT_HR;
+var CL_OPTIONS = CL_ROOT + "__options";
+exports.CL_OPTIONS = CL_OPTIONS;
+var CL_OPTIONS_DIV = CL_OPTIONS + "__div";
+exports.CL_OPTIONS_DIV = CL_OPTIONS_DIV;
+var CL_OPTIONS_ROW = CL_ROOT + "__row";
+exports.CL_OPTIONS_ROW = CL_OPTIONS_ROW;
+var CL_OPTIONS_ROW_ACTIVE = CL_OPTIONS_ROW + "--active";
+exports.CL_OPTIONS_ROW_ACTIVE = CL_OPTIONS_ROW_ACTIVE;
+var CL_FOOTER = CL_ROOT + "__footer";
+exports.CL_FOOTER = CL_FOOTER;
+var CL_FOOTER_INDEX = CL_FOOTER + "__index";
+exports.CL_FOOTER_INDEX = CL_FOOTER_INDEX;
+var CL_FOOTER_BTS = CL_FOOTER + "__bts";
+exports.CL_FOOTER_BTS = CL_FOOTER_BTS;
+var CL_FOOTER_MARGIN = CL_FOOTER + "--margin";
+exports.CL_FOOTER_MARGIN = CL_FOOTER_MARGIN;
+var CL_NOT_SELECTED = 'not-selected';
+exports.CL_NOT_SELECTED = CL_NOT_SELECTED;
 //# sourceMappingURL=CL.js.map

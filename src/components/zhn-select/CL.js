@@ -1,24 +1,19 @@
+export const CL_ROOT = 'zhn-select';
 
-const CL_ROOT = 'zhn-select';
-const CL = {
-  ROOT: CL_ROOT,
-  INPUT: `${CL_ROOT}__input`,
-  SPINNER: `${CL_ROOT}__spinner`,
-  SPINNER_FAILED: `${CL_ROOT}__spinner--failed`,
-  INPUT_HR: `${CL_ROOT}__input__hr`,
+export const CL_INPUT = `${CL_ROOT}__input`
+export const CL_SPINNER = `${CL_ROOT}__spinner`
+export const CL_SPINNER_FAILED = `${CL_SPINNER}--failed`
+export const CL_INPUT_HR = `${CL_ROOT}__input__hr`
 
-  OPTIONS: `${CL_ROOT}__options`,
-  OPTIONS_DIV: `${CL_ROOT}__options__div`,
+export const CL_OPTIONS = `${CL_ROOT}__options`
+export const CL_OPTIONS_DIV = `${CL_OPTIONS}__div`
 
-  OPTIONS_ROW: `${CL_ROOT}__row`,
-  OPTIONS_ROW_ACTIVE: `${CL_ROOT}__row--active`,
+export const CL_OPTIONS_ROW = `${CL_ROOT}__row`
+export const CL_OPTIONS_ROW_ACTIVE = `${CL_OPTIONS_ROW}--active`
 
-  FOOTER: `${CL_ROOT}__footer`,
-  FOOTER_INDEX: `${CL_ROOT}__footer__index`,
-  FOOTER_BTS: `${CL_ROOT}__footer__bts`,
-  FOOTER_MARGIN: `${CL_ROOT}__footer--margin`,
+export const CL_FOOTER = `${CL_ROOT}__footer`
+export const CL_FOOTER_INDEX = `${CL_FOOTER}__index`
+export const CL_FOOTER_BTS = `${CL_FOOTER}__bts`
+export const CL_FOOTER_MARGIN = `${CL_FOOTER}--margin`
 
-  NOT_SELECTED: 'not-selected'
-};
-
-export default CL
+export const CL_NOT_SELECTED = 'not-selected'

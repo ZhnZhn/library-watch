@@ -1,5 +1,4 @@
-
-const ItemOptionDf = ({ 
+const ItemOptionDf = ({
   item,
   propCaption
 }) => (
