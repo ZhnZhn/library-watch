@@ -18,13 +18,30 @@
   animation: hiding-popup 400ms ease-out;
   /*animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);*/
 }
+
 @keyframes showing-popup{
-  from { opacity: 0; transform: scaleY(0);}
-  to   { opacity: 1; transform: scaleY(1);}
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  20% {
+    opacity: 0;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
 }
-@keyframes hiding-popup{
-  from { opacity: 1; transform: scaleY(1);}
-  to   { opacity: 0; transform: scaleY(0);}
+@keyframes hiding-popup {
+  from {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  to {
+    opacity: 0;
+    transform: scaleY(0);
+  }
 }
 
 .scaleY-enter{
