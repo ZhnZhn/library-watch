@@ -1,88 +1,101 @@
+import useKeyEnter from '../hooks/useKeyEnter';
 import SvgClose from '../zhn-atoms/SvgClose';
 
-const STYLE = {
-  ITEM_DIV : {
-    position: 'relative',
-    paddingRight: 40,
-    paddingTop : 5,
-    paddingBottom: 5,
-    lineHeight : 1.4
-  },
-  ITEM_SPAN : {
-    display: 'inline-block',
-    verticalAlign : 'middle',
-    width: '100%',
-    maxWidth: 250,
-    textOverflow: 'ellipsis',
-    overflow: 'hidden'
-  },
-
-  SVG_CLOSE : {
-    position: 'absolute',
-    right: 0
-  },
-
-  DATE_SPAN : {
-    float : 'right'
-  }
+const S_ITEM_DIV = {
+  position: 'relative',
+  paddingRight: 40,
+  paddingTop : 5,
+  paddingBottom: 5,
+  lineHeight: 1.4
 }
-
-
-const VersionDateRow = (props) => {
-   const { version, date='' } = props
-   if (!version) {
-     return;
-   }
-   return (
-     <div>
-       <span>
-         {version}
-       </span>
-       <span style={STYLE.DATE_SPAN}>
-          {date.split(' ')[0]}
-       </span>
-     </div>
-   );
+, S_ITEM_SPAN = {
+  display: 'inline-block',
+  verticalAlign: 'middle',
+  width: '100%',
+  maxWidth: 250,
+  textOverflow: 'ellipsis',
+  overflow: 'hidden'
 }
+, S_SVG_CLOSE = {
+  position: 'absolute',
+  right: 0
+}
+, S_DATE_SPAN = {
+  float: 'right'
+};
+
+const VersionDateRow = ({
+  version,
+  date
+}) => version ? (
+  <div>
+   <span>
+     {version}
+   </span>
+   <span style={S_DATE_SPAN}>
+      {(date || '').split(' ')[0]}
+   </span>
+  </div>
+) : null;
 
 const WatchItem = ({
-  item, className, isModeEdit, option,
-  onClick, onClose,
-  onDragStart, onDragEnter, onDragOver, onDragLeave, onDrop
+  item,
+  className,
+  isModeEdit,
+  option,
+  onClick,
+  onClose,
+  onDragStart,
+  onDragEnter,
+  onDragOver,
+  onDragLeave,
+  onDrop
 }) => {
-  const { repo, version, date } = item
-  , _compBtClose = isModeEdit
-       ? (<SvgClose
-             style={STYLE.SVG_CLOSE}
-             onClose={onClose.bind(null, option)}
-          />)
-      : null
-  , _compVersionDateRow = version
-       ? <VersionDateRow version={version} date={date} />
-       : null
-  , _itemHandlers = isModeEdit ? {
+  const {
+    repo,
+    version,
+    date
+  } = item
+  , _onClick = onClick.bind(null, item)
+  , _onKeyDown = useKeyEnter(_onClick)
+  , _ddItemHandlers = isModeEdit ? {
        onDragStart: onDragStart.bind(null, option),
-          onDrop: onDrop.bind(null, option),
-          onDragOver,
-          onDragEnter,
-          onDragLeave,
-     } : void 0;
+       onDrop: onDrop.bind(null, option),
+       onDragOver,
+       onDragEnter,
+       onDragLeave
+  } : void 0;
 
   return (
      <div
+       role="menuitem"
+       tabIndex="0"
        className={className}
-       style={STYLE.ITEM_DIV}
-       onClick={onClick.bind(null, item)}
+       style={S_ITEM_DIV}
+       onClick={_onClick}
+       onKeyDown={_onKeyDown}
        draggable={isModeEdit}
-       {..._itemHandlers}
+       {..._ddItemHandlers}
      >
        <div>
-         <span style={STYLE.ITEM_SPAN}>
+         <span style={S_ITEM_SPAN}>
            {repo}
          </span>
-         {_compBtClose}
+         {isModeEdit
+            ? <SvgClose
+                 style={S_SVG_CLOSE}
+                 onClose={onClose.bind(null, option)}
+               />
+            : null
+         }
        </div>
-       {_compVersionDateRow}
+       {version
+          ? <VersionDateRow
+               version={version}
+               date={date}
+            />
+          : null
+       }
     </div>
   );
 };

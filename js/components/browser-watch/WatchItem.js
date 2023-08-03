@@ -1,25 +1,19 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
+exports.default = void 0;
+var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
 var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var STYLE = {
-  ITEM_DIV: {
+const S_ITEM_DIV = {
     position: 'relative',
     paddingRight: 40,
     paddingTop: 5,
     paddingBottom: 5,
     lineHeight: 1.4
   },
-  ITEM_SPAN: {
+  S_ITEM_SPAN = {
     display: 'inline-block',
     verticalAlign: 'middle',
     width: '100%',
@@ -27,81 +21,78 @@ var STYLE = {
     textOverflow: 'ellipsis',
     overflow: 'hidden'
   },
-  SVG_CLOSE: {
+  S_SVG_CLOSE = {
     position: 'absolute',
     right: 0
   },
-  DATE_SPAN: {
-    "float": 'right'
-  }
-};
-
-var VersionDateRow = function VersionDateRow(props) {
-  var version = props.version,
-      _props$date = props.date,
-      date = _props$date === void 0 ? '' : _props$date;
-
-  if (!version) {
-    return;
-  }
-
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  S_DATE_SPAN = {
+    float: 'right'
+  };
+const VersionDateRow = _ref => {
+  let {
+    version,
+    date
+  } = _ref;
+  return version ? /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       children: version
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      style: STYLE.DATE_SPAN,
-      children: date.split(' ')[0]
+      style: S_DATE_SPAN,
+      children: (date || '').split(' ')[0]
     })]
-  });
+  }) : null;
 };
-
-var WatchItem = function WatchItem(_ref) {
-  var item = _ref.item,
-      className = _ref.className,
-      isModeEdit = _ref.isModeEdit,
-      option = _ref.option,
-      onClick = _ref.onClick,
-      onClose = _ref.onClose,
-      onDragStart = _ref.onDragStart,
-      onDragEnter = _ref.onDragEnter,
-      onDragOver = _ref.onDragOver,
-      onDragLeave = _ref.onDragLeave,
-      onDrop = _ref.onDrop;
-
-  var repo = item.repo,
-      version = item.version,
-      date = item.date,
-      _compBtClose = isModeEdit ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose["default"], {
-    style: STYLE.SVG_CLOSE,
-    onClose: onClose.bind(null, option)
-  }) : null,
-      _compVersionDateRow = version ? /*#__PURE__*/(0, _jsxRuntime.jsx)(VersionDateRow, {
-    version: version,
-    date: date
-  }) : null,
-      _itemHandlers = isModeEdit ? {
-    onDragStart: onDragStart.bind(null, option),
-    onDrop: onDrop.bind(null, option),
-    onDragOver: onDragOver,
-    onDragEnter: onDragEnter,
-    onDragLeave: onDragLeave
-  } : void 0;
-
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", (0, _extends2["default"])({
+const WatchItem = _ref2 => {
+  let {
+    item,
+    className,
+    isModeEdit,
+    option,
+    onClick,
+    onClose,
+    onDragStart,
+    onDragEnter,
+    onDragOver,
+    onDragLeave,
+    onDrop
+  } = _ref2;
+  const {
+      repo,
+      version,
+      date
+    } = item,
+    _onClick = onClick.bind(null, item),
+    _onKeyDown = (0, _useKeyEnter.default)(_onClick),
+    _ddItemHandlers = isModeEdit ? {
+      onDragStart: onDragStart.bind(null, option),
+      onDrop: onDrop.bind(null, option),
+      onDragOver,
+      onDragEnter,
+      onDragLeave
+    } : void 0;
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    role: "menuitem",
+    tabIndex: "0",
     className: className,
-    style: STYLE.ITEM_DIV,
-    onClick: onClick.bind(null, item),
-    draggable: isModeEdit
-  }, _itemHandlers, {
+    style: S_ITEM_DIV,
+    onClick: _onClick,
+    onKeyDown: _onKeyDown,
+    draggable: isModeEdit,
+    ..._ddItemHandlers,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-        style: STYLE.ITEM_SPAN,
+        style: S_ITEM_SPAN,
         children: repo
-      }), _compBtClose]
-    }), _compVersionDateRow]
-  }));
+      }), isModeEdit ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose.default, {
+        style: S_SVG_CLOSE,
+        onClose: onClose.bind(null, option)
+      }) : null]
+    }), version ? /*#__PURE__*/(0, _jsxRuntime.jsx)(VersionDateRow, {
+      version: version,
+      date: date
+    }) : null]
+  });
 };
-
 var _default = WatchItem;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=WatchItem.js.map
