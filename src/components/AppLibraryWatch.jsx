@@ -7,10 +7,9 @@ import {
  } from '../flux/actions/BrowserActions';
 import { CHAT_INIT_AND_SHOW_CHART } from '../flux/actions/ChartActions';
 import {
-  CAT_INIT_AND_SHOW_DIALOG,
-  CAT_SHOW_DIALOG
-} from '../flux/actions/ComponentActions';
-import { useMdOption } from '../flux/compStore';
+  useDgOption,
+  useMdOption
+} from '../flux/compStore';
 
 import useHotKeys from './hotkeys/useHotKeys';
 
@@ -34,8 +33,7 @@ const AppLibraryWatch = (props) => {
             initBrowserAction={BAT_INIT_BROWSER_DYNAMIC}
             updateWatchAction={BAT_UPDATE_WATCH_BROWSER}
             toggleWatchDbBrowserAction={BAT_TOGGLE_WATCH_DB_BROWSER}
-            initDialogAction={CAT_INIT_AND_SHOW_DIALOG}
-            showDialogAction={CAT_SHOW_DIALOG}
+            useDgOption={useDgOption}            
          />
          <About store={Store} />
          <ComponentHrzContainer
@@ -45,7 +43,7 @@ const AppLibraryWatch = (props) => {
       </div>
       <DialogContainer
          store={Store}
-         useMdOption={useMdOption}        
+         useMdOption={useMdOption}
          routerDialog={RouterModalDialog}
       />
     </div>

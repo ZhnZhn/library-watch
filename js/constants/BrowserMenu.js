@@ -1,50 +1,34 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _ComponentActions = _interopRequireDefault(require("../flux/actions/ComponentActions"));
-
-var _ChartActions = _interopRequireDefault(require("../flux/actions/ChartActions"));
-
-var _fnClick = function _fnClick(dialogType, browserType) {
-  return _ComponentActions["default"].showDialog.bind(null, dialogType, browserType);
-};
-
-var _fnBadgeOpen = function _fnBadgeOpen(dialogType, browserType) {
-  return _ChartActions["default"].showChart.bind(null, dialogType, browserType);
-};
-
-var _fnBadgeClose = function _fnBadgeClose(chartType) {
-  return _ComponentActions["default"].closeChartContainer2.bind(null, chartType);
-};
-
-var fnCreateMenu = function fnCreateMenu(menu, data, browserType) {
-  return menu.map(function (menuPart) {
-    var items = menuPart.items.map(function (item, index) {
-      return {
-        id: item.id,
-        title: data[item.id].menuTitle,
-        counter: 0,
-        isOpen: false,
-        onClick: _fnClick(item.id, browserType),
-        onBadgeOpen: _fnBadgeOpen(item.id, browserType),
-        onBadgeClose: _fnBadgeClose(item.id)
-      };
-    });
+exports.default = void 0;
+var _ComponentActions = require("../flux/actions/ComponentActions");
+var _ChartActions = require("../flux/actions/ChartActions");
+var _compStore = require("../flux/compStore");
+const _crOnClick = (dialogType, browserType) => _compStore.showDialog.bind(null, dialogType, browserType);
+const _crOnBadgeOpen = (dialogType, browserType) => _ChartActions.ChartActions.showChart.bind(null, dialogType, browserType);
+const _crOnBadgeClose = chartType => _ComponentActions.ComponentActions.closeCompItemList.bind(null, chartType);
+const createMenu = (menu, data, browserType) => {
+  return menu.map(menuPart => {
+    const items = menuPart.items.map(item => ({
+      id: item.id,
+      title: data[item.id].menuTitle,
+      counter: 0,
+      isOpen: false,
+      onClick: _crOnClick(item.id, browserType),
+      onBadgeOpen: _crOnBadgeOpen(item.id, browserType),
+      onBadgeClose: _crOnBadgeClose(item.id)
+    }));
     return {
       caption: menuPart.caption,
       isInitClose: menuPart.isInitClose,
-      items: items
+      items
     };
   });
 };
-
-var BrowserMenu = {
-  createMenu: fnCreateMenu
+const BrowserMenu = {
+  createMenu
 };
 var _default = BrowserMenu;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=BrowserMenu.js.map

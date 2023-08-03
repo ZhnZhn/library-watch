@@ -16,8 +16,7 @@ const BrowserContainer = ({
   store,
   showBrowserAction,
   updateWatchAction,
-  initDialogAction,
-  showDialogAction,
+  useDgOption,
   initBrowserAction,
   toggleWatchDbBrowserAction
 }) => {
@@ -59,10 +58,8 @@ const BrowserContainer = ({
       {_doubleWatch}
       {elBrowsers.map(el => cloneElement(el))}
       <DialogStack
-         maxDialog={3}
-         store={store}
-         initAction={initDialogAction}
-         showAction={showDialogAction}
+         maxDialog={3}         
+         useDgOption={useDgOption}
       />
     </div>
   );

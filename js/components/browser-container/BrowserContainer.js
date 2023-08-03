@@ -1,120 +1,58 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _react = _interopRequireWildcard(require("react"));
-
+exports.default = void 0;
+var _uiApi = require("../uiApi");
+var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
+var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 var _Type = require("../../constants/Type");
-
 var _WatchBrowser = _interopRequireDefault(require("../browser-watch/WatchBrowser"));
-
-var _DialogContainer = _interopRequireDefault(require("../zhn-containers/DialogContainer3"));
-
+var _DialogStack = _interopRequireDefault(require("../zhn-containers/DialogStack"));
 var _jsxRuntime = require("react/jsx-runtime");
-
-//import PropTypes from 'props-type'
-var CL = "hrz-container";
-
-var BrowserContainer = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(BrowserContainer, _Component);
-
-  function BrowserContainer() {
-    var _this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
+const CL = "hrz-container";
+const BrowserContainer = _ref => {
+  let {
+    store,
+    showBrowserAction,
+    updateWatchAction,
+    useDgOption,
+    initBrowserAction,
+    toggleWatchDbBrowserAction
+  } = _ref;
+  const [isDoubleWatch, toggleIsDoubleWatch] = (0, _useToggle.default)(false),
+    [elBrowsers, setElBrowsers] = (0, _uiApi.useState)([]);
+  (0, _useListen.default)(store, (actionType, data) => {
+    if (actionType === initBrowserAction) {
+      setElBrowsers(prevElBrowsers => [data, ...prevElBrowsers]);
+    } else if (actionType === toggleWatchDbBrowserAction) {
+      toggleIsDoubleWatch();
     }
-
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-    _this.state = {
-      isDoubleWatch: false,
-      elBrowsers: []
-    };
-
-    _this._onStore = function (actionType, data) {
-      var _this$props = _this.props,
-          initBrowserAction = _this$props.initBrowserAction,
-          toggleWatchDbBrowserAction = _this$props.toggleWatchDbBrowserAction;
-
-      if (actionType === initBrowserAction) {
-        _this.state.elBrowsers.unshift(data);
-
-        _this.setState(_this.state);
-      } else if (actionType === toggleWatchDbBrowserAction) {
-        _this.setState({
-          isDoubleWatch: !_this.state.isDoubleWatch
-        });
-      }
-    };
-
-    _this._renderEl = function (elBrowsers) {
-      return elBrowsers.map(function (el) {
-        return /*#__PURE__*/_react["default"].cloneElement(el);
-      });
-    };
-
-    return _this;
-  }
-
-  var _proto = BrowserContainer.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    var store = this.props.store;
-    this.unsubscribe = store.listen(this._onStore);
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.unsubscribe();
-  };
-
-  _proto.render = function render() {
-    var _this$props2 = this.props,
-        store = _this$props2.store,
-        showBrowserAction = _this$props2.showBrowserAction,
-        updateWatchAction = _this$props2.updateWatchAction,
-        initDialogAction = _this$props2.initDialogAction,
-        showDialogAction = _this$props2.showDialogAction,
-        _this$state = this.state,
-        isDoubleWatch = _this$state.isDoubleWatch,
-        elBrowsers = _this$state.elBrowsers,
-        _doubleWatch = isDoubleWatch ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchBrowser["default"], {
-      isShow: true,
-      isEditMode: true,
-      isDoubleWatch: true,
+  });
+  const _doubleWatch = isDoubleWatch ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchBrowser.default, {
+    isShow: true,
+    isEditMode: true,
+    isDoubleWatch: true,
+    browserType: _Type.BrowserType.WATCH_LIST,
+    caption: "Watch 2",
+    store: store,
+    showAction: showBrowserAction,
+    updateAction: updateWatchAction
+  }) : null;
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    className: CL,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchBrowser.default, {
       browserType: _Type.BrowserType.WATCH_LIST,
-      caption: "Watch 2",
+      caption: "Watch",
       store: store,
       showAction: showBrowserAction,
       updateAction: updateWatchAction
-    }) : null;
-
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      className: CL,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchBrowser["default"], {
-        browserType: _Type.BrowserType.WATCH_LIST,
-        caption: "Watch",
-        store: store,
-        showAction: showBrowserAction,
-        updateAction: updateWatchAction
-      }), _doubleWatch, this._renderEl(elBrowsers), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogContainer["default"], {
-        maxDialog: 3,
-        store: store,
-        initAction: initDialogAction,
-        showAction: showDialogAction
-      })]
-    });
-  };
-
-  return BrowserContainer;
-}(_react.Component);
-
+    }), _doubleWatch, elBrowsers.map(el => (0, _uiApi.cloneElement)(el)), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogStack.default, {
+      maxDialog: 3,
+      useDgOption: useDgOption
+    })]
+  });
+};
 var _default = BrowserContainer;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=BrowserContainer.js.map

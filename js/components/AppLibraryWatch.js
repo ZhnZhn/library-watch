@@ -6,7 +6,6 @@ exports.default = void 0;
 var _AppStore = _interopRequireDefault(require("../flux/stores/AppStore"));
 var _BrowserActions = require("../flux/actions/BrowserActions");
 var _ChartActions = require("../flux/actions/ChartActions");
-var _ComponentActions = require("../flux/actions/ComponentActions");
 var _compStore = require("../flux/compStore");
 var _useHotKeys = _interopRequireDefault(require("./hotkeys/useHotKeys"));
 var _HeaderBar = _interopRequireDefault(require("./header/HeaderBar"));
@@ -29,8 +28,7 @@ const AppLibraryWatch = props => {
         initBrowserAction: _BrowserActions.BAT_INIT_BROWSER_DYNAMIC,
         updateWatchAction: _BrowserActions.BAT_UPDATE_WATCH_BROWSER,
         toggleWatchDbBrowserAction: _BrowserActions.BAT_TOGGLE_WATCH_DB_BROWSER,
-        initDialogAction: _ComponentActions.CAT_INIT_AND_SHOW_DIALOG,
-        showDialogAction: _ComponentActions.CAT_SHOW_DIALOG
+        useDgOption: _compStore.useDgOption
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_About.default, {
         store: _AppStore.default
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ComponentHrzContainer.default, {

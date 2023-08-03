@@ -2,7 +2,6 @@ import {
   cloneElement,
   useState
 } from '../uiApi';
-import useListen from '../hooks/useListen';
 
 const S_DIV = {
   zIndex: 30,
@@ -46,9 +45,7 @@ const INITIAL_STATE = {
 };
 
 const DialogStack = ({
-  store,
-  initAction,
-  showAction,
+  useDgOption,
   maxDialog
 }) => {
   const [
@@ -76,45 +73,47 @@ const DialogStack = ({
     })
   }
 
-  useListen(store, (actionType, data) => {
-    if (actionType === showAction){
-       setState(prevState => {
-         const {
-           dialog,
-           compDialogs,
-           openDialogs
-         } = prevState;
-         let _openDialogs
-         if (!dialog[data]){
-            dialog[data] = true;
-            _openDialogs = _checkOpenDialogs(maxDialog, openDialogs, dialog, data);
-         }
-         return {
-           dialog,
-           compDialogs: _crArrWithTopObjByKey(compDialogs, data),
-           openDialogs: _openDialogs || openDialogs
-         };
-       })
-    } else if (actionType === initAction) {
-       setState(prevState => {
-         const {
-           dialogType,
-           dialogComp
-         } = data
-         , {
-           dialog,
-           compDialogs,
-           openDialogs
-         } = prevState;
-         dialog[dialogType] = true;
-         compDialogs.push(dialogComp)
-         return {
-           dialog,
-           compDialogs,
-           openDialogs: _checkOpenDialogs(maxDialog, openDialogs, dialog, dialogType)
-         };
-       })
-     }
+  useDgOption(dgOption => {
+    if (dgOption) {
+      const {
+        dialogType,
+        dialogComp
+      } = dgOption;
+      if (dialogComp) {
+        setState(prevState => {
+          const {
+            dialog,
+            compDialogs,
+            openDialogs
+          } = prevState;
+          dialog[dialogType] = true;
+          compDialogs.push(dialogComp)
+          return {
+            dialog,
+            compDialogs,
+            openDialogs: _checkOpenDialogs(maxDialog, openDialogs, dialog, dialogType)
+          };
+        })
+      } else {
+        setState(prevState => {
+          const {
+            dialog,
+            compDialogs,
+            openDialogs
+          } = prevState;
+          let _openDialogs;
+          if (!dialog[dialogType]){
+             dialog[dialogType] = true;
+             _openDialogs = _checkOpenDialogs(maxDialog, openDialogs, dialog, dialogType);
+          }
+          return {
+            dialog,
+            compDialogs: _crArrWithTopObjByKey(compDialogs, dialogType),
+            openDialogs: _openDialogs || openDialogs
+          };
+        })
+      }
+    }
   })
 
   return (

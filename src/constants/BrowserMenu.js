@@ -1,11 +1,14 @@
 import { ComponentActions } from '../flux/actions/ComponentActions';
 import { ChartActions } from '../flux/actions/ChartActions';
+import { showDialog } from '../flux/compStore';
 
 const _crOnClick = (
   dialogType,
   browserType
-) => ComponentActions.showDialog
-  .bind(null, dialogType, browserType);
+) => showDialog.bind(null,
+  dialogType,
+  browserType
+);
 
 const _crOnBadgeOpen = (
   dialogType,

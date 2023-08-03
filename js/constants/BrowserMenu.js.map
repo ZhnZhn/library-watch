@@ -1,1 +1,47 @@
-{"version":3,"sources":["../../src/constants/BrowserMenu.js"],"names":["_fnClick","dialogType","browserType","ComponentActions","showDialog","bind","_fnBadgeOpen","ChartActions","showChart","_fnBadgeClose","chartType","closeChartContainer2","fnCreateMenu","menu","data","map","menuPart","items","item","index","id","title","menuTitle","counter","isOpen","onClick","onBadgeOpen","onBadgeClose","caption","isInitClose","BrowserMenu","createMenu"],"mappings":";;;;;;;AAAA;;AACA;;AAEA,IAAMA,QAAQ,GAAG,SAAXA,QAAW,CAASC,UAAT,EAAqBC,WAArB,EAAiC;AAChD,SAAOC,6BAAiBC,UAAjB,CAA4BC,IAA5B,CAAiC,IAAjC,EAAuCJ,UAAvC,EAAmDC,WAAnD,CAAP;AACD,CAFD;;AAIA,IAAMI,YAAY,GAAG,SAAfA,YAAe,CAASL,UAAT,EAAqBC,WAArB,EAAiC;AACpD,SAAOK,yBAAaC,SAAb,CAAuBH,IAAvB,CAA4B,IAA5B,EAAkCJ,UAAlC,EAA8CC,WAA9C,CAAP;AACD,CAFD;;AAIA,IAAMO,aAAa,GAAG,SAAhBA,aAAgB,CAASC,SAAT,EAAmB;AACvC,SAAOP,6BAAiBQ,oBAAjB,CAAsCN,IAAtC,CAA2C,IAA3C,EAAiDK,SAAjD,CAAP;AACD,CAFD;;AAKA,IAAME,YAAY,GAAG,SAAfA,YAAe,CAASC,IAAT,EAAeC,IAAf,EAAqBZ,WAArB,EAAiC;AACpD,SAAOW,IAAI,CAACE,GAAL,CAAS,UAACC,QAAD,EAAc;AAC3B,QAAMC,KAAK,GAAGD,QAAQ,CAACC,KAAT,CAAeF,GAAf,CAAmB,UAACG,IAAD,EAAOC,KAAP,EAAgB;AAC9C,aAAO;AACEC,QAAAA,EAAE,EAAEF,IAAI,CAACE,EADX;AAEEC,QAAAA,KAAK,EAAEP,IAAI,CAACI,IAAI,CAACE,EAAN,CAAJ,CAAcE,SAFvB;AAGEC,QAAAA,OAAO,EAAE,CAHX;AAIEC,QAAAA,MAAM,EAAE,KAJV;AAKEC,QAAAA,OAAO,EAAEzB,QAAQ,CAACkB,IAAI,CAACE,EAAN,EAAUlB,WAAV,CALnB;AAMEwB,QAAAA,WAAW,EAAEpB,YAAY,CAACY,IAAI,CAACE,EAAN,EAAUlB,WAAV,CAN3B;AAOEyB,QAAAA,YAAY,EAAGlB,aAAa,CAACS,IAAI,CAACE,EAAN;AAP9B,OAAP;AASF,KAVa,CAAd;AAWA,WAAO;AACJQ,MAAAA,OAAO,EAAEZ,QAAQ,CAACY,OADd;AAEJC,MAAAA,WAAW,EAAEb,QAAQ,CAACa,WAFlB;AAGJZ,MAAAA,KAAK,EAAEA;AAHH,KAAP;AAKF,GAjBM,CAAP;AAkBD,CAnBD;;AAqBA,IAAMa,WAAW,GAAG;AAClBC,EAAAA,UAAU,EAAGnB;AADK,CAApB;eAIekB,W","sourcesContent":["import ComponentActions from '../flux/actions/ComponentActions';\r\nimport ChartActions from '../flux/actions/ChartActions';\r\n\r\nconst _fnClick = function(dialogType, browserType){\r\n  return ComponentActions.showDialog.bind(null, dialogType, browserType);\r\n}\r\n\r\nconst _fnBadgeOpen = function(dialogType, browserType){\r\n  return ChartActions.showChart.bind(null, dialogType, browserType);\r\n}\r\n\r\nconst _fnBadgeClose = function(chartType){\r\n  return ComponentActions.closeChartContainer2.bind(null, chartType);\r\n}\r\n\r\n\r\nconst fnCreateMenu = function(menu, data, browserType){\r\n  return menu.map((menuPart) => {\r\n     const items = menuPart.items.map((item, index) =>{\r\n        return {\r\n                 id: item.id,\r\n                 title: data[item.id].menuTitle,\r\n                 counter: 0,\r\n                 isOpen: false,\r\n                 onClick: _fnClick(item.id, browserType),\r\n                 onBadgeOpen: _fnBadgeOpen(item.id, browserType),\r\n                 onBadgeClose : _fnBadgeClose(item.id)\r\n               }\r\n     });          \r\n     return {\r\n        caption: menuPart.caption,\r\n        isInitClose: menuPart.isInitClose,\r\n        items: items\r\n     }\r\n  })\r\n}\r\n\r\nconst BrowserMenu = {\r\n  createMenu : fnCreateMenu\r\n}\r\n\r\nexport default BrowserMenu\r\n"],"file":"BrowserMenu.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/constants/BrowserMenu.js"
+ ],
+ "file": "../../src/constants/BrowserMenu.js",
+ "names": [
+  "_ComponentActions",
+  "require",
+  "_ChartActions",
+  "_compStore",
+  "_crOnClick",
+  "dialogType",
+  "browserType",
+  "showDialog",
+  "bind",
+  "_crOnBadgeOpen",
+  "ChartActions",
+  "showChart",
+  "_crOnBadgeClose",
+  "chartType",
+  "ComponentActions",
+  "closeCompItemList",
+  "createMenu",
+  "menu",
+  "data",
+  "map",
+  "menuPart",
+  "items",
+  "item",
+  "id",
+  "title",
+  "menuTitle",
+  "counter",
+  "isOpen",
+  "onClick",
+  "onBadgeOpen",
+  "onBadgeClose",
+  "caption",
+  "isInitClose",
+  "BrowserMenu",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,iBAAA,GAAAC,OAAA;AACA,IAAAC,aAAA,GAAAD,OAAA;AACA,IAAAE,UAAA,GAAAF,OAAA;AAEA,MAAMG,UAAU,GAAGA,CACjBC,UAAU,EACVC,WAAW,KACRC,qBAAU,CAACC,IAAI,CAAC,IAAI,EACvBH,UAAU,EACVC,WACF,CAAC;AAED,MAAMG,cAAc,GAAGA,CACrBJ,UAAU,EACVC,WAAW,KACRI,0BAAY,CAACC,SAAS,CACxBH,IAAI,CAAC,IAAI,EAAEH,UAAU,EAAEC,WAAW,CAAC;AAEtC,MAAMM,eAAe,GACnBC,SAAS,IACNC,kCAAgB,CAACC,iBAAiB,CACpCP,IAAI,CAAC,IAAI,EAAEK,SAAS,CAAC;AAExB,MAAMG,UAAU,GAAGA,CACjBC,IAAI,EACJC,IAAI,EACJZ,WAAW,KACR;EACH,OAAOW,IAAI,CAACE,GAAG,CAACC,QAAQ,IAAI;IACzB,MAAMC,KAAK,GAAGD,QAAQ,CACnBC,KAAK,CAACF,GAAG,CAACG,IAAI,KAAK;MACjBC,EAAE,EAAED,IAAI,CAACC,EAAE;MACXC,KAAK,EAAEN,IAAI,CAACI,IAAI,CAACC,EAAE,CAAC,CAACE,SAAS;MAC9BC,OAAO,EAAE,CAAC;MACVC,MAAM,EAAE,KAAK;MACbC,OAAO,EAAExB,UAAU,CAACkB,IAAI,CAACC,EAAE,EAAEjB,WAAW,CAAC;MACzCuB,WAAW,EAAEpB,cAAc,CAACa,IAAI,CAACC,EAAE,EAAEjB,WAAW,CAAC;MACjDwB,YAAY,EAAElB,eAAe,CAACU,IAAI,CAACC,EAAE;IACxC,CAAC,CAAC,CAAC;IACL,OAAO;MACJQ,OAAO,EAAEX,QAAQ,CAACW,OAAO;MACzBC,WAAW,EAAEZ,QAAQ,CAACY,WAAW;MACjCX;IACH,CAAC;EACJ,CAAC,CAAC;AACJ,CAAC;AAED,MAAMY,WAAW,GAAG;EAClBjB;AACF,CAAC;AAAC,IAAAkB,QAAA,GAEaD,WAAW;AAAAE,OAAA,CAAAC,OAAA,GAAAF,QAAA"
+}
