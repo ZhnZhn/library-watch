@@ -1,8 +1,8 @@
 "use strict";
 
 exports.__esModule = true;
-exports.ChartType = exports.BrowserType = exports.ModalDialog = void 0;
-var ModalDialog = {
+exports.ModalDialog = exports.ChartType = exports.BrowserType = void 0;
+const ModalDialog = {
   ALERT: 'alert',
   INFO: 'info',
   ADD_ITEM: 'addToWatch',
@@ -12,12 +12,13 @@ var ModalDialog = {
   LOAD_FILE: 'loadFile'
 };
 exports.ModalDialog = ModalDialog;
-var BrowserType = {
+const BrowserType = {
   LIBRARY: 'LW',
-  WATCH_LIST: 'WL'
+  WATCH_LIST: 'WL',
+  WATCH_LIST_DB: 'WL_DB'
 };
 exports.BrowserType = BrowserType;
-var ChartType = {
+const ChartType = {
   WATCH_LIST: 'WL_WATCH_LIST'
 };
 exports.ChartType = ChartType;

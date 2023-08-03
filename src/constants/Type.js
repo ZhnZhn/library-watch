@@ -13,7 +13,8 @@ export const ModalDialog = {
 
 export const BrowserType = {
   LIBRARY : 'LW',
-  WATCH_LIST : 'WL'
+  WATCH_LIST : 'WL',
+  WATCH_LIST_DB : 'WL_DB'
 }
 
 export const ChartType = {

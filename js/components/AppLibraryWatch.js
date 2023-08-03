@@ -28,7 +28,6 @@ const AppLibraryWatch = props => {
         useMsBrowser: _browserStore.useMsBrowser,
         initBrowserAction: _BrowserActions.BAT_INIT_BROWSER_DYNAMIC,
         updateWatchAction: _BrowserActions.BAT_UPDATE_WATCH_BROWSER,
-        toggleWatchDbBrowserAction: _BrowserActions.BAT_TOGGLE_WATCH_DB_BROWSER,
         useDgOption: _compStore.useDgOption
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_About.default, {
         store: _AppStore.default

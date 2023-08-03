@@ -1,8 +1,9 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useMsBrowser = exports.showBrowser = void 0;
+exports.useMsBrowser = exports.showWatch = exports.showDbWatch = exports.showBrowser = void 0;
 var _storeApi = require("./storeApi");
+var _Type = require("../constants/Type");
 const _crStore = () => ({
     msBrowser: void 0
   }),
@@ -17,4 +18,8 @@ const showBrowser = id => _set({
   }
 });
 exports.showBrowser = showBrowser;
+const showWatch = showBrowser.bind(null, _Type.BrowserType.WATCH_LIST);
+exports.showWatch = showWatch;
+const showDbWatch = showBrowser.bind(null, _Type.BrowserType.WATCH_LIST_DB);
+exports.showDbWatch = showDbWatch;
 //# sourceMappingURL=browserStore.js.map

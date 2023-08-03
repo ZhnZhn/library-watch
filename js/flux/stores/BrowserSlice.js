@@ -9,46 +9,41 @@ var _BrowserActions = require("../actions/BrowserActions");
 var _compStore = require("../compStore");
 var _BrowserLogicFn = require("./browser/BrowserLogicFn");
 var _DataWL = _interopRequireDefault(require("../../constants/DataWL"));
+const _browserMenu = _BrowserMenu.default,
+  _routeDialog = {
+    WL: _DataWL.default
+  };
 const BrowserSlice = {
   browserMenu: _BrowserMenu.default,
-  routeDialog: {
-    WL: _DataWL.default
-  },
   getBrowserMenu(browserType) {
-    return this.browserMenu[browserType];
+    return _browserMenu[browserType];
   },
   setMenuItemOpen(chartType, browserType) {
-    (0, _BrowserLogicFn.setIsOpen)(chartType, this.browserMenu, browserType, true);
+    (0, _BrowserLogicFn.setIsOpen)(chartType, _browserMenu, browserType, true);
   },
   setMenuItemClose(chartType, browserType) {
-    (0, _BrowserLogicFn.setIsOpen)(chartType, this.browserMenu, browserType, false);
+    (0, _BrowserLogicFn.setIsOpen)(chartType, _browserMenu, browserType, false);
   },
   addMenuItemCounter(chartType, browserType) {
-    (0, _BrowserLogicFn.plusCounter)(chartType, browserType, this.browserMenu, 1);
+    (0, _BrowserLogicFn.plusCounter)(chartType, browserType, _browserMenu, 1);
   },
   minusMenuItemCounter(chartType, browserType) {
-    (0, _BrowserLogicFn.plusCounter)(chartType, browserType, this.browserMenu, -1);
-  },
-  getSourceConfig(browserId, sourceId) {
-    return this.routeDialog[browserId][sourceId];
+    (0, _BrowserLogicFn.plusCounter)(chartType, browserType, _browserMenu, -1);
   },
   getDataConf(dialogType) {
     const dataId = dialogType.split('_')[0];
-    return this.getSourceConfig(dataId, dialogType);
-  },
-  onShowBrowser(browserType) {
-    this.trigger(_BrowserActions.BAT_SHOW_BROWSER, browserType);
+    return _routeDialog[dataId][dialogType];
   },
   onShowBrowserDynamic(option) {
     const {
       browserType
     } = option;
-    if (!this.browserMenu[browserType]) {
+    if (!_browserMenu[browserType]) {
       const elBrowser = (0, _createBrowserDynamic.default)({
         ...option,
         store: this
       });
-      this.browserMenu[browserType] = [];
+      _browserMenu[browserType] = [];
       this.trigger(_BrowserActions.BAT_INIT_BROWSER_DYNAMIC, elBrowser);
     } else {
       this.trigger(_BrowserActions.BAT_SHOW_BROWSER_DYNAMIC, browserType);
@@ -61,8 +56,8 @@ const BrowserSlice = {
         browserType
       } = option,
       elMenu = _BrowserMenu.default.createMenu(menu, items, browserType);
-    this.routeDialog[browserType] = items;
-    this.browserMenu[browserType] = elMenu;
+    _routeDialog[browserType] = items;
+    _browserMenu[browserType] = elMenu;
     this.trigger(_BrowserActions.BAT_LOAD_BROWSER_DYNAMIC_COMPLETED, {
       menuItems: elMenu,
       browserType: browserType
@@ -72,11 +67,8 @@ const BrowserSlice = {
     option.alertItemId = option.alertItemId || option.caption || '';
     (0, _compStore.showAlert)(option);
   },
-  onToggleWatchDbBrowser() {
-    this.trigger(_BrowserActions.BAT_TOGGLE_WATCH_DB_BROWSER);
-  },
   resetMenuItemCounter(cT, bT) {
-    (0, _BrowserLogicFn.resetCounter)(this.browserMenu, bT, cT);
+    (0, _BrowserLogicFn.resetCounter)(_browserMenu, bT, cT);
   }
 };
 var _default = BrowserSlice;

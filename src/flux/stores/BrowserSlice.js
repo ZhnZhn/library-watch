@@ -4,8 +4,7 @@ import createBrowserDynamic from '../logic/createBrowserDynamic';
 import {
   BAT_INIT_BROWSER_DYNAMIC,
   BAT_SHOW_BROWSER_DYNAMIC,
-  BAT_LOAD_BROWSER_DYNAMIC_COMPLETED,
-  BAT_TOGGLE_WATCH_DB_BROWSER
+  BAT_LOAD_BROWSER_DYNAMIC_COMPLETED
 } from '../actions/BrowserActions';
 
 import { showAlert } from '../compStore'
@@ -70,10 +69,6 @@ const BrowserSlice = {
     option.alertItemId = option.alertItemId
       || option.caption || '';
     showAlert(option)
-  },
-
-  onToggleWatchDbBrowser(){
-    this.trigger(BAT_TOGGLE_WATCH_DB_BROWSER);
   },
 
   resetMenuItemCounter(cT, bT){

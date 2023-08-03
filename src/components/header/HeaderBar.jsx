@@ -1,5 +1,5 @@
 import { BrowserActions } from '../../flux/actions/BrowserActions';
-import { showBrowser } from '../../flux/browserStore';
+import { showWatch } from '../../flux/browserStore';
 import { showAbout } from '../../flux/compStore';
 import { BrowserType as BT } from '../../constants/Type';
 
@@ -45,7 +45,6 @@ const TITLE = "Library Watch v0.12.0"
 };
 
 const _hClickLibrary = () => BrowserActions.showBrowserDynamic(BROWSER_CONFIG_LIBRARY);
-const _hClickWatch = () => showBrowser(BT.WATCH_LIST);
 
 const HeaderBar = ({
   store
@@ -73,7 +72,7 @@ const HeaderBar = ({
         title="Watch Browser"
         hotKey={HK_WATCH}
         timeout={0}
-        onClick={_hClickWatch}
+        onClick={showWatch}
      />
      <A.ButtonSave
         store={store}

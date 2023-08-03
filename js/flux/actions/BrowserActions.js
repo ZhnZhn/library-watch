@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.BrowserActions = exports.BAT_UPDATE_WATCH_BROWSER = exports.BAT_UPDATE_BROWSER_MENU = exports.BAT_TOGGLE_WATCH_DB_BROWSER = exports.BAT_SHOW_BROWSER_DYNAMIC = exports.BAT_LOAD_BROWSER_DYNAMIC_COMPLETED = exports.BAT_LOAD_BROWSER_DYNAMIC = exports.BAT_INIT_BROWSER_DYNAMIC = void 0;
+exports.BrowserActions = exports.BAT_UPDATE_WATCH_BROWSER = exports.BAT_UPDATE_BROWSER_MENU = exports.BAT_SHOW_BROWSER_DYNAMIC = exports.BAT_LOAD_BROWSER_DYNAMIC_COMPLETED = exports.BAT_LOAD_BROWSER_DYNAMIC = exports.BAT_INIT_BROWSER_DYNAMIC = void 0;
 var _refluxCore = _interopRequireDefault(require("reflux-core"));
 var _fnFetch = _interopRequireDefault(require("../../network/fnFetch"));
 var _fnCatch = _interopRequireDefault(require("../../network/fnCatch"));
@@ -18,8 +18,6 @@ const BAT_LOAD_BROWSER_DYNAMIC_COMPLETED = 'loadBrowserDynamicCompleted';
 exports.BAT_LOAD_BROWSER_DYNAMIC_COMPLETED = BAT_LOAD_BROWSER_DYNAMIC_COMPLETED;
 const BAT_UPDATE_WATCH_BROWSER = 'updateWatchBrowser';
 exports.BAT_UPDATE_WATCH_BROWSER = BAT_UPDATE_WATCH_BROWSER;
-const BAT_TOGGLE_WATCH_DB_BROWSER = 'toggleWatchDbBrowser';
-exports.BAT_TOGGLE_WATCH_DB_BROWSER = BAT_TOGGLE_WATCH_DB_BROWSER;
 const _BrowserActions = _refluxCore.default.createActions({
   [BAT_UPDATE_BROWSER_MENU]: {},
   [BAT_SHOW_BROWSER_DYNAMIC]: {},
@@ -27,8 +25,7 @@ const _BrowserActions = _refluxCore.default.createActions({
   [BAT_LOAD_BROWSER_DYNAMIC]: {
     children: ['completed', 'failed']
   },
-  [BAT_UPDATE_WATCH_BROWSER]: {},
-  [BAT_TOGGLE_WATCH_DB_BROWSER]: {}
+  [BAT_UPDATE_WATCH_BROWSER]: {}
 });
 const _fnFetchSourceMenu = function (_ref) {
   let {

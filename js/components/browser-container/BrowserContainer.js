@@ -17,16 +17,18 @@ const BrowserContainer = _ref => {
     useMsBrowser,
     updateWatchAction,
     useDgOption,
-    initBrowserAction,
-    toggleWatchDbBrowserAction
+    initBrowserAction
   } = _ref;
   const [isDoubleWatch, toggleIsDoubleWatch] = (0, _useToggle.default)(false),
     [elBrowsers, setElBrowsers] = (0, _uiApi.useState)([]);
+  useMsBrowser(msBrowser => {
+    if (msBrowser && msBrowser.id === _Type.BrowserType.WATCH_LIST_DB) {
+      toggleIsDoubleWatch();
+    }
+  });
   (0, _useListen.default)(store, (actionType, data) => {
     if (actionType === initBrowserAction) {
       setElBrowsers(prevElBrowsers => [data, ...prevElBrowsers]);
-    } else if (actionType === toggleWatchDbBrowserAction) {
-      toggleIsDoubleWatch();
     }
   });
   const _doubleWatch = isDoubleWatch ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchBrowser.default, {

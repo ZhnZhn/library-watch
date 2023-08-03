@@ -1,6 +1,6 @@
 import { ModalDialog } from '../../constants/Type';
-import { BrowserActions } from '../../flux/actions/BrowserActions';
 import { WatchActions } from '../../flux/actions/WatchActions';
+import { showDbWatch } from '../../flux/browserStore';
 import { showModalDialog } from '../../flux/compStore';
 
 export const showDialogEditGroups = () =>
@@ -9,8 +9,7 @@ export const showDialogEditGroups = () =>
 export const showDialogEditLists = () =>
   showModalDialog(ModalDialog.EDIT_WATCH_LIST);
 
-export const toggleWatchDbBrowser = () =>
-  BrowserActions.toggleWatchDbBrowser();
+export const toggleWatchDbBrowser = showDbWatch
 
 export const showDialogWatchItem = (item) =>
   showModalDialog(ModalDialog.LOAD_WATCH_ITEM, item);

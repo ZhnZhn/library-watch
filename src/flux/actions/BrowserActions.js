@@ -9,7 +9,6 @@ export const BAT_INIT_BROWSER_DYNAMIC = 'initBrowserDynamic'
 export const BAT_LOAD_BROWSER_DYNAMIC = 'loadBrowserDynamic'
 export const BAT_LOAD_BROWSER_DYNAMIC_COMPLETED = 'loadBrowserDynamicCompleted'
 export const BAT_UPDATE_WATCH_BROWSER = 'updateWatchBrowser'
-export const BAT_TOGGLE_WATCH_DB_BROWSER = 'toggleWatchDbBrowser'
 
 const _BrowserActions = Reflux.createActions({
   [BAT_UPDATE_BROWSER_MENU]: {},
@@ -19,7 +18,6 @@ const _BrowserActions = Reflux.createActions({
   [BAT_LOAD_BROWSER_DYNAMIC]: { children: ['completed', 'failed']},
 
   [BAT_UPDATE_WATCH_BROWSER]: {},
-  [BAT_TOGGLE_WATCH_DB_BROWSER]: {}
 });
 
 const _fnFetchSourceMenu = function({

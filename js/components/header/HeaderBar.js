@@ -40,7 +40,6 @@ const TITLE = "Library Watch v0.12.0",
     rowClass: 'menu-item'
   };
 const _hClickLibrary = () => _BrowserActions.BrowserActions.showBrowserDynamic(BROWSER_CONFIG_LIBRARY);
-const _hClickWatch = () => (0, _browserStore.showBrowser)(_Type.BrowserType.WATCH_LIST);
 const HeaderBar = _ref => {
   let {
     store
@@ -67,7 +66,7 @@ const HeaderBar = _ref => {
       title: "Watch Browser",
       hotKey: _hotkeys.HK_WATCH,
       timeout: 0,
-      onClick: _hClickWatch
+      onClick: _browserStore.showWatch
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp.default.ButtonSave, {
       store: store,
       style: S_BUTTON_SAVE
