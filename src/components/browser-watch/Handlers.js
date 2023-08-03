@@ -1,28 +1,30 @@
 import { ModalDialog } from '../../constants/Type';
-import { ComponentActions } from '../../flux/actions/ComponentActions';
 import { BrowserActions } from '../../flux/actions/BrowserActions';
 import { WatchActions } from '../../flux/actions/WatchActions';
+import { showModalDialog } from '../../flux/compStore';
 
 export const showDialogEditGroups = () =>
-  ComponentActions.showModalDialog(ModalDialog.EDIT_WATCH_GROUP);
+  showModalDialog(ModalDialog.EDIT_WATCH_GROUP);
 
 export const showDialogEditLists = () =>
-  ComponentActions.showModalDialog(ModalDialog.EDIT_WATCH_LIST);
+  showModalDialog(ModalDialog.EDIT_WATCH_LIST);
 
 export const toggleWatchDbBrowser = () =>
   BrowserActions.toggleWatchDbBrowser();
 
 export const showDialogWatchItem = (item) =>
-  ComponentActions.showModalDialog(ModalDialog.LOAD_WATCH_ITEM, item);
+  showModalDialog(ModalDialog.LOAD_WATCH_ITEM, item);
 
-export const showDialogLoadItemsFromFile = ComponentActions.showModalDialog.bind(null, ModalDialog.LOAD_FILE, {
+export const showDialogLoadItemsFromFile = showModalDialog.bind(null, ModalDialog.LOAD_FILE, {
    onLoad: WatchActions.loadFromJson
 });
 
-export const removeWatchItem = (option, event) => {
-  event.stopPropagation()
+export const removeWatchItem = (
+  option,
+  evt
+) => {
+  evt.stopPropagation()
   WatchActions.removeItem(option)
 }
 
-export const backupWatchItemsToJson =
-  WatchActions.backupToJson
+export const backupWatchItemsToJson = WatchActions.backupToJson

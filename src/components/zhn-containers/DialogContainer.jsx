@@ -2,7 +2,6 @@ import {
   createElement,
   useState
 } from '../uiApi';
-import useListen from '../hooks/useListen';
 
 import ModalDialogContainer from './ModalDialogContainer';
 
@@ -17,7 +16,7 @@ const INITIAL_STATE = {
 
 const DialogContainer = ({
   store,
-  showAction,
+  useMdOption,
   routerDialog
 }) => {
   const [
@@ -42,9 +41,9 @@ const DialogContainer = ({
     })
   };
 
-  useListen(store, (actionType, option) => {
-    if (actionType === showAction){
-      const { modalDialogType:type } = option;
+  useMdOption(mdOption => {
+    if (mdOption) {
+      const { modalDialogType:type } = mdOption;
       setState(prevState => {
         const {
           inits,
@@ -52,7 +51,7 @@ const DialogContainer = ({
           data,
           dialogs
         } = prevState;
-        data[type] = option;
+        data[type] = mdOption;
         shows[type] = true;
         if (!inits[type]) {
           dialogs.push({
@@ -68,7 +67,7 @@ const DialogContainer = ({
         };
       })
     }
-  });
+  })
 
   return (
     <ModalDialogContainer

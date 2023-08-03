@@ -8,9 +8,9 @@ import {
 import { CHAT_INIT_AND_SHOW_CHART } from '../flux/actions/ChartActions';
 import {
   CAT_INIT_AND_SHOW_DIALOG,
-  CAT_SHOW_DIALOG,
-  CAT_SHOW_MODAL_DIALOG
+  CAT_SHOW_DIALOG
 } from '../flux/actions/ComponentActions';
+import { useMdOption } from '../flux/compStore';
 
 import useHotKeys from './hotkeys/useHotKeys';
 
@@ -45,7 +45,7 @@ const AppLibraryWatch = (props) => {
       </div>
       <DialogContainer
          store={Store}
-         showAction={CAT_SHOW_MODAL_DIALOG}
+         useMdOption={useMdOption}        
          routerDialog={RouterModalDialog}
       />
     </div>
