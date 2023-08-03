@@ -1,0 +1,21 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useSubscribe.js"
+ ],
+ "file": "../../../src/components/hooks/useSubscribe.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "useSubscribe",
+  "store",
+  "selector",
+  "onChange",
+  "useEffect",
+  "subscribe",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAEA;AACA,MAAMC,YAAY,GAAGA,CAACC,KAAK,EAAEC,QAAQ,EAAEC,QAAQ,KAAK;EAClD,IAAAC,gBAAS,EAAC,MAAM;IACd,OAAOH,KAAK,CAACI,SAAS,CAACH,QAAQ,EAAEC,QAAQ,CAAC;EAC5C,CAAC,EAAE,EAAE,CAAC;EACN;AACF,CAAC;AACD;AAAA,IAAAG,QAAA,GAEeN,YAAY;AAAAO,OAAA,CAAAC,OAAA,GAAAF,QAAA"
+}
