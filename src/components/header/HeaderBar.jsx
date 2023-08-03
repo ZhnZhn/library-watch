@@ -1,5 +1,5 @@
 import { BrowserActions } from '../../flux/actions/BrowserActions';
-import { ComponentActions } from '../../flux/actions/ComponentActions';
+import { showAbout } from '../../flux/compStore';
 import { BrowserType as BT } from '../../constants/Type';
 
 import A from '../Comp';
@@ -83,11 +83,11 @@ const HeaderBar = ({
           store={store}
        />
        <A.FlatButton
-          className={CL_ABOUT}          
+          className={CL_ABOUT}
           title="About webapp Library Watch"
           hotKey={HK_ABOUT}
           timeout={0}
-          onClick={ComponentActions.showAbout}
+          onClick={showAbout}
        >
           <A.SvgInfo style={S_SVG_INFO} />
        </A.FlatButton>

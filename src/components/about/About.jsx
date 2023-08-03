@@ -1,7 +1,8 @@
 import useBool from '../hooks/useBool';
 import useListen from '../hooks/useListen';
 
-import { CAT_SHOW_ABOUT } from '../../flux/actions/ComponentActions';
+import { useMsAbout } from '../../flux/compStore';
+
 import {
   CHAT_INIT_AND_SHOW_CHART,
   CHAT_SHOW_CHART
@@ -44,11 +45,17 @@ const About = ({
     hideAbout
   ] = useBool(true);
 
-  useListen(store, (actionType, data) => {
-    if (actionType === CAT_SHOW_ABOUT){
+
+  useMsAbout(msAbout => {
+    if (msAbout && msAbout.is) {
       showAbout()
-    } else if (actionType === CHAT_INIT_AND_SHOW_CHART
-            || actionType === CHAT_SHOW_CHART){
+    }
+  })
+
+  useListen(store, (actionType, data) => {
+    if (actionType === CHAT_INIT_AND_SHOW_CHART
+     || actionType === CHAT_SHOW_CHART
+   ){
       hideAbout()
     }
   })
