@@ -1,7 +1,8 @@
 import Reflux from 'reflux-core';
 
+import { showAlert } from '../compStore';
+
 import {
-  CAT_SHOW_MODAL_DIALOG,
   CAT_CLOSE_COMP_ITEM_LIST,
   ComponentActions
 } from '../actions/ComponentActions';
@@ -21,7 +22,6 @@ import { WatchActions } from '../actions/WatchActions';
 
 import {
   BrowserType as BT,
-  ModalDialog as MD
 } from '../../constants/Type';
 
 import createChartContainer from '../logic/createChartContainer';
@@ -38,9 +38,11 @@ import WithLimitRemaining from './WithLimitRemaining';
 import WithLoadingProgress from './WithLoadingProgress';
 
 const CONSOLE_LOG_STYLE = 'color:rgb(237, 88, 19);';
-const _logLoadError = function({
-  alertCaption, alertDescr, alertItemId
-}){
+const _logLoadError = ({
+  alertCaption,
+  alertDescr,
+  alertItemId
+}) => {
   console.log('%c'+ alertCaption + ':' + alertItemId, CONSOLE_LOG_STYLE);
   console.log('%c' + alertDescr, CONSOLE_LOG_STYLE);
 }
@@ -69,12 +71,6 @@ const AppStore = Reflux.createStore({
   getConfigs(chartType){
    return this.charts[chartType];
   },
-  showAlertDialog(option={}){
-   option.modalDialogType = MD.ALERT;
-   option.alertItemId = option.alertItemId
-     || option.repo || '';
-   this.trigger(CAT_SHOW_MODAL_DIALOG, option);
- },
 
   isKeyTop(key, option){
     const { chartType } = option
@@ -155,7 +151,9 @@ const AppStore = Reflux.createStore({
   onLoadStockFailed(option){
    const  { limitRemaining } = option;
    this.triggerLimitRemaining(limitRemaining);
-   this.showAlertDialog(option);
+   option.alertItemId = option.alertItemId
+     || option.repo || '';
+   showAlert(option)
    _logLoadError(option);
  },
 

@@ -9,6 +9,8 @@ import {
   BAT_TOGGLE_WATCH_DB_BROWSER
 } from '../actions/BrowserActions';
 
+import { showAlert } from '../compStore'
+
 import {
   setIsOpen,
   plusCounter,
@@ -73,7 +75,7 @@ const BrowserSlice = {
   onLoadBrowserDynamicFailed(option){
     option.alertItemId = option.alertItemId
       || option.caption || '';
-    this.showAlertDialog(option);
+    showAlert(option)    
   },
 
   onToggleWatchDbBrowser(){

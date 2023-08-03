@@ -2,7 +2,7 @@ import Reflux from 'reflux-core';
 
 import RouterLoad from '../logic/RouterLoad';
 import Store from '../stores/AppStore';
-import { ComponentActions } from './ComponentActions';
+import { showAlert } from '../compStore';
 
 const ALREADY_LOADED = {
   caption: 'Already loaded',
@@ -49,7 +49,7 @@ _ChartActions[CHAT_LOAD_STOCK].listen(function(
     this.idLoading = key;
     loadItem(option, this.completed, this.failed);
   } else {
-    ComponentActions.showAlert(ALREADY_LOADED)
+    showAlert(ALREADY_LOADED)
     _ChartActions.showChart(chartType, browserType)
   }
 })

@@ -6,7 +6,10 @@ import merge from '../../utils/merge';
 import { mlsToYmd } from '../../utils/dateFn';
 import saveJsonToFile from './saveJsonToFile';
 
-import { ComponentActions } from '../actions/ComponentActions';
+import {  
+  showAlert,
+  showInfo
+} from '../compStore';
 import {
   BAT_UPDATE_WATCH_BROWSER
 } from '../actions/BrowserActions';
@@ -23,7 +26,6 @@ import {
   WAT_DELETE_LIST
 } from '../actions/WatchActions';
 import WatchDefault from '../../constants/WatchDefault';
-import { ModalDialog }  from '../../constants/Type';
 import {
   MSG_WATCH_SAVED,
   MSG_WATCH_PREV,
@@ -109,7 +111,7 @@ const WatchListSlice = {
        this.setWatchEdited(true);
        this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
     } else {
-      this.showAlertDialog(result);
+      showAlert(result)
     }
   },
 
@@ -130,8 +132,7 @@ const WatchListSlice = {
          console.log(err.message);
        } else {
          this.setWatchEdited(false);
-         this.onShowModalDialog(
-           ModalDialog.INFO,
+         showInfo(
            _crInfoDialogProps(
               CAPTION_WATCH_SAVE,
               MSG_WATCH_SAVED
@@ -139,8 +140,7 @@ const WatchListSlice = {
          console.log(MSG_WATCH_SAVED);
        }
     } else {
-       this.onShowModalDialog(
-          ModalDialog.INFO,
+       showInfo(
           _crInfoDialogProps(
             CAPTION_WATCH_SAVE,
             MSG_WATCH_PREV
@@ -212,7 +212,7 @@ const WatchListSlice = {
       this.setWatchEdited(true);
       this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
     } catch(exc) {
-      ComponentActions.showModalDialog(ModalDialog.ALERT, {...ALERT_LOAD_FROM_JSON })
+      showAlert({...ALERT_LOAD_FROM_JSON })
     }
   }
 

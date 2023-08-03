@@ -18,13 +18,6 @@ const ComponentSlice = {
         dialogComp
       });
     }
-  },
-  onShowModalDialog(modalDialogType, option) {
-    if (option === void 0) {
-      option = {};
-    }
-    option.modalDialogType = modalDialogType;
-    this.trigger(_ComponentActions.CAT_SHOW_MODAL_DIALOG, option);
   }
 };
 var _default = ComponentSlice;
