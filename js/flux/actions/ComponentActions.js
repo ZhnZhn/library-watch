@@ -1,30 +1,28 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = exports.ComponentActionTypes = void 0;
-
+exports.ComponentActions = exports.CAT_SHOW_MODAL_DIALOG = exports.CAT_SHOW_DIALOG = exports.CAT_INIT_AND_SHOW_DIALOG = exports.CAT_CLOSE_COMP_ITEM_LIST = exports.CAT_CLOSE_CHART_CONTAINER = void 0;
 var _refluxCore = _interopRequireDefault(require("reflux-core"));
-
 var _Type = require("../../constants/Type");
-
-var _Reflux$createActions;
-
-var ComponentActionTypes = {
-  SHOW_ABOUT: 'showAbout',
-  INIT_AND_SHOW_DIALOG: 'initAndShowDialog',
-  SHOW_DIALOG: 'showDialog',
-  CLOSE_CHART_CONTAINER: 'closeChartContainer',
-  CLOSE_CHART_CONTAINER_2: 'closeChartContainer2',
-  //SET_ACTIVE_CHECKBOX : 'setActiveCheckbox',
-  SHOW_MODAL_DIALOG: 'showModalDialog'
-};
-exports.ComponentActionTypes = ComponentActionTypes;
-
-var ComponentActions = _refluxCore["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[ComponentActionTypes.SHOW_ABOUT] = {}, _Reflux$createActions[ComponentActionTypes.INIT_AND_SHOW_DIALOG] = {}, _Reflux$createActions[ComponentActionTypes.SHOW_DIALOG] = {}, _Reflux$createActions[ComponentActionTypes.CLOSE_CHART_CONTAINER] = {}, _Reflux$createActions[ComponentActionTypes.CLOSE_CHART_CONTAINER_2] = {}, _Reflux$createActions[ComponentActionTypes.SHOW_MODAL_DIALOG] = {}, _Reflux$createActions));
-
-ComponentActions.showAlert = ComponentActions.showModalDialog.bind(null, _Type.ModalDialog.ALERT);
-var _default = ComponentActions;
-exports["default"] = _default;
+const CAT_INIT_AND_SHOW_DIALOG = 'initAndShowDialog';
+exports.CAT_INIT_AND_SHOW_DIALOG = CAT_INIT_AND_SHOW_DIALOG;
+const CAT_SHOW_DIALOG = 'showDialog';
+exports.CAT_SHOW_DIALOG = CAT_SHOW_DIALOG;
+const CAT_CLOSE_CHART_CONTAINER = 'closeChartContainer';
+exports.CAT_CLOSE_CHART_CONTAINER = CAT_CLOSE_CHART_CONTAINER;
+const CAT_CLOSE_COMP_ITEM_LIST = 'closeCompItemList';
+exports.CAT_CLOSE_COMP_ITEM_LIST = CAT_CLOSE_COMP_ITEM_LIST;
+const CAT_SHOW_MODAL_DIALOG = 'showModalDialog';
+exports.CAT_SHOW_MODAL_DIALOG = CAT_SHOW_MODAL_DIALOG;
+const _ComponentActions = _refluxCore.default.createActions({
+  [CAT_INIT_AND_SHOW_DIALOG]: {},
+  [CAT_SHOW_DIALOG]: {},
+  [CAT_CLOSE_CHART_CONTAINER]: {},
+  [CAT_CLOSE_COMP_ITEM_LIST]: {},
+  [CAT_SHOW_MODAL_DIALOG]: {}
+});
+_ComponentActions.showAlert = _ComponentActions.showModalDialog.bind(null, _Type.ModalDialog.ALERT);
+const ComponentActions = _ComponentActions;
+exports.ComponentActions = ComponentActions;
 //# sourceMappingURL=ComponentActions.js.map

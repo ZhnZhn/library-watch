@@ -1,0 +1,25 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/flux/compStore.js"
+ ],
+ "file": "../../src/flux/compStore.js",
+ "names": [
+  "_storeApi",
+  "require",
+  "_crStore",
+  "msAbout",
+  "is",
+  "_compStore",
+  "createStoreWithSelector",
+  "_selectMsAbout",
+  "state",
+  "_set",
+  "setState",
+  "useMsAbout",
+  "fCrUse",
+  "exports",
+  "showAbout"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAKA,MAAMC,QAAQ,GAAGA,CAAA,MAAO;IACtBC,OAAO,EAAE;MAAEC,EAAE,EAAE;IAAK;EACtB,CAAC,CAAC;EACAC,UAAU,GAAG,IAAAC,iCAAuB,EAACJ,QAAQ,CAAC;EAC9CK,cAAc,GAAGC,KAAK,IAAIA,KAAK,CAACL,OAAO;EACvCM,IAAI,GAAGJ,UAAU,CAACK,QAAQ;AAErB,MAAMC,UAAU,GAAG,IAAAC,gBAAM,EAACP,UAAU,EAAEE,cAAc,CAAC;AAAAM,OAAA,CAAAF,UAAA,GAAAA,UAAA;AAErD,MAAMG,SAAS,GAAGA,CAAA,KAAML,IAAI,CAAC;EAClCN,OAAO,EAAE;IAAEC,EAAE,EAAE;EAAK;AACtB,CAAC,CAAC;AAAAS,OAAA,CAAAC,SAAA,GAAAA,SAAA"
+}
