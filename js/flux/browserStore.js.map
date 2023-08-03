@@ -1,0 +1,25 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/flux/browserStore.js"
+ ],
+ "file": "../../src/flux/browserStore.js",
+ "names": [
+  "_storeApi",
+  "require",
+  "_crStore",
+  "msBrowser",
+  "_browserStore",
+  "createStoreWithSelector",
+  "_selectMsBrowser",
+  "state",
+  "_set",
+  "setState",
+  "useMsBrowser",
+  "fCrUse",
+  "exports",
+  "showBrowser",
+  "id"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAKA,MAAMC,QAAQ,GAAGA,CAAA,MAAO;IACtBC,SAAS,EAAE,KAAK;EAClB,CAAC,CAAC;EACAC,aAAa,GAAG,IAAAC,iCAAuB,EAACH,QAAQ,CAAC;EACjDI,gBAAgB,GAAGC,KAAK,IAAIA,KAAK,CAACJ,SAAS;EAC3CK,IAAI,GAAGJ,aAAa,CAACK,QAAQ;AAExB,MAAMC,YAAY,GAAG,IAAAC,gBAAM,EAACP,aAAa,EAAEE,gBAAgB,CAAC;AAAAM,OAAA,CAAAF,YAAA,GAAAA,YAAA;AAC5D,MAAMG,WAAW,GAAIC,EAAE,IAAKN,IAAI,CAAC;EACtCL,SAAS,EAAE;IAAEW;EAAG;AAClB,CAAC,CAAC;AAAAF,OAAA,CAAAC,WAAA,GAAAA,WAAA"
+}

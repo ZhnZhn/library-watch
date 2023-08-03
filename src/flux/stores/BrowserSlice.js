@@ -2,7 +2,6 @@ import BrowserMenu from '../../constants/BrowserMenu';
 
 import createBrowserDynamic from '../logic/createBrowserDynamic';
 import {
-  BAT_SHOW_BROWSER,
   BAT_INIT_BROWSER_DYNAMIC,
   BAT_SHOW_BROWSER_DYNAMIC,
   BAT_LOAD_BROWSER_DYNAMIC_COMPLETED,
@@ -18,46 +17,40 @@ import {
 } from './browser/BrowserLogicFn';
 import DataWL from '../../constants/DataWL';
 
+const _browserMenu = BrowserMenu
+, _routeDialog = {
+  WL: DataWL
+};
+
 const BrowserSlice = {
   browserMenu: BrowserMenu,
-  routeDialog: {
-    WL: DataWL
-  },
 
   getBrowserMenu(browserType){
-     return this.browserMenu[browserType];
+     return _browserMenu[browserType];
   },
   setMenuItemOpen(chartType, browserType){
-    setIsOpen(chartType, this.browserMenu, browserType, true);
+    setIsOpen(chartType, _browserMenu, browserType, true);
   },
   setMenuItemClose(chartType, browserType){
-    setIsOpen(chartType, this.browserMenu, browserType, false);
+    setIsOpen(chartType, _browserMenu, browserType, false);
   },
   addMenuItemCounter(chartType, browserType){
-    plusCounter(chartType, browserType, this.browserMenu, 1);
+    plusCounter(chartType, browserType, _browserMenu, 1);
   },
   minusMenuItemCounter(chartType, browserType){
-    plusCounter(chartType, browserType, this.browserMenu, -1);
+    plusCounter(chartType, browserType, _browserMenu, -1);
   },
 
-  getSourceConfig(browserId, sourceId){
-    return this.routeDialog[browserId][sourceId];
-  },
   getDataConf(dialogType){
     const dataId = dialogType.split('_')[0];
-    return this.getSourceConfig(dataId, dialogType);
-  },
-
-
-  onShowBrowser(browserType){
-    this.trigger(BAT_SHOW_BROWSER, browserType);
+    return _routeDialog[dataId][dialogType];
   },
 
   onShowBrowserDynamic(option){
     const { browserType } = option;
-    if (!this.browserMenu[browserType]) {
+    if (!_browserMenu[browserType]) {
        const elBrowser = createBrowserDynamic({...option, store: this });
-       this.browserMenu[browserType] = [];
+       _browserMenu[browserType] = [];
        this.trigger(BAT_INIT_BROWSER_DYNAMIC, elBrowser);
     } else {
        this.trigger(BAT_SHOW_BROWSER_DYNAMIC, browserType);
@@ -66,16 +59,17 @@ const BrowserSlice = {
   onLoadBrowserDynamicCompleted(option){
     const { menu, items, browserType } = option
         , elMenu = BrowserMenu.createMenu(menu, items, browserType);
-    this.routeDialog[browserType] = items;
-    this.browserMenu[browserType] = elMenu;
+    _routeDialog[browserType] = items;
+    _browserMenu[browserType] = elMenu;
     this.trigger(BAT_LOAD_BROWSER_DYNAMIC_COMPLETED, {
-      menuItems: elMenu, browserType: browserType
+      menuItems: elMenu,
+      browserType: browserType
     })
   },
   onLoadBrowserDynamicFailed(option){
     option.alertItemId = option.alertItemId
       || option.caption || '';
-    showAlert(option)    
+    showAlert(option)
   },
 
   onToggleWatchDbBrowser(){
@@ -83,7 +77,7 @@ const BrowserSlice = {
   },
 
   resetMenuItemCounter(cT, bT){
-    resetCounter(this.browserMenu, bT, cT)
+    resetCounter(_browserMenu, bT, cT)
   }
 }
 

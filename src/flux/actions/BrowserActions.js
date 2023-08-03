@@ -3,7 +3,6 @@ import Reflux from 'reflux-core';
 import fnFetch from '../../network/fnFetch';
 import fnCatch from '../../network/fnCatch';
 
-export const BAT_SHOW_BROWSER = 'showBrowser'
 export const BAT_UPDATE_BROWSER_MENU = 'updateBrowserMenu'
 export const BAT_SHOW_BROWSER_DYNAMIC = 'showBrowserDynamic'
 export const BAT_INIT_BROWSER_DYNAMIC = 'initBrowserDynamic'
@@ -13,7 +12,6 @@ export const BAT_UPDATE_WATCH_BROWSER = 'updateWatchBrowser'
 export const BAT_TOGGLE_WATCH_DB_BROWSER = 'toggleWatchDbBrowser'
 
 const _BrowserActions = Reflux.createActions({
-  [BAT_SHOW_BROWSER]: {},
   [BAT_UPDATE_BROWSER_MENU]: {},
 
   [BAT_SHOW_BROWSER_DYNAMIC]: {},

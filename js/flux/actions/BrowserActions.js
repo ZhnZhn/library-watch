@@ -1,61 +1,65 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = exports.BrowserActionTypes = void 0;
-
+exports.BrowserActions = exports.BAT_UPDATE_WATCH_BROWSER = exports.BAT_UPDATE_BROWSER_MENU = exports.BAT_TOGGLE_WATCH_DB_BROWSER = exports.BAT_SHOW_BROWSER_DYNAMIC = exports.BAT_LOAD_BROWSER_DYNAMIC_COMPLETED = exports.BAT_LOAD_BROWSER_DYNAMIC = exports.BAT_INIT_BROWSER_DYNAMIC = void 0;
 var _refluxCore = _interopRequireDefault(require("reflux-core"));
-
 var _fnFetch = _interopRequireDefault(require("../../network/fnFetch"));
-
 var _fnCatch = _interopRequireDefault(require("../../network/fnCatch"));
-
-var _Reflux$createActions;
-
-var BrowserActionTypes = {
-  SHOW_BROWSER: 'showBrowser',
-  UPDATE_BROWSER_MENU: 'updateBrowserMenu',
-  SHOW_BROWSER_DYNAMIC: 'showBrowserDynamic',
-  INIT_BROWSER_DYNAMIC: 'initBrowserDynamic',
-  LOAD_BROWSER_DYNAMIC: 'loadBrowserDynamic',
-  LOAD_BROWSER_DYNAMIC_COMPLETED: 'loadBrowserDynamicCompleted',
-  UPDATE_WATCH_BROWSER: 'updateWatchBrowser',
-  TOGGLE_WATCH_DB_BROWSER: 'toggleWatchDbBrowser'
-};
-exports.BrowserActionTypes = BrowserActionTypes;
-
-var BrowserActions = _refluxCore["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[BrowserActionTypes.SHOW_BROWSER] = {}, _Reflux$createActions[BrowserActionTypes.UPDATE_BROWSER_MENU] = {}, _Reflux$createActions[BrowserActionTypes.SHOW_BROWSER_DYNAMIC] = {}, _Reflux$createActions[BrowserActionTypes.INIT_BROWSER_DYNAMIC] = {}, _Reflux$createActions[BrowserActionTypes.LOAD_BROWSER_DYNAMIC] = {
-  children: ['completed', 'failed']
-}, _Reflux$createActions[BrowserActionTypes.UPDATE_WATCH_BROWSER] = {}, _Reflux$createActions[BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER] = {}, _Reflux$createActions));
-
-var _fnFetchSourceMenu = function _fnFetchSourceMenu(_ref) {
-  var json = _ref.json,
-      option = _ref.option,
-      onCompleted = _ref.onCompleted;
-  var menu = json.menu,
-      items = json.items,
-      browserType = option.browserType;
+const BAT_UPDATE_BROWSER_MENU = 'updateBrowserMenu';
+exports.BAT_UPDATE_BROWSER_MENU = BAT_UPDATE_BROWSER_MENU;
+const BAT_SHOW_BROWSER_DYNAMIC = 'showBrowserDynamic';
+exports.BAT_SHOW_BROWSER_DYNAMIC = BAT_SHOW_BROWSER_DYNAMIC;
+const BAT_INIT_BROWSER_DYNAMIC = 'initBrowserDynamic';
+exports.BAT_INIT_BROWSER_DYNAMIC = BAT_INIT_BROWSER_DYNAMIC;
+const BAT_LOAD_BROWSER_DYNAMIC = 'loadBrowserDynamic';
+exports.BAT_LOAD_BROWSER_DYNAMIC = BAT_LOAD_BROWSER_DYNAMIC;
+const BAT_LOAD_BROWSER_DYNAMIC_COMPLETED = 'loadBrowserDynamicCompleted';
+exports.BAT_LOAD_BROWSER_DYNAMIC_COMPLETED = BAT_LOAD_BROWSER_DYNAMIC_COMPLETED;
+const BAT_UPDATE_WATCH_BROWSER = 'updateWatchBrowser';
+exports.BAT_UPDATE_WATCH_BROWSER = BAT_UPDATE_WATCH_BROWSER;
+const BAT_TOGGLE_WATCH_DB_BROWSER = 'toggleWatchDbBrowser';
+exports.BAT_TOGGLE_WATCH_DB_BROWSER = BAT_TOGGLE_WATCH_DB_BROWSER;
+const _BrowserActions = _refluxCore.default.createActions({
+  [BAT_UPDATE_BROWSER_MENU]: {},
+  [BAT_SHOW_BROWSER_DYNAMIC]: {},
+  [BAT_INIT_BROWSER_DYNAMIC]: {},
+  [BAT_LOAD_BROWSER_DYNAMIC]: {
+    children: ['completed', 'failed']
+  },
+  [BAT_UPDATE_WATCH_BROWSER]: {},
+  [BAT_TOGGLE_WATCH_DB_BROWSER]: {}
+});
+const _fnFetchSourceMenu = function (_ref) {
+  let {
+    json,
+    option,
+    onCompleted
+  } = _ref;
+  const {
+      menu,
+      items
+    } = json,
+    {
+      browserType
+    } = option;
   onCompleted({
-    menu: menu,
-    items: items,
-    browserType: browserType
+    menu,
+    items,
+    browserType
   });
 };
-
-BrowserActions[BrowserActionTypes.LOAD_BROWSER_DYNAMIC].listen(function (option) {
-  (0, _fnFetch["default"])({
+_BrowserActions[BAT_LOAD_BROWSER_DYNAMIC].listen(function (option) {
+  (0, _fnFetch.default)({
     uri: option.sourceMenuUrl,
     option: option,
-    onCheckResponse: function onCheckResponse(json) {
-      return true;
-    },
+    onCheckResponse: json => true,
     onFetch: _fnFetchSourceMenu,
     onCompleted: this.completed,
-    onCatch: _fnCatch["default"],
+    onCatch: _fnCatch.default,
     onFailed: this.failed
   });
 });
-var _default = BrowserActions;
-exports["default"] = _default;
+const BrowserActions = _BrowserActions;
+exports.BrowserActions = BrowserActions;
 //# sourceMappingURL=BrowserActions.js.map

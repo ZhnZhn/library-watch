@@ -1,1 +1,47 @@
-{"version":3,"sources":["../../../src/flux/actions/BrowserActions.js"],"names":["BrowserActionTypes","SHOW_BROWSER","UPDATE_BROWSER_MENU","SHOW_BROWSER_DYNAMIC","INIT_BROWSER_DYNAMIC","LOAD_BROWSER_DYNAMIC","LOAD_BROWSER_DYNAMIC_COMPLETED","UPDATE_WATCH_BROWSER","TOGGLE_WATCH_DB_BROWSER","BrowserActions","Reflux","createActions","children","_fnFetchSourceMenu","json","option","onCompleted","menu","items","browserType","listen","uri","sourceMenuUrl","onCheckResponse","onFetch","completed","onCatch","fnCatch","onFailed","failed"],"mappings":";;;;;;;AAAA;;AAEA;;AACA;;;;AAEO,IAAMA,kBAAkB,GAAG;AAChCC,EAAAA,YAAY,EAAG,aADiB;AAEhCC,EAAAA,mBAAmB,EAAG,mBAFU;AAIhCC,EAAAA,oBAAoB,EAAG,oBAJS;AAKhCC,EAAAA,oBAAoB,EAAG,oBALS;AAMhCC,EAAAA,oBAAoB,EAAG,oBANS;AAOhCC,EAAAA,8BAA8B,EAAG,6BAPD;AAShCC,EAAAA,oBAAoB,EAAG,oBATS;AAUhCC,EAAAA,uBAAuB,EAAG;AAVM,CAA3B;;;AAaP,IAAMC,cAAc,GAAGC,uBAAOC,aAAP,oDACpBX,kBAAkB,CAACC,YADC,IACe,EADf,wBAEpBD,kBAAkB,CAACE,mBAFC,IAEsB,EAFtB,wBAIpBF,kBAAkB,CAACG,oBAJC,IAIuB,EAJvB,wBAKpBH,kBAAkB,CAACI,oBALC,IAKuB,EALvB,wBAMpBJ,kBAAkB,CAACK,oBANC,IAMuB;AAAEO,EAAAA,QAAQ,EAAG,CAAC,WAAD,EAAc,QAAd;AAAb,CANvB,wBAQpBZ,kBAAkB,CAACO,oBARC,IAQuB,EARvB,wBASpBP,kBAAkB,CAACQ,uBATC,IAS0B,EAT1B,yBAAvB;;AAYA,IAAMK,kBAAkB,GAAG,SAArBA,kBAAqB,OAAuC;AAAA,MAA5BC,IAA4B,QAA5BA,IAA4B;AAAA,MAAtBC,MAAsB,QAAtBA,MAAsB;AAAA,MAAdC,WAAc,QAAdA,WAAc;AAAA,MACxDC,IADwD,GACxCH,IADwC,CACxDG,IADwD;AAAA,MAClDC,KADkD,GACxCJ,IADwC,CAClDI,KADkD;AAAA,MAExDC,WAFwD,GAExCJ,MAFwC,CAExDI,WAFwD;AAGhEH,EAAAA,WAAW,CAAC;AAAEC,IAAAA,IAAI,EAAJA,IAAF;AAAQC,IAAAA,KAAK,EAALA,KAAR;AAAeC,IAAAA,WAAW,EAAXA;AAAf,GAAD,CAAX;AACD,CAJD;;AAMAV,cAAc,CAACT,kBAAkB,CAACK,oBAApB,CAAd,CAAwDe,MAAxD,CAA+D,UAASL,MAAT,EAAgB;AAC5E,2BAAQ;AACNM,IAAAA,GAAG,EAAGN,MAAM,CAACO,aADP;AAENP,IAAAA,MAAM,EAAGA,MAFH;AAGNQ,IAAAA,eAAe,EAAG,yBAACT,IAAD;AAAA,aAAU,IAAV;AAAA,KAHZ;AAINU,IAAAA,OAAO,EAAGX,kBAJJ;AAKNG,IAAAA,WAAW,EAAG,KAAKS,SALb;AAMNC,IAAAA,OAAO,EAAGC,mBANJ;AAONC,IAAAA,QAAQ,EAAG,KAAKC;AAPV,GAAR;AASF,CAVD;eAaepB,c","sourcesContent":["import Reflux from 'reflux-core';\r\n\r\nimport fnFetch from '../../network/fnFetch';\r\nimport fnCatch from '../../network/fnCatch';\r\n\r\nexport const BrowserActionTypes = {\r\n  SHOW_BROWSER : 'showBrowser',\r\n  UPDATE_BROWSER_MENU : 'updateBrowserMenu',\r\n\r\n  SHOW_BROWSER_DYNAMIC : 'showBrowserDynamic',\r\n  INIT_BROWSER_DYNAMIC : 'initBrowserDynamic',\r\n  LOAD_BROWSER_DYNAMIC : 'loadBrowserDynamic',\r\n  LOAD_BROWSER_DYNAMIC_COMPLETED : 'loadBrowserDynamicCompleted',\r\n\r\n  UPDATE_WATCH_BROWSER : 'updateWatchBrowser',\r\n  TOGGLE_WATCH_DB_BROWSER : 'toggleWatchDbBrowser'\r\n}\r\n\r\nconst BrowserActions = Reflux.createActions({\r\n  [BrowserActionTypes.SHOW_BROWSER] : {},\r\n  [BrowserActionTypes.UPDATE_BROWSER_MENU] : {},\r\n\r\n  [BrowserActionTypes.SHOW_BROWSER_DYNAMIC] : {},\r\n  [BrowserActionTypes.INIT_BROWSER_DYNAMIC] : {},\r\n  [BrowserActionTypes.LOAD_BROWSER_DYNAMIC] : { children : ['completed', 'failed']},\r\n\r\n  [BrowserActionTypes.UPDATE_WATCH_BROWSER] : {},\r\n  [BrowserActionTypes.TOGGLE_WATCH_DB_BROWSER] : {}\r\n});\r\n\r\nconst _fnFetchSourceMenu = function({ json, option, onCompleted }){\r\n  const { menu, items } = json\r\n      , { browserType } = option;\r\n  onCompleted({ menu, items, browserType });\r\n}\r\n\r\nBrowserActions[BrowserActionTypes.LOAD_BROWSER_DYNAMIC].listen(function(option){\r\n   fnFetch({\r\n     uri : option.sourceMenuUrl,\r\n     option : option,\r\n     onCheckResponse : (json) => true,\r\n     onFetch : _fnFetchSourceMenu,\r\n     onCompleted : this.completed,\r\n     onCatch : fnCatch,\r\n     onFailed : this.failed\r\n   })\r\n})\r\n\r\n\r\nexport default BrowserActions\r\n"],"file":"BrowserActions.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/actions/BrowserActions.js"
+ ],
+ "file": "../../../src/flux/actions/BrowserActions.js",
+ "names": [
+  "_refluxCore",
+  "_interopRequireDefault",
+  "require",
+  "_fnFetch",
+  "_fnCatch",
+  "BAT_UPDATE_BROWSER_MENU",
+  "exports",
+  "BAT_SHOW_BROWSER_DYNAMIC",
+  "BAT_INIT_BROWSER_DYNAMIC",
+  "BAT_LOAD_BROWSER_DYNAMIC",
+  "BAT_LOAD_BROWSER_DYNAMIC_COMPLETED",
+  "BAT_UPDATE_WATCH_BROWSER",
+  "BAT_TOGGLE_WATCH_DB_BROWSER",
+  "_BrowserActions",
+  "Reflux",
+  "createActions",
+  "children",
+  "_fnFetchSourceMenu",
+  "_ref",
+  "json",
+  "option",
+  "onCompleted",
+  "menu",
+  "items",
+  "browserType",
+  "listen",
+  "fnFetch",
+  "uri",
+  "sourceMenuUrl",
+  "onCheckResponse",
+  "onFetch",
+  "completed",
+  "onCatch",
+  "fnCatch",
+  "onFailed",
+  "failed",
+  "BrowserActions"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,WAAA,GAAAC,sBAAA,CAAAC,OAAA;AAEA,IAAAC,QAAA,GAAAF,sBAAA,CAAAC,OAAA;AACA,IAAAE,QAAA,GAAAH,sBAAA,CAAAC,OAAA;AAEO,MAAMG,uBAAuB,GAAG,mBAAmB;AAAAC,OAAA,CAAAD,uBAAA,GAAAA,uBAAA;AACnD,MAAME,wBAAwB,GAAG,oBAAoB;AAAAD,OAAA,CAAAC,wBAAA,GAAAA,wBAAA;AACrD,MAAMC,wBAAwB,GAAG,oBAAoB;AAAAF,OAAA,CAAAE,wBAAA,GAAAA,wBAAA;AACrD,MAAMC,wBAAwB,GAAG,oBAAoB;AAAAH,OAAA,CAAAG,wBAAA,GAAAA,wBAAA;AACrD,MAAMC,kCAAkC,GAAG,6BAA6B;AAAAJ,OAAA,CAAAI,kCAAA,GAAAA,kCAAA;AACxE,MAAMC,wBAAwB,GAAG,oBAAoB;AAAAL,OAAA,CAAAK,wBAAA,GAAAA,wBAAA;AACrD,MAAMC,2BAA2B,GAAG,sBAAsB;AAAAN,OAAA,CAAAM,2BAAA,GAAAA,2BAAA;AAEjE,MAAMC,eAAe,GAAGC,mBAAM,CAACC,aAAa,CAAC;EAC3C,CAACV,uBAAuB,GAAG,CAAC,CAAC;EAE7B,CAACE,wBAAwB,GAAG,CAAC,CAAC;EAC9B,CAACC,wBAAwB,GAAG,CAAC,CAAC;EAC9B,CAACC,wBAAwB,GAAG;IAAEO,QAAQ,EAAE,CAAC,WAAW,EAAE,QAAQ;EAAC,CAAC;EAEhE,CAACL,wBAAwB,GAAG,CAAC,CAAC;EAC9B,CAACC,2BAA2B,GAAG,CAAC;AAClC,CAAC,CAAC;AAEF,MAAMK,kBAAkB,GAAG,SAAAA,CAAAC,IAAA,EAIzB;EAAA,IAJkC;IAClCC,IAAI;IACJC,MAAM;IACNC;EACF,CAAC,GAAAH,IAAA;EACC,MAAM;MAAEI,IAAI;MAAEC;IAAM,CAAC,GAAGJ,IAAI;IAC1B;MAAEK;IAAY,CAAC,GAAGJ,MAAM;EAC1BC,WAAW,CAAC;IAAEC,IAAI;IAAEC,KAAK;IAAEC;EAAY,CAAC,CAAC;AAC3C,CAAC;AAEDX,eAAe,CAACJ,wBAAwB,CAAC,CAACgB,MAAM,CAAC,UAASL,MAAM,EAAC;EAC9D,IAAAM,gBAAO,EAAC;IACNC,GAAG,EAAEP,MAAM,CAACQ,aAAa;IACzBR,MAAM,EAAEA,MAAM;IACdS,eAAe,EAAGV,IAAI,IAAK,IAAI;IAC/BW,OAAO,EAAEb,kBAAkB;IAC3BI,WAAW,EAAE,IAAI,CAACU,SAAS;IAC3BC,OAAO,EAAEC,gBAAO;IAChBC,QAAQ,EAAE,IAAI,CAACC;EACjB,CAAC,CAAC;AACL,CAAC,CAAC;AAEK,MAAMC,cAAc,GAAGvB,eAAe;AAAAP,OAAA,CAAA8B,cAAA,GAAAA,cAAA"
+}
