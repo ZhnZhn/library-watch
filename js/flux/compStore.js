@@ -1,17 +1,22 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.useMsAbout = exports.useMdOption = exports.showModalDialog = exports.showInfo = exports.showAlert = exports.showAbout = void 0;
+exports.useMsAbout = exports.useMdOption = exports.useDgOption = exports.showModalDialog = exports.showInfo = exports.showDialog = exports.showAlert = exports.showAddItem = exports.showAbout = void 0;
 var _storeApi = require("./storeApi");
 var _Type = require("../constants/Type");
+var _createDialog = _interopRequireDefault(require("./logic/createDialog"));
+var _BrowserSlice = _interopRequireDefault(require("./stores/BrowserSlice"));
 const _crStore = () => ({
     msAbout: {
       is: true
     },
+    dgOption: void 0,
     mdOption: void 0
   }),
   _compStore = (0, _storeApi.createStoreWithSelector)(_crStore),
   _selectMsAbout = state => state.msAbout,
+  _selectDgOption = state => state.dgOption,
   _selectMdOption = state => state.mdOption,
   _set = _compStore.setState;
 const useMsAbout = (0, _storeApi.fCrUse)(_compStore, _selectMsAbout);
@@ -22,6 +27,28 @@ const showAbout = () => _set({
   }
 });
 exports.showAbout = showAbout;
+const useDgOption = (0, _storeApi.fCrUse)(_compStore, _selectDgOption);
+exports.useDgOption = useDgOption;
+const _hmDialog = Object.create(null);
+const showDialog = (dialogType, browserType) => {
+  if (_hmDialog[dialogType]) {
+    _set({
+      dgOption: {
+        dialogType
+      }
+    });
+  } else {
+    _hmDialog[dialogType] = true;
+    const dialogComp = (0, _createDialog.default)(_BrowserSlice.default.getDataConf(dialogType), browserType);
+    _set({
+      dgOption: {
+        dialogType,
+        dialogComp
+      }
+    });
+  }
+};
+exports.showDialog = showDialog;
 const useMdOption = (0, _storeApi.fCrUse)(_compStore, _selectMdOption);
 exports.useMdOption = useMdOption;
 const showModalDialog = function (modalDialogType, option) {
@@ -34,6 +61,8 @@ const showModalDialog = function (modalDialogType, option) {
   });
 };
 exports.showModalDialog = showModalDialog;
+const showAddItem = showModalDialog.bind(null, _Type.ModalDialog.ADD_ITEM);
+exports.showAddItem = showAddItem;
 const showAlert = showModalDialog.bind(null, _Type.ModalDialog.ALERT);
 exports.showAlert = showAlert;
 const showInfo = showModalDialog.bind(null, _Type.ModalDialog.INFO);

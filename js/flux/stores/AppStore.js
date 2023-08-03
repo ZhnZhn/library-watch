@@ -15,7 +15,6 @@ var _createChartContainer = _interopRequireDefault(require("../logic/createChart
 var _createItem = _interopRequireDefault(require("../logic/createItem"));
 var _ChartLogicFn = require("./chart/ChartLogicFn");
 var _BrowserSlice = _interopRequireDefault(require("./BrowserSlice"));
-var _ComponentSlice = _interopRequireDefault(require("./ComponentSlice"));
 var _WatchListSlice = _interopRequireDefault(require("../watch-list/WatchListSlice"));
 var _WithLimitRemaining = _interopRequireDefault(require("./WithLimitRemaining"));
 var _WithLoadingProgress = _interopRequireDefault(require("./WithLoadingProgress"));
@@ -141,7 +140,6 @@ const AppStore = _refluxCore.default.createStore({
     this.trigger(_BrowserActions.BAT_UPDATE_BROWSER_MENU, browserType);
   },
   ..._BrowserSlice.default,
-  ..._ComponentSlice.default,
   ..._WatchListSlice.default,
   ..._WithLimitRemaining.default,
   ..._WithLoadingProgress.default

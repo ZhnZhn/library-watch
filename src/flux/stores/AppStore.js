@@ -32,7 +32,6 @@ import {
   removeAll
 } from './chart/ChartLogicFn';
 import BrowserSlice from './BrowserSlice';
-import ComponentSlice from './ComponentSlice';
 import WatchListSlice from '../watch-list/WatchListSlice';
 import WithLimitRemaining from './WithLimitRemaining';
 import WithLoadingProgress from './WithLoadingProgress';
@@ -189,7 +188,6 @@ const AppStore = Reflux.createStore({
   },
 
  ...BrowserSlice,
- ...ComponentSlice,
  ...WatchListSlice,
  ...WithLimitRemaining,
  ...WithLoadingProgress
