@@ -14,7 +14,7 @@ const CL = "hrz-container";
 const BrowserContainer = _ref => {
   let {
     store,
-    showBrowserAction,
+    useMsBrowser,
     updateWatchAction,
     useDgOption,
     initBrowserAction,
@@ -34,9 +34,9 @@ const BrowserContainer = _ref => {
     isEditMode: true,
     isDoubleWatch: true,
     browserType: _Type.BrowserType.WATCH_LIST,
+    useMsBrowser: useMsBrowser,
     caption: "Watch 2",
     store: store,
-    showAction: showBrowserAction,
     updateAction: updateWatchAction
   }) : null;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
@@ -45,7 +45,7 @@ const BrowserContainer = _ref => {
       browserType: _Type.BrowserType.WATCH_LIST,
       caption: "Watch",
       store: store,
-      showAction: showBrowserAction,
+      useMsBrowser: useMsBrowser,
       updateAction: updateWatchAction
     }), _doubleWatch, elBrowsers.map(el => (0, _uiApi.cloneElement)(el)), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogStack.default, {
       maxDialog: 3,

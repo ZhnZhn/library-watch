@@ -5,6 +5,7 @@ import {
   getRefValue,
   setRefValue
 } from '../uiApi';
+
 import useBool from '../hooks/useBool';
 import useToggle from '../hooks/useToggle';
 import useListen from '../hooks/useListen';
@@ -56,14 +57,15 @@ const WatchBrowser = ({
   caption,
   store,
   browserType,
-  showAction,
+  useMsBrowser,
   updateAction
 }) => {
   const _refIsShouldUpdateFind = useRef(false)
   , [
      isShowComp,
      showComp,
-     hideComp] = useBool(isShow)
+     hideComp
+   ] = useBool(isShow)
   , [
      isModeEdit,
      _toggleEditMode
@@ -97,11 +99,14 @@ const WatchBrowser = ({
   ], [isDoubleWatch])
   // hideComp, showComp
   /*eslint-enable react-hooks/exhaustive-deps */
+  useMsBrowser(msBrowser => {
+    if (msBrowser && msBrowser.id === browserType) {
+      _handlerShow()
+    }
+  })
 
   useListen(store, (actionType, data) => {
-    if (actionType === showAction && data === browserType ){
-      _handlerShow();
-    } else if (actionType === updateAction) {
+    if (actionType === updateAction) {
       setRefValue(_refIsShouldUpdateFind, true)
       setWatchList({...data})
       _setIsSearchInput(false)

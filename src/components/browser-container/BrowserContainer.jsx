@@ -14,14 +14,20 @@ const CL = "hrz-container";
 
 const BrowserContainer = ({
   store,
-  showBrowserAction,
+  useMsBrowser,
   updateWatchAction,
   useDgOption,
   initBrowserAction,
   toggleWatchDbBrowserAction
 }) => {
-  const [isDoubleWatch, toggleIsDoubleWatch] = useToggle(false)
-  , [elBrowsers, setElBrowsers] = useState([]);
+  const [
+    isDoubleWatch,
+    toggleIsDoubleWatch
+  ] = useToggle(false)
+  , [
+    elBrowsers,
+    setElBrowsers
+  ] = useState([]);
 
   useListen(store, (actionType, data) => {
     if (actionType === initBrowserAction){
@@ -38,9 +44,9 @@ const BrowserContainer = ({
           isEditMode={true}
           isDoubleWatch={true}
           browserType={BrowserType.WATCH_LIST}
+          useMsBrowser={useMsBrowser}
           caption="Watch 2"
           store={store}
-          showAction={showBrowserAction}
           updateAction={updateWatchAction}
         />
       )
@@ -52,13 +58,13 @@ const BrowserContainer = ({
          browserType={BrowserType.WATCH_LIST}
          caption="Watch"
          store={store}
-         showAction={showBrowserAction}
+         useMsBrowser={useMsBrowser}
          updateAction={updateWatchAction}
       />
       {_doubleWatch}
       {elBrowsers.map(el => cloneElement(el))}
       <DialogStack
-         maxDialog={3}         
+         maxDialog={3}
          useDgOption={useDgOption}
       />
     </div>

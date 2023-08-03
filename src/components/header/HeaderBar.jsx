@@ -1,4 +1,5 @@
 import { BrowserActions } from '../../flux/actions/BrowserActions';
+import { showBrowser } from '../../flux/browserStore';
 import { showAbout } from '../../flux/compStore';
 import { BrowserType as BT } from '../../constants/Type';
 
@@ -44,7 +45,7 @@ const TITLE = "Library Watch v0.12.0"
 };
 
 const _hClickLibrary = () => BrowserActions.showBrowserDynamic(BROWSER_CONFIG_LIBRARY);
-const _hClickWatch = () => BrowserActions.showBrowser(BT.WATCH_LIST);
+const _hClickWatch = () => showBrowser(BT.WATCH_LIST);
 
 const HeaderBar = ({
   store

@@ -6,6 +6,7 @@ exports.default = void 0;
 var _AppStore = _interopRequireDefault(require("../flux/stores/AppStore"));
 var _BrowserActions = require("../flux/actions/BrowserActions");
 var _ChartActions = require("../flux/actions/ChartActions");
+var _browserStore = require("../flux/browserStore");
 var _compStore = require("../flux/compStore");
 var _useHotKeys = _interopRequireDefault(require("./hotkeys/useHotKeys"));
 var _HeaderBar = _interopRequireDefault(require("./header/HeaderBar"));
@@ -24,7 +25,7 @@ const AppLibraryWatch = props => {
       className: "component-container",
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserContainer.default, {
         store: _AppStore.default,
-        showBrowserAction: _BrowserActions.BAT_SHOW_BROWSER,
+        useMsBrowser: _browserStore.useMsBrowser,
         initBrowserAction: _BrowserActions.BAT_INIT_BROWSER_DYNAMIC,
         updateWatchAction: _BrowserActions.BAT_UPDATE_WATCH_BROWSER,
         toggleWatchDbBrowserAction: _BrowserActions.BAT_TOGGLE_WATCH_DB_BROWSER,

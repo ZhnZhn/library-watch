@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _BrowserActions = require("../../flux/actions/BrowserActions");
+var _browserStore = require("../../flux/browserStore");
 var _compStore = require("../../flux/compStore");
 var _Type = require("../../constants/Type");
 var _Comp = _interopRequireDefault(require("../Comp"));
@@ -39,7 +40,7 @@ const TITLE = "Library Watch v0.12.0",
     rowClass: 'menu-item'
   };
 const _hClickLibrary = () => _BrowserActions.BrowserActions.showBrowserDynamic(BROWSER_CONFIG_LIBRARY);
-const _hClickWatch = () => _BrowserActions.BrowserActions.showBrowser(_Type.BrowserType.WATCH_LIST);
+const _hClickWatch = () => (0, _browserStore.showBrowser)(_Type.BrowserType.WATCH_LIST);
 const HeaderBar = _ref => {
   let {
     store
