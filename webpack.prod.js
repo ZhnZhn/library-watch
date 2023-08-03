@@ -18,6 +18,7 @@ module.exports = {
             "react", 
             "react-dom", 
             "reflux-core", 
+            "zustand", 
             "chart.js", 
             "timeago.js",             
             "papaparse",

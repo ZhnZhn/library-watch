@@ -32,7 +32,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "reflux-core": "^1.0.0",
-    "timeago.js": "^4.0.2"
+    "timeago.js": "^4.0.2",
+    "zustand": "^4.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.9",
