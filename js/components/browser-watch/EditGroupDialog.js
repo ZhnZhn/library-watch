@@ -1,72 +1,55 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _memoIsShow = _interopRequireDefault(require("../dialogs/memoIsShow"));
-
 var _WatchActions = require("../../flux/actions/WatchActions");
-
+var _watchListStore = require("../../flux/watch-list/watchListStore");
 var _Msg = require("../../constants/Msg");
-
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
-
 var _TabPane = _interopRequireDefault(require("../zhn-moleculs/TabPane"));
-
 var _Tab = _interopRequireDefault(require("../zhn-atoms/Tab"));
-
 var _GroupAddPane = _interopRequireDefault(require("./GroupAddPane"));
-
 var _GroupEditPane = _interopRequireDefault(require("./GroupEditPane"));
-
 var _GroupDeletePane = _interopRequireDefault(require("./GroupDeletePane"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var EditGroupDialog = (0, _memoIsShow["default"])(function (_ref) {
-  var isShow = _ref.isShow,
-      store = _ref.store,
-      onClose = _ref.onClose;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog["default"], {
+const EditGroupDialog = (0, _memoIsShow.default)(_ref => {
+  let {
+    isShow,
+    store,
+    onClose
+  } = _ref;
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog.default, {
     caption: "Watch Groups Edit",
     isShow: isShow,
     isWithButton: false,
     onClose: onClose,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_TabPane["default"], {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_TabPane.default, {
       width: "380px",
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Tab["default"], {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Tab.default, {
         title: "Create",
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_GroupAddPane["default"], {
-          store: store,
-          actionCompleted: _WatchActions.WAT_EDIT_WATCH_COMPLETED,
-          actionFailed: _WatchActions.WAT_EDIT_WATCH_FAILED,
-          forActionType: _WatchActions.WAT_ADD_GROUP,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_GroupAddPane.default, {
+          forActionType: _WatchActions.WAT_CREATE_GROUP,
           msgOnIsEmptyName: _Msg.MSG_EMPTY_NAME,
-          onCreate: _WatchActions.WatchActions.addGroup,
+          onCreate: _watchListStore.crGroup,
           onClose: onClose
         })
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Tab["default"], {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Tab.default, {
         title: "Rename",
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_GroupEditPane["default"], {
-          store: store,
-          actionCompleted: _WatchActions.WAT_EDIT_WATCH_COMPLETED,
-          actionFailed: _WatchActions.WAT_EDIT_WATCH_FAILED,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_GroupEditPane.default, {
           forActionType: _WatchActions.WAT_RENAME_GROUP,
           msgOnNotSelect: _Msg.MSG_NOT_SELECTED,
           msgOnIsEmptyName: _Msg.MSG_EMPTY_NAME,
-          onRename: _WatchActions.WatchActions.renameGroup,
+          onRename: _watchListStore.renGroup,
           onClose: onClose
         })
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Tab["default"], {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Tab.default, {
         title: "Delete",
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_GroupDeletePane["default"], {
-          store: store,
-          actionCompleted: _WatchActions.WAT_EDIT_WATCH_COMPLETED,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_GroupDeletePane.default, {
           forActionType: _WatchActions.WAT_DELETE_GROUP,
           msgOnNotSelect: _Msg.MSG_NOT_SELECTED,
-          onDelete: _WatchActions.WatchActions.deleteGroup,
+          onDelete: _watchListStore.delGroup,
           onClose: onClose
         })
       })]
@@ -74,5 +57,5 @@ var EditGroupDialog = (0, _memoIsShow["default"])(function (_ref) {
   });
 });
 var _default = EditGroupDialog;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=EditGroupDialog.js.map

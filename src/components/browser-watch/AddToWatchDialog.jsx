@@ -11,15 +11,18 @@ import memoIsShow from '../dialogs/memoIsShow';
 import useValidationMessages from '../hooks/useValidationMessages';
 import usePrevValue from '../hooks/usePrevValue';
 import useProperty from '../hooks/useProperty';
-import useListen from '../hooks/useListen';
+
 import useRefItemCaption from './useRefItemCaption';
 
 import {
-  WAT_EDIT_WATCH_COMPLETED,
-  WAT_EDIT_WATCH_FAILED,
-  WAT_ADD_ITEM,
-  WatchActions
+  WAT_ADD_ITEM
 } from '../../flux/actions/WatchActions';
+import {
+  addWatchItem,
+  useMsEdit,
+  getWatchGroups,
+  getWatchListsByGroup
+} from '../../flux/watch-list/watchListStore';
 
 import {
   MSG_NOT_SELECTED
@@ -42,7 +45,6 @@ const AddToWatchDialog = memoIsShow((props) => {
   const _prevProps = usePrevValue(props)
   , {
     isShow,
-    store,
     data,
     onClose
   } = props
@@ -58,7 +60,7 @@ const AddToWatchDialog = memoIsShow((props) => {
     state,
     setState
   ] = useState(() => ({
-    groupOptions: store.getWatchGroups(),
+    groupOptions: getWatchGroups(),
     listOptions: []
   }))
   , {
@@ -101,7 +103,7 @@ const AddToWatchDialog = memoIsShow((props) => {
      }
      if (_validationMessages.length === 0){
        const { caption, config } = data;
-       WatchActions.addItem({
+       addWatchItem({
          caption,
          groupCaption,
          listCaption,
@@ -123,20 +125,22 @@ const AddToWatchDialog = memoIsShow((props) => {
     />
   ], [_hAdd]);
 
-  useListen(store, (actionType, data) => {
-    if (actionType === WAT_EDIT_WATCH_COMPLETED && data.forActionType === WAT_ADD_ITEM){
-       _hClose()
-    } else if (actionType === WAT_EDIT_WATCH_FAILED && data.forActionType === WAT_ADD_ITEM){
-       setValidationMessages(data.messages)
+  useMsEdit(msEdit => {
+    if (msEdit && msEdit.forActionType === WAT_ADD_ITEM) {
+      if (msEdit.message) {
+        setValidationMessages(msEdit.messages)
+      } else {
+        _hClose()
+      }
     }
-  })
+  })  
 
   //UNSAFE_componentWillReceiveProps(nextProps)
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (_prevProps && _prevProps !== props && _prevProps.isShow !== isShow) {
       const _groupCaption = getGroupCaption()
-      , _groupOptions = store.getWatchGroups();
+      , _groupOptions = getWatchGroups();
       if (_groupOptions !== groupOptions){
         setGroupCaption(null)
         setRefValue(_refListCaption, null)
@@ -145,7 +149,7 @@ const AddToWatchDialog = memoIsShow((props) => {
           listOptions: []
         })
       } else if (_groupCaption){
-        const _listOptions = store.getWatchListsByGroup(_groupCaption);
+        const _listOptions = getWatchListsByGroup(_groupCaption);
         if (_listOptions !== listOptions){
           setRefValue(_refListCaption, null)
           setState(prevState => ({

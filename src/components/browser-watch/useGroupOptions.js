@@ -1,3 +1,7 @@
+import {
+  getWatchGroups
+} from '../../flux/watch-list/watchListStore';
+
 import useRefInit from '../hooks/useRefInit';
 import useRerender from '../hooks/useRerender';
 
@@ -5,11 +9,11 @@ const useGroupOptions = (store) => {
   const [
     groupOptions,
     _refGroupOptions
-  ] = useRefInit(store.getWatchGroups)
-  , _rerenderComp = useRerender()
+  ] = useRefInit(getWatchGroups)
+  , _rerender = useRerender()
   , updateGroupOptions = () => {
-    _refGroupOptions.current = store.getWatchGroups()
-    _rerenderComp()
+    _refGroupOptions.current = getWatchGroups()
+    _rerender()
   }
   return [
     groupOptions,

@@ -40,16 +40,16 @@ const WatchBrowser = _ref => {
     isEditMode,
     isDoubleWatch,
     caption,
-    store,
     browserType,
     useMsBrowser,
-    useMsBrowserDynamic
+    useMsBrowserDynamic,
+    useWatchList
   } = _ref;
   const _refIsShouldUpdateFind = (0, _uiApi.useRef)(false),
     [isShowComp, showComp, hideComp] = (0, _useBool.default)(isShow),
     [isModeEdit, _toggleEditMode] = (0, _useToggle.default)(isEditMode),
     [isSearchInput, _toggleSearchInput, _setIsSearchInput] = (0, _useToggle.default)(),
-    [watchList, setWatchList] = (0, _uiApi.useState)(store.getWatchList)
+    [watchList, setWatchList] = (0, _uiApi.useState)(_Handlers.getWatchList)
     /*eslint-disable react-hooks/exhaustive-deps */,
     [_handlerHide, _handlerShow] = (0, _uiApi.useMemo)(() => [() => {
       if (isDoubleWatch) {
@@ -69,12 +69,10 @@ const WatchBrowser = _ref => {
       _handlerShow();
     }
   });
-  useMsBrowserDynamic(msBrowserDynamic => {
-    if (msBrowserDynamic && msBrowserDynamic.browserType === browserType && msBrowserDynamic.menuItems) {
+  useWatchList(watchList => {
+    if (watchList) {
       (0, _uiApi.setRefValue)(_refIsShouldUpdateFind, true);
-      setWatchList({
-        ...msBrowserDynamic.menuItems
-      });
+      setWatchList(watchList);
       _setIsSearchInput(false);
     }
   });
@@ -96,8 +94,7 @@ const WatchBrowser = _ref => {
       caption: caption,
       onClose: _handlerHide,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(ButtonSave, {
-        className: CL_BT_CAPTION,
-        store: store
+        className: CL_BT_CAPTION
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ButtonCircle, {
         isWithoutDefault: true,
         className: CL_BT_CAPTION,

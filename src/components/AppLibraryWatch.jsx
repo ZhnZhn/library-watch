@@ -1,3 +1,5 @@
+import { useEffect } from './uiApi';
+
 import Store from '../flux/stores/AppStore';
 import { CHAT_INIT_AND_SHOW_CHART } from '../flux/actions/ChartActions';
 import {
@@ -8,6 +10,10 @@ import {
   useDgOption,
   useMdOption
 } from '../flux/compStore';
+import {
+  initWatchList,
+  useWatchList
+} from '../flux/watch-list/watchListStore';
 
 import useHotKeys from './hotkeys/useHotKeys';
 
@@ -21,14 +27,17 @@ import RouterModalDialog from './dialogs/RouterModalDialog';
 
 const AppLibraryWatch = (props) => {
   useHotKeys()
+  useEffect(() => {
+    initWatchList()
+  }, [])
   return (
     <div>
       <HeaderBar store={Store} />
       <div className="component-container">
-         <BrowserContainer
-            store={Store}
+         <BrowserContainer            
             useMsBrowser={useMsBrowser}
             useMsBrowserDynamic={useMsBrowserDynamic}
+            useWatchList={useWatchList}
             useDgOption={useDgOption}
          />
          <About store={Store} />

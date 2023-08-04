@@ -1,12 +1,12 @@
 import { useState } from '../uiApi';
 
-import useListen from '../hooks/useListen';
-import { crStyle2 } from '../zhn-utils/crStyle';
-
 import {
-  WAT_SET_WATCH_EDITED,
-  WatchActions
-} from '../../flux/actions/WatchActions';
+  getIsWatchEdited,
+  useIsWatchEdited,
+  saveWatchList
+} from '../../flux/watch-list/watchListStore';
+
+import { crStyle2 } from '../zhn-utils/crStyle';
 import ButtonCircle from '../zhn-atoms/ButtonCircle';
 
 const CAPTION = "S"
@@ -17,20 +17,18 @@ const CAPTION = "S"
    color: COLOR_NOT_WATCH_EDITED
 };
 
+
 const ButtonSave = ({
   className,
-  style,
-  store
+  style
 }) => {
   const [
     isWatchEdited,
     setIsWatchEdited
-  ] = useState(() => store.getWatchEdited());
+  ] = useState(getIsWatchEdited);
 
-  useListen(store, (actionType, value) => {
-    if (actionType === WAT_SET_WATCH_EDITED){
-      setIsWatchEdited(value)
-    }
+  useIsWatchEdited(isWatchEdited => {
+    setIsWatchEdited(!!isWatchEdited)
   })
 
   const _style = crStyle2(
@@ -44,7 +42,7 @@ const ButtonSave = ({
        caption={CAPTION}
        title={TITLE}
        style={_style}
-       onClick={WatchActions.saveWatch}
+       onClick={saveWatchList}
     />
   );
 };

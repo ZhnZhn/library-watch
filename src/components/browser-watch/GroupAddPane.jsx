@@ -3,17 +3,14 @@ import {
   useCallback,
   getRefValue
 } from '../uiApi';
-import useValidationMessages from '../hooks/useValidationMessages';
-import useListen from '../hooks/useListen';
 
 import RowInputText from '../dialogs/rows/RowInputText';
-import ValidationMessages from '../dialogs/rows/ValidationMessages';
 import RowButtons from './RowButtons';
 
+import useValidationMessages from '../hooks/useValidationMessages';
+import useWatchListMsEdit from './useWatchListMsEdit';
+
 const GroupAddPane = ({
-  store,
-  actionCompleted,
-  actionFailed,
   forActionType,
   msgOnIsEmptyName,
   onCreate,
@@ -41,15 +38,11 @@ const GroupAddPane = ({
   // msgOnIsEmptyName, onCreate
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  useListen(store, (actionType, data) => {
-    if (data && data.forActionType === forActionType) {
-      if (actionType === actionCompleted) {
-        _hClear()
-      } else if (actionType === actionFailed) {
-        setValidationMessages(data.messages)
-      }
-    }
-  })
+  useWatchListMsEdit(
+    forActionType,
+    setValidationMessages,
+    _hClear
+  )
 
   return (
     <div>
@@ -71,10 +64,7 @@ const GroupAddPane = ({
 };
 
 /*
-GroupAddPane.propTypes = {
-  store: PropTypes.object,
-  actionCompleted: PropTypes.string,
-  actionFailed: PropTypes.string,
+GroupAddPane.propTypes = {      
   forActionType: PropTypes.string,
   msgOnIsEmptyName: PropTypes.func,
   onCreate: PropTypes.func,

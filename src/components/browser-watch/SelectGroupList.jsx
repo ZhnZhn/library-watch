@@ -34,11 +34,11 @@ const SelectGroupList = forwardRef((props, ref) => {
     }
   }, [])
   , {
-    store,
+    getWatchListsByGroup,
     groupCaption,
     groupOptions,
     listCaption
-  } = props
+  } = props;
 
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
@@ -50,7 +50,7 @@ const SelectGroupList = forwardRef((props, ref) => {
           setListOptions([]);
       } else if (_groupCaption) {
         setListOptions(prevListOptions => {
-          const listOptions = store.getWatchListsByGroup(_groupCaption);
+          const listOptions = getWatchListsByGroup(_groupCaption);
           if (listOptions !== prevListOptions) {
             setRefValue(_refListCaption, null)
             return listOptions;
@@ -90,8 +90,7 @@ const SelectGroupList = forwardRef((props, ref) => {
 });
 
 /*
-SelectGroupList.propTypes = {
-  store: PropTypes.object,
+SelectGroupList.propTypes = {  
   groupCaption: PropTypes.string,
   groupOptions: PropTypes.array,
   listCaption: PropTypes.string

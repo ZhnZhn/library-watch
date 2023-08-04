@@ -3,10 +3,12 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _uiApi = require("./uiApi");
 var _AppStore = _interopRequireDefault(require("../flux/stores/AppStore"));
 var _ChartActions = require("../flux/actions/ChartActions");
 var _browserStore = require("../flux/browserStore");
 var _compStore = require("../flux/compStore");
+var _watchListStore = require("../flux/watch-list/watchListStore");
 var _useHotKeys = _interopRequireDefault(require("./hotkeys/useHotKeys"));
 var _HeaderBar = _interopRequireDefault(require("./header/HeaderBar"));
 var _About = _interopRequireDefault(require("./about/About"));
@@ -17,15 +19,18 @@ var _RouterModalDialog = _interopRequireDefault(require("./dialogs/RouterModalDi
 var _jsxRuntime = require("react/jsx-runtime");
 const AppLibraryWatch = props => {
   (0, _useHotKeys.default)();
+  (0, _uiApi.useEffect)(() => {
+    (0, _watchListStore.initWatchList)();
+  }, []);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderBar.default, {
       store: _AppStore.default
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: "component-container",
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserContainer.default, {
-        store: _AppStore.default,
         useMsBrowser: _browserStore.useMsBrowser,
         useMsBrowserDynamic: _browserStore.useMsBrowserDynamic,
+        useWatchList: _watchListStore.useWatchList,
         useDgOption: _compStore.useDgOption
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_About.default, {
         store: _AppStore.default

@@ -1,164 +1,71 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _react = require("react");
-
+exports.default = void 0;
+var _uiApi = require("../uiApi");
+var _useValidationMessages = _interopRequireDefault(require("../hooks/useValidationMessages"));
+var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
+var _useWatchList = _interopRequireDefault(require("./useWatchList"));
 var _SelectGroupList = _interopRequireDefault(require("./SelectGroupList"));
-
 var _ValidationMessages = _interopRequireDefault(require("../dialogs/rows/ValidationMessages"));
-
-var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
-
+var _RowButtons = _interopRequireDefault(require("./RowButtons"));
 var _jsxRuntime = require("react/jsx-runtime");
-
-//import PropTypes from 'prop-types'
-var S = {
-  COMMAND_DIV: {
-    cursor: 'default',
-    "float": 'right',
-    marginTop: 8,
-    marginBottom: 10,
-    marginRight: 4
-  }
-};
-
-var ListDeletePane = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(ListDeletePane, _Component);
-
-  /*
-  static propTypes = {
-    store : PropTypes.object,
-    actionCompleted : PropTypes.string,
-    forActionType : PropTypes.string,
-    onRename : PropTypes.func,
-    onClose : PropTypes.func
-  },
-  */
-  function ListDeletePane(props) {
-    var _this;
-
-    _this = _Component.call(this, props) || this;
-
-    _this._onStore = function (actionType, data) {
-      var _this$props = _this.props,
-          actionCompleted = _this$props.actionCompleted,
-          forActionType = _this$props.forActionType,
-          store = _this$props.store;
-
-      if (actionType === actionCompleted) {
-        if (data.forActionType === forActionType) {
-          _this._handlerClear();
-        }
-
-        _this.setState({
-          groupOptions: store.getWatchGroups()
-        });
-      }
-    };
-
-    _this._handlerClear = function () {
-      if (_this.state.validationMessages.length > 0) {
-        _this.setState({
-          validationMessages: []
-        });
-      }
-    };
-
-    _this._handlerDelete = function () {
-      var _this$selectGroupList = _this.selectGroupList.getValue(),
-          captionGroup = _this$selectGroupList.captionGroup,
-          captionList = _this$selectGroupList.captionList;
-
+const ListDeletePane = _ref => {
+  let {
+    getWatchListsByGroup,
+    forActionType,
+    msgOnNotSelect,
+    onDelete,
+    onClose
+  } = _ref;
+  const _refGroupList = (0, _uiApi.useRef)(),
+    [validationMessages, setValidationMessages, _hClear] = (0, _useValidationMessages.default)(),
+    rerender = (0, _useRerender.default)(),
+    groupOptions = (0, _useWatchList.default)(forActionType, setValidationMessages, _hClear, rerender)
+    /* eslint-disable react-hooks/exhaustive-deps */,
+    _hDelete = (0, _uiApi.useCallback)(() => {
+      const _selectGroupListComp = (0, _uiApi.getRefValue)(_refGroupList),
+        {
+          captionGroup,
+          captionList
+        } = _selectGroupListComp.getValue();
       if (captionGroup && captionList) {
-        _this.props.onDelete({
-          captionGroup: captionGroup,
-          captionList: captionList
+        onDelete({
+          captionGroup,
+          captionList
         });
       } else {
-        var msgOnNotSelect = _this.props.msgOnNotSelect,
-            msg = [];
-
+        const msg = [];
         if (!captionGroup) {
           msg.push(msgOnNotSelect('Group'));
         }
-
         if (!captionList) {
           msg.push(msgOnNotSelect('List'));
         }
-
-        _this.setState({
-          validationMessages: msg
-        });
+        setValidationMessages(msg);
       }
-    };
+    }, []);
+  // onDelete, msgOnNotSelect
+  /* eslint-enable react-hooks/exhaustive-deps */
 
-    _this._refGroupList = function (c) {
-      return _this.selectGroupList = c;
-    };
-
-    var _store = props.store;
-    _this.state = {
-      groupOptions: _store.getWatchGroups(),
-      validationMessages: []
-    };
-    return _this;
-  }
-
-  var _proto = ListDeletePane.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    this.unsubscribe = this.props.store.listen(this._onStore);
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.unsubscribe();
-  };
-
-  _proto.render = function render() {
-    var _this$props2 = this.props,
-        store = _this$props2.store,
-        onClose = _this$props2.onClose,
-        _this$state = this.state,
-        groupOptions = _this$state.groupOptions,
-        validationMessages = _this$state.validationMessages;
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SelectGroupList["default"], {
-        ref: this._refGroupList,
-        store: store,
-        groupCaption: "In Group",
-        groupOptions: groupOptions,
-        listCaption: "List"
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessages["default"], {
-        validationMessages: validationMessages
-      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        style: S.COMMAND_DIV,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-          isPrimary: true,
-          caption: "Delete",
-          timeout: 0,
-          onClick: this._handlerDelete
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-          caption: "Clear",
-          timeout: 0,
-          onClick: this._handlerClear
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-          caption: "Close",
-          timeout: 0,
-          onClick: onClose
-        })]
-      })]
-    });
-  };
-
-  return ListDeletePane;
-}(_react.Component);
-
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SelectGroupList.default, {
+      ref: _refGroupList,
+      getWatchListsByGroup: getWatchListsByGroup,
+      groupCaption: "In Group",
+      groupOptions: groupOptions,
+      listCaption: "List"
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessages.default, {
+      validationMessages: validationMessages
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RowButtons.default, {
+      caption: "Delete",
+      onClick: _hDelete,
+      onClear: _hClear,
+      onClose: onClose
+    })]
+  });
+};
 var _default = ListDeletePane;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=ListDeletePane.js.map

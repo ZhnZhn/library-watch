@@ -1,12 +1,12 @@
 import {
   useRef,
-  useState,
   useCallback,
   getRefValue
 } from '../uiApi';
+
 import useValidationMessages from '../hooks/useValidationMessages';
-import useListen from '../hooks/useListen'
 import useRefItemCaption from './useRefItemCaption';
+import useWatchList from './useWatchList';
 
 import RowInputSelect from '../dialogs/rows/RowInputSelect';
 import RowInputText from '../dialogs/rows/RowInputText';
@@ -14,9 +14,6 @@ import ValidationMessages from '../dialogs/rows/ValidationMessages';
 import RowButtons from './RowButtons';
 
 const GroupEditPane = ({
-  store,
-  actionCompleted,
-  actionFailed,
   forActionType,
   msgOnNotSelect,
   msgOnIsEmptyName,
@@ -29,15 +26,16 @@ const GroupEditPane = ({
      _hSelectGroup
     ] = useRefItemCaption()
   , [
-    groupOptions,
-    setGroupOptions
-  ] = useState(store.getWatchGroups)
-  , [
     validationMessages,
     setValidationMessages,
     _hClear
   ] = useValidationMessages(
     () => getRefValue(_refInputText).setValue('')
+  )
+  , groupOptions = useWatchList(
+     forActionType,
+     setValidationMessages,
+     _hClear
   )
   /* eslint-disable react-hooks/exhaustive-deps */
   , _hRename = useCallback(() => {
@@ -60,19 +58,7 @@ const GroupEditPane = ({
     }
   }, [])
   // onRename, msgOnNotSelect, msgOnIsEmptyName, setValidationMessages
-  /* eslint-enable react-hooks/exhaustive-deps */
-
-  useListen(store, (actionType, data) => {
-    if (actionType === actionCompleted){
-      if (data && data.forActionType === forActionType){
-        _hClear();
-      }
-      setGroupOptions(store.getWatchGroups())
-    } else if (actionType === actionFailed
-         && data.forActionType === forActionType) {
-      setValidationMessages(data.messages)
-    }
-  })
+  /* eslint-enable react-hooks/exhaustive-deps */  
 
   return (
     <div>

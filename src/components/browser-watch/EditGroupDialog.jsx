@@ -1,13 +1,16 @@
 import memoIsShow from '../dialogs/memoIsShow';
 
 import {
-  WAT_EDIT_WATCH_COMPLETED,
-  WAT_EDIT_WATCH_FAILED,
-  WAT_ADD_GROUP,
+  WAT_CREATE_GROUP,
   WAT_RENAME_GROUP,
-  WAT_DELETE_GROUP,
-  WatchActions
+  WAT_DELETE_GROUP
 } from '../../flux/actions/WatchActions';
+
+import {
+  crGroup,
+  renGroup,
+  delGroup
+} from '../../flux/watch-list/watchListStore';
 
 import {
   MSG_EMPTY_NAME,
@@ -35,34 +38,26 @@ const EditGroupDialog = memoIsShow(({
     <TabPane key="1" width="380px" >
        <Tab title="Create">
          <GroupAddPane
-            store={store}
-            actionCompleted={WAT_EDIT_WATCH_COMPLETED}
-            actionFailed={WAT_EDIT_WATCH_FAILED}
-            forActionType={WAT_ADD_GROUP}
+            forActionType={WAT_CREATE_GROUP}
             msgOnIsEmptyName={MSG_EMPTY_NAME}
-            onCreate={WatchActions.addGroup}
+            onCreate={crGroup}
             onClose={onClose}
           />
        </Tab>
        <Tab title="Rename">
          <GroupEditPane
-            store={store}
-            actionCompleted={WAT_EDIT_WATCH_COMPLETED}
-            actionFailed={WAT_EDIT_WATCH_FAILED}
             forActionType={WAT_RENAME_GROUP}
             msgOnNotSelect={MSG_NOT_SELECTED}
             msgOnIsEmptyName={MSG_EMPTY_NAME}
-            onRename={WatchActions.renameGroup}
+            onRename={renGroup}
             onClose={onClose}
          />
        </Tab>
        <Tab title="Delete">
          <GroupDeletePane
-            store={store}
-            actionCompleted={WAT_EDIT_WATCH_COMPLETED}
             forActionType={WAT_DELETE_GROUP}
             msgOnNotSelect={MSG_NOT_SELECTED}
-            onDelete={WatchActions.deleteGroup}
+            onDelete={delGroup}
             onClose={onClose}
          />
        </Tab>

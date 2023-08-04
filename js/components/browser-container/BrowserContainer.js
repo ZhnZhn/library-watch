@@ -12,9 +12,9 @@ var _jsxRuntime = require("react/jsx-runtime");
 const CL = "hrz-container";
 const BrowserContainer = _ref => {
   let {
-    store,
     useMsBrowser,
     useMsBrowserDynamic,
+    useWatchList,
     updateWatchAction,
     useDgOption
   } = _ref;
@@ -34,20 +34,18 @@ const BrowserContainer = _ref => {
     isShow: true,
     isEditMode: true,
     isDoubleWatch: true,
+    caption: "Watch 2",
     browserType: _Type.BrowserType.WATCH_LIST,
     useMsBrowser: useMsBrowser,
-    useMsBrowserDynamic: useMsBrowserDynamic,
-    caption: "Watch 2",
-    store: store
+    useWatchList: useWatchList
   }) : null;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: CL,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchBrowser.default, {
-      browserType: _Type.BrowserType.WATCH_LIST,
       caption: "Watch",
-      store: store,
+      browserType: _Type.BrowserType.WATCH_LIST,
       useMsBrowser: useMsBrowser,
-      useMsBrowserDynamic: useMsBrowserDynamic
+      useWatchList: useWatchList
     }), _doubleWatch, elBrowsers.map(el => (0, _uiApi.cloneElement)(el)), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogStack.default, {
       maxDialog: 3,
       useDgOption: useDgOption

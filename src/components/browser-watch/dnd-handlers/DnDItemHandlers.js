@@ -1,8 +1,10 @@
-import getTransferData from './getTransferData';
+import {
+  ddItem
+} from '../../../flux/watch-list/watchListStore';
 
-import { WatchActions } from '../../../flux/actions/WatchActions';
 import DRAG from '../WatchDnDConfig';
 
+import getTransferData from './getTransferData';
 import {
   dropWithDnDStyle
 } from './DnDStyleHandlers';
@@ -27,21 +29,21 @@ export const hDragStartItem = fDragStart(
 export const hDropItem = (
   //{groupCaption, listCaption, caption},
   options,
-  event
+  evt
 ) => {
-   dropWithDnDStyle(event)
+   dropWithDnDStyle(evt)
    const {
      xType,
      dragId
-   } = getTransferData(event)
+   } = getTransferData(evt)
    , dropId = _crItemId(options);
 
    if (xType === DRAG.ITEM) {
      if (dragId === dropId) {
        return;
     } else {
-      event.preventDefault()
-      WatchActions.dragDropItem({
+      evt.preventDefault()
+      ddItem({
         dragId,
         dropId
       })

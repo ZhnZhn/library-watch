@@ -10,6 +10,7 @@ import useBool from '../hooks/useBool';
 import useToggle from '../hooks/useToggle';
 
 import {
+  getWatchList,
   showDialogLoadItemsFromFile,
   toggleWatchDbBrowser,
   backupWatchItemsToJson
@@ -54,10 +55,10 @@ const WatchBrowser = ({
   isEditMode,
   isDoubleWatch,
   caption,
-  store,
   browserType,
   useMsBrowser,
-  useMsBrowserDynamic
+  useMsBrowserDynamic,
+  useWatchList
 }) => {
   const _refIsShouldUpdateFind = useRef(false)
   , [
@@ -77,7 +78,7 @@ const WatchBrowser = ({
   , [
      watchList,
      setWatchList
-  ] = useState(store.getWatchList)
+  ] = useState(getWatchList)
   /*eslint-disable react-hooks/exhaustive-deps */
   , [
      _handlerHide,
@@ -103,17 +104,13 @@ const WatchBrowser = ({
       _handlerShow()
     }
   })
-
-  useMsBrowserDynamic(msBrowserDynamic => {
-    if (msBrowserDynamic
-      && msBrowserDynamic.browserType === browserType
-      && msBrowserDynamic.menuItems
-    ) {
+  useWatchList(watchList => {
+    if (watchList) {
       setRefValue(_refIsShouldUpdateFind, true)
-      setWatchList({...msBrowserDynamic.menuItems})
+      setWatchList(watchList)
       _setIsSearchInput(false)
     }
-  })  
+  })
 
   const { groups } = watchList || {}
   , _styleCaption = isDoubleWatch
@@ -138,8 +135,7 @@ const WatchBrowser = ({
          onClose={_handlerHide}
       >
         <ButtonSave
-          className={CL_BT_CAPTION}
-          store={store}
+          className={CL_BT_CAPTION}          
         />
         <ButtonCircle
            isWithoutDefault={true}

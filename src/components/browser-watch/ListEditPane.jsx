@@ -5,8 +5,8 @@ import {
 } from '../uiApi';
 
 import useValidationMessages from '../hooks/useValidationMessages';
-import useListen from '../hooks/useListen';
-import useGroupOptions from './useGroupOptions';
+import useRerender from '../hooks/useRerender';
+import useWatchList from './useWatchList';
 
 import SelectGroupList from './SelectGroupList';
 import RowInputText from '../dialogs/rows/RowInputText';
@@ -14,9 +14,7 @@ import ValidationMessages from '../dialogs/rows/ValidationMessages';
 import RowButtons from './RowButtons';
 
 const ListEditPane = ({
-  store,
-  actionCompleted,
-  actionFailed,
+  getWatchListsByGroup,
   forActionType,
   msgOnIsEmptyName,
   msgOnNotSelect,
@@ -26,15 +24,18 @@ const ListEditPane = ({
   const _refGroupList = useRef()
   , _refInputText = useRef()
   , [
-    groupOptions,
-    updateGroupOptions
-  ] = useGroupOptions(store)
-  , [
     validationMessages,
     setValidationMessages,
     _hClear
   ] = useValidationMessages(
     () => getRefValue(_refInputText).setValue('')
+  )
+  , rerender = useRerender()
+  , groupOptions = useWatchList(
+     forActionType,
+     setValidationMessages,
+     _hClear,
+     rerender
   )
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hRename = useCallback(() => {
@@ -60,22 +61,11 @@ const ListEditPane = ({
   // onRename, msgOnIsEmptyName, msgOnNotSelect
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  useListen(store, (actionType, data) => {
-    if (actionType === actionCompleted){
-        if (data.forActionType === forActionType){
-          _hClear();
-        }
-        updateGroupOptions()
-    } else if (actionType === actionFailed && data.forActionType === forActionType){
-      setValidationMessages(data.messages)
-    }
-  })
-
   return (
     <div>
        <SelectGroupList
          ref={_refGroupList}
-         store={store}
+         getWatchListsByGroup={getWatchListsByGroup}
          groupCaption="In Group"
          groupOptions={groupOptions}
          listCaption="List From"

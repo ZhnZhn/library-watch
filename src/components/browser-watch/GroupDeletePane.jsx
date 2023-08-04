@@ -1,20 +1,18 @@
 //import PropTypes from 'prop-types'
 import {
-  useState,
   useCallback,
   getRefValue
 } from '../uiApi';
+
 import useValidationMessages from '../hooks/useValidationMessages';
-import useListen from '../hooks/useListen';
 import useRefItemCaption from './useRefItemCaption';
+import useWatchList from './useWatchList';
 
 import RowInputSelect from '../dialogs/rows/RowInputSelect';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
 import RowButtons from './RowButtons';
 
 const GroupDeletePane = ({
-  store,
-  actionCompleted,
   forActionType,
   msgOnNotSelect,
   onDelete,
@@ -25,14 +23,15 @@ const GroupDeletePane = ({
      _hSelectGroup
   ] = useRefItemCaption()
   , [
-     groupOptions,
-     setGroupOptions
-  ] = useState(store.getWatchGroups)
-  , [
     validationMessages,
     setValidationMessages,
     _hClear
   ] = useValidationMessages()
+  , groupOptions = useWatchList(
+     forActionType,
+     setValidationMessages,
+     _hClear
+  )
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hDeleteGroup = useCallback(() => {
     const caption = getRefValue(_refCaption);
@@ -44,15 +43,6 @@ const GroupDeletePane = ({
   }, [])
   // onDelete, msgOnNotSelect
   /*eslint-enable react-hooks/exhaustive-deps */
-
-  useListen(store, (actionType, data) => {
-    if (actionType === actionCompleted) {
-      if (data.forActionType === forActionType){
-        _hClear();
-      }
-      setGroupOptions(store.getWatchGroups())
-    }
-  })
 
   return (
     <div>
@@ -74,9 +64,7 @@ const GroupDeletePane = ({
 };
 
 /*
-GroupDeletePane.propTypes = {
-  store: PropTypes.object,
-  actionCompleted: PropTypes.string,
+GroupDeletePane.propTypes = {  
   forActionType: PropTypes.string,
   msgOnNotSelect: PropTypes.func,
   onDelete: PropTypes.func,

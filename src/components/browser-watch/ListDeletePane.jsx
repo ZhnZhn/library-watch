@@ -3,17 +3,17 @@ import {
   useCallback,
   getRefValue
 } from '../uiApi';
+
 import useValidationMessages from '../hooks/useValidationMessages';
-import useListen from '../hooks/useListen';
-import useGroupOptions from './useGroupOptions';
+import useRerender from '../hooks/useRerender';
+import useWatchList from './useWatchList';
 
 import SelectGroupList from './SelectGroupList';
 import ValidationMessages from '../dialogs/rows/ValidationMessages';
 import RowButtons from './RowButtons';
 
 const ListDeletePane = ({
-  store,
-  actionCompleted,
+  getWatchListsByGroup,
   forActionType,
   msgOnNotSelect,
   onDelete,
@@ -21,14 +21,17 @@ const ListDeletePane = ({
 }) => {
   const _refGroupList = useRef()
   , [
-    groupOptions,
-    updateGroupOptions
-  ] = useGroupOptions(store)
-  , [
     validationMessages,
     setValidationMessages,
     _hClear
   ] = useValidationMessages()
+  , rerender = useRerender()
+  , groupOptions = useWatchList(
+     forActionType,
+     setValidationMessages,
+     _hClear,
+     rerender
+  )
   /* eslint-disable react-hooks/exhaustive-deps */
   , _hDelete = useCallback(() => {
      const _selectGroupListComp = getRefValue(_refGroupList)
@@ -51,20 +54,11 @@ const ListDeletePane = ({
   // onDelete, msgOnNotSelect
   /* eslint-enable react-hooks/exhaustive-deps */
 
-  useListen(store, (actionType, data) => {
-    if (actionType === actionCompleted){
-      if (data && data.forActionType === forActionType) {
-        _hClear()
-      }
-      updateGroupOptions()
-    }
-  })
-
   return (
     <div>
        <SelectGroupList
          ref={_refGroupList}
-         store={store}
+         getWatchListsByGroup={getWatchListsByGroup}         
          groupCaption="In Group"
          groupOptions={groupOptions}
          listCaption="List"

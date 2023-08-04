@@ -12,9 +12,9 @@ import DialogStack from '../zhn-containers/DialogStack';
 const CL = "hrz-container";
 
 const BrowserContainer = ({
-  store,
   useMsBrowser,
   useMsBrowserDynamic,
+  useWatchList,
   updateWatchAction,
   useDgOption
 }) => {
@@ -47,11 +47,10 @@ const BrowserContainer = ({
           isShow={true}
           isEditMode={true}
           isDoubleWatch={true}
+          caption="Watch 2"
           browserType={BT.WATCH_LIST}
           useMsBrowser={useMsBrowser}
-          useMsBrowserDynamic={useMsBrowserDynamic}
-          caption="Watch 2"
-          store={store}
+          useWatchList={useWatchList}
         />
       )
     : null;
@@ -59,11 +58,10 @@ const BrowserContainer = ({
   return (
     <div className={CL}>
       <WatchBrowser
-         browserType={BT.WATCH_LIST}
          caption="Watch"
-         store={store}
+         browserType={BT.WATCH_LIST}
          useMsBrowser={useMsBrowser}
-         useMsBrowserDynamic={useMsBrowserDynamic}         
+         useWatchList={useWatchList}
       />
       {_doubleWatch}
       {elBrowsers.map(el => cloneElement(el))}
