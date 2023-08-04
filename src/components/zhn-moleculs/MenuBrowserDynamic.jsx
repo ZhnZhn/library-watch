@@ -6,7 +6,7 @@ import {
   setRefValue
 } from '../uiApi';
 import useBool from '../hooks/useBool';
-import useListen from '../hooks/useListen';
+//import useListen from '../hooks/useListen';
 
 import Browser from '../zhn-atoms/Browser';
 import CaptionRow from '../zhn-atoms/CaptionRow';
@@ -25,11 +25,12 @@ const MenuBrowserDynamic = ({
   isInitShow,
   caption,
   rowClass,
-  store,
+  //store,
   browserType,
-  showAction,
-  updateAction,
-  loadCompletedAction,
+  //showAction,
+  //updateAction,
+  useMsBrowserDynamic,
+  //loadCompletedAction,
   sourceMenuUrl,
   onLoadMenu,
   children
@@ -46,6 +47,21 @@ const MenuBrowserDynamic = ({
     setMenuItems
   ] = useState([]);
 
+  useMsBrowserDynamic(msBrowserDynamic => {
+    if (msBrowserDynamic) {
+      if (msBrowserDynamic.browserType === browserType) {
+        const { menuItems } = msBrowserDynamic;
+        if (menuItems) {
+          setRefValue(_refIsLoaded, true)
+          setMenuItems([...menuItems])
+        } else {
+          _hShow()
+        }
+      }
+    }
+  })
+
+  /*
   useListen(store, (actionType, data) => {
     if (actionType === showAction && data === browserType){
       _hShow();
@@ -56,6 +72,7 @@ const MenuBrowserDynamic = ({
       setMenuItems([...store.getBrowserMenu(browserType)])
     }
   })
+  */
 
   useEffect(() => {
     setRefValue(_refIsMounted, true)

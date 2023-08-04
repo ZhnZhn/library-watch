@@ -1,5 +1,7 @@
-import { BrowserActions } from '../../flux/actions/BrowserActions';
-import { showWatch } from '../../flux/browserStore';
+import {
+  showBrowserDynamic,
+  showWatch
+} from '../../flux/browserStore';
 import { showAbout } from '../../flux/compStore';
 import { BrowserType as BT } from '../../constants/Type';
 
@@ -44,7 +46,7 @@ const TITLE = "Library Watch v0.12.0"
   rowClass: 'menu-item'
 };
 
-const _hClickLibrary = () => BrowserActions.showBrowserDynamic(BROWSER_CONFIG_LIBRARY);
+const _hClickLibrary = () => showBrowserDynamic(BROWSER_CONFIG_LIBRARY);
 
 const HeaderBar = ({
   store

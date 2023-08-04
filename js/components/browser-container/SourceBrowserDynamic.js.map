@@ -5,14 +5,22 @@
  ],
  "file": "../../../src/components/browser-container/SourceBrowserDynamic.js",
  "names": [
+  "_memoEqual",
+  "_interopRequireDefault",
+  "require",
+  "_MenuBrowserDynamic",
+  "_browserStore",
+  "_jsxRuntime",
   "SourceBrowserDynamic",
   "memoEqual",
   "props",
-  "BAT_SHOW_BROWSER_DYNAMIC",
-  "BAT_LOAD_BROWSER_DYNAMIC_COMPLETED",
-  "BAT_UPDATE_BROWSER_MENU",
-  "BrowserActions",
-  "loadBrowserDynamic"
+  "jsx",
+  "default",
+  "useMsBrowserDynamic",
+  "onLoadMenu",
+  "loadBrowserDynamic",
+  "_default",
+  "exports"
  ],
- "mappings": ";;;;;;;;;AAAA;;AAEA;;AACA;;;;AAOA,IAAMA,oBAAoB,GAAG,IAAAC,qBAAA,EAAU,UAAAC,KAAK;EAAA,oBAC1C,qBAAC,8BAAD;IACG,UAAU,EAAEC,wCADf;IAEG,mBAAmB,EAAEC,kDAFxB;IAGG,YAAY,EAAEC,uCAHjB;IAIG,UAAU,EAAEC,8BAAA,CAAeC;EAJ9B,GAKOL,KALP,EAD0C;AAAA,CAAf,CAA7B;eAUeF,oB"
+ "mappings": ";;;;;AAAA,IAAAA,UAAA,GAAAC,sBAAA,CAAAC,OAAA;AAEA,IAAAC,mBAAA,GAAAF,sBAAA,CAAAC,OAAA;AACA,IAAAE,aAAA,GAAAF,OAAA;AAGiC,IAAAG,WAAA,GAAAH,OAAA;AAEjC,MAAMI,oBAAoB,GAAG,IAAAC,kBAAS,EAACC,KAAK,iBAC1C,IAAAH,WAAA,CAAAI,GAAA,EAACN,mBAAA,CAAAO,OAAkB;EAChBC,mBAAmB,EAAEA,iCAAoB;EACzCC,UAAU,EAAEC,gCAAmB;EAAA,GAC3BL;AAAK,CACX,CACF,CAAC;AAAC,IAAAM,QAAA,GAEYR,oBAAoB;AAAAS,OAAA,CAAAL,OAAA,GAAAI,QAAA"
 }

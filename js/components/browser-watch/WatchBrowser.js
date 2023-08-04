@@ -6,7 +6,6 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
-var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 var _Handlers = require("./Handlers");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _EditBar = _interopRequireDefault(require("./EditBar"));
@@ -44,7 +43,7 @@ const WatchBrowser = _ref => {
     store,
     browserType,
     useMsBrowser,
-    updateAction
+    useMsBrowserDynamic
   } = _ref;
   const _refIsShouldUpdateFind = (0, _uiApi.useRef)(false),
     [isShowComp, showComp, hideComp] = (0, _useBool.default)(isShow),
@@ -70,11 +69,11 @@ const WatchBrowser = _ref => {
       _handlerShow();
     }
   });
-  (0, _useListen.default)(store, (actionType, data) => {
-    if (actionType === updateAction) {
+  useMsBrowserDynamic(msBrowserDynamic => {
+    if (msBrowserDynamic && msBrowserDynamic.browserType === browserType && msBrowserDynamic.menuItems) {
       (0, _uiApi.setRefValue)(_refIsShouldUpdateFind, true);
       setWatchList({
-        ...data
+        ...msBrowserDynamic.menuItems
       });
       _setIsSearchInput(false);
     }

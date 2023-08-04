@@ -1,11 +1,8 @@
 import Store from '../flux/stores/AppStore';
-import {
-  BAT_INIT_BROWSER_DYNAMIC,
-  BAT_UPDATE_WATCH_BROWSER,
- } from '../flux/actions/BrowserActions';
 import { CHAT_INIT_AND_SHOW_CHART } from '../flux/actions/ChartActions';
 import {
-  useMsBrowser
+  useMsBrowser,
+  useMsBrowserDynamic
 } from '../flux/browserStore';
 import {
   useDgOption,
@@ -31,8 +28,7 @@ const AppLibraryWatch = (props) => {
          <BrowserContainer
             store={Store}
             useMsBrowser={useMsBrowser}
-            initBrowserAction={BAT_INIT_BROWSER_DYNAMIC}
-            updateWatchAction={BAT_UPDATE_WATCH_BROWSER}            
+            useMsBrowserDynamic={useMsBrowserDynamic}
             useDgOption={useDgOption}
          />
          <About store={Store} />

@@ -5,7 +5,6 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
-var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 var _Type = require("../../constants/Type");
 var _WatchBrowser = _interopRequireDefault(require("../browser-watch/WatchBrowser"));
 var _DialogStack = _interopRequireDefault(require("../zhn-containers/DialogStack"));
@@ -15,9 +14,9 @@ const BrowserContainer = _ref => {
   let {
     store,
     useMsBrowser,
+    useMsBrowserDynamic,
     updateWatchAction,
-    useDgOption,
-    initBrowserAction
+    useDgOption
   } = _ref;
   const [isDoubleWatch, toggleIsDoubleWatch] = (0, _useToggle.default)(false),
     [elBrowsers, setElBrowsers] = (0, _uiApi.useState)([]);
@@ -26,9 +25,9 @@ const BrowserContainer = _ref => {
       toggleIsDoubleWatch();
     }
   });
-  (0, _useListen.default)(store, (actionType, data) => {
-    if (actionType === initBrowserAction) {
-      setElBrowsers(prevElBrowsers => [data, ...prevElBrowsers]);
+  useMsBrowserDynamic(msBrowserDynamic => {
+    if (msBrowserDynamic && msBrowserDynamic.elBrowser) {
+      setElBrowsers(prevElBrowsers => [msBrowserDynamic.elBrowser, ...prevElBrowsers]);
     }
   });
   const _doubleWatch = isDoubleWatch ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchBrowser.default, {
@@ -37,9 +36,9 @@ const BrowserContainer = _ref => {
     isDoubleWatch: true,
     browserType: _Type.BrowserType.WATCH_LIST,
     useMsBrowser: useMsBrowser,
+    useMsBrowserDynamic: useMsBrowserDynamic,
     caption: "Watch 2",
-    store: store,
-    updateAction: updateWatchAction
+    store: store
   }) : null;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: CL,
@@ -48,7 +47,7 @@ const BrowserContainer = _ref => {
       caption: "Watch",
       store: store,
       useMsBrowser: useMsBrowser,
-      updateAction: updateWatchAction
+      useMsBrowserDynamic: useMsBrowserDynamic
     }), _doubleWatch, elBrowsers.map(el => (0, _uiApi.cloneElement)(el)), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogStack.default, {
       maxDialog: 3,
       useDgOption: useDgOption

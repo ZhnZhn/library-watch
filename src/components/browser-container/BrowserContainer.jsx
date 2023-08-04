@@ -3,7 +3,6 @@ import {
   useState
 } from '../uiApi';
 import useToggle from '../hooks/useToggle';
-import useListen from '../hooks/useListen';
 
 import { BrowserType as BT } from '../../constants/Type';
 
@@ -15,9 +14,9 @@ const CL = "hrz-container";
 const BrowserContainer = ({
   store,
   useMsBrowser,
+  useMsBrowserDynamic,
   updateWatchAction,
-  useDgOption,
-  initBrowserAction,
+  useDgOption
 }) => {
   const [
     isDoubleWatch,
@@ -33,10 +32,12 @@ const BrowserContainer = ({
       toggleIsDoubleWatch()
     }
   })
-
-  useListen(store, (actionType, data) => {
-    if (actionType === initBrowserAction){
-      setElBrowsers(prevElBrowsers => [data, ...prevElBrowsers])
+  useMsBrowserDynamic(msBrowserDynamic => {
+    if (msBrowserDynamic && msBrowserDynamic.elBrowser) {
+      setElBrowsers(prevElBrowsers => [
+        msBrowserDynamic.elBrowser,
+        ...prevElBrowsers
+      ])
     }
   })
 
@@ -48,9 +49,9 @@ const BrowserContainer = ({
           isDoubleWatch={true}
           browserType={BT.WATCH_LIST}
           useMsBrowser={useMsBrowser}
+          useMsBrowserDynamic={useMsBrowserDynamic}
           caption="Watch 2"
           store={store}
-          updateAction={updateWatchAction}
         />
       )
     : null;
@@ -62,7 +63,7 @@ const BrowserContainer = ({
          caption="Watch"
          store={store}
          useMsBrowser={useMsBrowser}
-         updateAction={updateWatchAction}
+         useMsBrowserDynamic={useMsBrowserDynamic}         
       />
       {_doubleWatch}
       {elBrowsers.map(el => cloneElement(el))}

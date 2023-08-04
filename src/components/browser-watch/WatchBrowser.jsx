@@ -8,7 +8,6 @@ import {
 
 import useBool from '../hooks/useBool';
 import useToggle from '../hooks/useToggle';
-import useListen from '../hooks/useListen';
 
 import {
   showDialogLoadItemsFromFile,
@@ -58,7 +57,7 @@ const WatchBrowser = ({
   store,
   browserType,
   useMsBrowser,
-  updateAction
+  useMsBrowserDynamic
 }) => {
   const _refIsShouldUpdateFind = useRef(false)
   , [
@@ -105,13 +104,16 @@ const WatchBrowser = ({
     }
   })
 
-  useListen(store, (actionType, data) => {
-    if (actionType === updateAction) {
+  useMsBrowserDynamic(msBrowserDynamic => {
+    if (msBrowserDynamic
+      && msBrowserDynamic.browserType === browserType
+      && msBrowserDynamic.menuItems
+    ) {
       setRefValue(_refIsShouldUpdateFind, true)
-      setWatchList({...data})
+      setWatchList({...msBrowserDynamic.menuItems})
       _setIsSearchInput(false)
-   }
-  })
+    }
+  })  
 
   const { groups } = watchList || {}
   , _styleCaption = isDoubleWatch

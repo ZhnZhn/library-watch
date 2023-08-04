@@ -4,7 +4,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _AppStore = _interopRequireDefault(require("../flux/stores/AppStore"));
-var _BrowserActions = require("../flux/actions/BrowserActions");
 var _ChartActions = require("../flux/actions/ChartActions");
 var _browserStore = require("../flux/browserStore");
 var _compStore = require("../flux/compStore");
@@ -26,8 +25,7 @@ const AppLibraryWatch = props => {
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserContainer.default, {
         store: _AppStore.default,
         useMsBrowser: _browserStore.useMsBrowser,
-        initBrowserAction: _BrowserActions.BAT_INIT_BROWSER_DYNAMIC,
-        updateWatchAction: _BrowserActions.BAT_UPDATE_WATCH_BROWSER,
+        useMsBrowserDynamic: _browserStore.useMsBrowserDynamic,
         useDgOption: _compStore.useDgOption
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_About.default, {
         store: _AppStore.default
