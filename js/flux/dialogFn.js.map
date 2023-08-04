@@ -1,0 +1,26 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/flux/dialogFn.js"
+ ],
+ "file": "../../src/flux/dialogFn.js",
+ "names": [
+  "_DataWL",
+  "_interopRequireDefault",
+  "require",
+  "_routeDialog",
+  "Object",
+  "create",
+  "WL",
+  "DataWL",
+  "setDialogItems",
+  "browserType",
+  "items",
+  "exports",
+  "getDataConf",
+  "dialogType",
+  "dataId",
+  "split"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,OAAA,GAAAC,sBAAA,CAAAC,OAAA;AAEA,MAAMC,YAAY,GAAGC,MAAM,CAACC,MAAM,CAAC,IAAI,CAAC;AACxCF,YAAY,CAACG,EAAE,GAAGC,eAAM;AAEjB,MAAMC,cAAc,GAAGA,CAC5BC,WAAW,EACXC,KAAK,KACF;EACHP,YAAY,CAACM,WAAW,CAAC,GAAGC,KAAK;AACnC,CAAC;AAAAC,OAAA,CAAAH,cAAA,GAAAA,cAAA;AAEM,MAAMI,WAAW,GAAIC,UAAU,IAAK;EACzC,MAAMC,MAAM,GAAGD,UAAU,CAACE,KAAK,CAAC,GAAG,CAAC,CAAC,CAAC,CAAC;EACvC,OAAOZ,YAAY,CAACW,MAAM,CAAC,CAACD,UAAU,CAAC;AACzC,CAAC;AAAAF,OAAA,CAAAC,WAAA,GAAAA,WAAA"
+}
