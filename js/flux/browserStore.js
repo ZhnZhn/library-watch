@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.useMsBrowserDynamic = exports.useMsBrowser = exports.updateWatchList = exports.updateBrowserMenu = exports.showWatch = exports.showDbWatch = exports.showBrowserDynamic = exports.showBrowser = exports.loadBrowserDynamic = void 0;
+exports.useMsBrowserDynamic = exports.useMsBrowser = exports.updateBrowserMenu = exports.showWatch = exports.showDbWatch = exports.showBrowserDynamic = exports.showBrowser = exports.loadBrowserDynamic = void 0;
 var _storeApi = require("./storeApi");
 var _Type = require("../constants/Type");
 var _BrowserMenu = _interopRequireDefault(require("../constants/BrowserMenu"));
@@ -115,13 +115,4 @@ const updateBrowserMenu = browserType => {
   });
 };
 exports.updateBrowserMenu = updateBrowserMenu;
-const updateWatchList = watchList => {
-  _set({
-    msBrowserDynamic: {
-      browserType: _Type.BrowserType.WATCH_LIST,
-      menuItems: watchList
-    }
-  });
-};
-exports.updateWatchList = updateWatchList;
 //# sourceMappingURL=browserStore.js.map

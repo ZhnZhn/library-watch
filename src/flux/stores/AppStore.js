@@ -28,8 +28,6 @@ import {
 } from '../actions/ChartActions';
 
 import { LoadingProgressActions } from '../actions/LoadingProgressActions';
-import { WatchActions } from '../actions/WatchActions';
-
 import {
   BrowserType as BT,
 } from '../../constants/Type';
@@ -42,7 +40,6 @@ import {
   removeAll
 } from './chart/ChartLogicFn';
 
-import WatchListSlice from '../watch-list/WatchListSlice';
 import WithLimitRemaining from './WithLimitRemaining';
 import WithLoadingProgress from './WithLoadingProgress';
 
@@ -60,14 +57,9 @@ const AppStore = Reflux.createStore({
   listenables: [
     ComponentActions,
     ChartActions,
-    WatchActions,
     LoadingProgressActions
   ],
   charts: {},
-
-  init(){
-    this.initWatchList();
-  },
 
   createInitConfig(chartType){
     return {
@@ -196,7 +188,6 @@ const AppStore = Reflux.createStore({
     updateBrowserMenu(browserType)
   },
 
- ...WatchListSlice,
  ...WithLimitRemaining,
  ...WithLoadingProgress
 });

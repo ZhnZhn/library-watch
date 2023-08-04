@@ -1,37 +1,33 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = exports.WatchActionTypes = void 0;
-
-var _refluxCore = _interopRequireDefault(require("reflux-core"));
-
-var _Reflux$createActions;
-
-var WatchActionTypes = {
-  ADD_ITEM: 'addItem',
-  REMOVE_ITEM: 'removeItem',
-  SAVE_WATCH: 'saveWatch',
-  DRAG_DROP_GROUP: 'dragDropGroup',
-  DRAG_DROP_LIST: 'dragDropList',
-  DRAG_DROP_ITEM: 'dragDropItem',
-  ADD_GROUP: 'addGroup',
-  RENAME_GROUP: 'renameGroup',
-  DELETE_GROUP: 'deleteGroup',
-  CREATE_LIST: 'createList',
-  RENAME_LIST: 'renameList',
-  DELETE_LIST: 'deleteList',
-  EDIT_WATCH_COMPLETED: 'editWatchCompleted',
-  EDIT_WATCH_FAILED: 'editWatchFailed',
-  BACKUP_TO_JSON: 'backupToJson',
-  LOAD_FROM_JSON: 'loadFromJson',
-  SET_WATCH_EDITED: 'setWatchEdited'
-};
-exports.WatchActionTypes = WatchActionTypes;
-
-var WatchActions = _refluxCore["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[WatchActionTypes.ADD_ITEM] = {}, _Reflux$createActions[WatchActionTypes.REMOVE_ITEM] = {}, _Reflux$createActions[WatchActionTypes.SAVE_WATCH] = {}, _Reflux$createActions[WatchActionTypes.DRAG_DROP_GROUP] = {}, _Reflux$createActions[WatchActionTypes.DRAG_DROP_LIST] = {}, _Reflux$createActions[WatchActionTypes.DRAG_DROP_ITEM] = {}, _Reflux$createActions[WatchActionTypes.ADD_GROUP] = {}, _Reflux$createActions[WatchActionTypes.RENAME_GROUP] = {}, _Reflux$createActions[WatchActionTypes.DELETE_GROUP] = {}, _Reflux$createActions[WatchActionTypes.CREATE_LIST] = {}, _Reflux$createActions[WatchActionTypes.RENAME_LIST] = {}, _Reflux$createActions[WatchActionTypes.DELETE_LIST] = {}, _Reflux$createActions[WatchActionTypes.EDIT_WATCH_COMPLETED] = {}, _Reflux$createActions[WatchActionTypes.EDIT_WATCH_FAILED] = {}, _Reflux$createActions[WatchActionTypes.BACKUP_TO_JSON] = {}, _Reflux$createActions[WatchActionTypes.LOAD_FROM_JSON] = {}, _Reflux$createActions));
-
-var _default = WatchActions;
-exports["default"] = _default;
+exports.WAT_SAVE_WATCH = exports.WAT_RENAME_LIST = exports.WAT_RENAME_GROUP = exports.WAT_REMOVE_ITEM = exports.WAT_LOAD_FROM_JSON = exports.WAT_DRAG_DROP_LIST = exports.WAT_DRAG_DROP_ITEM = exports.WAT_DRAG_DROP_GROUP = exports.WAT_DELETE_LIST = exports.WAT_DELETE_GROUP = exports.WAT_CREATE_LIST = exports.WAT_CREATE_GROUP = exports.WAT_BACKUP_TO_JSON = exports.WAT_ADD_ITEM = void 0;
+const WAT_CREATE_GROUP = 'crGroup';
+exports.WAT_CREATE_GROUP = WAT_CREATE_GROUP;
+const WAT_RENAME_GROUP = 'renGroup';
+exports.WAT_RENAME_GROUP = WAT_RENAME_GROUP;
+const WAT_DELETE_GROUP = 'delGroup';
+exports.WAT_DELETE_GROUP = WAT_DELETE_GROUP;
+const WAT_CREATE_LIST = 'crList';
+exports.WAT_CREATE_LIST = WAT_CREATE_LIST;
+const WAT_RENAME_LIST = 'renList';
+exports.WAT_RENAME_LIST = WAT_RENAME_LIST;
+const WAT_DELETE_LIST = 'delList';
+exports.WAT_DELETE_LIST = WAT_DELETE_LIST;
+const WAT_ADD_ITEM = 'addItem';
+exports.WAT_ADD_ITEM = WAT_ADD_ITEM;
+const WAT_REMOVE_ITEM = 'removeItem';
+exports.WAT_REMOVE_ITEM = WAT_REMOVE_ITEM;
+const WAT_DRAG_DROP_GROUP = 'ddDropGroup';
+exports.WAT_DRAG_DROP_GROUP = WAT_DRAG_DROP_GROUP;
+const WAT_DRAG_DROP_LIST = 'ddDropList';
+exports.WAT_DRAG_DROP_LIST = WAT_DRAG_DROP_LIST;
+const WAT_DRAG_DROP_ITEM = 'ddDropItem';
+exports.WAT_DRAG_DROP_ITEM = WAT_DRAG_DROP_ITEM;
+const WAT_BACKUP_TO_JSON = 'backupToJson';
+exports.WAT_BACKUP_TO_JSON = WAT_BACKUP_TO_JSON;
+const WAT_LOAD_FROM_JSON = 'loadFromJson';
+exports.WAT_LOAD_FROM_JSON = WAT_LOAD_FROM_JSON;
+const WAT_SAVE_WATCH = 'saveWatch';
+exports.WAT_SAVE_WATCH = WAT_SAVE_WATCH;
 //# sourceMappingURL=WatchActions.js.map

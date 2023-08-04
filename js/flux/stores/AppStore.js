@@ -11,12 +11,10 @@ var _browserStore = require("../browserStore");
 var _ComponentActions = require("../actions/ComponentActions");
 var _ChartActions = require("../actions/ChartActions");
 var _LoadingProgressActions = require("../actions/LoadingProgressActions");
-var _WatchActions = require("../actions/WatchActions");
 var _Type = require("../../constants/Type");
 var _createChartContainer = _interopRequireDefault(require("../logic/createChartContainer"));
 var _createItem = _interopRequireDefault(require("../logic/createItem"));
 var _ChartLogicFn = require("./chart/ChartLogicFn");
-var _WatchListSlice = _interopRequireDefault(require("../watch-list/WatchListSlice"));
 var _WithLimitRemaining = _interopRequireDefault(require("./WithLimitRemaining"));
 var _WithLoadingProgress = _interopRequireDefault(require("./WithLoadingProgress"));
 const CONSOLE_LOG_STYLE = 'color:rgb(237, 88, 19);';
@@ -30,11 +28,8 @@ const _logLoadError = _ref => {
   console.log('%c' + alertDescr, CONSOLE_LOG_STYLE);
 };
 const AppStore = _refluxCore.default.createStore({
-  listenables: [_ComponentActions.ComponentActions, _ChartActions.ChartActions, _WatchActions.WatchActions, _LoadingProgressActions.LoadingProgressActions],
+  listenables: [_ComponentActions.ComponentActions, _ChartActions.ChartActions, _LoadingProgressActions.LoadingProgressActions],
   charts: {},
-  init() {
-    this.initWatchList();
-  },
   createInitConfig(chartType) {
     return {
       chartType: chartType,
@@ -140,7 +135,6 @@ const AppStore = _refluxCore.default.createStore({
     this.trigger(_ChartActions.CHAT_SHOW_CHART, chartSlice);
     (0, _browserStore.updateBrowserMenu)(browserType);
   },
-  ..._WatchListSlice.default,
   ..._WithLimitRemaining.default,
   ..._WithLoadingProgress.default
 });

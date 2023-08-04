@@ -106,11 +106,3 @@ export const updateBrowserMenu = (browserType) => {
     }
   })
 }
-export const updateWatchList = (watchList) => {
-  _set({
-    msBrowserDynamic: {
-      browserType: BT.WATCH_LIST,
-      menuItems: watchList
-    }
-  })
-}
