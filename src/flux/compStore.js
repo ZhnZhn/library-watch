@@ -5,7 +5,7 @@ import {
 
 import { ModalDialog as MD } from '../constants/Type';
 import createDialog from './logic/createDialog';
-import BrowserSlice from './stores/BrowserSlice';
+import { getDataConf } from './dialogFn';
 
 const _crStore = () => ({
   msAbout: { is: true },
@@ -23,7 +23,6 @@ export const showAbout = () => _set({
   msAbout: { is: true }
 })
 
-
 export const useDgOption = fCrUse(_compStore, _selectDgOption)
 const _hmDialog = Object.create(null);
 export const showDialog = (dialogType, browserType) => {
@@ -32,7 +31,7 @@ export const showDialog = (dialogType, browserType) => {
   } else {
     _hmDialog[dialogType] = true
     const dialogComp = createDialog(
-      BrowserSlice.getDataConf(dialogType),
+      getDataConf(dialogType),
       browserType
     );
     _set({ dgOption: { dialogType, dialogComp} })

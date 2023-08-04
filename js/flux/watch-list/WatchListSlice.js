@@ -8,7 +8,7 @@ var _merge = _interopRequireDefault(require("../../utils/merge"));
 var _dateFn = require("../../utils/dateFn");
 var _saveJsonToFile = _interopRequireDefault(require("./saveJsonToFile"));
 var _compStore = require("../compStore");
-var _BrowserActions = require("../actions/BrowserActions");
+var _browserStore = require("../browserStore");
 var _WatchActions = require("../actions/WatchActions");
 var _WatchDefault = _interopRequireDefault(require("../../constants/WatchDefault"));
 var _Msg = require("../../constants/Msg");
@@ -30,7 +30,7 @@ const WatchListSlice = {
   initWatchList() {
     const [value] = (0, _localStorageFn.readFromLs)(STORAGE_KEY);
     this.watchList = value || _WatchDefault.default;
-    this.trigger(_BrowserActions.BAT_UPDATE_WATCH_BROWSER, this.watchList);
+    (0, _browserStore.updateWatchList)(this.watchList);
   },
   getWatchEdited() {
     return this.isWatchEdited;
@@ -58,12 +58,12 @@ const WatchListSlice = {
   onRemoveItem(option) {
     (0, _ItemFn.deleteItem)(this.watchList, option);
     this.setWatchEdited(true);
-    this.trigger(_BrowserActions.BAT_UPDATE_WATCH_BROWSER, this.watchList);
+    (0, _browserStore.updateWatchList)(this.watchList);
   },
   _onDragDrop(result) {
     if (result.isDone) {
       this.setWatchEdited(true);
-      this.trigger(_BrowserActions.BAT_UPDATE_WATCH_BROWSER, this.watchList);
+      (0, _browserStore.updateWatchList)(this.watchList);
     } else {
       (0, _compStore.showAlert)(result);
     }
@@ -94,7 +94,7 @@ const WatchListSlice = {
   _onEditWatch(result, forActionType) {
     if (result.isDone) {
       this.setWatchEdited(true);
-      this.trigger(_BrowserActions.BAT_UPDATE_WATCH_BROWSER, this.watchList);
+      (0, _browserStore.updateWatchList)(this.watchList);
       this.trigger(_WatchActions.WAT_EDIT_WATCH_COMPLETED, {
         forActionType
       });
@@ -135,7 +135,7 @@ const WatchListSlice = {
       } = option;
       (0, _merge.default)(this.watchList, JSON.parse(progressEvent.target.result));
       this.setWatchEdited(true);
-      this.trigger(_BrowserActions.BAT_UPDATE_WATCH_BROWSER, this.watchList);
+      (0, _browserStore.updateWatchList)(this.watchList);
     } catch (exc) {
       (0, _compStore.showAlert)({
         ..._Msg.ALERT_LOAD_FROM_JSON

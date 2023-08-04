@@ -6,13 +6,13 @@ import merge from '../../utils/merge';
 import { mlsToYmd } from '../../utils/dateFn';
 import saveJsonToFile from './saveJsonToFile';
 
-import {  
+import {
   showAlert,
   showInfo
 } from '../compStore';
 import {
-  BAT_UPDATE_WATCH_BROWSER
-} from '../actions/BrowserActions';
+  updateWatchList
+} from '../browserStore';
 import {
   WAT_SET_WATCH_EDITED,
   WAT_ADD_ITEM,
@@ -74,7 +74,7 @@ const WatchListSlice = {
       value
     ] = readFromLs(STORAGE_KEY);
     this.watchList = value || WatchDefault
-    this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
+    updateWatchList(this.watchList)
   },
   getWatchEdited(){
     return this.isWatchEdited;
@@ -103,13 +103,13 @@ const WatchListSlice = {
   onRemoveItem(option){
     deleteItem(this.watchList, option);
     this.setWatchEdited(true);
-    this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
+    updateWatchList(this.watchList)
   },
 
   _onDragDrop(result){
     if (result.isDone){
        this.setWatchEdited(true);
-       this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
+       updateWatchList(this.watchList)
     } else {
       showAlert(result)
     }
@@ -151,7 +151,7 @@ const WatchListSlice = {
   _onEditWatch(result, forActionType){
     if (result.isDone){
       this.setWatchEdited(true);
-      this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
+      updateWatchList(this.watchList)
       this.trigger(WAT_EDIT_WATCH_COMPLETED, {forActionType});
     } else {
       this.trigger(WAT_EDIT_WATCH_FAILED, {
@@ -210,7 +210,7 @@ const WatchListSlice = {
       const { progressEvent } = option
       merge(this.watchList, JSON.parse(progressEvent.target.result));
       this.setWatchEdited(true);
-      this.trigger(BAT_UPDATE_WATCH_BROWSER, this.watchList);
+      updateWatchList(this.watchList)
     } catch(exc) {
       showAlert({...ALERT_LOAD_FROM_JSON })
     }

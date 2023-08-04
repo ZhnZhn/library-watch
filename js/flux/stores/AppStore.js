@@ -5,16 +5,17 @@ exports.__esModule = true;
 exports.default = void 0;
 var _refluxCore = _interopRequireDefault(require("reflux-core"));
 var _compStore = require("../compStore");
+var _dialogFn = require("../dialogFn");
+var _browserFn = require("../browserFn");
+var _browserStore = require("../browserStore");
 var _ComponentActions = require("../actions/ComponentActions");
 var _ChartActions = require("../actions/ChartActions");
-var _BrowserActions = require("../actions/BrowserActions");
 var _LoadingProgressActions = require("../actions/LoadingProgressActions");
 var _WatchActions = require("../actions/WatchActions");
 var _Type = require("../../constants/Type");
 var _createChartContainer = _interopRequireDefault(require("../logic/createChartContainer"));
 var _createItem = _interopRequireDefault(require("../logic/createItem"));
 var _ChartLogicFn = require("./chart/ChartLogicFn");
-var _BrowserSlice = _interopRequireDefault(require("./BrowserSlice"));
 var _WatchListSlice = _interopRequireDefault(require("../watch-list/WatchListSlice"));
 var _WithLimitRemaining = _interopRequireDefault(require("./WithLimitRemaining"));
 var _WithLoadingProgress = _interopRequireDefault(require("./WithLoadingProgress"));
@@ -29,7 +30,7 @@ const _logLoadError = _ref => {
   console.log('%c' + alertDescr, CONSOLE_LOG_STYLE);
 };
 const AppStore = _refluxCore.default.createStore({
-  listenables: [_BrowserActions.BrowserActions, _ComponentActions.ComponentActions, _ChartActions.ChartActions, _WatchActions.WatchActions, _LoadingProgressActions.LoadingProgressActions],
+  listenables: [_ComponentActions.ComponentActions, _ChartActions.ChartActions, _WatchActions.WatchActions, _LoadingProgressActions.LoadingProgressActions],
   charts: {},
   init() {
     this.initWatchList();
@@ -64,11 +65,11 @@ const AppStore = _refluxCore.default.createStore({
       this.trigger(_ChartActions.CHAT_SHOW_CHART, chartCont);
     } else {
       this.charts[chartType] = this.createInitConfig(chartType);
-      this.trigger(_ChartActions.CHAT_INIT_AND_SHOW_CHART, (0, _createChartContainer.default)(this.getDataConf(chartType), browserType));
+      this.trigger(_ChartActions.CHAT_INIT_AND_SHOW_CHART, (0, _createChartContainer.default)((0, _dialogFn.getDataConf)(chartType), browserType));
     }
     if (browserType !== _Type.BrowserType.WATCH_LIST) {
-      this.setMenuItemOpen(chartType, browserType);
-      this.trigger(_BrowserActions.BAT_UPDATE_BROWSER_MENU, browserType);
+      (0, _browserFn.setMenuItemOpen)(chartType, browserType);
+      (0, _browserStore.updateBrowserMenu)(browserType);
     }
   },
   onLoadStock() {},
@@ -96,12 +97,12 @@ const AppStore = _refluxCore.default.createStore({
     } else {
       this.charts[chartType] = this.createInitConfig(chartType);
       this.charts[chartType].configs.unshift(comp);
-      this.trigger(_ChartActions.CHAT_INIT_AND_SHOW_CHART, (0, _createChartContainer.default)(this.getDataConf(chartType), browserType));
+      this.trigger(_ChartActions.CHAT_INIT_AND_SHOW_CHART, (0, _createChartContainer.default)((0, _dialogFn.getDataConf)(chartType), browserType));
     }
     this.triggerLimitRemaining(limitRemaining);
     if (browserType !== _Type.BrowserType.WATCH_LIST) {
-      this.addMenuItemCounter(chartType, browserType);
-      this.trigger(_BrowserActions.BAT_UPDATE_BROWSER_MENU, browserType);
+      (0, _browserFn.addMenuItemCounter)(chartType, browserType);
+      (0, _browserStore.updateBrowserMenu)(browserType);
     }
   },
   onLoadStockFailed(option) {
@@ -120,14 +121,14 @@ const AppStore = _refluxCore.default.createStore({
     });
     this.trigger(_ChartActions.CHAT_CLOSE_CHART, chartCont);
     if (browserType !== _Type.BrowserType.WATCH_LIST) {
-      this.minusMenuItemCounter(chartType, browserType);
-      this.trigger(_BrowserActions.BAT_UPDATE_BROWSER_MENU, browserType);
+      (0, _browserFn.minusMenuItemCounter)(chartType, browserType);
+      (0, _browserStore.updateBrowserMenu)(browserType);
     }
   },
   onCloseChartContainer(chartType, browserType) {
     if (browserType !== _Type.BrowserType.WATCH_LIST) {
-      this.setMenuItemClose(chartType, browserType);
-      this.trigger(_BrowserActions.BAT_UPDATE_BROWSER_MENU, browserType);
+      (0, _browserFn.setMenuItemClose)(chartType, browserType);
+      (0, _browserStore.updateBrowserMenu)(browserType);
     }
   },
   onCloseCompItemList(chartType, browserType) {
@@ -135,11 +136,10 @@ const AppStore = _refluxCore.default.createStore({
   },
   onRemoveAll(chartType, browserType) {
     const chartSlice = (0, _ChartLogicFn.removeAll)(this.charts, chartType);
-    this.resetMenuItemCounter(chartType, browserType);
+    (0, _browserFn.resetMenuItemCounter)(chartType, browserType);
     this.trigger(_ChartActions.CHAT_SHOW_CHART, chartSlice);
-    this.trigger(_BrowserActions.BAT_UPDATE_BROWSER_MENU, browserType);
+    (0, _browserStore.updateBrowserMenu)(browserType);
   },
-  ..._BrowserSlice.default,
   ..._WatchListSlice.default,
   ..._WithLimitRemaining.default,
   ..._WithLoadingProgress.default

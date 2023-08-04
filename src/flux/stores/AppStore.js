@@ -1,6 +1,19 @@
 import Reflux from 'reflux-core';
 
 import { showAlert } from '../compStore';
+import {
+  getDataConf
+} from '../dialogFn'
+import {
+  setMenuItemOpen,
+  setMenuItemClose,
+  addMenuItemCounter,
+  minusMenuItemCounter,
+  resetMenuItemCounter
+} from '../browserFn';
+import {
+  updateBrowserMenu
+} from '../browserStore';
 
 import {
   CAT_CLOSE_COMP_ITEM_LIST,
@@ -13,10 +26,7 @@ import {
   CHAT_CLOSE_CHART,
   ChartActions
 } from '../actions/ChartActions';
-import {
-  BAT_UPDATE_BROWSER_MENU,
-  BrowserActions
-} from '../actions/BrowserActions';
+
 import { LoadingProgressActions } from '../actions/LoadingProgressActions';
 import { WatchActions } from '../actions/WatchActions';
 
@@ -31,7 +41,7 @@ import {
   toTopByKey,
   removeAll
 } from './chart/ChartLogicFn';
-import BrowserSlice from './BrowserSlice';
+
 import WatchListSlice from '../watch-list/WatchListSlice';
 import WithLimitRemaining from './WithLimitRemaining';
 import WithLoadingProgress from './WithLoadingProgress';
@@ -48,7 +58,6 @@ const _logLoadError = ({
 
 const AppStore = Reflux.createStore({
   listenables: [
-    BrowserActions,
     ComponentActions,
     ChartActions,
     WatchActions,
@@ -92,15 +101,15 @@ const AppStore = Reflux.createStore({
      this.charts[chartType] = this.createInitConfig(chartType);
      this.trigger(CHAT_INIT_AND_SHOW_CHART,
         createChartContainer(
-          this.getDataConf(chartType),
+          getDataConf(chartType),
           browserType
         )
      );
    }
 
    if (browserType !== BT.WATCH_LIST){
-     this.setMenuItemOpen(chartType, browserType);
-     this.trigger(BAT_UPDATE_BROWSER_MENU, browserType);
+     setMenuItemOpen(chartType, browserType);
+     updateBrowserMenu(browserType)
    }
 
  },
@@ -134,7 +143,7 @@ const AppStore = Reflux.createStore({
      this.trigger(
         CHAT_INIT_AND_SHOW_CHART,
         createChartContainer(
-          this.getDataConf(chartType),
+          getDataConf(chartType),
           browserType
         )
      );
@@ -143,8 +152,8 @@ const AppStore = Reflux.createStore({
    this.triggerLimitRemaining(limitRemaining);
 
    if (browserType !== BT.WATCH_LIST){
-     this.addMenuItemCounter(chartType, browserType);
-     this.trigger(BAT_UPDATE_BROWSER_MENU, browserType);
+     addMenuItemCounter(chartType, browserType);
+     updateBrowserMenu(browserType)
    }
   },
   onLoadStockFailed(option){
@@ -164,16 +173,16 @@ const AppStore = Reflux.createStore({
    this.trigger(CHAT_CLOSE_CHART, chartCont);
 
    if (browserType !== BT.WATCH_LIST){
-     this.minusMenuItemCounter(chartType, browserType);
-     this.trigger(BAT_UPDATE_BROWSER_MENU, browserType);
+     minusMenuItemCounter(chartType, browserType);
+     updateBrowserMenu(browserType)
    }
 
  },
 
  onCloseChartContainer(chartType, browserType){
    if (browserType !== BT.WATCH_LIST){
-     this.setMenuItemClose(chartType, browserType);
-     this.trigger(BAT_UPDATE_BROWSER_MENU, browserType);
+     setMenuItemClose(chartType, browserType);
+     updateBrowserMenu(browserType)
    }
  },
  onCloseCompItemList(chartType, browserType){
@@ -182,12 +191,11 @@ const AppStore = Reflux.createStore({
 
  onRemoveAll(chartType, browserType){
     const chartSlice = removeAll(this.charts, chartType);
-    this.resetMenuItemCounter(chartType, browserType)
+    resetMenuItemCounter(chartType, browserType)
     this.trigger(CHAT_SHOW_CHART, chartSlice);
-    this.trigger(BAT_UPDATE_BROWSER_MENU, browserType);
+    updateBrowserMenu(browserType)
   },
 
- ...BrowserSlice,
  ...WatchListSlice,
  ...WithLimitRemaining,
  ...WithLoadingProgress

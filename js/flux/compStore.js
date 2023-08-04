@@ -6,7 +6,7 @@ exports.useMsAbout = exports.useMdOption = exports.useDgOption = exports.showMod
 var _storeApi = require("./storeApi");
 var _Type = require("../constants/Type");
 var _createDialog = _interopRequireDefault(require("./logic/createDialog"));
-var _BrowserSlice = _interopRequireDefault(require("./stores/BrowserSlice"));
+var _dialogFn = require("./dialogFn");
 const _crStore = () => ({
     msAbout: {
       is: true
@@ -39,7 +39,7 @@ const showDialog = (dialogType, browserType) => {
     });
   } else {
     _hmDialog[dialogType] = true;
-    const dialogComp = (0, _createDialog.default)(_BrowserSlice.default.getDataConf(dialogType), browserType);
+    const dialogComp = (0, _createDialog.default)((0, _dialogFn.getDataConf)(dialogType), browserType);
     _set({
       dgOption: {
         dialogType,

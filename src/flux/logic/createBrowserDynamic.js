@@ -2,7 +2,6 @@ import SourceBrowserDynamic from '../../components/browser-container/SourceBrows
 
 const createBrowserDynamic = ({
   browserType,
-  store,
   caption,
   sourceMenuUrl,
   rowClass
@@ -11,7 +10,6 @@ const createBrowserDynamic = ({
     isInitShow={true}
     key={browserType}
     browserType={browserType}
-    store={store}
     caption={caption}
     sourceMenuUrl={sourceMenuUrl}
     rowClass={rowClass}
