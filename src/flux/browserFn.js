@@ -25,7 +25,7 @@ const _fEditItem = (edit, value) => (
   chartType,
   browserType
 ) => {
-  if(_isBrowserTypeWatchList(browserType)) {
+  if(!_isBrowserTypeWatchList(browserType)) {
     edit(chartType, _browserMenu[browserType], value)
   }
 }
