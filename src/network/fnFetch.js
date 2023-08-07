@@ -1,82 +1,80 @@
-//import csvtojson from 'csvtojson'
-
-import {
-  LoadingProgressActions as LPA
-} from '../flux/actions/LoadingProgressActions';
-
-import fetchJson from './fetchJson'
-import fetchCsvStream from './fetchCsvStream'
+import fetchJson from './fetchJson';
+import fetchCsvStream from './fetchCsvStream';
 
 const CLICK_TIME_INTERVAL = 300
-    , MIN_FREQUENCY = 3000
-    , DONE = 'DONE'
-    , ALERT_FREQUENCY = {
-        errCaption : 'Load Frequency',
-        message : `Exceed item load frequency restriction of ${MIN_FREQUENCY/1000}s`
-    }
-    , ALERT_IN_PROGRESS = {
-         errCaption : 'Loading In Progress',
-         message : 'Loading data for this item in progress.\nIt seems several clicks on button Load repeatedly happend.'
-    };
+, MIN_FREQUENCY = 3000
+, DONE = 'DONE'
+, _crErrMsg = (
+  errCaption,
+  message
+) => ({
+  errCaption,
+  message
+})
+, ALERT_FREQUENCY = _crErrMsg(
+  'Load Frequency',
+  `Exceed item load frequency restriction of ${MIN_FREQUENCY/1000}s`
+)
+, ALERT_IN_PROGRESS = _crErrMsg(
+  'Loading In Progress',
+  'Loading data for this item in progress.\nIt seems several clicks on button Load repeatedly happend.'
+);
 
+const _crErr = ({
+  status,
+  statusText
+}={}) => _crErrMsg(
+  'Request Error',
+  `${status}: ${statusText}`
+);
 
-const _crErr = ({ status, statusText }={}) => ({
-  errCaption: 'Request Error',
-  message : `${status}: ${statusText}`
-});
-
-const _crErrResp = () => ({
-  errCaption: 'Response Error',
-  message : `Response format is incorrect`
-});
+const _crErrResp = () => _crErrMsg(
+  'Response Error',
+  'Response format is incorrect.'
+);
 
 let _recentUri = DONE
-  , _recentTime = Date.now() - MIN_FREQUENCY
-  , _recentCall = _recentTime;
+, _recentTime = Date.now() - MIN_FREQUENCY
+, _recentCall = _recentTime;
 
-const _fnSetRecentCall = function(uri, time){
-  _recentUri = uri;
+const _setRecentUriTime = (uri, time) => {
+  _recentUri = uri
   _recentCall = time
 }
-const _fnSetRecentDone = function(uri, time){
-  _recentUri = uri;
-  _recentTime = time;
-}
 
-const _starLoading = (uri, nowTime) => {
-  _fnSetRecentCall(uri, nowTime);
-  LPA.loadingProgress();
+, _starLoading = (uri, nowTime) => {
+   _setRecentUriTime(uri, nowTime)  
 }
-
-const _doneOk = (nowTime) => {
-  _fnSetRecentDone(DONE, nowTime);
-  LPA.loadingProgressComplete()
+, _doneOk = (nowTime) => {
+   _setRecentUriTime(DONE, nowTime)
 }
-
-const _doneFailure = (nowTime) => {
-  _fnSetRecentDone(DONE, nowTime);
-  LPA.loadingProgressFailed();
-}
+, _doneFailure = (nowTime) => {
+   _setRecentUriTime(DONE, nowTime)
+};
 
 export default (config) => {
    const {
-      uri, option,
-      onFailed, onCatch
-    } = config;
-  const _nowTime = Date.now();
+    uri,
+    option,
+    onFailed,
+    onCatch
+  } = config
+  , _nowTime = Date.now();
 
   if (_nowTime - _recentCall < CLICK_TIME_INTERVAL){
-    return void 0;
+    return;
   } else if (uri === _recentUri){
-    onCatch({ error : ALERT_IN_PROGRESS, option, onFailed });
+    onCatch({ error: ALERT_IN_PROGRESS, option, onFailed });
   } else if (_nowTime - _recentTime < MIN_FREQUENCY){
-    onCatch({ error : ALERT_FREQUENCY, option, onFailed });
+    onCatch({ error: ALERT_FREQUENCY, option, onFailed });
   } else {
-
      const _configFetch = {
        ...config,
-       _crErr, _crErrResp,
-       _nowTime, _doneOk, _doneFailure
+       _crErr,
+       _crErrResp,
+       _nowTime,
+       _doneOk,
+       _doneFailure
      };
 
     _starLoading(uri, _nowTime);
