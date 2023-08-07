@@ -15,7 +15,6 @@ const INITIAL_STATE = {
 };
 
 const DialogContainer = ({
-  store,
   useMdOption,
   routerDialog
 }) => {
@@ -79,7 +78,6 @@ const DialogContainer = ({
              key: type,
              isShow: shows[type],
              data: data[type],
-             store: store,
              onClose: () => _hClose(type)
           }
        ))}

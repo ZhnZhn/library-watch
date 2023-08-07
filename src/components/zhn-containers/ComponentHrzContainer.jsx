@@ -1,17 +1,20 @@
 import { useState } from '../uiApi';
-import useListen from '../hooks/useListen';
+import { useMsItem } from '../../flux/itemStore';
 
 const CL = "hrz-container";
 
-const ComponentHrzContainer = ({
-  store,
-  initShowAction
-}) => {
-  const [comps, setComps] = useState([]);
+const ComponentHrzContainer = () => {
+  const [
+    comps,
+    setComps
+  ] = useState([]);
 
-  useListen(store, (actionType, Comp) => {
-    if (actionType === initShowAction && Comp){
-      setComps(prevComps => [Comp, ...prevComps])
+  useMsItem(msItem => {
+    if (msItem && msItem.Comp) {
+      setComps(prevComps => [
+        msItem.Comp,
+        ...prevComps
+      ])
     }
   })
 

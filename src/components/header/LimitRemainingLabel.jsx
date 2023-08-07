@@ -1,5 +1,5 @@
 import { useState } from '../uiApi';
-import useListen from '../hooks/useListen';
+import { useLimitRemaining } from '../../flux/itemStore';
 
 const WITHOUT_LIMIT = ''
 , S_LIMIT_VALUE = {
@@ -10,20 +10,18 @@ const WITHOUT_LIMIT = ''
   fontWeight: 'bold'
 };
 
-const LimitRemainingLabel = ({
-  store
-}) => {
+const LimitRemainingLabel = () => {
   const [
     value,
     setValue
   ] = useState('');
 
-  useListen(store, (limitValue) => {
-    setValue(limitValue != null
-      ? limitValue
+  useLimitRemaining(limitRemaining => {
+    setValue(limitRemaining != null
+      ? limitRemaining
       : WITHOUT_LIMIT
     )
-  }, 'listenLimitRemaining')
+  })
 
   return (
     <span style={S_LIMIT_VALUE}>

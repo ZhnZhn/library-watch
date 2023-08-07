@@ -5,16 +5,13 @@ import {
   useEffect,
   getRefValue
 } from '../uiApi';
-import useMenuMore from '../hooks/useMenuMore'
-import useListen from '../hooks/useListen'
 
-import Store from '../../flux/stores/AppStore';
+import useMenuMore from '../hooks/useMenuMore';
+
 import {
-  CHAT_SHOW_CHART,
-  CHAT_LOAD_STOCK_COMPLETED,
-  CHAT_CLOSE_CHART
-} from '../../flux/actions/ChartActions';
-import { CAT_CLOSE_COMP_ITEM_LIST } from '../../flux/actions/ComponentActions';
+  getItemByType,
+  useMsItem
+} from '../../flux/itemStore';
 
 import ModalSlider from '../zhn-modal-slider/ModalSlider'
 import crModelMore from './ModelMore'
@@ -53,17 +50,6 @@ const RESIZE_INIT_WIDTH = 635
   top: 3,
   marginRight: 6
 };
-
-const _isInArray = (
-  arr=[],
-  value
-) => Boolean(~arr.indexOf(value));
-
-const COMP_ACTIONS = [
-  CHAT_SHOW_CHART,
-  CHAT_LOAD_STOCK_COMPLETED,
-  CHAT_CLOSE_CHART
-];
 
 const _getWidth = style =>
   parseInt(style.width, 10) || RESIZE_INIT_WIDTH
@@ -139,28 +125,26 @@ const CompItemList = ({
   useEffect(() => {
     setState(prevState => ({
       ...prevState,
-      ...Store.getConfigs(chartType)
+      ...getItemByType(chartType)
     }))
   }, [])
   // chartType
   /*eslint-enable react-hooks/exhaustive-deps */
-
-  useListen(Store, (actionType, data) => {
-    if (_isInArray(COMP_ACTIONS, actionType)) {
-      if (data && data.chartType === chartType){
+  useMsItem(msItem => {
+    if (msItem) {
+      if (msItem.chartType === chartType && msItem.close) {
+        _hClose();
+      }
+      if (msItem.chartCont && msItem.chartCont.chartType === chartType) {
         const _scrollEl = getRefValue(_refScroll)
         if (_scrollEl) {
           _scrollEl.scrollTop()
         }
         setState(prevState => ({
           ...prevState,
-          ...data
+          ...msItem.chartCont
         }))
       }
-    } else if (actionType === CAT_CLOSE_COMP_ITEM_LIST){
-       if (data === chartType){
-         _hClose();
-       }
     }
   })
 

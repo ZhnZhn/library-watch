@@ -1,10 +1,11 @@
 import memoIsShow from '../dialogs/memoIsShow';
 
-import { ChartActions } from '../../flux/actions/ChartActions';
+import { loadItem  } from '../../flux/itemStore';
 import {
   BrowserType,
   ChartType
 } from '../../constants/Type';
+
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import FlatButton from '../zhn-m/FlatButton';
 import RowText from './RowText';
@@ -25,7 +26,7 @@ const LoadItemDialog = memoIsShow(({
   onClose
 }) => {
   const _hLoad = () => {
-    ChartActions.loadStock(ChartType.WATCH_LIST, BrowserType.WATCH_LIST, data);
+    loadItem(ChartType.WATCH_LIST, BrowserType.WATCH_LIST, data);
     onClose();
   }
   , _commandButtons = [

@@ -3,6 +3,7 @@ import {
   showWatch
 } from '../../flux/browserStore';
 import { showAbout } from '../../flux/compStore';
+
 import { BrowserType as BT } from '../../constants/Type';
 
 import A from '../Comp';
@@ -48,11 +49,9 @@ const TITLE = "Library Watch v0.12.0"
 
 const _hClickLibrary = () => showBrowserDynamic(BROWSER_CONFIG_LIBRARY);
 
-const HeaderBar = ({
-  store
-}) => (
+const HeaderBar = () => (
   <header className={CL_HEADER}>
-     <LoadingProgress store={store} />
+     <LoadingProgress />
      <IconAppLogo
        className={CL_ICON}
        title={TITLE}
@@ -77,13 +76,10 @@ const HeaderBar = ({
         onClick={showWatch}
      />
      <A.ButtonSave
-        store={store}
         style={S_BUTTON_SAVE}
      />
      <div style={S_BTS_RIGHT}>
-       <LimitRemainingLabel
-          store={store}
-       />
+       <LimitRemainingLabel />
        <A.FlatButton
           className={CL_ABOUT}
           title="About webapp Library Watch"

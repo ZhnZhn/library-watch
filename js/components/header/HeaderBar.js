@@ -39,53 +39,43 @@ const TITLE = "Library Watch v0.12.0",
     rowClass: 'menu-item'
   };
 const _hClickLibrary = () => (0, _browserStore.showBrowserDynamic)(BROWSER_CONFIG_LIBRARY);
-const HeaderBar = _ref => {
-  let {
-    store
-  } = _ref;
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("header", {
-    className: CL_HEADER,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LoadingProgress.default, {
-      store: store
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconAppLogo.default, {
-      className: CL_ICON,
-      title: TITLE
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_AppLabel.default, {
-      className: CL_APP_LABEL,
-      caption: TITLE
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
-      className: CL_LIBRARY,
-      caption: "Library",
-      title: "Library Browser",
-      hotKey: _hotkeys.HK_LIBRARY,
+const HeaderBar = () => /*#__PURE__*/(0, _jsxRuntime.jsxs)("header", {
+  className: CL_HEADER,
+  children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LoadingProgress.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconAppLogo.default, {
+    className: CL_ICON,
+    title: TITLE
+  }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_AppLabel.default, {
+    className: CL_APP_LABEL,
+    caption: TITLE
+  }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
+    className: CL_LIBRARY,
+    caption: "Library",
+    title: "Library Browser",
+    hotKey: _hotkeys.HK_LIBRARY,
+    timeout: 0,
+    onClick: _hClickLibrary
+  }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
+    caption: "Watch",
+    title: "Watch Browser",
+    hotKey: _hotkeys.HK_WATCH,
+    timeout: 0,
+    onClick: _browserStore.showWatch
+  }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp.default.ButtonSave, {
+    style: S_BUTTON_SAVE
+  }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: S_BTS_RIGHT,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LimitRemainingLabel.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
+      className: CL_ABOUT,
+      title: "About webapp Library Watch",
+      hotKey: _hotkeys.HK_ABOUT,
       timeout: 0,
-      onClick: _hClickLibrary
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
-      caption: "Watch",
-      title: "Watch Browser",
-      hotKey: _hotkeys.HK_WATCH,
-      timeout: 0,
-      onClick: _browserStore.showWatch
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp.default.ButtonSave, {
-      store: store,
-      style: S_BUTTON_SAVE
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      style: S_BTS_RIGHT,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LimitRemainingLabel.default, {
-        store: store
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
-        className: CL_ABOUT,
-        title: "About webapp Library Watch",
-        hotKey: _hotkeys.HK_ABOUT,
-        timeout: 0,
-        onClick: _compStore.showAbout,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp.default.SvgInfo, {
-          style: S_SVG_INFO
-        })
-      })]
+      onClick: _compStore.showAbout,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp.default.SvgInfo, {
+        style: S_SVG_INFO
+      })
     })]
-  });
-};
+  })]
+});
 var _default = HeaderBar;
 exports.default = _default;
 //# sourceMappingURL=HeaderBar.js.map

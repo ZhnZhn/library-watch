@@ -1,12 +1,7 @@
 import useBool from '../hooks/useBool';
-import useListen from '../hooks/useListen';
 
 import { useMsAbout } from '../../flux/compStore';
-
-import {
-  CHAT_INIT_AND_SHOW_CHART,
-  CHAT_SHOW_CHART
-} from '../../flux/actions/ChartActions';
+import { useMsItem } from '../../flux/itemStore';
 
 import ScrollPane from '../zhn-atoms/ScrollPane';
 import CaptionRow from '../zhn-atoms/CaptionRow';
@@ -36,15 +31,12 @@ const CL_SHOW_POPUP = "show-popup"
 , S_MARGIN_BOTTOM = { marginBottom: '1em' }
 , S_MARGIN_TOP = { marginTop: 3 };
 
-const About = ({
-  store
-}) => {
+const About = () => {
   const [
     isShow,
     showAbout,
     hideAbout
   ] = useBool(true);
-
 
   useMsAbout(msAbout => {
     if (msAbout && msAbout.is) {
@@ -52,10 +44,8 @@ const About = ({
     }
   })
 
-  useListen(store, (actionType, data) => {
-    if (actionType === CHAT_INIT_AND_SHOW_CHART
-     || actionType === CHAT_SHOW_CHART
-   ){
+  useMsItem(msItem => {
+    if (msItem && (msItem.Comp || msItem.chartCont)) {
       hideAbout()
     }
   })

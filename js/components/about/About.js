@@ -4,9 +4,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
-var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 var _compStore = require("../../flux/compStore");
-var _ChartActions = require("../../flux/actions/ChartActions");
+var _itemStore = require("../../flux/itemStore");
 var _ScrollPane = _interopRequireDefault(require("../zhn-atoms/ScrollPane"));
 var _CaptionRow = _interopRequireDefault(require("../zhn-atoms/CaptionRow"));
 var _Step = _interopRequireDefault(require("./Step"));
@@ -40,18 +39,15 @@ const CL_SHOW_POPUP = "show-popup",
   S_MARGIN_TOP = {
     marginTop: 3
   };
-const About = _ref => {
-  let {
-    store
-  } = _ref;
+const About = () => {
   const [isShow, showAbout, hideAbout] = (0, _useBool.default)(true);
   (0, _compStore.useMsAbout)(msAbout => {
     if (msAbout && msAbout.is) {
       showAbout();
     }
   });
-  (0, _useListen.default)(store, (actionType, data) => {
-    if (actionType === _ChartActions.CHAT_INIT_AND_SHOW_CHART || actionType === _ChartActions.CHAT_SHOW_CHART) {
+  (0, _itemStore.useMsItem)(msItem => {
+    if (msItem && (msItem.Comp || msItem.chartCont)) {
       hideAbout();
     }
   });

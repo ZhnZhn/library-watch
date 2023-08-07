@@ -1,7 +1,5 @@
 import { useEffect } from './uiApi';
 
-import Store from '../flux/stores/AppStore';
-import { CHAT_INIT_AND_SHOW_CHART } from '../flux/actions/ChartActions';
 import {
   useMsBrowser,
   useMsBrowserDynamic
@@ -32,22 +30,18 @@ const AppLibraryWatch = (props) => {
   }, [])
   return (
     <div>
-      <HeaderBar store={Store} />
+      <HeaderBar />
       <div className="component-container">
-         <BrowserContainer            
+         <BrowserContainer
             useMsBrowser={useMsBrowser}
             useMsBrowserDynamic={useMsBrowserDynamic}
             useWatchList={useWatchList}
             useDgOption={useDgOption}
          />
-         <About store={Store} />
-         <ComponentHrzContainer
-            store={Store}
-            initShowAction={CHAT_INIT_AND_SHOW_CHART}
-         />
+         <About />
+         <ComponentHrzContainer />
       </div>
       <DialogContainer
-         store={Store}
          useMdOption={useMdOption}
          routerDialog={RouterModalDialog}
       />

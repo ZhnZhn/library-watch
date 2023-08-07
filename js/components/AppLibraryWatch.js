@@ -4,8 +4,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("./uiApi");
-var _AppStore = _interopRequireDefault(require("../flux/stores/AppStore"));
-var _ChartActions = require("../flux/actions/ChartActions");
 var _browserStore = require("../flux/browserStore");
 var _compStore = require("../flux/compStore");
 var _watchListStore = require("../flux/watch-list/watchListStore");
@@ -23,23 +21,15 @@ const AppLibraryWatch = props => {
     (0, _watchListStore.initWatchList)();
   }, []);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderBar.default, {
-      store: _AppStore.default
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderBar.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: "component-container",
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserContainer.default, {
         useMsBrowser: _browserStore.useMsBrowser,
         useMsBrowserDynamic: _browserStore.useMsBrowserDynamic,
         useWatchList: _watchListStore.useWatchList,
         useDgOption: _compStore.useDgOption
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_About.default, {
-        store: _AppStore.default
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ComponentHrzContainer.default, {
-        store: _AppStore.default,
-        initShowAction: _ChartActions.CHAT_INIT_AND_SHOW_CHART
-      })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_About.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ComponentHrzContainer.default, {})]
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogContainer.default, {
-      store: _AppStore.default,
       useMdOption: _compStore.useMdOption,
       routerDialog: _RouterModalDialog.default
     })]
