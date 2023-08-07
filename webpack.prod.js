@@ -16,8 +16,7 @@ module.exports = {
     },
     lib: [
             "react", 
-            "react-dom", 
-            "reflux-core", 
+            "react-dom",             
             "zustand", 
             "chart.js", 
             "timeago.js",             
