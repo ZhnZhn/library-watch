@@ -1,69 +1,36 @@
 import useKeyEnter  from '../hooks/useKeyEnter';
-import MenuBadge from '../zhn-atoms/MenuBadge';
+
+import AtomCounter from '../zhn-atoms/AtomCounter';
 import OpenClose2 from '../zhn-atoms/OpenClose2';
 
 const CL_NOT_SELECTED = 'not-selected'
-, CL_ROW_ITEM = `row__topic ${CL_NOT_SELECTED}`
+, CL_ROW_ITEM = `row__topic`
 , FILL_OPEN = '#1b2836'
 , FILL_CLOSE = 'transparent'
 
 , S_CAPTION_ROW = { paddingLeft: 6 };
 
 const MenuItem = ({
-  title,
-  className,
-  menuBadge,
-  onClick
+  item,
+  className
 }) => {
-  const _hKeyDown = useKeyEnter(onClick);
+  const _hKeyDown = useKeyEnter(item.onClick);
   return (
     <div
       role="menuitem"
       tabIndex={0}
       className={className}
-      onClick={onClick}
+      onClick={item.onClick}
       onKeyDown={_hKeyDown}
      >
-       {title}
-       {menuBadge}
+       {item.title}
+       <AtomCounter
+          atom={item.atomCounter}
+          onOpen={item.onOpen}
+          onClose={item.onClose}
+       />
     </div>
   );
-};
-
-const _renderMenuItems = (
-  rowClass,
-  items=[]
-) => {
-  return (items || []).map((item, index) => {
-    const {
-      counter,
-      title,
-      onClick
-    } = item
-    , _className = rowClass
-         ? rowClass + ' ' + CL_NOT_SELECTED
-         : CL_ROW_ITEM
-
-    , menuBadge = (counter !== 0)
-         ? (
-              <MenuBadge
-                counter={counter}
-                isOpen={item.isOpen}
-                onBadgeOpen={item.onBadgeOpen}
-                onBadgeClose={item.onBadgeClose}
-             />
-            )
-          : null;
-    return (
-      <MenuItem
-         key={index}
-         className={_className}
-         title={title}
-         menuBadge={menuBadge}
-         onClick={onClick}
-      />
-    );
-  })
 };
 
 const MenuPart = ({
@@ -79,7 +46,13 @@ const MenuPart = ({
      caption={caption}
      isClose={isInitClose}
   >
-     {_renderMenuItems(rowClass, items)}
+     {(items || []).map((item, index) => (
+         <MenuItem
+            key={item.id || index}
+            className={`${rowClass || CL_ROW_ITEM} ${CL_NOT_SELECTED}`}
+            item={item}
+         />
+     ))}
   </OpenClose2>
 );
 
