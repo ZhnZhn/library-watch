@@ -5,10 +5,11 @@ import {
 
 import { BrowserType as BT } from '../constants/Type';
 
-import BrowserMenu from '../constants/BrowserMenu';
-import createBrowserDynamic from './logic/createBrowserDynamic';
 import fnFetch from '../network/fnFetch';
 import fnCatch from '../network/fnCatch';
+
+import createBrowserMenu from './stores/browser/createMenu';
+import createBrowserDynamic from './logic/createBrowserDynamic';
 
 import {
   setBrowserMenu,
@@ -68,16 +69,16 @@ const _loadBrowserDynamicCompleted = ({
   items,
   browserType
 }) => {
-  const elMenu = BrowserMenu.createMenu(
+  const menuItems = createBrowserMenu(
     menu,
     items,
     browserType
   );
   setDialogItems(browserType, items)
-  setBrowserMenu(browserType, elMenu)
+  setBrowserMenu(browserType, menuItems)
   _set({
     msBrowserDynamic: {
-      menuItems: elMenu,
+      menuItems,
       browserType
     }
   })

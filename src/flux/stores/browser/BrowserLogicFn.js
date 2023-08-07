@@ -1,37 +1,51 @@
-import findItem from './findItem';
+import findItemCounterSetValue from './findItem';
 
 export const setIsOpen = (
   chartType,
-  browserMenu,
-  browserType,
+  menu,
   value
 ) => {
-  const item = findItem(browserMenu[browserType], chartType);
-  if (item) {
-    item.isOpen = value;
+  const setValue = findItemCounterSetValue(
+    menu,
+    chartType
+  );
+  if (setValue) {
+    setValue(prevValue => ({
+      v: prevValue.v,
+      is: value
+    }))
   }
 }
 
 export const plusCounter = (
   chartType,
-  browserType,
-  browserMenu,
+  menu,
   value
 ) => {
-  const item = findItem(browserMenu[browserType], chartType);
-  if (item) {
-    item.counter += value;
-    item.isOpen = true;
+  const setValue = findItemCounterSetValue(
+    menu,
+    chartType
+  );
+  if (setValue) {
+    setValue(prevValue => ({
+      v: prevValue.v + value,
+      is: true
+    }))
   }
 }
 
 export const resetCounter = (
-  appMenu,
-  bT,
-  cT
+  chartType,
+  menu
 ) => {
-  const item = findItem(appMenu[bT], cT);
-  if (item) {
-    item.counter = 0
+  const setValue = findItemCounterSetValue(
+    menu,
+    chartType
+  );
+  if (setValue) {
+    setValue(prevValue => ({
+      v: 0,
+      is: prevValue.is
+    }))
   }
 }

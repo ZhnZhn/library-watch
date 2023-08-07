@@ -5,8 +5,8 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../../components/uiApi");
 var _RouterItem = _interopRequireDefault(require("../../components/factories/RouterItem"));
-var _ChartActions = require("../actions/ChartActions");
 var _compStore = require("../compStore");
+var _itemStore = require("../itemStore");
 const createItem = (option, json, parentProps) => {
   const {
       requestType,
@@ -19,8 +19,8 @@ const createItem = (option, json, parentProps) => {
     option,
     json,
     parentProps,
-    onMoveToTop: _ChartActions.ChartActions.moveToTop.bind(null, chartType, key),
-    onCloseItem: _ChartActions.ChartActions.closeChart,
+    onMoveToTop: _itemStore.moveToTop.bind(null, chartType, key),
+    onCloseItem: _itemStore.closeChart,
     onWatchItem: _compStore.showAddItem
   });
 };

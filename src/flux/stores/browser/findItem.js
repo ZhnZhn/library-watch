@@ -1,6 +1,6 @@
 const _isArray = Array.isArray;
 
-const findItem = (menu, chartType) => {
+const _findItem = (menu, chartType) => {
   if (!_isArray(menu)) { return; }
 
   for (const topics of menu){
@@ -15,4 +15,10 @@ const findItem = (menu, chartType) => {
   }
 };
 
-export default findItem
+const findItemCounterSetValue = (
+  menu,
+  chartType
+) => ((_findItem(menu, chartType) || {}).atomCounter || {}).setValue
+
+
+export default findItemCounterSetValue

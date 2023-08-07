@@ -5,10 +5,10 @@ exports.__esModule = true;
 exports.useMsBrowserDynamic = exports.useMsBrowser = exports.updateBrowserMenu = exports.showWatch = exports.showDbWatch = exports.showBrowserDynamic = exports.showBrowser = exports.loadBrowserDynamic = void 0;
 var _storeApi = require("./storeApi");
 var _Type = require("../constants/Type");
-var _BrowserMenu = _interopRequireDefault(require("../constants/BrowserMenu"));
-var _createBrowserDynamic = _interopRequireDefault(require("./logic/createBrowserDynamic"));
 var _fnFetch = _interopRequireDefault(require("../network/fnFetch"));
 var _fnCatch = _interopRequireDefault(require("../network/fnCatch"));
+var _createMenu = _interopRequireDefault(require("./stores/browser/createMenu"));
+var _createBrowserDynamic = _interopRequireDefault(require("./logic/createBrowserDynamic"));
 var _browserFn = require("./browserFn");
 var _dialogFn = require("./dialogFn");
 var _compStore = require("./compStore");
@@ -80,12 +80,12 @@ const _loadBrowserDynamicCompleted = _ref2 => {
       items,
       browserType
     } = _ref2;
-    const elMenu = _BrowserMenu.default.createMenu(menu, items, browserType);
+    const menuItems = (0, _createMenu.default)(menu, items, browserType);
     (0, _dialogFn.setDialogItems)(browserType, items);
-    (0, _browserFn.setBrowserMenu)(browserType, elMenu);
+    (0, _browserFn.setBrowserMenu)(browserType, menuItems);
     _set({
       msBrowserDynamic: {
-        menuItems: elMenu,
+        menuItems,
         browserType
       }
     });
