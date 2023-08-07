@@ -19,25 +19,13 @@ import ContainerCaption from '../zhn-atoms/ContainerCaption';
 import SvgHrzResize from '../zhn-moleculs/SvgHrzResize';
 import ScrollPane from '../zhn-atoms/ScrollPane';
 import CL from '../styles/CL';
+import { S_COMP_ITEM_LIST } from '../styles/ContainerStyles';
 
 const RESIZE_INIT_WIDTH = 635
 , RESIZE_MIN_WIDTH = 375
 , RESIZE_MAX_WIDTH = 1200
 , DELTA = 10
 
-, S_ROOT = {
-  position: 'relative',
-  backgroundColor: '#4d4d4d',
-  width: 635,
-  height: 'calc(100vh - 71px)',
-  minHeight: 500,
-  padding: '0px 0px 16px',
-  marginLeft: 16,
-  borderRadius: 4,
-  boxShadow: '1px 4px 6px 1px rgba(0, 0, 0, 0.6)',
-  overflowY: 'hidden',
-  overflowX: 'hidden'
-}
 , S_BLOCK = { display: 'inline-block' }
 , S_NONE = { display: 'none' }
 , S_SCROLL = {
@@ -156,7 +144,7 @@ const CompItemList = ({
     <div
        ref={_refRootElement}
        className={_className}
-       style={{...S_ROOT, ..._style}}
+       style={{...S_COMP_ITEM_LIST, ..._style}}
     >
       <ModalSlider
         isShow={_isMenuMore}

@@ -12,24 +12,12 @@ var _ContainerCaption = _interopRequireDefault(require("../zhn-atoms/ContainerCa
 var _SvgHrzResize = _interopRequireDefault(require("../zhn-moleculs/SvgHrzResize"));
 var _ScrollPane = _interopRequireDefault(require("../zhn-atoms/ScrollPane"));
 var _CL = _interopRequireDefault(require("../styles/CL"));
+var _ContainerStyles = require("../styles/ContainerStyles");
 var _jsxRuntime = require("react/jsx-runtime");
 const RESIZE_INIT_WIDTH = 635,
   RESIZE_MIN_WIDTH = 375,
   RESIZE_MAX_WIDTH = 1200,
   DELTA = 10,
-  S_ROOT = {
-    position: 'relative',
-    backgroundColor: '#4d4d4d',
-    width: 635,
-    height: 'calc(100vh - 71px)',
-    minHeight: 500,
-    padding: '0px 0px 16px',
-    marginLeft: 16,
-    borderRadius: 4,
-    boxShadow: '1px 4px 6px 1px rgba(0, 0, 0, 0.6)',
-    overflowY: 'hidden',
-    overflowX: 'hidden'
-  },
   S_BLOCK = {
     display: 'inline-block'
   },
@@ -140,7 +128,7 @@ const CompItemList = _ref => {
     ref: _refRootElement,
     className: _className,
     style: {
-      ...S_ROOT,
+      ..._ContainerStyles.S_COMP_ITEM_LIST,
       ..._style
     },
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider.default, {
