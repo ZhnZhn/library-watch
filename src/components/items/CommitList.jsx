@@ -2,8 +2,8 @@ import A from '../zhn-atoms/A';
 import CL from '../styles/CL';
 import STYLE from './Item.Style';
 
-import formatDate from '../../utils/formatDate';
 import formatStrDate from '../../utils/formatStrDate';
+import { crDateAgo } from '../../utils/dateFn';
 
 const CommitList = ({ commits }) => (commits || [])
  .map((item, index) => {
@@ -11,7 +11,7 @@ const CommitList = ({ commits }) => (commits || [])
     , { message='', committer } = commit || {}
     , { date, name='' } = committer || {}
     , _dateTime = formatStrDate(date)
-    , _dateAgo = formatDate(_dateTime);
+    , _dateAgo = crDateAgo(date);
 
     return (
       <div key={index} className={CL.ROW_ITEM}>

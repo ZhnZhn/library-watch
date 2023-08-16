@@ -2,7 +2,7 @@ import A from '../zhn-atoms/A';
 import CL from '../styles/CL';
 import STYLE from './Item.Style';
 
-import formatStrDate from '../../utils/formatStrDate';
+import { crDateAgo } from '../../utils/dateFn';
 
 const S_STATE = {
   ...STYLE.PR_8,
@@ -27,10 +27,14 @@ const IssueList = ({ issues }) => (issues || [])
       title,
       html_url
     } = item
-    , _creadedAt = formatStrDate(created_at)
-    , _updatedAt = created_at !== updated_at
-        ? formatStrDate(updated_at)
-        : '';
+    , _creadedAt = crDateAgo(created_at)
+    , _updated = created_at === updated_at
+        ? ''
+        : crDateAgo(updated_at)
+    , _updatedAt = _creadedAt === _updated
+        ? ''
+        : _updated;
+
    return (
       <div key={index} className={CL.ROW_ITEM}>
         <A.Link href={html_url}>
