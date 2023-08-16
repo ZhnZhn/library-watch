@@ -20,19 +20,34 @@ import {
 import { setDialogItems } from './dialogFn';
 import { showAlert } from './compStore';
 
+const MS_BROWSER = 'msBrowser'
+, MS_BROWSER_DYNAMIC = 'msBrowserDynamic'
+, _crMsBrowser = (id) => ({
+  [MS_BROWSER]: { id }
+})
+, _crMsBrowserDynamicElement = (elBrowser) => ({
+  [MS_BROWSER_DYNAMIC]: {
+    elBrowser
+  }
+})
+, _crMsBrowserDynamicType = (browserType, menuItems) => ({
+  [MS_BROWSER_DYNAMIC]: {
+    menuItems,
+    browserType
+  }
+});
+
 const _crStore = () => ({
-  msBrowser: void 0,
-  msBrowserDynamic: void 0
+  [MS_BROWSER]: void 0,
+  [MS_BROWSER_DYNAMIC]: void 0
 })
 , _browserStore = createStoreWithSelector(_crStore)
-, _selectMsBrowser = state => state.msBrowser
-, _selectMsBrowserDynamic = state => state.msBrowserDynamic
+, _selectMsBrowser = state => state[MS_BROWSER]
+, _selectMsBrowserDynamic = state => state[MS_BROWSER_DYNAMIC]
 , [_set] = getStoreApi(_browserStore);
 
 export const useMsBrowser = fCrUse(_browserStore, _selectMsBrowser)
-export const showBrowser = (id) => _set({
-  msBrowser: { id }
-})
+export const showBrowser = (id) => _set(_crMsBrowser(id))
 export const showWatch = bindTo(showBrowser, BT.WATCH_LIST)
 export const showDbWatch = bindTo(showBrowser, BT.WATCH_LIST_DB)
 
@@ -42,13 +57,13 @@ export const showBrowserDynamic = (option) => {
   if (!getBrowserMenu(browserType)) {
      const elBrowser = createBrowserDynamic(option);
      setBrowserMenu(browserType)
-     _set({
-       msBrowserDynamic: { elBrowser }
-     })
+     _set(_crMsBrowserDynamicElement(
+       elBrowser
+     ))
   } else {
-     _set({
-       msBrowserDynamic: { browserType }
-     })
+     _set(_crMsBrowserDynamicType(
+       browserType
+     ))
   }
 }
 
@@ -78,12 +93,10 @@ const _loadBrowserDynamicCompleted = ({
   );
   setDialogItems(browserType, items)
   setBrowserMenu(browserType, menuItems)
-  _set({
-    msBrowserDynamic: {
-      menuItems,
-      browserType
-    }
-  })
+  _set(_crMsBrowserDynamicType(
+    browserType,
+    menuItems
+  ))
 }
 , _loadBrowserDynamicFailed = (option) => {
   option.alertItemId = option.alertItemId
@@ -102,10 +115,8 @@ export const loadBrowserDynamic = (option) => {
   })
 }
 export const updateBrowserMenu = (browserType) => {
-  _set({
-    msBrowserDynamic: {
-      menuItems: getBrowserMenu(browserType),
-      browserType
-    }
-  })
+  _set(_crMsBrowserDynamicType(
+    browserType,
+    getBrowserMenu(browserType)
+  ))
 }

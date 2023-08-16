@@ -12,21 +12,35 @@ var _createBrowserDynamic = _interopRequireDefault(require("./logic/createBrowse
 var _browserFn = require("./browserFn");
 var _dialogFn = require("./dialogFn");
 var _compStore = require("./compStore");
+const MS_BROWSER = 'msBrowser',
+  MS_BROWSER_DYNAMIC = 'msBrowserDynamic',
+  _crMsBrowser = id => ({
+    [MS_BROWSER]: {
+      id
+    }
+  }),
+  _crMsBrowserDynamicElement = elBrowser => ({
+    [MS_BROWSER_DYNAMIC]: {
+      elBrowser
+    }
+  }),
+  _crMsBrowserDynamicType = (browserType, menuItems) => ({
+    [MS_BROWSER_DYNAMIC]: {
+      menuItems,
+      browserType
+    }
+  });
 const _crStore = () => ({
-    msBrowser: void 0,
-    msBrowserDynamic: void 0
+    [MS_BROWSER]: void 0,
+    [MS_BROWSER_DYNAMIC]: void 0
   }),
   _browserStore = (0, _storeApi.createStoreWithSelector)(_crStore),
-  _selectMsBrowser = state => state.msBrowser,
-  _selectMsBrowserDynamic = state => state.msBrowserDynamic,
+  _selectMsBrowser = state => state[MS_BROWSER],
+  _selectMsBrowserDynamic = state => state[MS_BROWSER_DYNAMIC],
   [_set] = (0, _storeApi.getStoreApi)(_browserStore);
 const useMsBrowser = (0, _storeApi.fCrUse)(_browserStore, _selectMsBrowser);
 exports.useMsBrowser = useMsBrowser;
-const showBrowser = id => _set({
-  msBrowser: {
-    id
-  }
-});
+const showBrowser = id => _set(_crMsBrowser(id));
 exports.showBrowser = showBrowser;
 const showWatch = (0, _storeApi.bindTo)(showBrowser, _Type.BrowserType.WATCH_LIST);
 exports.showWatch = showWatch;
@@ -41,17 +55,9 @@ const showBrowserDynamic = option => {
   if (!(0, _browserFn.getBrowserMenu)(browserType)) {
     const elBrowser = (0, _createBrowserDynamic.default)(option);
     (0, _browserFn.setBrowserMenu)(browserType);
-    _set({
-      msBrowserDynamic: {
-        elBrowser
-      }
-    });
+    _set(_crMsBrowserDynamicElement(elBrowser));
   } else {
-    _set({
-      msBrowserDynamic: {
-        browserType
-      }
-    });
+    _set(_crMsBrowserDynamicType(browserType));
   }
 };
 exports.showBrowserDynamic = showBrowserDynamic;
@@ -83,12 +89,7 @@ const _loadBrowserDynamicCompleted = _ref2 => {
     const menuItems = (0, _createMenu.default)(menu, items, browserType);
     (0, _dialogFn.setDialogItems)(browserType, items);
     (0, _browserFn.setBrowserMenu)(browserType, menuItems);
-    _set({
-      msBrowserDynamic: {
-        menuItems,
-        browserType
-      }
-    });
+    _set(_crMsBrowserDynamicType(browserType, menuItems));
   },
   _loadBrowserDynamicFailed = option => {
     option.alertItemId = option.alertItemId || option.caption || '';
@@ -107,12 +108,7 @@ const loadBrowserDynamic = option => {
 };
 exports.loadBrowserDynamic = loadBrowserDynamic;
 const updateBrowserMenu = browserType => {
-  _set({
-    msBrowserDynamic: {
-      menuItems: (0, _browserFn.getBrowserMenu)(browserType),
-      browserType
-    }
-  });
+  _set(_crMsBrowserDynamicType(browserType, (0, _browserFn.getBrowserMenu)(browserType)));
 };
 exports.updateBrowserMenu = updateBrowserMenu;
 //# sourceMappingURL=browserStore.js.map
