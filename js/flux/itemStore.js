@@ -26,17 +26,34 @@ const _logLoadError = _ref => {
   console.log('%c' + alertCaption + ':' + alertItemId, CONSOLE_LOG_STYLE);
   console.log('%c' + alertDescr, CONSOLE_LOG_STYLE);
 };
+const MS_ITEM = 'msItem';
+const _crMsItemChartCont = chartCont => ({
+  [MS_ITEM]: {
+    chartCont
+  }
+});
+const _crMsItemComp = (chartType, browserType) => ({
+  [MS_ITEM]: {
+    Comp: (0, _createChartContainer.default)((0, _dialogFn.getDataConf)(chartType), browserType)
+  }
+});
+const _crMsItemChartTypeClose = chartType => ({
+  [MS_ITEM]: {
+    chartType,
+    close: true
+  }
+});
 const _crStore = () => ({
     loading: void 0,
     limitRemaining: void 0,
     items: {},
-    msItem: void 0
+    [MS_ITEM]: void 0
   }),
   itemStore = (0, _storeApi.createStoreWithSelector)(_crStore),
   _selectItems = state => state.items,
   _selectLoading = state => state.loading,
   _selectLimitRemaining = state => state.limitRemaining,
-  _selectMsItem = state => state.msItem,
+  _selectMsItem = state => state[MS_ITEM],
   [_set, _get] = (0, _storeApi.getStoreApi)(itemStore);
 const getItemByType = chartType => _selectItems(_get())[chartType];
 exports.getItemByType = getItemByType;
@@ -50,22 +67,6 @@ const _createInitConfig = chartType => ({
   chartType: chartType,
   configs: [],
   isShow: true
-});
-const _crMsItemChartCont = chartCont => ({
-  msItem: {
-    chartCont
-  }
-});
-const _crMsItemComp = (chartType, browserType) => ({
-  msItem: {
-    Comp: (0, _createChartContainer.default)((0, _dialogFn.getDataConf)(chartType), browserType)
-  }
-});
-const _crMsItemChartTypeClose = chartType => ({
-  msItem: {
-    chartType,
-    close: true
-  }
 });
 const _crLoadingLimitRemaining = (loading, limitRemaining) => ({
   loading,

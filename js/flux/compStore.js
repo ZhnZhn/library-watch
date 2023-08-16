@@ -22,9 +22,7 @@ const MS_ABOUT = 'msAbout',
   }),
   MD_OPTION = 'mdOption',
   _crMdOption = option => ({
-    [MD_OPTION]: {
-      option
-    }
+    [MD_OPTION]: option
   });
 const _crStore = () => ({
     ..._crMsAbout(true),
