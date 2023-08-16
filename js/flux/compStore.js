@@ -61,10 +61,10 @@ const showModalDialog = function (modalDialogType, option) {
   });
 };
 exports.showModalDialog = showModalDialog;
-const showAddItem = showModalDialog.bind(null, _Type.ModalDialog.ADD_ITEM);
+const showAddItem = (0, _storeApi.bindTo)(showModalDialog, _Type.ModalDialog.ADD_ITEM);
 exports.showAddItem = showAddItem;
-const showAlert = showModalDialog.bind(null, _Type.ModalDialog.ALERT);
+const showAlert = (0, _storeApi.bindTo)(showModalDialog, _Type.ModalDialog.ALERT);
 exports.showAlert = showAlert;
-const showInfo = showModalDialog.bind(null, _Type.ModalDialog.INFO);
+const showInfo = (0, _storeApi.bindTo)(showModalDialog, _Type.ModalDialog.INFO);
 exports.showInfo = showInfo;
 //# sourceMappingURL=compStore.js.map

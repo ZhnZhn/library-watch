@@ -1,6 +1,7 @@
 import {
   createStoreWithSelector,
-  fCrUse
+  fCrUse,
+  bindTo
 } from './storeApi';
 
 import { BrowserType as BT } from '../constants/Type';
@@ -31,8 +32,8 @@ export const useMsBrowser = fCrUse(_browserStore, _selectMsBrowser)
 export const showBrowser = (id) => _set({
   msBrowser: { id }
 })
-export const showWatch = showBrowser.bind(null, BT.WATCH_LIST)
-export const showDbWatch = showBrowser.bind(null, BT.WATCH_LIST_DB)
+export const showWatch = bindTo(showBrowser, BT.WATCH_LIST)
+export const showDbWatch = bindTo(showBrowser, BT.WATCH_LIST_DB)
 
 export const useMsBrowserDynamic = fCrUse(_browserStore, _selectMsBrowserDynamic)
 export const showBrowserDynamic = (option) => {

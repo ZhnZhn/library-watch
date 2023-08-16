@@ -28,9 +28,9 @@ const showBrowser = id => _set({
   }
 });
 exports.showBrowser = showBrowser;
-const showWatch = showBrowser.bind(null, _Type.BrowserType.WATCH_LIST);
+const showWatch = (0, _storeApi.bindTo)(showBrowser, _Type.BrowserType.WATCH_LIST);
 exports.showWatch = showWatch;
-const showDbWatch = showBrowser.bind(null, _Type.BrowserType.WATCH_LIST_DB);
+const showDbWatch = (0, _storeApi.bindTo)(showBrowser, _Type.BrowserType.WATCH_LIST_DB);
 exports.showDbWatch = showDbWatch;
 const useMsBrowserDynamic = (0, _storeApi.fCrUse)(_browserStore, _selectMsBrowserDynamic);
 exports.useMsBrowserDynamic = useMsBrowserDynamic;

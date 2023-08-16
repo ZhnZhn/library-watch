@@ -1,6 +1,7 @@
 import {
   createStoreWithSelector,
-  fCrUse
+  fCrUse,
+  bindTo
 } from './storeApi';
 
 import { ModalDialog as MD } from '../constants/Type';
@@ -43,6 +44,6 @@ export const showModalDialog = (modalDialogType, option={}) => {
   option.modalDialogType = modalDialogType
   _set({ mdOption: option })
 }
-export const showAddItem = showModalDialog.bind(null, MD.ADD_ITEM)
-export const showAlert = showModalDialog.bind(null, MD.ALERT)
-export const showInfo = showModalDialog.bind(null, MD.INFO)
+export const showAddItem = bindTo(showModalDialog, MD.ADD_ITEM)
+export const showAlert = bindTo(showModalDialog, MD.ALERT)
+export const showInfo = bindTo(showModalDialog, MD.INFO)
