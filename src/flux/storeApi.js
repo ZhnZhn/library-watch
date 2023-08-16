@@ -1,8 +1,8 @@
 import { createStore } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 
-import { useReducer } from '../components/uiApi';
 import useSubscribe from '../components/hooks/useSubscribe';
+import useRerender from '../components/hooks/useRerender';
 
 export const createStoreWithSelector = (
   crStore
@@ -27,21 +27,15 @@ export const atom = (initialValue) => {
    _atom.value = initialValue
    return {
      useAtomValue: () => {
-       const [
-         value,
-         dispatch
-       ] = useReducer(
-         _reducerUseAtomValue,
-         initialValue
-       );
-       _atom.dispatch = dispatch
-       return value;
+       _atom.rerender = useRerender()
+       return _atom.value;
      },
      setValue: (crOrValue) => {
-       _atom.value = _reducerUseAtomValue(_atom.value, crOrValue)
-       const _dispatch = _atom.dispatch;
-       if (_isFn(_dispatch)) {
-         _dispatch(crOrValue)
+       const _prev = _atom.value
+       , _rerender = _atom.rerender;
+       _atom.value = _reducerUseAtomValue(_prev, crOrValue)
+       if (_prev !== _atom.value && _isFn(_rerender)) {
+         _rerender()
        }
      }
    };

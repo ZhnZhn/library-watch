@@ -5,8 +5,8 @@ exports.__esModule = true;
 exports.fCrUse = exports.createStoreWithSelector = exports.atom = void 0;
 var _zustand = require("zustand");
 var _middleware = require("zustand/middleware");
-var _uiApi = require("../components/uiApi");
 var _useSubscribe = _interopRequireDefault(require("../components/hooks/useSubscribe"));
+var _useRerender = _interopRequireDefault(require("../components/hooks/useRerender"));
 const createStoreWithSelector = crStore => (0, _zustand.createStore)((0, _middleware.subscribeWithSelector)(crStore));
 exports.createStoreWithSelector = createStoreWithSelector;
 const fCrUse = (store, select) => _useSubscribe.default.bind(null, store, select);
@@ -18,15 +18,15 @@ const atom = initialValue => {
   _atom.value = initialValue;
   return {
     useAtomValue: () => {
-      const [value, dispatch] = (0, _uiApi.useReducer)(_reducerUseAtomValue, initialValue);
-      _atom.dispatch = dispatch;
-      return value;
+      _atom.rerender = (0, _useRerender.default)();
+      return _atom.value;
     },
     setValue: crOrValue => {
-      _atom.value = _reducerUseAtomValue(_atom.value, crOrValue);
-      const _dispatch = _atom.dispatch;
-      if (_isFn(_dispatch)) {
-        _dispatch(crOrValue);
+      const _prev = _atom.value,
+        _rerender = _atom.rerender;
+      _atom.value = _reducerUseAtomValue(_prev, crOrValue);
+      if (_prev !== _atom.value && _isFn(_rerender)) {
+        _rerender();
       }
     }
   };
