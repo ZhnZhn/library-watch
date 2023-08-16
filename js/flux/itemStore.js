@@ -2,12 +2,12 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.useMsItem = exports.useLoading = exports.useLimitRemaining = exports.showChart = exports.removeItems = exports.moveToTop = exports.loadItem = exports.getItemByType = exports.closeCompItemList = exports.closeChartContainer = exports.closeChart = void 0;
+exports.useMsItem = exports.showChart = exports.removeItems = exports.moveToTop = exports.loadItem = exports.getItemByType = exports.closeCompItemList = exports.closeChartContainer = exports.closeChart = void 0;
 var _storeApi = require("./storeApi");
 var _RouterLoad = _interopRequireDefault(require("./logic/RouterLoad"));
 var _createItem = _interopRequireDefault(require("./logic/createItem"));
 var _createChartContainer = _interopRequireDefault(require("./logic/createChartContainer"));
-var _LoadingProgressActions = require("./actions/LoadingProgressActions");
+var _storeAtoms = require("./storeAtoms");
 var _browserFn = require("./browserFn");
 var _dialogFn = require("./dialogFn");
 var _compStore = require("./compStore");
@@ -44,33 +44,21 @@ const _crMsItemChartTypeClose = chartType => ({
   }
 });
 const _crStore = () => ({
-    loading: void 0,
-    limitRemaining: void 0,
     items: {},
     [MS_ITEM]: void 0
   }),
   itemStore = (0, _storeApi.createStoreWithSelector)(_crStore),
   _selectItems = state => state.items,
-  _selectLoading = state => state.loading,
-  _selectLimitRemaining = state => state.limitRemaining,
   _selectMsItem = state => state[MS_ITEM],
   [_set, _get] = (0, _storeApi.getStoreApi)(itemStore);
 const getItemByType = chartType => _selectItems(_get())[chartType];
 exports.getItemByType = getItemByType;
-const useLoading = (0, _storeApi.fCrUse)(itemStore, _selectLoading);
-exports.useLoading = useLoading;
-const useLimitRemaining = (0, _storeApi.fCrUse)(itemStore, _selectLimitRemaining);
-exports.useLimitRemaining = useLimitRemaining;
 const useMsItem = (0, _storeApi.fCrUse)(itemStore, _selectMsItem);
 exports.useMsItem = useMsItem;
 const _createInitConfig = chartType => ({
   chartType: chartType,
   configs: [],
   isShow: true
-});
-const _crLoadingLimitRemaining = (loading, limitRemaining) => ({
-  loading,
-  limitRemaining
 });
 const showChart = (chartType, browserType) => {
   const chartCont = getItemByType(chartType);
@@ -111,14 +99,14 @@ const _loadItemCompleted = (option, json) => {
       _items[chartType].configs.unshift(comp);
       _set(_crMsItemComp(chartType, browserType));
     }
-    _set(_crLoadingLimitRemaining(_LoadingProgressActions.LPAT_LOADING_COMPLETE, option.limitRemaining));
+    (0, _storeAtoms.setLoadingComplete)(option.limitRemaining);
     (0, _browserFn.addMenuItemCounter)(chartType, browserType);
   },
   _loadItemFailed = option => {
     option.alertItemId = option.alertItemId || option.repo || '';
     (0, _compStore.showAlert)(option);
     _logLoadError(option);
-    _set(_crLoadingLimitRemaining(_LoadingProgressActions.LPAT_LOADING_FAILED, option.limitRemaining));
+    (0, _storeAtoms.setLoadingFailed)(option.limitRemaining);
   };
 const isKeyTop = (key, option) => {
   const {
@@ -140,9 +128,7 @@ const loadItem = (chartType, browserType, option) => {
     key = crKey(option);
   if (!isKeyTop(key, option)) {
     option.key = key;
-    _set({
-      loading: _LoadingProgressActions.LPAT_LOADING
-    });
+    (0, _storeAtoms.setLoading)();
     loadItem(option, _loadItemCompleted, _loadItemFailed);
   } else {
     (0, _compStore.showAlert)(ALREADY_LOADED);

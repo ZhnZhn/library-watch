@@ -9,10 +9,10 @@ import createItem from './logic/createItem';
 import createChartContainer from './logic/createChartContainer';
 
 import {
-  LPAT_LOADING,
-  LPAT_LOADING_COMPLETE,
-  LPAT_LOADING_FAILED
-} from './actions/LoadingProgressActions';
+  setLoading,
+  setLoadingComplete,
+  setLoadingFailed
+} from './storeAtoms';
 
 import {
   setMenuItemOpen,
@@ -69,22 +69,16 @@ const _crMsItemChartTypeClose = (
 });
 
 const _crStore = () => ({
-  loading: void 0,
-  limitRemaining: void 0,
   items: {},
   [MS_ITEM]: void 0
 })
 , itemStore = createStoreWithSelector(_crStore)
 , _selectItems = state => state.items
-, _selectLoading = state => state.loading
-, _selectLimitRemaining = state => state.limitRemaining
 , _selectMsItem = state => state[MS_ITEM]
 , [_set, _get] = getStoreApi(itemStore);
 
 export const getItemByType = (chartType) => _selectItems(_get())[chartType];
 
-export const useLoading = fCrUse(itemStore, _selectLoading)
-export const useLimitRemaining = fCrUse(itemStore, _selectLimitRemaining)
 export const useMsItem = fCrUse(itemStore, _selectMsItem)
 
 const _createInitConfig = (chartType) => ({
@@ -92,14 +86,6 @@ const _createInitConfig = (chartType) => ({
   configs: [],
   isShow: true
 });
-
-const _crLoadingLimitRemaining = (
-  loading,
-  limitRemaining
-) => ({
-  loading,
-  limitRemaining
-})
 
 export const showChart = (
   chartType,
@@ -150,10 +136,7 @@ const _loadItemCompleted = (
     _set(_crMsItemComp(chartType, browserType))
   }
 
-  _set(_crLoadingLimitRemaining(
-    LPAT_LOADING_COMPLETE,
-    option.limitRemaining
-  ))
+  setLoadingComplete(option.limitRemaining)
   addMenuItemCounter(chartType, browserType);
 }
 , _loadItemFailed = (option) => {
@@ -161,10 +144,7 @@ const _loadItemCompleted = (
     || option.repo || '';
   showAlert(option)
   _logLoadError(option);
-  _set(_crLoadingLimitRemaining(
-    LPAT_LOADING_FAILED,
-    option.limitRemaining
-  ))
+  setLoadingFailed(option.limitRemaining)
 }
 
 const isKeyTop = (
@@ -194,7 +174,7 @@ export const loadItem = (
   , key = crKey(option);
   if (!isKeyTop(key, option)) {
     option.key = key
-    _set({ loading: LPAT_LOADING })
+    setLoading()
     loadItem(option, _loadItemCompleted, _loadItemFailed);
   } else {
     showAlert(ALREADY_LOADED)

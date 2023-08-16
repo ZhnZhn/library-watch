@@ -1,0 +1,30 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/flux/storeAtoms.js"
+ ],
+ "file": "../../src/flux/storeAtoms.js",
+ "names": [
+  "_storeApi",
+  "require",
+  "_LoadingProgressActions",
+  "_atomLoading",
+  "atom",
+  "_setLoading",
+  "setValue",
+  "_atomLimitRemaining",
+  "_setLimitRemaining",
+  "limitRemaining",
+  "useLoading",
+  "useAtomValue",
+  "exports",
+  "useLimitRemaining",
+  "setLoading",
+  "LPAT_LOADING",
+  "setLoadingComplete",
+  "LPAT_LOADING_COMPLETE",
+  "setLoadingFailed",
+  "LPAT_LOADING_FAILED"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAEA,IAAAC,uBAAA,GAAAD,OAAA;AAMA,MAAME,YAAY,GAAG,IAAAC,cAAI,EAAC,CAAC;EACzBC,WAAW,GAAGF,YAAY,CAACG,QAAQ;EACnCC,mBAAmB,GAAG,IAAAH,cAAI,EAAC,CAAC;EAC5BI,kBAAkB,GAAIC,cAAc,IAAM;IAC1CF,mBAAmB,CAACD,QAAQ,CACxBG,cAAc,IAAI,IAAI,GAClB,KAAK,CAAC,GACNA,cACR,CAAC;EACH,CAAC;AAEM,MAAMC,UAAU,GAAGP,YAAY,CAACQ,YAAY;AAAAC,OAAA,CAAAF,UAAA,GAAAA,UAAA;AAC5C,MAAMG,iBAAiB,GAAGN,mBAAmB,CAACI,YAAY;AAAAC,OAAA,CAAAC,iBAAA,GAAAA,iBAAA;AAE1D,MAAMC,UAAU,GAAGA,CAAA,KAAMT,WAAW,CAACU,oCAAY,CAAC;AAAAH,OAAA,CAAAE,UAAA,GAAAA,UAAA;AAClD,MAAME,kBAAkB,GAAIP,cAAc,IAAK;EACpDJ,WAAW,CAACY,6CAAqB,CAAC;EAClCT,kBAAkB,CAACC,cAAc,CAAC;AACpC,CAAC;AAAAG,OAAA,CAAAI,kBAAA,GAAAA,kBAAA;AACM,MAAME,gBAAgB,GAAIT,cAAc,IAAK;EAClDJ,WAAW,CAACc,2CAAmB,CAAC;EAChCX,kBAAkB,CAACC,cAAc,CAAC;AACpC,CAAC;AAAAG,OAAA,CAAAM,gBAAA,GAAAA,gBAAA"
+}
