@@ -1,3 +1,5 @@
+import formatTimeAgo from './formatTimeAgo';
+
 import {
 	isStr,
 	isNumber,
@@ -5,6 +7,9 @@ import {
 } from './isTypeFn';
 
 const MIN_YEAR = 1999;
+
+const _crNumber = (str) => parseInt(str, 10);
+const _crNumberMonth = str => _crNumber(str) - 1;
 
 const _notInIntervalStrict = (
 	n,
@@ -110,7 +115,7 @@ export const ymdToMlsUTC = (
   const arr = strDate.split('-');
   return Date.UTC(
 		arr[0],
-		parseInt(arr[1],10)-1,
+		_crNumberMonth(arr[1]),
 		arr[2]
 	);
 }
@@ -128,9 +133,9 @@ export const isWeekend = (
 ) => {
 	const date = new Date(
 		Date.UTC(
-			 parseInt(year+'', 10),
-			 parseInt(month+'',10)-1,
-			 parseInt(day+'',10)
+			 _crNumber(year+''),
+			 _crNumberMonth(month+''),
+			 _crNumber(day+'')
 		));
 	if (isNaN(date)) {
 		return false;
@@ -138,4 +143,20 @@ export const isWeekend = (
   const weekday = date.getUTCDay();
 
   return weekday === 0 || weekday === 6;
+}
+
+//YYYY-MM-DDTHH:MM:SSZ
+export const crDateAgo = (str) => {
+	const _mls = (str || '').trim().length === 20
+    ? Date.UTC(
+        str.slice(0,4),
+				_crNumberMonth(str.slice(5,7)),
+				_crNumber(str.slice(8,10)),
+				_crNumber(str.slice(11,13)),
+				_crNumber(str.slice(14,16))
+      )
+    : void 0;
+	return isNumber(_mls)
+	  ? formatTimeAgo(_mls)
+		: str;
 }

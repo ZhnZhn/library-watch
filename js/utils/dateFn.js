@@ -1,102 +1,97 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.ymdToUTCSecond = exports.ymdToMlsUTC = exports.mlsToYmd = exports.mlsToDmy = exports.isYmd = exports.isWeekend = exports.getToDate = exports.getFromDate = void 0;
+exports.ymdToUTCSecond = exports.ymdToMlsUTC = exports.mlsToYmd = exports.mlsToDmy = exports.isYmd = exports.isWeekend = exports.getToDate = exports.getFromDate = exports.crDateAgo = void 0;
+var _formatTimeAgo = _interopRequireDefault(require("./formatTimeAgo"));
 var _isTypeFn = require("./isTypeFn");
-var MIN_YEAR = 1999;
-var _notInIntervalStrict = function _notInIntervalStrict(n, min, max) {
-  return (0, _isTypeFn.isNaN)(n) || n < min || n > max;
-};
-var _notInLengthMinMax = function _notInLengthMinMax(str, length, min, max) {
-  return (0, _isTypeFn.isStr)(str) && str.length !== length || _notInIntervalStrict(parseInt(str, 10), min, max);
-};
-var _isYmd = function _isYmd(dateStr, nForecastDate, minYear) {
+const MIN_YEAR = 1999;
+const _crNumber = str => parseInt(str, 10);
+const _crNumberMonth = str => _crNumber(str) - 1;
+const _notInIntervalStrict = (n, min, max) => (0, _isTypeFn.isNaN)(n) || n < min || n > max;
+const _notInLengthMinMax = (str, length, min, max) => (0, _isTypeFn.isStr)(str) && str.length !== length || _notInIntervalStrict(parseInt(str, 10), min, max);
+const _isYmd = function (dateStr, nForecastDate, minYear) {
   if (nForecastDate === void 0) {
     nForecastDate = 0;
   }
   if (minYear === void 0) {
     minYear = MIN_YEAR;
   }
-  var _dateStr$split = dateStr.split('-'),
-    yStr = _dateStr$split[0],
-    mStr = _dateStr$split[1],
-    dStr = _dateStr$split[2],
+  const [yStr, mStr, dStr] = dateStr.split('-'),
     _nowYear = new Date().getFullYear();
   return !(_notInLengthMinMax(yStr, 4, minYear, _nowYear + nForecastDate) || _notInLengthMinMax(mStr, 2, 1, 12) || _notInLengthMinMax(dStr, 2, 1, 31));
 };
 
 //YYYY-MM-DD valid format
-var isYmd = function isYmd(str, nForecastDate, minYear) {
+const isYmd = (str, nForecastDate, minYear) => {
   if (!(0, _isTypeFn.isStr)(str)) {
     return false;
   }
-  var _str = str.trim();
+  const _str = str.trim();
   if (_str.length !== 10) {
     return false;
   }
   return _isYmd(_str, nForecastDate, minYear);
 };
 exports.isYmd = isYmd;
-var _getYmdUTC = function _getYmdUTC(d, yearFromDate) {
-  return d.getUTCFullYear() - yearFromDate + "-" + ("0" + (d.getUTCMonth() + 1)).slice(-2) + "-" + ("0" + d.getUTCDate()).slice(-2);
-};
-var DF_YEAR_FROM_DATE = 2;
-var getFromDate = function getFromDate(yearFromDate) {
+const _getYmdUTC = (d, yearFromDate) => d.getUTCFullYear() - yearFromDate + "-" + ("0" + (d.getUTCMonth() + 1)).slice(-2) + "-" + ("0" + d.getUTCDate()).slice(-2);
+const DF_YEAR_FROM_DATE = 2;
+const getFromDate = function (yearFromDate) {
   if (yearFromDate === void 0) {
     yearFromDate = DF_YEAR_FROM_DATE;
   }
-  var dNow = new Date();
+  const dNow = new Date();
   return _getYmdUTC(dNow, yearFromDate);
 };
 exports.getFromDate = getFromDate;
-var getToDate = function getToDate() {
-  return getFromDate(0);
-};
+const getToDate = () => getFromDate(0);
 exports.getToDate = getToDate;
-var mlsToDmy = function mlsToDmy(mlsUTC) {
+const mlsToDmy = mlsUTC => {
   if (!((0, _isTypeFn.isNumber)(mlsUTC) && isFinite(mlsUTC))) {
     return '';
   }
-  var d = new Date(mlsUTC);
+  const d = new Date(mlsUTC);
   if (d.toString() === 'Invalid Date') {
     return '';
   }
   return ("0" + d.getUTCDate()).slice(-2) + "-" + ("0" + (d.getUTCMonth() + 1)).slice(-2) + "-" + d.getUTCFullYear();
 };
 exports.mlsToDmy = mlsToDmy;
-var mlsToYmd = function mlsToYmd(mlsUTC) {
-  var dmy = mlsToDmy(mlsUTC);
+const mlsToYmd = mlsUTC => {
+  const dmy = mlsToDmy(mlsUTC);
   if (dmy === '') {
     return '';
   }
-  var _dmy$split = dmy.split('-'),
-    d = _dmy$split[0],
-    m = _dmy$split[1],
-    y = _dmy$split[2];
+  const [d, m, y] = dmy.split('-');
   return y + "-" + m + "-" + d;
 };
 exports.mlsToYmd = mlsToYmd;
-var ymdToMlsUTC = function ymdToMlsUTC(strDate) {
+const ymdToMlsUTC = strDate => {
   if (!(0, _isTypeFn.isStr)(strDate)) {
     return NaN;
   }
-  var arr = strDate.split('-');
-  return Date.UTC(arr[0], parseInt(arr[1], 10) - 1, arr[2]);
+  const arr = strDate.split('-');
+  return Date.UTC(arr[0], _crNumberMonth(arr[1]), arr[2]);
 };
 exports.ymdToMlsUTC = ymdToMlsUTC;
-var ymdToUTCSecond = function ymdToUTCSecond(strDate) {
-  return ymdToMlsUTC(strDate) / 1000;
-};
+const ymdToUTCSecond = strDate => ymdToMlsUTC(strDate) / 1000;
 
 /* 1970-01-01 */
 exports.ymdToUTCSecond = ymdToUTCSecond;
-var isWeekend = function isWeekend(year, month, day) {
-  var date = new Date(Date.UTC(parseInt(year + '', 10), parseInt(month + '', 10) - 1, parseInt(day + '', 10)));
+const isWeekend = (year, month, day) => {
+  const date = new Date(Date.UTC(_crNumber(year + ''), _crNumberMonth(month + ''), _crNumber(day + '')));
   if ((0, _isTypeFn.isNaN)(date)) {
     return false;
   }
-  var weekday = date.getUTCDay();
+  const weekday = date.getUTCDay();
   return weekday === 0 || weekday === 6;
 };
+
+//YYYY-MM-DDTHH:MM:SSZ
 exports.isWeekend = isWeekend;
+const crDateAgo = str => {
+  const _mls = (str || '').trim().length === 20 ? Date.UTC(str.slice(0, 4), _crNumberMonth(str.slice(5, 7)), _crNumber(str.slice(8, 10)), _crNumber(str.slice(11, 13)), _crNumber(str.slice(14, 16))) : void 0;
+  return (0, _isTypeFn.isNumber)(_mls) ? (0, _formatTimeAgo.default)(_mls) : str;
+};
+exports.crDateAgo = crDateAgo;
 //# sourceMappingURL=dateFn.js.map
