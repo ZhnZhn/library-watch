@@ -13,6 +13,11 @@ export const createStoreWithSelector = (
   subscribeWithSelector(crStore)
 )
 
+export const getStoreApi = store => [
+  store.setState,
+  store.getState
+];
+
 export const fCrUse = (
   store,
   select

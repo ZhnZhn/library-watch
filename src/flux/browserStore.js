@@ -1,5 +1,6 @@
 import {
   createStoreWithSelector,
+  getStoreApi,
   fCrUse,
   bindTo
 } from './storeApi';
@@ -26,7 +27,7 @@ const _crStore = () => ({
 , _browserStore = createStoreWithSelector(_crStore)
 , _selectMsBrowser = state => state.msBrowser
 , _selectMsBrowserDynamic = state => state.msBrowserDynamic
-, _set = _browserStore.setState;
+, [_set] = getStoreApi(_browserStore);
 
 export const useMsBrowser = fCrUse(_browserStore, _selectMsBrowser)
 export const showBrowser = (id) => _set({

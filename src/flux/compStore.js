@@ -1,5 +1,6 @@
 import {
   createStoreWithSelector,
+  getStoreApi,
   fCrUse,
   bindTo
 } from './storeApi';
@@ -17,7 +18,7 @@ const _crStore = () => ({
 , _selectMsAbout = state => state.msAbout
 , _selectDgOption = state => state.dgOption
 , _selectMdOption = state => state.mdOption
-, _set = _compStore.setState;
+, [_set] = getStoreApi(_compStore);
 
 export const useMsAbout = fCrUse(_compStore, _selectMsAbout)
 export const showAbout = () => _set({

@@ -18,7 +18,7 @@ const _crStore = () => ({
   _selectMsAbout = state => state.msAbout,
   _selectDgOption = state => state.dgOption,
   _selectMdOption = state => state.mdOption,
-  _set = _compStore.setState;
+  [_set] = (0, _storeApi.getStoreApi)(_compStore);
 const useMsAbout = (0, _storeApi.fCrUse)(_compStore, _selectMsAbout);
 exports.useMsAbout = useMsAbout;
 const showAbout = () => _set({

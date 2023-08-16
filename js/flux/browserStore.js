@@ -19,7 +19,7 @@ const _crStore = () => ({
   _browserStore = (0, _storeApi.createStoreWithSelector)(_crStore),
   _selectMsBrowser = state => state.msBrowser,
   _selectMsBrowserDynamic = state => state.msBrowserDynamic,
-  _set = _browserStore.setState;
+  [_set] = (0, _storeApi.getStoreApi)(_browserStore);
 const useMsBrowser = (0, _storeApi.fCrUse)(_browserStore, _selectMsBrowser);
 exports.useMsBrowser = useMsBrowser;
 const showBrowser = id => _set({

@@ -37,8 +37,7 @@ const _crStore = () => ({
   _selectLoading = state => state.loading,
   _selectLimitRemaining = state => state.limitRemaining,
   _selectMsItem = state => state.msItem,
-  _set = itemStore.setState,
-  _get = itemStore.getState;
+  [_set, _get] = (0, _storeApi.getStoreApi)(itemStore);
 const getItemByType = chartType => _selectItems(_get())[chartType];
 exports.getItemByType = getItemByType;
 const useLoading = (0, _storeApi.fCrUse)(itemStore, _selectLoading);
