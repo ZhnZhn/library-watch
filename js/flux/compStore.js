@@ -7,45 +7,49 @@ var _storeApi = require("./storeApi");
 var _Type = require("../constants/Type");
 var _createDialog = _interopRequireDefault(require("./logic/createDialog"));
 var _dialogFn = require("./dialogFn");
+const MS_ABOUT = 'msAbout',
+  _crMsAbout = is => ({
+    [MS_ABOUT]: {
+      is
+    }
+  }),
+  DG_OPTION = 'dgOption',
+  _crDgOption = (dialogType, dialogComp) => ({
+    [DG_OPTION]: {
+      dialogType,
+      dialogComp
+    }
+  }),
+  MD_OPTION = 'mdOption',
+  _crMdOption = option => ({
+    [MD_OPTION]: {
+      option
+    }
+  });
 const _crStore = () => ({
-    msAbout: {
-      is: true
-    },
-    dgOption: void 0,
-    mdOption: void 0
+    ..._crMsAbout(true),
+    [DG_OPTION]: void 0,
+    [MD_OPTION]: void 0
   }),
   _compStore = (0, _storeApi.createStoreWithSelector)(_crStore),
-  _selectMsAbout = state => state.msAbout,
-  _selectDgOption = state => state.dgOption,
-  _selectMdOption = state => state.mdOption,
+  _selectMsAbout = state => state[MS_ABOUT],
+  _selectDgOption = state => state[DG_OPTION],
+  _selectMdOption = state => state[MD_OPTION],
   [_set] = (0, _storeApi.getStoreApi)(_compStore);
 const useMsAbout = (0, _storeApi.fCrUse)(_compStore, _selectMsAbout);
 exports.useMsAbout = useMsAbout;
-const showAbout = () => _set({
-  msAbout: {
-    is: true
-  }
-});
+const showAbout = () => _set(_crMsAbout(true));
 exports.showAbout = showAbout;
 const useDgOption = (0, _storeApi.fCrUse)(_compStore, _selectDgOption);
 exports.useDgOption = useDgOption;
 const _hmDialog = Object.create(null);
 const showDialog = (dialogType, browserType) => {
   if (_hmDialog[dialogType]) {
-    _set({
-      dgOption: {
-        dialogType
-      }
-    });
+    _set(_crDgOption(dialogType));
   } else {
     _hmDialog[dialogType] = true;
     const dialogComp = (0, _createDialog.default)((0, _dialogFn.getDataConf)(dialogType), browserType);
-    _set({
-      dgOption: {
-        dialogType,
-        dialogComp
-      }
-    });
+    _set(_crDgOption(dialogType, dialogComp));
   }
 };
 exports.showDialog = showDialog;
@@ -56,9 +60,7 @@ const showModalDialog = function (modalDialogType, option) {
     option = {};
   }
   option.modalDialogType = modalDialogType;
-  _set({
-    mdOption: option
-  });
+  _set(_crMdOption(option));
 };
 exports.showModalDialog = showModalDialog;
 const showAddItem = (0, _storeApi.bindTo)(showModalDialog, _Type.ModalDialog.ADD_ITEM);
