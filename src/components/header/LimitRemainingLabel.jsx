@@ -1,8 +1,6 @@
-import { useState } from '../uiApi';
-import { useLimitRemaining } from '../../flux/itemStore';
+import { useLimitRemaining } from '../../flux/storeAtoms';
 
-const WITHOUT_LIMIT = ''
-, S_LIMIT_VALUE = {
+const S_LIMIT_VALUE = {
   display: 'inline-block',
   color:'#2f7ed8',
   padding: '5px 10px 0',
@@ -11,17 +9,7 @@ const WITHOUT_LIMIT = ''
 };
 
 const LimitRemainingLabel = () => {
-  const [
-    value,
-    setValue
-  ] = useState('');
-
-  useLimitRemaining(limitRemaining => {
-    setValue(limitRemaining != null
-      ? limitRemaining
-      : WITHOUT_LIMIT
-    )
-  })
+  const value = useLimitRemaining();
 
   return (
     <span style={S_LIMIT_VALUE}>

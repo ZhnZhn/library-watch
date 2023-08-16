@@ -1,7 +1,5 @@
-import { useState } from '../uiApi';
-
 import memoEqual from '../hoc/memoEqual';
-import { useLoading } from '../../flux/itemStore';
+import { useLoading } from '../../flux/storeAtoms';
 
 import {
   LPAT_LOADING,
@@ -22,26 +20,17 @@ const _crState = (
 ];
 
 const LoadingProgress = () => {
-  const [
-    state,
-    setState
-  ] = useState(
-    () => _crState(0, COLOR_LOADING)
-  )
+  const status = useLoading()
   , [
     completed,
     color
-  ] = state;
-
-  useLoading(loading => {
-    if (loading === LPAT_LOADING){
-      setState(_crState(35, COLOR_LOADING));
-    } else if (loading === LPAT_LOADING_COMPLETE){
-      setState(_crState(100, COLOR_LOADING));
-    } else if (loading === LPAT_LOADING_FAILED){
-      setState(_crState(100, COLOR_FAILED))
-    }
-  })
+  ] = status === LPAT_LOADING
+    ? _crState(35, COLOR_LOADING)
+    : status === LPAT_LOADING_COMPLETE
+       ? _crState(100, COLOR_LOADING)
+       : status === LPAT_LOADING_FAILED
+           ? _crState(100, COLOR_FAILED)
+           : _crState(0, COLOR_LOADING);
 
   return (
     <ProgressLine
