@@ -25,7 +25,7 @@
     "url": "https://github.com/ZhnZhn/library-watch.git"
   },
   "dependencies": {
-    "chart.js": "^4.3.3",
+    "chart.js": "^4.4.0",
     "papaparse": "^5.4.1",
     "raven-js": "^3.27.2",
     "react": "^18.2.0",
