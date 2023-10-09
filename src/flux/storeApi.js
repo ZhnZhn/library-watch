@@ -1,5 +1,7 @@
-import { createStore } from 'zustand';
-import { subscribeWithSelector } from 'zustand/middleware';
+import {
+  createStore,
+  subscribeWithSelector
+} from './zustand-lite';
 
 import { bindTo } from '../utils/bindTo';
 

@@ -16,8 +16,7 @@ module.exports = {
     },
     lib: [
             "react", 
-            "react-dom",             
-            "zustand", 
+            "react-dom",                         
             "chart.js", 
             "timeago.js",             
             "papaparse",
