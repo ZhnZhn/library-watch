@@ -1,7 +1,10 @@
+import {
+  S_BLOCK,
+  S_NONE
+} from '../styles/CL';
+
 const CL_INIT = 'modal-root'
-, CL_SHOWING = 'modal-root show-modal'
-, S_SHOW = { display: 'block' }
-, S_HIDE = { display: 'none' };
+, CL_SHOWING = 'modal-root show-modal';
 
 const ModalDialogContainer = ({
   isShow,
@@ -9,8 +12,8 @@ const ModalDialogContainer = ({
   children
 }) => {
   const [_className, _style] = isShow
-    ? [CL_SHOWING, S_SHOW]
-    : [CL_INIT, S_HIDE];
+    ? [CL_SHOWING, S_BLOCK]
+    : [CL_INIT, S_NONE];
 
   return (
     <div
