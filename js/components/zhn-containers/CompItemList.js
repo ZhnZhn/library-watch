@@ -18,12 +18,6 @@ const RESIZE_INIT_WIDTH = 635,
   RESIZE_MIN_WIDTH = 375,
   RESIZE_MAX_WIDTH = 1200,
   DELTA = 10,
-  S_BLOCK = {
-    display: 'inline-block'
-  },
-  S_NONE = {
-    display: 'none'
-  },
   S_SCROLL = {
     overflowY: 'auto',
     height: '92%',
@@ -123,7 +117,7 @@ const CompItemList = _ref => {
       }
     }
   });
-  const [_style, _className] = isShow ? [S_BLOCK, _CL.CL_SHOW_POPUP] : [S_NONE];
+  const [_style, _className] = isShow ? [_CL.S_INLINE_BLOCK, _CL.CL_SHOW_POPUP] : [_CL.S_NONE];
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     ref: _refRootElement,
     className: _className,
