@@ -1,3 +1,6 @@
+export const S_BLOCK = { display: 'block' }
+export const S_NONE = { display: 'none' }
+
 export const CL_SHOW_POPUP = "show-popup"
 export const CL_NOT_SELECTED = "not-selected"
 

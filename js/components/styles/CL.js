@@ -1,7 +1,13 @@
 "use strict";
 
 exports.__esModule = true;
-exports.CL_SOURCE_LINK = exports.CL_SHOW_POPUP = exports.CL_ROW_MENU_MORE = exports.CL_ROW_ITEM = exports.CL_NOT_SELECTED = exports.CL_MENU_MORE = exports.CL_LIB_VALUE_TITLE = exports.CL_LIB_VALUE = exports.CL_LIB_TITLE = exports.CL_LIB = exports.CL_FILE_ITEM = exports.CL_BT_ITEM = void 0;
+exports.S_NONE = exports.S_BLOCK = exports.CL_SOURCE_LINK = exports.CL_SHOW_POPUP = exports.CL_ROW_MENU_MORE = exports.CL_ROW_ITEM = exports.CL_NOT_SELECTED = exports.CL_MENU_MORE = exports.CL_LIB_VALUE_TITLE = exports.CL_LIB_VALUE = exports.CL_LIB_TITLE = exports.CL_LIB = exports.CL_FILE_ITEM = exports.CL_BT_ITEM = void 0;
+const S_BLOCK = exports.S_BLOCK = {
+  display: 'block'
+};
+const S_NONE = exports.S_NONE = {
+  display: 'none'
+};
 const CL_SHOW_POPUP = exports.CL_SHOW_POPUP = "show-popup";
 const CL_NOT_SELECTED = exports.CL_NOT_SELECTED = "not-selected";
 const CL_BT_ITEM = exports.CL_BT_ITEM = `${CL_NOT_SELECTED} bt-item`;

@@ -1,39 +1,26 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
+exports.default = void 0;
+var _CL = require("../styles/CL");
 var _ContainerStyles = require("../styles/ContainerStyles");
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var CL_OPEN = "show-popup",
-    S_BLOCK = {
-  display: 'block'
-},
-    S_NONE = {
-  display: 'none'
-};
-
-var Browser = function Browser(_ref) {
-  var isShow = _ref.isShow,
-      style = _ref.style,
-      children = _ref.children;
-
-  var _className = isShow ? CL_OPEN : null,
-      _style = isShow ? S_BLOCK : S_NONE;
-
+const Browser = _ref => {
+  let {
+    isShow,
+    style,
+    children
+  } = _ref;
+  const [_style, _className] = isShow ? [_CL.S_BLOCK, _CL.CL_SHOW_POPUP] : [_CL.S_NONE];
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     className: _className,
-    style: (0, _extends2["default"])({}, _ContainerStyles.S_BROWSER, style, _style),
+    style: {
+      ..._ContainerStyles.S_BROWSER,
+      ...style,
+      ..._style
+    },
     children: children
   });
 };
-
-var _default = Browser;
-exports["default"] = _default;
+var _default = exports.default = Browser;
 //# sourceMappingURL=Browser.js.map
