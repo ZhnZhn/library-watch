@@ -11,7 +11,7 @@ var _ModelMore = _interopRequireDefault(require("./ModelMore"));
 var _ContainerCaption = _interopRequireDefault(require("../zhn-atoms/ContainerCaption"));
 var _SvgHrzResize = _interopRequireDefault(require("../zhn-moleculs/SvgHrzResize"));
 var _ScrollPane = _interopRequireDefault(require("../zhn-atoms/ScrollPane"));
-var _CL = _interopRequireDefault(require("../styles/CL"));
+var _CL = require("../styles/CL");
 var _ContainerStyles = require("../styles/ContainerStyles");
 var _jsxRuntime = require("react/jsx-runtime");
 const RESIZE_INIT_WIDTH = 635,
@@ -123,7 +123,7 @@ const CompItemList = _ref => {
       }
     }
   });
-  const [_style, _className] = isShow ? [S_BLOCK, _CL.default.SHOW_POPUP] : [S_NONE];
+  const [_style, _className] = isShow ? [S_BLOCK, _CL.CL_SHOW_POPUP] : [S_NONE];
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     ref: _refRootElement,
     className: _className,
@@ -133,7 +133,7 @@ const CompItemList = _ref => {
     },
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider.default, {
       isShow: _isMenuMore,
-      className: _CL.default.MENU_MORE,
+      className: _CL.CL_MENU_MORE,
       model: _MENU_MODEL,
       onClose: _toggleMenuMore
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ContainerCaption.default, {
@@ -156,6 +156,5 @@ const CompItemList = _ref => {
     })]
   });
 };
-var _default = CompItemList;
-exports.default = _default;
+var _default = exports.default = CompItemList;
 //# sourceMappingURL=CompItemList.js.map

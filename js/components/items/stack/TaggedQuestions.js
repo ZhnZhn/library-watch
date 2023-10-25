@@ -1,191 +1,124 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _react = require("react");
-
+exports.default = void 0;
+var _uiApi = require("../../uiApi");
+var _useToggle = _interopRequireDefault(require("../../hooks/useToggle"));
+var _useMenuMore = _interopRequireDefault(require("../../hooks/useMenuMore"));
 var _A = _interopRequireDefault(require("../../zhn-atoms/A"));
-
 var _ItemCaption = _interopRequireDefault(require("../ItemCaption"));
-
 var _ModalSlider = _interopRequireDefault(require("../../zhn-modal-slider/ModalSlider"));
-
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
-
 var _sortItemsBy = _interopRequireDefault(require("./sortItemsBy"));
-
 var _TaggedItemList = _interopRequireDefault(require("./TaggedItemList"));
-
 var _Item = _interopRequireDefault(require("../Item.Style"));
-
-var _CL = _interopRequireDefault(require("../../styles/CL"));
-
+var _CL = require("../../styles/CL");
 var _jsxRuntime = require("react/jsx-runtime");
-
-var S = {
-  BT_MORE: {
+const S_BT_MORE = {
     position: 'relative',
     top: 3,
     marginRight: 12
   },
-  ITEM_COUNT: {
+  S_ITEM_COUNT = {
     color: '#a9a9a9',
-    paddingLeft: 12,
-    paddingRight: 12
+    padding: '0 12px'
   },
-  BT_REVERSE: {
+  S_BT_REVERSE = {
     color: '#a487d4',
     fontWeight: 'bold',
     cursor: 'pointer'
   },
-  NOT_FLOAT: {
-    "float": 'none'
-  }
-};
-
-var StackTaggedQuestions = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(StackTaggedQuestions, _Component);
-
-  function StackTaggedQuestions(props) {
-    var _this;
-
-    _this = _Component.call(this, props) || this;
-
-    _this._sortItemsByPropName = function (propName, title) {
-      _this.setState(function (prevState) {
-        return {
-          pnForSort: propName,
-          titleForSort: title,
-          items: [].concat((0, _sortItemsBy["default"])(prevState.items, propName))
-        };
-      });
-    };
-
-    _this._reverseItems = function () {
-      _this.setState(function (prevState) {
-        return {
-          items: [].concat(prevState.items.reverse())
-        };
-      });
-    };
-
-    _this._hToggleOpen = function () {
-      _this.setState(function (prevState) {
-        return {
-          isShow: !prevState.isShow
-        };
-      });
-    };
-
-    _this._hShowMore = function () {
-      _this.setState({
-        isMore: true
-      });
-    };
-
-    _this._hToggleMore = function () {
-      _this.setState(function (prevState) {
-        return {
-          isMore: !prevState.isMore
-        };
-      });
-    };
-
-    _this._onRemoveItem = function () {
-      _this.setState(function (prevState) {
-        return {
-          itemRemoved: prevState.itemRemoved + 1
-        };
-      });
-    };
-
-    _this._MODEL_MORE = (0, _crModelMore["default"])({
-      setSortByProp: _this._sortItemsByPropName.bind((0, _assertThisInitialized2["default"])(_this)),
-      reverse: _this._reverseItems.bind((0, _assertThisInitialized2["default"])(_this))
-    });
-    _this.state = {
-      isShow: true,
-      isMore: false,
+  S_NOT_FLOAT = {
+    float: 'none'
+  },
+  DF_ITEMS = [];
+const StackTaggedQuestions = props => {
+  const {
+      repo,
+      caption,
+      onCloseItem
+    } = props,
+    [state, setState] = (0, _uiApi.useState)(() => ({
+      items: props.items || DF_ITEMS,
       pnForSort: '',
       titleForSort: '',
-      items: props.items,
       itemRemoved: 0
-    };
-    return _this;
-  }
-
-  var _proto = StackTaggedQuestions.prototype;
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        repo = _this$props.repo,
-        caption = _this$props.caption,
-        onCloseItem = _this$props.onCloseItem,
-        _this$state = this.state,
-        isShow = _this$state.isShow,
-        isMore = _this$state.isMore,
-        items = _this$state.items,
-        titleForSort = _this$state.titleForSort,
-        itemRemoved = _this$state.itemRemoved,
-        _items_count = items.length,
-        _token_count = itemRemoved ? _items_count - itemRemoved + "/" + _items_count : "" + _items_count,
-        _titleForSort = "Sorted By " + titleForSort;
-
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      style: _Item["default"].ROOT,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider["default"], {
-        isShow: isMore,
-        className: _CL["default"].MENU_MORE,
-        model: this._MODEL_MORE,
-        onClose: this._hToggleMore
-      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption["default"], {
-        onClose: onCloseItem,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].SvgMore, {
-          style: S.BT_MORE,
-          onClick: this._hShowMore
-        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
-          className: _CL["default"].NOT_SELECTED,
-          title: caption,
-          style: (0, _extends2["default"])({}, _Item["default"].CAPTION_OPEN, S.NOT_FLOAT),
-          onClick: this._hToggleOpen,
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            children: repo
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            style: S.ITEM_COUNT,
-            children: _token_count
-          })]
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
-          className: _CL["default"].NOT_SELECTED,
-          style: S.BT_REVERSE,
-          title: "Reverse Items",
-          onClick: this._reverseItems,
-          children: _titleForSort
+    })),
+    {
+      items,
+      titleForSort,
+      itemRemoved
+    } = state,
+    [isShow, _toggleIsShow] = (0, _useToggle.default)(true),
+    _reverseItems = (0, _uiApi.useCallback)(() => {
+      setState(prevState => ({
+        ...prevState,
+        items: [...prevState.items.reverse()]
+      }));
+    }, []),
+    _sortItemsByPropName = (0, _uiApi.useCallback)((propName, title) => {
+      setState(prevState => ({
+        ...prevState,
+        pnForSort: propName,
+        titleForSort: title,
+        items: [...(0, _sortItemsBy.default)(prevState.items, propName)]
+      }));
+    }, []),
+    _onRemoveItem = (0, _uiApi.useCallback)(() => {
+      setState(prevState => ({
+        ...prevState,
+        itemRemoved: prevState.itemRemoved + 1
+      }));
+    }, []),
+    [_MODEL_MORE, _isMenuMore, _toggleMenuMore, _showMenuMore] = (0, _useMenuMore.default)(_crModelMore.default, {
+      setSortByProp: _sortItemsByPropName,
+      reverse: _reverseItems
+    }),
+    _itemsLength = items.length,
+    _tokenItemsCount = itemRemoved ? `${_itemsLength - itemRemoved}/${_itemsLength}` : `${_itemsLength}`,
+    _titleForSort = `Sorted By ${titleForSort}`;
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: _Item.default.ROOT,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider.default, {
+      isShow: _isMenuMore,
+      className: _CL.CL_MENU_MORE,
+      model: _MODEL_MORE,
+      onClose: _toggleMenuMore
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption.default, {
+      onClose: onCloseItem,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.SvgMore, {
+        style: S_BT_MORE,
+        onClick: _showMenuMore
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+        className: _CL.CL_NOT_SELECTED,
+        title: caption,
+        style: {
+          ..._Item.default.CAPTION_OPEN,
+          ...S_NOT_FLOAT
+        },
+        onClick: _toggleIsShow,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          children: repo
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: S_ITEM_COUNT,
+          children: _tokenItemsCount
         })]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ShowHide, {
-        isShow: isShow,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_TaggedItemList["default"], {
-          items: items,
-          onRemoveItem: this._onRemoveItem
-        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+        className: _CL.CL_NOT_SELECTED,
+        style: S_BT_REVERSE,
+        title: "Reverse Items",
+        onClick: _reverseItems,
+        children: _titleForSort
       })]
-    });
-  };
-
-  return StackTaggedQuestions;
-}(_react.Component);
-
-StackTaggedQuestions.defaultProps = {
-  items: []
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ShowHide, {
+      isShow: isShow,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_TaggedItemList.default, {
+        items: items,
+        onRemoveItem: _onRemoveItem
+      })
+    })]
+  });
 };
-var _default = StackTaggedQuestions;
-exports["default"] = _default;
+var _default = exports.default = StackTaggedQuestions;
 //# sourceMappingURL=TaggedQuestions.js.map

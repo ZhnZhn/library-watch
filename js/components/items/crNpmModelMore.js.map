@@ -1,1 +1,33 @@
-{"version":3,"sources":["../../../src/components/items/crNpmModelMore.js"],"names":["CL_ROW","CL","ROW_MENU_MORE","_isFn","fn","_crItem","name","onClick","cn","isClose","crNpmModelMore","onMoveToTop","onToggleButtons","p0","filter","Boolean","baseTitleCl","pageWidth","maxPages"],"mappings":";;;;;;;AACA;;AAEA,IAAMA,MAAM,GAAGC,eAAGC,aAAlB;;AAEA,IAAMC,KAAK,GAAG,SAARA,KAAQ,CAAAC,EAAE;AAAA,SAAI,OAAOA,EAAP,KAAc,UAAlB;AAAA,CAAhB;;AACA,IAAMC,OAAO,GAAG,SAAVA,OAAU,CACdC,IADc,EACRC,OADQ,EAEdC,EAFc,EAEHC,OAFG;AAAA,MAEdD,EAFc;AAEdA,IAAAA,EAFc,GAEXR,MAFW;AAAA;;AAAA,MAEHS,OAFG;AAEHA,IAAAA,OAFG,GAEK,IAFL;AAAA;;AAAA,SAGV;AACJH,IAAAA,IAAI,EAAJA,IADI;AACEC,IAAAA,OAAO,EAAPA,OADF;AAEJC,IAAAA,EAAE,EAAFA,EAFI;AAEAC,IAAAA,OAAO,EAAPA;AAFA,GAHU;AAAA,CAAhB;;AAQA,IAAMC,cAAc,GAAG,SAAjBA,cAAiB,OAGjB;AAAA,MAFJC,WAEI,QAFJA,WAEI;AAAA,MADJC,eACI,QADJA,eACI;AACJ,MAAMC,EAAE,GAAG,CACTR,OAAO,CAAC,aAAD,EAAgBM,WAAhB,CADE,EAETR,KAAK,CAACS,eAAD,CAAL,GACIP,OAAO,CAAC,gBAAD,EAAmBO,eAAnB,CADX,GAEI,KAAK,CAJA,EAKTE,MALS,CAKFC,OALE,CAAX;AAOA,SAAO;AACLC,IAAAA,WAAW,EAAEhB,MADR;AAELiB,IAAAA,SAAS,EAAE,GAFN;AAGLC,IAAAA,QAAQ,EAAE,CAHL;AAILL,IAAAA,EAAE,EAAFA;AAJK,GAAP;AAMD,CAjBD;;eAmBeH,c","sourcesContent":["\r\nimport CL from '../styles/CL';\r\n\r\nconst CL_ROW = CL.ROW_MENU_MORE;\r\n\r\nconst _isFn = fn => typeof fn === 'function';\r\nconst _crItem = (\r\n  name, onClick,\r\n  cn=CL_ROW, isClose=true\r\n) => ({\r\n  name, onClick,\r\n  cn, isClose\r\n});\r\n\r\nconst crNpmModelMore = ({\r\n  onMoveToTop,\r\n  onToggleButtons\r\n}) => {\r\n  const p0 = [\r\n    _crItem('Move to Top', onMoveToTop),\r\n    _isFn(onToggleButtons)\r\n      ? _crItem('Toggle Buttons', onToggleButtons)\r\n      : void 0\r\n  ].filter(Boolean);\r\n\r\n  return {\r\n    baseTitleCl: CL_ROW,\r\n    pageWidth: 150,\r\n    maxPages: 1,\r\n    p0\r\n  };\r\n};\r\n\r\nexport default crNpmModelMore\r\n"],"file":"crNpmModelMore.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/crNpmModelMore.js"
+ ],
+ "file": "../../../src/components/items/crNpmModelMore.js",
+ "names": [
+  "_CL",
+  "require",
+  "_isFn",
+  "fn",
+  "_crItem",
+  "name",
+  "onClick",
+  "cn",
+  "isClose",
+  "CL_ROW_MENU_MORE",
+  "crNpmModelMore",
+  "_ref",
+  "onMoveToTop",
+  "onToggleButtons",
+  "p0",
+  "filter",
+  "Boolean",
+  "titleCl",
+  "pageWidth",
+  "maxPages",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AACA,IAAAA,GAAA,GAAAC,OAAA;AAEA,MAAMC,KAAK,GAAGC,EAAE,IAAI,OAAOA,EAAE,KAAK,UAAU;EAC1CC,OAAO,GAAG,SAAAA,CACVC,IAAI,EACJC,OAAO,EACPC,EAAE,EACFC,OAAO;IAAA,IADPD,EAAE;MAAFA,EAAE,GAACE,oBAAgB;IAAA;IAAA,IACnBD,OAAO;MAAPA,OAAO,GAAC,IAAI;IAAA;IAAA,OACR;MACJH,IAAI;MACJC,OAAO;MACPC,EAAE;MACFC;IACF,CAAC;EAAA,CAAC;AAEF,MAAME,cAAc,GAAGC,IAAA,IAGjB;EAAA,IAHkB;IACtBC,WAAW;IACXC;EACF,CAAC,GAAAF,IAAA;EACC,MAAMG,EAAE,GAAG,CACTV,OAAO,CAAC,aAAa,EAAEQ,WAAW,CAAC,EACnCV,KAAK,CAACW,eAAe,CAAC,GAClBT,OAAO,CAAC,gBAAgB,EAAES,eAAe,CAAC,GAC1C,KAAK,CAAC,CACX,CAACE,MAAM,CAACC,OAAO,CAAC;EAEjB,OAAO;IACLC,OAAO,EAAER,oBAAgB;IACzBS,SAAS,EAAE,GAAG;IACdC,QAAQ,EAAE,CAAC;IACXL;EACF,CAAC;AACH,CAAC;AAAC,IAAAM,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaZ,cAAc"
+}

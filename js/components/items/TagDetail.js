@@ -1,94 +1,91 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
+exports.default = void 0;
 var _A = _interopRequireDefault(require("../zhn-atoms/A"));
-
-var _CL = _interopRequireDefault(require("../styles/CL"));
-
+var _CL = require("../styles/CL");
 var _formatStrDate = _interopRequireDefault(require("../../utils/formatStrDate"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var Token = function Token(_ref) {
-  var caption = _ref.caption,
-      value = _ref.value;
+const _isArr = Array.isArray;
+const Token = _ref => {
+  let {
+    caption,
+    value
+  } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      className: _CL["default"].LIB_VT,
+      className: _CL.CL_LIB_VALUE_TITLE,
       children: caption + ':'
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      className: _CL["default"].LIB_V,
+      className: _CL.CL_LIB_VALUE,
       children: value
     })]
   });
 };
-
-var CellValue = function CellValue(props) {
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(Token, (0, _extends2["default"])({}, props))
-  });
-};
-
-var CellValueDate = function CellValueDate(_ref2) {
-  var caption = _ref2.caption,
-      value = _ref2.value,
-      date = _ref2.date;
+const CellValue = props => /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+  children: /*#__PURE__*/(0, _jsxRuntime.jsx)(Token, {
+    ...props
+  })
+});
+const CellValueDate = _ref2 => {
+  let {
+    caption,
+    value,
+    date
+  } = _ref2;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(Token, {
       caption: caption,
       value: value
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(Token, {
       caption: "Date",
-      value: (0, _formatStrDate["default"])(date)
+      value: (0, _formatStrDate.default)(date)
     })]
   });
 };
-
-var FileList = function FileList(_ref3) {
-  var files = _ref3.files;
-  return (files || []).map(function (file, index) {
-    var filename = file.filename;
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      className: _CL["default"].FILE_ITEM,
-      children: filename
-    }, index);
-  });
+const FileList = _ref3 => {
+  let {
+    files
+  } = _ref3;
+  return (files || []).map((file, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    className: _CL.CL_FILE_ITEM,
+    children: file ? file.filename : null
+  }, index));
 };
-
-var TagDetail = function TagDetail(_ref4) {
-  var json = _ref4.json;
-
+const TagDetail = _ref4 => {
+  let {
+    json
+  } = _ref4;
   if (!json) {
     return null;
   }
-
-  var commit = json.commit,
-      files = json.files,
-      stats = json.stats,
-      html_url = json.html_url,
-      _ref5 = commit || {},
-      author = _ref5.author,
-      message = _ref5.message,
-      committer = _ref5.committer,
-      _ref6 = author || {},
-      authorDate = _ref6.date,
-      authorName = _ref6.name,
-      _ref7 = committer || {},
-      committerDate = _ref7.date,
-      committerName = _ref7.name,
-      _ref8 = stats || {},
-      total = _ref8.total,
-      additions = _ref8.additions,
-      deletions = _ref8.deletions;
-
+  const {
+      commit,
+      files,
+      stats,
+      html_url
+    } = json,
+    {
+      author,
+      message,
+      committer
+    } = commit || {},
+    {
+      date: authorDate,
+      name: authorName
+    } = author || {},
+    {
+      date: committerDate,
+      name: committerName
+    } = committer || {},
+    {
+      total,
+      additions,
+      deletions
+    } = stats || {};
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    className: _CL["default"].LIB,
+    className: _CL.CL_LIB,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(CellValue, {
       caption: "Message",
       value: message
@@ -111,20 +108,18 @@ var TagDetail = function TagDetail(_ref4) {
         caption: "Deletions",
         value: deletions
       })]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].OpenClose2, {
-      caption: "Files (" + files.length + ")",
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.OpenClose2, {
+      caption: `Files (${_isArr(files) ? files.length : ''})`,
       isClose: true,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(FileList, {
         files: files
       })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.Link, {
+      className: _CL.CL_SOURCE_LINK,
       href: html_url,
-      className: _CL["default"].SOURCE_LINK,
       children: "Link to description of commit"
     })]
   });
 };
-
-var _default = TagDetail;
-exports["default"] = _default;
+var _default = exports.default = TagDetail;
 //# sourceMappingURL=TagDetail.js.map

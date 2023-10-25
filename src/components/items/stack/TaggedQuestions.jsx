@@ -12,7 +12,10 @@ import crModelMore from './crModelMore';
 import sortItemsBy from './sortItemsBy';
 import TaggedItemList from './TaggedItemList';
 import STYLE from '../Item.Style';
-import CL from '../../styles/CL';
+import {
+  CL_NOT_SELECTED,
+  CL_MENU_MORE
+} from '../../styles/CL';
 
 const S_BT_MORE = {
   position: 'relative',
@@ -88,7 +91,7 @@ const StackTaggedQuestions = (props) => {
     <div style={STYLE.ROOT}>
       <ModalSlider
         isShow={_isMenuMore}
-        className={CL.MENU_MORE}
+        className={CL_MENU_MORE}
         model={_MODEL_MORE}
         onClose={_toggleMenuMore}
       />
@@ -98,7 +101,7 @@ const StackTaggedQuestions = (props) => {
           onClick={_showMenuMore}
         />
         <button
-           className={CL.NOT_SELECTED}
+           className={CL_NOT_SELECTED}
            title={caption}
            style={{...STYLE.CAPTION_OPEN, ...S_NOT_FLOAT}}
            onClick={_toggleIsShow}
@@ -111,7 +114,7 @@ const StackTaggedQuestions = (props) => {
           </span>
         </button>
         <button
-          className={CL.NOT_SELECTED}
+          className={CL_NOT_SELECTED}
           style={S_BT_REVERSE}
           title="Reverse Items"
           onClick={_reverseItems}

@@ -14,7 +14,7 @@ import ButtonWatch from './ButtonWatch';
 import Caption from '../ItemCaption';
 import NpmPackageInfo from './NpmPackageInfo';
 
-import CL from '../../styles/CL';
+import { CL_MENU_MORE } from '../../styles/CL';
 import STYLE from '../Item.Style';
 
 const ITEM_DESCRIPTION = "Npm Recent Month Downloads"
@@ -90,7 +90,7 @@ const NpmDownloads = ({
     <div style={S_ROOT}>
       <ModalSlider
          isShow={isMenuMore}
-         className={CL.MENU_MORE}
+         className={CL_MENU_MORE}
          model={_MENU_MODEL}
          onClose={toggleIsMenuMore}
       />

@@ -1,9 +1,9 @@
+import { CL_ROW_MENU_MORE } from '../../styles/CL'
 
-import CL from '../../styles/CL'
-
-const CL_ROW = CL.ROW_MENU_MORE;
-
-const _fSortByItem = onClick => (name, propName) => ({
+const _fSortByItem = onClick => (
+  name,
+  propName
+) => ({
   name,
   onClick: onClick.bind(null, propName, name),
   isClose: true
@@ -16,14 +16,14 @@ const crModelMore = ({
 }={}) => {
   const _crSortByItem = _fSortByItem(setSortByProp);
   return {
-    titleCl: CL_ROW,
+    titleCl: CL_ROW_MENU_MORE,
     pageWidth: 180,
     maxPages: 2,
     p0: [
       {
         id: 'p1',
         type: 'sub',
-        cn: CL_ROW,
+        cn: CL_ROW_MENU_MORE,
         name: 'Sort By, DESC'
       }/*,{
         cn: CL_ROW,

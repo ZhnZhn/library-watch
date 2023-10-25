@@ -10,7 +10,11 @@ import LineChart from '../charts/LineChart';
 import Caption from './ItemCaption';
 
 import STYLE from './Item.Style';
-import CL from '../styles/CL';
+import {
+  CL_BT_ITEM,
+  CL_MENU_MORE,
+  CL_SOURCE_LINK
+} from '../styles/CL';
 
 const S_BT_CAPTION = {
   ...STYLE.CAPTION_OPEN,
@@ -61,7 +65,7 @@ const StatCounterShare = ({
     <div style={STYLE.ROOT}>
       <ModalSlider
         isShow={_isMenuMore}
-        className={CL.MENU_MORE}
+        className={CL_MENU_MORE}
         model={_MODAL_SLIDER_MODEL}
         onClose={_toggleMenuMore}
       />
@@ -74,7 +78,7 @@ const StatCounterShare = ({
           onClick={_showMenuMore}
         />
         <button
-           className={CL.BT_ITEM}
+           className={CL_BT_ITEM}
            title={caption}
            style={S_BT_CAPTION}
            onClick={_toggleIsShow}
@@ -99,9 +103,9 @@ const StatCounterShare = ({
            height={_height}
         />
         <A.Link
-          className={CL.SOURCE_LINK}
+          className={CL_SOURCE_LINK}
           style={S_SOURCE_LINK}
-          href={sourceLink}          
+          href={sourceLink}
         >
             StatCounter Chart
         </A.Link>

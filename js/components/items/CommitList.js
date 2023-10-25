@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _A = _interopRequireDefault(require("../zhn-atoms/A"));
-var _CL = _interopRequireDefault(require("../styles/CL"));
+var _CL = require("../styles/CL");
 var _Item = _interopRequireDefault(require("./Item.Style"));
 var _formatStrDate = _interopRequireDefault(require("../../utils/formatStrDate"));
 var _dateFn = require("../../utils/dateFn");
@@ -29,7 +29,7 @@ const CommitList = _ref => {
       _dateTime = (0, _formatStrDate.default)(date),
       _dateAgo = (0, _dateFn.crDateAgo)(date);
     return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      className: _CL.default.ROW_ITEM,
+      className: _CL.CL_ROW_ITEM,
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_A.default.Link, {
         href: html_url,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
@@ -48,6 +48,5 @@ const CommitList = _ref => {
     }, index);
   });
 };
-var _default = CommitList;
-exports.default = _default;
+var _default = exports.default = CommitList;
 //# sourceMappingURL=CommitList.js.map

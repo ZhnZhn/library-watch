@@ -1,16 +1,15 @@
-
-import CL from '../styles/CL'
-
-const CL_ROW = CL.ROW_MENU_MORE;
+import { CL_ROW_MENU_MORE } from '../styles/CL'
 
 const crModelMore = ({
   chartType,
-  onMinWidth, onInitialWidth,
-  onPlusWidth, onMinusWidth,
+  onMinWidth,
+  onInitialWidth,
+  onPlusWidth,
+  onMinusWidth,
   onRemoveAll
 }) => ({
   // cn property name for item
-  titleCl: CL_ROW,
+  titleCl: CL_ROW_MENU_MORE,
   pageWidth: 180,
   maxPages: 2,
   p0: [

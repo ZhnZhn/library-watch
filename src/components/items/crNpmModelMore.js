@@ -1,15 +1,17 @@
 
-import CL from '../styles/CL';
+import { CL_ROW_MENU_MORE } from '../styles/CL';
 
-const CL_ROW = CL.ROW_MENU_MORE;
-
-const _isFn = fn => typeof fn === 'function';
-const _crItem = (
-  name, onClick,
-  cn=CL_ROW, isClose=true
+const _isFn = fn => typeof fn === 'function'
+, _crItem = (
+  name,
+  onClick,
+  cn=CL_ROW_MENU_MORE,
+  isClose=true
 ) => ({
-  name, onClick,
-  cn, isClose
+  name,
+  onClick,
+  cn,
+  isClose
 });
 
 const crNpmModelMore = ({
@@ -24,7 +26,7 @@ const crNpmModelMore = ({
   ].filter(Boolean);
 
   return {
-    titleCl: CL_ROW,
+    titleCl: CL_ROW_MENU_MORE,
     pageWidth: 150,
     maxPages: 1,
     p0

@@ -1,19 +1,16 @@
+export const CL_SHOW_POPUP = "show-popup"
+export const CL_NOT_SELECTED = "not-selected"
 
-const CL = {
-  NOT_SELECTED: 'not-selected',
-  BT_ITEM: 'not-selected bt-item',
-  ROW_ITEM: 'row-item not-selected',
-  SHOW_POPUP: 'show-popup',
-  MENU_MORE: 'popup-menu charts__menu-more',
-  ROW_MENU_MORE: 'row__pane-topic not-selected',
-  SOURCE_LINK: 'source-link',
+export const CL_BT_ITEM = `${CL_NOT_SELECTED} bt-item`
+export const CL_MENU_MORE = "popup-menu charts__menu-more"
+export const CL_ROW_ITEM = `row-item ${CL_NOT_SELECTED}`
+export const CL_ROW_MENU_MORE = `row__pane-topic ${CL_NOT_SELECTED}`
 
-  LIB: "library",
-  LIB_T: "library__title",
-  LIB_VT: "library__value-title",
-  LIB_V: "library__value",
+export const CL_SOURCE_LINK = "source-link"
 
-  FILE_ITEM: "row__item"  
-};
+export const CL_LIB = "library"
+export const CL_LIB_TITLE = `${CL_LIB}__title`
+export const CL_LIB_VALUE = `${CL_LIB}__value`
+export const CL_LIB_VALUE_TITLE = `${CL_LIB_VALUE}-title`
 
-export default Object.freeze(CL);
+export const CL_FILE_ITEM = "row__item"

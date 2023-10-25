@@ -1,5 +1,5 @@
 import A from '../zhn-atoms/A';
-import CL from '../styles/CL';
+import { CL_ROW_ITEM } from '../styles/CL';
 import STYLE from './Item.Style';
 
 import formatStrDate from '../../utils/formatStrDate';
@@ -14,7 +14,7 @@ const CommitList = ({ commits }) => (commits || [])
     , _dateAgo = crDateAgo(date);
 
     return (
-      <div key={index} className={CL.ROW_ITEM}>
+      <div key={index} className={CL_ROW_ITEM}>
          <A.Link href={html_url}>
            <div style={STYLE.PB_8}>
              <span style={STYLE.PR_8}>

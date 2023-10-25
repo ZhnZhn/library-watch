@@ -8,7 +8,7 @@ import useButtonLoad from './useButtonLoad';
 import loadNpms from './loadNpms';
 import loadBundle from './loadBundle';
 
-import CL from '../../styles/CL';
+import { CL_SOURCE_LINK } from '../../styles/CL';
 import A from '../../zhn-atoms/A';
 import PackageDetails from './PackageDetails';
 import BundleInfo from './BundleInfo';
@@ -69,7 +69,7 @@ const NpmPackageInfo = ({
      <A.ShowHide isShow={isButtons}>
       <div style={S_ML_16}>
         <A.Link
-           className={CL.SOURCE_LINK}
+           className={CL_SOURCE_LINK}
            href={packageLink}
         >
            NPM Link

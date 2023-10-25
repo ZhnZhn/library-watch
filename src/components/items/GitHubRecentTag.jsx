@@ -8,7 +8,7 @@ import formatStrDate from '../../utils/formatStrDate';
 import A from '../zhn-atoms/A';
 import Caption from './ItemCaption';
 import TagDetail from './TagDetail';
-import CL from '../styles/CL';
+import { CL_BT_ITEM } from '../styles/CL';
 import STYLE from './Item.Style';
 
 const ITEM_DESCRIPTION = "GitHub Likely Recent Version Tag";
@@ -70,7 +70,7 @@ const GitHubRecentTag = ({
     <div style={STYLE.ROOT}>
       <Caption style={STYLE.PT_8} onClose={onCloseItem}>
         <button
-           className={CL.BT_ITEM}
+           className={CL_BT_ITEM}
            title={caption}
            style={STYLE.CAPTION_OPEN}
            onClick={toggleIsShow}

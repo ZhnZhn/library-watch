@@ -1,121 +1,102 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _react = require("react");
-
+exports.default = void 0;
+var _uiApi = require("../uiApi");
+var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _formatStrDate = _interopRequireDefault(require("../../utils/formatStrDate"));
-
 var _A = _interopRequireDefault(require("../zhn-atoms/A"));
-
 var _ItemCaption = _interopRequireDefault(require("./ItemCaption"));
-
 var _TagDetail = _interopRequireDefault(require("./TagDetail"));
-
-var _CL = _interopRequireDefault(require("../styles/CL"));
-
+var _CL = require("../styles/CL");
 var _Item = _interopRequireDefault(require("./Item.Style"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var ITEM_DESCRIPTION = "GitHub Likely Recent Version Tag";
-
-var _getTagDate = function _getTagDate(json) {
-  var _ref = json || {},
-      commit = _ref.commit,
-      _ref2 = commit || {},
-      committer = _ref2.committer,
-      _ref3 = committer || {},
-      date = _ref3.date;
-
-  return (0, _formatStrDate["default"])(date);
+const ITEM_DESCRIPTION = "GitHub Likely Recent Version Tag";
+const _getTagDate = json => {
+  const {
+      commit
+    } = json || {},
+    {
+      committer
+    } = commit || {},
+    {
+      date
+    } = committer || {};
+  return (0, _formatStrDate.default)(date);
 };
-
-var GitHubRecentTag = function GitHubRecentTag(_ref4) {
-  var repo = _ref4.repo,
-      version = _ref4.version,
-      caption = _ref4.caption,
-      onCloseItem = _ref4.onCloseItem,
-      onClickDetail = _ref4.onClickDetail,
-      requestType = _ref4.requestType,
-      onWatchItem = _ref4.onWatchItem;
-
-  var _useState = (0, _react.useState)(true),
-      isShow = _useState[0],
-      setIsShow = _useState[1],
-      _useState2 = (0, _react.useState)(),
-      json = _useState2[0],
-      setJson = _useState2[1],
-      _hToggle = (0, _react.useCallback)(function () {
-    return setIsShow(function (is) {
-      return !is;
-    });
-  }, []),
-      _hClickDetail = (0, _react.useCallback)(function () {
-    onClickDetail().then(function (json) {
-      setIsShow(true);
-      setJson(json);
-    })["catch"](function (err) {
-      return console.log(err);
-    });
-  }, [onClickDetail]),
-      _hClickWatch = (0, _react.useCallback)(function () {
-    var tagDate = _getTagDate(json),
-        caption = repo + " " + version;
-
-    onWatchItem({
-      caption: caption,
-      config: {
-        repo: repo,
-        requestType: requestType,
-        version: version,
-        caption: caption,
-        descr: ITEM_DESCRIPTION,
-        date: tagDate
-      }
-    }); //onWatchItem, repo, version, requestType
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [json]);
-
+const GitHubRecentTag = _ref => {
+  let {
+    repo,
+    version,
+    caption,
+    requestType,
+    onCloseItem,
+    onClickDetail,
+    onWatchItem
+  } = _ref;
+  const [json, setJson] = (0, _uiApi.useState)(),
+    [isShow, toggleIsShow, setIsShow] = (0, _useToggle.default)(true)
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    _hClickDetail = (0, _uiApi.useCallback)(() => {
+      onClickDetail().then(json => {
+        setIsShow(true);
+        setJson(json);
+      }).catch(err => console.log(err));
+    }, [onClickDetail])
+    // toggleIsShow
+    /*eslint-enable react-hooks/exhaustive-deps */,
+    _hClickWatch = (0, _uiApi.useCallback)(() => {
+      const tagDate = _getTagDate(json),
+        caption = `${repo} ${version}`;
+      onWatchItem({
+        caption,
+        config: {
+          repo,
+          requestType,
+          version,
+          caption,
+          descr: ITEM_DESCRIPTION,
+          date: tagDate
+        }
+      });
+      //onWatchItem, repo, version, requestType
+      //eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [json]);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: _Item["default"].ROOT,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption["default"], {
-      style: _Item["default"].PT_8,
+    style: _Item.default.ROOT,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption.default, {
+      style: _Item.default.PT_8,
       onClose: onCloseItem,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
-        className: _CL["default"].BT_ITEM,
+        className: _CL.CL_BT_ITEM,
         title: caption,
-        style: _Item["default"].CAPTION_OPEN,
-        onClick: _hToggle,
+        style: _Item.default.CAPTION_OPEN,
+        onClick: toggleIsShow,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           children: repo
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-          style: _Item["default"].SPAN_VERSION,
+          style: _Item.default.SPAN_VERSION,
           children: version
         })]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ButtonCircle, {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ButtonCircle, {
         caption: "W",
         title: "Add to Watch",
-        style: _Item["default"].BTN_CIRCLE,
+        style: _Item.default.BTN_CIRCLE,
         onClick: _hClickWatch
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ButtonCircle, {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ButtonCircle, {
         caption: "D",
         title: "Load Tag Details",
-        style: _Item["default"].BTN_CIRCLE,
+        style: _Item.default.BTN_CIRCLE,
         onClick: _hClickDetail
       })]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A["default"].ShowHide, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ShowHide, {
       isShow: isShow,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_TagDetail["default"], {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_TagDetail.default, {
         json: json
       })
     })]
   });
 };
-
-var _default = GitHubRecentTag;
-exports["default"] = _default;
+var _default = exports.default = GitHubRecentTag;
 //# sourceMappingURL=GitHubRecentTag.js.map

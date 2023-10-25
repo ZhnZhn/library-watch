@@ -1,4 +1,4 @@
-import CL from '../../styles/CL';
+import { CL_BT_ITEM } from '../../styles/CL';
 import STYLE from '../Item.Style';
 
 import A from '../../zhn-atoms/A';
@@ -22,7 +22,7 @@ const ButtonPackage = ({
   onClick
 }) => (
   <button
-     className={CL.BT_ITEM}
+     className={CL_BT_ITEM}
      style={S_CAPTION_OPEN}
      title={caption}
      onClick={onClick}

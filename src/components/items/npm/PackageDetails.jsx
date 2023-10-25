@@ -4,7 +4,7 @@ import crGitRepositoryCaption from './crGitRepositoryCaption';
 import checkResponseJson from './checkResponseJson';
 import CellValue from '../CellValue';
 import Link from '../../zhn-atoms/Link';
-import CL from '../../styles/CL';
+import { CL_SOURCE_LINK } from '../../styles/CL';
 
 const S_REPO = { padding: '4px 0 0 8px' }
 , S_REPO_LINK = { marginRight: 24 };
@@ -12,28 +12,26 @@ const S_REPO = { padding: '4px 0 0 8px' }
 const RowLinks = ({
   repoHref,
   hpHref
-}) => {
- if (!repoHref && !hpHref) {
-   return null;
- }
- return (
+}) => !repoHref && !hpHref
+? null
+: (
    <div style={S_REPO}>
      <Link
-        className={CL.SOURCE_LINK}
+        className={CL_SOURCE_LINK}
         style={S_REPO_LINK}
         href={repoHref}
      >
       {crGitRepositoryCaption(repoHref)}
      </Link>
      <Link
-        className={CL.SOURCE_LINK}
+        className={CL_SOURCE_LINK}
         href={hpHref}
      >
       Home Page
      </Link>
    </div>
  );
-};
+
 
 const _isStr = str => typeof str === 'string'
 , _isNumber = n => typeof n === 'number'

@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _A = _interopRequireDefault(require("../zhn-atoms/A"));
-var _CL = _interopRequireDefault(require("../styles/CL"));
+var _CL = require("../styles/CL");
 var _Item = _interopRequireDefault(require("./Item.Style"));
 var _dateFn = require("../../utils/dateFn");
 var _jsxRuntime = require("react/jsx-runtime");
@@ -37,7 +37,7 @@ const IssueList = _ref => {
       _updated = created_at === updated_at ? '' : (0, _dateFn.crDateAgo)(updated_at),
       _updatedAt = _creadedAt === _updated ? '' : _updated;
     return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      className: _CL.default.ROW_ITEM,
+      className: _CL.CL_ROW_ITEM,
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_A.default.Link, {
         href: html_url,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
@@ -47,7 +47,7 @@ const IssueList = _ref => {
             children: state
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
             style: S_NUMBER,
-            children: "(#" + number + ")"
+            children: `(#${number})`
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
             style: S_DATE,
             children: _creadedAt
@@ -62,6 +62,5 @@ const IssueList = _ref => {
     }, index);
   });
 };
-var _default = IssueList;
-exports.default = _default;
+var _default = exports.default = IssueList;
 //# sourceMappingURL=IssueList.js.map

@@ -18,7 +18,10 @@ import crModelMore from './ModelMore'
 import ContainerCaption from '../zhn-atoms/ContainerCaption';
 import SvgHrzResize from '../zhn-moleculs/SvgHrzResize';
 import ScrollPane from '../zhn-atoms/ScrollPane';
-import CL from '../styles/CL';
+import {
+  CL_SHOW_POPUP,
+  CL_MENU_MORE 
+} from '../styles/CL';
 import { S_COMP_ITEM_LIST } from '../styles/ContainerStyles';
 
 const RESIZE_INIT_WIDTH = 635
@@ -137,7 +140,7 @@ const CompItemList = ({
   })
 
   const [_style, _className] = isShow
-    ? [S_BLOCK, CL.SHOW_POPUP]
+    ? [S_BLOCK, CL_SHOW_POPUP]
     : [S_NONE];
 
   return (
@@ -148,7 +151,7 @@ const CompItemList = ({
     >
       <ModalSlider
         isShow={_isMenuMore}
-        className={CL.MENU_MORE}
+        className={CL_MENU_MORE}
         model={_MENU_MODEL}
         onClose={_toggleMenuMore}
       />
