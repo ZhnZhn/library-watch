@@ -1,7 +1,7 @@
 import SvgClose from '../zhn-atoms/SvgClose';
+import { CL_NOT_SELECTED } from '../styles/CL';
 
-const CL_NOT_SELECTED = "not-selected"
-, S_ROOT = {
+const S_ROOT = {
   color: 'silver',
   backgroundColor: '#232f3b',
   padding: 5,
