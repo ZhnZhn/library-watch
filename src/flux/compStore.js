@@ -1,6 +1,7 @@
 import {
   createStoreWithSelector,
   getStoreApi,
+  fCrStoreSlice,
   fCrUse,
   bindTo
 } from './storeApi';
@@ -9,33 +10,25 @@ import { ModalDialog as MD } from '../constants/Type';
 import createDialog from './logic/createDialog';
 import { getDataConf } from './dialogFn';
 
-const MS_ABOUT = 'msAbout'
-, _crMsAbout = (is) => ({
-  [MS_ABOUT]: { is }
-})
-
-, DG_OPTION = 'dgOption'
-, _crDgOption = (dialogType, dialogComp) => ({
-  [DG_OPTION]: {
-    dialogType,
-    dialogComp
-  }
-})
-
-, MD_OPTION = 'mdOption'
-, _crMdOption = (option) => ({
-  [MD_OPTION]: option
-});
+const [
+  _crMsAbout,
+  _selectMsAbout
+] = fCrStoreSlice("msAbout", "is")
+, [
+  _crDgOption,
+  _selectDgOption
+] = fCrStoreSlice("dgOption")
+, [
+  _crMdOption,
+  _selectMdOption
+] = fCrStoreSlice("mdOption");
 
 const _crStore = () => ({
   ..._crMsAbout(true),
-  [DG_OPTION]: void 0,
-  [MD_OPTION]: void 0
+  ..._crDgOption(),
+  ..._crMdOption()
 })
 , _compStore = createStoreWithSelector(_crStore)
-, _selectMsAbout = state => state[MS_ABOUT]
-, _selectDgOption = state => state[DG_OPTION]
-, _selectMdOption = state => state[MD_OPTION]
 , [_set] = getStoreApi(_compStore);
 
 export const useMsAbout = fCrUse(_compStore, _selectMsAbout)
@@ -45,17 +38,17 @@ export const useDgOption = fCrUse(_compStore, _selectDgOption)
 const _hmDialog = Object.create(null);
 export const showDialog = (dialogType, browserType) => {
   if (_hmDialog[dialogType]) {
-    _set(_crDgOption(dialogType))
+    _set(_crDgOption({ dialogType }))
   } else {
     _hmDialog[dialogType] = true
     const dialogComp = createDialog(
       getDataConf(dialogType),
       browserType
     );
-    _set(_crDgOption(
+    _set(_crDgOption({
       dialogType,
       dialogComp
-    ))
+    }))
   }
 }
 
