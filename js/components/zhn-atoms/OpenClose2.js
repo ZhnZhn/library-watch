@@ -1,119 +1,83 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _react = require("react");
-
-var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
-
-var _isKeyEnter = _interopRequireDefault(require("./isKeyEnter"));
-
+exports.default = void 0;
+var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
+var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
+var _CL = require("../styles/CL");
 var _jsxRuntime = require("react/jsx-runtime");
+//import PropTypes from "prop-types";
 
-//import PropTypes from 'prop-types'
-var CL_ROW_CAPTION = 'zhn-oc not-selected',
-    CL_SHOW_POPUP = 'show-popup',
-    S_ROOT = {
-  backgroundColor: '#4d4d4d',
-  lineHeight: 2
-},
-    S_SVG = {
-  display: 'inline-block',
-  width: 16,
-  height: 16
-},
-    S_CAPTION = {
-  color: '#1b2836',
-  paddingLeft: 4,
-  verticalAlign: 'top',
-  fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
-  fontWeight: 'bold',
-  fontSize: '16px',
-  cursor: 'pointer'
-},
-    S_INLINE = {
-  display: 'inline-block'
-},
-    S_BLOCK = {
-  display: 'block'
-},
-    S_NONE = {
-  display: 'none'
-};
-var FILL_OPEN = 'yellow',
-    FILL_CLOSE = '#4d4d4d',
-    PATH_OPEN = "M 2,14 L 14,14 14,2 2,14",
-    PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
-
-var OpenClose2 = function OpenClose2(_ref) {
-  var _ref$isClose = _ref.isClose,
-      isClose = _ref$isClose === void 0 ? true : _ref$isClose,
-      style = _ref.style,
-      styleNotSelected = _ref.styleNotSelected,
-      styleCaptionRow = _ref.styleCaptionRow,
-      styleCaption = _ref.styleCaption,
-      caption = _ref.caption,
-      _ref$fillOpen = _ref.fillOpen,
-      fillOpen = _ref$fillOpen === void 0 ? FILL_OPEN : _ref$fillOpen,
-      _ref$fillClose = _ref.fillClose,
-      fillClose = _ref$fillClose === void 0 ? FILL_CLOSE : _ref$fillClose,
-      isDraggable = _ref.isDraggable,
-      option = _ref.option,
-      onDragStart = _ref.onDragStart,
-      onDragEnter = _ref.onDragEnter,
-      onDragOver = _ref.onDragOver,
-      onDragLeave = _ref.onDragLeave,
-      onDrop = _ref.onDrop,
-      children = _ref.children;
-
-  var _useToggle = (0, _useToggle2["default"])(!isClose),
-      isOpen = _useToggle[0],
-      _hToggle = _useToggle[1],
-      _hKeyDown = (0, _react.useCallback)(function (event) {
-    if ((0, _isKeyEnter["default"])(event)) {
-      _hToggle();
-    }
-  }, []),
-      _dragOption = isDraggable ? {
-    draggable: true,
-    onDragStart: onDragStart.bind(null, option),
-    onDrop: onDrop.bind(null, option),
-    onDragEnter: onDragEnter,
-    onDragOver: onDragOver,
-    onDragLeave: onDragLeave
-  } : void 0;
-
-  var _pathV, _fillV, _styleCollapse, _classShow, _styleNotSelected;
-
-  if (isOpen) {
-    _pathV = PATH_OPEN;
-    _fillV = fillOpen;
-    _styleCollapse = S_BLOCK;
-    _classShow = CL_SHOW_POPUP;
-    _styleNotSelected = null;
-  } else {
-    _pathV = PATH_CLOSE;
-    _fillV = fillClose;
-    _styleCollapse = S_NONE;
-    _classShow = null;
-    _styleNotSelected = styleNotSelected;
-  }
-
+const CL_ROW_CAPTION = 'zhn-oc not-selected',
+  S_ROOT = {
+    backgroundColor: '#4d4d4d',
+    lineHeight: 2
+  },
+  S_SVG = {
+    ..._CL.S_INLINE_BLOCK,
+    width: 16,
+    height: 16
+  },
+  S_CAPTION = {
+    color: '#1b2836',
+    paddingLeft: 4,
+    verticalAlign: 'top',
+    fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
+    fontWeight: 'bold',
+    fontSize: '16px',
+    cursor: 'pointer'
+  },
+  FILL_OPEN = 'yellow',
+  FILL_CLOSE = '#4d4d4d',
+  PATH_OPEN = "M 2,14 L 14,14 14,2 2,14",
+  PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
+const OpenClose2 = _ref => {
+  let {
+    isClose = true,
+    style,
+    styleNotSelected,
+    styleCaptionRow,
+    styleCaption,
+    caption,
+    fillOpen = FILL_OPEN,
+    fillClose = FILL_CLOSE,
+    isDraggable,
+    option,
+    onDragStart,
+    onDragEnter,
+    onDragOver,
+    onDragLeave,
+    onDrop,
+    children
+  } = _ref;
+  const [isOpen, _hToggle] = (0, _useToggle.default)(!isClose),
+    _hKeyDown = (0, _useKeyEnter.default)(_hToggle),
+    _dragOption = isDraggable ? {
+      draggable: true,
+      onDragStart: onDragStart.bind(null, option),
+      onDrop: onDrop.bind(null, option),
+      onDragEnter: onDragEnter,
+      onDragOver: onDragOver,
+      onDragLeave: onDragLeave
+    } : void 0,
+    [_pathV, _fillV, _styleCollapse, _classShow, _styleNotSelected] = isOpen ? [PATH_OPEN, fillOpen, _CL.S_BLOCK, _CL.CL_SHOW_POPUP, null] : [PATH_CLOSE, fillClose, _CL.S_NONE, null, styleNotSelected];
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: (0, _extends2["default"])({}, S_ROOT, style),
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", (0, _extends2["default"])({
-      className: CL_ROW_CAPTION,
-      style: (0, _extends2["default"])({}, styleCaptionRow, _styleNotSelected),
-      onClick: _hToggle,
+    style: {
+      ...S_ROOT,
+      ...style
+    },
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       tabIndex: "0",
       role: "menuitem",
-      onKeyDown: _hKeyDown
-    }, _dragOption, {
+      className: CL_ROW_CAPTION,
+      style: {
+        ...styleCaptionRow,
+        ..._styleNotSelected
+      },
+      onClick: _hToggle,
+      onKeyDown: _hKeyDown,
+      ..._dragOption,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         style: S_SVG,
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
@@ -122,7 +86,7 @@ var OpenClose2 = function OpenClose2(_ref) {
           height: "100%",
           preserveAspectRatio: "none",
           xmlns: "http://www.w3.org/2000/svg",
-          style: S_INLINE,
+          style: _CL.S_INLINE_BLOCK,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
             d: _pathV,
             fill: _fillV,
@@ -131,16 +95,20 @@ var OpenClose2 = function OpenClose2(_ref) {
           })
         })
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-        style: (0, _extends2["default"])({}, S_CAPTION, styleCaption),
+        style: {
+          ...S_CAPTION,
+          ...styleCaption
+        },
         children: caption
       })]
-    })), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: _classShow,
       style: _styleCollapse,
       children: children
     })]
   });
 };
+
 /*
 OpenClose2.propTypes = {
   isClose: PropTypes.bool,
@@ -168,8 +136,5 @@ OpenClose2.propTypes = {
   ])
 }
 */
-
-
-var _default = OpenClose2;
-exports["default"] = _default;
+var _default = exports.default = OpenClose2;
 //# sourceMappingURL=OpenClose2.js.map

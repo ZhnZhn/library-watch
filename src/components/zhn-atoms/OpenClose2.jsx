@@ -1,15 +1,20 @@
 //import PropTypes from "prop-types";
 import useKeyEnter from '../hooks/useKeyEnter';
 import useToggle from '../hooks/useToggle';
+import {
+  S_BLOCK,
+  S_INLINE_BLOCK,
+  S_NONE,
+  CL_SHOW_POPUP
+} from '../styles/CL'
 
 const CL_ROW_CAPTION = 'zhn-oc not-selected'
-, CL_SHOW_POPUP = 'show-popup'
 , S_ROOT = {
   backgroundColor: '#4d4d4d',
   lineHeight: 2
 },
 S_SVG = {
-  display: 'inline-block',
+  ...S_INLINE_BLOCK,  
   width: 16,
   height: 16
 },
@@ -22,10 +27,6 @@ S_CAPTION = {
   fontSize: '16px',
   cursor: 'pointer'
 }
-, S_INLINE = { display: 'inline-block' }
-, S_BLOCK = { display: 'block' }
-, S_NONE = { display: 'none' }
-
 , FILL_OPEN = 'yellow'
 , FILL_CLOSE = '#4d4d4d'
 , PATH_OPEN = "M 2,14 L 14,14 14,2 2,14"
@@ -87,7 +88,7 @@ const OpenClose2 = ({
            <svg
               viewBox="0 0 16 16" width="100%" height="100%"
               preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
-              style={S_INLINE}
+              style={S_INLINE_BLOCK}
             >
              <path
                 d={_pathV}
