@@ -1,6 +1,7 @@
 import {
   createStoreWithSelector,
   getStoreApi,
+  fCrStoreSlice,
   fCrUse,
   bindTo
 } from './storeApi';
@@ -20,30 +21,32 @@ import {
 import { setDialogItems } from './dialogFn';
 import { showAlert } from './compStore';
 
-const MS_BROWSER = 'msBrowser'
-, MS_BROWSER_DYNAMIC = 'msBrowserDynamic'
-, _crMsBrowser = (id) => ({
-  [MS_BROWSER]: { id }
+const [
+  _crMsBrowser,
+  _selectMsBrowser
+] = fCrStoreSlice("msBrowser", "id")
+, [
+  _crMsBrowserDynamic,
+  _selectMsBrowserDynamic
+] = fCrStoreSlice("msBrowserDynamic")
+
+, _crMsBrowserDynamicElBrowser = (
+  elBrowser
+) => _crMsBrowserDynamic({
+  elBrowser
 })
-, _crMsBrowserDynamicElement = (elBrowser) => ({
-  [MS_BROWSER_DYNAMIC]: {
-    elBrowser
-  }
-})
-, _crMsBrowserDynamicType = (browserType, menuItems) => ({
-  [MS_BROWSER_DYNAMIC]: {
-    menuItems,
-    browserType
-  }
+, _crMsBrowserDynamicBrowserType = (
+  browserType, menuItems
+) => _crMsBrowserDynamic({
+  browserType,
+  menuItems
 });
 
 const _crStore = () => ({
-  [MS_BROWSER]: void 0,
-  [MS_BROWSER_DYNAMIC]: void 0
+  ..._crMsBrowser(),
+  ..._crMsBrowserDynamic()
 })
 , _browserStore = createStoreWithSelector(_crStore)
-, _selectMsBrowser = state => state[MS_BROWSER]
-, _selectMsBrowserDynamic = state => state[MS_BROWSER_DYNAMIC]
 , [_set] = getStoreApi(_browserStore);
 
 export const useMsBrowser = fCrUse(_browserStore, _selectMsBrowser)
@@ -57,11 +60,11 @@ export const showBrowserDynamic = (option) => {
   if (!getBrowserMenu(browserType)) {
      const elBrowser = createBrowserDynamic(option);
      setBrowserMenu(browserType)
-     _set(_crMsBrowserDynamicElement(
+     _set(_crMsBrowserDynamicElBrowser(
        elBrowser
      ))
   } else {
-     _set(_crMsBrowserDynamicType(
+     _set(_crMsBrowserDynamicBrowserType(
        browserType
      ))
   }
@@ -93,7 +96,7 @@ const _loadBrowserDynamicCompleted = ({
   );
   setDialogItems(browserType, items)
   setBrowserMenu(browserType, menuItems)
-  _set(_crMsBrowserDynamicType(
+  _set(_crMsBrowserDynamicBrowserType(
     browserType,
     menuItems
   ))
@@ -115,7 +118,7 @@ export const loadBrowserDynamic = (option) => {
   })
 }
 export const updateBrowserMenu = (browserType) => {
-  _set(_crMsBrowserDynamicType(
+  _set(_crMsBrowserDynamicBrowserType(
     browserType,
     getBrowserMenu(browserType)
   ))
