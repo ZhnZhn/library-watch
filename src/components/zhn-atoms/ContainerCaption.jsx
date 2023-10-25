@@ -1,3 +1,4 @@
+import crCn from '../zhn-utils/crCn';
 
 import SvgMore from './SvgMore';
 import SvgClose from './SvgClose';
@@ -18,32 +19,31 @@ const ContainerCaption = ({
   onMore,
   onClose,
   children
-}) => {
-  const _captionStyle = _isFn(onMore)
-     ? {...S_CAPTION, ...SL_CAPTION}
-     : S_CAPTION;
-  return (
-    <div className={CL_CAPTION} style={style}>
-       {
-         _isFn(onMore) &&
-         <SvgMore
-           style={moreStyle}
-           onClick={onMore}
-         />
-       }
-       <span
-          className={CL_NOT_SELECTED}
-          style={_captionStyle}
-       >
-         {caption}
-      </span>
-      {children}
-      <SvgClose
-         style={S_SVG_CLOSE}
-         onClose={onClose}
-      />
-    </div>
-  );
-};
+}) => (
+  <div className={CL_CAPTION} style={style}>
+     {
+       _isFn(onMore) &&
+       <SvgMore
+         style={moreStyle}
+         onClick={onMore}
+       />
+     }
+     <span
+        className={CL_NOT_SELECTED}
+        style={crCn(
+          S_CAPTION,
+          _isFn(onMore) && SL_CAPTION
+        )}
+     >
+       {caption}
+    </span>
+    {children}
+    <SvgClose
+       style={S_SVG_CLOSE}
+       onClose={onClose}
+    />
+  </div>
+);
+
 
 export default ContainerCaption;
