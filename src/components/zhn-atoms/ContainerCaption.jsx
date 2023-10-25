@@ -1,4 +1,4 @@
-import crCn from '../zhn-utils/crCn';
+import { crStyle2 } from '../zhn-utils/crStyle';
 
 import SvgMore from './SvgMore';
 import SvgClose from './SvgClose';
@@ -30,7 +30,7 @@ const ContainerCaption = ({
      }
      <span
         className={CL_NOT_SELECTED}
-        style={crCn(
+        style={crStyle2(
           S_CAPTION,
           _isFn(onMore) && SL_CAPTION
         )}
