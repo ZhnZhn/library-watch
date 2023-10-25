@@ -1,13 +1,17 @@
 import useToggle from '../hooks/useToggle';
+import {
+  S_INLINE_BLOCK,
+  S_NONE
+} from '../styles/CL';
 
-const S_DATE_AGO = { color: 'gray' }
+const S_DATE_AGO = {
+  color: 'gray'
+}
 , S_DATE = {
-  display: 'inline-block',
+  ...S_INLINE_BLOCK,
   color: 'black',
   marginLeft: 10
-}
-, S_INLINE_BLOCK = { display: 'inline-block' }
-, S_NONE = { display: 'none' }
+};
 
 const DateAgo = ({
   isShowDate,
