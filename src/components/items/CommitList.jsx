@@ -1,14 +1,19 @@
 import A from '../zhn-atoms/A';
 import { CL_ROW_ITEM } from '../styles/CL';
-import STYLE from './Item.Style';
+import {
+  S_PB_8,
+  S_PR_8
+} from './Item.Style';
 
 import formatStrDate from '../../utils/formatStrDate';
 import { crDateAgo } from '../../utils/dateFn';
 
+import DivComments from './DivComments';
+
 const CommitList = ({ commits }) => (commits || [])
  .map((item, index) => {
     const { commit, html_url } = item
-    , { message='', committer } = commit || {}
+    , { message='', committer, comment_count } = commit || {}
     , { date, name='' } = committer || {}
     , _dateTime = formatStrDate(date)
     , _dateAgo = crDateAgo(date);
@@ -16,8 +21,8 @@ const CommitList = ({ commits }) => (commits || [])
     return (
       <div key={index} className={CL_ROW_ITEM}>
          <A.Link href={html_url}>
-           <div style={STYLE.PB_8}>
-             <span style={STYLE.PR_8}>
+           <div style={S_PB_8}>
+             <span style={S_PR_8}>
                {name}
              </span>
              <A.DateAgo
@@ -28,6 +33,7 @@ const CommitList = ({ commits }) => (commits || [])
            <div>
              {message}
            </div>
+           <DivComments n={comment_count} />
          </A.Link>
       </div>
    );

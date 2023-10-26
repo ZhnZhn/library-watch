@@ -5,9 +5,10 @@ exports.__esModule = true;
 exports.default = void 0;
 var _A = _interopRequireDefault(require("../zhn-atoms/A"));
 var _CL = require("../styles/CL");
-var _Item = _interopRequireDefault(require("./Item.Style"));
+var _Item = require("./Item.Style");
 var _formatStrDate = _interopRequireDefault(require("../../utils/formatStrDate"));
 var _dateFn = require("../../utils/dateFn");
+var _DivComments = _interopRequireDefault(require("./DivComments"));
 var _jsxRuntime = require("react/jsx-runtime");
 const CommitList = _ref => {
   let {
@@ -20,7 +21,8 @@ const CommitList = _ref => {
       } = item,
       {
         message = '',
-        committer
+        committer,
+        comment_count
       } = commit || {},
       {
         date,
@@ -33,9 +35,9 @@ const CommitList = _ref => {
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_A.default.Link, {
         href: html_url,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-          style: _Item.default.PB_8,
+          style: _Item.S_PB_8,
           children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            style: _Item.default.PR_8,
+            style: _Item.S_PR_8,
             children: name
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.DateAgo, {
             dateAgo: _dateAgo,
@@ -43,6 +45,8 @@ const CommitList = _ref => {
           })]
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
           children: message
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DivComments.default, {
+          n: comment_count
         })]
       })
     }, index);
