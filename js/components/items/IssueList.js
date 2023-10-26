@@ -5,20 +5,21 @@ exports.__esModule = true;
 exports.default = void 0;
 var _A = _interopRequireDefault(require("../zhn-atoms/A"));
 var _CL = require("../styles/CL");
-var _Item = _interopRequireDefault(require("./Item.Style"));
+var _Item = require("./Item.Style");
+var _DivComments = _interopRequireDefault(require("./DivComments"));
 var _dateFn = require("../../utils/dateFn");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_STATE = {
-    ..._Item.default.PR_8,
+    ..._Item.S_PR_8,
     color: '#d7bb52'
   },
   S_NUMBER = {
-    ..._Item.default.PR_8,
+    ..._Item.S_PR_8,
     color: '#80c040'
   },
   S_DATE = {
-    ..._Item.default.PR_8,
-    color: 'gray'
+    ..._Item.S_PR_8,
+    ..._Item.S_COLOR_GREY
   };
 const IssueList = _ref => {
   let {
@@ -31,6 +32,7 @@ const IssueList = _ref => {
         created_at,
         updated_at,
         title,
+        comments,
         html_url
       } = item,
       _creadedAt = (0, _dateFn.crDateAgo)(created_at),
@@ -41,7 +43,7 @@ const IssueList = _ref => {
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_A.default.Link, {
         href: html_url,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-          style: _Item.default.PB_8,
+          style: _Item.S_PB_8,
           children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
             style: S_STATE,
             children: state
@@ -57,6 +59,8 @@ const IssueList = _ref => {
           })]
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
           children: title
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DivComments.default, {
+          n: comments
         })]
       })
     }, index);

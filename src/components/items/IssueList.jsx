@@ -1,20 +1,25 @@
 import A from '../zhn-atoms/A';
 import { CL_ROW_ITEM } from '../styles/CL';
-import STYLE from './Item.Style';
+import {
+  S_COLOR_GREY,
+  S_PR_8,
+  S_PB_8
+} from './Item.Style';
+import DivComments from './DivComments';
 
 import { crDateAgo } from '../../utils/dateFn';
 
 const S_STATE = {
-  ...STYLE.PR_8,
+  ...S_PR_8,
   color: '#d7bb52'
 }
 , S_NUMBER = {
-  ...STYLE.PR_8,
+  ...S_PR_8,
   color: '#80c040'
 }
 , S_DATE = {
-  ...STYLE.PR_8,
-  color: 'gray'
+  ...S_PR_8,
+  ...S_COLOR_GREY
 };
 
 const IssueList = ({ issues }) => (issues || [])
@@ -25,6 +30,7 @@ const IssueList = ({ issues }) => (issues || [])
       created_at,
       updated_at,
       title,
+      comments,
       html_url
     } = item
     , _creadedAt = crDateAgo(created_at)
@@ -38,7 +44,7 @@ const IssueList = ({ issues }) => (issues || [])
    return (
       <div key={index} className={CL_ROW_ITEM}>
         <A.Link href={html_url}>
-           <div style={STYLE.PB_8}>
+           <div style={S_PB_8}>
              <span style={S_STATE}>
                {state}
              </span>
@@ -55,6 +61,7 @@ const IssueList = ({ issues }) => (issues || [])
            <div>
              {title}
            </div>
+           <DivComments n={comments} />
         </A.Link>
       </div>
    );
