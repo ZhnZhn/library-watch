@@ -1,1 +1,34 @@
-{"version":3,"sources":["../../src/api/GitHubApi.js"],"names":["_base","_rRequestTypeToUrl","GH_RELEASE_RECENT","option","repo","GH_TAGS","GH_SEARCH_INFO","GH_COMMITS","GH_ISSUES","GH_PULL_REQUESTS","GitHubApi","getRequestUrl","fnFactory","requestType","getOnCheckResponse","checkResponse","crKey"],"mappings":";;;;AACA;AAEA;AAEA;AAEA;AACA;AAGA;AACA;AAEA;AAEA,IAAMA,KAAK,GAAG,wBAAd;AAGA,IAAMC,kBAAkB,GAAG;AACzBC,EAAAA,iBAAiB,EAAG,2BAACC,MAAD,EAAY;AAC9B,WAAUH,KAAV,eAAyBG,MAAM,CAACC,IAAhC;AACD,GAHwB;AAIzBC,EAAAA,OAAO,EAAG,iBAACF,MAAD,EAAY;AACpB,WAAUH,KAAV,eAAyBG,MAAM,CAACC,IAAhC;AACD,GANwB;AAOzBE,EAAAA,cAAc,EAAG,wBAACH,MAAD,EAAY;AAC3B,WAAUH,KAAV,oCAA8CG,MAAM,CAACC,IAArD;AACD,GATwB;AAUzBG,EAAAA,UAAU,EAAG,oBAACJ,MAAD,EAAY;AACvB,WAAUH,KAAV,eAAyBG,MAAM,CAACC,IAAhC;AACD,GAZwB;AAazBI,EAAAA,SAAS,EAAG,mBAACL,MAAD,EAAY;AACtB,WAAUH,KAAV,eAAyBG,MAAM,CAACC,IAAhC;AACD,GAfwB;AAgBzBK,EAAAA,gBAAgB,EAAG,0BAACN,MAAD,EAAY;AAC7B,WAAUH,KAAV,eAAyBG,MAAM,CAACC,IAAhC;AACD;AAlBwB,CAA3B;AAqBA,IAAMM,SAAS,GAAG;AACfC,EAAAA,aADe,yBACDR,MADC,EACM;AACnB,QAAMS,SAAS,GAAGX,kBAAkB,CAACE,MAAM,CAACU,WAAR,CAApC;AACA,WAAOD,SAAS,CAACT,MAAD,CAAhB;AACD,GAJc;AAKfW,EAAAA,kBALe,gCAKK;AAClB,WAAOJ,SAAS,CAACK,aAAjB;AACD,GAPc;AAQfC,EAAAA,KARe,uBAQa;AAAA,QAApBZ,IAAoB,QAApBA,IAAoB;AAAA,QAAdS,WAAc,QAAdA,WAAc;AAC1B,WAAUT,IAAV,SAAkBS,WAAlB;AACD,GAVc;AAYfE,EAAAA,aAZe,2BAYA;AACZ,WAAO,IAAP;AACF;AAdc,CAAlB;eAkBeL,S","sourcesContent":["\r\n// repos/:owner/:repo/releases/latest\r\n\r\n//  repos/:owner/:repo/git/refs/tags\r\n\r\n// GET /repos/:owner/:repo/releases/tags/:tag\r\n\r\n// repo\r\n// https://api.github.com/search/repositories?q=tetris+language:assembly&sort=stars&order=desc\r\n\r\n\r\n// commit descr url, (sha), html_url\r\n//https://api.github.com/repos/lodash/lodash/commits/fc734a63717e2f29268eb79a161daaa6a9107d02\r\n\r\n// /repos/:owner/:repo/issues\r\n\r\nconst _base = 'https://api.github.com'\r\n\r\n\r\nconst _rRequestTypeToUrl = {\r\n  GH_RELEASE_RECENT : (option) => {\r\n    return `${_base}/repos/${option.repo}/releases/latest`;\r\n  },\r\n  GH_TAGS : (option) => {\r\n    return `${_base}/repos/${option.repo}/tags`;\r\n  },\r\n  GH_SEARCH_INFO : (option) => {\r\n    return `${_base}/search/repositories?q=repo:${option.repo}`;\r\n  },\r\n  GH_COMMITS : (option) => {\r\n    return `${_base}/repos/${option.repo}/commits`;\r\n  },\r\n  GH_ISSUES : (option) => {\r\n    return `${_base}/repos/${option.repo}/issues`;\r\n  },\r\n  GH_PULL_REQUESTS : (option) => {\r\n    return `${_base}/repos/${option.repo}/pulls`;\r\n  }\r\n}\r\n\r\nconst GitHubApi = {\r\n   getRequestUrl(option){\r\n     const fnFactory = _rRequestTypeToUrl[option.requestType];\r\n     return fnFactory(option);\r\n   },\r\n   getOnCheckResponse(){\r\n     return GitHubApi.checkResponse;\r\n   },\r\n   crKey({ repo, requestType }){\r\n     return `${repo}_${requestType}`;\r\n   },\r\n\r\n   checkResponse(){\r\n      return true;\r\n   }\r\n\r\n};\r\n\r\nexport default GitHubApi\r\n"],"file":"GitHubApi.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/GitHubApi.js"
+ ],
+ "file": "../../src/api/GitHubApi.js",
+ "names": [
+  "GITHUB_API",
+  "URL_REPOS",
+  "_crReposRouteFn",
+  "routePath",
+  "repo",
+  "_rRequestTypeToUrl",
+  "GH_RELEASE_RECENT",
+  "GH_TAGS",
+  "GH_SEARCH_INFO",
+  "GH_COMMITS",
+  "GH_ISSUES",
+  "GH_PULL_REQUESTS",
+  "GitHubApi",
+  "getRequestUrl",
+  "option",
+  "fnFactory",
+  "requestType",
+  "getOnCheckResponse",
+  "checkResponse",
+  "crKey",
+  "_ref",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AACA;;AAEA;;AAEA;;AAEA;AACA;;AAGA;AACA;;AAEA;;AAEA,MAAMA,UAAU,GAAG,wBAAwB;EACzCC,SAAS,GAAI,GAAED,UAAW,QAAO;EACjCE,eAAe,GAAIC,SAAS,IAC5BC,IAAI,IACA,GAAEH,SAAU,IAAGG,IAAK,IAAGD,SAAU,EAAC;AAExC,MAAME,kBAAkB,GAAG;EACzBC,iBAAiB,EAAGJ,eAAe,CAAC,iBAAiB,CAAC;EACtDK,OAAO,EAAGL,eAAe,CAAC,MAAM,CAAC;EAEjCM,cAAc,EACZJ,IAAI,IACA,GAAEJ,UAAW,+BAA8BI,IAAK,EAAC;EAEvDK,UAAU,EAAGP,eAAe,CAAC,SAAS,CAAC;EACvCQ,SAAS,EAAGR,eAAe,CAAC,QAAQ,CAAC;EACrCS,gBAAgB,EAAGT,eAAe,CAAC,OAAO;AAC5C,CAAC;AAED,MAAMU,SAAS,GAAG;EACfC,aAAaA,CAACC,MAAM,EAAC;IACnB,MAAMC,SAAS,GAAGV,kBAAkB,CAACS,MAAM,CAACE,WAAW,CAAC;IACxD,OAAOD,SAAS,CAACD,MAAM,CAACV,IAAI,CAAC;EAC/B,CAAC;EACDa,kBAAkBA,CAAA,EAAE;IAClB,OAAOL,SAAS,CAACM,aAAa;EAChC,CAAC;EACDC,KAAKA,CAAAC,IAAA,EAAuB;IAAA,IAAtB;MAAEhB,IAAI;MAAEY;IAAY,CAAC,GAAAI,IAAA;IACzB,OAAQ,GAAEhB,IAAK,IAAGY,WAAY,EAAC;EACjC,CAAC;EACDE,aAAaA,CAAA,EAAE;IACb,OAAO,IAAI;EACb;AACH,CAAC;AAAC,IAAAG,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaX,SAAS"
+}

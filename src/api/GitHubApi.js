@@ -14,34 +14,29 @@
 
 // /repos/:owner/:repo/issues
 
-const _base = 'https://api.github.com'
-
+const GITHUB_API = 'https://api.github.com'
+, URL_REPOS = `${GITHUB_API}/repos`
+, _crReposRouteFn = (routePath) => (
+  repo
+) => `${URL_REPOS}/${repo}/${routePath}`;
 
 const _rRequestTypeToUrl = {
-  GH_RELEASE_RECENT : (option) => {
-    return `${_base}/repos/${option.repo}/releases/latest`;
-  },
-  GH_TAGS : (option) => {
-    return `${_base}/repos/${option.repo}/tags`;
-  },
-  GH_SEARCH_INFO : (option) => {
-    return `${_base}/search/repositories?q=repo:${option.repo}`;
-  },
-  GH_COMMITS : (option) => {
-    return `${_base}/repos/${option.repo}/commits`;
-  },
-  GH_ISSUES : (option) => {
-    return `${_base}/repos/${option.repo}/issues`;
-  },
-  GH_PULL_REQUESTS : (option) => {
-    return `${_base}/repos/${option.repo}/pulls`;
-  }
+  GH_RELEASE_RECENT : _crReposRouteFn("releases/latest"),
+  GH_TAGS : _crReposRouteFn("tags"),
+
+  GH_SEARCH_INFO : (
+    repo
+  ) => `${GITHUB_API}/search/repositories?q=repo:${repo}`,
+
+  GH_COMMITS : _crReposRouteFn("commits"),
+  GH_ISSUES : _crReposRouteFn("issues"),
+  GH_PULL_REQUESTS : _crReposRouteFn("pulls")
 }
 
 const GitHubApi = {
    getRequestUrl(option){
      const fnFactory = _rRequestTypeToUrl[option.requestType];
-     return fnFactory(option);
+     return fnFactory(option.repo);
    },
    getOnCheckResponse(){
      return GitHubApi.checkResponse;
@@ -49,11 +44,9 @@ const GitHubApi = {
    crKey({ repo, requestType }){
      return `${repo}_${requestType}`;
    },
-
    checkResponse(){
-      return true;
+     return true;
    }
-
 };
 
 export default GitHubApi
