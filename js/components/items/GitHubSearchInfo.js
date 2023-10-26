@@ -8,7 +8,7 @@ var _formatStrDate = _interopRequireDefault(require("../../utils/formatStrDate")
 var _A = _interopRequireDefault(require("../zhn-atoms/A"));
 var _ItemCaption = _interopRequireDefault(require("./ItemCaption"));
 var _CL = require("../styles/CL");
-var _Item = _interopRequireDefault(require("./Item.Style"));
+var _Item = require("./Item.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 const ItemDescription = _ref => {
   let {
@@ -100,19 +100,19 @@ const GitHubSearchInfo = _ref2 => {
   } = _ref2;
   const [isShow, _hToggle] = (0, _useToggle.default)(true);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: _Item.default.ROOT,
+    style: _Item.S_ROOT,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemCaption.default, {
-      style: _Item.default.PT_8,
+      style: _Item.S_PT_8,
       onClose: onCloseItem,
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
         className: _CL.CL_BT_ITEM,
         title: caption,
-        style: _Item.default.CAPTION_OPEN,
+        style: _Item.S_CAPTION_OPEN,
         onClick: _hToggle,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           children: repo
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-          style: _Item.default.SPAN_VERSION,
+          style: _Item.S_SPAN_VERSION,
           children: stars_count
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           children: pushed_at

@@ -9,7 +9,13 @@ import A from '../zhn-atoms/A';
 import Caption from './ItemCaption';
 import TagDetail from './TagDetail';
 import { CL_BT_ITEM } from '../styles/CL';
-import STYLE from './Item.Style';
+import {
+  S_ROOT,
+  S_CAPTION_OPEN,
+  S_SPAN_VERSION,
+  S_BTN_CIRCLE,
+  S_PT_8
+} from './Item.Style';
 
 const ITEM_DESCRIPTION = "GitHub Likely Recent Version Tag";
 
@@ -67,31 +73,31 @@ const GitHubRecentTag = ({
   }, [json]);
 
   return (
-    <div style={STYLE.ROOT}>
-      <Caption style={STYLE.PT_8} onClose={onCloseItem}>
+    <div style={S_ROOT}>
+      <Caption style={S_PT_8} onClose={onCloseItem}>
         <button
            className={CL_BT_ITEM}
            title={caption}
-           style={STYLE.CAPTION_OPEN}
+           style={S_CAPTION_OPEN}
            onClick={toggleIsShow}
         >
           <span>
             {repo}
           </span>
-          <span style={STYLE.SPAN_VERSION}>
+          <span style={S_SPAN_VERSION}>
             {version}
           </span>
         </button>
         <A.ButtonCircle
            caption="W"
            title="Add to Watch"
-           style={STYLE.BTN_CIRCLE}
+           style={S_BTN_CIRCLE}
            onClick={_hClickWatch}
         />
         <A.ButtonCircle
            caption="D"
            title="Load Tag Details"
-           style={STYLE.BTN_CIRCLE}
+           style={S_BTN_CIRCLE}
            onClick={_hClickDetail}
         />
       </Caption>

@@ -10,7 +10,7 @@ var _A = _interopRequireDefault(require("../zhn-atoms/A"));
 var _ItemCaption = _interopRequireDefault(require("./ItemCaption"));
 var _TagDetail = _interopRequireDefault(require("./TagDetail"));
 var _CL = require("../styles/CL");
-var _Item = _interopRequireDefault(require("./Item.Style"));
+var _Item = require("./Item.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 const ITEM_DESCRIPTION = "GitHub Likely Recent Version Tag";
 const _getTagDate = json => {
@@ -64,30 +64,30 @@ const GitHubRecentTag = _ref => {
       //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [json]);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: _Item.default.ROOT,
+    style: _Item.S_ROOT,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption.default, {
-      style: _Item.default.PT_8,
+      style: _Item.S_PT_8,
       onClose: onCloseItem,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
         className: _CL.CL_BT_ITEM,
         title: caption,
-        style: _Item.default.CAPTION_OPEN,
+        style: _Item.S_CAPTION_OPEN,
         onClick: toggleIsShow,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           children: repo
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-          style: _Item.default.SPAN_VERSION,
+          style: _Item.S_SPAN_VERSION,
           children: version
         })]
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ButtonCircle, {
         caption: "W",
         title: "Add to Watch",
-        style: _Item.default.BTN_CIRCLE,
+        style: _Item.S_BTN_CIRCLE,
         onClick: _hClickWatch
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ButtonCircle, {
         caption: "D",
         title: "Load Tag Details",
-        style: _Item.default.BTN_CIRCLE,
+        style: _Item.S_BTN_CIRCLE,
         onClick: _hClickDetail
       })]
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ShowHide, {

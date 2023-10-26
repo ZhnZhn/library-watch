@@ -4,11 +4,11 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _CL = require("../../styles/CL");
-var _Item = _interopRequireDefault(require("../Item.Style"));
+var _Item = require("../Item.Style");
 var _A = _interopRequireDefault(require("../../zhn-atoms/A"));
 var _jsxRuntime = require("react/jsx-runtime");
-const S_CAPTION_OPEN = {
-    ..._Item.default.CAPTION_OPEN,
+const _S_CAPTION_OPEN = {
+    ..._Item.S_CAPTION_OPEN,
     position: 'relative',
     top: -3
   },
@@ -30,7 +30,7 @@ const ButtonPackage = _ref => {
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
     className: _CL.CL_BT_ITEM,
-    style: S_CAPTION_OPEN,
+    style: _S_CAPTION_OPEN,
     title: caption,
     onClick: onClick,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {

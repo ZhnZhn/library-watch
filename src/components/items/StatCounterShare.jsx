@@ -9,15 +9,19 @@ import ModalSlider from '../zhn-modal-slider/ModalSlider';
 import LineChart from '../charts/LineChart';
 import Caption from './ItemCaption';
 
-import STYLE from './Item.Style';
 import {
   CL_BT_ITEM,
   CL_MENU_MORE,
   CL_SOURCE_LINK
 } from '../styles/CL';
+import {
+  S_ROOT,
+  S_CAPTION_OPEN,
+  S_BT_MORE
+} from './Item.Style';
 
 const S_BT_CAPTION = {
-  ...STYLE.CAPTION_OPEN,
+  ...S_CAPTION_OPEN,
   position: 'relative',
   top: -3
 }
@@ -62,7 +66,7 @@ const StatCounterShare = ({
   ] = _crChartConfig(labels, data);
 
   return (
-    <div style={STYLE.ROOT}>
+    <div style={S_ROOT}>
       <ModalSlider
         isShow={_isMenuMore}
         className={CL_MENU_MORE}
@@ -74,7 +78,7 @@ const StatCounterShare = ({
         onClose={onCloseItem}
       >
         <A.SvgMore
-          style={STYLE.BT_MORE}
+          style={S_BT_MORE}
           onClick={_showMenuMore}
         />
         <button

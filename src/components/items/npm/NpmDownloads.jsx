@@ -15,12 +15,12 @@ import Caption from '../ItemCaption';
 import NpmPackageInfo from './NpmPackageInfo';
 
 import { CL_MENU_MORE } from '../../styles/CL';
-import STYLE from '../Item.Style';
+import {
+  S_ROOT,
+  S_BT_MORE
+} from '../Item.Style';
 
 const ITEM_DESCRIPTION = "Npm Recent Month Downloads"
-
-, S_ROOT = STYLE.ROOT
-, S_BT_MORE = STYLE.BT_MORE
 , S_CAPTION = { paddingLeft: 4 }
 , S_CHART_WRAPPER = { paddingTop: 4 }
 

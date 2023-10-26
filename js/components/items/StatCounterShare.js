@@ -11,11 +11,11 @@ var _A = _interopRequireDefault(require("../zhn-atoms/A"));
 var _ModalSlider = _interopRequireDefault(require("../zhn-modal-slider/ModalSlider"));
 var _LineChart = _interopRequireDefault(require("../charts/LineChart"));
 var _ItemCaption = _interopRequireDefault(require("./ItemCaption"));
-var _Item = _interopRequireDefault(require("./Item.Style"));
 var _CL = require("../styles/CL");
+var _Item = require("./Item.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_BT_CAPTION = {
-    ..._Item.default.CAPTION_OPEN,
+    ..._Item.S_CAPTION_OPEN,
     position: 'relative',
     top: -3
   },
@@ -57,7 +57,7 @@ const StatCounterShare = _ref => {
     }),
     [_lineChartConfig, _height] = _crChartConfig(labels, data);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: _Item.default.ROOT,
+    style: _Item.S_ROOT,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider.default, {
       isShow: _isMenuMore,
       className: _CL.CL_MENU_MORE,
@@ -67,7 +67,7 @@ const StatCounterShare = _ref => {
       style: S_CAPTION,
       onClose: onCloseItem,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.SvgMore, {
-        style: _Item.default.BT_MORE,
+        style: _Item.S_BT_MORE,
         onClick: _showMenuMore
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
         className: _CL.CL_BT_ITEM,

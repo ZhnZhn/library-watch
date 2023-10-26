@@ -6,7 +6,13 @@ import Caption from './ItemCaption';
 import IssueList from './IssueList';
 
 import { CL_BT_ITEM } from '../styles/CL';
-import STYLE from './Item.Style';
+import {
+  S_ROOT,
+  S_CAPTION_OPEN,
+  S_BTN_CIRCLE,
+  S_PT_8,
+  S_PR_8
+} from './Item.Style';
 
 const ITEM_DESCRIPTION = "GitHub Repository Issues";
 
@@ -21,15 +27,15 @@ const GitHubIssues = (props) => {
   , _hClickWatch = useWatchItem(onWatchItem, props, ITEM_DESCRIPTION)
   , _number = issues.length;
   return (
-    <div style={STYLE.ROOT}>
-      <Caption style={STYLE.PT_8} onClose={onCloseItem}>
+    <div style={S_ROOT}>
+      <Caption style={S_PT_8} onClose={onCloseItem}>
         <button
            className={CL_BT_ITEM}
            title={caption}
-           style={STYLE.CAPTION_OPEN}
+           style={S_CAPTION_OPEN}
            onClick={_hToggle}
         >
-          <span style={STYLE.PR_8}>
+          <span style={S_PR_8}>
             {repo}
           </span>
           <span>
@@ -39,7 +45,7 @@ const GitHubIssues = (props) => {
         <A.ButtonCircle
            caption="W"
            title="Add to Watch"
-           style={STYLE.BTN_CIRCLE}
+           style={S_BTN_CIRCLE}
            onClick={_hClickWatch}
         />
       </Caption>

@@ -11,11 +11,14 @@ import ModalSlider from '../../zhn-modal-slider/ModalSlider';
 import crModelMore from './crModelMore';
 import sortItemsBy from './sortItemsBy';
 import TaggedItemList from './TaggedItemList';
-import STYLE from '../Item.Style';
 import {
   CL_NOT_SELECTED,
   CL_MENU_MORE
 } from '../../styles/CL';
+import {
+  S_ROOT,
+  S_CAPTION_OPEN
+} from '../Item.Style';
 
 const S_BT_MORE = {
   position: 'relative',
@@ -88,7 +91,7 @@ const StackTaggedQuestions = (props) => {
   , _titleForSort = `Sorted By ${titleForSort}`;
 
   return (
-    <div style={STYLE.ROOT}>
+    <div style={S_ROOT}>
       <ModalSlider
         isShow={_isMenuMore}
         className={CL_MENU_MORE}
@@ -103,7 +106,7 @@ const StackTaggedQuestions = (props) => {
         <button
            className={CL_NOT_SELECTED}
            title={caption}
-           style={{...STYLE.CAPTION_OPEN, ...S_NOT_FLOAT}}
+           style={{...S_CAPTION_OPEN, ...S_NOT_FLOAT}}
            onClick={_toggleIsShow}
         >
           <span>

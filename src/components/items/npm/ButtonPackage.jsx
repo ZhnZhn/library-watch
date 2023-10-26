@@ -1,10 +1,10 @@
 import { CL_BT_ITEM } from '../../styles/CL';
-import STYLE from '../Item.Style';
+import { S_CAPTION_OPEN } from '../Item.Style';
 
 import A from '../../zhn-atoms/A';
 
-const S_CAPTION_OPEN = {
-  ...STYLE.CAPTION_OPEN,
+const _S_CAPTION_OPEN = {
+  ...S_CAPTION_OPEN,
   position: 'relative',
   top: -3
 }, S_SPAN_SUM = {
@@ -23,7 +23,7 @@ const ButtonPackage = ({
 }) => (
   <button
      className={CL_BT_ITEM}
-     style={S_CAPTION_OPEN}
+     style={_S_CAPTION_OPEN}
      title={caption}
      onClick={onClick}
   >

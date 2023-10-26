@@ -12,8 +12,8 @@ var _ModalSlider = _interopRequireDefault(require("../../zhn-modal-slider/ModalS
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 var _sortItemsBy = _interopRequireDefault(require("./sortItemsBy"));
 var _TaggedItemList = _interopRequireDefault(require("./TaggedItemList"));
-var _Item = _interopRequireDefault(require("../Item.Style"));
 var _CL = require("../../styles/CL");
+var _Item = require("../Item.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_BT_MORE = {
     position: 'relative',
@@ -79,7 +79,7 @@ const StackTaggedQuestions = props => {
     _tokenItemsCount = itemRemoved ? `${_itemsLength - itemRemoved}/${_itemsLength}` : `${_itemsLength}`,
     _titleForSort = `Sorted By ${titleForSort}`;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: _Item.default.ROOT,
+    style: _Item.S_ROOT,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider.default, {
       isShow: _isMenuMore,
       className: _CL.CL_MENU_MORE,
@@ -94,7 +94,7 @@ const StackTaggedQuestions = props => {
         className: _CL.CL_NOT_SELECTED,
         title: caption,
         style: {
-          ..._Item.default.CAPTION_OPEN,
+          ..._Item.S_CAPTION_OPEN,
           ...S_NOT_FLOAT
         },
         onClick: _toggleIsShow,

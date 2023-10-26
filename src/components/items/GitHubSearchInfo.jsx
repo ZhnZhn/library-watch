@@ -12,7 +12,12 @@ import {
   CL_LIB_VALUE_TITLE,
   CL_SOURCE_LINK
 } from '../styles/CL';
-import STYLE from './Item.Style';
+import {
+  S_ROOT,
+  S_CAPTION_OPEN,
+  S_SPAN_VERSION,
+  S_PT_8
+} from './Item.Style';
 
 const ItemDescription = ({
   library
@@ -111,18 +116,18 @@ const GitHubSearchInfo = ({
   ] = useToggle(true);
 
   return (
-    <div style={STYLE.ROOT}>
-      <Caption style={STYLE.PT_8} onClose={onCloseItem}>
+    <div style={S_ROOT}>
+      <Caption style={S_PT_8} onClose={onCloseItem}>
         <button
            className={CL_BT_ITEM}
            title={caption}
-           style={STYLE.CAPTION_OPEN}
+           style={S_CAPTION_OPEN}
            onClick={_hToggle}
         >
           <span>
             {repo}
           </span>
-          <span style={STYLE.SPAN_VERSION}>
+          <span style={S_SPAN_VERSION}>
             {stars_count}
           </span>
           <span>

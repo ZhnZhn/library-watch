@@ -7,7 +7,14 @@ import {
   CL_BT_ITEM,
   CL_SOURCE_LINK
 } from '../styles/CL';
-import STYLE from './Item.Style';
+import {
+  S_ROOT,
+  S_CAPTION_OPEN,
+  S_SPAN_VERSION,
+  S_BTN_CIRCLE,
+  S_PT_8,
+  S_ML_8  
+} from './Item.Style';
 
 const ITEM_DESCRIPTION = "GitHub Repository Recent Release";
 
@@ -39,24 +46,24 @@ const GitHubRecentRelease = (props) => {
   ] = useToggle(true)
   , _hClickWatch = useWatchItem(
     onWatchItem,
-    props, 
+    props,
     ITEM_DESCRIPTION,
     _crCaption
   );
 
   return (
-    <div style={STYLE.ROOT}>
-      <Caption style={STYLE.PT_8} onClose={onCloseItem}>
+    <div style={S_ROOT}>
+      <Caption style={S_PT_8} onClose={onCloseItem}>
         <button
            className={CL_BT_ITEM}
            title={caption}
-           style={STYLE.CAPTION_OPEN}
+           style={S_CAPTION_OPEN}
            onClick={_hToggle}
         >
           <span>
             {repo}
           </span>
-          <span style={STYLE.SPAN_VERSION}>
+          <span style={S_SPAN_VERSION}>
              {version}
           </span>
           <span>
@@ -66,14 +73,14 @@ const GitHubRecentRelease = (props) => {
         <A.ButtonCircle
            caption="W"
            title="Add to Watch"
-           style={STYLE.BTN_CIRCLE}
+           style={S_BTN_CIRCLE}
            onClick={_hClickWatch}
         />
       </Caption>
-      <A.ShowHide isShow={isShow} style={STYLE.PT_8}>
+      <A.ShowHide isShow={isShow} style={S_PT_8}>
         <A.Link
            className={CL_SOURCE_LINK}
-           style={STYLE.ML_8}
+           style={S_ML_8}
            href={html_url}
         >
            Link to description of recent release tag

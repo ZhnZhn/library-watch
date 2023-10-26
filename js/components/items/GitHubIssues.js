@@ -9,7 +9,7 @@ var _A = _interopRequireDefault(require("../zhn-atoms/A"));
 var _ItemCaption = _interopRequireDefault(require("./ItemCaption"));
 var _IssueList = _interopRequireDefault(require("./IssueList"));
 var _CL = require("../styles/CL");
-var _Item = _interopRequireDefault(require("./Item.Style"));
+var _Item = require("./Item.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 const ITEM_DESCRIPTION = "GitHub Repository Issues";
 
@@ -30,17 +30,17 @@ const GitHubIssues = props => {
     _hClickWatch = (0, _useWatchItem.default)(onWatchItem, props, ITEM_DESCRIPTION),
     _number = issues.length;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: _Item.default.ROOT,
+    style: _Item.S_ROOT,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption.default, {
-      style: _Item.default.PT_8,
+      style: _Item.S_PT_8,
       onClose: onCloseItem,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
         className: _CL.CL_BT_ITEM,
         title: caption,
-        style: _Item.default.CAPTION_OPEN,
+        style: _Item.S_CAPTION_OPEN,
         onClick: _hToggle,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-          style: _Item.default.PR_8,
+          style: _Item.S_PR_8,
           children: repo
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           children: _number
@@ -48,7 +48,7 @@ const GitHubIssues = props => {
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ButtonCircle, {
         caption: "W",
         title: "Add to Watch",
-        style: _Item.default.BTN_CIRCLE,
+        style: _Item.S_BTN_CIRCLE,
         onClick: _hClickWatch
       })]
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ShowHide, {

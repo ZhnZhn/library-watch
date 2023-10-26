@@ -16,11 +16,9 @@ var _ButtonWatch = _interopRequireDefault(require("./ButtonWatch"));
 var _ItemCaption = _interopRequireDefault(require("../ItemCaption"));
 var _NpmPackageInfo = _interopRequireDefault(require("./NpmPackageInfo"));
 var _CL = require("../../styles/CL");
-var _Item = _interopRequireDefault(require("../Item.Style"));
+var _Item = require("../Item.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 const ITEM_DESCRIPTION = "Npm Recent Month Downloads",
-  S_ROOT = _Item.default.ROOT,
-  S_BT_MORE = _Item.default.BT_MORE,
   S_CAPTION = {
     paddingLeft: 4
   },
@@ -81,7 +79,7 @@ const NpmDownloads = _ref => {
       data
     });
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: S_ROOT,
+    style: _Item.S_ROOT,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider.default, {
       isShow: isMenuMore,
       className: _CL.CL_MENU_MORE,
@@ -91,7 +89,7 @@ const NpmDownloads = _ref => {
       style: S_CAPTION,
       onClose: onCloseItem,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.SvgMore, {
-        style: S_BT_MORE,
+        style: _Item.S_BT_MORE,
         onClick: _showMenuMore
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonPackage.default, {
         caption: caption,
