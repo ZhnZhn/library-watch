@@ -59,9 +59,11 @@
   },
   "jest": {
     "roots": [
+      "<rootDir>/js/flux/",
       "<rootDir>/js/utils/"
     ],
     "transformIgnorePatterns": [
+      "<rootDir>/js/flux/",
       "<rootDir>/js/utils/"
     ]
   }
