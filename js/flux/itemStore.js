@@ -26,35 +26,27 @@ const _logLoadError = _ref => {
   console.log('%c' + alertCaption + ':' + alertItemId, CONSOLE_LOG_STYLE);
   console.log('%c' + alertDescr, CONSOLE_LOG_STYLE);
 };
-const MS_ITEM = 'msItem';
-const _crMsItemChartCont = chartCont => ({
-  [MS_ITEM]: {
+const [_crItems, _selectItems] = (0, _storeApi.fCrStoreSlice)("items"),
+  [_crMsItem, _selectMsItem] = (0, _storeApi.fCrStoreSlice)("msItem"),
+  _crMsItemChartCont = (0, _storeApi.fCrMsFromFn)(_crMsItem, chartCont => ({
     chartCont
-  }
-});
-const _crMsItemComp = (chartType, browserType) => ({
-  [MS_ITEM]: {
+  })),
+  _crMsItemComp = (0, _storeApi.fCrMsFromFn)(_crMsItem, (chartType, browserType) => ({
     Comp: (0, _createChartContainer.default)((0, _dialogFn.getDataConf)(chartType), browserType)
-  }
-});
-const _crMsItemChartTypeClose = chartType => ({
-  [MS_ITEM]: {
+  })),
+  _crMsItemChartTypeClose = (0, _storeApi.fCrMsFromFn)(_crMsItem, chartType => ({
     chartType,
     close: true
-  }
-});
+  }));
 const _crStore = () => ({
-    items: {},
-    [MS_ITEM]: void 0
+    ..._crItems({}),
+    ..._crMsItem()
   }),
   itemStore = (0, _storeApi.createStoreWithSelector)(_crStore),
-  _selectItems = state => state.items,
-  _selectMsItem = state => state[MS_ITEM],
   [_set, _get] = (0, _storeApi.getStoreApi)(itemStore);
 const getItemByType = chartType => _selectItems(_get())[chartType];
 exports.getItemByType = getItemByType;
-const useMsItem = (0, _storeApi.fCrUse)(itemStore, _selectMsItem);
-exports.useMsItem = useMsItem;
+const useMsItem = exports.useMsItem = (0, _storeApi.fCrUse)(itemStore, _selectMsItem);
 const _createInitConfig = chartType => ({
   chartType: chartType,
   configs: [],
@@ -143,8 +135,7 @@ const closeChart = (chartType, browserType, key) => {
   (0, _browserFn.minusMenuItemCounter)(chartType, browserType);
 };
 exports.closeChart = closeChart;
-const closeChartContainer = _browserFn.setMenuItemClose;
-exports.closeChartContainer = closeChartContainer;
+const closeChartContainer = exports.closeChartContainer = _browserFn.setMenuItemClose;
 const closeCompItemList = (chartType, browserType) => {
   _set(_crMsItemChartTypeClose(chartType));
 };

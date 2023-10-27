@@ -1,6 +1,8 @@
 import {
   createStoreWithSelector,
   getStoreApi,
+  fCrStoreSlice,
+  fCrMsFromFn,
   fCrUse
 } from './storeApi';
 
@@ -42,39 +44,43 @@ const _logLoadError = ({
 }) => {
   console.log('%c'+ alertCaption + ':' + alertItemId, CONSOLE_LOG_STYLE);
   console.log('%c' + alertDescr, CONSOLE_LOG_STYLE);
-}
+};
 
-const MS_ITEM = 'msItem';
-const _crMsItemChartCont = (
-  chartCont
-) => ({
-  [MS_ITEM]: { chartCont }
-});
-const _crMsItemComp = (
-  chartType,
-  browserType
-) => ({
-  [MS_ITEM]: { Comp: createChartContainer(
-    getDataConf(chartType),
-    browserType
-  )}
-});
-const _crMsItemChartTypeClose = (
-  chartType
-) => ({
-    [MS_ITEM]: {
-      chartType,
-      close: true
-    }
-});
+const [
+  _crItems,
+  _selectItems
+] = fCrStoreSlice("items")
+, [
+  _crMsItem,
+  _selectMsItem
+] = fCrStoreSlice("msItem")
+
+, _crMsItemChartCont = fCrMsFromFn(
+  _crMsItem,
+  chartCont => ({ chartCont })
+)
+, _crMsItemComp = fCrMsFromFn(
+  _crMsItem,
+  (chartType, browserType) => ({
+    Comp: createChartContainer(
+      getDataConf(chartType),
+      browserType
+    )
+  })
+)
+, _crMsItemChartTypeClose = fCrMsFromFn(
+  _crMsItem,
+  chartType => ({
+    chartType,
+    close: true
+  })
+);
 
 const _crStore = () => ({
-  items: {},
-  [MS_ITEM]: void 0
+  ..._crItems({}),
+  ..._crMsItem()
 })
 , itemStore = createStoreWithSelector(_crStore)
-, _selectItems = state => state.items
-, _selectMsItem = state => state[MS_ITEM]
 , [_set, _get] = getStoreApi(itemStore);
 
 export const getItemByType = (chartType) => _selectItems(_get())[chartType];
