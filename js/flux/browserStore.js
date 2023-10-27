@@ -14,13 +14,8 @@ var _dialogFn = require("./dialogFn");
 var _compStore = require("./compStore");
 const [_crMsBrowser, _selectMsBrowser] = (0, _storeApi.fCrStoreSlice)("msBrowser", "id"),
   [_crMsBrowserDynamic, _selectMsBrowserDynamic] = (0, _storeApi.fCrStoreSlice)("msBrowserDynamic"),
-  _crMsBrowserDynamicElBrowser = elBrowser => _crMsBrowserDynamic({
-    elBrowser
-  }),
-  _crMsBrowserDynamicBrowserType = (browserType, menuItems) => _crMsBrowserDynamic({
-    browserType,
-    menuItems
-  });
+  _crMsBrowserDynamicElBrowser = (0, _storeApi.fCrMsOptions)(_crMsBrowserDynamic, "elBrowser"),
+  _crMsBrowserDynamicBrowserType = (0, _storeApi.fCrMsOptions)(_crMsBrowserDynamic, "browserType", "menuItems");
 const _crStore = () => ({
     ..._crMsBrowser(),
     ..._crMsBrowserDynamic()
