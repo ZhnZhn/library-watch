@@ -1,5 +1,6 @@
 import {
-  fCrStoreSlice
+  fCrStoreSlice,
+  fCrMsOptions
 } from '../storeApi';
 
 describe("fCrStoreSlice", () => {
@@ -41,5 +42,26 @@ describe("fCrStoreSlice", () => {
     expect(selectTestSlice({...crTestSlice(msTest3)}))
       .toEqual({ [PN]: msTest3})
   })
+})
 
+describe("fCrMsOptions", () => {
+  const fn = fCrMsOptions;
+  test("should return function that create store slice from parameters", () => {
+    const SLICE_TEST = "test"
+    , [
+      crTestSlice,
+      selectTestSlice
+    ] = fCrStoreSlice(SLICE_TEST)
+    , pn1 = "pn1"
+    , pn2 = "pn2"
+    , crMsOptions = fn(crTestSlice, pn1, pn2)
+    , v1 = "v1"
+    , v2 = "v2";
+
+    expect(selectTestSlice(crMsOptions(v1, v2)))
+      .toEqual({
+        [pn1]: v1,
+        [pn2]: v2
+      })
+  })
 })

@@ -32,6 +32,16 @@ export const fCrStoreSlice = (
   state => state[slicePn]
 ];
 
+export const fCrMsOptions = (
+  crMs,
+  ...optionNames
+) => (
+  ...optionValues
+) => crMs(optionNames.reduce((r, pn, i) => {
+  r[pn] = optionValues[i]
+  return r;
+}, {}))
+
 export const fCrUse = (
   store,
   select
