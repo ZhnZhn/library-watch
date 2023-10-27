@@ -2,7 +2,7 @@ import {
   createStoreWithSelector,
   getStoreApi,
   fCrStoreSlice,
-  fCrMsOptions,
+  fCrMsFromPropNames,
   fCrUse,
   bindTo
 } from './storeApi';
@@ -30,11 +30,11 @@ const [
   _crMsBrowserDynamic,
   _selectMsBrowserDynamic
 ] = fCrStoreSlice("msBrowserDynamic")
-, _crMsBrowserDynamicElBrowser = fCrMsOptions(
+, _crMsBrowserDynamicElBrowser = fCrMsFromPropNames(
    _crMsBrowserDynamic,
    "elBrowser"
  )
-, _crMsBrowserDynamicBrowserType = fCrMsOptions(
+, _crMsBrowserDynamicBrowserType = fCrMsFromPropNames(
   _crMsBrowserDynamic,
   "browserType",
   "menuItems"

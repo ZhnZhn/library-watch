@@ -32,7 +32,7 @@ export const fCrStoreSlice = (
   state => state[slicePn]
 ];
 
-export const fCrMsOptions = (
+export const fCrMsFromPropNames = (
   crMs,
   ...optionNames
 ) => (
@@ -41,6 +41,11 @@ export const fCrMsOptions = (
   r[pn] = optionValues[i]
   return r;
 }, {}))
+
+export const fCrMsFromFn = (
+  crMs,
+  fn
+) => (...args) => crMs(fn(...args))
 
 export const fCrUse = (
   store,

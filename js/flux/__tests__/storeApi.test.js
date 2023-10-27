@@ -49,8 +49,8 @@ describe("fCrStoreSlice", () => {
     });
   });
 });
-describe("fCrMsOptions", () => {
-  const fn = _storeApi.fCrMsOptions;
+describe("fCrMsFromPropNames", () => {
+  const fn = _storeApi.fCrMsFromPropNames;
   test("should return function that create store slice from parameters", () => {
     const SLICE_TEST = "test",
       [crTestSlice, selectTestSlice] = (0, _storeApi.fCrStoreSlice)(SLICE_TEST),
@@ -62,6 +62,27 @@ describe("fCrMsOptions", () => {
     expect(selectTestSlice(crMsOptions(v1, v2))).toEqual({
       [pn1]: v1,
       [pn2]: v2
+    });
+  });
+});
+describe("fCrMsFromFn", () => {
+  const fn = _storeApi.fCrMsFromFn;
+  test("should return function that create slice from fn parameter", () => {
+    const SLICE_TEST = "test",
+      [crTestSlice, selectTestSlice] = (0, _storeApi.fCrStoreSlice)(SLICE_TEST),
+      pn1 = "pn1",
+      pn2 = "pn2",
+      crMsOptions = fn(crTestSlice, (v1, v2) => ({
+        [pn1]: v1,
+        [pn2]: v2,
+        is: true
+      })),
+      v1 = "v1",
+      v2 = "v2";
+    expect(selectTestSlice(crMsOptions(v1, v2))).toEqual({
+      [pn1]: v1,
+      [pn2]: v2,
+      is: true
     });
   });
 });

@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.getStoreApi = exports.fCrUse = exports.fCrStoreSlice = exports.fCrMsOptions = exports.createStoreWithSelector = exports.atom = void 0;
+exports.getStoreApi = exports.fCrUse = exports.fCrStoreSlice = exports.fCrMsFromPropNames = exports.fCrMsFromFn = exports.createStoreWithSelector = exports.atom = void 0;
 var _zustandLite = require("./zustand-lite");
 var _bindTo = require("../utils/bindTo");
 exports.bindTo = _bindTo.bindTo;
@@ -18,7 +18,7 @@ const fCrStoreSlice = (slicePn, optionPn) => [value => ({
   } : value
 }), state => state[slicePn]];
 exports.fCrStoreSlice = fCrStoreSlice;
-const fCrMsOptions = function (crMs) {
+const fCrMsFromPropNames = function (crMs) {
   for (var _len = arguments.length, optionNames = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     optionNames[_key - 1] = arguments[_key];
   }
@@ -32,7 +32,11 @@ const fCrMsOptions = function (crMs) {
     }, {}));
   };
 };
-exports.fCrMsOptions = fCrMsOptions;
+exports.fCrMsFromPropNames = fCrMsFromPropNames;
+const fCrMsFromFn = (crMs, fn) => function () {
+  return crMs(fn(...arguments));
+};
+exports.fCrMsFromFn = fCrMsFromFn;
 const fCrUse = (store, select) => (0, _bindTo.bindTo)(_useSubscribe.default, store, select);
 exports.fCrUse = fCrUse;
 const _isFn = v => typeof v === 'function',

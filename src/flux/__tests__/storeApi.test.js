@@ -1,6 +1,7 @@
 import {
   fCrStoreSlice,
-  fCrMsOptions
+  fCrMsFromPropNames,
+  fCrMsFromFn
 } from '../storeApi';
 
 describe("fCrStoreSlice", () => {
@@ -44,8 +45,8 @@ describe("fCrStoreSlice", () => {
   })
 })
 
-describe("fCrMsOptions", () => {
-  const fn = fCrMsOptions;
+describe("fCrMsFromPropNames", () => {
+  const fn = fCrMsFromPropNames;
   test("should return function that create store slice from parameters", () => {
     const SLICE_TEST = "test"
     , [
@@ -62,6 +63,33 @@ describe("fCrMsOptions", () => {
       .toEqual({
         [pn1]: v1,
         [pn2]: v2
+      })
+  })
+})
+
+describe("fCrMsFromFn", () => {
+  const fn = fCrMsFromFn
+  test("should return function that create slice from fn parameter", () => {
+    const SLICE_TEST = "test"
+    , [
+      crTestSlice,
+      selectTestSlice
+    ] = fCrStoreSlice(SLICE_TEST)
+    , pn1 = "pn1"
+    , pn2 = "pn2"
+    , crMsOptions = fn(crTestSlice, (v1, v2) => ({
+        [pn1]: v1,
+        [pn2]: v2,
+        is: true
+    }))
+    , v1 = "v1"
+    , v2 = "v2";
+
+    expect(selectTestSlice(crMsOptions(v1, v2)))
+      .toEqual({
+         [pn1]: v1,
+         [pn2]: v2,
+         is: true
       })
   })
 })
