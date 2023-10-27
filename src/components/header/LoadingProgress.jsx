@@ -1,4 +1,4 @@
-import memoEqual from '../hoc/memoEqual';
+import { memoEqual } from '../hoc/memoFn';
 import { useLoading } from '../../flux/storeAtoms';
 
 import {

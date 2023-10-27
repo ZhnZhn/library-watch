@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _memoIsShow = _interopRequireDefault(require("../dialogs/memoIsShow"));
+var _memoFn = require("../hoc/memoFn");
 var _WatchActions = require("../../flux/actions/WatchActions");
 var _watchListStore = require("../../flux/watch-list/watchListStore");
 var _Msg = require("../../constants/Msg");
@@ -14,7 +14,7 @@ var _GroupAddPane = _interopRequireDefault(require("./GroupAddPane"));
 var _GroupEditPane = _interopRequireDefault(require("./GroupEditPane"));
 var _GroupDeletePane = _interopRequireDefault(require("./GroupDeletePane"));
 var _jsxRuntime = require("react/jsx-runtime");
-const EditGroupDialog = (0, _memoIsShow.default)(_ref => {
+const EditGroupDialog = (0, _memoFn.memoIsShow)(_ref => {
   let {
     isShow,
     store,
@@ -56,6 +56,5 @@ const EditGroupDialog = (0, _memoIsShow.default)(_ref => {
     }, "1")
   });
 });
-var _default = EditGroupDialog;
-exports.default = _default;
+var _default = exports.default = EditGroupDialog;
 //# sourceMappingURL=EditGroupDialog.js.map

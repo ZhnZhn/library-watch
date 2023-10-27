@@ -1,246 +1,125 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _react = require("react");
-
-var _DateUtils = _interopRequireDefault(require("../../utils/DateUtils"));
-
+exports.default = void 0;
+var _uiApi = require("../uiApi");
+var _memoFn = require("../hoc/memoFn");
+var _useDialog = _interopRequireDefault(require("./useDialog"));
+var _useSelectItem = _interopRequireDefault(require("./useSelectItem"));
+var _useDialogButtons = _interopRequireDefault(require("./useDialogButtons"));
+var _Dialog = _interopRequireDefault(require("./Dialog"));
 var _DialogCell = _interopRequireDefault(require("./DialogCell"));
-
-var _Decorators = _interopRequireDefault(require("./decorators/Decorators"));
-
-var _helperFns = _interopRequireDefault(require("./helperFns/helperFns"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var _dec, _class;
-
-var crMenuMore = _helperFns["default"].crMenuMore,
-    crButtons = _helperFns["default"].crButtons;
-var MARKET_SHARES = [{
-  caption: "OS: Desktop, Mobile, Tablet, Console",
-  value: "os"
-}, {
-  caption: "Windows: Desktop",
-  value: "win-desktop"
-}, {
-  caption: "macOS: Desktop",
-  value: "mac-desktop"
-}, {
-  caption: "Android: Mobile, Tablet",
-  value: "android-mobile"
-}, {
-  caption: "IOS: Mobile, Tablet",
-  value: "ios-mobile"
-}, {
-  caption: "Browser: All Platforms",
-  value: "browser"
-}];
-var REGIONS = [{
-  caption: "Worldwide",
-  value: "worlwide",
-  v2: "ww"
-}, {
-  caption: "Africa",
-  value: "africa",
-  v2: "af"
-}, {
-  caption: "Asia",
-  value: "asia",
-  v2: "as"
-}, {
-  caption: "Antarctica",
-  value: "antarctica",
-  v2: "an"
-}, {
-  caption: "Australia",
-  value: "australia",
-  v2: "au"
-}, {
-  caption: "Europe",
-  value: "europe",
-  v2: "eu"
-}, {
-  caption: "North America",
-  value: "north-america",
-  v2: "na"
-}, {
-  caption: "South America",
-  value: "south-america",
-  v2: "sa"
-}, {
-  caption: "Oceania",
-  value: "oceania",
-  v2: "oc"
-}];
-
-var _initFromDate = _DateUtils["default"].getFromDate(1),
-    _initToDate = _DateUtils["default"].getToDate(),
-    _onTestDate = _DateUtils["default"].isValidDate;
-
-var DialogType3 = (_dec = _Decorators["default"].dialog, _dec(_class = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(DialogType3, _Component);
-
-  /*
-  static propTypes = {
-    caption: PropTypes.string,
-    requestType: PropTypes.string,
-    oneTitle: PropTypes.string,
-    onePlaceholder: PropTypes.string,
-    twoTitle: PropTypes.string,
-    twoPlaceholder: PropTypes.string,
-    isShow: PropTypes.bool,
-    onShow: PropTypes.func
-  }
-  */
-  function DialogType3(props) {
-    var _this;
-
-    _this = _Component.call(this, props) || this;
-
-    _this._hSelectItem = function (item) {
-      _this._item = item;
-    };
-
-    _this._hSelectRegion = function (item) {
-      _this._region = item;
-    };
-
-    _this._handleClear = function () {
-      _this.setState({
-        validationMessages: []
+const MARKET_SHARES = [{
+    caption: "OS: Desktop, Mobile, Tablet, Console",
+    value: "os"
+  }, {
+    caption: "Windows: Desktop",
+    value: "win-desktop"
+  }, {
+    caption: "macOS: Desktop",
+    value: "mac-desktop"
+  }, {
+    caption: "Android: Mobile, Tablet",
+    value: "android-mobile"
+  }, {
+    caption: "IOS: Mobile, Tablet",
+    value: "ios-mobile"
+  }, {
+    caption: "Browser: All Platforms",
+    value: "browser"
+  }],
+  REGIONS = [{
+    caption: "Worldwide",
+    value: "worlwide",
+    v2: "ww"
+  }, {
+    caption: "Africa",
+    value: "africa",
+    v2: "af"
+  }, {
+    caption: "Asia",
+    value: "asia",
+    v2: "as"
+  }, {
+    caption: "Antarctica",
+    value: "antarctica",
+    v2: "an"
+  }, {
+    caption: "Australia",
+    value: "australia",
+    v2: "au"
+  }, {
+    caption: "Europe",
+    value: "europe",
+    v2: "eu"
+  }, {
+    caption: "North America",
+    value: "north-america",
+    v2: "na"
+  }, {
+    caption: "South America",
+    value: "south-america",
+    v2: "sa"
+  }, {
+    caption: "Oceania",
+    value: "oceania",
+    v2: "oc"
+  }],
+  _getItemCaption = item => item.caption,
+  DF_MARKET_SHARE = MARKET_SHARES[0],
+  ITEM_PLACEHOLDER = _getItemCaption(DF_MARKET_SHARE),
+  DF_REGION = REGIONS[0],
+  REGION_PLACEHOLDER = _getItemCaption(DF_REGION);
+const DialogType3 = (0, _memoFn.memoIsShow)(_ref => {
+  let {
+    isShow,
+    caption,
+    requestType,
+    onShow,
+    onLoad,
+    onClose
+  } = _ref;
+  const [MENU_MODEL, TOOLBAR_BUTTONS, isToolbar, isShowLabels] = (0, _useDialog.default)(),
+    [_refItem, _hSelectItem] = (0, _useSelectItem.default)(DF_MARKET_SHARE),
+    [_refRegion, _hSelectRegion] = (0, _useSelectItem.default)(DF_REGION),
+    [validationMessages, COMMAND_BUTTONS, hClose] = (0, _useDialogButtons.default)((setValidationMessages, clearValidationMessages) => {
+      const {
+        value,
+        caption
+      } = (0, _uiApi.getRefValue)(_refItem) || DF_MARKET_SHARE;
+      onLoad({
+        requestType,
+        value,
+        caption,
+        region: (0, _uiApi.getRefValue)(_refRegion) || DF_REGION
       });
-    };
-
-    _this._handleLoad = function () {
-      _this._handleLoadWithValidation(_this._createValidationMessages(), _this._createLoadOption);
-    };
-
-    _this._createValidationMessages = function () {
-      var msg = [];
-
-      var _this$datesFragment$g = _this.datesFragment.getValidation(),
-          isValid = _this$datesFragment$g.isValid,
-          datesMsg = _this$datesFragment$g.datesMsg;
-
-      if (!isValid) {
-        msg = msg.concat(datesMsg);
-      }
-
-      msg.isValid = msg.length === 0 ? true : false;
-      return msg;
-    };
-
-    _this._createLoadOption = function () {
-      var requestType = _this.props.requestType,
-          _this$_item = _this._item,
-          value = _this$_item.value,
-          caption = _this$_item.caption;
-      return {
-        requestType: requestType,
-        value: value,
-        caption: caption,
-        region: _this._region
-      };
-    };
-
-    _this._handleClose = function () {
-      _this._handleCloseWithValidation(_this._createValidationMessages);
-    };
-
-    _this._refDatesFragment = function (c) {
-      return _this.datesFragment = c;
-    };
-
-    _this.stock = null;
-    _this._item = MARKET_SHARES[0];
-    _this._region = REGIONS[0];
-    _this.toolbarButtons = _this._createType2WithToolbar(props, {
-      hasDate: false
-    });
-    _this._menuMore = crMenuMore((0, _assertThisInitialized2["default"])(_this), {
-      toggleDates: _this._clickDateWithToolbar,
-      toggleLabels: _this._clickLabelWithToolbar,
-      toggleToolBar: _this._toggleWithToolbar
-    });
-    _this._commandButtons = crButtons({
-      inst: (0, _assertThisInitialized2["default"])(_this)
-    });
-    _this.state = (0, _extends2["default"])({}, _this._withInitialState());
-    return _this;
-  }
-
-  var _proto = DialogType3.prototype;
-
-  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
-    if (this.props !== nextProps) {
-      if (this.props.isShow === nextProps.isShow) {
-        return false;
-      }
-    }
-
-    return true;
-  };
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        caption = _this$props.caption,
-        isShow = _this$props.isShow,
-        onShow = _this$props.onShow,
-        _this$state = this.state,
-        isToolbar = _this$state.isToolbar,
-        isShowLabels = _this$state.isShowLabels,
-        isShowDate = _this$state.isShowDate,
-        validationMessages = _this$state.validationMessages;
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_DialogCell["default"].DraggableDialog, {
-      isShow: isShow,
-      caption: caption,
-      menuModel: this._menuMore,
-      commandButtons: this._commandButtons,
-      onShowChart: onShow,
-      onClose: this._handleClose,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].Toolbar, {
-        isShow: isToolbar,
-        buttons: this.toolbarButtons
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].RowInputSelect, {
-        isShowLabel: isShowLabels,
-        caption: "Item",
-        placeholder: MARKET_SHARES[0].caption,
-        options: MARKET_SHARES,
-        onSelect: this._hSelectItem
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].RowInputSelect, {
-        isShowLabel: isShowLabels,
-        caption: "Region",
-        placeholder: REGIONS[0].caption,
-        options: REGIONS,
-        onSelect: this._hSelectRegion
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].ShowHide, {
-        isShow: isShowDate,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].Dates, {
-          ref: this._refDatesFragment,
-          isShowLabels: isShowLabels,
-          initFromDate: _initFromDate,
-          initToDate: _initToDate,
-          onTestDate: _onTestDate
-        })
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell["default"].ValidationMessages, {
-        validationMessages: validationMessages
-      })]
-    });
-  };
-
-  return DialogType3;
-}(_react.Component)) || _class);
-var _default = DialogType3;
-exports["default"] = _default;
+    }, onClose);
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Dialog.default, {
+    isShow: isShow,
+    isToolbar: isToolbar,
+    caption: caption,
+    menuModel: MENU_MODEL,
+    toolbarButtons: TOOLBAR_BUTTONS,
+    commandButtons: COMMAND_BUTTONS,
+    validationMessages: validationMessages,
+    onShow: onShow,
+    onClose: hClose,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.RowInputSelect, {
+      isShowLabel: isShowLabels,
+      caption: "Item",
+      placeholder: ITEM_PLACEHOLDER,
+      options: MARKET_SHARES,
+      onSelect: _hSelectItem
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.RowInputSelect, {
+      isShowLabel: isShowLabels,
+      caption: "Region",
+      placeholder: REGION_PLACEHOLDER,
+      options: REGIONS,
+      onSelect: _hSelectRegion
+    })]
+  });
+});
+var _default = exports.default = DialogType3;
 //# sourceMappingURL=DialogType1A.js.map

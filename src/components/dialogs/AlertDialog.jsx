@@ -1,4 +1,4 @@
-import memoIsShow from './memoIsShow';
+import { memoIsShow } from '../hoc/memoFn';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import D from './DialogCell';

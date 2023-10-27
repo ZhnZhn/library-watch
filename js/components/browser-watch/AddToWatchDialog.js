@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _memoIsShow = _interopRequireDefault(require("../dialogs/memoIsShow"));
+var _memoFn = require("../hoc/memoFn");
 var _useValidationMessages = _interopRequireDefault(require("../hooks/useValidationMessages"));
 var _usePrevValue = _interopRequireDefault(require("../hooks/usePrevValue"));
 var _useProperty = _interopRequireDefault(require("../hooks/useProperty"));
@@ -28,7 +28,7 @@ const S_BOLD = {
     fontWeight: 'bold',
     color: 'gray'
   };
-const AddToWatchDialog = (0, _memoIsShow.default)(props => {
+const AddToWatchDialog = (0, _memoFn.memoIsShow)(props => {
   const _prevProps = (0, _usePrevValue.default)(props),
     {
       isShow,
@@ -169,6 +169,5 @@ const AddToWatchDialog = (0, _memoIsShow.default)(props => {
     })]
   });
 });
-var _default = AddToWatchDialog;
-exports.default = _default;
+var _default = exports.default = AddToWatchDialog;
 //# sourceMappingURL=AddToWatchDialog.js.map

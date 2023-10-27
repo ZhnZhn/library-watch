@@ -1,4 +1,4 @@
-import memoIsShow from '../dialogs/memoIsShow';
+import { memoIsShow } from '../hoc/memoFn';
 
 import { loadItem  } from '../../flux/itemStore';
 import {

@@ -1,4 +1,4 @@
-import memoEqual from '../hoc/memoEqual';
+import { memoEqual } from '../hoc/memoFn';
 
 import MenuBrowserDynamic from '../zhn-moleculs/MenuBrowserDynamic';
 import {

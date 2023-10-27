@@ -7,7 +7,8 @@ import {
   setRefValue
 } from '../uiApi';
 
-import memoIsShow from '../dialogs/memoIsShow';
+import { memoIsShow } from '../hoc/memoFn';
+
 import useValidationMessages from '../hooks/useValidationMessages';
 import usePrevValue from '../hooks/usePrevValue';
 import useProperty from '../hooks/useProperty';
@@ -133,7 +134,7 @@ const AddToWatchDialog = memoIsShow((props) => {
         _hClose()
       }
     }
-  })  
+  })
 
   //UNSAFE_componentWillReceiveProps(nextProps)
   /*eslint-disable react-hooks/exhaustive-deps */

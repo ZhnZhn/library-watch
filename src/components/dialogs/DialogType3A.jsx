@@ -2,10 +2,12 @@ import {
   useRef,
   getRefValue
 } from '../uiApi';
+
+import { memoIsShow } from '../hoc/memoFn';
+
 import useToggle from '../hooks/useToggle';
 import useDialog from './useDialog';
 import useDialogButtons from './useDialogButtons';
-import memoIsShow from './memoIsShow';
 
 import Dialog from './Dialog';
 import D from './DialogCell';

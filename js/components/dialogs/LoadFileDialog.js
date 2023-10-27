@@ -1,153 +1,73 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _react = require("react");
-
-var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
-
+exports.default = void 0;
+var _uiApi = require("../uiApi");
+var _memoFn = require("../hoc/memoFn");
+var _useDialogButtons = _interopRequireDefault(require("./useDialogButtons"));
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
-
 var _InputFileReader = _interopRequireDefault(require("../zhn-atoms/InputFileReader"));
-
-var _ValidationMessages = _interopRequireDefault(require("./rows/ValidationMessages"));
-
-var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
-
+var _DialogCell = _interopRequireDefault(require("./DialogCell"));
 var _jsxRuntime = require("react/jsx-runtime");
-
-//import PropTypes from "prop-types";
-var styles = _DialogStyles["default"];
-var MSG_FILE_NOT_CHOOSED = 'Please choose file for loading.',
-    S_MODAL_DIALOG = {
-  minWidth: 320
-},
-    S_ROW_INPUT_FILE = {
-  margin: '16px 0'
-},
-    S_ROW_VALIDATION = {
-  width: '100%',
-  marginRight: 16
-};
-
-var LoadFileDialog = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(LoadFileDialog, _Component);
-
-  /*
-  static propTypes = {
-    isShow: PropTypes.bool,
-    data: PropTypes.shape({
-      onLoad: PropTypes.func
-    }),
-    onClose: PropTypes.func
-  }
-  */
-  function LoadFileDialog(props) {
-    var _this;
-
-    _this = _Component.call(this, props) || this;
-
-    _this._handleChange = function (results) {
-      if (results && results[0]) {
-        var _results$ = results[0],
-            progressEvent = _results$[0],
-            file = _results$[1];
-        _this.progressEvent = progressEvent;
-        _this.file = file;
-      } else {
-        _this.progressEvent = null;
-        _this.file = null;
-      }
-    };
-
-    _this._handleLoad = function () {
-      if (_this.progressEvent && _this.file) {
-        var data = _this.props.data,
-            onLoad = data.onLoad;
+const MSG_FILE_NOT_CHOOSED = 'Please choose file for loading.',
+  S_MODAL_DIALOG = {
+    minWidth: 320
+  },
+  S_ROW_INPUT_FILE = {
+    margin: '16px 0'
+  },
+  S_ROW_VALIDATION = {
+    width: '100%',
+    marginRight: 16
+  };
+const LoadFileDialog = (0, _memoFn.memoIsShow)(_ref => {
+  let {
+    isShow,
+    data,
+    onClose
+  } = _ref;
+  const {
+      onLoad
+    } = data,
+    _refTupleEventFile = (0, _uiApi.useRef)(null),
+    _hChange = (0, _uiApi.useCallback)(results => {
+      const [_results] = results || [],
+        _tupleEventFile = _results
+        //progressEvent, file
+        ? [_results[0], _results[1]] : null;
+      (0, _uiApi.setRefValue)(_refTupleEventFile, _tupleEventFile);
+    }, []),
+    [validationMessages, COMMAND_BUTTONS, hClose] = (0, _useDialogButtons.default)((setValidationMessages, clearValidationMessages) => {
+      const [progressEvent, file] = (0, _uiApi.getRefValue)(_refTupleEventFile) || [];
+      if (progressEvent && file) {
         onLoad({
-          progressEvent: _this.progressEvent
+          progressEvent
         });
-
-        _this.setState({
-          validationMessages: []
-        });
+        clearValidationMessages();
       } else {
-        _this.setState({
-          validationMessages: [MSG_FILE_NOT_CHOOSED]
-        });
+        setValidationMessages([MSG_FILE_NOT_CHOOSED]);
       }
-    };
-
-    _this._handleClose = function () {
-      var onClose = _this.props.onClose;
-
-      if (_this.state.validationMessages.length !== 0) {
-        _this.setState({
-          validationMessages: []
-        });
-      }
-
-      onClose();
-    };
-
-    _this.progressEvent = null;
-    _this.file = null;
-    _this._commandButtons = [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-      isPrimary: true,
-      caption: "Load",
-      timeout: 2000,
-      onClick: _this._handleLoad
-    }, "load")];
-    _this.state = {
-      validationMessages: []
-    };
-    return _this;
-  }
-
-  var _proto = LoadFileDialog.prototype;
-
-  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-      return false;
-    }
-
-    return true;
-  };
-
-  _proto.render = function render() {
-    var isShow = this.props.isShow,
-        validationMessages = this.state.validationMessages;
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalDialog["default"], {
-      style: S_MODAL_DIALOG,
-      caption: "Load Watch Items from File",
-      isShow: isShow,
-      commandButtons: this._commandButtons,
-      onClose: this._handleClose,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        style: (0, _extends2["default"])({}, styles.rowDiv, S_ROW_INPUT_FILE),
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputFileReader["default"], {
-          as: "text",
-          onChange: this._handleChange
-        })
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        style: (0, _extends2["default"])({}, styles.rowDiv, S_ROW_VALIDATION),
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessages["default"], {
-          validationMessages: validationMessages
-        })
-      })]
-    });
-  };
-
-  return LoadFileDialog;
-}(_react.Component);
-
-var _default = LoadFileDialog;
-exports["default"] = _default;
+    }, onClose);
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalDialog.default, {
+    style: S_MODAL_DIALOG,
+    caption: "Load Watch Items from File",
+    isShow: isShow,
+    commandButtons: COMMAND_BUTTONS,
+    onClose: hClose,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.Row, {
+      style: S_ROW_INPUT_FILE,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputFileReader.default, {
+        as: "text",
+        onChange: _hChange
+      })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.Row, {
+      style: S_ROW_VALIDATION,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.ValidationMessages, {
+        validationMessages: validationMessages
+      })
+    })]
+  });
+});
+var _default = exports.default = LoadFileDialog;
 //# sourceMappingURL=LoadFileDialog.js.map

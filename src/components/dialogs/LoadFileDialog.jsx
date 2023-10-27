@@ -4,9 +4,10 @@ import {
   getRefValue,
   setRefValue
 } from '../uiApi';
-import useDialogButtons from './useDialogButtons';
-import memoIsShow from './memoIsShow';
 
+import { memoIsShow } from '../hoc/memoFn';
+
+import useDialogButtons from './useDialogButtons';
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import InputFileReader from '../zhn-atoms/InputFileReader';
 import D from './DialogCell';

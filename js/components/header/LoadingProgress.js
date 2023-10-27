@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _memoEqual = _interopRequireDefault(require("../hoc/memoEqual"));
+var _memoFn = require("../hoc/memoFn");
 var _storeAtoms = require("../../flux/storeAtoms");
 var _LoadingProgressActions = require("../../flux/actions/LoadingProgressActions");
 var _ProgressLine = _interopRequireDefault(require("../zhn-atoms/ProgressLine"));
@@ -19,6 +19,5 @@ const LoadingProgress = () => {
     completed: completed
   });
 };
-var _default = (0, _memoEqual.default)(LoadingProgress);
-exports.default = _default;
+var _default = exports.default = (0, _memoFn.memoEqual)(LoadingProgress);
 //# sourceMappingURL=LoadingProgress.js.map

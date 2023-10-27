@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _memoIsShow = _interopRequireDefault(require("../dialogs/memoIsShow"));
+var _memoFn = require("../hoc/memoFn");
 var _itemStore = require("../../flux/itemStore");
 var _Type = require("../../constants/Type");
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
@@ -25,7 +25,7 @@ const DIALOG_CAPTION = "Load Watch Item",
   S_BOLD = {
     fontWeight: 'bold'
   };
-const LoadItemDialog = (0, _memoIsShow.default)(_ref => {
+const LoadItemDialog = (0, _memoFn.memoIsShow)(_ref => {
   let {
     isShow,
     data,
@@ -68,6 +68,5 @@ const LoadItemDialog = (0, _memoIsShow.default)(_ref => {
     }, "3")]
   });
 });
-var _default = LoadItemDialog;
-exports.default = _default;
+var _default = exports.default = LoadItemDialog;
 //# sourceMappingURL=LoadItemDialog.js.map

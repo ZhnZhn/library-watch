@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _memoIsShow = _interopRequireDefault(require("../dialogs/memoIsShow"));
+var _memoFn = require("../hoc/memoFn");
 var _WatchActions = require("../../flux/actions/WatchActions");
 var _watchListStore = require("../../flux/watch-list/watchListStore");
 var _Msg = require("../../constants/Msg");
@@ -14,7 +14,7 @@ var _ListCreatePane = _interopRequireDefault(require("./ListCreatePane"));
 var _ListEditPane = _interopRequireDefault(require("./ListEditPane"));
 var _ListDeletePane = _interopRequireDefault(require("./ListDeletePane"));
 var _jsxRuntime = require("react/jsx-runtime");
-const EditListDialog = (0, _memoIsShow.default)(_ref => {
+const EditListDialog = (0, _memoFn.memoIsShow)(_ref => {
   let {
     isShow,
     store,
@@ -59,6 +59,5 @@ const EditListDialog = (0, _memoIsShow.default)(_ref => {
     }, "1")
   });
 });
-var _default = EditListDialog;
-exports.default = _default;
+var _default = exports.default = EditListDialog;
 //# sourceMappingURL=EditListDialog.js.map

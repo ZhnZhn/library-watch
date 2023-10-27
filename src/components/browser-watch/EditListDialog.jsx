@@ -1,4 +1,4 @@
-import memoIsShow from '../dialogs/memoIsShow';
+import { memoIsShow } from '../hoc/memoFn';
 
 import {
   WAT_CREATE_LIST,
