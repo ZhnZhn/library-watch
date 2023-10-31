@@ -123,7 +123,7 @@ const loadItem = (chartType, browserType, option) => {
     (0, _storeAtoms.setLoading)();
     loadItem(option, _loadItemCompleted, _loadItemFailed);
   } else {
-    (0, _compStore.showAlert)(ALREADY_LOADED);
+    setTimeout(() => (0, _compStore.showAlert)(ALREADY_LOADED), 1000);
     showChart(chartType, browserType);
   }
 };

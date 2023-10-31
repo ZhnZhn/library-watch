@@ -43,7 +43,9 @@ const showModalDialog = function (modalDialogType, option) {
     option = {};
   }
   option.modalDialogType = modalDialogType;
-  _set(_crMdOption(option));
+  _set(_crMdOption({
+    ...option
+  }));
 };
 exports.showModalDialog = showModalDialog;
 const showAddItem = exports.showAddItem = (0, _storeApi.bindTo)(showModalDialog, _Type.ModalDialog.ADD_ITEM);

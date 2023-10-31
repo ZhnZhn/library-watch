@@ -8,6 +8,7 @@ var _bindTo = require("../utils/bindTo");
 exports.bindTo = _bindTo.bindTo;
 var _useSubscribe = _interopRequireDefault(require("../components/hooks/useSubscribe"));
 var _useRerender = _interopRequireDefault(require("../components/hooks/useRerender"));
+const _isFn = v => typeof v === "function";
 const createStoreWithSelector = crStore => (0, _zustandLite.createStore)((0, _zustandLite.subscribeWithSelector)(crStore));
 exports.createStoreWithSelector = createStoreWithSelector;
 const getStoreApi = store => [store.setState, store.getState];
@@ -37,10 +38,9 @@ const fCrMsFromFn = (crMs, fn) => function () {
   return crMs(fn(...arguments));
 };
 exports.fCrMsFromFn = fCrMsFromFn;
-const fCrUse = (store, select) => (0, _bindTo.bindTo)(_useSubscribe.default, store, select);
+const fCrUse = (store, select, isSameValue) => (0, _bindTo.bindTo)(_useSubscribe.default, store, select);
 exports.fCrUse = fCrUse;
-const _isFn = v => typeof v === 'function',
-  _reducerUseAtomValue = (value, crOrValue) => _isFn(crOrValue) ? crOrValue(value) : crOrValue;
+const _reducerUseAtomValue = (value, crOrValue) => _isFn(crOrValue) ? crOrValue(value) : crOrValue;
 const atom = initialValue => {
   const _atom = Object.create(null);
   _atom.value = initialValue;

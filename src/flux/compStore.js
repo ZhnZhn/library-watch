@@ -53,9 +53,12 @@ export const showDialog = (dialogType, browserType) => {
 }
 
 export const useMdOption = fCrUse(_compStore, _selectMdOption)
-export const showModalDialog = (modalDialogType, option={}) => {
+export const showModalDialog = (
+  modalDialogType,
+  option={}
+) => {
   option.modalDialogType = modalDialogType
-  _set(_crMdOption(option))
+  _set(_crMdOption({...option}))
 }
 export const showAddItem = bindTo(showModalDialog, MD.ADD_ITEM)
 export const showAlert = bindTo(showModalDialog, MD.ALERT)

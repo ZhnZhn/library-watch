@@ -183,7 +183,7 @@ export const loadItem = (
     setLoading()
     loadItem(option, _loadItemCompleted, _loadItemFailed);
   } else {
-    showAlert(ALREADY_LOADED)
+    setTimeout(() => showAlert(ALREADY_LOADED), 1000)    
     showChart(chartType, browserType)
   }
 }

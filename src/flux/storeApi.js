@@ -9,6 +9,9 @@ import useSubscribe from '../components/hooks/useSubscribe';
 import useRerender from '../components/hooks/useRerender';
 
 export { bindTo } from '../utils/bindTo';
+
+const _isFn = v => typeof v === "function";
+
 export const createStoreWithSelector = (
   crStore
 ) => createStore(
@@ -49,11 +52,14 @@ export const fCrMsFromFn = (
 
 export const fCrUse = (
   store,
-  select
-) => bindTo(useSubscribe, store, select);
+  select,
+  isSameValue
+) => bindTo(useSubscribe,
+  store,
+  select  
+);
 
-const _isFn = v => typeof v === 'function'
-, _reducerUseAtomValue = (
+const _reducerUseAtomValue = (
   value,
   crOrValue
 ) => _isFn(crOrValue)
