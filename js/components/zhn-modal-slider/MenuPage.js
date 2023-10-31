@@ -1,74 +1,63 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _react = require("react");
-
+exports.default = void 0;
+var _uiApi = require("../uiApi");
 var _MenuTitle = _interopRequireDefault(require("./MenuTitle"));
-
 var _MenuItemList = _interopRequireDefault(require("./MenuItemList"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var _fFocus = function _fFocus(ref) {
-  return function () {
-    if (ref && ref.current) {
-      ref.current.focus();
-    }
-  };
+const _fFocus = ref => () => {
+  (0, _uiApi.focusRefInput)(ref);
 };
-
-var MenuPage = function MenuPage(_ref) {
-  var isShow = _ref.isShow,
-      _ref$items = _ref.items,
-      items = _ref$items === void 0 ? [] : _ref$items,
-      style = _ref.style,
-      title = _ref.title,
-      baseTitleCl = _ref.baseTitleCl,
-      itemCl = _ref.itemCl,
-      pageCurrent = _ref.pageCurrent,
-      pageNumber = _ref.pageNumber,
-      onClose = _ref.onClose,
-      children = _ref.children,
-      onNextPage = _ref.onNextPage,
-      onPrevPage = _ref.onPrevPage;
-
-  var _refTitle = (0, _react.useRef)(),
-      _refFirst = (0, _react.useRef)(),
-      _hClickTitle = (0, _react.useCallback)(function () {
-    onPrevPage(pageNumber);
-  }, [onPrevPage, pageNumber]),
-      _isFocus = pageCurrent === pageNumber && isShow;
-
-  (0, _react.useEffect)(function () {
+const MenuPage = _ref => {
+  let {
+    isShow,
+    items = [],
+    style,
+    title,
+    titleCl,
+    itemCl,
+    pageCurrent,
+    pageNumber,
+    onClose,
+    children,
+    onNextPage,
+    onPrevPage
+  } = _ref;
+  const _refTitle = (0, _uiApi.useRef)(),
+    _refFirst = (0, _uiApi.useRef)(),
+    _hClickTitle = (0, _uiApi.useCallback)(() => {
+      onPrevPage(pageNumber);
+    }, [onPrevPage, pageNumber]),
+    _isFocus = pageCurrent === pageNumber && isShow;
+  (0, _uiApi.useEffect)(() => {
     if (_isFocus) {
-      if (_refTitle.current) {
+      if ((0, _uiApi.getRefValue)(_refTitle)) {
         setTimeout(_fFocus(_refTitle), 1000);
-      } else if (_refFirst.current) {
+      } else if ((0, _uiApi.getRefValue)(_refFirst)) {
         setTimeout(_fFocus(_refFirst), 1000);
       }
     }
   });
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: style,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuTitle["default"], {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuTitle.default, {
       ref: _refTitle,
-      titleCl: baseTitleCl,
+      titleCl: titleCl,
       title: title,
       onClick: _hClickTitle
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuItemList["default"], {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuItemList.default, {
       ref: _refFirst,
       items: items,
-      itemCl: itemCl || baseTitleCl,
+      itemCl: itemCl || titleCl,
       pageNumber: pageNumber,
       onNextPage: onNextPage,
       onClose: onClose
     }), children]
   });
 };
+
 /*
 MenuPage.propTypes = {
   isShow: PropTypes.bool,
@@ -87,8 +76,5 @@ MenuPage.propTypes = {
   onClose: PropTypes.func
 }
 */
-
-
-var _default = MenuPage;
-exports["default"] = _default;
+var _default = exports.default = MenuPage;
 //# sourceMappingURL=MenuPage.js.map

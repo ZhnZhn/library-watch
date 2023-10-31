@@ -1,16 +1,16 @@
-import { 
+import {
   useRef,
   useCallback,
-  useEffect
+  useEffect,
+  getRefValue,
+  focusRefInput
 } from '../uiApi';
 
 import MenuTitle from './MenuTitle';
 import MenuItemList from './MenuItemList';
 
 const _fFocus = ref => () => {
-  if (ref && ref.current) {
-    ref.current.focus()
-  }
+  focusRefInput(ref)
 };
 
 const MenuPage = ({
@@ -36,9 +36,9 @@ const MenuPage = ({
 
  useEffect(() => {
    if (_isFocus) {
-     if (_refTitle.current) {
+     if (getRefValue(_refTitle)) {
         setTimeout(_fFocus(_refTitle), 1000)
-     } else if (_refFirst.current) {
+     } else if (getRefValue(_refFirst)) {
         setTimeout(_fFocus(_refFirst), 1000)
      }
    }
