@@ -1,6 +1,8 @@
 import {
   useRef,
-  useCallback
+  useCallback,
+  getRefValue,
+  setRefValue
 } from '../uiApi';
 
 import crCn from '../zhn-utils/crCn';
@@ -26,17 +28,17 @@ const FlatButton = ({
   onClick
 }) => {
   const _refTimeStamp = useRef(null)
-  , _hClick = useCallback((event) => {
+  , _hClick = useCallback(evt => {
     if (timeout === 0) {
-      onClick(event)
+      onClick(evt)
       return;
     }
-    const _timeStampPrev = _refTimeStamp.current
-    , { timeStamp } = event;
+    const _timeStampPrev = getRefValue(_refTimeStamp)
+    , { timeStamp } = evt;
     if (_timeStampPrev == null
         || timeStamp - _timeStampPrev > timeout) {
-      onClick(event)
-      _refTimeStamp.current = timeStamp
+      onClick(evt)
+      setRefValue(_refTimeStamp, timeStamp)
     }
   }, [timeout, onClick])
   , _className = crCn(CL_BT_FLAT, className)
