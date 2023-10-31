@@ -2,7 +2,8 @@ import {
   forwardRef,
   useRef,
   useState,
-  useImperativeHandle
+  useImperativeHandle,
+  focusRefInput
 } from '../uiApi';
 
 const S_ROOT = {
@@ -88,7 +89,7 @@ const InputDate = forwardRef(({
   useImperativeHandle(ref, () => ({
     getValue: () => value,
     isValid: () => isValid,
-    focus: () => _refInput.current.focus()
+    focus: () => focusRefInput(_refInput)
   }), [isValid, value])
 
   return (
