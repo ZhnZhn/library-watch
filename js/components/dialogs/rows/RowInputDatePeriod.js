@@ -24,7 +24,7 @@ const INITIAL_FROM_DATE = (0, _dateFn.getFromDate)(1),
     setValue: FN_NOOP,
     focus: FN_NOOP
   },
-  _getRefValue = ref => ref.current || DF_DATE_COMP;
+  _getRefValue = ref => (0, _uiApi.getRefValue)(ref) || DF_DATE_COMP;
 const RowInputDatePeriod = (0, _uiApi.forwardRef)((_ref, ref) => {
   let {
     isShow,
@@ -66,7 +66,7 @@ const RowInputDatePeriod = (0, _uiApi.forwardRef)((_ref, ref) => {
       };
     },
     focusInput: () => {
-      _getRefValue(_refFromDate).focus();
+      (0, _uiApi.focusRefInput)(_refFromDate);
     },
     focusNotValidInput: () => {
       const _fromDate = _getRefValue(_refFromDate),

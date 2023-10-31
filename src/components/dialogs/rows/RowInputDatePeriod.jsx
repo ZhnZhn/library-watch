@@ -2,8 +2,10 @@ import {
   forwardRef,
   useRef,
   useImperativeHandle,
+  getRefValue,
   getRefInputValue,
-  setRefInputValue
+  setRefInputValue,
+  focusRefInput
 } from '../../uiApi';
 import ShowHide from '../../zhn-atoms/ShowHide';
 import InputDate from '../../zhn-atoms/InputDate';
@@ -31,7 +33,7 @@ const INITIAL_FROM_DATE = getFromDate(1)
    setValue: FN_NOOP,
    focus: FN_NOOP
 }
-, _getRefValue = ref => ref.current || DF_DATE_COMP;
+, _getRefValue = ref => getRefValue(ref) || DF_DATE_COMP;
 
 const RowInputDatePeriod = forwardRef(({
   isShow,
@@ -51,7 +53,7 @@ const RowInputDatePeriod = forwardRef(({
      }),
      setValues: (fromDate, toDate) => {
        setRefInputValue(_refFromDate, fromDate)
-       setRefInputValue(_refToDate, toDate)        
+       setRefInputValue(_refToDate, toDate)
      },
      getValidation: () => {
        const datesMsg = []
@@ -74,7 +76,7 @@ const RowInputDatePeriod = forwardRef(({
          : { isValid: true };
      },
      focusInput: () => {
-       _getRefValue(_refFromDate).focus()
+       focusRefInput(_refFromDate)       
      },
      focusNotValidInput: () => {
        const _fromDate = _getRefValue(_refFromDate)

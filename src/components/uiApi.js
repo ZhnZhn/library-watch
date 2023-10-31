@@ -40,6 +40,13 @@ export const setRefInputValue = (ref, value) => {
   }
 }
 
+export const focusRefInput = ref => {
+  const _inputInst = getRefValue(ref);
+  if (_inputInst && _isFn(_inputInst.focus)) {
+    _inputInst.focus()
+  }
+}
+
 export const focusHtmlElement = el => {
   if (el && _isFn(el.focus)) {
     el.focus()
