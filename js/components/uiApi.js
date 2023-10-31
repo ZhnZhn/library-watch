@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefElement = exports.focusHtmlElement = exports.createElement = exports.cloneElement = exports.Component = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.getRefInputValue = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefElement = exports.focusHtmlElement = exports.createElement = exports.cloneElement = exports.Component = void 0;
 var _react = require("react");
 exports.Component = _react.Component;
 exports.cloneElement = _react.cloneElement;
@@ -16,44 +16,35 @@ exports.useMemo = _react.useMemo;
 exports.useLayoutEffect = _react.useLayoutEffect;
 exports.useEffect = _react.useEffect;
 exports.useImperativeHandle = _react.useImperativeHandle;
-var _isFn = function _isFn(fn) {
-  return typeof fn === 'function';
-};
-var getRefValue = function getRefValue(ref) {
-  return (ref || {}).current;
-};
+const _isFn = fn => typeof fn === 'function';
+const getRefValue = ref => (ref || {}).current;
 exports.getRefValue = getRefValue;
-var setRefValue = function setRefValue(ref, value) {
+const setRefValue = (ref, value) => {
   if (ref) {
     ref.current = value;
   }
 };
 exports.setRefValue = setRefValue;
-var focusHtmlElement = function focusHtmlElement(el) {
+const getRefInputValue = ref => {
+  const _inputInst = getRefValue(ref);
+  return _inputInst && _isFn(_inputInst.getValue) ? _inputInst.getValue() : void 0;
+};
+exports.getRefInputValue = getRefInputValue;
+const focusHtmlElement = el => {
   if (el && _isFn(el.focus)) {
     el.focus();
   }
 };
 exports.focusHtmlElement = focusHtmlElement;
-var focusRefElement = function focusRefElement(ref) {
+const focusRefElement = ref => {
   focusHtmlElement(getRefValue(ref));
 };
 exports.focusRefElement = focusRefElement;
-var _getFirstTouches = function _getFirstTouches(touches) {
-  return touches && touches[0] || {};
-};
-var _getTouchClientX = function _getTouchClientX(touches) {
-  return _getFirstTouches(touches).clientX;
-};
-var _getTouchClientY = function _getTouchClientY(touches) {
-  return _getFirstTouches(touches).clientY;
-};
-var getClientX = function getClientX(evt) {
-  return evt.clientX || _getTouchClientX(evt.targetTouches) || _getTouchClientX(evt.changedTouches) || 0;
-};
+const _getFirstTouches = touches => touches && touches[0] || {};
+const _getTouchClientX = touches => _getFirstTouches(touches).clientX;
+const _getTouchClientY = touches => _getFirstTouches(touches).clientY;
+const getClientX = evt => evt.clientX || _getTouchClientX(evt.targetTouches) || _getTouchClientX(evt.changedTouches) || 0;
 exports.getClientX = getClientX;
-var getClientY = function getClientY(evt) {
-  return evt.clientY || _getTouchClientY(evt.targetTouches) || _getTouchClientY(evt.changedTouches) || 0;
-};
+const getClientY = evt => evt.clientY || _getTouchClientY(evt.targetTouches) || _getTouchClientY(evt.changedTouches) || 0;
 exports.getClientY = getClientY;
 //# sourceMappingURL=uiApi.js.map

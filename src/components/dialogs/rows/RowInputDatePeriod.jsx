@@ -1,7 +1,8 @@
 import {
   forwardRef,
   useRef,
-  useImperativeHandle
+  useImperativeHandle,
+  getRefInputValue
 } from '../../uiApi';
 import ShowHide from '../../zhn-atoms/ShowHide';
 import InputDate from '../../zhn-atoms/InputDate';
@@ -44,8 +45,8 @@ const RowInputDatePeriod = forwardRef(({
 
   useImperativeHandle(ref, () => ({
      getValues: () => ({
-       fromDate: _getRefValue(_refFromDate).getValue(),
-       toDate: _getRefValue(_refToDate).getValue()
+       fromDate: getRefInputValue(_refFromDate),
+       toDate: getRefInputValue(_refToDate)
      }),
      setValues: (fromDate, toDate) => {
         _getRefValue(_refFromDate).setValue(fromDate)
