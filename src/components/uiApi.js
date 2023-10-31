@@ -26,26 +26,30 @@ export const setRefValue = (
   }
 }
 
-export const getRefInputValue = (ref) => {
+const _fReturnMethod = (
+  methodName,
+  dfValue
+) => (ref) => {
   const _inputInst = getRefValue(ref);
-  return _inputInst && _isFn(_inputInst.getValue)
-    ? _inputInst.getValue()
-    : void 0;
+  return _inputInst && _isFn(_inputInst[methodName])
+    ? _inputInst[methodName]()
+    : dfValue;
 }
 
-export const setRefInputValue = (ref, value) => {
-  const _inputInst = getRefValue(ref);
-  if (_inputInst && _isFn(_inputInst.setValue)) {
-    _inputInst.setValue(value)
-  }
-}
+export const isRefInputValid = _fReturnMethod("isValid", false)
+export const getRefInputValue = _fReturnMethod("getValue")
 
-export const focusRefInput = ref => {
+const _fCallMethod = (
+  methodName
+) => (ref, value) => {
   const _inputInst = getRefValue(ref);
-  if (_inputInst && _isFn(_inputInst.focus)) {
-    _inputInst.focus()
+  if (_inputInst && _isFn(_inputInst[methodName])) {
+    _inputInst[methodName](value)
   }
-}
+};
+
+export const setRefInputValue = _fCallMethod("setValue")
+export const focusRefInput = _fCallMethod("focus")
 
 export const focusHtmlElement = el => {
   if (el && _isFn(el.focus)) {

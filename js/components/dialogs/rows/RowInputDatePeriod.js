@@ -17,14 +17,7 @@ const INITIAL_FROM_DATE = (0, _dateFn.getFromDate)(1),
   TO_DATE = "To Date",
   ERROR_FROM_NEAR_TO = "From Date is near that To Date",
   DF_MSG_ON_NOT_VALID_FORMAT = item => `${item} is not in valid format`,
-  FN_NOOP = () => {},
-  DF_DATE_COMP = {
-    isValid: () => false,
-    getValue: FN_NOOP,
-    setValue: FN_NOOP,
-    focus: FN_NOOP
-  },
-  _getRefValue = ref => (0, _uiApi.getRefValue)(ref) || DF_DATE_COMP;
+  _getTrimRefInputValue = ref => ((0, _uiApi.getRefInputValue)(ref) || "").trim();
 const RowInputDatePeriod = (0, _uiApi.forwardRef)((_ref, ref) => {
   let {
     isShow,
@@ -46,16 +39,14 @@ const RowInputDatePeriod = (0, _uiApi.forwardRef)((_ref, ref) => {
       (0, _uiApi.setRefInputValue)(_refToDate, toDate);
     },
     getValidation: () => {
-      const datesMsg = [],
-        _fromDate = _getRefValue(_refFromDate),
-        _toDate = _getRefValue(_refToDate);
-      if (!_fromDate.isValid()) {
+      const datesMsg = [];
+      if (!(0, _uiApi.isRefInputValid)(_refFromDate)) {
         datesMsg.push(msgOnNotValidFormat(FROM_DATE));
       }
-      if (!_toDate.isValid()) {
+      if (!(0, _uiApi.isRefInputValid)(_refToDate)) {
         datesMsg.push(msgOnNotValidFormat(TO_DATE));
       }
-      if (_fromDate.getValue().trim() > _toDate.getValue().trim()) {
+      if (_getTrimRefInputValue(_refFromDate) > _getTrimRefInputValue(_refToDate)) {
         datesMsg.push(ERROR_FROM_NEAR_TO);
       }
       return datesMsg.length > 0 ? {
@@ -69,14 +60,12 @@ const RowInputDatePeriod = (0, _uiApi.forwardRef)((_ref, ref) => {
       (0, _uiApi.focusRefInput)(_refFromDate);
     },
     focusNotValidInput: () => {
-      const _fromDate = _getRefValue(_refFromDate),
-        _toDate = _getRefValue(_refToDate);
-      if (!_fromDate.isValid()) {
-        _fromDate.focus();
+      if (!(0, _uiApi.isRefInputValid)(_refFromDate)) {
+        (0, _uiApi.focusRefInput)(_refFromDate);
         return true;
       }
-      if (!_toDate.isValid()) {
-        _toDate.focus();
+      if (!(0, _uiApi.isRefInputValid)(_refToDate)) {
+        (0, _uiApi.focusRefInput)(_refToDate);
         return true;
       }
       return false;

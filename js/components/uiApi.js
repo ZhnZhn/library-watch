@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.setRefValue = exports.setRefInputValue = exports.memo = exports.getRefValue = exports.getRefInputValue = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefInput = exports.focusRefElement = exports.focusHtmlElement = exports.createElement = exports.cloneElement = exports.Component = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.setRefValue = exports.setRefInputValue = exports.memo = exports.isRefInputValid = exports.getRefValue = exports.getRefInputValue = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefInput = exports.focusRefElement = exports.focusHtmlElement = exports.createElement = exports.cloneElement = exports.Component = void 0;
 var _react = require("react");
 exports.Component = _react.Component;
 exports.cloneElement = _react.cloneElement;
@@ -25,25 +25,20 @@ const setRefValue = (ref, value) => {
   }
 };
 exports.setRefValue = setRefValue;
-const getRefInputValue = ref => {
+const _fReturnMethod = (methodName, dfValue) => ref => {
   const _inputInst = getRefValue(ref);
-  return _inputInst && _isFn(_inputInst.getValue) ? _inputInst.getValue() : void 0;
+  return _inputInst && _isFn(_inputInst[methodName]) ? _inputInst[methodName]() : dfValue;
 };
-exports.getRefInputValue = getRefInputValue;
-const setRefInputValue = (ref, value) => {
+const isRefInputValid = exports.isRefInputValid = _fReturnMethod("isValid", false);
+const getRefInputValue = exports.getRefInputValue = _fReturnMethod("getValue");
+const _fCallMethod = methodName => (ref, value) => {
   const _inputInst = getRefValue(ref);
-  if (_inputInst && _isFn(_inputInst.setValue)) {
-    _inputInst.setValue(value);
+  if (_inputInst && _isFn(_inputInst[methodName])) {
+    _inputInst[methodName](value);
   }
 };
-exports.setRefInputValue = setRefInputValue;
-const focusRefInput = ref => {
-  const _inputInst = getRefValue(ref);
-  if (_inputInst && _isFn(_inputInst.focus)) {
-    _inputInst.focus();
-  }
-};
-exports.focusRefInput = focusRefInput;
+const setRefInputValue = exports.setRefInputValue = _fCallMethod("setValue");
+const focusRefInput = exports.focusRefInput = _fCallMethod("focus");
 const focusHtmlElement = el => {
   if (el && _isFn(el.focus)) {
     el.focus();

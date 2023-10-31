@@ -2,7 +2,7 @@ import {
   forwardRef,
   useRef,
   useImperativeHandle,
-  getRefValue,
+  isRefInputValid,
   getRefInputValue,
   setRefInputValue,
   focusRefInput
@@ -26,14 +26,7 @@ const INITIAL_FROM_DATE = getFromDate(1)
 , TO_DATE = "To Date"
 , ERROR_FROM_NEAR_TO = "From Date is near that To Date"
 , DF_MSG_ON_NOT_VALID_FORMAT = item => `${item} is not in valid format`
-, FN_NOOP = () => {}
-, DF_DATE_COMP = {
-   isValid: () => false,
-   getValue: FN_NOOP,
-   setValue: FN_NOOP,
-   focus: FN_NOOP
-}
-, _getRefValue = ref => getRefValue(ref) || DF_DATE_COMP;
+, _getTrimRefInputValue = ref => (getRefInputValue(ref) || "").trim();
 
 const RowInputDatePeriod = forwardRef(({
   isShow,
@@ -56,18 +49,16 @@ const RowInputDatePeriod = forwardRef(({
        setRefInputValue(_refToDate, toDate)
      },
      getValidation: () => {
-       const datesMsg = []
-       , _fromDate = _getRefValue(_refFromDate)
-       , _toDate = _getRefValue(_refToDate);
+       const datesMsg = [];
 
-       if (!_fromDate.isValid()) {
+       if (!isRefInputValid(_refFromDate)) {
          datesMsg.push(msgOnNotValidFormat(FROM_DATE))
        }
-       if (!_toDate.isValid()) {
+       if (!isRefInputValid(_refToDate)) {
          datesMsg.push(msgOnNotValidFormat(TO_DATE))
        }
 
-       if (_fromDate.getValue().trim() > _toDate.getValue().trim()) {
+       if (_getTrimRefInputValue(_refFromDate) > _getTrimRefInputValue(_refToDate)) {
          datesMsg.push(ERROR_FROM_NEAR_TO)
        }
 
@@ -76,18 +67,15 @@ const RowInputDatePeriod = forwardRef(({
          : { isValid: true };
      },
      focusInput: () => {
-       focusRefInput(_refFromDate)       
+       focusRefInput(_refFromDate)
      },
      focusNotValidInput: () => {
-       const _fromDate = _getRefValue(_refFromDate)
-       , _toDate = _getRefValue(_refToDate);
-
-       if (!_fromDate.isValid()){
-          _fromDate.focus()
+       if (!isRefInputValid(_refFromDate)){
+          focusRefInput(_refFromDate)
           return true;
        }
-       if (!_toDate.isValid()){
-         _toDate.focus()
+       if (!isRefInputValid(_refToDate)){
+         focusRefInput(_refToDate)
          return true;
        }
        return false;
