@@ -2,7 +2,8 @@ import {
   forwardRef,
   useRef,
   useImperativeHandle,
-  getRefInputValue
+  getRefInputValue,
+  setRefInputValue
 } from '../../uiApi';
 import ShowHide from '../../zhn-atoms/ShowHide';
 import InputDate from '../../zhn-atoms/InputDate';
@@ -49,8 +50,8 @@ const RowInputDatePeriod = forwardRef(({
        toDate: getRefInputValue(_refToDate)
      }),
      setValues: (fromDate, toDate) => {
-        _getRefValue(_refFromDate).setValue(fromDate)
-        _getRefValue(_refToDate).setValue(toDate)
+       setRefInputValue(_refFromDate, fromDate)
+       setRefInputValue(_refToDate, toDate)        
      },
      getValidation: () => {
        const datesMsg = []

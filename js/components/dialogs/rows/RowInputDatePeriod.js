@@ -42,8 +42,8 @@ const RowInputDatePeriod = (0, _uiApi.forwardRef)((_ref, ref) => {
       toDate: (0, _uiApi.getRefInputValue)(_refToDate)
     }),
     setValues: (fromDate, toDate) => {
-      _getRefValue(_refFromDate).setValue(fromDate);
-      _getRefValue(_refToDate).setValue(toDate);
+      (0, _uiApi.setRefInputValue)(_refFromDate, fromDate);
+      (0, _uiApi.setRefInputValue)(_refToDate, toDate);
     },
     getValidation: () => {
       const datesMsg = [],

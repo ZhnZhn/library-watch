@@ -27,10 +27,17 @@ export const setRefValue = (
 }
 
 export const getRefInputValue = (ref) => {
-  const _inputInst = getRefValue(ref)
+  const _inputInst = getRefValue(ref);
   return _inputInst && _isFn(_inputInst.getValue)
     ? _inputInst.getValue()
     : void 0;
+}
+
+export const setRefInputValue = (ref, value) => {
+  const _inputInst = getRefValue(ref);
+  if (_inputInst && _isFn(_inputInst.setValue)) {
+    _inputInst.setValue(value)
+  }
 }
 
 export const focusHtmlElement = el => {
