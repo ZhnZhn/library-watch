@@ -1,3 +1,5 @@
+import { forwardRef } from '../uiApi'
+
 import crCn from '../zhn-utils/crCn';
 import {
   S_BLOCK,
@@ -5,26 +7,33 @@ import {
   CL_SHOW_POPUP
 } from '../styles/CL';
 
-
-const ShowHide = ({
+const ShowHide = forwardRef(({
   isShow,
   style,
   className,
+  onKeyDown,
   children
-}) => {
+}, ref) => {
   const _className = crCn(
-     className, [isShow, CL_SHOW_POPUP]
+     className,
+     [isShow, CL_SHOW_POPUP]
   )
-  , _style = isShow ? S_BLOCK : S_NONE;
+  , _style = isShow
+     ? S_BLOCK
+     : S_NONE;
 
   return (
     <div
+       ref={ref}
+       role="presentation"
+       aria-hidden={isShow}
        className={_className}
        style={{...style, ..._style}}
-      >
+       onKeyDown={onKeyDown}
+    >
       {children}
     </div>
   );
-};
+});
 
 export default ShowHide
