@@ -18,3 +18,43 @@
   top: 6px;
   right: 0;
 }
+
+
+.item {
+  margin-bottom: 5px;
+  box-shadow: rgb(0 0 0 / 60%) 1px 4px 6px 1px;
+}
+
+.item-title {   
+  background-color: #404040;
+  color: #000;  
+  padding: 8px; 
+  line-height: 1.5;
+  word-wrap: break-word;        
+  font-size: 16px;
+  font-weight: 700;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-bottom: medium solid transparent;   
+  cursor: pointer;
+}
+
+.item-title:focus {
+  border-bottom: medium solid #80c040;
+  outline: 0;
+}
+.item-title:active {
+  outline: 0;
+}
+
+.link-wrapper {
+  display: block;
+  word-break: break-word;
+  white-space: pre-line;
+  border-bottom: medium solid transparent;
+}
+.link-wrapper:focus,
+.link-wrapper:hover {
+  border-bottom: solid #1b75bb;
+  outline: 0;
+}

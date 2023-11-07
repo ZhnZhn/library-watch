@@ -10,6 +10,10 @@ export const CL_MENU_MORE = "popup-menu charts__menu-more"
 export const CL_ROW_ITEM = `row-item ${CL_NOT_SELECTED}`
 export const CL_ROW_MENU_MORE = `row__pane-topic ${CL_NOT_SELECTED}`
 
+export const CL_ITEM = "item"
+export const CL_ITEM_TITLE = `item-title ${CL_NOT_SELECTED}`
+export const CL_LINK_WARPPER = "link-wrapper"
+
 export const CL_SOURCE_LINK = "source-link"
 
 export const CL_LIB = "library"
