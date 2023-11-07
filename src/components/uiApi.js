@@ -61,6 +61,15 @@ export const focusRefElement = ref => {
   focusHtmlElement(getRefValue(ref));
 };
 
+export const focusRefNextSiblingFirstChildElement = (
+  ref
+) => {
+  focusHtmlElement(((getRefValue(ref) || {})
+    .nextElementSibling || {})
+    .firstElementChild
+  )
+}
+
 const _getFirstTouches = (
   touches
 ) => (touches && touches[0]) || {};

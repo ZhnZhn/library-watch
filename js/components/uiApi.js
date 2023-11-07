@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.setRefValue = exports.setRefInputValue = exports.memo = exports.isRefInputValid = exports.getRefValue = exports.getRefInputValue = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefInput = exports.focusRefElement = exports.focusHtmlElement = exports.createElement = exports.cloneElement = exports.Component = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.setRefValue = exports.setRefInputValue = exports.memo = exports.isRefInputValid = exports.getRefValue = exports.getRefInputValue = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefNextSiblingFirstChildElement = exports.focusRefInput = exports.focusRefElement = exports.focusHtmlElement = exports.createElement = exports.cloneElement = exports.Component = void 0;
 var _react = require("react");
 exports.Component = _react.Component;
 exports.cloneElement = _react.cloneElement;
@@ -49,6 +49,10 @@ const focusRefElement = ref => {
   focusHtmlElement(getRefValue(ref));
 };
 exports.focusRefElement = focusRefElement;
+const focusRefNextSiblingFirstChildElement = ref => {
+  focusHtmlElement(((getRefValue(ref) || {}).nextElementSibling || {}).firstElementChild);
+};
+exports.focusRefNextSiblingFirstChildElement = focusRefNextSiblingFirstChildElement;
 const _getFirstTouches = touches => touches && touches[0] || {};
 const _getTouchClientX = touches => _getFirstTouches(touches).clientX;
 const _getTouchClientY = touches => _getFirstTouches(touches).clientY;
