@@ -1,0 +1,21 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useKeyDelete.js"
+ ],
+ "file": "../../../src/components/hooks/useKeyDelete.js",
+ "names": [
+  "_fUseKey",
+  "_interopRequireDefault",
+  "require",
+  "_isKeyDelete",
+  "evt",
+  "keyCode",
+  "useKeyDelete",
+  "fUseKey",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,QAAA,GAAAC,sBAAA,CAAAC,OAAA;AAEA,MAAMC,YAAY,GAAGC,GAAG,IAAIA,GAAG,CAACC,OAAO,KAAK,EAAE;EAC5CC,YAAY,GAAG,IAAAC,gBAAO,EAACJ,YAAY,CAAC;AAAC,IAAAK,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAExBJ,YAAY"
+}
