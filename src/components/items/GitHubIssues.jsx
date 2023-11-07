@@ -22,9 +22,22 @@ onWatchItem, requestType
 */
 
 const GitHubIssues = (props) => {
-  const { caption, repo, issues, onCloseItem, onWatchItem } = props
-  , [isShow, _hToggle] = useToggle(true)
-  , _hClickWatch = useWatchItem(onWatchItem, props, ITEM_DESCRIPTION)
+  const {
+    caption,
+    repo,
+    issues,
+    onCloseItem,
+    onWatchItem
+  } = props
+  , [
+    isShow,
+    _hToggle
+  ] = useToggle(true)
+  , _hClickWatch = useWatchItem(
+     onWatchItem,
+     props,
+     ITEM_DESCRIPTION
+   )
   , _number = issues.length;
   return (
     <div style={S_ROOT}>

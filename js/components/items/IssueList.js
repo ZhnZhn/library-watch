@@ -3,24 +3,9 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _A = _interopRequireDefault(require("../zhn-atoms/A"));
-var _CL = require("../styles/CL");
-var _Item = require("./Item.Style");
-var _DivComments = _interopRequireDefault(require("./DivComments"));
 var _dateFn = require("../../utils/dateFn");
+var _IssueItem = _interopRequireDefault(require("./IssueItem"));
 var _jsxRuntime = require("react/jsx-runtime");
-const S_STATE = {
-    ..._Item.S_PR_8,
-    color: '#d7bb52'
-  },
-  S_NUMBER = {
-    ..._Item.S_PR_8,
-    color: '#80c040'
-  },
-  S_DATE = {
-    ..._Item.S_PR_8,
-    ..._Item.S_COLOR_GREY
-  };
 const IssueList = _ref => {
   let {
     issues
@@ -32,37 +17,22 @@ const IssueList = _ref => {
         created_at,
         updated_at,
         title,
+        body,
         comments,
         html_url
       } = item,
       _creadedAt = (0, _dateFn.crDateAgo)(created_at),
       _updated = created_at === updated_at ? '' : (0, _dateFn.crDateAgo)(updated_at),
       _updatedAt = _creadedAt === _updated ? '' : _updated;
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      className: _CL.CL_ROW_ITEM,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_A.default.Link, {
-        href: html_url,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-          style: _Item.S_PB_8,
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            style: S_STATE,
-            children: state
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            style: S_NUMBER,
-            children: `(#${number})`
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            style: S_DATE,
-            children: _creadedAt
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            style: S_DATE,
-            children: _updatedAt
-          })]
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-          children: title
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DivComments.default, {
-          n: comments
-        })]
-      })
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_IssueItem.default, {
+      url: html_url,
+      state: state,
+      number: number,
+      createdAt: _creadedAt,
+      updatedAt: _updatedAt,
+      title: title,
+      comments: comments,
+      body: body
     }, index);
   });
 };

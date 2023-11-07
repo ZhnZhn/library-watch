@@ -1,28 +1,9 @@
-import A from '../zhn-atoms/A';
-import { CL_ROW_ITEM } from '../styles/CL';
-import {
-  S_COLOR_GREY,
-  S_PR_8,
-  S_PB_8
-} from './Item.Style';
-import DivComments from './DivComments';
-
 import { crDateAgo } from '../../utils/dateFn';
+import IssueItem from './IssueItem';
 
-const S_STATE = {
-  ...S_PR_8,
-  color: '#d7bb52'
-}
-, S_NUMBER = {
-  ...S_PR_8,
-  color: '#80c040'
-}
-, S_DATE = {
-  ...S_PR_8,
-  ...S_COLOR_GREY
-};
-
-const IssueList = ({ issues }) => (issues || [])
+const IssueList = ({
+  issues
+}) => (issues || [])
   .map((item, index) => {
     const {
       state,
@@ -30,6 +11,7 @@ const IssueList = ({ issues }) => (issues || [])
       created_at,
       updated_at,
       title,
+      body,
       comments,
       html_url
     } = item
@@ -42,28 +24,17 @@ const IssueList = ({ issues }) => (issues || [])
         : _updated;
 
    return (
-      <div key={index} className={CL_ROW_ITEM}>
-        <A.Link href={html_url}>
-           <div style={S_PB_8}>
-             <span style={S_STATE}>
-               {state}
-             </span>
-             <span style={S_NUMBER}>
-               {`(#${number})`}
-             </span>
-             <span style={S_DATE}>
-               {_creadedAt}
-             </span>
-             <span style={S_DATE}>
-               {_updatedAt}
-             </span>
-           </div>
-           <div>
-             {title}
-           </div>
-           <DivComments n={comments} />
-        </A.Link>
-      </div>
+      <IssueItem
+        key={index}
+        url={html_url}
+        state={state}
+        number={number}
+        createdAt={_creadedAt}
+        updatedAt={_updatedAt}
+        title={title}
+        comments={comments}
+        body={body}
+      />
    );
 })
 
