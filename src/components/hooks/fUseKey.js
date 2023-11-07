@@ -1,10 +1,17 @@
 import { useCallback } from '../uiApi';
 
 /*eslint-disable react-hooks/exhaustive-deps */
-const fUseKey = isKey => (fn, deps) => useCallback(event => {
-  if (isKey(event)) {
-    event.preventDefault()
-    event.stopPropagation()
+const fUseKey = isKey => (
+  fn, {
+    deps,
+    isPropagation
+  } = {}
+) => useCallback(evt => {
+  if (isKey(evt)) {
+    evt.preventDefault()
+    if (!isPropagation) {
+      evt.stopPropagation()
+    }
     fn(event)
   }
 }, deps || []);

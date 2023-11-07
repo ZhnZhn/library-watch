@@ -1,0 +1,22 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useKeyEscape.js"
+ ],
+ "file": "../../../src/components/hooks/useKeyEscape.js",
+ "names": [
+  "_fUseKey",
+  "_interopRequireDefault",
+  "require",
+  "_isKeyEscape",
+  "evt",
+  "keyCode",
+  "key",
+  "useKeyEscape",
+  "fUseKey",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,QAAA,GAAAC,sBAAA,CAAAC,OAAA;AAEA,MAAMC,YAAY,GAAGC,GAAG,IACtBA,GAAG,CAACC,OAAO,KAAK,EAAE,IAAID,GAAG,CAACE,GAAG,KAAK,QAAQ;EAC1CC,YAAY,GAAG,IAAAC,gBAAO,EAACL,YAAY,CAAC;AAAC,IAAAM,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAExBJ,YAAY"
+}
