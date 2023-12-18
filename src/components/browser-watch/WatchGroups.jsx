@@ -14,11 +14,13 @@ const { OpenClose2 } = Comp
 , S_GROUP_DIV = { lineHeight: 2 }
 
 const WatchGroups = ({
+  refFirstItem,
   isModeEdit,
   groups
 }) => _isArr(groups) ? groups
-  .map(({caption, lists}) => (
+  .map(({caption, lists}, index) => (
       <OpenClose2
+         refItem={index === 0 ? refFirstItem : void 0}
          key={caption}
          style={S_GROUP_DIV}
          caption={caption}

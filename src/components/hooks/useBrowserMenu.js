@@ -10,8 +10,8 @@ const useBrowserMenu = (
 ) => {
   const refFirstItem = useRef();
 
-  useEffect(() => {
-    if (isShow && menu) {
+  useEffect(() => {    
+    if (menu && isShow) {
       focusRefElement(refFirstItem)
     }
   }, [isShow, menu])

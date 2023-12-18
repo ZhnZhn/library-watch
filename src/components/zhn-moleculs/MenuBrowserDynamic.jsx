@@ -5,13 +5,14 @@ import {
   getRefValue,
   setRefValue
 } from '../uiApi';
+
 import useBool from '../hooks/useBool';
+import useBrowserMenu from '../hooks/useBrowserMenu';
 
 import Browser from '../zhn-atoms/Browser';
 import CaptionRow from '../zhn-atoms/CaptionRow';
 import ScrollPane from '../zhn-atoms/ScrollPane';
 import MenuPart from './MenuPart';
-import useBrowserMenu from './useBrowserMenu';
 
 const S_BROWSER = { paddingRight: 0 }
 , S_SCROLL_DIV = {

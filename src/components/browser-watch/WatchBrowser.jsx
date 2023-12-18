@@ -8,6 +8,7 @@ import {
 
 import useBool from '../hooks/useBool';
 import useToggle from '../hooks/useToggle';
+import useBrowserMenu from '../hooks/useBrowserMenu';
 
 import {
   getWatchList,
@@ -99,6 +100,11 @@ const WatchBrowser = ({
   ], [isDoubleWatch])
   // hideComp, showComp
   /*eslint-enable react-hooks/exhaustive-deps */
+  , _refFirstItem = useBrowserMenu(
+    isShowComp,
+    watchList
+  );
+
   useMsBrowser(msBrowser => {
     if (msBrowser && msBrowser.id === browserType) {
       _handlerShow()
@@ -135,7 +141,7 @@ const WatchBrowser = ({
          onClose={_handlerHide}
       >
         <ButtonSave
-          className={CL_BT_CAPTION}          
+          className={CL_BT_CAPTION}
         />
         <ButtonCircle
            isWithoutDefault={true}
@@ -177,6 +183,7 @@ const WatchBrowser = ({
       />
       <ScrollPane className={_scrollClass}>
         <WatchGroups
+           refFirstItem={_refFirstItem}
            isModeEdit={isModeEdit}
            groups={groups}
         />

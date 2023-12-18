@@ -6,6 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
+var _useBrowserMenu = _interopRequireDefault(require("../hooks/useBrowserMenu"));
 var _Handlers = require("./Handlers");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _EditBar = _interopRequireDefault(require("./EditBar"));
@@ -20,8 +21,8 @@ const {
   ScrollPane
 } = _Comp.default;
 const CL_BROWSER_WATCH = "browser-watch",
-  CL_BROWSER_WATCH__30 = CL_BROWSER_WATCH + "--1r",
-  CL_BROWSER_WATCH__60 = CL_BROWSER_WATCH + "--2r",
+  CL_BROWSER_WATCH__30 = `${CL_BROWSER_WATCH}--1r`,
+  CL_BROWSER_WATCH__60 = `${CL_BROWSER_WATCH}--2r`,
   CL_BT_CAPTION = "bt__watch__caption",
   S_BROWSER = {
     maxWidth: 500,
@@ -61,9 +62,10 @@ const WatchBrowser = _ref => {
       if (!isDoubleWatch) {
         showComp();
       }
-    }], [isDoubleWatch]);
-  // hideComp, showComp
-  /*eslint-enable react-hooks/exhaustive-deps */
+    }], [isDoubleWatch])
+    // hideComp, showComp
+    /*eslint-enable react-hooks/exhaustive-deps */,
+    _refFirstItem = (0, _useBrowserMenu.default)(isShowComp, watchList);
   useMsBrowser(msBrowser => {
     if (msBrowser && msBrowser.id === browserType) {
       _handlerShow();
@@ -131,12 +133,12 @@ const WatchBrowser = _ref => {
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ScrollPane, {
       className: _scrollClass,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchGroups.default, {
+        refFirstItem: _refFirstItem,
         isModeEdit: isModeEdit,
         groups: groups
       })
     })]
   });
 };
-var _default = WatchBrowser;
-exports.default = _default;
+var _default = exports.default = WatchBrowser;
 //# sourceMappingURL=WatchBrowser.js.map

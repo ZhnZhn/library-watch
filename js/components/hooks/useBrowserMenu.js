@@ -6,7 +6,7 @@ var _uiApi = require("../uiApi");
 const useBrowserMenu = (isShow, menu) => {
   const refFirstItem = (0, _uiApi.useRef)();
   (0, _uiApi.useEffect)(() => {
-    if (isShow && menu) {
+    if (menu && isShow) {
       (0, _uiApi.focusRefElement)(refFirstItem);
     }
   }, [isShow, menu]);
