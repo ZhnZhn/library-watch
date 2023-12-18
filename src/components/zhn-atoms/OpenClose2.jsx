@@ -1,4 +1,6 @@
 //import PropTypes from "prop-types";
+import { bindTo } from '../uiApi';
+
 import useKeyEnter from '../hooks/useKeyEnter';
 import useToggle from '../hooks/useToggle';
 import {
@@ -59,8 +61,8 @@ const OpenClose2 = ({
   , _dragOption = isDraggable
      ? {
          draggable: true,
-         onDragStart: onDragStart.bind(null, option),
-         onDrop: onDrop.bind(null, option),
+         onDragStart: bindTo(onDragStart, option),
+         onDrop: bindTo(onDrop, option),
          onDragEnter: onDragEnter,
          onDragOver: onDragOver,
          onDragLeave: onDragLeave

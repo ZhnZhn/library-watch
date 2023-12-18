@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _uiApi = require("../uiApi");
 var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _CL = require("../styles/CL");
@@ -56,8 +57,8 @@ const OpenClose2 = _ref => {
     _hKeyDown = (0, _useKeyEnter.default)(_hToggle),
     _dragOption = isDraggable ? {
       draggable: true,
-      onDragStart: onDragStart.bind(null, option),
-      onDrop: onDrop.bind(null, option),
+      onDragStart: (0, _uiApi.bindTo)(onDragStart, option),
+      onDrop: (0, _uiApi.bindTo)(onDrop, option),
       onDragEnter: onDragEnter,
       onDragOver: onDragOver,
       onDragLeave: onDragLeave
