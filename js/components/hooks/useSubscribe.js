@@ -1,16 +1,14 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-/*eslint-disable react-hooks/exhaustive-deps */
+var _useRefInit = _interopRequireDefault(require("./useRefInit"));
 const useSubscribe = (store, selector, onChange) => {
-  (0, _uiApi.useEffect)(() => {
-    return store.subscribe(selector, onChange);
-  }, []);
-  //onChange
+  const _subscribe = (0, _useRefInit.default)(() => rerender => (rerender(), store.subscribe(selector, onChange)))[0],
+    _getSnapshot = (0, _useRefInit.default)(() => () => selector(store.getState()))[0];
+  (0, _uiApi.useSyncExternalStore)(_subscribe, _getSnapshot);
 };
-/*eslint-disable react-hooks/exhaustive-deps */
-var _default = useSubscribe;
-exports.default = _default;
+var _default = exports.default = useSubscribe;
 //# sourceMappingURL=useSubscribe.js.map

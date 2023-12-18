@@ -1,12 +1,17 @@
-import { useEffect } from '../uiApi';
+import { useSyncExternalStore } from '../uiApi';
+import useRefInit from './useRefInit';
 
-/*eslint-disable react-hooks/exhaustive-deps */
-const useSubscribe = (store, selector, onChange) => {
-  useEffect(() => {
-    return store.subscribe(selector, onChange);
-  }, [])
-  //onChange
+const useSubscribe = (
+  store,
+  selector,
+  onChange
+) => {
+  const _subscribe = useRefInit(() => (rerender) => (rerender(), store.subscribe(selector, onChange)))[0]
+  , _getSnapshot = useRefInit(() => () => selector(store.getState()))[0];
+  useSyncExternalStore(
+    _subscribe,
+    _getSnapshot
+  )
 }
-/*eslint-disable react-hooks/exhaustive-deps */
 
 export default useSubscribe
