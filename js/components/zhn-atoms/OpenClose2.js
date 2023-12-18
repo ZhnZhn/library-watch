@@ -34,6 +34,7 @@ const CL_ROW_CAPTION = 'zhn-oc not-selected',
   PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 const OpenClose2 = _ref => {
   let {
+    refItem,
     isClose = true,
     style,
     styleNotSelected,
@@ -68,6 +69,7 @@ const OpenClose2 = _ref => {
       ...style
     },
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      ref: refItem,
       tabIndex: "0",
       role: "menuitem",
       className: CL_ROW_CAPTION,

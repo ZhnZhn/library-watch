@@ -6,7 +6,7 @@ import {
   S_INLINE_BLOCK,
   S_NONE,
   CL_SHOW_POPUP
-} from '../styles/CL'
+} from '../styles/CL';
 
 const CL_ROW_CAPTION = 'zhn-oc not-selected'
 , S_ROOT = {
@@ -14,7 +14,7 @@ const CL_ROW_CAPTION = 'zhn-oc not-selected'
   lineHeight: 2
 },
 S_SVG = {
-  ...S_INLINE_BLOCK,  
+  ...S_INLINE_BLOCK,
   width: 16,
   height: 16
 },
@@ -33,6 +33,7 @@ S_CAPTION = {
 , PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
 const OpenClose2 = ({
+  refItem,
   isClose=true,
   style,
   styleNotSelected,
@@ -66,16 +67,29 @@ const OpenClose2 = ({
        }
      : void 0
   , [
-    _pathV, _fillV, _styleCollapse, _classShow, _styleNotSelected
+    _pathV,
+    _fillV,
+    _styleCollapse,
+    _classShow,
+    _styleNotSelected
   ] = isOpen ? [
-    PATH_OPEN, fillOpen, S_BLOCK, CL_SHOW_POPUP, null
+    PATH_OPEN,
+    fillOpen,
+    S_BLOCK,
+    CL_SHOW_POPUP,
+    null
   ] : [
-    PATH_CLOSE, fillClose, S_NONE, null, styleNotSelected
+    PATH_CLOSE,
+    fillClose,
+    S_NONE,
+    null,
+    styleNotSelected
   ];
 
   return (
     <div style={{...S_ROOT, ...style}}>
       <div
+         ref={refItem}
          tabIndex="0"
          role="menuitem"
          className={CL_ROW_CAPTION}
