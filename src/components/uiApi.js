@@ -1,4 +1,4 @@
-export { bindTo } from '../utils/bindTo'; 
+export { bindTo } from '../utils/bindTo';
 
 export {
   Component,
@@ -13,6 +13,7 @@ export {
   useMemo,
   useLayoutEffect,
   useEffect,
+  useSyncExternalStore,
   useImperativeHandle
 } from 'react';
 
