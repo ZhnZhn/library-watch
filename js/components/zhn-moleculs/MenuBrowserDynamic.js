@@ -9,6 +9,7 @@ var _Browser = _interopRequireDefault(require("../zhn-atoms/Browser"));
 var _CaptionRow = _interopRequireDefault(require("../zhn-atoms/CaptionRow"));
 var _ScrollPane = _interopRequireDefault(require("../zhn-atoms/ScrollPane"));
 var _MenuPart = _interopRequireDefault(require("./MenuPart"));
+var _useBrowserMenu = _interopRequireDefault(require("./useBrowserMenu"));
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 const S_BROWSER = {
@@ -34,7 +35,8 @@ const MenuBrowserDynamic = _ref => {
   const _refIsLoaded = (0, _uiApi.useRef)(false),
     _refIsMounted = (0, _uiApi.useRef)(false),
     [isShow, _hShow, _hHide] = (0, _useBool.default)(isInitShow),
-    [menuItems, setMenuItems] = (0, _uiApi.useState)([]);
+    [menuItems, setMenuItems] = (0, _uiApi.useState)([]),
+    _refFirstItem = (0, _useBrowserMenu.default)(isShow, menuItems);
   useMsBrowserDynamic(msBrowserDynamic => {
     if (msBrowserDynamic) {
       if (msBrowserDynamic.browserType === browserType) {
@@ -79,11 +81,11 @@ const MenuBrowserDynamic = _ref => {
       children: [menuItems.map((menuPart, index) => /*#__PURE__*/(0, _react.createElement)(_MenuPart.default, {
         ...menuPart,
         key: index,
-        rowClass: rowClass
+        rowClass: rowClass,
+        refFirstItem: index === 0 ? _refFirstItem : void 0
       })), children]
     })]
   });
 };
-var _default = MenuBrowserDynamic;
-exports.default = _default;
+var _default = exports.default = MenuBrowserDynamic;
 //# sourceMappingURL=MenuBrowserDynamic.js.map

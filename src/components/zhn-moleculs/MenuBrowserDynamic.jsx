@@ -11,6 +11,7 @@ import Browser from '../zhn-atoms/Browser';
 import CaptionRow from '../zhn-atoms/CaptionRow';
 import ScrollPane from '../zhn-atoms/ScrollPane';
 import MenuPart from './MenuPart';
+import useBrowserMenu from './useBrowserMenu';
 
 const S_BROWSER = { paddingRight: 0 }
 , S_SCROLL_DIV = {
@@ -40,7 +41,11 @@ const MenuBrowserDynamic = ({
   , [
     menuItems,
     setMenuItems
-  ] = useState([]);
+  ] = useState([])
+  , _refFirstItem = useBrowserMenu(
+    isShow,
+    menuItems
+  );
 
   useMsBrowserDynamic(msBrowserDynamic => {
     if (msBrowserDynamic) {
@@ -91,6 +96,7 @@ const MenuBrowserDynamic = ({
                {...menuPart}
                key={index}
                rowClass={rowClass}
+               refFirstItem={index === 0 ? _refFirstItem : void 0}
             />)
           )
         }
