@@ -34,12 +34,14 @@ const MenuItem = ({
 };
 
 const MenuPart = ({
+  refFirstItem,
   rowClass,
   caption,
   items,
   isInitClose
 }) => (
   <OpenClose2
+     refItem={refFirstItem}
      styleCaptionRow={S_CAPTION_ROW}
      fillOpen={FILL_OPEN}
      fillClose={FILL_CLOSE}

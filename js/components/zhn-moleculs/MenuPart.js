@@ -8,7 +8,7 @@ var _AtomCounter = _interopRequireDefault(require("../zhn-atoms/AtomCounter"));
 var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose2"));
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_NOT_SELECTED = 'not-selected',
-  CL_ROW_ITEM = "row__topic",
+  CL_ROW_ITEM = `row__topic`,
   FILL_OPEN = '#1b2836',
   FILL_CLOSE = 'transparent',
   S_CAPTION_ROW = {
@@ -35,19 +35,21 @@ const MenuItem = _ref => {
 };
 const MenuPart = _ref2 => {
   let {
+    refFirstItem,
     rowClass,
     caption,
     items,
     isInitClose
   } = _ref2;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_OpenClose.default, {
+    refItem: refFirstItem,
     styleCaptionRow: S_CAPTION_ROW,
     fillOpen: FILL_OPEN,
     fillClose: FILL_CLOSE,
     caption: caption,
     isClose: isInitClose,
     children: (items || []).map((item, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)(MenuItem, {
-      className: (rowClass || CL_ROW_ITEM) + " " + CL_NOT_SELECTED,
+      className: `${rowClass || CL_ROW_ITEM} ${CL_NOT_SELECTED}`,
       item: item
     }, item.id || index))
   });
@@ -60,6 +62,5 @@ MenuPart.propTypes = {
   isInitClose: PropTypes.bool
 }
 */
-var _default = MenuPart;
-exports.default = _default;
+var _default = exports.default = MenuPart;
 //# sourceMappingURL=MenuPart.js.map
