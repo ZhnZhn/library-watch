@@ -4,7 +4,7 @@ import {
 } from '../uiApi';
 
 import TransformFn from '../zhn-select/TransformFn';
-import InputSearch from '../zhn-select/InputSearch';
+import InputSelect from '../zhn-select/InputSelect';
 import ItemTopicOption from '../zhn-select/ItemTopicOption';
 
 const SEARCH_PLACEHOLDER = 'Find Item'
@@ -26,7 +26,8 @@ const WrapperInputSearch = memo(({
 
   return (
     <div style={style}>
-      <InputSearch
+      <InputSelect
+         width="315"
          placeholder={SEARCH_PLACEHOLDER}
          propCaption="caption"
          options={_options}
