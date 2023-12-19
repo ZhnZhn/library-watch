@@ -1,7 +1,6 @@
 export { bindTo } from '../utils/bindTo';
 
 export {
-  Component,
   cloneElement,
   createElement,
   memo,
