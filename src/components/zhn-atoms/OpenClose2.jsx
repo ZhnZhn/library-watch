@@ -51,6 +51,7 @@ const OpenClose2 = ({
   onDragOver,
   onDragLeave,
   onDrop,
+  onFocus,
   children
 }) => {
   const [
@@ -98,6 +99,7 @@ const OpenClose2 = ({
          style={{...styleCaptionRow, ..._styleNotSelected}}
          onClick={_hToggle}
          onKeyDown={_hKeyDown}
+         onFocus={onFocus}
          {..._dragOption}
        >
         <div style={S_SVG}>
@@ -148,6 +150,8 @@ OpenClose2.propTypes = {
   onDragOver: PropTypes.func,
   onDragLeave: PropTypes.func,
   onDrop: PropTypes.func,
+
+  onFocus: PropTypes.func,
 
   children: PropTypes.oneOfType([
      PropTypes.arrayOf(PropTypes.node),
