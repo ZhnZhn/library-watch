@@ -9,6 +9,7 @@ const Browser = _ref => {
   let {
     isShow,
     style,
+    onKeyDown,
     children
   } = _ref;
   const [_style, _className] = isShow ? [_CL.S_BLOCK, _CL.CL_SHOW_POPUP] : [_CL.S_NONE];
@@ -19,6 +20,8 @@ const Browser = _ref => {
       ...style,
       ..._style
     },
+    role: "presentation",
+    onKeyDown: onKeyDown,
     children: children
   });
 };
