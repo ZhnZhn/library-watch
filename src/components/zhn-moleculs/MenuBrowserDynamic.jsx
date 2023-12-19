@@ -7,6 +7,7 @@ import {
 } from '../uiApi';
 
 import useBool from '../hooks/useBool';
+import useKeyEscape from '../hooks/useKeyEscape';
 import useBrowserMenu from '../hooks/useBrowserMenu';
 
 import Browser from '../zhn-atoms/Browser';
@@ -39,6 +40,7 @@ const MenuBrowserDynamic = ({
     _hShow,
     _hHide
   ] = useBool(isInitShow)
+  , _hKeyDown = useKeyEscape(_hHide)
   , [
     menuItems,
     setMenuItems
@@ -85,6 +87,7 @@ const MenuBrowserDynamic = ({
     <Browser
        isShow={isShow}
        style={S_BROWSER}
+       onKeyDown={_hKeyDown}
     >
       <CaptionRow
          caption={caption}

@@ -5,6 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
+var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
 var _useBrowserMenu = _interopRequireDefault(require("../hooks/useBrowserMenu"));
 var _Browser = _interopRequireDefault(require("../zhn-atoms/Browser"));
 var _CaptionRow = _interopRequireDefault(require("../zhn-atoms/CaptionRow"));
@@ -35,6 +36,7 @@ const MenuBrowserDynamic = _ref => {
   const _refIsLoaded = (0, _uiApi.useRef)(false),
     _refIsMounted = (0, _uiApi.useRef)(false),
     [isShow, _hShow, _hHide] = (0, _useBool.default)(isInitShow),
+    _hKeyDown = (0, _useKeyEscape.default)(_hHide),
     [menuItems, setMenuItems] = (0, _uiApi.useState)([]),
     _refFirstItem = (0, _useBrowserMenu.default)(isShow, menuItems);
   useMsBrowserDynamic(msBrowserDynamic => {
@@ -73,6 +75,7 @@ const MenuBrowserDynamic = _ref => {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Browser.default, {
     isShow: isShow,
     style: S_BROWSER,
+    onKeyDown: _hKeyDown,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_CaptionRow.default, {
       caption: caption,
       onClose: _hHide
