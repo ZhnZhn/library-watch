@@ -8,6 +8,7 @@ import {
 
 import useBool from '../hooks/useBool';
 import useToggle from '../hooks/useToggle';
+import useKeyEscape from '../hooks/useKeyEscape';
 import useBrowserMenu from '../hooks/useBrowserMenu';
 
 import {
@@ -67,6 +68,7 @@ const WatchBrowser = ({
      showComp,
      hideComp
    ] = useBool(isShow)
+  , _hKeyDown = useKeyEscape(hideComp)
   , [
      isModeEdit,
      _toggleEditMode
@@ -134,6 +136,7 @@ const WatchBrowser = ({
     <Browser
        isShow={isShowComp}
        style={S_BROWSER}
+       onKeyDown={_hKeyDown}
      >
       <CaptionRow
          style={_styleCaption}

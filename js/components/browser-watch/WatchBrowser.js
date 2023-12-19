@@ -6,6 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
+var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
 var _useBrowserMenu = _interopRequireDefault(require("../hooks/useBrowserMenu"));
 var _Handlers = require("./Handlers");
 var _Comp = _interopRequireDefault(require("../Comp"));
@@ -48,6 +49,7 @@ const WatchBrowser = _ref => {
   } = _ref;
   const _refIsShouldUpdateFind = (0, _uiApi.useRef)(false),
     [isShowComp, showComp, hideComp] = (0, _useBool.default)(isShow),
+    _hKeyDown = (0, _useKeyEscape.default)(hideComp),
     [isModeEdit, _toggleEditMode] = (0, _useToggle.default)(isEditMode),
     [isSearchInput, _toggleSearchInput, _setIsSearchInput] = (0, _useToggle.default)(),
     [watchList, setWatchList] = (0, _uiApi.useState)(_Handlers.getWatchList)
@@ -91,6 +93,7 @@ const WatchBrowser = _ref => {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(Browser, {
     isShow: isShowComp,
     style: S_BROWSER,
+    onKeyDown: _hKeyDown,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(CaptionRow, {
       style: _styleCaption,
       caption: caption,
