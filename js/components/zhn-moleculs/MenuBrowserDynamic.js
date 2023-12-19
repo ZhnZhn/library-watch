@@ -6,6 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
+var _useRecentFocusedElement = _interopRequireDefault(require("../hooks/useRecentFocusedElement"));
 var _useBrowserMenu = _interopRequireDefault(require("../hooks/useBrowserMenu"));
 var _Browser = _interopRequireDefault(require("../zhn-atoms/Browser"));
 var _CaptionRow = _interopRequireDefault(require("../zhn-atoms/CaptionRow"));
@@ -38,7 +39,8 @@ const MenuBrowserDynamic = _ref => {
     [isShow, _hShow, _hHide] = (0, _useBool.default)(isInitShow),
     _hKeyDown = (0, _useKeyEscape.default)(_hHide),
     [menuItems, setMenuItems] = (0, _uiApi.useState)([]),
-    _refFirstItem = (0, _useBrowserMenu.default)(isShow, menuItems);
+    _refFirstItem = (0, _useBrowserMenu.default)(isShow, menuItems),
+    [_hFocusElement, _focusPrevElement] = (0, _useRecentFocusedElement.default)();
   useMsBrowserDynamic(msBrowserDynamic => {
     if (msBrowserDynamic) {
       if (msBrowserDynamic.browserType === browserType) {
@@ -50,6 +52,7 @@ const MenuBrowserDynamic = _ref => {
           setMenuItems([...menuItems]);
         } else {
           _hShow();
+          _focusPrevElement();
         }
       }
     }
@@ -85,7 +88,8 @@ const MenuBrowserDynamic = _ref => {
         ...menuPart,
         key: index,
         rowClass: rowClass,
-        refFirstItem: index === 0 ? _refFirstItem : void 0
+        refFirstItem: index === 0 ? _refFirstItem : void 0,
+        onFocus: _hFocusElement
       })), children]
     })]
   });

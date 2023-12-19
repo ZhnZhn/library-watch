@@ -12,7 +12,8 @@ const CL_NOT_SELECTED = 'not-selected'
 
 const MenuItem = ({
   item,
-  className
+  className,
+  onFocus
 }) => {
   const _hKeyDown = useKeyEnter(item.onClick);
   return (
@@ -22,6 +23,7 @@ const MenuItem = ({
       className={className}
       onClick={item.onClick}
       onKeyDown={_hKeyDown}
+      onFocus={onFocus}
      >
        {item.title}
        <AtomCounter
@@ -38,7 +40,8 @@ const MenuPart = ({
   rowClass,
   caption,
   items,
-  isInitClose
+  isInitClose,
+  onFocus
 }) => (
   <OpenClose2
      refItem={refFirstItem}
@@ -47,12 +50,14 @@ const MenuPart = ({
      fillClose={FILL_CLOSE}
      caption={caption}
      isClose={isInitClose}
+     onFocus={onFocus}
   >
      {(items || []).map((item, index) => (
          <MenuItem
             key={item.id || index}
             className={`${rowClass || CL_ROW_ITEM} ${CL_NOT_SELECTED}`}
             item={item}
+            onFocus={onFocus}
          />
      ))}
   </OpenClose2>

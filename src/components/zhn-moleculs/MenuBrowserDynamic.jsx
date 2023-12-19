@@ -8,6 +8,7 @@ import {
 
 import useBool from '../hooks/useBool';
 import useKeyEscape from '../hooks/useKeyEscape';
+import useRecentFocusedElement from '../hooks/useRecentFocusedElement';
 import useBrowserMenu from '../hooks/useBrowserMenu';
 
 import Browser from '../zhn-atoms/Browser';
@@ -48,7 +49,11 @@ const MenuBrowserDynamic = ({
   , _refFirstItem = useBrowserMenu(
     isShow,
     menuItems
-  );
+  )
+  , [
+    _hFocusElement,
+    _focusPrevElement
+  ] = useRecentFocusedElement();
 
   useMsBrowserDynamic(msBrowserDynamic => {
     if (msBrowserDynamic) {
@@ -59,6 +64,7 @@ const MenuBrowserDynamic = ({
           setMenuItems([...menuItems])
         } else {
           _hShow()
+          _focusPrevElement()
         }
       }
     }
@@ -101,6 +107,7 @@ const MenuBrowserDynamic = ({
                key={index}
                rowClass={rowClass}
                refFirstItem={index === 0 ? _refFirstItem : void 0}
+               onFocus={_hFocusElement}
             />)
           )
         }

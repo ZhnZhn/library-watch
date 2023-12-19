@@ -17,7 +17,8 @@ const CL_NOT_SELECTED = 'not-selected',
 const MenuItem = _ref => {
   let {
     item,
-    className
+    className,
+    onFocus
   } = _ref;
   const _hKeyDown = (0, _useKeyEnter.default)(item.onClick);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
@@ -26,6 +27,7 @@ const MenuItem = _ref => {
     className: className,
     onClick: item.onClick,
     onKeyDown: _hKeyDown,
+    onFocus: onFocus,
     children: [item.title, /*#__PURE__*/(0, _jsxRuntime.jsx)(_AtomCounter.default, {
       atom: item.atomCounter,
       onOpen: item.onOpen,
@@ -39,7 +41,8 @@ const MenuPart = _ref2 => {
     rowClass,
     caption,
     items,
-    isInitClose
+    isInitClose,
+    onFocus
   } = _ref2;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_OpenClose.default, {
     refItem: refFirstItem,
@@ -48,9 +51,11 @@ const MenuPart = _ref2 => {
     fillClose: FILL_CLOSE,
     caption: caption,
     isClose: isInitClose,
+    onFocus: onFocus,
     children: (items || []).map((item, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)(MenuItem, {
       className: `${rowClass || CL_ROW_ITEM} ${CL_NOT_SELECTED}`,
-      item: item
+      item: item,
+      onFocus: onFocus
     }, item.id || index))
   });
 };
