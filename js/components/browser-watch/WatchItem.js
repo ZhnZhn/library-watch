@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _uiApi = require("../uiApi");
 var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
 var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -61,11 +62,11 @@ const WatchItem = _ref2 => {
       version,
       date
     } = item,
-    _onClick = onClick.bind(null, item),
+    _onClick = (0, _uiApi.bindTo)(onClick, item),
     _onKeyDown = (0, _useKeyEnter.default)(_onClick),
     _ddItemHandlers = isModeEdit ? {
-      onDragStart: onDragStart.bind(null, option),
-      onDrop: onDrop.bind(null, option),
+      onDragStart: (0, _uiApi.bindTo)(onDragStart, option),
+      onDrop: (0, _uiApi.bindTo)(onDrop, option),
       onDragOver,
       onDragEnter,
       onDragLeave
@@ -85,7 +86,7 @@ const WatchItem = _ref2 => {
         children: repo
       }), isModeEdit ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose.default, {
         style: S_SVG_CLOSE,
-        onClose: onClose.bind(null, option)
+        onClose: (0, _uiApi.bindTo)(onClose, option)
       }) : null]
     }), version ? /*#__PURE__*/(0, _jsxRuntime.jsx)(VersionDateRow, {
       version: version,
@@ -93,6 +94,5 @@ const WatchItem = _ref2 => {
     }) : null]
   });
 };
-var _default = WatchItem;
-exports.default = _default;
+var _default = exports.default = WatchItem;
 //# sourceMappingURL=WatchItem.js.map
