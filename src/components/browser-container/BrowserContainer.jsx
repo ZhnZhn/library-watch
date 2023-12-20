@@ -1,7 +1,4 @@
-import {
-  cloneElement,
-  useState
-} from '../uiApi';
+import { useState } from '../uiApi';
 import useToggle from '../hooks/useToggle';
 
 import { BrowserType as BT } from '../../constants/Type';
@@ -41,20 +38,6 @@ const BrowserContainer = ({
     }
   })
 
-  const _doubleWatch = isDoubleWatch
-     ? (
-        <WatchBrowser
-          isShow={true}
-          isEditMode={true}
-          isDoubleWatch={true}
-          caption="Watch 2"
-          browserType={BT.WATCH_LIST}
-          useMsBrowser={useMsBrowser}
-          useWatchList={useWatchList}
-        />
-      )
-    : null;
-
   return (
     <div className={CL}>
       <WatchBrowser
@@ -63,8 +46,18 @@ const BrowserContainer = ({
          useMsBrowser={useMsBrowser}
          useWatchList={useWatchList}
       />
-      {_doubleWatch}
-      {elBrowsers.map(el => cloneElement(el))}
+      {isDoubleWatch && (
+         <WatchBrowser
+            isShow={true}
+            isEditMode={true}
+            isDoubleWatch={true}
+            caption="Watch 2"
+            browserType={BT.WATCH_LIST}
+            useMsBrowser={useMsBrowser}
+            useWatchList={useWatchList}
+         />
+      )}
+      {elBrowsers}
       <DialogStack
          maxDialog={3}
          useDgOption={useDgOption}

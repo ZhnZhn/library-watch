@@ -30,15 +30,6 @@ const BrowserContainer = _ref => {
       setElBrowsers(prevElBrowsers => [msBrowserDynamic.elBrowser, ...prevElBrowsers]);
     }
   });
-  const _doubleWatch = isDoubleWatch ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchBrowser.default, {
-    isShow: true,
-    isEditMode: true,
-    isDoubleWatch: true,
-    caption: "Watch 2",
-    browserType: _Type.BrowserType.WATCH_LIST,
-    useMsBrowser: useMsBrowser,
-    useWatchList: useWatchList
-  }) : null;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: CL,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchBrowser.default, {
@@ -46,12 +37,19 @@ const BrowserContainer = _ref => {
       browserType: _Type.BrowserType.WATCH_LIST,
       useMsBrowser: useMsBrowser,
       useWatchList: useWatchList
-    }), _doubleWatch, elBrowsers.map(el => (0, _uiApi.cloneElement)(el)), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogStack.default, {
+    }), isDoubleWatch && /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchBrowser.default, {
+      isShow: true,
+      isEditMode: true,
+      isDoubleWatch: true,
+      caption: "Watch 2",
+      browserType: _Type.BrowserType.WATCH_LIST,
+      useMsBrowser: useMsBrowser,
+      useWatchList: useWatchList
+    }), elBrowsers, /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogStack.default, {
       maxDialog: 3,
       useDgOption: useDgOption
     })]
   });
 };
-var _default = BrowserContainer;
-exports.default = _default;
+var _default = exports.default = BrowserContainer;
 //# sourceMappingURL=BrowserContainer.js.map
