@@ -1,5 +1,5 @@
 import {
-  useRef,  
+  useRef,
   useEffect,
   getRefValue,
   setRefValue
@@ -22,17 +22,15 @@ const S_BROWSER = { paddingRight: 0 }
 };
 
 const MenuBrowserDynamic = ({
-  isInitShow,
+  isShowInitial,
   caption,
   rowClass,
   browserType,
   useMsBrowserDynamic,
-  sourceMenuUrl,
   onLoadMenu,
   children
 }) => {
   const _refIsLoaded = useRef(false)
-  , _refIsMounted = useRef(false)
   , [
     menuItems,
     setMenuItems,
@@ -41,7 +39,7 @@ const MenuBrowserDynamic = ({
     _hHide,
     _hKeyDown,
     _refFirstItem
-  ] = useBrowser(isInitShow)
+  ] = useBrowser(isShowInitial)
   , [
     _hFocusElement,
     _focusPrevElement
@@ -62,23 +60,13 @@ const MenuBrowserDynamic = ({
     }
   })
 
-  useEffect(() => {
-    setRefValue(_refIsMounted, true)
-  }, [])
-
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
-    if (getRefValue(_refIsMounted)
-     || (!getRefValue(_refIsLoaded) && isShow)) {
-      setRefValue(_refIsMounted, false)
-      onLoadMenu({
-        browserType,
-        caption,
-        sourceMenuUrl
-      })
+    if (isShow && !getRefValue(_refIsLoaded)) {
+      onLoadMenu()
     }
   }, [isShow])
-  //onLoadMenu, browserType, caption, sourceMenuUrl
+  //onLoadMenu
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (

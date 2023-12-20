@@ -1,5 +1,11 @@
 import SourceBrowserDynamic from '../../components/browser-container/SourceBrowserDynamic';
 
+import { bindTo } from '../storeApi';
+import {
+  useMsBrowserDynamic,
+  loadBrowserDynamic
+} from '../browserStore';
+
 const createBrowserDynamic = ({
   browserType,
   caption,
@@ -7,12 +13,17 @@ const createBrowserDynamic = ({
   rowClass
 }) => (
   <SourceBrowserDynamic
-    isInitShow={true}
-    key={browserType}
-    browserType={browserType}
-    caption={caption}
-    sourceMenuUrl={sourceMenuUrl}
-    rowClass={rowClass}
+     isShowInitial={true}
+     key={browserType}
+     browserType={browserType}
+     caption={caption}
+     rowClass={rowClass}
+     useMsBrowserDynamic={useMsBrowserDynamic}
+     onLoadMenu={bindTo(loadBrowserDynamic, {
+        browserType,
+        caption,
+        sourceMenuUrl
+     })}
  />
 );
 

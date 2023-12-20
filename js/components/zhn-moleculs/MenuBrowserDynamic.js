@@ -23,18 +23,16 @@ const S_BROWSER = {
   };
 const MenuBrowserDynamic = _ref => {
   let {
-    isInitShow,
+    isShowInitial,
     caption,
     rowClass,
     browserType,
     useMsBrowserDynamic,
-    sourceMenuUrl,
     onLoadMenu,
     children
   } = _ref;
   const _refIsLoaded = (0, _uiApi.useRef)(false),
-    _refIsMounted = (0, _uiApi.useRef)(false),
-    [menuItems, setMenuItems, isShow, _hShow, _hHide, _hKeyDown, _refFirstItem] = (0, _useBrowser.default)(isInitShow),
+    [menuItems, setMenuItems, isShow, _hShow, _hHide, _hKeyDown, _refFirstItem] = (0, _useBrowser.default)(isShowInitial),
     [_hFocusElement, _focusPrevElement] = (0, _useRecentFocusedElement.default)();
   useMsBrowserDynamic(msBrowserDynamic => {
     if (msBrowserDynamic) {
@@ -52,22 +50,14 @@ const MenuBrowserDynamic = _ref => {
       }
     }
   });
-  (0, _uiApi.useEffect)(() => {
-    (0, _uiApi.setRefValue)(_refIsMounted, true);
-  }, []);
 
   /*eslint-disable react-hooks/exhaustive-deps */
   (0, _uiApi.useEffect)(() => {
-    if ((0, _uiApi.getRefValue)(_refIsMounted) || !(0, _uiApi.getRefValue)(_refIsLoaded) && isShow) {
-      (0, _uiApi.setRefValue)(_refIsMounted, false);
-      onLoadMenu({
-        browserType,
-        caption,
-        sourceMenuUrl
-      });
+    if (isShow && !(0, _uiApi.getRefValue)(_refIsLoaded)) {
+      onLoadMenu();
     }
   }, [isShow]);
-  //onLoadMenu, browserType, caption, sourceMenuUrl
+  //onLoadMenu
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Browser.default, {
