@@ -6,8 +6,7 @@ import {
   setRefValue
 } from '../uiApi';
 
-import useBool from '../hooks/useBool';
-import useKeyEscape from '../hooks/useKeyEscape';
+import useBrowser from '../hooks/useBrowser';
 import useRecentFocusedElement from '../hooks/useRecentFocusedElement';
 import useBrowserMenu from '../hooks/useBrowserMenu';
 
@@ -39,9 +38,9 @@ const MenuBrowserDynamic = ({
   , [
     isShow,
     _hShow,
-    _hHide
-  ] = useBool(isInitShow)
-  , _hKeyDown = useKeyEscape(_hHide)
+    _hHide,
+    _hKeyDown
+  ] = useBrowser(isInitShow)
   , [
     menuItems,
     setMenuItems

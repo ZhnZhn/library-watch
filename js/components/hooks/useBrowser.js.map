@@ -1,0 +1,24 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useBrowser.js"
+ ],
+ "file": "../../../src/components/hooks/useBrowser.js",
+ "names": [
+  "_useBool",
+  "_interopRequireDefault",
+  "require",
+  "_useKeyEscape",
+  "useBrowser",
+  "isShowInitial",
+  "isShowBrowser",
+  "showBrowser",
+  "hideBrowser",
+  "useBool",
+  "useKeyEscape",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,QAAA,GAAAC,sBAAA,CAAAC,OAAA;AACA,IAAAC,aAAA,GAAAF,sBAAA,CAAAC,OAAA;AAEA,MAAME,UAAU,GACdC,aAAa,IACV;EACH,MAAM,CACHC,aAAa,EACbC,WAAW,EACXC,WAAW,CACZ,GAAG,IAAAC,gBAAO,EAACJ,aAAa,CAAC;EAC3B,OAAO,CACLC,aAAa,EACbC,WAAW,EACXC,WAAW,EACX,IAAAE,qBAAY,EAACF,WAAW,CAAC,CAC1B;AACH,CAAC;AAAA,IAAAG,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEcT,UAAU"
+}

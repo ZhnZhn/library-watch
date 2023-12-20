@@ -7,9 +7,8 @@ import {
   focusRefElement
 } from '../uiApi';
 
-import useBool from '../hooks/useBool';
 import useToggle from '../hooks/useToggle';
-import useKeyEscape from '../hooks/useKeyEscape';
+import useBrowser from '../hooks/useBrowser';
 import useBrowserMenu from '../hooks/useBrowserMenu';
 
 import {
@@ -67,9 +66,9 @@ const WatchBrowser = ({
   , [
      isShowComp,
      showComp,
-     hideComp
-   ] = useBool(isShow)
-  , _hKeyDown = useKeyEscape(hideComp)
+     hideComp,
+     _hKeyDown
+   ] = useBrowser(isShow)
   , [
      isModeEdit,
      _toggleEditMode

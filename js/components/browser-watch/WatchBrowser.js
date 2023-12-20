@@ -4,9 +4,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
-var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
+var _useBrowser = _interopRequireDefault(require("../hooks/useBrowser"));
 var _useBrowserMenu = _interopRequireDefault(require("../hooks/useBrowserMenu"));
 var _Handlers = require("./Handlers");
 var _Comp = _interopRequireDefault(require("../Comp"));
@@ -48,8 +47,7 @@ const WatchBrowser = _ref => {
     useWatchList
   } = _ref;
   const _refIsShouldUpdateFind = (0, _uiApi.useRef)(false),
-    [isShowComp, showComp, hideComp] = (0, _useBool.default)(isShow),
-    _hKeyDown = (0, _useKeyEscape.default)(hideComp),
+    [isShowComp, showComp, hideComp, _hKeyDown] = (0, _useBrowser.default)(isShow),
     [isModeEdit, _toggleEditMode] = (0, _useToggle.default)(isEditMode),
     [isSearchInput, _toggleSearchInput, _setIsSearchInput] = (0, _useToggle.default)(),
     [watchList, setWatchList] = (0, _uiApi.useState)(_Handlers.getWatchList)
