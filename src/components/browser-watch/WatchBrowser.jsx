@@ -1,6 +1,5 @@
 import {
-  useRef,
-  useState,
+  useRef,  
   useMemo,
   getRefValue,
   setRefValue,
@@ -73,15 +72,13 @@ const WatchBrowser = ({
   ] = useToggle()
   , [
      watchList,
-     setWatchList
-  ] = useState(getWatchList)
-  , [
+     setWatchList,
      isShowComp,
      showComp,
      hideComp,
      _hKeyDown,
      _refFirstItem
-   ] = useBrowser(isShow, watchList)
+   ] = useBrowser(isShow, getWatchList)
   /*eslint-disable react-hooks/exhaustive-deps */
   , [
      _handlerHide,

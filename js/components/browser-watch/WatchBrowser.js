@@ -48,8 +48,7 @@ const WatchBrowser = _ref => {
   const _refIsShouldUpdateFind = (0, _uiApi.useRef)(false),
     [isModeEdit, _toggleEditMode] = (0, _useToggle.default)(isEditMode),
     [isSearchInput, _toggleSearchInput, _setIsSearchInput] = (0, _useToggle.default)(),
-    [watchList, setWatchList] = (0, _uiApi.useState)(_Handlers.getWatchList),
-    [isShowComp, showComp, hideComp, _hKeyDown, _refFirstItem] = (0, _useBrowser.default)(isShow, watchList)
+    [watchList, setWatchList, isShowComp, showComp, hideComp, _hKeyDown, _refFirstItem] = (0, _useBrowser.default)(isShow, _Handlers.getWatchList)
     /*eslint-disable react-hooks/exhaustive-deps */,
     [_handlerHide, _handlerShow] = (0, _uiApi.useMemo)(() => [() => {
       if (isDoubleWatch) {

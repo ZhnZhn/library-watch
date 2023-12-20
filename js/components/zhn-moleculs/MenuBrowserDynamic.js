@@ -34,8 +34,7 @@ const MenuBrowserDynamic = _ref => {
   } = _ref;
   const _refIsLoaded = (0, _uiApi.useRef)(false),
     _refIsMounted = (0, _uiApi.useRef)(false),
-    [menuItems, setMenuItems] = (0, _uiApi.useState)([]),
-    [isShow, _hShow, _hHide, _hKeyDown, _refFirstItem] = (0, _useBrowser.default)(isInitShow, menuItems),
+    [menuItems, setMenuItems, isShow, _hShow, _hHide, _hKeyDown, _refFirstItem] = (0, _useBrowser.default)(isInitShow),
     [_hFocusElement, _focusPrevElement] = (0, _useRecentFocusedElement.default)();
   useMsBrowserDynamic(msBrowserDynamic => {
     if (msBrowserDynamic) {

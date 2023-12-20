@@ -1,6 +1,5 @@
 import {
-  useRef,
-  useState,
+  useRef,  
   useEffect,
   getRefValue,
   setRefValue
@@ -36,15 +35,13 @@ const MenuBrowserDynamic = ({
   , _refIsMounted = useRef(false)
   , [
     menuItems,
-    setMenuItems
-  ] = useState([])
-  , [
+    setMenuItems,
     isShow,
     _hShow,
     _hHide,
     _hKeyDown,
     _refFirstItem
-  ] = useBrowser(isInitShow, menuItems)
+  ] = useBrowser(isInitShow)
   , [
     _hFocusElement,
     _focusPrevElement
