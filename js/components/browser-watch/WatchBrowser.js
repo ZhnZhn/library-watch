@@ -71,6 +71,7 @@ const WatchBrowser = _ref => {
   useMsBrowser(msBrowser => {
     if (msBrowser && msBrowser.id === browserType) {
       _handlerShow();
+      (0, _uiApi.focusRefElement)(_refFirstItem);
     }
   });
   useWatchList(watchList => {

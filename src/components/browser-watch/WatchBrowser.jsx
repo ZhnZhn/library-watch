@@ -3,7 +3,8 @@ import {
   useState,
   useMemo,
   getRefValue,
-  setRefValue
+  setRefValue,
+  focusRefElement
 } from '../uiApi';
 
 import useBool from '../hooks/useBool';
@@ -110,6 +111,7 @@ const WatchBrowser = ({
   useMsBrowser(msBrowser => {
     if (msBrowser && msBrowser.id === browserType) {
       _handlerShow()
+      focusRefElement(_refFirstItem)
     }
   })
   useWatchList(watchList => {
