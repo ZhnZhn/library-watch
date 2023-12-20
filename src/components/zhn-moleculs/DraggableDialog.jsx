@@ -1,4 +1,5 @@
 import { forwardRef } from '../uiApi';
+import { crClNotSelected } from '../styleFn';
 
 import useKeyEscape from '../hooks/useKeyEscape';
 import useToggle from '../hooks/useToggle';
@@ -24,7 +25,7 @@ import {
 } from './Dialog.Style';
 
 const CL_DRAGGABLE_DIALOG = "draggable-dialog"
-, CL_NOT_SELECTED = 'not-selected'
+, CL_NOT_SELECTED = crClNotSelected()
 , CL_MENU_MORE = 'popup-menu dialog__menu-more'
 
 , S_DRAGGABLE_DIALOG = {

@@ -4,13 +4,14 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
 var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _CL = require("../styles/CL");
 var _jsxRuntime = require("react/jsx-runtime");
 //import PropTypes from "prop-types";
 
-const CL_ROW_CAPTION = 'zhn-oc not-selected',
+const CL_ROW_CAPTION = (0, _styleFn.crClNotSelected)("zhn-oc"),
   S_ROOT = {
     backgroundColor: '#4d4d4d',
     lineHeight: 2

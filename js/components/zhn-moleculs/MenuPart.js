@@ -3,11 +3,12 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _styleFn = require("../styleFn");
 var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
 var _AtomCounter = _interopRequireDefault(require("../zhn-atoms/AtomCounter"));
 var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose2"));
 var _jsxRuntime = require("react/jsx-runtime");
-const CL_NOT_SELECTED = 'not-selected',
+const CL_NOT_SELECTED = (0, _styleFn.crClNotSelected)(),
   CL_ROW_ITEM = `row__topic`,
   FILL_OPEN = '#1b2836',
   FILL_CLOSE = 'transparent',

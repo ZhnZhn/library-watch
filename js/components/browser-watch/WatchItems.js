@@ -4,12 +4,13 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
 var _Handlers = require("./Handlers");
 var _DnDItemHandlers = require("./dnd-handlers/DnDItemHandlers");
 var _WatchItem = _interopRequireDefault(require("./WatchItem"));
 var _jsxRuntime = require("react/jsx-runtime");
 const _isArr = Array.isArray,
-  CL_WATCH_ITEM = 'row__topic not-selected';
+  CL_WATCH_ITEM = (0, _styleFn.crClNotSelected)('row__topic');
 const WatchItems = _ref => {
   let {
     isModeEdit,

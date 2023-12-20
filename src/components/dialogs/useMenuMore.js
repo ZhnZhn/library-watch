@@ -1,6 +1,7 @@
+import { crClNotSelected } from '../styleFn';
 import useRefInit from '../hooks/useRefInit';
 
-const CL_ROW = 'row__pane-topic not-selected';
+const CL_ROW = crClNotSelected("row__pane-topic");
 
 const _crMenuItem = (
   name,

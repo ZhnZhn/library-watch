@@ -1,3 +1,5 @@
+import { crClNotSelected } from '../styleFn';
+
 export const CL_ROOT = 'zhn-select';
 
 export const CL_INPUT = `${CL_ROOT}__input`
@@ -16,4 +18,4 @@ export const CL_FOOTER_INDEX = `${CL_FOOTER}__index`
 export const CL_FOOTER_BTS = `${CL_FOOTER}__bts`
 export const CL_FOOTER_MARGIN = `${CL_FOOTER}--margin`
 
-export const CL_NOT_SELECTED = 'not-selected'
+export const CL_NOT_SELECTED = crClNotSelected()

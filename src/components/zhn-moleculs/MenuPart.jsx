@@ -1,9 +1,10 @@
+import { crClNotSelected } from '../styleFn';
 import useKeyEnter  from '../hooks/useKeyEnter';
 
 import AtomCounter from '../zhn-atoms/AtomCounter';
 import OpenClose2 from '../zhn-atoms/OpenClose2';
 
-const CL_NOT_SELECTED = 'not-selected'
+const CL_NOT_SELECTED = crClNotSelected()
 , CL_ROW_ITEM = `row__topic`
 , FILL_OPEN = '#1b2836'
 , FILL_CLOSE = 'transparent'

@@ -1,4 +1,5 @@
 import { bindTo } from '../uiApi';
+import { crClNotSelected } from '../styleFn';
 
 import {
   showDialogWatchItem,
@@ -16,7 +17,7 @@ import {
 import WatchItem from './WatchItem';
 
 const _isArr = Array.isArray
-, CL_WATCH_ITEM = 'row__topic not-selected';
+, CL_WATCH_ITEM = crClNotSelected('row__topic');
 
 const WatchItems = ({
   isModeEdit,

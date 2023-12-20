@@ -1,12 +1,13 @@
 import { useState } from '../../uiApi';
+import { crClNotSelected } from '../../styleFn';
+
 import useDnDHandlers from './useDnDHandlers';
 
 import { HAS_TOUCH_EVENTS } from '../../has';
 import A from '../../zhn-atoms/A';
 import TagList from './TagList';
 
-const CL = 'row-item not-selected'
-
+const CL = crClNotSelected("row-item")
 , S_NONE = { display: 'none' }
 , S_ITEM_CAPTION = {
   display: 'flex',

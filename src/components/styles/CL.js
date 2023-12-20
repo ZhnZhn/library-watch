@@ -1,17 +1,19 @@
+import { crClNotSelected } from '../styleFn';
+
 export const S_BLOCK = { display: 'block' }
 export const S_INLINE_BLOCK = { display: 'inline-block' }
 export const S_NONE = { display: 'none' }
 
 export const CL_SHOW_POPUP = "show-popup"
-export const CL_NOT_SELECTED = "not-selected"
+export const CL_NOT_SELECTED = crClNotSelected()
 
-export const CL_BT_ITEM = `${CL_NOT_SELECTED} bt-item`
+export const CL_BT_ITEM = crClNotSelected("bt-item")
 export const CL_MENU_MORE = "popup-menu charts__menu-more"
-export const CL_ROW_ITEM = `row-item ${CL_NOT_SELECTED}`
-export const CL_ROW_MENU_MORE = `row__pane-topic ${CL_NOT_SELECTED}`
+export const CL_ROW_ITEM = crClNotSelected("row-item")
+export const CL_ROW_MENU_MORE = crClNotSelected("row__pane-topic")
 
 export const CL_ITEM = "item"
-export const CL_ITEM_TITLE = `item-title ${CL_NOT_SELECTED}`
+export const CL_ITEM_TITLE = crClNotSelected("item-title")
 export const CL_LINK_WARPPER = "link-wrapper"
 
 export const CL_SOURCE_LINK = "source-link"

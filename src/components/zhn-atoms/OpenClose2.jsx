@@ -1,5 +1,6 @@
 //import PropTypes from "prop-types";
 import { bindTo } from '../uiApi';
+import { crClNotSelected } from '../styleFn';
 
 import useKeyEnter from '../hooks/useKeyEnter';
 import useToggle from '../hooks/useToggle';
@@ -10,7 +11,7 @@ import {
   CL_SHOW_POPUP
 } from '../styles/CL';
 
-const CL_ROW_CAPTION = 'zhn-oc not-selected'
+const CL_ROW_CAPTION = crClNotSelected("zhn-oc")
 , S_ROOT = {
   backgroundColor: '#4d4d4d',
   lineHeight: 2
