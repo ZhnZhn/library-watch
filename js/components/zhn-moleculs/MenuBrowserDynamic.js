@@ -6,7 +6,6 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useBrowser = _interopRequireDefault(require("../hooks/useBrowser"));
 var _useRecentFocusedElement = _interopRequireDefault(require("../hooks/useRecentFocusedElement"));
-var _useBrowserMenu = _interopRequireDefault(require("../hooks/useBrowserMenu"));
 var _Browser = _interopRequireDefault(require("../zhn-atoms/Browser"));
 var _CaptionRow = _interopRequireDefault(require("../zhn-atoms/CaptionRow"));
 var _ScrollPane = _interopRequireDefault(require("../zhn-atoms/ScrollPane"));
@@ -35,9 +34,8 @@ const MenuBrowserDynamic = _ref => {
   } = _ref;
   const _refIsLoaded = (0, _uiApi.useRef)(false),
     _refIsMounted = (0, _uiApi.useRef)(false),
-    [isShow, _hShow, _hHide, _hKeyDown] = (0, _useBrowser.default)(isInitShow),
     [menuItems, setMenuItems] = (0, _uiApi.useState)([]),
-    _refFirstItem = (0, _useBrowserMenu.default)(isShow, menuItems),
+    [isShow, _hShow, _hHide, _hKeyDown, _refFirstItem] = (0, _useBrowser.default)(isInitShow, menuItems),
     [_hFocusElement, _focusPrevElement] = (0, _useRecentFocusedElement.default)();
   useMsBrowserDynamic(msBrowserDynamic => {
     if (msBrowserDynamic) {

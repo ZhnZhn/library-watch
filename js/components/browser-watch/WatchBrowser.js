@@ -6,7 +6,6 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useBrowser = _interopRequireDefault(require("../hooks/useBrowser"));
-var _useBrowserMenu = _interopRequireDefault(require("../hooks/useBrowserMenu"));
 var _Handlers = require("./Handlers");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _EditBar = _interopRequireDefault(require("./EditBar"));
@@ -47,10 +46,10 @@ const WatchBrowser = _ref => {
     useWatchList
   } = _ref;
   const _refIsShouldUpdateFind = (0, _uiApi.useRef)(false),
-    [isShowComp, showComp, hideComp, _hKeyDown] = (0, _useBrowser.default)(isShow),
     [isModeEdit, _toggleEditMode] = (0, _useToggle.default)(isEditMode),
     [isSearchInput, _toggleSearchInput, _setIsSearchInput] = (0, _useToggle.default)(),
-    [watchList, setWatchList] = (0, _uiApi.useState)(_Handlers.getWatchList)
+    [watchList, setWatchList] = (0, _uiApi.useState)(_Handlers.getWatchList),
+    [isShowComp, showComp, hideComp, _hKeyDown, _refFirstItem] = (0, _useBrowser.default)(isShow, watchList)
     /*eslint-disable react-hooks/exhaustive-deps */,
     [_handlerHide, _handlerShow] = (0, _uiApi.useMemo)(() => [() => {
       if (isDoubleWatch) {
@@ -62,10 +61,10 @@ const WatchBrowser = _ref => {
       if (!isDoubleWatch) {
         showComp();
       }
-    }], [isDoubleWatch])
-    // hideComp, showComp
-    /*eslint-enable react-hooks/exhaustive-deps */,
-    _refFirstItem = (0, _useBrowserMenu.default)(isShowComp, watchList);
+    }], [isDoubleWatch]);
+  // hideComp, showComp
+  /*eslint-enable react-hooks/exhaustive-deps */
+
   useMsBrowser(msBrowser => {
     if (msBrowser && msBrowser.id === browserType) {
       _handlerShow();

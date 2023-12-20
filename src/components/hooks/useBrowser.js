@@ -1,8 +1,10 @@
 import useBool from './useBool';
 import useKeyEscape from './useKeyEscape';
+import useBrowserMenu from './useBrowserMenu';
 
 const useBrowser = (
-  isShowInitial
+  isShowInitial,
+  menuItems
 ) => {
   const [
      isShowBrowser,
@@ -13,7 +15,8 @@ const useBrowser = (
     isShowBrowser,
     showBrowser,
     hideBrowser,
-    useKeyEscape(hideBrowser)
+    useKeyEscape(hideBrowser),
+    useBrowserMenu(isShowBrowser, menuItems)
   ];
 }
 

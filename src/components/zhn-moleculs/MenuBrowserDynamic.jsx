@@ -8,7 +8,6 @@ import {
 
 import useBrowser from '../hooks/useBrowser';
 import useRecentFocusedElement from '../hooks/useRecentFocusedElement';
-import useBrowserMenu from '../hooks/useBrowserMenu';
 
 import Browser from '../zhn-atoms/Browser';
 import CaptionRow from '../zhn-atoms/CaptionRow';
@@ -36,19 +35,16 @@ const MenuBrowserDynamic = ({
   const _refIsLoaded = useRef(false)
   , _refIsMounted = useRef(false)
   , [
-    isShow,
-    _hShow,
-    _hHide,
-    _hKeyDown
-  ] = useBrowser(isInitShow)
-  , [
     menuItems,
     setMenuItems
   ] = useState([])
-  , _refFirstItem = useBrowserMenu(
+  , [
     isShow,
-    menuItems
-  )
+    _hShow,
+    _hHide,
+    _hKeyDown,
+    _refFirstItem
+  ] = useBrowser(isInitShow, menuItems)
   , [
     _hFocusElement,
     _focusPrevElement

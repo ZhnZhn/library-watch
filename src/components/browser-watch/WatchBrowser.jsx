@@ -9,7 +9,6 @@ import {
 
 import useToggle from '../hooks/useToggle';
 import useBrowser from '../hooks/useBrowser';
-import useBrowserMenu from '../hooks/useBrowserMenu';
 
 import {
   getWatchList,
@@ -64,12 +63,6 @@ const WatchBrowser = ({
 }) => {
   const _refIsShouldUpdateFind = useRef(false)
   , [
-     isShowComp,
-     showComp,
-     hideComp,
-     _hKeyDown
-   ] = useBrowser(isShow)
-  , [
      isModeEdit,
      _toggleEditMode
   ] = useToggle(isEditMode)
@@ -82,6 +75,13 @@ const WatchBrowser = ({
      watchList,
      setWatchList
   ] = useState(getWatchList)
+  , [
+     isShowComp,
+     showComp,
+     hideComp,
+     _hKeyDown,
+     _refFirstItem
+   ] = useBrowser(isShow, watchList)
   /*eslint-disable react-hooks/exhaustive-deps */
   , [
      _handlerHide,
@@ -99,13 +99,9 @@ const WatchBrowser = ({
         showComp()
       }
     }
-  ], [isDoubleWatch])
+  ], [isDoubleWatch]);
   // hideComp, showComp
   /*eslint-enable react-hooks/exhaustive-deps */
-  , _refFirstItem = useBrowserMenu(
-    isShowComp,
-    watchList
-  );
 
   useMsBrowser(msBrowser => {
     if (msBrowser && msBrowser.id === browserType) {
