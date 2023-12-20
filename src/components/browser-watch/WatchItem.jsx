@@ -1,4 +1,3 @@
-import { bindTo } from '../uiApi';
 import useKeyEnter from '../hooks/useKeyEnter';
 import SvgClose from '../zhn-atoms/SvgClose';
 
@@ -43,29 +42,16 @@ const WatchItem = ({
   item,
   className,
   isModeEdit,
-  option,
   onClick,
   onClose,
-  onDragStart,
-  onDragEnter,
-  onDragOver,
-  onDragLeave,
-  onDrop
+  ddItemHandlers,
 }) => {
   const {
     repo,
     version,
     date
   } = item
-  , _onClick = bindTo(onClick, item)
-  , _onKeyDown = useKeyEnter(_onClick)
-  , _ddItemHandlers = isModeEdit ? {
-       onDragStart: bindTo(onDragStart, option),
-       onDrop: bindTo(onDrop, option),
-       onDragOver,
-       onDragEnter,
-       onDragLeave
-  } : void 0;
+  , _onKeyDown = useKeyEnter(onClick);
 
   return (
      <div
@@ -73,10 +59,10 @@ const WatchItem = ({
        tabIndex="0"
        className={className}
        style={S_ITEM_DIV}
-       onClick={_onClick}
+       onClick={onClick}
        onKeyDown={_onKeyDown}
        draggable={isModeEdit}
-       {..._ddItemHandlers}
+       {...ddItemHandlers}
      >
        <div>
          <span style={S_ITEM_SPAN}>
@@ -85,7 +71,7 @@ const WatchItem = ({
          {isModeEdit
             ? <SvgClose
                  style={S_SVG_CLOSE}
-                 onClose={bindTo(onClose, option)}
+                 onClose={onClose}
                />
             : null
          }

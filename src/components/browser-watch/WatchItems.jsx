@@ -1,3 +1,5 @@
+import { bindTo } from '../uiApi';
+
 import {
   showDialogWatchItem,
   removeWatchItem
@@ -22,26 +24,31 @@ const WatchItems = ({
   groupCaption,
   listCaption
 }) => _isArr(items) ? items
-  .map((item, index) => {
-    const { caption } = item;
+  .map(item => {
+    const {
+      caption
+    } = item
+    , option = {
+      groupCaption,
+      listCaption,
+      caption
+    }
+    , ddItemHandlers = isModeEdit ? {
+         onDragStart: bindTo(hDragStartItem, option),
+         onDrop: bindTo(hDropItem, option),
+         onDragOver: hDragOverItem,
+         onDragEnter: hDragEnterItem,
+         onDragLeave: hDragLeaveItem
+    } : void 0;
     return (
        <WatchItem
           key={caption}
           className={CL_WATCH_ITEM}
-          isModeEdit={isModeEdit}
           item={item}
-          option={{
-            groupCaption,
-            listCaption,
-            caption
-          }}
-          onClick={showDialogWatchItem}
-          onClose={removeWatchItem}
-          onDragStart={hDragStartItem}
-          onDragOver={hDragOverItem}
-          onDragEnter={hDragEnterItem}
-          onDragLeave={hDragLeaveItem}
-          onDrop={hDropItem}
+          isModeEdit={isModeEdit}
+          onClick={bindTo(showDialogWatchItem, item)}
+          onClose={bindTo(removeWatchItem, option)}
+          ddItemHandlers={ddItemHandlers}
        />
     );
   }) : null;
