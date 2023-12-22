@@ -26,21 +26,14 @@ const WatchItems = _ref => {
         groupCaption,
         listCaption,
         caption
-      },
-      ddItemHandlers = isModeEdit ? {
-        onDragStart: (0, _uiApi.bindTo)(_DnDItemHandlers.hDragStartItem, option),
-        onDrop: (0, _uiApi.bindTo)(_DnDItemHandlers.hDropItem, option),
-        onDragOver: _DnDItemHandlers.hDragOverItem,
-        onDragEnter: _DnDItemHandlers.hDragEnterItem,
-        onDragLeave: _DnDItemHandlers.hDragLeaveItem
-      } : void 0;
+      };
     return /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchItem.default, {
       className: CL_WATCH_ITEM,
-      item: item,
       isModeEdit: isModeEdit,
+      item: item,
       onClick: (0, _uiApi.bindTo)(_Handlers.showDialogWatchItem, item),
       onClose: (0, _uiApi.bindTo)(_Handlers.removeWatchItem, option),
-      ddItemHandlers: ddItemHandlers
+      dndItemHandlers: (0, _DnDItemHandlers.crDnDItemHandlers)(isModeEdit, option)
     }, caption);
   }) : null;
 };

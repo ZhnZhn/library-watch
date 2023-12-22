@@ -40,12 +40,12 @@ const VersionDateRow = ({
 ) : null;
 
 const WatchItem = ({
+  isModeEdit,
   item,
   className,
-  isModeEdit,
   onClick,
   onClose,
-  ddItemHandlers,
+  dndItemHandlers,
 }) => {
   const {
     repo,
@@ -62,8 +62,7 @@ const WatchItem = ({
        style={S_ITEM_DIV}
        onClick={onClick}
        onKeyDown={_onKeyDown}
-       draggable={isModeEdit}
-       {...ddItemHandlers}
+       {...dndItemHandlers}
      >
        <div>
          <span style={S_ITEM_SPAN}>

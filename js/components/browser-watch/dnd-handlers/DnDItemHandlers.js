@@ -2,22 +2,23 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.hDropItem = exports.hDragStartItem = exports.hDragOverItem = exports.hDragLeaveItem = exports.hDragEnterItem = void 0;
+exports.crDnDItemHandlers = void 0;
 var _watchListStore = require("../../../flux/watch-list/watchListStore");
+var _uiApi = require("../../uiApi");
 var _WatchDnDConfig = _interopRequireDefault(require("../WatchDnDConfig"));
 var _getTransferData = _interopRequireDefault(require("./getTransferData"));
 var _DnDStyleHandlers = require("./DnDStyleHandlers");
 var _DnDHandlers = require("./DnDHandlers");
+var _crDnDHandlers = _interopRequireDefault(require("./crDnDHandlers"));
 const _crItemId = _ref => {
   let {
     groupCaption,
     listCaption,
     caption
   } = _ref;
-  return groupCaption + ";" + listCaption + ";" + caption;
+  return `${groupCaption};${listCaption};${caption}`;
 };
 const hDragStartItem = (0, _DnDHandlers.fDragStart)([_WatchDnDConfig.default.ITEM, _WatchDnDConfig.default.LIST], _crItemId);
-exports.hDragStartItem = hDragStartItem;
 const hDropItem = (
 //{groupCaption, listCaption, caption},
 options, evt) => {
@@ -39,11 +40,6 @@ options, evt) => {
     }
   }
 };
-exports.hDropItem = hDropItem;
 const hDragEnterItem = (0, _DnDHandlers.fDragEnter)(_WatchDnDConfig.default.ITEM, _WatchDnDConfig.default.C_LIST_ENTER);
-exports.hDragEnterItem = hDragEnterItem;
-const hDragOverItem = _DnDHandlers.hDragOver;
-exports.hDragOverItem = hDragOverItem;
-const hDragLeaveItem = _DnDHandlers.hDragLeave;
-exports.hDragLeaveItem = hDragLeaveItem;
+const crDnDItemHandlers = exports.crDnDItemHandlers = (0, _uiApi.bindTo)(_crDnDHandlers.default, hDragStartItem, hDropItem, hDragEnterItem, _DnDHandlers.hDragOver, _DnDHandlers.hDragLeave);
 //# sourceMappingURL=DnDItemHandlers.js.map

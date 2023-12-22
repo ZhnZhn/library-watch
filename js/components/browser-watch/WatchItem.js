@@ -45,12 +45,12 @@ const VersionDateRow = _ref => {
 };
 const WatchItem = _ref2 => {
   let {
+    isModeEdit,
     item,
     className,
-    isModeEdit,
     onClick,
     onClose,
-    ddItemHandlers
+    dndItemHandlers
   } = _ref2;
   const {
       repo,
@@ -65,8 +65,7 @@ const WatchItem = _ref2 => {
     style: S_ITEM_DIV,
     onClick: onClick,
     onKeyDown: _onKeyDown,
-    draggable: isModeEdit,
-    ...ddItemHandlers,
+    ...dndItemHandlers,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
         style: S_ITEM_SPAN,

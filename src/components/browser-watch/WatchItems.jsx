@@ -6,13 +6,7 @@ import {
   removeWatchItem
 } from './Handlers';
 
-import {
-  hDragStartItem,
-  hDragOverItem,
-  hDragEnterItem,
-  hDragLeaveItem,
-  hDropItem
-} from './dnd-handlers/DnDItemHandlers';
+import { crDnDItemHandlers } from './dnd-handlers/DnDItemHandlers';
 
 import WatchItem from './WatchItem';
 
@@ -33,23 +27,16 @@ const WatchItems = ({
       groupCaption,
       listCaption,
       caption
-    }
-    , ddItemHandlers = isModeEdit ? {
-         onDragStart: bindTo(hDragStartItem, option),
-         onDrop: bindTo(hDropItem, option),
-         onDragOver: hDragOverItem,
-         onDragEnter: hDragEnterItem,
-         onDragLeave: hDragLeaveItem
-    } : void 0;
+    };
     return (
        <WatchItem
           key={caption}
           className={CL_WATCH_ITEM}
-          item={item}
           isModeEdit={isModeEdit}
+          item={item}
           onClick={bindTo(showDialogWatchItem, item)}
           onClose={bindTo(removeWatchItem, option)}
-          ddItemHandlers={ddItemHandlers}
+          dndItemHandlers={crDnDItemHandlers(isModeEdit, option)}
        />
     );
   }) : null;
