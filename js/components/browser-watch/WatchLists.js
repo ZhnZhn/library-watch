@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _uiApi = require("../uiApi");
 var _DnDListHandlers = require("./dnd-handlers/DnDListHandlers");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _WatchItems = _interopRequireDefault(require("./WatchItems"));
@@ -17,15 +18,14 @@ const {
   },
   S_CAPTION_ROW = {
     paddingLeft: 12
-  },
-  _isArr = Array.isArray;
+  };
 const WatchLists = _ref => {
   let {
     isModeEdit,
     groupCaption,
     lists
   } = _ref;
-  return _isArr(lists) ? lists.map(_ref2 => {
+  return (0, _uiApi.safeMap)(lists, _ref2 => {
     let {
       caption,
       items
@@ -46,7 +46,7 @@ const WatchLists = _ref => {
         listCaption: caption
       })
     }, caption);
-  }) : null;
+  });
 };
 var _default = exports.default = WatchLists;
 //# sourceMappingURL=WatchLists.js.map

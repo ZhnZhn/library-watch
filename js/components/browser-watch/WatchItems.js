@@ -9,8 +9,7 @@ var _Handlers = require("./Handlers");
 var _DnDItemHandlers = require("./dnd-handlers/DnDItemHandlers");
 var _WatchItem = _interopRequireDefault(require("./WatchItem"));
 var _jsxRuntime = require("react/jsx-runtime");
-const _isArr = Array.isArray,
-  CL_WATCH_ITEM = (0, _styleFn.crClNotSelected)('row__topic');
+const CL_WATCH_ITEM = (0, _styleFn.crClNotSelected)('row__topic');
 const WatchItems = _ref => {
   let {
     isModeEdit,
@@ -18,7 +17,7 @@ const WatchItems = _ref => {
     groupCaption,
     listCaption
   } = _ref;
-  return _isArr(items) ? items.map(item => {
+  return (0, _uiApi.safeMap)(items, item => {
     const {
         caption
       } = item,
@@ -35,7 +34,7 @@ const WatchItems = _ref => {
       onClose: (0, _uiApi.bindTo)(_Handlers.removeWatchItem, option),
       dndItemHandlers: (0, _DnDItemHandlers.crDnDItemHandlers)(isModeEdit, option)
     }, caption);
-  }) : null;
+  });
 };
 var _default = exports.default = WatchItems;
 //# sourceMappingURL=WatchItems.js.map
