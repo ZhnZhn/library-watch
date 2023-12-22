@@ -10,22 +10,20 @@ const S_COMP = {
   borderRadius: 4,
   boxShadow: '1px 4px 6px 1px rgba(0, 0, 0, 0.6)'
 };
-const S_BROWSER = {
+const S_BROWSER = exports.S_BROWSER = {
   ...S_COMP,
   minWidth: 270,
   maxWidth: 400,
-  padding: '0px 3px 16px'
+  paddingBottom: 16
 };
-exports.S_BROWSER = S_BROWSER;
-const S_ABOUT = {
+const S_ABOUT = exports.S_ABOUT = {
   ...S_COMP,
   position: 'relative',
   minWidth: 300,
   maxWidth: 700,
   padding: '0px 0px 16px'
 };
-exports.S_ABOUT = S_ABOUT;
-const S_COMP_ITEM_LIST = {
+const S_COMP_ITEM_LIST = exports.S_COMP_ITEM_LIST = {
   ...S_COMP,
   position: 'relative',
   width: 635,
@@ -33,5 +31,4 @@ const S_COMP_ITEM_LIST = {
   overflowY: 'hidden',
   overflowX: 'hidden'
 };
-exports.S_COMP_ITEM_LIST = S_COMP_ITEM_LIST;
 //# sourceMappingURL=ContainerStyles.js.map

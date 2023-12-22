@@ -12,15 +12,12 @@ var _ScrollPane = _interopRequireDefault(require("../zhn-atoms/ScrollPane"));
 var _MenuPart = _interopRequireDefault(require("./MenuPart"));
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
-const S_BROWSER = {
-    paddingRight: 0
-  },
-  S_SCROLL_DIV = {
-    overflowY: 'auto',
-    height: '92%',
-    //height: 'calc(100vh - 90px)',
-    paddingRight: 10
-  };
+const S_SCROLL_DIV = {
+  overflowY: 'auto',
+  height: '92%',
+  //height: 'calc(100vh - 90px)',
+  paddingRight: 10
+};
 const MenuBrowserDynamic = _ref => {
   let {
     isShowInitial,
@@ -62,7 +59,6 @@ const MenuBrowserDynamic = _ref => {
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Browser.default, {
     isShow: isShow,
-    style: S_BROWSER,
     onKeyDown: _hKeyDown,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_CaptionRow.default, {
       caption: caption,

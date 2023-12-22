@@ -11,7 +11,7 @@ export const S_BROWSER = {
   ...S_COMP,
   minWidth: 270,
   maxWidth: 400,
-  padding: '0px 3px 16px'
+  paddingBottom: 16
 };
 export const S_ABOUT = {
   ...S_COMP,

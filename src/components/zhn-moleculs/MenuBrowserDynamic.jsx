@@ -13,8 +13,7 @@ import CaptionRow from '../zhn-atoms/CaptionRow';
 import ScrollPane from '../zhn-atoms/ScrollPane';
 import MenuPart from './MenuPart';
 
-const S_BROWSER = { paddingRight: 0 }
-, S_SCROLL_DIV = {
+const S_SCROLL_DIV = {
   overflowY: 'auto',
   height: '92%',
   //height: 'calc(100vh - 90px)',
@@ -72,7 +71,6 @@ const MenuBrowserDynamic = ({
   return (
     <Browser
        isShow={isShow}
-       style={S_BROWSER}
        onKeyDown={_hKeyDown}
     >
       <CaptionRow

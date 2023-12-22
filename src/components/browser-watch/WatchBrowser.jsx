@@ -1,5 +1,5 @@
 import {
-  useRef,  
+  useRef,
   useMemo,
   getRefValue,
   setRefValue,
@@ -35,8 +35,7 @@ const CL_BROWSER_WATCH = "browser-watch"
 , CL_BROWSER_WATCH__60 = `${CL_BROWSER_WATCH}--2r`
 , CL_BT_CAPTION = "bt__watch__caption"
 , S_BROWSER = {
-  maxWidth: 500,
-  paddingRight: 0
+  maxWidth: 500
 }
 , S_CAPTION_ROOT = { minWidth: 340 }
 , S_CAPTION_ROOT_DOUBLE = { minWidth: 310 };
