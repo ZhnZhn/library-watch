@@ -17,6 +17,7 @@ export {
 } from 'react';
 
 const _isFn = fn => typeof fn === 'function';
+const _isArr = Array.isArray;
 
 export const getRefValue = ref => (ref || {}).current
 export const setRefValue = (
@@ -97,3 +98,10 @@ export const getClientY = (
   || _getTouchClientY(evt.targetTouches)
   || _getTouchClientY(evt.changedTouches)
   || 0;
+
+export const safeMap = (
+  items,
+  crElement
+) => _isArr(items)
+  ? items.map(crElement)
+  : null
