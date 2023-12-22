@@ -6,6 +6,7 @@ const S_ITEM_DIV = {
   paddingRight: 40,
   paddingTop : 5,
   paddingBottom: 5,
+  paddingLeft: 14,
   lineHeight: 1.4
 }
 , S_ITEM_SPAN = {

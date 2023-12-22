@@ -6,10 +6,10 @@ import WatchItems from './WatchItems';
 const { OpenClose2 } = Comp
 , S_LIST_DIV = {
   marginLeft: 8,
-  paddingLeft: 12,
   lineHeight: 2,
   borderLeft: '1px solid yellow',
 }
+, S_CAPTION_ROW = { paddingLeft: 12 }
 , _isArr = Array.isArray;
 
 const WatchLists = ({
@@ -22,7 +22,8 @@ const WatchLists = ({
        key={caption}
        fillOpen="#80c040"
        style={S_LIST_DIV}
-       caption={caption}       
+       styleCaptionRow={S_CAPTION_ROW}
+       caption={caption}
        dndHandlers={crDnDListHandlers(isModeEdit, { groupCaption, caption })}
     >
       <WatchItems
