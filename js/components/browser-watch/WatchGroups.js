@@ -33,16 +33,9 @@ const WatchGroups = _ref => {
       style: S_GROUP_DIV,
       styleCaptionRow: S_CAPTION_ROW,
       caption: caption,
-      isClose: true,
-      isDraggable: isModeEdit,
-      option: {
+      dndHandlers: (0, _DnDGroupHandlers.crDnDGroupHandlers)(isModeEdit, {
         caption
-      },
-      onDragStart: _DnDGroupHandlers.hDragStartGroup,
-      onDragEnter: _DnDGroupHandlers.hDragEnterGroup,
-      onDragOver: _DnDGroupHandlers.hDragOverGroup,
-      onDragLeave: _DnDGroupHandlers.hDragLeaveGroup,
-      onDrop: _DnDGroupHandlers.hDropGroup,
+      }),
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchLists.default, {
         isModeEdit: isModeEdit,
         groupCaption: caption,

@@ -2,20 +2,21 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.hDropGroup = exports.hDragStartGroup = exports.hDragOverGroup = exports.hDragLeaveGroup = exports.hDragEnterGroup = void 0;
+exports.hDropGroup = exports.hDragStartGroup = exports.crDnDGroupHandlers = void 0;
 var _watchListStore = require("../../../flux/watch-list/watchListStore");
+var _uiApi = require("../../uiApi");
 var _WatchDnDConfig = _interopRequireDefault(require("../WatchDnDConfig"));
 var _getTransferData = _interopRequireDefault(require("./getTransferData"));
 var _DnDStyleHandlers = require("./DnDStyleHandlers");
 var _DnDHandlers = require("./DnDHandlers");
+var _crDnDHandlers = _interopRequireDefault(require("./crDnDHandlers"));
 const _crGroupId = _ref => {
   let {
     caption
   } = _ref;
-  return caption + ";";
+  return `${caption};`;
 };
-const hDragStartGroup = (0, _DnDHandlers.fDragStart)([_WatchDnDConfig.default.GROUP], _crGroupId);
-exports.hDragStartGroup = hDragStartGroup;
+const hDragStartGroup = exports.hDragStartGroup = (0, _DnDHandlers.fDragStart)([_WatchDnDConfig.default.GROUP], _crGroupId);
 const hDropGroup = (
 //{ caption },
 options, evt) => {
@@ -45,9 +46,5 @@ options, evt) => {
 };
 exports.hDropGroup = hDropGroup;
 const hDragEnterGroup = (0, _DnDHandlers.fDragEnter)(_WatchDnDConfig.default.GROUP, _WatchDnDConfig.default.C_GROUP_ENTER);
-exports.hDragEnterGroup = hDragEnterGroup;
-const hDragOverGroup = _DnDHandlers.hDragOver;
-exports.hDragOverGroup = hDragOverGroup;
-const hDragLeaveGroup = _DnDHandlers.hDragLeave;
-exports.hDragLeaveGroup = hDragLeaveGroup;
+const crDnDGroupHandlers = exports.crDnDGroupHandlers = (0, _uiApi.bindTo)(_crDnDHandlers.default, hDragStartGroup, hDropGroup, hDragEnterGroup, _DnDHandlers.hDragOver, _DnDHandlers.hDragLeave);
 //# sourceMappingURL=DnDGroupHandlers.js.map

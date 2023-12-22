@@ -1,10 +1,4 @@
-import {
-  hDragStartGroup,
-  hDragEnterGroup,
-  hDragOverGroup,
-  hDragLeaveGroup,
-  hDropGroup
-} from './dnd-handlers/DnDGroupHandlers';
+import { crDnDGroupHandlers } from './dnd-handlers/DnDGroupHandlers';
 
 import Comp from '../Comp';
 import WatchLists from './WatchLists';
@@ -25,15 +19,8 @@ const WatchGroups = ({
          key={caption}
          style={S_GROUP_DIV}
          styleCaptionRow={S_CAPTION_ROW}
-         caption={caption}
-         isClose={true}
-         isDraggable={isModeEdit}
-         option={{ caption }}
-         onDragStart={hDragStartGroup}
-         onDragEnter={hDragEnterGroup}
-         onDragOver={hDragOverGroup}
-         onDragLeave={hDragLeaveGroup}
-         onDrop={hDropGroup}
+         caption={caption}         
+         dndHandlers={crDnDGroupHandlers(isModeEdit, { caption })}
        >
          <WatchLists
            isModeEdit={isModeEdit}

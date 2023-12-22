@@ -32,17 +32,10 @@ const WatchLists = _ref => {
       fillOpen: "#80c040",
       style: S_LIST_DIV,
       caption: caption,
-      isClose: true,
-      isDraggable: isModeEdit,
-      option: {
+      dndHandlers: (0, _DnDListHandlers.crDnDListHandlers)(isModeEdit, {
         groupCaption,
         caption
-      },
-      onDragStart: _DnDListHandlers.hDragStartList,
-      onDragEnter: _DnDListHandlers.hDragEnterList,
-      onDragOver: _DnDListHandlers.hDragOverList,
-      onDragLeave: _DnDListHandlers.hDragLeaveList,
-      onDrop: _DnDListHandlers.hDropList,
+      }),
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchItems.default, {
         isModeEdit: isModeEdit,
         items: items,

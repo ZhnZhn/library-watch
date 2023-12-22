@@ -1,10 +1,4 @@
-import {
-  hDragStartList,
-  hDragEnterList,
-  hDragOverList,
-  hDragLeaveList,
-  hDropList
-} from './dnd-handlers/DnDListHandlers';
+import { crDnDListHandlers } from './dnd-handlers/DnDListHandlers';
 
 import Comp from '../Comp';
 import WatchItems from './WatchItems';
@@ -27,16 +21,9 @@ const WatchLists = ({
     <OpenClose2
        key={caption}
        fillOpen="#80c040"
-       style={S_LIST_DIV}       
-       caption={caption}
-       isClose={true}
-       isDraggable={isModeEdit}
-       option={{ groupCaption, caption }}
-       onDragStart={hDragStartList}
-       onDragEnter={hDragEnterList}
-       onDragOver={hDragOverList}
-       onDragLeave={hDragLeaveList}
-       onDrop={hDropList}
+       style={S_LIST_DIV}
+       caption={caption}       
+       dndHandlers={crDnDListHandlers(isModeEdit, { groupCaption, caption })}
     >
       <WatchItems
         isModeEdit={isModeEdit}

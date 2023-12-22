@@ -1,0 +1,25 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/browser-watch/dnd-handlers/crDnDHandlers.js"
+ ],
+ "file": "../../../../src/components/browser-watch/dnd-handlers/crDnDHandlers.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "crDnDHandlers",
+  "onDragStart",
+  "onDrop",
+  "onDragEnter",
+  "onDragOver",
+  "onDragLeave",
+  "isEditMode",
+  "option",
+  "draggable",
+  "bindTo",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAEA,MAAMC,aAAa,GAAGA,CACpBC,WAAW,EACXC,MAAM,EACNC,WAAW,EACXC,UAAU,EACVC,WAAW,EACXC,UAAU,EACVC,MAAM,KACHD,UAAU,GACZ;EACCE,SAAS,EAAE,IAAI;EACfP,WAAW,EAAE,IAAAQ,aAAM,EAACR,WAAW,EAAEM,MAAM,CAAC;EACxCL,MAAM,EAAE,IAAAO,aAAM,EAACP,MAAM,EAAEK,MAAM,CAAC;EAC9BJ,WAAW;EACXC,UAAU;EACVC;AACF,CAAC,GACA,KAAK,CAAC;AAAA,IAAAK,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEMZ,aAAa"
+}
