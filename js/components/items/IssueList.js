@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _uiApi = require("../uiApi");
 var _dateFn = require("../../utils/dateFn");
 var _IssueItem = _interopRequireDefault(require("./IssueItem"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -10,7 +11,7 @@ const IssueList = _ref => {
   let {
     issues
   } = _ref;
-  return (issues || []).map((item, index) => {
+  return (0, _uiApi.safeMap)(issues, (item, index) => {
     const {
         state,
         number,

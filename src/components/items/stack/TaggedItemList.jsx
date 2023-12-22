@@ -1,4 +1,4 @@
-import { memo } from '../../uiApi';
+import { memo, safeMap } from '../../uiApi';
 
 import TaggedItem from './TaggedItem';
 
@@ -10,7 +10,7 @@ const TaggedItemList = memo(({
   onRemoveItem
 }) => (
   <>
-    {(items || []).map((item, index) => {
+    {safeMap(items, (item, index) => {
        const { question_id } = item;
        return (
          <TaggedItem

@@ -1,10 +1,11 @@
+import { safeMap } from '../uiApi';
+
 import { crDateAgo } from '../../utils/dateFn';
 import IssueItem from './IssueItem';
 
 const IssueList = ({
   issues
-}) => (issues || [])
-  .map((item, index) => {
+}) => safeMap(issues, (item, index) => {
     const {
       state,
       number,

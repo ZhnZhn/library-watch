@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _uiApi = require("../uiApi");
 var _A = _interopRequireDefault(require("../zhn-atoms/A"));
 var _CL = require("../styles/CL");
 var _Item = require("./Item.Style");
@@ -14,7 +15,7 @@ const CommitList = _ref => {
   let {
     commits
   } = _ref;
-  return (commits || []).map((item, index) => {
+  return (0, _uiApi.safeMap)(commits, (item, index) => {
     const {
         commit,
         html_url
