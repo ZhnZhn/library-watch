@@ -20,8 +20,9 @@ const {
   ScrollPane
 } = _Comp.default;
 const CL_BROWSER_WATCH = "browser-watch",
-  CL_BROWSER_WATCH__30 = `${CL_BROWSER_WATCH}--1r`,
-  CL_BROWSER_WATCH__60 = `${CL_BROWSER_WATCH}--2r`,
+  _crBrowserWatchStyle = suffix => `${CL_BROWSER_WATCH} ${CL_BROWSER_WATCH}--${suffix}`,
+  CL_BROWSER_WATCH__30 = _crBrowserWatchStyle("1r"),
+  CL_BROWSER_WATCH__60 = _crBrowserWatchStyle("2r"),
   CL_BT_CAPTION = "bt__watch__caption",
   S_BROWSER = {
     maxWidth: 500

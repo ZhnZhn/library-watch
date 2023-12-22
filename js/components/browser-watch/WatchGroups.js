@@ -13,6 +13,9 @@ const {
   _isArr = Array.isArray,
   S_GROUP_DIV = {
     lineHeight: 2
+  },
+  S_CAPTION_ROW = {
+    paddingLeft: 6
   };
 const WatchGroups = _ref => {
   let {
@@ -28,6 +31,7 @@ const WatchGroups = _ref => {
     return /*#__PURE__*/(0, _jsxRuntime.jsx)(OpenClose2, {
       refItem: index === 0 ? refFirstItem : void 0,
       style: S_GROUP_DIV,
+      styleCaptionRow: S_CAPTION_ROW,
       caption: caption,
       isClose: true,
       isDraggable: isModeEdit,

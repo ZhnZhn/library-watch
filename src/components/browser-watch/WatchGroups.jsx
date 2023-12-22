@@ -12,6 +12,7 @@ import WatchLists from './WatchLists';
 const { OpenClose2 } = Comp
 , _isArr = Array.isArray
 , S_GROUP_DIV = { lineHeight: 2 }
+, S_CAPTION_ROW = { paddingLeft: 6 };
 
 const WatchGroups = ({
   refFirstItem,
@@ -23,6 +24,7 @@ const WatchGroups = ({
          refItem={index === 0 ? refFirstItem : void 0}
          key={caption}
          style={S_GROUP_DIV}
+         styleCaptionRow={S_CAPTION_ROW}
          caption={caption}
          isClose={true}
          isDraggable={isModeEdit}

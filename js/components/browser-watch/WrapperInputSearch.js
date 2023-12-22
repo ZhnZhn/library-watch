@@ -26,7 +26,7 @@ const WrapperInputSearch = (0, _uiApi.memo)(_ref => {
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     style: style,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputSelect.default, {
-      width: "315",
+      width: "330",
       placeholder: SEARCH_PLACEHOLDER,
       propCaption: "caption",
       options: _options,

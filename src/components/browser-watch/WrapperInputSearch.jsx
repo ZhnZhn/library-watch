@@ -27,7 +27,7 @@ const WrapperInputSearch = memo(({
   return (
     <div style={style}>
       <InputSelect
-         width="315"
+         width="330"
          placeholder={SEARCH_PLACEHOLDER}
          propCaption="caption"
          options={_options}
