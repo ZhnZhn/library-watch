@@ -1,5 +1,4 @@
 //import PropTypes from "prop-types";
-import { bindTo } from '../uiApi';
 import { crClNotSelected } from '../styleFn';
 
 import useKeyEnter from '../hooks/useKeyEnter';
@@ -45,13 +44,7 @@ const OpenClose2 = ({
   caption,
   fillOpen=FILL_OPEN,
   fillClose=FILL_CLOSE,
-  isDraggable,
-  option,
-  onDragStart,
-  onDragEnter,
-  onDragOver,
-  onDragLeave,
-  onDrop,
+  dndHandlers,
   onFocus,
   children
 }) => {
@@ -60,16 +53,6 @@ const OpenClose2 = ({
     _hToggle
   ] = useToggle(!isClose)
   , _hKeyDown = useKeyEnter(_hToggle)
-  , _dragOption = isDraggable
-     ? {
-         draggable: true,
-         onDragStart: bindTo(onDragStart, option),
-         onDrop: bindTo(onDrop, option),
-         onDragEnter: onDragEnter,
-         onDragOver: onDragOver,
-         onDragLeave: onDragLeave
-       }
-     : void 0
   , [
     _pathV,
     _fillV,
@@ -101,7 +84,7 @@ const OpenClose2 = ({
          onClick={_hToggle}
          onKeyDown={_hKeyDown}
          onFocus={onFocus}
-         {..._dragOption}
+         {...dndHandlers}
        >
         <div style={S_SVG}>
            <svg

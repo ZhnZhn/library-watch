@@ -3,7 +3,6 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
 var _styleFn = require("../styleFn");
 var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
@@ -45,26 +44,12 @@ const OpenClose2 = _ref => {
     caption,
     fillOpen = FILL_OPEN,
     fillClose = FILL_CLOSE,
-    isDraggable,
-    option,
-    onDragStart,
-    onDragEnter,
-    onDragOver,
-    onDragLeave,
-    onDrop,
+    dndHandlers,
     onFocus,
     children
   } = _ref;
   const [isOpen, _hToggle] = (0, _useToggle.default)(!isClose),
     _hKeyDown = (0, _useKeyEnter.default)(_hToggle),
-    _dragOption = isDraggable ? {
-      draggable: true,
-      onDragStart: (0, _uiApi.bindTo)(onDragStart, option),
-      onDrop: (0, _uiApi.bindTo)(onDrop, option),
-      onDragEnter: onDragEnter,
-      onDragOver: onDragOver,
-      onDragLeave: onDragLeave
-    } : void 0,
     [_pathV, _fillV, _styleCollapse, _classShow, _styleNotSelected] = isOpen ? [PATH_OPEN, fillOpen, _CL.S_BLOCK, _CL.CL_SHOW_POPUP, null] : [PATH_CLOSE, fillClose, _CL.S_NONE, null, styleNotSelected];
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: {
@@ -83,7 +68,7 @@ const OpenClose2 = _ref => {
       onClick: _hToggle,
       onKeyDown: _hKeyDown,
       onFocus: onFocus,
-      ..._dragOption,
+      ...dndHandlers,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         style: S_SVG,
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
