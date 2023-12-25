@@ -1,4 +1,4 @@
-import useBool from '../hooks/useBool';
+import useShowHideComponent from '../hooks/useShowHideComponent';
 
 import { useMsAbout } from '../../flux/compStore';
 import { useMsItem } from '../../flux/itemStore';
@@ -35,8 +35,9 @@ const About = () => {
   const [
     isShow,
     showAbout,
-    hideAbout
-  ] = useBool(true);
+    hideAbout,
+    _hKeyDown
+  ] = useShowHideComponent(true);
 
   useMsAbout(msAbout => {
     if (msAbout && msAbout.is) {
@@ -61,6 +62,8 @@ const About = () => {
     <div
        className={_className}
        style={{...S_ABOUT, ..._style}}
+       role="presentation"
+       onKeyDown={_hKeyDown}
     >
        <CaptionRow
           caption="About"

@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _useBool = _interopRequireDefault(require("../hooks/useBool"));
+var _useShowHideComponent = _interopRequireDefault(require("../hooks/useShowHideComponent"));
 var _compStore = require("../../flux/compStore");
 var _itemStore = require("../../flux/itemStore");
 var _ScrollPane = _interopRequireDefault(require("../zhn-atoms/ScrollPane"));
@@ -40,7 +40,7 @@ const CL_SHOW_POPUP = "show-popup",
     marginTop: 3
   };
 const About = () => {
-  const [isShow, showAbout, hideAbout] = (0, _useBool.default)(true);
+  const [isShow, showAbout, hideAbout, _hKeyDown] = (0, _useShowHideComponent.default)(true);
   (0, _compStore.useMsAbout)(msAbout => {
     if (msAbout && msAbout.is) {
       showAbout();
@@ -58,6 +58,8 @@ const About = () => {
       ..._ContainerStyles.S_ABOUT,
       ..._style
     },
+    role: "presentation",
+    onKeyDown: _hKeyDown,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_CaptionRow.default, {
       caption: "About",
       onClose: hideAbout
@@ -192,6 +194,5 @@ const About = () => {
     })]
   });
 };
-var _default = About;
-exports.default = _default;
+var _default = exports.default = About;
 //# sourceMappingURL=About.js.map
