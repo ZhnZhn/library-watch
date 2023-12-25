@@ -1,10 +1,9 @@
 import { useState } from '../uiApi';
 
-import useBool from './useBool';
-import useKeyEscape from './useKeyEscape';
+import useShowHideComponent from './useShowHideComponent';
 import useBrowserMenu from './useBrowserMenu';
 
-const crInitialMenuItemsDf = () => []
+const crInitialMenuItemsDf = () => [];
 
 const useBrowser = (
   isShowInitial,
@@ -15,17 +14,18 @@ const useBrowser = (
     setMenuItems
   ] = useState(crInitialMenuItems)
   , [
-     isShowBrowser,
-     showBrowser,
-     hideBrowser
-   ] = useBool(isShowInitial);
+    isShowBrowser,
+    showBrowser,
+    hideBrowser,
+    hKeyDown
+  ] = useShowHideComponent(isShowInitial);
   return [
     menuItems,
     setMenuItems,
     isShowBrowser,
     showBrowser,
     hideBrowser,
-    useKeyEscape(hideBrowser),
+    hKeyDown,
     useBrowserMenu(isShowBrowser, menuItems)
   ];
 }
