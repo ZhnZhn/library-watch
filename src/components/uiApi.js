@@ -19,6 +19,8 @@ export {
 const _isFn = fn => typeof fn === 'function';
 const _isArr = Array.isArray;
 
+export const FN_NOOP = () => {}
+
 export const getRefValue = ref => (ref || {}).current
 export const setRefValue = (
   ref,
