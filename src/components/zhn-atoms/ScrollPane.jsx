@@ -11,6 +11,7 @@ const CL_SCROLL = 'with-scroll';
 const ScrollPane = forwardRef(({
   style,
   className,
+  onFocusIn,
   children
 }, ref) => {
   const _refDivElement = useRef()
@@ -30,6 +31,7 @@ const ScrollPane = forwardRef(({
       ref={_refDivElement}
       className={_className}
       style={style}
+      onFocus={onFocusIn}
     >
        {children}
     </div>
