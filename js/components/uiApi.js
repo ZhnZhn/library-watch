@@ -47,12 +47,11 @@ const focusRefInput = exports.focusRefInput = _fCallMethod("focus");
 const focusHtmlElement = el => {
   if (el && _isFn(el.focus)) {
     el.focus();
+    return true;
   }
 };
 exports.focusHtmlElement = focusHtmlElement;
-const focusRefElement = ref => {
-  focusHtmlElement(getRefValue(ref));
-};
+const focusRefElement = ref => focusHtmlElement(getRefValue(ref));
 exports.focusRefElement = focusRefElement;
 const focusRefNextSiblingFirstChildElement = ref => {
   focusHtmlElement(((getRefValue(ref) || {}).nextElementSibling || {}).firstElementChild);

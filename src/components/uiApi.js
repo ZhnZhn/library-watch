@@ -59,12 +59,13 @@ export const focusRefInput = _fCallMethod("focus")
 export const focusHtmlElement = el => {
   if (el && _isFn(el.focus)) {
     el.focus()
+    return true;
   }
 };
 
-export const focusRefElement = ref => {
-  focusHtmlElement(getRefValue(ref));
-};
+export const focusRefElement = (
+  ref
+) => focusHtmlElement(getRefValue(ref))
 
 export const focusRefNextSiblingFirstChildElement = (
   ref
