@@ -6,6 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useBrowser = _interopRequireDefault(require("../hooks/useBrowser"));
+var _useRecentFocusedElement = _interopRequireDefault(require("../hooks/useRecentFocusedElement"));
 var _Handlers = require("./Handlers");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _EditBar = _interopRequireDefault(require("./EditBar"));
@@ -48,7 +49,8 @@ const WatchBrowser = _ref => {
   const _refIsShouldUpdateFind = (0, _uiApi.useRef)(false),
     [isModeEdit, _toggleEditMode] = (0, _useToggle.default)(isEditMode),
     [isSearchInput, _toggleSearchInput, _setIsSearchInput] = (0, _useToggle.default)(),
-    [watchList, setWatchList, isShowComp, showComp, hideComp, _hKeyDown, _refFirstItem] = (0, _useBrowser.default)(isShow, _Handlers.getWatchList)
+    [watchList, setWatchList, isShowComp, showComp, hideComp, _hKeyDown, _refFirstItem] = (0, _useBrowser.default)(isShow, _Handlers.getWatchList),
+    [_hFocusIn, _focusPrevMenuElement] = (0, _useRecentFocusedElement.default)()
     /*eslint-disable react-hooks/exhaustive-deps */,
     [_handlerHide, _handlerShow] = (0, _uiApi.useMemo)(() => [() => {
       if (isDoubleWatch) {
@@ -67,7 +69,9 @@ const WatchBrowser = _ref => {
   useMsBrowser(msBrowser => {
     if (msBrowser && msBrowser.id === browserType) {
       _handlerShow();
-      (0, _uiApi.focusRefElement)(_refFirstItem);
+      if (!_focusPrevMenuElement()) {
+        (0, _uiApi.focusRefElement)(_refFirstItem);
+      }
     }
   });
   useWatchList(watchList => {
@@ -132,6 +136,7 @@ const WatchBrowser = _ref => {
       data: watchList
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ScrollPane, {
       className: _scrollClass,
+      onFocusIn: _hFocusIn,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchGroups.default, {
         refFirstItem: _refFirstItem,
         isModeEdit: isModeEdit,

@@ -8,6 +8,7 @@ import {
 
 import useToggle from '../hooks/useToggle';
 import useBrowser from '../hooks/useBrowser';
+import useRecentFocusedElement from '../hooks/useRecentFocusedElement';
 
 import {
   getWatchList,
@@ -77,6 +78,10 @@ const WatchBrowser = ({
      _hKeyDown,
      _refFirstItem
    ] = useBrowser(isShow, getWatchList)
+   , [
+     _hFocusIn,
+     _focusPrevMenuElement
+   ] = useRecentFocusedElement()
   /*eslint-disable react-hooks/exhaustive-deps */
   , [
      _handlerHide,
@@ -101,7 +106,9 @@ const WatchBrowser = ({
   useMsBrowser(msBrowser => {
     if (msBrowser && msBrowser.id === browserType) {
       _handlerShow()
-      focusRefElement(_refFirstItem)
+      if (!_focusPrevMenuElement()) {
+        focusRefElement(_refFirstItem)
+      }
     }
   })
   useWatchList(watchList => {
@@ -176,7 +183,10 @@ const WatchBrowser = ({
          isShouldUpdate={_isShouldUpdateSearchInput}
          data={watchList}
       />
-      <ScrollPane className={_scrollClass}>
+      <ScrollPane
+         className={_scrollClass}
+         onFocusIn={_hFocusIn}
+      >
         <WatchGroups
            refFirstItem={_refFirstItem}
            isModeEdit={isModeEdit}
