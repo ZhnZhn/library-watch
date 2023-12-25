@@ -77,7 +77,10 @@ const MenuBrowserDynamic = ({
          caption={caption}
          onClose={_hHide}
       />
-      <ScrollPane style={S_SCROLL_DIV}>
+      <ScrollPane
+         style={S_SCROLL_DIV}
+         onFocusIn={_hFocusElement}
+      >
         {
           menuItems.map((menuPart, index) => (
             <MenuPart
@@ -85,7 +88,6 @@ const MenuBrowserDynamic = ({
                key={index}
                rowClass={rowClass}
                refFirstItem={index === 0 ? _refFirstItem : void 0}
-               onFocus={_hFocusElement}
             />)
           )
         }

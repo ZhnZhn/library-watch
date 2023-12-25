@@ -45,7 +45,6 @@ const OpenClose2 = ({
   fillOpen=FILL_OPEN,
   fillClose=FILL_CLOSE,
   dndHandlers,
-  onFocus,
   children
 }) => {
   const [
@@ -82,8 +81,7 @@ const OpenClose2 = ({
          className={CL_ROW_CAPTION}
          style={{...styleCaptionRow, ..._styleNotSelected}}
          onClick={_hToggle}
-         onKeyDown={_hKeyDown}
-         onFocus={onFocus}
+         onKeyDown={_hKeyDown}         
          {...dndHandlers}
        >
         <div style={S_SVG}>

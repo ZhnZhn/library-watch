@@ -65,12 +65,12 @@ const MenuBrowserDynamic = _ref => {
       onClose: _hHide
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ScrollPane.default, {
       style: S_SCROLL_DIV,
+      onFocusIn: _hFocusElement,
       children: [menuItems.map((menuPart, index) => /*#__PURE__*/(0, _react.createElement)(_MenuPart.default, {
         ...menuPart,
         key: index,
         rowClass: rowClass,
-        refFirstItem: index === 0 ? _refFirstItem : void 0,
-        onFocus: _hFocusElement
+        refFirstItem: index === 0 ? _refFirstItem : void 0
       })), children]
     })]
   });

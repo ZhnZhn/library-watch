@@ -45,7 +45,6 @@ const OpenClose2 = _ref => {
     fillOpen = FILL_OPEN,
     fillClose = FILL_CLOSE,
     dndHandlers,
-    onFocus,
     children
   } = _ref;
   const [isOpen, _hToggle] = (0, _useToggle.default)(!isClose),
@@ -67,7 +66,6 @@ const OpenClose2 = _ref => {
       },
       onClick: _hToggle,
       onKeyDown: _hKeyDown,
-      onFocus: onFocus,
       ...dndHandlers,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         style: S_SVG,
