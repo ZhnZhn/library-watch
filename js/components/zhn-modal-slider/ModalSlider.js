@@ -2,17 +2,16 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _useInitStateFromProps = _interopRequireDefault(require("../hooks/useInitStateFromProps"));
 var _useThrottleCallback = _interopRequireDefault(require("../hooks/useThrottleCallback"));
-var _useDidUpdate = _interopRequireDefault(require("../hooks/useDidUpdate"));
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
 var _MenuPage = _interopRequireDefault(require("./MenuPage"));
 var _MenuPages = _interopRequireDefault(require("./MenuPages"));
 var _jsxRuntime = require("react/jsx-runtime");
-var S_SHOW_HIDE = {
+const S_SHOW_HIDE = {
     position: 'absolute',
     overflow: 'hidden'
   },
@@ -30,67 +29,71 @@ var S_SHOW_HIDE = {
     initId: DF_INIT_ID,
     p0: []
   };
-var _initState = function _initState(model) {
-  var _pW = model.pageWidth,
-    _maxP = model.maxPages,
-    _initId = model.initId || DF_INIT_ID;
-  return {
-    pageWidth: _pW,
-    pagesStyle: {
-      width: _maxP * _pW + "px"
-    },
-    pageStyle: {
-      width: _pW + "px"
-    },
-    pageCurrent: 1,
-    pages: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuPage["default"], {
-      items: model[_initId],
-      titleCl: model.titleCl,
-      itemCl: model.itemCl
-    }, _initId)]
-  };
-};
-var _addPage = function _addPage(pages, id, title, model) {
-  pages.push( /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuPage["default"], {
+const _crWidthStyle = v => ({
+  width: v
+});
+const _addPage = (model, pages, id, title) => {
+  pages.push( /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuPage.default, {
     title: title,
     items: model[id],
     titleCl: model.titleCl,
     itemCl: model.itemCl
   }, id));
 };
-var _crTransform = function _crTransform(pageWidth, pageCurrent) {
-  var _dX = -1 * pageWidth * (pageCurrent - 1) + 0;
+const _initState = model => {
+  const _pW = model.pageWidth,
+    _maxP = model.maxPages,
+    _initId = model.initId || DF_INIT_ID;
   return {
-    transform: "translateX(" + _dX + "px)"
+    addPage: (0, _uiApi.bindTo)(_addPage, model),
+    pageWidth: _pW,
+    pagesStyle: _crWidthStyle(_maxP * _pW),
+    pageStyle: _crWidthStyle(_pW),
+    pageCurrent: 1,
+    pages: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuPage.default, {
+      items: model[_initId],
+      titleCl: model.titleCl,
+      itemCl: model.itemCl
+    }, _initId)]
   };
 };
-var ModalSlider = function ModalSlider(_ref) {
-  var _ref$model = _ref.model,
-    model = _ref$model === void 0 ? DF_MODEL : _ref$model,
-    isShow = _ref.isShow,
-    className = _ref.className,
-    rootStyle = _ref.rootStyle,
-    style = _ref.style,
-    onClose = _ref.onClose;
-  var _useState = (0, _uiApi.useState)(function () {
-      return _initState(model);
-    }),
-    state = _useState[0],
-    setState = _useState[1],
-    pageWidth = state.pageWidth,
-    pagesStyle = state.pagesStyle,
-    pageStyle = state.pageStyle,
-    pageCurrent = state.pageCurrent,
-    pages = state.pages,
-    hPrevPage = (0, _useThrottleCallback["default"])(function (pageNumber) {
-      setState(function (prevState) {
+const _crTransformStyle = (pageWidth, pageCurrent) => {
+  const _dX = -1 * pageWidth * (pageCurrent - 1) + 0;
+  return {
+    transform: `translateX(${_dX}px)`
+  };
+};
+const ModalSlider = _ref => {
+  let {
+    model = DF_MODEL,
+    isShow,
+    className,
+    rootStyle,
+    style,
+    onClose
+  } = _ref;
+  const [state, setState] = (0, _useInitStateFromProps.default)(_initState, model),
+    {
+      pageWidth,
+      pagesStyle,
+      pageStyle,
+      pageCurrent,
+      pages
+    } = state,
+    hPrevPage = (0, _useThrottleCallback.default)(pageNumber => {
+      setState(prevState => {
         prevState.pageCurrent = pageNumber - 1;
-        return (0, _extends2["default"])({}, prevState);
+        return {
+          ...prevState
+        };
       });
     }),
-    hNextPage = (0, _useThrottleCallback["default"])(function (id, title, pageNumber) {
-      setState(function (prevState) {
-        var pages = prevState.pages,
+    hNextPage = (0, _useThrottleCallback.default)((id, title, pageNumber) => {
+      setState(prevState => {
+        const {
+            addPage,
+            pages
+          } = prevState,
           _max = pages.length - 1;
         if (_max + 1 > pageNumber) {
           if (pages[pageNumber] && pages[pageNumber].key !== id) {
@@ -99,31 +102,38 @@ var ModalSlider = function ModalSlider(_ref) {
             } else {
               prevState.pages = [];
             }
-            _addPage(prevState.pages, id, title, model);
+            addPage(prevState.pages, id, title);
           }
         } else {
-          _addPage(pages, id, title, model);
+          addPage(pages, id, title);
         }
         prevState.pageCurrent = pageNumber + 1;
-        return (0, _extends2["default"])({}, prevState);
+        return {
+          ...prevState
+        };
       });
-    }, [model]);
-  (0, _useDidUpdate["default"])(function () {
-    return setState(_initState(model));
-  }, [model]);
-  var _showHideStyle = (0, _extends2["default"])({}, style, S_SHOW_HIDE, pageStyle),
-    _divStyle = (0, _extends2["default"])({}, S_PAGES, pagesStyle, _crTransform(pageWidth, pageCurrent));
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalPane["default"], {
+    });
+  const _showHideStyle = {
+      ...style,
+      ...S_SHOW_HIDE,
+      ...pageStyle
+    },
+    _divStyle = {
+      ...S_PAGES,
+      ...pagesStyle,
+      ..._crTransformStyle(pageWidth, pageCurrent)
+    };
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalPane.default, {
     isShow: isShow,
     style: rootStyle,
     onClose: onClose,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide["default"], {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide.default, {
       className: className,
       style: _showHideStyle,
       isShow: isShow,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         style: _divStyle,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuPages["default"], {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuPages.default, {
           isShow: isShow,
           style: pageStyle,
           pages: pages,
@@ -136,6 +146,5 @@ var ModalSlider = function ModalSlider(_ref) {
     })
   });
 };
-var _default = ModalSlider;
-exports["default"] = _default;
+var _default = exports.default = ModalSlider;
 //# sourceMappingURL=ModalSlider.js.map
