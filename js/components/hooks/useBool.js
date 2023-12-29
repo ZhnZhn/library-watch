@@ -1,29 +1,11 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _react = require("react");
-
-var useBool = function useBool(initialValue) {
-  var _useState = (0, _react.useState)(function () {
-    return !!initialValue;
-  }),
-      is = _useState[0],
-      setIs = _useState[1],
-      setTrue = (0, _react.useCallback)(function () {
-    return setIs(true);
-  }, []),
-      setFalse = (0, _react.useCallback)(function () {
-    return setIs(false);
-  }, []); //setIs
-
-  /*eslint-enable react-hooks/exhaustive-deps */
-
-
-  return [is, setTrue, setFalse];
+exports.default = void 0;
+var _uiApi = require("../uiApi");
+const useBool = initialValue => {
+  const [state, setState] = (0, _uiApi.useState)(() => [!!initialValue, () => setState(prevState => [true, prevState[1], prevState[2]]), () => setState(prevState => [false, prevState[1], prevState[2]])]);
+  return state;
 };
-
-var _default = useBool;
-exports["default"] = _default;
+var _default = exports.default = useBool;
 //# sourceMappingURL=useBool.js.map
