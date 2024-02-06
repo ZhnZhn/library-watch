@@ -1,0 +1,20 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useRefInit.js"
+ ],
+ "file": "../../../src/components/hooks/useRefInit.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "useRefInit",
+  "crValue",
+  "ref",
+  "useRef",
+  "current",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAEA,MAAMC,UAAU,GAAGC,OAAO,IAAI;EAC5B,MAAMC,GAAG,GAAG,IAAAC,aAAM,EAAC,IAAI,CAAC;EACxB,IAAID,GAAG,CAACE,OAAO,KAAK,IAAI,EAAE;IACxBF,GAAG,CAACE,OAAO,GAAGH,OAAO,CAAC,CAAC;EACzB;EACA,OAAO,CACLC,GAAG,CAACE,OAAO,EACXF,GAAG,CACJ;AACH,CAAC;AAAC,IAAAG,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaP,UAAU"
+}
