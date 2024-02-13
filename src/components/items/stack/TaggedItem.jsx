@@ -9,14 +9,20 @@ import TagList from './TagList';
 
 const CL = crClNotSelected("row-item")
 , S_NONE = { display: 'none' }
+, S_INLINE_BLOCK = { display: 'inline-block'}
+, S_FS_18 = { fontSize: '18px' }
 , S_ITEM_CAPTION = {
   display: 'flex',
   flexWrap: 'wrap',
   paddingBottom: 8
 }
+, S_BOUNTY = {
+  color: '#6495ed',
+  padding: '2px 8px 2px 0'
+}
 , S_BADGE = {
-  display: 'inline-block',
-  fontSize: 18,
+  ...S_INLINE_BLOCK,
+  ...S_FS_18,
   paddingRight: 8
 }
 , S_FISH_BADGE = {
@@ -32,28 +38,28 @@ const CL = crClNotSelected("row-item")
   color: 'black'
 }
 , S_DATE_AGO = {
-  display: 'inline-block',
-  fontSize: '18px'
+  ...S_INLINE_BLOCK,
+  ...S_FS_18
 }
 , S_TITLE = {
-  paddingBottom: 8,
-  fontSize: '18px'
-};
+  ...S_FS_18,
+  paddingBottom: 8
+}
 
-const TOKEN_ANSWER = HAS_TOUCH_EVENTS ? 'A' : (
-  <span role="img" arial-label="hammer and pick">&#x2692;</span>
-);
-const TOKEN_SCORE = HAS_TOUCH_EVENTS ? 'S' : (
-  <span role="img" aria-label="fish">&#x1F41F;</span>
-);
-const TOKEN_VIEW = HAS_TOUCH_EVENTS ? 'V' : (
-  <span role="img" aria-label="wheel of dharma">&#x2638;</span>
-);
-const TOKEN_REPUTATION = HAS_TOUCH_EVENTS ? 'R' : (
-  <span role="img" arial-label="shamrock">&#x2618;</span>
-);
+, TOKEN_ANSWER = HAS_TOUCH_EVENTS ? "A" : (
+   <span role="img" arial-label="hammer and pick">&#x2692;</span>
+ )
+, TOKEN_SCORE = HAS_TOUCH_EVENTS ? "S" : (
+   <span role="img" arial-label="fish">&#x1F41F;</span>
+ )
+, TOKEN_VIEW = HAS_TOUCH_EVENTS ? "V" : (
+   <span role="img" arial-label="wheel of dharma">&#x2638;</span>
+ )
+, TOKEN_REPUTATION = HAS_TOUCH_EVENTS ? "R" : (
+   <span role="img" arial-label="shamrock">&#x2618;</span>
+ )
 
-const FN_NOOP = () => {};
+, FN_NOOP = () => {};
 
 const TaggedItem = ({
   item,
@@ -72,6 +78,7 @@ const TaggedItem = ({
    )
   , {
      is_answered,
+     bounty_amount,
      answer_count,
      score,
      view_count,
@@ -84,17 +91,19 @@ const TaggedItem = ({
   , {
     reputation,
     display_name
-  } = owner || {}
-  , _style = isClosed ? S_NONE : void 0;
+  } = owner || {};
 
   return (
     <div
       className={CL}
-      style={_style}
+      style={isClosed ? S_NONE : void 0}
       {..._itemHandlers}
     >
        <A.Link href={link}>
          <div style={S_ITEM_CAPTION}>
+           {bounty_amount && <span style={S_BOUNTY}>
+             {`+${bounty_amount}`}
+           </span>}
            <span style={is_answered ? S_GREEN_BADGE: S_FISH_BADGE}>
              {TOKEN_ANSWER}&nbsp;{answer_count}
            </span>

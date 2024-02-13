@@ -1,13 +1,29 @@
-import { CL_ROW_MENU_MORE } from '../../styles/CL'
+import { setFirstToUpperCase } from '../../../utils/strFn';
+import { CL_ROW_MENU_MORE } from '../../styles/CL';
+import {
+  PN_BOUNTY_AMOUNT,
+  PN_ANSWER_COUNT,
+  PN_SCORE,
+  PN_VIEW_COUNT,
+  PN_REPUTATION
+} from './config';
+
+const _crName = (
+  propName
+) => propName.split("_")
+  .map(setFirstToUpperCase)
+  .join(" ");
 
 const _fSortByItem = onClick => (
-  name,
   propName
-) => ({
-  name,
-  onClick: onClick.bind(null, propName, name),
-  isClose: true
-});
+) => {
+  const name = _crName(propName);
+  return {
+    name,
+    onClick: onClick.bind(null, propName, name),
+    isClose: true
+  };
+}
 
 const crModelMore = ({
   setSortByProp,
@@ -33,10 +49,11 @@ const crModelMore = ({
       }*/
     ],
     p1: [
-      _crSortByItem('Answer Count', 'answer_count'),
-      _crSortByItem('Score', 'score'),
-      _crSortByItem('View Count', 'view_count'),
-      _crSortByItem('Reputation', 'reputation'), {
+      _crSortByItem(PN_BOUNTY_AMOUNT),
+      _crSortByItem(PN_ANSWER_COUNT),
+      _crSortByItem(PN_SCORE),
+      _crSortByItem(PN_VIEW_COUNT),
+      _crSortByItem(PN_REPUTATION), {
         name: 'Reverse Items',
         onClick: reverse,
         isClose: true

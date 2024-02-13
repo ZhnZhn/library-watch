@@ -14,14 +14,24 @@ const CL = (0, _styleFn.crClNotSelected)("row-item"),
   S_NONE = {
     display: 'none'
   },
+  S_INLINE_BLOCK = {
+    display: 'inline-block'
+  },
+  S_FS_18 = {
+    fontSize: '18px'
+  },
   S_ITEM_CAPTION = {
     display: 'flex',
     flexWrap: 'wrap',
     paddingBottom: 8
   },
+  S_BOUNTY = {
+    color: '#6495ed',
+    padding: '2px 8px 2px 0'
+  },
   S_BADGE = {
-    display: 'inline-block',
-    fontSize: 18,
+    ...S_INLINE_BLOCK,
+    ...S_FS_18,
     paddingRight: 8
   },
   S_FISH_BADGE = {
@@ -37,34 +47,34 @@ const CL = (0, _styleFn.crClNotSelected)("row-item"),
     color: 'black'
   },
   S_DATE_AGO = {
-    display: 'inline-block',
-    fontSize: '18px'
+    ...S_INLINE_BLOCK,
+    ...S_FS_18
   },
   S_TITLE = {
-    paddingBottom: 8,
-    fontSize: '18px'
-  };
-const TOKEN_ANSWER = _has.HAS_TOUCH_EVENTS ? 'A' : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-  role: "img",
-  "arial-label": "hammer and pick",
-  children: "\u2692"
-});
-const TOKEN_SCORE = _has.HAS_TOUCH_EVENTS ? 'S' : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-  role: "img",
-  "aria-label": "fish",
-  children: "\uD83D\uDC1F"
-});
-const TOKEN_VIEW = _has.HAS_TOUCH_EVENTS ? 'V' : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-  role: "img",
-  "aria-label": "wheel of dharma",
-  children: "\u2638"
-});
-const TOKEN_REPUTATION = _has.HAS_TOUCH_EVENTS ? 'R' : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-  role: "img",
-  "arial-label": "shamrock",
-  children: "\u2618"
-});
-const FN_NOOP = () => {};
+    ...S_FS_18,
+    paddingBottom: 8
+  },
+  TOKEN_ANSWER = _has.HAS_TOUCH_EVENTS ? "A" : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    role: "img",
+    "arial-label": "hammer and pick",
+    children: "\u2692"
+  }),
+  TOKEN_SCORE = _has.HAS_TOUCH_EVENTS ? "S" : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    role: "img",
+    "arial-label": "fish",
+    children: "\uD83D\uDC1F"
+  }),
+  TOKEN_VIEW = _has.HAS_TOUCH_EVENTS ? "V" : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    role: "img",
+    "arial-label": "wheel of dharma",
+    children: "\u2638"
+  }),
+  TOKEN_REPUTATION = _has.HAS_TOUCH_EVENTS ? "R" : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    role: "img",
+    "arial-label": "shamrock",
+    children: "\u2618"
+  }),
+  FN_NOOP = () => {};
 const TaggedItem = _ref => {
   let {
     item,
@@ -75,6 +85,7 @@ const TaggedItem = _ref => {
     _itemHandlers = (0, _useDnDHandlers.default)(item, setIsClose, onRemoveItem, onRemoveUnder),
     {
       is_answered,
+      bounty_amount,
       answer_count,
       score,
       view_count,
@@ -87,17 +98,19 @@ const TaggedItem = _ref => {
     {
       reputation,
       display_name
-    } = owner || {},
-    _style = isClosed ? S_NONE : void 0;
+    } = owner || {};
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     className: CL,
-    style: _style,
+    style: isClosed ? S_NONE : void 0,
     ..._itemHandlers,
     children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_A.default.Link, {
       href: link,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         style: S_ITEM_CAPTION,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+        children: [bounty_amount && /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: S_BOUNTY,
+          children: `+${bounty_amount}`
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
           style: is_answered ? S_GREEN_BADGE : S_FISH_BADGE,
           children: [TOKEN_ANSWER, "\xA0", answer_count]
         }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {

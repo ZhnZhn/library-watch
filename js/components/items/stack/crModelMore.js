@@ -2,12 +2,18 @@
 
 exports.__esModule = true;
 exports.default = void 0;
+var _strFn = require("../../../utils/strFn");
 var _CL = require("../../styles/CL");
-const _fSortByItem = onClick => (name, propName) => ({
-  name,
-  onClick: onClick.bind(null, propName, name),
-  isClose: true
-});
+var _config = require("./config");
+const _crName = propName => propName.split("_").map(_strFn.setFirstToUpperCase).join(" ");
+const _fSortByItem = onClick => propName => {
+  const name = _crName(propName);
+  return {
+    name,
+    onClick: onClick.bind(null, propName, name),
+    isClose: true
+  };
+};
 const crModelMore = function (_temp) {
   let {
     setSortByProp,
@@ -30,8 +36,7 @@ const crModelMore = function (_temp) {
        onClick: onRemoveAll,
        isClose: true
       }*/],
-
-    p1: [_crSortByItem('Answer Count', 'answer_count'), _crSortByItem('Score', 'score'), _crSortByItem('View Count', 'view_count'), _crSortByItem('Reputation', 'reputation'), {
+    p1: [_crSortByItem(_config.PN_BOUNTY_AMOUNT), _crSortByItem(_config.PN_ANSWER_COUNT), _crSortByItem(_config.PN_SCORE), _crSortByItem(_config.PN_VIEW_COUNT), _crSortByItem(_config.PN_REPUTATION), {
       name: 'Reverse Items',
       onClick: reverse,
       isClose: true
