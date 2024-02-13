@@ -1,4 +1,10 @@
 import { isNumber } from '../../../utils/isTypeFn';
+import { clearPrototypeOf } from '../../../utils/clearPrototypeOf';
+
+import {
+  PN_REPUTATION,
+  PN_BOUNTY_AMOUNT
+} from './config';
 
 const DF_RESULT = 2;
 const _compareNotNumber = (
@@ -15,25 +21,34 @@ const _compareNotNumber = (
   return dfR;
 }
 
-const _getReputation = (
-  item
-) => {
-  const { owner } = item || {};
-  return (owner || {}).reputation || 0;
-}
-
-const _compareByReputation = (
+const _fCompareMaybeNumber = (
+  getMaybeNumber
+) => (
   a,
   b
 ) => {
-  const bN = _getReputation(b)
-  , aN = _getReputation(a)
+  const bN = getMaybeNumber(b)
+  , aN = getMaybeNumber(a)
   , _notNumberResult = _compareNotNumber(aN, bN);
   return _notNumberResult === DF_RESULT
     ? bN - aN
     : _notNumberResult;
 };
 
+const _getReputation = (
+  item
+) => {
+  const { owner } = item || {};
+  return (owner || {})[PN_REPUTATION] || 0;
+}
+, _compareByReputation = _fCompareMaybeNumber(_getReputation)
+, _getBountyAmount = item => (item || {})[PN_BOUNTY_AMOUNT] || 0
+, _routerCompare = {
+  [PN_REPUTATION]: _compareByReputation,
+  [PN_BOUNTY_AMOUNT]: _fCompareMaybeNumber(_getBountyAmount)
+};
+
+clearPrototypeOf(_routerCompare)
 
 const _fCompareBy = (
   propName
@@ -55,12 +70,8 @@ const _fCompareBy = (
 const sortItemsBy = (
   items,
   propName
-) => {
-  if (!propName) return items;
-  const _compare = propName === 'reputation'
-     ? _compareByReputation
-     : _fCompareBy(propName);
-  return items.sort(_compare);
-};
+) => propName
+  ? items.sort(_routerCompare[propName] || _fCompareBy(propName))
+  : items;
 
 export default sortItemsBy
