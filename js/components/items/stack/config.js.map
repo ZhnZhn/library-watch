@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/items/stack/config.js"
+ ],
+ "file": "../../../../src/components/items/stack/config.js",
+ "names": [
+  "PN_BOUNTY_AMOUNT",
+  "exports",
+  "PN_ANSWER_COUNT",
+  "PN_SCORE",
+  "PN_VIEW_COUNT",
+  "PN_REPUTATION"
+ ],
+ "mappings": ";;;;AACO,MAAMA,gBAAgB,GAAAC,OAAA,CAAAD,gBAAA,GAAG,eAAe;AACxC,MAAME,eAAe,GAAAD,OAAA,CAAAC,eAAA,GAAG,cAAc;AACtC,MAAMC,QAAQ,GAAAF,OAAA,CAAAE,QAAA,GAAG,OAAO;AACxB,MAAMC,aAAa,GAAAH,OAAA,CAAAG,aAAA,GAAG,YAAY;AAClC,MAAMC,aAAa,GAAAJ,OAAA,CAAAI,aAAA,GAAG,YAAY"
+}
