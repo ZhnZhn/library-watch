@@ -1,0 +1,26 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/items/stack/crImgToken.js"
+ ],
+ "file": "../../../../src/components/items/stack/crImgToken.js",
+ "names": [
+  "_has",
+  "require",
+  "_jsxRuntime",
+  "crImgToken",
+  "letter",
+  "label",
+  "codes",
+  "HAS_TOUCH_EVENTS",
+  "jsx",
+  "role",
+  "children",
+  "String",
+  "fromCharCode",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,IAAA,GAAAC,OAAA;AAA6C,IAAAC,WAAA,GAAAD,OAAA;AAE7C,MAAME,UAAU,GAAGA,CACjBC,MAAM,EACNC,KAAK,EACLC,KAAK,KACFC,qBAAgB,GAClBH,MAAM,gBACN,IAAAF,WAAA,CAAAM,GAAA;EAAMC,IAAI,EAAC,KAAK;EAAC,eAAaJ,KAAM;EAAAK,QAAA,EACjCC,MAAM,CAACC,YAAY,CAAC,GAAGN,KAAK;AAAC,CAC1B,CACP;AAAC,IAAAO,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaZ,UAAU"
+}

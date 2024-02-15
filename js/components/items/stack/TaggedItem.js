@@ -6,8 +6,8 @@ exports.default = void 0;
 var _uiApi = require("../../uiApi");
 var _styleFn = require("../../styleFn");
 var _useDnDHandlers = _interopRequireDefault(require("./useDnDHandlers"));
-var _has = require("../../has");
 var _A = _interopRequireDefault(require("../../zhn-atoms/A"));
+var _crImgToken = _interopRequireDefault(require("./crImgToken"));
 var _TagList = _interopRequireDefault(require("./TagList"));
 var _jsxRuntime = require("react/jsx-runtime");
 const CL = (0, _styleFn.crClNotSelected)("row-item"),
@@ -54,26 +54,10 @@ const CL = (0, _styleFn.crClNotSelected)("row-item"),
     ...S_FS_18,
     paddingBottom: 8
   },
-  TOKEN_ANSWER = _has.HAS_TOUCH_EVENTS ? "A" : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-    role: "img",
-    "arial-label": "hammer and pick",
-    children: "\u2692"
-  }),
-  TOKEN_SCORE = _has.HAS_TOUCH_EVENTS ? "S" : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-    role: "img",
-    "arial-label": "fish",
-    children: "\uD83D\uDC1F"
-  }),
-  TOKEN_VIEW = _has.HAS_TOUCH_EVENTS ? "V" : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-    role: "img",
-    "arial-label": "wheel of dharma",
-    children: "\u2638"
-  }),
-  TOKEN_REPUTATION = _has.HAS_TOUCH_EVENTS ? "R" : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-    role: "img",
-    "arial-label": "shamrock",
-    children: "\u2618"
-  }),
+  TOKEN_ANSWER = (0, _crImgToken.default)("A", "hammer and pick", [9874]),
+  TOKEN_SCORE = (0, _crImgToken.default)("S", "fish", [55357, 56351]),
+  TOKEN_VIEW = (0, _crImgToken.default)("V", "wheel of dharma", [9784]),
+  TOKEN_REPUTATION = (0, _crImgToken.default)("R", "shamrock", [9752]),
   FN_NOOP = () => {};
 const TaggedItem = _ref => {
   let {

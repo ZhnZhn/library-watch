@@ -3,8 +3,8 @@ import { crClNotSelected } from '../../styleFn';
 
 import useDnDHandlers from './useDnDHandlers';
 
-import { HAS_TOUCH_EVENTS } from '../../has';
 import A from '../../zhn-atoms/A';
+import crImgToken from './crImgToken';
 import TagList from './TagList';
 
 const CL = crClNotSelected("row-item")
@@ -45,19 +45,10 @@ const CL = crClNotSelected("row-item")
   ...S_FS_18,
   paddingBottom: 8
 }
-
-, TOKEN_ANSWER = HAS_TOUCH_EVENTS ? "A" : (
-   <span role="img" arial-label="hammer and pick">&#x2692;</span>
- )
-, TOKEN_SCORE = HAS_TOUCH_EVENTS ? "S" : (
-   <span role="img" arial-label="fish">&#x1F41F;</span>
- )
-, TOKEN_VIEW = HAS_TOUCH_EVENTS ? "V" : (
-   <span role="img" arial-label="wheel of dharma">&#x2638;</span>
- )
-, TOKEN_REPUTATION = HAS_TOUCH_EVENTS ? "R" : (
-   <span role="img" arial-label="shamrock">&#x2618;</span>
- )
+, TOKEN_ANSWER = crImgToken("A", "hammer and pick", [9874])
+, TOKEN_SCORE = crImgToken("S", "fish", [55357, 56351])
+, TOKEN_VIEW = crImgToken("V", "wheel of dharma", [9784])
+, TOKEN_REPUTATION = crImgToken("R", "shamrock", [9752])
 
 , FN_NOOP = () => {};
 
