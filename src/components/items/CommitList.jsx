@@ -1,4 +1,5 @@
 import { safeMap } from '../uiApi';
+import { memoItems } from '../hoc/memoFn';
 
 import A from '../zhn-atoms/A';
 import { CL_ROW_ITEM } from '../styles/CL';
@@ -12,9 +13,9 @@ import { crDateAgo } from '../../utils/dateFn';
 
 import DivComments from './DivComments';
 
-const CommitList = ({
-  commits
-}) => safeMap(commits, (item, index) => {
+const CommitList = memoItems(({
+  items
+}) => safeMap(items, (item, index) => {
   const {
     commit,
     html_url
@@ -50,6 +51,6 @@ const CommitList = ({
        </A.Link>
     </div>
   );
-})
+}))
 
 export default CommitList

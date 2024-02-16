@@ -58,7 +58,7 @@ const GitHubCommits = (props) => {
         />
       </Caption>
       <A.ShowHide isShow={isShow}>
-        <CommitList commits={commits} />
+        <CommitList items={commits} />
       </A.ShowHide>
     </div>
   );
