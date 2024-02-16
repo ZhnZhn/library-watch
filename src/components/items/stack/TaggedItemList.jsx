@@ -1,13 +1,9 @@
-import { memo, safeMap } from '../../uiApi';
+import { safeMap } from '../../uiApi';
+import { memoItems } from '../../hoc/memoFn'
 
 import TaggedItem from './TaggedItem';
 
-const _isNotShouldRerender = (
-  prevProps,
-  nextProps
-) => prevProps.items === nextProps.items;
-
-const TaggedItemList = memo(({
+const TaggedItemList = memoItems(({
   items,
   onRemoveItem
 }) => (
@@ -20,6 +16,6 @@ const TaggedItemList = memo(({
        />
     ))}
   </>
-), _isNotShouldRerender);
+));
 
 export default TaggedItemList

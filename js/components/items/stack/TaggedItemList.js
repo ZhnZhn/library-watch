@@ -4,10 +4,10 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../../uiApi");
+var _memoFn = require("../../hoc/memoFn");
 var _TaggedItem = _interopRequireDefault(require("./TaggedItem"));
 var _jsxRuntime = require("react/jsx-runtime");
-const _isNotShouldRerender = (prevProps, nextProps) => prevProps.items === nextProps.items;
-const TaggedItemList = (0, _uiApi.memo)(_ref => {
+const TaggedItemList = (0, _memoFn.memoItems)(_ref => {
   let {
     items,
     onRemoveItem
@@ -18,6 +18,6 @@ const TaggedItemList = (0, _uiApi.memo)(_ref => {
       onRemoveItem: onRemoveItem
     }, item.question_id || index))
   });
-}, _isNotShouldRerender);
+});
 var _default = exports.default = TaggedItemList;
 //# sourceMappingURL=TaggedItemList.js.map
