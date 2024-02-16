@@ -1,4 +1,4 @@
-import { memo } from '../uiApi';
+import { safeMap, memo } from '../uiApi';
 
 const IS_NOT_SHOULD_RERENDER_DF = () => true;
 export const memoEqual = (
@@ -21,3 +21,9 @@ const _isNotShouldRerenderItems = (
   nextProps
 ) => prevProps.items === nextProps.items;
 export const memoItems = _fMemo(_isNotShouldRerenderItems)
+
+export const crMemoCompList = (
+  crElement
+) => memoItems(
+  ({ items }) => safeMap(items, crElement)
+)
