@@ -54,7 +54,7 @@ const GitHubIssues = props => {
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ShowHide, {
       isShow: isShow,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_IssueList.default, {
-        issues: issues
+        items: issues
       })
     })]
   });

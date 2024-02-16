@@ -1,11 +1,12 @@
 import { safeMap } from '../uiApi';
+import { memoItems } from '../hoc/memoFn';
 
 import { crDateAgo } from '../../utils/dateFn';
 import IssueItem from './IssueItem';
 
-const IssueList = ({
-  issues
-}) => safeMap(issues, (item, index) => {
+const IssueList = memoItems(({
+  items
+}) => safeMap(items, (item, index) => {
     const {
       state,
       number,
@@ -37,6 +38,6 @@ const IssueList = ({
         body={body}
       />
    );
-})
+}))
 
 export default IssueList

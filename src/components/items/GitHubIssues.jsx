@@ -63,7 +63,7 @@ const GitHubIssues = (props) => {
         />
       </Caption>
       <A.ShowHide isShow={isShow}>
-        <IssueList issues={issues} />
+        <IssueList items={issues} />
       </A.ShowHide>
     </div>
   );

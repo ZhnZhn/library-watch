@@ -4,14 +4,15 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _memoFn = require("../hoc/memoFn");
 var _dateFn = require("../../utils/dateFn");
 var _IssueItem = _interopRequireDefault(require("./IssueItem"));
 var _jsxRuntime = require("react/jsx-runtime");
-const IssueList = _ref => {
+const IssueList = (0, _memoFn.memoItems)(_ref => {
   let {
-    issues
+    items
   } = _ref;
-  return (0, _uiApi.safeMap)(issues, (item, index) => {
+  return (0, _uiApi.safeMap)(items, (item, index) => {
     const {
         state,
         number,
@@ -36,6 +37,6 @@ const IssueList = _ref => {
       body: body
     }, index);
   });
-};
+});
 var _default = exports.default = IssueList;
 //# sourceMappingURL=IssueList.js.map
