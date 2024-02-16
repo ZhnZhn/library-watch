@@ -20,10 +20,13 @@ const _isNotShouldRerenderItems = (
   prevProps,
   nextProps
 ) => prevProps.items === nextProps.items;
-export const memoItems = _fMemo(_isNotShouldRerenderItems)
+const _memoItems = _fMemo(_isNotShouldRerenderItems);
 
 export const crMemoCompList = (
   crElement
-) => memoItems(
-  ({ items }) => safeMap(items, crElement)
+) => _memoItems(
+  (props) => safeMap(
+    props.items,
+    (item, index) => crElement(item, index, props)
+  )
 )
