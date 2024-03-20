@@ -25,7 +25,7 @@
     "url": "https://github.com/ZhnZhn/library-watch.git"
   },
   "dependencies": {
-    "@babel/runtime": "^7.24.0",
+    "@babel/runtime": "^7.24.1",
     "chart.js": "^4.4.2",
     "papaparse": "^5.4.1",
     "raven-js": "^3.27.2",
@@ -34,12 +34,12 @@
     "timeago.js": "^4.0.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.23.9",
-    "@babel/core": "^7.24.0",
-    "@babel/eslint-parser": "^7.23.10",
-    "@babel/plugin-transform-runtime": "^7.24.0",
-    "@babel/preset-env": "^7.24.0",
-    "@babel/preset-react": "^7.23.3",
+    "@babel/cli": "^7.24.1",
+    "@babel/core": "^7.24.1",
+    "@babel/eslint-parser": "^7.24.1",
+    "@babel/plugin-transform-runtime": "^7.24.1",
+    "@babel/preset-env": "^7.24.1",
+    "@babel/preset-react": "^7.24.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
     "babel-jest": "^29.7.0",
     "babel-loader": "^9.1.3",
