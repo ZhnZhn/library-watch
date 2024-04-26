@@ -25,7 +25,7 @@
     "url": "https://github.com/ZhnZhn/library-watch.git"
   },
   "dependencies": {
-    "@babel/runtime": "^7.24.1",
+    "@babel/runtime": "^7.24.4",
     "chart.js": "^4.4.2",
     "papaparse": "^5.4.1",
     "raven-js": "^3.27.2",
@@ -35,10 +35,10 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.24.1",
-    "@babel/core": "^7.24.3",
+    "@babel/core": "^7.24.4",
     "@babel/eslint-parser": "^7.24.1",
     "@babel/plugin-transform-runtime": "^7.24.3",
-    "@babel/preset-env": "^7.24.3",
+    "@babel/preset-env": "^7.24.4",
     "@babel/preset-react": "^7.24.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
     "babel-jest": "^29.7.0",
@@ -47,7 +47,7 @@
     "eslint": "^7.32.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-hooks": "^4.6.1",
     "html-webpack-plugin": "^5.6.0",
     "jest": "^29.7.0",
     "terser-webpack-plugin": "^5.3.10",
