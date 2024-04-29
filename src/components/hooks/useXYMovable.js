@@ -54,7 +54,7 @@ const _getComposedPath = (
 const _isExcludeElement  = (
   element
 ) => element.tagName === 'BUTTON'
- || element.dataset.scrollable
+ || (element.dataset || {}).scrollable
 
 const _isInitEvent = (
   evt,
@@ -156,7 +156,7 @@ const useXYMovable = (
     _element.addEventListener(INIT_EVENT, (evt) => {
       _initialEvtClientX = getClientX(evt)
       _initialEvtClientY = getClientY(evt)
-      if (_isInitEvent(evt, _initialEvtClientX, _initialEvtClientY, _element)) {
+      if (_element && _isInitEvent(evt, _initialEvtClientX, _initialEvtClientY, _element)) {
         _element.addEventListener(MOVE_EVENT, _hMove, MOVE_EVENT_OPTIONS)
         _element.addEventListener(CANCEL_EVENT, _hResetEvent, EVENT_OPTIONS)
         _element.addEventListener(RESET_EVENT, _hResetEvent, EVENT_OPTIONS)
