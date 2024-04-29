@@ -1,38 +1,30 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _react = require("react");
-
+exports.default = void 0;
 var _MenuAriaItem = _interopRequireDefault(require("./MenuAriaItem"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var S_ITEM = {
-  position: 'relative'
-},
-    S_PREV_PAGE = {
-  position: 'absolute',
-  top: 0,
-  left: 16
-},
-    S_TITLE = {
-  paddingLeft: 16
-};
-var MenuTitle = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
-  var titleCl = _ref.titleCl,
-      title = _ref.title,
-      pageNumber = _ref.pageNumber,
-      onClick = _ref.onClick;
-
-  if (!title) {
-    return null;
-  }
-
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_MenuAriaItem["default"], {
+const S_ITEM = {
+    position: 'relative'
+  },
+  S_PREV_PAGE = {
+    position: 'absolute',
+    top: 0,
+    left: 16
+  },
+  S_TITLE = {
+    paddingLeft: 16
+  };
+const MenuTitle = _ref => {
+  let {
+    ref,
+    titleCl,
+    title,
+    pageNumber,
+    onClick
+  } = _ref;
+  return title ? /*#__PURE__*/(0, _jsxRuntime.jsxs)(_MenuAriaItem.default, {
     ref: ref,
     className: titleCl,
     style: S_ITEM,
@@ -44,8 +36,7 @@ var MenuTitle = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
       style: S_TITLE,
       children: title
     })]
-  });
-});
-var _default = MenuTitle;
-exports["default"] = _default;
+  }) : null;
+};
+var _default = exports.default = MenuTitle;
 //# sourceMappingURL=MenuTitle.js.map

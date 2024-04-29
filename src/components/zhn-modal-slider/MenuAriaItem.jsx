@@ -1,13 +1,12 @@
-import { forwardRef } from '../uiApi';
-
 const FN_NOOP = () => {};
 
-const MenuAriaItem = forwardRef(({
+const MenuAriaItem = ({
+  ref,
   onClick,
   onReg=FN_NOOP,
   children,
   ...rest
-}, ref) => {
+}) => {
   const _onKeyDown = evt => {
     if (evt.which === 13 || evt.which === 32) {
       onClick()
@@ -26,6 +25,6 @@ const MenuAriaItem = forwardRef(({
       {children}
     </div>
   );
-});
+}
 
 export default MenuAriaItem

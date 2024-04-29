@@ -1,5 +1,3 @@
-import { forwardRef } from '../uiApi';
-
 import MenuAriaItem from './MenuAriaItem';
 
 const SUB_MENU = 'sub'
@@ -31,13 +29,14 @@ const NextPageArrow = ({ type }) =>
     </span>
   ) : null;
 
-const MenuItemList = forwardRef(({
+const MenuItemList = ({
+  ref,
   items,
   itemCl,
   pageNumber,
   onNextPage,
   onClose
-}, ref) => (
+}) => (
   <>
     {items.map((item, index) => {
       const {
@@ -66,6 +65,6 @@ const MenuItemList = forwardRef(({
       );
     })}
   </>
-));
+);
 
 export default MenuItemList
