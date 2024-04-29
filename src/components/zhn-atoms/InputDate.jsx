@@ -1,5 +1,4 @@
 import {
-  forwardRef,
   useRef,
   useState,
   useImperativeHandle,
@@ -43,11 +42,12 @@ const S_ROOT = {
 }
 , FN_NOOP = () => {};
 
-const InputDate = forwardRef(({
+const InputDate = ({
+  ref,
   initialValue,
   errorMsg,
   onTest=FN_NOOP
-}, ref) => {
+}) => {
   const _refInput = useRef()
   , [state, setState] = useState({
     value: initialValue || '',
@@ -114,6 +114,6 @@ const InputDate = forwardRef(({
       </div>
     </div>
   );
-});
+};
 
 export default InputDate

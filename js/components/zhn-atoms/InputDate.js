@@ -44,8 +44,9 @@ const S_ROOT = {
     fontWeight: 'bold'
   },
   FN_NOOP = () => {};
-const InputDate = (0, _uiApi.forwardRef)((_ref, ref) => {
+const InputDate = _ref => {
   let {
+    ref,
     initialValue,
     errorMsg,
     onTest = FN_NOOP
@@ -114,6 +115,6 @@ const InputDate = (0, _uiApi.forwardRef)((_ref, ref) => {
       children: errMsg
     })]
   });
-});
+};
 var _default = exports.default = InputDate;
 //# sourceMappingURL=InputDate.js.map
