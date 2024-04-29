@@ -1,5 +1,4 @@
 import {
-  forwardRef,
   useRef,
   useImperativeHandle,
   getRefValue
@@ -29,10 +28,11 @@ const S_ARROW_CELL = {
 , ANIMATION_CIRCLE = "circle infinite 1.25s linear"
 , BORDER_COLOR = "#1b75bb transparent transparent";
 
-const ArrowCell = forwardRef(({
+const ArrowCell = ({
+  ref,
   arrowStyle,
   onClick
-}, ref) => {
+}) => {
   const _refArrowCell = useRef()
   , _refArrow = useRef();
 
@@ -66,6 +66,6 @@ const ArrowCell = forwardRef(({
       />
     </button>
   );
-});
+};
 
 export default ArrowCell
