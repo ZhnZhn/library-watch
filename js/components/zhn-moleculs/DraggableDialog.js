@@ -3,7 +3,6 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
 var _styleFn = require("../styleFn");
 var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
@@ -41,8 +40,9 @@ const CL_DRAGGABLE_DIALOG = "draggable-dialog",
   },
   FN_NOOP = () => {},
   _isFn = fn => typeof fn === 'function';
-const DraggableDialog = (0, _uiApi.forwardRef)((_ref, ref) => {
+const DraggableDialog = _ref => {
   let {
+    ref,
     menuModel,
     isShow,
     caption,
@@ -113,6 +113,6 @@ const DraggableDialog = (0, _uiApi.forwardRef)((_ref, ref) => {
       })]
     })
   );
-});
+};
 var _default = exports.default = DraggableDialog;
 //# sourceMappingURL=DraggableDialog.js.map

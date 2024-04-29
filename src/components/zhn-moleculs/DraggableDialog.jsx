@@ -1,4 +1,3 @@
-import { forwardRef } from '../uiApi';
 import { crClNotSelected } from '../styleFn';
 
 import useKeyEscape from '../hooks/useKeyEscape';
@@ -52,7 +51,8 @@ const CL_DRAGGABLE_DIALOG = "draggable-dialog"
 , FN_NOOP = () => {}
 , _isFn = fn => typeof fn === 'function';
 
-const DraggableDialog = forwardRef(({
+const DraggableDialog = ({
+  ref,
   menuModel,
   isShow,
   caption,
@@ -60,7 +60,7 @@ const DraggableDialog = forwardRef(({
   commandButtons,
   onShowChart,
   onClose=FN_NOOP
-}, ref) => {
+}) => {
   const [
     _refRootDiv,
     _refBtMore
@@ -146,6 +146,6 @@ const DraggableDialog = forwardRef(({
       </div>
     </div>
   );
-});
+};
 
 export default DraggableDialog
