@@ -3,12 +3,12 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 var _CL = require("../styles/CL");
 var _jsxRuntime = require("react/jsx-runtime");
-const ShowHide = (0, _uiApi.forwardRef)((_ref, ref) => {
+const ShowHide = _ref => {
   let {
+    ref,
     isShow,
     style,
     className,
@@ -29,6 +29,6 @@ const ShowHide = (0, _uiApi.forwardRef)((_ref, ref) => {
     onKeyDown: onKeyDown,
     children: children
   });
-});
+};
 var _default = exports.default = ShowHide;
 //# sourceMappingURL=ShowHide.js.map

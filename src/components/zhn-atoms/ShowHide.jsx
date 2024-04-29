@@ -1,5 +1,3 @@
-import { forwardRef } from '../uiApi'
-
 import crCn from '../zhn-utils/crCn';
 import {
   S_BLOCK,
@@ -7,13 +5,14 @@ import {
   CL_SHOW_POPUP
 } from '../styles/CL';
 
-const ShowHide = forwardRef(({
+const ShowHide = ({
+  ref,
   isShow,
   style,
   className,
   onKeyDown,
   children
-}, ref) => {
+}) => {
   const _className = crCn(
      className,
      [isShow, CL_SHOW_POPUP]
@@ -34,6 +33,6 @@ const ShowHide = forwardRef(({
       {children}
     </div>
   );
-});
+};
 
 export default ShowHide
