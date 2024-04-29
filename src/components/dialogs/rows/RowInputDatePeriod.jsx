@@ -1,5 +1,4 @@
 import {
-  forwardRef,
   useRef,
   useImperativeHandle,
   isRefInputValid,
@@ -28,14 +27,15 @@ const INITIAL_FROM_DATE = getFromDate(1)
 , DF_MSG_ON_NOT_VALID_FORMAT = item => `${item} is not in valid format`
 , _getTrimRefInputValue = ref => (getRefInputValue(ref) || "").trim();
 
-const RowInputDatePeriod = forwardRef(({
+const RowInputDatePeriod = ({
+  ref,
   isShow,
   isShowLabels=true,
   msgOnNotValidFormat=DF_MSG_ON_NOT_VALID_FORMAT,
   initialFromDate=INITIAL_FROM_DATE,
   initialToDate=INITIAL_TO_DATE,
   onTestDate=isYmd
-}, ref) => {
+}) => {
   const _refFromDate = useRef()
   , _refToDate = useRef();
 
@@ -110,6 +110,6 @@ const RowInputDatePeriod = forwardRef(({
      </Row>
    </ShowHide>
   );
-});
+};
 
 export default RowInputDatePeriod
