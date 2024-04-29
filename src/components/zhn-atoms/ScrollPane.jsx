@@ -1,5 +1,4 @@
 import {
-  forwardRef,
   useRef,
   useImperativeHandle,
   getRefValue
@@ -8,12 +7,13 @@ import crCn from '../zhn-utils/crCn';
 
 const CL_SCROLL = 'with-scroll';
 
-const ScrollPane = forwardRef(({
+const ScrollPane = ({
+  ref,
   style,
   className,
   onFocusIn,
   children
-}, ref) => {
+}) => {
   const _refDivElement = useRef()
   , _className = crCn(CL_SCROLL, className);
 
@@ -36,6 +36,6 @@ const ScrollPane = forwardRef(({
        {children}
     </div>
   );
-});
+};
 
 export default ScrollPane

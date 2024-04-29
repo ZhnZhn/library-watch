@@ -7,8 +7,9 @@ var _uiApi = require("../uiApi");
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_SCROLL = 'with-scroll';
-const ScrollPane = (0, _uiApi.forwardRef)((_ref, ref) => {
+const ScrollPane = _ref => {
   let {
+    ref,
     style,
     className,
     onFocusIn,
@@ -31,6 +32,6 @@ const ScrollPane = (0, _uiApi.forwardRef)((_ref, ref) => {
     onFocus: onFocusIn,
     children: children
   });
-});
+};
 var _default = exports.default = ScrollPane;
 //# sourceMappingURL=ScrollPane.js.map
