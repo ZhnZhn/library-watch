@@ -1,24 +1,30 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
+exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _has = require("../has");
 var _jsxRuntime = require("react/jsx-runtime");
-var CL_FIELD = 'm-field',
+const CL_FIELD = 'm-field',
   CL_INPUT = CL_FIELD + "__input",
   CL_BT_CLEAR = CL_FIELD + "__bt-clear";
-var _isKeyClean = function _isKeyClean(_ref) {
-  var keyCode = _ref.keyCode;
+const _isKeyClean = _ref => {
+  let {
+    keyCode
+  } = _ref;
   return keyCode === 27 || keyCode === 46;
 };
-var _isKeyEnter = function _isKeyEnter(_ref2) {
-  var keyCode = _ref2.keyCode;
+const _isKeyEnter = _ref2 => {
+  let {
+    keyCode
+  } = _ref2;
   return keyCode === 13;
 };
-var BtClear = function BtClear(_ref3) {
-  var isValue = _ref3.isValue,
-    onClick = _ref3.onClick;
+const BtClear = _ref3 => {
+  let {
+    isValue,
+    onClick
+  } = _ref3;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     type: "button",
     className: CL_BT_CLEAR,
@@ -27,49 +33,42 @@ var BtClear = function BtClear(_ref3) {
     children: isValue ? 'x' : ''
   });
 };
-var FN_NOOP = function FN_NOOP() {};
-var InputText = (0, _uiApi.forwardRef)(function (_ref4, ref) {
-  var style = _ref4.style,
-    initValue = _ref4.initValue,
-    placeholder = _ref4.placeholder,
-    _ref4$maxLength = _ref4.maxLength,
-    maxLength = _ref4$maxLength === void 0 ? 50 : _ref4$maxLength,
-    _ref4$onEnter = _ref4.onEnter,
-    onEnter = _ref4$onEnter === void 0 ? FN_NOOP : _ref4$onEnter;
-  var _refInput = (0, _uiApi.useRef)(),
-    _useState = (0, _uiApi.useState)(function () {
-      return initValue || '';
-    }),
-    value = _useState[0],
-    _setValue = _useState[1],
-    _hChange = (0, _uiApi.useCallback)(function (event) {
-      _setValue(event.target.value);
+const FN_NOOP = () => {};
+const InputText = _ref4 => {
+  let {
+    ref,
+    style,
+    initValue,
+    placeholder,
+    maxLength = 50,
+    onEnter = FN_NOOP
+  } = _ref4;
+  const _refInput = (0, _uiApi.useRef)(),
+    [value, setValue] = (0, _uiApi.useState)(() => initValue || ''),
+    _hChange = (0, _uiApi.useCallback)(event => {
+      setValue(event.target.value);
     }, []),
-    _hKeyDown = (0, _uiApi.useCallback)(function (event) {
+    _hKeyDown = (0, _uiApi.useCallback)(event => {
       if (_isKeyClean(event)) {
-        _setValue('');
+        setValue('');
       } else if (_isKeyEnter(event)) {
         onEnter(event.target.value);
       }
     }, [onEnter]),
-    _hClean = (0, _uiApi.useCallback)(function () {
-      _setValue('');
+    _hClean = (0, _uiApi.useCallback)(() => {
+      setValue('');
       (0, _uiApi.focusRefElement)(_refInput);
     }, []);
-  (0, _uiApi.useImperativeHandle)(ref, function () {
-    return {
-      getValue: function getValue() {
-        var _inputEl = (0, _uiApi.getRefValue)(_refInput);
-        return _inputEl ? _inputEl.value.trim() : void 0;
-      },
-      setValue: function setValue(value) {
-        return _setValue(value);
-      },
-      focus: function focus() {
-        (0, _uiApi.focusRefElement)(_refInput);
-      }
-    };
-  }, []);
+  (0, _uiApi.useImperativeHandle)(ref, () => ({
+    getValue: () => {
+      const _inputEl = (0, _uiApi.getRefValue)(_refInput);
+      return _inputEl ? _inputEl.value.trim() : void 0;
+    },
+    setValue: value => setValue(value),
+    focus: () => {
+      (0, _uiApi.focusRefElement)(_refInput);
+    }
+  }), []);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: CL_FIELD,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
@@ -90,7 +89,6 @@ var InputText = (0, _uiApi.forwardRef)(function (_ref4, ref) {
       onClick: _hClean
     })]
   });
-});
-var _default = InputText;
-exports["default"] = _default;
+};
+var _default = exports.default = InputText;
 //# sourceMappingURL=InputText.js.map

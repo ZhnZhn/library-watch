@@ -1,5 +1,4 @@
 import {
-  forwardRef,
   useRef,
   useState,
   useCallback,
@@ -38,13 +37,14 @@ const BtClear = ({
 const FN_NOOP = () => {};
 
 
-const InputText = forwardRef(({
+const InputText = ({
+  ref,
   style,
   initValue,
   placeholder,
   maxLength=50,
   onEnter=FN_NOOP
-}, ref) => {
+}) => {
   const _refInput = useRef()
   , [value,  setValue] = useState(() => initValue || '')
   , _hChange = useCallback(event => {
@@ -99,6 +99,6 @@ const InputText = forwardRef(({
       }
    </div>
   );
-});
+};
 
 export default InputText
