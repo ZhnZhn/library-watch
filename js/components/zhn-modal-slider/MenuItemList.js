@@ -18,35 +18,35 @@ const SUB_MENU = 'sub',
     padding: '1px 16px 1px 0px',
     fontWeight: 'bold'
   };
-const _fClick = _ref2 => {
+const _fClick = _ref => {
   let {
     isClose,
     onClick,
     onClose
-  } = _ref2;
+  } = _ref;
   return typeof onClick === 'function' ? isClose ? () => {
     onClick();
     onClose();
   } : onClick : void 0;
 };
-const NextPageArrow = _ref3 => {
+const NextPageArrow = _ref2 => {
   let {
     type
-  } = _ref3;
+  } = _ref2;
   return type === SUB_MENU ? /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
     style: S_NEXT_PAGE,
     children: '>'
   }) : null;
 };
-const MenuItemList = _ref4 => {
+const MenuItemList = _ref3 => {
   let {
-    ref,
+    refEl,
     items,
     itemCl,
     pageNumber,
     onNextPage,
     onClose
-  } = _ref4;
+  } = _ref3;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
     children: items.map((item, index) => {
       const {
@@ -62,9 +62,9 @@ const MenuItemList = _ref4 => {
           onClick,
           onClose
         }),
-        _ref = index === 0 ? ref : void 0;
+        _refEl = index === 0 ? refEl : void 0;
       return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_MenuAriaItem.default, {
-        ref: _ref,
+        refEl: _refEl,
         className: cn || itemCl,
         style: S_ITEM,
         onClick: _onClick,

@@ -6,7 +6,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 const FN_NOOP = () => {};
 const MenuAriaItem = _ref => {
   let {
-    ref,
+    refEl,
     onClick,
     onReg = FN_NOOP,
     children,
@@ -19,7 +19,7 @@ const MenuAriaItem = _ref => {
   };
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     ...rest,
-    ref: ref,
+    ref: refEl,
     role: "menuitem",
     tabIndex: "0",
     onClick: onClick,

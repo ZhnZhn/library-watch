@@ -14,7 +14,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 const _crValidationMessages = (repo, isValid, datesMsg, oneTitle) => {
   const msg = [];
   if (!repo) {
-    msg.push(`${oneTitle} is required`);
+    msg.push(oneTitle + " is required");
   }
   if (!isValid) {
     msg.push(datesMsg);
@@ -72,13 +72,13 @@ const DialogType3A = (0, _memoFn.memoIsShow)(_ref => {
     onShow: onShow,
     onClose: hClose,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.RowInputText, {
-      ref: _refInputOne,
+      refEl: _refInputOne,
       isShowLabel: isShowLabels,
       caption: oneTitle,
       placeholder: onePlaceholder,
       onEnter: hLoad
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.RowInputDatePeriod, {
-      ref: _refInputDates,
+      refEl: _refInputDates,
       isShow: isShowDate,
       isShowLabels: isShowLabels
     })]

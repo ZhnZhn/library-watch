@@ -28,7 +28,7 @@ const INITIAL_FROM_DATE = getFromDate(1)
 , _getTrimRefInputValue = ref => (getRefInputValue(ref) || "").trim();
 
 const RowInputDatePeriod = ({
-  ref,
+  refEl,
   isShow,
   isShowLabels=true,
   msgOnNotValidFormat=DF_MSG_ON_NOT_VALID_FORMAT,
@@ -39,7 +39,7 @@ const RowInputDatePeriod = ({
   const _refFromDate = useRef()
   , _refToDate = useRef();
 
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(refEl, () => ({
      getValues: () => ({
        fromDate: getRefInputValue(_refFromDate),
        toDate: getRefInputValue(_refToDate)
@@ -90,7 +90,7 @@ const RowInputDatePeriod = ({
           caption="From Date"
         />
         <InputDate
-           ref={_refFromDate}
+           refEl={_refFromDate}
            initialValue={initialFromDate}
            errorMsg={ERROR_FORMAT}
            onTest={onTestDate}
@@ -102,7 +102,7 @@ const RowInputDatePeriod = ({
            caption="To Date"
         />
         <InputDate
-           ref={_refToDate}
+           refEl={_refToDate}
            initialValue={initialToDate}
            errorMsg={ERROR_FORMAT}
            onTest={onTestDate}

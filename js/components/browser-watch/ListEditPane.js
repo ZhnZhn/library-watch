@@ -58,13 +58,13 @@ const ListEditPane = _ref => {
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SelectGroupList.default, {
-      ref: _refGroupList,
+      refEl: _refGroupList,
       getWatchListsByGroup: getWatchListsByGroup,
       groupCaption: "In Group",
       groupOptions: groupOptions,
       listCaption: "List From"
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputText.default, {
-      ref: _refInputText,
+      refEl: _refInputText,
       caption: "List To"
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessages.default, {
       validationMessages: validationMessages
@@ -76,6 +76,5 @@ const ListEditPane = _ref => {
     })]
   });
 };
-var _default = ListEditPane;
-exports.default = _default;
+var _default = exports.default = ListEditPane;
 //# sourceMappingURL=ListEditPane.js.map

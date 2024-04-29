@@ -108,14 +108,14 @@ const DialogType3 = memoIsShow(({
        onClose={hClose}
     >
       <D.RowInputText
-         ref={_refInputOne}
+         refEl={_refInputOne}
          isShowLabel={isShowLabels}
          caption={oneTitle}
          placeholder={onePlaceholder}
          onEnter={hLoad}
       />
       <D.RowInputText
-         ref={_refInputTwo}
+         refEl={_refInputTwo}
          isShowLabel={isShowLabels}
          caption={twoTitle}
          placeholder={twoPlaceholder}
@@ -128,7 +128,7 @@ const DialogType3 = memoIsShow(({
          onSelect={_hSelectSortBy}
       />
       <D.RowInputDatePeriod
-        ref={_refInputDates}
+        refEl={_refInputDates}
         isShow={isShowDate}
         isShowLabels={isShowLabels}
       />

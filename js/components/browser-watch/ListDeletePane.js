@@ -51,7 +51,7 @@ const ListDeletePane = _ref => {
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SelectGroupList.default, {
-      ref: _refGroupList,
+      refEl: _refGroupList,
       getWatchListsByGroup: getWatchListsByGroup,
       groupCaption: "In Group",
       groupOptions: groupOptions,
@@ -66,6 +66,5 @@ const ListDeletePane = _ref => {
     })]
   });
 };
-var _default = ListDeletePane;
-exports.default = _default;
+var _default = exports.default = ListDeletePane;
 //# sourceMappingURL=ListDeletePane.js.map

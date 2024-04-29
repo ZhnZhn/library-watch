@@ -58,7 +58,7 @@ const GroupEditPane = ({
     }
   }, [])
   // onRename, msgOnNotSelect, msgOnIsEmptyName, setValidationMessages
-  /* eslint-enable react-hooks/exhaustive-deps */  
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   return (
     <div>
@@ -68,7 +68,7 @@ const GroupEditPane = ({
           onSelect={_hSelectGroup}
        />
       <RowInputText
-        ref={_refInputText}
+        refEl={_refInputText}
         caption="Group To"
       />
       <ValidationMessages

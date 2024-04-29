@@ -53,7 +53,7 @@ const ListCreatePane = _ref => {
       options: groupOptions,
       onSelect: _hSelectGroup
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputText.default, {
-      ref: _refInputText,
+      refEl: _refInputText,
       caption: "List"
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessages.default, {
       validationMessages: validationMessages
@@ -65,6 +65,5 @@ const ListCreatePane = _ref => {
     })]
   });
 };
-var _default = ListCreatePane;
-exports.default = _default;
+var _default = exports.default = ListCreatePane;
 //# sourceMappingURL=ListCreatePane.js.map

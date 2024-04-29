@@ -1,6 +1,5 @@
 //import PropTypes from 'prop-types'
 import {
-  forwardRef,
   useRef,
   useState,
   useCallback,
@@ -14,8 +13,11 @@ import useRefItemCaption from './useRefItemCaption';
 
 import RowInputSelect from '../dialogs/rows/RowInputSelect';
 
-const SelectGroupList = forwardRef((props, ref) => {
-  const _prevProps = usePrevValue(props)
+const SelectGroupList = ({
+  refEl,
+  ...restProps
+}) => {
+  const _prevProps = usePrevValue(restProps)
   , _refGroupCaption = useRef(null)
   , [
       _refListCaption,
@@ -38,13 +40,13 @@ const SelectGroupList = forwardRef((props, ref) => {
     groupCaption,
     groupOptions,
     listCaption
-  } = props;
+  } = restProps;
 
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
-    if (_prevProps && props !== _prevProps) {
+    if (_prevProps && restProps !== _prevProps) {
       const _groupCaption = getRefValue(_refGroupCaption);
-      if (props.groupOptions !== _prevProps.groupOptions){
+      if (restProps.groupOptions !== _prevProps.groupOptions){
           setRefValue(_refGroupCaption, null)
           setRefValue(_refListCaption, null)
           setListOptions([]);
@@ -62,7 +64,7 @@ const SelectGroupList = forwardRef((props, ref) => {
   })
   /*eslint-disable react-hooks/exhaustive-deps */
 
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(refEl, () => ({
     getValue: () => ({
       captionGroup: getRefValue(_refGroupCaption),
       captionList: getRefValue(_refListCaption)
@@ -87,10 +89,10 @@ const SelectGroupList = forwardRef((props, ref) => {
        />
     </div>
   );
-});
+};
 
 /*
-SelectGroupList.propTypes = {  
+SelectGroupList.propTypes = {
   groupCaption: PropTypes.string,
   groupOptions: PropTypes.array,
   listCaption: PropTypes.string

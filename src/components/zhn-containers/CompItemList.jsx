@@ -169,7 +169,7 @@ const CompItemList = ({
         />
       </ContainerCaption>
       <ScrollPane
-        ref={_refScroll}
+        refEl={_refScroll}
         style={S_SCROLL}
       >
         <div>

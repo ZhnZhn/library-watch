@@ -10,8 +10,12 @@ var _RowInputSelect = _interopRequireDefault(require("../dialogs/rows/RowInputSe
 var _jsxRuntime = require("react/jsx-runtime");
 //import PropTypes from 'prop-types'
 
-const SelectGroupList = (0, _uiApi.forwardRef)((props, ref) => {
-  const _prevProps = (0, _usePrevValue.default)(props),
+const SelectGroupList = _ref => {
+  let {
+    refEl,
+    ...restProps
+  } = _ref;
+  const _prevProps = (0, _usePrevValue.default)(restProps),
     _refGroupCaption = (0, _uiApi.useRef)(null),
     [_refListCaption, _hSelectList] = (0, _useRefItemCaption.default)(),
     [listOptions, setListOptions] = (0, _uiApi.useState)([]),
@@ -28,13 +32,13 @@ const SelectGroupList = (0, _uiApi.forwardRef)((props, ref) => {
       groupCaption,
       groupOptions,
       listCaption
-    } = props;
+    } = restProps;
 
   /*eslint-disable react-hooks/exhaustive-deps */
   (0, _uiApi.useEffect)(() => {
-    if (_prevProps && props !== _prevProps) {
+    if (_prevProps && restProps !== _prevProps) {
       const _groupCaption = (0, _uiApi.getRefValue)(_refGroupCaption);
-      if (props.groupOptions !== _prevProps.groupOptions) {
+      if (restProps.groupOptions !== _prevProps.groupOptions) {
         (0, _uiApi.setRefValue)(_refGroupCaption, null);
         (0, _uiApi.setRefValue)(_refListCaption, null);
         setListOptions([]);
@@ -52,7 +56,7 @@ const SelectGroupList = (0, _uiApi.forwardRef)((props, ref) => {
   });
   /*eslint-disable react-hooks/exhaustive-deps */
 
-  (0, _uiApi.useImperativeHandle)(ref, () => ({
+  (0, _uiApi.useImperativeHandle)(refEl, () => ({
     getValue: () => ({
       captionGroup: (0, _uiApi.getRefValue)(_refGroupCaption),
       captionList: (0, _uiApi.getRefValue)(_refListCaption)
@@ -73,15 +77,14 @@ const SelectGroupList = (0, _uiApi.forwardRef)((props, ref) => {
       onSelect: _hSelectList
     })]
   });
-});
+};
 
 /*
-SelectGroupList.propTypes = {  
+SelectGroupList.propTypes = {
   groupCaption: PropTypes.string,
   groupOptions: PropTypes.array,
   listCaption: PropTypes.string
 }
 */
-var _default = SelectGroupList;
-exports.default = _default;
+var _default = exports.default = SelectGroupList;
 //# sourceMappingURL=SelectGroupList.js.map

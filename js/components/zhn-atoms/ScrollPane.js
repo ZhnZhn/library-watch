@@ -9,7 +9,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 const CL_SCROLL = 'with-scroll';
 const ScrollPane = _ref => {
   let {
-    ref,
+    refEl,
     style,
     className,
     onFocusIn,
@@ -17,7 +17,7 @@ const ScrollPane = _ref => {
   } = _ref;
   const _refDivElement = (0, _uiApi.useRef)(),
     _className = (0, _crCn.default)(CL_SCROLL, className);
-  (0, _uiApi.useImperativeHandle)(ref, () => ({
+  (0, _uiApi.useImperativeHandle)(refEl, () => ({
     scrollTop: () => {
       const _divElement = (0, _uiApi.getRefValue)(_refDivElement);
       if (_divElement) {

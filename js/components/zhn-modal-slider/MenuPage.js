@@ -43,12 +43,12 @@ const MenuPage = _ref => {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: style,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuTitle.default, {
-      ref: _refTitle,
+      refEl: _refTitle,
       titleCl: titleCl,
       title: title,
       onClick: _hClickTitle
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuItemList.default, {
-      ref: _refFirst,
+      refEl: _refFirst,
       items: items,
       itemCl: itemCl || titleCl,
       pageNumber: pageNumber,

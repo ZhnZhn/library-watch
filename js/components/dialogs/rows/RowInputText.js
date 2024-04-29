@@ -19,7 +19,7 @@ const S_DIV = {
   };
 const RowInputText = _ref => {
   let {
-    ref,
+    refEl,
     isShowLabel,
     caption,
     placeholder,
@@ -32,7 +32,7 @@ const RowInputText = _ref => {
       is: isShowLabel,
       caption: caption
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputText.default, {
-      ref: ref,
+      refEl: refEl,
       style: S_INPUT_TEXT,
       placeholder: _placeholder,
       onEnter: onEnter

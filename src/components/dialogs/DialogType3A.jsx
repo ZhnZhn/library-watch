@@ -93,14 +93,14 @@ const DialogType3A = memoIsShow(({
        onClose={hClose}
     >
       <D.RowInputText
-         ref={_refInputOne}
+         refEl={_refInputOne}
          isShowLabel={isShowLabels}
          caption={oneTitle}
          placeholder={onePlaceholder}
          onEnter={hLoad}
       />
       <D.RowInputDatePeriod
-        ref={_refInputDates}
+        refEl={_refInputDates}
         isShow={isShowDate}
         isShowLabels={isShowLabels}
       />

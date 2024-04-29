@@ -28,13 +28,13 @@ const S_ARROW_CELL = {
   BORDER_COLOR = "#1b75bb transparent transparent";
 const ArrowCell = _ref => {
   let {
-    ref,
+    refEl,
     arrowStyle,
     onClick
   } = _ref;
   const _refArrowCell = (0, _uiApi.useRef)(),
     _refArrow = (0, _uiApi.useRef)();
-  (0, _uiApi.useImperativeHandle)(ref, () => ({
+  (0, _uiApi.useImperativeHandle)(refEl, () => ({
     startAnimation: () => {
       const _arrowCell = (0, _uiApi.getRefValue)(_refArrowCell),
         _arrow = (0, _uiApi.getRefValue)(_refArrow);

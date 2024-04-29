@@ -18,14 +18,14 @@ const S_ITEM = {
   };
 const MenuTitle = _ref => {
   let {
-    ref,
+    refEl,
     titleCl,
     title,
     pageNumber,
     onClick
   } = _ref;
   return title ? /*#__PURE__*/(0, _jsxRuntime.jsxs)(_MenuAriaItem.default, {
-    ref: ref,
+    refEl: refEl,
     className: titleCl,
     style: S_ITEM,
     onClick: onClick,

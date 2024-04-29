@@ -13,7 +13,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 const _crValidationMessages = (value, oneTitle) => {
   const msg = [];
   if (!value) {
-    msg.push(`${oneTitle} is required`);
+    msg.push(oneTitle + " is required");
   }
   msg.isValid = msg.length === 0;
   return msg;
@@ -55,7 +55,7 @@ const DialogType1 = (0, _memoFn.memoIsShow)(_ref => {
     onShow: onShow,
     onClose: hClose,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.RowInputText, {
-      ref: _refInputOne,
+      refEl: _refInputOne,
       isShowLabel: isShowLabels,
       caption: oneTitle,
       placeholder: onePlaceholder,

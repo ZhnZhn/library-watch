@@ -20,7 +20,7 @@ const INITIAL_FROM_DATE = (0, _dateFn.getFromDate)(1),
   _getTrimRefInputValue = ref => ((0, _uiApi.getRefInputValue)(ref) || "").trim();
 const RowInputDatePeriod = _ref => {
   let {
-    ref,
+    refEl,
     isShow,
     isShowLabels = true,
     msgOnNotValidFormat = DF_MSG_ON_NOT_VALID_FORMAT,
@@ -30,7 +30,7 @@ const RowInputDatePeriod = _ref => {
   } = _ref;
   const _refFromDate = (0, _uiApi.useRef)(),
     _refToDate = (0, _uiApi.useRef)();
-  (0, _uiApi.useImperativeHandle)(ref, () => ({
+  (0, _uiApi.useImperativeHandle)(refEl, () => ({
     getValues: () => ({
       fromDate: (0, _uiApi.getRefInputValue)(_refFromDate),
       toDate: (0, _uiApi.getRefInputValue)(_refToDate)
@@ -79,7 +79,7 @@ const RowInputDatePeriod = _ref => {
         is: isShowLabels,
         caption: "From Date"
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputDate.default, {
-        ref: _refFromDate,
+        refEl: _refFromDate,
         initialValue: initialFromDate,
         errorMsg: ERROR_FORMAT,
         onTest: onTestDate
@@ -89,7 +89,7 @@ const RowInputDatePeriod = _ref => {
         is: isShowLabels,
         caption: "To Date"
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputDate.default, {
-        ref: _refToDate,
+        refEl: _refToDate,
         initialValue: initialToDate,
         errorMsg: ERROR_FORMAT,
         onTest: onTestDate

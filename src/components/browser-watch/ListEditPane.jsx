@@ -64,14 +64,14 @@ const ListEditPane = ({
   return (
     <div>
        <SelectGroupList
-         ref={_refGroupList}
+         refEl={_refGroupList}
          getWatchListsByGroup={getWatchListsByGroup}
          groupCaption="In Group"
          groupOptions={groupOptions}
          listCaption="List From"
        />
        <RowInputText
-          ref={_refInputText}
+          refEl={_refInputText}
           caption="List To"
        />
        <ValidationMessages

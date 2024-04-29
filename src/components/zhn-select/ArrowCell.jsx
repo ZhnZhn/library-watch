@@ -29,14 +29,14 @@ const S_ARROW_CELL = {
 , BORDER_COLOR = "#1b75bb transparent transparent";
 
 const ArrowCell = ({
-  ref,
+  refEl,
   arrowStyle,
   onClick
 }) => {
   const _refArrowCell = useRef()
   , _refArrow = useRef();
 
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(refEl, () => ({
     startAnimation: () => {
       const _arrowCell = getRefValue(_refArrowCell)
       , _arrow = getRefValue(_refArrow);

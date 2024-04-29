@@ -91,13 +91,13 @@ const DialogType3 = (0, _memoFn.memoIsShow)(_ref => {
     onShow: onShow,
     onClose: hClose,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.RowInputText, {
-      ref: _refInputOne,
+      refEl: _refInputOne,
       isShowLabel: isShowLabels,
       caption: oneTitle,
       placeholder: onePlaceholder,
       onEnter: hLoad
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.RowInputText, {
-      ref: _refInputTwo,
+      refEl: _refInputTwo,
       isShowLabel: isShowLabels,
       caption: twoTitle,
       placeholder: twoPlaceholder
@@ -108,7 +108,7 @@ const DialogType3 = (0, _memoFn.memoIsShow)(_ref => {
       options: _SORT_OPTIONS,
       onSelect: _hSelectSortBy
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.RowInputDatePeriod, {
-      ref: _refInputDates,
+      refEl: _refInputDates,
       isShow: isShowDate,
       isShowLabels: isShowLabels
     })]

@@ -30,7 +30,7 @@ const NextPageArrow = ({ type }) =>
   ) : null;
 
 const MenuItemList = ({
-  ref,
+  refEl,
   items,
   itemCl,
   pageNumber,
@@ -50,10 +50,10 @@ const MenuItemList = ({
       , _onClick = type === SUB_MENU
            ? onNextPage.bind(null, id, name, pageNumber)
            : _fClick({ isClose, onClick, onClose })
-      , _ref = index === 0 ? ref : void 0;
+      , _refEl = index === 0 ? refEl : void 0;
       return (
         <MenuAriaItem
-          ref={_ref}
+          refEl={_refEl}
           key={name}
           className={cn || itemCl}
           style={S_ITEM}

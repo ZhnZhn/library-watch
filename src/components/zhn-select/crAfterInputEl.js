@@ -30,7 +30,7 @@ const crAfterInputEl = (
   return !isLoading && !isLoadingFailed
     ? [placeholder || `Select ${optionName}...`,
         (<ArrowCell
-          ref={refArrowCell}
+          refEl={refArrowCell}
           arrowStyle={isShowOption ? S_ARROW_SHOW : void 0}
           onClick={hToggleOptions}
        />)]

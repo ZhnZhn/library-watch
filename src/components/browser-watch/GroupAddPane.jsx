@@ -5,6 +5,7 @@ import {
 } from '../uiApi';
 
 import RowInputText from '../dialogs/rows/RowInputText';
+import ValidationMessages from '../dialogs/rows/ValidationMessages';
 import RowButtons from './RowButtons';
 
 import useValidationMessages from '../hooks/useValidationMessages';
@@ -47,7 +48,7 @@ const GroupAddPane = ({
   return (
     <div>
       <RowInputText
-         ref={_refInputText}
+         refEl={_refInputText}
          caption="Group"
       />
       <ValidationMessages
@@ -64,7 +65,7 @@ const GroupAddPane = ({
 };
 
 /*
-GroupAddPane.propTypes = {      
+GroupAddPane.propTypes = {
   forActionType: PropTypes.string,
   msgOnIsEmptyName: PropTypes.func,
   onCreate: PropTypes.func,

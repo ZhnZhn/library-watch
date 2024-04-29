@@ -36,9 +36,8 @@ const BtClear = ({
 
 const FN_NOOP = () => {};
 
-
 const InputText = ({
-  ref,
+  refEl,
   style,
   initValue,
   placeholder,
@@ -62,7 +61,7 @@ const InputText = ({
     focusRefElement(_refInput)
   }, []);
 
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(refEl, () => ({
      getValue: () => {
        const _inputEl = getRefValue(_refInput);
        return _inputEl

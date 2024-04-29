@@ -1,5 +1,5 @@
 import {
-  useRef,  
+  useRef,
   useCallback,
   getRefValue
 } from '../uiApi';
@@ -64,7 +64,7 @@ const ListCreatePane = ({
          onSelect={_hSelectGroup}
       />
       <RowInputText
-         ref={_refInputText}
+         refEl={_refInputText}
          caption="List"
       />
       <ValidationMessages

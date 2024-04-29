@@ -42,7 +42,7 @@ const CL_DRAGGABLE_DIALOG = "draggable-dialog",
   _isFn = fn => typeof fn === 'function';
 const DraggableDialog = _ref => {
   let {
-    ref,
+    refEl,
     menuModel,
     isShow,
     caption,
@@ -51,7 +51,7 @@ const DraggableDialog = _ref => {
     onShowChart,
     onClose = FN_NOOP
   } = _ref;
-  const [_refRootDiv, _refBtMore] = (0, _useDialogFocus.default)(ref, isShow),
+  const [_refRootDiv, _refBtMore] = (0, _useDialogFocus.default)(refEl, isShow),
     [_isMore, _toggleMore] = (0, _useToggle.default)(),
     _hKeyDown = (0, _useKeyEscape.default)(onClose),
     _className = (0, _crCn.default)(CL_DRAGGABLE_DIALOG, [isShow, _Dialog.CL_SHOW_POPUP]),

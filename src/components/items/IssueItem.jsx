@@ -67,7 +67,7 @@ const IssueItem = ({
 
   return (
     <A.ShowHide
-       ref={_refItem}
+       refEl={_refItem}
        isShow={isShow}
        className={CL_ITEM}
        onKeyDown={_onKeyDownItem}

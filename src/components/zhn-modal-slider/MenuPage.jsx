@@ -47,13 +47,13 @@ const MenuPage = ({
  return (
     <div style={style}>
       <MenuTitle
-        ref={_refTitle}
+        refEl={_refTitle}
         titleCl={titleCl}
         title={title}
         onClick={_hClickTitle}
       />
       <MenuItemList
-        ref={_refFirst}
+        refEl={_refFirst}
         items={items}
         itemCl={itemCl || titleCl}
         pageNumber={pageNumber}

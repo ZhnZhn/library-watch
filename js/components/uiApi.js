@@ -1,14 +1,13 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useSyncExternalStore = exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.setRefValue = exports.setRefInputValue = exports.safeMap = exports.memo = exports.isRefInputValid = exports.getRefValue = exports.getRefInputValue = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefNextSiblingFirstChildElement = exports.focusRefInput = exports.focusRefElement = exports.focusHtmlElement = exports.createElement = exports.cloneElement = exports.bindTo = exports.FN_NOOP = void 0;
+exports.useSyncExternalStore = exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.setRefValue = exports.setRefInputValue = exports.safeMap = exports.memo = exports.isRefInputValid = exports.getRefValue = exports.getRefInputValue = exports.getClientY = exports.getClientX = exports.focusRefNextSiblingFirstChildElement = exports.focusRefInput = exports.focusRefElement = exports.focusHtmlElement = exports.createElement = exports.cloneElement = exports.bindTo = exports.FN_NOOP = void 0;
 var _bindTo = require("../utils/bindTo");
 exports.bindTo = _bindTo.bindTo;
 var _react = require("react");
 exports.cloneElement = _react.cloneElement;
 exports.createElement = _react.createElement;
 exports.memo = _react.memo;
-exports.forwardRef = _react.forwardRef;
 exports.useRef = _react.useRef;
 exports.useState = _react.useState;
 exports.useReducer = _react.useReducer;

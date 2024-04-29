@@ -142,7 +142,7 @@ const CompItemList = _ref => {
         maxWidth: RESIZE_MAX_WIDTH
       })
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ScrollPane.default, {
-      ref: _refScroll,
+      refEl: _refScroll,
       style: S_SCROLL,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         children: configs

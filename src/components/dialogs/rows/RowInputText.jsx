@@ -14,7 +14,7 @@ const S_DIV = {
 };
 
 const RowInputText = ({
-  ref,
+  refEl,
   isShowLabel,
   caption,
   placeholder,
@@ -31,7 +31,7 @@ const RowInputText = ({
          caption={caption}
        />
        <InputText
-          ref={ref}
+          refEl={refEl}
           style={S_INPUT_TEXT}
           placeholder={_placeholder}
           onEnter={onEnter}

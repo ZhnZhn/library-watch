@@ -50,7 +50,7 @@ const IssueItem = _ref => {
       isPropagation: true
     });
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_A.default.ShowHide, {
-    ref: _refItem,
+    refEl: _refItem,
     isShow: isShow,
     className: _CL.CL_ITEM,
     onKeyDown: _onKeyDownItem,
@@ -67,7 +67,7 @@ const IssueItem = _ref => {
           children: state
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           style: S_NUMBER,
-          children: `(#${number})`
+          children: "(#" + number + ")"
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           style: S_DATE,
           children: createdAt

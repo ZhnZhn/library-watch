@@ -36,7 +36,7 @@ const BtClear = _ref3 => {
 const FN_NOOP = () => {};
 const InputText = _ref4 => {
   let {
-    ref,
+    refEl,
     style,
     initValue,
     placeholder,
@@ -59,7 +59,7 @@ const InputText = _ref4 => {
       setValue('');
       (0, _uiApi.focusRefElement)(_refInput);
     }, []);
-  (0, _uiApi.useImperativeHandle)(ref, () => ({
+  (0, _uiApi.useImperativeHandle)(refEl, () => ({
     getValue: () => {
       const _inputEl = (0, _uiApi.getRefValue)(_refInput);
       return _inputEl ? _inputEl.value.trim() : void 0;

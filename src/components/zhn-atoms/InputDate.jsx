@@ -43,7 +43,7 @@ const S_ROOT = {
 , FN_NOOP = () => {};
 
 const InputDate = ({
-  ref,
+  refEl,
   initialValue,
   errorMsg,
   onTest=FN_NOOP
@@ -86,7 +86,7 @@ const InputDate = ({
       ? S_HR_VALID
       : S_HR_NOT_VALID;
 
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(refEl, () => ({
     getValue: () => value,
     isValid: () => isValid,
     focus: () => focusRefInput(_refInput)

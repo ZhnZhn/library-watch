@@ -53,7 +53,7 @@ const GroupEditPane = _ref => {
       options: groupOptions,
       onSelect: _hSelectGroup
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputText.default, {
-      ref: _refInputText,
+      refEl: _refInputText,
       caption: "Group To"
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessages.default, {
       validationMessages: validationMessages
@@ -65,6 +65,5 @@ const GroupEditPane = _ref => {
     })]
   });
 };
-var _default = GroupEditPane;
-exports.default = _default;
+var _default = exports.default = GroupEditPane;
 //# sourceMappingURL=GroupEditPane.js.map

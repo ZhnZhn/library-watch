@@ -52,7 +52,7 @@ const CL_DRAGGABLE_DIALOG = "draggable-dialog"
 , _isFn = fn => typeof fn === 'function';
 
 const DraggableDialog = ({
-  ref,
+  refEl,
   menuModel,
   isShow,
   caption,
@@ -64,7 +64,7 @@ const DraggableDialog = ({
   const [
     _refRootDiv,
     _refBtMore
-  ] = useDialogFocus(ref, isShow)
+  ] = useDialogFocus(refEl, isShow)
   , [
     _isMore,
     _toggleMore

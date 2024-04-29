@@ -8,7 +8,7 @@ var _CL = require("../styles/CL");
 var _jsxRuntime = require("react/jsx-runtime");
 const ShowHide = _ref => {
   let {
-    ref,
+    refEl,
     isShow,
     style,
     className,
@@ -18,7 +18,7 @@ const ShowHide = _ref => {
   const _className = (0, _crCn.default)(className, [isShow, _CL.CL_SHOW_POPUP]),
     _style = isShow ? _CL.S_BLOCK : _CL.S_NONE;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    ref: ref,
+    ref: refEl,
     role: "presentation",
     "aria-hidden": isShow,
     className: _className,

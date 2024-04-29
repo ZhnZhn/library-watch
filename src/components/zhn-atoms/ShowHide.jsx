@@ -6,7 +6,7 @@ import {
 } from '../styles/CL';
 
 const ShowHide = ({
-  ref,
+  refEl,
   isShow,
   style,
   className,
@@ -23,7 +23,7 @@ const ShowHide = ({
 
   return (
     <div
-       ref={ref}
+       ref={refEl}
        role="presentation"
        aria-hidden={isShow}
        className={_className}

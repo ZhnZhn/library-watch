@@ -8,7 +8,7 @@ import crCn from '../zhn-utils/crCn';
 const CL_SCROLL = 'with-scroll';
 
 const ScrollPane = ({
-  ref,
+  refEl,
   style,
   className,
   onFocusIn,
@@ -17,7 +17,7 @@ const ScrollPane = ({
   const _refDivElement = useRef()
   , _className = crCn(CL_SCROLL, className);
 
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(refEl, () => ({
     scrollTop: () => {
       const _divElement = getRefValue(_refDivElement);
       if (_divElement) {

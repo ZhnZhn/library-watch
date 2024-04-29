@@ -1,7 +1,7 @@
 const FN_NOOP = () => {};
 
 const MenuAriaItem = ({
-  ref,
+  refEl,
   onClick,
   onReg=FN_NOOP,
   children,
@@ -16,7 +16,7 @@ const MenuAriaItem = ({
   return (
     <div
       {...rest}
-      ref={ref}
+      ref={refEl}
       role="menuitem"
       tabIndex="0"
       onClick={onClick}

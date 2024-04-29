@@ -74,7 +74,7 @@ const DialogType1 = memoIsShow(({
        onClose={hClose}
     >
       <D.RowInputText
-         ref={_refInputOne}
+         refEl={_refInputOne}
          isShowLabel={isShowLabels}
          caption={oneTitle}
          placeholder={onePlaceholder}
