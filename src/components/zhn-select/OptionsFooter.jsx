@@ -1,5 +1,3 @@
-import { forwardRef } from '../uiApi';
-
 import BtCircle from '../zhn-atoms/ButtonCircle2';
 import {
   CL_FOOTER,
@@ -13,17 +11,18 @@ const S_BT_CIRCLE = {
   backgroundColor: '#949ab4'
 };
 
-const OptionsFooter = forwardRef(({
+const OptionsFooter = ({
+  refIndexElement,
   indexActiveOption,
   nFiltered,
   nAll,
   onStepDown,
   onStepUp,
   onClear
-}, ref) => (
+}) => (
   <div className={`${CL_FOOTER} ${CL_NOT_SELECTED}`}>
     <span className={CL_FOOTER_INDEX}>
-      <span ref={ref}>
+      <span ref={refIndexElement}>
         {indexActiveOption}
       </span>
       <span>
@@ -50,6 +49,6 @@ const OptionsFooter = forwardRef(({
       />
     </span>
   </div>
-));
+);
 
 export default OptionsFooter
