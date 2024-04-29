@@ -1,4 +1,3 @@
-import { forwardRef } from '../../uiApi';
 import InputText from '../../zhn-atoms/InputText';
 import Caption from './Caption';
 
@@ -14,12 +13,13 @@ const S_DIV = {
   marginRight: 0
 };
 
-const RowInputText = forwardRef(({
+const RowInputText = ({
+  ref,
   isShowLabel,
   caption,
   placeholder,
   onEnter
-}, ref) => {
+}) => {
   const _placeholder = isShowLabel
     ? placeholder
     : placeholder || caption;
@@ -38,6 +38,6 @@ const RowInputText = forwardRef(({
        />
     </div>
   );
-});
+};
 
 export default RowInputText
