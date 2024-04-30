@@ -17,8 +17,7 @@ module.exports = {
     lib: [
             "react", 
             "react-dom",                         
-            "chart.js", 
-            "timeago.js",             
+            "chart.js",                          
             "papaparse",
             "raven-js" 
     ],

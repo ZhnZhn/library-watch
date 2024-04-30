@@ -1,4 +1,4 @@
-import formatTimeAgo from './formatTimeAgo';
+import { safeFormatMls } from './formatDate';
 
 import {
 	isStr,
@@ -146,7 +146,7 @@ export const isWeekend = (
 }
 
 //YYYY-MM-DDTHH:MM:SSZ
-export const crDateAgo = (str) => {
+export const crDateAgo = (str, nowMls) => {
 	const _mls = (str || '').trim().length === 20
     ? Date.UTC(
         str.slice(0,4),
@@ -156,7 +156,5 @@ export const crDateAgo = (str) => {
 				_crNumber(str.slice(14,16))
       )
     : void 0;
-	return isNumber(_mls)
-	  ? formatTimeAgo(_mls)
-		: str;
+	return safeFormatMls(_mls, nowMls);
 }

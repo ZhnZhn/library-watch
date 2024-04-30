@@ -1,9 +1,8 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.ymdToUTCSecond = exports.ymdToMlsUTC = exports.mlsToYmd = exports.mlsToDmy = exports.isYmd = exports.isWeekend = exports.getToDate = exports.getFromDate = exports.crDateAgo = void 0;
-var _formatTimeAgo = _interopRequireDefault(require("./formatTimeAgo"));
+var _formatDate = require("./formatDate");
 var _isTypeFn = require("./isTypeFn");
 const MIN_YEAR = 1999;
 const _crNumber = str => parseInt(str, 10);
@@ -89,9 +88,9 @@ const isWeekend = (year, month, day) => {
 
 //YYYY-MM-DDTHH:MM:SSZ
 exports.isWeekend = isWeekend;
-const crDateAgo = str => {
+const crDateAgo = (str, nowMls) => {
   const _mls = (str || '').trim().length === 20 ? Date.UTC(str.slice(0, 4), _crNumberMonth(str.slice(5, 7)), _crNumber(str.slice(8, 10)), _crNumber(str.slice(11, 13)), _crNumber(str.slice(14, 16))) : void 0;
-  return (0, _isTypeFn.isNumber)(_mls) ? (0, _formatTimeAgo.default)(_mls) : str;
+  return (0, _formatDate.safeFormatMls)(_mls, nowMls);
 };
 exports.crDateAgo = crDateAgo;
 //# sourceMappingURL=dateFn.js.map
