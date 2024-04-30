@@ -1,11 +1,16 @@
 import { htmlDecode } from '../../utils/domFn';
 import { safeFormatSec } from '../../utils/formatDate';
 
+import {
+  bindTo,
+  safeMap
+} from '../uiApi';
+
 import StackTaggedQuestions from '../items/stack/TaggedQuestions';
 
 const _crItems = items => {
   const _nowMls = Date.now();
-  return (items || []).map(item => {
+  return safeMap(items, item => {
      const {
        title,
        last_activity_date,
@@ -19,7 +24,7 @@ const _crItems = items => {
 
      return item;
   });
-}
+};
 
 const fStackTaggedQuestions = ({
   createElement,
@@ -47,10 +52,14 @@ const fStackTaggedQuestions = ({
      requestType,
      caption: repo,
      items: _items,
-     onCloseItem: onCloseItem.bind(null, chartType, browserType, key),
+     onCloseItem: bindTo(onCloseItem,
+       chartType,
+       browserType,
+       key
+     ),
      onWatchItem: onWatchItem,
      ...parentProps
   });
-}
+};
 
 export default fStackTaggedQuestions

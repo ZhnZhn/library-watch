@@ -5,10 +5,11 @@ exports.__esModule = true;
 exports.default = void 0;
 var _domFn = require("../../utils/domFn");
 var _formatDate = require("../../utils/formatDate");
+var _uiApi = require("../uiApi");
 var _TaggedQuestions = _interopRequireDefault(require("../items/stack/TaggedQuestions"));
 const _crItems = items => {
   const _nowMls = Date.now();
-  return (items || []).map(item => {
+  return (0, _uiApi.safeMap)(items, item => {
     const {
         title,
         last_activity_date,
@@ -49,7 +50,7 @@ const fStackTaggedQuestions = _ref => {
     requestType,
     caption: repo,
     items: _items,
-    onCloseItem: onCloseItem.bind(null, chartType, browserType, key),
+    onCloseItem: (0, _uiApi.bindTo)(onCloseItem, chartType, browserType, key),
     onWatchItem: onWatchItem,
     ...parentProps
   });
