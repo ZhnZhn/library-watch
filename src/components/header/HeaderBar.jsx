@@ -7,6 +7,7 @@ import { showAbout } from '../../flux/compStore';
 import { BrowserType as BT } from '../../constants/Type';
 
 import A from '../Comp';
+import SvgInfo from '../zhn-atoms/svg/SvgInfo';
 import LoadingProgress from './LoadingProgress';
 import IconAppLogo from './IconAppLogo';
 import AppLabel from './AppLabel';
@@ -87,7 +88,7 @@ const HeaderBar = () => (
           timeout={0}
           onClick={showAbout}
        >
-          <A.SvgInfo style={S_SVG_INFO} />
+          <SvgInfo style={S_SVG_INFO} />
        </A.FlatButton>
      </div>
   </header>

@@ -7,6 +7,7 @@ var _browserStore = require("../../flux/browserStore");
 var _compStore = require("../../flux/compStore");
 var _Type = require("../../constants/Type");
 var _Comp = _interopRequireDefault(require("../Comp"));
+var _SvgInfo = _interopRequireDefault(require("../zhn-atoms/svg/SvgInfo"));
 var _LoadingProgress = _interopRequireDefault(require("./LoadingProgress"));
 var _IconAppLogo = _interopRequireDefault(require("./IconAppLogo"));
 var _AppLabel = _interopRequireDefault(require("./AppLabel"));
@@ -70,12 +71,11 @@ const HeaderBar = () => /*#__PURE__*/(0, _jsxRuntime.jsxs)("header", {
       hotKey: _hotkeys.HK_ABOUT,
       timeout: 0,
       onClick: _compStore.showAbout,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp.default.SvgInfo, {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgInfo.default, {
         style: S_SVG_INFO
       })
     })]
   })]
 });
-var _default = HeaderBar;
-exports.default = _default;
+var _default = exports.default = HeaderBar;
 //# sourceMappingURL=HeaderBar.js.map
