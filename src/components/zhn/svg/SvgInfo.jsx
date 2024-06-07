@@ -1,11 +1,26 @@
-import SvgIcon from './SvgIcon';
+import Svg100 from './Svg100';
 
-const SvgInfo = (props) => (
-  <SvgIcon {...props}>
+const SvgInfo = ({
+  color='currentColor',
+  size='24',
+  children,
+  ...restProps
+}) => (
+  <Svg100
+    w={size}
+    width={size}
+    height={size}
+    fill="none"
+    stroke={color}
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...restProps}
+  >
     <circle cx="12" cy="12" r="10" />
     <line x1="12" y1="16" x2="12" y2="12" />
     <line x1="12" y1="8" x2="12" y2="8" />
-  </SvgIcon>
+  </Svg100>
 );
 
 export default SvgInfo
