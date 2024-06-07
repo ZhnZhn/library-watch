@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../src/components/zhn-atoms/svg/SvgIcons.jsx"],"names":["SvgIcons","SvgInfo"],"mappings":";;;;;;;AACA;;AAEA,IAAMA,QAAQ,GAAG;AACfC,EAAAA,OAAO,EAAPA;AADe,CAAjB;eAIeD,Q","sourcesContent":["\r\nimport SvgInfo from './SvgInfo'\r\n\r\nconst SvgIcons = {\r\n  SvgInfo\r\n};\r\n\r\nexport default SvgIcons\r\n"],"file":"SvgIcons.js"}

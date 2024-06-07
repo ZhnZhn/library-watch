@@ -1,5 +1,4 @@
 
-import SvgIcons from './svg/SvgIcons'
 import Browser from './Browser'
 import ButtonCircle from './ButtonCircle'
 import ButtonDownUp from './ButtonDownUp'
@@ -14,7 +13,6 @@ import ShowHide from './ShowHide'
 import SvgMore from './SvgMore'
 
 const A = {
-  ...SvgIcons,
   Browser,
   ButtonCircle,
   ButtonDownUp,

@@ -1,15 +1,13 @@
+import Svg100 from './Svg100';
 
-const SvgIcon = ({ 
+const SvgIcon = ({
   color='currentColor',
   size='24',
   children,
   ...restProps
 }) => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
+    <Svg100
+      w={size}
       fill="none"
       stroke={color}
       strokeWidth="2"
@@ -18,7 +16,7 @@ const SvgIcon = ({
       {...restProps}
     >
       {children}
-    </svg>
+    </Svg100>
 );
 
 export default SvgIcon
