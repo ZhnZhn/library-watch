@@ -2,32 +2,29 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
+exports.default = void 0;
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
+var _Svg = _interopRequireDefault(require("./svg/Svg100"));
 var _jsxRuntime = require("react/jsx-runtime");
-var COLOR = "#ed5813",
-  CL_SVG_CLOSE = "svg-close",
+const CL_SVG_CLOSE = "svg-close",
   S_SVG = {
-    padding: 3
+    padding: 3,
+    stroke: 'inherit'
   };
-var SvgClose = function SvgClose(_ref) {
-  var className = _ref.className,
-    style = _ref.style,
-    onClose = _ref.onClose;
+const SvgClose = _ref => {
+  let {
+    className,
+    style,
+    onClose
+  } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     type: "button",
     tabIndex: "-1",
-    className: (0, _crCn["default"])(CL_SVG_CLOSE, className),
+    className: (0, _crCn.default)(CL_SVG_CLOSE, className),
     style: style,
     onClick: onClose,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("svg", {
-      preserveAspectRatio: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 12 12",
-      width: "100%",
-      height: "100%",
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Svg.default, {
       style: S_SVG,
-      stroke: COLOR,
       strokeWidth: "2",
       strokeLinecap: "round",
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
@@ -38,6 +35,5 @@ var SvgClose = function SvgClose(_ref) {
     })
   });
 };
-var _default = SvgClose;
-exports["default"] = _default;
+var _default = exports.default = SvgClose;
 //# sourceMappingURL=SvgClose.js.map
