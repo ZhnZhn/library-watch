@@ -3,6 +3,7 @@ import { CL_NOT_SELECTED } from '../styles/CL';
 
 const S_ROOT = {
   color: 'silver',
+  stroke: 'silver',
   backgroundColor: '#232f3b',
   padding: 5,
   textAlign: 'center',

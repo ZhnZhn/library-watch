@@ -15,6 +15,7 @@ export const S_CAPTION_DIV = {
   position: 'relative',
   padding: '5px 35px 5px 16px',
   color: '#c0c0c0',
+  stroke: '#c0c0c0',
   backgroundColor: '#1b2836',
   textAlign: 'center',
   fontSize: '18px',

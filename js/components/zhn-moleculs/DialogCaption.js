@@ -8,6 +8,7 @@ var _CL = require("../styles/CL");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_ROOT = {
     color: 'silver',
+    stroke: 'silver',
     backgroundColor: '#232f3b',
     padding: 5,
     textAlign: 'center',
