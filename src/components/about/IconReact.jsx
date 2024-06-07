@@ -1,17 +1,13 @@
-import Link from '../zhn-atoms/Link'
+import Link from '../zhn/Link';
+import SvgLogo from '../zhn/svg/SvgLogo';
 
 const IconReact = () => (
   <Link
-     className="icon__react"     
+     className="icon__react"
      href="https://github.com/facebook/react"
      title="React"
   >
-    <svg viewBox="0 0 600 600"
-         xmlns="http://www.w3.org/2000/svg"
-         fillRule="evenodd"
-         clipRule="evenodd"
-         strokeLinejoin="round"
-    >
+    <SvgLogo w="600">
         <circle cx="299.529" cy="299.628" r="50.167"/>
         <path fill="none" d="M299.529,197.628
           c67.356,0,129.928,9.665,177.107,25.907c56.844,19.569,91.794,49.233,91.794,76.093c0,27.991-37.041,59.503-98.083,79.728
@@ -27,7 +23,7 @@ const IconReact = () => (
           c24.224-14.024,70.055,2.244,118.14,44.94c36.356,32.28,73.688,80.837,105.723,136.173c32.844,56.733,57.461,114.209,67.036,162.582
           c12.117,61.213,2.309,107.984-21.453,121.74c-23.057,13.348-65.249-0.784-110.239-39.499
           C285.567,460.886,244.898,410.344,210.821,351.482z"/>
-    </svg>
+    </SvgLogo>
   </Link>
 );
 

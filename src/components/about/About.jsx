@@ -3,8 +3,8 @@ import useShowHideComponent from '../hooks/useShowHideComponent';
 import { useMsAbout } from '../../flux/compStore';
 import { useMsItem } from '../../flux/itemStore';
 
-import ScrollPane from '../zhn-atoms/ScrollPane';
-import CaptionRow from '../zhn-atoms/CaptionRow';
+import ScrollPane from '../zhn/ScrollPane';
+import CaptionRow from '../zhn/CaptionRow';
 
 import Step from './Step';
 import Token from './Token';
