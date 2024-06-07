@@ -24,8 +24,8 @@
   padding: 2px;
   line-height: initial;
   border-radius: 50%;
-  border: 2px solid gray;
-  stroke: gray;
+  border: 2px solid silver;
+  stroke: silver;
   cursor: pointer;
 }
 .svg-resize:hover{

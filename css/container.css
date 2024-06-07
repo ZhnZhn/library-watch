@@ -28,6 +28,7 @@
   position: relative;
   background-color: #232f3b;
   color: silver;
+  stroke: silver;
   line-height: 1.8;
   padding-top: 4px;
   padding-left: 4px;
@@ -79,6 +80,7 @@
 .row__topic {
   line-height: 1.5;
   color: black;
+  stroke: black;
   font-size: 16px;
   font-weight: bold;
   padding-top: 1px;

@@ -1,6 +1,7 @@
 
 .item-caption {
   position: relative;
+  stroke: silver;
   background-color: #232f3b;
   width: 100%;
   min-height: 38px;
