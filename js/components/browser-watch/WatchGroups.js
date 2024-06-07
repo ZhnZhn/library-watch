@@ -5,13 +5,10 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _DnDGroupHandlers = require("./dnd-handlers/DnDGroupHandlers");
-var _Comp = _interopRequireDefault(require("../Comp"));
+var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose2"));
 var _WatchLists = _interopRequireDefault(require("./WatchLists"));
 var _jsxRuntime = require("react/jsx-runtime");
-const {
-    OpenClose2
-  } = _Comp.default,
-  S_GROUP_DIV = {
+const S_GROUP_DIV = {
     lineHeight: 2
   },
   S_CAPTION_ROW = {
@@ -28,7 +25,7 @@ const WatchGroups = _ref => {
       caption,
       lists
     } = _ref2;
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(OpenClose2, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_OpenClose.default, {
       refItem: index === 0 ? refFirstItem : void 0,
       style: S_GROUP_DIV,
       styleCaptionRow: S_CAPTION_ROW,

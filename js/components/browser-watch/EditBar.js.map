@@ -1,0 +1,38 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/browser-watch/EditBar.js"
+ ],
+ "file": "../../../src/components/browser-watch/EditBar.js",
+ "names": [
+  "_ButtonCircle",
+  "_interopRequireDefault",
+  "require",
+  "_Handlers",
+  "_jsxRuntime",
+  "CL_BT_BAR",
+  "S_EDIT_BAR_DIV",
+  "marginBottom",
+  "S_BT_EDIT_BAR_LIST",
+  "marginLeft",
+  "EditBar",
+  "_ref",
+  "is",
+  "jsxs",
+  "style",
+  "children",
+  "jsx",
+  "default",
+  "caption",
+  "title",
+  "className",
+  "isWithoutDefault",
+  "onClick",
+  "showDialogEditGroups",
+  "showDialogEditLists",
+  "toggleWatchDbBrowser",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,aAAA,GAAAC,sBAAA,CAAAC,OAAA;AAEA,IAAAC,SAAA,GAAAD,OAAA;AAIoB,IAAAE,WAAA,GAAAF,OAAA;AAEpB,MAAMG,SAAS,GAAG,gBAAgB;EAChCC,cAAc,GAAG;IAAEC,YAAY,EAAE;EAAG,CAAC;EACrCC,kBAAkB,GAAG;IAAEC,UAAU,EAAE;EAAG,CAAC;AAEzC,MAAMC,OAAO,GAAGC,IAAA;EAAA,IAAC;IACfC;EACF,CAAC,GAAAD,IAAA;EAAA,OAAKC,EAAE,gBACN,IAAAR,WAAA,CAAAS,IAAA;IAAKC,KAAK,EAAER,cAAe;IAAAS,QAAA,gBACxB,IAAAX,WAAA,CAAAY,GAAA,EAAChB,aAAA,CAAAiB,OAAY;MACXC,OAAO,EAAC,OAAO;MACfC,KAAK,EAAC,YAAY;MAClBC,SAAS,EAAEf,SAAU;MACrBgB,gBAAgB,EAAE,IAAK;MACvBC,OAAO,EAAEC;IAAqB,CAChC,CAAC,eACF,IAAAnB,WAAA,CAAAY,GAAA,EAAChB,aAAA,CAAAiB,OAAY;MACVC,OAAO,EAAC,MAAM;MACdC,KAAK,EAAC,iBAAiB;MACvBC,SAAS,EAAEf,SAAU;MACrBgB,gBAAgB,EAAE,IAAK;MACvBP,KAAK,EAAEN,kBAAmB;MAC1Bc,OAAO,EAAEE;IAAoB,CAC/B,CAAC,eACF,IAAApB,WAAA,CAAAY,GAAA,EAAChB,aAAA,CAAAiB,OAAY;MACVC,OAAO,EAAC,IAAI;MACZC,KAAK,EAAC,sBAAsB;MAC5BC,SAAS,EAAEf,SAAU;MACrBgB,gBAAgB,EAAE,IAAK;MACvBP,KAAK,EAAEN,kBAAmB;MAC1Bc,OAAO,EAAEG;IAAqB,CAChC,CAAC;EAAA,CACC,CAAC,GACJ,IAAI;AAAA;AAAC,IAAAC,QAAA,GAAAC,OAAA,CAAAV,OAAA,GAEMP,OAAO"
+}

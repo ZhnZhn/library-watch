@@ -6,8 +6,9 @@ import { showAbout } from '../../flux/compStore';
 
 import { BrowserType as BT } from '../../constants/Type';
 
-import A from '../Comp';
 import SvgInfo from '../zhn-atoms/svg/SvgInfo';
+import FlatButton from '../zhn-m/FlatButton';
+import ButtonSave from '../zhn-moleculs/ButtonSave';
 import LoadingProgress from './LoadingProgress';
 import IconAppLogo from './IconAppLogo';
 import AppLabel from './AppLabel';
@@ -61,7 +62,7 @@ const HeaderBar = () => (
        className={CL_APP_LABEL}
        caption={TITLE}
      />
-     <A.FlatButton
+     <FlatButton
         className={CL_LIBRARY}
         caption="Library"
         title="Library Browser"
@@ -69,19 +70,19 @@ const HeaderBar = () => (
         timeout={0}
         onClick={_hClickLibrary}
      />
-     <A.FlatButton
+     <FlatButton
         caption="Watch"
         title="Watch Browser"
         hotKey={HK_WATCH}
         timeout={0}
         onClick={showWatch}
      />
-     <A.ButtonSave
+     <ButtonSave
         style={S_BUTTON_SAVE}
      />
      <div style={S_BTS_RIGHT}>
        <LimitRemainingLabel />
-       <A.FlatButton
+       <FlatButton
           className={CL_ABOUT}
           title="About webapp Library Watch"
           hotKey={HK_ABOUT}
@@ -89,7 +90,7 @@ const HeaderBar = () => (
           onClick={showAbout}
        >
           <SvgInfo style={S_SVG_INFO} />
-       </A.FlatButton>
+       </FlatButton>
      </div>
   </header>
 );

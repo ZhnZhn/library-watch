@@ -1,11 +1,10 @@
 import { safeMap } from '../uiApi';
 import { crDnDListHandlers } from './dnd-handlers/DnDListHandlers';
 
-import Comp from '../Comp';
+import OpenClose2 from '../zhn-atoms/OpenClose2';
 import WatchItems from './WatchItems';
 
-const { OpenClose2 } = Comp
-, S_LIST_DIV = {
+const S_LIST_DIV = {
   marginLeft: 8,
   lineHeight: 2,
   borderLeft: '1px solid yellow',

@@ -5,13 +5,10 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _DnDListHandlers = require("./dnd-handlers/DnDListHandlers");
-var _Comp = _interopRequireDefault(require("../Comp"));
+var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose2"));
 var _WatchItems = _interopRequireDefault(require("./WatchItems"));
 var _jsxRuntime = require("react/jsx-runtime");
-const {
-    OpenClose2
-  } = _Comp.default,
-  S_LIST_DIV = {
+const S_LIST_DIV = {
     marginLeft: 8,
     lineHeight: 2,
     borderLeft: '1px solid yellow'
@@ -30,7 +27,7 @@ const WatchLists = _ref => {
       caption,
       items
     } = _ref2;
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(OpenClose2, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_OpenClose.default, {
       fillOpen: "#80c040",
       style: S_LIST_DIV,
       styleCaptionRow: S_CAPTION_ROW,

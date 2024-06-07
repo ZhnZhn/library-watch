@@ -10,26 +10,22 @@ import useToggle from '../hooks/useToggle';
 import useBrowser from '../hooks/useBrowser';
 import useRecentFocusedElement from '../hooks/useRecentFocusedElement';
 
+import Browser from '../zhn-atoms/Browser';
+import CaptionRow from '../zhn-atoms/CaptionRow';
+import ButtonCircle from '../zhn-atoms/ButtonCircle';
+import ScrollPane from '../zhn-atoms/ScrollPane';
+import ButtonSave from '../zhn-moleculs/ButtonSave';
+
+import EditBar from './EditBar';
+import SearchInput from './SearchInput';
+import WatchGroups from './WatchGroups';
+
 import {
   getWatchList,
   showDialogLoadItemsFromFile,
   toggleWatchDbBrowser,
   backupWatchItemsToJson
 } from './Handlers';
-
-import Comp from '../Comp';
-
-import EditBar from './EditBar';
-import SearchInput from './SearchInput';
-import WatchGroups from './WatchGroups';
-
-const {
-  Browser,
-  CaptionRow,
-  ButtonCircle,
-  ButtonSave,
-  ScrollPane
-} = Comp;
 
 const CL_BROWSER_WATCH = "browser-watch"
 , _crBrowserWatchStyle = (suffix) => `${CL_BROWSER_WATCH} ${CL_BROWSER_WATCH}--${suffix}`

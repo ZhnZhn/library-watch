@@ -1,15 +1,14 @@
+import ButtonCircle from '../zhn-atoms/ButtonCircle';
+
 import {
   showDialogEditGroups,
   showDialogEditLists,
   toggleWatchDbBrowser
 } from './Handlers';
 
-import Comp from '../Comp';
-
-const { ButtonCircle } = Comp
-, CL_BT_BAR = "bt__watch__bar"
+const CL_BT_BAR = "bt__watch__bar"
 , S_EDIT_BAR_DIV = { marginBottom: 10 }
-, S_BT_EDIT_BAR_LIST = { marginLeft: 20 }
+, S_BT_EDIT_BAR_LIST = { marginLeft: 20 };
 
 const EditBar = ({
   is

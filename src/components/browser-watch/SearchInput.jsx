@@ -1,10 +1,9 @@
-import { showDialogWatchItem } from './Handlers';
-
-import Comp from '../Comp';
+import ShowHide from '../zhn-atoms/ShowHide';
 import WrapperInputSearch from './WrapperInputSearch';
 
-const { ShowHide } = Comp
-, S_WRAPPER_SEARCH = {
+import { showDialogWatchItem } from './Handlers';
+
+const S_WRAPPER_SEARCH = {
   width: '100%',
   padding: '0 0 8px 0'
 };

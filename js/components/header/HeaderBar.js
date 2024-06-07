@@ -6,8 +6,9 @@ exports.default = void 0;
 var _browserStore = require("../../flux/browserStore");
 var _compStore = require("../../flux/compStore");
 var _Type = require("../../constants/Type");
-var _Comp = _interopRequireDefault(require("../Comp"));
 var _SvgInfo = _interopRequireDefault(require("../zhn-atoms/svg/SvgInfo"));
+var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
+var _ButtonSave = _interopRequireDefault(require("../zhn-moleculs/ButtonSave"));
 var _LoadingProgress = _interopRequireDefault(require("./LoadingProgress"));
 var _IconAppLogo = _interopRequireDefault(require("./IconAppLogo"));
 var _AppLabel = _interopRequireDefault(require("./AppLabel"));
@@ -48,24 +49,24 @@ const HeaderBar = () => /*#__PURE__*/(0, _jsxRuntime.jsxs)("header", {
   }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_AppLabel.default, {
     className: CL_APP_LABEL,
     caption: TITLE
-  }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
+  }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
     className: CL_LIBRARY,
     caption: "Library",
     title: "Library Browser",
     hotKey: _hotkeys.HK_LIBRARY,
     timeout: 0,
     onClick: _hClickLibrary
-  }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
+  }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
     caption: "Watch",
     title: "Watch Browser",
     hotKey: _hotkeys.HK_WATCH,
     timeout: 0,
     onClick: _browserStore.showWatch
-  }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp.default.ButtonSave, {
+  }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonSave.default, {
     style: S_BUTTON_SAVE
   }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: S_BTS_RIGHT,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LimitRemainingLabel.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LimitRemainingLabel.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
       className: CL_ABOUT,
       title: "About webapp Library Watch",
       hotKey: _hotkeys.HK_ABOUT,
