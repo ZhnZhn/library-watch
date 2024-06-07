@@ -4,12 +4,12 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _memoFn = require("../hoc/memoFn");
-var _A = _interopRequireDefault(require("../zhn-atoms/A"));
 var _CL = require("../styles/CL");
-var _Item = require("./Item.Style");
 var _formatStrDate = _interopRequireDefault(require("../../utils/formatStrDate"));
 var _dateFn = require("../../utils/dateFn");
+var _Link = _interopRequireDefault(require("../zhn/Link"));
 var _DivComments = _interopRequireDefault(require("./DivComments"));
+var _Item = require("./Item.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 const CommitList = (0, _memoFn.crMemoCompList)((item, index) => {
   const {
@@ -29,14 +29,14 @@ const CommitList = (0, _memoFn.crMemoCompList)((item, index) => {
     _dateAgo = (0, _dateFn.crDateAgo)(date);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     className: _CL.CL_ROW_ITEM,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_A.default.Link, {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Link.default, {
       href: html_url,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         style: _Item.S_PB_8,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           style: _Item.S_PR_8,
           children: name
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.DateAgo, {
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Link.default, {
           dateAgo: _dateAgo,
           date: _dateTime
         })]

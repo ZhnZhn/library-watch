@@ -10,10 +10,10 @@ import useToggle from '../hooks/useToggle';
 import useBrowser from '../hooks/useBrowser';
 import useRecentFocusedElement from '../hooks/useRecentFocusedElement';
 
-import Browser from '../zhn-atoms/Browser';
-import CaptionRow from '../zhn-atoms/CaptionRow';
-import ButtonCircle from '../zhn-atoms/ButtonCircle';
-import ScrollPane from '../zhn-atoms/ScrollPane';
+import Browser from '../zhn/Browser';
+import CaptionRow from '../zhn/CaptionRow';
+import ButtonCircle from '../zhn/ButtonCircle';
+import ScrollPane from '../zhn/ScrollPane';
 import ButtonSave from '../zhn-moleculs/ButtonSave';
 
 import EditBar from './EditBar';

@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _Svg = _interopRequireDefault(require("../zhn-atoms/svg/Svg100"));
+var _Svg = _interopRequireDefault(require("../zhn/svg/Svg100"));
 var _useResizeElement = _interopRequireDefault(require("./useResizeElement"));
 var _jsxRuntime = require("react/jsx-runtime");
 //import PropTypes from "prop-types";

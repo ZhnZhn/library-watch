@@ -1,5 +1,5 @@
 import useKeyEnter from '../hooks/useKeyEnter';
-import SvgClose from '../zhn-atoms/SvgClose';
+import SvgClose from '../zhn/SvgClose';
 
 const S_ITEM_DIV = {
   position: 'relative',

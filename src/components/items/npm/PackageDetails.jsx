@@ -1,10 +1,11 @@
+import { CL_SOURCE_LINK } from '../../styles/CL';
+
 import crGitRepositoryHref from './crGitRepositoryHref';
 import crGitRepositoryCaption from './crGitRepositoryCaption';
 
 import checkResponseJson from './checkResponseJson';
 import CellValue from '../CellValue';
-import Link from '../../zhn-atoms/Link';
-import { CL_SOURCE_LINK } from '../../styles/CL';
+import Link from '../../zhn/Link';
 
 const S_REPO = { padding: '4px 0 0 8px' }
 , S_REPO_LINK = { marginRight: 24 };

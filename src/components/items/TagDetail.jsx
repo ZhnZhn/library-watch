@@ -1,4 +1,3 @@
-import A from '../zhn-atoms/A';
 import {
   CL_LIB,
   CL_LIB_VALUE,
@@ -9,6 +8,9 @@ import {
 
 import formatStrDate from '../../utils/formatStrDate';
 
+import OpenClose2 from '../zhn/OpenClose2';
+import Link from '../zhn/Link';
+
 const _isArr = Array.isArray;
 
 const Token = ({
@@ -17,7 +19,7 @@ const Token = ({
 }) => (
   <>
     <span className={CL_LIB_VALUE_TITLE}>
-      {caption+':'}
+      {`${caption}:`}
     </span>
     <span className={CL_LIB_VALUE}>
       {value}
@@ -116,18 +118,18 @@ const TagDetail = ({ json }) => {
           value={deletions}
         />
       </div>
-      <A.OpenClose2
+      <OpenClose2
         caption={`Files (${_isArr(files) ? files.length : ''})`}
         isClose={true}
       >
         <FileList files={files} />
-      </A.OpenClose2>
-      <A.Link
+      </OpenClose2>
+      <Link
          className={CL_SOURCE_LINK}
          href={html_url}
       >
          Link to description of commit
-      </A.Link>
+      </Link>
     </div>
   );
 };

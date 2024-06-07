@@ -6,7 +6,7 @@ import { showAbout } from '../../flux/compStore';
 
 import { BrowserType as BT } from '../../constants/Type';
 
-import SvgInfo from '../zhn-atoms/svg/SvgInfo';
+import SvgInfo from '../zhn/svg/SvgInfo';
 import FlatButton from '../zhn-m/FlatButton';
 import ButtonSave from '../zhn-moleculs/ButtonSave';
 import LoadingProgress from './LoadingProgress';

@@ -1,4 +1,4 @@
-import ButtonCircle from '../zhn-atoms/ButtonCircle';
+import ButtonCircle from '../zhn/ButtonCircle';
 
 import {
   showDialogEditGroups,

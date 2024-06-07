@@ -1,4 +1,4 @@
-import A from '../../zhn-atoms/A';
+import ButtonCircle from '../../zhn/ButtonCircle';
 
 const S_BTN_CIRCLE = {
   position: 'relative',
@@ -9,7 +9,7 @@ const S_BTN_CIRCLE = {
 const ButtonWatch = ({
   onClick
 }) => (
-  <A.ButtonCircle
+  <ButtonCircle
      style={S_BTN_CIRCLE}
      caption="W"
      title="Add to WatchList"

@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _ButtonCircle = _interopRequireDefault(require("../zhn-atoms/ButtonCircle2"));
+var _ButtonCircle = _interopRequireDefault(require("../zhn/ButtonCircle2"));
 var _CL = require("./CL");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_BT_CIRCLE = {

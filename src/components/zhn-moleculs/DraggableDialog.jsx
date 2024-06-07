@@ -8,8 +8,8 @@ import useDialogFocus from './useDialogFocus';
 import crCn from '../zhn-utils/crCn';
 
 import ModalSlider from '../zhn-modal-slider/ModalSlider';
-import SvgMore from '../zhn-atoms/SvgMore';
-import SvgClose from '../zhn-atoms/SvgClose';
+import SvgMore from '../zhn/SvgMore';
+import SvgClose from '../zhn/SvgClose';
 import FlatButton from '../zhn-m/FlatButton';
 
 import {

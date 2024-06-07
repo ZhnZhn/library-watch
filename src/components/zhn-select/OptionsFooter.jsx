@@ -1,4 +1,4 @@
-import BtCircle from '../zhn-atoms/ButtonCircle2';
+import BtCircle from '../zhn/ButtonCircle2';
 import {
   CL_FOOTER,
   CL_NOT_SELECTED,

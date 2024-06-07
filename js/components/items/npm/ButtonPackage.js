@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _CL = require("../../styles/CL");
 var _Item = require("../Item.Style");
-var _A = _interopRequireDefault(require("../../zhn-atoms/A"));
+var _FormattedInteger = _interopRequireDefault(require("../../zhn/FormattedInteger"));
 var _jsxRuntime = require("react/jsx-runtime");
 const _S_CAPTION_OPEN = {
     ..._Item.S_CAPTION_OPEN,
@@ -35,7 +35,7 @@ const ButtonPackage = _ref => {
     onClick: onClick,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       children: packageName
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.FormattedInteger, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FormattedInteger.default, {
       style: S_SPAN_SUM,
       value: sumDownloads
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {

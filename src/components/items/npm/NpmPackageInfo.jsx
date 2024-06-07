@@ -9,7 +9,11 @@ import loadNpms from './loadNpms';
 import loadBundle from './loadBundle';
 
 import { CL_SOURCE_LINK } from '../../styles/CL';
-import A from '../../zhn-atoms/A';
+
+import Link from '../../zhn/Link';
+import LinkImg from '../../zhn/LinkImg';
+import ButtonDownUp from '../../zhn/ButtonDownUp';
+import ShowHide from '../../zhn/ShowHide';
 import PackageDetails from './PackageDetails';
 import BundleInfo from './BundleInfo';
 
@@ -66,22 +70,22 @@ const NpmPackageInfo = ({
 
   return (
     <>
-     <A.ShowHide isShow={isButtons}>
+     <ShowHide isShow={isButtons}>
       <div style={S_ML_16}>
-        <A.Link
+        <Link
            className={CL_SOURCE_LINK}
            href={packageLink}
         >
            NPM Link
-        </A.Link>
-        <A.ButtonDownUp
+        </Link>
+        <ButtonDownUp
           style={S_BTN_DOWN_UP}
           isUp={isShowNodeIco}
           caption="NodeICO"
           title="Package badge from Nodei.co"
           onClick={_hClickNodeIco}
         />
-        <A.ButtonDownUp
+        <ButtonDownUp
           style={S_BTN_DOWN_UP}
           isUp={isShowNmps}
           isLoading={isLoadingNpms}
@@ -89,7 +93,7 @@ const NpmPackageInfo = ({
           title="Click to load package info from npms.io"
           onClick={_hClickNpms}
         />
-        <A.ButtonDownUp
+        <ButtonDownUp
           style={S_BTN_DOWN_UP}
           isUp={isShowBundle}
           isLoading={isLoadingBundle}
@@ -98,24 +102,24 @@ const NpmPackageInfo = ({
           onClick={_hClickBundle}
         />
       </div>
-     </A.ShowHide>
+     </ShowHide>
 
      <div style={S_ML_8}>
-       <A.ShowHide isShow={isShowNodeIco} style={S_SH_LINK_IMAGE}>
+       <ShowHide isShow={isShowNodeIco} style={S_SH_LINK_IMAGE}>
          {
-           isLoadNodeIco && <A.LinkImg
+           isLoadNodeIco && <LinkImg
              href={packageLink}
              imgClass="node-ico"
              imgSrc={`${BASE_NODEICO}${packageName}${SUFFIX_NODEICO}`}
            />
          }
-       </A.ShowHide>
-       <A.ShowHide isShow={isShowNmps} style={S_MB_8}>
+       </ShowHide>
+       <ShowHide isShow={isShowNmps} style={S_MB_8}>
          <PackageDetails json={npmsJson} />
-       </A.ShowHide>
-       <A.ShowHide isShow={isShowBundle} style={S_MB_8}>
+       </ShowHide>
+       <ShowHide isShow={isShowBundle} style={S_MB_8}>
           <BundleInfo json={bundleJson} />
-       </A.ShowHide>
+       </ShowHide>
      </div>
     </>
   );

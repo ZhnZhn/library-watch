@@ -8,7 +8,8 @@ var _useToggle = _interopRequireDefault(require("../../hooks/useToggle"));
 var _useMenuMore = _interopRequireDefault(require("../../hooks/useMenuMore"));
 var _ChartConfigFactories = require("../../charts/ChartConfigFactories");
 var _crNpmModelMore = _interopRequireDefault(require("../crNpmModelMore"));
-var _A = _interopRequireDefault(require("../../zhn-atoms/A"));
+var _SvgMore = _interopRequireDefault(require("../../zhn/SvgMore"));
+var _ShowHide = _interopRequireDefault(require("../../zhn/ShowHide"));
 var _ModalSlider = _interopRequireDefault(require("../../zhn-modal-slider/ModalSlider"));
 var _LineChart = _interopRequireDefault(require("../../charts/LineChart"));
 var _ButtonPackage = _interopRequireDefault(require("./ButtonPackage"));
@@ -59,7 +60,7 @@ const NpmDownloads = _ref => {
     // toggleIsMore
     ,
     _hClickWatch = (0, _uiApi.useCallback)(() => {
-      const _caption = `${packageName} ${sumDownloads}`;
+      const _caption = packageName + " " + sumDownloads;
       onWatchItem({
         caption: _caption,
         config: {
@@ -88,7 +89,7 @@ const NpmDownloads = _ref => {
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption.default, {
       style: S_CAPTION,
       onClose: onCloseItem,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.SvgMore, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore.default, {
         style: _Item.S_BT_MORE,
         onClick: _showMenuMore
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonPackage.default, {
@@ -101,7 +102,7 @@ const NpmDownloads = _ref => {
       }), _isFn(onWatchItem) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonWatch.default, {
         onClick: _hClickWatch
       })]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_A.default.ShowHide, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ShowHide.default, {
       isShow: isShow,
       style: S_CHART_WRAPPER,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LineChart.default, {

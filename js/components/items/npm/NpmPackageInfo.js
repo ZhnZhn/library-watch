@@ -8,7 +8,10 @@ var _useButtonLoad = _interopRequireDefault(require("./useButtonLoad"));
 var _loadNpms = _interopRequireDefault(require("./loadNpms"));
 var _loadBundle = _interopRequireDefault(require("./loadBundle"));
 var _CL = require("../../styles/CL");
-var _A = _interopRequireDefault(require("../../zhn-atoms/A"));
+var _Link = _interopRequireDefault(require("../../zhn/Link"));
+var _LinkImg = _interopRequireDefault(require("../../zhn/LinkImg"));
+var _ButtonDownUp = _interopRequireDefault(require("../../zhn/ButtonDownUp"));
+var _ShowHide = _interopRequireDefault(require("../../zhn/ShowHide"));
 var _PackageDetails = _interopRequireDefault(require("./PackageDetails"));
 var _BundleInfo = _interopRequireDefault(require("./BundleInfo"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -55,28 +58,28 @@ const NpmPackageInfo = _ref => {
       }));
     }, []);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ShowHide, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide.default, {
       isShow: isButtons,
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         style: S_ML_16,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.Link, {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Link.default, {
           className: _CL.CL_SOURCE_LINK,
           href: packageLink,
           children: "NPM Link"
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ButtonDownUp, {
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonDownUp.default, {
           style: S_BTN_DOWN_UP,
           isUp: isShowNodeIco,
           caption: "NodeICO",
           title: "Package badge from Nodei.co",
           onClick: _hClickNodeIco
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ButtonDownUp, {
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonDownUp.default, {
           style: S_BTN_DOWN_UP,
           isUp: isShowNmps,
           isLoading: isLoadingNpms,
           caption: "NPMS.IO",
           title: "Click to load package info from npms.io",
           onClick: _hClickNpms
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ButtonDownUp, {
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonDownUp.default, {
           style: S_BTN_DOWN_UP,
           isUp: isShowBundle,
           isLoading: isLoadingBundle,
@@ -87,21 +90,21 @@ const NpmPackageInfo = _ref => {
       })
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       style: S_ML_8,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ShowHide, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide.default, {
         isShow: isShowNodeIco,
         style: S_SH_LINK_IMAGE,
-        children: isLoadNodeIco && /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.LinkImg, {
+        children: isLoadNodeIco && /*#__PURE__*/(0, _jsxRuntime.jsx)(_LinkImg.default, {
           href: packageLink,
           imgClass: "node-ico",
-          imgSrc: `${BASE_NODEICO}${packageName}${SUFFIX_NODEICO}`
+          imgSrc: "" + BASE_NODEICO + packageName + SUFFIX_NODEICO
         })
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ShowHide, {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide.default, {
         isShow: isShowNmps,
         style: S_MB_8,
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_PackageDetails.default, {
           json: npmsJson
         })
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ShowHide, {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide.default, {
         isShow: isShowBundle,
         style: S_MB_8,
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_BundleInfo.default, {

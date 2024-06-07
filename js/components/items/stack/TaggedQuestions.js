@@ -4,15 +4,16 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../../uiApi");
+var _CL = require("../../styles/CL");
 var _useToggle = _interopRequireDefault(require("../../hooks/useToggle"));
 var _useMenuMore = _interopRequireDefault(require("../../hooks/useMenuMore"));
-var _A = _interopRequireDefault(require("../../zhn-atoms/A"));
+var _ShowHide = _interopRequireDefault(require("../../zhn/ShowHide"));
+var _SvgMore = _interopRequireDefault(require("../../zhn/SvgMore"));
 var _ItemCaption = _interopRequireDefault(require("../ItemCaption"));
 var _ModalSlider = _interopRequireDefault(require("../../zhn-modal-slider/ModalSlider"));
+var _TaggedItemList = _interopRequireDefault(require("./TaggedItemList"));
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 var _sortItemsBy = _interopRequireDefault(require("./sortItemsBy"));
-var _TaggedItemList = _interopRequireDefault(require("./TaggedItemList"));
-var _CL = require("../../styles/CL");
 var _Item = require("../Item.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_BT_MORE = {
@@ -76,8 +77,8 @@ const StackTaggedQuestions = props => {
       reverse: _reverseItems
     }),
     _itemsLength = items.length,
-    _tokenItemsCount = itemRemoved ? `${_itemsLength - itemRemoved}/${_itemsLength}` : `${_itemsLength}`,
-    _titleForSort = `Sorted By ${titleForSort}`;
+    _tokenItemsCount = itemRemoved ? _itemsLength - itemRemoved + "/" + _itemsLength : "" + _itemsLength,
+    _titleForSort = "Sorted By " + titleForSort;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: _Item.S_ROOT,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider.default, {
@@ -87,7 +88,7 @@ const StackTaggedQuestions = props => {
       onClose: _toggleMenuMore
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption.default, {
       onClose: onCloseItem,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.SvgMore, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore.default, {
         style: S_BT_MORE,
         onClick: _showMenuMore
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
@@ -111,7 +112,7 @@ const StackTaggedQuestions = props => {
         onClick: _reverseItems,
         children: _titleForSort
       })]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ShowHide, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide.default, {
       isShow: isShow,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_TaggedItemList.default, {
         items: items,

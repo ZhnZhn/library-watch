@@ -6,7 +6,8 @@ import { fLineConfig } from '../../charts/ChartConfigFactories';
 
 import crModelMore from '../crNpmModelMore';
 
-import A from '../../zhn-atoms/A';
+import SvgMore from '../../zhn/SvgMore';
+import ShowHide from '../../zhn/ShowHide';
 import ModalSlider from '../../zhn-modal-slider/ModalSlider';
 import LineChart from '../../charts/LineChart';
 import ButtonPackage from './ButtonPackage';
@@ -98,7 +99,7 @@ const NpmDownloads = ({
          style={S_CAPTION}
          onClose={onCloseItem}
       >
-        <A.SvgMore
+        <SvgMore
           style={S_BT_MORE}
           onClick={_showMenuMore}
         />
@@ -114,7 +115,7 @@ const NpmDownloads = ({
             onClick={_hClickWatch}
         />}
       </Caption>
-      <A.ShowHide
+      <ShowHide
          isShow={isShow}
          style={S_CHART_WRAPPER}
       >
@@ -127,7 +128,7 @@ const NpmDownloads = ({
           packageName={packageName}
           packageLink={packageLink}
         />
-      </A.ShowHide>
+      </ShowHide>
     </div>
   );
 };

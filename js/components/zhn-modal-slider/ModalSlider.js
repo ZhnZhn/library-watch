@@ -7,7 +7,7 @@ var _uiApi = require("../uiApi");
 var _useInitStateFromProps = _interopRequireDefault(require("../hooks/useInitStateFromProps"));
 var _useThrottleCallback = _interopRequireDefault(require("../hooks/useThrottleCallback"));
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
-var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
+var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
 var _MenuPage = _interopRequireDefault(require("./MenuPage"));
 var _MenuPages = _interopRequireDefault(require("./MenuPages"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -60,7 +60,7 @@ const _initState = model => {
 const _crTransformStyle = (pageWidth, pageCurrent) => {
   const _dX = -1 * pageWidth * (pageCurrent - 1) + 0;
   return {
-    transform: `translateX(${_dX}px)`
+    transform: "translateX(" + _dX + "px)"
   };
 };
 const ModalSlider = _ref => {

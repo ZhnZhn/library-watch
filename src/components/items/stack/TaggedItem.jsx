@@ -3,9 +3,10 @@ import { crClNotSelected } from '../../styleFn';
 
 import useDnDHandlers from './useDnDHandlers';
 
-import A from '../../zhn-atoms/A';
-import crImgToken from './crImgToken';
+import Link from '../../zhn/Link';
+import DateAgo from '../../zhn/DateAgo';
 import TagList from './TagList';
+import crImgToken from './crImgToken';
 
 const CL = crClNotSelected("row-item")
 , S_NONE = { display: 'none' }
@@ -90,7 +91,7 @@ const TaggedItem = ({
       style={isClosed ? S_NONE : void 0}
       {..._itemHandlers}
     >
-       <A.Link href={link}>
+       <Link href={link}>
          <div style={S_ITEM_CAPTION}>
            {bounty_amount && <span style={S_BOUNTY}>
              {`+${bounty_amount}`}
@@ -110,7 +111,7 @@ const TaggedItem = ({
            <span style={S_BLACK_BAGDE}>
              {display_name}
            </span>
-           <A.DateAgo
+           <DateAgo
               style={S_DATE_AGO}
               dateAgo={dateAgo}
            />
@@ -119,7 +120,7 @@ const TaggedItem = ({
            {title}
          </div>
          <TagList tags={tags} />
-       </A.Link>
+       </Link>
     </div>
   );
 };

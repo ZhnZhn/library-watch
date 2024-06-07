@@ -1,19 +1,22 @@
+import {
+  CL_BT_ITEM,
+  CL_MENU_MORE,
+  CL_SOURCE_LINK
+} from '../styles/CL';
+
 import useToggle from '../hooks/useToggle';
 import useMenuMore from '../hooks/useMenuMore';
 
 import { fLineConfigs } from '../charts/ChartConfigFactories'
 import crModelMore from './crNpmModelMore';
 
-import A from '../zhn-atoms/A';
+import ShowHide from '../zhn/ShowHide';
+import Link from '../zhn/Link';
+import SvgMore from '../zhn/SvgMore';
 import ModalSlider from '../zhn-modal-slider/ModalSlider';
 import LineChart from '../charts/LineChart';
 import Caption from './ItemCaption';
 
-import {
-  CL_BT_ITEM,
-  CL_MENU_MORE,
-  CL_SOURCE_LINK
-} from '../styles/CL';
 import {
   S_ROOT,
   S_CAPTION_OPEN,
@@ -77,7 +80,7 @@ const StatCounterShare = ({
         style={S_CAPTION}
         onClose={onCloseItem}
       >
-        <A.SvgMore
+        <SvgMore
           style={S_BT_MORE}
           onClick={_showMenuMore}
         />
@@ -98,7 +101,7 @@ const StatCounterShare = ({
           </span>
         </button>
       </Caption>
-      <A.ShowHide
+      <ShowHide
         isShow={_isShow}
         style={S_CHART_WRAPER}
       >
@@ -106,14 +109,14 @@ const StatCounterShare = ({
            data={_lineChartConfig}
            height={_height}
         />
-        <A.Link
+        <Link
           className={CL_SOURCE_LINK}
           style={S_SOURCE_LINK}
           href={sourceLink}
         >
             StatCounter Chart
-        </A.Link>
-      </A.ShowHide>
+        </Link>
+      </ShowHide>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import crGitRepositoryCaption from './crGitRepositoryCaption';
 
 import checkResponseJson from './checkResponseJson';
 import CellValue from '../CellValue';
-import Link from '../../zhn-atoms/Link';
+import Link from '../../zhn/Link';
 import { CL_SOURCE_LINK } from '../../styles/CL';
 
 const S_ML_8 = { marginLeft: 8 }

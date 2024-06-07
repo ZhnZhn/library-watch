@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
+var _SvgClose = _interopRequireDefault(require("../zhn/SvgClose"));
 var _CL = require("../styles/CL");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_ROOT = {

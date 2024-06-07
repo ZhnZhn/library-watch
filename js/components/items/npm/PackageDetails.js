@@ -3,12 +3,12 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _CL = require("../../styles/CL");
 var _crGitRepositoryHref = _interopRequireDefault(require("./crGitRepositoryHref"));
 var _crGitRepositoryCaption = _interopRequireDefault(require("./crGitRepositoryCaption"));
 var _checkResponseJson = _interopRequireDefault(require("./checkResponseJson"));
 var _CellValue = _interopRequireDefault(require("../CellValue"));
-var _Link = _interopRequireDefault(require("../../zhn-atoms/Link"));
-var _CL = require("../../styles/CL");
+var _Link = _interopRequireDefault(require("../../zhn/Link"));
 var _jsxRuntime = require("react/jsx-runtime");
 const S_REPO = {
     padding: '4px 0 0 8px'

@@ -7,7 +7,7 @@ import {
 } from '../../flux/watch-list/watchListStore';
 
 import { crStyle2 } from '../zhn-utils/crStyle';
-import ButtonCircle from '../zhn-atoms/ButtonCircle';
+import ButtonCircle from '../zhn/ButtonCircle';
 
 const CAPTION = "S"
 , TITLE = "Save Watch Items to Locale Storage"

@@ -1,5 +1,5 @@
 //import PropTypes from "prop-types";
-import Svg100 from '../zhn-atoms/svg/Svg100';
+import Svg100 from '../zhn/svg/Svg100';
 import useResizeElement from './useResizeElement';
 
 const CL_SVG_RESIZE = "svg-resize"

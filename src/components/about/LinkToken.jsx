@@ -1,4 +1,4 @@
-import Link from '../zhn-atoms/Link';
+import Link from '../zhn/Link';
 
 const CL_SOURCE_LINK = "source-link"
 , S_WRAPPER = {

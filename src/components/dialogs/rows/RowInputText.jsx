@@ -1,4 +1,4 @@
-import InputText from '../../zhn-atoms/InputText';
+import InputText from '../../zhn/InputText';
 import Caption from './Caption';
 
 const S_DIV = {

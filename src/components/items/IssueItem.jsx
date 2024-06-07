@@ -5,23 +5,25 @@ import {
   focusRefNextSiblingFirstChildElement
 } from '../uiApi';
 
-import useToggle from '../hooks/useToggle';
-import useKeyDelete from '../hooks/useKeyDelete';
-import useKeyEnter from '../hooks/useKeyEnter';
-
-import A from '../zhn-atoms/A';
 import {
   CL_ITEM,
   CL_ITEM_TITLE,
   CL_LINK_WARPPER
 } from '../styles/CL';
 
+import useToggle from '../hooks/useToggle';
+import useKeyDelete from '../hooks/useKeyDelete';
+import useKeyEnter from '../hooks/useKeyEnter';
+
+import ShowHide from '../zhn/ShowHide';
+import Link from '../zhn/Link';
+import DivComments from './DivComments';
+
 import {
   S_COLOR_GREY,
   S_PR_8,
   S_PB_8
 } from './Item.Style';
-import DivComments from './DivComments';
 
 const S_STATE = {
   ...S_PR_8,
@@ -66,7 +68,7 @@ const IssueItem = ({
   , _onKeyDown = useKeyEnter(toggleIsDescr, { isPropagation: true });
 
   return (
-    <A.ShowHide
+    <ShowHide
        refEl={_refItem}
        isShow={isShow}
        className={CL_ITEM}
@@ -97,13 +99,13 @@ const IssueItem = ({
              {title}
            </div>
       </div>
-      <A.ShowHide isShow={isDescr} style={S_SHOW_HIDE}>
-        <A.Link className={CL_LINK_WARPPER} href={url}>
+      <ShowHide isShow={isDescr} style={S_SHOW_HIDE}>
+        <Link className={CL_LINK_WARPPER} href={url}>
           {body}
-        </A.Link>
+        </Link>
         <DivComments n={comments} />
-      </A.ShowHide>
-    </A.ShowHide>
+      </ShowHide>
+    </ShowHide>
   )
 };
 

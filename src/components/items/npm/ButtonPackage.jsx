@@ -1,7 +1,7 @@
 import { CL_BT_ITEM } from '../../styles/CL';
 import { S_CAPTION_OPEN } from '../Item.Style';
 
-import A from '../../zhn-atoms/A';
+import FormattedInteger from '../../zhn/FormattedInteger';
 
 const _S_CAPTION_OPEN = {
   ...S_CAPTION_OPEN,
@@ -30,7 +30,7 @@ const ButtonPackage = ({
     <span>
       {packageName}
     </span>
-    <A.FormattedInteger
+    <FormattedInteger
        style={S_SPAN_SUM}
        value={sumDownloads}
     />

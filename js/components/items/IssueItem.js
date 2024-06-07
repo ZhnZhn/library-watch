@@ -4,13 +4,14 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _CL = require("../styles/CL");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useKeyDelete = _interopRequireDefault(require("../hooks/useKeyDelete"));
 var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
-var _A = _interopRequireDefault(require("../zhn-atoms/A"));
-var _CL = require("../styles/CL");
-var _Item = require("./Item.Style");
+var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
+var _Link = _interopRequireDefault(require("../zhn/Link"));
 var _DivComments = _interopRequireDefault(require("./DivComments"));
+var _Item = require("./Item.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_STATE = {
     ..._Item.S_PR_8,
@@ -49,7 +50,7 @@ const IssueItem = _ref => {
     _onKeyDown = (0, _useKeyEnter.default)(toggleIsDescr, {
       isPropagation: true
     });
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_A.default.ShowHide, {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ShowHide.default, {
     refEl: _refItem,
     isShow: isShow,
     className: _CL.CL_ITEM,
@@ -78,10 +79,10 @@ const IssueItem = _ref => {
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         children: title
       })]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_A.default.ShowHide, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ShowHide.default, {
       isShow: isDescr,
       style: S_SHOW_HIDE,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.Link, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Link.default, {
         className: _CL.CL_LINK_WARPPER,
         href: url,
         children: body

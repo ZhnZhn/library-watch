@@ -1,7 +1,7 @@
 import { safeMap } from '../uiApi';
 import { crDnDListHandlers } from './dnd-handlers/DnDListHandlers';
 
-import OpenClose2 from '../zhn-atoms/OpenClose2';
+import OpenClose2 from '../zhn/OpenClose2';
 import WatchItems from './WatchItems';
 
 const S_LIST_DIV = {

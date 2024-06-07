@@ -1,19 +1,23 @@
-import useToggle from '../hooks/useToggle';
-import useWatchItem from './hooks/useWatchItem';
-
-import A from '../zhn-atoms/A';
-import Caption from './ItemCaption'
 import {
   CL_BT_ITEM,
   CL_SOURCE_LINK
 } from '../styles/CL';
+
+import useToggle from '../hooks/useToggle';
+import useWatchItem from './hooks/useWatchItem';
+
+import ButtonCircle from '../zhn/ButtonCircle';
+import ShowHide from '../zhn/ShowHide';
+import Link from '../zhn/Link';
+import Caption from './ItemCaption';
+
 import {
   S_ROOT,
   S_CAPTION_OPEN,
   S_SPAN_VERSION,
   S_BTN_CIRCLE,
   S_PT_8,
-  S_ML_8  
+  S_ML_8
 } from './Item.Style';
 
 const ITEM_DESCRIPTION = "GitHub Repository Recent Release";
@@ -70,22 +74,22 @@ const GitHubRecentRelease = (props) => {
              {published_at}
           </span>
         </button>
-        <A.ButtonCircle
+        <ButtonCircle
            caption="W"
            title="Add to Watch"
            style={S_BTN_CIRCLE}
            onClick={_hClickWatch}
         />
       </Caption>
-      <A.ShowHide isShow={isShow} style={S_PT_8}>
-        <A.Link
+      <ShowHide isShow={isShow} style={S_PT_8}>
+        <Link
            className={CL_SOURCE_LINK}
            style={S_ML_8}
            href={html_url}
         >
            Link to description of recent release tag
-        </A.Link>
-      </A.ShowHide>
+        </Link>
+      </ShowHide>
     </div>
   );
 };

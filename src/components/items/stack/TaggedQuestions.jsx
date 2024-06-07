@@ -2,19 +2,24 @@ import {
   useState,
   useCallback
 } from '../../uiApi';
-import useToggle from '../../hooks/useToggle';
-import useMenuMore from '../../hooks/useMenuMore';
 
-import A from '../../zhn-atoms/A';
-import Caption from '../ItemCaption';
-import ModalSlider from '../../zhn-modal-slider/ModalSlider';
-import crModelMore from './crModelMore';
-import sortItemsBy from './sortItemsBy';
-import TaggedItemList from './TaggedItemList';
 import {
   CL_NOT_SELECTED,
   CL_MENU_MORE
 } from '../../styles/CL';
+
+import useToggle from '../../hooks/useToggle';
+import useMenuMore from '../../hooks/useMenuMore';
+
+import ShowHide from '../../zhn/ShowHide';
+import SvgMore from '../../zhn/SvgMore';
+import Caption from '../ItemCaption';
+import ModalSlider from '../../zhn-modal-slider/ModalSlider';
+import TaggedItemList from './TaggedItemList';
+
+import crModelMore from './crModelMore';
+import sortItemsBy from './sortItemsBy';
+
 import {
   S_ROOT,
   S_CAPTION_OPEN
@@ -99,7 +104,7 @@ const StackTaggedQuestions = (props) => {
         onClose={_toggleMenuMore}
       />
       <Caption onClose={onCloseItem}>
-        <A.SvgMore
+        <SvgMore
           style={S_BT_MORE}
           onClick={_showMenuMore}
         />
@@ -125,12 +130,12 @@ const StackTaggedQuestions = (props) => {
            {_titleForSort}
         </button>
       </Caption>
-      <A.ShowHide isShow={isShow}>
+      <ShowHide isShow={isShow}>
         <TaggedItemList
           items={items}
           onRemoveItem={_onRemoveItem}
         />
-      </A.ShowHide>
+      </ShowHide>
     </div>
   );
 };

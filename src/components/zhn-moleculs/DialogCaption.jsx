@@ -1,4 +1,4 @@
-import SvgClose from '../zhn-atoms/SvgClose';
+import SvgClose from '../zhn/SvgClose';
 import { CL_NOT_SELECTED } from '../styles/CL';
 
 const S_ROOT = {

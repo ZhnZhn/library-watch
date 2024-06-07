@@ -1,16 +1,17 @@
 import { crMemoCompList } from '../hoc/memoFn';
-
-import A from '../zhn-atoms/A';
 import { CL_ROW_ITEM } from '../styles/CL';
-import {
-  S_PB_8,
-  S_PR_8
-} from './Item.Style';
 
 import formatStrDate from '../../utils/formatStrDate';
 import { crDateAgo } from '../../utils/dateFn';
 
+import Link from '../zhn/Link';
+import DateAgo from '../zhn/Link';
 import DivComments from './DivComments';
+
+import {
+  S_PB_8,
+  S_PR_8
+} from './Item.Style';
 
 const CommitList = crMemoCompList((item, index) => {
   const {
@@ -31,12 +32,12 @@ const CommitList = crMemoCompList((item, index) => {
 
   return (
     <div key={index} className={CL_ROW_ITEM}>
-       <A.Link href={html_url}>
+       <Link href={html_url}>
          <div style={S_PB_8}>
            <span style={S_PR_8}>
              {name}
            </span>
-           <A.DateAgo
+           <DateAgo
               dateAgo={_dateAgo}
               date={_dateTime}
            />
@@ -45,7 +46,7 @@ const CommitList = crMemoCompList((item, index) => {
            {message}
          </div>
          <DivComments n={comment_count} />
-       </A.Link>
+       </Link>
     </div>
   );
 });

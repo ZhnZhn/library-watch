@@ -6,7 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _watchListStore = require("../../flux/watch-list/watchListStore");
 var _crStyle = require("../zhn-utils/crStyle");
-var _ButtonCircle = _interopRequireDefault(require("../zhn-atoms/ButtonCircle"));
+var _ButtonCircle = _interopRequireDefault(require("../zhn/ButtonCircle"));
 var _jsxRuntime = require("react/jsx-runtime");
 const CAPTION = "S",
   TITLE = "Save Watch Items to Locale Storage",
@@ -33,6 +33,5 @@ const ButtonSave = _ref => {
     onClick: _watchListStore.saveWatchList
   });
 };
-var _default = ButtonSave;
-exports.default = _default;
+var _default = exports.default = ButtonSave;
 //# sourceMappingURL=ButtonSave.js.map

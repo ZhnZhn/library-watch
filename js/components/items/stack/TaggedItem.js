@@ -6,9 +6,10 @@ exports.default = void 0;
 var _uiApi = require("../../uiApi");
 var _styleFn = require("../../styleFn");
 var _useDnDHandlers = _interopRequireDefault(require("./useDnDHandlers"));
-var _A = _interopRequireDefault(require("../../zhn-atoms/A"));
-var _crImgToken = _interopRequireDefault(require("./crImgToken"));
+var _Link = _interopRequireDefault(require("../../zhn/Link"));
+var _DateAgo = _interopRequireDefault(require("../../zhn/DateAgo"));
 var _TagList = _interopRequireDefault(require("./TagList"));
+var _crImgToken = _interopRequireDefault(require("./crImgToken"));
 var _jsxRuntime = require("react/jsx-runtime");
 const CL = (0, _styleFn.crClNotSelected)("row-item"),
   S_NONE = {
@@ -87,13 +88,13 @@ const TaggedItem = _ref => {
     className: CL,
     style: isClosed ? S_NONE : void 0,
     ..._itemHandlers,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_A.default.Link, {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Link.default, {
       href: link,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         style: S_ITEM_CAPTION,
         children: [bounty_amount && /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           style: S_BOUNTY,
-          children: `+${bounty_amount}`
+          children: "+" + bounty_amount
         }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
           style: is_answered ? S_GREEN_BADGE : S_FISH_BADGE,
           children: [TOKEN_ANSWER, "\xA0", answer_count]
@@ -109,7 +110,7 @@ const TaggedItem = _ref => {
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           style: S_BLACK_BAGDE,
           children: display_name
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.DateAgo, {
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DateAgo.default, {
           style: S_DATE_AGO,
           dateAgo: dateAgo
         })]

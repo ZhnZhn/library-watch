@@ -4,7 +4,7 @@ import useInitStateFromProps from '../hooks/useInitStateFromProps';
 import useThrottleCallback from '../hooks/useThrottleCallback';
 
 import ModalPane from '../zhn-moleculs/ModalPane';
-import ShowHide from '../zhn-atoms/ShowHide';
+import ShowHide from '../zhn/ShowHide';
 
 import MenuPage from './MenuPage';
 import MenuPages from './MenuPages';

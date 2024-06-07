@@ -9,7 +9,7 @@ import { memoIsShow } from '../hoc/memoFn';
 
 import useDialogButtons from './useDialogButtons';
 import ModalDialog from '../zhn-moleculs/ModalDialog';
-import InputFileReader from '../zhn-atoms/InputFileReader';
+import InputFileReader from '../zhn/InputFileReader';
 import D from './DialogCell';
 
 const MSG_FILE_NOT_CHOOSED = 'Please choose file for loading.'

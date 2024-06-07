@@ -7,7 +7,7 @@ var _crGitRepositoryHref = _interopRequireDefault(require("./crGitRepositoryHref
 var _crGitRepositoryCaption = _interopRequireDefault(require("./crGitRepositoryCaption"));
 var _checkResponseJson = _interopRequireDefault(require("./checkResponseJson"));
 var _CellValue = _interopRequireDefault(require("../CellValue"));
-var _Link = _interopRequireDefault(require("../../zhn-atoms/Link"));
+var _Link = _interopRequireDefault(require("../../zhn/Link"));
 var _CL = require("../../styles/CL");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_ML_8 = {
@@ -17,7 +17,7 @@ const S_ML_8 = {
     marginRight: 24
   },
   API_URL = 'https://bundlephobia.com/result?p=',
-  _crBundleHref = (name, version) => `${API_URL}${name}@${version}`,
+  _crBundleHref = (name, version) => "" + API_URL + name + "@" + version,
   _toKbStr = sizeByte => (sizeByte / 1024).toFixed(1);
 const BundleInfo = _ref => {
   let {

@@ -6,7 +6,7 @@ import {
   LPAT_LOADING_COMPLETE,
   LPAT_LOADING_FAILED
 } from '../../flux/actions/LoadingProgressActions';
-import ProgressLine from '../zhn-atoms/ProgressLine';
+import ProgressLine from '../zhn/ProgressLine';
 
 const COLOR_LOADING = '#2f7ed8'
 , COLOR_FAILED = '#ed5813';

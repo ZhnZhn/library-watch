@@ -1,8 +1,8 @@
 import { crClNotSelected } from '../styleFn';
 import useKeyEnter  from '../hooks/useKeyEnter';
 
-import AtomCounter from '../zhn-atoms/AtomCounter';
-import OpenClose2 from '../zhn-atoms/OpenClose2';
+import AtomCounter from '../zhn/AtomCounter';
+import OpenClose2 from '../zhn/OpenClose2';
 
 const CL_NOT_SELECTED = crClNotSelected()
 , CL_ROW_ITEM = `row__topic`

@@ -13,18 +13,21 @@ import {
   useMsItem
 } from '../../flux/itemStore';
 
-import ModalSlider from '../zhn-modal-slider/ModalSlider'
-import crModelMore from './ModelMore'
-import ContainerCaption from '../zhn-atoms/ContainerCaption';
+import ModalSlider from '../zhn-modal-slider/ModalSlider';
+import crModelMore from './ModelMore';
+import ContainerCaption from '../zhn/ContainerCaption';
+import ScrollPane from '../zhn/ScrollPane';
 import SvgHrzResize from '../zhn-moleculs/SvgHrzResize';
-import ScrollPane from '../zhn-atoms/ScrollPane';
+
 import {
   S_INLINE_BLOCK,
   S_NONE,
   CL_SHOW_POPUP,
   CL_MENU_MORE
 } from '../styles/CL';
-import { S_COMP_ITEM_LIST } from '../styles/ContainerStyles';
+import { 
+  S_COMP_ITEM_LIST
+} from '../styles/ContainerStyles';
 
 const RESIZE_INIT_WIDTH = 635
 , RESIZE_MIN_WIDTH = 375

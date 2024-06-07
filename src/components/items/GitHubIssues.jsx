@@ -1,11 +1,13 @@
+import { CL_BT_ITEM } from '../styles/CL';
+
 import useToggle from '../hooks/useToggle';
 import useWatchItem from './hooks/useWatchItem';
 
-import A from '../zhn-atoms/A';
+import ButtonCircle from '../zhn/ButtonCircle';
+import ShowHide from '../zhn/ShowHide';
 import Caption from './ItemCaption';
 import IssueList from './IssueList';
 
-import { CL_BT_ITEM } from '../styles/CL';
 import {
   S_ROOT,
   S_CAPTION_OPEN,
@@ -55,16 +57,16 @@ const GitHubIssues = (props) => {
             {_number}
           </span>
         </button>
-        <A.ButtonCircle
+        <ButtonCircle
            caption="W"
            title="Add to Watch"
            style={S_BTN_CIRCLE}
            onClick={_hClickWatch}
         />
       </Caption>
-      <A.ShowHide isShow={isShow}>
+      <ShowHide isShow={isShow}>
         <IssueList items={issues} />
-      </A.ShowHide>
+      </ShowHide>
     </div>
   );
 }

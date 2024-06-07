@@ -4,12 +4,13 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _CL = require("../styles/CL");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _formatStrDate = _interopRequireDefault(require("../../utils/formatStrDate"));
-var _A = _interopRequireDefault(require("../zhn-atoms/A"));
+var _ButtonCircle = _interopRequireDefault(require("../zhn/ButtonCircle"));
+var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
 var _ItemCaption = _interopRequireDefault(require("./ItemCaption"));
 var _TagDetail = _interopRequireDefault(require("./TagDetail"));
-var _CL = require("../styles/CL");
 var _Item = require("./Item.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 const ITEM_DESCRIPTION = "GitHub Likely Recent Version Tag";
@@ -48,7 +49,7 @@ const GitHubRecentTag = _ref => {
     /*eslint-enable react-hooks/exhaustive-deps */,
     _hClickWatch = (0, _uiApi.useCallback)(() => {
       const tagDate = _getTagDate(json),
-        caption = `${repo} ${version}`;
+        caption = repo + " " + version;
       onWatchItem({
         caption,
         config: {
@@ -79,18 +80,18 @@ const GitHubRecentTag = _ref => {
           style: _Item.S_SPAN_VERSION,
           children: version
         })]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ButtonCircle, {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle.default, {
         caption: "W",
         title: "Add to Watch",
         style: _Item.S_BTN_CIRCLE,
         onClick: _hClickWatch
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ButtonCircle, {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle.default, {
         caption: "D",
         title: "Load Tag Details",
         style: _Item.S_BTN_CIRCLE,
         onClick: _hClickDetail
       })]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ShowHide, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide.default, {
       isShow: isShow,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_TagDetail.default, {
         json: json

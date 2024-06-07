@@ -1,5 +1,5 @@
 import ArrowCell from './ArrowCell';
-import BtCircle from '../zhn-atoms/ButtonCircle2';
+import BtCircle from '../zhn/ButtonCircle2';
 
 import {
   CL_SPINNER,

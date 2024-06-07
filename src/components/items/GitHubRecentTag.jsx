@@ -2,13 +2,17 @@ import {
   useState,
   useCallback
 } from '../uiApi';
+
+import { CL_BT_ITEM } from '../styles/CL';
+
 import useToggle from '../hooks/useToggle';
 import formatStrDate from '../../utils/formatStrDate';
 
-import A from '../zhn-atoms/A';
+import ButtonCircle from '../zhn/ButtonCircle';
+import ShowHide from '../zhn/ShowHide';
 import Caption from './ItemCaption';
 import TagDetail from './TagDetail';
-import { CL_BT_ITEM } from '../styles/CL';
+
 import {
   S_ROOT,
   S_CAPTION_OPEN,
@@ -88,22 +92,22 @@ const GitHubRecentTag = ({
             {version}
           </span>
         </button>
-        <A.ButtonCircle
+        <ButtonCircle
            caption="W"
            title="Add to Watch"
            style={S_BTN_CIRCLE}
            onClick={_hClickWatch}
         />
-        <A.ButtonCircle
+        <ButtonCircle
            caption="D"
            title="Load Tag Details"
            style={S_BTN_CIRCLE}
            onClick={_hClickDetail}
         />
       </Caption>
-      <A.ShowHide isShow={isShow}>
+      <ShowHide isShow={isShow}>
         <TagDetail json={json} />
-      </A.ShowHide>
+      </ShowHide>
     </div>
   );
 }

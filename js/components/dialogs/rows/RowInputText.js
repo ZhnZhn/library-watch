@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _InputText = _interopRequireDefault(require("../../zhn-atoms/InputText"));
+var _InputText = _interopRequireDefault(require("../../zhn/InputText"));
 var _Caption = _interopRequireDefault(require("./Caption"));
 var _jsxRuntime = require("react/jsx-runtime");
 const S_DIV = {

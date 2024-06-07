@@ -3,11 +3,13 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _CL = require("../styles/CL");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useWatchItem = _interopRequireDefault(require("./hooks/useWatchItem"));
-var _A = _interopRequireDefault(require("../zhn-atoms/A"));
+var _ButtonCircle = _interopRequireDefault(require("../zhn/ButtonCircle"));
+var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
+var _Link = _interopRequireDefault(require("../zhn/Link"));
 var _ItemCaption = _interopRequireDefault(require("./ItemCaption"));
-var _CL = require("../styles/CL");
 var _Item = require("./Item.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 const ITEM_DESCRIPTION = "GitHub Repository Recent Release";
@@ -16,7 +18,7 @@ const _crCaption = _ref => {
     repo,
     version
   } = _ref;
-  return `${repo} ${version}`;
+  return repo + " " + version;
 };
 
 /*
@@ -56,16 +58,16 @@ const GitHubRecentRelease = props => {
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           children: published_at
         })]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ButtonCircle, {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle.default, {
         caption: "W",
         title: "Add to Watch",
         style: _Item.S_BTN_CIRCLE,
         onClick: _hClickWatch
       })]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.ShowHide, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide.default, {
       isShow: isShow,
       style: _Item.S_PT_8,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_A.default.Link, {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Link.default, {
         className: _CL.CL_SOURCE_LINK,
         style: _Item.S_ML_8,
         href: html_url,

@@ -1,9 +1,3 @@
-import useToggle from '../hooks/useToggle'
-
-import formatStrDate from '../../utils/formatStrDate';
-
-import A from '../zhn-atoms/A';
-import Caption from './ItemCaption';
 import {
   CL_BT_ITEM,
   CL_LIB,
@@ -12,6 +6,15 @@ import {
   CL_LIB_VALUE_TITLE,
   CL_SOURCE_LINK
 } from '../styles/CL';
+
+import useToggle from '../hooks/useToggle'
+
+import formatStrDate from '../../utils/formatStrDate';
+
+import ShowHide from '../zhn/ShowHide';
+import Link from '../zhn/Link';
+import Caption from './ItemCaption';
+
 import {
   S_ROOT,
   S_CAPTION_OPEN,
@@ -90,12 +93,12 @@ const ItemDescription = ({
             </span>
           </div>
           <div>
-             <A.Link
+             <Link
                 className={CL_SOURCE_LINK}
                 href={html_url}
               >
                 Link to GitHub Repository
-             </A.Link>
+             </Link>
           </div>
         </div>
   );
@@ -135,11 +138,11 @@ const GitHubSearchInfo = ({
           </span>
         </button>
       </Caption>
-      <A.ShowHide isShow={isShow}>
+      <ShowHide isShow={isShow}>
         <ItemDescription
           library={library}
         />
-      </A.ShowHide>
+      </ShowHide>
     </div>
   );
 };

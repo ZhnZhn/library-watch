@@ -1,31 +1,26 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
-
+exports.default = void 0;
+var _SvgClose = _interopRequireDefault(require("../zhn/SvgClose"));
 var _jsxRuntime = require("react/jsx-runtime");
-
-var CL_ROOT = 'item-caption',
-    CL_BT_CLOSE = 'item-caption__bt-close';
-
-var ItemCaption = function ItemCaption(_ref) {
-  var style = _ref.style,
-      children = _ref.children,
-      onClose = _ref.onClose;
+const CL_ITEM_CAPTION = 'item-caption',
+  CL_BT_CLOSE = CL_ITEM_CAPTION + "__bt-close";
+const ItemCaption = _ref => {
+  let {
+    style,
+    children,
+    onClose
+  } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    className: CL_ROOT,
+    className: CL_ITEM_CAPTION,
     style: style,
-    children: [children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose["default"], {
+    children: [children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose.default, {
       className: CL_BT_CLOSE,
       onClose: onClose
     })]
   });
 };
-
-var _default = ItemCaption;
-exports["default"] = _default;
+var _default = exports.default = ItemCaption;
 //# sourceMappingURL=ItemCaption.js.map
