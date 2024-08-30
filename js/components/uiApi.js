@@ -17,8 +17,8 @@ exports.useLayoutEffect = _react.useLayoutEffect;
 exports.useEffect = _react.useEffect;
 exports.useSyncExternalStore = _react.useSyncExternalStore;
 exports.useImperativeHandle = _react.useImperativeHandle;
-const _isFn = fn => typeof fn === 'function';
-const _isArr = Array.isArray;
+var _isTypeFn = require("../utils/isTypeFn");
+exports.isFn = _isTypeFn.isFn;
 const FN_NOOP = () => {};
 exports.FN_NOOP = FN_NOOP;
 const getRefValue = ref => (ref || {}).current;
@@ -31,20 +31,20 @@ const setRefValue = (ref, value) => {
 exports.setRefValue = setRefValue;
 const _fReturnMethod = (methodName, dfValue) => ref => {
   const _inputInst = getRefValue(ref);
-  return _inputInst && _isFn(_inputInst[methodName]) ? _inputInst[methodName]() : dfValue;
+  return _inputInst && (0, _isTypeFn.isFn)(_inputInst[methodName]) ? _inputInst[methodName]() : dfValue;
 };
 const isRefInputValid = exports.isRefInputValid = _fReturnMethod("isValid", false);
 const getRefInputValue = exports.getRefInputValue = _fReturnMethod("getValue");
 const _fCallMethod = methodName => (ref, value) => {
   const _inputInst = getRefValue(ref);
-  if (_inputInst && _isFn(_inputInst[methodName])) {
+  if (_inputInst && (0, _isTypeFn.isFn)(_inputInst[methodName])) {
     _inputInst[methodName](value);
   }
 };
 const setRefInputValue = exports.setRefInputValue = _fCallMethod("setValue");
 const focusRefInput = exports.focusRefInput = _fCallMethod("focus");
 const focusHtmlElement = el => {
-  if (el && _isFn(el.focus)) {
+  if (el && (0, _isTypeFn.isFn)(el.focus)) {
     el.focus();
     return true;
   }
@@ -63,6 +63,6 @@ const getClientX = evt => evt.clientX || _getTouchClientX(evt.targetTouches) || 
 exports.getClientX = getClientX;
 const getClientY = evt => evt.clientY || _getTouchClientY(evt.targetTouches) || _getTouchClientY(evt.changedTouches) || 0;
 exports.getClientY = getClientY;
-const safeMap = (items, crElement) => _isArr(items) ? items.map(crElement) : null;
+const safeMap = (items, crElement) => (0, _isTypeFn.isArr)(items) ? items.map(crElement) : null;
 exports.safeMap = safeMap;
 //# sourceMappingURL=uiApi.js.map

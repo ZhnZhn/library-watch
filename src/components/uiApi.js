@@ -15,8 +15,14 @@ export {
   useImperativeHandle
 } from 'react';
 
-const _isFn = fn => typeof fn === 'function';
-const _isArr = Array.isArray;
+export {
+  isFn
+} from '../utils/isTypeFn';
+import {
+  isFn,
+  isArr
+} from '../utils/isTypeFn';
+
 
 export const FN_NOOP = () => {}
 
@@ -35,7 +41,7 @@ const _fReturnMethod = (
   dfValue
 ) => (ref) => {
   const _inputInst = getRefValue(ref);
-  return _inputInst && _isFn(_inputInst[methodName])
+  return _inputInst && isFn(_inputInst[methodName])
     ? _inputInst[methodName]()
     : dfValue;
 }
@@ -47,7 +53,7 @@ const _fCallMethod = (
   methodName
 ) => (ref, value) => {
   const _inputInst = getRefValue(ref);
-  if (_inputInst && _isFn(_inputInst[methodName])) {
+  if (_inputInst && isFn(_inputInst[methodName])) {
     _inputInst[methodName](value)
   }
 };
@@ -56,7 +62,7 @@ export const setRefInputValue = _fCallMethod("setValue")
 export const focusRefInput = _fCallMethod("focus")
 
 export const focusHtmlElement = el => {
-  if (el && _isFn(el.focus)) {
+  if (el && isFn(el.focus)) {
     el.focus()
     return true;
   }
@@ -104,6 +110,6 @@ export const getClientY = (
 export const safeMap = (
   items,
   crElement
-) => _isArr(items)
+) => isArr(items)
   ? items.map(crElement)
   : null
