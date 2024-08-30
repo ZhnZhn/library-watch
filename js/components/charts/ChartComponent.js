@@ -11,7 +11,7 @@ var _deepEqual = _interopRequireDefault(require("../../utils/deepEqual"));
 var _omit = _interopRequireDefault(require("../../utils/omit"));
 var _jsxRuntime = require("react/jsx-runtime");
 const IGNORED_PROPERTIES = ['id', 'width', 'height', 'onElementsClick'];
-_chart.Chart.register(_chart.LineElement, _chart.LineController, _chart.CategoryScale, _chart.LinearScale, _chart.PointElement, _chart.Legend, _chart.Tooltip);
+_chart.Chart.register(_chart.LineElement, _chart.LineController, _chart.BarElement, _chart.BarController, _chart.CategoryScale, _chart.LinearScale, _chart.PointElement, _chart.Legend, _chart.Tooltip);
 (0, _configChart.default)(_chart.Chart);
 const DF_OPTIONS = {
   tooltips: {
@@ -29,7 +29,9 @@ const _isNotShouldRerender = (prevProps, nextProps) => (0, _deepEqual.default)((
     (0, _uiApi.setRefValue)(refChartInst, new _chart.Chart((0, _uiApi.getRefValue)(refCanvas), {
       type,
       data,
-      options: (0, _merge.default)(DF_OPTIONS, options)
+      options: (0, _merge.default)({
+        ...DF_OPTIONS
+      }, options)
     }));
   },
   _updateChart = (chartInst, data, options) => {
@@ -96,13 +98,6 @@ ChartComp.propTypes = {
   type: PropTypes.oneOf([
 	  'line',
 		'bar'
-		'horizontalBar',
-	  'doughnut',
-		'pie',
-		'scatter',
-		'bubble'
-		'radar',
-		'polarArea'
 	]),
 	width: PropTypes.number,
 	height: PropTypes.number,

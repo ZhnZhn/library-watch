@@ -12,6 +12,8 @@ import {
 	Chart,
 	LineElement,
 	LineController,
+	BarElement,
+	BarController,
 	Legend,
   Tooltip,
 	CategoryScale,
@@ -34,6 +36,8 @@ const IGNORED_PROPERTIES = [
 Chart.register(
 	LineElement,
   LineController,
+	BarElement,
+	BarController,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -71,7 +75,7 @@ const _isNotShouldRerender = (
 	 setRefValue(refChartInst, new Chart(getRefValue(refCanvas), {
 		 type,
 		 data,
-		 options: merge(DF_OPTIONS, options)
+		 options: merge({...DF_OPTIONS}, options)
 	}));
 }
 , _updateChart = (
@@ -148,13 +152,6 @@ ChartComp.propTypes = {
   type: PropTypes.oneOf([
 	  'line',
 		'bar'
-		'horizontalBar',
-	  'doughnut',
-		'pie',
-		'scatter',
-		'bubble'
-		'radar',
-		'polarArea'
 	]),
 	width: PropTypes.number,
 	height: PropTypes.number,
