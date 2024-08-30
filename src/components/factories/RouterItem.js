@@ -7,6 +7,7 @@ import fGitHubIssues from './fGitHubIssues';
 
 import fNpmRecentDownloads from './fNpmRecentDownloads';
 import fNpmDownloads from './fNpmDownloads';
+import fNpmTopVersions from './fNpmTopVersions';
 
 import fStackTaggedQuestions from './fStackTaggedQuestions';
 
@@ -23,6 +24,7 @@ const RouterItem = {
 
   NPM_DOWNLOADS_RECENT_MONTH : fNpmRecentDownloads,
   NPM_DOWNLOADS : fNpmDownloads,
+  NPM_TOP_VERSIONS : fNpmTopVersions,
 
   SE_QUESTIONS : fStackTaggedQuestions,
   SE_SEARCH_QUESTIONS : fStackTaggedQuestions,

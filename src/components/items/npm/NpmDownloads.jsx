@@ -34,6 +34,9 @@ const ITEM_DESCRIPTION = "Npm Recent Month Downloads"
 const _isFn = fn => typeof fn === 'function';
 
 const NpmDownloads = ({
+  type,
+  options,
+  chartType,
   caption,
   packageName,
   requestType,
@@ -120,8 +123,9 @@ const NpmDownloads = ({
          style={S_CHART_WRAPPER}
       >
         <LineChart
+           type={type}
            data={_lineChartConfig}
-           options={CHART_OPTIONS}
+           options={options || CHART_OPTIONS}
         />
         <NpmPackageInfo
           isButtons={isButtons}
