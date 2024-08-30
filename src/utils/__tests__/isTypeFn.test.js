@@ -4,6 +4,7 @@ import {
   isArr,
   isRegularObj,
   isStr,
+  isFn,
   isNotEmptyStr
 } from '../isTypeFn';
 
@@ -84,6 +85,19 @@ describe('isNotEmptyStr',()=>{
     expect(fn(true)).toBe(false)
     expect(fn({})).toBe(false)
     expect(fn(()=>{})).toBe(false)
+  })
+})
+
+describe("isFn", ()=>{
+  const fn = isFn;
+  test('should return true for function value otherwise flase', ()=>{
+    expect(fn(fn)).toBe(true)
+    expect(fn(()=>{})).toBe(true)
+
+    expect(fn()).toBe(false)
+    expect(fn(null)).toBe(false)
+    expect(fn({})).toBe(false)
+    expect(fn('')).toBe(false)
   })
 })
 

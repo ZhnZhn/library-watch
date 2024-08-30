@@ -1,9 +1,9 @@
 "use strict";
 
 var _isTypeFn = require("../isTypeFn");
-describe('isNumber', function () {
-  var fn = _isTypeFn.isNumber;
-  test('should return boolean is value type number', function () {
+describe('isNumber', () => {
+  const fn = _isTypeFn.isNumber;
+  test('should return boolean is value type number', () => {
     expect(fn(0.1 + 0.2)).toBe(true);
     expect(fn(NaN)).toBe(false);
     expect(fn()).toBe(false);
@@ -12,12 +12,12 @@ describe('isNumber', function () {
     expect(fn(true)).toBe(false);
     expect(fn({})).toBe(false);
     expect(fn([])).toBe(false);
-    expect(fn(function () {})).toBe(false);
+    expect(fn(() => {})).toBe(false);
   });
 });
-describe('isNaN', function () {
-  var fn = _isTypeFn.isNaN;
-  test('should return boolean is value NaN', function () {
+describe('isNaN', () => {
+  const fn = _isTypeFn.isNaN;
+  test('should return boolean is value NaN', () => {
     expect(fn(NaN)).toBe(true);
     expect(fn(0.1)).toBe(false);
     expect(fn()).toBe(false);
@@ -26,12 +26,12 @@ describe('isNaN', function () {
     expect(fn(true)).toBe(false);
     expect(fn({})).toBe(false);
     expect(fn([])).toBe(false);
-    expect(fn(function () {})).toBe(false);
+    expect(fn(() => {})).toBe(false);
   });
 });
-describe('isArr', function () {
-  var fn = _isTypeFn.isArr;
-  test('should return boolean is value type array', function () {
+describe('isArr', () => {
+  const fn = _isTypeFn.isArr;
+  test('should return boolean is value type array', () => {
     expect(fn([])).toBe(true);
     expect(fn(1)).toBe(false);
     expect(fn(NaN)).toBe(false);
@@ -40,12 +40,12 @@ describe('isArr', function () {
     expect(fn('str')).toBe(false);
     expect(fn(true)).toBe(false);
     expect(fn({})).toBe(false);
-    expect(fn(function () {})).toBe(false);
+    expect(fn(() => {})).toBe(false);
   });
 });
-describe('isRegularObj', function () {
-  var fn = _isTypeFn.isRegularObj;
-  test('should return boolean is value type regular object', function () {
+describe('isRegularObj', () => {
+  const fn = _isTypeFn.isRegularObj;
+  test('should return boolean is value type regular object', () => {
     expect(fn({})).toBe(true);
     expect(fn(1)).toBe(false);
     expect(fn(NaN)).toBe(false);
@@ -54,12 +54,12 @@ describe('isRegularObj', function () {
     expect(fn('str')).toBe(false);
     expect(fn(true)).toBe(false);
     expect(fn([])).toBe(false);
-    expect(fn(function () {})).toBe(false);
+    expect(fn(() => {})).toBe(false);
   });
 });
-describe('isNotEmptyStr', function () {
-  var fn = _isTypeFn.isStr;
-  test('shoult return true only for string type', function () {
+describe('isNotEmptyStr', () => {
+  const fn = _isTypeFn.isStr;
+  test('shoult return true only for string type', () => {
     expect(fn('str')).toBe(true);
     expect(fn('')).toBe(true);
     expect(fn(new String())).toBe(false);
@@ -68,12 +68,23 @@ describe('isNotEmptyStr', function () {
     expect(fn(0)).toBe(false);
     expect(fn(true)).toBe(false);
     expect(fn({})).toBe(false);
-    expect(fn(function () {})).toBe(false);
+    expect(fn(() => {})).toBe(false);
   });
 });
-describe('isNotEmptyStr', function () {
-  var fn = _isTypeFn.isNotEmptyStr;
-  test('shoult return true only for not empty string parameter', function () {
+describe("isFn", () => {
+  const fn = _isTypeFn.isFn;
+  test('should return true for function value otherwise flase', () => {
+    expect(fn(fn)).toBe(true);
+    expect(fn(() => {})).toBe(true);
+    expect(fn()).toBe(false);
+    expect(fn(null)).toBe(false);
+    expect(fn({})).toBe(false);
+    expect(fn('')).toBe(false);
+  });
+});
+describe('isNotEmptyStr', () => {
+  const fn = _isTypeFn.isNotEmptyStr;
+  test('shoult return true only for not empty string parameter', () => {
     expect(fn('a')).toBe(true);
     expect(fn(' ')).toBe(true);
     expect(fn('')).toBe(false);
@@ -82,7 +93,7 @@ describe('isNotEmptyStr', function () {
     expect(fn(0)).toBe(false);
     expect(fn(true)).toBe(false);
     expect(fn({})).toBe(false);
-    expect(fn(function () {})).toBe(false);
+    expect(fn(() => {})).toBe(false);
   });
 });
 //# sourceMappingURL=isTypeFn.test.js.map
