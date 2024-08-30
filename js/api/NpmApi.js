@@ -1,59 +1,68 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
+exports.default = void 0;
 var _strFn = require("../utils/strFn");
-var BASE = 'https://api.npmjs.org';
-var NPM_PACKAGE = 'https://www.npmjs.com/package/';
-var NPM = 'https://www.npmjs.com';
-var REQUEST_PACKAGE = 'Request Package';
+const API_URL = 'https://api.npmjs.org';
+const NPM = 'https://www.npmjs.com';
+const NPM_PACKAGE = `${NPM}/package/`;
+const REQUEST_PACKAGE = 'Request Package';
 
 //https://api.npmjs.org/downloads/range/last-month
 
-var _crPackageLink = function _crPackageLink(name) {
-  return name ? "" + NPM_PACKAGE + name : NPM;
-};
-var _addPackageLinkTo = function _addPackageLinkTo(option) {
-  var repo = option.repo;
+const _crPackageLink = name => name ? `${NPM_PACKAGE}${name}` : NPM;
+const _addPackageLinkTo = option => {
+  const {
+    repo
+  } = option;
   option.packageLink = _crPackageLink(repo);
 };
-var _rRequestTypeToUrl = {
-  NPM_RECENT_VERSION: function NPM_RECENT_VERSION(option) {
-    return "https://registry.npmjs.org/-/package/" + option.repo + "/dist-tags";
+const _crVersionPackage = repo => repo.replace('/', '%2F');
+const _rRequestTypeToUrl = {
+  NPM_RECENT_VERSION: option => {
+    return `https://registry.npmjs.org/-/package/${option.repo}/dist-tags`;
   },
-  NPM_DOWNLOADS_RECENT_MONTH: function NPM_DOWNLOADS_RECENT_MONTH(option) {
+  NPM_DOWNLOADS_RECENT_MONTH: option => {
     _addPackageLinkTo(option);
-    return BASE + "/downloads/range/last-month/" + option.repo;
+    return `${API_URL}/downloads/range/last-month/${option.repo}`;
   },
-  NPM_DOWNLOADS: function NPM_DOWNLOADS(option) {
-    var fromDate = option.fromDate,
-      toDate = option.toDate,
-      repo = option.repo;
+  NPM_DOWNLOADS: option => {
+    const {
+      fromDate,
+      toDate,
+      repo
+    } = option;
     _addPackageLinkTo(option);
-    return BASE + "/downloads/range/" + fromDate + ":" + toDate + "/" + repo;
+    return `${API_URL}/downloads/range/${fromDate}:${toDate}/${repo}`;
+  },
+  NPM_TOP_VERSIONS: option => {
+    _addPackageLinkTo(option);
+    return `${API_URL}/versions/${_crVersionPackage(option.repo)}/last-week`;
   }
 };
-var NpmApi = {
-  getRequestUrl: function getRequestUrl(option) {
-    var fnFactory = _rRequestTypeToUrl[option.requestType];
+const NpmApi = {
+  getRequestUrl(option) {
+    const fnFactory = _rRequestTypeToUrl[option.requestType];
     return fnFactory(option);
   },
-  getOnCheckResponse: function getOnCheckResponse() {
+  getOnCheckResponse() {
     return NpmApi.checkResponse;
   },
-  crKey: function crKey(_ref) {
-    var repo = _ref.repo,
-      requestType = _ref.requestType,
-      _ref$fromDate = _ref.fromDate,
-      fromDate = _ref$fromDate === void 0 ? '' : _ref$fromDate;
-    return repo + "_" + requestType + "_" + fromDate;
+  crKey(_ref) {
+    let {
+      repo,
+      requestType,
+      fromDate = ''
+    } = _ref;
+    return `${repo}_${requestType}_${fromDate}`;
   },
-  checkResponse: function checkResponse(json, option) {
+  checkResponse(json, option) {
     if (json === void 0) {
       json = {};
     }
-    var _json = json,
-      error = _json.error;
+    const {
+      error
+    } = json;
     if (error) {
       throw {
         errCaption: REQUEST_PACKAGE,
@@ -63,6 +72,5 @@ var NpmApi = {
     return true;
   }
 };
-var _default = NpmApi;
-exports["default"] = _default;
+var _default = exports.default = NpmApi;
 //# sourceMappingURL=NpmApi.js.map
