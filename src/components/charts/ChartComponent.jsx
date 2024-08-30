@@ -3,6 +3,7 @@ import {
 	useRef,
 	useMemo,
 	useLayoutEffect,
+	isFn,
 	getRefValue,
 	setRefValue
 } from '../uiApi';
@@ -42,8 +43,7 @@ Chart.register(
 
 configChart(Chart)
 
-const _isFn = fn => typeof fn === 'function'
-, DF_OPTIONS = {
+const DF_OPTIONS = {
 	tooltips: {
 		callbacks: {
 			labelTextColor: function(tooltipItem, chartInst) {
@@ -100,7 +100,7 @@ const ChartComponent = memo(({
 }) => {
   const _refCanvas = useRef()
 	, _refChartInst = useRef()
-	, _hClick = useMemo(() => _isFn(onElementsClick)
+	, _hClick = useMemo(() => isFn(onElementsClick)
 	    ? event => {
 				  const elems = getRefValue(_refChartInst).getElementsAtEvent(event);
 				  if (elems.length) {
