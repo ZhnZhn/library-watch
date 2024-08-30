@@ -25,7 +25,7 @@
     "url": "https://github.com/ZhnZhn/library-watch.git"
   },
   "dependencies": {
-    "@babel/runtime": "^7.25.4",
+    "@babel/runtime": "^7.25.6",
     "chart.js": "^4.4.4",
     "papaparse": "^5.4.1",
     "raven-js": "^3.27.2",
@@ -33,7 +33,7 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.24.8",
+    "@babel/cli": "^7.25.6",
     "@babel/core": "^7.25.2",
     "@babel/eslint-parser": "^7.25.1",
     "@babel/plugin-transform-runtime": "^7.25.4",
