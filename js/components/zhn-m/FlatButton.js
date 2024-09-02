@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
+var _styleFn = require("../styleFn");
 var _useHotKey = _interopRequireDefault(require("../hotkeys/useHotKey"));
 var _BtCaption = _interopRequireDefault(require("./BtCaption"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -43,7 +43,7 @@ const FlatButton = _ref => {
         (0, _uiApi.setRefValue)(_refTimeStamp, timeStamp);
       }
     }, [timeout, onClick]),
-    _className = (0, _crCn.default)(CL_BT_FLAT, className),
+    _className = (0, _styleFn.crCn)(CL_BT_FLAT, className),
     _style = isPrimary ? {
       ...style,
       ...S_PRIMARY_COLOR

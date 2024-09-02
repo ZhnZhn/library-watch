@@ -5,7 +5,7 @@ import {
   setRefValue
 } from '../uiApi';
 
-import crCn from '../zhn-utils/crCn';
+import { crCn } from '../styleFn';
 import useHotKey from '../hotkeys/useHotKey';
 import BtCaption from './BtCaption';
 

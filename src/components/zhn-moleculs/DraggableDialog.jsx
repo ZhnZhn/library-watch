@@ -1,11 +1,12 @@
-import { crClNotSelected } from '../styleFn';
+import {
+  crCn,
+  crClNotSelected 
+} from '../styleFn';
 
 import useKeyEscape from '../hooks/useKeyEscape';
 import useToggle from '../hooks/useToggle';
 import useXYMovable from '../hooks/useXYMovable';
 import useDialogFocus from './useDialogFocus';
-
-import crCn from '../zhn-utils/crCn';
 
 import ModalSlider from '../zhn-modal-slider/ModalSlider';
 import SvgMore from '../zhn/SvgMore';

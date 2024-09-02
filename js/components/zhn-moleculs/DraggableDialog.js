@@ -8,7 +8,6 @@ var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useXYMovable = _interopRequireDefault(require("../hooks/useXYMovable"));
 var _useDialogFocus = _interopRequireDefault(require("./useDialogFocus"));
-var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 var _ModalSlider = _interopRequireDefault(require("../zhn-modal-slider/ModalSlider"));
 var _SvgMore = _interopRequireDefault(require("../zhn/SvgMore"));
 var _SvgClose = _interopRequireDefault(require("../zhn/SvgClose"));
@@ -54,7 +53,7 @@ const DraggableDialog = _ref => {
   const [_refRootDiv, _refBtMore] = (0, _useDialogFocus.default)(refEl, isShow),
     [_isMore, _toggleMore] = (0, _useToggle.default)(),
     _hKeyDown = (0, _useKeyEscape.default)(onClose),
-    _className = (0, _crCn.default)(CL_DRAGGABLE_DIALOG, [isShow, _Dialog.CL_SHOW_POPUP]),
+    _className = (0, _styleFn.crCn)(CL_DRAGGABLE_DIALOG, [isShow, _Dialog.CL_SHOW_POPUP]),
     _styleShow = isShow ? _Dialog.S_SHOW : _Dialog.S_HIDE;
   (0, _useXYMovable.default)(_refRootDiv);
   return (

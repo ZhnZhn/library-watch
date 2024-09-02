@@ -1,9 +1,8 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
+var _styleFn = require("../styleFn");
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_BT_CIRCLE_2 = 'zhn-bt-circle2';
 const ButtonCircle2 = _ref => {
@@ -16,7 +15,7 @@ const ButtonCircle2 = _ref => {
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     type: "button",
-    className: (0, _crCn.default)(CL_BT_CIRCLE_2, className),
+    className: (0, _styleFn.crCn)(CL_BT_CIRCLE_2, className),
     style: style,
     onClick: onClick,
     ...restProps,

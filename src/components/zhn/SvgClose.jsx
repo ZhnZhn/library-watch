@@ -1,4 +1,4 @@
-import crCn from '../zhn-utils/crCn';
+import { crCn } from '../styleFn';
 import Svg100 from './svg/Svg100';
 
 const CL_SVG_CLOSE = "svg-close"

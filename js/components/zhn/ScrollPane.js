@@ -1,10 +1,9 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
+var _styleFn = require("../styleFn");
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_SCROLL = 'with-scroll';
 const ScrollPane = _ref => {
@@ -16,7 +15,7 @@ const ScrollPane = _ref => {
     children
   } = _ref;
   const _refDivElement = (0, _uiApi.useRef)(),
-    _className = (0, _crCn.default)(CL_SCROLL, className);
+    _className = (0, _styleFn.crCn)(CL_SCROLL, className);
   (0, _uiApi.useImperativeHandle)(refEl, () => ({
     scrollTop: () => {
       const _divElement = (0, _uiApi.getRefValue)(_refDivElement);

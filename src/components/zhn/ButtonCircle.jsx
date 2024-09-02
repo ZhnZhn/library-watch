@@ -1,4 +1,4 @@
-import crCn from '../zhn-utils/crCn';
+import { crCn } from '../styleFn';
 
 const CL_BT_CIRCLE = 'zhn-bt-circle';
 

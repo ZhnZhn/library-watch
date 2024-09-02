@@ -1,5 +1,5 @@
-import crCn from '../zhn-utils/crCn';
 import {
+  crCn,
   S_BLOCK,
   S_NONE,
   CL_SHOW_POPUP

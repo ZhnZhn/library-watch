@@ -3,7 +3,7 @@ import {
   useImperativeHandle,
   getRefValue
 } from '../uiApi';
-import crCn from '../zhn-utils/crCn';
+import { crCn } from '../styleFn';
 
 const CL_SCROLL = 'with-scroll';
 
