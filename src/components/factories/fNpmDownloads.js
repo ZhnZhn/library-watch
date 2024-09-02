@@ -1,5 +1,5 @@
+import fNpm from './fNpm';
 import { isWeekend } from '../../utils/dateFn';
-import NpmDownloads from '../items/npm/NpmDownloads';
 
 const MAX_ITEMS = 30;
 
@@ -65,50 +65,6 @@ const _transformDownloads = (
     };
 };
 
-const fNpmDownloads = function({
-  createElement,
-  option,
-  json,
-  parentProps,
-  onMoveToTop,
-  onCloseItem,
-  onWatchItem
-}){
-  const {
-    repo,
-    requestType,
-    chartType,
-    browserType,
-    key,
-    packageLink
-  } = option
-  , {
-    downloads,
-    package:packageName
-  } = json
-  , {
-    sumDownloads,
-    fromDate,
-    toDate,
-    labels,
-    data
-  } = _transformDownloads(downloads);
-
-  return createElement(NpmDownloads, {
-     key,
-     packageName,
-     packageLink,
-     caption: packageName,
-     requestType,
-     sumDownloads,
-     fromDate,
-     toDate,
-     labels,
-     data,
-     onMoveToTop,
-     onCloseItem: onCloseItem.bind(null, chartType, browserType, key),
-     ...parentProps
-  })
-};
+const fNpmDownloads = fNpm(_transformDownloads);
 
 export default fNpmDownloads

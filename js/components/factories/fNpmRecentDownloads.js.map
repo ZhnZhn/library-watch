@@ -1,1 +1,32 @@
-{"version":3,"sources":["../../../src/components/factories/fNpmRecentDownloads.js"],"names":["_fnTransformDownloads","downloads","day","labels","data","fromDate","toDate","length","sumDownloads","forEach","item","arrDate","split","push","fNpmRecentDownloads","factory","option","json","parentProps","onCloseItem","onWatchItem","requestType","chartType","browserType","key","packageLink","createElement","NpmDownloads","packageName","caption","bind"],"mappings":";;;;;;;;;AACA;;AAEA,IAAMA,qBAAqB,GAAG,SAAxBA,qBAAwB,CAACC,SAAD,EAAgD;AAAA,MAA/CA,SAA+C;AAA/CA,IAAAA,SAA+C,GAArC,CAAC;AAAEC,MAAAA,GAAG,EAAE,OAAP;AAAgBD,MAAAA,SAAS,EAAG;AAA5B,KAAD,CAAqC;AAAA;;AAC1E,MAAME,MAAM,GAAG,EAAf;AAAA,MACMC,IAAI,GAAG,EADb;AAAA,MAEMC,QAAQ,GAAGJ,SAAS,CAAC,CAAD,CAAT,CAAaC,GAF9B;AAAA,MAGMI,MAAM,GAAGL,SAAS,CAACA,SAAS,CAACM,MAAV,GAAiB,CAAlB,CAAT,CAA8BL,GAH7C;AAIA,MAAIM,YAAY,GAAG,CAAnB;AAEAP,EAAAA,SAAS,CAACQ,OAAV,CAAkB,UAACC,IAAD,EAAU;AAAA,QAClBR,GADkB,GACCQ,IADD,CAClBR,GADkB;AAAA,QACbD,SADa,GACCS,IADD,CACbT,SADa;AAAA,QAEpBU,OAFoB,GAEVT,GAAG,CAACU,KAAJ,CAAU,GAAV,CAFU;AAI1BT,IAAAA,MAAM,CAACU,IAAP,MAAeF,OAAO,CAAC,CAAD,CAAtB;AACAP,IAAAA,IAAI,CAACS,IAAL,CAAUZ,SAAV;AACAO,IAAAA,YAAY,GAAGA,YAAY,GAAGP,SAA9B;AACD,GAPD;AASA,SAAO;AAACO,IAAAA,YAAY,EAAZA,YAAD;AAAeH,IAAAA,QAAQ,EAARA,QAAf;AAAyBC,IAAAA,MAAM,EAANA,MAAzB;AAAiCH,IAAAA,MAAM,EAANA,MAAjC;AAAyCC,IAAAA,IAAI,EAAJA;AAAzC,GAAP;AACH,CAjBD;;AAmBA,IAAMU,mBAAmB,GAAG,SAAtBA,mBAAsB,OAE1B;AAAA,MADAC,OACA,QADAA,OACA;AAAA,MADSC,MACT,QADSA,MACT;AAAA,MADiBC,IACjB,QADiBA,IACjB;AAAA,MADuBC,WACvB,QADuBA,WACvB;AAAA,MADoCC,WACpC,QADoCA,WACpC;AAAA,MADiDC,WACjD,QADiDA,WACjD;;AAAA,MACQC,WADR,GACkEL,MADlE,CACQK,WADR;AAAA,MACqBC,SADrB,GACkEN,MADlE,CACqBM,SADrB;AAAA,MACgCC,WADhC,GACkEP,MADlE,CACgCO,WADhC;AAAA,MAC6CC,GAD7C,GACkER,MADlE,CAC6CQ,GAD7C;AAAA,MACkDC,WADlD,GACkET,MADlE,CACkDS,WADlD;AAAA,MAEQxB,SAFR,GAEsBgB,IAFtB,CAEQhB,SAFR;AAAA,+BAGyDD,qBAAqB,CAACC,SAAD,CAH9E;AAAA,MAGQO,YAHR,0BAGQA,YAHR;AAAA,MAGsBH,QAHtB,0BAGsBA,QAHtB;AAAA,MAGgCC,MAHhC,0BAGgCA,MAHhC;AAAA,MAGwCH,MAHxC,0BAGwCA,MAHxC;AAAA,MAGgDC,IAHhD,0BAGgDA,IAHhD;;AAKA,SAAOW,OAAO,CAACW,aAAR,CAAsBC,wBAAtB;AACJH,IAAAA,GAAG,EAAHA,GADI;AAEJI,IAAAA,WAAW,EAAEX,IAAI,WAFb;AAGJY,IAAAA,OAAO,EAAEZ,IAAI,WAHT;AAIJQ,IAAAA,WAAW,EAAXA,WAJI;AAKJJ,IAAAA,WAAW,EAAXA,WALI;AAMJb,IAAAA,YAAY,EAAZA,YANI;AAOJH,IAAAA,QAAQ,EAARA,QAPI;AAQJC,IAAAA,MAAM,EAANA,MARI;AASJH,IAAAA,MAAM,EAANA,MATI;AAUJC,IAAAA,IAAI,EAAJA,IAVI;AAWJe,IAAAA,WAAW,EAAEA,WAAW,CAACW,IAAZ,CAAiB,IAAjB,EAAuBR,SAAvB,EAAkCC,WAAlC,EAA+CC,GAA/C,CAXT;AAYJJ,IAAAA,WAAW,EAAEA;AAZT,KAaDF,WAbC,EAAP;AAeD,CAtBD;;eAwBeJ,mB","sourcesContent":["\r\nimport NpmDownloads from '../items/NpmDownloads';\r\n\r\nconst _fnTransformDownloads = (downloads=[{ day: '0-0-0', downloads : 0}]) => {\r\n    const labels = []\r\n        , data = []\r\n        , fromDate = downloads[0].day\r\n        , toDate = downloads[downloads.length-1].day\r\n    let sumDownloads = 0;\r\n\r\n    downloads.forEach((item) => {\r\n      const { day, downloads } = item\r\n          , arrDate = day.split('-');\r\n\r\n      labels.push(`${arrDate[2]}`);\r\n      data.push(downloads);\r\n      sumDownloads = sumDownloads + downloads;\r\n    })\r\n\r\n    return {sumDownloads, fromDate, toDate, labels, data};\r\n}\r\n\r\nconst fNpmRecentDownloads = function({\r\n  factory, option, json, parentProps, onCloseItem, onWatchItem\r\n}){\r\n  const { requestType, chartType, browserType, key, packageLink } = option\r\n      , { downloads } = json\r\n      , { sumDownloads, fromDate, toDate, labels, data } = _fnTransformDownloads(downloads);\r\n\r\n  return factory.createElement(NpmDownloads, {\r\n     key,\r\n     packageName: json.package,\r\n     caption: json.package,\r\n     packageLink,\r\n     requestType,\r\n     sumDownloads,\r\n     fromDate,\r\n     toDate,\r\n     labels,\r\n     data,\r\n     onCloseItem: onCloseItem.bind(null, chartType, browserType, key),\r\n     onWatchItem: onWatchItem,\r\n     ...parentProps\r\n  })\r\n};\r\n\r\nexport default fNpmRecentDownloads\r\n"],"file":"fNpmRecentDownloads.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/factories/fNpmRecentDownloads.js"
+ ],
+ "file": "../../../src/components/factories/fNpmRecentDownloads.js",
+ "names": [
+  "_fNpm",
+  "_interopRequireDefault",
+  "require",
+  "_transformDownloads",
+  "downloads",
+  "day",
+  "labels",
+  "data",
+  "fromDate",
+  "toDate",
+  "length",
+  "sumDownloads",
+  "forEach",
+  "item",
+  "arrDate",
+  "split",
+  "push",
+  "fNpmRecentDownloads",
+  "fNpm",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,KAAA,GAAAC,sBAAA,CAAAC,OAAA;AAEA,MAAMC,mBAAmB,GAAG,SAAAA,CAC1BC,SAAS,EACN;EAAA,IADHA,SAAS;IAATA,SAAS,GAAC,CAAC;MAAEC,GAAG,EAAE,OAAO;MAAED,SAAS,EAAE;IAAC,CAAC,CAAC;EAAA;EAEvC,MAAME,MAAM,GAAG,EAAE;IACfC,IAAI,GAAG,EAAE;IACTC,QAAQ,GAAGJ,SAAS,CAAC,CAAC,CAAC,CAACC,GAAG;IAC3BI,MAAM,GAAGL,SAAS,CAACA,SAAS,CAACM,MAAM,GAAC,CAAC,CAAC,CAACL,GAAG;EAC5C,IAAIM,YAAY,GAAG,CAAC;EAEpBP,SAAS,CAACQ,OAAO,CAAEC,IAAI,IAAK;IAC1B,MAAM;QAAER,GAAG;QAAED;MAAU,CAAC,GAAGS,IAAI;MAC7BC,OAAO,GAAGT,GAAG,CAACU,KAAK,CAAC,GAAG,CAAC;IAE1BT,MAAM,CAACU,IAAI,CAAC,GAAGF,OAAO,CAAC,CAAC,CAAC,EAAE,CAAC;IAC5BP,IAAI,CAACS,IAAI,CAACZ,SAAS,CAAC;IACpBO,YAAY,GAAGA,YAAY,GAAGP,SAAS;EACzC,CAAC,CAAC;EAEF,OAAO;IACLO,YAAY;IACZH,QAAQ;IACRC,MAAM;IACNH,MAAM;IACNC;EACF,CAAC;AACL,CAAC;AAED,MAAMU,mBAAmB,GAAG,IAAAC,aAAI,EAACf,mBAAmB,CAAC;AAAC,IAAAgB,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEvCJ,mBAAmB"
+}

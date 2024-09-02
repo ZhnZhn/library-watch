@@ -1,5 +1,4 @@
-
-import NpmDownloads from '../items/npm/NpmDownloads';
+import fNpm from './fNpm';
 
 const _transformDownloads = (
   downloads=[{ day: '0-0-0', downloads: 0}]
@@ -28,47 +27,6 @@ const _transformDownloads = (
     };
 };
 
-const fNpmRecentDownloads = function({
-  createElement,
-  option,
-  json,
-  parentProps,
-  onCloseItem,
-  onWatchItem
-}){
-  const {
-    requestType,
-    chartType,
-    browserType,
-    key,
-    packageLink
-  } = option
-  , {
-    downloads
-  } = json
-  , {
-    sumDownloads,
-    fromDate,
-    toDate,
-    labels,
-    data
-  } = _transformDownloads(downloads);
-
-  return createElement(NpmDownloads, {
-     key,
-     packageName: json.package,
-     caption: json.package,
-     packageLink,
-     requestType,
-     sumDownloads,
-     fromDate,
-     toDate,
-     labels,
-     data,
-     onCloseItem: onCloseItem.bind(null, chartType, browserType, key),
-     onWatchItem: onWatchItem,
-     ...parentProps
-  })
-};
+const fNpmRecentDownloads = fNpm(_transformDownloads);
 
 export default fNpmRecentDownloads

@@ -3,64 +3,26 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _NpmDownloads = _interopRequireDefault(require("../items/npm/NpmDownloads"));
+var _fNpm = _interopRequireDefault(require("./fNpm"));
 const _transformDownloads = downloads => {
-  let labels = [],
-    data = [];
-  Object.keys(downloads).map(key => [key, downloads[key]]).sort((tA, tB) => tB[1] - tA[1]).slice(0, 10).forEach(tuple => {
-    labels.push(tuple[0]);
-    data.push(tuple[1]);
-  });
-  return {
-    data,
-    labels,
-    sumDownloads: data.reduce((sum, versionDownloads) => sum + versionDownloads, 0)
-  };
-};
-const fNpmTopVersions = _ref => {
-  let {
-    createElement,
-    option,
-    json,
-    parentProps,
-    onMoveToTop,
-    onCloseItem
-  } = _ref;
-  const {
-      requestType,
-      chartType,
-      browserType,
-      key,
-      packageLink
-    } = option,
-    {
-      downloads
-    } = json,
-    {
-      sumDownloads,
-      fromDate,
-      toDate,
+    let labels = [],
+      data = [];
+    Object.keys(downloads).map(key => [key, downloads[key]]).sort((tA, tB) => tB[1] - tA[1]).slice(0, 10).forEach(tuple => {
+      labels.push(tuple[0]);
+      data.push(tuple[1]);
+    });
+    return {
+      data,
       labels,
-      data
-    } = _transformDownloads(downloads);
-  return createElement(_NpmDownloads.default, {
-    key,
+      sumDownloads: data.reduce((sum, versionDownloads) => sum + versionDownloads, 0)
+    };
+  },
+  _crElementProps = () => ({
     type: 'bar',
     options: {
       indexAxis: 'y'
-    },
-    packageName: json.package,
-    caption: json.package,
-    packageLink,
-    requestType,
-    sumDownloads,
-    fromDate,
-    toDate,
-    labels,
-    data,
-    onCloseItem: onCloseItem.bind(null, chartType, browserType, key),
-    ...parentProps
+    }
   });
-};
+const fNpmTopVersions = (0, _fNpm.default)(_transformDownloads, _crElementProps);
 var _default = exports.default = fNpmTopVersions;
 //# sourceMappingURL=fNpmTopVersions.js.map
