@@ -3,7 +3,7 @@ import {
   useCallback
 } from '../uiApi';
 
-import { CL_BT_ITEM } from '../styles/CL';
+import { CL_BT_ITEM } from '../styleFn';
 
 import useToggle from '../hooks/useToggle';
 import formatStrDate from '../../utils/formatStrDate';

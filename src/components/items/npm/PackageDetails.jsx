@@ -1,4 +1,4 @@
-import { CL_SOURCE_LINK } from '../../styles/CL';
+import { CL_SOURCE_LINK } from '../../styleFn';
 
 import crGitRepositoryHref from './crGitRepositoryHref';
 import crGitRepositoryCaption from './crGitRepositoryCaption';

@@ -1,4 +1,4 @@
-import { CL_BT_ITEM } from '../../styles/CL';
+import { CL_BT_ITEM } from '../../styleFn';
 import { S_CAPTION_OPEN } from '../Item.Style';
 
 import FormattedInteger from '../../zhn/FormattedInteger';

@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../../uiApi");
-var _CL = require("../../styles/CL");
+var _styleFn = require("../../styleFn");
 var _useToggle = _interopRequireDefault(require("../../hooks/useToggle"));
 var _useMenuMore = _interopRequireDefault(require("../../hooks/useMenuMore"));
 var _ShowHide = _interopRequireDefault(require("../../zhn/ShowHide"));
@@ -77,13 +77,13 @@ const StackTaggedQuestions = props => {
       reverse: _reverseItems
     }),
     _itemsLength = items.length,
-    _tokenItemsCount = itemRemoved ? _itemsLength - itemRemoved + "/" + _itemsLength : "" + _itemsLength,
-    _titleForSort = "Sorted By " + titleForSort;
+    _tokenItemsCount = itemRemoved ? `${_itemsLength - itemRemoved}/${_itemsLength}` : `${_itemsLength}`,
+    _titleForSort = `Sorted By ${titleForSort}`;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: _Item.S_ROOT,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider.default, {
       isShow: _isMenuMore,
-      className: _CL.CL_MENU_MORE,
+      className: _styleFn.CL_MENU_MORE,
       model: _MODEL_MORE,
       onClose: _toggleMenuMore
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption.default, {
@@ -92,7 +92,7 @@ const StackTaggedQuestions = props => {
         style: S_BT_MORE,
         onClick: _showMenuMore
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
-        className: _CL.CL_NOT_SELECTED,
+        className: _styleFn.CL_NOT_SELECTED,
         title: caption,
         style: {
           ..._Item.S_CAPTION_OPEN,
@@ -106,7 +106,7 @@ const StackTaggedQuestions = props => {
           children: _tokenItemsCount
         })]
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
-        className: _CL.CL_NOT_SELECTED,
+        className: _styleFn.CL_NOT_SELECTED,
         style: S_BT_REVERSE,
         title: "Reverse Items",
         onClick: _reverseItems,

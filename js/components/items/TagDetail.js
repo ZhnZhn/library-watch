@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _CL = require("../styles/CL");
+var _styleFn = require("../styleFn");
 var _formatStrDate = _interopRequireDefault(require("../../utils/formatStrDate"));
 var _OpenClose = _interopRequireDefault(require("../zhn/OpenClose2"));
 var _Link = _interopRequireDefault(require("../zhn/Link"));
@@ -16,10 +16,10 @@ const Token = _ref => {
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      className: _CL.CL_LIB_VALUE_TITLE,
-      children: caption + ":"
+      className: _styleFn.CL_LIB_VALUE_TITLE,
+      children: `${caption}:`
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      className: _CL.CL_LIB_VALUE,
+      className: _styleFn.CL_LIB_VALUE,
       children: value
     })]
   });
@@ -50,7 +50,7 @@ const FileList = _ref3 => {
     files
   } = _ref3;
   return (files || []).map((file, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    className: _CL.CL_FILE_ITEM,
+    className: _styleFn.CL_FILE_ITEM,
     children: file ? file.filename : null
   }, index));
 };
@@ -86,7 +86,7 @@ const TagDetail = _ref4 => {
       deletions
     } = stats || {};
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    className: _CL.CL_LIB,
+    className: _styleFn.CL_LIB,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(CellValue, {
       caption: "Message",
       value: message
@@ -110,13 +110,13 @@ const TagDetail = _ref4 => {
         value: deletions
       })]
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_OpenClose.default, {
-      caption: "Files (" + (_isArr(files) ? files.length : '') + ")",
+      caption: `Files (${_isArr(files) ? files.length : ''})`,
       isClose: true,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(FileList, {
         files: files
       })
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Link.default, {
-      className: _CL.CL_SOURCE_LINK,
+      className: _styleFn.CL_SOURCE_LINK,
       href: html_url,
       children: "Link to description of commit"
     })]

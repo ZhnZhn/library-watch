@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _CL = require("../styles/CL");
+var _styleFn = require("../styleFn");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useWatchItem = _interopRequireDefault(require("./hooks/useWatchItem"));
 var _ButtonCircle = _interopRequireDefault(require("../zhn/ButtonCircle"));
@@ -18,7 +18,7 @@ const _crCaption = _ref => {
     repo,
     version
   } = _ref;
-  return repo + " " + version;
+  return `${repo} ${version}`;
 };
 
 /*
@@ -46,7 +46,7 @@ const GitHubRecentRelease = props => {
       style: _Item.S_PT_8,
       onClose: onCloseItem,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
-        className: _CL.CL_BT_ITEM,
+        className: _styleFn.CL_BT_ITEM,
         title: caption,
         style: _Item.S_CAPTION_OPEN,
         onClick: _hToggle,
@@ -68,7 +68,7 @@ const GitHubRecentRelease = props => {
       isShow: isShow,
       style: _Item.S_PT_8,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Link.default, {
-        className: _CL.CL_SOURCE_LINK,
+        className: _styleFn.CL_SOURCE_LINK,
         style: _Item.S_ML_8,
         href: html_url,
         children: "Link to description of recent release tag"

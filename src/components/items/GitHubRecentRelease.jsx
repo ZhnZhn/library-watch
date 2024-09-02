@@ -1,7 +1,7 @@
 import {
   CL_BT_ITEM,
   CL_SOURCE_LINK
-} from '../styles/CL';
+} from '../styleFn';
 
 import useToggle from '../hooks/useToggle';
 import useWatchItem from './hooks/useWatchItem';

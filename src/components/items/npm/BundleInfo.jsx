@@ -4,7 +4,7 @@ import crGitRepositoryCaption from './crGitRepositoryCaption';
 import checkResponseJson from './checkResponseJson';
 import CellValue from '../CellValue';
 import Link from '../../zhn/Link';
-import { CL_SOURCE_LINK } from '../../styles/CL';
+import { CL_SOURCE_LINK } from '../../styleFn';
 
 const S_ML_8 = { marginLeft: 8 }
 , S_MR_24 = { marginRight: 24 }

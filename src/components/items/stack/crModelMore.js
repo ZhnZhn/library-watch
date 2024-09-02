@@ -1,5 +1,5 @@
 import { setFirstToUpperCase } from '../../../utils/strFn';
-import { CL_ROW_MENU_MORE } from '../../styles/CL';
+import { CL_ROW_MENU_MORE } from '../../styleFn';
 import {
   PN_BOUNTY_AMOUNT,
   PN_ANSWER_COUNT,

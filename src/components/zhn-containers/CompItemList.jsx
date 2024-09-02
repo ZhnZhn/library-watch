@@ -24,8 +24,8 @@ import {
   S_NONE,
   CL_SHOW_POPUP,
   CL_MENU_MORE
-} from '../styles/CL';
-import { 
+} from '../styleFn';
+import {
   S_COMP_ITEM_LIST
 } from '../styles/ContainerStyles';
 

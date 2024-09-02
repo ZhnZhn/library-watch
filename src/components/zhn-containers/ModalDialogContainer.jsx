@@ -1,7 +1,7 @@
 import {
   S_BLOCK,
   S_NONE
-} from '../styles/CL';
+} from '../styleFn';
 
 const CL_INIT = 'modal-root'
 , CL_SHOWING = 'modal-root show-modal';

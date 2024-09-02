@@ -8,7 +8,7 @@ var _crGitRepositoryCaption = _interopRequireDefault(require("./crGitRepositoryC
 var _checkResponseJson = _interopRequireDefault(require("./checkResponseJson"));
 var _CellValue = _interopRequireDefault(require("../CellValue"));
 var _Link = _interopRequireDefault(require("../../zhn/Link"));
-var _CL = require("../../styles/CL");
+var _styleFn = require("../../styleFn");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_ML_8 = {
     marginLeft: 8
@@ -17,7 +17,7 @@ const S_ML_8 = {
     marginRight: 24
   },
   API_URL = 'https://bundlephobia.com/result?p=',
-  _crBundleHref = (name, version) => "" + API_URL + name + "@" + version,
+  _crBundleHref = (name, version) => `${API_URL}${name}@${version}`,
   _toKbStr = sizeByte => (sizeByte / 1024).toFixed(1);
 const BundleInfo = _ref => {
   let {
@@ -64,12 +64,12 @@ const BundleInfo = _ref => {
       style: S_ML_8,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Link.default, {
         href: gitHref,
-        className: _CL.CL_SOURCE_LINK,
+        className: _styleFn.CL_SOURCE_LINK,
         style: S_MR_24,
         children: gitCaption
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Link.default, {
         href: bundleHref,
-        className: _CL.CL_SOURCE_LINK,
+        className: _styleFn.CL_SOURCE_LINK,
         children: "Bundelphobia Link"
       })]
     })]

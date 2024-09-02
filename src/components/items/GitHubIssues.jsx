@@ -1,4 +1,4 @@
-import { CL_BT_ITEM } from '../styles/CL';
+import { CL_BT_ITEM } from '../styleFn';
 
 import useToggle from '../hooks/useToggle';
 import useWatchItem from './hooks/useWatchItem';

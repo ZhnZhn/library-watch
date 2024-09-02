@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _CL = require("../../styles/CL");
+var _styleFn = require("../../styleFn");
 var _Item = require("../Item.Style");
 var _FormattedInteger = _interopRequireDefault(require("../../zhn/FormattedInteger"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -29,7 +29,7 @@ const ButtonPackage = _ref => {
     onClick
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
-    className: _CL.CL_BT_ITEM,
+    className: _styleFn.CL_BT_ITEM,
     style: _S_CAPTION_OPEN,
     title: caption,
     onClick: onClick,

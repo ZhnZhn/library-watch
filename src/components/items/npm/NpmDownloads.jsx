@@ -15,7 +15,7 @@ import ButtonWatch from './ButtonWatch';
 import Caption from '../ItemCaption';
 import NpmPackageInfo from './NpmPackageInfo';
 
-import { CL_MENU_MORE } from '../../styles/CL';
+import { CL_MENU_MORE } from '../../styleFn';
 import {
   S_ROOT,
   S_BT_MORE

@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _CL = require("../styles/CL");
+var _styleFn = require("../styleFn");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _formatStrDate = _interopRequireDefault(require("../../utils/formatStrDate"));
 var _ButtonCircle = _interopRequireDefault(require("../zhn/ButtonCircle"));
@@ -49,7 +49,7 @@ const GitHubRecentTag = _ref => {
     /*eslint-enable react-hooks/exhaustive-deps */,
     _hClickWatch = (0, _uiApi.useCallback)(() => {
       const tagDate = _getTagDate(json),
-        caption = repo + " " + version;
+        caption = `${repo} ${version}`;
       onWatchItem({
         caption,
         config: {
@@ -70,7 +70,7 @@ const GitHubRecentTag = _ref => {
       style: _Item.S_PT_8,
       onClose: onCloseItem,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
-        className: _CL.CL_BT_ITEM,
+        className: _styleFn.CL_BT_ITEM,
         title: caption,
         style: _Item.S_CAPTION_OPEN,
         onClick: toggleIsShow,

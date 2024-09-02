@@ -9,7 +9,7 @@ import {
   CL_ITEM,
   CL_ITEM_TITLE,
   CL_LINK_WARPPER
-} from '../styles/CL';
+} from '../styleFn';
 
 import useToggle from '../hooks/useToggle';
 import useKeyDelete from '../hooks/useKeyDelete';

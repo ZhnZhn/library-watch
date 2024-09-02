@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _CL = require("../../styles/CL");
+var _styleFn = require("../../styleFn");
 var _crGitRepositoryHref = _interopRequireDefault(require("./crGitRepositoryHref"));
 var _crGitRepositoryCaption = _interopRequireDefault(require("./crGitRepositoryCaption"));
 var _checkResponseJson = _interopRequireDefault(require("./checkResponseJson"));
@@ -24,12 +24,12 @@ const RowLinks = _ref => {
   return !repoHref && !hpHref ? null : /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: S_REPO,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Link.default, {
-      className: _CL.CL_SOURCE_LINK,
+      className: _styleFn.CL_SOURCE_LINK,
       style: S_REPO_LINK,
       href: repoHref,
       children: (0, _crGitRepositoryCaption.default)(repoHref)
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Link.default, {
-      className: _CL.CL_SOURCE_LINK,
+      className: _styleFn.CL_SOURCE_LINK,
       href: hpHref,
       children: "Home Page"
     })]

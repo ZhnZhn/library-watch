@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
-var _CL = require("../styles/CL");
+var _styleFn = require("../styleFn");
 var _jsxRuntime = require("react/jsx-runtime");
 const ShowHide = _ref => {
   let {
@@ -15,8 +15,8 @@ const ShowHide = _ref => {
     onKeyDown,
     children
   } = _ref;
-  const _className = (0, _crCn.default)(className, [isShow, _CL.CL_SHOW_POPUP]),
-    _style = isShow ? _CL.S_BLOCK : _CL.S_NONE;
+  const _className = (0, _crCn.default)(className, [isShow, _styleFn.CL_SHOW_POPUP]),
+    _style = isShow ? _styleFn.S_BLOCK : _styleFn.S_NONE;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     ref: refEl,
     role: "presentation",

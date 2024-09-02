@@ -1,5 +1,5 @@
 import { crMemoCompList } from '../hoc/memoFn';
-import { CL_ROW_ITEM } from '../styles/CL';
+import { CL_ROW_ITEM } from '../styleFn';
 
 import formatStrDate from '../../utils/formatStrDate';
 import { crDateAgo } from '../../utils/dateFn';

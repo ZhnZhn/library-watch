@@ -3,7 +3,7 @@
 exports.__esModule = true;
 exports.default = void 0;
 var _strFn = require("../../../utils/strFn");
-var _CL = require("../../styles/CL");
+var _styleFn = require("../../styleFn");
 var _config = require("./config");
 const _crName = propName => propName.split("_").map(_strFn.setFirstToUpperCase).join(" ");
 const _fSortByItem = onClick => propName => {
@@ -22,13 +22,13 @@ const crModelMore = function (_temp) {
   } = _temp === void 0 ? {} : _temp;
   const _crSortByItem = _fSortByItem(setSortByProp);
   return {
-    titleCl: _CL.CL_ROW_MENU_MORE,
+    titleCl: _styleFn.CL_ROW_MENU_MORE,
     pageWidth: 180,
     maxPages: 2,
     p0: [{
       id: 'p1',
       type: 'sub',
-      cn: _CL.CL_ROW_MENU_MORE,
+      cn: _styleFn.CL_ROW_MENU_MORE,
       name: 'Sort By, DESC'
     } /*,{
        cn: CL_ROW,

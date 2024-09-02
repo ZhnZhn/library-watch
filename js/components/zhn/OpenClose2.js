@@ -6,7 +6,6 @@ exports.default = void 0;
 var _styleFn = require("../styleFn");
 var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
-var _CL = require("../styles/CL");
 var _jsxRuntime = require("react/jsx-runtime");
 //import PropTypes from "prop-types";
 
@@ -16,7 +15,7 @@ const CL_ROW_CAPTION = (0, _styleFn.crClNotSelected)("zhn-oc"),
     lineHeight: 2
   },
   S_SVG = {
-    ..._CL.S_INLINE_BLOCK,
+    ..._styleFn.S_INLINE_BLOCK,
     width: 16,
     height: 16
   },
@@ -49,7 +48,7 @@ const OpenClose2 = _ref => {
   } = _ref;
   const [isOpen, _hToggle] = (0, _useToggle.default)(!isClose),
     _hKeyDown = (0, _useKeyEnter.default)(_hToggle),
-    [_pathV, _fillV, _styleCollapse, _classShow, _styleNotSelected] = isOpen ? [PATH_OPEN, fillOpen, _CL.S_BLOCK, _CL.CL_SHOW_POPUP, null] : [PATH_CLOSE, fillClose, _CL.S_NONE, null, styleNotSelected];
+    [_pathV, _fillV, _styleCollapse, _classShow, _styleNotSelected] = isOpen ? [PATH_OPEN, fillOpen, _styleFn.S_BLOCK, _styleFn.CL_SHOW_POPUP, null] : [PATH_CLOSE, fillClose, _styleFn.S_NONE, null, styleNotSelected];
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: {
       ...S_ROOT,
@@ -75,7 +74,7 @@ const OpenClose2 = _ref => {
           height: "100%",
           preserveAspectRatio: "none",
           xmlns: "http://www.w3.org/2000/svg",
-          style: _CL.S_INLINE_BLOCK,
+          style: _styleFn.S_INLINE_BLOCK,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
             d: _pathV,
             fill: _fillV,

@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _CL = require("../styles/CL");
+var _styleFn = require("../styleFn");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useMenuMore = _interopRequireDefault(require("../hooks/useMenuMore"));
 var _ChartConfigFactories = require("../charts/ChartConfigFactories");
@@ -62,7 +62,7 @@ const StatCounterShare = _ref => {
     style: _Item.S_ROOT,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider.default, {
       isShow: _isMenuMore,
-      className: _CL.CL_MENU_MORE,
+      className: _styleFn.CL_MENU_MORE,
       model: _MODAL_SLIDER_MODEL,
       onClose: _toggleMenuMore
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption.default, {
@@ -72,7 +72,7 @@ const StatCounterShare = _ref => {
         style: _Item.S_BT_MORE,
         onClick: _showMenuMore
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
-        className: _CL.CL_BT_ITEM,
+        className: _styleFn.CL_BT_ITEM,
         title: caption,
         style: S_BT_CAPTION,
         onClick: _toggleIsShow,
@@ -92,7 +92,7 @@ const StatCounterShare = _ref => {
         data: _lineChartConfig,
         height: _height
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Link.default, {
-        className: _CL.CL_SOURCE_LINK,
+        className: _styleFn.CL_SOURCE_LINK,
         style: S_SOURCE_LINK,
         href: sourceLink,
         children: "StatCounter Chart"

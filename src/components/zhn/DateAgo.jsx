@@ -2,7 +2,7 @@ import useToggle from '../hooks/useToggle';
 import {
   S_INLINE_BLOCK,
   S_NONE
-} from '../styles/CL';
+} from '../styleFn';
 
 const S_DATE_AGO = {
   color: 'gray'

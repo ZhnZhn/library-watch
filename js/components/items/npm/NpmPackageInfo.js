@@ -7,7 +7,7 @@ var _uiApi = require("../../uiApi");
 var _useButtonLoad = _interopRequireDefault(require("./useButtonLoad"));
 var _loadNpms = _interopRequireDefault(require("./loadNpms"));
 var _loadBundle = _interopRequireDefault(require("./loadBundle"));
-var _CL = require("../../styles/CL");
+var _styleFn = require("../../styleFn");
 var _Link = _interopRequireDefault(require("../../zhn/Link"));
 var _LinkImg = _interopRequireDefault(require("../../zhn/LinkImg"));
 var _ButtonDownUp = _interopRequireDefault(require("../../zhn/ButtonDownUp"));
@@ -63,7 +63,7 @@ const NpmPackageInfo = _ref => {
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         style: S_ML_16,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Link.default, {
-          className: _CL.CL_SOURCE_LINK,
+          className: _styleFn.CL_SOURCE_LINK,
           href: packageLink,
           children: "NPM Link"
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonDownUp.default, {
@@ -96,7 +96,7 @@ const NpmPackageInfo = _ref => {
         children: isLoadNodeIco && /*#__PURE__*/(0, _jsxRuntime.jsx)(_LinkImg.default, {
           href: packageLink,
           imgClass: "node-ico",
-          imgSrc: "" + BASE_NODEICO + packageName + SUFFIX_NODEICO
+          imgSrc: `${BASE_NODEICO}${packageName}${SUFFIX_NODEICO}`
         })
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide.default, {
         isShow: isShowNmps,

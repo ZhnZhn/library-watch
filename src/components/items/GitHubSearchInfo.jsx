@@ -5,7 +5,7 @@ import {
   CL_LIB_VALUE,
   CL_LIB_VALUE_TITLE,
   CL_SOURCE_LINK
-} from '../styles/CL';
+} from '../styleFn';
 
 import useToggle from '../hooks/useToggle'
 

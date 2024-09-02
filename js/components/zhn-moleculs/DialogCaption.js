@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _SvgClose = _interopRequireDefault(require("../zhn/SvgClose"));
-var _CL = require("../styles/CL");
+var _styleFn = require("../styleFn");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_ROOT = {
     color: 'silver',
@@ -27,7 +27,7 @@ const DialogCaption = _ref => {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: S_ROOT,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      className: _CL.CL_NOT_SELECTED,
+      className: _styleFn.CL_NOT_SELECTED,
       children: caption
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose.default, {
       style: S_SVG,

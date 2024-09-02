@@ -1,5 +1,5 @@
 import SvgClose from '../zhn/SvgClose';
-import { CL_NOT_SELECTED } from '../styles/CL';
+import { CL_NOT_SELECTED } from '../styleFn';
 
 const S_ROOT = {
   color: 'silver',

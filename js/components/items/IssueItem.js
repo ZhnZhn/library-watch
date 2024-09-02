@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _CL = require("../styles/CL");
+var _styleFn = require("../styleFn");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useKeyDelete = _interopRequireDefault(require("../hooks/useKeyDelete"));
 var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
@@ -53,12 +53,12 @@ const IssueItem = _ref => {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ShowHide.default, {
     refEl: _refItem,
     isShow: isShow,
-    className: _CL.CL_ITEM,
+    className: _styleFn.CL_ITEM,
     onKeyDown: _onKeyDownItem,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       role: "button",
       tabIndex: "0",
-      className: _CL.CL_ITEM_TITLE,
+      className: _styleFn.CL_ITEM_TITLE,
       onClick: toggleIsDescr,
       onKeyDown: _onKeyDown,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
@@ -68,7 +68,7 @@ const IssueItem = _ref => {
           children: state
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           style: S_NUMBER,
-          children: "(#" + number + ")"
+          children: `(#${number})`
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           style: S_DATE,
           children: createdAt
@@ -83,7 +83,7 @@ const IssueItem = _ref => {
       isShow: isDescr,
       style: S_SHOW_HIDE,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Link.default, {
-        className: _CL.CL_LINK_WARPPER,
+        className: _styleFn.CL_LINK_WARPPER,
         href: url,
         children: body
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DivComments.default, {

@@ -3,7 +3,7 @@ import {
   S_BLOCK,
   S_NONE,
   CL_SHOW_POPUP
-} from '../styles/CL';
+} from '../styleFn';
 
 const ShowHide = ({
   refEl,

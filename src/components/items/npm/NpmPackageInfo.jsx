@@ -8,7 +8,7 @@ import useButtonLoad from './useButtonLoad';
 import loadNpms from './loadNpms';
 import loadBundle from './loadBundle';
 
-import { CL_SOURCE_LINK } from '../../styles/CL';
+import { CL_SOURCE_LINK } from '../../styleFn';
 
 import Link from '../../zhn/Link';
 import LinkImg from '../../zhn/LinkImg';

@@ -6,7 +6,7 @@ import {
 import {
   CL_NOT_SELECTED,
   CL_MENU_MORE
-} from '../../styles/CL';
+} from '../../styleFn';
 
 import useToggle from '../../hooks/useToggle';
 import useMenuMore from '../../hooks/useMenuMore';

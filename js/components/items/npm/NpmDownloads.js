@@ -16,7 +16,7 @@ var _ButtonPackage = _interopRequireDefault(require("./ButtonPackage"));
 var _ButtonWatch = _interopRequireDefault(require("./ButtonWatch"));
 var _ItemCaption = _interopRequireDefault(require("../ItemCaption"));
 var _NpmPackageInfo = _interopRequireDefault(require("./NpmPackageInfo"));
-var _CL = require("../../styles/CL");
+var _styleFn = require("../../styleFn");
 var _Item = require("../Item.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 const ITEM_DESCRIPTION = "Npm Recent Month Downloads",
@@ -34,6 +34,9 @@ const ITEM_DESCRIPTION = "Npm Recent Month Downloads",
 const _isFn = fn => typeof fn === 'function';
 const NpmDownloads = _ref => {
   let {
+    type,
+    options,
+    chartType,
     caption,
     packageName,
     requestType,
@@ -60,7 +63,7 @@ const NpmDownloads = _ref => {
     // toggleIsMore
     ,
     _hClickWatch = (0, _uiApi.useCallback)(() => {
-      const _caption = packageName + " " + sumDownloads;
+      const _caption = `${packageName} ${sumDownloads}`;
       onWatchItem({
         caption: _caption,
         config: {
@@ -83,7 +86,7 @@ const NpmDownloads = _ref => {
     style: _Item.S_ROOT,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider.default, {
       isShow: isMenuMore,
-      className: _CL.CL_MENU_MORE,
+      className: _styleFn.CL_MENU_MORE,
       model: _MENU_MODEL,
       onClose: toggleIsMenuMore
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption.default, {
@@ -106,8 +109,9 @@ const NpmDownloads = _ref => {
       isShow: isShow,
       style: S_CHART_WRAPPER,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LineChart.default, {
+        type: type,
         data: _lineChartConfig,
-        options: CHART_OPTIONS
+        options: options || CHART_OPTIONS
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_NpmPackageInfo.default, {
         isButtons: isButtons,
         packageName: packageName,

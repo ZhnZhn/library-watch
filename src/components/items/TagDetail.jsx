@@ -4,7 +4,7 @@ import {
   CL_LIB_VALUE_TITLE,
   CL_FILE_ITEM,
   CL_SOURCE_LINK
-} from '../styles/CL';
+} from '../styleFn';
 
 import formatStrDate from '../../utils/formatStrDate';
 

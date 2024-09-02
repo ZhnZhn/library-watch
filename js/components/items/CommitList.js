@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _memoFn = require("../hoc/memoFn");
-var _CL = require("../styles/CL");
+var _styleFn = require("../styleFn");
 var _formatStrDate = _interopRequireDefault(require("../../utils/formatStrDate"));
 var _dateFn = require("../../utils/dateFn");
 var _Link = _interopRequireDefault(require("../zhn/Link"));
@@ -28,7 +28,7 @@ const CommitList = (0, _memoFn.crMemoCompList)((item, index) => {
     _dateTime = (0, _formatStrDate.default)(date),
     _dateAgo = (0, _dateFn.crDateAgo)(date);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    className: _CL.CL_ROW_ITEM,
+    className: _styleFn.CL_ROW_ITEM,
     children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Link.default, {
       href: html_url,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {

@@ -1,14 +1,14 @@
 //import PropTypes from "prop-types";
-import { crClNotSelected } from '../styleFn';
-
-import useKeyEnter from '../hooks/useKeyEnter';
-import useToggle from '../hooks/useToggle';
 import {
   S_BLOCK,
   S_INLINE_BLOCK,
   S_NONE,
-  CL_SHOW_POPUP
-} from '../styles/CL';
+  CL_SHOW_POPUP,
+  crClNotSelected
+} from '../styleFn';
+
+import useKeyEnter from '../hooks/useKeyEnter';
+import useToggle from '../hooks/useToggle';
 
 const CL_ROW_CAPTION = crClNotSelected("zhn-oc")
 , S_ROOT = {

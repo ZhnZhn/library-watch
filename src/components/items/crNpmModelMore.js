@@ -1,5 +1,4 @@
-
-import { CL_ROW_MENU_MORE } from '../styles/CL';
+import { CL_ROW_MENU_MORE } from '../styleFn';
 
 const _isFn = fn => typeof fn === 'function'
 , _crItem = (
