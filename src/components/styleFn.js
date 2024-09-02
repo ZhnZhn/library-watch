@@ -1,8 +1,9 @@
-export const S_BLOCK = { display: 'block' }
-export const S_INLINE_BLOCK = { display: 'inline-block' }
-export const S_NONE = { display: 'none' }
-
-export const CL_SHOW_POPUP = "show-popup"
+const _fStyleDisplay = value => ({
+  display: value
+});
+export const S_BLOCK = _fStyleDisplay('block')
+export const S_INLINE_BLOCK = _fStyleDisplay('inline-block')
+export const S_NONE = _fStyleDisplay('none')
 
 export const CL_NOT_SELECTED = "not-selected";
 export const crClNotSelected = (
@@ -29,6 +30,7 @@ export const CL_LIB_VALUE_TITLE = `${CL_LIB_VALUE}-title`
 
 export const CL_FILE_ITEM = "row__item"
 
+export const CL_SHOW_POPUP = "show-popup"
 export const crShowPopupStyle = isShow => isShow
  ? [S_BLOCK, CL_SHOW_POPUP]
  : [S_NONE]
