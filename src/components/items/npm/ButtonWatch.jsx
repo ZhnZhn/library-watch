@@ -2,7 +2,7 @@ import ButtonCircle from '../../zhn/ButtonCircle';
 
 const S_BTN_CIRCLE = {
   position: 'relative',
-  top: -6,
+  top: -2,
   marginLeft: 10
 };
 

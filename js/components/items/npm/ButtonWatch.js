@@ -7,7 +7,7 @@ var _ButtonCircle = _interopRequireDefault(require("../../zhn/ButtonCircle"));
 var _jsxRuntime = require("react/jsx-runtime");
 const S_BTN_CIRCLE = {
   position: 'relative',
-  top: -6,
+  top: -2,
   marginLeft: 10
 };
 const ButtonWatch = _ref => {
