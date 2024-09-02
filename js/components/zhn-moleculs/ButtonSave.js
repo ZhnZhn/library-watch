@@ -4,8 +4,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
 var _watchListStore = require("../../flux/watch-list/watchListStore");
-var _crStyle = require("../zhn-utils/crStyle");
 var _ButtonCircle = _interopRequireDefault(require("../zhn/ButtonCircle"));
 var _jsxRuntime = require("react/jsx-runtime");
 const CAPTION = "S",
@@ -24,7 +24,7 @@ const ButtonSave = _ref => {
   (0, _watchListStore.useIsWatchEdited)(isWatchEdited => {
     setIsWatchEdited(!!isWatchEdited);
   });
-  const _style = (0, _crStyle.crStyle2)(style, isWatchEdited && S_NOT_WATCH_EDITED);
+  const _style = (0, _styleFn.crStyle2)(style, isWatchEdited && S_NOT_WATCH_EDITED);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle.default, {
     className: className,
     caption: CAPTION,

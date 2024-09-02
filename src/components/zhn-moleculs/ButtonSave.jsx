@@ -1,4 +1,5 @@
 import { useState } from '../uiApi';
+import { crStyle2 } from '../styleFn';
 
 import {
   getIsWatchEdited,
@@ -6,7 +7,6 @@ import {
   saveWatchList
 } from '../../flux/watch-list/watchListStore';
 
-import { crStyle2 } from '../zhn-utils/crStyle';
 import ButtonCircle from '../zhn/ButtonCircle';
 
 const CAPTION = "S"
@@ -16,7 +16,6 @@ const CAPTION = "S"
    borderColor: COLOR_NOT_WATCH_EDITED,
    color: COLOR_NOT_WATCH_EDITED
 };
-
 
 const ButtonSave = ({
   className,

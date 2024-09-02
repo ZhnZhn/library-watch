@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _crStyle = require("../zhn-utils/crStyle");
+var _styleFn = require("../styleFn");
 var _SvgMore = _interopRequireDefault(require("./SvgMore"));
 var _SvgClose = _interopRequireDefault(require("./SvgClose"));
 var _CaptionRow = require("./CaptionRow.Style");
@@ -29,7 +29,7 @@ const ContainerCaption = _ref => {
       onClick: onMore
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       className: _CaptionRow.CL_NOT_SELECTED,
-      style: (0, _crStyle.crStyle2)(_CaptionRow.S_CAPTION, _isFn(onMore) && SL_CAPTION),
+      style: (0, _styleFn.crStyle2)(_CaptionRow.S_CAPTION, _isFn(onMore) && SL_CAPTION),
       children: caption
     }), children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose.default, {
       style: _CaptionRow.S_SVG_CLOSE,

@@ -1,4 +1,4 @@
-import { crStyle2 } from '../zhn-utils/crStyle';
+import { crStyle2 } from '../styleFn';
 
 import SvgMore from './SvgMore';
 import SvgClose from './SvgClose';

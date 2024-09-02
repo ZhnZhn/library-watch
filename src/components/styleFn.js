@@ -5,6 +5,18 @@ export const S_BLOCK = _fStyleDisplay('block')
 export const S_INLINE_BLOCK = _fStyleDisplay('inline-block')
 export const S_NONE = _fStyleDisplay('none')
 
+export const crStyle2 = (
+  style1,
+  style2
+) => style2
+ ? {...style1, ...style2}
+ : style1;
+
+export const CL_SHOW_POPUP = "show-popup"
+export const crShowPopupStyle = isShow => isShow
+ ? [S_BLOCK, CL_SHOW_POPUP]
+ : [S_NONE]
+
 export const CL_NOT_SELECTED = "not-selected";
 export const crClNotSelected = (
   className
@@ -29,8 +41,3 @@ export const CL_LIB_VALUE = `${CL_LIB}__value`
 export const CL_LIB_VALUE_TITLE = `${CL_LIB_VALUE}-title`
 
 export const CL_FILE_ITEM = "row__item"
-
-export const CL_SHOW_POPUP = "show-popup"
-export const crShowPopupStyle = isShow => isShow
- ? [S_BLOCK, CL_SHOW_POPUP]
- : [S_NONE]
