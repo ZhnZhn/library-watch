@@ -2,7 +2,7 @@
 
 exports.__esModule = true;
 exports.default = void 0;
-var _CL = require("../styles/CL");
+var _styleFn = require("../styleFn");
 var _ContainerStyles = require("../styles/ContainerStyles");
 var _jsxRuntime = require("react/jsx-runtime");
 const Browser = _ref => {
@@ -12,7 +12,7 @@ const Browser = _ref => {
     onKeyDown,
     children
   } = _ref;
-  const [_style, _className] = isShow ? [_CL.S_BLOCK, _CL.CL_SHOW_POPUP] : [_CL.S_NONE];
+  const [_style, _className] = (0, _styleFn.crShowPopupStyle)(isShow);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     className: _className,
     style: {

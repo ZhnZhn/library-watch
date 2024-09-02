@@ -1,12 +1,5 @@
-import {
-  S_BLOCK,
-  S_NONE,
-  CL_SHOW_POPUP
-} from '../styles/CL';
-
-import {
-  S_BROWSER
-} from '../styles/ContainerStyles';
+import { crShowPopupStyle } from '../styleFn';
+import { S_BROWSER } from '../styles/ContainerStyles';
 
 const Browser = ({
   isShow,
@@ -17,9 +10,7 @@ const Browser = ({
     const [
       _style,
       _className
-    ] = isShow
-      ? [S_BLOCK, CL_SHOW_POPUP]
-      : [S_NONE];
+    ] = crShowPopupStyle(isShow);      
     return (
       <div
         className={_className}
