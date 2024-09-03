@@ -3,13 +3,11 @@
 exports.__esModule = true;
 exports.default = void 0;
 var _strFn = require("../utils/strFn");
+var _apiFn = require("./apiFn");
 const API_URL = 'https://api.npmjs.org';
 const NPM = 'https://www.npmjs.com';
 const NPM_PACKAGE = `${NPM}/package/`;
 const REQUEST_PACKAGE = 'Request Package';
-
-//https://api.npmjs.org/downloads/range/last-month
-
 const _crPackageLink = name => name ? `${NPM_PACKAGE}${name}` : NPM;
 const _addPackageLinkTo = option => {
   const {
@@ -41,10 +39,7 @@ const _rRequestTypeToUrl = {
   }
 };
 const NpmApi = {
-  getRequestUrl(option) {
-    const fnFactory = _rRequestTypeToUrl[option.requestType];
-    return fnFactory(option);
-  },
+  getRequestUrl: (0, _apiFn.fGetRequestUrl)(_rRequestTypeToUrl),
   getOnCheckResponse() {
     return NpmApi.checkResponse;
   },
@@ -57,12 +52,9 @@ const NpmApi = {
     return `${repo}_${requestType}_${fromDate}`;
   },
   checkResponse(json, option) {
-    if (json === void 0) {
-      json = {};
-    }
     const {
       error
-    } = json;
+    } = json || {};
     if (error) {
       throw {
         errCaption: REQUEST_PACKAGE,

@@ -1,3 +1,4 @@
+import { fGetRequestUrl } from './apiFn';
 
 // repos/:owner/:repo/releases/latest
 
@@ -16,28 +17,26 @@
 
 const GITHUB_API = 'https://api.github.com'
 , URL_REPOS = `${GITHUB_API}/repos`
-, _crReposRouteFn = (routePath) => (
+, _crReposRouteFn = (routePath) => ({
   repo
-) => `${URL_REPOS}/${repo}/${routePath}`;
+}) => `${URL_REPOS}/${repo}/${routePath}`;
 
 const _rRequestTypeToUrl = {
   GH_RELEASE_RECENT : _crReposRouteFn("releases/latest"),
   GH_TAGS : _crReposRouteFn("tags"),
 
-  GH_SEARCH_INFO : (
+  GH_SEARCH_INFO : ({
     repo
-  ) => `${GITHUB_API}/search/repositories?q=repo:${repo}`,
+  }) => `${GITHUB_API}/search/repositories?q=repo:${repo}`,
 
   GH_COMMITS : _crReposRouteFn("commits"),
   GH_ISSUES : _crReposRouteFn("issues"),
   GH_PULL_REQUESTS : _crReposRouteFn("pulls")
-}
+};
 
 const GitHubApi = {
-   getRequestUrl(option){
-     const fnFactory = _rRequestTypeToUrl[option.requestType];
-     return fnFactory(option.repo);
-   },
+   getRequestUrl: fGetRequestUrl(_rRequestTypeToUrl),
+
    getOnCheckResponse(){
      return GitHubApi.checkResponse;
    },

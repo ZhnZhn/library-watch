@@ -1,12 +1,10 @@
-
 import { setFirstToUpperCase } from '../utils/strFn';
+import { fGetRequestUrl } from './apiFn';
 
 const API_URL = 'https://api.npmjs.org';
 const NPM = 'https://www.npmjs.com';
 const NPM_PACKAGE = `${NPM}/package/`;
 const REQUEST_PACKAGE = 'Request Package';
-
-//https://api.npmjs.org/downloads/range/last-month
 
 const _crPackageLink = name => name
   ? `${NPM_PACKAGE}${name}`
@@ -39,10 +37,8 @@ const _rRequestTypeToUrl = {
 }
 
 const NpmApi = {
-   getRequestUrl(option){
-     const fnFactory = _rRequestTypeToUrl[option.requestType]
-     return fnFactory(option);
-   },
+   getRequestUrl: fGetRequestUrl(_rRequestTypeToUrl),
+
    getOnCheckResponse(){
      return NpmApi.checkResponse;
    },
@@ -50,9 +46,9 @@ const NpmApi = {
      return `${repo}_${requestType}_${fromDate}`;
    },
 
-   checkResponse(json={}, option){
-      const { error } = json;
-      if (error){
+   checkResponse(json, option){
+      const { error } = json || {};
+      if (error) {
         throw {
            errCaption: REQUEST_PACKAGE,
            message: setFirstToUpperCase(error)

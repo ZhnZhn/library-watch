@@ -2,6 +2,7 @@
 
 exports.__esModule = true;
 exports.default = void 0;
+var _apiFn = require("./apiFn");
 // repos/:owner/:repo/releases/latest
 
 //  repos/:owner/:repo/git/refs/tags
@@ -18,28 +19,35 @@ exports.default = void 0;
 
 const GITHUB_API = 'https://api.github.com',
   URL_REPOS = `${GITHUB_API}/repos`,
-  _crReposRouteFn = routePath => repo => `${URL_REPOS}/${repo}/${routePath}`;
+  _crReposRouteFn = routePath => _ref => {
+    let {
+      repo
+    } = _ref;
+    return `${URL_REPOS}/${repo}/${routePath}`;
+  };
 const _rRequestTypeToUrl = {
   GH_RELEASE_RECENT: _crReposRouteFn("releases/latest"),
   GH_TAGS: _crReposRouteFn("tags"),
-  GH_SEARCH_INFO: repo => `${GITHUB_API}/search/repositories?q=repo:${repo}`,
+  GH_SEARCH_INFO: _ref2 => {
+    let {
+      repo
+    } = _ref2;
+    return `${GITHUB_API}/search/repositories?q=repo:${repo}`;
+  },
   GH_COMMITS: _crReposRouteFn("commits"),
   GH_ISSUES: _crReposRouteFn("issues"),
   GH_PULL_REQUESTS: _crReposRouteFn("pulls")
 };
 const GitHubApi = {
-  getRequestUrl(option) {
-    const fnFactory = _rRequestTypeToUrl[option.requestType];
-    return fnFactory(option.repo);
-  },
+  getRequestUrl: (0, _apiFn.fGetRequestUrl)(_rRequestTypeToUrl),
   getOnCheckResponse() {
     return GitHubApi.checkResponse;
   },
-  crKey(_ref) {
+  crKey(_ref3) {
     let {
       repo,
       requestType
-    } = _ref;
+    } = _ref3;
     return `${repo}_${requestType}`;
   },
   checkResponse() {

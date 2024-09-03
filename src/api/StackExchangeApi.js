@@ -1,5 +1,5 @@
-
 import { setFirstToUpperCase } from '../utils/strFn';
+import { fGetRequestUrl } from './apiFn';
 
 const BASE_URL = "https://api.stackexchange.com/2.2"
 , DF_REQUEST_TYPE = 'SE_QUESTIONS';
@@ -29,11 +29,8 @@ const _rRequestTypeToUrl = {
 };
 
 const StackExchangeApi = {
-   getRequestUrl(option){
-     const _option = option || {}
-     , { requestType } = _option
-     return _rRequestTypeToUrl[requestType || DF_REQUEST_TYPE](_option);
-   },
+   getRequestUrl: fGetRequestUrl(_rRequestTypeToUrl, DF_REQUEST_TYPE),
+
    getOnCheckResponse(){
      return this.checkResponse;
    },

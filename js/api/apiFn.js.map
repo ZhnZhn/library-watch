@@ -1,0 +1,20 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/apiFn.js"
+ ],
+ "file": "../../src/api/apiFn.js",
+ "names": [
+  "_isTypeFn",
+  "require",
+  "fGetRequestUrl",
+  "hmRoutes",
+  "dfRoute",
+  "option",
+  "requestType",
+  "crRequestUrl",
+  "isFn",
+  "exports"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAEO,MAAMC,cAAc,GAAGA,CAC5BC,QAAQ,EACRC,OAAO,KACJC,MAAM,IAAI;EACb,MAAM;MAAEC,WAAW,GAACF;IAAQ,CAAC,GAAGC,MAAM;IACpCE,YAAY,GAAGD,WAAW,IAAIH,QAAQ,CAACG,WAAW,CAAC;EACrD,OAAO,IAAAE,cAAI,EAACD,YAAY,CAAC,GACrBA,YAAY,CAACF,MAAM,CAAC,GACpB,KAAK,CAAC;AACZ,CAAC;AAAAI,OAAA,CAAAP,cAAA,GAAAA,cAAA"
+}
