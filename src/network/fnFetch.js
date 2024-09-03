@@ -11,11 +11,12 @@ const CLICK_TIME_INTERVAL = 300
   errCaption,
   message
 })
-, ALERT_FREQUENCY = _crErrMsg(
+, ERR_MSG_EMPTY_ROUTE = _crErrMsg('Route is not exist')
+, ERR_MSG_FREQUENCY = _crErrMsg(
   'Load Frequency',
   `Exceed item load frequency restriction of ${MIN_FREQUENCY/1000}s`
 )
-, ALERT_IN_PROGRESS = _crErrMsg(
+, ERR_MSG_IN_PROGRESS = _crErrMsg(
   'Loading In Progress',
   'Loading data for this item in progress.\nIt seems several clicks on button Load repeatedly happend.'
 );
@@ -43,7 +44,7 @@ const _setRecentUriTime = (uri, time) => {
 }
 
 , _starLoading = (uri, nowTime) => {
-   _setRecentUriTime(uri, nowTime)  
+   _setRecentUriTime(uri, nowTime)
 }
 , _doneOk = (nowTime) => {
    _setRecentUriTime(DONE, nowTime)
@@ -63,10 +64,12 @@ export default (config) => {
 
   if (_nowTime - _recentCall < CLICK_TIME_INTERVAL){
     return;
+  } else if (!uri) {
+    onCatch({ error: ERR_MSG_EMPTY_ROUTE, option, onFailed });
   } else if (uri === _recentUri){
-    onCatch({ error: ALERT_IN_PROGRESS, option, onFailed });
+    onCatch({ error: ERR_MSG_IN_PROGRESS, option, onFailed });
   } else if (_nowTime - _recentTime < MIN_FREQUENCY){
-    onCatch({ error: ALERT_FREQUENCY, option, onFailed });
+    onCatch({ error: ERR_MSG_FREQUENCY, option, onFailed });
   } else {
      const _configFetch = {
        ...config,

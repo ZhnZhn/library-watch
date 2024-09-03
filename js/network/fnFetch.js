@@ -12,14 +12,15 @@ const CLICK_TIME_INTERVAL = 300,
     errCaption,
     message
   }),
-  ALERT_FREQUENCY = _crErrMsg('Load Frequency', "Exceed item load frequency restriction of " + MIN_FREQUENCY / 1000 + "s"),
-  ALERT_IN_PROGRESS = _crErrMsg('Loading In Progress', 'Loading data for this item in progress.\nIt seems several clicks on button Load repeatedly happend.');
+  ERR_MSG_EMPTY_ROUTE = _crErrMsg('Route is not exist'),
+  ERR_MSG_FREQUENCY = _crErrMsg('Load Frequency', `Exceed item load frequency restriction of ${MIN_FREQUENCY / 1000}s`),
+  ERR_MSG_IN_PROGRESS = _crErrMsg('Loading In Progress', 'Loading data for this item in progress.\nIt seems several clicks on button Load repeatedly happend.');
 const _crErr = function (_temp) {
   let {
     status,
     statusText
   } = _temp === void 0 ? {} : _temp;
-  return _crErrMsg('Request Error', status + ": " + statusText);
+  return _crErrMsg('Request Error', `${status}: ${statusText}`);
 };
 const _crErrResp = () => _crErrMsg('Response Error', 'Response format is incorrect.');
 let _recentUri = DONE,
@@ -48,15 +49,21 @@ var _default = config => {
     _nowTime = Date.now();
   if (_nowTime - _recentCall < CLICK_TIME_INTERVAL) {
     return;
+  } else if (!uri) {
+    onCatch({
+      error: ERR_MSG_EMPTY_ROUTE,
+      option,
+      onFailed
+    });
   } else if (uri === _recentUri) {
     onCatch({
-      error: ALERT_IN_PROGRESS,
+      error: ERR_MSG_IN_PROGRESS,
       option,
       onFailed
     });
   } else if (_nowTime - _recentTime < MIN_FREQUENCY) {
     onCatch({
-      error: ALERT_FREQUENCY,
+      error: ERR_MSG_FREQUENCY,
       option,
       onFailed
     });
