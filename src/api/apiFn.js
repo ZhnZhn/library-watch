@@ -10,3 +10,11 @@ export const fGetRequestUrl = (
     ? crRequestUrl(option)
     : void 0;
 }
+
+export const crErrMsg = (
+  errCaption,
+  message
+) => ({
+  errCaption,
+  message
+})

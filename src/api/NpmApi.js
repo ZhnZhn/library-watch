@@ -1,5 +1,8 @@
 import { setFirstToUpperCase } from '../utils/strFn';
-import { fGetRequestUrl } from './apiFn';
+import {
+  fGetRequestUrl,
+  crErrMsg
+} from './apiFn';
 
 const API_URL = 'https://api.npmjs.org';
 const NPM = 'https://www.npmjs.com';
@@ -49,10 +52,10 @@ const NpmApi = {
    checkResponse(json, option){
       const { error } = json || {};
       if (error) {
-        throw {
-           errCaption: REQUEST_PACKAGE,
-           message: setFirstToUpperCase(error)
-         };
+        throw crErrMsg(
+          REQUEST_PACKAGE,
+          setFirstToUpperCase(error)
+        );
       }
       return true;
    }

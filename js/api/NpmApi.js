@@ -56,10 +56,7 @@ const NpmApi = {
       error
     } = json || {};
     if (error) {
-      throw {
-        errCaption: REQUEST_PACKAGE,
-        message: (0, _strFn.setFirstToUpperCase)(error)
-      };
+      throw (0, _apiFn.crErrMsg)(REQUEST_PACKAGE, (0, _strFn.setFirstToUpperCase)(error));
     }
     return true;
   }

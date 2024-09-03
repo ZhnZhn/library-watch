@@ -1,5 +1,8 @@
 import { setFirstToUpperCase } from '../utils/strFn';
-import { fGetRequestUrl } from './apiFn';
+import {
+  fGetRequestUrl,
+  crErrMsg
+} from './apiFn';
 
 const BASE_URL = "https://api.stackexchange.com/2.2"
 , DF_REQUEST_TYPE = 'SE_QUESTIONS';
@@ -39,12 +42,15 @@ const StackExchangeApi = {
    },
 
    checkResponse(json, option){
-     const { error_message, error_name='' } = json || {}
+     const {
+       error_message,
+       error_name=''
+     } = json || {}
      if (error_message){
-       throw {
-          errCaption: setFirstToUpperCase(error_name.replace('_', ' ')),
-          message: setFirstToUpperCase(error_message)
-       };
+       throw crErrMsg(
+         setFirstToUpperCase(error_name.replace('_', ' ')),
+         setFirstToUpperCase(error_message)
+       );
      }
      return true;
    }

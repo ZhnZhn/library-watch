@@ -52,10 +52,7 @@ const StackExchangeApi = {
       error_name = ''
     } = json || {};
     if (error_message) {
-      throw {
-        errCaption: (0, _strFn.setFirstToUpperCase)(error_name.replace('_', ' ')),
-        message: (0, _strFn.setFirstToUpperCase)(error_message)
-      };
+      throw (0, _apiFn.crErrMsg)((0, _strFn.setFirstToUpperCase)(error_name.replace('_', ' ')), (0, _strFn.setFirstToUpperCase)(error_message));
     }
     return true;
   }
