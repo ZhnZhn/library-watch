@@ -18,7 +18,8 @@ module.exports = {
     static: {
       directory: path.resolve(__dirname, 'dev')
     },        
-    allowedHosts: ['localhost','client.webSocketURL.hostname'],
+    allowedHosts: ['client.webSocketURL.hostname'],
+    host: '127.0.0.1',
     port: 8084
   },
 
