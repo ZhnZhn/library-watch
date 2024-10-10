@@ -1,3 +1,4 @@
+import { bindTo } from '../../uiApi';
 import { setFirstToUpperCase } from '../../../utils/strFn';
 import { CL_ROW_MENU_MORE } from '../../styleFn';
 import {
@@ -20,7 +21,7 @@ const _fSortByItem = onClick => (
   const name = _crName(propName);
   return {
     name,
-    onClick: onClick.bind(null, propName, name),
+    onClick: bindTo(onClick, propName, name),
     isClose: true
   };
 }

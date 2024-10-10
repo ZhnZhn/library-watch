@@ -1,38 +1,36 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
+exports.default = void 0;
+var _uiApi = require("../uiApi");
 var _GitHubIssues = _interopRequireDefault(require("../items/GitHubIssues"));
-
-var fGitHubCommits = function fGitHubCommits(_ref) {
-  var factory = _ref.factory,
-      option = _ref.option,
-      _ref$json = _ref.json,
-      json = _ref$json === void 0 ? [] : _ref$json,
-      parentProps = _ref.parentProps,
-      onCloseItem = _ref.onCloseItem,
-      onWatchItem = _ref.onWatchItem;
-  var repo = option.repo,
-      requestType = option.requestType,
-      chartType = option.chartType,
-      browserType = option.browserType,
-      key = option.key;
-  return factory.createElement(_GitHubIssues["default"], (0, _extends2["default"])({
-    key: key,
-    repo: repo,
-    requestType: requestType,
-    caption: "" + repo,
+const fGitHubCommits = function (_ref) {
+  let {
+    createElement,
+    option,
+    json = [],
+    parentProps,
+    onCloseItem,
+    onWatchItem
+  } = _ref;
+  const {
+    repo,
+    requestType,
+    chartType,
+    browserType,
+    key
+  } = option;
+  return createElement(_GitHubIssues.default, {
+    key,
+    repo,
+    requestType,
+    caption: repo,
     issues: json,
-    onCloseItem: onCloseItem.bind(null, chartType, browserType, key),
-    onWatchItem: onWatchItem
-  }, parentProps));
+    onCloseItem: (0, _uiApi.bindTo)(onCloseItem, chartType, browserType, key),
+    onWatchItem: onWatchItem,
+    ...parentProps
+  });
 };
-
-var _default = fGitHubCommits;
-exports["default"] = _default;
+var _default = exports.default = fGitHubCommits;
 //# sourceMappingURL=fGitHubIssues.js.map

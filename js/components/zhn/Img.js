@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _uiApi = require("../uiApi");
 var _toLink = _interopRequireDefault(require("./toLink"));
 var _jsxRuntime = require("react/jsx-runtime");
 const _onError = (src, event) => {
@@ -19,7 +20,7 @@ const Img = _ref => {
     alt: alt,
     className: className,
     src: _src,
-    onError: _onError.bind(null, _src)
+    onError: (0, _uiApi.bindTo)(_onError, _src)
   }) : null;
 };
 var _default = exports.default = Img;

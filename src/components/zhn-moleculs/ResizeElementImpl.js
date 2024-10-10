@@ -1,5 +1,6 @@
-const _isFn = fn => typeof fn === 'function'
-, _assign = Object.assign
+import { isFn, bindTo } from '../uiApi';
+
+const _assign = Object.assign
 , _setInitialValuesTo = obj => {
    _assign(obj, {
      id: null,
@@ -27,9 +28,9 @@ class ResizeElementImpl {
     this.minDelta = minWidth - this.initWidth;
     this.maxDelta = maxWidth - this.initWidth;
 
-    this.onStopRezise = this._hStopResize.bind(null, true);
-    this.onStartResizeLeft = this._hStartResize.bind(null, this._resizeLeft)
-    this.onStartResizeRight = this._hStartResize.bind(null, this._resizeRight)
+    this.onStopRezise = bindTo(this._hStopResize, true);
+    this.onStartResizeLeft = bindTo(this._hStartResize, this._resizeLeft)
+    this.onStartResizeRight = bindTo(this._hStartResize, this._resizeRight)
   }
 
   _increaseStepValue = () => {
@@ -89,7 +90,7 @@ class ResizeElementImpl {
     _setInitialValuesTo(this)
 
     const { onResizeAfter } = this;
-    if (isOnResizeAfter && _isFn(onResizeAfter)){
+    if (isOnResizeAfter && isFn(onResizeAfter)){
       onResizeAfter(this.currentWidth);
     }
   }

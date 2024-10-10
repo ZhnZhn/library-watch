@@ -1,3 +1,4 @@
+import { bindTo } from '../uiApi';
 import toLink from './toLink';
 
 const _onError = (
@@ -18,7 +19,7 @@ const Img = ({
        alt={alt}
        className={className}
        src={_src}
-       onError={_onError.bind(null, _src)}
+       onError={bindTo(_onError, _src)}
     />
   ) : null;
 };

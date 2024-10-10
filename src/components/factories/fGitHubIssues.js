@@ -1,3 +1,4 @@
+import { bindTo } from '../uiApi';
 import GitHubIssues from '../items/GitHubIssues';
 
 const fGitHubCommits = function({
@@ -21,7 +22,7 @@ const fGitHubCommits = function({
       requestType,
       caption: repo,
       issues: json,
-      onCloseItem: onCloseItem.bind(null, chartType, browserType, key),
+      onCloseItem: bindTo(onCloseItem, chartType, browserType, key),
       onWatchItem: onWatchItem,
       ...parentProps
   })

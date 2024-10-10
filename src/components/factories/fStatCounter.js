@@ -1,4 +1,4 @@
-
+import { bindTo } from '../uiApi';
 import StatcounterShare from '../items/StatcounterShare';
 
 const _filterEmptyDate = json => json
@@ -93,7 +93,7 @@ const fStatcounter = ({
      data,
      sourceLink,
      onMoveToTop,
-     onCloseItem: onCloseItem.bind(null, chartType, browserType, key),
+     onCloseItem: bindTo(onCloseItem, chartType, browserType, key),
      ...parentProps
   })
 };

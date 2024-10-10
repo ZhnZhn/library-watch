@@ -1,3 +1,4 @@
+import { bindTo } from '../uiApi';
 import GitHubSearchInfo from '../items/GitHubSearchInfo';
 import formatStrDate from '../../utils/formatStrDate';
 
@@ -29,7 +30,7 @@ const fGitHubSearchInfo = function({
      stars_count: stargazers_count,
      pushed_at: _pushed_at,
      caption: `${full_name} ${stargazers_count} ${_pushed_at}`,
-     onCloseItem: onCloseItem.bind(null, chartType, browserType, key),
+     onCloseItem: bindTo(onCloseItem, chartType, browserType, key),
      ...parentProps
   })
 };

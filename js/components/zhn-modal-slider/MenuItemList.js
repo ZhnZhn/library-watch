@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _uiApi = require("../uiApi");
 var _MenuAriaItem = _interopRequireDefault(require("./MenuAriaItem"));
 var _jsxRuntime = require("react/jsx-runtime");
 const SUB_MENU = 'sub',
@@ -24,7 +25,7 @@ const _fClick = _ref => {
     onClick,
     onClose
   } = _ref;
-  return typeof onClick === 'function' ? isClose ? () => {
+  return (0, _uiApi.isFn)(onClick) ? isClose ? () => {
     onClick();
     onClose();
   } : onClick : void 0;
@@ -57,7 +58,7 @@ const MenuItemList = _ref3 => {
           isClose,
           onClick
         } = item,
-        _onClick = type === SUB_MENU ? onNextPage.bind(null, id, name, pageNumber) : _fClick({
+        _onClick = type === SUB_MENU ? (0, _uiApi.bindTo)(onNextPage, id, name, pageNumber) : _fClick({
           isClose,
           onClick,
           onClose

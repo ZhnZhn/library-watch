@@ -1,3 +1,4 @@
+import { bindTo } from '../uiApi';
 import GitHubRecentTag from '../items/GitHubRecentTag';
 import fnFetchJson from '../../network/fnFetchJson';
 import fnCatch from '../../network/fnCatch';
@@ -22,7 +23,7 @@ const fGitHubRecentTag = function({
     key
   } = option
   , tagItem = json[0]
-  , _onClickDetail = fnFetchJson.bind(null, {
+  , _onClickDetail = bindTo(fnFetchJson, {
       uri: `${API_URL}/repos/${option.repo}/commits/${tagItem.commit.sha}`,
       onCatch: fnCatch
     });
@@ -32,7 +33,7 @@ const fGitHubRecentTag = function({
     requestType,
     version: tagItem.name,
     caption: `${repo} ${tagItem.name}`,
-    onCloseItem: onCloseItem.bind(null, chartType, browserType, key),
+    onCloseItem: bindTo(onCloseItem, chartType, browserType, key),
     onClickDetail: _onClickDetail,
     onWatchItem: onWatchItem,
     ...parentProps

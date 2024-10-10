@@ -1,1 +1,42 @@
-{"version":3,"sources":["../../../src/components/factories/fGitHubRecentRelease.js"],"names":["fGitHubRecentRelease","factory","option","json","parentProps","onCloseItem","onWatchItem","repo","requestType","chartType","browserType","key","tag_name","name","published_at","html_url","_version","_published_at","replace","createElement","GitHubRecentRelease","caption","version","bind"],"mappings":";;;;;;;;;AACA;;AAEA,IAAMA,oBAAoB,GAAG,SAAvBA,oBAAuB,OAE1B;AAAA,MADDC,OACC,QADDA,OACC;AAAA,MADQC,MACR,QADQA,MACR;AAAA,MADgBC,IAChB,QADgBA,IAChB;AAAA,MADsBC,WACtB,QADsBA,WACtB;AAAA,MADmCC,WACnC,QADmCA,WACnC;AAAA,MADgDC,WAChD,QADgDA,WAChD;;AAAA,MACOC,IADP,GAC0DL,MAD1D,CACOK,IADP;AAAA,MACaC,WADb,GAC0DN,MAD1D,CACaM,WADb;AAAA,MAC0BC,SAD1B,GAC0DP,MAD1D,CAC0BO,SAD1B;AAAA,MACqCC,WADrC,GAC0DR,MAD1D,CACqCQ,WADrC;AAAA,MACkDC,GADlD,GAC0DT,MAD1D,CACkDS,GADlD;AAAA,MAEOC,QAFP,GAE0DT,IAF1D,CAEOS,QAFP;AAAA,MAEiBC,IAFjB,GAE0DV,IAF1D,CAEiBU,IAFjB;AAAA,2BAE0DV,IAF1D,CAEuBW,YAFvB;AAAA,MAEuBA,YAFvB,mCAEoC,OAFpC;AAAA,MAE6CC,QAF7C,GAE0DZ,IAF1D,CAE6CY,QAF7C;AAAA,MAGKC,QAHL,GAGiBJ,QAAD,GACNA,QADM,GAELC,IAAD,GACAA,IADA,GAEA,OAPV;AAAA,MAQKI,aARL,GAQqBH,YAAY,CAACI,OAAb,CAAqB,GAArB,EAA0B,GAA1B,EAA+BA,OAA/B,CAAuC,GAAvC,EAA4C,EAA5C,CARrB;;AASD,SAAOjB,OAAO,CAACkB,aAAR,CAAsBC,+BAAtB;AACHT,IAAAA,GAAG,EAAGA,GADH;AAEHJ,IAAAA,IAAI,EAAGA,IAFJ;AAGHC,IAAAA,WAAW,EAAGA,WAHX;AAIHa,IAAAA,OAAO,EAAMd,IAAN,SAAcS,QAAd,SAA0BC,aAJ9B;AAKHK,IAAAA,OAAO,EAAGN,QALP;AAMHF,IAAAA,YAAY,EAAGG,aANZ;AAOHF,IAAAA,QAAQ,EAAGA,QAPR;AAQHV,IAAAA,WAAW,EAAGA,WAAW,CAACkB,IAAZ,CAAiB,IAAjB,EAAuBd,SAAvB,EAAkCC,WAAlC,EAA+CC,GAA/C,CARX;AASHL,IAAAA,WAAW,EAAGA;AATX,KAUAF,WAVA,EAAP;AAYD,CAvBD;;eAyBeJ,oB","sourcesContent":["\r\nimport GitHubRecentRelease from '../items/GitHubRecentRelease';\r\n\r\nconst fGitHubRecentRelease = function({\r\n  factory, option, json, parentProps, onCloseItem, onWatchItem\r\n}) {\r\n  const { repo, requestType, chartType, browserType, key } = option\r\n      , { tag_name, name, published_at='empty', html_url } = json\r\n      , _version = (tag_name)\r\n           ? tag_name\r\n           : (name)\r\n           ? name\r\n           : 'empty'\r\n      , _published_at = published_at.replace('T', ' ').replace('Z', '');\r\n  return factory.createElement(GitHubRecentRelease, {\r\n      key : key,\r\n      repo : repo,\r\n      requestType : requestType,\r\n      caption : `${repo} ${_version} ${_published_at}`,\r\n      version : _version,\r\n      published_at : _published_at,\r\n      html_url : html_url,\r\n      onCloseItem : onCloseItem.bind(null, chartType, browserType, key),\r\n      onWatchItem : onWatchItem,\r\n      ...parentProps\r\n  })\r\n}\r\n\r\nexport default fGitHubRecentRelease\r\n"],"file":"fGitHubRecentRelease.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/factories/fGitHubRecentRelease.js"
+ ],
+ "file": "../../../src/components/factories/fGitHubRecentRelease.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "_GitHubRecentRelease",
+  "_interopRequireDefault",
+  "_formatStrDate",
+  "fGitHubRecentRelease",
+  "_ref",
+  "createElement",
+  "option",
+  "json",
+  "parentProps",
+  "onCloseItem",
+  "onWatchItem",
+  "repo",
+  "requestType",
+  "chartType",
+  "browserType",
+  "key",
+  "tag_name",
+  "name",
+  "published_at",
+  "html_url",
+  "_version",
+  "_published_at",
+  "formatStrDate",
+  "GitHubRecentRelease",
+  "caption",
+  "version",
+  "bindTo",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AACA,IAAAC,oBAAA,GAAAC,sBAAA,CAAAF,OAAA;AACA,IAAAG,cAAA,GAAAD,sBAAA,CAAAF,OAAA;AAEA,MAAMI,oBAAoB,GAAG,SAAAA,CAAAC,IAAA,EAO1B;EAAA,IAPmC;IACpCC,aAAa;IACbC,MAAM;IACNC,IAAI;IACJC,WAAW;IACXC,WAAW;IACXC;EACF,CAAC,GAAAN,IAAA;EACC,MAAM;MACJO,IAAI;MACJC,WAAW;MACXC,SAAS;MACTC,WAAW;MACXC;IACF,CAAC,GAAGT,MAAM;IACR;MACAU,QAAQ;MACRC,IAAI;MACJC,YAAY;MACZC;IACF,CAAC,GAAGZ,IAAI;IACNa,QAAQ,GAAGJ,QAAQ,IAAIC,IAAI,IAAI,OAAO;IACtCI,aAAa,GAAG,IAAAC,sBAAa,EAACJ,YAAY,EAAE,OAAO,CAAC;EACtD,OAAOb,aAAa,CAACkB,4BAAmB,EAAE;IACtCR,GAAG;IACHJ,IAAI;IACJC,WAAW;IACXO,QAAQ;IACRK,OAAO,EAAE,GAAGb,IAAI,IAAIS,QAAQ,IAAIC,aAAa,EAAE;IAC/CI,OAAO,EAAEL,QAAQ;IACjBF,YAAY,EAAEG,aAAa;IAC3BZ,WAAW,EAAG,IAAAiB,aAAM,EAACjB,WAAW,EAAEI,SAAS,EAAEC,WAAW,EAAEC,GAAG,CAAC;IAC9DL,WAAW,EAAGA,WAAW;IACzB,GAAGF;EACP,CAAC,CAAC;AACJ,CAAC;AAAA,IAAAmB,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEc1B,oBAAoB"
+}

@@ -1,3 +1,4 @@
+import { bindTo } from '../uiApi';
 import GitHubRecentRelease from '../items/GitHubRecentRelease';
 import formatStrDate from '../../utils/formatStrDate';
 
@@ -32,7 +33,7 @@ const fGitHubRecentRelease = function({
       caption: `${repo} ${_version} ${_published_at}`,
       version: _version,
       published_at: _published_at,
-      onCloseItem : onCloseItem.bind(null, chartType, browserType, key),
+      onCloseItem : bindTo(onCloseItem, chartType, browserType, key),
       onWatchItem : onWatchItem,
       ...parentProps
   })

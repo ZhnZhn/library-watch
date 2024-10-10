@@ -2,6 +2,7 @@
 
 exports.__esModule = true;
 exports.default = void 0;
+var _uiApi = require("../../uiApi");
 var _strFn = require("../../../utils/strFn");
 var _styleFn = require("../../styleFn");
 var _config = require("./config");
@@ -10,7 +11,7 @@ const _fSortByItem = onClick => propName => {
   const name = _crName(propName);
   return {
     name,
-    onClick: onClick.bind(null, propName, name),
+    onClick: (0, _uiApi.bindTo)(onClick, propName, name),
     isClose: true
   };
 };

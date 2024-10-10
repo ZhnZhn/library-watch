@@ -1,1 +1,47 @@
-{"version":3,"sources":["../../../src/components/factories/fGitHubRecentTag.js"],"names":["_base","fGitHubRecentTag","factory","option","json","name","parentProps","onCloseItem","onWatchItem","repo","requestType","chartType","browserType","key","tagItem","_onClickDetail","fnFetchJson","bind","uri","commit","sha","onCatch","fnCatch","createElement","GitHubRecentTag","version","caption","onClickDetail"],"mappings":";;;;;;;;;AACA;;AACA;;AACA;;AAEA;AAEA,IAAMA,KAAK,GAAG,wBAAd;;AAEA,IAAMC,gBAAgB,GAAG,SAAnBA,gBAAmB,OAEvB;AAAA,MADAC,OACA,QADAA,OACA;AAAA,MADSC,MACT,QADSA,MACT;AAAA,uBADiBC,IACjB;AAAA,MADiBA,IACjB,0BADsB,CAAC;AAACC,IAAAA,IAAI,EAAE;AAAP,GAAD,CACtB;AAAA,MADyCC,WACzC,QADyCA,WACzC;AAAA,MADsDC,WACtD,QADsDA,WACtD;AAAA,MADmEC,WACnE,QADmEA,WACnE;;AAAA,MACQC,IADR,GAC2DN,MAD3D,CACQM,IADR;AAAA,MACcC,WADd,GAC2DP,MAD3D,CACcO,WADd;AAAA,MAC2BC,SAD3B,GAC2DR,MAD3D,CAC2BQ,SAD3B;AAAA,MACsCC,WADtC,GAC2DT,MAD3D,CACsCS,WADtC;AAAA,MACmDC,GADnD,GAC2DV,MAD3D,CACmDU,GADnD;AAAA,MAEMC,OAFN,GAEgBV,IAAI,CAAC,CAAD,CAFpB;AAAA,MAGMW,cAHN,GAGuBC,wBAAYC,IAAZ,CAAiB,IAAjB,EAAuB;AACtCC,IAAAA,GAAG,EAAMlB,KAAN,eAAqBG,MAAM,CAACM,IAA5B,iBAA4CK,OAAO,CAACK,MAAR,CAAeC,GADxB;AAEtCC,IAAAA,OAAO,EAAGC;AAF4B,GAAvB,CAHvB;;AAOA,SAAOpB,OAAO,CAACqB,aAAR,CAAsBC,2BAAtB;AACHX,IAAAA,GAAG,EAAGA,GADH;AAEHJ,IAAAA,IAAI,EAAGA,IAFJ;AAGHC,IAAAA,WAAW,EAAGA,WAHX;AAIHe,IAAAA,OAAO,EAAGX,OAAO,CAACT,IAJf;AAKHqB,IAAAA,OAAO,EAAMjB,IAAN,SAAcK,OAAO,CAACT,IAL1B;AAMHE,IAAAA,WAAW,EAAGA,WAAW,CAACU,IAAZ,CAAiB,IAAjB,EAAuBN,SAAvB,EAAkCC,WAAlC,EAA+CC,GAA/C,CANX;AAOHc,IAAAA,aAAa,EAAGZ,cAPb;AAQHP,IAAAA,WAAW,EAAGA;AARX,KASAF,WATA,EAAP;AAWD,CApBD;;eAsBeL,gB","sourcesContent":["\r\nimport GitHubRecentTag from '../items/GitHubRecentTag';\r\nimport fnFetchJson from '../../network/fnFetchJson';\r\nimport fnCatch from '../../network/fnCatch';\r\n\r\n//uri, option, onCheckResponse, onFetch, onCompleted, onFailed, onCatch\r\n\r\nconst _base = 'https://api.github.com';\r\n\r\nconst fGitHubRecentTag = function({\r\n  factory, option, json=[{name: 'empty'}], parentProps, onCloseItem, onWatchItem\r\n}){\r\n  const { repo, requestType, chartType, browserType, key } = option\r\n      , tagItem = json[0]\r\n      , _onClickDetail = fnFetchJson.bind(null, {\r\n          uri : `${_base}/repos/${option.repo}/commits/${tagItem.commit.sha}`,\r\n          onCatch : fnCatch\r\n        });\r\n  return factory.createElement(GitHubRecentTag, {\r\n      key : key,\r\n      repo : repo,\r\n      requestType : requestType,\r\n      version : tagItem.name,\r\n      caption : `${repo} ${tagItem.name}`,\r\n      onCloseItem : onCloseItem.bind(null, chartType, browserType, key),\r\n      onClickDetail : _onClickDetail,\r\n      onWatchItem : onWatchItem,\r\n      ...parentProps\r\n  });\r\n};\r\n\r\nexport default fGitHubRecentTag\r\n"],"file":"fGitHubRecentTag.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/factories/fGitHubRecentTag.js"
+ ],
+ "file": "../../../src/components/factories/fGitHubRecentTag.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "_GitHubRecentTag",
+  "_interopRequireDefault",
+  "_fnFetchJson",
+  "_fnCatch",
+  "API_URL",
+  "fGitHubRecentTag",
+  "_ref",
+  "createElement",
+  "option",
+  "json",
+  "name",
+  "parentProps",
+  "onCloseItem",
+  "onWatchItem",
+  "repo",
+  "requestType",
+  "chartType",
+  "browserType",
+  "key",
+  "tagItem",
+  "_onClickDetail",
+  "bindTo",
+  "fnFetchJson",
+  "uri",
+  "commit",
+  "sha",
+  "onCatch",
+  "fnCatch",
+  "GitHubRecentTag",
+  "version",
+  "caption",
+  "onClickDetail",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AACA,IAAAC,gBAAA,GAAAC,sBAAA,CAAAF,OAAA;AACA,IAAAG,YAAA,GAAAD,sBAAA,CAAAF,OAAA;AACA,IAAAI,QAAA,GAAAF,sBAAA,CAAAF,OAAA;AAEA;;AAEA,MAAMK,OAAO,GAAG,wBAAwB;AAExC,MAAMC,gBAAgB,GAAG,SAAAA,CAAAC,IAAA,EAOvB;EAAA,IAPgC;IAChCC,aAAa;IACbC,MAAM;IACNC,IAAI,GAAC,CAAC;MAACC,IAAI,EAAE;IAAO,CAAC,CAAC;IACtBC,WAAW;IACXC,WAAW;IACXC;EACF,CAAC,GAAAP,IAAA;EACC,MAAM;MACJQ,IAAI;MACJC,WAAW;MACXC,SAAS;MACTC,WAAW;MACXC;IACF,CAAC,GAAGV,MAAM;IACRW,OAAO,GAAGV,IAAI,CAAC,CAAC,CAAC;IACjBW,cAAc,GAAG,IAAAC,aAAM,EAACC,oBAAW,EAAE;MACnCC,GAAG,EAAE,GAAGnB,OAAO,UAAUI,MAAM,CAACM,IAAI,YAAYK,OAAO,CAACK,MAAM,CAACC,GAAG,EAAE;MACpEC,OAAO,EAAEC;IACX,CAAC,CAAC;EACJ,OAAOpB,aAAa,CAACqB,wBAAe,EAAE;IACpCV,GAAG;IACHJ,IAAI;IACJC,WAAW;IACXc,OAAO,EAAEV,OAAO,CAACT,IAAI;IACrBoB,OAAO,EAAE,GAAGhB,IAAI,IAAIK,OAAO,CAACT,IAAI,EAAE;IAClCE,WAAW,EAAE,IAAAS,aAAM,EAACT,WAAW,EAAEI,SAAS,EAAEC,WAAW,EAAEC,GAAG,CAAC;IAC7Da,aAAa,EAAEX,cAAc;IAC7BP,WAAW,EAAEA,WAAW;IACxB,GAAGF;EACL,CAAC,CAAC;AACJ,CAAC;AAAC,IAAAqB,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEa7B,gBAAgB"
+}

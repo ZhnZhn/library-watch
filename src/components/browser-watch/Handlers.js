@@ -3,6 +3,8 @@ export {
   saveWatchList
 } from '../../flux/watch-list/watchListStore';
 
+import { bindTo } from '../uiApi';
+
 import { ModalDialog } from '../../constants/Type';
 import { showDbWatch } from '../../flux/browserStore';
 import { showModalDialog } from '../../flux/compStore';
@@ -24,7 +26,7 @@ export const toggleWatchDbBrowser = showDbWatch
 export const showDialogWatchItem = (item) =>
   showModalDialog(ModalDialog.LOAD_WATCH_ITEM, item);
 
-export const showDialogLoadItemsFromFile = showModalDialog.bind(null,
+export const showDialogLoadItemsFromFile = bindTo(showModalDialog,
   ModalDialog.LOAD_FILE, {
    onLoad: loadFromJson
 });
@@ -34,7 +36,7 @@ export const removeWatchItem = (
   evt
 ) => {
   evt.stopPropagation()
-  deleteWatchItem(option)  
+  deleteWatchItem(option)
 }
 
 export const backupWatchItemsToJson = backupToJson
