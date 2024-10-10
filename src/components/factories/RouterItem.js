@@ -11,7 +11,7 @@ import fNpmTopVersions from './fNpmTopVersions';
 
 import fStackTaggedQuestions from './fStackTaggedQuestions';
 
-import fStatCounter from './fStatCounter'
+import fStatcounter from './fStatcounter';
 
 const RouterItem = {
   DEFAULT : fItemTest,
@@ -29,7 +29,7 @@ const RouterItem = {
   SE_QUESTIONS : fStackTaggedQuestions,
   SE_SEARCH_QUESTIONS : fStackTaggedQuestions,
 
-  ST_OSVERSION : fStatCounter
+  ST_OSVERSION : fStatcounter
 };
 
 export default RouterItem

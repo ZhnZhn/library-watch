@@ -1,9 +1,9 @@
 {
  "version": 3,
  "sources": [
-  "../../src/api/StatCounterApi.js"
+  "../../src/api/StatcounterApi.js"
  ],
- "file": "../../src/api/StatCounterApi.js",
+ "file": "../../src/api/StatcounterApi.js",
  "names": [
   "OS_VERSION_MARKET_SHARE",
   "DESKTOP",
@@ -43,7 +43,7 @@
   "_urlItem",
   "caption",
   "v2",
-  "StatCounterApi",
+  "StatcounterApi",
   "getRequestUrl",
   "fetchType",
   "sourceLink",

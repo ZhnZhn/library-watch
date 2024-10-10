@@ -1,5 +1,5 @@
 
-import StatCounterShare from '../items/StatCounterShare';
+import StatcounterShare from '../items/StatcounterShare';
 
 const _filterEmptyDate = json => json
  .data.filter(item => Boolean(item.Date));
@@ -61,7 +61,7 @@ const _crCaption = ({
 } = {}
 ) => `${region.caption || ''}: ${caption}`;
 
-const fStatCounter = ({
+const fStatcounter = ({
   createElement,
   option,
   json,
@@ -83,7 +83,7 @@ const fStatCounter = ({
   , toDate = labels[labels.length - 1]
   , _caption = _crCaption(option);
 
-  return createElement(StatCounterShare, {
+  return createElement(StatcounterShare, {
      key,
      caption: _caption,
      requestType,
@@ -98,4 +98,4 @@ const fStatCounter = ({
   })
 };
 
-export default fStatCounter
+export default fStatcounter

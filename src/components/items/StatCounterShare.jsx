@@ -43,7 +43,7 @@ const _crChartConfig = (
   return [_lineChartConfig, _height];
 };
 
-const StatCounterShare = ({
+const StatcounterShare = ({
   caption,
   fromDate,
   toDate,
@@ -114,11 +114,11 @@ const StatCounterShare = ({
           style={S_SOURCE_LINK}
           href={sourceLink}
         >
-            StatCounter Chart
+            Statcounter Chart
         </Link>
       </ShowHide>
     </div>
   );
 };
 
-export default StatCounterShare
+export default StatcounterShare

@@ -78,7 +78,7 @@ const _crLinks = (option) => {
   };
 };
 
-const StatCounterApi = {
+const StatcounterApi = {
   getRequestUrl: (option) => {
     const { csv, link } =_crLinks(option)
     option.fetchType = 'csv-stream'
@@ -94,7 +94,7 @@ const StatCounterApi = {
   },
 
   getOnCheckResponse: () => {
-    return StatCounterApi.checkResponse;
+    return StatcounterApi.checkResponse;
   },
 
   checkResponse: (json, option) => {
@@ -102,4 +102,4 @@ const StatCounterApi = {
   }
 };
 
-export default StatCounterApi
+export default StatcounterApi

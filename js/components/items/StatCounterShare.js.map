@@ -1,9 +1,9 @@
 {
  "version": 3,
  "sources": [
-  "../../../src/components/items/StatCounterShare.js"
+  "../../../src/components/items/StatcounterShare.js"
  ],
- "file": "../../../src/components/items/StatCounterShare.js",
+ "file": "../../../src/components/items/StatcounterShare.js",
  "names": [
   "_styleFn",
   "require",
@@ -43,7 +43,7 @@
   "_height",
   "Math",
   "floor",
-  "StatCounterShare",
+  "StatcounterShare",
   "_ref",
   "caption",
   "fromDate",

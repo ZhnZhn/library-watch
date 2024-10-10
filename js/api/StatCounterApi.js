@@ -73,7 +73,7 @@ const _crLinks = option => {
     link: `${_urlItem.link}${region.value}`
   };
 };
-const StatCounterApi = {
+const StatcounterApi = {
   getRequestUrl: option => {
     const {
       csv,
@@ -94,11 +94,11 @@ const StatCounterApi = {
     return `${vRegion}-${value}`;
   },
   getOnCheckResponse: () => {
-    return StatCounterApi.checkResponse;
+    return StatcounterApi.checkResponse;
   },
   checkResponse: (json, option) => {
     return json && _isArr(json.data);
   }
 };
-var _default = exports.default = StatCounterApi;
-//# sourceMappingURL=StatCounterApi.js.map
+var _default = exports.default = StatcounterApi;
+//# sourceMappingURL=StatcounterApi.js.map

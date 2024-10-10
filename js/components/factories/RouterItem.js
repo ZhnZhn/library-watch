@@ -13,7 +13,7 @@ var _fNpmRecentDownloads = _interopRequireDefault(require("./fNpmRecentDownloads
 var _fNpmDownloads = _interopRequireDefault(require("./fNpmDownloads"));
 var _fNpmTopVersions = _interopRequireDefault(require("./fNpmTopVersions"));
 var _fStackTaggedQuestions = _interopRequireDefault(require("./fStackTaggedQuestions"));
-var _fStatCounter = _interopRequireDefault(require("./fStatCounter"));
+var _fStatcounter = _interopRequireDefault(require("./fStatcounter"));
 const RouterItem = {
   DEFAULT: _fItemTest.default,
   GH_RELEASE_RECENT: _fGitHubRecentRelease.default,
@@ -27,7 +27,7 @@ const RouterItem = {
   NPM_TOP_VERSIONS: _fNpmTopVersions.default,
   SE_QUESTIONS: _fStackTaggedQuestions.default,
   SE_SEARCH_QUESTIONS: _fStackTaggedQuestions.default,
-  ST_OSVERSION: _fStatCounter.default
+  ST_OSVERSION: _fStatcounter.default
 };
 var _default = exports.default = RouterItem;
 //# sourceMappingURL=RouterItem.js.map

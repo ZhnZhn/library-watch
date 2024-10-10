@@ -112,8 +112,8 @@ const About = () => {
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_LinkToken.default, {
             href: "https://gs.statcounter.com/",
             color: "#009ae5",
-            title: "StatCounter",
-            caption: "StatCounter"
+            title: "Statcounter",
+            caption: "Statcounter"
           })]
         }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("p", {
           children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Step.default, {

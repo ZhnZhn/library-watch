@@ -42,7 +42,7 @@ const _crChartConfig = (labels, data) => {
     _height = 150 + Math.floor(_numSeries / 5) * 16;
   return [_lineChartConfig, _height];
 };
-const StatCounterShare = _ref => {
+const StatcounterShare = _ref => {
   let {
     caption,
     fromDate,
@@ -95,10 +95,10 @@ const StatCounterShare = _ref => {
         className: _styleFn.CL_SOURCE_LINK,
         style: S_SOURCE_LINK,
         href: sourceLink,
-        children: "StatCounter Chart"
+        children: "Statcounter Chart"
       })]
     })]
   });
 };
-var _default = exports.default = StatCounterShare;
-//# sourceMappingURL=StatCounterShare.js.map
+var _default = exports.default = StatcounterShare;
+//# sourceMappingURL=StatcounterShare.js.map

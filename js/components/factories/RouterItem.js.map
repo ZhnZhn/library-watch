@@ -17,7 +17,7 @@
   "_fNpmDownloads",
   "_fNpmTopVersions",
   "_fStackTaggedQuestions",
-  "_fStatCounter",
+  "_fStatcounter",
   "RouterItem",
   "DEFAULT",
   "fItemTest",
@@ -42,7 +42,7 @@
   "fStackTaggedQuestions",
   "SE_SEARCH_QUESTIONS",
   "ST_OSVERSION",
-  "fStatCounter",
+  "fStatcounter",
   "_default",
   "exports",
   "default"

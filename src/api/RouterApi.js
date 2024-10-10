@@ -2,13 +2,13 @@
 import GitHubApi from './GitHubApi';
 import NpmApi from './NpmApi';
 import StackExchangeApi from './StackExchangeApi';
-import StatCounterApi from './StatCounterApi';
+import StatcounterApi from './StatCounterApi';
 
 const RouterApi = {
   GH : GitHubApi,
   NPM : NpmApi,
   SE : StackExchangeApi,
-  ST : StatCounterApi
+  ST : StatcounterApi
 };
 
 export default RouterApi

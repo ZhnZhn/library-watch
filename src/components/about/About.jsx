@@ -121,8 +121,8 @@ const About = () => {
           <LinkToken
              href="https://gs.statcounter.com/"
              color="#009ae5"
-             title="StatCounter"
-             caption="StatCounter"
+             title="Statcounter"
+             caption="Statcounter"
           />
          </p>
           <p>
