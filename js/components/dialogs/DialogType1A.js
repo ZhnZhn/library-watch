@@ -15,6 +15,9 @@ const MARKET_SHARES = [{
     caption: "OS: Desktop, Mobile, Tablet, Console",
     value: "os"
   }, {
+    caption: "OS: Desktop",
+    value: "os-desktop"
+  }, {
     caption: "Windows: Desktop",
     value: "win-desktop"
   }, {
@@ -29,6 +32,9 @@ const MARKET_SHARES = [{
   }, {
     caption: "Browser: All Platforms",
     value: "browser"
+  }, {
+    caption: "Social Media Stats",
+    value: "social-media"
   }],
   REGIONS = [{
     caption: "Worldwide",

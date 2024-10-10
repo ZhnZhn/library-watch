@@ -10,11 +10,13 @@ import D from './DialogCell';
 
 const MARKET_SHARES = [
   { caption: "OS: Desktop, Mobile, Tablet, Console", value: "os"},
+  { caption: "OS: Desktop", value: "os-desktop"},
   { caption: "Windows: Desktop", value: "win-desktop"},
   { caption: "macOS: Desktop", value: "mac-desktop"},
   { caption: "Android: Mobile, Tablet", value: "android-mobile" },
   { caption: "IOS: Mobile, Tablet", value: "ios-mobile" },
-  { caption: "Browser: All Platforms", value: "browser" }
+  { caption: "Browser: All Platforms", value: "browser" },
+  { caption: "Social Media Stats", value: "social-media"}
 ]
 , REGIONS = [
   { caption: "Worldwide", value: "worlwide", v2: "ww"  },
