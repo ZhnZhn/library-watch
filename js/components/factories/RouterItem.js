@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _fItemTest = _interopRequireDefault(require("./fItemTest"));
+var _fCrateDownload = _interopRequireDefault(require("./fCrateDownload"));
 var _fGitHubRecentRelease = _interopRequireDefault(require("./fGitHubRecentRelease"));
 var _fGitHubRecentTag = _interopRequireDefault(require("./fGitHubRecentTag"));
 var _fGitHubSearchInfo = _interopRequireDefault(require("./fGitHubSearchInfo"));
@@ -16,6 +17,7 @@ var _fStackTaggedQuestions = _interopRequireDefault(require("./fStackTaggedQuest
 var _fStatcounter = _interopRequireDefault(require("./fStatcounter"));
 const RouterItem = {
   DEFAULT: _fItemTest.default,
+  CR_DOWNLOADS: _fCrateDownload.default,
   GH_RELEASE_RECENT: _fGitHubRecentRelease.default,
   GH_TAGS: _fGitHubRecentTag.default,
   GH_SEARCH_INFO: _fGitHubSearchInfo.default,

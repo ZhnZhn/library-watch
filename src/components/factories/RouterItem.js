@@ -1,4 +1,7 @@
 import fItemTest from './fItemTest';
+
+import fCrateDownload from './fCrateDownload';
+
 import fGitHubRecentRelease from './fGitHubRecentRelease';
 import fGitHubRecentTag from './fGitHubRecentTag';
 import fGitHubSearchInfo from './fGitHubSearchInfo';
@@ -15,6 +18,9 @@ import fStatcounter from './fStatcounter';
 
 const RouterItem = {
   DEFAULT : fItemTest,
+
+  CR_DOWNLOADS : fCrateDownload,
+  
   GH_RELEASE_RECENT : fGitHubRecentRelease,
   GH_TAGS : fGitHubRecentTag,
   GH_SEARCH_INFO : fGitHubSearchInfo,
