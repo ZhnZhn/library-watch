@@ -1,1 +1,31 @@
-{"version":3,"sources":["../../src/api/RouterApi.js"],"names":["RouterApi","GH","GitHubApi","NPM","NpmApi","SE","StackExchangeApi","ST","StatCounterApi"],"mappings":";;;;;;;AACA;;AACA;;AACA;;AACA;;AAEA,IAAMA,SAAS,GAAG;AAChBC,EAAAA,EAAE,EAAGC,qBADW;AAEhBC,EAAAA,GAAG,EAAGC,kBAFU;AAGhBC,EAAAA,EAAE,EAAGC,4BAHW;AAIhBC,EAAAA,EAAE,EAAGC;AAJW,CAAlB;eAOeR,S","sourcesContent":["\r\nimport GitHubApi from './GitHubApi';\r\nimport NpmApi from './NpmApi';\r\nimport StackExchangeApi from './StackExchangeApi';\r\nimport StatCounterApi from './StatCounterApi';\r\n\r\nconst RouterApi = {\r\n  GH : GitHubApi,\r\n  NPM : NpmApi,\r\n  SE : StackExchangeApi,\r\n  ST : StatCounterApi\r\n};\r\n\r\nexport default RouterApi\r\n"],"file":"RouterApi.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/RouterApi.js"
+ ],
+ "file": "../../src/api/RouterApi.js",
+ "names": [
+  "_CrateApi",
+  "_interopRequireDefault",
+  "require",
+  "_GitHubApi",
+  "_NpmApi",
+  "_StackExchangeApi",
+  "_StatCounterApi",
+  "RouterApi",
+  "CR",
+  "CrateApi",
+  "GH",
+  "GitHubApi",
+  "NPM",
+  "NpmApi",
+  "SE",
+  "StackExchangeApi",
+  "ST",
+  "StatcounterApi",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,SAAA,GAAAC,sBAAA,CAAAC,OAAA;AACA,IAAAC,UAAA,GAAAF,sBAAA,CAAAC,OAAA;AACA,IAAAE,OAAA,GAAAH,sBAAA,CAAAC,OAAA;AACA,IAAAG,iBAAA,GAAAJ,sBAAA,CAAAC,OAAA;AACA,IAAAI,eAAA,GAAAL,sBAAA,CAAAC,OAAA;AAEA,MAAMK,SAAS,GAAG;EAChBC,EAAE,EAAEC,iBAAQ;EACZC,EAAE,EAAGC,kBAAS;EACdC,GAAG,EAAGC,eAAM;EACZC,EAAE,EAAGC,yBAAgB;EACrBC,EAAE,EAAGC;AACP,CAAC;AAAC,IAAAC,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEab,SAAS"
+}
