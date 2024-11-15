@@ -89,6 +89,12 @@ const About = () => {
             Information API providers:
           </Token>
           <LinkToken
+             href="https://crates.io/"
+             color="#009ae5"
+             title="crates.io"
+             caption="Crates.io"
+          />
+          <LinkToken
              href="https://www.github.com/"
              color="#009ae5"
              title="GitHub"

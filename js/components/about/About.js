@@ -85,6 +85,11 @@ const About = () => {
             color: "grey",
             children: "Information API providers:"
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_LinkToken.default, {
+            href: "https://crates.io/",
+            color: "#009ae5",
+            title: "crates.io",
+            caption: "Crates.io"
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_LinkToken.default, {
             href: "https://www.github.com/",
             color: "#009ae5",
             title: "GitHub",
