@@ -14,6 +14,7 @@ const _S_CAPTION_OPEN = {
 , S_SPAN_FD = { paddingRight: 10 };
 
 const ButtonPackage = ({
+  style,
   caption,
   packageName,
   sumDownloads,
@@ -23,7 +24,7 @@ const ButtonPackage = ({
 }) => (
   <button
      className={CL_BT_ITEM}
-     style={_S_CAPTION_OPEN}
+     style={{..._S_CAPTION_OPEN, ...style}}
      title={caption}
      onClick={onClick}
   >

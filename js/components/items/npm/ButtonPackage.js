@@ -21,6 +21,7 @@ const _S_CAPTION_OPEN = {
   };
 const ButtonPackage = _ref => {
   let {
+    style,
     caption,
     packageName,
     sumDownloads,
@@ -30,7 +31,10 @@ const ButtonPackage = _ref => {
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
     className: _styleFn.CL_BT_ITEM,
-    style: _S_CAPTION_OPEN,
+    style: {
+      ..._S_CAPTION_OPEN,
+      ...style
+    },
     title: caption,
     onClick: onClick,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
