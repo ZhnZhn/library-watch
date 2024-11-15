@@ -1,7 +1,7 @@
 # [Library Watch](https://zhnzhn.github.io/library-watch)
 **Library Watch** is a SPA RESTful client.   
 By means of web app Library-Watch, it is possible to view information about **GitHub's** repositories, **NPM's** packages, **StackOverflows's** questions.   
-Information API providers: [GitHub](https://www.github.com/), [NPM](https://www.npmjs.com/), [Stack Exchange](https://stackexchange.com/).    
+Information API providers: [Crates.io](https://crates.io/), [GitHub](https://www.github.com/), [NPM](https://www.npmjs.com/), [Stack Exchange](https://stackexchange.com/).    
 
 ![alt text](screencast/library-watch.png?raw=true "Library Watch")
 
