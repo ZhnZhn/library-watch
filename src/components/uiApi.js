@@ -17,7 +17,8 @@ export {
 
 export {
   isFn,
-  isNumber
+  isNumber,
+  isStr
 } from '../utils/isTypeFn';
 import {
   isFn,
