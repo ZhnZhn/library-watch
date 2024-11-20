@@ -1,32 +1,19 @@
-
-
 import RouterApi from './RouterApi';
 
 const RestApi = {
-   getApi(option){
-     const { requestType } = option
-         , id = requestType.split('_')[0]
-     return RouterApi[id];
-   },
+   getApi: option => RouterApi[option.requestType.split('_')[0]],
 
-   getRequestUrl(option){
-     const api = RestApi.getApi(option);
-     return api.getRequestUrl(option);
-   },
+   getRequestUrl: option => RestApi
+     .getApi(option)
+     .getRequestUrl(option),
 
-   getOnCheckResponse(option){
-     const api = RestApi.getApi(option);
-     return api.checkResponse;
-   },
+   getOnCheckResponse: option => RestApi
+     .getApi(option)
+     .checkResponse,
 
-   crKey(option){
-     const api = RestApi.getApi(option);
-     return api.crKey(option);
-   },
-
-   checkResponse(){
-     return true;
-   }
+   crKey: option => RestApi
+     .getApi(option)
+     .crKey(option)
 };
 
 export default RestApi

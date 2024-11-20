@@ -1,14 +1,21 @@
-
 import fnFetch from '../../network/fnFetch';
 import fnCatch from '../../network/fnCatch';
 
 import RestApi from '../../api/RestApi';
 
-const _fnFetchToChartComp = function({ json, option, onCompleted }){
+const _fnFetchToChartComp = ({
+  json,
+  option,
+  onCompleted
+}) => {
   onCompleted(option, json);
 };
 
-const loadItem = function(option, onCompleted, onFailed){
+const loadItem = (
+  option,
+  onCompleted,
+  onFailed
+) => {
   fnFetch({
     uri : RestApi.getRequestUrl(option),
     option : option,
