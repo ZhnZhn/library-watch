@@ -19,11 +19,6 @@ const S_CAPTION = {
   },
   S_CHART_WRAPPER = {
     paddingTop: 4
-  },
-  CHART_OPTIONS = {
-    legend: {
-      position: "top"
-    }
   };
 const CrateDownloads = _ref => {
   let {
@@ -63,7 +58,7 @@ const CrateDownloads = _ref => {
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_LineChart.default, {
         type: type,
         data: _lineChartConfig,
-        options: options || CHART_OPTIONS
+        options: options || _Item.CHART_OPTIONS_LEGEND_TOP
       })
     })]
   });

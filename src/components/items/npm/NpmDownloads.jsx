@@ -18,18 +18,13 @@ import NpmPackageInfo from './NpmPackageInfo';
 import { CL_MENU_MORE } from '../../styleFn';
 import {
   S_ROOT,
-  S_BT_MORE
+  S_BT_MORE,
+  CHART_OPTIONS_LEGEND_TOP
 } from '../Item.Style';
 
 const ITEM_DESCRIPTION = "Npm Recent Month Downloads"
 , S_CAPTION = { paddingLeft: 4 }
-, S_CHART_WRAPPER = { paddingTop: 4 }
-
-, CHART_OPTIONS = {
-  legend: {
-    position: 'top'
-  }
-};
+, S_CHART_WRAPPER = { paddingTop: 4 };
 
 const _isFn = fn => typeof fn === 'function';
 
@@ -125,7 +120,7 @@ const NpmDownloads = ({
         <LineChart
            type={type}
            data={_lineChartConfig}
-           options={options || CHART_OPTIONS}
+           options={options || CHART_OPTIONS_LEGEND_TOP}
         />
         <NpmPackageInfo
           isButtons={isButtons}

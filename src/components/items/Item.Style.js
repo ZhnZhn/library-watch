@@ -44,3 +44,9 @@ export const S_PR_8 = {
 export const S_ML_8 = {
   marginLeft: 8
 }
+
+export const CHART_OPTIONS_LEGEND_TOP = {
+  legend: {
+    position: "top"
+  }
+}

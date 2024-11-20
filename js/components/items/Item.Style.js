@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.S_SPAN_VERSION = exports.S_ROOT = exports.S_PT_8 = exports.S_PR_8 = exports.S_PB_8 = exports.S_ML_8 = exports.S_COLOR_GREY = exports.S_CAPTION_OPEN = exports.S_BT_MORE = exports.S_BTN_CIRCLE = void 0;
+exports.S_SPAN_VERSION = exports.S_ROOT = exports.S_PT_8 = exports.S_PR_8 = exports.S_PB_8 = exports.S_ML_8 = exports.S_COLOR_GREY = exports.S_CAPTION_OPEN = exports.S_BT_MORE = exports.S_BTN_CIRCLE = exports.CHART_OPTIONS_LEGEND_TOP = void 0;
 const S_COLOR_GREY = exports.S_COLOR_GREY = {
   color: "grey"
 };
@@ -47,5 +47,10 @@ const S_PR_8 = exports.S_PR_8 = {
 };
 const S_ML_8 = exports.S_ML_8 = {
   marginLeft: 8
+};
+const CHART_OPTIONS_LEGEND_TOP = exports.CHART_OPTIONS_LEGEND_TOP = {
+  legend: {
+    position: "top"
+  }
 };
 //# sourceMappingURL=Item.Style.js.map

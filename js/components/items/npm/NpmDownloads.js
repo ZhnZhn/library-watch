@@ -25,11 +25,6 @@ const ITEM_DESCRIPTION = "Npm Recent Month Downloads",
   },
   S_CHART_WRAPPER = {
     paddingTop: 4
-  },
-  CHART_OPTIONS = {
-    legend: {
-      position: 'top'
-    }
   };
 const _isFn = fn => typeof fn === 'function';
 const NpmDownloads = _ref => {
@@ -111,7 +106,7 @@ const NpmDownloads = _ref => {
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LineChart.default, {
         type: type,
         data: _lineChartConfig,
-        options: options || CHART_OPTIONS
+        options: options || _Item.CHART_OPTIONS_LEGEND_TOP
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_NpmPackageInfo.default, {
         isButtons: isButtons,
         packageName: packageName,

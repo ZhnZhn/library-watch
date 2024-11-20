@@ -7,7 +7,10 @@ import Caption from '../ItemCaption';
 import ButtonPackage from '../npm/ButtonPackage';
 import ShowHide from '../../zhn/ShowHide';
 
-import { S_ROOT } from '../Item.Style';
+import {
+  S_ROOT,
+  CHART_OPTIONS_LEGEND_TOP
+} from '../Item.Style';
 
 const S_CAPTION = {
   paddingLeft: 4
@@ -17,11 +20,6 @@ const S_CAPTION = {
 }
 , S_CHART_WRAPPER = {
   paddingTop: 4
-}
-, CHART_OPTIONS = {
-  legend: {
-    position: "top"
-  }
 };
 
 const CrateDownloads = ({
@@ -68,7 +66,7 @@ const CrateDownloads = ({
         <LineChart
            type={type}
            data={_lineChartConfig}
-           options={options || CHART_OPTIONS}
+           options={options || CHART_OPTIONS_LEGEND_TOP}
         />
       </ShowHide>
     </div>
