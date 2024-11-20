@@ -24,8 +24,6 @@ const fGitHubRecentTag = function (_ref) {
   const {
       repo,
       requestType,
-      chartType,
-      browserType,
       key
     } = option,
     tagItem = json[0],
@@ -39,9 +37,9 @@ const fGitHubRecentTag = function (_ref) {
     requestType,
     version: tagItem.name,
     caption: `${repo} ${tagItem.name}`,
-    onCloseItem: (0, _uiApi.bindTo)(onCloseItem, chartType, browserType, key),
     onClickDetail: _onClickDetail,
-    onWatchItem: onWatchItem,
+    onCloseItem,
+    onWatchItem,
     ...parentProps
   });
 };

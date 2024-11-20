@@ -1,4 +1,4 @@
-import { bindTo } from '../uiApi';
+//import { bindTo } from '../uiApi';
 import StatcounterShare from '../items/StatcounterShare';
 
 const _filterEmptyDate = json => json
@@ -72,8 +72,8 @@ const fStatcounter = ({
 }) => {
   const {
     requestType,
-    chartType,
-    browserType,
+    //chartType,
+    //browserType,
     key,
     sourceLink
   } = option
@@ -84,18 +84,18 @@ const fStatcounter = ({
   , _caption = _crCaption(option);
 
   return createElement(StatcounterShare, {
-     key,
-     caption: _caption,
-     requestType,
-     fromDate,
-     toDate,
-     labels,
-     data,
-     sourceLink,
-     onMoveToTop,
-     onCloseItem: bindTo(onCloseItem, chartType, browserType, key),
-     ...parentProps
-  })
+    key,
+    caption: _caption,
+    requestType,
+    fromDate,
+    toDate,
+    labels,
+    data,
+    sourceLink,
+    onMoveToTop,
+    onCloseItem,
+    ...parentProps
+  });
 };
 
 export default fStatcounter

@@ -1,10 +1,7 @@
 import { htmlDecode } from '../../utils/domFn';
 import { safeFormatSec } from '../../utils/formatDate';
 
-import {
-  bindTo,
-  safeMap
-} from '../uiApi';
+import { safeMap } from '../uiApi';
 
 import StackTaggedQuestions from '../items/stack/TaggedQuestions';
 
@@ -37,8 +34,6 @@ const fStackTaggedQuestions = ({
   const {
     repo,
     requestType,
-    chartType,
-    browserType,
     key
   } = option
   , {
@@ -52,11 +47,7 @@ const fStackTaggedQuestions = ({
      requestType,
      caption: repo,
      items: _items,
-     onCloseItem: bindTo(onCloseItem,
-       chartType,
-       browserType,
-       key
-     ),
+     onCloseItem,     
      onWatchItem: onWatchItem,
      ...parentProps
   });

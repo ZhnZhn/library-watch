@@ -36,8 +36,6 @@ const fStackTaggedQuestions = _ref => {
   const {
       repo,
       requestType,
-      chartType,
-      browserType,
       key
     } = option,
     {
@@ -50,7 +48,7 @@ const fStackTaggedQuestions = _ref => {
     requestType,
     caption: repo,
     items: _items,
-    onCloseItem: (0, _uiApi.bindTo)(onCloseItem, chartType, browserType, key),
+    onCloseItem,
     onWatchItem: onWatchItem,
     ...parentProps
   });

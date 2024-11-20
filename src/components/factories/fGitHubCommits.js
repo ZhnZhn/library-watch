@@ -1,4 +1,3 @@
-import { bindTo } from '../uiApi';
 import GitHubCommits from '../items/GitHubCommits';
 
 const fGitHubCommits = function({
@@ -12,20 +11,18 @@ const fGitHubCommits = function({
   const {
     repo,
     requestType,
-    chartType,
-    browserType,
     key
   } = option;
   return createElement(GitHubCommits, {
-      key,
-      repo,
-      requestType,
-      caption: repo,
-      commits: json,
-      onCloseItem: bindTo(onCloseItem, chartType, browserType, key),
-      onWatchItem: onWatchItem,
-      ...parentProps
-  })
-}
+    key,
+    repo,
+    requestType,
+    caption: repo,
+    commits: json,
+    onCloseItem,
+    onWatchItem,
+    ...parentProps
+  });
+};
 
 export default fGitHubCommits

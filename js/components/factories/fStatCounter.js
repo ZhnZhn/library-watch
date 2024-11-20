@@ -3,8 +3,9 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
 var _StatcounterShare = _interopRequireDefault(require("../items/StatcounterShare"));
+//import { bindTo } from '../uiApi';
+
 const _filterEmptyDate = json => json.data.filter(item => Boolean(item.Date));
 const _crArrFromObj = obj => {
   const _arr = [];
@@ -78,8 +79,8 @@ const fStatcounter = _ref => {
   } = _ref;
   const {
       requestType,
-      chartType,
-      browserType,
+      //chartType,
+      //browserType,
       key,
       sourceLink
     } = option,
@@ -101,7 +102,7 @@ const fStatcounter = _ref => {
     data,
     sourceLink,
     onMoveToTop,
-    onCloseItem: (0, _uiApi.bindTo)(onCloseItem, chartType, browserType, key),
+    onCloseItem,
     ...parentProps
   });
 };

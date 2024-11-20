@@ -3,7 +3,6 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
 var _NpmDownloads = _interopRequireDefault(require("../items/npm/NpmDownloads"));
 const FN_NOOP = () => ({}),
   fNpm = function (transformDownloads, crElementProps) {
@@ -21,8 +20,6 @@ const FN_NOOP = () => ({}),
         } = options,
         {
           requestType,
-          chartType,
-          browserType,
           key,
           packageLink
         } = option,
@@ -49,7 +46,7 @@ const FN_NOOP = () => ({}),
         labels,
         data,
         onMoveToTop,
-        onCloseItem: (0, _uiApi.bindTo)(onCloseItem, chartType, browserType, key),
+        onCloseItem,
         ...crElementProps(options),
         ...parentProps
       });

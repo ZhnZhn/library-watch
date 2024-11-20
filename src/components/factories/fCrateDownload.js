@@ -1,7 +1,6 @@
 import {
   isNumber,
-  isStr,
-  bindTo
+  isStr
 } from '../uiApi';
 import CrateDownloads from '../items/crate/CrateDownloads';
 
@@ -89,8 +88,6 @@ const fCrateDownload = (
   } = options
   , {
     repo,
-    chartType,
-    browserType,
     key
   } = option
   , {
@@ -122,7 +119,7 @@ const fCrateDownload = (
     sumDownloads,
     labels,
     data,
-    onCloseItem: bindTo(onCloseItem, chartType, browserType, key),
+    onCloseItem    
   });
 };
 

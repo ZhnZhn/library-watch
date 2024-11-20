@@ -1,4 +1,7 @@
-import { createElement } from '../../components/uiApi';
+import {
+  bindTo,
+  createElement
+} from '../../components/uiApi';
 import RouterItem from '../../components/factories/RouterItem';
 
 import { showAddItem } from '../compStore';
@@ -15,6 +18,7 @@ const createItem = (
   const {
     requestType,
     chartType,
+    browserType,
     key
   } = option
   , _fnFactory = RouterItem[requestType]
@@ -24,10 +28,10 @@ const createItem = (
      option,
      json,
      parentProps,
-     onMoveToTop: moveToTop.bind(null, chartType, key),
-     onCloseItem: closeChart,
+     onMoveToTop: bindTo(moveToTop, chartType, key),
+     onCloseItem: bindTo(closeChart, chartType, browserType, key),
      onWatchItem: showAddItem
    });
-}
+};
 
 export default createItem

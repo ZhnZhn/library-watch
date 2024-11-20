@@ -3,7 +3,6 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
 var _GitHubRecentRelease = _interopRequireDefault(require("../items/GitHubRecentRelease"));
 var _formatStrDate = _interopRequireDefault(require("../../utils/formatStrDate"));
 const fGitHubRecentRelease = function (_ref) {
@@ -18,8 +17,6 @@ const fGitHubRecentRelease = function (_ref) {
   const {
       repo,
       requestType,
-      chartType,
-      browserType,
       key
     } = option,
     {
@@ -38,8 +35,8 @@ const fGitHubRecentRelease = function (_ref) {
     caption: `${repo} ${_version} ${_published_at}`,
     version: _version,
     published_at: _published_at,
-    onCloseItem: (0, _uiApi.bindTo)(onCloseItem, chartType, browserType, key),
-    onWatchItem: onWatchItem,
+    onCloseItem,
+    onWatchItem,
     ...parentProps
   });
 };

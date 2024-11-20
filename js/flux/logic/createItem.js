@@ -11,6 +11,7 @@ const createItem = (option, json, parentProps) => {
   const {
       requestType,
       chartType,
+      browserType,
       key
     } = option,
     _fnFactory = _RouterItem.default[requestType] || _RouterItem.default.DEFAULT;
@@ -19,11 +20,10 @@ const createItem = (option, json, parentProps) => {
     option,
     json,
     parentProps,
-    onMoveToTop: _itemStore.moveToTop.bind(null, chartType, key),
-    onCloseItem: _itemStore.closeChart,
+    onMoveToTop: (0, _uiApi.bindTo)(_itemStore.moveToTop, chartType, key),
+    onCloseItem: (0, _uiApi.bindTo)(_itemStore.closeChart, chartType, browserType, key),
     onWatchItem: _compStore.showAddItem
   });
 };
-var _default = createItem;
-exports.default = _default;
+var _default = exports.default = createItem;
 //# sourceMappingURL=createItem.js.map

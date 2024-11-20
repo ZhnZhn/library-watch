@@ -1,4 +1,3 @@
-import { bindTo } from '../uiApi';
 import NpmDownloads from '../items/npm/NpmDownloads';
 
 const FN_NOOP = () => ({})
@@ -18,8 +17,6 @@ const FN_NOOP = () => ({})
   } = options
   , {
     requestType,
-    chartType,
-    browserType,
     key,
     packageLink
   } = option
@@ -46,10 +43,10 @@ const FN_NOOP = () => ({})
      labels,
      data,
      onMoveToTop,
-     onCloseItem: bindTo(onCloseItem, chartType, browserType, key),
+     onCloseItem,
      ...crElementProps(options),
      ...parentProps
-  })
+  });
 };
 
 export default fNpm

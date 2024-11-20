@@ -55,8 +55,6 @@ const fCrateDownload = options => {
     } = options,
     {
       repo,
-      chartType,
-      browserType,
       key
     } = option,
     {
@@ -78,7 +76,7 @@ const fCrateDownload = options => {
     sumDownloads,
     labels,
     data,
-    onCloseItem: (0, _uiApi.bindTo)(onCloseItem, chartType, browserType, key)
+    onCloseItem
   });
 };
 var _default = exports.default = fCrateDownload;

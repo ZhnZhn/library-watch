@@ -3,7 +3,6 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
 var _GitHubSearchInfo = _interopRequireDefault(require("../items/GitHubSearchInfo"));
 var _formatStrDate = _interopRequireDefault(require("../../utils/formatStrDate"));
 const fGitHubSearchInfo = function (_ref) {
@@ -15,8 +14,6 @@ const fGitHubSearchInfo = function (_ref) {
     onCloseItem
   } = _ref;
   const {
-      chartType,
-      browserType,
       key
     } = option,
     {
@@ -36,7 +33,7 @@ const fGitHubSearchInfo = function (_ref) {
     stars_count: stargazers_count,
     pushed_at: _pushed_at,
     caption: `${full_name} ${stargazers_count} ${_pushed_at}`,
-    onCloseItem: (0, _uiApi.bindTo)(onCloseItem, chartType, browserType, key),
+    onCloseItem,
     ...parentProps
   });
 };
