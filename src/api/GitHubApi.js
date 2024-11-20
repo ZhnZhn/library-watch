@@ -37,12 +37,10 @@ const _rRequestTypeToUrl = {
 const GitHubApi = {
    getRequestUrl: fGetRequestUrl(_rRequestTypeToUrl),
 
-   getOnCheckResponse(){
-     return GitHubApi.checkResponse;
-   },
    crKey({ repo, requestType }){
      return `${repo}_${requestType}`;
    },
+   
    checkResponse(){
      return true;
    }

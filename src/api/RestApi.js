@@ -16,7 +16,7 @@ const RestApi = {
 
    getOnCheckResponse(option){
      const api = RestApi.getApi(option);
-     return api.getOnCheckResponse();
+     return api.checkResponse;
    },
 
    crKey(option){

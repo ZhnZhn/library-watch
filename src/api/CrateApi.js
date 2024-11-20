@@ -6,10 +6,7 @@ const _isArr = Array.isArray;
 const CrateApi = {
   getRequestUrl({ repo }){
     return `${API_URL}/api/v1/crates/${repo}/downloads`;
-  },
-  getOnCheckResponse(){
-    return CrateApi.checkResponse;
-  },
+  },  
   crKey({repo, requestType}){
     return `${repo}_${requestType}`;
   },

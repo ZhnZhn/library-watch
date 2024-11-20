@@ -40,9 +40,6 @@ const _rRequestTypeToUrl = {
 };
 const NpmApi = {
   getRequestUrl: (0, _apiFn.fGetRequestUrl)(_rRequestTypeToUrl),
-  getOnCheckResponse() {
-    return NpmApi.checkResponse;
-  },
   crKey(_ref) {
     let {
       repo,

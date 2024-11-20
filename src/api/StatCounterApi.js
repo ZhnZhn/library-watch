@@ -86,15 +86,10 @@ const StatcounterApi = {
     return csv;
   },
 
-
   crKey: (option) => {
     const { value, region } = option
     , { value: vRegion='' } = region || {};
     return `${vRegion}-${value}`;
-  },
-
-  getOnCheckResponse: () => {
-    return StatcounterApi.checkResponse;
   },
 
   checkResponse: (json, option) => {

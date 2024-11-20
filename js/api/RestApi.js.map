@@ -1,1 +1,28 @@
-{"version":3,"sources":["../../src/api/RestApi.js"],"names":["RestApi","getApi","option","requestType","id","split","RouterApi","getRequestUrl","api","getOnCheckResponse","crKey","checkResponse"],"mappings":";;;;;;;AAEA;;AAEA,IAAMA,OAAO,GAAG;AACbC,EAAAA,MADa,kBACNC,MADM,EACC;AACN,QAAEC,WAAF,GAAkBD,MAAlB,CAAEC,WAAF;AAAA,QACAC,EADA,GACKD,WAAW,CAACE,KAAZ,CAAkB,GAAlB,EAAuB,CAAvB,CADL;AAEN,WAAOC,sBAAUF,EAAV,CAAP;AACD,GALY;AAObG,EAAAA,aAPa,yBAOCL,MAPD,EAOQ;AACnB,QAAMM,GAAG,GAAGR,OAAO,CAACC,MAAR,CAAeC,MAAf,CAAZ;AACA,WAAOM,GAAG,CAACD,aAAJ,CAAkBL,MAAlB,CAAP;AACD,GAVY;AAYbO,EAAAA,kBAZa,8BAYMP,MAZN,EAYa;AACxB,QAAMM,GAAG,GAAGR,OAAO,CAACC,MAAR,CAAeC,MAAf,CAAZ;AACA,WAAOM,GAAG,CAACC,kBAAJ,EAAP;AACD,GAfY;AAiBbC,EAAAA,KAjBa,iBAiBPR,MAjBO,EAiBA;AACX,QAAMM,GAAG,GAAGR,OAAO,CAACC,MAAR,CAAeC,MAAf,CAAZ;AACA,WAAOM,GAAG,CAACE,KAAJ,CAAUR,MAAV,CAAP;AACD,GApBY;AAsBbS,EAAAA,aAtBa,2BAsBE;AACb,WAAO,IAAP;AACD;AAxBY,CAAhB;eA2BeX,O","sourcesContent":["\r\n\r\nimport RouterApi from './RouterApi';\r\n\r\nconst RestApi = {\r\n   getApi(option){\r\n     const { requestType } = option\r\n         , id = requestType.split('_')[0]\r\n     return RouterApi[id];\r\n   },\r\n\r\n   getRequestUrl(option){\r\n     const api = RestApi.getApi(option);\r\n     return api.getRequestUrl(option);\r\n   },\r\n\r\n   getOnCheckResponse(option){\r\n     const api = RestApi.getApi(option);\r\n     return api.getOnCheckResponse();\r\n   },\r\n\r\n   crKey(option){\r\n     const api = RestApi.getApi(option);\r\n     return api.crKey(option);\r\n   },\r\n\r\n   checkResponse(){\r\n     return true;\r\n   }\r\n};\r\n\r\nexport default RestApi\r\n"],"file":"RestApi.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/RestApi.js"
+ ],
+ "file": "../../src/api/RestApi.js",
+ "names": [
+  "_RouterApi",
+  "_interopRequireDefault",
+  "require",
+  "RestApi",
+  "getApi",
+  "option",
+  "requestType",
+  "id",
+  "split",
+  "RouterApi",
+  "getRequestUrl",
+  "api",
+  "getOnCheckResponse",
+  "checkResponse",
+  "crKey",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAEA,IAAAA,UAAA,GAAAC,sBAAA,CAAAC,OAAA;AAEA,MAAMC,OAAO,GAAG;EACbC,MAAMA,CAACC,MAAM,EAAC;IACZ,MAAM;QAAEC;MAAY,CAAC,GAAGD,MAAM;MACxBE,EAAE,GAAGD,WAAW,CAACE,KAAK,CAAC,GAAG,CAAC,CAAC,CAAC,CAAC;IACpC,OAAOC,kBAAS,CAACF,EAAE,CAAC;EACtB,CAAC;EAEDG,aAAaA,CAACL,MAAM,EAAC;IACnB,MAAMM,GAAG,GAAGR,OAAO,CAACC,MAAM,CAACC,MAAM,CAAC;IAClC,OAAOM,GAAG,CAACD,aAAa,CAACL,MAAM,CAAC;EAClC,CAAC;EAEDO,kBAAkBA,CAACP,MAAM,EAAC;IACxB,MAAMM,GAAG,GAAGR,OAAO,CAACC,MAAM,CAACC,MAAM,CAAC;IAClC,OAAOM,GAAG,CAACE,aAAa;EAC1B,CAAC;EAEDC,KAAKA,CAACT,MAAM,EAAC;IACX,MAAMM,GAAG,GAAGR,OAAO,CAACC,MAAM,CAACC,MAAM,CAAC;IAClC,OAAOM,GAAG,CAACG,KAAK,CAACT,MAAM,CAAC;EAC1B,CAAC;EAEDQ,aAAaA,CAAA,EAAE;IACb,OAAO,IAAI;EACb;AACH,CAAC;AAAC,IAAAE,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEad,OAAO"
+}

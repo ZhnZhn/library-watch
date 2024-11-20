@@ -41,10 +41,7 @@ const _rRequestTypeToUrl = {
 
 const NpmApi = {
    getRequestUrl: fGetRequestUrl(_rRequestTypeToUrl),
-
-   getOnCheckResponse(){
-     return NpmApi.checkResponse;
-   },
+   
    crKey({repo, requestType, fromDate=''}){
      return `${repo}_${requestType}_${fromDate}`;
    },

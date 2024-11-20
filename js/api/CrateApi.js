@@ -12,9 +12,6 @@ const CrateApi = {
     } = _ref;
     return `${API_URL}/api/v1/crates/${repo}/downloads`;
   },
-  getOnCheckResponse() {
-    return CrateApi.checkResponse;
-  },
   crKey(_ref2) {
     let {
       repo,

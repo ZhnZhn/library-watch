@@ -34,9 +34,6 @@ const _rRequestTypeToUrl = {
 const StackExchangeApi = {
    getRequestUrl: fGetRequestUrl(_rRequestTypeToUrl, DF_REQUEST_TYPE),
 
-   getOnCheckResponse(){
-     return this.checkResponse;
-   },
    crKey({ repo, requestType }){
      return `${repo}_${requestType}`;
    },
