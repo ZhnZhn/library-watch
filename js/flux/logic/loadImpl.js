@@ -15,10 +15,11 @@ const _fnFetchToChartComp = _ref => {
   onCompleted(option, json);
 };
 const loadItem = (option, onCompleted, onFailed) => {
+  const api = _RestApi.default.getApi(option);
   (0, _fnFetch.default)({
-    uri: _RestApi.default.getRequestUrl(option),
+    uri: api.getRequestUrl(option),
     option: option,
-    onCheckResponse: _RestApi.default.getOnCheckResponse(option),
+    onCheckResponse: api.checkResponse,
     onFetch: _fnFetchToChartComp,
     onCompleted: onCompleted,
     onCatch: _fnCatch.default,

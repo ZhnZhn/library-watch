@@ -16,10 +16,11 @@ const loadItem = (
   onCompleted,
   onFailed
 ) => {
+  const api = RestApi.getApi(option);
   fnFetch({
-    uri : RestApi.getRequestUrl(option),
+    uri : api.getRequestUrl(option),
     option : option,
-    onCheckResponse : RestApi.getOnCheckResponse(option),
+    onCheckResponse : api.checkResponse,
     onFetch : _fnFetchToChartComp,
     onCompleted : onCompleted,
     onCatch : fnCatch,
