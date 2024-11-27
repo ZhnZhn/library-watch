@@ -1,32 +1,28 @@
-import { useCallback } from '../../uiApi';
+import {
+  isFn,
+  useCallback
+} from '../../uiApi';
+
 import useToggle from '../../hooks/useToggle';
-import useMenuMore from '../../hooks/useMenuMore';
+import useItemMenuMore from '../useItemMenuMore';
 
 import { fLineConfig } from '../../charts/ChartConfigFactories';
 
-import crModelMore from '../crNpmModelMore';
-
-import SvgMore from '../../zhn/SvgMore';
 import ShowHide from '../../zhn/ShowHide';
-import ModalSlider from '../../zhn-modal-slider/ModalSlider';
 import LineChart from '../../charts/LineChart';
 import ButtonPackage from './ButtonPackage';
 import ButtonWatch from './ButtonWatch';
 import Caption from '../ItemCaption';
 import NpmPackageInfo from './NpmPackageInfo';
 
-import { CL_MENU_MORE } from '../../styleFn';
 import {
   S_ROOT,
-  S_BT_MORE,
   CHART_OPTIONS_LEGEND_TOP
 } from '../Item.Style';
 
 const ITEM_DESCRIPTION = "Npm Recent Month Downloads"
 , S_CAPTION = { paddingLeft: 4 }
 , S_CHART_WRAPPER = { paddingTop: 4 };
-
-const _isFn = fn => typeof fn === 'function';
 
 const NpmDownloads = ({
   type,
@@ -54,19 +50,13 @@ const NpmDownloads = ({
     toggleIsButtons
   ] = useToggle(true)
   , [
-    _MENU_MODEL,
-    isMenuMore,
-    toggleIsMenuMore,
-    setIsMenuMore
-  ] = useMenuMore(crModelMore, {
-    onMoveToTop,
-    onToggleButtons: toggleIsButtons
-  })
+    MenuMoreEl,
+    BtMenuMoreEl
+  ] = useItemMenuMore(
+      onMoveToTop,
+      toggleIsButtons
+  )
   /*eslint-disable react-hooks/exhaustive-deps */
-  , _showMenuMore = useCallback(() => {
-    setIsMenuMore(true)
-  }, [])
-  // toggleIsMore
   , _hClickWatch = useCallback(() => {
     const _caption = `${packageName} ${sumDownloads}`;
     onWatchItem({
@@ -87,20 +77,12 @@ const NpmDownloads = ({
 
   return (
     <div style={S_ROOT}>
-      <ModalSlider
-         isShow={isMenuMore}
-         className={CL_MENU_MORE}
-         model={_MENU_MODEL}
-         onClose={toggleIsMenuMore}
-      />
+      {MenuMoreEl}
       <Caption
          style={S_CAPTION}
          onClose={onCloseItem}
       >
-        <SvgMore
-          style={S_BT_MORE}
-          onClick={_showMenuMore}
-        />
+        {BtMenuMoreEl}
         <ButtonPackage
            caption={caption}
            packageName={packageName}
@@ -109,7 +91,7 @@ const NpmDownloads = ({
            toDate={toDate}
            onClick={toggleIsShow}
         />
-        { _isFn(onWatchItem) && <ButtonWatch
+        { isFn(onWatchItem) && <ButtonWatch
             onClick={_hClickWatch}
         />}
       </Caption>

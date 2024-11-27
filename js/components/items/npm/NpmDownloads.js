@@ -5,18 +5,14 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../../uiApi");
 var _useToggle = _interopRequireDefault(require("../../hooks/useToggle"));
-var _useMenuMore = _interopRequireDefault(require("../../hooks/useMenuMore"));
+var _useItemMenuMore = _interopRequireDefault(require("../useItemMenuMore"));
 var _ChartConfigFactories = require("../../charts/ChartConfigFactories");
-var _crNpmModelMore = _interopRequireDefault(require("../crNpmModelMore"));
-var _SvgMore = _interopRequireDefault(require("../../zhn/SvgMore"));
 var _ShowHide = _interopRequireDefault(require("../../zhn/ShowHide"));
-var _ModalSlider = _interopRequireDefault(require("../../zhn-modal-slider/ModalSlider"));
 var _LineChart = _interopRequireDefault(require("../../charts/LineChart"));
 var _ButtonPackage = _interopRequireDefault(require("./ButtonPackage"));
 var _ButtonWatch = _interopRequireDefault(require("./ButtonWatch"));
 var _ItemCaption = _interopRequireDefault(require("../ItemCaption"));
 var _NpmPackageInfo = _interopRequireDefault(require("./NpmPackageInfo"));
-var _styleFn = require("../../styleFn");
 var _Item = require("../Item.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 const ITEM_DESCRIPTION = "Npm Recent Month Downloads",
@@ -26,7 +22,6 @@ const ITEM_DESCRIPTION = "Npm Recent Month Downloads",
   S_CHART_WRAPPER = {
     paddingTop: 4
   };
-const _isFn = fn => typeof fn === 'function';
 const NpmDownloads = _ref => {
   let {
     type,
@@ -47,16 +42,8 @@ const NpmDownloads = _ref => {
   } = _ref;
   const [isShow, toggleIsShow] = (0, _useToggle.default)(true),
     [isButtons, toggleIsButtons] = (0, _useToggle.default)(true),
-    [_MENU_MODEL, isMenuMore, toggleIsMenuMore, setIsMenuMore] = (0, _useMenuMore.default)(_crNpmModelMore.default, {
-      onMoveToTop,
-      onToggleButtons: toggleIsButtons
-    })
+    [MenuMoreEl, BtMenuMoreEl] = (0, _useItemMenuMore.default)(onMoveToTop, toggleIsButtons)
     /*eslint-disable react-hooks/exhaustive-deps */,
-    _showMenuMore = (0, _uiApi.useCallback)(() => {
-      setIsMenuMore(true);
-    }, [])
-    // toggleIsMore
-    ,
     _hClickWatch = (0, _uiApi.useCallback)(() => {
       const _caption = `${packageName} ${sumDownloads}`;
       onWatchItem({
@@ -79,25 +66,17 @@ const NpmDownloads = _ref => {
     });
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: _Item.S_ROOT,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider.default, {
-      isShow: isMenuMore,
-      className: _styleFn.CL_MENU_MORE,
-      model: _MENU_MODEL,
-      onClose: toggleIsMenuMore
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption.default, {
+    children: [MenuMoreEl, /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption.default, {
       style: S_CAPTION,
       onClose: onCloseItem,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore.default, {
-        style: _Item.S_BT_MORE,
-        onClick: _showMenuMore
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonPackage.default, {
+      children: [BtMenuMoreEl, /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonPackage.default, {
         caption: caption,
         packageName: packageName,
         sumDownloads: sumDownloads,
         fromDate: fromDate,
         toDate: toDate,
         onClick: toggleIsShow
-      }), _isFn(onWatchItem) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonWatch.default, {
+      }), (0, _uiApi.isFn)(onWatchItem) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonWatch.default, {
         onClick: _hClickWatch
       })]
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ShowHide.default, {

@@ -5,13 +5,10 @@ exports.__esModule = true;
 exports.default = void 0;
 var _styleFn = require("../styleFn");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
-var _useMenuMore = _interopRequireDefault(require("../hooks/useMenuMore"));
+var _useItemMenuMore = _interopRequireDefault(require("./useItemMenuMore"));
 var _ChartConfigFactories = require("../charts/ChartConfigFactories");
-var _crNpmModelMore = _interopRequireDefault(require("./crNpmModelMore"));
 var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
 var _Link = _interopRequireDefault(require("../zhn/Link"));
-var _SvgMore = _interopRequireDefault(require("../zhn/SvgMore"));
-var _ModalSlider = _interopRequireDefault(require("../zhn-modal-slider/ModalSlider"));
 var _LineChart = _interopRequireDefault(require("../charts/LineChart"));
 var _ItemCaption = _interopRequireDefault(require("./ItemCaption"));
 var _Item = require("./Item.Style");
@@ -29,9 +26,6 @@ const S_BT_CAPTION = {
   },
   S_CHART_WRAPER = {
     paddingTop: 12
-  },
-  S_SOURCE_LINK = {
-    margin: "4px 0 0 16px"
   };
 const _crChartConfig = (labels, data) => {
   const _lineChartConfig = (0, _ChartConfigFactories.fLineConfigs)({
@@ -54,24 +48,14 @@ const StatcounterShare = _ref => {
     onCloseItem
   } = _ref;
   const [_isShow, _toggleIsShow] = (0, _useToggle.default)(true),
-    [_MODAL_SLIDER_MODEL, _isMenuMore, _toggleMenuMore, _showMenuMore] = (0, _useMenuMore.default)(_crNpmModelMore.default, {
-      onMoveToTop
-    }),
+    [MenuMoreEl, BtMenuMoreEl] = (0, _useItemMenuMore.default)(onMoveToTop),
     [_lineChartConfig, _height] = _crChartConfig(labels, data);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: _Item.S_ROOT,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider.default, {
-      isShow: _isMenuMore,
-      className: _styleFn.CL_MENU_MORE,
-      model: _MODAL_SLIDER_MODEL,
-      onClose: _toggleMenuMore
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption.default, {
+    children: [MenuMoreEl, /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ItemCaption.default, {
       style: S_CAPTION,
       onClose: onCloseItem,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore.default, {
-        style: _Item.S_BT_MORE,
-        onClick: _showMenuMore
-      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+      children: [BtMenuMoreEl, /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
         className: _styleFn.CL_BT_ITEM,
         title: caption,
         style: S_BT_CAPTION,
@@ -93,7 +77,7 @@ const StatcounterShare = _ref => {
         height: _height
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Link.default, {
         className: _styleFn.CL_SOURCE_LINK,
-        style: S_SOURCE_LINK,
+        style: _Item.S_SOURCE_LINK,
         href: sourceLink,
         children: "Statcounter Chart"
       })]

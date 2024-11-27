@@ -1,26 +1,22 @@
 import {
   CL_BT_ITEM,
-  CL_MENU_MORE,
   CL_SOURCE_LINK
 } from '../styleFn';
 
 import useToggle from '../hooks/useToggle';
-import useMenuMore from '../hooks/useMenuMore';
+import useItemMenuMore from './useItemMenuMore';
 
 import { fLineConfigs } from '../charts/ChartConfigFactories'
-import crModelMore from './crNpmModelMore';
 
 import ShowHide from '../zhn/ShowHide';
 import Link from '../zhn/Link';
-import SvgMore from '../zhn/SvgMore';
-import ModalSlider from '../zhn-modal-slider/ModalSlider';
 import LineChart from '../charts/LineChart';
 import Caption from './ItemCaption';
 
 import {
   S_ROOT,
   S_CAPTION_OPEN,
-  S_BT_MORE
+  S_SOURCE_LINK
 } from './Item.Style';
 
 const S_BT_CAPTION = {
@@ -30,8 +26,7 @@ const S_BT_CAPTION = {
 }
 , S_CAPTION = { paddingLeft: 4 }
 , S_SPAN_START = { padding: "0 10px" }
-, S_CHART_WRAPER = { paddingTop: 12 }
-, S_SOURCE_LINK = { margin: "4px 0 0 16px" };
+, S_CHART_WRAPER = { paddingTop: 12 };
 
 const _crChartConfig = (
   labels,
@@ -58,11 +53,9 @@ const StatcounterShare = ({
      _toggleIsShow
   ] = useToggle(true)
   , [
-      _MODAL_SLIDER_MODEL,
-      _isMenuMore,
-      _toggleMenuMore,
-      _showMenuMore
-  ] = useMenuMore(crModelMore, { onMoveToTop })
+    MenuMoreEl,
+    BtMenuMoreEl
+  ] = useItemMenuMore(onMoveToTop)
   , [
       _lineChartConfig,
       _height
@@ -70,20 +63,12 @@ const StatcounterShare = ({
 
   return (
     <div style={S_ROOT}>
-      <ModalSlider
-        isShow={_isMenuMore}
-        className={CL_MENU_MORE}
-        model={_MODAL_SLIDER_MODEL}
-        onClose={_toggleMenuMore}
-      />
+      {MenuMoreEl}
       <Caption
         style={S_CAPTION}
         onClose={onCloseItem}
       >
-        <SvgMore
-          style={S_BT_MORE}
-          onClick={_showMenuMore}
-        />
+        {BtMenuMoreEl}
         <button
            className={CL_BT_ITEM}
            title={caption}
