@@ -46,11 +46,13 @@ const _crLabelsDataSum = arrDateValue => {
   }
   return [labels, data, sumDownloads];
 };
+const _crSourceLink = repo => `https://crates.io/crates/${repo}`;
 const fCrateDownload = options => {
   const {
       createElement,
       option,
       json,
+      onMoveToTop,
       onCloseItem
     } = options,
     {
@@ -76,6 +78,8 @@ const fCrateDownload = options => {
     sumDownloads,
     labels,
     data,
+    sourceLink: _crSourceLink(repo),
+    onMoveToTop,
     onCloseItem
   });
 };
