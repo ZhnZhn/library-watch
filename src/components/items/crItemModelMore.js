@@ -1,7 +1,7 @@
+import { isFn } from '../uiApi';
 import { CL_ROW_MENU_MORE } from '../styleFn';
 
-const _isFn = fn => typeof fn === 'function'
-, _crItem = (
+const _crItem = (
   name,
   onClick,
   cn=CL_ROW_MENU_MORE,
@@ -13,13 +13,13 @@ const _isFn = fn => typeof fn === 'function'
   isClose
 });
 
-const crNpmModelMore = ({
+const crItemModelMore = ({
   onMoveToTop,
   onToggleButtons
 }) => {
   const p0 = [
     _crItem('Move to Top', onMoveToTop),
-    _isFn(onToggleButtons)
+    isFn(onToggleButtons)
       ? _crItem('Toggle Buttons', onToggleButtons)
       : void 0
   ].filter(Boolean);
@@ -32,4 +32,4 @@ const crNpmModelMore = ({
   };
 };
 
-export default crNpmModelMore
+export default crItemModelMore
