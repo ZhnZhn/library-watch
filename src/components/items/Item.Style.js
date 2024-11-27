@@ -50,3 +50,7 @@ export const CHART_OPTIONS_LEGEND_TOP = {
     position: "top"
   }
 }
+
+export const S_SOURCE_LINK = {
+  margin: "4px 0 0 16px"
+}
