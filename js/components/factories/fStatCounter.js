@@ -4,19 +4,13 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _StatcounterShare = _interopRequireDefault(require("../items/StatcounterShare"));
-//import { bindTo } from '../uiApi';
-
+var _helperFn = require("./helperFn");
 const _filterEmptyDate = json => json.data.filter(item => Boolean(item.Date));
-const _crArrFromObj = obj => {
-  const _arr = [];
-  for (let propName in obj) {
-    _arr.push({
-      caption: propName,
-      value: parseFloat(obj[propName])
-    });
-  }
-  return _arr;
-};
+const _crArrFromObj = obj => (0, _helperFn.getObjectKeys)(obj).map(propName => ({
+  caption: propName,
+  value: parseFloat(obj[propName])
+}));
+const _compareByValue = (a, b) => b.value - a.value;
 const _crTopN = function (arr, top) {
   if (top === void 0) {
     top = 5;
@@ -28,7 +22,7 @@ const _crTopN = function (arr, top) {
     } = arr[arr.length - 1]
     /*eslint-enable no-unused-vars */,
     _arrRecent = _crArrFromObj(rest);
-  _arrRecent.sort((a, b) => b.value - a.value);
+  _arrRecent.sort(_compareByValue);
   const _arrTop = [],
     _toIndex = _arrRecent.length;
   for (let i = 0; i < _toIndex; i++) {
@@ -39,7 +33,7 @@ const _crTopN = function (arr, top) {
   }
   return _arrTop;
 };
-const _fnTransform = json => {
+const _crLabelsDataTuple = json => {
   const labels = [],
     _arrTop5 = _crTopN(json),
     _maxSeria = _arrTop5.length,
@@ -55,19 +49,16 @@ const _fnTransform = json => {
       _arr.push(row[_arr.seriaName]);
     }
   });
-  return {
-    labels,
-    data: arrSeries
-  };
+  return [labels, arrSeries];
 };
-const _crCaption = function (_temp) {
+const _crCaption = _ref => {
   let {
     caption,
-    region = {}
-  } = _temp === void 0 ? {} : _temp;
-  return `${region.caption || ''}: ${caption}`;
+    region
+  } = _ref;
+  return `${(region || {}).caption || ''}: ${caption}`;
 };
-const fStatcounter = _ref => {
+const fStatcounter = _ref2 => {
   let {
     createElement,
     option,
@@ -76,31 +67,17 @@ const fStatcounter = _ref => {
     onMoveToTop,
     onCloseItem,
     onWatchItem
-  } = _ref;
-  const {
-      requestType,
-      //chartType,
-      //browserType,
-      key,
-      sourceLink
-    } = option,
-    _data = _filterEmptyDate(json),
-    {
-      labels,
-      data
-    } = _fnTransform(_data),
-    fromDate = labels[0],
-    toDate = labels[labels.length - 1],
-    _caption = _crCaption(option);
+  } = _ref2;
+  const [labels, data] = _crLabelsDataTuple(_filterEmptyDate(json));
   return createElement(_StatcounterShare.default, {
-    key,
-    caption: _caption,
-    requestType,
-    fromDate,
-    toDate,
+    key: option.key,
+    caption: _crCaption(option),
+    requestType: option.requestType,
+    fromDate: labels[0],
+    toDate: labels[labels.length - 1],
     labels,
     data,
-    sourceLink,
+    sourceLink: option.sourceLink,
     onMoveToTop,
     onCloseItem,
     ...parentProps
