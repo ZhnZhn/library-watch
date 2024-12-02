@@ -3,24 +3,48 @@ import {
   isStr
 } from '../uiApi';
 import CrateDownloads from '../items/crate/CrateDownloads';
+import {
+  getObjectKeys,
+  getArrLength
+} from './helperFn';
+
+//112,15,44 #700f2c
+//181,34,52 #b52234
+//215,103,85 #d76755
+//244,165,130 #f4a582
+//146,197,222 #92c5de
+//82,156,199 #529cc7
+
+const COLORS = [
+  "112,15,44",
+  "181,34,52",
+  "215,103,85",
+  "244,165,130",
+  "146,197,222",
+  "82,156,199"
+];
+const TOTAL_COLOR = "128,192,64"
 
 const _getDate = item => (item || {}).date;
 const _getDownloads = item => (item || {}).downloads;
+const _getVersion = item => (item || {}).version;
 
 const _getDateValue = item => [
   _getDate(item),
-  _getDownloads(item)
+  _getDownloads(item),
+  _getVersion(item)
 ]
 
 const _crLabel = (date) => {
   const _dateTokens = date.split("-");
-  return _dateTokens.length === 3
+  return getArrLength(_dateTokens) === 3
     ? `${_dateTokens[1]}-${_dateTokens[2]}`
     : date;
 };
 
 const _crHm = (extraDownloads) => {
   const _hm = {};
+  const _otherData = []
   for (const item of extraDownloads) {
     const [
       date,
@@ -28,19 +52,26 @@ const _crHm = (extraDownloads) => {
     ] = _getDateValue(item);
     if (isNumber(value) && isStr(date)) {
       _hm[date] = value
+      _otherData.push([date, value])
     }
   }
-  return _hm;
+  _otherData.sort((t1, t2) => t1>t2 ? 1: t1<t2 ? -1 : 0)
+  return [
+    _hm,
+    _otherData.map(t => t[1])
+  ];
 }
 
 const _sumValuesTo = (
   hm,
   downloads
 ) => {
+  const _hmVersions = {};
   for (const item of downloads) {
     const [
       date,
-      value
+      value,
+      version
     ] = _getDateValue(item);
     if (isNumber(value) && isStr(date)) {
       if (isNumber(hm[date])) {
@@ -48,8 +79,19 @@ const _sumValuesTo = (
       } else {
         hm[date] = value
       }
+
+      if (_hmVersions[version]) {
+        _hmVersions[version].push(value)
+      } else {
+        const _data = [value]
+        _data.seriaName = version
+        _hmVersions[version] = _data
+      }
     }
   }
+  return getObjectKeys(_hmVersions)
+    .map(propName => _hmVersions[propName])
+    .sort((arrA, arrB) => arrB.seriaName - arrA.seriaName);
 };
 
 const _crArrDateValue = (
@@ -77,9 +119,48 @@ const _crLabelsDataSum = (
   ];
 };
 
-const _crSourceLink = (
-  repo
-) => `https://crates.io/crates/${repo}`;
+const _updateSeries = (
+  series,
+  seriaName,
+  color
+) => {
+  series.seriaName = seriaName
+  series.color = color
+  return series;
+}
+
+const _updateDataVersions = (
+  totalData,
+  otherData,
+  _dataVersions,
+  _hmVersions
+) => {
+  const _dataLength = getArrLength(totalData);
+  for (let i=0; i<getArrLength(_dataVersions); i++){
+    const _series = _dataVersions[i]
+    , _diffNumber = _dataLength - getArrLength(_series);
+
+    _updateSeries(_series, _hmVersions[_series.seriaName], COLORS[i])
+
+    for (let j=0; j<_diffNumber; j++){
+      _series.unshift(NaN)
+    }
+  }
+
+  _dataVersions.push(
+    _updateSeries(otherData, "Other", COLORS[5]),
+    _updateSeries(totalData, "Total", TOTAL_COLOR)
+  )
+};
+
+const _crHmVersions = (json1) => {
+  const _hm = {}
+  , versions = json1.versions || [];
+  for (let item of versions) {
+    _hm[item.id] = item.num
+  }
+  return _hm;
+};
 
 const fCrateDownload = (
   options
@@ -100,16 +181,26 @@ const fCrateDownload = (
     meta
   } = json
   , _extraDownloads = meta.extra_downloads
-  , _extraDownloadsLength = _extraDownloads.length;
+  , _extraDownloadsLength = getArrLength(_extraDownloads)
 
-  const _hm = _crHm(_extraDownloads);
-  _sumValuesTo(_hm, version_downloads)
-  const arrDateValue = _crArrDateValue(_hm)
+  , [
+    _hm,
+    otherData
+  ] = _crHm(_extraDownloads)
+  , _dataVersions = _sumValuesTo(_hm, version_downloads)
+  , arrDateValue = _crArrDateValue(_hm)
   , [
     labels,
     data,
     sumDownloads
   ] = _crLabelsDataSum(arrDateValue);
+
+  _updateDataVersions(
+    data,
+    otherData,
+    _dataVersions,
+    _crHmVersions(option.json1)
+  )
 
   return createElement(CrateDownloads, {
     key,
@@ -123,8 +214,8 @@ const fCrateDownload = (
       : "",
     sumDownloads,
     labels,
-    data,
-    sourceLink: _crSourceLink(repo),
+    data: _dataVersions,
+    sourceLink: option.sourceLink,
     onMoveToTop,
     onCloseItem
   });
