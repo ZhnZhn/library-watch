@@ -3,31 +3,36 @@
 exports.__esModule = true;
 exports.default = void 0;
 var _apiFn = require("./apiFn");
-const API_URL = "https://crates.io";
-const _isArr = Array.isArray;
+const PROVIDER_URL = "https://crates.io",
+  API_URL = `${PROVIDER_URL}/api/v1/crates`,
+  _isArr = Array.isArray;
 const CrateApi = {
-  getRequestUrl(_ref) {
-    let {
+  getRequestUrl(option) {
+    const {
       repo
-    } = _ref;
-    return `${API_URL}/api/v1/crates/${repo}/downloads`;
+    } = option;
+    option.sourceLink = `${PROVIDER_URL}/crates/${repo}`;
+    return [`${API_URL}/${repo}`, `${API_URL}/${repo}/downloads`];
   },
-  crKey(_ref2) {
+  crKey(_ref) {
     let {
       repo,
       requestType
-    } = _ref2;
+    } = _ref;
     return `${repo}_${requestType}`;
   },
   checkResponse(json, option) {
-    const {
-        meta
-      } = json || {},
-      {
-        extra_downloads
-      } = meta || {};
-    if (!_isArr(extra_downloads)) {
-      throw (0, _apiFn.crErrMsg)("Request Crate", "Incorrect response");
+    if (option.json1) {
+      const {
+          meta
+        } = json || {},
+        {
+          extra_downloads
+        } = meta || {};
+      if (!_isArr(extra_downloads)) {
+        throw (0, _apiFn.crErrMsg)("Request Crate", "Incorrect response");
+      }
+      return true;
     }
     return true;
   }
