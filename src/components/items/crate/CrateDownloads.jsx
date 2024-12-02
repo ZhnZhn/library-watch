@@ -3,7 +3,7 @@ import { CL_SOURCE_LINK } from '../../styleFn';
 import useToggle from '../../hooks/useToggle';
 import useItemMenuMore from '../useItemMenuMore';
 
-import { fLineConfig } from '../../charts/ChartConfigFactories';
+import { fLineConfigs } from '../../charts/ChartConfigFactories';
 import LineChart from '../../charts/LineChart';
 
 import Caption from '../ItemCaption';
@@ -46,7 +46,7 @@ const CrateDownloads = ({
     MenuMoreEl,
     BtMenuMoreEl
   ] = useItemMenuMore(onMoveToTop)
-  , _lineChartConfig = fLineConfig({
+  , _lineChartConfig = fLineConfigs({
     labels,
     data
   });
@@ -82,7 +82,7 @@ const CrateDownloads = ({
           style={S_SOURCE_LINK}
           href={sourceLink}
         >
-            {`crates.io ${packageName}`}
+            {`Crates.io ${packageName}`}
         </Link>
       </ShowHide>
     </div>

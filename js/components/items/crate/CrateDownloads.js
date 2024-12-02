@@ -37,7 +37,7 @@ const CrateDownloads = _ref => {
   } = _ref;
   const [isShow, toggleIsShow] = (0, _useToggle.default)(true),
     [MenuMoreEl, BtMenuMoreEl] = (0, _useItemMenuMore.default)(onMoveToTop),
-    _lineChartConfig = (0, _ChartConfigFactories.fLineConfig)({
+    _lineChartConfig = (0, _ChartConfigFactories.fLineConfigs)({
       labels,
       data
     });
@@ -65,7 +65,7 @@ const CrateDownloads = _ref => {
         className: _styleFn.CL_SOURCE_LINK,
         style: _Item.S_SOURCE_LINK,
         href: sourceLink,
-        children: `crates.io ${packageName}`
+        children: `Crates.io ${packageName}`
       })]
     })]
   });
