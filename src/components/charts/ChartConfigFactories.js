@@ -63,7 +63,7 @@ export const fLineConfigs = ({
   const numColors = COLORS.length
   , datasets = data.map((arr, index) => _crDataset({
       data: arr,
-      strColor: COLORS[index % numColors],
+      strColor: arr.color || COLORS[index % numColors],
       hidden: index >= numVisible ? true : false
   }));
   return {
