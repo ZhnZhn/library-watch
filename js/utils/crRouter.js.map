@@ -1,0 +1,24 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/crRouter.js"
+ ],
+ "file": "../../src/utils/crRouter.js",
+ "names": [
+  "_isTypeFn",
+  "require",
+  "crRouter",
+  "obj",
+  "Object",
+  "assign",
+  "create",
+  "exports",
+  "crGetRoute",
+  "routes",
+  "dfRoute",
+  "_router",
+  "routeId",
+  "isStr"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAEO,MAAMC,QAAQ,GACnBC,GAAG,IACAC,MAAM,CAACC,MAAM,CAACD,MAAM,CAACE,MAAM,CAAC,IAAI,CAAC,EAAEH,GAAG,CAAC;AAAAI,OAAA,CAAAL,QAAA,GAAAA,QAAA;AAErC,MAAMM,UAAU,GAAGA,CACxBC,MAAM,EACNC,OAAO,KACJ;EACH,MAAMC,OAAO,GAAGT,QAAQ,CAACO,MAAM,CAAC;EAChC,OAAOG,OAAO,IAAI,IAAAC,eAAK,EAACD,OAAO,CAAC,GAC5BD,OAAO,CAACC,OAAO,CAAC,IAAIF,OAAO,GAC3BA,OAAO;AACb,CAAC;AAAAH,OAAA,CAAAC,UAAA,GAAAA,UAAA"
+}
