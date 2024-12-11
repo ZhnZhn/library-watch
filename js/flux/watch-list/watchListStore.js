@@ -35,12 +35,9 @@ const getIsWatchEdited = () => _selectIsWatchEdited(_get());
 exports.getIsWatchEdited = getIsWatchEdited;
 const getWatchList = () => _selectWatchList(_get());
 exports.getWatchList = getWatchList;
-const useWatchList = (0, _storeApi.fCrUse)(_watchListStore, _selectWatchList);
-exports.useWatchList = useWatchList;
-const useMsEdit = (0, _storeApi.fCrUse)(_watchListStore, _selectMsEdit);
-exports.useMsEdit = useMsEdit;
-const useIsWatchEdited = (0, _storeApi.fCrUse)(_watchListStore, _selectIsWatchEdited);
-exports.useIsWatchEdited = useIsWatchEdited;
+const useWatchList = exports.useWatchList = (0, _storeApi.fCrUse)(_watchListStore, _selectWatchList);
+const useMsEdit = exports.useMsEdit = (0, _storeApi.fCrUse)(_watchListStore, _selectMsEdit);
+const useIsWatchEdited = exports.useIsWatchEdited = (0, _storeApi.fCrUse)(_watchListStore, _selectIsWatchEdited);
 const getWatchGroups = () => (getWatchList() || {}).groups;
 exports.getWatchGroups = getWatchGroups;
 const getWatchListsByGroup = groupCaption => {
@@ -71,18 +68,12 @@ const _onEditWatch = (result, forActionType) => {
 const _fEditWatch = (editEntity, EDIT_ENTITY) => option => {
   _onEditWatch(editEntity(getWatchList(), option), EDIT_ENTITY);
 };
-const crGroup = _fEditWatch(_GroupFn.addGroup, _WatchActions.WAT_CREATE_GROUP);
-exports.crGroup = crGroup;
-const renGroup = _fEditWatch(_GroupFn.renameGroup, _WatchActions.WAT_RENAME_GROUP);
-exports.renGroup = renGroup;
-const delGroup = _fEditWatch(_GroupFn.deleteGroup, _WatchActions.WAT_DELETE_GROUP);
-exports.delGroup = delGroup;
-const crList = _fEditWatch(_ListFn.addList, _WatchActions.WAT_CREATE_LIST);
-exports.crList = crList;
-const renList = _fEditWatch(_ListFn.renameList, _WatchActions.WAT_RENAME_LIST);
-exports.renList = renList;
-const delList = _fEditWatch(_ListFn.deleteList, _WatchActions.WAT_DELETE_LIST);
-exports.delList = delList;
+const crGroup = exports.crGroup = _fEditWatch(_GroupFn.addGroup, _WatchActions.WAT_CREATE_GROUP);
+const renGroup = exports.renGroup = _fEditWatch(_GroupFn.renameGroup, _WatchActions.WAT_RENAME_GROUP);
+const delGroup = exports.delGroup = _fEditWatch(_GroupFn.deleteGroup, _WatchActions.WAT_DELETE_GROUP);
+const crList = exports.crList = _fEditWatch(_ListFn.addList, _WatchActions.WAT_CREATE_LIST);
+const renList = exports.renList = _fEditWatch(_ListFn.renameList, _WatchActions.WAT_RENAME_LIST);
+const delList = exports.delList = _fEditWatch(_ListFn.deleteList, _WatchActions.WAT_DELETE_LIST);
 const _addItem = _fEditWatch(_ItemFn.addItem, _WatchActions.WAT_ADD_ITEM);
 const _onDragDrop = result => {
   if (result.isDone) {
@@ -99,12 +90,9 @@ const _onDragDrop = result => {
 const _fDdEntity = ddEntity => option => {
   _onDragDrop(ddEntity(getWatchList(), option));
 };
-const ddItem = _fDdEntity(_DragDropFn.dragDropItem);
-exports.ddItem = ddItem;
-const ddList = _fDdEntity(_DragDropFn.dragDropList);
-exports.ddList = ddList;
-const ddGroup = _fDdEntity(_DragDropFn.dragDropGroup);
-exports.ddGroup = ddGroup;
+const ddItem = exports.ddItem = _fDdEntity(_DragDropFn.dragDropItem);
+const ddList = exports.ddList = _fDdEntity(_DragDropFn.dragDropList);
+const ddGroup = exports.ddGroup = _fDdEntity(_DragDropFn.dragDropGroup);
 const _crMsgOption = descr => ({
   caption: DIALOG_CAPTION,
   descr
@@ -158,7 +146,7 @@ const deleteWatchItem = option => {
 exports.deleteWatchItem = deleteWatchItem;
 const backupToJson = () => {
   const yyyymmdd = (0, _dateFn.mlsToYmd)(Date.now()),
-    _fileName = WATCH_FILE_NAME + "_" + yyyymmdd + ".json";
+    _fileName = `${WATCH_FILE_NAME}_${yyyymmdd}.json`;
   (0, _saveJsonToFile.default)(getWatchList(), _fileName);
 };
 exports.backupToJson = backupToJson;

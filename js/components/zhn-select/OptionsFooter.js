@@ -20,7 +20,7 @@ const OptionsFooter = _ref => {
     onClear
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    className: _CL.CL_FOOTER + " " + _CL.CL_NOT_SELECTED,
+    className: `${_CL.CL_FOOTER} ${_CL.CL_NOT_SELECTED}`,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
       className: _CL.CL_FOOTER_INDEX,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {

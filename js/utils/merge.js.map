@@ -1,11 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/utils/merge.js"
- ],
- "file": "../../src/utils/merge.js",
- "names": [
-  "merge"
- ],
- "mappings": ";;;;;AACA;;AADA;eAGeA,c"
-}
+{"version":3,"file":"merge.js","names":["_helpers","require","_default","exports","default","merge"],"sources":["../../src/utils/merge.js"],"sourcesContent":["//import merge from 'lodash.merge';\r\nimport { merge } from 'chart.js/helpers';\r\n\r\nexport default merge\r\n"],"mappings":";;;;AACA,IAAAA,QAAA,GAAAC,OAAA;AADA;AAAA,IAAAC,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAGeC,cAAK","ignoreList":[]}

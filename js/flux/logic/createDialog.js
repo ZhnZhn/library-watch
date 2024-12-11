@@ -18,6 +18,5 @@ const createDialog = (conf, browserType) => {
     ...conf.dialogProps
   }, dialogType);
 };
-var _default = createDialog;
-exports.default = _default;
+var _default = exports.default = createDialog;
 //# sourceMappingURL=createDialog.js.map

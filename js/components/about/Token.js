@@ -1,23 +1,21 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _jsxRuntime = require("react/jsx-runtime");
-
-var Token = function Token(_ref) {
-  var isFirstBlank = _ref.isFirstBlank,
-      color = _ref.color,
-      children = _ref.children;
+const Token = _ref => {
+  let {
+    isFirstBlank,
+    color,
+    children
+  } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
     style: {
-      color: color,
+      color,
       fontWeight: 'bold'
     },
     children: [isFirstBlank ? ' ' : null, children]
   });
 };
-
-var _default = Token;
-exports["default"] = _default;
+var _default = exports.default = Token;
 //# sourceMappingURL=Token.js.map

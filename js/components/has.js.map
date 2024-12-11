@@ -1,18 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/components/has.js"
- ],
- "file": "../../src/components/has.js",
- "names": [
-  "HAS_TOUCH_EVENTS",
-  "exports",
-  "document",
-  "documentElement",
-  "HAS_KEYBOARD_FOCUS",
-  "isWideWidth",
-  "window",
-  "innerWidth"
- ],
- "mappings": ";;;;AAAO,MAAMA,gBAAgB,GAAAC,OAAA,CAAAD,gBAAA,GAAGE,QAAQ,IACnC,cAAc,IAAIA,QAAQ,CAACC,eAAe;AACxC,MAAMC,kBAAkB,GAAAH,OAAA,CAAAG,kBAAA,GAAG,CAACJ,gBAAgB;AAE5C,MAAMK,WAAW,GAAGA,CAAA,KAAMC,MAAM,CAACC,UAAU,GAC9CD,MAAM,CAACC,UAAU,GAAG,GAAG,GACvB,IAAI;AAAAN,OAAA,CAAAI,WAAA,GAAAA,WAAA"
-}
+{"version":3,"file":"has.js","names":["HAS_TOUCH_EVENTS","exports","document","documentElement","HAS_KEYBOARD_FOCUS","isWideWidth","window","innerWidth"],"sources":["../../src/components/has.js"],"sourcesContent":["export const HAS_TOUCH_EVENTS = document\r\n  && 'ontouchstart' in document.documentElement\r\nexport const HAS_KEYBOARD_FOCUS = !HAS_TOUCH_EVENTS  \r\n\r\nexport const isWideWidth = () => window.innerWidth\r\n  ? window.innerWidth > 700\r\n  : true\r\n"],"mappings":";;;;AAAO,MAAMA,gBAAgB,GAAAC,OAAA,CAAAD,gBAAA,GAAGE,QAAQ,IACnC,cAAc,IAAIA,QAAQ,CAACC,eAAe;AACxC,MAAMC,kBAAkB,GAAAH,OAAA,CAAAG,kBAAA,GAAG,CAACJ,gBAAgB;AAE5C,MAAMK,WAAW,GAAGA,CAAA,KAAMC,MAAM,CAACC,UAAU,GAC9CD,MAAM,CAACC,UAAU,GAAG,GAAG,GACvB,IAAI;AAAAN,OAAA,CAAAI,WAAA,GAAAA,WAAA","ignoreList":[]}

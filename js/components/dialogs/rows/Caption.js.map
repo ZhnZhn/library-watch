@@ -1,16 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../../src/components/dialogs/rows/Caption.js"
- ],
- "file": "../../../../src/components/dialogs/rows/Caption.js",
- "names": [
-  "_crCaption",
-  "caption",
-  "indexOf",
-  "Caption",
-  "is",
-  "style"
- ],
- "mappings": ";;;;;;;AACA,IAAMA,UAAU,GAAG,SAAbA,UAAa,CAAAC,OAAO;AAAA,SAAIA,OAAO,IACjCA,OAAO,CAACC,OAAR,CAAgB,GAAhB,MAAyB,CAAC,CADA,GAEzBD,OAAO,GAAG,GAFe,GAGzB,EAHqB;AAAA,CAA1B;;AAKA,IAAME,OAAO,GAAG,SAAVA,OAAU,OAIV;AAAA,MAHJC,EAGI,QAHJA,EAGI;AAAA,MAFJC,KAEI,QAFJA,KAEI;AAAA,MADJJ,OACI,QADJA,OACI;;AACJ,MAAI,CAACG,EAAL,EAAS;AACP,WAAO,IAAP;AACD;;AACD,sBACE;AAAM,IAAA,KAAK,EAAEC,KAAb;AAAA,cACGL,UAAU,CAACC,OAAD;AADb,IADF;AAKD,CAbD;;eAeeE,O"
-}
+{"version":3,"file":"Caption.js","names":["S_LABEL_SPAN","color","display","width","paddingRight","textAlign","fontSize","fontWeight","_crCaption","caption","indexOf","Caption","_ref","is","_jsxRuntime","jsx","style","children","_default","exports","default"],"sources":["../../../../src/components/dialogs/rows/Caption.jsx"],"sourcesContent":["const S_LABEL_SPAN = {\r\n  color: '#1b75bb',\r\n  display: 'inline-block',\r\n  width: 120,\r\n  paddingRight: 5,\r\n  textAlign: 'right',\r\n  fontSize: '16px',\r\n  fontWeight: 'bold'\r\n};\r\n\r\nconst _crCaption = caption => caption\r\n && caption.indexOf(':') === -1\r\n   ? caption + ':'\r\n   : '';\r\n\r\nconst Caption = ({\r\n  is=true,\r\n  caption\r\n}) => is ? (\r\n   <span style={S_LABEL_SPAN}>\r\n     {_crCaption(caption)}\r\n   </span>\r\n ) : null;\r\n\r\nexport default Caption\r\n"],"mappings":";;;;;AAAA,MAAMA,YAAY,GAAG;EACnBC,KAAK,EAAE,SAAS;EAChBC,OAAO,EAAE,cAAc;EACvBC,KAAK,EAAE,GAAG;EACVC,YAAY,EAAE,CAAC;EACfC,SAAS,EAAE,OAAO;EAClBC,QAAQ,EAAE,MAAM;EAChBC,UAAU,EAAE;AACd,CAAC;AAED,MAAMC,UAAU,GAAGC,OAAO,IAAIA,OAAO,IACjCA,OAAO,CAACC,OAAO,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC,GAC1BD,OAAO,GAAG,GAAG,GACb,EAAE;AAEP,MAAME,OAAO,GAAGC,IAAA;EAAA,IAAC;IACfC,EAAE,GAAC,IAAI;IACPJ;EACF,CAAC,GAAAG,IAAA;EAAA,OAAKC,EAAE,gBACL,IAAAC,WAAA,CAAAC,GAAA;IAAMC,KAAK,EAAEhB,YAAa;IAAAiB,QAAA,EACvBT,UAAU,CAACC,OAAO;EAAC,CAChB,CAAC,GACL,IAAI;AAAA;AAAC,IAAAS,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEKT,OAAO","ignoreList":[]}

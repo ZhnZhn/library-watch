@@ -17,10 +17,10 @@ var _hotkeys = require("../hotkeys/hotkeys");
 var _jsxRuntime = require("react/jsx-runtime");
 const TITLE = "Library Watch v0.12.0",
   CL_HEADER = "header",
-  CL_ICON = CL_HEADER + "__icon-app",
-  CL_ABOUT = CL_HEADER + "__bt-about",
-  CL_APP_LABEL = CL_HEADER + "__app-label",
-  CL_LIBRARY = CL_HEADER + "__bt-library",
+  CL_ICON = `${CL_HEADER}__icon-app`,
+  CL_ABOUT = `${CL_HEADER}__bt-about`,
+  CL_APP_LABEL = `${CL_HEADER}__app-label`,
+  CL_LIBRARY = `${CL_HEADER}__bt-library`,
   S_SVG_INFO = {
     position: 'relative',
     top: -2,

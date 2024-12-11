@@ -1,35 +1,30 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-describe('mockDateBeforeAll', function () {
-  test('', function () {
-    return expect('').toBe('');
-  });
+exports.default = void 0;
+describe('mockDateBeforeAll', () => {
+  test('', () => expect('').toBe(''));
 });
-var mockDateBeforeAll = function mockDateBeforeAll(y, m, d, hours, minutes, seconds) {
-  var FIXED_DATE = new Date(y, m, d, hours, minutes, seconds);
+const mockDateBeforeAll = (y, m, d, hours, minutes, seconds) => {
+  const FIXED_DATE = new Date(y, m, d, hours, minutes, seconds);
   /*eslint-disable no-undef*/
-  var NATIVE_DATE_IMP = Date.bind(global.Date);
-  beforeAll(function () {
-    var _Date = Date;
+  const NATIVE_DATE_IMP = Date.bind(global.Date);
+  beforeAll(() => {
+    const _Date = Date;
     //2020-01-01 12:00:01
-    global.Date = jest.fn(function () {
-      return FIXED_DATE;
-    });
+    global.Date = jest.fn(() => FIXED_DATE);
     global.Date.UTC = jest.fn(_Date.UTC);
   });
-  it('log mocked date', function () {
+  it('log mocked date', () => {
     console.log('Mocked Date', new Date().toISOString());
     console.log(Date.UTC(2020, 0, 1), 1577836800000, '2020-01-01 UTC-0');
   });
-  afterAll(function () {
+  afterAll(() => {
     global.Date = NATIVE_DATE_IMP;
     global.Date.UTC = NATIVE_DATE_IMP.UTC;
     console.log('Current Date', new Date().toISOString());
   });
   /*eslint-enable no-undef*/
 };
-var _default = mockDateBeforeAll;
-exports["default"] = _default;
+var _default = exports.default = mockDateBeforeAll;
 //# sourceMappingURL=mockDateBeforeAll.js.map

@@ -13,7 +13,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 const _crValidationMessages = (value, oneTitle) => {
   const msg = [];
   if (!value) {
-    msg.push(oneTitle + " is required");
+    msg.push(`${oneTitle} is required`);
   }
   msg.isValid = msg.length === 0;
   return msg;

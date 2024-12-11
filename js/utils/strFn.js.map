@@ -1,15 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/utils/strFn.js"
- ],
- "file": "../../src/utils/strFn.js",
- "names": [
-  "setFirstToUpperCase",
-  "str",
-  "isNotEmptyStr",
-  "toUpperCase",
-  "substring"
- ],
- "mappings": ";;;;AAAA;AAEO,IAAMA,mBAAmB,GAAG,SAAtBA,mBAAmB,CAC9BC,GAAG;EAAA,OACA,IAAAC,uBAAa,EAACD,GAAG,CAAC,GACnBA,GAAG,CAAC,CAAC,CAAC,CAACE,WAAW,EAAE,GAAGF,GAAG,CAACG,SAAS,CAAC,CAAC,CAAC,GACvCH,GAAG;AAAA;AAAC"
-}
+{"version":3,"file":"strFn.js","names":["_isTypeFn","require","setFirstToUpperCase","str","isNotEmptyStr","toUpperCase","substring","exports"],"sources":["../../src/utils/strFn.js"],"sourcesContent":["import { isNotEmptyStr } from './isTypeFn';\r\n\r\nexport const setFirstToUpperCase = (\r\n  str\r\n) => isNotEmptyStr(str)\r\n  ? str[0].toUpperCase() + str.substring(1)\r\n  : str;\r\n"],"mappings":";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAEO,MAAMC,mBAAmB,GAC9BC,GAAG,IACA,IAAAC,uBAAa,EAACD,GAAG,CAAC,GACnBA,GAAG,CAAC,CAAC,CAAC,CAACE,WAAW,CAAC,CAAC,GAAGF,GAAG,CAACG,SAAS,CAAC,CAAC,CAAC,GACvCH,GAAG;AAACI,OAAA,CAAAL,mBAAA,GAAAA,mBAAA","ignoreList":[]}

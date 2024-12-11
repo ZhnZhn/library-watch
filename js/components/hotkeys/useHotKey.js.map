@@ -1,17 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/hotkeys/useHotKey.js"
- ],
- "file": "../../../src/components/hotkeys/useHotKey.js",
- "names": [
-  "useHotKey",
-  "hotKey",
-  "onKeyDown",
-  "useEffect",
-  "HAS_HOT_KEYS",
-  "addHotKey",
-  "removeHotKey"
- ],
- "mappings": ";;;;AAAA;AAEA;AAMA,IAAMA,SAAS,GAAG,SAAZA,SAAS,CACbC,MAAM,EACNC,SAAS,EACN;EACH;EACA,IAAAC,gBAAS,EAAC;IAAA,OAAMC,uBAAY,IAAIH,MAAM,IAEhC,IAAAI,oBAAS,EAACJ,MAAM,EAAEC,SAAS,CAAC,EAC5B;MAAA,OAAM,IAAAI,uBAAY,EAACL,MAAM,EAAEC,SAAS,CAAC;IAAA,KAEvC,KAAK,CAAC;EAAA,GACR,EAAE,CAAC;EACL;EACA;AACF,CAAC;AAAA,eAEcF,SAAS;AAAA"
-}
+{"version":3,"file":"useHotKey.js","names":["_uiApi","require","_hmHotkeys","useHotKey","hotKey","onKeyDown","useEffect","HAS_HOT_KEYS","addHotKey","removeHotKey","_default","exports","default"],"sources":["../../../src/components/hotkeys/useHotKey.js"],"sourcesContent":["import { useEffect } from '../uiApi';\r\n\r\nimport {\r\n  HAS_HOT_KEYS,\r\n  addHotKey,\r\n  removeHotKey\r\n} from './hm-hotkeys';\r\n\r\nconst useHotKey = (\r\n  hotKey,\r\n  onKeyDown\r\n) => {\r\n  /*eslint-disable react-hooks/exhaustive-deps */\r\n  useEffect(() => HAS_HOT_KEYS && hotKey\r\n    ? (\r\n        addHotKey(hotKey, onKeyDown),\r\n        () => removeHotKey(hotKey, onKeyDown)\r\n      )\r\n    : void 0\r\n  , [])\r\n  //hotKey, onKeyDown\r\n  /*eslint-disable react-hooks/exhaustive-deps */\r\n}\r\n\r\nexport default useHotKey\r\n"],"mappings":";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAEA,IAAAC,UAAA,GAAAD,OAAA;AAMA,MAAME,SAAS,GAAGA,CAChBC,MAAM,EACNC,SAAS,KACN;EACH;EACA,IAAAC,gBAAS,EAAC,MAAMC,uBAAY,IAAIH,MAAM,IAEhC,IAAAI,oBAAS,EAACJ,MAAM,EAAEC,SAAS,CAAC,EAC5B,MAAM,IAAAI,uBAAY,EAACL,MAAM,EAAEC,SAAS,CAAC,IAEvC,KAAK,CAAC,EACR,EAAE,CAAC;EACL;EACA;AACF,CAAC;AAAA,IAAAK,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEcT,SAAS","ignoreList":[]}

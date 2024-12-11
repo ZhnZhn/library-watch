@@ -1,11 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/items/TestItem.js"
- ],
- "file": "../../../src/components/items/TestItem.js",
- "names": [
-  "TestItem"
- ],
- "mappings": ";;;;;;;AACA,IAAMA,QAAQ,GAAG,SAAXA,QAAW;AAAA,sBACf;AAAA;AAAA,IADe;AAAA,CAAjB;;eAIeA,Q"
-}
+{"version":3,"file":"TestItem.js","names":["TestItem","_jsxRuntime","jsx","children","_default","exports","default"],"sources":["../../../src/components/items/TestItem.jsx"],"sourcesContent":["\r\nconst TestItem = () => (\r\n  <span>TestItem</span>\r\n);\r\n\r\nexport default TestItem\r\n"],"mappings":";;;;;AACA,MAAMA,QAAQ,GAAGA,CAAA,kBACf,IAAAC,WAAA,CAAAC,GAAA;EAAAC,QAAA,EAAM;AAAQ,CAAM,CACrB;AAAC,IAAAC,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaN,QAAQ","ignoreList":[]}

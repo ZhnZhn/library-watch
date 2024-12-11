@@ -2,7 +2,7 @@
 
 exports.__esModule = true;
 exports.ModalDialog = exports.ChartType = exports.BrowserType = void 0;
-const ModalDialog = {
+const ModalDialog = exports.ModalDialog = {
   ALERT: 'alert',
   INFO: 'info',
   ADD_ITEM: 'addToWatch',
@@ -11,15 +11,12 @@ const ModalDialog = {
   EDIT_WATCH_LIST: 'editWatchList',
   LOAD_FILE: 'loadFile'
 };
-exports.ModalDialog = ModalDialog;
-const BrowserType = {
+const BrowserType = exports.BrowserType = {
   LIBRARY: 'LW',
   WATCH_LIST: 'WL',
   WATCH_LIST_DB: 'WL_DB'
 };
-exports.BrowserType = BrowserType;
-const ChartType = {
+const ChartType = exports.ChartType = {
   WATCH_LIST: 'WL_WATCH_LIST'
 };
-exports.ChartType = ChartType;
 //# sourceMappingURL=Type.js.map

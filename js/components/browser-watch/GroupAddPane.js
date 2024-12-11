@@ -5,6 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _RowInputText = _interopRequireDefault(require("../dialogs/rows/RowInputText"));
+var _ValidationMessages = _interopRequireDefault(require("../dialogs/rows/ValidationMessages"));
 var _RowButtons = _interopRequireDefault(require("./RowButtons"));
 var _useValidationMessages = _interopRequireDefault(require("../hooks/useValidationMessages"));
 var _useWatchListMsEdit = _interopRequireDefault(require("./useWatchListMsEdit"));
@@ -39,7 +40,7 @@ const GroupAddPane = _ref => {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputText.default, {
       refEl: _refInputText,
       caption: "Group"
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ValidationMessages, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessages.default, {
       validationMessages: validationMessages
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RowButtons.default, {
       caption: "Create",

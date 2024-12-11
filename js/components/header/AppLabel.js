@@ -1,21 +1,19 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _jsxRuntime = require("react/jsx-runtime");
-
-var AppLabel = function AppLabel(_ref) {
-  var className = _ref.className,
-      caption = _ref.caption,
-      title = _ref.title;
+const AppLabel = _ref => {
+  let {
+    className,
+    caption,
+    title
+  } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
     className: className,
     title: title,
     children: caption
   });
 };
-
-var _default = AppLabel;
-exports["default"] = _default;
+var _default = exports.default = AppLabel;
 //# sourceMappingURL=AppLabel.js.map

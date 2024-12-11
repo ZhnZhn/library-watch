@@ -62,7 +62,7 @@ const mlsToYmd = mlsUTC => {
     return '';
   }
   const [d, m, y] = dmy.split('-');
-  return y + "-" + m + "-" + d;
+  return `${y}-${m}-${d}`;
 };
 exports.mlsToYmd = mlsToYmd;
 const ymdToMlsUTC = strDate => {

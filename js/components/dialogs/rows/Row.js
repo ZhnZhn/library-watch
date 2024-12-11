@@ -1,28 +1,25 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _DialogStyles = _interopRequireDefault(require("../../styles/DialogStyles"));
-
+exports.default = void 0;
 var _jsxRuntime = require("react/jsx-runtime");
-
-var Plain = function Plain(_ref) {
-  var style = _ref.style,
-      children = _ref.children;
+const S_ROW_DIV = {
+  display: 'flex',
+  alignItems: 'center',
+  margin: 5
+};
+const Row = _ref => {
+  let {
+    style,
+    children
+  } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    style: (0, _extends2["default"])({}, _DialogStyles["default"].rowDiv, style),
+    style: {
+      ...S_ROW_DIV,
+      ...style
+    },
     children: children
   });
 };
-
-var Row = {
-  Plain: Plain
-};
-var _default = Row;
-exports["default"] = _default;
+var _default = exports.default = Row;
 //# sourceMappingURL=Row.js.map

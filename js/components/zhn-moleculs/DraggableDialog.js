@@ -56,62 +56,58 @@ const DraggableDialog = _ref => {
     _className = (0, _styleFn.crCn)(CL_DRAGGABLE_DIALOG, [isShow, _Dialog.CL_SHOW_POPUP]),
     _styleShow = isShow ? _Dialog.S_SHOW : _Dialog.S_HIDE;
   (0, _useXYMovable.default)(_refRootDiv);
-  return (
-    /*#__PURE__*/
-    /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
-    (0, _jsxRuntime.jsxs)("div", {
-      ref: _refRootDiv,
-      role: "dialog",
-      tabIndex: "-1",
-      "aria-label": caption,
-      "aria-hidden": !isShow,
-      className: _className,
-      style: {
-        ...S_DRAGGABLE_DIALOG,
-        ..._styleShow
-      },
-      onKeyDown: _hKeyDown,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        style: S_CAPTION,
-        children: [menuModel && /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider.default, {
-            isShow: _isMore,
-            className: CL_MENU_MORE,
-            model: menuModel,
-            onClose: _toggleMore
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore.default, {
-            btRef: _refBtMore,
-            style: S_BT_MORE,
-            svgStyle: S_BT_MORE_SVG,
-            onClick: _toggleMore
-          })]
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-          className: CL_NOT_SELECTED,
-          children: caption
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose.default, {
-          style: _Dialog.S_SVG_CLOSE,
-          onClose: onClose
+  return /*#__PURE__*/ /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/(0, _jsxRuntime.jsxs)("div", {
+    ref: _refRootDiv,
+    role: "dialog",
+    tabIndex: "-1",
+    "aria-label": caption,
+    "aria-hidden": !isShow,
+    className: _className,
+    style: {
+      ...S_DRAGGABLE_DIALOG,
+      ..._styleShow
+    },
+    onKeyDown: _hKeyDown,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: S_CAPTION,
+      children: [menuModel && /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider.default, {
+          isShow: _isMore,
+          className: CL_MENU_MORE,
+          model: menuModel,
+          onClose: _toggleMore
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore.default, {
+          btRef: _refBtMore,
+          style: S_BT_MORE,
+          svgStyle: S_BT_MORE_SVG,
+          onClick: _toggleMore
         })]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        children: children
-      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        style: _Dialog.S_COMMAND_DIV,
-        children: [commandButtons, _isFn(onShowChart) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
-          timeout: 0,
-          rootStyle: _Dialog.S_BT_ROOT,
-          caption: "Show",
-          title: "Show Pane Container",
-          onClick: onShowChart
-        }, "show"), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
-          timeout: 0,
-          rootStyle: _Dialog.S_BT_ROOT,
-          caption: "Close",
-          title: "Close Draggable Dialog",
-          onClick: onClose
-        }, "close")]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: CL_NOT_SELECTED,
+        children: caption
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose.default, {
+        style: _Dialog.S_SVG_CLOSE,
+        onClose: onClose
       })]
-    })
-  );
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      children: children
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: _Dialog.S_COMMAND_DIV,
+      children: [commandButtons, _isFn(onShowChart) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
+        timeout: 0,
+        rootStyle: _Dialog.S_BT_ROOT,
+        caption: "Show",
+        title: "Show Pane Container",
+        onClick: onShowChart
+      }, "show"), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
+        timeout: 0,
+        rootStyle: _Dialog.S_BT_ROOT,
+        caption: "Close",
+        title: "Close Draggable Dialog",
+        onClick: onClose
+      }, "close")]
+    })]
+  });
 };
 var _default = exports.default = DraggableDialog;
 //# sourceMappingURL=DraggableDialog.js.map

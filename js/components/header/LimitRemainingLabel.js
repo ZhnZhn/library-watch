@@ -18,6 +18,5 @@ const LimitRemainingLabel = () => {
     children: value
   });
 };
-var _default = LimitRemainingLabel;
-exports.default = _default;
+var _default = exports.default = LimitRemainingLabel;
 //# sourceMappingURL=LimitRemainingLabel.js.map

@@ -14,7 +14,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 const _crValidationMessages = (repo, isValid, datesMsg, oneTitle) => {
   const msg = [];
   if (!repo) {
-    msg.push(oneTitle + " is required");
+    msg.push(`${oneTitle} is required`);
   }
   if (!isValid) {
     msg.push(datesMsg);

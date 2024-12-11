@@ -16,7 +16,7 @@ const INITIAL_FROM_DATE = (0, _dateFn.getFromDate)(1),
   FROM_DATE = "From Date",
   TO_DATE = "To Date",
   ERROR_FROM_NEAR_TO = "From Date is near that To Date",
-  DF_MSG_ON_NOT_VALID_FORMAT = item => item + " is not in valid format",
+  DF_MSG_ON_NOT_VALID_FORMAT = item => `${item} is not in valid format`,
   _getTrimRefInputValue = ref => ((0, _uiApi.getRefInputValue)(ref) || "").trim();
 const RowInputDatePeriod = _ref => {
   let {

@@ -1,27 +1,20 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.writeToLs = exports.readFromLs = exports.hasLocalStorage = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var KEY_PREFIX = 'LW',
+const KEY_PREFIX = 'LW',
   LS = window.localStorage,
   _toLs = JSON.stringify,
   _fromLs = JSON.parse,
-  _crErr = function _crErr(msg) {
-    return {
-      message: msg
-    };
-  },
+  _crErr = msg => ({
+    message: msg
+  }),
   ERR_LS_IS_ABSENT = _crErr("LocalStorage is absent"),
   ERR_USE_LS_NOT_ALLOWED = _crErr("Use LocalStorage is not allowed");
-var hasLocalStorage = !!LS;
-exports.hasLocalStorage = hasLocalStorage;
-var _isAllowUseLs = true;
-var _crStorageKey = function _crStorageKey(storageKey) {
-  return KEY_PREFIX + "_" + storageKey;
-};
-var readFromLs = function readFromLs(storageKey) {
+const hasLocalStorage = exports.hasLocalStorage = !!LS;
+let _isAllowUseLs = true;
+const _crStorageKey = storageKey => `${KEY_PREFIX}_${storageKey}`;
+const readFromLs = storageKey => {
   if (hasLocalStorage) {
     try {
       return [_fromLs(LS[_crStorageKey(storageKey)])];
@@ -29,13 +22,17 @@ var readFromLs = function readFromLs(storageKey) {
       return [void 0, err];
     }
   } else {
-    return [void 0, (0, _extends2["default"])({}, ERR_LS_IS_ABSENT)];
+    return [void 0, {
+      ...ERR_LS_IS_ABSENT
+    }];
   }
 };
 exports.readFromLs = readFromLs;
-var writeToLs = function writeToLs(storageKey, value) {
+const writeToLs = (storageKey, value) => {
   if (!_isAllowUseLs) {
-    return (0, _extends2["default"])({}, ERR_USE_LS_NOT_ALLOWED);
+    return {
+      ...ERR_USE_LS_NOT_ALLOWED
+    };
   }
   if (hasLocalStorage) {
     try {
@@ -44,7 +41,9 @@ var writeToLs = function writeToLs(storageKey, value) {
       return err;
     }
   } else {
-    return (0, _extends2["default"])({}, ERR_LS_IS_ABSENT);
+    return {
+      ...ERR_LS_IS_ABSENT
+    };
   }
 };
 exports.writeToLs = writeToLs;

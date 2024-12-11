@@ -1,16 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/hooks/useThrottleCallback.js"
- ],
- "file": "../../../src/components/hooks/useThrottleCallback.js",
- "names": [
-  "useThrottleCallback",
-  "fn",
-  "deps",
-  "period",
-  "useCallback",
-  "throttleFn"
- ],
- "mappings": ";;;;;AAAA;AACA;AAEA;AACA,IAAMA,mBAAmB,GAAG,SAAtBA,mBAAmB,CACvBC,EAAE,EACFC,IAAI,EACJC,MAAM;EAAA,OACH,IAAAC,kBAAW,EACd,IAAAC,sBAAU,EAACJ,EAAE,EAAEE,MAAM,CAAC,EACtBD,IAAI,IAAI,EAAE,CACX;AAAA;AACD;AAAA,eAEeF,mBAAmB;AAAA"
-}
+{"version":3,"file":"useThrottleCallback.js","names":["_uiApi","require","_throttleFn","_interopRequireDefault","useThrottleCallback","fn","deps","period","useCallback","throttleFn","_default","exports","default"],"sources":["../../../src/components/hooks/useThrottleCallback.js"],"sourcesContent":["import { useCallback } from '../uiApi';\r\nimport throttleFn from '../../utils/throttleFn';\r\n\r\n/*eslint-disable react-hooks/exhaustive-deps */\r\nconst useThrottleCallback = (\r\n  fn,\r\n  deps,\r\n  period\r\n) => useCallback(\r\n  throttleFn(fn, period),\r\n  deps || []\r\n)\r\n/*eslint-enable react-hooks/exhaustive-deps */\r\n\r\nexport default useThrottleCallback\r\n"],"mappings":";;;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AACA,IAAAC,WAAA,GAAAC,sBAAA,CAAAF,OAAA;AAEA;AACA,MAAMG,mBAAmB,GAAGA,CAC1BC,EAAE,EACFC,IAAI,EACJC,MAAM,KACH,IAAAC,kBAAW,EACd,IAAAC,mBAAU,EAACJ,EAAE,EAAEE,MAAM,CAAC,EACtBD,IAAI,IAAI,EACV,CAAC;AACD;AAAA,IAAAI,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEeR,mBAAmB","ignoreList":[]}

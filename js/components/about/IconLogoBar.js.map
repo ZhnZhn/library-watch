@@ -1,14 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/about/IconLogoBar.js"
- ],
- "file": "../../../src/components/about/IconLogoBar.js",
- "names": [
-  "S_ROOT",
-  "paddingTop",
-  "textAlign",
-  "IconLogoBar"
- ],
- "mappings": ";;;;;;;AAAA;;AACA;;;;AAEA,IAAMA,MAAM,GAAG;AACbC,EAAAA,UAAU,EAAE,EADC;AAEbC,EAAAA,SAAS,EAAE;AAFE,CAAf;;AAKA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,sBAClB;AAAK,IAAA,KAAK,EAAEH,MAAZ;AAAA,4BACG,qBAAC,sBAAD;AACG,MAAA,SAAS,EAAC,cADb;AAEG,MAAA,KAAK,EAAC,sBAFT;AAGG,MAAA,GAAG,EAAC;AAHP,MADH,eAMG,qBAAC,qBAAD,KANH;AAAA,IADkB;AAAA,CAApB;;eAWeG,W"
-}
+{"version":3,"file":"IconLogoBar.js","names":["_IconGitHub","_interopRequireDefault","require","_IconReact","_jsxRuntime","S_ROOT","paddingTop","textAlign","IconLogoBar","jsxs","style","children","jsx","default","className","title","href","_default","exports"],"sources":["../../../src/components/about/IconLogoBar.jsx"],"sourcesContent":["import IconGitHub from './IconGitHub';\r\nimport IconReact from './IconReact';\r\n\r\nconst S_ROOT = {\r\n  paddingTop: 20,\r\n  textAlign: 'center'\r\n};\r\n\r\nconst IconLogoBar = () => (\r\n  <div style={S_ROOT}>\r\n     <IconGitHub\r\n        className=\"icon__github\"\r\n        title=\"GitHub Library Watch\"\r\n        href=\"https://github.com/ZhnZhn/library-watch.git\"\r\n     />\r\n     <IconReact />\r\n  </div>\r\n);\r\n\r\nexport default IconLogoBar\r\n"],"mappings":";;;;;AAAA,IAAAA,WAAA,GAAAC,sBAAA,CAAAC,OAAA;AACA,IAAAC,UAAA,GAAAF,sBAAA,CAAAC,OAAA;AAAoC,IAAAE,WAAA,GAAAF,OAAA;AAEpC,MAAMG,MAAM,GAAG;EACbC,UAAU,EAAE,EAAE;EACdC,SAAS,EAAE;AACb,CAAC;AAED,MAAMC,WAAW,GAAGA,CAAA,kBAClB,IAAAJ,WAAA,CAAAK,IAAA;EAAKC,KAAK,EAAEL,MAAO;EAAAM,QAAA,gBAChB,IAAAP,WAAA,CAAAQ,GAAA,EAACZ,WAAA,CAAAa,OAAU;IACRC,SAAS,EAAC,cAAc;IACxBC,KAAK,EAAC,sBAAsB;IAC5BC,IAAI,EAAC;EAA6C,CACpD,CAAC,eACF,IAAAZ,WAAA,CAAAQ,GAAA,EAACT,UAAA,CAAAU,OAAS,IAAE,CAAC;AAAA,CACX,CACN;AAAC,IAAAI,QAAA,GAAAC,OAAA,CAAAL,OAAA,GAEaL,WAAW","ignoreList":[]}

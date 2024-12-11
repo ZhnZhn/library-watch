@@ -1,52 +1,50 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-var LIMIT_REMAINING = 'X-RateLimit-Remaining';
-
-var fetchJson = function fetchJson(_ref) {
-  var uri = _ref.uri,
-      option = _ref.option,
-      onFetch = _ref.onFetch,
-      onCheckResponse = _ref.onCheckResponse,
-      onCompleted = _ref.onCompleted,
-      onCatch = _ref.onCatch,
-      onFailed = _ref.onFailed,
-      _crErr = _ref._crErr,
-      _nowTime = _ref._nowTime,
-      _doneOk = _ref._doneOk,
-      _doneFailure = _ref._doneFailure;
-  return fetch(uri).then(function (response) {
-    var status = response.status,
-        headers = response.headers;
+exports.default = void 0;
+const LIMIT_REMAINING = 'X-RateLimit-Remaining';
+const fetchJson = _ref => {
+  let {
+    uri,
+    option,
+    onFetch,
+    onCheckResponse,
+    onCompleted,
+    onCatch,
+    onFailed,
+    _crErr,
+    _nowTime,
+    _doneOk,
+    _doneFailure
+  } = _ref;
+  return fetch(uri).then(response => {
+    const {
+      status,
+      headers
+    } = response;
     option.limitRemaining = headers.get(LIMIT_REMAINING);
-
     if (status >= 200 && status <= 400) {
       return response.json();
     } else {
       throw _crErr(response);
     }
-  }).then(function (json) {
+  }).then(json => {
     if (onCheckResponse(json, option)) {
       onFetch({
-        json: json,
-        option: option,
-        onCompleted: onCompleted
+        json,
+        option,
+        onCompleted
       });
     }
-
     _doneOk(_nowTime);
-  })["catch"](function (error) {
+  }).catch(error => {
     onCatch({
-      error: error,
-      option: option,
-      onFailed: onFailed
+      error,
+      option,
+      onFailed
     });
-
     _doneFailure(_nowTime);
   });
 };
-
-var _default = fetchJson;
-exports["default"] = _default;
+var _default = exports.default = fetchJson;
 //# sourceMappingURL=fetchJson.js.map

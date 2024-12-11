@@ -1,14 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/flux/actions/LoadingProgressActions.js"
- ],
- "file": "../../../src/flux/actions/LoadingProgressActions.js",
- "names": [
-  "LPAT_LOADING",
-  "exports",
-  "LPAT_LOADING_COMPLETE",
-  "LPAT_LOADING_FAILED"
- ],
- "mappings": ";;;;AAAO,MAAMA,YAAY,GAAG,SAAS;AAAAC,OAAA,CAAAD,YAAA,GAAAA,YAAA;AAC9B,MAAME,qBAAqB,GAAG,iBAAiB;AAAAD,OAAA,CAAAC,qBAAA,GAAAA,qBAAA;AAC/C,MAAMC,mBAAmB,GAAG,eAAe;AAAAF,OAAA,CAAAE,mBAAA,GAAAA,mBAAA"
-}
+{"version":3,"file":"LoadingProgressActions.js","names":["LPAT_LOADING","exports","LPAT_LOADING_COMPLETE","LPAT_LOADING_FAILED"],"sources":["../../../src/flux/actions/LoadingProgressActions.js"],"sourcesContent":["export const LPAT_LOADING = 'loading'\r\nexport const LPAT_LOADING_COMPLETE = 'loadingComplete'\r\nexport const LPAT_LOADING_FAILED = 'loadingFailed'\r\n"],"mappings":";;;;AAAO,MAAMA,YAAY,GAAAC,OAAA,CAAAD,YAAA,GAAG,SAAS;AAC9B,MAAME,qBAAqB,GAAAD,OAAA,CAAAC,qBAAA,GAAG,iBAAiB;AAC/C,MAAMC,mBAAmB,GAAAF,OAAA,CAAAE,mBAAA,GAAG,eAAe","ignoreList":[]}

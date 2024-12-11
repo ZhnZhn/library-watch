@@ -242,6 +242,5 @@ InputSelect.propTypes = {
    onSelect: PropTypes.func,
 }
 */
-var _default = InputSelect;
-exports.default = _default;
+var _default = exports.default = InputSelect;
 //# sourceMappingURL=InputSelect.js.map

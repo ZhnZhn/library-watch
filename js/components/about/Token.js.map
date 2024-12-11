@@ -1,15 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/about/Token.js"
- ],
- "file": "../../../src/components/about/Token.js",
- "names": [
-  "Token",
-  "isFirstBlank",
-  "color",
-  "children",
-  "fontWeight"
- ],
- "mappings": ";;;;;;;AACA,IAAMA,KAAK,GAAG,SAARA,KAAQ;AAAA,MACZC,YADY,QACZA,YADY;AAAA,MAEZC,KAFY,QAEZA,KAFY;AAAA,MAGZC,QAHY,QAGZA,QAHY;AAAA,sBAKZ;AAAM,IAAA,KAAK,EAAE;AAAED,MAAAA,KAAK,EAALA,KAAF;AAASE,MAAAA,UAAU,EAAE;AAArB,KAAb;AAAA,eACGH,YAAY,GAAG,GAAH,GAAS,IADxB,EAEGE,QAFH;AAAA,IALY;AAAA,CAAd;;eAWeH,K"
-}
+{"version":3,"file":"Token.js","names":["Token","_ref","isFirstBlank","color","children","_jsxRuntime","jsxs","style","fontWeight","_default","exports","default"],"sources":["../../../src/components/about/Token.jsx"],"sourcesContent":["\r\nconst Token = ({\r\n  isFirstBlank,\r\n  color,\r\n  children\r\n}) => (\r\n  <span style={{ color, fontWeight: 'bold' }}>\r\n    {isFirstBlank ? ' ' : null}\r\n    {children}\r\n  </span>\r\n);\r\n\r\nexport default Token\r\n"],"mappings":";;;;;AACA,MAAMA,KAAK,GAAGC,IAAA;EAAA,IAAC;IACbC,YAAY;IACZC,KAAK;IACLC;EACF,CAAC,GAAAH,IAAA;EAAA,oBACC,IAAAI,WAAA,CAAAC,IAAA;IAAMC,KAAK,EAAE;MAAEJ,KAAK;MAAEK,UAAU,EAAE;IAAO,CAAE;IAAAJ,QAAA,GACxCF,YAAY,GAAG,GAAG,GAAG,IAAI,EACzBE,QAAQ;EAAA,CACL,CAAC;AAAA,CACR;AAAC,IAAAK,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaX,KAAK","ignoreList":[]}

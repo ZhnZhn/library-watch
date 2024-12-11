@@ -6,7 +6,7 @@ exports.default = void 0;
 var _SvgClose = _interopRequireDefault(require("../zhn/SvgClose"));
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_ITEM_CAPTION = 'item-caption',
-  CL_BT_CLOSE = CL_ITEM_CAPTION + "__bt-close";
+  CL_BT_CLOSE = `${CL_ITEM_CAPTION}__bt-close`;
 const ItemCaption = _ref => {
   let {
     style,

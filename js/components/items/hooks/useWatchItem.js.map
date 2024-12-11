@@ -1,15 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../../src/components/items/hooks/useWatchItem.js"
- ],
- "file": "../../../../src/components/items/hooks/useWatchItem.js",
- "names": [
-  "useWatchItem",
-  "onWatchItem",
-  "props",
-  "itemDescription",
-  "crCaption"
- ],
- "mappings": ";;;;;;;AAAA;;AAEA;;AAEA,IAAMA,YAAY,GAAG,SAAfA,YAAe,CACnBC,WADmB,EAEnBC,KAFmB,EAGnBC,eAHmB,EAInBC,SAJmB;AAAA,SAKhB,wBAAY,YAAM;AACpBH,IAAAA,WAAW,CAAC,6BAAYC,KAAZ,EAAmBC,eAAnB,EAAoCC,SAApC,CAAD,CAAX,CADoB,CAEvB;AACC,GAHI,EAGF,EAHE,CALgB;AAAA,CAArB;;eAUeJ,Y"
-}
+{"version":3,"file":"useWatchItem.js","names":["_uiApi","require","_crItemWatch","_interopRequireDefault","useWatchItem","onWatchItem","props","itemDescription","crCaption","useCallback","crItemWatch","_default","exports","default"],"sources":["../../../../src/components/items/hooks/useWatchItem.js"],"sourcesContent":["import { useCallback } from '../../uiApi';\r\n\r\nimport crItemWatch from './crItemWatch';\r\n\r\nconst useWatchItem = (\r\n  onWatchItem,\r\n  props,\r\n  itemDescription,\r\n  crCaption\r\n) => useCallback(() => {\r\n   onWatchItem(crItemWatch(props, itemDescription, crCaption));\r\n//eslint-disable-next-line react-hooks/exhaustive-deps\r\n}, []);\r\n\r\nexport default useWatchItem\r\n"],"mappings":";;;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAEA,IAAAC,YAAA,GAAAC,sBAAA,CAAAF,OAAA;AAEA,MAAMG,YAAY,GAAGA,CACnBC,WAAW,EACXC,KAAK,EACLC,eAAe,EACfC,SAAS,KACN,IAAAC,kBAAW,EAAC,MAAM;EACpBJ,WAAW,CAAC,IAAAK,oBAAW,EAACJ,KAAK,EAAEC,eAAe,EAAEC,SAAS,CAAC,CAAC;EAC9D;AACA,CAAC,EAAE,EAAE,CAAC;AAAC,IAAAG,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEQT,YAAY","ignoreList":[]}

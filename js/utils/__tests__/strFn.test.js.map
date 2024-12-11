@@ -1,18 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/utils/__tests__/strFn.test.js"
- ],
- "file": "../../../src/utils/__tests__/strFn.test.js",
- "names": [
-  "describe",
-  "fn",
-  "setFirstToUpperCase",
-  "test",
-  "expect",
-  "toBe",
-  "obj",
-  "fnInput"
- ],
- "mappings": ";;AAAA;AAIAA,QAAQ,CAAC,qBAAqB,EAAC,YAAI;EACjC,IAAMC,EAAE,GAAGC,0BAAmB;EAC9BC,IAAI,CAAC,wCAAwC,EAAC,YAAI;IAChDC,MAAM,CAACH,EAAE,CAAC,KAAK,CAAC,CAAC,CAACI,IAAI,CAAC,KAAK,CAAC;EAC/B,CAAC,CAAC;EACFF,IAAI,CAAC,gCAAgC,EAAC,YAAI;IACxCC,MAAM,CAACH,EAAE,CAAC,EAAE,CAAC,CAAC,CAACI,IAAI,CAAC,EAAE,CAAC;IAEvBD,MAAM,CAACH,EAAE,EAAE,CAAC,CAACI,IAAI,EAAE;IACnBD,MAAM,CAACH,EAAE,CAAC,IAAI,CAAC,CAAC,CAACI,IAAI,CAAC,IAAI,CAAC;IAC3BD,MAAM,CAACH,EAAE,CAAC,CAAC,CAAC,CAAC,CAACI,IAAI,CAAC,CAAC,CAAC;IACrBD,MAAM,CAACH,EAAE,CAAC,IAAI,CAAC,CAAC,CAACI,IAAI,CAAC,IAAI,CAAC;IAE3B,IAAMC,GAAG,GAAG,CAAC,CAAC;IACdF,MAAM,CAACH,EAAE,CAACK,GAAG,CAAC,KAAKA,GAAG,CAAC,CAACD,IAAI,CAAC,IAAI,CAAC;IAClC,IAAME,OAAO,GAAG,SAAVA,OAAO,GAAS,CAAC,CAAC;IACxBH,MAAM,CAACH,EAAE,CAACM,OAAO,CAAC,KAAKA,OAAO,CAAC,CAACF,IAAI,CAAC,IAAI,CAAC;EAC5C,CAAC,CAAC;AACJ,CAAC,CAAC"
-}
+{"version":3,"file":"strFn.test.js","names":["_strFn","require","describe","fn","setFirstToUpperCase","test","expect","toBe","obj","fnInput"],"sources":["../../../src/utils/__tests__/strFn.test.js"],"sourcesContent":["import {\r\n  setFirstToUpperCase\r\n} from '../strFn';\r\n\r\ndescribe('setFirstToUpperCase',()=>{\r\n  const fn = setFirstToUpperCase;\r\n  test('return str with upperCase first letter',()=>{\r\n    expect(fn('abc')).toBe('Abc')\r\n  })\r\n  test('return input in all edge cases',()=>{\r\n    expect(fn('')).toBe('')\r\n\r\n    expect(fn()).toBe()\r\n    expect(fn(null)).toBe(null)\r\n    expect(fn(1)).toBe(1)\r\n    expect(fn(true)).toBe(true)\r\n\r\n    const obj = {}\r\n    expect(fn(obj) === obj).toBe(true)\r\n    const fnInput = () => {}\r\n    expect(fn(fnInput) === fnInput).toBe(true)\r\n  })\r\n})\r\n"],"mappings":";;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAIAC,QAAQ,CAAC,qBAAqB,EAAC,MAAI;EACjC,MAAMC,EAAE,GAAGC,0BAAmB;EAC9BC,IAAI,CAAC,wCAAwC,EAAC,MAAI;IAChDC,MAAM,CAACH,EAAE,CAAC,KAAK,CAAC,CAAC,CAACI,IAAI,CAAC,KAAK,CAAC;EAC/B,CAAC,CAAC;EACFF,IAAI,CAAC,gCAAgC,EAAC,MAAI;IACxCC,MAAM,CAACH,EAAE,CAAC,EAAE,CAAC,CAAC,CAACI,IAAI,CAAC,EAAE,CAAC;IAEvBD,MAAM,CAACH,EAAE,CAAC,CAAC,CAAC,CAACI,IAAI,CAAC,CAAC;IACnBD,MAAM,CAACH,EAAE,CAAC,IAAI,CAAC,CAAC,CAACI,IAAI,CAAC,IAAI,CAAC;IAC3BD,MAAM,CAACH,EAAE,CAAC,CAAC,CAAC,CAAC,CAACI,IAAI,CAAC,CAAC,CAAC;IACrBD,MAAM,CAACH,EAAE,CAAC,IAAI,CAAC,CAAC,CAACI,IAAI,CAAC,IAAI,CAAC;IAE3B,MAAMC,GAAG,GAAG,CAAC,CAAC;IACdF,MAAM,CAACH,EAAE,CAACK,GAAG,CAAC,KAAKA,GAAG,CAAC,CAACD,IAAI,CAAC,IAAI,CAAC;IAClC,MAAME,OAAO,GAAGA,CAAA,KAAM,CAAC,CAAC;IACxBH,MAAM,CAACH,EAAE,CAACM,OAAO,CAAC,KAAKA,OAAO,CAAC,CAACF,IAAI,CAAC,IAAI,CAAC;EAC5C,CAAC,CAAC;AACJ,CAAC,CAAC","ignoreList":[]}

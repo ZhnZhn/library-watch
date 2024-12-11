@@ -1,27 +1,27 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-var _crFilteredOptions = function _crFilteredOptions(options, value, caption) {
-  var valueFor = value.toLowerCase();
-  return (options || []).filter(function (option) {
-    return option[caption].toLowerCase().indexOf(valueFor) !== -1;
-  });
+exports.default = void 0;
+const _crFilteredOptions = (options, value, caption) => {
+  const valueFor = value.toLowerCase();
+  return (options || []).filter(option => option[caption].toLowerCase().indexOf(valueFor) !== -1);
 };
-var INPUT_PREFIX = 'From input:';
-var _crItemNotFounded = function _crItemNotFounded(inputValue, propCaption, isWithInput) {
-  var _ref;
-  var _inputValue = String(inputValue).replace(INPUT_PREFIX, '').trim(),
-    _caption = isWithInput ? INPUT_PREFIX + " " + _inputValue : 'No results found';
-  return _ref = {}, _ref[propCaption] = _caption, _ref.value = 'noresult', _ref.inputValue = _inputValue, _ref;
+const INPUT_PREFIX = 'From input:';
+const _crItemNotFounded = (inputValue, propCaption, isWithInput) => {
+  const _inputValue = String(inputValue).replace(INPUT_PREFIX, '').trim(),
+    _caption = isWithInput ? `${INPUT_PREFIX} ${_inputValue}` : 'No results found';
+  return {
+    [propCaption]: _caption,
+    value: 'noresult',
+    inputValue: _inputValue
+  };
 };
-var crFilteredOptions = function crFilteredOptions(token, options, propCaption, isWithInput) {
-  var _filteredOptions = _crFilteredOptions(options, token, propCaption);
+const crFilteredOptions = (token, options, propCaption, isWithInput) => {
+  const _filteredOptions = _crFilteredOptions(options, token, propCaption);
   if (_filteredOptions.length === 0) {
     _filteredOptions.push(_crItemNotFounded(token, propCaption, isWithInput));
   }
   return _filteredOptions;
 };
-var _default = crFilteredOptions;
-exports["default"] = _default;
+var _default = exports.default = crFilteredOptions;
 //# sourceMappingURL=crFilteredOptions.js.map

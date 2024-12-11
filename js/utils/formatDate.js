@@ -9,7 +9,7 @@ const PERIODS = [['just now', 999], ['sec', 1000], ['min', 60 * 1000], ['hour', 
 const _crTimeAgo = (diff, i) => {
   const [periodStr, periodMsl] = PERIODS[i],
     v = Math.round(diff / periodMsl);
-  return v + " " + periodStr + (v === 1 ? '' : 's') + " ago";
+  return `${v} ${periodStr}${v === 1 ? '' : 's'} ago`;
 };
 const _formatMls = (mls, nowMls) => {
   const _nowMls = nowMls || Date.now(),

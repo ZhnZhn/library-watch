@@ -1,11 +1,11 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-var _hasOwnProperty = Object.prototype.hasOwnProperty;
-var omit = function omit(obj, keys) {
-  var target = {};
-  for (var propName in obj) {
+exports.default = void 0;
+const _hasOwnProperty = Object.prototype.hasOwnProperty;
+const omit = (obj, keys) => {
+  const target = {};
+  for (let propName in obj) {
     if (keys.indexOf(propName) >= 0 || !_hasOwnProperty.call(obj, propName)) {
       continue;
     }
@@ -13,6 +13,5 @@ var omit = function omit(obj, keys) {
   }
   return target;
 };
-var _default = omit;
-exports["default"] = _default;
+var _default = exports.default = omit;
 //# sourceMappingURL=omit.js.map

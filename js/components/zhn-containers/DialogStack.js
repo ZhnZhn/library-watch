@@ -110,6 +110,5 @@ const DialogStack = _ref => {
     })
   });
 };
-var _default = DialogStack;
-exports.default = _default;
+var _default = exports.default = DialogStack;
 //# sourceMappingURL=DialogStack.js.map

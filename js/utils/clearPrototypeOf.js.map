@@ -1,15 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/utils/clearPrototypeOf.js"
- ],
- "file": "../../src/utils/clearPrototypeOf.js",
- "names": [
-  "clearPrototypeOf",
-  "obj",
-  "Object",
-  "setPrototypeOf",
-  "exports"
- ],
- "mappings": ";;;;AACO,MAAMA,gBAAgB,GAAIC,GAAG,IAAK;EACvCC,MAAM,CAACC,cAAc,CAACF,GAAG,EAAE,IAAI,CAAC;AAClC,CAAC;AAAAG,OAAA,CAAAJ,gBAAA,GAAAA,gBAAA"
-}
+{"version":3,"file":"clearPrototypeOf.js","names":["clearPrototypeOf","obj","Object","setPrototypeOf","exports"],"sources":["../../src/utils/clearPrototypeOf.js"],"sourcesContent":["\r\nexport const clearPrototypeOf = (obj) => {\r\n  Object.setPrototypeOf(obj, null)\r\n}\r\n"],"mappings":";;;;AACO,MAAMA,gBAAgB,GAAIC,GAAG,IAAK;EACvCC,MAAM,CAACC,cAAc,CAACF,GAAG,EAAE,IAAI,CAAC;AAClC,CAAC;AAAAG,OAAA,CAAAJ,gBAAA,GAAAA,gBAAA","ignoreList":[]}

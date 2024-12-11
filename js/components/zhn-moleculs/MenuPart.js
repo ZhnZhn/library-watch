@@ -9,7 +9,7 @@ var _AtomCounter = _interopRequireDefault(require("../zhn/AtomCounter"));
 var _OpenClose = _interopRequireDefault(require("../zhn/OpenClose2"));
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_NOT_SELECTED = (0, _styleFn.crClNotSelected)(),
-  CL_ROW_ITEM = "row__topic",
+  CL_ROW_ITEM = `row__topic`,
   FILL_OPEN = '#1b2836',
   FILL_CLOSE = 'transparent',
   S_CAPTION_ROW = {
@@ -50,7 +50,7 @@ const MenuPart = _ref2 => {
     caption: caption,
     isClose: isInitClose,
     children: (items || []).map((item, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)(MenuItem, {
-      className: (rowClass || CL_ROW_ITEM) + " " + CL_NOT_SELECTED,
+      className: `${rowClass || CL_ROW_ITEM} ${CL_NOT_SELECTED}`,
       item: item
     }, item.id || index))
   });

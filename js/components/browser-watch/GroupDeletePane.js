@@ -60,6 +60,5 @@ GroupDeletePane.propTypes = {
   onClose: PropTypes.func
 }
 */
-var _default = GroupDeletePane;
-exports.default = _default;
+var _default = exports.default = GroupDeletePane;
 //# sourceMappingURL=GroupDeletePane.js.map

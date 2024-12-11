@@ -15,6 +15,5 @@ const useGroupOptions = store => {
     };
   return [groupOptions, updateGroupOptions];
 };
-var _default = useGroupOptions;
-exports.default = _default;
+var _default = exports.default = useGroupOptions;
 //# sourceMappingURL=useGroupOptions.js.map

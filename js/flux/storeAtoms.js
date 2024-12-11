@@ -10,10 +10,8 @@ const _atomLoading = (0, _storeApi.atom)(),
   _setLimitRemaining = limitRemaining => {
     _atomLimitRemaining.setValue(limitRemaining == null ? void 0 : limitRemaining);
   };
-const useLoading = _atomLoading.useAtomValue;
-exports.useLoading = useLoading;
-const useLimitRemaining = _atomLimitRemaining.useAtomValue;
-exports.useLimitRemaining = useLimitRemaining;
+const useLoading = exports.useLoading = _atomLoading.useAtomValue;
+const useLimitRemaining = exports.useLimitRemaining = _atomLimitRemaining.useAtomValue;
 const setLoading = () => _setLoading(_LoadingProgressActions.LPAT_LOADING);
 exports.setLoading = setLoading;
 const setLoadingComplete = limitRemaining => {

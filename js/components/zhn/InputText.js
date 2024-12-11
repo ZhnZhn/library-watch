@@ -6,8 +6,8 @@ var _uiApi = require("../uiApi");
 var _has = require("../has");
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_FIELD = 'm-field',
-  CL_INPUT = CL_FIELD + "__input",
-  CL_BT_CLEAR = CL_FIELD + "__bt-clear";
+  CL_INPUT = `${CL_FIELD}__input`,
+  CL_BT_CLEAR = `${CL_FIELD}__bt-clear`;
 const _isKeyClean = _ref => {
   let {
     keyCode

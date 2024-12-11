@@ -1,11 +1,10 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-var _assign = Object.assign;
-
-var configChart = function configChart(Chart) {
-  var _d = Chart.defaults;
+exports.default = void 0;
+const _assign = Object.assign;
+const configChart = Chart => {
+  const _d = Chart.defaults;
   _d.color = 'black';
   _d.font.size = 14;
   _d.font.weight = 'bold';
@@ -20,7 +19,5 @@ var configChart = function configChart(Chart) {
     }
   });
 };
-
-var _default = configChart;
-exports["default"] = _default;
+var _default = exports.default = configChart;
 //# sourceMappingURL=configChart.js.map

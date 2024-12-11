@@ -1,8 +1,8 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-var WatchDefault = {
+exports.default = void 0;
+const WatchDefault = {
   groups: [{
     caption: 'GitHub Libraries',
     lists: [{
@@ -22,13 +22,12 @@ var WatchDefault = {
       caption: 'List3'
     }]
   }]
+
   /*
   fDefaultGroup({ caption='Default' }){
     return { caption };
   }
   */
-
 };
-var _default = WatchDefault;
-exports["default"] = _default;
+var _default = exports.default = WatchDefault;
 //# sourceMappingURL=WatchDefault.js.map

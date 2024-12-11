@@ -1,25 +1,22 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
+exports.default = void 0;
+var _uiApi = require("../uiApi");
+const _isFn = fn => typeof fn === "function";
+const useToggle = (initialValue, isEventStopPropagation) => {
+  const [is, setIs] = (0, _uiApi.useState)(() => _isFn(initialValue) ? initialValue() : !!initialValue)
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    toggle = (0, _uiApi.useCallback)(event => {
+      if (isEventStopPropagation && event) {
+        event.stopPropagation();
+      }
+      setIs(is => !is);
+    }, []);
+  // isEventStopPropagation
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-var _react = require("react");
-
-var useToggle = function useToggle(initialValue) {
-  var _useState = (0, _react.useState)(function () {
-    return !!initialValue;
-  }),
-      is = _useState[0],
-      setIs = _useState[1],
-      toggle = (0, _react.useCallback)(function () {
-    return setIs(function (is) {
-      return !is;
-    });
-  }, []);
-
-  return [is, toggle];
+  return [is, toggle, setIs];
 };
-
-var _default = useToggle;
-exports["default"] = _default;
+var _default = exports.default = useToggle;
 //# sourceMappingURL=useToggle.js.map

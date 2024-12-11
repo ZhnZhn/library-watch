@@ -1,15 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/hooks/useToggle.js"
- ],
- "file": "../../../src/components/hooks/useToggle.js",
- "names": [
-  "useToggle",
-  "initialValue",
-  "is",
-  "setIs",
-  "toggle"
- ],
- "mappings": ";;;;;AAAA;;AAEA,IAAMA,SAAS,GAAG,SAAZA,SAAY,CAACC,YAAD,EAAkB;AAAA,kBACd,qBAAS;AAAA,WAAI,CAAC,CAACA,YAAN;AAAA,GAAT,CADc;AAAA,MAC3BC,EAD2B;AAAA,MACvBC,KADuB;AAAA,MAEhCC,MAFgC,GAEvB,wBAAY;AAAA,WAAMD,KAAK,CAAC,UAAAD,EAAE;AAAA,aAAI,CAACA,EAAL;AAAA,KAAH,CAAX;AAAA,GAAZ,EAAoC,EAApC,CAFuB;;AAGlC,SAAO,CAACA,EAAD,EAAKE,MAAL,CAAP;AACD,CAJD;;eAMeJ,S"
-}
+{"version":3,"file":"useToggle.js","names":["_uiApi","require","_isFn","fn","useToggle","initialValue","isEventStopPropagation","is","setIs","useState","toggle","useCallback","event","stopPropagation","_default","exports","default"],"sources":["../../../src/components/hooks/useToggle.js"],"sourcesContent":["import {\r\n  useState,\r\n  useCallback\r\n} from '../uiApi';\r\n\r\nconst _isFn = fn => typeof fn === \"function\";\r\n\r\nconst useToggle = (\r\n  initialValue,\r\n  isEventStopPropagation\r\n) => {\r\n  const [\r\n    is,\r\n    setIs\r\n  ] = useState(() => _isFn(initialValue)\r\n     ? initialValue()\r\n     : !!initialValue\r\n   )\r\n   /*eslint-disable react-hooks/exhaustive-deps */\r\n  , toggle = useCallback(event => {\r\n      if (isEventStopPropagation && event) {\r\n        event.stopPropagation()\r\n      }\r\n      setIs(is => !is)\r\n  }, []);\r\n  // isEventStopPropagation\r\n  /*eslint-enable react-hooks/exhaustive-deps */\r\n\r\n  return [\r\n    is,\r\n    toggle,\r\n    setIs\r\n  ];\r\n};\r\n\r\nexport default useToggle\r\n"],"mappings":";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAKA,MAAMC,KAAK,GAAGC,EAAE,IAAI,OAAOA,EAAE,KAAK,UAAU;AAE5C,MAAMC,SAAS,GAAGA,CAChBC,YAAY,EACZC,sBAAsB,KACnB;EACH,MAAM,CACJC,EAAE,EACFC,KAAK,CACN,GAAG,IAAAC,eAAQ,EAAC,MAAMP,KAAK,CAACG,YAAY,CAAC,GACjCA,YAAY,CAAC,CAAC,GACd,CAAC,CAACA,YACN;IACA;IACCK,MAAM,GAAG,IAAAC,kBAAW,EAACC,KAAK,IAAI;MAC5B,IAAIN,sBAAsB,IAAIM,KAAK,EAAE;QACnCA,KAAK,CAACC,eAAe,CAAC,CAAC;MACzB;MACAL,KAAK,CAACD,EAAE,IAAI,CAACA,EAAE,CAAC;IACpB,CAAC,EAAE,EAAE,CAAC;EACN;EACA;;EAEA,OAAO,CACLA,EAAE,EACFG,MAAM,EACNF,KAAK,CACN;AACH,CAAC;AAAC,IAAAM,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaZ,SAAS","ignoreList":[]}

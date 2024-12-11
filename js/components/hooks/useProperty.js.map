@@ -1,15 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/hooks/useProperty.js"
- ],
- "file": "../../../src/components/hooks/useProperty.js",
- "names": [
-  "useProperty",
-  "initialValue",
-  "ref",
-  "v",
-  "current"
- ],
- "mappings": ";;;;;AAAA;;AAKA,IAAMA,WAAW,GAAG,SAAdA,WAAc,CAClBC,YADkB,EAEf;AACH,MAAMC,GAAG,GAAG,mBAAOD,YAAP,CAAZ;AACA,SAAO,oBAAQ;AAAA,WAAM,CACnB;AACA,cAAAE,CAAC,EAAI;AAAED,MAAAA,GAAG,CAACE,OAAJ,GAAcD,CAAd;AAAiB,KAFL,EAGnB;AACA;AAAA,aAAMD,GAAG,CAACE,OAAV;AAAA,KAJmB,CAAN;AAAA,GAAR,EAKJ,EALI,CAAP;AAMD,CAVD;;eAYeJ,W"
-}
+{"version":3,"file":"useProperty.js","names":["_uiApi","require","useProperty","initialValue","ref","useRef","useMemo","v","current","_default","exports","default"],"sources":["../../../src/components/hooks/useProperty.js"],"sourcesContent":["import {\r\n  useRef,\r\n  useMemo\r\n} from '../uiApi';\r\n\r\nconst useProperty = (\r\n  initialValue\r\n) => {\r\n  const ref = useRef(initialValue);\r\n  return useMemo(() => [\r\n    //setValue\r\n    v => { ref.current = v },\r\n    //getValue\r\n    () => ref.current\r\n  ], []);\r\n};\r\n\r\nexport default useProperty\r\n"],"mappings":";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAKA,MAAMC,WAAW,GACfC,YAAY,IACT;EACH,MAAMC,GAAG,GAAG,IAAAC,aAAM,EAACF,YAAY,CAAC;EAChC,OAAO,IAAAG,cAAO,EAAC,MAAM;EACnB;EACAC,CAAC,IAAI;IAAEH,GAAG,CAACI,OAAO,GAAGD,CAAC;EAAC,CAAC;EACxB;EACA,MAAMH,GAAG,CAACI,OAAO,CAClB,EAAE,EAAE,CAAC;AACR,CAAC;AAAC,IAAAC,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaT,WAAW","ignoreList":[]}

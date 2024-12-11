@@ -1,24 +1,21 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-var DF_PERIOD = 800;
-var _getNowTime = Date.now || function () {
-  return new Date.getTime();
-};
-var throttleFn = function throttleFn(fn, period) {
+exports.default = void 0;
+const DF_PERIOD = 800;
+const _getNowTime = Date.now || (() => new Date.getTime());
+const throttleFn = function (fn, period) {
   if (period === void 0) {
     period = DF_PERIOD;
   }
-  var prevTime = 0;
+  let prevTime = 0;
   return function throttled() {
-    var nowTime = _getNowTime();
+    const nowTime = _getNowTime();
     if (nowTime - prevTime > period) {
       prevTime = nowTime;
-      return fn.apply(void 0, arguments);
+      return fn(...arguments);
     }
   };
 };
-var _default = throttleFn;
-exports["default"] = _default;
+var _default = exports.default = throttleFn;
 //# sourceMappingURL=throttleFn.js.map

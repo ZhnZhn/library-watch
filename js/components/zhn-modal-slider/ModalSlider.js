@@ -33,7 +33,7 @@ const _crWidthStyle = v => ({
   width: v
 });
 const _addPage = (model, pages, id, title) => {
-  pages.push( /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuPage.default, {
+  pages.push(/*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuPage.default, {
     title: title,
     items: model[id],
     titleCl: model.titleCl,
@@ -60,7 +60,7 @@ const _initState = model => {
 const _crTransformStyle = (pageWidth, pageCurrent) => {
   const _dX = -1 * pageWidth * (pageCurrent - 1) + 0;
   return {
-    transform: "translateX(" + _dX + "px)"
+    transform: `translateX(${_dX}px)`
   };
 };
 const ModalSlider = _ref => {

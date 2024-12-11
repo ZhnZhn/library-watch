@@ -1,18 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/utils/delayFn.js"
- ],
- "file": "../../src/utils/delayFn.js",
- "names": [
-  "delayFn",
-  "mls",
-  "fn",
-  "Promise",
-  "resolve",
-  "setTimeout",
-  "then",
-  "exports"
- ],
- "mappings": ";;;;AACO,MAAMA,OAAO,GAAGA,CACrBC,GAAG,EACHC,EAAE,KACE,IAAIC,OAAO,CAACC,OAAO,IAAI;EAC3BC,UAAU,CAACD,OAAO,EAAEH,GAAG,CAAC;AAC1B,CAAC,CAAC,CAAEK,IAAI,CAACJ,EAAE,CAAC;AAAAK,OAAA,CAAAP,OAAA,GAAAA,OAAA"
-}
+{"version":3,"file":"delayFn.js","names":["delayFn","mls","fn","Promise","resolve","setTimeout","then","exports"],"sources":["../../src/utils/delayFn.js"],"sourcesContent":["\r\nexport const delayFn = (\r\n  mls,\r\n  fn\r\n) => (new Promise(resolve => {\r\n  setTimeout(resolve, mls)\r\n})).then(fn)\r\n"],"mappings":";;;;AACO,MAAMA,OAAO,GAAGA,CACrBC,GAAG,EACHC,EAAE,KACE,IAAIC,OAAO,CAACC,OAAO,IAAI;EAC3BC,UAAU,CAACD,OAAO,EAAEH,GAAG,CAAC;AAC1B,CAAC,CAAC,CAAEK,IAAI,CAACJ,EAAE,CAAC;AAAAK,OAAA,CAAAP,OAAA,GAAAA,OAAA","ignoreList":[]}

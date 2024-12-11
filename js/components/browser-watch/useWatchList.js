@@ -21,6 +21,5 @@ const useWatchList = function (forActionType, setValidationMessages, hClear, rer
   });
   return groupOptions;
 };
-var _default = useWatchList;
-exports.default = _default;
+var _default = exports.default = useWatchList;
 //# sourceMappingURL=useWatchList.js.map

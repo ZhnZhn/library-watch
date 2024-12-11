@@ -17,6 +17,5 @@ const createChartContainer = (conf, browserType) => {
     onRemoveAll: _itemStore.removeItems.bind(null, chartType, browserType)
   }, chartType);
 };
-var _default = createChartContainer;
-exports.default = _default;
+var _default = exports.default = createChartContainer;
 //# sourceMappingURL=createChartContainer.js.map

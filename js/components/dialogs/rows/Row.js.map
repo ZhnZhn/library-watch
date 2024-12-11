@@ -1,16 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../../src/components/dialogs/rows/Row.js"
- ],
- "file": "../../../../src/components/dialogs/rows/Row.js",
- "names": [
-  "Plain",
-  "style",
-  "children",
-  "STYLE",
-  "rowDiv",
-  "Row"
- ],
- "mappings": ";;;;;;;;;AAAA;;;;AAEA,IAAMA,KAAK,GAAG,SAARA,KAAQ;AAAA,MACZC,KADY,QACZA,KADY;AAAA,MAEZC,QAFY,QAEZA,QAFY;AAAA,sBAIZ;AAAK,IAAA,KAAK,gCAAOC,yBAAMC,MAAb,EAAwBH,KAAxB,CAAV;AAAA,cACGC;AADH,IAJY;AAAA,CAAd;;AASA,IAAMG,GAAG,GAAG;AACVL,EAAAA,KAAK,EAALA;AADU,CAAZ;eAIeK,G"
-}
+{"version":3,"file":"Row.js","names":["S_ROW_DIV","display","alignItems","margin","Row","_ref","style","children","_jsxRuntime","jsx","_default","exports","default"],"sources":["../../../../src/components/dialogs/rows/Row.jsx"],"sourcesContent":["const S_ROW_DIV = {\r\n  display: 'flex',\r\n  alignItems: 'center',\r\n  margin: 5\r\n};\r\n\r\nconst Row = ({\r\n  style,\r\n  children\r\n}) => (\r\n  <div style={{...S_ROW_DIV, ...style}}>\r\n    {children}\r\n  </div>\r\n);\r\n\r\nexport default Row\r\n"],"mappings":";;;;;AAAA,MAAMA,SAAS,GAAG;EAChBC,OAAO,EAAE,MAAM;EACfC,UAAU,EAAE,QAAQ;EACpBC,MAAM,EAAE;AACV,CAAC;AAED,MAAMC,GAAG,GAAGC,IAAA;EAAA,IAAC;IACXC,KAAK;IACLC;EACF,CAAC,GAAAF,IAAA;EAAA,oBACC,IAAAG,WAAA,CAAAC,GAAA;IAAKH,KAAK,EAAE;MAAC,GAAGN,SAAS;MAAE,GAAGM;IAAK,CAAE;IAAAC,QAAA,EAClCA;EAAQ,CACN,CAAC;AAAA,CACP;AAAC,IAAAG,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaR,GAAG","ignoreList":[]}

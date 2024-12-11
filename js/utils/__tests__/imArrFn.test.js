@@ -1,10 +1,10 @@
 "use strict";
 
 var _imArrFn = require("../imArrFn");
-describe('imArrPush', function () {
-  var fn = _imArrFn.imArrPush;
-  test('should immutable add element to array', function () {
-    var obj1 = {},
+describe('imArrPush', () => {
+  const fn = _imArrFn.imArrPush;
+  test('should immutable add element to array', () => {
+    const obj1 = {},
       obj2 = {},
       arrResult1 = fn(void 0, obj1),
       arrResult2 = fn(arrResult1, obj2);
@@ -13,10 +13,10 @@ describe('imArrPush', function () {
     expect(arrResult2[1]).toEqual(obj2);
   });
 });
-describe('imArrFilterByProp', function () {
-  var fn = _imArrFn.imArrFilterByProp;
-  test('should immutable filter array by propName', function () {
-    var arrFrom = [{
+describe('imArrFilterByProp', () => {
+  const fn = _imArrFn.imArrFilterByProp;
+  test('should immutable filter array by propName', () => {
+    const arrFrom = [{
         p1: 'a'
       }, {
         p1: 'a'
@@ -26,10 +26,10 @@ describe('imArrFilterByProp', function () {
     expect(arrResult.length).toBe(0);
   });
 });
-describe('imArrInsertItem', function () {
-  var fn = _imArrFn.imArrInsertItem;
-  test('should immutable insert item to array by index', function () {
-    var obj1 = {},
+describe('imArrInsertItem', () => {
+  const fn = _imArrFn.imArrInsertItem;
+  test('should immutable insert item to array by index', () => {
+    const obj1 = {},
       obj2 = {},
       obj3 = {},
       arrResult1 = fn(obj1, 0),

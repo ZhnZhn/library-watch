@@ -1,8 +1,8 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-var DataWL = {
+exports.default = void 0;
+const DataWL = {
   WL_WATCH_LIST: {
     type: 'WL_WATCH_LIST',
     menuTitle: 'Watch List',
@@ -10,6 +10,5 @@ var DataWL = {
     chartContainerCaption: 'Watch List'
   }
 };
-var _default = DataWL;
-exports["default"] = _default;
+var _default = exports.default = DataWL;
 //# sourceMappingURL=DataWL.js.map

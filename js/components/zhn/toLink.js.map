@@ -1,17 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/zhn/toLink.js"
- ],
- "file": "../../../src/components/zhn/toLink.js",
- "names": [
-  "toLink",
-  "href",
-  "protocol",
-  "split",
-  "_default",
-  "exports",
-  "default"
- ],
- "mappings": ";;;;AAAA,MAAMA,MAAM,GACVC,IAAI,IACD;EACH,MAAMC,QAAQ,GAAG,CAACD,IAAI,IAAI,EAAE,EACzBE,KAAK,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC;EAClB,OAAOD,QAAQ,KAAK,OAAO,GACvBD,IAAI,GACJ,KAAK,CAAC;AACZ,CAAC;AAAC,IAAAG,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaN,MAAM"
-}
+{"version":3,"file":"toLink.js","names":["toLink","href","protocol","split","_default","exports","default"],"sources":["../../../src/components/zhn/toLink.js"],"sourcesContent":["const toLink = (\r\n  href\r\n) => {\r\n  const protocol = (href || '')\r\n    .split('://')[0];\r\n  return protocol === 'https'\r\n    ? href\r\n    : void 0;\r\n};\r\n\r\nexport default toLink\r\n"],"mappings":";;;;AAAA,MAAMA,MAAM,GACVC,IAAI,IACD;EACH,MAAMC,QAAQ,GAAG,CAACD,IAAI,IAAI,EAAE,EACzBE,KAAK,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC;EAClB,OAAOD,QAAQ,KAAK,OAAO,GACvBD,IAAI,GACJ,KAAK,CAAC;AACZ,CAAC;AAAC,IAAAG,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaN,MAAM","ignoreList":[]}

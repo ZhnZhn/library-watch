@@ -35,6 +35,5 @@ const AppLibraryWatch = props => {
     })]
   });
 };
-var _default = AppLibraryWatch;
-exports.default = _default;
+var _default = exports.default = AppLibraryWatch;
 //# sourceMappingURL=AppLibraryWatch.js.map

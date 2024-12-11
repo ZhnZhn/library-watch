@@ -11,7 +11,7 @@ const Svg100 = _ref => {
     ...restProps
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
-    viewBox: "0 0 " + w + " " + h,
+    viewBox: `0 0 ${w} ${h}`,
     "aria-hidden": "true",
     width: "100%",
     height: "100%",

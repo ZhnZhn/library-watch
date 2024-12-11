@@ -1,13 +1,13 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _jsxRuntime = require("react/jsx-runtime");
-
-var IconAppLogo = function IconAppLogo(_ref) {
-  var className = _ref.className,
-      title = _ref.title;
+const IconAppLogo = _ref => {
+  let {
+    className,
+    title
+  } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
     className: className,
     title: title,
@@ -52,7 +52,5 @@ var IconAppLogo = function IconAppLogo(_ref) {
     })
   });
 };
-
-var _default = IconAppLogo;
-exports["default"] = _default;
+var _default = exports.default = IconAppLogo;
 //# sourceMappingURL=IconAppLogo.js.map

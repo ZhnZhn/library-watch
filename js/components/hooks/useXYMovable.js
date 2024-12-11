@@ -62,8 +62,8 @@ const useXYMovable = refElement => {
         _nextLeft = _crNextValue(_prevLeft + _diffX, window.innerWidth - _element.clientWidth),
         _nextTop = _crNextValue(_prevTop + _diffY, window.innerHeight - _element.clientHeight);
       _assign(_elementStyle, {
-        top: _nextTop + "px",
-        left: _nextLeft + "px",
+        top: `${_nextTop}px`,
+        left: `${_nextLeft}px`,
         webkitTransform: '',
         transform: ''
       });
@@ -80,7 +80,7 @@ const useXYMovable = refElement => {
       }
       _diffX = (0, _uiApi.getClientX)(evt) - _initialEvtClientX;
       _diffY = (0, _uiApi.getClientY)(evt) - _initialEvtClientY;
-      const _translate = "translate(" + _diffX + "px," + _diffY + "px)";
+      const _translate = `translate(${_diffX}px,${_diffY}px)`;
       _assign(_elementStyle, {
         webkitTransform: _translate,
         transform: _translate

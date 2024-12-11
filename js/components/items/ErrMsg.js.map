@@ -1,15 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/items/ErrMsg.js"
- ],
- "file": "../../../src/components/items/ErrMsg.js",
- "names": [
-  "S_ERR",
-  "color",
-  "fontWeight",
-  "ErrMsg",
-  "errMsg"
- ],
- "mappings": ";;;;;;;AAAA,IAAMA,KAAK,GAAG;AACZC,EAAAA,KAAK,EAAE,SADK;AAEZC,EAAAA,UAAU,EAAE;AAFA,CAAd;;AAKA,IAAMC,MAAM,GAAG,SAATA,MAAS;AAAA,MACbC,MADa,QACbA,MADa;AAAA,sBAGb;AAAK,IAAA,KAAK,EAAEJ,KAAZ;AAAA,cAAoBI;AAApB,IAHa;AAAA,CAAf;;eAMeD,M"
-}
+{"version":3,"file":"ErrMsg.js","names":["S_ERR","color","fontWeight","ErrMsg","_ref","errMsg","_jsxRuntime","jsx","style","children","_default","exports","default"],"sources":["../../../src/components/items/ErrMsg.jsx"],"sourcesContent":["const S_ERR = {\r\n  color: '#f44336',\r\n  fontWeight: 'bold'\r\n};\r\n\r\nconst ErrMsg = ({ \r\n  errMsg\r\n}) => (\r\n  <div style={S_ERR}>{errMsg}</div>\r\n);\r\n\r\nexport default ErrMsg\r\n"],"mappings":";;;;;AAAA,MAAMA,KAAK,GAAG;EACZC,KAAK,EAAE,SAAS;EAChBC,UAAU,EAAE;AACd,CAAC;AAED,MAAMC,MAAM,GAAGC,IAAA;EAAA,IAAC;IACdC;EACF,CAAC,GAAAD,IAAA;EAAA,oBACC,IAAAE,WAAA,CAAAC,GAAA;IAAKC,KAAK,EAAER,KAAM;IAAAS,QAAA,EAAEJ;EAAM,CAAM,CAAC;AAAA,CAClC;AAAC,IAAAK,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaT,MAAM","ignoreList":[]}

@@ -14,6 +14,5 @@ const useWatchListMsEdit = (forActionType, setValidationMessages, hClear) => {
     }
   });
 };
-var _default = useWatchListMsEdit;
-exports.default = _default;
+var _default = exports.default = useWatchListMsEdit;
 //# sourceMappingURL=useWatchListMsEdit.js.map

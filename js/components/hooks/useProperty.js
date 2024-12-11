@@ -1,23 +1,17 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _uiApi = require("../uiApi");
-
-var useProperty = function useProperty(initialValue) {
-  var ref = (0, _uiApi.useRef)(initialValue);
-  return (0, _uiApi.useMemo)(function () {
-    return [//setValue
-    function (v) {
-      ref.current = v;
-    }, //getValue
-    function () {
-      return ref.current;
-    }];
-  }, []);
+const useProperty = initialValue => {
+  const ref = (0, _uiApi.useRef)(initialValue);
+  return (0, _uiApi.useMemo)(() => [
+  //setValue
+  v => {
+    ref.current = v;
+  },
+  //getValue
+  () => ref.current], []);
 };
-
-var _default = useProperty;
-exports["default"] = _default;
+var _default = exports.default = useProperty;
 //# sourceMappingURL=useProperty.js.map

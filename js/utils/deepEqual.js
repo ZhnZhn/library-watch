@@ -1,10 +1,11 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-
-var is = function is(x, y) {
+exports.default = void 0;
+const {
+  hasOwnProperty
+} = Object.prototype;
+const is = (x, y) => {
   // SameValue algorithm
   if (x === y) {
     // Steps 1-5, 7-10
@@ -15,25 +16,22 @@ var is = function is(x, y) {
     return x !== x && y !== y;
   }
 };
-
-var deepEqual = function deepEqual(objA, objB) {
+const deepEqual = (objA, objB) => {
   if (is(objA, objB)) {
     return true;
   }
-
   if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
     return false;
   }
+  let keysA = Object.keys(objA);
 
-  var keysA = Object.keys(objA); // Test for A's keys different from B.
-
-  for (var i = 0; i < keysA.length; i++) {
+  // Test for A's keys different from B.
+  for (let i = 0; i < keysA.length; i++) {
     if (!hasOwnProperty.call(objB, keysA[i])) {
       return false;
     }
   }
-
-  for (var propty in objA) {
+  for (let propty in objA) {
     if (hasOwnProperty.call(objB, propty)) {
       if (!deepEqual(objA[propty], objB[propty])) {
         return false;
@@ -42,10 +40,7 @@ var deepEqual = function deepEqual(objA, objB) {
       return false;
     }
   }
-
   return true;
 };
-
-var _default = deepEqual;
-exports["default"] = _default;
+var _default = exports.default = deepEqual;
 //# sourceMappingURL=deepEqual.js.map

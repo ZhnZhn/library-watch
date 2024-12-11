@@ -1,13 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/hotkeys/hotkeys.js"
- ],
- "file": "../../../src/components/hotkeys/hotkeys.js",
- "names": [
-  "HK_LIBRARY",
-  "HK_WATCH",
-  "HK_ABOUT"
- ],
- "mappings": ";;;;AAAO,IAAMA,UAAU,GAAG,GAAG;AAAA;AACtB,IAAMC,QAAQ,GAAG,GAAG;AAAA;AACpB,IAAMC,QAAQ,GAAG,GAAG;AAAA"
-}
+{"version":3,"file":"hotkeys.js","names":["HK_LIBRARY","exports","HK_WATCH","HK_ABOUT"],"sources":["../../../src/components/hotkeys/hotkeys.js"],"sourcesContent":["export const HK_LIBRARY = 'L'\r\nexport const HK_WATCH = 'W'\r\nexport const HK_ABOUT = 'A'\r\n"],"mappings":";;;;AAAO,MAAMA,UAAU,GAAAC,OAAA,CAAAD,UAAA,GAAG,GAAG;AACtB,MAAME,QAAQ,GAAAD,OAAA,CAAAC,QAAA,GAAG,GAAG;AACpB,MAAMC,QAAQ,GAAAF,OAAA,CAAAE,QAAA,GAAG,GAAG","ignoreList":[]}

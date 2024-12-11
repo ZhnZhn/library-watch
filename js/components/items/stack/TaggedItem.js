@@ -94,7 +94,7 @@ const TaggedItem = _ref => {
         style: S_ITEM_CAPTION,
         children: [bounty_amount && /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           style: S_BOUNTY,
-          children: "+" + bounty_amount
+          children: `+${bounty_amount}`
         }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
           style: is_answered ? S_GREEN_BADGE : S_FISH_BADGE,
           children: [TOKEN_ANSWER, "\xA0", answer_count]

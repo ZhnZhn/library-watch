@@ -1,14 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/header/AppLabel.js"
- ],
- "file": "../../../src/components/header/AppLabel.js",
- "names": [
-  "AppLabel",
-  "className",
-  "caption",
-  "title"
- ],
- "mappings": ";;;;;;;AAAA,IAAMA,QAAQ,GAAG,SAAXA,QAAW;AAAA,MACfC,SADe,QACfA,SADe;AAAA,MAEfC,OAFe,QAEfA,OAFe;AAAA,MAGfC,KAHe,QAGfA,KAHe;AAAA,sBAKf;AACE,IAAA,SAAS,EAAEF,SADb;AAEE,IAAA,KAAK,EAAEE,KAFT;AAAA,cAIGD;AAJH,IALe;AAAA,CAAjB;;eAaeF,Q"
-}
+{"version":3,"file":"AppLabel.js","names":["AppLabel","_ref","className","caption","title","_jsxRuntime","jsx","children","_default","exports","default"],"sources":["../../../src/components/header/AppLabel.jsx"],"sourcesContent":["const AppLabel = ({\r\n  className,\r\n  caption,\r\n  title\r\n}) => (\r\n  <span\r\n    className={className}\r\n    title={title}\r\n  >\r\n    {caption}\r\n  </span>\r\n);\r\n\r\nexport default AppLabel\r\n"],"mappings":";;;;;AAAA,MAAMA,QAAQ,GAAGC,IAAA;EAAA,IAAC;IAChBC,SAAS;IACTC,OAAO;IACPC;EACF,CAAC,GAAAH,IAAA;EAAA,oBACC,IAAAI,WAAA,CAAAC,GAAA;IACEJ,SAAS,EAAEA,SAAU;IACrBE,KAAK,EAAEA,KAAM;IAAAG,QAAA,EAEZJ;EAAO,CACJ,CAAC;AAAA,CACR;AAAC,IAAAK,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaV,QAAQ","ignoreList":[]}

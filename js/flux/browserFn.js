@@ -17,14 +17,9 @@ const _fEditItem = (edit, value) => (chartType, browserType) => {
     edit(chartType, _browserMenu[browserType], value);
   }
 };
-const setMenuItemOpen = _fEditItem(_BrowserLogicFn.setIsOpen, true);
-exports.setMenuItemOpen = setMenuItemOpen;
-const setMenuItemClose = _fEditItem(_BrowserLogicFn.setIsOpen, false);
-exports.setMenuItemClose = setMenuItemClose;
-const addMenuItemCounter = _fEditItem(_BrowserLogicFn.plusCounter, 1);
-exports.addMenuItemCounter = addMenuItemCounter;
-const minusMenuItemCounter = _fEditItem(_BrowserLogicFn.plusCounter, -1);
-exports.minusMenuItemCounter = minusMenuItemCounter;
-const resetMenuItemCounter = _fEditItem(_BrowserLogicFn.resetCounter);
-exports.resetMenuItemCounter = resetMenuItemCounter;
+const setMenuItemOpen = exports.setMenuItemOpen = _fEditItem(_BrowserLogicFn.setIsOpen, true);
+const setMenuItemClose = exports.setMenuItemClose = _fEditItem(_BrowserLogicFn.setIsOpen, false);
+const addMenuItemCounter = exports.addMenuItemCounter = _fEditItem(_BrowserLogicFn.plusCounter, 1);
+const minusMenuItemCounter = exports.minusMenuItemCounter = _fEditItem(_BrowserLogicFn.plusCounter, -1);
+const resetMenuItemCounter = exports.resetMenuItemCounter = _fEditItem(_BrowserLogicFn.resetCounter);
 //# sourceMappingURL=browserFn.js.map

@@ -18,6 +18,5 @@ const ComponentHrzContainer = () => {
     children: comps
   });
 };
-var _default = ComponentHrzContainer;
-exports.default = _default;
+var _default = exports.default = ComponentHrzContainer;
 //# sourceMappingURL=ComponentHrzContainer.js.map

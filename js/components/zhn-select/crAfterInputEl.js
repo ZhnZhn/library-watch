@@ -22,14 +22,14 @@ const crAfterInputEl = (props, state, refArrowCell, hToggleOptions) => {
       isShowOption,
       optionNames
     } = state;
-  return !isLoading && !isLoadingFailed ? [placeholder || "Select " + optionName + "...", /*#__PURE__*/(0, _jsxRuntime.jsx)(_ArrowCell.default, {
+  return !isLoading && !isLoadingFailed ? [placeholder || `Select ${optionName}...`, /*#__PURE__*/(0, _jsxRuntime.jsx)(_ArrowCell.default, {
     refEl: refArrowCell,
     arrowStyle: isShowOption ? S_ARROW_SHOW : void 0,
     onClick: hToggleOptions
-  })] : isLoading ? ["Loading " + optionNames + "...", /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+  })] : isLoading ? [`Loading ${optionNames}...`, /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
     className: _CL.CL_SPINNER,
     "data-loader": "circle"
-  })] : isLoadingFailed ? ["Loading " + optionNames + " Failed", /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle.default, {
+  })] : isLoadingFailed ? [`Loading ${optionNames} Failed`, /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle.default, {
     className: _CL.CL_SPINNER_FAILED,
     "data-loader": "circle-failed",
     onClick: onLoadOption

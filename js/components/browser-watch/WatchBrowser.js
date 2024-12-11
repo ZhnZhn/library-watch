@@ -18,7 +18,7 @@ var _WatchGroups = _interopRequireDefault(require("./WatchGroups"));
 var _Handlers = require("./Handlers");
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_BROWSER_WATCH = "browser-watch",
-  _crBrowserWatchStyle = suffix => CL_BROWSER_WATCH + " " + CL_BROWSER_WATCH + "--" + suffix,
+  _crBrowserWatchStyle = suffix => `${CL_BROWSER_WATCH} ${CL_BROWSER_WATCH}--${suffix}`,
   CL_BROWSER_WATCH__30 = _crBrowserWatchStyle("1r"),
   CL_BROWSER_WATCH__60 = _crBrowserWatchStyle("2r"),
   CL_BT_CAPTION = "bt__watch__caption",

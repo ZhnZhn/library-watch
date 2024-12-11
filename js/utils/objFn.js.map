@@ -1,17 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/utils/objFn.js"
- ],
- "file": "../../src/utils/objFn.js",
- "names": [
-  "findInPropArrayByPropItem",
-  "propNameArr",
-  "propNameItem",
-  "obj",
-  "value",
-  "findByPropNameInArrItem",
-  "isRegularObj"
- ],
- "mappings": ";;;;AAAA;AAGA;AAIO,IAAMA,yBAAyB,GAAG,SAA5BA,yBAAyB,CACpCC,WAAW,EACXC,YAAY,EACZC,GAAG,EACHC,KAAK;EAAA,OACF,IAAAC,8BAAuB,EAC1BH,YAAY,EACZ,IAAAI,sBAAY,EAACH,GAAG,CAAC,IAAIA,GAAG,CAACF,WAAW,CAAC,EACrCG,KAAK,CACN;AAAA;AAAC"
-}
+{"version":3,"file":"objFn.js","names":["_isTypeFn","require","_arrFn","findInPropArrayByPropItem","propNameArr","propNameItem","obj","value","findByPropNameInArrItem","isRegularObj","exports"],"sources":["../../src/utils/objFn.js"],"sourcesContent":["import {\r\n  isRegularObj\r\n} from './isTypeFn';\r\nimport {\r\n  findByPropNameInArrItem\r\n} from './arrFn';\r\n\r\nexport const findInPropArrayByPropItem = (\r\n  propNameArr,\r\n  propNameItem,\r\n  obj,\r\n  value\r\n) => findByPropNameInArrItem(\r\n  propNameItem,\r\n  isRegularObj(obj) && obj[propNameArr],\r\n  value\r\n);\r\n"],"mappings":";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAGA,IAAAC,MAAA,GAAAD,OAAA;AAIO,MAAME,yBAAyB,GAAGA,CACvCC,WAAW,EACXC,YAAY,EACZC,GAAG,EACHC,KAAK,KACF,IAAAC,8BAAuB,EAC1BH,YAAY,EACZ,IAAAI,sBAAY,EAACH,GAAG,CAAC,IAAIA,GAAG,CAACF,WAAW,CAAC,EACrCG,KACF,CAAC;AAACG,OAAA,CAAAP,yBAAA,GAAAA,yBAAA","ignoreList":[]}
