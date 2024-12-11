@@ -11,14 +11,27 @@ var _CaptionRow = _interopRequireDefault(require("../zhn/CaptionRow"));
 var _ScrollPane = _interopRequireDefault(require("../zhn/ScrollPane"));
 var _MenuPart = _interopRequireDefault(require("./MenuPart"));
 var _jsxRuntime = require("react/jsx-runtime");
-var _react = require("react");
 const S_SCROLL_DIV = {
   overflowY: 'auto',
   height: '92%',
   //height: 'calc(100vh - 90px)',
   paddingRight: 10
 };
-const MenuBrowserDynamic = _ref => {
+const BrowserMenu = _ref => {
+  let {
+    menuItems,
+    rowClass,
+    refFirstItem
+  } = _ref;
+  return (0, _uiApi.safeMap)(menuItems, (menuPart, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuPart.default, {
+    refFirstItem: index === 0 ? refFirstItem : void 0,
+    isInitClose: menuPart.isInitClose,
+    caption: menuPart.caption,
+    items: menuPart.items,
+    rowClass: rowClass
+  }, index));
+};
+const MenuBrowserDynamic = _ref2 => {
   let {
     isShowInitial,
     caption,
@@ -27,7 +40,7 @@ const MenuBrowserDynamic = _ref => {
     useMsBrowserDynamic,
     onLoadMenu,
     children
-  } = _ref;
+  } = _ref2;
   const _refIsLoaded = (0, _uiApi.useRef)(false),
     [menuItems, setMenuItems, isShow, _hShow, _hHide, _hKeyDown, _refFirstItem] = (0, _useBrowser.default)(isShowInitial),
     [_hFocusElement, _focusPrevElement] = (0, _useRecentFocusedElement.default)();
@@ -66,12 +79,11 @@ const MenuBrowserDynamic = _ref => {
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ScrollPane.default, {
       style: S_SCROLL_DIV,
       onFocusIn: _hFocusElement,
-      children: [menuItems.map((menuPart, index) => /*#__PURE__*/(0, _react.createElement)(_MenuPart.default, {
-        ...menuPart,
-        key: index,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(BrowserMenu, {
+        menuItems: menuItems,
         rowClass: rowClass,
-        refFirstItem: index === 0 ? _refFirstItem : void 0
-      })), children]
+        refFirstItem: _refFirstItem
+      }), children]
     })]
   });
 };

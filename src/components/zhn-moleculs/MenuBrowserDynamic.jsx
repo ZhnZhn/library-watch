@@ -2,7 +2,8 @@ import {
   useRef,
   useEffect,
   getRefValue,
-  setRefValue
+  setRefValue,
+  safeMap
 } from '../uiApi';
 
 import useBrowser from '../hooks/useBrowser';
@@ -19,6 +20,20 @@ const S_SCROLL_DIV = {
   //height: 'calc(100vh - 90px)',
   paddingRight: 10
 };
+
+const BrowserMenu = ({
+  menuItems,
+  rowClass,
+  refFirstItem
+}) => safeMap(menuItems, (menuPart, index) => (<MenuPart
+     key={index}
+     refFirstItem={index === 0 ? refFirstItem : void 0}
+     isInitClose={menuPart.isInitClose}
+     caption={menuPart.caption}
+     items={menuPart.items}
+     rowClass={rowClass}
+  />)
+);
 
 const MenuBrowserDynamic = ({
   isShowInitial,
@@ -81,16 +96,11 @@ const MenuBrowserDynamic = ({
          style={S_SCROLL_DIV}
          onFocusIn={_hFocusElement}
       >
-        {
-          menuItems.map((menuPart, index) => (
-            <MenuPart
-               {...menuPart}
-               key={index}
-               rowClass={rowClass}
-               refFirstItem={index === 0 ? _refFirstItem : void 0}
-            />)
-          )
-        }
+        <BrowserMenu
+           menuItems={menuItems}
+           rowClass={rowClass}
+           refFirstItem={_refFirstItem}
+        />
         {children}
       </ScrollPane>
     </Browser>
