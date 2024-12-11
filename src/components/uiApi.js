@@ -1,8 +1,7 @@
-export { bindTo } from '../utils/bindTo';
+export { bindTo } from "../utils/bindTo";
 
 export {
   cloneElement,
-  createElement,
   memo,
   useRef,
   useState,
@@ -13,17 +12,17 @@ export {
   useEffect,
   useSyncExternalStore,
   useImperativeHandle
-} from 'react';
+} from "react";
 
 export {
   isFn,
   isNumber,
   isStr
-} from '../utils/isTypeFn';
+} from "../utils/isTypeFn";
 import {
   isFn,
   isArr
-} from '../utils/isTypeFn';
+} from "../utils/isTypeFn";
 
 
 export const FN_NOOP = () => {}
