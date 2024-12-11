@@ -1,14 +1,11 @@
-import {
-  bindTo,
-  createElement
-} from '../../components/uiApi';
-import RouterItem from '../../components/factories/RouterItem';
+import RouterItem from "../../components/factories/RouterItem";
+import { bindTo } from "../../utils/bindTo";
 
-import { showAddItem } from '../compStore';
+import { showAddItem } from "../compStore";
 import {
   moveToTop,
   closeChart
-} from '../itemStore';
+} from "../itemStore";
 
 const createItem = (
   option,
@@ -24,7 +21,6 @@ const createItem = (
   , _fnFactory = RouterItem[requestType]
       || RouterItem.DEFAULT;
    return _fnFactory({
-     createElement,
      option,
      json,
      parentProps,

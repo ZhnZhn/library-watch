@@ -1,5 +1,5 @@
-import StatcounterShare from '../items/StatcounterShare';
-import { getObjectKeys } from './helperFn';
+import StatcounterShare from "../items/StatcounterShare";
+import { getObjectKeys } from "./helperFn";
 
 const _filterEmptyDate = (
   json
@@ -57,10 +57,9 @@ const _crLabelsDataTuple = (json) => {
 const _crCaption = ({
   caption,
   region
-}) => `${(region || {}).caption || ''}: ${caption}`;
+}) => `${(region || {}).caption || ""}: ${caption}`;
 
 const fStatcounter = ({
-  createElement,
   option,
   json,
   parentProps,
@@ -73,19 +72,19 @@ const fStatcounter = ({
     data
   ] = _crLabelsDataTuple(_filterEmptyDate(json));
 
-  return createElement(StatcounterShare, {
-    key: option.key,
-    caption: _crCaption(option),
-    requestType: option.requestType,
-    fromDate: labels[0],
-    toDate: labels[labels.length - 1],
-    labels,
-    data,
-    sourceLink: option.sourceLink,
-    onMoveToTop,
-    onCloseItem,
-    ...parentProps
-  });
+  return (<StatcounterShare
+    key={option.key}
+    caption={_crCaption(option)}
+    requestType={option.requestType}
+    fromDate={labels[0]}
+    toDate={labels[labels.length - 1]}
+    labels={labels}
+    data={data}
+    sourceLink={option.sourceLink}
+    onMoveToTop={onMoveToTop}
+    onCloseItem={onCloseItem}
+    {...parentProps}
+  />);
 };
 
 export default fStatcounter

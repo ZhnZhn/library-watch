@@ -4,30 +4,24 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _GitHubIssues = _interopRequireDefault(require("../items/GitHubIssues"));
-const fGitHubCommits = function (_ref) {
+var _jsxRuntime = require("react/jsx-runtime");
+const fGitHubCommits = _ref => {
   let {
-    createElement,
     option,
-    json = [],
+    json,
     parentProps,
     onCloseItem,
     onWatchItem
   } = _ref;
-  const {
-    repo,
-    requestType,
-    key
-  } = option;
-  return createElement(_GitHubIssues.default, {
-    key,
-    repo,
-    requestType,
-    caption: repo,
-    issues: json,
-    onCloseItem,
-    onWatchItem,
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_GitHubIssues.default, {
+    caption: option.repo,
+    repo: option.repo,
+    requestType: option.requestType,
+    issues: json || [],
+    onCloseItem: onCloseItem,
+    onWatchItem: onWatchItem,
     ...parentProps
-  });
+  }, option.key);
 };
 var _default = exports.default = fGitHubCommits;
 //# sourceMappingURL=fGitHubIssues.js.map

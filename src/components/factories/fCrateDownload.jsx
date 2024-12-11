@@ -1,12 +1,14 @@
 import {
   isNumber,
   isStr
-} from '../uiApi';
-import CrateDownloads from '../items/crate/CrateDownloads';
+} from "../uiApi";
+
+import CrateDownloads from "../items/crate/CrateDownloads";
+
 import {
   getObjectKeys,
   getArrLength
-} from './helperFn';
+} from "./helperFn";
 
 //112,15,44 #700f2c
 //181,34,52 #b52234
@@ -166,7 +168,6 @@ const fCrateDownload = (
   options
 ) => {
   const {
-    createElement,
     option,
     json,
     onMoveToTop,
@@ -202,23 +203,23 @@ const fCrateDownload = (
     _crHmVersions(option.json1)
   )
 
-  return createElement(CrateDownloads, {
-    key,
-    caption: repo,
-    packageName: repo,
-    fromDate: _extraDownloadsLength !== 0
+  return (<CrateDownloads
+    key={key}
+    caption={repo}
+    packageName={repo}
+    fromDate={_extraDownloadsLength !== 0
       ? _getDate(_extraDownloads[0])
-      : "",
-    toDate: _extraDownloadsLength > 0
+      : ""}
+    toDate={_extraDownloadsLength > 0
       ? _getDate(_extraDownloads[_extraDownloadsLength-1])
-      : "",
-    sumDownloads,
-    labels,
-    data: _dataVersions,
-    sourceLink: option.sourceLink,
-    onMoveToTop,
-    onCloseItem
-  });
+      : ""}
+    sumDownloads={sumDownloads}
+    labels={labels}
+    data={_dataVersions}
+    sourceLink={option.sourceLink}
+    onMoveToTop={onMoveToTop}
+    onCloseItem={onCloseItem}
+  />);
 };
 
 export default fCrateDownload

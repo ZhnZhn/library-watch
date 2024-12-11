@@ -6,13 +6,13 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _CrateDownloads = _interopRequireDefault(require("../items/crate/CrateDownloads"));
 var _helperFn = require("./helperFn");
+var _jsxRuntime = require("react/jsx-runtime");
 //112,15,44 #700f2c
 //181,34,52 #b52234
 //215,103,85 #d76755
 //244,165,130 #f4a582
 //146,197,222 #92c5de
 //82,156,199 #529cc7
-
 const COLORS = ["112,15,44", "181,34,52", "215,103,85", "244,165,130", "146,197,222", "82,156,199"];
 const TOTAL_COLOR = "128,192,64";
 const _getDate = item => (item || {}).date;
@@ -96,7 +96,6 @@ const _crHmVersions = json1 => {
 };
 const fCrateDownload = options => {
   const {
-      createElement,
       option,
       json,
       onMoveToTop,
@@ -117,19 +116,18 @@ const fCrateDownload = options => {
     arrDateValue = _crArrDateValue(_hm),
     [labels, data, sumDownloads] = _crLabelsDataSum(arrDateValue);
   _updateDataVersions(data, otherData, _dataVersions, _crHmVersions(option.json1));
-  return createElement(_CrateDownloads.default, {
-    key,
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_CrateDownloads.default, {
     caption: repo,
     packageName: repo,
     fromDate: _extraDownloadsLength !== 0 ? _getDate(_extraDownloads[0]) : "",
     toDate: _extraDownloadsLength > 0 ? _getDate(_extraDownloads[_extraDownloadsLength - 1]) : "",
-    sumDownloads,
-    labels,
+    sumDownloads: sumDownloads,
+    labels: labels,
     data: _dataVersions,
     sourceLink: option.sourceLink,
-    onMoveToTop,
-    onCloseItem
-  });
+    onMoveToTop: onMoveToTop,
+    onCloseItem: onCloseItem
+  }, key);
 };
 var _default = exports.default = fCrateDownload;
 //# sourceMappingURL=fCrateDownload.js.map

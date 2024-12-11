@@ -3,8 +3,8 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../../components/uiApi");
 var _RouterItem = _interopRequireDefault(require("../../components/factories/RouterItem"));
+var _bindTo = require("../../utils/bindTo");
 var _compStore = require("../compStore");
 var _itemStore = require("../itemStore");
 const createItem = (option, json, parentProps) => {
@@ -16,12 +16,11 @@ const createItem = (option, json, parentProps) => {
     } = option,
     _fnFactory = _RouterItem.default[requestType] || _RouterItem.default.DEFAULT;
   return _fnFactory({
-    createElement: _uiApi.createElement,
     option,
     json,
     parentProps,
-    onMoveToTop: (0, _uiApi.bindTo)(_itemStore.moveToTop, chartType, key),
-    onCloseItem: (0, _uiApi.bindTo)(_itemStore.closeChart, chartType, browserType, key),
+    onMoveToTop: (0, _bindTo.bindTo)(_itemStore.moveToTop, chartType, key),
+    onCloseItem: (0, _bindTo.bindTo)(_itemStore.closeChart, chartType, browserType, key),
     onWatchItem: _compStore.showAddItem
   });
 };

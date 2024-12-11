@@ -1,1 +1,24 @@
-{"version":3,"sources":["../../../src/components/factories/fItemTest.js"],"names":["fItemTest","factory","option","json","parentProps","repo","requestType","createElement","TestItem","key"],"mappings":";;;;;;;;;AACA;;AAEA,IAAMA,SAAS,GAAG,SAAZA,SAAY,OAAgD;AAAA,MAArCC,OAAqC,QAArCA,OAAqC;AAAA,MAA5BC,MAA4B,QAA5BA,MAA4B;AAAA,MAApBC,IAAoB,QAApBA,IAAoB;AAAA,MAAdC,WAAc,QAAdA,WAAc;AAAA,MACxDC,IADwD,GAClCH,MADkC,CACxDG,IADwD;AAAA,MAClDC,WADkD,GAClCJ,MADkC,CAClDI,WADkD;AAEhE,SAAOL,OAAO,CAACM,aAAR,CAAsBC,oBAAtB;AACHC,IAAAA,GAAG,EAAMJ,IAAN,SAAcC;AADd,KAEAF,WAFA,EAAP;AAID,CAND;;eAQeJ,S","sourcesContent":["\r\nimport TestItem from '../items/TestItem';\r\n\r\nconst fItemTest = function({ factory, option, json, parentProps }){\r\n  const { repo, requestType } = option\r\n  return factory.createElement(TestItem, {\r\n      key : `${repo}_${requestType}`,\r\n      ...parentProps\r\n  })\r\n}\r\n\r\nexport default fItemTest\r\n"],"file":"fItemTest.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/factories/fItemTest.js"
+ ],
+ "file": "../../../src/components/factories/fItemTest.js",
+ "names": [
+  "_TestItem",
+  "_interopRequireDefault",
+  "require",
+  "_jsxRuntime",
+  "fItemTest",
+  "_ref",
+  "option",
+  "parentProps",
+  "jsx",
+  "default",
+  "repo",
+  "requestType",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,SAAA,GAAAC,sBAAA,CAAAC,OAAA;AAAyC,IAAAC,WAAA,GAAAD,OAAA;AAEzC,MAAME,SAAS,GAAGC,IAAA;EAAA,IAAC;IACjBC,MAAM;IACNC;EACF,CAAC,GAAAF,IAAA;EAAA,oBAAM,IAAAF,WAAA,CAAAK,GAAA,EAACR,SAAA,CAAAS,OAAQ;IAAA,GAEVF;EAAW,GADV,GAAGD,MAAM,CAACI,IAAI,IAAIJ,MAAM,CAACK,WAAW,EAE1C,CAAC;AAAA,CAAC;AAAC,IAAAC,QAAA,GAAAC,OAAA,CAAAJ,OAAA,GAEWL,SAAS"
+}

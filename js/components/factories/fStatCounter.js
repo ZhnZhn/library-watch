@@ -5,6 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _StatcounterShare = _interopRequireDefault(require("../items/StatcounterShare"));
 var _helperFn = require("./helperFn");
+var _jsxRuntime = require("react/jsx-runtime");
 const _filterEmptyDate = json => json.data.filter(item => Boolean(item.Date));
 const _crArrFromObj = obj => (0, _helperFn.getObjectKeys)(obj).map(propName => ({
   caption: propName,
@@ -56,11 +57,10 @@ const _crCaption = _ref => {
     caption,
     region
   } = _ref;
-  return `${(region || {}).caption || ''}: ${caption}`;
+  return `${(region || {}).caption || ""}: ${caption}`;
 };
 const fStatcounter = _ref2 => {
   let {
-    createElement,
     option,
     json,
     parentProps,
@@ -69,19 +69,18 @@ const fStatcounter = _ref2 => {
     onWatchItem
   } = _ref2;
   const [labels, data] = _crLabelsDataTuple(_filterEmptyDate(json));
-  return createElement(_StatcounterShare.default, {
-    key: option.key,
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_StatcounterShare.default, {
     caption: _crCaption(option),
     requestType: option.requestType,
     fromDate: labels[0],
     toDate: labels[labels.length - 1],
-    labels,
-    data,
+    labels: labels,
+    data: data,
     sourceLink: option.sourceLink,
-    onMoveToTop,
-    onCloseItem,
+    onMoveToTop: onMoveToTop,
+    onCloseItem: onCloseItem,
     ...parentProps
-  });
+  }, option.key);
 };
 var _default = exports.default = fStatcounter;
 //# sourceMappingURL=fStatcounter.js.map

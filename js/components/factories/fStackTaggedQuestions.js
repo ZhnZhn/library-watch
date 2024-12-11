@@ -7,6 +7,7 @@ var _domFn = require("../../utils/domFn");
 var _formatDate = require("../../utils/formatDate");
 var _uiApi = require("../uiApi");
 var _TaggedQuestions = _interopRequireDefault(require("../items/stack/TaggedQuestions"));
+var _jsxRuntime = require("react/jsx-runtime");
 const _crItems = items => {
   const _nowMls = Date.now();
   return (0, _uiApi.safeMap)(items, item => {
@@ -26,32 +27,21 @@ const _crItems = items => {
 };
 const fStackTaggedQuestions = _ref => {
   let {
-    createElement,
     option,
     json,
     parentProps,
     onCloseItem,
     onWatchItem
   } = _ref;
-  const {
-      repo,
-      requestType,
-      key
-    } = option,
-    {
-      items
-    } = json || {},
-    _items = _crItems(items);
-  return createElement(_TaggedQuestions.default, {
-    key,
-    repo,
-    requestType,
-    caption: repo,
-    items: _items,
-    onCloseItem,
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_TaggedQuestions.default, {
+    caption: option.repo,
+    repo: option.repo,
+    requestType: option.requestType,
+    items: _crItems((json || {}).items),
+    onCloseItem: onCloseItem,
     onWatchItem: onWatchItem,
     ...parentProps
-  });
+  }, option.key);
 };
 var _default = exports.default = fStackTaggedQuestions;
 //# sourceMappingURL=fStackTaggedQuestions.js.map

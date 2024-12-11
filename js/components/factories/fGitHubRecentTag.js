@@ -7,16 +7,13 @@ var _uiApi = require("../uiApi");
 var _GitHubRecentTag = _interopRequireDefault(require("../items/GitHubRecentTag"));
 var _fnFetchJson = _interopRequireDefault(require("../../network/fnFetchJson"));
 var _fnCatch = _interopRequireDefault(require("../../network/fnCatch"));
+var _jsxRuntime = require("react/jsx-runtime");
 //uri, option, onCheckResponse, onFetch, onCompleted, onFailed, onCatch
-
-const API_URL = 'https://api.github.com';
-const fGitHubRecentTag = function (_ref) {
+const API_URL = "https://api.github.com";
+const fGitHubRecentTag = _ref => {
   let {
-    createElement,
     option,
-    json = [{
-      name: 'empty'
-    }],
+    json,
     parentProps,
     onCloseItem,
     onWatchItem
@@ -26,22 +23,23 @@ const fGitHubRecentTag = function (_ref) {
       requestType,
       key
     } = option,
-    tagItem = json[0],
+    tagItem = json[0] || [{
+      name: "empty"
+    }],
     _onClickDetail = (0, _uiApi.bindTo)(_fnFetchJson.default, {
-      uri: `${API_URL}/repos/${option.repo}/commits/${tagItem.commit.sha}`,
+      uri: `${API_URL}/repos/${repo}/commits/${tagItem.commit.sha}`,
       onCatch: _fnCatch.default
     });
-  return createElement(_GitHubRecentTag.default, {
-    key,
-    repo,
-    requestType,
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_GitHubRecentTag.default, {
+    repo: repo,
+    requestType: requestType,
     version: tagItem.name,
     caption: `${repo} ${tagItem.name}`,
     onClickDetail: _onClickDetail,
-    onCloseItem,
-    onWatchItem,
+    onCloseItem: onCloseItem,
+    onWatchItem: onWatchItem,
     ...parentProps
-  });
+  }, key);
 };
 var _default = exports.default = fGitHubRecentTag;
 //# sourceMappingURL=fGitHubRecentTag.js.map
