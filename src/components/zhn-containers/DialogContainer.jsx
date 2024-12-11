@@ -1,7 +1,4 @@
-import {
-  createElement,
-  useState
-} from '../uiApi';
+import { useState } from '../uiApi';
 
 import ModalDialogContainer from './ModalDialogContainer';
 
@@ -55,7 +52,7 @@ const DialogContainer = ({
         if (!inits[type]) {
           dialogs.push({
             type: type,
-            comp: routerDialog[type]
+            Comp: routerDialog[type]
           });
           inits[type] = true
         }
@@ -73,14 +70,15 @@ const DialogContainer = ({
        isShow={isShow}
        onClose={() => _hClose(currentDialog)}
     >
-       {dialogs.map(({ type, comp }) =>
-          createElement(comp, {
-             key: type,
-             isShow: shows[type],
-             data: data[type],
-             onClose: () => _hClose(type)
-          }
-       ))}
+       {dialogs.map(({
+          type,
+          Comp
+       }) => (<Comp
+          key={type}
+          isShow={shows[type]}
+          data={data[type]}
+          onClose={() => _hClose(type)}
+       />))}
    </ModalDialogContainer>
   );
 };

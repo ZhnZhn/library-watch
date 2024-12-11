@@ -54,7 +54,7 @@ const DialogContainer = _ref => {
         if (!inits[type]) {
           dialogs.push({
             type: type,
-            comp: routerDialog[type]
+            Comp: routerDialog[type]
           });
           inits[type] = true;
         }
@@ -72,17 +72,15 @@ const DialogContainer = _ref => {
     children: dialogs.map(_ref2 => {
       let {
         type,
-        comp
+        Comp
       } = _ref2;
-      return (0, _uiApi.createElement)(comp, {
-        key: type,
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)(Comp, {
         isShow: shows[type],
         data: data[type],
         onClose: () => _hClose(type)
-      });
+      }, type);
     })
   });
 };
-var _default = DialogContainer;
-exports.default = _default;
+var _default = exports.default = DialogContainer;
 //# sourceMappingURL=DialogContainer.js.map
