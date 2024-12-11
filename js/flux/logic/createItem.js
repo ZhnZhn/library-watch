@@ -1,9 +1,8 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _RouterItem = _interopRequireDefault(require("../../components/factories/RouterItem"));
+var _RouterItem = require("../../components/factories/RouterItem");
 var _bindTo = require("../../utils/bindTo");
 var _compStore = require("../compStore");
 var _itemStore = require("../itemStore");
@@ -14,8 +13,8 @@ const createItem = (option, json, parentProps) => {
       browserType,
       key
     } = option,
-    _fnFactory = _RouterItem.default[requestType] || _RouterItem.default.DEFAULT;
-  return _fnFactory({
+    _crItemElement = (0, _RouterItem.getItemFactoryRoute)(requestType);
+  return _crItemElement({
     option,
     json,
     parentProps,

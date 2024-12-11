@@ -1,4 +1,4 @@
-import RouterItem from "../../components/factories/RouterItem";
+import { getItemFactoryRoute } from "../../components/factories/RouterItem";
 import { bindTo } from "../../utils/bindTo";
 
 import { showAddItem } from "../compStore";
@@ -18,16 +18,15 @@ const createItem = (
     browserType,
     key
   } = option
-  , _fnFactory = RouterItem[requestType]
-      || RouterItem.DEFAULT;
-   return _fnFactory({
-     option,
-     json,
-     parentProps,
-     onMoveToTop: bindTo(moveToTop, chartType, key),
-     onCloseItem: bindTo(closeChart, chartType, browserType, key),
-     onWatchItem: showAddItem
-   });
+  , _crItemElement = getItemFactoryRoute(requestType);
+  return _crItemElement({
+    option,
+    json,
+    parentProps,
+    onMoveToTop: bindTo(moveToTop, chartType, key),
+    onCloseItem: bindTo(closeChart, chartType, browserType, key),
+    onWatchItem: showAddItem
+  });
 };
 
 export default createItem

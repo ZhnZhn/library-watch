@@ -1,26 +1,25 @@
-import fItemTest from './fItemTest';
+import { crGetRoute } from "../../utils/crRouter";
+import fItemTest from "./fItemTest";
 
-import fCrateDownload from './fCrateDownload';
+import fCrateDownload from "./fCrateDownload";
 
-import fGitHubRecentRelease from './fGitHubRecentRelease';
-import fGitHubRecentTag from './fGitHubRecentTag';
-import fGitHubSearchInfo from './fGitHubSearchInfo';
-import fGitHubCommits from './fGitHubCommits';
-import fGitHubIssues from './fGitHubIssues';
+import fGitHubRecentRelease from "./fGitHubRecentRelease";
+import fGitHubRecentTag from "./fGitHubRecentTag";
+import fGitHubSearchInfo from "./fGitHubSearchInfo";
+import fGitHubCommits from "./fGitHubCommits";
+import fGitHubIssues from "./fGitHubIssues";
 
-import fNpmRecentDownloads from './fNpmRecentDownloads';
-import fNpmDownloads from './fNpmDownloads';
-import fNpmTopVersions from './fNpmTopVersions';
+import fNpmRecentDownloads from "./fNpmRecentDownloads";
+import fNpmDownloads from "./fNpmDownloads";
+import fNpmTopVersions from "./fNpmTopVersions";
 
-import fStackTaggedQuestions from './fStackTaggedQuestions';
+import fStackTaggedQuestions from "./fStackTaggedQuestions";
 
-import fStatcounter from './fStatcounter';
+import fStatcounter from "./fStatcounter";
 
-const RouterItem = {
-  DEFAULT : fItemTest,
-
+export const getItemFactoryRoute = crGetRoute({
   CR_DOWNLOADS : fCrateDownload,
-  
+
   GH_RELEASE_RECENT : fGitHubRecentRelease,
   GH_TAGS : fGitHubRecentTag,
   GH_SEARCH_INFO : fGitHubSearchInfo,
@@ -36,6 +35,4 @@ const RouterItem = {
   SE_SEARCH_QUESTIONS : fStackTaggedQuestions,
 
   ST_OSVERSION : fStatcounter
-};
-
-export default RouterItem
+}, fItemTest)
