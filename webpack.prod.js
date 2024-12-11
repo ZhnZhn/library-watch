@@ -16,8 +16,7 @@ module.exports = {
       dependOn: 'lib'
     },
     lib: [
-            "react", 
-            "react-dom",                                    
+            "react",                                        
             "react-dom/client",                                    
             "chart.js",                          
             "papaparse",
