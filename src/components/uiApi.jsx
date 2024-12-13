@@ -1,7 +1,6 @@
 export { bindTo } from "../utils/bindTo";
 
 export {
-  cloneElement,
   memo,
   useRef,
   useState,
@@ -26,6 +25,16 @@ import {
 
 
 export const FN_NOOP = () => {}
+
+export const cloneUiElement = (
+  Element,
+  overrideProps,
+  key=Element.key
+) => (<Element.type
+  key={key}
+  {...Element.props}
+  {...overrideProps}
+/>)
 
 export const getRefValue = ref => (ref || {}).current
 export const setRefValue = (
@@ -111,6 +120,6 @@ export const getClientY = (
 export const safeMap = (
   items,
   crElement
-) => isArr(items)
+) => isArr(items) && items.length > 0
   ? items.map(crElement)
   : null

@@ -7,20 +7,20 @@ var _uiApi = require("../uiApi");
 var _useRefInit = _interopRequireDefault(require("../hooks/useRefInit"));
 var _jsxRuntime = require("react/jsx-runtime");
 const S_TABS = {
-    margin: '10px 5px 0 10px',
-    borderBottom: '2px solid #a487d4'
+    margin: "10px 5px 0 10px",
+    borderBottom: "2px solid #a487d4"
   },
   S_TABPANES = {
     width: "100%",
     height: "100%"
   },
   S_TABPANE_SELECTED = {
-    display: 'block',
+    display: "block",
     width: "100%",
     height: "100%"
   },
   S_TABPANE_HIDED = {
-    display: 'none'
+    display: "none"
   };
 const TabPane = _ref => {
   let {
@@ -28,9 +28,7 @@ const TabPane = _ref => {
     height,
     children
   } = _ref;
-  const components = (0, _useRefInit.default)(() => children.map((tab, index) => (0, _uiApi.cloneElement)(tab.props.children, {
-      key: index
-    })))[0],
+  const components = (0, _useRefInit.default)(() => children.map((TabElement, index) => (0, _uiApi.cloneUiElement)(TabElement.props.children, void 0, index)))[0],
     [selectedTabIndex, setSelectedTabIndex] = (0, _uiApi.useState)(0),
     _isSelectedTabIndex = index => index === selectedTabIndex;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
@@ -40,11 +38,10 @@ const TabPane = _ref => {
     },
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       style: S_TABS,
-      children: children.map((tab, index) => (0, _uiApi.cloneElement)(tab, {
-        key: index,
+      children: children.map((ElementTab, index) => (0, _uiApi.cloneUiElement)(ElementTab, {
         onClick: () => setSelectedTabIndex(index),
         isSelected: _isSelectedTabIndex(index)
-      }))
+      }, index))
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       style: S_TABPANES,
       children: components.map((comp, index) => {

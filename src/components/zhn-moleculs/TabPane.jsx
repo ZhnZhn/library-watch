@@ -1,23 +1,25 @@
 import {
   useState,
-  cloneElement
-} from '../uiApi';
-import useRefInit from '../hooks/useRefInit';
+  cloneUiElement
+} from "../uiApi";
+import useRefInit from "../hooks/useRefInit";
 
 const S_TABS = {
-  margin: '10px 5px 0 10px',
-  borderBottom: '2px solid #a487d4'
+  margin: "10px 5px 0 10px",
+  borderBottom: "2px solid #a487d4"
 }
 , S_TABPANES = {
   width: "100%",
   height: "100%"
 }
 , S_TABPANE_SELECTED = {
-  display: 'block',
+  display: "block",
   width: "100%",
   height: "100%"
 }
-, S_TABPANE_HIDED = { display: 'none' };
+, S_TABPANE_HIDED = {
+  display: "none"
+};
 
 const TabPane = ({
   width,
@@ -25,8 +27,8 @@ const TabPane = ({
   children
 }) => {
   const components = useRefInit(() => children
-    .map((tab, index) => cloneElement(
-        tab.props.children, { key: index }
+    .map((TabElement, index) => cloneUiElement(
+        TabElement.props.children, void 0, index
     )))[0]
   , [
      selectedTabIndex,
@@ -37,12 +39,11 @@ const TabPane = ({
   return (
     <div style={{ width, height }}>
       <div style={S_TABS}>
-         {children.map((tab, index) =>
-            cloneElement(tab, {
-              key: index,
+         {children.map((ElementTab, index) =>
+            cloneUiElement(ElementTab, {
               onClick: () => setSelectedTabIndex(index),
               isSelected: _isSelectedTabIndex(index)
-            })
+            }, index)
          )}
       </div>
       <div style={S_TABPANES}>

@@ -1,14 +1,14 @@
 import {
-  cloneElement,
+  cloneUiElement,
   useState
-} from '../uiApi';
+} from "../uiApi";
 
 const S_DIV = {
   zIndex: 30,
-  position: 'absolute',
+  position: "absolute",
   top: 70,
   left: 10,
-  width: '99%'
+  width: "99%"
 };
 
 const _crArrWithTopObjByKey = (arr, key) => {
@@ -40,7 +40,7 @@ const _checkOpenDialogs = (
 
 const INITIAL_STATE = {
   dialog: {},
-  compDialogs: [],
+  elementDialogs: [],
   openDialogs: []
 };
 
@@ -54,7 +54,7 @@ const DialogStack = ({
   ] = useState(INITIAL_STATE)
   , {
     dialog,
-    compDialogs
+    elementDialogs
   } = state
   , _hToggleDialog = (dialogType) => {
     setState(prevState => {
@@ -83,14 +83,14 @@ const DialogStack = ({
         setState(prevState => {
           const {
             dialog,
-            compDialogs,
+            elementDialogs,
             openDialogs
           } = prevState;
           dialog[dialogType] = true;
-          compDialogs.push(dialogComp)
+          elementDialogs.push(dialogComp)
           return {
             dialog,
-            compDialogs,
+            elementDialogs,
             openDialogs: _checkOpenDialogs(maxDialog, openDialogs, dialog, dialogType)
           };
         })
@@ -98,7 +98,7 @@ const DialogStack = ({
         setState(prevState => {
           const {
             dialog,
-            compDialogs,
+            elementDialogs,
             openDialogs
           } = prevState;
           let _openDialogs;
@@ -108,7 +108,7 @@ const DialogStack = ({
           }
           return {
             dialog,
-            compDialogs: _crArrWithTopObjByKey(compDialogs, dialogType),
+            elementDialogs: _crArrWithTopObjByKey(elementDialogs, dialogType),
             openDialogs: _openDialogs || openDialogs
           };
         })
@@ -118,12 +118,11 @@ const DialogStack = ({
 
   return (
     <div style={S_DIV}>
-      {compDialogs.map(compDialog => {
-         const { key } = compDialog;
-         return cloneElement(compDialog, {
-            key,
-            isShow: dialog[key],
-            onClose: () => _hToggleDialog(key)
+      {elementDialogs.map(ElementDialog => {
+         const { key } = ElementDialog;
+         return cloneUiElement(ElementDialog, {
+           isShow: dialog[key],
+           onClose: () => _hToggleDialog(key)
          });
       })}
     </div>

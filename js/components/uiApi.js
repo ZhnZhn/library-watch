@@ -1,11 +1,10 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useSyncExternalStore = exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.setRefValue = exports.setRefInputValue = exports.safeMap = exports.memo = exports.isStr = exports.isRefInputValid = exports.isNumber = exports.getRefValue = exports.getRefInputValue = exports.getClientY = exports.getClientX = exports.focusRefNextSiblingFirstChildElement = exports.focusRefInput = exports.focusRefElement = exports.focusHtmlElement = exports.cloneElement = exports.bindTo = exports.FN_NOOP = void 0;
+exports.useSyncExternalStore = exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.setRefValue = exports.setRefInputValue = exports.safeMap = exports.memo = exports.isStr = exports.isRefInputValid = exports.isNumber = exports.getRefValue = exports.getRefInputValue = exports.getClientY = exports.getClientX = exports.focusRefNextSiblingFirstChildElement = exports.focusRefInput = exports.focusRefElement = exports.focusHtmlElement = exports.cloneUiElement = exports.bindTo = exports.FN_NOOP = void 0;
 var _bindTo = require("../utils/bindTo");
 exports.bindTo = _bindTo.bindTo;
 var _react = require("react");
-exports.cloneElement = _react.cloneElement;
 exports.memo = _react.memo;
 exports.useRef = _react.useRef;
 exports.useState = _react.useState;
@@ -20,8 +19,19 @@ var _isTypeFn = require("../utils/isTypeFn");
 exports.isFn = _isTypeFn.isFn;
 exports.isNumber = _isTypeFn.isNumber;
 exports.isStr = _isTypeFn.isStr;
+var _jsxRuntime = require("react/jsx-runtime");
 const FN_NOOP = () => {};
 exports.FN_NOOP = FN_NOOP;
+const cloneUiElement = function (Element, overrideProps, key) {
+  if (key === void 0) {
+    key = Element.key;
+  }
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(Element.type, {
+    ...Element.props,
+    ...overrideProps
+  }, key);
+};
+exports.cloneUiElement = cloneUiElement;
 const getRefValue = ref => (ref || {}).current;
 exports.getRefValue = getRefValue;
 const setRefValue = (ref, value) => {
@@ -64,6 +74,6 @@ const getClientX = evt => evt.clientX || _getTouchClientX(evt.targetTouches) || 
 exports.getClientX = getClientX;
 const getClientY = evt => evt.clientY || _getTouchClientY(evt.targetTouches) || _getTouchClientY(evt.changedTouches) || 0;
 exports.getClientY = getClientY;
-const safeMap = (items, crElement) => (0, _isTypeFn.isArr)(items) ? items.map(crElement) : null;
+const safeMap = (items, crElement) => (0, _isTypeFn.isArr)(items) && items.length > 0 ? items.map(crElement) : null;
 exports.safeMap = safeMap;
 //# sourceMappingURL=uiApi.js.map

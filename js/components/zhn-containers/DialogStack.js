@@ -6,10 +6,10 @@ var _uiApi = require("../uiApi");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_DIV = {
   zIndex: 30,
-  position: 'absolute',
+  position: "absolute",
   top: 70,
   left: 10,
-  width: '99%'
+  width: "99%"
 };
 const _crArrWithTopObjByKey = (arr, key) => {
   let index, i;
@@ -27,7 +27,7 @@ const _checkOpenDialogs = (maxDialog, openDialogs, dialog, dialogType) => {
 };
 const INITIAL_STATE = {
   dialog: {},
-  compDialogs: [],
+  elementDialogs: [],
   openDialogs: []
 };
 const DialogStack = _ref => {
@@ -38,7 +38,7 @@ const DialogStack = _ref => {
   const [state, setState] = (0, _uiApi.useState)(INITIAL_STATE),
     {
       dialog,
-      compDialogs
+      elementDialogs
     } = state,
     _hToggleDialog = dialogType => {
       setState(prevState => {
@@ -64,14 +64,14 @@ const DialogStack = _ref => {
         setState(prevState => {
           const {
             dialog,
-            compDialogs,
+            elementDialogs,
             openDialogs
           } = prevState;
           dialog[dialogType] = true;
-          compDialogs.push(dialogComp);
+          elementDialogs.push(dialogComp);
           return {
             dialog,
-            compDialogs,
+            elementDialogs,
             openDialogs: _checkOpenDialogs(maxDialog, openDialogs, dialog, dialogType)
           };
         });
@@ -79,7 +79,7 @@ const DialogStack = _ref => {
         setState(prevState => {
           const {
             dialog,
-            compDialogs,
+            elementDialogs,
             openDialogs
           } = prevState;
           let _openDialogs;
@@ -89,7 +89,7 @@ const DialogStack = _ref => {
           }
           return {
             dialog,
-            compDialogs: _crArrWithTopObjByKey(compDialogs, dialogType),
+            elementDialogs: _crArrWithTopObjByKey(elementDialogs, dialogType),
             openDialogs: _openDialogs || openDialogs
           };
         });
@@ -98,12 +98,11 @@ const DialogStack = _ref => {
   });
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     style: S_DIV,
-    children: compDialogs.map(compDialog => {
+    children: elementDialogs.map(ElementDialog => {
       const {
         key
-      } = compDialog;
-      return (0, _uiApi.cloneElement)(compDialog, {
-        key,
+      } = ElementDialog;
+      return (0, _uiApi.cloneUiElement)(ElementDialog, {
         isShow: dialog[key],
         onClose: () => _hToggleDialog(key)
       });

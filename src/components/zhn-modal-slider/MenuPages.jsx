@@ -1,4 +1,4 @@
-import { cloneElement } from '../uiApi';
+import { cloneUiElement } from "../uiApi";
 
 const MenuPages = ({
   isShow,
@@ -9,7 +9,7 @@ const MenuPages = ({
   onPrevPage,
   onClose
 }) => pages
- .map((Page, index) => cloneElement(Page, {
+ .map((ElementPage, index) => cloneUiElement(ElementPage, {
     isShow,
     pageCurrent,
     style,

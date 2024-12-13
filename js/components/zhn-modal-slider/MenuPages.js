@@ -13,7 +13,7 @@ const MenuPages = _ref => {
     onPrevPage,
     onClose
   } = _ref;
-  return pages.map((Page, index) => (0, _uiApi.cloneElement)(Page, {
+  return pages.map((ElementPage, index) => (0, _uiApi.cloneUiElement)(ElementPage, {
     isShow,
     pageCurrent,
     style,
