@@ -61,8 +61,9 @@ module.exports = {
       inject: false
     })    
   ],
-  optimization: {
+
+  optimization: {         
     minimize: true,
-    minimizer: [new TerserPlugin()]
+    minimizer: [new TerserPlugin()]       
   }
 }
