@@ -8,7 +8,7 @@ var _Row = _interopRequireDefault(require("../rows/Row"));
 var _ButtonCircle = _interopRequireDefault(require("../../zhn/ButtonCircle"));
 var _jsxRuntime = require("react/jsx-runtime");
 const S_ROW = {
-    padding: '4px 0 8px 0'
+    padding: "4px 0 8px 0"
   },
   S_BUTTON_CIRCLE = {
     marginLeft: 20
@@ -19,7 +19,7 @@ const ToolbarButtonCircle = (0, _uiApi.memo)(_ref => {
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Row.default, {
     style: S_ROW,
-    children: (buttons || []).map((_ref2, index) => {
+    children: (0, _uiApi.safeMap)(buttons, (_ref2, index) => {
       let {
         caption,
         title,
