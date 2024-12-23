@@ -1,15 +1,16 @@
+import { safeMap } from "../uApi";
 import {
   CL_LIB,
   CL_LIB_VALUE,
   CL_LIB_VALUE_TITLE,
   CL_FILE_ITEM,
   CL_SOURCE_LINK
-} from '../styleFn';
+} from "../styleFn";
 
-import formatStrDate from '../../utils/formatStrDate';
+import formatStrDate from "../../utils/formatStrDate";
 
-import OpenClose2 from '../zhn/OpenClose2';
-import Link from '../zhn/Link';
+import OpenClose2 from "../zhn/OpenClose2";
+import Link from "../zhn/Link";
 
 const _isArr = Array.isArray;
 
@@ -53,12 +54,11 @@ const CellValueDate = ({
 
 const FileList = ({
   files
-}) => (files || [])
- .map((file, index) => (
-    <div key={index} className={CL_FILE_ITEM}>
-      {file ? file.filename : null}
-    </div>
- ));
+}) => safeMap(files, (file, index) => (
+  <div key={index} className={CL_FILE_ITEM}>
+    {file ? file.filename : null}
+  </div>
+));
 
 const TagDetail = ({ json }) => {
   if (!json) { return null; }
@@ -119,7 +119,7 @@ const TagDetail = ({ json }) => {
         />
       </div>
       <OpenClose2
-        caption={`Files (${_isArr(files) ? files.length : ''})`}
+        caption={`Files (${_isArr(files) ? files.length : ""})`}
         isClose={true}
       >
         <FileList files={files} />

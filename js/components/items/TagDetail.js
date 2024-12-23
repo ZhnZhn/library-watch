@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _uApi = require("../uApi");
 var _styleFn = require("../styleFn");
 var _formatStrDate = _interopRequireDefault(require("../../utils/formatStrDate"));
 var _OpenClose = _interopRequireDefault(require("../zhn/OpenClose2"));
@@ -49,7 +50,7 @@ const FileList = _ref3 => {
   let {
     files
   } = _ref3;
-  return (files || []).map((file, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+  return (0, _uApi.safeMap)(files, (file, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     className: _styleFn.CL_FILE_ITEM,
     children: file ? file.filename : null
   }, index));
@@ -110,7 +111,7 @@ const TagDetail = _ref4 => {
         value: deletions
       })]
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_OpenClose.default, {
-      caption: `Files (${_isArr(files) ? files.length : ''})`,
+      caption: `Files (${_isArr(files) ? files.length : ""})`,
       isClose: true,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(FileList, {
         files: files
