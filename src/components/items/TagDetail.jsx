@@ -1,4 +1,4 @@
-import { safeMap } from "../uApi";
+import { safeMap } from "../uiApi";
 import {
   CL_LIB,
   CL_LIB_VALUE,

@@ -1,6 +1,7 @@
 import {
   useState,
-  cloneUiElement
+  cloneUiElement,
+  safeMap
 } from "../uiApi";
 import useRefInit from "../hooks/useRefInit";
 
@@ -26,10 +27,12 @@ const TabPane = ({
   height,
   children
 }) => {
-  const components = useRefInit(() => children
-    .map((TabElement, index) => cloneUiElement(
+  const components = useRefInit(() => safeMap(
+    children,
+    (TabElement, index) => cloneUiElement(
         TabElement.props.children, void 0, index
-    )))[0]
+    ))
+  )[0]
   , [
      selectedTabIndex,
      setSelectedTabIndex
@@ -39,7 +42,7 @@ const TabPane = ({
   return (
     <div style={{ width, height }}>
       <div style={S_TABS}>
-         {children.map((ElementTab, index) =>
+         {safeMap(children, (ElementTab, index) =>
             cloneUiElement(ElementTab, {
               onClick: () => setSelectedTabIndex(index),
               isSelected: _isSelectedTabIndex(index)
@@ -47,7 +50,7 @@ const TabPane = ({
          )}
       </div>
       <div style={S_TABPANES}>
-         {components.map((comp, index) => {
+         {safeMap(components, (comp, index) => {
             const divStyle = _isSelectedTabIndex(index)
                ? S_TABPANE_SELECTED
                : S_TABPANE_HIDED;

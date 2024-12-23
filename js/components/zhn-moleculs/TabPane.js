@@ -28,7 +28,7 @@ const TabPane = _ref => {
     height,
     children
   } = _ref;
-  const components = (0, _useRefInit.default)(() => children.map((TabElement, index) => (0, _uiApi.cloneUiElement)(TabElement.props.children, void 0, index)))[0],
+  const components = (0, _useRefInit.default)(() => (0, _uiApi.safeMap)(children, (TabElement, index) => (0, _uiApi.cloneUiElement)(TabElement.props.children, void 0, index)))[0],
     [selectedTabIndex, setSelectedTabIndex] = (0, _uiApi.useState)(0),
     _isSelectedTabIndex = index => index === selectedTabIndex;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
@@ -38,13 +38,13 @@ const TabPane = _ref => {
     },
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       style: S_TABS,
-      children: children.map((ElementTab, index) => (0, _uiApi.cloneUiElement)(ElementTab, {
+      children: (0, _uiApi.safeMap)(children, (ElementTab, index) => (0, _uiApi.cloneUiElement)(ElementTab, {
         onClick: () => setSelectedTabIndex(index),
         isSelected: _isSelectedTabIndex(index)
       }, index))
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       style: S_TABPANES,
-      children: components.map((comp, index) => {
+      children: (0, _uiApi.safeMap)(components, (comp, index) => {
         const divStyle = _isSelectedTabIndex(index) ? S_TABPANE_SELECTED : S_TABPANE_HIDED;
         return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
           style: divStyle,
