@@ -1,13 +1,14 @@
-import { crClNotSelected } from '../styleFn';
-import useKeyEnter  from '../hooks/useKeyEnter';
+import { safeMap } from "../uiApi";
+import { crClNotSelected } from "../styleFn";
+import useKeyEnter  from "../hooks/useKeyEnter";
 
-import AtomCounter from '../zhn/AtomCounter';
-import OpenClose2 from '../zhn/OpenClose2';
+import AtomCounter from "../zhn/AtomCounter";
+import OpenClose2 from "../zhn/OpenClose2";
 
 const CL_NOT_SELECTED = crClNotSelected()
-, CL_ROW_ITEM = `row__topic`
-, FILL_OPEN = '#1b2836'
-, FILL_CLOSE = 'transparent'
+, CL_ROW_ITEM = "row__topic"
+, FILL_OPEN = "#1b2836"
+, FILL_CLOSE = "transparent"
 
 , S_CAPTION_ROW = { paddingLeft: 6 };
 
@@ -49,7 +50,7 @@ const MenuPart = ({
      caption={caption}
      isClose={isInitClose}
   >
-     {(items || []).map((item, index) => (
+     {safeMap(items, (item, index) => (
          <MenuItem
             key={item.id || index}
             className={`${rowClass || CL_ROW_ITEM} ${CL_NOT_SELECTED}`}

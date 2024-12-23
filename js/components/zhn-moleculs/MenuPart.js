@@ -3,15 +3,16 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _uiApi = require("../uiApi");
 var _styleFn = require("../styleFn");
 var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
 var _AtomCounter = _interopRequireDefault(require("../zhn/AtomCounter"));
 var _OpenClose = _interopRequireDefault(require("../zhn/OpenClose2"));
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_NOT_SELECTED = (0, _styleFn.crClNotSelected)(),
-  CL_ROW_ITEM = `row__topic`,
-  FILL_OPEN = '#1b2836',
-  FILL_CLOSE = 'transparent',
+  CL_ROW_ITEM = "row__topic",
+  FILL_OPEN = "#1b2836",
+  FILL_CLOSE = "transparent",
   S_CAPTION_ROW = {
     paddingLeft: 6
   };
@@ -49,7 +50,7 @@ const MenuPart = _ref2 => {
     fillClose: FILL_CLOSE,
     caption: caption,
     isClose: isInitClose,
-    children: (items || []).map((item, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)(MenuItem, {
+    children: (0, _uiApi.safeMap)(items, (item, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)(MenuItem, {
       className: `${rowClass || CL_ROW_ITEM} ${CL_NOT_SELECTED}`,
       item: item
     }, item.id || index))
