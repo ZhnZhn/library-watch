@@ -7,21 +7,21 @@ var _jsxRuntime = require("react/jsx-runtime");
 
 const _isArr = Array.isArray,
   S_ROOT_DIV = {
-    color: '#f44336',
-    padding: '5px 0 0 10px'
+    color: "#f44336",
+    padding: "5px 0 0 10px"
   },
   S_NUMBER = {
-    display: 'inline-block',
+    display: "inline-block",
     width: 22,
     height: 22,
     marginRight: 5,
-    border: 'solid 2px #f44336',
-    borderRadius: '50%',
-    textAlign: 'center'
+    border: "solid 2px #f44336",
+    borderRadius: "50%",
+    textAlign: "center"
   },
   S_MSG = {
-    whiteSpace: 'pre',
-    fontWeight: 'bold'
+    whiteSpace: "pre",
+    fontWeight: "bold"
   };
 const ValidationMessage = _ref => {
   let {
@@ -42,16 +42,13 @@ const ValidationMessages = _ref2 => {
   let {
     validationMessages
   } = _ref2;
-  if (!_isArr(validationMessages)) {
-    return null;
-  }
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+  return _isArr(validationMessages) ? /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     style: S_ROOT_DIV,
     children: validationMessages.map((msg, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)(ValidationMessage, {
       msg: msg,
       index: index + 1
     }, index))
-  });
+  }) : null;
 };
 
 /*

@@ -1,1 +1,43 @@
-{"version":3,"file":"ValidationMessages.js","names":["_isArr","Array","isArray","S_ROOT_DIV","color","padding","S_NUMBER","display","width","height","marginRight","border","borderRadius","textAlign","S_MSG","whiteSpace","fontWeight","ValidationMessage","_ref","index","msg","_jsxRuntime","jsxs","children","jsx","style","ValidationMessages","_ref2","validationMessages","map","_default","exports","default"],"sources":["../../../../src/components/dialogs/rows/ValidationMessages.jsx"],"sourcesContent":["//import PropTypes from \"prop-types\";\r\n\r\nconst _isArr = Array.isArray\r\n, S_ROOT_DIV = {\r\n  color: '#f44336',\r\n  padding: '5px 0 0 10px'\r\n}\r\n, S_NUMBER = {\r\n  display: 'inline-block',\r\n  width: 22,\r\n  height: 22,\r\n  marginRight: 5,\r\n  border: 'solid 2px #f44336',\r\n  borderRadius: '50%',\r\n  textAlign: 'center'\r\n}\r\n, S_MSG = {\r\n  whiteSpace: 'pre',\r\n  fontWeight: 'bold'\r\n};\r\n\r\nconst ValidationMessage = ({ \r\n  index,\r\n  msg\r\n}) => (\r\n  <div>\r\n    <span style={S_NUMBER}>{index}</span>\r\n    <span style={S_MSG}>{msg}</span>\r\n  </div>\r\n);\r\n\r\nconst ValidationMessages = ({\r\n  validationMessages\r\n}) => {\r\n  if (!_isArr(validationMessages)){\r\n     return null;\r\n  }\r\n  return (\r\n    <div style={S_ROOT_DIV}>\r\n      {validationMessages.map((msg, index) => (\r\n         <ValidationMessage\r\n            key={index}\r\n            msg={msg}\r\n            index={index+1}\r\n          />\r\n      ))}\r\n    </div>\r\n  );\r\n};\r\n\r\n/*\r\nValidationMessages.propTypes = {\r\n  validationMessages: PropTypes.arrayOf(\r\n    PropTypes.shape({\r\n      msg: PropTypes.string\r\n    })\r\n  )\r\n}\r\n*/\r\n\r\nexport default ValidationMessages\r\n"],"mappings":";;;;;AAAA;;AAEA,MAAMA,MAAM,GAAGC,KAAK,CAACC,OAAO;EAC1BC,UAAU,GAAG;IACbC,KAAK,EAAE,SAAS;IAChBC,OAAO,EAAE;EACX,CAAC;EACCC,QAAQ,GAAG;IACXC,OAAO,EAAE,cAAc;IACvBC,KAAK,EAAE,EAAE;IACTC,MAAM,EAAE,EAAE;IACVC,WAAW,EAAE,CAAC;IACdC,MAAM,EAAE,mBAAmB;IAC3BC,YAAY,EAAE,KAAK;IACnBC,SAAS,EAAE;EACb,CAAC;EACCC,KAAK,GAAG;IACRC,UAAU,EAAE,KAAK;IACjBC,UAAU,EAAE;EACd,CAAC;AAED,MAAMC,iBAAiB,GAAGC,IAAA;EAAA,IAAC;IACzBC,KAAK;IACLC;EACF,CAAC,GAAAF,IAAA;EAAA,oBACC,IAAAG,WAAA,CAAAC,IAAA;IAAAC,QAAA,gBACE,IAAAF,WAAA,CAAAG,GAAA;MAAMC,KAAK,EAAEnB,QAAS;MAAAiB,QAAA,EAAEJ;IAAK,CAAO,CAAC,eACrC,IAAAE,WAAA,CAAAG,GAAA;MAAMC,KAAK,EAAEX,KAAM;MAAAS,QAAA,EAAEH;IAAG,CAAO,CAAC;EAAA,CAC7B,CAAC;AAAA,CACP;AAED,MAAMM,kBAAkB,GAAGC,KAAA,IAErB;EAAA,IAFsB;IAC1BC;EACF,CAAC,GAAAD,KAAA;EACC,IAAI,CAAC3B,MAAM,CAAC4B,kBAAkB,CAAC,EAAC;IAC7B,OAAO,IAAI;EACd;EACA,oBACE,IAAAP,WAAA,CAAAG,GAAA;IAAKC,KAAK,EAAEtB,UAAW;IAAAoB,QAAA,EACpBK,kBAAkB,CAACC,GAAG,CAAC,CAACT,GAAG,EAAED,KAAK,kBAChC,IAAAE,WAAA,CAAAG,GAAA,EAACP,iBAAiB;MAEfG,GAAG,EAAEA,GAAI;MACTD,KAAK,EAAEA,KAAK,GAAC;IAAE,GAFVA,KAGN,CACJ;EAAC,CACC,CAAC;AAEV,CAAC;;AAED;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AARA,IAAAW,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAUeN,kBAAkB","ignoreList":[]}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/dialogs/rows/ValidationMessages.js"
+ ],
+ "file": "../../../../src/components/dialogs/rows/ValidationMessages.js",
+ "names": [
+  "_isArr",
+  "Array",
+  "isArray",
+  "S_ROOT_DIV",
+  "color",
+  "padding",
+  "S_NUMBER",
+  "display",
+  "width",
+  "height",
+  "marginRight",
+  "border",
+  "borderRadius",
+  "textAlign",
+  "S_MSG",
+  "whiteSpace",
+  "fontWeight",
+  "ValidationMessage",
+  "_ref",
+  "index",
+  "msg",
+  "_jsxRuntime",
+  "jsxs",
+  "children",
+  "jsx",
+  "style",
+  "ValidationMessages",
+  "_ref2",
+  "validationMessages",
+  "map",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA;;AAEA,MAAMA,MAAM,GAAGC,KAAK,CAACC,OAAO;EAC1BC,UAAU,GAAG;IACbC,KAAK,EAAE,SAAS;IAChBC,OAAO,EAAE;EACX,CAAC;EACCC,QAAQ,GAAG;IACXC,OAAO,EAAE,cAAc;IACvBC,KAAK,EAAE,EAAE;IACTC,MAAM,EAAE,EAAE;IACVC,WAAW,EAAE,CAAC;IACdC,MAAM,EAAE,mBAAmB;IAC3BC,YAAY,EAAE,KAAK;IACnBC,SAAS,EAAE;EACb,CAAC;EACCC,KAAK,GAAG;IACRC,UAAU,EAAE,KAAK;IACjBC,UAAU,EAAE;EACd,CAAC;AAED,MAAMC,iBAAiB,GAAGC,IAAA;EAAA,IAAC;IACzBC,KAAK;IACLC;EACF,CAAC,GAAAF,IAAA;EAAA,oBACC,IAAAG,WAAA,CAAAC,IAAA;IAAAC,QAAA,gBACE,IAAAF,WAAA,CAAAG,GAAA;MAAMC,KAAK,EAAEnB,QAAS;MAAAiB,QAAA,EAAEJ;IAAK,CAAO,CAAC,eACrC,IAAAE,WAAA,CAAAG,GAAA;MAAMC,KAAK,EAAEX,KAAM;MAAAS,QAAA,EAAEH;IAAG,CAAO,CAAC;EAAA,CAC7B,CAAC;AAAA,CACP;AAED,MAAMM,kBAAkB,GAAGC,KAAA;EAAA,IAAC;IAC1BC;EACF,CAAC,GAAAD,KAAA;EAAA,OAAK3B,MAAM,CAAC4B,kBAAkB,CAAC,gBAC9B,IAAAP,WAAA,CAAAG,GAAA;IAAKC,KAAK,EAAEtB,UAAW;IAAAoB,QAAA,EACpBK,kBAAkB,CAACC,GAAG,CAAC,CAACT,GAAG,EAAED,KAAK,kBAChC,IAAAE,WAAA,CAAAG,GAAA,EAACP,iBAAiB;MAEfG,GAAG,EAAEA,GAAI;MACTD,KAAK,EAAEA,KAAK,GAAC;IAAE,GAFVA,KAGN,CACJ;EAAC,CACC,CAAC,GACJ,IAAI;AAAA;;AAGR;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AARA,IAAAW,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAUeN,kBAAkB"
+}

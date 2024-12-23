@@ -2,24 +2,24 @@
 
 const _isArr = Array.isArray
 , S_ROOT_DIV = {
-  color: '#f44336',
-  padding: '5px 0 0 10px'
+  color: "#f44336",
+  padding: "5px 0 0 10px"
 }
 , S_NUMBER = {
-  display: 'inline-block',
+  display: "inline-block",
   width: 22,
   height: 22,
   marginRight: 5,
-  border: 'solid 2px #f44336',
-  borderRadius: '50%',
-  textAlign: 'center'
+  border: "solid 2px #f44336",
+  borderRadius: "50%",
+  textAlign: "center"
 }
 , S_MSG = {
-  whiteSpace: 'pre',
-  fontWeight: 'bold'
+  whiteSpace: "pre",
+  fontWeight: "bold"
 };
 
-const ValidationMessage = ({ 
+const ValidationMessage = ({
   index,
   msg
 }) => (
@@ -31,22 +31,18 @@ const ValidationMessage = ({
 
 const ValidationMessages = ({
   validationMessages
-}) => {
-  if (!_isArr(validationMessages)){
-     return null;
-  }
-  return (
-    <div style={S_ROOT_DIV}>
-      {validationMessages.map((msg, index) => (
-         <ValidationMessage
-            key={index}
-            msg={msg}
-            index={index+1}
-          />
-      ))}
-    </div>
-  );
-};
+}) => _isArr(validationMessages) ? (
+  <div style={S_ROOT_DIV}>
+    {validationMessages.map((msg, index) => (
+       <ValidationMessage
+          key={index}
+          msg={msg}
+          index={index+1}
+        />
+    ))}
+  </div>
+) : null;
+
 
 /*
 ValidationMessages.propTypes = {
