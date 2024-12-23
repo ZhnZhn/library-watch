@@ -1,20 +1,21 @@
+import { safeMap } from "../../uiApi";
 const S_SPAN_TAG = {
-  display: 'inline-block',
-  color: 'black',
-  padding: '4px 8px',
-  margin: '6px 8px 2px 8px',
+  display: "inline-block",
+  color: "black",
+  padding: "4px 8px",
+  margin: "6px 8px 2px 8px",
   borderRadius: 16,
-  backgroundColor: 'gray'
+  backgroundColor: "gray"
 };
 
 const TagList = ({
   tags
 }) => (
   <div>
-    {(tags || []).map((tag, index) => (
-        <span key={index} style={S_SPAN_TAG}>
-          {tag}
-        </span>
+    {safeMap(tags, (tag, index) => (
+       <span key={index} style={S_SPAN_TAG}>
+         {tag}
+       </span>
     ))}
   </div>
 );
