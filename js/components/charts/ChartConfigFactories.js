@@ -27,11 +27,12 @@ const _crDataset = function (_temp) {
     strColor,
     hidden
   } = _temp === void 0 ? {} : _temp;
-  const _borderColor = _crBorderColor(strColor || COLORS[0]);
+  const _strColor = strColor || COLORS[0],
+    _borderColor = _crBorderColor(_strColor);
   return {
     ...DATASET_OPTIONS,
     label: label || data.seriaName || "Downloads",
-    backgroundColor: crRgbaBgColor(strColor),
+    backgroundColor: crRgbaBgColor(_strColor),
     borderColor: _borderColor,
     pointBorderColor: _borderColor,
     pointBackgroundColor: _borderColor,
