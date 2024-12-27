@@ -1,54 +1,55 @@
 
 const COLORS = [
-  '128,192,64',
-  '36,156,216',
-  '237,86,91',
-  '241,174,44',
-  '144,89,152'
-  //'rgba(128, 192, 64, 1)',
+  "128,192,64",
+  "36,156,216",
+  "237,86,91",
+  "241,174,44",
+  "144,89,152"
 ];
 
-const _crBgColor = str => `rgba(${str}, 0.4)`;
+const DATASET_OPTIONS = {
+  fill: false,
+  lineTension: 0.1,
+
+  borderCapStyle: "butt",
+  borderDash: [],
+  borderDashOffset: 0.0,
+  borderJoinStyle: "miter",
+
+  pointBorderWidth: 1,
+  pointHoverRadius: 8,
+
+  pointHoverBorderColor: "rgba(164, 135, 212, 1)",
+  pointHoverBorderWidth: 4,
+  pointRadius: 5,
+  pointHitRadius: 10
+};
+
+export const crRgbaBgColor = str => `rgba(${str}, 0.4)`
 const _crBorderColor = str => `rgba(${str}, 1)`;
 
 const _crDataset = ({
   label,
   data,
-  strColor=COLORS[0],
-  hidden=false
+  strColor,
+  hidden
 }={}) => {
-  const _label = label || data.seriaName || 'Downloads'
-  , _borderColor = _crBorderColor(strColor);
+  const _borderColor = _crBorderColor(strColor || COLORS[0]);
   return {
-    hidden,
-    label: _label,
-    fill: false,
-    lineTension: 0.1,
-    backgroundColor: _crBgColor(strColor),
-    //rgba(128, 192, 64, 1)
-    //rgba(75,192,192,1)
+    ...DATASET_OPTIONS,
+    label: label || data.seriaName || "Downloads",
+    backgroundColor: crRgbaBgColor(strColor),
     borderColor: _borderColor,
-    borderCapStyle: 'butt',
-    borderDash: [],
-    borderDashOffset: 0.0,
-    borderJoinStyle: 'miter',
     pointBorderColor: _borderColor,
-    //pointBackgroundColor: '#fff',
-    pointBackgroundColor : _borderColor,
-    pointBorderWidth: 1,
-    pointHoverRadius: 8,
+    pointBackgroundColor: _borderColor,
     pointHoverBackgroundColor: _borderColor,
-    //pointHoverBorderColor: 'rgba(220,220,220,1)',
-    pointHoverBorderColor: 'rgba(164, 135, 212, 1)',
-    pointHoverBorderWidth: 4,
-    pointRadius: 5,
-    pointHitRadius: 10,
-    data: data
+    hidden: !!hidden,
+    data
   };
 };
 
 export const fLineConfig = ({
-  labels=['1', '2'],
+  labels=["1", "2"],
   data=[0, 0]
 }) => ({
   labels,
@@ -56,7 +57,7 @@ export const fLineConfig = ({
 })
 
 export const fLineConfigs = ({
-  labels=['1', '2'],
+  labels=["1", "2"],
   data=[[0, 0]],
   numVisible=5
 }) => {
@@ -64,10 +65,29 @@ export const fLineConfigs = ({
   , datasets = data.map((arr, index) => _crDataset({
       data: arr,
       strColor: arr.color || COLORS[index % numColors],
-      hidden: index >= numVisible ? true : false
+      hidden: index >= numVisible
   }));
   return {
     labels,
     datasets
   };
-};
+}
+
+export const crBarConfig = (
+  label,
+  labels,
+  data,
+  backgroundColor,
+  borderColor
+) => ({
+  labels,
+  datasets: [{
+    ...DATASET_OPTIONS,
+    label,
+    data,
+    backgroundColor,
+    borderColor,
+    borderRadius: 2,
+    minBarLength: 10
+  }]
+})
