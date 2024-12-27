@@ -1,38 +1,47 @@
+import {
+  crRgbaBgColor,
+  crBarConfig
+} from "../charts/ChartConfigFactories";
 import fNpm from "./fNpm";
+
+const _isReleaseVersion = (
+  a
+) => (a.split(".")[2] || "").indexOf("-") === -1;
 
 const _compareToken = (
   a,
   b
 ) => parseInt(a) > parseInt(b) ? -1 : 1;
 
+const _compareByVersions = (
+  a,
+  b
+) => {
+  const arrA = a.split(".")
+  , arrB = b.split(".");
+  if (arrA[0] === arrB[0]) {
+    return arrA[1] === arrB[1]
+      ? _compareToken(arrA[2], arrB[2])
+      : _compareToken(arrA[1], arrB[1]);
+  }
+  return _compareToken(arrA[0], arrB[0]);
+};
+
 const _findRecentVersion = (
   downloadsKeys
-) => {
-  let recentVersion = "";
-  try {
-    recentVersion = downloadsKeys
-      .filter(a => a.split(".")[2].indexOf("-") === -1)
-      .sort((a, b) => {
-        const arrA = a.split(".")
-        , arrB = b.split(".");
-        if (arrA[0] === arrB[0]) {
-          return arrA[1] === arrB[1]
-            ? _compareToken(arrA[2], arrB[2])
-            : _compareToken(arrA[1], arrB[1]);
-        }
-        return _compareToken(arrA[0], arrB[0]);
-      })[0];
-  } catch(err) {
-    console.log(err);
-  }
-  return recentVersion;
-};
+) => downloadsKeys
+  .filter(_isReleaseVersion)
+  .sort(_compareByVersions)[0];
+
+const RGBA_VERSION = crRgbaBgColor("128,192,64");
+const RGBA_RECENT_VERSION = crRgbaBgColor("144,89,152");
 
 const _transformDownloads = (
   downloads
 ) => {
   const labels = []
   , data = []
+  , backgroundColors = []
   , downloadsKeys = Object.keys(downloads)
   , recentVersion = _findRecentVersion([...downloadsKeys]);
 
@@ -46,16 +55,25 @@ const _transformDownloads = (
       data.push(numberOfDownloads)
       if (version === recentVersion) {
         isRecentVersion = !0
+        backgroundColors.push(RGBA_RECENT_VERSION)
+      } else {
+        backgroundColors.push(RGBA_VERSION)
       }
     });
   if (!isRecentVersion && recentVersion) {
     labels.push(recentVersion)
     data.push(downloads[recentVersion])
+    backgroundColors.push(RGBA_RECENT_VERSION)
   }
 
   return {
-    data,
-    labels,
+    chartConfig: crBarConfig(
+      "Downloads",
+      labels,
+      data,
+      backgroundColors,
+      [...backgroundColors]
+    ),
     sumDownloads: data
       .reduce((sum, versionDownloads) => sum + versionDownloads, 0)
   };
