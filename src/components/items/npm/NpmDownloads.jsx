@@ -34,6 +34,7 @@ const NpmDownloads = ({
   sumDownloads=0,
   toDate,
   fromDate,
+  chartConfig,
   labels,
   data,
   packageLink,
@@ -73,7 +74,7 @@ const NpmDownloads = ({
   }, [])
   // requestType, packageName, sumDownloads, toDate, onWatchItem
   /*eslint-enable react-hooks/exhaustive-deps */
-  , _lineChartConfig = fLineConfig({ labels, data });
+  , _lineChartConfig = chartConfig || fLineConfig({ labels, data });
 
   return (
     <div style={S_ROOT}>

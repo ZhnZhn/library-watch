@@ -33,6 +33,7 @@ const NpmDownloads = _ref => {
     sumDownloads = 0,
     toDate,
     fromDate,
+    chartConfig,
     labels,
     data,
     packageLink,
@@ -60,7 +61,7 @@ const NpmDownloads = _ref => {
     }, [])
     // requestType, packageName, sumDownloads, toDate, onWatchItem
     /*eslint-enable react-hooks/exhaustive-deps */,
-    _lineChartConfig = (0, _ChartConfigFactories.fLineConfig)({
+    _lineChartConfig = chartConfig || (0, _ChartConfigFactories.fLineConfig)({
       labels,
       data
     });
