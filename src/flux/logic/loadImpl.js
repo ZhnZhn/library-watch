@@ -18,6 +18,7 @@ const _fetchToChartComp = ({
 };
 
 const _fFetchUrl = (
+  mlsDelay,
   uri,
   onCheckResponse,
   onFailed
@@ -27,7 +28,7 @@ const _fFetchUrl = (
   onCompleted
 }) => {
   option.json1 = json
-  delayFn(4000, () => fnFetch({
+  delayFn(mlsDelay, () => fnFetch({
     uri,
     option,
     onCheckResponse,
@@ -52,7 +53,7 @@ const loadItem = (
   ] = isStr(_uri)
     ? [_uri, _fetchToChartComp]
     : isArr(_uri)
-       ? [_uri[0], _fFetchUrl(_uri[1], onCheckResponse, onFailed)]
+       ? [_uri[0], _fFetchUrl(3200, _uri[1], onCheckResponse, onFailed)]
        : [];
 
    fnFetch({

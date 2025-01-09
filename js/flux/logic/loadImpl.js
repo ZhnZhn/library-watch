@@ -16,14 +16,14 @@ const _fetchToChartComp = _ref => {
   } = _ref;
   onCompleted(option, json);
 };
-const _fFetchUrl = (uri, onCheckResponse, onFailed) => _ref2 => {
+const _fFetchUrl = (mlsDelay, uri, onCheckResponse, onFailed) => _ref2 => {
   let {
     json,
     option,
     onCompleted
   } = _ref2;
   option.json1 = json;
-  (0, _delayFn.delayFn)(4000, () => (0, _fnFetch.default)({
+  (0, _delayFn.delayFn)(mlsDelay, () => (0, _fnFetch.default)({
     uri,
     option,
     onCheckResponse,
@@ -37,7 +37,7 @@ const loadItem = (option, onCompleted, onFailed) => {
   const api = _RestApi.default.getApi(option),
     _uri = api.getRequestUrl(option),
     onCheckResponse = api.checkResponse,
-    [uri, onFetch] = (0, _isTypeFn.isStr)(_uri) ? [_uri, _fetchToChartComp] : (0, _isTypeFn.isArr)(_uri) ? [_uri[0], _fFetchUrl(_uri[1], onCheckResponse, onFailed)] : [];
+    [uri, onFetch] = (0, _isTypeFn.isStr)(_uri) ? [_uri, _fetchToChartComp] : (0, _isTypeFn.isArr)(_uri) ? [_uri[0], _fFetchUrl(3200, _uri[1], onCheckResponse, onFailed)] : [];
   (0, _fnFetch.default)({
     uri,
     onFetch,
