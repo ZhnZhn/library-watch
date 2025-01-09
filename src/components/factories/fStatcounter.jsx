@@ -1,3 +1,5 @@
+import { isStr } from "../../utils/isTypeFn";
+
 import StatcounterShare from "../items/StatcounterShare";
 import { getObjectKeys } from "./helperFn";
 
@@ -30,6 +32,10 @@ const _crTopN = (arr, top=5) => {
   return _arrTop;
 }
 
+const _isDate = (
+  date
+) => isStr(date) && date.slice(5,7) !== "00"
+
 const _crLabelsDataTuple = (json) => {
   const labels = []
   , _arrTop5 = _crTopN(json)
@@ -40,11 +46,13 @@ const _crLabelsDataTuple = (json) => {
     return _arr;
   });
 
-  json.forEach(row => {
-    labels.push(row.Date)
-    for(let i=0; i<_maxSeria; i++){
-      const _arr = arrSeries[i];
-      _arr.push(row[_arr.seriaName])
+  json.forEach(row => {    
+    if (_isDate(row.Date)) {
+      labels.push(row.Date)
+      for(let i=0; i<_maxSeria; i++){
+        const _arr = arrSeries[i];
+        _arr.push(row[_arr.seriaName])
+      }
     }
   })
 

@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _StatcounterShare = _interopRequireDefault(require("../items/StatcounterShare"));
 var _helperFn = require("./helperFn");
 var _jsxRuntime = require("react/jsx-runtime");
@@ -34,6 +35,7 @@ const _crTopN = function (arr, top) {
   }
   return _arrTop;
 };
+const _isDate = date => (0, _isTypeFn.isStr)(date) && date.slice(5, 7) !== "00";
 const _crLabelsDataTuple = json => {
   const labels = [],
     _arrTop5 = _crTopN(json),
@@ -44,10 +46,12 @@ const _crLabelsDataTuple = json => {
       return _arr;
     });
   json.forEach(row => {
-    labels.push(row.Date);
-    for (let i = 0; i < _maxSeria; i++) {
-      const _arr = arrSeries[i];
-      _arr.push(row[_arr.seriaName]);
+    if (_isDate(row.Date)) {
+      labels.push(row.Date);
+      for (let i = 0; i < _maxSeria; i++) {
+        const _arr = arrSeries[i];
+        _arr.push(row[_arr.seriaName]);
+      }
     }
   });
   return [labels, arrSeries];
