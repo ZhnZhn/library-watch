@@ -19,6 +19,7 @@
   font-weight: bold;
 }
 
+
 .zhn-select__spinner {
   position: absolute;
   top: 6px;
@@ -36,6 +37,21 @@
   height: 20px;
   border-color: #f44336;
   cursor: pointer;
+}
+
+.zhn-select__bt-arrow {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  width: 35px;
+  padding-right: 5px;  
+}
+
+.zhn-select__bt-arrow > svg { 
+  fill: currentcolor;
+  stroke: currentcolor;
+  stroke-width: 2.7;
+  stroke-linecap: round;
 }
 
 .zhn-select__input__hr {
@@ -61,38 +77,33 @@
 }
 
 .zhn-select__options__div {
+  background-color: #d5d5bc;
   min-height: 160px;
   max-height: 200px;
   overflow-y: auto;
   overflow-x: hidden;
-
+  
   overscroll-behavior: contain;
 
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;
 }
 
-
 .zhn-select__row {
-  background-color: #d5d5bc;
-  padding-top: 6px;
-  padding-left: 5px;
-  padding-bottom: 6px;
+  padding: 6px 10px;  
   border-bottom: solid 2px transparent;
   cursor: pointer;
 }
-.zhn-select__row:nth-child(odd) {
-  background-color: #c3c3ac;
-}
 
-.zhn-select__row:hover {
+.zhn-select__row:hover {  
+  border-bottom: solid 2px #1b75bb;
   font-weight: 600;
 }
 .zhn-select__row:focus {
   outline: 0;
 }
 .zhn-select__row--active {
-  border-bottom: solid 2px #1b75bb;
+  background-color: rgba(128, 128, 128, 0.3);
   font-weight: 600;
 }
 

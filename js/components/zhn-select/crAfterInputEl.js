@@ -7,10 +7,7 @@ var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
 var _ButtonCircle = _interopRequireDefault(require("../zhn/ButtonCircle2"));
 var _CL = require("./CL");
 var _jsxRuntime = require("react/jsx-runtime");
-const S_ARROW_SHOW = {
-  borderColor: '#1b75bb transparent transparent'
-};
-const crAfterInputEl = (props, state, refArrowCell, hToggleOptions) => {
+const crAfterInputEl = (props, state, isShowOption, hToggleOptions) => {
   const {
       isLoading,
       isLoadingFailed,
@@ -19,12 +16,10 @@ const crAfterInputEl = (props, state, refArrowCell, hToggleOptions) => {
       onLoadOption
     } = props,
     {
-      isShowOption,
       optionNames
     } = state;
   return !isLoading && !isLoadingFailed ? [placeholder || `Select ${optionName}...`, /*#__PURE__*/(0, _jsxRuntime.jsx)(_ArrowCell.default, {
-    refEl: refArrowCell,
-    arrowStyle: isShowOption ? S_ARROW_SHOW : void 0,
+    isShowOption: isShowOption,
     onClick: hToggleOptions
   })] : isLoading ? [`Loading ${optionNames}...`, /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
     className: _CL.CL_SPINNER,

@@ -15,8 +15,6 @@ var _crFilteredOptions = _interopRequireDefault(require("./crFilteredOptions"));
 var _useStepHandlers = _interopRequireDefault(require("./useStepHandlers"));
 var _helperFns = require("./helperFns");
 var _jsxRuntime = require("react/jsx-runtime");
-//import PropTypes from 'prop-types'
-
 const DF_OPTIONS = [];
 const _crInitialStateFromProps = _ref => {
   let {
@@ -42,7 +40,6 @@ const InputSelect = props => {
       isWithInput = false,
       onSelect = FN_NOOP
     } = props,
-    _refArrowCell = (0, _uiApi.useRef)(),
     _refDomInputText = (0, _uiApi.useRef)(),
     [state, setState] = (0, _uiApi.useState)(() => _crInitialStateFromProps(props)),
     {
@@ -181,7 +178,7 @@ const InputSelect = props => {
   }
   const indexActiveOption = getActiveIndexOption(),
     _style = (0, _crStyleWidth.default)(width, style),
-    [placeholder, afterInputEl] = (0, _crAfterInputEl.default)(props, state, _refArrowCell, toggleIsShowOption),
+    [placeholder, afterInputEl] = (0, _crAfterInputEl.default)(props, state, isShowOption, toggleIsShowOption),
     [nFiltered, nAll] = (0, _helperFns.crFooterIndex)(options, initialOptions);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: _CL.CL_ROOT,

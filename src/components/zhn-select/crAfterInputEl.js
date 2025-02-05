@@ -6,14 +6,10 @@ import {
   CL_SPINNER_FAILED,
 } from './CL';
 
-const S_ARROW_SHOW = {
-  borderColor: '#1b75bb transparent transparent'
-};
-
 const crAfterInputEl = (
   props,
   state,
-  refArrowCell,
+  isShowOption,
   hToggleOptions
 ) => {
   const {
@@ -24,14 +20,12 @@ const crAfterInputEl = (
      onLoadOption
    } = props
   , {
-    isShowOption,
     optionNames
   } = state
   return !isLoading && !isLoadingFailed
     ? [placeholder || `Select ${optionName}...`,
         (<ArrowCell
-          refEl={refArrowCell}
-          arrowStyle={isShowOption ? S_ARROW_SHOW : void 0}
+          isShowOption={isShowOption}
           onClick={hToggleOptions}
        />)]
     : isLoading

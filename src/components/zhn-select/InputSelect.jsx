@@ -1,4 +1,3 @@
-//import PropTypes from 'prop-types'
 import {
   useRef,
   useState,
@@ -60,7 +59,6 @@ const InputSelect = (
     isWithInput=false,
     onSelect=FN_NOOP
   } = props
-  , _refArrowCell = useRef()
   , _refDomInputText = useRef()
   , [
     state,
@@ -232,7 +230,7 @@ const InputSelect = (
   ] = crAfterInputEl(
      props,
      state,
-     _refArrowCell,
+     isShowOption,
      toggleIsShowOption
    )
   , [
