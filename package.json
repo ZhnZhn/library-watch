@@ -58,10 +58,12 @@
   },
   "jest": {
     "roots": [
+      "<rootDir>/js/components/charts",
       "<rootDir>/js/flux/",
       "<rootDir>/js/utils/"
     ],
     "transformIgnorePatterns": [
+      "<rootDir>/js/components/charts",
       "<rootDir>/js/flux/",
       "<rootDir>/js/utils/"
     ]
