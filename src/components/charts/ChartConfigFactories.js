@@ -1,3 +1,4 @@
+import { formatTicks } from './ChartFn';
 
 const COLORS = [
   "128,192,64",
@@ -91,4 +92,15 @@ export const crBarConfig = (
     borderRadius: 2,
     minBarLength: 10
   }]
+})
+
+export const crLinearScale = (pnAxis) => ({
+  scales: {
+    [pnAxis]: {
+      type: "linear",
+      ticks: {
+        callback: formatTicks
+      }
+    }
+  }
 })

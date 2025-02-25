@@ -1,7 +1,8 @@
 "use strict";
 
 exports.__esModule = true;
-exports.fLineConfigs = exports.fLineConfig = exports.crRgbaBgColor = exports.crBarConfig = void 0;
+exports.fLineConfigs = exports.fLineConfig = exports.crRgbaBgColor = exports.crLinearScale = exports.crBarConfig = void 0;
+var _ChartFn = require("./ChartFn");
 const COLORS = ["128,192,64", "36,156,216", "237,86,91", "241,174,44", "144,89,152"];
 const DATASET_OPTIONS = {
   fill: false,
@@ -85,4 +86,15 @@ const crBarConfig = (label, labels, data, backgroundColor, borderColor) => ({
   }]
 });
 exports.crBarConfig = crBarConfig;
+const crLinearScale = pnAxis => ({
+  scales: {
+    [pnAxis]: {
+      type: "linear",
+      ticks: {
+        callback: _ChartFn.formatTicks
+      }
+    }
+  }
+});
+exports.crLinearScale = crLinearScale;
 //# sourceMappingURL=ChartConfigFactories.js.map
