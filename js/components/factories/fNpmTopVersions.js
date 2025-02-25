@@ -49,7 +49,8 @@ const _transformDownloads = downloads => {
   _crElementProps = () => ({
     type: "bar",
     options: {
-      indexAxis: "y"
+      indexAxis: "y",
+      ...(0, _ChartConfigFactories.crLinearScale)("x")
     }
   });
 const fNpmTopVersions = (0, _fNpm.default)(_transformDownloads, _crElementProps);

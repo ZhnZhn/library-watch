@@ -1,1 +1,38 @@
-{"version":3,"file":"fNpm.js","names":["_NpmDownloads","_interopRequireDefault","require","_jsxRuntime","FN_NOOP","fNpm","transformDownloads","crElementProps","options","option","json","parentProps","onMoveToTop","onCloseItem","jsx","default","packageName","package","caption","packageLink","requestType","downloads","key","_default","exports"],"sources":["../../../src/components/factories/fNpm.jsx"],"sourcesContent":["import NpmDownloads from \"../items/npm/NpmDownloads\";\r\n\r\nconst FN_NOOP = () => ({})\r\n, fNpm = (\r\n  transformDownloads,\r\n  crElementProps=FN_NOOP\r\n) => (\r\n  options\r\n) => {\r\n  const {\r\n    option,\r\n    json,\r\n    parentProps,\r\n    onMoveToTop,\r\n    onCloseItem\r\n  } = options;\r\n  return (<NpmDownloads\r\n     key={option.key}\r\n     packageName={json.package}\r\n     caption={json.package}\r\n     packageLink={option.packageLink}\r\n     requestType={option.requestType}\r\n\r\n     //sumDownloads={sumDownloads}\r\n     //fromDate={fromDate}\r\n     //toDate={toDate}\r\n     //labels={labels}\r\n     //data={data}\r\n     {...transformDownloads(json.downloads)}\r\n\r\n     onMoveToTop={onMoveToTop}\r\n     onCloseItem={onCloseItem}\r\n     {...crElementProps(options)}\r\n     {...parentProps}\r\n  />);\r\n};\r\n\r\nexport default fNpm\r\n"],"mappings":";;;;;AAAA,IAAAA,aAAA,GAAAC,sBAAA,CAAAC,OAAA;AAAqD,IAAAC,WAAA,GAAAD,OAAA;AAErD,MAAME,OAAO,GAAGA,CAAA,MAAO,CAAC,CAAC,CAAC;EACxBC,IAAI,GAAG,SAAAA,CACPC,kBAAkB,EAClBC,cAAc;IAAA,IAAdA,cAAc;MAAdA,cAAc,GAACH,OAAO;IAAA;IAAA,OAEtBI,OAAO,IACJ;MACH,MAAM;QACJC,MAAM;QACNC,IAAI;QACJC,WAAW;QACXC,WAAW;QACXC;MACF,CAAC,GAAGL,OAAO;MACX,oBAAQ,IAAAL,WAAA,CAAAW,GAAA,EAACd,aAAA,CAAAe,OAAY;QAElBC,WAAW,EAAEN,IAAI,CAACO,OAAQ;QAC1BC,OAAO,EAAER,IAAI,CAACO,OAAQ;QACtBE,WAAW,EAAEV,MAAM,CAACU,WAAY;QAChCC,WAAW,EAAEX,MAAM,CAACW;;QAEpB;QACA;QACA;QACA;QACA;QAAA;QAAA,GACId,kBAAkB,CAACI,IAAI,CAACW,SAAS,CAAC;QAEtCT,WAAW,EAAEA,WAAY;QACzBC,WAAW,EAAEA,WAAY;QAAA,GACrBN,cAAc,CAACC,OAAO,CAAC;QAAA,GACvBG;MAAW,GAhBVF,MAAM,CAACa,GAiBd,CAAC;IACJ,CAAC;EAAA;AAAC,IAAAC,QAAA,GAAAC,OAAA,CAAAT,OAAA,GAEaV,IAAI","ignoreList":[]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/factories/fNpm.js"
+ ],
+ "file": "../../../src/components/factories/fNpm.js",
+ "names": [
+  "_ChartConfigFactories",
+  "require",
+  "_NpmDownloads",
+  "_interopRequireDefault",
+  "_jsxRuntime",
+  "_crElementPropsDf",
+  "type",
+  "options",
+  "crLinearScale",
+  "fNpm",
+  "transformDownloads",
+  "crElementProps",
+  "option",
+  "json",
+  "parentProps",
+  "onMoveToTop",
+  "onCloseItem",
+  "jsx",
+  "default",
+  "packageName",
+  "package",
+  "caption",
+  "packageLink",
+  "requestType",
+  "downloads",
+  "key",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,qBAAA,GAAAC,OAAA;AACA,IAAAC,aAAA,GAAAC,sBAAA,CAAAF,OAAA;AAAqD,IAAAG,WAAA,GAAAH,OAAA;AAErD,MAAMI,iBAAiB,GAAGA,CAAA,MAAO;EAC/BC,IAAI,EAAE,MAAM;EACZC,OAAO,EAAE;IACP,GAAG,IAAAC,mCAAa,EAAC,GAAG;EACtB;AACF,CAAC,CAAC;AAEF,MAAMC,IAAI,GAAG,SAAAA,CACXC,kBAAkB,EAClBC,cAAc;EAAA,IAAdA,cAAc;IAAdA,cAAc,GAACN,iBAAiB;EAAA;EAAA,OAEhCE,OAAO,IACJ;IACH,MAAM;MACJK,MAAM;MACNC,IAAI;MACJC,WAAW;MACXC,WAAW;MACXC;IACF,CAAC,GAAGT,OAAO;IACX,oBAAQ,IAAAH,WAAA,CAAAa,GAAA,EAACf,aAAA,CAAAgB,OAAY;MAElBC,WAAW,EAAEN,IAAI,CAACO,OAAQ;MAC1BC,OAAO,EAAER,IAAI,CAACO,OAAQ;MACtBE,WAAW,EAAEV,MAAM,CAACU,WAAY;MAChCC,WAAW,EAAEX,MAAM,CAACW;;MAEpB;MACA;MACA;MACA;MACA;MAAA;MAAA,GACIb,kBAAkB,CAACG,IAAI,CAACW,SAAS,CAAC;MAEtCT,WAAW,EAAEA,WAAY;MACzBC,WAAW,EAAEA,WAAY;MAAA,GACrBL,cAAc,CAACJ,OAAO,CAAC;MAAA,GACvBO;IAAW,GAhBVF,MAAM,CAACa,GAiBd,CAAC;EACJ,CAAC;AAAA;AAAC,IAAAC,QAAA,GAAAC,OAAA,CAAAT,OAAA,GAEaT,IAAI"
+}

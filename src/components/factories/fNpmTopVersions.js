@@ -1,7 +1,9 @@
 import {
   crRgbaBgColor,
-  crBarConfig
+  crBarConfig,
+  crLinearScale
 } from "../charts/ChartConfigFactories";
+
 import fNpm from "./fNpm";
 
 const _isReleaseVersion = (
@@ -81,7 +83,8 @@ const _transformDownloads = (
 , _crElementProps = () => ({
   type: "bar",
   options: {
-    indexAxis: "y"
+    indexAxis: "y",
+    ...crLinearScale("x")
   }
 });
 

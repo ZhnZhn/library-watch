@@ -1,9 +1,16 @@
+import { crLinearScale } from "../charts/ChartConfigFactories";
 import NpmDownloads from "../items/npm/NpmDownloads";
 
-const FN_NOOP = () => ({})
-, fNpm = (
+const _crElementPropsDf = () => ({
+  type: "line",
+  options: {
+    ...crLinearScale("y")
+  }
+});
+
+const fNpm = (
   transformDownloads,
-  crElementProps=FN_NOOP
+  crElementProps=_crElementPropsDf
 ) => (
   options
 ) => {
