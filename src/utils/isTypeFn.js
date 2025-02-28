@@ -11,6 +11,7 @@ export const isRegularObj = (v) => !!v
   && !isArr(v);
 
 export const isStr = _fIsType('string')
+export const isBool = _fIsType('boolean')
 export const isFn = _fIsType('function')
 
 export const isNotEmptyStr = str => isStr(str) && str !== '';

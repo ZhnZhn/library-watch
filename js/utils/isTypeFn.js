@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.isStr = exports.isRegularObj = exports.isNumber = exports.isNotEmptyStr = exports.isNaN = exports.isFn = exports.isArr = void 0;
+exports.isStr = exports.isRegularObj = exports.isNumber = exports.isNotEmptyStr = exports.isNaN = exports.isFn = exports.isBool = exports.isArr = void 0;
 const isNaN = exports.isNaN = Number.isNaN;
 const isArr = exports.isArr = Array.isArray;
 const _fIsType = strType => v => typeof v === strType,
@@ -11,6 +11,7 @@ exports.isNumber = isNumber;
 const isRegularObj = v => !!v && typeof v === 'object' && !isArr(v);
 exports.isRegularObj = isRegularObj;
 const isStr = exports.isStr = _fIsType('string');
+const isBool = exports.isBool = _fIsType('boolean');
 const isFn = exports.isFn = _fIsType('function');
 const isNotEmptyStr = str => isStr(str) && str !== '';
 exports.isNotEmptyStr = isNotEmptyStr;

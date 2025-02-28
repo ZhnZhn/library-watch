@@ -1,1 +1,28 @@
-{"version":3,"file":"isTypeFn.js","names":["isNaN","exports","Number","isArr","Array","isArray","_fIsType","strType","v","_isTypeNumber","isNumber","n","isRegularObj","isStr","isFn","isNotEmptyStr","str"],"sources":["../../src/utils/isTypeFn.js"],"sourcesContent":["export const isNaN = Number.isNaN\r\nexport const isArr = Array.isArray\r\n\r\nconst _fIsType = strType => v => typeof v === strType\r\n, _isTypeNumber = _fIsType('number');\r\n\r\nexport const isNumber = n => _isTypeNumber(n) && n-n===0\r\n\r\nexport const isRegularObj = (v) => !!v\r\n  && typeof v === 'object'\r\n  && !isArr(v);\r\n\r\nexport const isStr = _fIsType('string')\r\nexport const isFn = _fIsType('function')\r\n\r\nexport const isNotEmptyStr = str => isStr(str) && str !== '';\r\n"],"mappings":";;;;AAAO,MAAMA,KAAK,GAAAC,OAAA,CAAAD,KAAA,GAAGE,MAAM,CAACF,KAAK;AAC1B,MAAMG,KAAK,GAAAF,OAAA,CAAAE,KAAA,GAAGC,KAAK,CAACC,OAAO;AAElC,MAAMC,QAAQ,GAAGC,OAAO,IAAIC,CAAC,IAAI,OAAOA,CAAC,KAAKD,OAAO;EACnDE,aAAa,GAAGH,QAAQ,CAAC,QAAQ,CAAC;AAE7B,MAAMI,QAAQ,GAAGC,CAAC,IAAIF,aAAa,CAACE,CAAC,CAAC,IAAIA,CAAC,GAACA,CAAC,KAAG,CAAC;AAAAV,OAAA,CAAAS,QAAA,GAAAA,QAAA;AAEjD,MAAME,YAAY,GAAIJ,CAAC,IAAK,CAAC,CAACA,CAAC,IACjC,OAAOA,CAAC,KAAK,QAAQ,IACrB,CAACL,KAAK,CAACK,CAAC,CAAC;AAACP,OAAA,CAAAW,YAAA,GAAAA,YAAA;AAER,MAAMC,KAAK,GAAAZ,OAAA,CAAAY,KAAA,GAAGP,QAAQ,CAAC,QAAQ,CAAC;AAChC,MAAMQ,IAAI,GAAAb,OAAA,CAAAa,IAAA,GAAGR,QAAQ,CAAC,UAAU,CAAC;AAEjC,MAAMS,aAAa,GAAGC,GAAG,IAAIH,KAAK,CAACG,GAAG,CAAC,IAAIA,GAAG,KAAK,EAAE;AAACf,OAAA,CAAAc,aAAA,GAAAA,aAAA","ignoreList":[]}
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/isTypeFn.js"
+ ],
+ "file": "../../src/utils/isTypeFn.js",
+ "names": [
+  "isNaN",
+  "exports",
+  "Number",
+  "isArr",
+  "Array",
+  "isArray",
+  "_fIsType",
+  "strType",
+  "v",
+  "_isTypeNumber",
+  "isNumber",
+  "n",
+  "isRegularObj",
+  "isStr",
+  "isBool",
+  "isFn",
+  "isNotEmptyStr",
+  "str"
+ ],
+ "mappings": ";;;;AAAO,MAAMA,KAAK,GAAAC,OAAA,CAAAD,KAAA,GAAGE,MAAM,CAACF,KAAK;AAC1B,MAAMG,KAAK,GAAAF,OAAA,CAAAE,KAAA,GAAGC,KAAK,CAACC,OAAO;AAElC,MAAMC,QAAQ,GAAGC,OAAO,IAAIC,CAAC,IAAI,OAAOA,CAAC,KAAKD,OAAO;EACnDE,aAAa,GAAGH,QAAQ,CAAC,QAAQ,CAAC;AAE7B,MAAMI,QAAQ,GAAGC,CAAC,IAAIF,aAAa,CAACE,CAAC,CAAC,IAAIA,CAAC,GAACA,CAAC,KAAG,CAAC;AAAAV,OAAA,CAAAS,QAAA,GAAAA,QAAA;AAEjD,MAAME,YAAY,GAAIJ,CAAC,IAAK,CAAC,CAACA,CAAC,IACjC,OAAOA,CAAC,KAAK,QAAQ,IACrB,CAACL,KAAK,CAACK,CAAC,CAAC;AAACP,OAAA,CAAAW,YAAA,GAAAA,YAAA;AAER,MAAMC,KAAK,GAAAZ,OAAA,CAAAY,KAAA,GAAGP,QAAQ,CAAC,QAAQ,CAAC;AAChC,MAAMQ,MAAM,GAAAb,OAAA,CAAAa,MAAA,GAAGR,QAAQ,CAAC,SAAS,CAAC;AAClC,MAAMS,IAAI,GAAAd,OAAA,CAAAc,IAAA,GAAGT,QAAQ,CAAC,UAAU,CAAC;AAEjC,MAAMU,aAAa,GAAGC,GAAG,IAAIJ,KAAK,CAACI,GAAG,CAAC,IAAIA,GAAG,KAAK,EAAE;AAAChB,OAAA,CAAAe,aAAA,GAAAA,aAAA"
+}
