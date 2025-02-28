@@ -18,8 +18,8 @@ import {
 } from '../../constants/Msg';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
-import TabPane from '../zhn-moleculs/TabPane';
-import Tab from '../zhn/Tab';
+import TabPane from '../zhn-tab/TabPane';
+import Tab from '../zhn-tab/Tab';
 import GroupAddPane from './GroupAddPane';
 import GroupEditPane from './GroupEditPane';
 import GroupDeletePane from './GroupDeletePane';
