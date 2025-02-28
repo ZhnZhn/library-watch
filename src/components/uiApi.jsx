@@ -23,7 +23,6 @@ import {
   isArr
 } from "../utils/isTypeFn";
 
-
 export const FN_NOOP = () => {}
 
 export const cloneUiElement = (
@@ -89,6 +88,19 @@ export const focusRefNextSiblingFirstChildElement = (
     .nextElementSibling || {})
     .firstElementChild
   )
+}
+
+export const focusElementById = (
+  id
+) => {
+  focusHtmlElement(
+    document.getElementById(id)
+  )
+}
+
+export const stopDefaultFor = (evt) => {
+  evt.stopPropagation()
+  evt.preventDefault()
 }
 
 const _getFirstTouches = (
