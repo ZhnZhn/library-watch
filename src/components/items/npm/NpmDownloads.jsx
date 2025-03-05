@@ -9,7 +9,7 @@ import useItemMenuMore from '../useItemMenuMore';
 import { fLineConfig } from '../../charts/ChartConfigFactories';
 
 import ShowHide from '../../zhn/ShowHide';
-import LineChart from '../../charts/LineChart';
+import { ChartComponent } from '../../charts/ChartComponent';
 import ButtonPackage from './ButtonPackage';
 import ButtonWatch from './ButtonWatch';
 import Caption from '../ItemCaption';
@@ -37,6 +37,7 @@ const NpmDownloads = ({
   chartConfig,
   labels,
   data,
+  height,
   packageLink,
   onWatchItem,
   onMoveToTop,
@@ -100,8 +101,9 @@ const NpmDownloads = ({
          isShow={isShow}
          style={S_CHART_WRAPPER}
       >
-        <LineChart
+        <ChartComponent
            type={type}
+           height={height}
            data={_lineChartConfig}
            options={options || CHART_OPTIONS_LEGEND_TOP}
         />

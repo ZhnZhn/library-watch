@@ -93,7 +93,7 @@ const _isNotShouldRerender = (
 	 chartInst.update();
 };
 
-const ChartComponent = memo(({
+export const ChartComponent = memo(({
 	 type='line',
 	 height=150,
 	 width=300,
@@ -148,7 +148,7 @@ const ChartComponent = memo(({
 }, _isNotShouldRerender);
 
 /*
-ChartComp.propTypes = {
+ChartComponent.propTypes = {
   type: PropTypes.oneOf([
 	  'line',
 		'bar'
@@ -163,5 +163,3 @@ ChartComp.propTypes = {
 	onElementsClick: PropTypes.func
 },
 */
-
-export default ChartComponent;

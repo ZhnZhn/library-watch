@@ -7,7 +7,7 @@ var _styleFn = require("../../styleFn");
 var _useToggle = _interopRequireDefault(require("../../hooks/useToggle"));
 var _useItemMenuMore = _interopRequireDefault(require("../useItemMenuMore"));
 var _ChartConfigFactories = require("../../charts/ChartConfigFactories");
-var _LineChart = _interopRequireDefault(require("../../charts/LineChart"));
+var _ChartComponent = require("../../charts/ChartComponent");
 var _ItemCaption = _interopRequireDefault(require("../ItemCaption"));
 var _ButtonPackage = _interopRequireDefault(require("../npm/ButtonPackage"));
 var _ShowHide = _interopRequireDefault(require("../../zhn/ShowHide"));
@@ -57,7 +57,7 @@ const CrateDownloads = _ref => {
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ShowHide.default, {
       isShow: isShow,
       style: S_CHART_WRAPPER,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LineChart.default, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ChartComponent.ChartComponent, {
         type: type,
         data: _lineChartConfig,
         options: options || _Item.CHART_OPTIONS_LEGEND_TOP

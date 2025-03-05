@@ -10,7 +10,7 @@ import { fLineConfigs } from '../charts/ChartConfigFactories'
 
 import ShowHide from '../zhn/ShowHide';
 import Link from '../zhn/Link';
-import LineChart from '../charts/LineChart';
+import { ChartComponent } from '../charts/ChartComponent';
 import Caption from './ItemCaption';
 
 import {
@@ -90,7 +90,7 @@ const StatcounterShare = ({
         isShow={_isShow}
         style={S_CHART_WRAPER}
       >
-        <LineChart
+        <ChartComponent
            data={_lineChartConfig}
            height={_height}
         />

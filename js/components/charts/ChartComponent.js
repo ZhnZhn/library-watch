@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.default = void 0;
+exports.ChartComponent = void 0;
 var _uiApi = require("../uiApi");
 var _chart = require("chart.js");
 var _configChart = _interopRequireDefault(require("./configChart"));
@@ -44,7 +44,7 @@ const _isNotShouldRerender = (prevProps, nextProps) => (0, _deepEqual.default)((
     };
     chartInst.update();
   };
-const ChartComponent = (0, _uiApi.memo)(_ref => {
+const ChartComponent = exports.ChartComponent = (0, _uiApi.memo)(_ref => {
   let {
     type = 'line',
     height = 150,
@@ -94,7 +94,7 @@ const ChartComponent = (0, _uiApi.memo)(_ref => {
 }, _isNotShouldRerender);
 
 /*
-ChartComp.propTypes = {
+ChartComponent.propTypes = {
   type: PropTypes.oneOf([
 	  'line',
 		'bar'
@@ -109,5 +109,4 @@ ChartComp.propTypes = {
 	onElementsClick: PropTypes.func
 },
 */
-var _default = exports.default = ChartComponent;
 //# sourceMappingURL=ChartComponent.js.map

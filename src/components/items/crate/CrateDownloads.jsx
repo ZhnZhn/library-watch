@@ -4,7 +4,7 @@ import useToggle from '../../hooks/useToggle';
 import useItemMenuMore from '../useItemMenuMore';
 
 import { fLineConfigs } from '../../charts/ChartConfigFactories';
-import LineChart from '../../charts/LineChart';
+import { ChartComponent} from '../../charts/ChartComponent';
 
 import Caption from '../ItemCaption';
 import ButtonPackage from '../npm/ButtonPackage';
@@ -72,7 +72,7 @@ const CrateDownloads = ({
         isShow={isShow}
         style={S_CHART_WRAPPER}
       >
-        <LineChart
+        <ChartComponent
            type={type}
            data={_lineChartConfig}
            options={options || CHART_OPTIONS_LEGEND_TOP}
