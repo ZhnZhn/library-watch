@@ -23,3 +23,6 @@ export const isInArrByPropName = (
     : -1;
   return _itemIndex !== -1;
 }
+
+export const calcSum = arr => arr
+  .reduce((sum, value) => sum + value, 0)
