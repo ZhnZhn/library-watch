@@ -28,11 +28,7 @@ const fNpm = (
      packageLink={option.packageLink}
      requestType={option.requestType}
 
-     //sumDownloads={sumDownloads}
-     //fromDate={fromDate}
-     //toDate={toDate}
-     //labels={labels}
-     //data={data}
+     //sumDownloads, fromDate, toDate, labels, data, height
      {...transformDownloads(json.downloads)}
 
      onMoveToTop={onMoveToTop}

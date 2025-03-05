@@ -1,3 +1,5 @@
+import { calcSum } from "../../utils/arrFn";
+
 import {
   crRgbaBgColor,
   crBarConfig,
@@ -37,6 +39,8 @@ const _findRecentVersion = (
 
 const RGBA_VERSION = crRgbaBgColor("128,192,64");
 const RGBA_RECENT_VERSION = crRgbaBgColor("144,89,152");
+const HEIGHT_OF_CHART_COMPONENTS = 30
+const HEIGHT_OF_ONE_ITEM = 12;
 
 const _transformDownloads = (
   downloads
@@ -76,8 +80,8 @@ const _transformDownloads = (
       backgroundColors,
       [...backgroundColors]
     ),
-    sumDownloads: data
-      .reduce((sum, versionDownloads) => sum + versionDownloads, 0)
+    height: data.length * HEIGHT_OF_ONE_ITEM + HEIGHT_OF_CHART_COMPONENTS,
+    sumDownloads: calcSum(data)
   };
 }
 , _crElementProps = () => ({
