@@ -4,13 +4,17 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _isTypeFn = require("../../utils/isTypeFn");
+var _dateFn = require("../../utils/dateFn");
 var _memoFn = require("../hoc/memoFn");
+var _useRefInit = _interopRequireDefault(require("../hooks/useRefInit"));
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useDialog = _interopRequireDefault(require("./useDialog"));
 var _useDialogButtons = _interopRequireDefault(require("./useDialogButtons"));
 var _Dialog = _interopRequireDefault(require("./Dialog"));
 var _DialogCell = _interopRequireDefault(require("./DialogCell"));
 var _jsxRuntime = require("react/jsx-runtime");
+const INITIAL_TO_DATE = (0, _dateFn.getToDate)();
 const _crValidationMessages = (repo, isValid, datesMsg, oneTitle) => {
   const msg = [];
   if (!repo) {
@@ -28,12 +32,14 @@ const DialogType3A = (0, _memoFn.memoIsShow)(_ref => {
     caption,
     requestType,
     oneTitle,
+    fromDate,
     onePlaceholder,
     onLoad,
     onShow,
     onClose
   } = _ref;
-  const [isShowDate, toggleIsShowDate] = (0, _useToggle.default)(),
+  const [initialFromDate] = (0, _useRefInit.default)(() => (0, _isTypeFn.isNumber)(fromDate) && fromDate < 36 ? (0, _dateFn.subtractMonths)(INITIAL_TO_DATE, fromDate) : void 0),
+    [isShowDate, toggleIsShowDate] = (0, _useToggle.default)(),
     [MENU_MODEL, TOOLBAR_BUTTONS, isToolbar, isShowLabels] = (0, _useDialog.default)(toggleIsShowDate),
     _refInputOne = (0, _uiApi.useRef)(),
     _refInputDates = (0, _uiApi.useRef)(),
@@ -80,7 +86,9 @@ const DialogType3A = (0, _memoFn.memoIsShow)(_ref => {
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.RowInputDatePeriod, {
       refEl: _refInputDates,
       isShow: isShowDate,
-      isShowLabels: isShowLabels
+      isShowLabels: isShowLabels,
+      initialFromDate: initialFromDate,
+      initialToDate: INITIAL_TO_DATE
     })]
   });
 });

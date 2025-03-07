@@ -3,14 +3,24 @@ import {
   getRefValue
 } from '../uiApi';
 
+import { isNumber } from '../../utils/isTypeFn';
+
+import {
+  getToDate,
+  subtractMonths
+} from '../../utils/dateFn';
+
 import { memoIsShow } from '../hoc/memoFn';
 
+import useRefInit from '../hooks/useRefInit';
 import useToggle from '../hooks/useToggle';
 import useDialog from './useDialog';
 import useDialogButtons from './useDialogButtons';
 
 import Dialog from './Dialog';
 import D from './DialogCell';
+
+const INITIAL_TO_DATE = getToDate();
 
 const _crValidationMessages = (
   repo,
@@ -34,12 +44,18 @@ const DialogType3A = memoIsShow(({
   caption,
   requestType,
   oneTitle,
+  fromDate,
   onePlaceholder,
   onLoad,
   onShow,
   onClose
 }) => {
-  const [
+  const [initialFromDate] = useRefInit(() => isNumber(fromDate)
+    && fromDate < 36
+    ? subtractMonths(INITIAL_TO_DATE, fromDate)
+    : void 0
+  ),
+  [
     isShowDate,
     toggleIsShowDate
   ] = useToggle()
@@ -103,6 +119,8 @@ const DialogType3A = memoIsShow(({
         refEl={_refInputDates}
         isShow={isShowDate}
         isShowLabels={isShowLabels}
+        initialFromDate={initialFromDate}
+        initialToDate={INITIAL_TO_DATE}
       />
     </Dialog>
   );
