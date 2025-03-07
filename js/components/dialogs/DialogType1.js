@@ -7,8 +7,8 @@ var _uiApi = require("../uiApi");
 var _memoFn = require("../hoc/memoFn");
 var _useDialog = _interopRequireDefault(require("./useDialog"));
 var _useDialogButtons = _interopRequireDefault(require("./useDialogButtons"));
-var _DialogCell = _interopRequireDefault(require("./DialogCell"));
 var _Dialog = _interopRequireDefault(require("./Dialog"));
+var _RowInputText = _interopRequireDefault(require("./rows/RowInputText"));
 var _jsxRuntime = require("react/jsx-runtime");
 const _crValidationMessages = (value, oneTitle) => {
   const msg = [];
@@ -54,7 +54,7 @@ const DialogType1 = (0, _memoFn.memoIsShow)(_ref => {
     validationMessages: validationMessages,
     onShow: onShow,
     onClose: hClose,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.RowInputText, {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputText.default, {
       refEl: _refInputOne,
       isShowLabel: isShowLabels,
       caption: oneTitle,

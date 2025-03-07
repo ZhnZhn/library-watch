@@ -3,7 +3,9 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _DialogCell = _interopRequireDefault(require("./DialogCell"));
+var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/DraggableDialog"));
+var _Toolbar = _interopRequireDefault(require("./widgets/Toolbar"));
+var _ValidationMessages = _interopRequireDefault(require("./rows/ValidationMessages"));
 var _jsxRuntime = require("react/jsx-runtime");
 const Dialog = _ref => {
   let {
@@ -18,17 +20,17 @@ const Dialog = _ref => {
     onShow,
     onClose
   } = _ref;
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_DialogCell.default.DraggableDialog, {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_DraggableDialog.default, {
     isShow: isShow,
     caption: caption,
     menuModel: menuModel,
     commandButtons: commandButtons,
     onShowChart: onShow,
     onClose: onClose,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.Toolbar, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Toolbar.default, {
       isShow: isToolbar,
       buttons: toolbarButtons
-    }), children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.ValidationMessages, {
+    }), children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessages.default, {
       validationMessages: validationMessages
     })]
   });

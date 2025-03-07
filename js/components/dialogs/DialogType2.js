@@ -11,7 +11,9 @@ var _useSelectItem = _interopRequireDefault(require("./useSelectItem"));
 var _useDialogButtons = _interopRequireDefault(require("./useDialogButtons"));
 var _getRefItemValue = _interopRequireDefault(require("./getRefItemValue"));
 var _Dialog = _interopRequireDefault(require("./Dialog"));
-var _DialogCell = _interopRequireDefault(require("./DialogCell"));
+var _RowInputText = _interopRequireDefault(require("./rows/RowInputText"));
+var _RowInputSelect = _interopRequireDefault(require("./rows/RowInputSelect"));
+var _RowInputDatePeriod = _interopRequireDefault(require("./rows/RowInputDatePeriod"));
 var _helperFns = require("./helperFns");
 var _jsxRuntime = require("react/jsx-runtime");
 const _SORT_OPTIONS = [{
@@ -92,19 +94,19 @@ const DialogType2 = (0, _memoFn.memoIsShow)(_ref => {
     validationMessages: validationMessages,
     onShow: onShow,
     onClose: hClose,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.RowInputText, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputText.default, {
       refEl: _refInputOne,
       isShowLabel: isShowLabels,
       caption: oneTitle,
       placeholder: onePlaceholder,
       onEnter: hLoad
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.RowInputSelect, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputSelect.default, {
       isShowLabel: isShowLabels,
       caption: "Sort By",
       placeholder: "Default: Hot Week Tab",
       options: _SORT_OPTIONS,
       onSelect: _hSelectSortBy
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.RowInputDatePeriod, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputDatePeriod.default, {
       refEl: _refInputDates,
       isShow: isShowDate,
       isShowLabels: isShowLabels

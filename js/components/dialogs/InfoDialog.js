@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _memoFn = require("../hoc/memoFn");
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
-var _DialogCell = _interopRequireDefault(require("./DialogCell"));
+var _Row = _interopRequireDefault(require("./rows/Row"));
 var _jsxRuntime = require("react/jsx-runtime");
 const S_CAPTION = {
     color: '#a487d4',
@@ -37,12 +37,12 @@ const InfoDialog = _ref => {
     caption: "Information",
     isShow: isShow,
     onClose: onClose,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.Row, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Row.default, {
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
         style: S_CAPTION,
         children: caption
       })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.Row, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Row.default, {
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
         style: S_DESCR,
         children: descr

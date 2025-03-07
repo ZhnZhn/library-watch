@@ -7,8 +7,9 @@ import { memoIsShow } from '../hoc/memoFn';
 
 import useDialog from './useDialog';
 import useDialogButtons from './useDialogButtons';
-import D from './DialogCell';
+
 import Dialog from './Dialog';
+import RowInputText from './rows/RowInputText';
 
 const _crValidationMessages = (
   value,
@@ -73,7 +74,7 @@ const DialogType1 = memoIsShow(({
        onShow={onShow}
        onClose={hClose}
     >
-      <D.RowInputText
+      <RowInputText
          refEl={_refInputOne}
          isShowLabel={isShowLabels}
          caption={oneTitle}

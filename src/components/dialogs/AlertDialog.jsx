@@ -1,7 +1,7 @@
 import { memoIsShow } from '../hoc/memoFn';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
-import D from './DialogCell';
+import Row from './rows/Row';
 
 const S_CAPTION = {
   color: '#f44336',
@@ -55,7 +55,7 @@ const AlertDialog = memoIsShow(({
       isShow={isShow}
       onClose={onClose}
     >
-       <D.Row>
+       <Row>
           <span style={S_CAPTION}>
             <span>{_caption}</span>
             <span>:</span>
@@ -63,10 +63,10 @@ const AlertDialog = memoIsShow(({
               {_itemId}
             </span>
           </span>
-       </D.Row>
-       <D.Row>
+       </Row>
+       <Row>
           <p style={S_DESCR}>{_descr}</p>
-       </D.Row>
+       </Row>
     </ModalDialog>
   );
 });

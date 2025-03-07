@@ -12,7 +12,9 @@ import useDialogButtons from './useDialogButtons';
 import getRefItemValue from './getRefItemValue';
 
 import Dialog from './Dialog';
-import D from './DialogCell';
+import RowInputText from './rows/RowInputText';
+import RowInputSelect from './rows/RowInputSelect';
+import RowInputDatePeriod from './rows/RowInputDatePeriod';
 
 import { ymdToUTCSecond } from './helperFns';
 
@@ -107,27 +109,27 @@ const DialogType3 = memoIsShow(({
        onShow={onShow}
        onClose={hClose}
     >
-      <D.RowInputText
+      <RowInputText
          refEl={_refInputOne}
          isShowLabel={isShowLabels}
          caption={oneTitle}
          placeholder={onePlaceholder}
          onEnter={hLoad}
       />
-      <D.RowInputText
+      <RowInputText
          refEl={_refInputTwo}
          isShowLabel={isShowLabels}
          caption={twoTitle}
          placeholder={twoPlaceholder}
       />
-      <D.RowInputSelect
+      <RowInputSelect
          isShowLabel={isShowLabels}
          caption="Sort By"
          placeholder="Default: Activity"
          options={_SORT_OPTIONS}
          onSelect={_hSelectSortBy}
       />
-      <D.RowInputDatePeriod
+      <RowInputDatePeriod
         refEl={_refInputDates}
         isShow={isShowDate}
         isShowLabels={isShowLabels}

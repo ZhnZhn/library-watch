@@ -12,7 +12,8 @@ var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useDialog = _interopRequireDefault(require("./useDialog"));
 var _useDialogButtons = _interopRequireDefault(require("./useDialogButtons"));
 var _Dialog = _interopRequireDefault(require("./Dialog"));
-var _DialogCell = _interopRequireDefault(require("./DialogCell"));
+var _RowInputText = _interopRequireDefault(require("./rows/RowInputText"));
+var _RowInputDatePeriod = _interopRequireDefault(require("./rows/RowInputDatePeriod"));
 var _jsxRuntime = require("react/jsx-runtime");
 const INITIAL_TO_DATE = (0, _dateFn.getToDate)();
 const _crValidationMessages = (repo, isValid, datesMsg, oneTitle) => {
@@ -77,13 +78,13 @@ const DialogType3A = (0, _memoFn.memoIsShow)(_ref => {
     validationMessages: validationMessages,
     onShow: onShow,
     onClose: hClose,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.RowInputText, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputText.default, {
       refEl: _refInputOne,
       isShowLabel: isShowLabels,
       caption: oneTitle,
       placeholder: onePlaceholder,
       onEnter: hLoad
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.RowInputDatePeriod, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputDatePeriod.default, {
       refEl: _refInputDates,
       isShow: isShowDate,
       isShowLabels: isShowLabels,

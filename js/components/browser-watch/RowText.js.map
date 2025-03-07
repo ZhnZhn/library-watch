@@ -1,1 +1,29 @@
-{"version":3,"file":"RowText.js","names":["_DialogCell","_interopRequireDefault","require","_jsxRuntime","RowText","_ref","style","caption","isCaption","textStyle","text","jsxs","default","Row","children","jsx","Caption","is","_default","exports"],"sources":["../../../src/components/browser-watch/RowText.jsx"],"sourcesContent":["import D from '../dialogs/DialogCell';\r\n\r\nconst RowText = ({\r\n  style,\r\n  caption,\r\n  isCaption=true,\r\n  textStyle,\r\n  text\r\n}) => (\r\n  <D.Row style={style}>\r\n    <D.Caption\r\n      is={isCaption}\r\n      caption={caption}\r\n    />\r\n    <span style={textStyle}>\r\n       {text}\r\n    </span>\r\n  </D.Row>\r\n);\r\n\r\nexport default RowText\r\n"],"mappings":";;;;;AAAA,IAAAA,WAAA,GAAAC,sBAAA,CAAAC,OAAA;AAAsC,IAAAC,WAAA,GAAAD,OAAA;AAEtC,MAAME,OAAO,GAAGC,IAAA;EAAA,IAAC;IACfC,KAAK;IACLC,OAAO;IACPC,SAAS,GAAC,IAAI;IACdC,SAAS;IACTC;EACF,CAAC,GAAAL,IAAA;EAAA,oBACC,IAAAF,WAAA,CAAAQ,IAAA,EAACX,WAAA,CAAAY,OAAC,CAACC,GAAG;IAACP,KAAK,EAAEA,KAAM;IAAAQ,QAAA,gBAClB,IAAAX,WAAA,CAAAY,GAAA,EAACf,WAAA,CAAAY,OAAC,CAACI,OAAO;MACRC,EAAE,EAAET,SAAU;MACdD,OAAO,EAAEA;IAAQ,CAClB,CAAC,eACF,IAAAJ,WAAA,CAAAY,GAAA;MAAMT,KAAK,EAAEG,SAAU;MAAAK,QAAA,EACnBJ;IAAI,CACF,CAAC;EAAA,CACF,CAAC;AAAA,CACT;AAAC,IAAAQ,QAAA,GAAAC,OAAA,CAAAP,OAAA,GAEaR,OAAO","ignoreList":[]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/browser-watch/RowText.js"
+ ],
+ "file": "../../../src/components/browser-watch/RowText.js",
+ "names": [
+  "_Caption",
+  "_interopRequireDefault",
+  "require",
+  "_Row",
+  "_jsxRuntime",
+  "RowText",
+  "_ref",
+  "style",
+  "caption",
+  "isCaption",
+  "textStyle",
+  "text",
+  "jsxs",
+  "default",
+  "children",
+  "jsx",
+  "is",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,QAAA,GAAAC,sBAAA,CAAAC,OAAA;AACA,IAAAC,IAAA,GAAAF,sBAAA,CAAAC,OAAA;AAAsC,IAAAE,WAAA,GAAAF,OAAA;AAEtC,MAAMG,OAAO,GAAGC,IAAA;EAAA,IAAC;IACfC,KAAK;IACLC,OAAO;IACPC,SAAS,GAAC,IAAI;IACdC,SAAS;IACTC;EACF,CAAC,GAAAL,IAAA;EAAA,oBACC,IAAAF,WAAA,CAAAQ,IAAA,EAACT,IAAA,CAAAU,OAAG;IAACN,KAAK,EAAEA,KAAM;IAAAO,QAAA,gBAChB,IAAAV,WAAA,CAAAW,GAAA,EAACf,QAAA,CAAAa,OAAO;MACNG,EAAE,EAAEP,SAAU;MACdD,OAAO,EAAEA;IAAQ,CAClB,CAAC,eACF,IAAAJ,WAAA,CAAAW,GAAA;MAAMR,KAAK,EAAEG,SAAU;MAAAI,QAAA,EACnBH;IAAI,CACF,CAAC;EAAA,CACJ,CAAC;AAAA,CACP;AAAC,IAAAM,QAAA,GAAAC,OAAA,CAAAL,OAAA,GAEaR,OAAO"
+}

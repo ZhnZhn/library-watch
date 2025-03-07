@@ -18,7 +18,8 @@ import useDialog from './useDialog';
 import useDialogButtons from './useDialogButtons';
 
 import Dialog from './Dialog';
-import D from './DialogCell';
+import RowInputText from './rows/RowInputText';
+import RowInputDatePeriod from './rows/RowInputDatePeriod';
 
 const INITIAL_TO_DATE = getToDate();
 
@@ -108,14 +109,14 @@ const DialogType3A = memoIsShow(({
        onShow={onShow}
        onClose={hClose}
     >
-      <D.RowInputText
+      <RowInputText
          refEl={_refInputOne}
          isShowLabel={isShowLabels}
          caption={oneTitle}
          placeholder={onePlaceholder}
          onEnter={hLoad}
       />
-      <D.RowInputDatePeriod
+      <RowInputDatePeriod
         refEl={_refInputDates}
         isShow={isShowDate}
         isShowLabels={isShowLabels}

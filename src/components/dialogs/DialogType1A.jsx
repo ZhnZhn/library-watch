@@ -6,7 +6,7 @@ import useSelectItem from './useSelectItem';
 import useDialogButtons from './useDialogButtons';
 
 import Dialog from './Dialog';
-import D from './DialogCell';
+import RowInputSelect from './rows/RowInputSelect'
 
 const MARKET_SHARES = [
   { caption: "OS: Desktop, Mobile, Tablet, Console", value: "os"},
@@ -90,14 +90,14 @@ const DialogType3 = memoIsShow(({
        onShow={onShow}
        onClose={hClose}
     >
-      <D.RowInputSelect
+      <RowInputSelect
          isShowLabel={isShowLabels}
          caption="Item"
          placeholder={ITEM_PLACEHOLDER}
          options={MARKET_SHARES}
          onSelect={_hSelectItem}
       />
-      <D.RowInputSelect
+      <RowInputSelect
          isShowLabel={isShowLabels}
          caption="Region"
          placeholder={REGION_PLACEHOLDER}

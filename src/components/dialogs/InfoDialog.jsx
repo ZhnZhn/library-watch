@@ -1,7 +1,7 @@
 import { memoIsShow } from '../hoc/memoFn';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
-import D from './DialogCell';
+import Row from './rows/Row';
 
 const S_CAPTION = {
   color: '#a487d4',
@@ -35,14 +35,14 @@ const InfoDialog = ({
       isShow={isShow}
       onClose={onClose}
     >
-       <D.Row>
+       <Row>
           <p style={S_CAPTION}>
             {caption}
           </p>
-       </D.Row>
-       <D.Row>
+       </Row>
+       <Row>
           <p style={S_DESCR}>{descr}</p>
-       </D.Row>
+       </Row>
     </ModalDialog>
   );
 };

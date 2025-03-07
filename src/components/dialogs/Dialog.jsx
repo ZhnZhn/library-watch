@@ -1,5 +1,6 @@
-
-import D from './DialogCell';
+import DraggableDialog from '../zhn-moleculs/DraggableDialog';
+import Toolbar from './widgets/Toolbar';
+import ValidationMessages from './rows/ValidationMessages';
 
 const Dialog = ({
   isShow,
@@ -13,7 +14,7 @@ const Dialog = ({
   onShow,
   onClose
 }) => (
-  <D.DraggableDialog
+  <DraggableDialog
      isShow={isShow}
      caption={caption}
      menuModel={menuModel}
@@ -21,15 +22,15 @@ const Dialog = ({
      onShowChart={onShow}
      onClose={onClose}
   >
-   <D.Toolbar
+   <Toolbar
       isShow={isToolbar}
       buttons={toolbarButtons}
    />
    {children}
-   <D.ValidationMessages
+   <ValidationMessages
       validationMessages={validationMessages}
    />
- </D.DraggableDialog>
+ </DraggableDialog>
 );
 
 export default Dialog

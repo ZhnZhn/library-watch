@@ -3,7 +3,8 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _DialogCell = _interopRequireDefault(require("../dialogs/DialogCell"));
+var _Caption = _interopRequireDefault(require("../dialogs/rows/Caption"));
+var _Row = _interopRequireDefault(require("../dialogs/rows/Row"));
 var _jsxRuntime = require("react/jsx-runtime");
 const RowText = _ref => {
   let {
@@ -13,9 +14,9 @@ const RowText = _ref => {
     textStyle,
     text
   } = _ref;
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_DialogCell.default.Row, {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Row.default, {
     style: style,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.Caption, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Caption.default, {
       is: isCaption,
       caption: caption
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {

@@ -1,4 +1,5 @@
-import D from '../dialogs/DialogCell';
+import Caption from '../dialogs/rows/Caption';
+import Row from '../dialogs/rows/Row';
 
 const RowText = ({
   style,
@@ -7,15 +8,15 @@ const RowText = ({
   textStyle,
   text
 }) => (
-  <D.Row style={style}>
-    <D.Caption
+  <Row style={style}>
+    <Caption
       is={isCaption}
       caption={caption}
     />
     <span style={textStyle}>
        {text}
     </span>
-  </D.Row>
+  </Row>
 );
 
 export default RowText

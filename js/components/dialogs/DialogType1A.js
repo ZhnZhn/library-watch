@@ -9,7 +9,7 @@ var _useDialog = _interopRequireDefault(require("./useDialog"));
 var _useSelectItem = _interopRequireDefault(require("./useSelectItem"));
 var _useDialogButtons = _interopRequireDefault(require("./useDialogButtons"));
 var _Dialog = _interopRequireDefault(require("./Dialog"));
-var _DialogCell = _interopRequireDefault(require("./DialogCell"));
+var _RowInputSelect = _interopRequireDefault(require("./rows/RowInputSelect"));
 var _jsxRuntime = require("react/jsx-runtime");
 const MARKET_SHARES = [{
     caption: "OS: Desktop, Mobile, Tablet, Console",
@@ -112,13 +112,13 @@ const DialogType3 = (0, _memoFn.memoIsShow)(_ref => {
     validationMessages: validationMessages,
     onShow: onShow,
     onClose: hClose,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.RowInputSelect, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputSelect.default, {
       isShowLabel: isShowLabels,
       caption: "Item",
       placeholder: ITEM_PLACEHOLDER,
       options: MARKET_SHARES,
       onSelect: _hSelectItem
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.RowInputSelect, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputSelect.default, {
       isShowLabel: isShowLabels,
       caption: "Region",
       placeholder: REGION_PLACEHOLDER,

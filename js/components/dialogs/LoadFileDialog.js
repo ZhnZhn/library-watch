@@ -8,7 +8,8 @@ var _memoFn = require("../hoc/memoFn");
 var _useDialogButtons = _interopRequireDefault(require("./useDialogButtons"));
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 var _InputFileReader = _interopRequireDefault(require("../zhn/InputFileReader"));
-var _DialogCell = _interopRequireDefault(require("./DialogCell"));
+var _Row = _interopRequireDefault(require("./rows/Row"));
+var _ValidationMessages = _interopRequireDefault(require("./rows/ValidationMessages"));
 var _jsxRuntime = require("react/jsx-runtime");
 const MSG_FILE_NOT_CHOOSED = 'Please choose file for loading.',
   S_MODAL_DIALOG = {
@@ -55,15 +56,15 @@ const LoadFileDialog = (0, _memoFn.memoIsShow)(_ref => {
     isShow: isShow,
     commandButtons: COMMAND_BUTTONS,
     onClose: hClose,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.Row, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Row.default, {
       style: S_ROW_INPUT_FILE,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputFileReader.default, {
         as: "text",
         onChange: _hChange
       })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.Row, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Row.default, {
       style: S_ROW_VALIDATION,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCell.default.ValidationMessages, {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ValidationMessages.default, {
         validationMessages: validationMessages
       })
     })]

@@ -10,7 +10,8 @@ import { memoIsShow } from '../hoc/memoFn';
 import useDialogButtons from './useDialogButtons';
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import InputFileReader from '../zhn/InputFileReader';
-import D from './DialogCell';
+import Row from './rows/Row';
+import ValidationMessages from './rows/ValidationMessages'
 
 const MSG_FILE_NOT_CHOOSED = 'Please choose file for loading.'
 , S_MODAL_DIALOG = { minWidth: 320 }
@@ -63,17 +64,17 @@ const LoadFileDialog = memoIsShow(({
       commandButtons={COMMAND_BUTTONS}
       onClose={hClose}
     >
-       <D.Row style={S_ROW_INPUT_FILE}>
+       <Row style={S_ROW_INPUT_FILE}>
           <InputFileReader
              as="text"
              onChange={_hChange}
           />
-       </D.Row>
-       <D.Row style={S_ROW_VALIDATION}>
-         <D.ValidationMessages
+       </Row>
+       <Row style={S_ROW_VALIDATION}>
+         <ValidationMessages
             validationMessages={validationMessages}
          />
-       </D.Row>
+       </Row>
     </ModalDialog>
   );
 });
