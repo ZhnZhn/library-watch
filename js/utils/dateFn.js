@@ -1,10 +1,12 @@
 "use strict";
 
 exports.__esModule = true;
-exports.ymdToUTCSecond = exports.ymdToMlsUTC = exports.mlsToYmd = exports.mlsToDmy = exports.isYmd = exports.isWeekend = exports.getToDate = exports.getFromDate = exports.crDateAgo = void 0;
+exports.ymdToUTCSecond = exports.ymdToMlsUTC = exports.subtractMonths = exports.mlsToYmd = exports.mlsToDmy = exports.isYmd = exports.isWeekend = exports.getToDate = exports.getFromDate = exports.crDateAgo = void 0;
 var _formatDate = require("./formatDate");
 var _isTypeFn = require("./isTypeFn");
 const MIN_YEAR = 1999;
+const _mathFloor = Math.floor,
+  _mathMin = Math.min;
 const _crNumber = str => parseInt(str, 10);
 const _crNumberMonth = str => _crNumber(str) - 1;
 const _notInIntervalStrict = (n, min, max) => (0, _isTypeFn.isNaN)(n) || n < min || n > max;
@@ -33,7 +35,26 @@ const isYmd = (str, nForecastDate, minYear) => {
   return _isYmd(_str, nForecastDate, minYear);
 };
 exports.isYmd = isYmd;
-const _getYmdUTC = (d, yearFromDate) => d.getUTCFullYear() - yearFromDate + "-" + ("0" + (d.getUTCMonth() + 1)).slice(-2) + "-" + ("0" + d.getUTCDate()).slice(-2);
+const _padByZero = v => ("0" + v).slice(-2),
+  _getNumberOfDays = (year, month) => new Date(year, month, 0).getDate();
+const subtractMonths = (strYmd, numberOfMonths) => {
+  const [y, m, d] = strYmd.split('-'),
+    _m = numberOfMonths % 12,
+    nM = parseInt(m);
+  let _rY = parseInt(y) - _mathFloor(numberOfMonths / 12),
+    _rM;
+  if (nM > _m) {
+    _rM = nM - _m;
+  } else {
+    _rY = _rY - 1;
+    _rM = nM === _m ? 12 : _rM = nM - _m + 12;
+  }
+  const __rD = _getNumberOfDays(_rY, _rM),
+    _rD = _padByZero(_getNumberOfDays(y, m)) === d ? __rD : _mathMin(parseInt(d), __rD);
+  return `${_rY}-${_padByZero(_rM)}-${_padByZero(_rD)}`;
+};
+exports.subtractMonths = subtractMonths;
+const _getYmdUTC = (d, yearFromDate) => d.getUTCFullYear() - yearFromDate + "-" + _padByZero(d.getUTCMonth() + 1) + "-" + _padByZero(d.getUTCDate());
 const DF_YEAR_FROM_DATE = 2;
 const getFromDate = function (yearFromDate) {
   if (yearFromDate === void 0) {
@@ -53,7 +74,7 @@ const mlsToDmy = mlsUTC => {
   if (d.toString() === 'Invalid Date') {
     return '';
   }
-  return ("0" + d.getUTCDate()).slice(-2) + "-" + ("0" + (d.getUTCMonth() + 1)).slice(-2) + "-" + d.getUTCFullYear();
+  return _padByZero(d.getUTCDate()) + "-" + _padByZero(d.getUTCMonth() + 1) + "-" + d.getUTCFullYear();
 };
 exports.mlsToDmy = mlsToDmy;
 const mlsToYmd = mlsUTC => {

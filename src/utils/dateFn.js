@@ -7,6 +7,8 @@ import {
 } from './isTypeFn';
 
 const MIN_YEAR = 1999;
+const _mathFloor = Math.floor
+, _mathMin = Math.min;
 
 const _crNumber = (str) => parseInt(str, 10);
 const _crNumberMonth = str => _crNumber(str) - 1;
@@ -59,12 +61,45 @@ export const isYmd = (
   return _isYmd(_str, nForecastDate, minYear);
 }
 
+const _padByZero = v => ("0" + v).slice(-2)
+, _getNumberOfDays = (
+	year,
+	month
+) => new Date(year, month, 0).getDate();
+
+export const subtractMonths = (
+	strYmd,
+	numberOfMonths
+) => {
+	const [y, m, d] = strYmd.split('-')
+	, _m = numberOfMonths % 12
+	, nM = parseInt(m);
+
+	let _rY = parseInt(y) - _mathFloor(numberOfMonths / 12)
+	, _rM;
+
+	if (nM > _m) {
+		_rM = nM - _m
+	} else {
+		_rY = _rY - 1
+		_rM = nM === _m
+		  ? 12
+			: _rM = nM - _m + 12
+	}
+
+	const __rD = _getNumberOfDays(_rY, _rM)
+	, _rD = _padByZero(_getNumberOfDays(y, m)) === d
+	  ? __rD
+		: _mathMin(parseInt(d), __rD);
+	return `${_rY}-${_padByZero(_rM)}-${_padByZero(_rD)}`;
+}
+
 const _getYmdUTC = (
   d,
   yearFromDate
 ) => (d.getUTCFullYear()-yearFromDate)
-  + "-" + ("0"+(d.getUTCMonth() + 1)).slice(-2)
-  + "-" + ("0"+d.getUTCDate()).slice(-2);
+  + "-" + _padByZero(d.getUTCMonth() + 1)
+  + "-" + _padByZero(d.getUTCDate());
 
 const DF_YEAR_FROM_DATE = 2;
 export const getFromDate = (
@@ -86,9 +121,9 @@ export const mlsToDmy = (
 	if (d.toString() === 'Invalid Date') {
 		return '';
 	}
-  return ("0" + d.getUTCDate()).slice(-2)
-    + "-" + ("0" + (d.getUTCMonth() + 1) ).slice(-2)
-    + "-" + d.getUTCFullYear() ;
+  return _padByZero(d.getUTCDate())
+    + "-" + _padByZero(d.getUTCMonth() + 1)
+    + "-" + d.getUTCFullYear();
 }
 
 export const mlsToYmd = (

@@ -2,6 +2,7 @@ import {
   isYmd,
   mlsToDmy,
   mlsToYmd,
+  subtractMonths,
   ymdToMlsUTC,
   ymdToUTCSecond,
   isWeekend
@@ -81,6 +82,34 @@ describe('mlsToYmd',()=>{
     expect(fn('abc')).toBe(EMPTY)
     expect(fn(()=>{})).toBe(EMPTY)
     expect(fn(Number.MAX_SAFE_INTEGER)).toBe(EMPTY)
+  })
+})
+
+describe('subtractMonths', ()=>{
+  const fn = subtractMonths;
+  test('should return string YYYY-MM-DD from date string and number of months', () => {
+    expect(fn('2010-01-31', 1)).toBe('2009-12-31')
+    expect(fn('2010-03-31', 1)).toBe('2010-02-28')
+    expect(fn('2012-03-31', 1)).toBe('2012-02-29')
+    expect(fn('2010-05-31', 1)).toBe('2010-04-30')
+    expect(fn('2010-06-30', 1)).toBe('2010-05-31')
+
+    expect(fn('2010-01-30', 1)).toBe('2009-12-30')
+    expect(fn('2010-03-30', 1)).toBe('2010-02-28')
+    expect(fn('2012-03-30', 1)).toBe('2012-02-29')
+    expect(fn('2010-05-30', 1)).toBe('2010-04-30')
+    expect(fn('2010-06-29', 1)).toBe('2010-05-29')
+
+    expect(fn('2010-01-01', 1)).toBe('2009-12-01')
+    expect(fn('2010-03-02', 1)).toBe('2010-02-02')
+    expect(fn('2010-05-03', 1)).toBe('2010-04-03')
+    expect(fn('2010-06-04', 1)).toBe('2010-05-04')
+
+    expect(fn('2010-06-30', 2)).toBe('2010-04-30')
+    expect(fn('2010-06-30', 6)).toBe('2009-12-31')
+    expect(fn('2010-06-30', 12)).toBe('2009-06-30')
+    expect(fn('2010-06-30', 18)).toBe('2008-12-31')
+    expect(fn('2010-06-30', 24)).toBe('2008-06-30')
   })
 })
 
