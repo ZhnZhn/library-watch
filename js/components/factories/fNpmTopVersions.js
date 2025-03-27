@@ -30,13 +30,15 @@ const _transformDownloads = downloads => {
     let isRecentVersion = !1;
     downloadsKeys.map(key => [key, downloads[key]]).sort((tA, tB) => tB[1] - tA[1]).slice(0, 10).forEach(_ref => {
       let [version, numberOfDownloads] = _ref;
-      labels.push(version);
-      data.push(numberOfDownloads);
-      if (version === recentVersion) {
-        isRecentVersion = !0;
-        backgroundColors.push(RGBA_RECENT_VERSION);
-      } else {
-        backgroundColors.push(RGBA_VERSION);
+      if (_isReleaseVersion(version)) {
+        labels.push(version);
+        data.push(numberOfDownloads);
+        if (version === recentVersion) {
+          isRecentVersion = !0;
+          backgroundColors.push(RGBA_RECENT_VERSION);
+        } else {
+          backgroundColors.push(RGBA_VERSION);
+        }
       }
     });
     if (!isRecentVersion && recentVersion) {
