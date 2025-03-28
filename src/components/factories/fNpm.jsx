@@ -20,7 +20,8 @@ const fNpm = (
     parentProps,
     onMoveToTop,
     onCloseItem
-  } = options;
+  } = options
+  , { sort } = option || {};
   return (<NpmDownloads
      key={option.key}
      packageName={json.package}
@@ -29,7 +30,7 @@ const fNpm = (
      requestType={option.requestType}
 
      //sumDownloads, fromDate, toDate, labels, data, height
-     {...transformDownloads(json.downloads)}
+     {...transformDownloads(json.downloads, sort)}
 
      onMoveToTop={onMoveToTop}
      onCloseItem={onCloseItem}

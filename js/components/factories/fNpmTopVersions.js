@@ -21,16 +21,18 @@ const RGBA_VERSION = (0, _ChartConfigFactories.crRgbaBgColor)("128,192,64");
 const RGBA_RECENT_VERSION = (0, _ChartConfigFactories.crRgbaBgColor)("144,89,152");
 const HEIGHT_OF_CHART_COMPONENTS = 30;
 const HEIGHT_OF_ONE_ITEM = 12;
-const _transformDownloads = downloads => {
+const FN_TRUE = () => !0;
+const _transformDownloads = (downloads, sort) => {
     const labels = [],
       data = [],
       backgroundColors = [],
       downloadsKeys = Object.keys(downloads),
-      recentVersion = _findRecentVersion([...downloadsKeys]);
+      recentVersion = _findRecentVersion([...downloadsKeys]),
+      isAddVersion = !sort || sort === "R" ? _isReleaseVersion : FN_TRUE;
     let isRecentVersion = !1;
     downloadsKeys.map(key => [key, downloads[key]]).sort((tA, tB) => tB[1] - tA[1]).slice(0, 10).forEach(_ref => {
       let [version, numberOfDownloads] = _ref;
-      if (_isReleaseVersion(version)) {
+      if (isAddVersion(version)) {
         labels.push(version);
         data.push(numberOfDownloads);
         if (version === recentVersion) {

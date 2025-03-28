@@ -18,12 +18,15 @@ const fNpm = function (transformDownloads, crElementProps) {
   }
   return options => {
     const {
-      option,
-      json,
-      parentProps,
-      onMoveToTop,
-      onCloseItem
-    } = options;
+        option,
+        json,
+        parentProps,
+        onMoveToTop,
+        onCloseItem
+      } = options,
+      {
+        sort
+      } = option || {};
     return /*#__PURE__*/(0, _jsxRuntime.jsx)(_NpmDownloads.default, {
       packageName: json.package,
       caption: json.package,
@@ -32,7 +35,7 @@ const fNpm = function (transformDownloads, crElementProps) {
 
       //sumDownloads, fromDate, toDate, labels, data, height
       ,
-      ...transformDownloads(json.downloads),
+      ...transformDownloads(json.downloads, sort),
       onMoveToTop: onMoveToTop,
       onCloseItem: onCloseItem,
       ...crElementProps(options),
