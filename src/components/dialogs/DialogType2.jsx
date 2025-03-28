@@ -1,5 +1,6 @@
 import {
   useRef,
+  useMemo,
   getRefValue
 } from '../uiApi';
 
@@ -16,16 +17,8 @@ import RowInputText from './rows/RowInputText';
 import RowInputSelect from './rows/RowInputSelect';
 import RowInputDatePeriod from './rows/RowInputDatePeriod';
 
+import { getRowSelectProps } from './getRowSelectProps';
 import { ymdToUTCSecond } from './helperFns';
-
-const _SORT_OPTIONS = [
-  { caption: "Activity, Recent Day", value: "activity" },
-  { caption: "Creation Date", value: "creation"},
-  { caption: "Score", value: "votes" },
-  { caption: "Hot Tab", value: "hot" },
-  { caption: "Hot Week Tab", value: "week" },
-  { caption: "Hot Month Tab", value: "month" }
-];
 
 const _createValidationMessages = (
   isValid,
@@ -39,17 +32,41 @@ const _createValidationMessages = (
    return msg;
 };
 
+const _getDateTuple = (_datesInst) => {
+  if (_datesInst) {
+    const {
+      isValid,
+      datesMsg
+    } = _datesInst.getValidation()
+    , {
+      fromDate,
+      toDate
+    } = _datesInst.getValues()
+    return [isValid, datesMsg, fromDate, toDate];
+  }
+  return [true, ""];
+}
+
+const _ymdToUTCSecond = (ymd) => ymd
+  ? ymdToUTCSecond(ymd)
+  : void 0;
+
 const DialogType2 = memoIsShow(({
   isShow,
   caption,
   requestType,
   oneTitle,
   onePlaceholder,
+  isPeriod,
   onShow,
   onLoad,
   onClose
 }) => {
-  const [
+  const inputSelectProps = useMemo(
+    () => getRowSelectProps(requestType),
+    [requestType]
+  )
+  , [
     isShowDate,
     toggleIsShowDate
   ] = useToggle()
@@ -58,7 +75,7 @@ const DialogType2 = memoIsShow(({
     TOOLBAR_BUTTONS,
     isToolbar,
     isShowLabels
-  ] = useDialog(toggleIsShowDate)
+  ] = useDialog(isPeriod ? toggleIsShowDate : void 0)
   , _refInputOne = useRef()
   , _refInputDates = useRef()
   , [
@@ -75,19 +92,23 @@ const DialogType2 = memoIsShow(({
     clearValidationMessages
   ) => {
     const repo = getRefValue(_refInputOne).getValue()
-    , _datesInst = getRefValue(_refInputDates)
-    , { isValid, datesMsg } = _datesInst.getValidation()
-    , { fromDate, toDate } = _datesInst.getValues()
+    , [
+      isValid,
+      datesMsg,
+      fromDate,
+      toDate
+    ] = _getDateTuple(getRefValue(_refInputDates))
     , _validationMessage = _createValidationMessages(
-      isValid, datesMsg
+      isValid,
+      datesMsg
     )
     if (_validationMessage.isValid){
       onLoad({
         repo,
         requestType,
         sort: getRefItemValue(_refSortBy),
-        fromdate: ymdToUTCSecond(fromDate),
-        todate: ymdToUTCSecond(toDate)
+        fromdate: _ymdToUTCSecond(fromDate),
+        todate: _ymdToUTCSecond(toDate)
       });
       clearValidationMessages()
     } else {
@@ -115,17 +136,15 @@ const DialogType2 = memoIsShow(({
          onEnter={hLoad}
       />
       <RowInputSelect
-         isShowLabel={isShowLabels}
-         caption="Sort By"
-         placeholder="Default: Hot Week Tab"
-         options={_SORT_OPTIONS}
+         {...inputSelectProps}
+         isShowLabel={isShowLabels}         
          onSelect={_hSelectSortBy}
       />
-      <RowInputDatePeriod
+      {isPeriod && <RowInputDatePeriod
         refEl={_refInputDates}
         isShow={isShowDate}
         isShowLabels={isShowLabels}
-      />
+      />}
     </Dialog>
   );
 });
