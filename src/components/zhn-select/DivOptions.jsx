@@ -10,6 +10,7 @@ const S_BLOCK = { display: 'block' }
 , S_NONE = { display: 'none' };
 
 const DivOptions = ({
+  id,
   refOptionsElement,
   refIndexElement,
   optionsStyle,
@@ -30,6 +31,7 @@ const DivOptions = ({
 
   return (
     <div
+       id={id}
        className={CL_OPTIONS}
        style={_widthStyle}
        data-scrollable={true}

@@ -42,6 +42,7 @@ const InputSelect = props => {
       isWithInput = false,
       onSelect = FN_NOOP
     } = props,
+    _optionsViewId = (0, _uiApi.useId)(),
     _refDomInputText = (0, _uiApi.useRef)(),
     [state, setState] = (0, _uiApi.useState)(() => _crInitialStateFromProps(props)),
     {
@@ -186,6 +187,7 @@ const InputSelect = props => {
     className: _CL.CL_ROOT,
     style: _style,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+      ...(0, _a11yFn.crA11yExpandedProps)(isShowOption, _optionsViewId),
       ...(0, _a11yFn.crA11yComboboxProps)(labelId),
       ref: _refDomInputText,
       className: _CL.CL_INPUT,
@@ -202,6 +204,7 @@ const InputSelect = props => {
     }), afterInputEl, /*#__PURE__*/(0, _jsxRuntime.jsx)("hr", {
       className: _CL.CL_INPUT_HR
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DivOptions.default, {
+      id: _optionsViewId,
       refOptionsElement: _refOptionsElement,
       refIndexElement: _refIndexElement,
       optionsStyle: optionsStyle,

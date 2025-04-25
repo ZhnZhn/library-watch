@@ -15,6 +15,7 @@ const S_BLOCK = {
   };
 const DivOptions = _ref => {
   let {
+    id,
     refOptionsElement,
     refIndexElement,
     optionsStyle,
@@ -30,6 +31,7 @@ const DivOptions = _ref => {
   } = _ref;
   const _widthStyle = (0, _crStyleWidth.default)(width, isShowOption ? S_BLOCK : S_NONE);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    id: id,
     className: _CL.CL_OPTIONS,
     style: _widthStyle,
     "data-scrollable": true,

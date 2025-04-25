@@ -1,4 +1,5 @@
 import {
+  useId,
   useRef,
   useState,
   useCallback,
@@ -7,6 +8,7 @@ import {
 } from '../uiApi';
 
 import {
+  crA11yExpandedProps,
   crA11yComboboxProps
 } from '../a11yFn';
 
@@ -64,6 +66,7 @@ const InputSelect = (
     isWithInput=false,
     onSelect=FN_NOOP
   } = props
+  , _optionsViewId = useId()
   , _refDomInputText = useRef()
   , [
     state,
@@ -252,6 +255,7 @@ const InputSelect = (
       style={_style}
     >
       <input
+         {...crA11yExpandedProps(isShowOption, _optionsViewId)}
          {...crA11yComboboxProps(labelId)}
          ref={_refDomInputText}
          className={CL_INPUT}
@@ -269,6 +273,7 @@ const InputSelect = (
       {afterInputEl}
       <hr className={CL_INPUT_HR} />
       <DivOptions
+         id={_optionsViewId}
          refOptionsElement={_refOptionsElement}
          refIndexElement={_refIndexElement}
          optionsStyle={optionsStyle}
