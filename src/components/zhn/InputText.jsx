@@ -7,6 +7,10 @@ import {
   focusRefElement
 } from '../uiApi';
 
+import {
+  crA11yLabelledByProps
+} from '../a11yFn';
+
 import { HAS_TOUCH_EVENTS } from '../has';
 
 const CL_FIELD = 'm-field'
@@ -78,7 +82,7 @@ const InputText = ({
   return (
     <div className={CL_FIELD}>
       <input
-        aria-labelledby={labelId}
+        {...crA11yLabelledByProps(labelId)}        
         ref={_refInput}
         type="text"
         autoCorrect="off"

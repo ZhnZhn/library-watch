@@ -28,7 +28,9 @@ const RowInputDatePeriod = _ref => {
     initialToDate = INITIAL_TO_DATE,
     onTestDate = _dateFn.isYmd
   } = _ref;
-  const _refFromDate = (0, _uiApi.useRef)(),
+  const _fromDateLabelId = (0, _uiApi.useId)(),
+    _toDateLabelId = (0, _uiApi.useId)(),
+    _refFromDate = (0, _uiApi.useRef)(),
     _refToDate = (0, _uiApi.useRef)();
   (0, _uiApi.useImperativeHandle)(refEl, () => ({
     getValues: () => ({
@@ -77,8 +79,10 @@ const RowInputDatePeriod = _ref => {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_Row.default, {
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Caption.default, {
         is: isShowLabels,
-        caption: "From Date"
+        caption: "From Date",
+        labelId: _fromDateLabelId
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputDate.default, {
+        labelId: _fromDateLabelId,
         refEl: _refFromDate,
         initialValue: initialFromDate,
         errorMsg: ERROR_FORMAT,
@@ -87,8 +91,10 @@ const RowInputDatePeriod = _ref => {
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Row.default, {
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Caption.default, {
         is: isShowLabels,
-        caption: "To Date"
+        caption: "To Date",
+        labelId: _toDateLabelId
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputDate.default, {
+        labelId: _toDateLabelId,
         refEl: _refToDate,
         initialValue: initialToDate,
         errorMsg: ERROR_FORMAT,

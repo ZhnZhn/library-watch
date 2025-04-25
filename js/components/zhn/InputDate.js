@@ -3,6 +3,7 @@
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _a11yFn = require("../a11yFn");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_ROOT = {
     position: 'relative',
@@ -46,6 +47,7 @@ const S_ROOT = {
   FN_NOOP = () => {};
 const InputDate = _ref => {
   let {
+    labelId,
     refEl,
     initialValue,
     errorMsg,
@@ -92,9 +94,9 @@ const InputDate = _ref => {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: S_ROOT,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+      ...(0, _a11yFn.crA11yLabelledByProps)(labelId),
       ref: _refInput,
-      type: "text",
-      name: "date"
+      type: "text"
       //autoComplete="new-date"
       ,
       autoCorrect: "off",

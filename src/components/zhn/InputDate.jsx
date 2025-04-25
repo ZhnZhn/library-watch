@@ -5,6 +5,10 @@ import {
   focusRefInput
 } from '../uiApi';
 
+import {
+  crA11yLabelledByProps
+} from '../a11yFn';
+
 const S_ROOT = {
   position: 'relative',
   display: 'inline-block',
@@ -43,6 +47,7 @@ const S_ROOT = {
 , FN_NOOP = () => {};
 
 const InputDate = ({
+  labelId,
   refEl,
   initialValue,
   errorMsg,
@@ -95,9 +100,9 @@ const InputDate = ({
   return (
     <div style={S_ROOT}>
       <input
+         {...crA11yLabelledByProps(labelId)}
          ref={_refInput}
-         type="text"
-         name="date"
+         type="text"    
          //autoComplete="new-date"
          autoCorrect="off"
          autoCapitalize="off"

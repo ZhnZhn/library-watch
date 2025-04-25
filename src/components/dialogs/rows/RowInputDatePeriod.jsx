@@ -1,4 +1,5 @@
 import {
+  useId,
   useRef,
   useImperativeHandle,
   isRefInputValid,
@@ -37,7 +38,9 @@ const RowInputDatePeriod = ({
   initialToDate=INITIAL_TO_DATE,
   onTestDate=isYmd
 }) => {
-  const _refFromDate = useRef()
+  const _fromDateLabelId = useId()
+  , _toDateLabelId = useId()
+  , _refFromDate = useRef()
   , _refToDate = useRef();
 
   useImperativeHandle(refEl, () => ({
@@ -89,8 +92,10 @@ const RowInputDatePeriod = ({
         <Caption
           is={isShowLabels}
           caption="From Date"
+          labelId={_fromDateLabelId}
         />
         <InputDate
+           labelId={_fromDateLabelId}
            refEl={_refFromDate}
            initialValue={initialFromDate}
            errorMsg={ERROR_FORMAT}
@@ -101,8 +106,10 @@ const RowInputDatePeriod = ({
        <Caption
            is={isShowLabels}
            caption="To Date"
+           labelId={_toDateLabelId}
         />
         <InputDate
+           labelId={_toDateLabelId}
            refEl={_refToDate}
            initialValue={initialToDate}
            errorMsg={ERROR_FORMAT}

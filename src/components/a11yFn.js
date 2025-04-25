@@ -1,9 +1,15 @@
+export const crA11yLabelledByProps = (
+  labelId
+) => ({
+  "aria-labelledby": labelId
+})
+
 export const crA11yComboboxProps = (
   labelId
 ) => ({
   role: "combobox",
   "aria-autocomplete": "list",
-  "aria-labelledby": labelId
+  ...crA11yLabelledByProps(labelId)
 })
 
 export const crA11yExpandedProps = (
