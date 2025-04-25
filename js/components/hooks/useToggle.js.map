@@ -1,1 +1,27 @@
-{"version":3,"file":"useToggle.js","names":["_uiApi","require","_isFn","fn","useToggle","initialValue","isEventStopPropagation","is","setIs","useState","toggle","useCallback","event","stopPropagation","_default","exports","default"],"sources":["../../../src/components/hooks/useToggle.js"],"sourcesContent":["import {\r\n  useState,\r\n  useCallback\r\n} from '../uiApi';\r\n\r\nconst _isFn = fn => typeof fn === \"function\";\r\n\r\nconst useToggle = (\r\n  initialValue,\r\n  isEventStopPropagation\r\n) => {\r\n  const [\r\n    is,\r\n    setIs\r\n  ] = useState(() => _isFn(initialValue)\r\n     ? initialValue()\r\n     : !!initialValue\r\n   )\r\n   /*eslint-disable react-hooks/exhaustive-deps */\r\n  , toggle = useCallback(event => {\r\n      if (isEventStopPropagation && event) {\r\n        event.stopPropagation()\r\n      }\r\n      setIs(is => !is)\r\n  }, []);\r\n  // isEventStopPropagation\r\n  /*eslint-enable react-hooks/exhaustive-deps */\r\n\r\n  return [\r\n    is,\r\n    toggle,\r\n    setIs\r\n  ];\r\n};\r\n\r\nexport default useToggle\r\n"],"mappings":";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAKA,MAAMC,KAAK,GAAGC,EAAE,IAAI,OAAOA,EAAE,KAAK,UAAU;AAE5C,MAAMC,SAAS,GAAGA,CAChBC,YAAY,EACZC,sBAAsB,KACnB;EACH,MAAM,CACJC,EAAE,EACFC,KAAK,CACN,GAAG,IAAAC,eAAQ,EAAC,MAAMP,KAAK,CAACG,YAAY,CAAC,GACjCA,YAAY,CAAC,CAAC,GACd,CAAC,CAACA,YACN;IACA;IACCK,MAAM,GAAG,IAAAC,kBAAW,EAACC,KAAK,IAAI;MAC5B,IAAIN,sBAAsB,IAAIM,KAAK,EAAE;QACnCA,KAAK,CAACC,eAAe,CAAC,CAAC;MACzB;MACAL,KAAK,CAACD,EAAE,IAAI,CAACA,EAAE,CAAC;IACpB,CAAC,EAAE,EAAE,CAAC;EACN;EACA;;EAEA,OAAO,CACLA,EAAE,EACFG,MAAM,EACNF,KAAK,CACN;AACH,CAAC;AAAC,IAAAM,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaZ,SAAS","ignoreList":[]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useToggle.js"
+ ],
+ "file": "../../../src/components/hooks/useToggle.js",
+ "names": [
+  "_isTypeFn",
+  "require",
+  "_uiApi",
+  "useToggle",
+  "initialValue",
+  "isEventStopPropagation",
+  "is",
+  "setIs",
+  "useState",
+  "isFn",
+  "toggle",
+  "useCallback",
+  "evt",
+  "stopPropagation",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAEA,IAAAC,MAAA,GAAAD,OAAA;AAKA,MAAME,SAAS,GAAGA,CAChBC,YAAY,EACZC,sBAAsB,KACnB;EACH,MAAM,CACJC,EAAE,EACFC,KAAK,CACN,GAAG,IAAAC,eAAQ,EAAC,MAAM,IAAAC,cAAI,EAACL,YAAY,CAAC,GAChCA,YAAY,CAAC,CAAC,GACd,CAAC,CAACA,YACN;IACA;IACCM,MAAM,GAAG,IAAAC,kBAAW,EAACC,GAAG,IAAI;MAC1B,IAAIP,sBAAsB,IAAIO,GAAG,EAAE;QACjCA,GAAG,CAACC,eAAe,CAAC,CAAC;MACvB;MACAN,KAAK,CAACD,EAAE,IAAI,CAACA,EAAE,CAAC;IACpB,CAAC,EAAE,EAAE,CAAC;EACN;EACA;;EAEA,OAAO,CACLA,EAAE,EACFI,MAAM,EACNH,KAAK,CACN;AACH,CAAC;AAAC,IAAAO,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEab,SAAS"
+}

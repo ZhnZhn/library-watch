@@ -3,12 +3,13 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../../utils/isTypeFn");
 var _uiApi = require("../../uiApi");
 var _useToggle = _interopRequireDefault(require("../../hooks/useToggle"));
 var _useItemMenuMore = _interopRequireDefault(require("../useItemMenuMore"));
 var _ChartConfigFactories = require("../../charts/ChartConfigFactories");
 var _ShowHide = _interopRequireDefault(require("../../zhn/ShowHide"));
-var _LineChart = _interopRequireDefault(require("../../charts/LineChart"));
+var _ChartComponent = require("../../charts/ChartComponent");
 var _ButtonPackage = _interopRequireDefault(require("./ButtonPackage"));
 var _ButtonWatch = _interopRequireDefault(require("./ButtonWatch"));
 var _ItemCaption = _interopRequireDefault(require("../ItemCaption"));
@@ -36,6 +37,7 @@ const NpmDownloads = _ref => {
     chartConfig,
     labels,
     data,
+    height,
     packageLink,
     onWatchItem,
     onMoveToTop,
@@ -77,14 +79,15 @@ const NpmDownloads = _ref => {
         fromDate: fromDate,
         toDate: toDate,
         onClick: toggleIsShow
-      }), (0, _uiApi.isFn)(onWatchItem) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonWatch.default, {
+      }), (0, _isTypeFn.isFn)(onWatchItem) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonWatch.default, {
         onClick: _hClickWatch
       })]
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ShowHide.default, {
       isShow: isShow,
       style: S_CHART_WRAPPER,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LineChart.default, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ChartComponent.ChartComponent, {
         type: type,
+        height: height,
         data: _lineChartConfig,
         options: options || _Item.CHART_OPTIONS_LEGEND_TOP
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_NpmPackageInfo.default, {

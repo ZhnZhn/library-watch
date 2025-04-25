@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.ChartComponent = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _chart = require("chart.js");
 var _configChart = _interopRequireDefault(require("./configChart"));
@@ -56,7 +57,7 @@ const ChartComponent = exports.ChartComponent = (0, _uiApi.memo)(_ref => {
   } = _ref;
   const _refCanvas = (0, _uiApi.useRef)(),
     _refChartInst = (0, _uiApi.useRef)(),
-    _hClick = (0, _uiApi.useMemo)(() => (0, _uiApi.isFn)(onElementsClick) ? event => {
+    _hClick = (0, _uiApi.useMemo)(() => (0, _isTypeFn.isFn)(onElementsClick) ? event => {
       const elems = (0, _uiApi.getRefValue)(_refChartInst).getElementsAtEvent(event);
       if (elems.length) {
         onElementsClick(elems);

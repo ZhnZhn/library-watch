@@ -1,3 +1,4 @@
+import { isFn } from '../../utils/isTypeFn';
 import { crStyle2 } from '../styleFn';
 
 import SvgMore from './SvgMore';
@@ -10,7 +11,6 @@ import {
 } from './CaptionRow.Style';
 
 const SL_CAPTION = { paddingLeft: 0 }
-, _isFn = fn => typeof fn === 'function';
 
 const ContainerCaption = ({
   style,
@@ -22,8 +22,7 @@ const ContainerCaption = ({
 }) => (
   <div className={CL_CAPTION} style={style}>
      {
-       _isFn(onMore) &&
-       <SvgMore
+       isFn(onMore) && <SvgMore
          style={moreStyle}
          onClick={onMore}
        />
@@ -32,7 +31,7 @@ const ContainerCaption = ({
         className={CL_NOT_SELECTED}
         style={crStyle2(
           S_CAPTION,
-          _isFn(onMore) && SL_CAPTION
+          isFn(onMore) && SL_CAPTION
         )}
      >
        {caption}

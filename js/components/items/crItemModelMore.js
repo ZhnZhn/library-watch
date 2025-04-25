@@ -2,7 +2,7 @@
 
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
+var _isTypeFn = require("../../utils/isTypeFn");
 var _styleFn = require("../styleFn");
 const _crItem = function (name, onClick, cn, isClose) {
   if (cn === void 0) {
@@ -23,7 +23,7 @@ const crItemModelMore = _ref => {
     onMoveToTop,
     onToggleButtons
   } = _ref;
-  const p0 = [_crItem('Move to Top', onMoveToTop), (0, _uiApi.isFn)(onToggleButtons) ? _crItem('Toggle Buttons', onToggleButtons) : void 0].filter(Boolean);
+  const p0 = [_crItem('Move to Top', onMoveToTop), (0, _isTypeFn.isFn)(onToggleButtons) ? _crItem('Toggle Buttons', onToggleButtons) : void 0].filter(Boolean);
   return {
     titleCl: _styleFn.CL_ROW_MENU_MORE,
     pageWidth: 150,

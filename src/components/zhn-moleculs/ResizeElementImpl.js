@@ -1,4 +1,5 @@
-import { isFn, bindTo } from '../uiApi';
+import { isFn } from '../../utils/isTypeFn';
+import { bindTo } from '../uiApi';
 
 const _assign = Object.assign
 , _setInitialValuesTo = obj => {

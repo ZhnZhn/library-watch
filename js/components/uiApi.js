@@ -17,7 +17,6 @@ exports.useEffect = _react.useEffect;
 exports.useSyncExternalStore = _react.useSyncExternalStore;
 exports.useImperativeHandle = _react.useImperativeHandle;
 var _isTypeFn = require("../utils/isTypeFn");
-exports.isFn = _isTypeFn.isFn;
 var _jsxRuntime = require("react/jsx-runtime");
 const FN_NOOP = () => {};
 exports.FN_NOOP = FN_NOOP;

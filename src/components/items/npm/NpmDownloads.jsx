@@ -1,7 +1,5 @@
-import {
-  isFn,
-  useCallback
-} from '../../uiApi';
+import { isFn } from '../../../utils/isTypeFn';
+import { useCallback } from '../../uiApi';
 
 import useToggle from '../../hooks/useToggle';
 import useItemMenuMore from '../useItemMenuMore';

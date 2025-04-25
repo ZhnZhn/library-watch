@@ -1,6 +1,8 @@
+import { isFn } from '../../utils/isTypeFn';
+
 import {
   crCn,
-  crClNotSelected 
+  crClNotSelected
 } from '../styleFn';
 
 import useKeyEscape from '../hooks/useKeyEscape';
@@ -49,8 +51,7 @@ const CL_DRAGGABLE_DIALOG = "draggable-dialog"
   fill: 'inherit'
 }
 
-, FN_NOOP = () => {}
-, _isFn = fn => typeof fn === 'function';
+, FN_NOOP = () => {};
 
 const DraggableDialog = ({
   refEl,
@@ -127,7 +128,7 @@ const DraggableDialog = ({
       <div style={S_COMMAND_DIV}>
         {commandButtons}
         {
-          _isFn(onShowChart) && <FlatButton
+          isFn(onShowChart) && <FlatButton
             key="show"
             timeout={0}
             rootStyle={S_BT_ROOT}

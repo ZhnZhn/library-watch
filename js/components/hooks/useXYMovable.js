@@ -2,11 +2,10 @@
 
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _has = require("../has");
 const _assign = Object.assign,
-  _isArr = Array.isArray,
-  _isFn = fn => typeof fn === 'function',
   [INIT_EVENT, MOVE_EVENT, CANCEL_EVENT, RESET_EVENT] = _has.HAS_TOUCH_EVENTS ? ['touchstart', 'touchmove', 'touchcancel', 'touchend'] : ['mousedown', 'mousemove', 'mouseleave', 'mouseup'];
 const EVENT_OPTIONS = {
     passive: true
@@ -21,11 +20,11 @@ const VALUE_GAP = 8;
 const _crNextValue = (value, maxValue) => value > 0 ? value > maxValue ? maxValue - 2 * VALUE_GAP : value : VALUE_GAP;
 const START_EVENT_GAP = 22;
 const _isValueInGapRange = (from, to, value) => value - from > START_EVENT_GAP && to - value > START_EVENT_GAP;
-const _getComposedPath = evt => _isFn(evt.composedPath) ? evt.composedPath() : void 0;
+const _getComposedPath = evt => (0, _isTypeFn.isFn)(evt.composedPath) ? evt.composedPath() : void 0;
 const _isExcludeElement = element => element.tagName === 'BUTTON' || (element.dataset || {}).scrollable;
 const _isInitEvent = (evt, initialEvtClientX, initialEvtClientY, element) => {
   const _composedPath = _getComposedPath(evt);
-  if (_isArr(_composedPath)) {
+  if ((0, _isTypeFn.isArr)(_composedPath)) {
     for (let i = 0; i < _composedPath.length; i++) {
       const _el = _composedPath[i];
       if (_isExcludeElement(_el)) {

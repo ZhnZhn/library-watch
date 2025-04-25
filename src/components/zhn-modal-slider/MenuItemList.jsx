@@ -1,4 +1,6 @@
-import { isFn, bindTo } from '../uiApi';
+import { isFn } from '../../utils/isTypeFn'
+import { bindTo } from '../uiApi';
+
 import MenuAriaItem from './MenuAriaItem';
 
 const SUB_MENU = 'sub'

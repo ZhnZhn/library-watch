@@ -1,9 +1,10 @@
+import { isFn } from '../../utils/isTypeFn';
+
 import {
 	memo,
 	useRef,
 	useMemo,
 	useLayoutEffect,
-	isFn,
 	getRefValue,
 	setRefValue
 } from '../uiApi';

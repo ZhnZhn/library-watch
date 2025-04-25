@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _MenuAriaItem = _interopRequireDefault(require("./MenuAriaItem"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -25,7 +26,7 @@ const _fClick = _ref => {
     onClick,
     onClose
   } = _ref;
-  return (0, _uiApi.isFn)(onClick) ? isClose ? () => {
+  return (0, _isTypeFn.isFn)(onClick) ? isClose ? () => {
     onClick();
     onClose();
   } : onClick : void 0;

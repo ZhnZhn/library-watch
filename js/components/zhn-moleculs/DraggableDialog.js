@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _styleFn = require("../styleFn");
 var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
@@ -37,8 +38,7 @@ const CL_DRAGGABLE_DIALOG = "draggable-dialog",
     stroke: 'inherit',
     fill: 'inherit'
   },
-  FN_NOOP = () => {},
-  _isFn = fn => typeof fn === 'function';
+  FN_NOOP = () => {};
 const DraggableDialog = _ref => {
   let {
     refEl,
@@ -93,7 +93,7 @@ const DraggableDialog = _ref => {
       children: children
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       style: _Dialog.S_COMMAND_DIV,
-      children: [commandButtons, _isFn(onShowChart) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
+      children: [commandButtons, (0, _isTypeFn.isFn)(onShowChart) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
         timeout: 0,
         rootStyle: _Dialog.S_BT_ROOT,
         caption: "Show",

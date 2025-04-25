@@ -14,9 +14,6 @@ export {
   useImperativeHandle
 } from "react";
 
-export {
-  isFn  
-} from "../utils/isTypeFn";
 import {
   isFn,
   isArr

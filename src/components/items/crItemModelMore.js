@@ -1,4 +1,4 @@
-import { isFn } from '../uiApi';
+import { isFn } from '../../utils/isTypeFn';
 import { CL_ROW_MENU_MORE } from '../styleFn';
 
 const _crItem = (

@@ -1,9 +1,9 @@
+import { isFn } from '../../utils/isTypeFn';
+
 import {
   useState,
   useCallback
 } from '../uiApi';
-
-const _isFn = fn => typeof fn === "function";
 
 const useToggle = (
   initialValue,
@@ -12,14 +12,14 @@ const useToggle = (
   const [
     is,
     setIs
-  ] = useState(() => _isFn(initialValue)
+  ] = useState(() => isFn(initialValue)
      ? initialValue()
      : !!initialValue
    )
    /*eslint-disable react-hooks/exhaustive-deps */
-  , toggle = useCallback(event => {
-      if (isEventStopPropagation && event) {
-        event.stopPropagation()
+  , toggle = useCallback(evt => {
+      if (isEventStopPropagation && evt) {
+        evt.stopPropagation()
       }
       setIs(is => !is)
   }, []);

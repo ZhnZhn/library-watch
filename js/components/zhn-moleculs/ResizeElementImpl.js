@@ -2,6 +2,7 @@
 
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 const _assign = Object.assign,
   _setInitialValuesTo = obj => {
@@ -87,7 +88,7 @@ class ResizeElementImpl {
     const {
       onResizeAfter
     } = this;
-    if (isOnResizeAfter && (0, _uiApi.isFn)(onResizeAfter)) {
+    if (isOnResizeAfter && (0, _isTypeFn.isFn)(onResizeAfter)) {
       onResizeAfter(this.currentWidth);
     }
   };
