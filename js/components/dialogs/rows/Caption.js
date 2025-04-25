@@ -7,12 +7,11 @@ const S_LABEL_SPAN = {
   color: '#1b75bb',
   display: 'inline-block',
   width: 120,
-  paddingRight: 5,
+  paddingRight: 8,
   textAlign: 'right',
   fontSize: '16px',
   fontWeight: 'bold'
 };
-const _crCaption = caption => caption && caption.indexOf(':') === -1 ? caption + ':' : '';
 const Caption = _ref => {
   let {
     is = true,
@@ -20,7 +19,7 @@ const Caption = _ref => {
   } = _ref;
   return is ? /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
     style: S_LABEL_SPAN,
-    children: _crCaption(caption)
+    children: caption
   }) : null;
 };
 var _default = exports.default = Caption;

@@ -1,1 +1,29 @@
-{"version":3,"file":"Caption.js","names":["S_LABEL_SPAN","color","display","width","paddingRight","textAlign","fontSize","fontWeight","_crCaption","caption","indexOf","Caption","_ref","is","_jsxRuntime","jsx","style","children","_default","exports","default"],"sources":["../../../../src/components/dialogs/rows/Caption.jsx"],"sourcesContent":["const S_LABEL_SPAN = {\r\n  color: '#1b75bb',\r\n  display: 'inline-block',\r\n  width: 120,\r\n  paddingRight: 5,\r\n  textAlign: 'right',\r\n  fontSize: '16px',\r\n  fontWeight: 'bold'\r\n};\r\n\r\nconst _crCaption = caption => caption\r\n && caption.indexOf(':') === -1\r\n   ? caption + ':'\r\n   : '';\r\n\r\nconst Caption = ({\r\n  is=true,\r\n  caption\r\n}) => is ? (\r\n   <span style={S_LABEL_SPAN}>\r\n     {_crCaption(caption)}\r\n   </span>\r\n ) : null;\r\n\r\nexport default Caption\r\n"],"mappings":";;;;;AAAA,MAAMA,YAAY,GAAG;EACnBC,KAAK,EAAE,SAAS;EAChBC,OAAO,EAAE,cAAc;EACvBC,KAAK,EAAE,GAAG;EACVC,YAAY,EAAE,CAAC;EACfC,SAAS,EAAE,OAAO;EAClBC,QAAQ,EAAE,MAAM;EAChBC,UAAU,EAAE;AACd,CAAC;AAED,MAAMC,UAAU,GAAGC,OAAO,IAAIA,OAAO,IACjCA,OAAO,CAACC,OAAO,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC,GAC1BD,OAAO,GAAG,GAAG,GACb,EAAE;AAEP,MAAME,OAAO,GAAGC,IAAA;EAAA,IAAC;IACfC,EAAE,GAAC,IAAI;IACPJ;EACF,CAAC,GAAAG,IAAA;EAAA,OAAKC,EAAE,gBACL,IAAAC,WAAA,CAAAC,GAAA;IAAMC,KAAK,EAAEhB,YAAa;IAAAiB,QAAA,EACvBT,UAAU,CAACC,OAAO;EAAC,CAChB,CAAC,GACL,IAAI;AAAA;AAAC,IAAAS,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEKT,OAAO","ignoreList":[]}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/dialogs/rows/Caption.js"
+ ],
+ "file": "../../../../src/components/dialogs/rows/Caption.js",
+ "names": [
+  "S_LABEL_SPAN",
+  "color",
+  "display",
+  "width",
+  "paddingRight",
+  "textAlign",
+  "fontSize",
+  "fontWeight",
+  "Caption",
+  "_ref",
+  "is",
+  "caption",
+  "_jsxRuntime",
+  "jsx",
+  "style",
+  "children",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,MAAMA,YAAY,GAAG;EACnBC,KAAK,EAAE,SAAS;EAChBC,OAAO,EAAE,cAAc;EACvBC,KAAK,EAAE,GAAG;EACVC,YAAY,EAAE,CAAC;EACfC,SAAS,EAAE,OAAO;EAClBC,QAAQ,EAAE,MAAM;EAChBC,UAAU,EAAE;AACd,CAAC;AAED,MAAMC,OAAO,GAAGC,IAAA;EAAA,IAAC;IACfC,EAAE,GAAC,IAAI;IACPC;EACF,CAAC,GAAAF,IAAA;EAAA,OAAKC,EAAE,gBACJ,IAAAE,WAAA,CAAAC,GAAA;IAAMC,KAAK,EAAEd,YAAa;IAAAe,QAAA,EACxBJ;EAAO,CACJ,CAAC,GACL,IAAI;AAAA;AAAC,IAAAK,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEKV,OAAO"
+}
