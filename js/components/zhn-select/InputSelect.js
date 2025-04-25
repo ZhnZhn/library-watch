@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _a11yFn = require("../a11yFn");
 var _inputFn = require("../inputFn");
@@ -87,7 +88,7 @@ const InputSelect = props => {
         case 13:
           {
             const _indexActiveOption = getActiveIndexOption();
-            if ((0, _helperFns.isNumber)(_indexActiveOption)) {
+            if ((0, _isTypeFn.isNumber)(_indexActiveOption)) {
               const item = options[_indexActiveOption];
               if (item && item[propCaption]) {
                 onSelect((0, _helperFns.crOnEnterItem)(item, propCaption, isWithInput));

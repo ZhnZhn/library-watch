@@ -1,16 +1,12 @@
+import { isNumber } from '../../utils/isTypeFn';
+
 import {
   useMemo,
   getRefValue
 } from '../uiApi';
 
-import {
-  CL_OPTIONS_ROW_ACTIVE
-} from './CL';
-
-import {
-  isNumber,
-  getDataIndex
-} from './helperFns';
+import { CL_OPTIONS_ROW_ACTIVE } from './CL';
+import { getDataIndex } from './helperFns';
 
 /*eslint-disable react-hooks/exhaustive-deps */
 const useOptionDecorator = (

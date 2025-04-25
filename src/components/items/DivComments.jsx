@@ -1,4 +1,4 @@
-import { isNumber } from '../uiApi';
+import { isNumber } from '../../utils/isTypeFn';
 import { S_COLOR_GREY } from './Item.Style';
 
 const COMMENT = "Comment";

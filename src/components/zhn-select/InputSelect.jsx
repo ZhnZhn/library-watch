@@ -1,3 +1,5 @@
+import { isNumber } from '../../utils/isTypeFn';
+
 import {
   useId,
   useRef,
@@ -32,7 +34,6 @@ import crFilteredOptions from './crFilteredOptions';
 import useStepHandlers from './useStepHandlers';
 
 import {
-  isNumber,
   getDataIndex,
   crOnEnterItem,
   crFooterIndex,
@@ -261,7 +262,7 @@ const InputSelect = (
          {...crA11yComboboxProps(labelId)}
          {...crInputTextProps()}
          ref={_refDomInputText}
-         className={CL_INPUT}                  
+         className={CL_INPUT}
          value={value}
          placeholder={placeholder}
          onChange={_hInputChange}

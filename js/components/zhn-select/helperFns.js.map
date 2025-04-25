@@ -1,1 +1,32 @@
-{"version":3,"file":"helperFns.js","names":["isNumber","n","exports","getDataIndex","element","dataset","index","Number","crOnEnterItem","item","propCaption","isWithInput","value","inputValue","crFooterIndex","options","initialOptions","length","makeVisibleActiveRowComp","comp","offsetTop","optionsElement","parentElement","scrollTop"],"sources":["../../../src/components/zhn-select/helperFns.js"],"sourcesContent":["\r\nexport const isNumber = n => typeof n === 'number'\r\n  && n-n === 0;\r\n\r\nexport const getDataIndex = element => {\r\n  const { dataset } = element\r\n  , { index } = dataset || {};\r\n  return Number(index);\r\n};\r\n\r\nexport const crOnEnterItem = (\r\n  item,\r\n  propCaption,\r\n  isWithInput\r\n) => item.value !== 'noresult'\r\n  ? item\r\n  : isWithInput\r\n      ? {\r\n          [propCaption]: 'From Input',\r\n          value: item.inputValue\r\n        }\r\n      : void 0\r\n\r\nexport const crFooterIndex = (\r\n  options,\r\n  initialOptions\r\n) => [\r\n  options[0] && options[0].value !== 'noresult'\r\n     ? options.length\r\n     : 0,\r\n  initialOptions\r\n     ? initialOptions.length\r\n     : 0\r\n];\r\n\r\nexport const makeVisibleActiveRowComp = (\r\n  comp\r\n) => {\r\n  if (comp) {\r\n    const  { offsetTop } = comp\r\n    , optionsElement = comp.parentElement\r\n    , { scrollTop } = optionsElement;\r\n    if (offsetTop - scrollTop > 70){\r\n       optionsElement.scrollTop += offsetTop - scrollTop - 70;\r\n    }\r\n    if (offsetTop - scrollTop < 0){\r\n      optionsElement.scrollTop = 0;\r\n    }\r\n  }\r\n}\r\n"],"mappings":";;;;AACO,MAAMA,QAAQ,GAAGC,CAAC,IAAI,OAAOA,CAAC,KAAK,QAAQ,IAC7CA,CAAC,GAACA,CAAC,KAAK,CAAC;AAACC,OAAA,CAAAF,QAAA,GAAAA,QAAA;AAER,MAAMG,YAAY,GAAGC,OAAO,IAAI;EACrC,MAAM;MAAEC;IAAQ,CAAC,GAAGD,OAAO;IACzB;MAAEE;IAAM,CAAC,GAAGD,OAAO,IAAI,CAAC,CAAC;EAC3B,OAAOE,MAAM,CAACD,KAAK,CAAC;AACtB,CAAC;AAACJ,OAAA,CAAAC,YAAA,GAAAA,YAAA;AAEK,MAAMK,aAAa,GAAGA,CAC3BC,IAAI,EACJC,WAAW,EACXC,WAAW,KACRF,IAAI,CAACG,KAAK,KAAK,UAAU,GAC1BH,IAAI,GACJE,WAAW,GACP;EACE,CAACD,WAAW,GAAG,YAAY;EAC3BE,KAAK,EAAEH,IAAI,CAACI;AACd,CAAC,GACD,KAAK,CAAC;AAAAX,OAAA,CAAAM,aAAA,GAAAA,aAAA;AAEP,MAAMM,aAAa,GAAGA,CAC3BC,OAAO,EACPC,cAAc,KACX,CACHD,OAAO,CAAC,CAAC,CAAC,IAAIA,OAAO,CAAC,CAAC,CAAC,CAACH,KAAK,KAAK,UAAU,GACxCG,OAAO,CAACE,MAAM,GACd,CAAC,EACND,cAAc,GACTA,cAAc,CAACC,MAAM,GACrB,CAAC,CACP;AAACf,OAAA,CAAAY,aAAA,GAAAA,aAAA;AAEK,MAAMI,wBAAwB,GACnCC,IAAI,IACD;EACH,IAAIA,IAAI,EAAE;IACR,MAAO;QAAEC;MAAU,CAAC,GAAGD,IAAI;MACzBE,cAAc,GAAGF,IAAI,CAACG,aAAa;MACnC;QAAEC;MAAU,CAAC,GAAGF,cAAc;IAChC,IAAID,SAAS,GAAGG,SAAS,GAAG,EAAE,EAAC;MAC5BF,cAAc,CAACE,SAAS,IAAIH,SAAS,GAAGG,SAAS,GAAG,EAAE;IACzD;IACA,IAAIH,SAAS,GAAGG,SAAS,GAAG,CAAC,EAAC;MAC5BF,cAAc,CAACE,SAAS,GAAG,CAAC;IAC9B;EACF;AACF,CAAC;AAAArB,OAAA,CAAAgB,wBAAA,GAAAA,wBAAA","ignoreList":[]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-select/helperFns.js"
+ ],
+ "file": "../../../src/components/zhn-select/helperFns.js",
+ "names": [
+  "getDataIndex",
+  "element",
+  "dataset",
+  "index",
+  "Number",
+  "exports",
+  "crOnEnterItem",
+  "item",
+  "propCaption",
+  "isWithInput",
+  "value",
+  "inputValue",
+  "crFooterIndex",
+  "options",
+  "initialOptions",
+  "length",
+  "makeVisibleActiveRowComp",
+  "comp",
+  "offsetTop",
+  "optionsElement",
+  "parentElement",
+  "scrollTop"
+ ],
+ "mappings": ";;;;AACO,MAAMA,YAAY,GAAGC,OAAO,IAAI;EACrC,MAAM;MAAEC;IAAQ,CAAC,GAAGD,OAAO;IACzB;MAAEE;IAAM,CAAC,GAAGD,OAAO,IAAI,CAAC,CAAC;EAC3B,OAAOE,MAAM,CAACD,KAAK,CAAC;AACtB,CAAC;AAACE,OAAA,CAAAL,YAAA,GAAAA,YAAA;AAEK,MAAMM,aAAa,GAAGA,CAC3BC,IAAI,EACJC,WAAW,EACXC,WAAW,KACRF,IAAI,CAACG,KAAK,KAAK,UAAU,GAC1BH,IAAI,GACJE,WAAW,GACP;EACE,CAACD,WAAW,GAAG,YAAY;EAC3BE,KAAK,EAAEH,IAAI,CAACI;AACd,CAAC,GACD,KAAK,CAAC;AAAAN,OAAA,CAAAC,aAAA,GAAAA,aAAA;AAEP,MAAMM,aAAa,GAAGA,CAC3BC,OAAO,EACPC,cAAc,KACX,CACHD,OAAO,CAAC,CAAC,CAAC,IAAIA,OAAO,CAAC,CAAC,CAAC,CAACH,KAAK,KAAK,UAAU,GACxCG,OAAO,CAACE,MAAM,GACd,CAAC,EACND,cAAc,GACTA,cAAc,CAACC,MAAM,GACrB,CAAC,CACP;AAACV,OAAA,CAAAO,aAAA,GAAAA,aAAA;AAEK,MAAMI,wBAAwB,GACnCC,IAAI,IACD;EACH,IAAIA,IAAI,EAAE;IACR,MAAO;QAAEC;MAAU,CAAC,GAAGD,IAAI;MACzBE,cAAc,GAAGF,IAAI,CAACG,aAAa;MACnC;QAAEC;MAAU,CAAC,GAAGF,cAAc;IAChC,IAAID,SAAS,GAAGG,SAAS,GAAG,EAAE,EAAC;MAC5BF,cAAc,CAACE,SAAS,IAAIH,SAAS,GAAGG,SAAS,GAAG,EAAE;IACzD;IACA,IAAIH,SAAS,GAAGG,SAAS,GAAG,CAAC,EAAC;MAC5BF,cAAc,CAACE,SAAS,GAAG,CAAC;IAC9B;EACF;AACF,CAAC;AAAAhB,OAAA,CAAAW,wBAAA,GAAAA,wBAAA"
+}

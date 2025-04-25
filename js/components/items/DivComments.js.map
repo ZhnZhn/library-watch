@@ -1,1 +1,26 @@
-{"version":3,"file":"DivComments.js","names":["_uiApi","require","_Item","_jsxRuntime","COMMENT","DivComments","_ref","n","isNumber","jsx","style","S_COLOR_GREY","children","_default","exports","default"],"sources":["../../../src/components/items/DivComments.jsx"],"sourcesContent":["import { isNumber } from '../uiApi';\r\nimport { S_COLOR_GREY } from './Item.Style';\r\n\r\nconst COMMENT = \"Comment\";\r\nconst DivComments = ({\r\n  n\r\n}) => isNumber(n) && n\r\n  ? (\r\n     <div style={S_COLOR_GREY}>\r\n       {`${n===1 ? COMMENT : COMMENT + \"s\"} ${n}`}\r\n     </div>\r\n    )\r\n  : null;\r\n\r\nexport default DivComments\r\n"],"mappings":";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AACA,IAAAC,KAAA,GAAAD,OAAA;AAA4C,IAAAE,WAAA,GAAAF,OAAA;AAE5C,MAAMG,OAAO,GAAG,SAAS;AACzB,MAAMC,WAAW,GAAGC,IAAA;EAAA,IAAC;IACnBC;EACF,CAAC,GAAAD,IAAA;EAAA,OAAK,IAAAE,eAAQ,EAACD,CAAC,CAAC,IAAIA,CAAC,gBAEjB,IAAAJ,WAAA,CAAAM,GAAA;IAAKC,KAAK,EAAEC,kBAAa;IAAAC,QAAA,EACtB,GAAGL,CAAC,KAAG,CAAC,GAAGH,OAAO,GAAGA,OAAO,GAAG,GAAG,IAAIG,CAAC;EAAE,CACvC,CAAC,GAEP,IAAI;AAAA;AAAC,IAAAM,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEMV,WAAW","ignoreList":[]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/DivComments.js"
+ ],
+ "file": "../../../src/components/items/DivComments.js",
+ "names": [
+  "_isTypeFn",
+  "require",
+  "_Item",
+  "_jsxRuntime",
+  "COMMENT",
+  "DivComments",
+  "_ref",
+  "n",
+  "isNumber",
+  "jsx",
+  "style",
+  "S_COLOR_GREY",
+  "children",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AACA,IAAAC,KAAA,GAAAD,OAAA;AAA4C,IAAAE,WAAA,GAAAF,OAAA;AAE5C,MAAMG,OAAO,GAAG,SAAS;AACzB,MAAMC,WAAW,GAAGC,IAAA;EAAA,IAAC;IACnBC;EACF,CAAC,GAAAD,IAAA;EAAA,OAAK,IAAAE,kBAAQ,EAACD,CAAC,CAAC,IAAIA,CAAC,gBAEjB,IAAAJ,WAAA,CAAAM,GAAA;IAAKC,KAAK,EAAEC,kBAAa;IAAAC,QAAA,EACtB,GAAGL,CAAC,KAAG,CAAC,GAAGH,OAAO,GAAGA,OAAO,GAAG,GAAG,IAAIG,CAAC;EAAE,CACvC,CAAC,GAEP,IAAI;AAAA;AAAC,IAAAM,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEMV,WAAW"
+}

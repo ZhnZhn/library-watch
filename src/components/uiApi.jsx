@@ -15,8 +15,7 @@ export {
 } from "react";
 
 export {
-  isFn,
-  isNumber
+  isFn  
 } from "../utils/isTypeFn";
 import {
   isFn,

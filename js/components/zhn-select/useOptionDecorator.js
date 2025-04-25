@@ -2,6 +2,7 @@
 
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _CL = require("./CL");
 var _helperFns = require("./helperFns");
@@ -13,7 +14,7 @@ element => {
     element.classList.add(_CL.CL_OPTIONS_ROW_ACTIVE);
     const dataIndex = (0, _helperFns.getDataIndex)(element),
       _indexElement = (0, _uiApi.getRefValue)(refIndexNode);
-    if (_indexElement && (0, _helperFns.isNumber)(dataIndex)) {
+    if (_indexElement && (0, _isTypeFn.isNumber)(dataIndex)) {
       _indexElement.textContent = dataIndex + 1;
     }
   }

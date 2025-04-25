@@ -1,9 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.makeVisibleActiveRowComp = exports.isNumber = exports.getDataIndex = exports.crOnEnterItem = exports.crFooterIndex = void 0;
-const isNumber = n => typeof n === 'number' && n - n === 0;
-exports.isNumber = isNumber;
+exports.makeVisibleActiveRowComp = exports.getDataIndex = exports.crOnEnterItem = exports.crFooterIndex = void 0;
 const getDataIndex = element => {
   const {
       dataset

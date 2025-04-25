@@ -1,17 +1,15 @@
-import {
-  useRef,
-  getRefValue
-} from '../uiApi';
-
 import { isNumber } from '../../utils/isTypeFn';
-
 import {
   getToDate,
   subtractMonths
 } from '../../utils/dateFn';
 
-import { memoIsShow } from '../hoc/memoFn';
+import {
+  useRef,
+  getRefValue
+} from '../uiApi';
 
+import { memoIsShow } from '../hoc/memoFn';
 import useRefInit from '../hooks/useRefInit';
 import useToggle from '../hooks/useToggle';
 import useDialog from './useDialog';
