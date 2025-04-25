@@ -56,7 +56,7 @@ module.exports = {
     new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
         filename: path.resolve('dev', 'index.html'),
-        template: path.resolve('template', 'index.ejs'),
+        template: path.resolve('template', 'a-index.ejs'),
         inject: false
     })
   ]

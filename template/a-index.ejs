@@ -6,8 +6,8 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta http-equiv="Content-Security-Policy" content="
 default-src 'self'; 
-script-src 'self' 'sha256-eNw17CvskFhM0+lRvHA0RFUyv2OAR+g6w/fqMNHE36s='; 
-style-src 'self' 'sha256-qp2Jbti2jhbFmU9MB8cNvDt2ydPCdzi6WvY638wz/R8=' 'sha256-UqieFvMmS94HHJ6KCA+zBQjOdHixX8E4aqgi7yS6AVE='; 
+script-src 'self'; 
+style-src 'self' 'sha256-OMv+RQo51uKV5re4/2pTcpNrhhXnrYHau5IPvbN1SS0=' 'sha256-UqieFvMmS94HHJ6KCA+zBQjOdHixX8E4aqgi7yS6AVE='; 
 img-src 'self' https://nodei.co;
 connect-src 'self'
 https://api.github.com
@@ -41,130 +41,49 @@ require-trusted-types-for 'script';"
     }</script>
   <link rel="icon" href="/css/favicon.png" sizes="32x32" type="image/png">
   <base target="_blank">
-
-  <script>
-      var preloader = (function(n){
-      var obj, hm={};
-      var _getEl = function(id){
-        if (!hm[id]){hm[id] = document.getElementById(id);}
-        return hm[id];
-      };
-      var _setStyle = function(id,n,v){
-         var el = _getEl(id);
-         if (el) {el.style[n]=v;}
-         return;
-      };
-      var _setText = function(id,t){
-         var el = _getEl(id);
-         if (el) {el.textContent=t;}
-         return;
-      };
-      obj = {
-        w:1, n:n, d:0,
-        done:function(p){
-          obj.w += p;
-          _setText('msg',(obj.w!==100)?'Loading '+obj.w+'%...':'Loaded 100%')
-          _setStyle('loaded', 'width', obj.w+'%');
-          if ((++obj.d) === obj.n){
-            window.preloader = undefined;
-          }
-        },
-        hiding:function(){
-          _setStyle('preloader','opacity',0.5);
-        },
-        errCss:function(){
-           obj.isErrCss = true;
-           _setStyle('css-missed','display','block');
-           _setStyle('msg-reload','display','block');
-        },
-        errScript:function(){
-          obj.isErrScript = true;
-          _setStyle('bundle-missed','display','block');
-          _setStyle('msg-reload','display','block');
-        },
-        stop:function(){
-          var arr = ['','-webkit-','-moz-','-o-'], i=0, len=arr.length, n='animation-play-state';
-          for(;i<len;i++){ _setStyle('circle', arr[i]+n, 'paused'); }
-          _setText('msg','Loaded '+obj.w+'%');
-        }
-      };
-       return obj;
-    })(4);
-  </script>  
-  
-  <style>
-  [data-loader='circle']
-  {
-    width: 2.5em;
-    height: 2.5em;
-    -webkit-animation: circle infinite 1.25s linear;
-    -o-animation: circle infinite 1.25s linear;
-    animation: circle infinite 1.25s linear;
-   border: 3px solid #009ae5;
-   border-top-color: transparent;
-   border-radius: 100%;
- }
-@-webkit-keyframes circle
-{ 100% {
-  -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
-} }
-@-o-keyframes circle
-{ 100% {
-  -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-} }
-@keyframes circle
-{ 100% {transform: rotate(360deg);}}
-
+    
+<style>
+[data-loader='circle'] {
+  width: 2.5em;
+  height: 2.5em;    
+  animation: circle infinite 1.25s linear;
+  border: 3px solid #009ae5;
+  border-top-color: transparent;
+  border-radius: 100%;
+}
+@keyframes circle { 
+  100% {transform: rotate(360deg);}
+}
 .wrapper {
-  margin: 0 auto;
-  margin-top: 3em;
+  margin: 3em auto 0 auto;
+  padding: 1em 0 1.5em 0;  
+  width: 14em;
+  text-align: center;
   background-color: #4d4d4d;
   border: solid 2px #232f3b;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 6px;
-  z-index: 100;
-  width: 14em;
-  padding-top: 1em;
-  padding-bottom: 1.5em;
-  text-align: center;
+  z-index: 100;  
 }
 .wrapper__loading {
   margin: 0.5em auto;
 }
 .wrapper__descr {
-   margin-top: 1em;
-   font-family: "Roboto", "Arial", "Lato", sans-serif;
-   font-size: 1em;
-   font-weight: bold;
+  margin-top: 1em;
+  font-family: "Roboto", "Arial", "Lato", sans-serif;
+  font-size: 1em;
+  font-weight: bold;
 }
 .wrapper__app {
   color: #80c040;
-  display: block;
   padding-bottom: 0.5em;
-}
-.wrapper__loaded {
-  width: 0;
-  height: 3px;
-  background-color: #80c040;
 }
 #msg {
   color: grey;
 }
-.wrapper__error {
-  display: none;
-  color: #f44336;
-  margin-top: 8px;
-}
-.wrapper__reload {
-  display: none;
-  color: black;
-  margin-top: 8px;
-}
+</style>
 
-  </style>
-  <!-- REPLACE_BY_CSS_MIN_LINK -->  
+  <link rel="stylesheet" href="css/app-9b9ca27af9.min.css">  
 
 </head>
 <body>
@@ -173,24 +92,12 @@ require-trusted-types-for 'script';"
   <div id="preloader" class="wrapper">
       <div id="circle" data-loader="circle" class="wrapper__loading"></div>
       <div class="wrapper__descr">
-        <span class="wrapper__app">
-          Library Watch&nbsp;
-        </span>
+        <div class="wrapper__app">
+          Library&nbsp;Watch
+        </div>
         <div id='msg'>
-          Loading 1%...
-        </div>
-        <div id="loaded" class="wrapper__loaded">
-        </div>
-        <div id="css-missed" class="wrapper__error">
-          Error on load css.
-        </div>
-        <div id="bundle-missed" class="wrapper__error">
-          Error on load bundle.
-        </div>
-        <div id="msg-reload" class="wrapper__reload">
-          *Maybe, missed in locale cache.
-          Please, reload page through browser's toolbar.
-        </div>
+          Loading...
+        </div>                                
       </div>
     </div>
   <!--googleon: snippet-->
