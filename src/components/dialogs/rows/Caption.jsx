@@ -10,9 +10,10 @@ const S_LABEL_SPAN = {
 
 const Caption = ({
   is=true,
-  caption
+  caption,
+  labelId
 }) => is ? (
-    <span style={S_LABEL_SPAN}>
+   <span style={S_LABEL_SPAN} id={labelId}>
      {caption}
    </span>
  ) : null;

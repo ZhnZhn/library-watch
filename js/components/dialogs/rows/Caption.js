@@ -15,10 +15,12 @@ const S_LABEL_SPAN = {
 const Caption = _ref => {
   let {
     is = true,
-    caption
+    caption,
+    labelId
   } = _ref;
   return is ? /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
     style: S_LABEL_SPAN,
+    id: labelId,
     children: caption
   }) : null;
 };

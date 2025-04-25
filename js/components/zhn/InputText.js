@@ -41,6 +41,7 @@ const InputText = _ref4 => {
     initValue,
     placeholder,
     maxLength = 50,
+    labelId,
     onEnter = FN_NOOP
   } = _ref4;
   const _refInput = (0, _uiApi.useRef)(),
@@ -72,6 +73,7 @@ const InputText = _ref4 => {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: CL_FIELD,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+      "aria-labelledby": labelId,
       ref: _refInput,
       type: "text",
       autoCorrect: "off",

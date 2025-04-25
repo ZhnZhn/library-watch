@@ -1,3 +1,5 @@
+import { useId } from '../../uiApi';
+
 import InputText from '../../zhn/InputText';
 import Caption from './Caption';
 
@@ -20,7 +22,8 @@ const RowInputText = ({
   placeholder,
   onEnter
 }) => {
-  const _placeholder = isShowLabel
+  const labelId = useId()
+  , _placeholder = isShowLabel
     ? placeholder
     : placeholder || caption;
 
@@ -29,11 +32,13 @@ const RowInputText = ({
        <Caption
          is={isShowLabel}
          caption={caption}
+         labelId={labelId}
        />
        <InputText
           refEl={refEl}
           style={S_INPUT_TEXT}
           placeholder={_placeholder}
+          labelId={labelId}
           onEnter={onEnter}
        />
     </div>

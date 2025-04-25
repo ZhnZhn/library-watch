@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _uiApi = require("../../uiApi");
 var _InputText = _interopRequireDefault(require("../../zhn/InputText"));
 var _Caption = _interopRequireDefault(require("./Caption"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -25,16 +26,19 @@ const RowInputText = _ref => {
     placeholder,
     onEnter
   } = _ref;
-  const _placeholder = isShowLabel ? placeholder : placeholder || caption;
+  const labelId = (0, _uiApi.useId)(),
+    _placeholder = isShowLabel ? placeholder : placeholder || caption;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: S_DIV,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Caption.default, {
       is: isShowLabel,
-      caption: caption
+      caption: caption,
+      labelId: labelId
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputText.default, {
       refEl: refEl,
       style: S_INPUT_TEXT,
       placeholder: _placeholder,
+      labelId: labelId,
       onEnter: onEnter
     })]
   });

@@ -2,6 +2,7 @@ export { bindTo } from "../utils/bindTo";
 
 export {
   memo,
+  useId,
   useRef,
   useState,
   useReducer,

@@ -42,6 +42,7 @@ const InputText = ({
   initValue,
   placeholder,
   maxLength=50,
+  labelId,
   onEnter=FN_NOOP
 }) => {
   const _refInput = useRef()
@@ -77,6 +78,7 @@ const InputText = ({
   return (
     <div className={CL_FIELD}>
       <input
+        aria-labelledby={labelId}
         ref={_refInput}
         type="text"
         autoCorrect="off"
