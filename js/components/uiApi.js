@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useSyncExternalStore = exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.safeMap = exports.memo = exports.isStr = exports.isRefInputValid = exports.isNumber = exports.getRefValue = exports.getRefInputValue = exports.getClientY = exports.getClientX = exports.focusRefNextSiblingFirstChildElement = exports.focusRefInput = exports.focusRefElement = exports.focusHtmlElement = exports.focusElementById = exports.cloneUiElement = exports.bindTo = exports.FN_NOOP = void 0;
+exports.useSyncExternalStore = exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.safeMap = exports.memo = exports.isRefInputValid = exports.isNumber = exports.getRefValue = exports.getRefInputValue = exports.getClientY = exports.getClientX = exports.focusRefNextSiblingFirstChildElement = exports.focusRefInput = exports.focusRefElement = exports.focusHtmlElement = exports.focusElementById = exports.cloneUiElement = exports.bindTo = exports.FN_NOOP = void 0;
 var _bindTo = require("../utils/bindTo");
 exports.bindTo = _bindTo.bindTo;
 var _react = require("react");
@@ -18,7 +18,6 @@ exports.useImperativeHandle = _react.useImperativeHandle;
 var _isTypeFn = require("../utils/isTypeFn");
 exports.isFn = _isTypeFn.isFn;
 exports.isNumber = _isTypeFn.isNumber;
-exports.isStr = _isTypeFn.isStr;
 var _jsxRuntime = require("react/jsx-runtime");
 const FN_NOOP = () => {};
 exports.FN_NOOP = FN_NOOP;

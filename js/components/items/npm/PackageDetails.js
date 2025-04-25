@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../../utils/isTypeFn");
 var _styleFn = require("../../styleFn");
 var _crGitRepositoryHref = _interopRequireDefault(require("./crGitRepositoryHref"));
 var _crGitRepositoryCaption = _interopRequireDefault(require("./crGitRepositoryCaption"));
@@ -35,10 +36,8 @@ const RowLinks = _ref => {
     })]
   });
 };
-const _isStr = str => typeof str === 'string',
-  _isNumber = n => typeof n === 'number',
-  _trimTo5 = n => _isNumber(n) ? ('' + n).substring(0, 5) : '',
-  _toYear = strDate => _isStr(strDate) ? strDate.split('T')[0] : '',
+const _trimTo5 = n => (0, _isTypeFn.isNumber)(n) ? ('' + n).substring(0, 5) : '',
+  _toYear = strDate => (0, _isTypeFn.isStr)(strDate) ? strDate.split('T')[0] : '',
   _crRepositoryHref = _ref2 => {
     let {
       type,

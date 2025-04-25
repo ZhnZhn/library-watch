@@ -1,7 +1,7 @@
 import {
   isNumber,
   isStr
-} from "../uiApi";
+} from "../../utils/isTypeFn";
 
 import CrateDownloads from "../items/crate/CrateDownloads";
 

@@ -1,3 +1,7 @@
+import {
+  isNumber,
+  isStr
+} from '../../../utils/isTypeFn';
 import { CL_SOURCE_LINK } from '../../styleFn';
 
 import crGitRepositoryHref from './crGitRepositoryHref';
@@ -34,12 +38,10 @@ const RowLinks = ({
  );
 
 
-const _isStr = str => typeof str === 'string'
-, _isNumber = n => typeof n === 'number'
-, _trimTo5 = n => _isNumber(n)
+const _trimTo5 = n => isNumber(n)
     ? (''+n).substring(0, 5)
     : ''
-, _toYear = strDate => _isStr(strDate)
+, _toYear = strDate => isStr(strDate)
     ? strDate.split('T')[0]
     : ''
 , _crRepositoryHref = ({

@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
+var _isTypeFn = require("../../utils/isTypeFn");
 var _CrateDownloads = _interopRequireDefault(require("../items/crate/CrateDownloads"));
 var _helperFn = require("./helperFn");
 var _jsxRuntime = require("react/jsx-runtime");
@@ -28,7 +28,7 @@ const _crHm = extraDownloads => {
   const _otherData = [];
   for (const item of extraDownloads) {
     const [date, value] = _getDateValue(item);
-    if ((0, _uiApi.isNumber)(value) && (0, _uiApi.isStr)(date)) {
+    if ((0, _isTypeFn.isNumber)(value) && (0, _isTypeFn.isStr)(date)) {
       _hm[date] = value;
       _otherData.push([date, value]);
     }
@@ -40,8 +40,8 @@ const _sumValuesTo = (hm, downloads) => {
   const _hmVersions = {};
   for (const item of downloads) {
     const [date, value, version] = _getDateValue(item);
-    if ((0, _uiApi.isNumber)(value) && (0, _uiApi.isStr)(date)) {
-      if ((0, _uiApi.isNumber)(hm[date])) {
+    if ((0, _isTypeFn.isNumber)(value) && (0, _isTypeFn.isStr)(date)) {
+      if ((0, _isTypeFn.isNumber)(hm[date])) {
         hm[date] += value;
       } else {
         hm[date] = value;
