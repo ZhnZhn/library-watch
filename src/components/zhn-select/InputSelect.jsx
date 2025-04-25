@@ -6,6 +6,10 @@ import {
   useEffect
 } from '../uiApi';
 
+import {
+  crA11yComboboxProps
+} from '../a11yFn';
+
 import useToggle from '../hooks/useToggle';
 
 import ItemOptionDf from './ItemOptionDf'
@@ -52,6 +56,7 @@ const InputSelect = (
     style,
     width,
     optionsStyle,
+    labelId,
 
     propCaption='caption',
     ItemOptionComp=ItemOptionDf,
@@ -247,11 +252,12 @@ const InputSelect = (
       style={_style}
     >
       <input
+         {...crA11yComboboxProps(labelId)}
          ref={_refDomInputText}
          className={CL_INPUT}
          type="text"
          name="select"
-         //autoComplete="off"
+         autoComplete="off"
          autoCorrect="off"
          autoCapitalize="off"
          spellCheck={false}

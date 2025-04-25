@@ -1,3 +1,5 @@
+import { useId } from '../../uiApi';
+
 import InputSelect from '../../zhn-select/InputSelect';
 import Row from './Row';
 import Caption from './Caption';
@@ -8,19 +10,24 @@ const RowInputSelect = ({
   placeholder,
   options,
   onSelect
-}) => (
-  <Row>
-    <Caption
-      is={isShowLabel}
-      caption={caption}
-    />
-     <InputSelect
+}) => {
+  const labelId = useId();
+  return (
+    <Row>
+      <Caption
+        is={isShowLabel}
+        caption={caption}
+        labelId={labelId}
+      />
+      <InputSelect
         width="250"
         placeholder={placeholder}
         options={options}
+        labelId={labelId}
         onSelect={onSelect}
-     />
-  </Row>
-);
+      />
+    </Row>
+  );
+};
 
 export default RowInputSelect
