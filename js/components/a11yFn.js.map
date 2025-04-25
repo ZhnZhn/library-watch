@@ -1,0 +1,14 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/components/a11yFn.js"
+ ],
+ "file": "../../src/components/a11yFn.js",
+ "names": [
+  "crA11yComboboxProps",
+  "labelId",
+  "role",
+  "exports"
+ ],
+ "mappings": ";;;;AAAO,MAAMA,mBAAmB,GAC9BC,OAAO,KACH;EACJC,IAAI,EAAE,UAAU;EAChB,mBAAmB,EAAE,MAAM;EAC3B,iBAAiB,EAAED;AACrB,CAAC,CAAC;AAAAE,OAAA,CAAAH,mBAAA,GAAAA,mBAAA"
+}
