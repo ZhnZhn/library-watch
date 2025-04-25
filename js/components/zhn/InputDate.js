@@ -4,6 +4,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _a11yFn = require("../a11yFn");
+var _inputFn = require("../inputFn");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_ROOT = {
     position: 'relative',
@@ -95,13 +96,8 @@ const InputDate = _ref => {
     style: S_ROOT,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
       ...(0, _a11yFn.crA11yLabelledByProps)(labelId),
+      ...(0, _inputFn.crInputTextProps)(),
       ref: _refInput,
-      type: "text"
-      //autoComplete="new-date"
-      ,
-      autoCorrect: "off",
-      autoCapitalize: "off",
-      spellCheck: false,
       style: S_INPUT,
       placeholder: "YYYY-MM-DD",
       value: value,

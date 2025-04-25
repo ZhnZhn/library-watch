@@ -12,6 +12,8 @@ import {
   crA11yComboboxProps
 } from '../a11yFn';
 
+import { crInputTextProps } from '../inputFn';
+
 import useToggle from '../hooks/useToggle';
 
 import ItemOptionDf from './ItemOptionDf'
@@ -257,14 +259,9 @@ const InputSelect = (
       <input
          {...crA11yExpandedProps(isShowOption, _optionsViewId)}
          {...crA11yComboboxProps(labelId)}
+         {...crInputTextProps()}
          ref={_refDomInputText}
-         className={CL_INPUT}
-         type="text"
-         name="select"
-         autoComplete="off"
-         autoCorrect="off"
-         autoCapitalize="off"
-         spellCheck={false}
+         className={CL_INPUT}                  
          value={value}
          placeholder={placeholder}
          onChange={_hInputChange}

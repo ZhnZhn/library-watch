@@ -1,0 +1,17 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/components/inputFn.js"
+ ],
+ "file": "../../src/components/inputFn.js",
+ "names": [
+  "crInputTextProps",
+  "type",
+  "autoCapitalize",
+  "autoComplete",
+  "autoCorrect",
+  "spellCheck",
+  "exports"
+ ],
+ "mappings": ";;;;AAAO,MAAMA,gBAAgB,GAAGA,CAAA,MAAO;EACrCC,IAAI,EAAE,MAAM;EACZC,cAAc,EAAE,KAAK;EACrBC,YAAY,EAAE,KAAK;EACnBC,WAAW,EAAE,KAAK;EAClBC,UAAU,EAAE;AACd,CAAC,CAAC;AAAAC,OAAA,CAAAN,gBAAA,GAAAA,gBAAA"
+}

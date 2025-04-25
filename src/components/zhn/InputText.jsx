@@ -7,9 +7,8 @@ import {
   focusRefElement
 } from '../uiApi';
 
-import {
-  crA11yLabelledByProps
-} from '../a11yFn';
+import { crA11yLabelledByProps } from '../a11yFn';
+import { crInputTextProps } from '../inputFn';
 
 import { HAS_TOUCH_EVENTS } from '../has';
 
@@ -82,12 +81,9 @@ const InputText = ({
   return (
     <div className={CL_FIELD}>
       <input
-        {...crA11yLabelledByProps(labelId)}        
-        ref={_refInput}
-        type="text"
-        autoCorrect="off"
-        autoCapitalize="off"
-        spellCheck={false}
+        {...crA11yLabelledByProps(labelId)}
+        {...crInputTextProps()}
+        ref={_refInput}        
         className={CL_INPUT}
         style={style}
         value={value}

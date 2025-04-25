@@ -4,6 +4,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _a11yFn = require("../a11yFn");
+var _inputFn = require("../inputFn");
 var _has = require("../has");
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_FIELD = 'm-field',
@@ -75,11 +76,8 @@ const InputText = _ref4 => {
     className: CL_FIELD,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
       ...(0, _a11yFn.crA11yLabelledByProps)(labelId),
+      ...(0, _inputFn.crInputTextProps)(),
       ref: _refInput,
-      type: "text",
-      autoCorrect: "off",
-      autoCapitalize: "off",
-      spellCheck: false,
       className: CL_INPUT,
       style: style,
       value: value,

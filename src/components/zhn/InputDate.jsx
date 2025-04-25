@@ -5,9 +5,8 @@ import {
   focusRefInput
 } from '../uiApi';
 
-import {
-  crA11yLabelledByProps
-} from '../a11yFn';
+import { crA11yLabelledByProps } from '../a11yFn';
+import { crInputTextProps } from '../inputFn';
 
 const S_ROOT = {
   position: 'relative',
@@ -101,12 +100,8 @@ const InputDate = ({
     <div style={S_ROOT}>
       <input
          {...crA11yLabelledByProps(labelId)}
-         ref={_refInput}
-         type="text"    
-         //autoComplete="new-date"
-         autoCorrect="off"
-         autoCapitalize="off"
-         spellCheck={false}
+         {...crInputTextProps()}
+         ref={_refInput}         
          style={S_INPUT}
          placeholder="YYYY-MM-DD"
          value={value}

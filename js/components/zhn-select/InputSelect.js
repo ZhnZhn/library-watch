@@ -5,6 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _a11yFn = require("../a11yFn");
+var _inputFn = require("../inputFn");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _ItemOptionDf = _interopRequireDefault(require("./ItemOptionDf"));
 var _DivOptions = _interopRequireDefault(require("./DivOptions"));
@@ -189,14 +190,9 @@ const InputSelect = props => {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
       ...(0, _a11yFn.crA11yExpandedProps)(isShowOption, _optionsViewId),
       ...(0, _a11yFn.crA11yComboboxProps)(labelId),
+      ...(0, _inputFn.crInputTextProps)(),
       ref: _refDomInputText,
       className: _CL.CL_INPUT,
-      type: "text",
-      name: "select",
-      autoComplete: "off",
-      autoCorrect: "off",
-      autoCapitalize: "off",
-      spellCheck: false,
       value: value,
       placeholder: placeholder,
       onChange: _hInputChange,
