@@ -25,6 +25,7 @@
     "url": "https://github.com/ZhnZhn/library-watch.git"
   },
   "dependencies": {
+    "@babel/runtime": "^7.28.2",
     "chart.js": "^4.5.0",
     "papaparse": "^5.5.3",
     "raven-js": "^3.27.2",
@@ -39,7 +40,6 @@
     "@babel/plugin-transform-runtime": "^7.28.0",
     "@babel/preset-env": "^7.28.0",
     "@babel/preset-react": "^7.27.1",
-    "@babel/runtime": "^7.27.6",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.1",
     "babel-jest": "^30.0.5",
     "babel-loader": "^10.0.0",
@@ -52,7 +52,7 @@
     "html-webpack-plugin": "^5.6.3",
     "jest": "^30.0.5",
     "terser-webpack-plugin": "^5.3.14",
-    "webpack": "^5.100.2",
+    "webpack": "^5.101.0",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
   },
