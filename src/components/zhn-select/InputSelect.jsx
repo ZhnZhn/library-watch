@@ -94,7 +94,9 @@ const InputSelect = (
     _decorateActiveElement,
     _undecorateActiveElement,
     _stepDownOption,
-    _stepUpOption
+    _stepHomeOption,
+    _stepUpOption,
+    _stepEndOption
   ] = useStepHandlers()
   /*eslint-disable react-hooks/exhaustive-deps */
   , _initStateFromProps = useCallback(() => {
@@ -134,6 +136,7 @@ const InputSelect = (
     }
   }
   , _hInputKeyDown = (evt) => {
+    let _stepOption;
     switch(evt.keyCode){
       // enter
       case 13:{
@@ -172,20 +175,20 @@ const InputSelect = (
         if (!isShowOption){
           setIsShowOption(true)
         } else {
-          evt.preventDefault()
-          _stepDownOption()
+          _stepOption = _stepDownOption
         }
         break;
       }
       //up
-      case 38: {
-        if (isShowOption){
-          evt.preventDefault()
-          _stepUpOption()
-        }
-        break;
-      }
+      case 38: _stepOption = _stepUpOption; break;
+      case 36: _stepOption = _stepHomeOption; break;
+      case 35: _stepOption = _stepEndOption; break;
       default: return;
+    }
+
+    if (isShowOption && _stepOption) {
+      evt.preventDefault()
+      _stepOption()
     }
   }
 

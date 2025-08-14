@@ -53,7 +53,7 @@ const InputSelect = props => {
       initialOptions
     } = state,
     [isShowOption, toggleIsShowOption, setIsShowOption] = (0, _useToggle.default)(false),
-    [_refOptionsElement, _refIndexElement, setActiveIndexOption, getActiveIndexOption, _getActiveElement, _decorateActiveElement, _undecorateActiveElement, _stepDownOption, _stepUpOption] = (0, _useStepHandlers.default)()
+    [_refOptionsElement, _refIndexElement, setActiveIndexOption, getActiveIndexOption, _getActiveElement, _decorateActiveElement, _undecorateActiveElement, _stepDownOption, _stepHomeOption, _stepUpOption, _stepEndOption] = (0, _useStepHandlers.default)()
     /*eslint-disable react-hooks/exhaustive-deps */,
     _initStateFromProps = (0, _uiApi.useCallback)(() => {
       _undecorateActiveElement();
@@ -83,6 +83,7 @@ const InputSelect = props => {
       }
     },
     _hInputKeyDown = evt => {
+      let _stepOption;
       switch (evt.keyCode) {
         // enter
         case 13:
@@ -121,22 +122,26 @@ const InputSelect = props => {
             if (!isShowOption) {
               setIsShowOption(true);
             } else {
-              evt.preventDefault();
-              _stepDownOption();
+              _stepOption = _stepDownOption;
             }
             break;
           }
         //up
         case 38:
-          {
-            if (isShowOption) {
-              evt.preventDefault();
-              _stepUpOption();
-            }
-            break;
-          }
+          _stepOption = _stepUpOption;
+          break;
+        case 36:
+          _stepOption = _stepHomeOption;
+          break;
+        case 35:
+          _stepOption = _stepEndOption;
+          break;
         default:
           return;
+      }
+      if (isShowOption && _stepOption) {
+        evt.preventDefault();
+        _stepOption();
       }
     }
 

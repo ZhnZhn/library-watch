@@ -36,6 +36,18 @@ const useStepHandlers = () => {
       }
     }
   },
+  //stepHomeOption
+  () => {
+    const prevComp = getActiveElement();
+    if (prevComp) {
+      undecorateActiveElement(prevComp);
+      const _optionsElement = (0, _uiApi.getRefValue)(refOptionsElement);
+      setActiveIndexOption(0);
+      _optionsElement.scrollTop = 0;
+      const nextComp = getActiveElement();
+      decorateActiveElement(nextComp);
+    }
+  },
   //stepUpOption
   () => {
     const prevComp = getActiveElement();
@@ -55,6 +67,19 @@ const useStepHandlers = () => {
       if (offsetTop - scrollTop < 70) {
         _optionsElement.scrollTop -= 70 - (offsetTop - scrollTop);
       }
+    }
+  },
+  //stepEndOption
+  () => {
+    const prevComp = getActiveElement();
+    if (prevComp) {
+      undecorateActiveElement(prevComp);
+      const _optionsElement = (0, _uiApi.getRefValue)(refOptionsElement);
+      setActiveIndexOption(_getItemLength(_optionsElement) - 1);
+      const bottomComp = getActiveElement();
+      _optionsElement.scrollTop = bottomComp.offsetTop;
+      const nextComp = getActiveElement();
+      decorateActiveElement(nextComp);
     }
   }], [])];
 };
