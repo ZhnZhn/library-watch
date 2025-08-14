@@ -6,6 +6,9 @@ import {
   focusRefInput
 } from '../uiApi';
 
+import { crVisibilityHidden } from '../styleFn';
+import useCanBeHidden from './useCanBeHidden';
+
 import MenuTitle from './MenuTitle';
 import MenuItemList from './MenuItemList';
 
@@ -17,6 +20,8 @@ const MenuPage = ({
   isShow,
   items=[],
   style,
+  isVisible,
+  canBeHidden,
   title,
   titleCl,
   itemCl,
@@ -32,7 +37,8 @@ const MenuPage = ({
   , _hClickTitle = useCallback(() => {
       onPrevPage(pageNumber)
   }, [onPrevPage, pageNumber])
-  , _isFocus = (pageCurrent === pageNumber) && isShow;
+  , _isFocus = (pageCurrent === pageNumber) && isShow
+  , _style = useCanBeHidden(canBeHidden);
 
  useEffect(() => {
    if (_isFocus) {
@@ -45,7 +51,11 @@ const MenuPage = ({
  })
 
  return (
-    <div style={style}>
+    <div style={{
+      ...style,
+      ...crVisibilityHidden(isVisible),
+      ..._style
+    }}>
       <MenuTitle
         refEl={_refTitle}
         titleCl={titleCl}

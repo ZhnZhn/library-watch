@@ -9,14 +9,19 @@ const MenuPages = ({
   onPrevPage,
   onClose
 }) => pages
- .map((ElementPage, index) => cloneUiElement(ElementPage, {
+ .map((ElementPage, index) => {
+   const _pageNumber = index + 1;   
+   return cloneUiElement(ElementPage, {
     isShow,
     pageCurrent,
     style,
-    pageNumber: index + 1,
+    isVisible: isShow && (_pageNumber === pageCurrent),
+    canBeHidden: _pageNumber > pageCurrent,
+    pageNumber: _pageNumber,
     onNextPage: index === 0 ? onNextPage : void 0,
     onPrevPage: index !== 0 ? onPrevPage : void 0,
     onClose
- }));
+ })}
+);
 
 export default MenuPages

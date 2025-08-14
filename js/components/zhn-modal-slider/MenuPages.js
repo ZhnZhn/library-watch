@@ -13,15 +13,20 @@ const MenuPages = _ref => {
     onPrevPage,
     onClose
   } = _ref;
-  return pages.map((ElementPage, index) => (0, _uiApi.cloneUiElement)(ElementPage, {
-    isShow,
-    pageCurrent,
-    style,
-    pageNumber: index + 1,
-    onNextPage: index === 0 ? onNextPage : void 0,
-    onPrevPage: index !== 0 ? onPrevPage : void 0,
-    onClose
-  }));
+  return pages.map((ElementPage, index) => {
+    const _pageNumber = index + 1;
+    return (0, _uiApi.cloneUiElement)(ElementPage, {
+      isShow,
+      pageCurrent,
+      style,
+      isVisible: isShow && _pageNumber === pageCurrent,
+      canBeHidden: _pageNumber > pageCurrent,
+      pageNumber: _pageNumber,
+      onNextPage: index === 0 ? onNextPage : void 0,
+      onPrevPage: index !== 0 ? onPrevPage : void 0,
+      onClose
+    });
+  });
 };
 var _default = exports.default = MenuPages;
 //# sourceMappingURL=MenuPages.js.map

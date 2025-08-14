@@ -4,6 +4,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
+var _useCanBeHidden = _interopRequireDefault(require("./useCanBeHidden"));
 var _MenuTitle = _interopRequireDefault(require("./MenuTitle"));
 var _MenuItemList = _interopRequireDefault(require("./MenuItemList"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -15,6 +17,8 @@ const MenuPage = _ref => {
     isShow,
     items = [],
     style,
+    isVisible,
+    canBeHidden,
     title,
     titleCl,
     itemCl,
@@ -30,7 +34,8 @@ const MenuPage = _ref => {
     _hClickTitle = (0, _uiApi.useCallback)(() => {
       onPrevPage(pageNumber);
     }, [onPrevPage, pageNumber]),
-    _isFocus = pageCurrent === pageNumber && isShow;
+    _isFocus = pageCurrent === pageNumber && isShow,
+    _style = (0, _useCanBeHidden.default)(canBeHidden);
   (0, _uiApi.useEffect)(() => {
     if (_isFocus) {
       if ((0, _uiApi.getRefValue)(_refTitle)) {
@@ -41,7 +46,11 @@ const MenuPage = _ref => {
     }
   });
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: style,
+    style: {
+      ...style,
+      ...(0, _styleFn.crVisibilityHidden)(isVisible),
+      ..._style
+    },
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuTitle.default, {
       refEl: _refTitle,
       titleCl: titleCl,
