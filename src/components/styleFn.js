@@ -55,3 +55,9 @@ export const CL_LIB_VALUE = `${CL_LIB}__value`
 export const CL_LIB_VALUE_TITLE = `${CL_LIB_VALUE}-title`
 
 export const CL_FILE_ITEM = "row__item"
+
+export const crVisibilityHidden = (
+  isVisible
+) => isVisible
+  ? void 0
+  : { visibility: 'hidden' }
