@@ -1,20 +1,26 @@
 import {
-  useRef,
+  //useRef,
   useCallback,
-  useEffect,
-  getRefValue,
-  focusRefInput
+  //useEffect,
+  //getRefValue,
+  //focusRefInput
 } from '../uiApi';
 
 import { crVisibilityHidden } from '../styleFn';
+
+import { useItemsFocusTrap } from '../hooks/useFocus';
 import useCanBeHidden from './useCanBeHidden';
 
+
+import FocusTrap from '../zhn-moleculs/FocusTrap';
 import MenuTitle from './MenuTitle';
 import MenuItemList from './MenuItemList';
 
+/*
 const _fFocus = ref => () => {
   focusRefInput(ref)
 };
+*/
 
 const MenuPage = ({
   isShow,
@@ -32,45 +38,46 @@ const MenuPage = ({
   onNextPage,
   onPrevPage
 }) => {
-  const _refTitle = useRef()
-  , _refFirst = useRef()
-  , _hClickTitle = useCallback(() => {
-      onPrevPage(pageNumber)
+  const _hClickTitle = useCallback(() => {
+    onPrevPage(pageNumber)
   }, [onPrevPage, pageNumber])
-  , _isFocus = (pageCurrent === pageNumber) && isShow
-  , _style = useCanBeHidden(canBeHidden);
+  , [
+    _refFirstItem,
+    _refLastItem,
+    _getRefItem
+  ] = useItemsFocusTrap(
+    items,
+    isVisible,
+    !title
+  )
+  ,  _style = useCanBeHidden(canBeHidden);
 
- useEffect(() => {
-   if (_isFocus) {
-     if (getRefValue(_refTitle)) {
-        setTimeout(_fFocus(_refTitle), 1000)
-     } else if (getRefValue(_refFirst)) {
-        setTimeout(_fFocus(_refFirst), 1000)
-     }
-   }
- })
-
- return (
+  return (
     <div style={{
       ...style,
       ...crVisibilityHidden(isVisible),
       ..._style
     }}>
-      <MenuTitle
-        refEl={_refTitle}
-        titleCl={titleCl}
-        title={title}
-        onClick={_hClickTitle}
-      />
-      <MenuItemList
-        refEl={_refFirst}
-        items={items}
-        itemCl={itemCl || titleCl}
-        pageNumber={pageNumber}
-        onNextPage={onNextPage}
-        onClose={onClose}
-      />
+      <FocusTrap
+        refFirst={_refFirstItem}
+        refLast={_refLastItem}
+      >
+        <MenuTitle
+          refEl={_refFirstItem}
+          titleCl={titleCl}
+          title={title}
+          onClick={_hClickTitle}
+        />
+        <MenuItemList
+          getRefItem={_getRefItem}
+          items={items}
+          itemCl={itemCl || titleCl}
+          pageNumber={pageNumber}
+          onNextPage={onNextPage}
+          onClose={onClose}
+        />
       {children}
+      </FocusTrap>
     </div>
   );
 }
@@ -78,6 +85,8 @@ const MenuPage = ({
 /*
 MenuPage.propTypes = {
   isShow: PropTypes.bool,
+  isVisible: PropTypes.bool,
+  canBeHidden: PropTypes.bool,
   title: PropTypes.string,
   pageNumber: PropTypes.number,
   items: PropTypes.arrayOf(
