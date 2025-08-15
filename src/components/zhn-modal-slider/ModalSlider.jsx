@@ -18,7 +18,7 @@ S_PAGES = {
   flexFlow: 'row nowrap',
   alignItems: 'flex-start',
   overflowX: 'hidden',
-  transition: 'all 750ms ease-out'
+  transition: 'all .3s ease-out'
 }
 
 , DF_INIT_ID = 'p0'
