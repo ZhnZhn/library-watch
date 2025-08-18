@@ -1,5 +1,5 @@
 import useClickOutside from '../hooks/useClickOutside';
-import useKeyEscape from '../hooks/useKeyEscape';
+import { useKeyEscape } from '../hooks/fUseKey';
 
 const S_DIV = { backgroundColor: '#4d4d4d' }
 , FN_NOOP = () => {};

@@ -5,7 +5,7 @@ import {
   crClNotSelected
 } from '../styleFn';
 
-import useKeyEscape from '../hooks/useKeyEscape';
+import { useKeyEscape } from '../hooks/fUseKey';
 import useToggle from '../hooks/useToggle';
 import useXYMovable from '../hooks/useXYMovable';
 import useDialogFocus from './useDialogFocus';

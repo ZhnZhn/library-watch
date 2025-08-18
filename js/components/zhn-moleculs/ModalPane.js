@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _useClickOutside = _interopRequireDefault(require("../hooks/useClickOutside"));
-var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
+var _fUseKey = require("../hooks/fUseKey");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_DIV = {
     backgroundColor: '#4d4d4d'
@@ -20,7 +20,7 @@ const ModalPane = _ref2 => {
     ...restProps
   } = _ref2;
   const _ref = (0, _useClickOutside.default)(isShow, onClose),
-    _hKeyEscape = (0, _useKeyEscape.default)(onClose);
+    _hKeyEscape = (0, _fUseKey.useKeyEscape)(onClose);
   /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     ...restProps,

@@ -1,8 +1,9 @@
 "use strict";
 
 exports.__esModule = true;
-exports.default = void 0;
+exports.useKeyEscape = exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _has = require("../has");
 /*eslint-disable react-hooks/exhaustive-deps */
 const fUseKey = isKey => function (fn, _temp) {
   let {
@@ -20,5 +21,8 @@ const fUseKey = isKey => function (fn, _temp) {
   }, deps || []);
 };
 /*eslint-enable react-hooks/exhaustive-deps */
+
+const _isKeyEscape = evt => evt.keyCode === 27 || evt.key === 'Escape';
+const useKeyEscape = exports.useKeyEscape = _has.HAS_KEYBOARD_FOCUS ? fUseKey(_isKeyEscape) : _uiApi.FN_NOOP;
 var _default = exports.default = fUseKey;
 //# sourceMappingURL=fUseKey.js.map

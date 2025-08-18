@@ -6,7 +6,7 @@ import {
   setRefValue
 } from '../uiApi';
 import useRerender from '../hooks/useRerender';
-import useKeyEscape from '../hooks/useKeyEscape';
+import { useKeyEscape } from '../hooks/fUseKey';
 
 import Caption from './DialogCaption'
 import FlatButton from '../zhn-m/FlatButton'

@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _isTypeFn = require("../../utils/isTypeFn");
 var _styleFn = require("../styleFn");
-var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
+var _fUseKey = require("../hooks/fUseKey");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useXYMovable = _interopRequireDefault(require("../hooks/useXYMovable"));
 var _useDialogFocus = _interopRequireDefault(require("./useDialogFocus"));
@@ -52,7 +52,7 @@ const DraggableDialog = _ref => {
   } = _ref;
   const [_refRootDiv, _refBtMore] = (0, _useDialogFocus.default)(refEl, isShow),
     [_isMore, _toggleMore] = (0, _useToggle.default)(),
-    _hKeyDown = (0, _useKeyEscape.default)(onClose),
+    _hKeyDown = (0, _fUseKey.useKeyEscape)(onClose),
     _className = (0, _styleFn.crCn)(CL_DRAGGABLE_DIALOG, [isShow, _Dialog.CL_SHOW_POPUP]),
     _styleShow = isShow ? _Dialog.S_SHOW : _Dialog.S_HIDE;
   (0, _useXYMovable.default)(_refRootDiv);

@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
-var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
+var _fUseKey = require("../hooks/fUseKey");
 var _DialogCaption = _interopRequireDefault(require("./DialogCaption"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 var _Dialog = require("./Dialog.Style");
@@ -34,7 +34,7 @@ const ModalDialog = _ref => {
     children
   } = _ref;
   const _rerenderComp = (0, _useRerender.default)(),
-    _hKeyDown = (0, _useKeyEscape.default)(onClose),
+    _hKeyDown = (0, _fUseKey.useKeyEscape)(onClose),
     _refWasClosing = (0, _uiApi.useRef)(),
     _hClickDialog = (0, _uiApi.useCallback)(event => {
       event.stopPropagation();

@@ -1,1 +1,33 @@
-{"version":3,"file":"fUseKey.js","names":["_uiApi","require","fUseKey","isKey","fn","_temp","deps","isPropagation","useCallback","evt","preventDefault","stopPropagation","event","_default","exports","default"],"sources":["../../../src/components/hooks/fUseKey.js"],"sourcesContent":["import { useCallback } from '../uiApi';\r\n\r\n/*eslint-disable react-hooks/exhaustive-deps */\r\nconst fUseKey = isKey => (\r\n  fn, {\r\n    deps,\r\n    isPropagation\r\n  } = {}\r\n) => useCallback(evt => {\r\n  if (isKey(evt)) {\r\n    evt.preventDefault()\r\n    if (!isPropagation) {\r\n      evt.stopPropagation()\r\n    }\r\n    fn(event)\r\n  }\r\n}, deps || []);\r\n/*eslint-enable react-hooks/exhaustive-deps */\r\n\r\nexport default fUseKey\r\n"],"mappings":";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAEA;AACA,MAAMC,OAAO,GAAGC,KAAK,IAAI,UACvBC,EAAE,EAAAC,KAAA;EAAA,IAAE;IACFC,IAAI;IACJC;EACF,CAAC,GAAAF,KAAA,cAAG,CAAC,CAAC,GAAAA,KAAA;EAAA,OACH,IAAAG,kBAAW,EAACC,GAAG,IAAI;IACtB,IAAIN,KAAK,CAACM,GAAG,CAAC,EAAE;MACdA,GAAG,CAACC,cAAc,CAAC,CAAC;MACpB,IAAI,CAACH,aAAa,EAAE;QAClBE,GAAG,CAACE,eAAe,CAAC,CAAC;MACvB;MACAP,EAAE,CAACQ,KAAK,CAAC;IACX;EACF,CAAC,EAAEN,IAAI,IAAI,EAAE,CAAC;AAAA;AACd;AAAA,IAAAO,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEeb,OAAO","ignoreList":[]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/fUseKey.js"
+ ],
+ "file": "../../../src/components/hooks/fUseKey.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "_has",
+  "fUseKey",
+  "isKey",
+  "fn",
+  "_temp",
+  "deps",
+  "isPropagation",
+  "useCallback",
+  "evt",
+  "preventDefault",
+  "stopPropagation",
+  "event",
+  "_isKeyEscape",
+  "keyCode",
+  "key",
+  "useKeyEscape",
+  "exports",
+  "HAS_KEYBOARD_FOCUS",
+  "FN_NOOP",
+  "_default",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AACA,IAAAC,IAAA,GAAAD,OAAA;AAEA;AACA,MAAME,OAAO,GAAGC,KAAK,IAAI,UACvBC,EAAE,EAAAC,KAAA;EAAA,IAAE;IACFC,IAAI;IACJC;EACF,CAAC,GAAAF,KAAA,cAAG,CAAC,CAAC,GAAAA,KAAA;EAAA,OACH,IAAAG,kBAAW,EAACC,GAAG,IAAI;IACtB,IAAIN,KAAK,CAACM,GAAG,CAAC,EAAE;MACdA,GAAG,CAACC,cAAc,CAAC,CAAC;MACpB,IAAI,CAACH,aAAa,EAAE;QAClBE,GAAG,CAACE,eAAe,CAAC,CAAC;MACvB;MACAP,EAAE,CAACQ,KAAK,CAAC;IACX;EACF,CAAC,EAAEN,IAAI,IAAI,EAAE,CAAC;AAAA;AACd;;AAEA,MAAMO,YAAY,GAAGJ,GAAG,IAAIA,GAAG,CAACK,OAAO,KAAK,EAAE,IAC1CL,GAAG,CAACM,GAAG,KAAK,QAAQ;AACjB,MAAMC,YAAY,GAAAC,OAAA,CAAAD,YAAA,GAAGE,uBAAkB,GACzChB,OAAO,CAACW,YAAY,CAAC,GACrBM,cAAO;AAAC,IAAAC,QAAA,GAAAH,OAAA,CAAAI,OAAA,GAEEnB,OAAO"
+}
