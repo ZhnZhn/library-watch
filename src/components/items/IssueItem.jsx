@@ -12,8 +12,10 @@ import {
 } from '../styleFn';
 
 import useToggle from '../hooks/useToggle';
-import { useKeyDelete } from '../hooks/fUseKey';
-import useKeyEnter from '../hooks/useKeyEnter';
+import {
+  useKeyDelete,
+  useKeyEnter
+} from '../hooks/fUseKey';
 
 import ShowHide from '../zhn/ShowHide';
 import Link from '../zhn/Link';

@@ -7,7 +7,7 @@ import {
   crClNotSelected
 } from '../styleFn';
 
-import useKeyEnter from '../hooks/useKeyEnter';
+import { useKeyEnter } from '../hooks/fUseKey';
 import useToggle from '../hooks/useToggle';
 
 const CL_ROW_CAPTION = crClNotSelected("zhn-oc")

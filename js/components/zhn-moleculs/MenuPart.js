@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _styleFn = require("../styleFn");
-var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
+var _fUseKey = require("../hooks/fUseKey");
 var _AtomCounter = _interopRequireDefault(require("../zhn/AtomCounter"));
 var _OpenClose = _interopRequireDefault(require("../zhn/OpenClose2"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -21,7 +21,7 @@ const MenuItem = _ref => {
     item,
     className
   } = _ref;
-  const _hKeyDown = (0, _useKeyEnter.default)(item.onClick);
+  const _hKeyDown = (0, _fUseKey.useKeyEnter)(item.onClick);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     role: "menuitem",
     tabIndex: 0,

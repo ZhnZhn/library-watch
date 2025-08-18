@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _styleFn = require("../styleFn");
-var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
+var _fUseKey = require("../hooks/fUseKey");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _jsxRuntime = require("react/jsx-runtime");
 //import PropTypes from "prop-types";
@@ -47,7 +47,7 @@ const OpenClose2 = _ref => {
     children
   } = _ref;
   const [isOpen, _hToggle] = (0, _useToggle.default)(!isClose),
-    _hKeyDown = (0, _useKeyEnter.default)(_hToggle),
+    _hKeyDown = (0, _fUseKey.useKeyEnter)(_hToggle),
     [_pathV, _fillV, _styleCollapse, _classShow, _styleNotSelected] = isOpen ? [PATH_OPEN, fillOpen, _styleFn.S_BLOCK, _styleFn.CL_SHOW_POPUP, null] : [PATH_CLOSE, fillClose, _styleFn.S_NONE, null, styleNotSelected];
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: {

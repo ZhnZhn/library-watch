@@ -7,7 +7,6 @@ var _uiApi = require("../uiApi");
 var _styleFn = require("../styleFn");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _fUseKey = require("../hooks/fUseKey");
-var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
 var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
 var _Link = _interopRequireDefault(require("../zhn/Link"));
 var _DivComments = _interopRequireDefault(require("./DivComments"));
@@ -47,7 +46,7 @@ const IssueItem = _ref => {
       (0, _uiApi.focusRefNextSiblingFirstChildElement)(_refItem);
     }, []),
     _onKeyDownItem = (0, _fUseKey.useKeyDelete)(_close),
-    _onKeyDown = (0, _useKeyEnter.default)(toggleIsDescr, {
+    _onKeyDown = (0, _fUseKey.useKeyEnter)(toggleIsDescr, {
       isPropagation: true
     });
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ShowHide.default, {
