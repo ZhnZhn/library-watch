@@ -13,10 +13,15 @@ const MenuAriaItem = _ref => {
     ...rest
   } = _ref;
   const _onKeyDown = evt => {
-    if (evt.which === 13 || evt.which === 32) {
-      onClick();
-    }
-  };
+      if (evt.keyCode === 32) {
+        evt.preventDefault();
+      }
+    },
+    _onKeyUp = evt => {
+      if (evt.keyCode === 13 || evt.keyCode === 32) {
+        onClick();
+      }
+    };
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     ...rest,
     ref: refEl,
@@ -24,6 +29,7 @@ const MenuAriaItem = _ref => {
     tabIndex: "0",
     onClick: onClick,
     onKeyDown: _onKeyDown,
+    onKeyUp: _onKeyUp,
     children: children
   });
 };

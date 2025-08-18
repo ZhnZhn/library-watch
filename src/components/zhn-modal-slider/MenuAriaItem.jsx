@@ -8,7 +8,12 @@ const MenuAriaItem = ({
   ...rest
 }) => {
   const _onKeyDown = evt => {
-    if (evt.which === 13 || evt.which === 32) {
+    if (evt.keyCode === 32) {
+      evt.preventDefault()
+    }
+  }
+  , _onKeyUp = evt => {
+    if (evt.keyCode === 13 || evt.keyCode === 32) {
       onClick()
     }
   };
@@ -21,6 +26,7 @@ const MenuAriaItem = ({
       tabIndex="0"
       onClick={onClick}
       onKeyDown={_onKeyDown}
+      onKeyUp={_onKeyUp}
     >
       {children}
     </div>

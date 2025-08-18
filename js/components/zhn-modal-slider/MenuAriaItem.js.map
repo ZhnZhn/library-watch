@@ -1,1 +1,33 @@
-{"version":3,"file":"MenuAriaItem.js","names":["FN_NOOP","MenuAriaItem","_ref","refEl","onClick","onReg","children","rest","_onKeyDown","evt","which","_jsxRuntime","jsx","ref","role","tabIndex","onKeyDown","_default","exports","default"],"sources":["../../../src/components/zhn-modal-slider/MenuAriaItem.jsx"],"sourcesContent":["const FN_NOOP = () => {};\r\n\r\nconst MenuAriaItem = ({\r\n  refEl,\r\n  onClick,\r\n  onReg=FN_NOOP,\r\n  children,\r\n  ...rest\r\n}) => {\r\n  const _onKeyDown = evt => {\r\n    if (evt.which === 13 || evt.which === 32) {\r\n      onClick()\r\n    }\r\n  };\r\n\r\n  return (\r\n    <div\r\n      {...rest}\r\n      ref={refEl}\r\n      role=\"menuitem\"\r\n      tabIndex=\"0\"\r\n      onClick={onClick}\r\n      onKeyDown={_onKeyDown}\r\n    >\r\n      {children}\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default MenuAriaItem\r\n"],"mappings":";;;;;AAAA,MAAMA,OAAO,GAAGA,CAAA,KAAM,CAAC,CAAC;AAExB,MAAMC,YAAY,GAAGC,IAAA,IAMf;EAAA,IANgB;IACpBC,KAAK;IACLC,OAAO;IACPC,KAAK,GAACL,OAAO;IACbM,QAAQ;IACR,GAAGC;EACL,CAAC,GAAAL,IAAA;EACC,MAAMM,UAAU,GAAGC,GAAG,IAAI;IACxB,IAAIA,GAAG,CAACC,KAAK,KAAK,EAAE,IAAID,GAAG,CAACC,KAAK,KAAK,EAAE,EAAE;MACxCN,OAAO,CAAC,CAAC;IACX;EACF,CAAC;EAED,oBACE,IAAAO,WAAA,CAAAC,GAAA;IAAA,GACML,IAAI;IACRM,GAAG,EAAEV,KAAM;IACXW,IAAI,EAAC,UAAU;IACfC,QAAQ,EAAC,GAAG;IACZX,OAAO,EAAEA,OAAQ;IACjBY,SAAS,EAAER,UAAW;IAAAF,QAAA,EAErBA;EAAQ,CACN,CAAC;AAEV,CAAC;AAAA,IAAAW,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEclB,YAAY","ignoreList":[]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-modal-slider/MenuAriaItem.js"
+ ],
+ "file": "../../../src/components/zhn-modal-slider/MenuAriaItem.js",
+ "names": [
+  "FN_NOOP",
+  "MenuAriaItem",
+  "_ref",
+  "refEl",
+  "onClick",
+  "onReg",
+  "children",
+  "rest",
+  "_onKeyDown",
+  "evt",
+  "keyCode",
+  "preventDefault",
+  "_onKeyUp",
+  "_jsxRuntime",
+  "jsx",
+  "ref",
+  "role",
+  "tabIndex",
+  "onKeyDown",
+  "onKeyUp",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,MAAMA,OAAO,GAAGA,CAAA,KAAM,CAAC,CAAC;AAExB,MAAMC,YAAY,GAAGC,IAAA,IAMf;EAAA,IANgB;IACpBC,KAAK;IACLC,OAAO;IACPC,KAAK,GAACL,OAAO;IACbM,QAAQ;IACR,GAAGC;EACL,CAAC,GAAAL,IAAA;EACC,MAAMM,UAAU,GAAGC,GAAG,IAAI;MACxB,IAAIA,GAAG,CAACC,OAAO,KAAK,EAAE,EAAE;QACtBD,GAAG,CAACE,cAAc,CAAC,CAAC;MACtB;IACF,CAAC;IACCC,QAAQ,GAAGH,GAAG,IAAI;MAClB,IAAIA,GAAG,CAACC,OAAO,KAAK,EAAE,IAAID,GAAG,CAACC,OAAO,KAAK,EAAE,EAAE;QAC5CN,OAAO,CAAC,CAAC;MACX;IACF,CAAC;EAED,oBACE,IAAAS,WAAA,CAAAC,GAAA;IAAA,GACMP,IAAI;IACRQ,GAAG,EAAEZ,KAAM;IACXa,IAAI,EAAC,UAAU;IACfC,QAAQ,EAAC,GAAG;IACZb,OAAO,EAAEA,OAAQ;IACjBc,SAAS,EAAEV,UAAW;IACtBW,OAAO,EAAEP,QAAS;IAAAN,QAAA,EAEjBA;EAAQ,CACN,CAAC;AAEV,CAAC;AAAA,IAAAc,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEcrB,YAAY"
+}
