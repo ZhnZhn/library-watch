@@ -68,8 +68,6 @@ const ModalSlider = _ref => {
     model = DF_MODEL,
     isShow,
     className,
-    rootStyle,
-    style,
     onClose
   } = _ref;
   const [state, setState] = (0, _useInitStateFromProps.default)(_initState, model),
@@ -114,7 +112,6 @@ const ModalSlider = _ref => {
       });
     });
   const _showHideStyle = {
-      ...style,
       ...S_SHOW_HIDE,
       ...pageStyle
     },
@@ -125,7 +122,6 @@ const ModalSlider = _ref => {
     };
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalPane.default, {
     isShow: isShow,
-    style: rootStyle,
     onClose: onClose,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide.default, {
       className: className,

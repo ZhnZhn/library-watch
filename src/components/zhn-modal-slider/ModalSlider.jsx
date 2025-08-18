@@ -86,8 +86,6 @@ const ModalSlider = ({
   model=DF_MODEL,
   isShow,
   className,
-  rootStyle,
-  style,
   onClose
 }) => {
   const [
@@ -141,7 +139,6 @@ const ModalSlider = ({
   });
 
   const _showHideStyle = {
-    ...style,
     ...S_SHOW_HIDE,
     ...pageStyle
   }, _divStyle = {
@@ -153,7 +150,6 @@ const ModalSlider = ({
   return (
       <ModalPane
         isShow={isShow}
-        style={rootStyle}
         onClose={onClose}
       >
         <ShowHide

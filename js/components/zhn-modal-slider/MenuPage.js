@@ -11,11 +11,7 @@ var _FocusTrap = _interopRequireDefault(require("../zhn-moleculs/FocusTrap"));
 var _MenuTitle = _interopRequireDefault(require("./MenuTitle"));
 var _MenuItemList = _interopRequireDefault(require("./MenuItemList"));
 var _jsxRuntime = require("react/jsx-runtime");
-/*
-const _fFocus = ref => () => {
-  focusRefInput(ref)
-};
-*/const MenuPage = _ref => {
+const MenuPage = _ref => {
   let {
     isShow,
     items = [],

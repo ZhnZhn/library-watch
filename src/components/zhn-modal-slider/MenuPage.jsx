@@ -1,26 +1,12 @@
-import {
-  //useRef,
-  useCallback,
-  //useEffect,
-  //getRefValue,
-  //focusRefInput
-} from '../uiApi';
-
+import { useCallback } from '../uiApi';
 import { crVisibilityHidden } from '../styleFn';
 
 import { useItemsFocusTrap } from '../hooks/useFocus';
 import useCanBeHidden from './useCanBeHidden';
 
-
 import FocusTrap from '../zhn-moleculs/FocusTrap';
 import MenuTitle from './MenuTitle';
 import MenuItemList from './MenuItemList';
-
-/*
-const _fFocus = ref => () => {
-  focusRefInput(ref)
-};
-*/
 
 const MenuPage = ({
   isShow,
