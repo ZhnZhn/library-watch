@@ -5,6 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _useClickOutside = _interopRequireDefault(require("../hooks/useClickOutside"));
 var _fUseKey = require("../hooks/fUseKey");
+var _useFocus = require("../hooks/useFocus");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_DIV = {
     backgroundColor: '#4d4d4d'
@@ -21,6 +22,7 @@ const ModalPane = _ref2 => {
   } = _ref2;
   const _ref = (0, _useClickOutside.default)(isShow, onClose),
     _hKeyEscape = (0, _fUseKey.useKeyEscape)(onClose);
+  (0, _useFocus.useFocusPrevElement)(isShow);
   /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     ...restProps,

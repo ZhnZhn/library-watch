@@ -1,5 +1,6 @@
 import useClickOutside from '../hooks/useClickOutside';
 import { useKeyEscape } from '../hooks/fUseKey';
+import { useFocusPrevElement } from '../hooks/useFocus';
 
 const S_DIV = { backgroundColor: '#4d4d4d' }
 , FN_NOOP = () => {};
@@ -14,6 +15,8 @@ const ModalPane = ({
 }) => {
   const _ref = useClickOutside(isShow, onClose)
   , _hKeyEscape = useKeyEscape(onClose);
+
+  useFocusPrevElement(isShow)
   /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return (
     <div
