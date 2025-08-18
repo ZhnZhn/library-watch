@@ -12,7 +12,7 @@ import {
 } from '../styleFn';
 
 import useToggle from '../hooks/useToggle';
-import useKeyDelete from '../hooks/useKeyDelete';
+import { useKeyDelete } from '../hooks/fUseKey';
 import useKeyEnter from '../hooks/useKeyEnter';
 
 import ShowHide from '../zhn/ShowHide';

@@ -21,7 +21,10 @@ const fUseKey = isKey => (
 const _isKeyEscape = evt => evt.keyCode === 27
  || evt.key === 'Escape'
 export const useKeyEscape = HAS_KEYBOARD_FOCUS
-   ? fUseKey(_isKeyEscape)
-   : FN_NOOP;
+  ? fUseKey(_isKeyEscape)
+  : FN_NOOP
+
+const _isKeyDelete = evt => evt.keyCode === 46
+export const useKeyDelete = fUseKey(_isKeyDelete)
 
 export default fUseKey
