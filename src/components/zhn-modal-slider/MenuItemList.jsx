@@ -1,9 +1,16 @@
-import { isFn } from '../../utils/isTypeFn'
+import { isFn, isBool } from '../../utils/isTypeFn'
 import { bindTo } from '../uiApi';
 
+import InputSwitch from '../zhn/InputSwitch';
 import MenuAriaItem from './MenuAriaItem';
 
 const SUB_MENU = 'sub'
+, S_INPUT_SWITCH = {
+  height: 38,
+  padding: '9px 14px 0 14px',
+  alignItems: 'baseline',
+  fontSize: '16px'
+}
 , S_ITEM = { position: 'relative' }
 , S_NEXT_PAGE = {
   position: 'absolute',
@@ -47,16 +54,27 @@ const MenuItemList = ({
         name,
         type,
         id,
+        isInitial,
         isClose,
         onClick
       } = item
       , _onClick = type === SUB_MENU
            ? bindTo(onNextPage, id, name, pageNumber)
            : _fClick({ isClose, onClick, onClose })
-      return (
+      return isBool(isInitial) ? (
+        <div key={name} role="menuitem" tabIndex="-1">
+          <InputSwitch
+             refEl={getRefItem(index)}            
+             style={S_INPUT_SWITCH}
+             initialValue={isInitial}
+             caption={name}
+             onToggle={_onClick}
+           />
+        </div>
+      ) : (
         <MenuAriaItem
-          refEl={getRefItem(index)}
           key={name}
+          refEl={getRefItem(index)}
           className={cn || itemCl}
           style={S_ITEM}
           onClick={_onClick}
