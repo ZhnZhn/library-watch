@@ -3,7 +3,7 @@ import { isFn } from '../../utils/isTypeFn';
 const _crItem = (
   name,
   onClick,
-  isClose=true
+  isClose=!0
 ) => ({
   name,
   onClick,
@@ -17,12 +17,12 @@ const crItemModelMore = ({
   const p0 = [
     _crItem('Move to Top', onMoveToTop),
     isFn(onToggleButtons)
-      ? _crItem('Toggle Buttons', onToggleButtons)
+      ? {..._crItem('Buttom Buttons', onToggleButtons), isInitial: !0}
       : void 0
   ].filter(Boolean);
 
   return {
-    pageWidth: 150,
+    pageWidth: 195,
     maxPages: 1,
     p0
   };

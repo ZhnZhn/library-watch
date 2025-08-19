@@ -5,7 +5,7 @@ exports.default = void 0;
 var _isTypeFn = require("../../utils/isTypeFn");
 const _crItem = function (name, onClick, isClose) {
   if (isClose === void 0) {
-    isClose = true;
+    isClose = !0;
   }
   return {
     name,
@@ -18,9 +18,12 @@ const crItemModelMore = _ref => {
     onMoveToTop,
     onToggleButtons
   } = _ref;
-  const p0 = [_crItem('Move to Top', onMoveToTop), (0, _isTypeFn.isFn)(onToggleButtons) ? _crItem('Toggle Buttons', onToggleButtons) : void 0].filter(Boolean);
+  const p0 = [_crItem('Move to Top', onMoveToTop), (0, _isTypeFn.isFn)(onToggleButtons) ? {
+    ..._crItem('Buttom Buttons', onToggleButtons),
+    isInitial: !0
+  } : void 0].filter(Boolean);
   return {
-    pageWidth: 150,
+    pageWidth: 195,
     maxPages: 1,
     p0
   };
