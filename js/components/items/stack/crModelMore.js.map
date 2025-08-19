@@ -1,1 +1,44 @@
-{"version":3,"file":"crModelMore.js","names":["_uiApi","require","_strFn","_styleFn","_config","_crName","propName","split","map","setFirstToUpperCase","join","_fSortByItem","onClick","name","bindTo","isClose","crModelMore","_temp","setSortByProp","reverse","_crSortByItem","titleCl","CL_ROW_MENU_MORE","pageWidth","maxPages","p0","id","type","cn","p1","PN_BOUNTY_AMOUNT","PN_ANSWER_COUNT","PN_SCORE","PN_VIEW_COUNT","PN_REPUTATION","_default","exports","default"],"sources":["../../../../src/components/items/stack/crModelMore.js"],"sourcesContent":["import { bindTo } from '../../uiApi';\r\nimport { setFirstToUpperCase } from '../../../utils/strFn';\r\nimport { CL_ROW_MENU_MORE } from '../../styleFn';\r\nimport {\r\n  PN_BOUNTY_AMOUNT,\r\n  PN_ANSWER_COUNT,\r\n  PN_SCORE,\r\n  PN_VIEW_COUNT,\r\n  PN_REPUTATION\r\n} from './config';\r\n\r\nconst _crName = (\r\n  propName\r\n) => propName.split(\"_\")\r\n  .map(setFirstToUpperCase)\r\n  .join(\" \");\r\n\r\nconst _fSortByItem = onClick => (\r\n  propName\r\n) => {\r\n  const name = _crName(propName);\r\n  return {\r\n    name,\r\n    onClick: bindTo(onClick, propName, name),\r\n    isClose: true\r\n  };\r\n}\r\n\r\nconst crModelMore = ({\r\n  setSortByProp,\r\n  reverse\r\n  //onRemoveAll\r\n}={}) => {\r\n  const _crSortByItem = _fSortByItem(setSortByProp);\r\n  return {\r\n    titleCl: CL_ROW_MENU_MORE,\r\n    pageWidth: 180,\r\n    maxPages: 2,\r\n    p0: [\r\n      {\r\n        id: 'p1',\r\n        type: 'sub',\r\n        cn: CL_ROW_MENU_MORE,\r\n        name: 'Sort By, DESC'\r\n      }/*,{\r\n        cn: CL_ROW,\r\n        name: 'Remove Visited',\r\n        onClick: onRemoveAll,\r\n        isClose: true\r\n      }*/\r\n    ],\r\n    p1: [\r\n      _crSortByItem(PN_BOUNTY_AMOUNT),\r\n      _crSortByItem(PN_ANSWER_COUNT),\r\n      _crSortByItem(PN_SCORE),\r\n      _crSortByItem(PN_VIEW_COUNT),\r\n      _crSortByItem(PN_REPUTATION), {\r\n        name: 'Reverse Items',\r\n        onClick: reverse,\r\n        isClose: true\r\n      }\r\n    ]\r\n  }\r\n};\r\n\r\nexport default crModelMore\r\n"],"mappings":";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AACA,IAAAC,MAAA,GAAAD,OAAA;AACA,IAAAE,QAAA,GAAAF,OAAA;AACA,IAAAG,OAAA,GAAAH,OAAA;AAQA,MAAMI,OAAO,GACXC,QAAQ,IACLA,QAAQ,CAACC,KAAK,CAAC,GAAG,CAAC,CACrBC,GAAG,CAACC,0BAAmB,CAAC,CACxBC,IAAI,CAAC,GAAG,CAAC;AAEZ,MAAMC,YAAY,GAAGC,OAAO,IAC1BN,QAAQ,IACL;EACH,MAAMO,IAAI,GAAGR,OAAO,CAACC,QAAQ,CAAC;EAC9B,OAAO;IACLO,IAAI;IACJD,OAAO,EAAE,IAAAE,aAAM,EAACF,OAAO,EAAEN,QAAQ,EAAEO,IAAI,CAAC;IACxCE,OAAO,EAAE;EACX,CAAC;AACH,CAAC;AAED,MAAMC,WAAW,GAAG,SAAAA,CAAAC,KAAA,EAIX;EAAA,IAJY;IACnBC,aAAa;IACbC;IACA;EACF,CAAC,GAAAF,KAAA,cAAC,CAAC,CAAC,GAAAA,KAAA;EACF,MAAMG,aAAa,GAAGT,YAAY,CAACO,aAAa,CAAC;EACjD,OAAO;IACLG,OAAO,EAAEC,yBAAgB;IACzBC,SAAS,EAAE,GAAG;IACdC,QAAQ,EAAE,CAAC;IACXC,EAAE,EAAE,CACF;MACEC,EAAE,EAAE,IAAI;MACRC,IAAI,EAAE,KAAK;MACXC,EAAE,EAAEN,yBAAgB;MACpBT,IAAI,EAAE;IACR,CAAC;AACP;AACA;AACA;AACA;AACA,SALO,CAMF;IACDgB,EAAE,EAAE,CACFT,aAAa,CAACU,wBAAgB,CAAC,EAC/BV,aAAa,CAACW,uBAAe,CAAC,EAC9BX,aAAa,CAACY,gBAAQ,CAAC,EACvBZ,aAAa,CAACa,qBAAa,CAAC,EAC5Bb,aAAa,CAACc,qBAAa,CAAC,EAAE;MAC5BrB,IAAI,EAAE,eAAe;MACrBD,OAAO,EAAEO,OAAO;MAChBJ,OAAO,EAAE;IACX,CAAC;EAEL,CAAC;AACH,CAAC;AAAC,IAAAoB,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEarB,WAAW","ignoreList":[]}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/items/stack/crModelMore.js"
+ ],
+ "file": "../../../../src/components/items/stack/crModelMore.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "_strFn",
+  "_config",
+  "_crName",
+  "propName",
+  "split",
+  "map",
+  "setFirstToUpperCase",
+  "join",
+  "_fSortByItem",
+  "onClick",
+  "name",
+  "bindTo",
+  "isClose",
+  "crModelMore",
+  "_temp",
+  "setSortByProp",
+  "reverse",
+  "_crSortByItem",
+  "pageWidth",
+  "maxPages",
+  "p0",
+  "id",
+  "type",
+  "p1",
+  "PN_BOUNTY_AMOUNT",
+  "PN_ANSWER_COUNT",
+  "PN_SCORE",
+  "PN_VIEW_COUNT",
+  "PN_REPUTATION",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AACA,IAAAC,MAAA,GAAAD,OAAA;AAEA,IAAAE,OAAA,GAAAF,OAAA;AAQA,MAAMG,OAAO,GACXC,QAAQ,IACLA,QAAQ,CAACC,KAAK,CAAC,GAAG,CAAC,CACrBC,GAAG,CAACC,0BAAmB,CAAC,CACxBC,IAAI,CAAC,GAAG,CAAC;AAEZ,MAAMC,YAAY,GAAGC,OAAO,IAC1BN,QAAQ,IACL;EACH,MAAMO,IAAI,GAAGR,OAAO,CAACC,QAAQ,CAAC;EAC9B,OAAO;IACLO,IAAI;IACJD,OAAO,EAAE,IAAAE,aAAM,EAACF,OAAO,EAAEN,QAAQ,EAAEO,IAAI,CAAC;IACxCE,OAAO,EAAE;EACX,CAAC;AACH,CAAC;AAED,MAAMC,WAAW,GAAG,SAAAA,CAAAC,KAAA,EAIX;EAAA,IAJY;IACnBC,aAAa;IACbC;IACA;EACF,CAAC,GAAAF,KAAA,cAAC,CAAC,CAAC,GAAAA,KAAA;EACF,MAAMG,aAAa,GAAGT,YAAY,CAACO,aAAa,CAAC;EACjD,OAAO;IACLG,SAAS,EAAE,GAAG;IACdC,QAAQ,EAAE,CAAC;IACXC,EAAE,EAAE,CACF;MACEC,EAAE,EAAE,IAAI;MACRC,IAAI,EAAE,KAAK;MACXZ,IAAI,EAAE;IACR,CAAC;AACP;AACA;AACA;AACA,SAJO,CAKF;IACDa,EAAE,EAAE,CACFN,aAAa,CAACO,wBAAgB,CAAC,EAC/BP,aAAa,CAACQ,uBAAe,CAAC,EAC9BR,aAAa,CAACS,gBAAQ,CAAC,EACvBT,aAAa,CAACU,qBAAa,CAAC,EAC5BV,aAAa,CAACW,qBAAa,CAAC,EAAE;MAC5BlB,IAAI,EAAE,eAAe;MACrBD,OAAO,EAAEO,OAAO;MAChBJ,OAAO,EAAE;IACX,CAAC;EAEL,CAAC;AACH,CAAC;AAAC,IAAAiB,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEalB,WAAW"
+}

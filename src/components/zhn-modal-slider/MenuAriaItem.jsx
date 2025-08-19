@@ -1,3 +1,5 @@
+import { crMenuItemRole } from '../a11yFn';
+
 const FN_NOOP = () => {};
 
 const MenuAriaItem = ({
@@ -5,7 +7,7 @@ const MenuAriaItem = ({
   onClick,
   onReg=FN_NOOP,
   children,
-  ...rest
+  ...restProps
 }) => {
   const _onKeyDown = evt => {
     if (evt.keyCode === 32) {
@@ -17,13 +19,12 @@ const MenuAriaItem = ({
       onClick()
     }
   };
-
+  /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return (
     <div
-      {...rest}
+      {...restProps}
+      {...crMenuItemRole()}
       ref={refEl}
-      role="menuitem"
-      tabIndex="0"
       onClick={onClick}
       onKeyDown={_onKeyDown}
       onKeyUp={_onKeyUp}
@@ -31,6 +32,7 @@ const MenuAriaItem = ({
       {children}
     </div>
   );
+  /*eslint-enable jsx-a11y/no-static-element-interactions*/
 }
 
 export default MenuAriaItem

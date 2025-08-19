@@ -1,7 +1,8 @@
 "use strict";
 
 exports.__esModule = true;
-exports.crA11yLabelledByProps = exports.crA11yExpandedProps = exports.crA11yComboboxProps = void 0;
+exports.crMenuItemRole = exports.crA11yLabelledByProps = exports.crA11yExpandedProps = exports.crA11yComboboxProps = void 0;
+var _styleFn = require("./styleFn");
 const crA11yLabelledByProps = labelId => ({
   "aria-labelledby": labelId
 });
@@ -17,4 +18,15 @@ const crA11yExpandedProps = (isExpaned, controlsId) => ({
   "aria-controls": isExpaned ? controlsId : void 0
 });
 exports.crA11yExpandedProps = crA11yExpandedProps;
+const crMenuItemRole = function (tabIndex) {
+  if (tabIndex === void 0) {
+    tabIndex = "0";
+  }
+  return {
+    role: "menuitem",
+    className: `menu-item ${_styleFn.CL_NOT_SELECTED}`,
+    tabIndex
+  };
+};
+exports.crMenuItemRole = crMenuItemRole;
 //# sourceMappingURL=a11yFn.js.map

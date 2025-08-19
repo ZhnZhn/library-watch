@@ -1,6 +1,6 @@
 import { bindTo } from '../../uiApi';
 import { setFirstToUpperCase } from '../../../utils/strFn';
-import { CL_ROW_MENU_MORE } from '../../styleFn';
+
 import {
   PN_BOUNTY_AMOUNT,
   PN_ANSWER_COUNT,
@@ -33,17 +33,14 @@ const crModelMore = ({
 }={}) => {
   const _crSortByItem = _fSortByItem(setSortByProp);
   return {
-    titleCl: CL_ROW_MENU_MORE,
     pageWidth: 180,
     maxPages: 2,
     p0: [
       {
         id: 'p1',
         type: 'sub',
-        cn: CL_ROW_MENU_MORE,
         name: 'Sort By, DESC'
       }/*,{
-        cn: CL_ROW,
         name: 'Remove Visited',
         onClick: onRemoveAll,
         isClose: true

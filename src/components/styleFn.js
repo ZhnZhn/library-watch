@@ -41,7 +41,6 @@ export const crClNotSelected = (
 export const CL_BT_ITEM = crClNotSelected("bt-item")
 export const CL_MENU_MORE = "popup-menu charts__menu-more"
 export const CL_ROW_ITEM = crClNotSelected("row-item")
-export const CL_ROW_MENU_MORE = crClNotSelected("row__pane-topic")
 
 export const CL_ITEM = "item"
 export const CL_ITEM_TITLE = crClNotSelected("item-title")

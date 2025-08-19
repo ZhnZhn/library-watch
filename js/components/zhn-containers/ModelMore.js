@@ -2,7 +2,6 @@
 
 exports.__esModule = true;
 exports.default = void 0;
-var _styleFn = require("../styleFn");
 const crModelMore = _ref => {
   let {
     chartType,
@@ -14,7 +13,6 @@ const crModelMore = _ref => {
   } = _ref;
   return {
     // cn property name for item
-    titleCl: _styleFn.CL_ROW_MENU_MORE,
     pageWidth: 180,
     maxPages: 2,
     p0: [{

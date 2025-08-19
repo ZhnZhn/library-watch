@@ -3,10 +3,8 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _styleFn = require("../styleFn");
 var _has = require("../has");
 var _useRefInit = _interopRequireDefault(require("../hooks/useRefInit"));
-const CL_ROW = (0, _styleFn.crClNotSelected)("row__pane-topic");
 const _crMenuItem = function (name, onClick, isInitial) {
   if (isInitial === void 0) {
     isInitial = !1;
@@ -19,7 +17,6 @@ const _crMenuItem = function (name, onClick, isInitial) {
   } : null;
 };
 const useMenuMore = (toggleIsLabels, toggleIsDates) => (0, _useRefInit.default)(() => ({
-  titleCl: CL_ROW,
   pageWidth: 175,
   maxPages: 1,
   p0: [_crMenuItem('Input Labels', toggleIsLabels, (0, _has.isWideWidth)()), _crMenuItem('Input Dates', toggleIsDates)].filter(Boolean)

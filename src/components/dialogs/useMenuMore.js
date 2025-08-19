@@ -1,8 +1,5 @@
-import { crClNotSelected } from '../styleFn';
 import { isWideWidth } from '../has';
 import useRefInit from '../hooks/useRefInit';
-
-const CL_ROW = crClNotSelected("row__pane-topic");
 
 const _crMenuItem = (
   name,
@@ -19,7 +16,6 @@ const useMenuMore = (
   toggleIsLabels,
   toggleIsDates
 ) => useRefInit(()=>({
-  titleCl: CL_ROW,
   pageWidth: 175,
   maxPages: 1,
   p0: [
