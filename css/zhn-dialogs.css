@@ -8,17 +8,3 @@
   z-index: 10;
   text-align: left;
 }
-
-.row__pane-topic {
-  line-height: 2.2;
-  color: black;
-  padding: 1px 16px;
-  border-bottom: 2px solid transparent;
-  font-size: 16px;
-  font-weight: bold;
-  outline: none;
-  user-select: none;
-  cursor: pointer; }
-
-.row__pane-topic:focus {
-  border-bottom: 2px solid #1b75bb; }
