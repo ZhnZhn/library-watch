@@ -60,8 +60,6 @@ const DialogType3A = memoIsShow(({
   ] = useToggle()
   , [
     MENU_MODEL,
-    TOOLBAR_BUTTONS,
-    isToolbar,
     isShowLabels
   ] = useDialog(toggleIsShowDate)
   , _refInputOne = useRef()
@@ -98,10 +96,8 @@ const DialogType3A = memoIsShow(({
   return (
     <Dialog
        isShow={isShow}
-       isToolbar={isToolbar}
        caption={caption}
        menuModel={MENU_MODEL}
-       toolbarButtons={TOOLBAR_BUTTONS}
        commandButtons={COMMAND_BUTTONS}
        validationMessages={validationMessages}
        onShow={onShow}

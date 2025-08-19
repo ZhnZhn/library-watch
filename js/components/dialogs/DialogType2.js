@@ -54,7 +54,7 @@ const DialogType2 = (0, _memoFn.memoIsShow)(_ref => {
   } = _ref;
   const inputSelectProps = (0, _uiApi.useMemo)(() => (0, _getRowSelectProps.getRowSelectProps)(requestType), [requestType]),
     [isShowDate, toggleIsShowDate] = (0, _useToggle.default)(),
-    [MENU_MODEL, TOOLBAR_BUTTONS, isToolbar, isShowLabels] = (0, _useDialog.default)(isPeriod ? toggleIsShowDate : void 0),
+    [MENU_MODEL, isShowLabels] = (0, _useDialog.default)(isPeriod ? toggleIsShowDate : void 0),
     _refInputOne = (0, _uiApi.useRef)(),
     _refInputDates = (0, _uiApi.useRef)(),
     [_refSortBy, _hSelectSortBy] = (0, _useSelectItem.default)(),
@@ -77,10 +77,8 @@ const DialogType2 = (0, _memoFn.memoIsShow)(_ref => {
     }, onClose);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Dialog.default, {
     isShow: isShow,
-    isToolbar: isToolbar,
     caption: caption,
     menuModel: MENU_MODEL,
-    toolbarButtons: TOOLBAR_BUTTONS,
     commandButtons: COMMAND_BUTTONS,
     validationMessages: validationMessages,
     onShow: onShow,

@@ -72,8 +72,6 @@ const DialogType2 = memoIsShow(({
   ] = useToggle()
   , [
     MENU_MODEL,
-    TOOLBAR_BUTTONS,
-    isToolbar,
     isShowLabels
   ] = useDialog(isPeriod ? toggleIsShowDate : void 0)
   , _refInputOne = useRef()
@@ -119,10 +117,8 @@ const DialogType2 = memoIsShow(({
   return (
     <Dialog
        isShow={isShow}
-       isToolbar={isToolbar}
        caption={caption}
        menuModel={MENU_MODEL}
-       toolbarButtons={TOOLBAR_BUTTONS}
        commandButtons={COMMAND_BUTTONS}
        validationMessages={validationMessages}
        onShow={onShow}
@@ -137,7 +133,7 @@ const DialogType2 = memoIsShow(({
       />
       <RowInputSelect
          {...inputSelectProps}
-         isShowLabel={isShowLabels}         
+         isShowLabel={isShowLabels}
          onSelect={_hSelectSortBy}
       />
       {isPeriod && <RowInputDatePeriod

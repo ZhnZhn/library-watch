@@ -41,7 +41,7 @@ const DialogType3A = (0, _memoFn.memoIsShow)(_ref => {
   } = _ref;
   const [initialFromDate] = (0, _useRefInit.default)(() => (0, _isTypeFn.isNumber)(fromDate) && fromDate < 36 ? (0, _dateFn.subtractMonths)(INITIAL_TO_DATE, fromDate) : void 0),
     [isShowDate, toggleIsShowDate] = (0, _useToggle.default)(),
-    [MENU_MODEL, TOOLBAR_BUTTONS, isToolbar, isShowLabels] = (0, _useDialog.default)(toggleIsShowDate),
+    [MENU_MODEL, isShowLabels] = (0, _useDialog.default)(toggleIsShowDate),
     _refInputOne = (0, _uiApi.useRef)(),
     _refInputDates = (0, _uiApi.useRef)(),
     [validationMessages, COMMAND_BUTTONS, hClose, hLoad] = (0, _useDialogButtons.default)((setValidationMessages, clearValidationMessages) => {
@@ -70,10 +70,8 @@ const DialogType3A = (0, _memoFn.memoIsShow)(_ref => {
     }, onClose);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Dialog.default, {
     isShow: isShow,
-    isToolbar: isToolbar,
     caption: caption,
     menuModel: MENU_MODEL,
-    toolbarButtons: TOOLBAR_BUTTONS,
     commandButtons: COMMAND_BUTTONS,
     validationMessages: validationMessages,
     onShow: onShow,

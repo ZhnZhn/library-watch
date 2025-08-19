@@ -1,1 +1,36 @@
-{"version":3,"file":"useMenuMore.js","names":["_styleFn","require","_useRefInit","_interopRequireDefault","CL_ROW","crClNotSelected","_crMenuItem","name","onClick","isClose","useMenuMore","toggleIsToolbar","toggleIsLabels","toggleIsDates","useRefInit","titleCl","pageWidth","maxPages","p0","filter","Boolean","_default","exports","default"],"sources":["../../../src/components/dialogs/useMenuMore.js"],"sourcesContent":["import { crClNotSelected } from '../styleFn';\r\nimport useRefInit from '../hooks/useRefInit';\r\n\r\nconst CL_ROW = crClNotSelected(\"row__pane-topic\");\r\n\r\nconst _crMenuItem = (\r\n  name,\r\n  onClick\r\n) => onClick ? ({\r\n  name,\r\n  onClick,\r\n  isClose: true\r\n}) : null;\r\n\r\nconst useMenuMore = (\r\n  toggleIsToolbar,\r\n  toggleIsLabels,\r\n  toggleIsDates\r\n) => useRefInit(()=>({\r\n  titleCl: CL_ROW,\r\n  pageWidth: 160,\r\n  maxPages: 1,\r\n  p0: [\r\n    _crMenuItem('Toggle Dates', toggleIsDates),\r\n    _crMenuItem('Toggle Labels', toggleIsLabels),\r\n    _crMenuItem('Toggle ToolBar', toggleIsToolbar)\r\n  ].filter(Boolean)\r\n}))[0];\r\n\r\nexport default useMenuMore\r\n"],"mappings":";;;;;AAAA,IAAAA,QAAA,GAAAC,OAAA;AACA,IAAAC,WAAA,GAAAC,sBAAA,CAAAF,OAAA;AAEA,MAAMG,MAAM,GAAG,IAAAC,wBAAe,EAAC,iBAAiB,CAAC;AAEjD,MAAMC,WAAW,GAAGA,CAClBC,IAAI,EACJC,OAAO,KACJA,OAAO,GAAI;EACdD,IAAI;EACJC,OAAO;EACPC,OAAO,EAAE;AACX,CAAC,GAAI,IAAI;AAET,MAAMC,WAAW,GAAGA,CAClBC,eAAe,EACfC,cAAc,EACdC,aAAa,KACV,IAAAC,mBAAU,EAAC,OAAK;EACnBC,OAAO,EAAEX,MAAM;EACfY,SAAS,EAAE,GAAG;EACdC,QAAQ,EAAE,CAAC;EACXC,EAAE,EAAE,CACFZ,WAAW,CAAC,cAAc,EAAEO,aAAa,CAAC,EAC1CP,WAAW,CAAC,eAAe,EAAEM,cAAc,CAAC,EAC5CN,WAAW,CAAC,gBAAgB,EAAEK,eAAe,CAAC,CAC/C,CAACQ,MAAM,CAACC,OAAO;AAClB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAAC,IAAAC,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEQb,WAAW","ignoreList":[]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/useMenuMore.js"
+ ],
+ "file": "../../../src/components/dialogs/useMenuMore.js",
+ "names": [
+  "_styleFn",
+  "require",
+  "_has",
+  "_useRefInit",
+  "_interopRequireDefault",
+  "CL_ROW",
+  "crClNotSelected",
+  "_crMenuItem",
+  "name",
+  "onClick",
+  "isInitial",
+  "isClose",
+  "useMenuMore",
+  "toggleIsLabels",
+  "toggleIsDates",
+  "useRefInit",
+  "titleCl",
+  "pageWidth",
+  "maxPages",
+  "p0",
+  "isWideWidth",
+  "filter",
+  "Boolean",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,QAAA,GAAAC,OAAA;AACA,IAAAC,IAAA,GAAAD,OAAA;AACA,IAAAE,WAAA,GAAAC,sBAAA,CAAAH,OAAA;AAEA,MAAMI,MAAM,GAAG,IAAAC,wBAAe,EAAC,iBAAiB,CAAC;AAEjD,MAAMC,WAAW,GAAG,SAAAA,CAClBC,IAAI,EACJC,OAAO,EACPC,SAAS;EAAA,IAATA,SAAS;IAATA,SAAS,GAAG,CAAC,CAAC;EAAA;EAAA,OACXD,OAAO,GAAI;IACdD,IAAI;IACJC,OAAO;IACPC,SAAS;IACTC,OAAO,EAAE,CAAC;EACZ,CAAC,GAAI,IAAI;AAAA;AAET,MAAMC,WAAW,GAAGA,CAClBC,cAAc,EACdC,aAAa,KACV,IAAAC,mBAAU,EAAC,OAAK;EACnBC,OAAO,EAAEX,MAAM;EACfY,SAAS,EAAE,GAAG;EACdC,QAAQ,EAAE,CAAC;EACXC,EAAE,EAAE,CACFZ,WAAW,CAAC,cAAc,EAAEM,cAAc,EAAE,IAAAO,gBAAW,EAAC,CAAC,CAAC,EAC1Db,WAAW,CAAC,aAAa,EAAEO,aAAa,CAAC,CAC1C,CAACO,MAAM,CAACC,OAAO;AAClB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAAC,IAAAC,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEQb,WAAW"
+}

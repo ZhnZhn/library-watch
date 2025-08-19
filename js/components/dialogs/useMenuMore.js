@@ -4,18 +4,25 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _styleFn = require("../styleFn");
+var _has = require("../has");
 var _useRefInit = _interopRequireDefault(require("../hooks/useRefInit"));
 const CL_ROW = (0, _styleFn.crClNotSelected)("row__pane-topic");
-const _crMenuItem = (name, onClick) => onClick ? {
-  name,
-  onClick,
-  isClose: true
-} : null;
-const useMenuMore = (toggleIsToolbar, toggleIsLabels, toggleIsDates) => (0, _useRefInit.default)(() => ({
+const _crMenuItem = function (name, onClick, isInitial) {
+  if (isInitial === void 0) {
+    isInitial = !1;
+  }
+  return onClick ? {
+    name,
+    onClick,
+    isInitial,
+    isClose: !0
+  } : null;
+};
+const useMenuMore = (toggleIsLabels, toggleIsDates) => (0, _useRefInit.default)(() => ({
   titleCl: CL_ROW,
-  pageWidth: 160,
+  pageWidth: 175,
   maxPages: 1,
-  p0: [_crMenuItem('Toggle Dates', toggleIsDates), _crMenuItem('Toggle Labels', toggleIsLabels), _crMenuItem('Toggle ToolBar', toggleIsToolbar)].filter(Boolean)
+  p0: [_crMenuItem('Input Labels', toggleIsLabels, (0, _has.isWideWidth)()), _crMenuItem('Input Dates', toggleIsDates)].filter(Boolean)
 }))[0];
 var _default = exports.default = useMenuMore;
 //# sourceMappingURL=useMenuMore.js.map

@@ -45,8 +45,6 @@ const DialogType3 = memoIsShow(({
 }) => {
   const [
     MENU_MODEL,
-    TOOLBAR_BUTTONS,
-    isToolbar,
     isShowLabels
   ] = useDialog()
   , [
@@ -81,10 +79,8 @@ const DialogType3 = memoIsShow(({
   return (
     <Dialog
        isShow={isShow}
-       isToolbar={isToolbar}
        caption={caption}
        menuModel={MENU_MODEL}
-       toolbarButtons={TOOLBAR_BUTTONS}
        commandButtons={COMMAND_BUTTONS}
        validationMessages={validationMessages}
        onShow={onShow}

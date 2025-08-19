@@ -29,7 +29,7 @@ const DialogType1 = (0, _memoFn.memoIsShow)(_ref => {
     onLoad,
     onClose
   } = _ref;
-  const [MENU_MODEL, TOOLBAR_BUTTONS, isToolbar, isShowLabels] = (0, _useDialog.default)(),
+  const [MENU_MODEL, isShowLabels] = (0, _useDialog.default)(),
     _refInputOne = (0, _uiApi.useRef)(),
     [validationMessages, COMMAND_BUTTONS, hClose, hLoad] = (0, _useDialogButtons.default)((setValidationMessages, clearValidationMessages) => {
       const value = (0, _uiApi.getRefValue)(_refInputOne).getValue(),
@@ -46,10 +46,8 @@ const DialogType1 = (0, _memoFn.memoIsShow)(_ref => {
     }, onClose);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Dialog.default, {
     isShow: isShow,
-    isToolbar: isToolbar,
     caption: caption,
     menuModel: MENU_MODEL,
-    toolbarButtons: TOOLBAR_BUTTONS,
     commandButtons: COMMAND_BUTTONS,
     validationMessages: validationMessages,
     onShow: onShow,

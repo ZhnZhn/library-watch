@@ -87,7 +87,7 @@ const DialogType3 = (0, _memoFn.memoIsShow)(_ref => {
     onLoad,
     onClose
   } = _ref;
-  const [MENU_MODEL, TOOLBAR_BUTTONS, isToolbar, isShowLabels] = (0, _useDialog.default)(),
+  const [MENU_MODEL, isShowLabels] = (0, _useDialog.default)(),
     [_refItem, _hSelectItem] = (0, _useSelectItem.default)(DF_MARKET_SHARE),
     [_refRegion, _hSelectRegion] = (0, _useSelectItem.default)(DF_REGION),
     [validationMessages, COMMAND_BUTTONS, hClose] = (0, _useDialogButtons.default)((setValidationMessages, clearValidationMessages) => {
@@ -104,10 +104,8 @@ const DialogType3 = (0, _memoFn.memoIsShow)(_ref => {
     }, onClose);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Dialog.default, {
     isShow: isShow,
-    isToolbar: isToolbar,
     caption: caption,
     menuModel: MENU_MODEL,
-    toolbarButtons: TOOLBAR_BUTTONS,
     commandButtons: COMMAND_BUTTONS,
     validationMessages: validationMessages,
     onShow: onShow,
