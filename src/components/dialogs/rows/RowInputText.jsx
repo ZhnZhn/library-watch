@@ -1,18 +1,13 @@
 import { useId } from '../../uiApi';
 
 import InputText from '../../zhn/InputText';
+import Row from './Row';
 import Caption from './Caption';
 
-const S_DIV = {
-  margin: 5,
-  lineHeight: 2
-}
-, S_INPUT_TEXT = {
-  width: 250,
-  height: 30,
-  paddingLeft: 10,
-  marginLeft: 0,
-  marginRight: 0
+const S_INPUT_TEXT = {
+  width: 240,
+  height: 38,
+  paddingLeft: 5
 };
 
 const RowInputText = ({
@@ -26,22 +21,21 @@ const RowInputText = ({
   , _placeholder = isShowLabel
     ? placeholder
     : placeholder || caption;
-
   return (
-    <div style={S_DIV}>
-       <Caption
-         is={isShowLabel}
-         caption={caption}
-         labelId={labelId}
-       />
-       <InputText
-          refEl={refEl}
-          style={S_INPUT_TEXT}
-          placeholder={_placeholder}
-          labelId={labelId}
-          onEnter={onEnter}
-       />
-    </div>
+    <Row>
+      <Caption
+        is={isShowLabel}
+        caption={caption}
+        labelId={labelId}
+      />
+      <InputText
+        refEl={refEl}
+        style={S_INPUT_TEXT}
+        placeholder={_placeholder}
+        labelId={labelId}
+        onEnter={onEnter}
+      />
+    </Row>
   );
 };
 

@@ -39,7 +39,6 @@ const CL_DRAGGABLE_DIALOG = "draggable-dialog"
 }
 , S_CAPTION = {
   ...S_CAPTION_DIV,
-  marginBottom: 10,
   cursor: 'move'
 }
 , S_BT_MORE = {
