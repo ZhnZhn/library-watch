@@ -203,9 +203,7 @@ const InputSelect = props => {
       placeholder: placeholder,
       onChange: _hInputChange,
       onKeyDown: _hInputKeyDown
-    }), afterInputEl, /*#__PURE__*/(0, _jsxRuntime.jsx)("hr", {
-      className: _CL.CL_INPUT_HR
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DivOptions.default, {
+    }), afterInputEl, /*#__PURE__*/(0, _jsxRuntime.jsx)(_DivOptions.default, {
       id: _optionsViewId,
       refOptionsElement: _refOptionsElement,
       refIndexElement: _refIndexElement,

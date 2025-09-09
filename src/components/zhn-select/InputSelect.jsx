@@ -23,8 +23,7 @@ import DivOptions from './DivOptions';
 import OptionStack from './OptionStack';
 import {
   CL_ROOT,
-  CL_INPUT,
-  CL_INPUT_HR
+  CL_INPUT
 } from './CL';
 
 import crStyleWidth from './crStyleWidth';
@@ -272,7 +271,6 @@ const InputSelect = (
          onKeyDown={_hInputKeyDown}
       />
       {afterInputEl}
-      <hr className={CL_INPUT_HR} />
       <DivOptions
          id={_optionsViewId}
          refOptionsElement={_refOptionsElement}

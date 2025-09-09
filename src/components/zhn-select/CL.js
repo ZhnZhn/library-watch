@@ -6,7 +6,6 @@ export const CL_INPUT = `${CL_ROOT}__input`
 export const CL_SPINNER = `${CL_ROOT}__spinner`
 export const CL_SPINNER_FAILED = `${CL_SPINNER}--failed`
 export const CL_BT_ARROW = `${CL_ROOT}__bt-arrow`
-export const CL_INPUT_HR = `${CL_ROOT}__input__hr`
 
 export const CL_OPTIONS = `${CL_ROOT}__options`
 export const CL_OPTIONS_DIV = `${CL_OPTIONS}__div`
