@@ -213,8 +213,6 @@ const InputSelect = props => {
       indexActiveOption: indexActiveOption,
       nFiltered: nFiltered,
       nAll: nAll,
-      onStepUp: _stepUpOption,
-      onStepDown: _stepDownOption,
       onClear: _initStateFromProps,
       children: domOptions
     })]

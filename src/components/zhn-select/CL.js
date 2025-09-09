@@ -16,6 +16,5 @@ export const CL_OPTIONS_ROW_ACTIVE = `${CL_OPTIONS_ROW}--active`
 export const CL_FOOTER = `${CL_ROOT}__footer`
 export const CL_FOOTER_INDEX = `${CL_FOOTER}__index`
 export const CL_FOOTER_BTS = `${CL_FOOTER}__bts`
-export const CL_FOOTER_MARGIN = `${CL_FOOTER}--margin`
 
 export const CL_NOT_SELECTED = crClNotSelected()

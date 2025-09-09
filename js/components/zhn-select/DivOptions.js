@@ -24,8 +24,6 @@ const DivOptions = _ref => {
     indexActiveOption,
     nFiltered,
     nAll,
-    onStepUp,
-    onStepDown,
     onClear,
     children
   } = _ref;
@@ -48,8 +46,6 @@ const DivOptions = _ref => {
       indexActiveOption: indexActiveOption,
       nAll: nAll,
       nFiltered: nFiltered,
-      onStepUp: onStepUp,
-      onStepDown: onStepDown,
       onClear: onClear
     })]
   });
