@@ -3,13 +3,14 @@
   position: relative;
   display: inline-block;
   background-color: #e1e1cb;
+  border-radius: 2px;
 }
 .m-field__input {
   display: inline-block;
   position: relative;
-  background: transparent none repeat scroll 0 0;
-  border: medium none;
-  outline: medium none;
+  background: 0 0;
+  border: none;
+  outline: 0;
   height: 26px;
   padding-left: 10px;
   padding-right: 30px;
