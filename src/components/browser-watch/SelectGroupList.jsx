@@ -62,7 +62,7 @@ const SelectGroupList = ({
       }
     }
   })
-  /*eslint-disable react-hooks/exhaustive-deps */
+  /*eslint-enable react-hooks/exhaustive-deps */
 
   useImperativeHandle(refEl, () => ({
     getValue: () => ({

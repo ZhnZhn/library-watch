@@ -97,7 +97,7 @@ const useDnDHandlers = (
       }
   }, []);
   // item, onRemoveItem, setIsClose, onRemoveUnder
-  /*eslint-disable react-hooks/exhaustive-deps */
+  /*eslint-enable react-hooks/exhaustive-deps */
 };
 
 export default useDnDHandlers

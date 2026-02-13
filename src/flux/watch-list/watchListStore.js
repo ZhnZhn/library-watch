@@ -204,7 +204,7 @@ export const loadFromJson = (option) => {
       isWatchEdited: true,
       watchList: {...getWatchList()}
     })
-  } catch(exc) {
+  } catch {
     showAlert({...ALERT_LOAD_FROM_JSON })
   }
 }

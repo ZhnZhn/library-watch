@@ -4,11 +4,10 @@
   "description": "Web app Library Watch gives the ability to view information about GitHub's repositories, NPM's packages, StackOverflows's questions.",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --config webpack.dev.js",
-    "lint": "eslint -c .eslintrc.js ./src > lint.txt",
-    "lint:build": "eslint -c .eslintrc-build.js ./src > lint-build.txt",
+    "dev": "webpack serve --config webpack.dev.js",    
     "transpile": "babel ./src --out-dir ./js --source-maps --ignore ./**/__tests__",
     "transpile:all": "babel ./src --out-dir ./js --source-maps",
+    "lint:one": "eslint -c eslint.config.js",
     "css:min": "node min-css.js",
     "build:prod": "webpack --color --progress --config webpack.prod.js",
     "stats": "npm run stats:json && npm run stats:report",

@@ -13,7 +13,7 @@ const fUseKey = isKey => (
     if (!isPropagation) {
       evt.stopPropagation()
     }
-    fn(event)
+    fn(evt)
   }
 }, deps || []);
 /*eslint-enable react-hooks/exhaustive-deps */
