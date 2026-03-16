@@ -5,7 +5,9 @@ const _onError = (
   src,
   event
 ) => {
+  /*eslint-disable no-undef */
   console.log("Failed to load image with src: " + src);
+  /* eslint-enable no-undef */
 };
 
 const Img = ({

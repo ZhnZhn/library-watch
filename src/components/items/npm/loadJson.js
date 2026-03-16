@@ -26,7 +26,9 @@ const loadJson = ({
     }
   })
   .catch(err => {
+    /*eslint-disable no-undef*/
     console.log(err)
+    /*eslint-enable no-undef*/
     onLoad({ errMsg: err.message })
   });
 

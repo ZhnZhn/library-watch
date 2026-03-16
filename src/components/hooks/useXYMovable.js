@@ -145,7 +145,9 @@ const useXYMovable = (
     }
 
     function _hResetEvent() {
+      /*eslint-disable no-use-before-define */
       clearEventListener()
+      /*eslint-enable no-use-before-define */
       _moveDone()
     }
 

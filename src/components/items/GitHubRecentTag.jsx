@@ -54,7 +54,11 @@ const GitHubRecentTag = ({
         setIsShow(true)
         setJson(json)
      })
-     .catch(err => console.log(err));
+     .catch(err => {
+        /*eslint-disable no-undef */
+        console.log(err)
+        /*eslint-enable no-undef */  
+     });
   }, [onClickDetail])
   // toggleIsShow
   /*eslint-enable react-hooks/exhaustive-deps */

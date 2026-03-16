@@ -17,7 +17,9 @@ const saveJsonToFile = (json, fileName) => {
     }
     a.remove()
   } catch (err) {
+    /*eslint-disable no-undef*/
     console.log(err.message)
+    /*eslint-enable no-undef*/
   }
 };
 

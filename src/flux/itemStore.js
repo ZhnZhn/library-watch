@@ -42,8 +42,10 @@ const _logLoadError = ({
   alertDescr,
   alertItemId
 }) => {
+  /*eslint-disable no-undef*/
   console.log('%c'+ alertCaption + ':' + alertItemId, CONSOLE_LOG_STYLE);
   console.log('%c' + alertDescr, CONSOLE_LOG_STYLE);
+  /*eslint-enable no-undef*/
 };
 
 const [
@@ -114,12 +116,11 @@ const _loadItemCompleted = (
   json
 ) => {
   /* eslint-disable no-undef */
-  if (process.env.NODE_ENV !== 'production'){
-  /* eslint-enable no-undef */
+  if (process.env.NODE_ENV !== 'production'){  
     console.log(option);
     console.log(json);
   }
-
+  /* eslint-enable no-undef */
   const {
     chartType,
     browserType
