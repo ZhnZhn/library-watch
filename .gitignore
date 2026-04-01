@@ -9,3 +9,5 @@ stats.json
 report.html
 dev
 min-css.js
+rspack.dev.js
+template/a-index-dev.ejs
