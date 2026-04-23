@@ -41,7 +41,7 @@
     "@babel/plugin-transform-runtime": "^7.29.0",
     "@babel/preset-env": "^7.29.2",
     "@babel/preset-react": "^7.28.5",
-    "@biomejs/biome": "^2.4.11",
+    "@biomejs/biome": "^2.4.12",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.2",
     "@rspack/cli": "^1.7.11",
     "@rspack/core": "^1.7.11",
@@ -53,19 +53,17 @@
     "eslint": "^9.39.4",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "html-webpack-plugin": "^5.6.6",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "html-webpack-plugin": "^5.6.7",
     "jest": "^30.3.0",
     "terser-webpack-plugin": "^5.4.0",
-    "webpack": "^5.106.1",
+    "webpack": "^5.106.2",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.3"
   },
   "overrides": {
-    "js-yaml": "~4.1.1",
-    "glob": "~11.1.0",
-    "serialize-javascript": "~7.0.3",
-    "brace-expansion": "~5.0.5"
+    "glob": "~13.0.6",
+    "uuid": "~14.0.0"
   },
   "jest": {
     "roots": [
