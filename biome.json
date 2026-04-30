@@ -14,13 +14,26 @@
 	},
 	"linter": {
 		"enabled": true,
+                "domains": {
+                	"project": "recommended",
+                	"react": "recommended"
+                },
 		"rules": {
-			"recommended": true,
+			"recommended": true,                        
+                        "correctness": {
+                            	"noUndeclaredVariables": "on"
+                        },   
                         "style": {
-                           "useTemplate": "off"
+                        	"useTemplate": "off"
                         }
 		}
 	},
+        "overrides": [
+           {
+             "includes": ["**/__tests__/*.{js,jsx}"],
+             "javascript": { "globals": [ "jest" ] }
+           }
+        ], 
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "double"
@@ -30,7 +43,7 @@
 		"enabled": true,
 		"actions": {
 			"source": {
-				"organizeImports": "on"
+				"organizeImports": "off"
 			}
 		}
 	}
