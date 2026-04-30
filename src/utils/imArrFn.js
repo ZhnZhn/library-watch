@@ -11,9 +11,7 @@ export const imArrFilterByProp = (
   propName,
   arr,
   value
-) => arr.filter(
-  (obj, index) => obj[propName] !== value
-)
+) => arr.filter(obj => obj[propName] !== value)
 
 export const imArrInsertItem = (
   item,

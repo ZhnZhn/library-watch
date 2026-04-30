@@ -52,11 +52,10 @@ export const fCrMsFromFn = (
 
 export const fCrUse = (
   store,
-  select,
-  isSameValue
+  select
 ) => bindTo(useSubscribe,
   store,
-  select  
+  select
 );
 
 const _reducerUseAtomValue = (

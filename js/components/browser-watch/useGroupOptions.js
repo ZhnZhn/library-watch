@@ -6,7 +6,7 @@ exports.default = void 0;
 var _watchListStore = require("../../flux/watch-list/watchListStore");
 var _useRefInit = _interopRequireDefault(require("../hooks/useRefInit"));
 var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
-const useGroupOptions = store => {
+const useGroupOptions = () => {
   const [groupOptions, _refGroupOptions] = (0, _useRefInit.default)(_watchListStore.getWatchGroups),
     _rerender = (0, _useRerender.default)(),
     updateGroupOptions = () => {

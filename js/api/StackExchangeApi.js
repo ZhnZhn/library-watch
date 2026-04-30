@@ -43,7 +43,7 @@ const StackExchangeApi = {
     } = _ref3;
     return `${repo}_${requestType}`;
   },
-  checkResponse(json, option) {
+  checkResponse(json) {
     const {
       error_message,
       error_name = ''

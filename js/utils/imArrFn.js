@@ -5,7 +5,7 @@ exports.imArrPush = exports.imArrInsertItem = exports.imArrFilterByProp = void 0
 var _isTypeFn = require("./isTypeFn");
 const imArrPush = (arr, obj) => (0, _isTypeFn.isArr)(arr) ? [...arr, obj] : [obj];
 exports.imArrPush = imArrPush;
-const imArrFilterByProp = (propName, arr, value) => arr.filter((obj, index) => obj[propName] !== value);
+const imArrFilterByProp = (propName, arr, value) => arr.filter(obj => obj[propName] !== value);
 exports.imArrFilterByProp = imArrFilterByProp;
 const imArrInsertItem = function (item, index, arr) {
   if (arr === void 0) {

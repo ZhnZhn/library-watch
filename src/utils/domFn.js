@@ -14,7 +14,7 @@ const HM_ENTITIES = {
 } = String
 , OUT_OF_BOUNDS_CHART = fromCharCode(65533)
 , _replaceCharCodeByChar = (
-  match,
+  _match,
   decodeCode
 ) => {
   let _decodeCode;

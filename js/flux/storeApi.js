@@ -38,7 +38,7 @@ const fCrMsFromFn = (crMs, fn) => function () {
   return crMs(fn(...arguments));
 };
 exports.fCrMsFromFn = fCrMsFromFn;
-const fCrUse = (store, select, isSameValue) => (0, _bindTo.bindTo)(_useSubscribe.default, store, select);
+const fCrUse = (store, select) => (0, _bindTo.bindTo)(_useSubscribe.default, store, select);
 exports.fCrUse = fCrUse;
 const _reducerUseAtomValue = (value, crOrValue) => _isFn(crOrValue) ? crOrValue(value) : crOrValue;
 const atom = initialValue => {

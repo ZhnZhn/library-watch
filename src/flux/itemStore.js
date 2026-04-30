@@ -116,7 +116,7 @@ const _loadItemCompleted = (
   json
 ) => {
   /* eslint-disable no-undef */
-  if (process.env.NODE_ENV !== 'production'){  
+  if (process.env.NODE_ENV !== 'production'){
     console.log(option);
     console.log(json);
   }
@@ -184,7 +184,7 @@ export const loadItem = (
     setLoading()
     loadItem(option, _loadItemCompleted, _loadItemFailed);
   } else {
-    setTimeout(() => showAlert(ALREADY_LOADED), 1000)    
+    setTimeout(() => showAlert(ALREADY_LOADED), 1000)
     showChart(chartType, browserType)
   }
 }
@@ -205,7 +205,7 @@ export const closeChartContainer = setMenuItemClose
 
 export const closeCompItemList = (
   chartType,
-  browserType
+  //browserType
 ) => {
   _set(_crMsItemChartTypeClose(chartType))
 }

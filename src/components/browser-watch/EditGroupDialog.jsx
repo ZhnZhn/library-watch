@@ -26,7 +26,6 @@ import GroupDeletePane from './GroupDeletePane';
 
 const EditGroupDialog = memoIsShow(({
   isShow,
-  store,
   onClose
 }) => (
   <ModalDialog

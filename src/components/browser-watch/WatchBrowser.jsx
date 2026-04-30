@@ -52,7 +52,6 @@ const WatchBrowser = ({
   caption,
   browserType,
   useMsBrowser,
-  useMsBrowserDynamic,
   useWatchList
 }) => {
   const _refIsShouldUpdateFind = useRef(false)

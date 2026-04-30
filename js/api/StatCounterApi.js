@@ -93,7 +93,7 @@ const StatcounterApi = {
       } = region || {};
     return `${vRegion}-${value}`;
   },
-  checkResponse: (json, option) => {
+  checkResponse: json => {
     return json && _isArr(json.data);
   }
 };

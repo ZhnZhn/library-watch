@@ -16,7 +16,7 @@ const HM_ENTITIES = {
     fromCharPoint
   } = String,
   OUT_OF_BOUNDS_CHART = fromCharCode(65533),
-  _replaceCharCodeByChar = (match, decodeCode) => {
+  _replaceCharCodeByChar = (_match, decodeCode) => {
     let _decodeCode;
     if (decodeCode[0] === '#') {
       _decodeCode = parseInt(decodeCode.substring(1), 10);

@@ -27,7 +27,6 @@ import ListDeletePane from './ListDeletePane';
 
 const EditListDialog = memoIsShow(({
   isShow,
-  store,
   onClose
 }) => (
   <ModalDialog

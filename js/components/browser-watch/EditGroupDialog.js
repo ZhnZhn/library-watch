@@ -17,7 +17,6 @@ var _jsxRuntime = require("react/jsx-runtime");
 const EditGroupDialog = (0, _memoFn.memoIsShow)(_ref => {
   let {
     isShow,
-    store,
     onClose
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog.default, {

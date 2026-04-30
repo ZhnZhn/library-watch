@@ -1,1 +1,25 @@
-{"version":3,"file":"imArrFn.js","names":["_isTypeFn","require","imArrPush","arr","obj","isArr","exports","imArrFilterByProp","propName","value","filter","index","imArrInsertItem","item","slice"],"sources":["../../src/utils/imArrFn.js"],"sourcesContent":["import { isArr } from './isTypeFn';\r\n\r\nexport const imArrPush = (\r\n  arr,\r\n  obj\r\n) => isArr(arr)\r\n  ? [...arr, obj]\r\n  : [obj]\r\n\r\nexport const imArrFilterByProp = (\r\n  propName,\r\n  arr,\r\n  value\r\n) => arr.filter(\r\n  (obj, index) => obj[propName] !== value\r\n)\r\n\r\nexport const imArrInsertItem = (\r\n  item,\r\n  index,\r\n  arr=[]\r\n) => index === 0\r\n ? [\r\n     {...item},\r\n     ...arr\r\n   ]\r\n : [\r\n     ...arr.slice(0, index),\r\n     {...item},\r\n     ...arr.slice(index)\r\n   ]\r\n"],"mappings":";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAEO,MAAMC,SAAS,GAAGA,CACvBC,GAAG,EACHC,GAAG,KACA,IAAAC,eAAK,EAACF,GAAG,CAAC,GACX,CAAC,GAAGA,GAAG,EAAEC,GAAG,CAAC,GACb,CAACA,GAAG,CAAC;AAAAE,OAAA,CAAAJ,SAAA,GAAAA,SAAA;AAEF,MAAMK,iBAAiB,GAAGA,CAC/BC,QAAQ,EACRL,GAAG,EACHM,KAAK,KACFN,GAAG,CAACO,MAAM,CACb,CAACN,GAAG,EAAEO,KAAK,KAAKP,GAAG,CAACI,QAAQ,CAAC,KAAKC,KACpC,CAAC;AAAAH,OAAA,CAAAC,iBAAA,GAAAA,iBAAA;AAEM,MAAMK,eAAe,GAAG,SAAAA,CAC7BC,IAAI,EACJF,KAAK,EACLR,GAAG;EAAA,IAAHA,GAAG;IAAHA,GAAG,GAAC,EAAE;EAAA;EAAA,OACHQ,KAAK,KAAK,CAAC,GACb,CACE;IAAC,GAAGE;EAAI,CAAC,EACT,GAAGV,GAAG,CACP,GACD,CACE,GAAGA,GAAG,CAACW,KAAK,CAAC,CAAC,EAAEH,KAAK,CAAC,EACtB;IAAC,GAAGE;EAAI,CAAC,EACT,GAAGV,GAAG,CAACW,KAAK,CAACH,KAAK,CAAC,CACpB;AAAA;AAAAL,OAAA,CAAAM,eAAA,GAAAA,eAAA","ignoreList":[]}
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/imArrFn.js"
+ ],
+ "file": "../../src/utils/imArrFn.js",
+ "names": [
+  "_isTypeFn",
+  "require",
+  "imArrPush",
+  "arr",
+  "obj",
+  "isArr",
+  "exports",
+  "imArrFilterByProp",
+  "propName",
+  "value",
+  "filter",
+  "imArrInsertItem",
+  "item",
+  "index",
+  "slice"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAEO,MAAMC,SAAS,GAAGA,CACvBC,GAAG,EACHC,GAAG,KACA,IAAAC,eAAK,EAACF,GAAG,CAAC,GACX,CAAC,GAAGA,GAAG,EAAEC,GAAG,CAAC,GACb,CAACA,GAAG,CAAC;AAAAE,OAAA,CAAAJ,SAAA,GAAAA,SAAA;AAEF,MAAMK,iBAAiB,GAAGA,CAC/BC,QAAQ,EACRL,GAAG,EACHM,KAAK,KACFN,GAAG,CAACO,MAAM,CAACN,GAAG,IAAIA,GAAG,CAACI,QAAQ,CAAC,KAAKC,KAAK,CAAC;AAAAH,OAAA,CAAAC,iBAAA,GAAAA,iBAAA;AAExC,MAAMI,eAAe,GAAG,SAAAA,CAC7BC,IAAI,EACJC,KAAK,EACLV,GAAG;EAAA,IAAHA,GAAG;IAAHA,GAAG,GAAC,EAAE;EAAA;EAAA,OACHU,KAAK,KAAK,CAAC,GACb,CACE;IAAC,GAAGD;EAAI,CAAC,EACT,GAAGT,GAAG,CACP,GACD,CACE,GAAGA,GAAG,CAACW,KAAK,CAAC,CAAC,EAAED,KAAK,CAAC,EACtB;IAAC,GAAGD;EAAI,CAAC,EACT,GAAGT,GAAG,CAACW,KAAK,CAACD,KAAK,CAAC,CACpB;AAAA;AAAAP,OAAA,CAAAK,eAAA,GAAAA,eAAA"
+}

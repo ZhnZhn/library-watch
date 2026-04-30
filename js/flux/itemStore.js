@@ -23,8 +23,10 @@ const _logLoadError = _ref => {
     alertDescr,
     alertItemId
   } = _ref;
+  /*eslint-disable no-undef*/
   console.log('%c' + alertCaption + ':' + alertItemId, CONSOLE_LOG_STYLE);
   console.log('%c' + alertDescr, CONSOLE_LOG_STYLE);
+  /*eslint-enable no-undef*/
 };
 const [_crItems, _selectItems] = (0, _storeApi.fCrStoreSlice)("items"),
   [_crMsItem, _selectMsItem] = (0, _storeApi.fCrStoreSlice)("msItem"),
@@ -68,10 +70,10 @@ exports.showChart = showChart;
 const _loadItemCompleted = (option, json) => {
     /* eslint-disable no-undef */
     if (process.env.NODE_ENV !== 'production') {
-      /* eslint-enable no-undef */
       console.log(option);
       console.log(json);
     }
+    /* eslint-enable no-undef */
     const {
         chartType,
         browserType
@@ -136,7 +138,9 @@ const closeChart = (chartType, browserType, key) => {
 };
 exports.closeChart = closeChart;
 const closeChartContainer = exports.closeChartContainer = _browserFn.setMenuItemClose;
-const closeCompItemList = (chartType, browserType) => {
+const closeCompItemList = (chartType
+//browserType
+) => {
   _set(_crMsItemChartTypeClose(chartType));
 };
 exports.closeCompItemList = closeCompItemList;

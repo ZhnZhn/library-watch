@@ -40,7 +40,6 @@ const WatchBrowser = _ref => {
     caption,
     browserType,
     useMsBrowser,
-    useMsBrowserDynamic,
     useWatchList
   } = _ref;
   const _refIsShouldUpdateFind = (0, _uiApi.useRef)(false),

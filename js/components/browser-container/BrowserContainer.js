@@ -15,7 +15,6 @@ const BrowserContainer = _ref => {
     useMsBrowser,
     useMsBrowserDynamic,
     useWatchList,
-    updateWatchAction,
     useDgOption
   } = _ref;
   const [isDoubleWatch, toggleIsDoubleWatch] = (0, _useToggle.default)(false),

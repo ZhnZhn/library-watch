@@ -5,7 +5,7 @@ import {
 import useRefInit from '../hooks/useRefInit';
 import useRerender from '../hooks/useRerender';
 
-const useGroupOptions = (store) => {
+const useGroupOptions = () => {
   const [
     groupOptions,
     _refGroupOptions

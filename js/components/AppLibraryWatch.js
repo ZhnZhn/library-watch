@@ -15,7 +15,7 @@ var _ComponentHrzContainer = _interopRequireDefault(require("./zhn-containers/Co
 var _DialogContainer = _interopRequireDefault(require("./zhn-containers/DialogContainer"));
 var _RouterModalDialog = _interopRequireDefault(require("./dialogs/RouterModalDialog"));
 var _jsxRuntime = require("react/jsx-runtime");
-const AppLibraryWatch = props => {
+const AppLibraryWatch = () => {
   (0, _useHotKeys.default)();
   (0, _uiApi.useEffect)(() => {
     (0, _watchListStore.initWatchList)();

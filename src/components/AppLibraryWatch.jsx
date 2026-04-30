@@ -23,7 +23,7 @@ import DialogContainer from './zhn-containers/DialogContainer';
 
 import RouterModalDialog from './dialogs/RouterModalDialog';
 
-const AppLibraryWatch = (props) => {
+const AppLibraryWatch = () => {
   useHotKeys()
   useEffect(() => {
     initWatchList()

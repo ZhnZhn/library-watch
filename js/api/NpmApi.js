@@ -48,7 +48,7 @@ const NpmApi = {
     } = _ref;
     return `${repo}_${requestType}_${fromDate}`;
   },
-  checkResponse(json, option) {
+  checkResponse(json) {
     const {
       error
     } = json || {};

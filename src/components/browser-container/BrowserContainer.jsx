@@ -12,7 +12,6 @@ const BrowserContainer = ({
   useMsBrowser,
   useMsBrowserDynamic,
   useWatchList,
-  updateWatchAction,
   useDgOption
 }) => {
   const [

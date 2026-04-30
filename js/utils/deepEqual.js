@@ -2,9 +2,7 @@
 
 exports.__esModule = true;
 exports.default = void 0;
-const {
-  hasOwnProperty
-} = Object.prototype;
+const _hasOwnProperty = Object.prototype.hasOwnProperty;
 const is = (x, y) => {
   // SameValue algorithm
   if (x === y) {
@@ -23,16 +21,16 @@ const deepEqual = (objA, objB) => {
   if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
     return false;
   }
-  let keysA = Object.keys(objA);
+  const keysA = Object.keys(objA);
 
   // Test for A's keys different from B.
   for (let i = 0; i < keysA.length; i++) {
-    if (!hasOwnProperty.call(objB, keysA[i])) {
+    if (!_hasOwnProperty.call(objB, keysA[i])) {
       return false;
     }
   }
-  for (let propty in objA) {
-    if (hasOwnProperty.call(objB, propty)) {
+  for (const propty in objA) {
+    if (_hasOwnProperty.call(objB, propty)) {
       if (!deepEqual(objA[propty], objB[propty])) {
         return false;
       }

@@ -6,7 +6,7 @@ const omit = (
 	keys
 ) => {
 	const target = {};
-	for (let propName in obj) {
+	for (const propName in obj) {
 		if (keys.indexOf(propName) >= 0
 	     || !_hasOwnProperty.call(obj, propName)) {
 			continue;
