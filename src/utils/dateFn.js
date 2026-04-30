@@ -10,8 +10,9 @@ const MIN_YEAR = 1999;
 const _mathFloor = Math.floor
 , _mathMin = Math.min;
 
-const _crNumber = (str) => parseInt(str, 10);
-const _crNumberMonth = str => _crNumber(str) - 1;
+const _isFinite = Number.isFinite;
+const _parseIntBy10 = str => parseInt(str, 10);
+const _crNumberMonth = str => _parseIntBy10(str) - 1;
 
 const _notInIntervalStrict = (
 	n,
@@ -25,7 +26,7 @@ const _notInLengthMinMax = (
 	max
 ) =>
  (isStr(str) && str.length !== length)
- || _notInIntervalStrict(parseInt(str, 10), min, max);
+ || _notInIntervalStrict(_parseIntBy10(str), min, max);
 
 const _isYmd = (
 	dateStr,
@@ -73,9 +74,9 @@ export const subtractMonths = (
 ) => {
 	const [y, m, d] = strYmd.split('-')
 	, _m = numberOfMonths % 12
-	, nM = parseInt(m);
+	, nM = _parseIntBy10(m);
 
-	let _rY = parseInt(y) - _mathFloor(numberOfMonths / 12)
+	let _rY = _parseIntBy10(y) - _mathFloor(numberOfMonths / 12)
 	, _rM;
 
 	if (nM > _m) {
@@ -90,7 +91,7 @@ export const subtractMonths = (
 	const __rD = _getNumberOfDays(_rY, _rM)
 	, _rD = _padByZero(_getNumberOfDays(y, m)) === d
 	  ? __rD
-		: _mathMin(parseInt(d), __rD);
+		: _mathMin(_parseIntBy10(d), __rD);
 	return `${_rY}-${_padByZero(_rM)}-${_padByZero(_rD)}`;
 }
 
@@ -114,7 +115,7 @@ export const getToDate = () => getFromDate(0)
 export const mlsToDmy = (
 	mlsUTC
 ) => {
-	if (!(isNumber(mlsUTC) && isFinite(mlsUTC))) {
+	if (!(isNumber(mlsUTC) && _isFinite(mlsUTC))) {
 		return '';
 	}
   const d = new Date(mlsUTC);
@@ -168,9 +169,9 @@ export const isWeekend = (
 ) => {
 	const date = new Date(
 		Date.UTC(
-			 _crNumber(year+''),
+			 _parseIntBy10(year+''),
 			 _crNumberMonth(month+''),
-			 _crNumber(day+'')
+			 _parseIntBy10(day+'')
 		));
 	if (isNaN(date)) {
 		return false;
@@ -186,9 +187,9 @@ export const crDateAgo = (str, nowMls) => {
     ? Date.UTC(
         str.slice(0,4),
 				_crNumberMonth(str.slice(5,7)),
-				_crNumber(str.slice(8,10)),
-				_crNumber(str.slice(11,13)),
-				_crNumber(str.slice(14,16))
+				_parseIntBy10(str.slice(8,10)),
+				_parseIntBy10(str.slice(11,13)),
+				_parseIntBy10(str.slice(14,16))
       )
     : void 0;
 	return safeFormatMls(_mls, nowMls);

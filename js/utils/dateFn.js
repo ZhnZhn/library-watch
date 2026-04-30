@@ -7,10 +7,11 @@ var _isTypeFn = require("./isTypeFn");
 const MIN_YEAR = 1999;
 const _mathFloor = Math.floor,
   _mathMin = Math.min;
-const _crNumber = str => parseInt(str, 10);
-const _crNumberMonth = str => _crNumber(str) - 1;
+const _isFinite = Number.isFinite;
+const _parseIntBy10 = str => parseInt(str, 10);
+const _crNumberMonth = str => _parseIntBy10(str) - 1;
 const _notInIntervalStrict = (n, min, max) => (0, _isTypeFn.isNaN)(n) || n < min || n > max;
-const _notInLengthMinMax = (str, length, min, max) => (0, _isTypeFn.isStr)(str) && str.length !== length || _notInIntervalStrict(parseInt(str, 10), min, max);
+const _notInLengthMinMax = (str, length, min, max) => (0, _isTypeFn.isStr)(str) && str.length !== length || _notInIntervalStrict(_parseIntBy10(str), min, max);
 const _isYmd = function (dateStr, nForecastDate, minYear) {
   if (nForecastDate === void 0) {
     nForecastDate = 0;
@@ -40,8 +41,8 @@ const _padByZero = v => ("0" + v).slice(-2),
 const subtractMonths = (strYmd, numberOfMonths) => {
   const [y, m, d] = strYmd.split('-'),
     _m = numberOfMonths % 12,
-    nM = parseInt(m);
-  let _rY = parseInt(y) - _mathFloor(numberOfMonths / 12),
+    nM = _parseIntBy10(m);
+  let _rY = _parseIntBy10(y) - _mathFloor(numberOfMonths / 12),
     _rM;
   if (nM > _m) {
     _rM = nM - _m;
@@ -50,7 +51,7 @@ const subtractMonths = (strYmd, numberOfMonths) => {
     _rM = nM === _m ? 12 : _rM = nM - _m + 12;
   }
   const __rD = _getNumberOfDays(_rY, _rM),
-    _rD = _padByZero(_getNumberOfDays(y, m)) === d ? __rD : _mathMin(parseInt(d), __rD);
+    _rD = _padByZero(_getNumberOfDays(y, m)) === d ? __rD : _mathMin(_parseIntBy10(d), __rD);
   return `${_rY}-${_padByZero(_rM)}-${_padByZero(_rD)}`;
 };
 exports.subtractMonths = subtractMonths;
@@ -67,7 +68,7 @@ exports.getFromDate = getFromDate;
 const getToDate = () => getFromDate(0);
 exports.getToDate = getToDate;
 const mlsToDmy = mlsUTC => {
-  if (!((0, _isTypeFn.isNumber)(mlsUTC) && isFinite(mlsUTC))) {
+  if (!((0, _isTypeFn.isNumber)(mlsUTC) && _isFinite(mlsUTC))) {
     return '';
   }
   const d = new Date(mlsUTC);
@@ -99,7 +100,7 @@ const ymdToUTCSecond = strDate => ymdToMlsUTC(strDate) / 1000;
 /* 1970-01-01 */
 exports.ymdToUTCSecond = ymdToUTCSecond;
 const isWeekend = (year, month, day) => {
-  const date = new Date(Date.UTC(_crNumber(year + ''), _crNumberMonth(month + ''), _crNumber(day + '')));
+  const date = new Date(Date.UTC(_parseIntBy10(year + ''), _crNumberMonth(month + ''), _parseIntBy10(day + '')));
   if ((0, _isTypeFn.isNaN)(date)) {
     return false;
   }
@@ -110,7 +111,7 @@ const isWeekend = (year, month, day) => {
 //YYYY-MM-DDTHH:MM:SSZ
 exports.isWeekend = isWeekend;
 const crDateAgo = (str, nowMls) => {
-  const _mls = (str || '').trim().length === 20 ? Date.UTC(str.slice(0, 4), _crNumberMonth(str.slice(5, 7)), _crNumber(str.slice(8, 10)), _crNumber(str.slice(11, 13)), _crNumber(str.slice(14, 16))) : void 0;
+  const _mls = (str || '').trim().length === 20 ? Date.UTC(str.slice(0, 4), _crNumberMonth(str.slice(5, 7)), _parseIntBy10(str.slice(8, 10)), _parseIntBy10(str.slice(11, 13)), _parseIntBy10(str.slice(14, 16))) : void 0;
   return (0, _formatDate.safeFormatMls)(_mls, nowMls);
 };
 exports.crDateAgo = crDateAgo;
