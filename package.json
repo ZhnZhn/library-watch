@@ -30,8 +30,8 @@
     "chart.js": "^4.5.1",
     "papaparse": "^5.5.3",
     "raven-js": "^3.27.2",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.28.6",
