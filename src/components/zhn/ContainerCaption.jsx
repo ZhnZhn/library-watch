@@ -1,51 +1,37 @@
 import { isFn } from '../../utils/isTypeFn';
-import { crStyle2 } from '../styleFn';
 
 import SvgMore from './SvgMore';
+import CaptionToken from './CaptionToken';
 import SvgClose from './SvgClose';
 
 import {
-  CL_NOT_SELECTED
-} from '../styleFn';
-import {
   CL_CAPTION,
-  S_CAPTION,
   S_SVG_CLOSE
 } from './CaptionRow.Style';
 
-const SL_CAPTION = { paddingLeft: 0 }
+const S_CAPTION_TOKEN = { paddingLeft: 0 }
 
-const ContainerCaption = ({
-  style,
-  moreStyle,
-  caption='',
-  onMore,
-  onClose,
-  children
-}) => (
-  <div className={CL_CAPTION} style={style}>
-     {
-       isFn(onMore) && <SvgMore
-         style={moreStyle}
-         onClick={onMore}
+const ContainerCaption = (props) => {
+  const _isOnMore = isFn(props.onMore);
+  return (
+    <div className={CL_CAPTION} style={props.style}>
+       {
+         _isOnMore && <SvgMore
+           style={props.moreStyle}
+           onClick={props.onMore}
+         />
+       }
+       <CaptionToken
+         style={_isOnMore ? S_CAPTION_TOKEN : void 0}
+         caption={props.caption}
        />
-     }
-     <span
-        className={CL_NOT_SELECTED}
-        style={crStyle2(
-          S_CAPTION,
-          isFn(onMore) && SL_CAPTION
-        )}
-     >
-       {caption}
-    </span>
-    {children}
-    <SvgClose
-       style={S_SVG_CLOSE}
-       onClose={onClose}
-    />
-  </div>
-);
+      {props.children}
+      <SvgClose
+         style={S_SVG_CLOSE}
+         onClose={props.onClose}
+      />
+    </div>
+  );
+};
 
-
-export default ContainerCaption;
+export default ContainerCaption

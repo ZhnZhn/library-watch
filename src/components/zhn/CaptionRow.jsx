@@ -1,34 +1,23 @@
+import CaptionToken from './CaptionToken';
 import SvgClose from './SvgClose';
 
 import {
-  CL_NOT_SELECTED
-} from '../styleFn';
-import {
   CL_CAPTION,
-  S_CAPTION,
   S_SVG_CLOSE
 } from './CaptionRow.Style';
 
-const CaptionRow = ({
-  style,
-  caption='',
-  onClose,
-  children,
-}) => (
+const CaptionRow = (props) => (
   <div
     className={CL_CAPTION}
-    style={style}
+    style={props.style}
   >
-     <span
-        className={CL_NOT_SELECTED}
-        style={S_CAPTION}
-     >
-       {caption}
-    </span>
-    {children}
+    <CaptionToken
+      caption={props.caption}
+    />
+    {props.children}
     <SvgClose
-       style={S_SVG_CLOSE}
-       onClose={onClose}
+      style={S_SVG_CLOSE}
+      onClose={props.onClose}
     />
   </div>
 );

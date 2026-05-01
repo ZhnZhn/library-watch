@@ -4,36 +4,28 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _isTypeFn = require("../../utils/isTypeFn");
-var _styleFn = require("../styleFn");
 var _SvgMore = _interopRequireDefault(require("./SvgMore"));
+var _CaptionToken = _interopRequireDefault(require("./CaptionToken"));
 var _SvgClose = _interopRequireDefault(require("./SvgClose"));
 var _CaptionRow = require("./CaptionRow.Style");
 var _jsxRuntime = require("react/jsx-runtime");
-const SL_CAPTION = {
+const S_CAPTION_TOKEN = {
   paddingLeft: 0
 };
-const ContainerCaption = _ref => {
-  let {
-    style,
-    moreStyle,
-    caption = '',
-    onMore,
-    onClose,
-    children
-  } = _ref;
+const ContainerCaption = props => {
+  const _isOnMore = (0, _isTypeFn.isFn)(props.onMore);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: _CaptionRow.CL_CAPTION,
-    style: style,
-    children: [(0, _isTypeFn.isFn)(onMore) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore.default, {
-      style: moreStyle,
-      onClick: onMore
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      className: _styleFn.CL_NOT_SELECTED,
-      style: (0, _styleFn.crStyle2)(_CaptionRow.S_CAPTION, (0, _isTypeFn.isFn)(onMore) && SL_CAPTION),
-      children: caption
-    }), children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose.default, {
+    style: props.style,
+    children: [_isOnMore && /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore.default, {
+      style: props.moreStyle,
+      onClick: props.onMore
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_CaptionToken.default, {
+      style: _isOnMore ? S_CAPTION_TOKEN : void 0,
+      caption: props.caption
+    }), props.children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose.default, {
       style: _CaptionRow.S_SVG_CLOSE,
-      onClose: onClose
+      onClose: props.onClose
     })]
   });
 };
