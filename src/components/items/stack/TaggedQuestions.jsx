@@ -109,6 +109,7 @@ const StackTaggedQuestions = (props) => {
           onClick={_showMenuMore}
         />
         <button
+           type="button"
            className={CL_NOT_SELECTED}
            title={caption}
            style={{...S_CAPTION_OPEN, ...S_NOT_FLOAT}}
@@ -122,6 +123,7 @@ const StackTaggedQuestions = (props) => {
           </span>
         </button>
         <button
+          type="button"
           className={CL_NOT_SELECTED}
           style={S_BT_REVERSE}
           title="Reverse Items"

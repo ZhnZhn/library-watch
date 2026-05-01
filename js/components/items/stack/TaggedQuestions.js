@@ -92,6 +92,7 @@ const StackTaggedQuestions = props => {
         style: S_BT_MORE,
         onClick: _showMenuMore
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+        type: "button",
         className: _styleFn.CL_NOT_SELECTED,
         title: caption,
         style: {
@@ -106,6 +107,7 @@ const StackTaggedQuestions = props => {
           children: _tokenItemsCount
         })]
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+        type: "button",
         className: _styleFn.CL_NOT_SELECTED,
         style: S_BT_REVERSE,
         title: "Reverse Items",

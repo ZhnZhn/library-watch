@@ -70,6 +70,7 @@ const StatcounterShare = ({
       >
         {BtMenuMoreEl}
         <button
+           type="button"
            className={CL_BT_ITEM}
            title={caption}
            style={S_BT_CAPTION}

@@ -57,7 +57,7 @@ const GitHubRecentTag = ({
      .catch(err => {
         /*eslint-disable no-undef */
         console.log(err)
-        /*eslint-enable no-undef */  
+        /*eslint-enable no-undef */
      });
   }, [onClickDetail])
   // toggleIsShow
@@ -84,6 +84,7 @@ const GitHubRecentTag = ({
     <div style={S_ROOT}>
       <Caption style={S_PT_8} onClose={onCloseItem}>
         <button
+           type="button"
            className={CL_BT_ITEM}
            title={caption}
            style={S_CAPTION_OPEN}

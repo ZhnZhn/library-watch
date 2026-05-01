@@ -46,6 +46,7 @@ const GitHubRecentRelease = props => {
       style: _Item.S_PT_8,
       onClose: onCloseItem,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+        type: "button",
         className: _styleFn.CL_BT_ITEM,
         title: caption,
         style: _Item.S_CAPTION_OPEN,

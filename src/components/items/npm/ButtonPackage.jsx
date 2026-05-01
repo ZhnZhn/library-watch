@@ -23,6 +23,7 @@ const ButtonPackage = ({
   onClick
 }) => (
   <button
+     type="button"
      className={CL_BT_ITEM}
      style={{..._S_CAPTION_OPEN, ...style}}
      title={caption}

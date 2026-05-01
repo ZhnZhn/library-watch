@@ -9,7 +9,7 @@ var _useItemMenuMore = _interopRequireDefault(require("./useItemMenuMore"));
 var _ChartConfigFactories = require("../charts/ChartConfigFactories");
 var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
 var _Link = _interopRequireDefault(require("../zhn/Link"));
-var _LineChart = _interopRequireDefault(require("../charts/LineChart"));
+var _ChartComponent = require("../charts/ChartComponent");
 var _ItemCaption = _interopRequireDefault(require("./ItemCaption"));
 var _Item = require("./Item.Style");
 var _jsxRuntime = require("react/jsx-runtime");
@@ -56,6 +56,7 @@ const StatcounterShare = _ref => {
       style: S_CAPTION,
       onClose: onCloseItem,
       children: [BtMenuMoreEl, /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+        type: "button",
         className: _styleFn.CL_BT_ITEM,
         title: caption,
         style: S_BT_CAPTION,
@@ -72,7 +73,7 @@ const StatcounterShare = _ref => {
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ShowHide.default, {
       isShow: _isShow,
       style: S_CHART_WRAPER,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LineChart.default, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ChartComponent.ChartComponent, {
         data: _lineChartConfig,
         height: _height
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Link.default, {

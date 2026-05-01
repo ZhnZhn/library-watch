@@ -30,6 +30,7 @@ const ButtonPackage = _ref => {
     onClick
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+    type: "button",
     className: _styleFn.CL_BT_ITEM,
     style: {
       ..._S_CAPTION_OPEN,
