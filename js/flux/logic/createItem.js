@@ -2,8 +2,8 @@
 
 exports.__esModule = true;
 exports.default = void 0;
-var _RouterItem = require("../../components/factories/RouterItem");
 var _bindTo = require("../../utils/bindTo");
+var _RouterItem = require("../../components/factories/RouterItem");
 var _compStore = require("../compStore");
 var _itemStore = require("../itemStore");
 const createItem = (option, json, parentProps) => {

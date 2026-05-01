@@ -1,6 +1,6 @@
+import { bindTo } from "../../utils/bindTo";
 import SourceBrowserDynamic from '../../components/browser-container/SourceBrowserDynamic';
 
-import { bindTo } from '../storeApi';
 import {
   useMsBrowserDynamic,
   loadBrowserDynamic

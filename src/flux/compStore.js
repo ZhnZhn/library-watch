@@ -1,9 +1,10 @@
+import { bindTo } from "../../utils/bindTo";
+
 import {
   createStoreWithSelector,
   getStoreApi,
   fCrStoreSlice,
-  fCrUse,
-  bindTo
+  fCrUse
 } from './storeApi';
 
 import { ModalDialog as MD } from '../constants/Type';

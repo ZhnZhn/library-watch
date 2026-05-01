@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.useMsAbout = exports.useMdOption = exports.useDgOption = exports.showModalDialog = exports.showInfo = exports.showDialog = exports.showAlert = exports.showAddItem = exports.showAbout = void 0;
+var _bindTo = require("../../utils/bindTo");
 var _storeApi = require("./storeApi");
 var _Type = require("../constants/Type");
 var _createDialog = _interopRequireDefault(require("./logic/createDialog"));
@@ -48,7 +49,7 @@ const showModalDialog = function (modalDialogType, option) {
   }));
 };
 exports.showModalDialog = showModalDialog;
-const showAddItem = exports.showAddItem = (0, _storeApi.bindTo)(showModalDialog, _Type.ModalDialog.ADD_ITEM);
-const showAlert = exports.showAlert = (0, _storeApi.bindTo)(showModalDialog, _Type.ModalDialog.ALERT);
-const showInfo = exports.showInfo = (0, _storeApi.bindTo)(showModalDialog, _Type.ModalDialog.INFO);
+const showAddItem = exports.showAddItem = (0, _bindTo.bindTo)(showModalDialog, _Type.ModalDialog.ADD_ITEM);
+const showAlert = exports.showAlert = (0, _bindTo.bindTo)(showModalDialog, _Type.ModalDialog.ALERT);
+const showInfo = exports.showInfo = (0, _bindTo.bindTo)(showModalDialog, _Type.ModalDialog.INFO);
 //# sourceMappingURL=compStore.js.map

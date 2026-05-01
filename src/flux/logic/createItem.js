@@ -1,5 +1,5 @@
-import { getItemFactoryRoute } from "../../components/factories/RouterItem";
 import { bindTo } from "../../utils/bindTo";
+import { getItemFactoryRoute } from "../../components/factories/RouterItem";
 
 import { showAddItem } from "../compStore";
 import {

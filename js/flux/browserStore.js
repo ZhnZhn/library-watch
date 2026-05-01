@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.useMsBrowserDynamic = exports.useMsBrowser = exports.updateBrowserMenu = exports.showWatch = exports.showDbWatch = exports.showBrowserDynamic = exports.showBrowser = exports.loadBrowserDynamic = void 0;
+var _bindTo = require("../utils/bindTo");
 var _storeApi = require("./storeApi");
 var _Type = require("../constants/Type");
 var _fnFetch = _interopRequireDefault(require("../network/fnFetch"));
@@ -25,8 +26,8 @@ const _crStore = () => ({
 const useMsBrowser = exports.useMsBrowser = (0, _storeApi.fCrUse)(_browserStore, _selectMsBrowser);
 const showBrowser = id => _set(_crMsBrowser(id));
 exports.showBrowser = showBrowser;
-const showWatch = exports.showWatch = (0, _storeApi.bindTo)(showBrowser, _Type.BrowserType.WATCH_LIST);
-const showDbWatch = exports.showDbWatch = (0, _storeApi.bindTo)(showBrowser, _Type.BrowserType.WATCH_LIST_DB);
+const showWatch = exports.showWatch = (0, _bindTo.bindTo)(showBrowser, _Type.BrowserType.WATCH_LIST);
+const showDbWatch = exports.showDbWatch = (0, _bindTo.bindTo)(showBrowser, _Type.BrowserType.WATCH_LIST_DB);
 const useMsBrowserDynamic = exports.useMsBrowserDynamic = (0, _storeApi.fCrUse)(_browserStore, _selectMsBrowserDynamic);
 const showBrowserDynamic = option => {
   const {

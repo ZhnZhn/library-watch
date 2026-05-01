@@ -3,9 +3,8 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.getStoreApi = exports.fCrUse = exports.fCrStoreSlice = exports.fCrMsFromPropNames = exports.fCrMsFromFn = exports.createStoreWithSelector = exports.atom = void 0;
-var _zustandLite = require("./zustand-lite");
 var _bindTo = require("../utils/bindTo");
-exports.bindTo = _bindTo.bindTo;
+var _zustandLite = require("./zustand-lite");
 var _useSubscribe = _interopRequireDefault(require("../components/hooks/useSubscribe"));
 var _useRerender = _interopRequireDefault(require("../components/hooks/useRerender"));
 const _isFn = v => typeof v === "function";

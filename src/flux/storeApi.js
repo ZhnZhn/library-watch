@@ -1,14 +1,12 @@
+import { bindTo } from '../utils/bindTo';
+
 import {
   createStore,
   subscribeWithSelector
 } from './zustand-lite';
 
-import { bindTo } from '../utils/bindTo';
-
 import useSubscribe from '../components/hooks/useSubscribe';
 import useRerender from '../components/hooks/useRerender';
-
-export { bindTo } from '../utils/bindTo';
 
 const _isFn = v => typeof v === "function";
 

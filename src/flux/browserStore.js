@@ -1,10 +1,11 @@
+import { bindTo } from "../utils/bindTo";
+
 import {
   createStoreWithSelector,
   getStoreApi,
   fCrStoreSlice,
   fCrMsFromPropNames,
-  fCrUse,
-  bindTo
+  fCrUse
 } from './storeApi';
 
 import { BrowserType as BT } from '../constants/Type';
