@@ -1,9 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.S_SVG_CLOSE = exports.S_CAPTION = exports.CL_NOT_SELECTED = exports.CL_CAPTION = void 0;
-var _styleFn = require("../styleFn");
-exports.CL_NOT_SELECTED = _styleFn.CL_NOT_SELECTED;
+exports.S_SVG_CLOSE = exports.S_CAPTION = exports.CL_CAPTION = void 0;
 const CL_CAPTION = exports.CL_CAPTION = "gap-right cont-caption";
 const S_CAPTION = exports.S_CAPTION = {
   padding: '0 8px 0 6px',

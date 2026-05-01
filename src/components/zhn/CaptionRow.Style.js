@@ -1,5 +1,3 @@
-export { CL_NOT_SELECTED } from "../styleFn";
-
 export const CL_CAPTION = "gap-right cont-caption"
 
 export const S_CAPTION = {

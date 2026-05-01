@@ -3,9 +3,12 @@ import { crStyle2 } from '../styleFn';
 
 import SvgMore from './SvgMore';
 import SvgClose from './SvgClose';
+
+import {
+  CL_NOT_SELECTED
+} from '../styleFn';
 import {
   CL_CAPTION,
-  CL_NOT_SELECTED,
   S_CAPTION,
   S_SVG_CLOSE
 } from './CaptionRow.Style';

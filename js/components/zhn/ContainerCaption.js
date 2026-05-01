@@ -28,7 +28,7 @@ const ContainerCaption = _ref => {
       style: moreStyle,
       onClick: onMore
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      className: _CaptionRow.CL_NOT_SELECTED,
+      className: _styleFn.CL_NOT_SELECTED,
       style: (0, _styleFn.crStyle2)(_CaptionRow.S_CAPTION, (0, _isTypeFn.isFn)(onMore) && SL_CAPTION),
       children: caption
     }), children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose.default, {
