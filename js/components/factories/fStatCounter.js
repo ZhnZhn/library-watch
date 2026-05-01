@@ -13,10 +13,7 @@ const _crArrFromObj = obj => (0, _helperFn.getObjectKeys)(obj).map(propName => (
   value: parseFloat(obj[propName])
 }));
 const _compareByValue = (a, b) => b.value - a.value;
-const _crTopN = function (arr, top) {
-  if (top === void 0) {
-    top = 5;
-  }
+const _crTopN = arr => {
   /*eslint-disable no-unused-vars */
   const {
       Date,
@@ -69,8 +66,7 @@ const fStatcounter = _ref2 => {
     json,
     parentProps,
     onMoveToTop,
-    onCloseItem,
-    onWatchItem
+    onCloseItem
   } = _ref2;
   const [labels, data] = _crLabelsDataTuple(_filterEmptyDate(json));
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_StatcounterShare.default, {

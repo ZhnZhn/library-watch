@@ -90,7 +90,7 @@ const DialogType3 = (0, _memoFn.memoIsShow)(_ref => {
   const [MENU_MODEL, isShowLabels] = (0, _useDialog.default)(),
     [_refItem, _hSelectItem] = (0, _useSelectItem.default)(DF_MARKET_SHARE),
     [_refRegion, _hSelectRegion] = (0, _useSelectItem.default)(DF_REGION),
-    [validationMessages, COMMAND_BUTTONS, hClose] = (0, _useDialogButtons.default)((setValidationMessages, clearValidationMessages) => {
+    [validationMessages, COMMAND_BUTTONS, hClose] = (0, _useDialogButtons.default)((_setValidationMessages, _clearValidationMessages) => {
       const {
         value,
         caption

@@ -6,8 +6,10 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _toLink = _interopRequireDefault(require("./toLink"));
 var _jsxRuntime = require("react/jsx-runtime");
-const _onError = (src, event) => {
+const _onError = (src, _evt) => {
+  /*eslint-disable no-undef */
   console.log("Failed to load image with src: " + src);
+  /* eslint-enable no-undef */
 };
 const Img = _ref => {
   let {

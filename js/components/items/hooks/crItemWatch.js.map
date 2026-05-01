@@ -1,1 +1,24 @@
-{"version":3,"file":"crItemWatch.js","names":["_crCaption","props","repo","crItemWatch","itemDesription","crCaption","requestType","version","caption","config","descr","_default","exports","default"],"sources":["../../../../src/components/items/hooks/crItemWatch.js"],"sourcesContent":["const _crCaption = props => props.repo;\r\n\r\nconst crItemWatch = (props, itemDesription, crCaption=_crCaption) => {\r\n  const { repo, requestType, version='' } = props\r\n  , caption = _crCaption(props);\r\n  return {\r\n    caption,\r\n    config: {\r\n      descr: itemDesription,\r\n      caption, version,\r\n      repo, requestType\r\n    }\r\n  };\r\n};\r\n\r\nexport default crItemWatch\r\n"],"mappings":";;;;AAAA,MAAMA,UAAU,GAAGC,KAAK,IAAIA,KAAK,CAACC,IAAI;AAEtC,MAAMC,WAAW,GAAG,SAAAA,CAACF,KAAK,EAAEG,cAAc,EAAEC,SAAS,EAAgB;EAAA,IAAzBA,SAAS;IAATA,SAAS,GAACL,UAAU;EAAA;EAC9D,MAAM;MAAEE,IAAI;MAAEI,WAAW;MAAEC,OAAO,GAAC;IAAG,CAAC,GAAGN,KAAK;IAC7CO,OAAO,GAAGR,UAAU,CAACC,KAAK,CAAC;EAC7B,OAAO;IACLO,OAAO;IACPC,MAAM,EAAE;MACNC,KAAK,EAAEN,cAAc;MACrBI,OAAO;MAAED,OAAO;MAChBL,IAAI;MAAEI;IACR;EACF,CAAC;AACH,CAAC;AAAC,IAAAK,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaV,WAAW","ignoreList":[]}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/items/hooks/crItemWatch.js"
+ ],
+ "file": "../../../../src/components/items/hooks/crItemWatch.js",
+ "names": [
+  "_crCaptionDf",
+  "props",
+  "repo",
+  "crItemWatch",
+  "itemDesription",
+  "crCaption",
+  "requestType",
+  "version",
+  "caption",
+  "config",
+  "descr",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,MAAMA,YAAY,GAAGC,KAAK,IAAIA,KAAK,CAACC,IAAI;AAExC,MAAMC,WAAW,GAAG,SAAAA,CAClBF,KAAK,EACLG,cAAc,EACdC,SAAS,EACN;EAAA,IADHA,SAAS;IAATA,SAAS,GAACL,YAAY;EAAA;EAEtB,MAAM;MACJE,IAAI;MACJI,WAAW;MACXC,OAAO,GAAC;IACV,CAAC,GAAGN,KAAK;IACPO,OAAO,GAAGH,SAAS,CAACJ,KAAK,CAAC;EAC5B,OAAO;IACLO,OAAO;IACPC,MAAM,EAAE;MACNC,KAAK,EAAEN,cAAc;MACrBI,OAAO;MACPD,OAAO;MACPL,IAAI;MACJI;IACF;EACF,CAAC;AACH,CAAC;AAAC,IAAAK,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaV,WAAW"
+}

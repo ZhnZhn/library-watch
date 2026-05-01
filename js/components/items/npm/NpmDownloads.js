@@ -27,7 +27,6 @@ const NpmDownloads = _ref => {
   let {
     type,
     options,
-    chartType,
     caption,
     packageName,
     requestType,

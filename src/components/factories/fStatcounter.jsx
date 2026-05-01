@@ -14,7 +14,7 @@ const _crArrFromObj = obj => getObjectKeys(obj)
   }));
 
 const _compareByValue = (a, b) => b.value - a.value;
-const _crTopN = (arr, top=5) => {
+const _crTopN = (arr) => {
   /*eslint-disable no-unused-vars */
   const { Date, ...rest } = arr[arr.length-1]
   /*eslint-enable no-unused-vars */
@@ -46,7 +46,7 @@ const _crLabelsDataTuple = (json) => {
     return _arr;
   });
 
-  json.forEach(row => {    
+  json.forEach(row => {
     if (_isDate(row.Date)) {
       labels.push(row.Date)
       for(let i=0; i<_maxSeria; i++){
@@ -72,8 +72,7 @@ const fStatcounter = ({
   json,
   parentProps,
   onMoveToTop,
-  onCloseItem,
-  onWatchItem
+  onCloseItem
 }) => {
   const [
     labels,

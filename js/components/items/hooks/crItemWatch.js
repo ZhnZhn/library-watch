@@ -2,17 +2,17 @@
 
 exports.__esModule = true;
 exports.default = void 0;
-const _crCaption = props => props.repo;
+const _crCaptionDf = props => props.repo;
 const crItemWatch = function (props, itemDesription, crCaption) {
   if (crCaption === void 0) {
-    crCaption = _crCaption;
+    crCaption = _crCaptionDf;
   }
   const {
       repo,
       requestType,
       version = ''
     } = props,
-    caption = _crCaption(props);
+    caption = crCaption(props);
   return {
     caption,
     config: {

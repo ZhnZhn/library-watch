@@ -6,7 +6,7 @@ import App from './components/AppLibraryWatch';
 if (process.env.NODE_ENV !== 'production'){
 /* eslint-disable no-undef */
   console.log('Development Mode:');
-  window.onerror = function(message, source, lineno, colno, error) {
+  window.onerror = function(message, _source, _lineno, _colno, _error) {
      console.log('window.onerror:');
      console.log(message);
      return false;

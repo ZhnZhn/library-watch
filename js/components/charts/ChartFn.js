@@ -22,7 +22,7 @@ const ONE_THOUSAND = 1_000,
   _fCrTick = (number, suffix) => value => value ? (value / number).toFixed(1).replace(".0", "") + suffix : "0",
   _crThousandTick = _fCrTick(ONE_THOUSAND, "K"),
   _crMillionTick = _fCrTick(ONE_MILLION, "M");
-const formatTicks = (value, index, values) => {
+const formatTicks = (value, _index, values) => {
   const _item2 = values[1],
     _itemN = values[values.length - 1];
   return _isMillionCase(_item2, _itemN) ? _crMillionTick(value) : _isThousandCase(_item2, _itemN) ? _crThousandTick(value) : "" + value;

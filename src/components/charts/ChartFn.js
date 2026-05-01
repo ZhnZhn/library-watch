@@ -32,7 +32,7 @@ const ONE_THOUSAND = 1_000
 
 export const formatTicks = (
   value,
-  index,
+  _index,
   values
 ) => {
   const _item2 = values[1]

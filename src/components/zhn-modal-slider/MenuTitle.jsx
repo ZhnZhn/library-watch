@@ -16,8 +16,7 @@ const MenuTitle = ({
   refEl,
   titleCl,
   title,
-  pageNumber,
-  onClick,
+  onClick
 }) => title ? (
   <MenuAriaItem
     refEl={refEl}

@@ -43,7 +43,7 @@ const InputSwitch = _ref => {
   } = _ref;
   const _inputId = (0, _uiApi.useId)(),
     [_isChecked, _setIsChecked] = (0, _uiApi.useState)(() => !!initialValue),
-    _hChange = evt => {
+    _hChange = _evt => {
       const _nextValue = !_isChecked,
         _onChange = onToggle || (_nextValue ? onCheck : onUnCheck);
       _onChange(_nextValue);

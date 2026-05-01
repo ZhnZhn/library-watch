@@ -52,7 +52,6 @@ const MenuItemList = _ref3 => {
   let {
     getRefItem,
     items,
-    itemCl,
     pageNumber,
     onNextPage,
     onClose

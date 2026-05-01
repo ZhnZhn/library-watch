@@ -43,7 +43,6 @@ const NextPageArrow = ({ type }) =>
 const MenuItemList = ({
   getRefItem,
   items,
-  itemCl,
   pageNumber,
   onNextPage,
   onClose

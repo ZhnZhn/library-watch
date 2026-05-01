@@ -19,7 +19,7 @@ const InputFileReader = ({
       }
 
       // Build Promise List, each promise resolved by FileReader.onload.
-      Promise.all(files.map(file => new Promise((resolve, reject) => {
+      Promise.all(files.map(file => new Promise((resolve, _reject) => {
         let reader = new FileReader();
 
         reader.onload = result => {
@@ -52,6 +52,11 @@ const InputFileReader = ({
           : INITIAL_FILE_LABEL;
         setLabelText(_labelText)
         onChange(zippedResults)
+      })
+      .catch(err => {
+        /*eslint-disable no-undef */
+        console.log(err)
+        /*eslint-enable no-undef */
       });
     }, [])
     // as, onChange

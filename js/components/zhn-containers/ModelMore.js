@@ -4,7 +4,6 @@ exports.__esModule = true;
 exports.default = void 0;
 const crModelMore = _ref => {
   let {
-    chartType,
     onMinWidth,
     onInitialWidth,
     onPlusWidth,

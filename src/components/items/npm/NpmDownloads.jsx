@@ -25,7 +25,6 @@ const ITEM_DESCRIPTION = "Npm Recent Month Downloads"
 const NpmDownloads = ({
   type,
   options,
-  chartType,
   caption,
   packageName,
   requestType,

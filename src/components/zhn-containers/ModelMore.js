@@ -1,5 +1,4 @@
 const crModelMore = ({
-  chartType,
   onMinWidth,
   onInitialWidth,
   onPlusWidth,

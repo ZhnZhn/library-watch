@@ -86,7 +86,7 @@ class ResizeElementImpl {
     this.id = setInterval(resizeFn, 5);
   }
 
-  _hStopResize = (isOnResizeAfter, event) => {
+  _hStopResize = (isOnResizeAfter, _evt) => {
     clearInterval(this.id);
     _setInitialValuesTo(this)
 

@@ -3,7 +3,7 @@ import toLink from './toLink';
 
 const _onError = (
   src,
-  event
+  _evt
 ) => {
   /*eslint-disable no-undef */
   console.log("Failed to load image with src: " + src);

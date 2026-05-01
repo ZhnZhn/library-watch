@@ -21,7 +21,6 @@ const MenuTitle = _ref => {
     refEl,
     titleCl,
     title,
-    pageNumber,
     onClick
   } = _ref;
   return title ? /*#__PURE__*/(0, _jsxRuntime.jsxs)(_MenuAriaItem.default, {

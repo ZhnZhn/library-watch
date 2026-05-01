@@ -9,7 +9,6 @@ import MenuTitle from './MenuTitle';
 import MenuItemList from './MenuItemList';
 
 const MenuPage = ({
-  isShow,
   items=[],
   style,
   isVisible,
@@ -17,7 +16,6 @@ const MenuPage = ({
   title,
   titleCl,
   itemCl,
-  pageCurrent,
   pageNumber,
   onClose,
   children,
@@ -70,7 +68,6 @@ const MenuPage = ({
 
 /*
 MenuPage.propTypes = {
-  isShow: PropTypes.bool,
   isVisible: PropTypes.bool,
   canBeHidden: PropTypes.bool,
   title: PropTypes.string,

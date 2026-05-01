@@ -13,7 +13,6 @@ var _MenuItemList = _interopRequireDefault(require("./MenuItemList"));
 var _jsxRuntime = require("react/jsx-runtime");
 const MenuPage = _ref => {
   let {
-    isShow,
     items = [],
     style,
     isVisible,
@@ -21,7 +20,6 @@ const MenuPage = _ref => {
     title,
     titleCl,
     itemCl,
-    pageCurrent,
     pageNumber,
     onClose,
     children,
@@ -61,7 +59,6 @@ const MenuPage = _ref => {
 
 /*
 MenuPage.propTypes = {
-  isShow: PropTypes.bool,
   isVisible: PropTypes.bool,
   canBeHidden: PropTypes.bool,
   title: PropTypes.string,

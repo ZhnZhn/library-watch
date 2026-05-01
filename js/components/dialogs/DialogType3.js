@@ -56,7 +56,7 @@ const DialogType3 = (0, _memoFn.memoIsShow)(_ref => {
     _refInputTwo = (0, _uiApi.useRef)(),
     _refInputDates = (0, _uiApi.useRef)(),
     [_refSortBy, _hSelectSortBy] = (0, _useSelectItem.default)(),
-    [validationMessages, COMMAND_BUTTONS, hClose, hLoad] = (0, _useDialogButtons.default)((setValidationMessages, clearValidationMessages) => {
+    [validationMessages, COMMAND_BUTTONS, hClose, hLoad] = (0, _useDialogButtons.default)((setValidationMessages, _clearValidationMessages) => {
       const repo = (0, _uiApi.getRefValue)(_refInputOne).getValue(),
         intitle = (0, _uiApi.getRefValue)(_refInputTwo).getValue(),
         _dateInst = (0, _uiApi.getRefValue)(_refInputDates),

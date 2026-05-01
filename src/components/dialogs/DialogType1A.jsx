@@ -60,8 +60,8 @@ const DialogType3 = memoIsShow(({
     COMMAND_BUTTONS,
     hClose
   ] = useDialogButtons((
-    setValidationMessages,
-    clearValidationMessages
+    _setValidationMessages,
+    _clearValidationMessages
   ) => {
     const {
       value,

@@ -79,7 +79,7 @@ const loadBrowserDynamic = option => {
   (0, _fnFetch.default)({
     uri: option.sourceMenuUrl,
     option: option,
-    onCheckResponse: json => true,
+    onCheckResponse: _json => true,
     onFetch: _fetchSourceMenu,
     onCompleted: _loadBrowserDynamicCompleted,
     onCatch: _fnCatch.default,

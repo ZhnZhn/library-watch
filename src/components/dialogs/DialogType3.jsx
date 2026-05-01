@@ -71,7 +71,7 @@ const DialogType3 = memoIsShow(({
     hLoad
   ] = useDialogButtons((
     setValidationMessages,
-    clearValidationMessages
+    _clearValidationMessages
   ) => {
     const repo = getRefValue(_refInputOne).getValue()
     , intitle = getRefValue(_refInputTwo).getValue()
