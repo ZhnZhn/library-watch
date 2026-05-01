@@ -20,10 +20,10 @@ const useItemMenuMore = (onMoveToTop, onToggleButtons) => {
     className: _styleFn.CL_MENU_MORE,
     model: _MENU_MODEL,
     onClose: toggleIsMenuMore
-  }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore.default, {
+  }, "ms"), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore.default, {
     style: _Item.S_BT_MORE,
     onClick: _showMenuMore
-  })];
+  }, "sm")];
 };
 var _default = exports.default = useItemMenuMore;
 //# sourceMappingURL=useItemMenuMore.js.map

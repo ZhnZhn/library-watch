@@ -22,6 +22,7 @@ const crAfterInputEl = (
   , {
     optionNames
   } = state
+  // biome-ignore-start lint/correctness/useJsxKeyInIterable: return tuple
   return !isLoading && !isLoadingFailed
     ? [placeholder || `Select ${optionName}...`,
         (<ArrowCell
@@ -42,6 +43,7 @@ const crAfterInputEl = (
                    onClick={onLoadOption}
              />)]
             : [];
+  // biome-ignore-end lint/correctness/useJsxKeyInIterable: return tuple
 };
 
 export default crAfterInputEl

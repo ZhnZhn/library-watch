@@ -18,6 +18,7 @@ const crAfterInputEl = (props, state, isShowOption, hToggleOptions) => {
     {
       optionNames
     } = state;
+  // biome-ignore-start lint/correctness/useJsxKeyInIterable: return tuple
   return !isLoading && !isLoadingFailed ? [placeholder || `Select ${optionName}...`, /*#__PURE__*/(0, _jsxRuntime.jsx)(_ArrowCell.default, {
     isShowOption: isShowOption,
     onClick: hToggleOptions
@@ -29,6 +30,7 @@ const crAfterInputEl = (props, state, isShowOption, hToggleOptions) => {
     "data-loader": "circle-failed",
     onClick: onLoadOption
   })] : [];
+  // biome-ignore-end lint/correctness/useJsxKeyInIterable: return tuple
 };
 var _default = exports.default = crAfterInputEl;
 //# sourceMappingURL=crAfterInputEl.js.map

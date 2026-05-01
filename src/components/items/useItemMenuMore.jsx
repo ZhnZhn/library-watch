@@ -10,7 +10,7 @@ import { S_BT_MORE } from './Item.Style';
 const useItemMenuMore = (
   onMoveToTop,
   onToggleButtons
-) => {  
+) => {
   const [
     _MENU_MODEL,
     isMenuMore,
@@ -22,12 +22,14 @@ const useItemMenuMore = (
   });
   return [
     <ModalSlider
+       key="ms"
        isShow={isMenuMore}
        className={CL_MENU_MORE}
        model={_MENU_MODEL}
        onClose={toggleIsMenuMore}
     />,
     <SvgMore
+      key="sm"
       style={S_BT_MORE}
       onClick={_showMenuMore}
     />

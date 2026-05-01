@@ -10,7 +10,7 @@
     "transpile:all": "babel ./src --out-dir ./js --source-maps",
     "lint:one": "eslint -c eslint.config.js",
     "lint:biome": "npx @biomejs/biome lint ./src --colors=off --skip=noAssignInExpressions --skip=useOptionalChain --skip=noCommaOperator --skip=noExportsInTest",
-    "lint:only": "npx @biomejs/biome lint ./src --only=useIterableCallbackReturn --colors=off",    
+    "lint:only": "npx @biomejs/biome lint ./src --only=useJsxKeyInIterable --colors=off",    
     "css:min": "node min-css.js",
     "build:prod": "webpack --color --progress --config webpack.prod.js",
     "stats": "npm run stats:json && npm run stats:report",
