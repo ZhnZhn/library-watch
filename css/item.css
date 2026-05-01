@@ -5,10 +5,8 @@
   background-color: #232f3b;
   width: 100%;
   min-height: 38px;
-  padding-left: 8px;
-  padding-top: 2px;
-  padding-right: 42px;
-  overflow-x: hidden;
+  padding: 2px 42px 0 8px;
+  overflow: hidden;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   box-shadow: rgba(0, 0, 0, 0.18) 0 5px 11px 0, rgba(0, 0, 0, 0.15) 0 4px 15px 0;
