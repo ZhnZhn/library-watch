@@ -16,19 +16,27 @@ const _crArrFromObj = obj => getObjectKeys(obj)
 const _compareByValue = (a, b) => b.value - a.value;
 const _crTopN = (arr) => {
   /*eslint-disable no-unused-vars */
-  const { Date, ...rest } = arr[arr.length-1]
+  const { Date: _d, ...rest } = arr[arr.length-1]
   /*eslint-enable no-unused-vars */
   , _arrRecent = _crArrFromObj(rest);
   _arrRecent.sort(_compareByValue)
 
   const _arrTop = []
-  , _toIndex = _arrRecent.length;
+  //, _toIndex = _arrRecent.length;
+  for (const item of _arrRecent) {
+    const caption = item.caption;
+    if (caption) {
+      _arrTop.push(caption)
+    }
+  }
+  /*
   for(let i=0; i<_toIndex; i++){
     const caption = _arrRecent[i].caption;
     if (caption) {
       _arrTop.push(caption)
     }
   }
+  */
   return _arrTop;
 }
 

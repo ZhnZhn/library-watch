@@ -1,3 +1,5 @@
+import { _isNaN } from './isTypeFn';
+
 const _hasOwnProperty  = Object.prototype.hasOwnProperty;
 
 const is = (x, y) => {
@@ -8,7 +10,7 @@ const is = (x, y) => {
 		return x !== 0 || 1 / x === 1 / y;
 	} else {
 		// Step 6.a: NaN == NaN
-		return x !== x && y !== y;
+		return _isNaN(x) && _isNaN(y);
 	}
 };
 

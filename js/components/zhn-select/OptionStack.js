@@ -23,7 +23,7 @@ var _jsxRuntime = require("react/jsx-runtime");
       item: item,
       propCaption: propCaption
     })
-  }, index));
+  }, item[propCaption]));
 };
 /*eslint-enable jsx-a11y/click-events-have-key-events*/
 var _default = exports.default = OptionStack;

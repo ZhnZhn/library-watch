@@ -35,7 +35,7 @@ const ValidationMessages = ({
   <div style={S_ROOT_DIV}>
     {validationMessages.map((msg, index) => (
        <ValidationMessage
-          key={index}
+          key={msg}
           msg={msg}
           index={index+1}
         />

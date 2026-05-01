@@ -5,19 +5,23 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _has = require("../has");
 var _jsxRuntime = require("react/jsx-runtime");
+// biome-ignore-start lint/a11y/noAriaHiddenOnFocusable: focus trap sentinel
+// biome-ignore-start lint/a11y/noNoninteractiveTabindex: focus trap sentinel
 /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/const TrapDiv = _ref => {
   let {
     style,
     onFocus
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    style: style,
-    tabIndex: "0",
     "aria-hidden": "true",
+    tabIndex: "0",
+    style: style,
     onFocus: onFocus
   });
 };
 /*eslint-enable jsx-a11y/no-noninteractive-tabindex*/
+// biome-ignore-end lint/a11y/noAriaHiddenOnFocusable: focus trap sentinel
+// biome-ignore-end lint/a11y/noNoninteractiveTabindex: focus trap sentinel
 
 const FocusTrap = _ref2 => {
   let {

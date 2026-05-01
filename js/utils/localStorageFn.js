@@ -12,7 +12,7 @@ const KEY_PREFIX = 'LW',
   ERR_LS_IS_ABSENT = _crErr("LocalStorage is absent"),
   ERR_USE_LS_NOT_ALLOWED = _crErr("Use LocalStorage is not allowed");
 const hasLocalStorage = exports.hasLocalStorage = !!LS;
-let _isAllowUseLs = true;
+const _isAllowUseLs = true;
 const _crStorageKey = storageKey => `${KEY_PREFIX}_${storageKey}`;
 const readFromLs = storageKey => {
   if (hasLocalStorage) {

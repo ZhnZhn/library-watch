@@ -18,6 +18,7 @@ const SvgMore = _ref => {
     style: style,
     onClick: onClick,
     children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("svg", {
+      "aria-hidden": "true",
       style: svgStyle,
       width: "6px",
       height: "22px",

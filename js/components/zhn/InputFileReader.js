@@ -25,7 +25,7 @@ const InputFileReader = _ref => {
 
       // Build Promise List, each promise resolved by FileReader.onload.
       Promise.all(files.map(file => new Promise((resolve, _reject) => {
-        let reader = new FileReader();
+        const reader = new FileReader();
         reader.onload = result => {
           // Resolve both the FileReader result and its original file.
           resolve([result, file]);
@@ -74,6 +74,7 @@ const InputFileReader = _ref => {
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("label", {
       htmlFor: "file",
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
+        "aria-hidden": "true",
         xmlns: "http://www.w3.org/2000/svg",
         width: "20",
         height: "17",

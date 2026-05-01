@@ -46,8 +46,8 @@ const _transformDownloads = function (downloads) {
             downloads: value
           } = item
           /* eslint-disable no-unused-vars */,
-          [y, m, d] = date.split('-');
-        /* eslint-disable no-unused-vars */
+          [_y, m, d] = date.split('-');
+        /* eslint-enable no-unused-vars */
         labels.push(`${m}-${d}`);
         data.push(value);
       }

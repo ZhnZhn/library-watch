@@ -9,9 +9,9 @@ const TransformFn = {
       level2 = "lists",
       level3 = "items",
       _options = [];
-    for (let group of data[level1] || []) {
-      for (let list of group[level2] || []) {
-        for (let item of list[level3] || []) {
+    for (const group of data[level1] || []) {
+      for (const list of group[level2] || []) {
+        for (const item of list[level3] || []) {
           item.topic = `${group[caption]}/${list[caption]}`;
           _options.push(item);
         }

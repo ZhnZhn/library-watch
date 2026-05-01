@@ -69,6 +69,7 @@ const OpenClose2 = _ref => {
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         style: S_SVG,
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
+          "aria-hidden": "true",
           viewBox: "0 0 16 16",
           width: "100%",
           height: "100%",

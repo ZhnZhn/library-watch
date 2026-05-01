@@ -8,7 +8,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 /* eslint-disable no-undef */if (process.env.NODE_ENV !== 'production') {
   /* eslint-disable no-undef */
   console.log('Development Mode:');
-  window.onerror = function (message, _source, _lineno, _colno, _error) {
+  window.onerror = (message, _source, _lineno, _colno, _error) => {
     console.log('window.onerror:');
     console.log(message);
     return false;
@@ -24,7 +24,7 @@ const _renderApp = () => {
   }
   (0, _client.createRoot)(document.getElementById("app")).render(/*#__PURE__*/(0, _jsxRuntime.jsx)(_AppLibraryWatch.default, {}));
 };
-const _loadingApp = function () {
+const _loadingApp = () => {
   const preloader = window.preloader;
   if (preloader) {
     if (!preloader.isErrCss && !preloader.isErrScript) {

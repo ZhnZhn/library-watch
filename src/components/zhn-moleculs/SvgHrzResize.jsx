@@ -39,24 +39,33 @@ const SvgHrzResize = props => {
        title="Resize container horizontal right"
        {...rightBtHandlers}
     >
-      <svg viewBox="0 0 12 12" width="100%" height="100%"
-           preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-           <path
-              d="M 1,6 L 11,6"
-              strokeWidth="2"
-              strokeLinecap="round"
-          />
-          <path
-              d="M 6,2 L 11,6 6,10"
-              strokeWidth="2"
-              strokeLinecap="round"
-              fill="none"
-         />
-      </svg>
+      <Svg100>
+        <path
+          d="M 1,6 L 11,6"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+        <path
+          d="M 6,2 L 11,6 6,10"
+          strokeWidth="2"
+          strokeLinecap="round"
+          fill="none"
+        />
+      </Svg100>
     </div>
   </div>
   );
 };
+
+/*
+<svg
+  viewBox="0 0 12 12"
+  width="100%"
+  height="100%"
+  preserveAspectRatio="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+*/
 
 /*
 SvgHrzResize.propTypes = {

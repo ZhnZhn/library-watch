@@ -2,6 +2,7 @@ import { isFn } from '../../utils/isTypeFn';
 import { bindTo } from '../uiApi';
 
 const _assign = Object.assign
+, _isNaN = Number.isNaN
 , _setInitialValuesTo = obj => {
    _assign(obj, {
      id: null,
@@ -73,7 +74,7 @@ class ResizeElementImpl {
 
   _updateDelta = () => {
     const w = parseInt(this._getElementStyle().width, 10);
-    if (!isNaN(w)) {
+    if (!_isNaN(w)) {
       this.delta = w - this.initWidth
     }
   }

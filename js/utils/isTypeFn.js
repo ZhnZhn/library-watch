@@ -1,8 +1,8 @@
 "use strict";
 
 exports.__esModule = true;
-exports.isStr = exports.isRegularObj = exports.isNumber = exports.isNotEmptyStr = exports.isNaN = exports.isFn = exports.isBool = exports.isArr = void 0;
-const isNaN = exports.isNaN = Number.isNaN;
+exports.isStr = exports.isRegularObj = exports.isNumber = exports.isNotEmptyStr = exports.isFn = exports.isBool = exports.isArr = exports._isNaN = void 0;
+const _isNaN = exports._isNaN = Number.isNaN;
 const isArr = exports.isArr = Array.isArray;
 const _fIsType = strType => v => typeof v === strType,
   _isTypeNumber = _fIsType('number');

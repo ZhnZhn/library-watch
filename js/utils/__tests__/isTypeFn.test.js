@@ -15,8 +15,8 @@ describe('isNumber', () => {
     expect(fn(() => {})).toBe(false);
   });
 });
-describe('isNaN', () => {
-  const fn = _isTypeFn.isNaN;
+describe('_isNaN', () => {
+  const fn = _isTypeFn._isNaN;
   test('should return boolean is value NaN', () => {
     expect(fn(NaN)).toBe(true);
     expect(fn(0.1)).toBe(false);

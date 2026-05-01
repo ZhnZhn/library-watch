@@ -3,7 +3,7 @@ import { safeFormatMls } from './formatDate';
 import {
 	isStr,
 	isNumber,
-	isNaN
+	_isNaN
 } from './isTypeFn';
 
 const MIN_YEAR = 1999;
@@ -18,7 +18,7 @@ const _notInIntervalStrict = (
 	n,
 	min,
 	max
-) => isNaN(n) || (n<min || n>max);
+) => _isNaN(n) || (n<min || n>max);
 const _notInLengthMinMax = (
 	str,
 	length,
@@ -173,7 +173,7 @@ export const isWeekend = (
 			 _crNumberMonth(month+''),
 			 _parseIntBy10(day+'')
 		));
-	if (isNaN(date)) {
+	if (_isNaN(date)) {
 		return false;
 	}
   const weekday = date.getUTCDay();

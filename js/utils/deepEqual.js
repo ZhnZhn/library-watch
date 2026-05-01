@@ -2,6 +2,7 @@
 
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("./isTypeFn");
 const _hasOwnProperty = Object.prototype.hasOwnProperty;
 const is = (x, y) => {
   // SameValue algorithm
@@ -11,7 +12,7 @@ const is = (x, y) => {
     return x !== 0 || 1 / x === 1 / y;
   } else {
     // Step 6.a: NaN == NaN
-    return x !== x && y !== y;
+    return (0, _isTypeFn._isNaN)(x) && (0, _isTypeFn._isNaN)(y);
   }
 };
 const deepEqual = (objA, objB) => {

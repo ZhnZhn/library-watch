@@ -41,12 +41,7 @@ const SvgHrzResize = props => {
       style: S_BT_DIV,
       title: "Resize container horizontal right",
       ...rightBtHandlers,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("svg", {
-        viewBox: "0 0 12 12",
-        width: "100%",
-        height: "100%",
-        preserveAspectRatio: "none",
-        xmlns: "http://www.w3.org/2000/svg",
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Svg.default, {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
           d: "M 1,6 L 11,6",
           strokeWidth: "2",
@@ -61,6 +56,16 @@ const SvgHrzResize = props => {
     })]
   });
 };
+
+/*
+<svg
+  viewBox="0 0 12 12"
+  width="100%"
+  height="100%"
+  preserveAspectRatio="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+*/
 
 /*
 SvgHrzResize.propTypes = {

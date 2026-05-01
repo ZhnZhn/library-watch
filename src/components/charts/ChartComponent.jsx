@@ -51,9 +51,10 @@ configChart(Chart)
 const DF_OPTIONS = {
 	tooltips: {
 		callbacks: {
-			labelTextColor: function(tooltipItem, chartInst) {
-				 return chartInst.data.datasets[tooltipItem.datasetIndex].borderColor;
-			}
+			labelTextColor: (
+				tooltipItem,
+				chartInst
+			) => chartInst.data.datasets[tooltipItem.datasetIndex].borderColor
 		}
 	}
 };

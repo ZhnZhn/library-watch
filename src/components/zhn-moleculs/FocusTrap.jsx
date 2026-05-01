@@ -1,19 +1,23 @@
 import { focusRefElement } from '../uiApi';
 import { HAS_KEYBOARD_FOCUS } from '../has';
 
+// biome-ignore-start lint/a11y/noAriaHiddenOnFocusable: focus trap sentinel
+// biome-ignore-start lint/a11y/noNoninteractiveTabindex: focus trap sentinel
 /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
 const TrapDiv = ({
   style,
   onFocus
 }) => (
   <div
-    style={style}
-    tabIndex="0"
     aria-hidden="true"
+    tabIndex="0"
+    style={style}
     onFocus={onFocus}
   />
 );
 /*eslint-enable jsx-a11y/no-noninteractive-tabindex*/
+// biome-ignore-end lint/a11y/noAriaHiddenOnFocusable: focus trap sentinel
+// biome-ignore-end lint/a11y/noNoninteractiveTabindex: focus trap sentinel
 
 const FocusTrap = ({
   refEl,

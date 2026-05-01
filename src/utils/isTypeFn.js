@@ -1,4 +1,4 @@
-export const isNaN = Number.isNaN
+export const _isNaN = Number.isNaN
 export const isArr = Array.isArray
 
 const _fIsType = strType => v => typeof v === strType

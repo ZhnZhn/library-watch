@@ -17,9 +17,7 @@ _chart.Chart.register(_chart.LineElement, _chart.LineController, _chart.BarEleme
 const DF_OPTIONS = {
   tooltips: {
     callbacks: {
-      labelTextColor: function (tooltipItem, chartInst) {
-        return chartInst.data.datasets[tooltipItem.datasetIndex].borderColor;
-      }
+      labelTextColor: (tooltipItem, chartInst) => chartInst.data.datasets[tooltipItem.datasetIndex].borderColor
     }
   }
 };

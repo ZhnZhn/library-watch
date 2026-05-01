@@ -9,7 +9,7 @@ const OptionStack = ({
   onClick
 }) => options
   .map((item, index)=>(<div
-      key={index}
+      key={item[propCaption]}
       role="option"
       aria-selected={indexActiveOption === index}
       tabIndex="-1"

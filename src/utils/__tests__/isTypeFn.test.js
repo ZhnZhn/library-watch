@@ -1,6 +1,6 @@
 import {
   isNumber,
-  isNaN,
+  _isNaN,
   isArr,
   isRegularObj,
   isStr,
@@ -24,8 +24,8 @@ describe('isNumber',()=>{
   })
 })
 
-describe('isNaN',()=>{
-  const fn = isNaN;
+describe('_isNaN',()=>{
+  const fn = _isNaN;
   test('should return boolean is value NaN',()=>{
     expect(fn(NaN)).toBe(true)
 

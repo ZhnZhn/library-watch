@@ -7,7 +7,7 @@ var _arrFn = require("../../utils/arrFn");
 var _ChartConfigFactories = require("../charts/ChartConfigFactories");
 var _fNpm = _interopRequireDefault(require("./fNpm"));
 const _isReleaseVersion = a => (a.split(".")[2] || "").indexOf("-") === -1;
-const _compareToken = (a, b) => parseInt(a) > parseInt(b) ? -1 : 1;
+const _compareToken = (a, b) => parseInt(a, 10) > parseInt(b, 10) ? -1 : 1;
 const _compareByVersions = (a, b) => {
   const arrA = a.split("."),
     arrB = b.split(".");

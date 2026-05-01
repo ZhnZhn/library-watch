@@ -10,6 +10,7 @@ const Link = ({
   const _href = toLink(href);
   return _href ? (
     <a target="_blank"
+        rel="noopener"
         className={className}
         style={style}
         href={href}

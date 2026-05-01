@@ -15,7 +15,7 @@ const _isReleaseVersion = (
 const _compareToken = (
   a,
   b
-) => parseInt(a) > parseInt(b) ? -1 : 1;
+) => parseInt(a, 10) > parseInt(b, 10) ? -1 : 1;
 
 const _compareByVersions = (
   a,

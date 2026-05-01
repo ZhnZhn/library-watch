@@ -158,7 +158,7 @@ const _updateDataVersions = (
 const _crHmVersions = (json1) => {
   const _hm = {}
   , versions = json1.versions || [];
-  for (let item of versions) {
+  for (const item of versions) {
     _hm[item.id] = item.num
   }
   return _hm;

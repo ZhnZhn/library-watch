@@ -8,7 +8,7 @@ const KEY_PREFIX = 'LW'
 
 export const hasLocalStorage = !!(LS)
 
-let _isAllowUseLs = true;
+const _isAllowUseLs = true;
 const _crStorageKey = (
   storageKey
 ) => `${KEY_PREFIX}_${storageKey}`;

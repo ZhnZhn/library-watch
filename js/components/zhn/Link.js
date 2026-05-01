@@ -16,6 +16,7 @@ const Link = _ref => {
   const _href = (0, _toLink.default)(href);
   return _href ? /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
     target: "_blank",
+    rel: "noopener",
     className: className,
     style: style,
     href: href,

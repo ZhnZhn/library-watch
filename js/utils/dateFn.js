@@ -10,7 +10,7 @@ const _mathFloor = Math.floor,
 const _isFinite = Number.isFinite;
 const _parseIntBy10 = str => parseInt(str, 10);
 const _crNumberMonth = str => _parseIntBy10(str) - 1;
-const _notInIntervalStrict = (n, min, max) => (0, _isTypeFn.isNaN)(n) || n < min || n > max;
+const _notInIntervalStrict = (n, min, max) => (0, _isTypeFn._isNaN)(n) || n < min || n > max;
 const _notInLengthMinMax = (str, length, min, max) => (0, _isTypeFn.isStr)(str) && str.length !== length || _notInIntervalStrict(_parseIntBy10(str), min, max);
 const _isYmd = function (dateStr, nForecastDate, minYear) {
   if (nForecastDate === void 0) {
@@ -101,7 +101,7 @@ const ymdToUTCSecond = strDate => ymdToMlsUTC(strDate) / 1000;
 exports.ymdToUTCSecond = ymdToUTCSecond;
 const isWeekend = (year, month, day) => {
   const date = new Date(Date.UTC(_parseIntBy10(year + ''), _crNumberMonth(month + ''), _parseIntBy10(day + '')));
-  if ((0, _isTypeFn.isNaN)(date)) {
+  if ((0, _isTypeFn._isNaN)(date)) {
     return false;
   }
   const weekday = date.getUTCDay();

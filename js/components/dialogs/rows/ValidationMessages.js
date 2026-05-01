@@ -47,7 +47,7 @@ const ValidationMessages = _ref2 => {
     children: validationMessages.map((msg, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)(ValidationMessage, {
       msg: msg,
       index: index + 1
-    }, index))
+    }, msg))
   }) : null;
 };
 
