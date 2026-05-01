@@ -1,3 +1,5 @@
+import { ymdToUTCSecond } from '../../utils/dateFn';
+
 import {
   useRef,
   getRefValue
@@ -15,8 +17,6 @@ import Dialog from './Dialog';
 import RowInputText from './rows/RowInputText';
 import RowInputSelect from './rows/RowInputSelect';
 import RowInputDatePeriod from './rows/RowInputDatePeriod';
-
-import { ymdToUTCSecond } from './helperFns';
 
 const _SORT_OPTIONS = [
   { caption: "Activity, Recent Day", value: "activity" },

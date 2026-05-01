@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _dateFn = require("../../utils/dateFn");
 var _uiApi = require("../uiApi");
 var _memoFn = require("../hoc/memoFn");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
@@ -14,7 +15,6 @@ var _Dialog = _interopRequireDefault(require("./Dialog"));
 var _RowInputText = _interopRequireDefault(require("./rows/RowInputText"));
 var _RowInputSelect = _interopRequireDefault(require("./rows/RowInputSelect"));
 var _RowInputDatePeriod = _interopRequireDefault(require("./rows/RowInputDatePeriod"));
-var _helperFns = require("./helperFns");
 var _jsxRuntime = require("react/jsx-runtime");
 const _SORT_OPTIONS = [{
   caption: "Activity, Recent Day",
@@ -75,8 +75,8 @@ const DialogType3 = (0, _memoFn.memoIsShow)(_ref => {
           requestType,
           intitle,
           sort: (0, _getRefItemValue.default)(_refSortBy),
-          fromdate: (0, _helperFns.ymdToUTCSecond)(fromDate),
-          todate: (0, _helperFns.ymdToUTCSecond)(toDate)
+          fromdate: (0, _dateFn.ymdToUTCSecond)(fromDate),
+          todate: (0, _dateFn.ymdToUTCSecond)(toDate)
         });
       } else {
         setValidationMessages(_validationMessage);
