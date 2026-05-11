@@ -23,21 +23,12 @@ const _crTopN = arr => {
     _arrRecent = _crArrFromObj(rest);
   _arrRecent.sort(_compareByValue);
   const _arrTop = [];
-  //, _toIndex = _arrRecent.length;
   for (const item of _arrRecent) {
     const caption = item.caption;
     if (caption) {
       _arrTop.push(caption);
     }
   }
-  /*
-  for(let i=0; i<_toIndex; i++){
-    const caption = _arrRecent[i].caption;
-    if (caption) {
-      _arrTop.push(caption)
-    }
-  }
-  */
   return _arrTop;
 };
 const _isDate = date => (0, _isTypeFn.isStr)(date) && date.slice(5, 7) !== "00";

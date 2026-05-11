@@ -1,4 +1,4 @@
-import { bindTo } from "../../utils/bindTo";
+import { bindTo } from "../utils/bindTo";
 
 import {
   createStoreWithSelector,

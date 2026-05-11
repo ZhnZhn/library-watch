@@ -19,7 +19,8 @@
                 	"react": "recommended"
                 },
 		"rules": {
-			"recommended": true,                        
+			"recommended": true,            
+                        "performance": "on",            
                         "correctness": {
                             	"noUndeclaredVariables": "on"
                         },   
