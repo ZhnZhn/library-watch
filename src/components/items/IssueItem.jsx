@@ -27,7 +27,11 @@ import {
   S_PB_8
 } from './Item.Style';
 
-const S_STATE = {
+const S_BT_TITLE = {
+  width: '100%',
+  textAlign: 'left'
+}
+, S_STATE = {
   ...S_PR_8,
   color: '#d7bb52'
 }
@@ -76,10 +80,10 @@ const IssueItem = ({
        className={CL_ITEM}
        onKeyDown={_onKeyDownItem}
     >
-      <div
-         role="button"
-         tabIndex="0"
+      <button
+         type="button"
          className={CL_ITEM_TITLE}
+         style={S_BT_TITLE}
          onClick={toggleIsDescr}
          onKeyDown={_onKeyDown}
       >
@@ -100,7 +104,7 @@ const IssueItem = ({
            <div>
              {title}
            </div>
-      </div>
+      </button>
       <ShowHide isShow={isDescr} style={S_SHOW_HIDE}>
         <Link className={CL_LINK_WARPPER} href={url}>
           {body}

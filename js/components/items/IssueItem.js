@@ -12,7 +12,11 @@ var _Link = _interopRequireDefault(require("../zhn/Link"));
 var _DivComments = _interopRequireDefault(require("./DivComments"));
 var _Item = require("./Item.Style");
 var _jsxRuntime = require("react/jsx-runtime");
-const S_STATE = {
+const S_BT_TITLE = {
+    width: '100%',
+    textAlign: 'left'
+  },
+  S_STATE = {
     ..._Item.S_PR_8,
     color: '#d7bb52'
   },
@@ -54,10 +58,10 @@ const IssueItem = _ref => {
     isShow: isShow,
     className: _styleFn.CL_ITEM,
     onKeyDown: _onKeyDownItem,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      role: "button",
-      tabIndex: "0",
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+      type: "button",
       className: _styleFn.CL_ITEM_TITLE,
+      style: S_BT_TITLE,
       onClick: toggleIsDescr,
       onKeyDown: _onKeyDown,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
