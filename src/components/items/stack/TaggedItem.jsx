@@ -4,7 +4,6 @@ import { crClNotSelected } from '../../styleFn';
 import useDnDHandlers from './useDnDHandlers';
 
 import Link from '../../zhn/Link';
-import DateAgo from '../../zhn/DateAgo';
 import TagList from './TagList';
 import crImgToken from './crImgToken';
 
@@ -111,10 +110,9 @@ const TaggedItem = ({
            <span style={S_BLACK_BAGDE}>
              {display_name}
            </span>
-           <DateAgo
-              style={S_DATE_AGO}
-              dateAgo={dateAgo}
-           />
+           <span style={S_DATE_AGO}>
+             {dateAgo}
+           </span>
          </div>
          <div style={S_TITLE}>
            {title}

@@ -7,7 +7,6 @@ var _uiApi = require("../../uiApi");
 var _styleFn = require("../../styleFn");
 var _useDnDHandlers = _interopRequireDefault(require("./useDnDHandlers"));
 var _Link = _interopRequireDefault(require("../../zhn/Link"));
-var _DateAgo = _interopRequireDefault(require("../../zhn/DateAgo"));
 var _TagList = _interopRequireDefault(require("./TagList"));
 var _crImgToken = _interopRequireDefault(require("./crImgToken"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -110,9 +109,9 @@ const TaggedItem = _ref => {
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           style: S_BLACK_BAGDE,
           children: display_name
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DateAgo.default, {
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           style: S_DATE_AGO,
-          dateAgo: dateAgo
+          children: dateAgo
         })]
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         style: S_TITLE,

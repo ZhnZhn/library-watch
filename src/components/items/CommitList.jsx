@@ -5,7 +5,6 @@ import formatStrDate from '../../utils/formatStrDate';
 import { crDateAgo } from '../../utils/dateFn';
 
 import Link from '../zhn/Link';
-import DateAgo from '../zhn/Link';
 import DivComments from './DivComments';
 
 import {
@@ -37,10 +36,9 @@ const CommitList = crMemoCompList((item, index) => {
            <span style={S_PR_8}>
              {name}
            </span>
-           <DateAgo
-              dateAgo={_dateAgo}
-              date={_dateTime}
-           />
+           <span>
+              {_dateAgo}
+           </span>
          </div>
          <div>
            {message}

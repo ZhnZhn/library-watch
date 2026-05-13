@@ -36,9 +36,8 @@ const CommitList = (0, _memoFn.crMemoCompList)((item, index) => {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           style: _Item.S_PR_8,
           children: name
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Link.default, {
-          dateAgo: _dateAgo,
-          date: _dateTime
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          children: _dateAgo
         })]
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         children: message
