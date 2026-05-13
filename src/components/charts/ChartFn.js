@@ -1,7 +1,7 @@
 
 const ONE_THOUSAND = 1_000
 , ONE_MILLION = ONE_THOUSAND * ONE_THOUSAND
-, _getValue = item => (item || {}).value
+, _getValue = item => item?.value
 , _fIsValue = (
   number
 ) => value => {

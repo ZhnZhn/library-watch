@@ -22,13 +22,13 @@ const useClickOutside = (
   const _ref = useRef(null)
   , _refIs = useRef(null)
   /*eslint-disable react-hooks/exhaustive-deps */
-  , _hClickOutside = useCallback(event => {
+  , _hClickOutside = useCallback(evt => {
       const _el = getRefValue(_ref);
-      if ( _el && _el.contains
-        && !_el.contains(event.target)
+      if ( _el?.contains
+        && !_el.contains(evt.target)
       ){
-        event.stopPropagation()
-        onClickOutside(event)
+        evt.stopPropagation()
+        onClickOutside(evt)
       }
   }, []);
   // onClickOutside

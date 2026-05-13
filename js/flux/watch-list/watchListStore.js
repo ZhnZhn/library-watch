@@ -38,7 +38,7 @@ exports.getWatchList = getWatchList;
 const useWatchList = exports.useWatchList = (0, _storeApi.fCrUse)(_watchListStore, _selectWatchList);
 const useMsEdit = exports.useMsEdit = (0, _storeApi.fCrUse)(_watchListStore, _selectMsEdit);
 const useIsWatchEdited = exports.useIsWatchEdited = (0, _storeApi.fCrUse)(_watchListStore, _selectIsWatchEdited);
-const getWatchGroups = () => (getWatchList() || {}).groups;
+const getWatchGroups = () => getWatchList()?.groups;
 exports.getWatchGroups = getWatchGroups;
 const getWatchListsByGroup = groupCaption => {
   const group = (0, _Fn.findGroup)(getWatchList(), groupCaption);
@@ -162,7 +162,7 @@ const loadFromJson = option => {
         ...getWatchList()
       }
     });
-  } catch (exc) {
+  } catch {
     (0, _compStore.showAlert)({
       ..._Msg.ALERT_LOAD_FROM_JSON
     });

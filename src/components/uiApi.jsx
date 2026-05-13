@@ -31,7 +31,7 @@ export const cloneUiElement = (
   {...overrideProps}
 />)
 
-export const getRefValue = ref => (ref || {}).current
+export const getRefValue = ref => ref?.current
 export const setRefValue = (
   ref,
   value
@@ -80,9 +80,10 @@ export const focusRefElement = (
 export const focusRefNextSiblingFirstChildElement = (
   ref
 ) => {
-  focusHtmlElement(((getRefValue(ref) || {})
-    .nextElementSibling || {})
-    .firstElementChild
+  focusHtmlElement(
+    getRefValue(ref)
+      ?.nextElementSibling
+      ?.firstElementChild
   )
 }
 
@@ -101,7 +102,7 @@ export const stopDefaultFor = (evt) => {
 
 const _getFirstTouches = (
   touches
-) => (touches && touches[0]) || {};
+) => touches?.[0] || {};
 
 const _getTouchClientX = (
   touches

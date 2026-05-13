@@ -6,14 +6,14 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useProperty = _interopRequireDefault(require("../hooks/useProperty"));
 var _useOptionDecorator = _interopRequireDefault(require("./useOptionDecorator"));
-const _getItemLength = element => (element.children || {}).length;
+const _getItemLength = element => element.children?.length;
 
 /*eslint-disable react-hooks/exhaustive-deps */
 const useStepHandlers = () => {
   const refOptionsElement = (0, _uiApi.useRef)(),
     refIndexElement = (0, _uiApi.useRef)(),
     [setActiveIndexOption, getActiveIndexOption] = (0, _useProperty.default)(0),
-    getActiveElement = (0, _uiApi.useMemo)(() => () => (((0, _uiApi.getRefValue)(refOptionsElement) || {}).childNodes || [])[getActiveIndexOption()], []),
+    getActiveElement = (0, _uiApi.useMemo)(() => () => (0, _uiApi.getRefValue)(refOptionsElement)?.childNodes?.[getActiveIndexOption()], []),
     [decorateActiveElement, undecorateActiveElement] = (0, _useOptionDecorator.default)(refIndexElement, getActiveElement);
   return [refOptionsElement, refIndexElement, setActiveIndexOption, getActiveIndexOption, getActiveElement, decorateActiveElement, undecorateActiveElement, ...(0, _uiApi.useMemo)(() => [
   //stepDownOption

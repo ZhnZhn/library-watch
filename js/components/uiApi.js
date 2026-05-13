@@ -30,7 +30,7 @@ const cloneUiElement = function (Element, overrideProps, key) {
   }, key);
 };
 exports.cloneUiElement = cloneUiElement;
-const getRefValue = ref => (ref || {}).current;
+const getRefValue = ref => ref?.current;
 exports.getRefValue = getRefValue;
 const setRefValue = (ref, value) => {
   if (ref) {
@@ -62,7 +62,7 @@ exports.focusHtmlElement = focusHtmlElement;
 const focusRefElement = ref => focusHtmlElement(getRefValue(ref));
 exports.focusRefElement = focusRefElement;
 const focusRefNextSiblingFirstChildElement = ref => {
-  focusHtmlElement(((getRefValue(ref) || {}).nextElementSibling || {}).firstElementChild);
+  focusHtmlElement(getRefValue(ref)?.nextElementSibling?.firstElementChild);
 };
 exports.focusRefNextSiblingFirstChildElement = focusRefNextSiblingFirstChildElement;
 const focusElementById = id => {
@@ -74,7 +74,7 @@ const stopDefaultFor = evt => {
   evt.preventDefault();
 };
 exports.stopDefaultFor = stopDefaultFor;
-const _getFirstTouches = touches => touches && touches[0] || {};
+const _getFirstTouches = touches => touches?.[0] || {};
 const _getTouchClientX = touches => _getFirstTouches(touches).clientX;
 const _getTouchClientY = touches => _getFirstTouches(touches).clientY;
 const getClientX = evt => evt.clientX || _getTouchClientX(evt.targetTouches) || _getTouchClientX(evt.changedTouches) || 0;

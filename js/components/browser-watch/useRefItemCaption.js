@@ -6,7 +6,7 @@ var _uiApi = require("../uiApi");
 const useRefItemCaption = () => {
   const _ref = (0, _uiApi.useRef)(null),
     _setItemCaption = (0, _uiApi.useCallback)(item => {
-      _ref.current = item && item.caption || null;
+      _ref.current = item?.caption || null;
     }, []);
   return [_ref, _setItemCaption];
 };

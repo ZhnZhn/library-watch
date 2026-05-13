@@ -37,12 +37,9 @@ const _fCompareMaybeNumber = (
 
 const _getReputation = (
   item
-) => {
-  const { owner } = item || {};
-  return (owner || {})[PN_REPUTATION] || 0;
-}
+) => item?.owner?.[PN_REPUTATION] || 0
 , _compareByReputation = _fCompareMaybeNumber(_getReputation)
-, _getBountyAmount = item => (item || {})[PN_BOUNTY_AMOUNT] || 0
+, _getBountyAmount = item => item?.[PN_BOUNTY_AMOUNT] || 0
 , _routerCompare = {
   [PN_REPUTATION]: _compareByReputation,
   [PN_BOUNTY_AMOUNT]: _fCompareMaybeNumber(_getBountyAmount)

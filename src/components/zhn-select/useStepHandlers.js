@@ -9,7 +9,7 @@ import useOptionDecorator from './useOptionDecorator';
 
 const _getItemLength = (
   element
-) => (element.children || {}).length;
+) => element.children?.length;
 
 /*eslint-disable react-hooks/exhaustive-deps */
 const useStepHandlers = () => {
@@ -20,7 +20,9 @@ const useStepHandlers = () => {
     getActiveIndexOption
   ] = useProperty(0)
   , getActiveElement = useMemo(
-    () => () => ((getRefValue(refOptionsElement) || {}).childNodes || [])[getActiveIndexOption()],
+    () => () => getRefValue(refOptionsElement)
+      ?.childNodes
+      ?.[getActiveIndexOption()],
     []
   )
   , [

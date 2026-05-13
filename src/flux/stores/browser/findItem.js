@@ -18,7 +18,7 @@ const _findItem = (menu, chartType) => {
 const findItemCounterSetValue = (
   menu,
   chartType
-) => ((_findItem(menu, chartType) || {}).atomCounter || {}).setValue
+) => _findItem(menu, chartType)?.atomCounter?.setValue
 
 
 export default findItemCounterSetValue

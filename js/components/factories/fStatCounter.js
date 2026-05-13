@@ -57,7 +57,7 @@ const _crCaption = _ref => {
     caption,
     region
   } = _ref;
-  return `${(region || {}).caption || ""}: ${caption}`;
+  return [region?.caption, caption].filter(Boolean).join(": ");
 };
 const fStatcounter = _ref2 => {
   let {

@@ -42,12 +42,12 @@ const CL_SHOW_POPUP = "show-popup",
 const About = () => {
   const [isShow, showAbout, hideAbout, _hKeyDown] = (0, _useShowHideComponent.default)(true);
   (0, _compStore.useMsAbout)(msAbout => {
-    if (msAbout && msAbout.is) {
+    if (msAbout?.is) {
       showAbout();
     }
   });
   (0, _itemStore.useMsItem)(msItem => {
-    if (msItem && (msItem.Comp || msItem.chartCont)) {
+    if (msItem?.Comp || msItem?.chartCont) {
       hideAbout();
     }
   });

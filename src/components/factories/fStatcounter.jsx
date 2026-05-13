@@ -65,7 +65,9 @@ const _crLabelsDataTuple = (json) => {
 const _crCaption = ({
   caption,
   region
-}) => `${(region || {}).caption || ""}: ${caption}`;
+}) => [region?.caption, caption]
+  .filter(Boolean)
+  .join(": ");
 
 const fStatcounter = ({
   option,

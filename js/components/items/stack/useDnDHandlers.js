@@ -14,19 +14,19 @@ const DELTA = _has.HAS_TOUCH_EVENTS ? {
   REMOVE_ITEM: 35,
   REMOVE_UNDER: 150
 };
-const _getTouchesClientX = ev => (((ev || {}).touches || [])[0] || {}).clientX || 0;
-const _getChangedTouches = ev => (((ev || {}).changedTouches || [])[0] || {}).clientX || 0;
+const _getTouchesClientX = evt => evt?.touches?.[0]?.clientX || 0;
+const _getChangedTouches = evt => evt?.changedTouches?.[0]?.clientX || 0;
 const useDnDHandlers = (item, setIsClose, onRemoveItem, onRemoveUnder) => {
   const _refClientX = (0, _uiApi.useRef)();
   /*eslint-disable react-hooks/exhaustive-deps */
   return (0, _uiApi.useMemo)(() => {
     const _calcDeltaX = clientX => Math.abs((0, _uiApi.getRefValue)(_refClientX) - clientX),
-      onDragStart = ev => {
-        (0, _uiApi.setRefValue)(_refClientX, ev.clientX);
-        (0, _dndHandlers.styleDragStart)(ev);
-        if (ev && ev.dataTransfer) {
-          ev.dataTransfer.effectAllowed = "move";
-          ev.dataTransfer.dropEffect = "move";
+      onDragStart = evt => {
+        (0, _uiApi.setRefValue)(_refClientX, evt.clientX);
+        (0, _dndHandlers.styleDragStart)(evt);
+        if (evt?.dataTransfer) {
+          evt.dataTransfer.effectAllowed = "move";
+          evt.dataTransfer.dropEffect = "move";
         }
       },
       onTouchStart = ev => {
@@ -77,7 +77,7 @@ const useDnDHandlers = (item, setIsClose, onRemoveItem, onRemoveUnder) => {
     };
   }, []);
   // item, onRemoveItem, setIsClose, onRemoveUnder
-  /*eslint-disable react-hooks/exhaustive-deps */
+  /*eslint-enable react-hooks/exhaustive-deps */
 };
 var _default = exports.default = useDnDHandlers;
 //# sourceMappingURL=useDnDHandlers.js.map

@@ -28,7 +28,7 @@ const SelectGroupList = ({
       setListOptions
     ] = useState([])
   , _hSelectGroup = useCallback(item => {
-    if (item && item.caption){
+    if (item?.caption){
       setRefValue(_refGroupCaption, item.caption)
       setListOptions(item.lists || [])
     } else {

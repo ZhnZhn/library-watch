@@ -91,7 +91,7 @@ const InputSelect = props => {
             const _indexActiveOption = getActiveIndexOption();
             if ((0, _isTypeFn.isNumber)(_indexActiveOption)) {
               const item = options[_indexActiveOption];
-              if (item && item[propCaption]) {
+              if (item?.[propCaption]) {
                 onSelect((0, _helperFns.crOnEnterItem)(item, propCaption, isWithInput));
                 setIsShowOption(false);
                 setState(prevState => ({

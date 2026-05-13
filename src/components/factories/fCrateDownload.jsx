@@ -27,9 +27,9 @@ const COLORS = [
 ];
 const TOTAL_COLOR = "128,192,64"
 
-const _getDate = item => (item || {}).date;
-const _getDownloads = item => (item || {}).downloads;
-const _getVersion = item => (item || {}).version;
+const _getDate = item => item?.date;
+const _getDownloads = item => item?.downloads;
+const _getVersion = item => item?.version;
 
 const _getDateValue = item => [
   _getDate(item),

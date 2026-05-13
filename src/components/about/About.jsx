@@ -40,13 +40,13 @@ const About = () => {
   ] = useShowHideComponent(true);
 
   useMsAbout(msAbout => {
-    if (msAbout && msAbout.is) {
+    if (msAbout?.is) {
       showAbout()
     }
   })
 
   useMsItem(msItem => {
-    if (msItem && (msItem.Comp || msItem.chartCont)) {
+    if (msItem?.Comp || msItem?.chartCont) {
       hideAbout()
     }
   })

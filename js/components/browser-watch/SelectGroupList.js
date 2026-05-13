@@ -20,7 +20,7 @@ const SelectGroupList = _ref => {
     [_refListCaption, _hSelectList] = (0, _useRefItemCaption.default)(),
     [listOptions, setListOptions] = (0, _uiApi.useState)([]),
     _hSelectGroup = (0, _uiApi.useCallback)(item => {
-      if (item && item.caption) {
+      if (item?.caption) {
         (0, _uiApi.setRefValue)(_refGroupCaption, item.caption);
         setListOptions(item.lists || []);
       } else {
@@ -54,7 +54,7 @@ const SelectGroupList = _ref => {
       }
     }
   });
-  /*eslint-disable react-hooks/exhaustive-deps */
+  /*eslint-enable react-hooks/exhaustive-deps */
 
   (0, _uiApi.useImperativeHandle)(refEl, () => ({
     getValue: () => ({

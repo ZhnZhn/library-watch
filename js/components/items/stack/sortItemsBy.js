@@ -23,14 +23,9 @@ const _fCompareMaybeNumber = getMaybeNumber => (a, b) => {
     _notNumberResult = _compareNotNumber(aN, bN);
   return _notNumberResult === DF_RESULT ? bN - aN : _notNumberResult;
 };
-const _getReputation = item => {
-    const {
-      owner
-    } = item || {};
-    return (owner || {})[_config.PN_REPUTATION] || 0;
-  },
+const _getReputation = item => item?.owner?.[_config.PN_REPUTATION] || 0,
   _compareByReputation = _fCompareMaybeNumber(_getReputation),
-  _getBountyAmount = item => (item || {})[_config.PN_BOUNTY_AMOUNT] || 0,
+  _getBountyAmount = item => item?.[_config.PN_BOUNTY_AMOUNT] || 0,
   _routerCompare = {
     [_config.PN_REPUTATION]: _compareByReputation,
     [_config.PN_BOUNTY_AMOUNT]: _fCompareMaybeNumber(_getBountyAmount)

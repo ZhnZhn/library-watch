@@ -25,7 +25,7 @@ const BrowserContainer = _ref => {
     }
   });
   useMsBrowserDynamic(msBrowserDynamic => {
-    if (msBrowserDynamic && msBrowserDynamic.elBrowser) {
+    if (msBrowserDynamic?.elBrowser) {
       setElBrowsers(prevElBrowsers => [msBrowserDynamic.elBrowser, ...prevElBrowsers]);
     }
   });

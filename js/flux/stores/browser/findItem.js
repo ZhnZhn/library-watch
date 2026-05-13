@@ -18,6 +18,6 @@ const _findItem = (menu, chartType) => {
     }
   }
 };
-const findItemCounterSetValue = (menu, chartType) => ((_findItem(menu, chartType) || {}).atomCounter || {}).setValue;
+const findItemCounterSetValue = (menu, chartType) => _findItem(menu, chartType)?.atomCounter?.setValue;
 var _default = exports.default = findItemCounterSetValue;
 //# sourceMappingURL=findItem.js.map

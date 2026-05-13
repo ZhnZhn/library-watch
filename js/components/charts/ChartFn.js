@@ -4,7 +4,7 @@ exports.__esModule = true;
 exports.formatTicks = void 0;
 const ONE_THOUSAND = 1_000,
   ONE_MILLION = ONE_THOUSAND * ONE_THOUSAND,
-  _getValue = item => (item || {}).value,
+  _getValue = item => item?.value,
   _fIsValue = number => value => {
     const _remainder = value % number;
     return _remainder === 0 || _remainder * 10 % number === 0;

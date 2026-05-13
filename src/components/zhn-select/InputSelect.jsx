@@ -142,7 +142,7 @@ const InputSelect = (
          const _indexActiveOption = getActiveIndexOption();
          if (isNumber(_indexActiveOption)) {
             const item = options[_indexActiveOption];
-            if (item && item[propCaption]){
+            if (item?.[propCaption]){
               onSelect(crOnEnterItem(
                 item,
                 propCaption,

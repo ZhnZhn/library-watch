@@ -12,12 +12,11 @@ const _crItems = items => {
        title,
        last_activity_date,
        owner
-     } = item
-     , { display_name } = owner || {};
+     } = item;
 
      item.dateAgo = safeFormatSec(last_activity_date, _nowMls)
      item.title = htmlDecode(title);
-     item.owner.display_name = htmlDecode(display_name);
+     item.owner.display_name = htmlDecode(owner?.display_name);
 
      return item;
   });
@@ -34,7 +33,7 @@ const fStackTaggedQuestions = ({
    caption={option.repo}
    repo={option.repo}
    requestType={option.requestType}
-   items={_crItems((json || {}).items)}
+   items={_crItems(json?.items)}
    onCloseItem={onCloseItem}
    onWatchItem={onWatchItem}
    {...parentProps}

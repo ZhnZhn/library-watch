@@ -9,7 +9,7 @@ const CL = "hrz-container";
 const ComponentHrzContainer = () => {
   const [comps, setComps] = (0, _uiApi.useState)([]);
   (0, _itemStore.useMsItem)(msItem => {
-    if (msItem && msItem.Comp) {
+    if (msItem?.Comp) {
       setComps(prevComps => [msItem.Comp, ...prevComps]);
     }
   });

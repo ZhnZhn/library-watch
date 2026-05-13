@@ -15,9 +15,9 @@ var _jsxRuntime = require("react/jsx-runtime");
 //82,156,199 #529cc7
 const COLORS = ["112,15,44", "181,34,52", "215,103,85", "244,165,130", "146,197,222", "82,156,199"];
 const TOTAL_COLOR = "128,192,64";
-const _getDate = item => (item || {}).date;
-const _getDownloads = item => (item || {}).downloads;
-const _getVersion = item => (item || {}).version;
+const _getDate = item => item?.date;
+const _getDownloads = item => item?.downloads;
+const _getVersion = item => item?.version;
 const _getDateValue = item => [_getDate(item), _getDownloads(item), _getVersion(item)];
 const _crLabel = date => {
   const _dateTokens = date.split("-");

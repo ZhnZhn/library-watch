@@ -22,10 +22,12 @@ const DELTA = HAS_TOUCH_EVENTS ? {
    REMOVE_UNDER: 150
 };
 
-const _getTouchesClientX = (ev) =>
-  (((ev || {}).touches || [])[0] || {}).clientX || 0;
-const _getChangedTouches = (ev) =>
-  (((ev || {}).changedTouches || [])[0] || {}).clientX || 0;
+const _getTouchesClientX = (
+  evt
+) => evt?.touches?.[0]?.clientX || 0;
+const _getChangedTouches = (
+  evt
+) => evt?.changedTouches?.[0]?.clientX || 0;
 
 const useDnDHandlers = (
   item,
@@ -38,12 +40,12 @@ const useDnDHandlers = (
   return useMemo(() => {
     const _calcDeltaX = clientX =>
       Math.abs(getRefValue(_refClientX) - clientX)
-    , onDragStart = (ev) => {
-       setRefValue(_refClientX, ev.clientX)
-       styleDragStart(ev)
-       if (ev && ev.dataTransfer) {
-         ev.dataTransfer.effectAllowed="move"
-         ev.dataTransfer.dropEffect="move"
+    , onDragStart = (evt) => {
+       setRefValue(_refClientX, evt.clientX)
+       styleDragStart(evt)
+       if (evt?.dataTransfer) {
+         evt.dataTransfer.effectAllowed="move"
+         evt.dataTransfer.dropEffect="move"
        }
     }
     , onTouchStart = (ev) => {

@@ -50,7 +50,7 @@ const InputFileReader = _ref => {
         }
       }))).then(zippedResults => {
         // Run the callback after all files have been read.
-        const _labelText = zippedResults && zippedResults[0] ? (zippedResults[0][1] || {}).name : INITIAL_FILE_LABEL;
+        const _labelText = zippedResults?.[0] ? zippedResults[0][1]?.name : INITIAL_FILE_LABEL;
         setLabelText(_labelText);
         onChange(zippedResults);
       }).catch(err => {

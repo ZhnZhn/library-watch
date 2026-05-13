@@ -1,1 +1,19 @@
-{"version":3,"file":"getRefItemValue.js","names":["_uiApi","require","getRefItemValue","ref","getRefValue","value","_default","exports","default"],"sources":["../../../src/components/dialogs/getRefItemValue.js"],"sourcesContent":["import {\r\n  getRefValue\r\n} from '../uiApi';\r\n\r\nconst getRefItemValue = ref =>\r\n  (getRefValue(ref) || {}).value;\r\n\r\nexport default getRefItemValue\r\n"],"mappings":";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAIA,MAAMC,eAAe,GAAGC,GAAG,IACzB,CAAC,IAAAC,kBAAW,EAACD,GAAG,CAAC,IAAI,CAAC,CAAC,EAAEE,KAAK;AAAC,IAAAC,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAElBN,eAAe","ignoreList":[]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/getRefItemValue.js"
+ ],
+ "file": "../../../src/components/dialogs/getRefItemValue.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "getRefItemValue",
+  "ref",
+  "getRefValue",
+  "value",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAIA,MAAMC,eAAe,GACnBC,GAAG,IACA,IAAAC,kBAAW,EAACD,GAAG,CAAC,EAAEE,KAAK;AAAC,IAAAC,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEdN,eAAe"
+}

@@ -12,16 +12,13 @@ const _crItems = items => {
   const _nowMls = Date.now();
   return (0, _uiApi.safeMap)(items, item => {
     const {
-        title,
-        last_activity_date,
-        owner
-      } = item,
-      {
-        display_name
-      } = owner || {};
+      title,
+      last_activity_date,
+      owner
+    } = item;
     item.dateAgo = (0, _formatDate.safeFormatSec)(last_activity_date, _nowMls);
     item.title = (0, _domFn.htmlDecode)(title);
-    item.owner.display_name = (0, _domFn.htmlDecode)(display_name);
+    item.owner.display_name = (0, _domFn.htmlDecode)(owner?.display_name);
     return item;
   });
 };
@@ -37,7 +34,7 @@ const fStackTaggedQuestions = _ref => {
     caption: option.repo,
     repo: option.repo,
     requestType: option.requestType,
-    items: _crItems((json || {}).items),
+    items: _crItems(json?.items),
     onCloseItem: onCloseItem,
     onWatchItem: onWatchItem,
     ...parentProps

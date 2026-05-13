@@ -10,7 +10,7 @@ const ComponentHrzContainer = () => {
   ] = useState([]);
 
   useMsItem(msItem => {
-    if (msItem && msItem.Comp) {
+    if (msItem?.Comp) {
       setComps(prevComps => [
         msItem.Comp,
         ...prevComps
