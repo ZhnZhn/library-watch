@@ -15,6 +15,8 @@ var _ButtonSave = _interopRequireDefault(require("../zhn-moleculs/ButtonSave"));
 var _EditBar = _interopRequireDefault(require("./EditBar"));
 var _SearchInput = _interopRequireDefault(require("./SearchInput"));
 var _WatchGroups = _interopRequireDefault(require("./WatchGroups"));
+var _browserStore = require("../../flux/browserStore");
+var _watchListStore = require("../../flux/watch-list/watchListStore");
 var _Handlers = require("./Handlers");
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_BROWSER_WATCH = "browser-watch",
@@ -45,12 +47,12 @@ const WatchBrowser = _ref => {
   const _refIsShouldUpdateFind = (0, _uiApi.useRef)(false),
     [isModeEdit, _toggleEditMode] = (0, _useToggle.default)(isEditMode),
     [isSearchInput, _toggleSearchInput, _setIsSearchInput] = (0, _useToggle.default)(),
-    [watchList, setWatchList, isShowComp, showComp, hideComp, _hKeyDown, _refFirstItem] = (0, _useBrowser.default)(isShow, _Handlers.getWatchList),
+    [watchList, setWatchList, isShowComp, showComp, hideComp, _hKeyDown, _refFirstItem] = (0, _useBrowser.default)(isShow, _watchListStore.getWatchList),
     [_hFocusIn, _focusPrevMenuElement] = (0, _useRecentFocusedElement.default)()
     /*eslint-disable react-hooks/exhaustive-deps */,
     [_handlerHide, _handlerShow] = (0, _uiApi.useMemo)(() => [() => {
       if (isDoubleWatch) {
-        (0, _Handlers.toggleWatchDbBrowser)();
+        (0, _browserStore.showDbWatch)();
       } else {
         hideComp();
       }
@@ -115,7 +117,7 @@ const WatchBrowser = _ref => {
           className: CL_BT_CAPTION,
           caption: "B",
           title: "BackUp Watch Items to JSON File",
-          onClick: _Handlers.backupWatchItemsToJson
+          onClick: _watchListStore.backupToJson
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonCircle.default, {
           isWithoutDefault: true,
           className: CL_BT_CAPTION,

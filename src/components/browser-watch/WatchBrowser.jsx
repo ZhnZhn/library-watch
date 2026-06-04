@@ -21,10 +21,15 @@ import SearchInput from './SearchInput';
 import WatchGroups from './WatchGroups';
 
 import {
-  getWatchList,
-  showDialogLoadItemsFromFile,
-  toggleWatchDbBrowser,
-  backupWatchItemsToJson
+  showDbWatch
+} from '../../flux/browserStore';
+import {
+  backupToJson,
+  getWatchList
+} from '../../flux/watch-list/watchListStore';
+
+import {
+  showDialogLoadItemsFromFile
 } from './Handlers';
 
 const CL_BROWSER_WATCH = "browser-watch"
@@ -84,7 +89,7 @@ const WatchBrowser = ({
   ] = useMemo(() => [
     () => {
       if (isDoubleWatch) {
-        toggleWatchDbBrowser()
+        showDbWatch()
       } else {
         hideComp()
       }
@@ -160,7 +165,7 @@ const WatchBrowser = ({
                className={CL_BT_CAPTION}
                caption="B"
                title="BackUp Watch Items to JSON File"
-               onClick={backupWatchItemsToJson}
+               onClick={backupToJson}
              />
              <ButtonCircle
                 isWithoutDefault={true}

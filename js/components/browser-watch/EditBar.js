@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _ButtonCircle = _interopRequireDefault(require("../zhn/ButtonCircle"));
+var _browserStore = require("../../flux/browserStore");
 var _Handlers = require("./Handlers");
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_BT_BAR = "bt__watch__bar",
@@ -38,7 +39,7 @@ const EditBar = _ref => {
       className: CL_BT_BAR,
       isWithoutDefault: true,
       style: S_BT_EDIT_BAR_LIST,
-      onClick: _Handlers.toggleWatchDbBrowser
+      onClick: _browserStore.showDbWatch
     })]
   }) : null;
 };

@@ -1,9 +1,11 @@
 import ButtonCircle from '../zhn/ButtonCircle';
 
 import {
+  showDbWatch
+} from '../../flux/browserStore';
+import {
   showDialogEditGroups,
-  showDialogEditLists,
-  toggleWatchDbBrowser
+  showDialogEditLists
 } from './Handlers';
 
 const CL_BT_BAR = "bt__watch__bar"
@@ -35,7 +37,7 @@ const EditBar = ({
        className={CL_BT_BAR}
        isWithoutDefault={true}
        style={S_BT_EDIT_BAR_LIST}
-       onClick={toggleWatchDbBrowser}
+       onClick={showDbWatch}
     />
   </div>
 ) : null;
