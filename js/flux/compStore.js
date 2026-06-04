@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.useMsAbout = exports.useMdOption = exports.useDgOption = exports.showModalDialog = exports.showInfo = exports.showDialog = exports.showAlert = exports.showAddItem = exports.showAbout = void 0;
+exports.useMsAbout = exports.useMdOption = exports.useDgOption = exports.showInfo = exports.showDialog = exports.showAlert = exports.showAddItem = exports.showAbout = exports.fShowModalDialog = void 0;
 var _bindTo = require("../utils/bindTo");
 var _storeApi = require("./storeApi");
 var _Type = require("../constants/Type");
@@ -39,7 +39,7 @@ const showDialog = (dialogType, browserType) => {
 };
 exports.showDialog = showDialog;
 const useMdOption = exports.useMdOption = (0, _storeApi.fCrUse)(_compStore, _selectMdOption);
-const showModalDialog = function (modalDialogType, option) {
+const _showModalDialog = function (modalDialogType, option) {
   if (option === void 0) {
     option = {};
   }
@@ -48,8 +48,9 @@ const showModalDialog = function (modalDialogType, option) {
     ...option
   }));
 };
-exports.showModalDialog = showModalDialog;
-const showAddItem = exports.showAddItem = (0, _bindTo.bindTo)(showModalDialog, _Type.ModalDialog.ADD_ITEM);
-const showAlert = exports.showAlert = (0, _bindTo.bindTo)(showModalDialog, _Type.ModalDialog.ALERT);
-const showInfo = exports.showInfo = (0, _bindTo.bindTo)(showModalDialog, _Type.ModalDialog.INFO);
+const fShowModalDialog = (modalDialogType, configOption) => itemOption => _showModalDialog(modalDialogType, configOption || itemOption);
+exports.fShowModalDialog = fShowModalDialog;
+const showAddItem = exports.showAddItem = fShowModalDialog(_Type.ModalDialog.ADD_ITEM);
+const showAlert = exports.showAlert = fShowModalDialog(_Type.ModalDialog.ALERT);
+const showInfo = exports.showInfo = fShowModalDialog(_Type.ModalDialog.INFO);
 //# sourceMappingURL=compStore.js.map
