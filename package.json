@@ -9,8 +9,8 @@
     "transpile": "babel ./src --out-dir ./js --source-maps --ignore ./**/__tests__",
     "transpile:all": "babel ./src --out-dir ./js --source-maps",
     "lint:one": "eslint -c eslint.config.js",
-    "lint:biome": "npx @biomejs/biome lint ./src --colors=off --skip=noAssignInExpressions --skip=noCommaOperator --skip=noExportsInTest --skip=noStaticElementInteractions --skip=useSemanticElements --skip=useKeyWithClickEvents",
-    "lint:only": "npx @biomejs/biome lint ./src --only=useSemanticElements --colors=off",
+    "lint:biome": "npx @biomejs/biome lint ./src --colors=off --skip=noAssignInExpressions --skip=noCommaOperator --skip=noExportsInTest --skip=noStaticElementInteractions --skip=useKeyWithClickEvents",
+    "lint:only": "npx @biomejs/biome lint ./src --only=noStaticElementInteractions --colors=off",
     "css:min": "node min-css.js",
     "build:prod": "webpack --color --progress --config webpack.prod.js",
     "stats": "npm run stats:json && npm run stats:report",
@@ -31,8 +31,8 @@
     "chart.js": "^4.5.1",
     "papaparse": "^5.5.3",
     "raven-js": "^3.27.2",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.29.7",
