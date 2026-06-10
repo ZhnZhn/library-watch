@@ -8,9 +8,19 @@ import {
 
 import fNpm from "./fNpm";
 
+const _isStrNumber = (strNumber) => {
+  const n = parseInt(strNumber, 10);
+  return strNumber.length === (''+n).length
+    && n - n === 0;
+}
+
 const _isReleaseVersion = (
   a
-) => (a.split(".")[2] || "").indexOf("-") === -1;
+) => {
+  const _tokens = a.split(".");
+  return _tokens.length === 3
+   && _isStrNumber(_tokens[2]);
+};
 
 const _compareToken = (
   a,

@@ -6,7 +6,14 @@ exports.default = void 0;
 var _arrFn = require("../../utils/arrFn");
 var _ChartConfigFactories = require("../charts/ChartConfigFactories");
 var _fNpm = _interopRequireDefault(require("./fNpm"));
-const _isReleaseVersion = a => (a.split(".")[2] || "").indexOf("-") === -1;
+const _isStrNumber = strNumber => {
+  const n = parseInt(strNumber, 10);
+  return strNumber.length === ('' + n).length && n - n === 0;
+};
+const _isReleaseVersion = a => {
+  const _tokens = a.split(".");
+  return _tokens.length === 3 && _isStrNumber(_tokens[2]);
+};
 const _compareToken = (a, b) => parseInt(a, 10) > parseInt(b, 10) ? -1 : 1;
 const _compareByVersions = (a, b) => {
   const arrA = a.split("."),
