@@ -60,8 +60,7 @@
     "jest": "^30.4.2",
     "terser-webpack-plugin": "^5.6.1",
     "webpack": "^5.107.2",
-    "webpack-cli": "^7.0.3",
-    "webpack-dev-server": "^5.2.5"
+    "webpack-cli": "^7.0.3"
   },
   "overrides": {
     "glob": "~13.0.6",
