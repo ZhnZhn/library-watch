@@ -11,16 +11,11 @@ const _onError = (src, _evt) => {
   console.log("Failed to load image with src: " + src);
   /* eslint-enable no-undef */
 };
-const Img = _ref => {
-  let {
-    alt,
-    className,
-    src
-  } = _ref;
-  const _src = (0, _toLink.default)(src);
+const Img = props => {
+  const _src = (0, _toLink.default)(props.src);
   return _src ? /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-    alt: alt,
-    className: className,
+    alt: props.alt,
+    className: props.className,
     src: _src,
     onError: (0, _uiApi.bindTo)(_onError, _src)
   }) : null;

@@ -10,16 +10,12 @@ const _onError = (
   /* eslint-enable no-undef */
 };
 
-const Img = ({
-  alt,
-  className,
-  src
-}) => {
-  const _src = toLink(src);
+const Img = (props) => {
+  const _src = toLink(props.src);
   return _src ? (
     <img
-       alt={alt}
-       className={className}
+       alt={props.alt}
+       className={props.className}
        src={_src}
        onError={bindTo(_onError, _src)}
     />

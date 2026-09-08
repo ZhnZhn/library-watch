@@ -5,23 +5,16 @@ exports.__esModule = true;
 exports.default = void 0;
 var _toLink = _interopRequireDefault(require("./toLink"));
 var _jsxRuntime = require("react/jsx-runtime");
-const Link = _ref => {
-  let {
-    className,
-    style,
-    href,
-    title,
-    children
-  } = _ref;
-  const _href = (0, _toLink.default)(href);
+const Link = props => {
+  const _href = (0, _toLink.default)(props.href);
   return _href ? /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
     target: "_blank",
     rel: "noopener",
-    className: className,
-    style: style,
-    href: href,
-    title: title,
-    children: children
+    className: props.className,
+    style: props.style,
+    href: props.href,
+    title: props.title,
+    children: props.children
   }) : null;
 };
 var _default = exports.default = Link;

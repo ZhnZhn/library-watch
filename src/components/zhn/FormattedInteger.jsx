@@ -4,12 +4,9 @@ const REPLACER_PATTERN = /(.)(?=(\d{3})+$)/g
    ? ('' + value).replace(REPLACER_PATTERN, '$1,')
    : value;
 
-const FormattedInteger = ({
-  style,
-  value=0
-}) => (
-  <span style={style}>
-    {_formatValue(value)}
+const FormattedInteger = (props) => (
+  <span style={props.style}>
+    {_formatValue(props.value ?? 0)}
   </span>
 );
 

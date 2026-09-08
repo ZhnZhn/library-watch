@@ -10,42 +10,29 @@ var _jsxRuntime = require("react/jsx-runtime");
 const CL_FIELD = 'm-field',
   CL_INPUT = `${CL_FIELD}__input`,
   CL_BT_CLEAR = `${CL_FIELD}__bt-clear`;
-const _isKeyClean = _ref => {
-  let {
-    keyCode
-  } = _ref;
-  return keyCode === 27 || keyCode === 46;
-};
-const _isKeyEnter = _ref2 => {
-  let {
-    keyCode
-  } = _ref2;
-  return keyCode === 13;
-};
-const BtClear = _ref3 => {
-  let {
-    isValue,
-    onClick
-  } = _ref3;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
-    type: "button",
-    className: CL_BT_CLEAR,
-    tabIndex: "-1",
-    onClick: onClick,
-    children: isValue ? 'x' : ''
-  });
-};
+const _isKeyClean = ({
+  keyCode
+}) => keyCode === 27 || keyCode === 46;
+const _isKeyEnter = ({
+  keyCode
+}) => keyCode === 13;
+const BtClear = props => /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+  type: "button",
+  className: CL_BT_CLEAR,
+  tabIndex: "-1",
+  onClick: props.onClick,
+  children: props.isValue ? "x" : ""
+});
 const FN_NOOP = () => {};
-const InputText = _ref4 => {
-  let {
-    refEl,
-    style,
-    initValue,
-    placeholder,
-    maxLength = 50,
-    labelId,
-    onEnter = FN_NOOP
-  } = _ref4;
+const InputText = ({
+  refEl,
+  style,
+  initValue,
+  placeholder,
+  maxLength = 50,
+  labelId,
+  onEnter = FN_NOOP
+}) => {
   const _refInput = (0, _uiApi.useRef)(),
     [value, setValue] = (0, _uiApi.useState)(() => initValue || ''),
     _hChange = (0, _uiApi.useCallback)(event => {

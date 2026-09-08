@@ -2,27 +2,20 @@ import { crCn } from '../styleFn';
 
 const CL_BT_CIRCLE = 'zhn-bt-circle';
 
-const ButtonCircle = ({
-  isWithoutDefault,
-  className,
-  style,
-  caption='',
-  title,
-  onClick
-}) => {
+const ButtonCircle = (props) => {
   const _className = crCn(
-    [!isWithoutDefault, CL_BT_CIRCLE],
-    className
+    [!props.isWithoutDefault, CL_BT_CIRCLE],
+    props.className
   );
   return (
     <button
        type="button"
        className={_className}
-       style={style}
-       title={title}
-       onClick={onClick}
+       style={props.style}
+       title={props.title}
+       onClick={props.onClick}
     >
-      <div>{caption}</div>
+      <div>{props.caption ?? ""}</div>
     </button>
   );
 };

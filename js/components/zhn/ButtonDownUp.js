@@ -72,28 +72,20 @@ const _crStateEl = (isUp, isLoading) => {
     })]
   });
 };
-const ButtonDownUp = _ref => {
-  let {
-    style,
-    isUp,
-    isLoading,
-    caption = '',
-    title = '',
-    onClick
-  } = _ref;
-  const _style = isUp ? S_BT_UP : S_BT_DOWN;
+const ButtonDownUp = props => {
+  const _style = props.isUp ? S_BT_UP : S_BT_DOWN;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
     type: "button",
-    title: title,
+    title: props.title,
     style: {
       ...S_ROOT,
-      ...style,
+      ...props.style,
       ..._style
     },
-    onClick: onClick,
-    children: [_crStateEl(isUp, isLoading), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    onClick: props.onClick,
+    children: [_crStateEl(props.isUp, props.isLoading), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       style: S_ITEM,
-      children: caption
+      children: props.caption ?? ""
     })]
   });
 };

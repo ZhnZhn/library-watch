@@ -23,17 +23,14 @@ const _isKeyEnter = ({
   keyCode
 }) => keyCode === 13;
 
-const BtClear = ({
-  isValue,
-  onClick
-}) => (
+const BtClear = (props) => (
   <button
     type="button"
     className={CL_BT_CLEAR}
     tabIndex="-1"
-    onClick={onClick}
+    onClick={props.onClick}
   >
-    {isValue ? 'x' : ''}
+    {props.isValue ? "x" : ""}
   </button>
 );
 
@@ -83,7 +80,7 @@ const InputText = ({
       <input
         {...crA11yLabelledByProps(labelId)}
         {...crInputTextProps()}
-        ref={_refInput}        
+        ref={_refInput}
         className={CL_INPUT}
         style={style}
         value={value}

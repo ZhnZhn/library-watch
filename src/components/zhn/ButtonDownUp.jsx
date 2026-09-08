@@ -69,28 +69,21 @@ const _crStateEl = (
   );
 };
 
-const ButtonDownUp = ({
-  style,
-  isUp,
-  isLoading,
-  caption='',
-  title='',
-  onClick
-}) => {
-   const _style = isUp
+const ButtonDownUp = (props) => {
+   const _style = props.isUp
      ? S_BT_UP
      : S_BT_DOWN;
 
    return (
      <button
         type="button"
-        title={title}
-        style={{...S_ROOT, ...style, ..._style}}
-        onClick={onClick}
+        title={props.title}
+        style={{...S_ROOT, ...props.style, ..._style}}
+        onClick={props.onClick}
      >
-       {_crStateEl(isUp, isLoading)}
+       {_crStateEl(props.isUp, props.isLoading)}
        <span style={S_ITEM}>
-          {caption}
+          {props.caption ?? ""}
        </span>
     </button>
    );
