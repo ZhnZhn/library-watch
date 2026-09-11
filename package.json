@@ -13,7 +13,7 @@
     "lint:only": "npx @biomejs/biome lint ./src --only=noStaticElementInteractions --colors=off",
     "css:min": "node min-css.js",
     "build:prod": "webpack --color --progress --config webpack.prod.js",
-    "build:rspack:prod": "rspack build --config rspack.prod.js",   
+    "build:rspack:prod": "rspack build --config rspack.prod.js",
     "stats": "npm run stats:json && npm run stats:report",
     "stats:json": "webpack --config webpack.test.js --profile --json > stats.json",
     "stats:report": "webpack-bundle-analyzer stats.json --no-open --mode static",
@@ -44,7 +44,7 @@
     "@babel/preset-env": "^7.29.7",
     "@babel/preset-react": "^7.29.7",
     "@biomejs/biome": "^2.5.12",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.6.2",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.6.3",
     "@rspack/cli": "^2.2.2",
     "@rspack/core": "^2.2.2",
     "@rspack/dev-server": "^2.2.1",
@@ -60,7 +60,7 @@
     "html-webpack-plugin": "^5.6.8",
     "jest": "^30.5.1",
     "terser-webpack-plugin": "^5.6.1",
-    "webpack": "^5.109.2",
+    "webpack": "^5.110.3",
     "webpack-cli": "^7.2.3"
   },
   "overrides": {
