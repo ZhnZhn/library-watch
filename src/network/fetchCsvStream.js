@@ -1,12 +1,19 @@
 import csv from 'papaparse';
 
+import { isFn }  from '../utils/isTypeFn';
 
 const fetchCsvStream = ({
   uri,
-  option, onFetch, onCheckResponse, onCompleted,
-  onCatch, onFailed,
-  _crErr, _crErrResp,
-  _nowTime, _doneOk, _doneFailure
+  option,
+  onFetch,
+  onCheckResponse,
+  onCompleted,
+  onCatch,
+  onFailed,
+  _crErr,
+  _nowTime,
+  _doneOk,
+  _doneFailure
 }) => fetch(uri)
     .then(response => {
       if (response.body) {
@@ -21,12 +28,11 @@ const fetchCsvStream = ({
       return csv.parse(_str, { header: true });
     })
     .then(json => {
-      if (onCheckResponse(json)) {
-        onFetch({ json, option, onCompleted });
-        _doneOk(_nowTime)
-      } else {
-        throw _crErrResp();
+      if (isFn(onCheckResponse)) {
+        onCheckResponse(json)
       }
+      onFetch({ json, option, onCompleted });
+      _doneOk(_nowTime)
     })
     .catch(error => {
       onCatch({ error, option, onFailed })

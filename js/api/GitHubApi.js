@@ -19,36 +19,26 @@ var _apiFn = require("./apiFn");
 
 const GITHUB_API = 'https://api.github.com',
   URL_REPOS = `${GITHUB_API}/repos`,
-  _crReposRouteFn = routePath => _ref => {
-    let {
-      repo
-    } = _ref;
-    return `${URL_REPOS}/${repo}/${routePath}`;
-  };
+  _crReposRouteFn = routePath => ({
+    repo
+  }) => `${URL_REPOS}/${repo}/${routePath}`;
 const _rRequestTypeToUrl = {
   GH_RELEASE_RECENT: _crReposRouteFn("releases/latest"),
   GH_TAGS: _crReposRouteFn("tags"),
-  GH_SEARCH_INFO: _ref2 => {
-    let {
-      repo
-    } = _ref2;
-    return `${GITHUB_API}/search/repositories?q=repo:${repo}`;
-  },
+  GH_SEARCH_INFO: ({
+    repo
+  }) => `${GITHUB_API}/search/repositories?q=repo:${repo}`,
   GH_COMMITS: _crReposRouteFn("commits"),
   GH_ISSUES: _crReposRouteFn("issues"),
   GH_PULL_REQUESTS: _crReposRouteFn("pulls")
 };
 const GitHubApi = {
   getRequestUrl: (0, _apiFn.fGetRequestUrl)(_rRequestTypeToUrl),
-  crKey(_ref3) {
-    let {
-      repo,
-      requestType
-    } = _ref3;
+  crKey({
+    repo,
+    requestType
+  }) {
     return `${repo}_${requestType}`;
-  },
-  checkResponse() {
-    return true;
   }
 };
 var _default = exports.default = GitHubApi;

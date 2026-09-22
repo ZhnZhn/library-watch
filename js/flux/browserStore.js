@@ -42,12 +42,11 @@ const showBrowserDynamic = option => {
   }
 };
 exports.showBrowserDynamic = showBrowserDynamic;
-const _fetchSourceMenu = _ref => {
-  let {
-    json,
-    option,
-    onCompleted
-  } = _ref;
+const _fetchSourceMenu = ({
+  json,
+  option,
+  onCompleted
+}) => {
   const {
       menu,
       items
@@ -61,12 +60,11 @@ const _fetchSourceMenu = _ref => {
     browserType
   });
 };
-const _loadBrowserDynamicCompleted = _ref2 => {
-    let {
-      menu,
-      items,
-      browserType
-    } = _ref2;
+const _loadBrowserDynamicCompleted = ({
+    menu,
+    items,
+    browserType
+  }) => {
     const menuItems = (0, _createMenu.default)(menu, items, browserType);
     (0, _dialogFn.setDialogItems)(browserType, items);
     (0, _browserFn.setBrowserMenu)(browserType, menuItems);
@@ -80,7 +78,6 @@ const loadBrowserDynamic = option => {
   (0, _fnFetch.default)({
     uri: option.sourceMenuUrl,
     option: option,
-    onCheckResponse: _json => true,
     onFetch: _fetchSourceMenu,
     onCompleted: _loadBrowserDynamicCompleted,
     onCatch: _fnCatch.default,

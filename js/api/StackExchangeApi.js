@@ -11,23 +11,21 @@ const BASE_URL = "https://api.stackexchange.com/2.2",
 // /questions/{ids}/related Get the questions that are related to the questions identified by a set of ids.
 
 const _rRequestTypeToUrl = {
-  [DF_REQUEST_TYPE]: _ref => {
-    let {
-      repo,
-      sort = 'week',
-      fromdate,
-      todate
-    } = _ref;
+  [DF_REQUEST_TYPE]: ({
+    repo,
+    sort = 'week',
+    fromdate,
+    todate
+  }) => {
     return `${BASE_URL}/questions?page=1&pagesize=50&order=desc&fromdate=${fromdate}&todate=${todate}&sort=${sort}&tagged=${repo || 'css'}&site=stackoverflow`;
   },
-  SE_SEARCH_QUESTIONS: _ref2 => {
-    let {
-      repo = 'css',
-      intitle = '',
-      sort = 'activity',
-      fromdate,
-      todate
-    } = _ref2;
+  SE_SEARCH_QUESTIONS: ({
+    repo = 'css',
+    intitle = '',
+    sort = 'activity',
+    fromdate,
+    todate
+  }) => {
     if (!repo && !intitle) {
       repo = 'css';
     }
@@ -36,11 +34,10 @@ const _rRequestTypeToUrl = {
 };
 const StackExchangeApi = {
   getRequestUrl: (0, _apiFn.fGetRequestUrl)(_rRequestTypeToUrl, DF_REQUEST_TYPE),
-  crKey(_ref3) {
-    let {
-      repo,
-      requestType
-    } = _ref3;
+  crKey({
+    repo,
+    requestType
+  }) {
     return `${repo}_${requestType}`;
   },
   checkResponse(json) {
@@ -51,7 +48,6 @@ const StackExchangeApi = {
     if (error_message) {
       throw (0, _apiFn.crErrMsg)((0, _strFn.setFirstToUpperCase)(error_name.replace('_', ' ')), (0, _strFn.setFirstToUpperCase)(error_message));
     }
-    return true;
   }
 };
 var _default = exports.default = StackExchangeApi;

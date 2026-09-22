@@ -2,6 +2,7 @@
 
 exports.__esModule = true;
 exports.default = void 0;
+var _apiFn = require("./apiFn");
 const OS_VERSION_MARKET_SHARE = "os-version-market-share",
   DESKTOP = "desktop",
   MOBILE_TABLET = "mobile-tablet";
@@ -94,7 +95,12 @@ const StatcounterApi = {
     return `${vRegion}-${value}`;
   },
   checkResponse: json => {
-    return json && _isArr(json.data);
+    const {
+      data
+    } = json || {};
+    if (!_isArr(data)) {
+      throw (0, _apiFn.crErrMsg)("Response error", "Incorrect response");
+    }
   }
 };
 var _default = exports.default = StatcounterApi;

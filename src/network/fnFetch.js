@@ -29,11 +29,6 @@ const _crErr = ({
   `${status}: ${statusText}`
 );
 
-const _crErrResp = () => _crErrMsg(
-  'Response Error',
-  'Response format is incorrect.'
-);
-
 let _recentUri = DONE
 , _recentTime = Date.now() - MIN_FREQUENCY
 , _recentCall = _recentTime;
@@ -74,7 +69,6 @@ export default (config) => {
      const _configFetch = {
        ...config,
        _crErr,
-       _crErrResp,
        _nowTime,
        _doneOk,
        _doneFailure

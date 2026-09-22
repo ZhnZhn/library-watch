@@ -15,14 +15,10 @@ const CLICK_TIME_INTERVAL = 300,
   ERR_MSG_EMPTY_ROUTE = _crErrMsg('Route is not exist'),
   ERR_MSG_FREQUENCY = _crErrMsg('Load Frequency', `Exceed item load frequency restriction of ${MIN_FREQUENCY / 1000}s`),
   ERR_MSG_IN_PROGRESS = _crErrMsg('Loading In Progress', 'Loading data for this item in progress.\nIt seems several clicks on button Load repeatedly happend.');
-const _crErr = function (_temp) {
-  let {
-    status,
-    statusText
-  } = _temp === void 0 ? {} : _temp;
-  return _crErrMsg('Request Error', `${status}: ${statusText}`);
-};
-const _crErrResp = () => _crErrMsg('Response Error', 'Response format is incorrect.');
+const _crErr = ({
+  status,
+  statusText
+} = {}) => _crErrMsg('Request Error', `${status}: ${statusText}`);
 let _recentUri = DONE,
   _recentTime = Date.now() - MIN_FREQUENCY,
   _recentCall = _recentTime;
@@ -71,7 +67,6 @@ var _default = config => {
     const _configFetch = {
       ...config,
       _crErr,
-      _crErrResp,
       _nowTime,
       _doneOk,
       _doneFailure

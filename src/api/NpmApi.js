@@ -53,8 +53,7 @@ const NpmApi = {
           REQUEST_PACKAGE,
           setFirstToUpperCase(error)
         );
-      }
-      return true;
+      }      
    }
 };
 

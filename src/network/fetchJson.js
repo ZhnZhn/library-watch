@@ -1,11 +1,19 @@
+import { isFn } from '../utils/isTypeFn';
+
 const LIMIT_REMAINING = 'X-RateLimit-Remaining';
 
 const fetchJson = ({
   uri,
-  option, onFetch, onCheckResponse, onCompleted,
-  onCatch, onFailed,
+  option,
+  onFetch,
+  onCheckResponse,
+  onCompleted,
+  onCatch,
+  onFailed,
   _crErr,
-  _nowTime, _doneOk, _doneFailure
+  _nowTime,
+  _doneOk,
+  _doneFailure
 }) => fetch(uri)
     .then(response => {
       const { status, headers } = response;
@@ -17,9 +25,10 @@ const fetchJson = ({
       }
     })
     .then(json => {
-       if (onCheckResponse(json, option)){
-         onFetch({ json, option, onCompleted });
+       if (isFn(onCheckResponse)) {
+         onCheckResponse(json, option)
        }
+       onFetch({ json, option, onCompleted });
        _doneOk(_nowTime)
     })
     .catch(error => {

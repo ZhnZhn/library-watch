@@ -14,11 +14,10 @@ const CrateApi = {
     option.sourceLink = `${PROVIDER_URL}/crates/${repo}`;
     return [`${API_URL}/${repo}`, `${API_URL}/${repo}/downloads`];
   },
-  crKey(_ref) {
-    let {
-      repo,
-      requestType
-    } = _ref;
+  crKey({
+    repo,
+    requestType
+  }) {
     return `${repo}_${requestType}`;
   },
   checkResponse(json, option) {
@@ -30,11 +29,9 @@ const CrateApi = {
           extra_downloads
         } = meta || {};
       if (!_isArr(extra_downloads)) {
-        throw (0, _apiFn.crErrMsg)("Request Crate", "Incorrect response");
+        throw (0, _apiFn.crErrMsg)("Request crate", "Incorrect response");
       }
-      return true;
     }
-    return true;
   }
 };
 var _default = exports.default = CrateApi;

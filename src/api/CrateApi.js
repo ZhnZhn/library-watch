@@ -25,13 +25,11 @@ const CrateApi = {
 
        if (!_isArr(extra_downloads)) {
          throw crErrMsg(
-           "Request Crate",
+           "Request crate",
            "Incorrect response"
          );
        }
-       return true;
     }
-    return true;    
   }
 };
 

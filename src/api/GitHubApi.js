@@ -39,11 +39,7 @@ const GitHubApi = {
 
    crKey({ repo, requestType }){
      return `${repo}_${requestType}`;
-   },
-   
-   checkResponse(){
-     return true;
-   }
+   }   
 };
 
 export default GitHubApi

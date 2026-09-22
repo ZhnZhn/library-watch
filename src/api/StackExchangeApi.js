@@ -1,4 +1,6 @@
-import { setFirstToUpperCase } from '../utils/strFn';
+import {
+  setFirstToUpperCase
+} from '../utils/strFn';
 import {
   fGetRequestUrl,
   crErrMsg
@@ -49,7 +51,6 @@ const StackExchangeApi = {
          setFirstToUpperCase(error_message)
        );
      }
-     return true;
    }
 };
 

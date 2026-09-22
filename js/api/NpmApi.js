@@ -40,12 +40,11 @@ const _rRequestTypeToUrl = {
 };
 const NpmApi = {
   getRequestUrl: (0, _apiFn.fGetRequestUrl)(_rRequestTypeToUrl),
-  crKey(_ref) {
-    let {
-      repo,
-      requestType,
-      fromDate = ''
-    } = _ref;
+  crKey({
+    repo,
+    requestType,
+    fromDate = ''
+  }) {
     return `${repo}_${requestType}_${fromDate}`;
   },
   checkResponse(json) {
@@ -55,7 +54,6 @@ const NpmApi = {
     if (error) {
       throw (0, _apiFn.crErrMsg)(REQUEST_PACKAGE, (0, _strFn.setFirstToUpperCase)(error));
     }
-    return true;
   }
 };
 var _default = exports.default = NpmApi;

@@ -1,8 +1,8 @@
+import { crErrMsg } from './apiFn';
 
 const OS_VERSION_MARKET_SHARE = "os-version-market-share"
 , DESKTOP = "desktop"
 , MOBILE_TABLET = "mobile-tablet";
-
 
 const API_URL = 'https://gs.statcounter.com'
 , OS_DESKTOP_PATH = `os-market-share/${DESKTOP}`
@@ -93,7 +93,13 @@ const StatcounterApi = {
   },
 
   checkResponse: (json) => {
-    return json && _isArr(json.data);
+    const { data } = json || {}
+    if (!_isArr(data)) {
+      throw crErrMsg(
+        "Response error",
+        "Incorrect response"
+      );
+    }
   }
 };
 
