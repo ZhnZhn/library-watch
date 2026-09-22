@@ -34,6 +34,11 @@ const _rRequestTypeToUrl = {
 };
 const GitHubApi = {
   getRequestUrl: (0, _apiFn.fGetRequestUrl)(_rRequestTypeToUrl),
+  crOptionFetch: () => ({
+    headers: {
+      Accept: "application/vnd.github+json"
+    }
+  }),
   crKey({
     repo,
     requestType
