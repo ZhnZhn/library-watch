@@ -1,8 +1,11 @@
 import {
   isArr,
   isStr,
+  isFn
 } from '../../utils/isTypeFn';
-import { delayFn } from '../../utils/delayFn';
+import {
+  delayFn
+} from '../../utils/delayFn';
 
 import fnFetch from '../../network/fnFetch';
 import onCatch from '../../network/fnCatch';
@@ -47,6 +50,7 @@ const loadItem = (
   const api = RestApi.getApi(option)
   , _uri = api.getRequestUrl(option)
   , onCheckResponse = api.checkResponse
+  , crOptionFetch = api.crOptionFetch
   , [
     uri,
     onFetch
@@ -58,6 +62,10 @@ const loadItem = (
 
    fnFetch({
      uri,
+     //GitHubApi
+     optionFetch: isFn(crOptionFetch)
+       ? crOptionFetch()
+       : void 0,
      onFetch,
      onCheckResponse,
      option,

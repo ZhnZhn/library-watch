@@ -6,6 +6,7 @@ var _isTypeFn = require("../utils/isTypeFn");
 const LIMIT_REMAINING = 'X-RateLimit-Remaining';
 const fetchJson = ({
   uri,
+  optionFetch,
   option,
   onFetch,
   onCheckResponse,
@@ -16,7 +17,7 @@ const fetchJson = ({
   _nowTime,
   _doneOk,
   _doneFailure
-}) => fetch(uri).then(response => {
+}) => fetch(uri, optionFetch).then(response => {
   const {
     status,
     headers

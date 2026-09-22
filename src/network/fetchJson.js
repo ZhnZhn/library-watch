@@ -4,6 +4,7 @@ const LIMIT_REMAINING = 'X-RateLimit-Remaining';
 
 const fetchJson = ({
   uri,
+  optionFetch,
   option,
   onFetch,
   onCheckResponse,
@@ -14,7 +15,7 @@ const fetchJson = ({
   _nowTime,
   _doneOk,
   _doneFailure
-}) => fetch(uri)
+}) => fetch(uri, optionFetch)
     .then(response => {
       const { status, headers } = response;
       option.limitRemaining = headers.get(LIMIT_REMAINING);
