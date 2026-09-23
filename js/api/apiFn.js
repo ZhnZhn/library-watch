@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.fGetRequestUrl = exports.crProviderApi = exports.crErrMsg = void 0;
+exports.fGetRequestUrl = exports.crProviderApi = exports.crErrMsg = exports.addCrOptionFetchTo = void 0;
 var _isTypeFn = require("../utils/isTypeFn");
 const fGetRequestUrl = (hmRoutes, dfRoute) => option => {
   const {
@@ -26,4 +26,9 @@ const crProviderApi = (getRequestUrl, checkResponse, crKey = _crKeyDf) => ({
   checkResponse
 });
 exports.crProviderApi = crProviderApi;
+const addCrOptionFetchTo = (providerApi, crOptionFetch) => {
+  providerApi.crOptionFetch = crOptionFetch;
+  return providerApi;
+};
+exports.addCrOptionFetchTo = addCrOptionFetchTo;
 //# sourceMappingURL=apiFn.js.map

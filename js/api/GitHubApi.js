@@ -32,19 +32,12 @@ const _rRequestTypeToUrl = {
   GH_ISSUES: _crReposRouteFn("issues"),
   GH_PULL_REQUESTS: _crReposRouteFn("pulls")
 };
-const GitHubApi = {
-  getRequestUrl: (0, _apiFn.fGetRequestUrl)(_rRequestTypeToUrl),
-  crOptionFetch: () => ({
+const getRequestUrl = (0, _apiFn.fGetRequestUrl)(_rRequestTypeToUrl),
+  crOptionFetch = () => ({
     headers: {
       Accept: "application/vnd.github+json"
     }
-  }),
-  crKey({
-    repo,
-    requestType
-  }) {
-    return `${repo}_${requestType}`;
-  }
-};
+  });
+const GitHubApi = (0, _apiFn.addCrOptionFetchTo)((0, _apiFn.crProviderApi)(getRequestUrl), crOptionFetch);
 var _default = exports.default = GitHubApi;
 //# sourceMappingURL=GitHubApi.js.map

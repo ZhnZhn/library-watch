@@ -1,4 +1,8 @@
-import { fGetRequestUrl } from './apiFn';
+import {
+  fGetRequestUrl,
+  crProviderApi,
+  addCrOptionFetchTo
+} from './apiFn';
 
 // repos/:owner/:repo/releases/latest
 
@@ -34,17 +38,16 @@ const _rRequestTypeToUrl = {
   GH_PULL_REQUESTS : _crReposRouteFn("pulls")
 };
 
-const GitHubApi = {
-   getRequestUrl: fGetRequestUrl(_rRequestTypeToUrl),
-   crOptionFetch: () => ({
-     headers: {
-       Accept: "application/vnd.github+json"
-     }
-   }),
+const getRequestUrl = fGetRequestUrl(_rRequestTypeToUrl)
+, crOptionFetch = () => ({
+  headers: {
+    Accept: "application/vnd.github+json"
+  }
+})
 
-   crKey({ repo, requestType }){
-     return `${repo}_${requestType}`;
-   }
-};
+const GitHubApi = addCrOptionFetchTo(
+  crProviderApi(getRequestUrl),
+  crOptionFetch
+);
 
 export default GitHubApi

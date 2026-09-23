@@ -19,10 +19,9 @@ export const crErrMsg = (
   message
 })
 
-
 const _crKeyDf = ({
   repo,
-  requestType 
+  requestType
 }) => `${repo}_${requestType}`;
 
 export const crProviderApi = (
@@ -34,3 +33,11 @@ export const crProviderApi = (
   crKey,
   checkResponse
 })
+
+export const addCrOptionFetchTo = (
+  providerApi,
+  crOptionFetch
+) => {
+  providerApi.crOptionFetch = crOptionFetch
+  return providerApi;
+}
