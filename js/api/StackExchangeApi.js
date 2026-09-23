@@ -32,15 +32,8 @@ const _rRequestTypeToUrl = {
     return `${BASE_URL}/search?page=1&pagesize=50&order=desc&fromdate=${fromdate}&todate=${todate}&sort=${sort}&tagged=${repo}&intitle=${intitle}&site=stackoverflow`;
   }
 };
-const StackExchangeApi = {
-  getRequestUrl: (0, _apiFn.fGetRequestUrl)(_rRequestTypeToUrl, DF_REQUEST_TYPE),
-  crKey({
-    repo,
-    requestType
-  }) {
-    return `${repo}_${requestType}`;
-  },
-  checkResponse(json) {
+const getRequestUrl = (0, _apiFn.fGetRequestUrl)(_rRequestTypeToUrl, DF_REQUEST_TYPE),
+  checkResponse = json => {
     const {
       error_message,
       error_name = ''
@@ -48,7 +41,7 @@ const StackExchangeApi = {
     if (error_message) {
       throw (0, _apiFn.crErrMsg)((0, _strFn.setFirstToUpperCase)(error_name.replace('_', ' ')), (0, _strFn.setFirstToUpperCase)(error_message));
     }
-  }
-};
+  };
+const StackExchangeApi = (0, _apiFn.crProviderApi)(getRequestUrl, checkResponse);
 var _default = exports.default = StackExchangeApi;
 //# sourceMappingURL=StackExchangeApi.js.map

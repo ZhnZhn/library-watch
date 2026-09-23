@@ -3,7 +3,8 @@ import {
 } from '../utils/strFn';
 import {
   fGetRequestUrl,
-  crErrMsg
+  crErrMsg,
+  crProviderApi
 } from './apiFn';
 
 const BASE_URL = "https://api.stackexchange.com/2.2"
@@ -33,25 +34,25 @@ const _rRequestTypeToUrl = {
   }
 };
 
-const StackExchangeApi = {
-   getRequestUrl: fGetRequestUrl(_rRequestTypeToUrl, DF_REQUEST_TYPE),
-
-   crKey({ repo, requestType }){
-     return `${repo}_${requestType}`;
-   },
-
-   checkResponse(json){
-     const {
-       error_message,
-       error_name=''
-     } = json || {}
-     if (error_message){
-       throw crErrMsg(
-         setFirstToUpperCase(error_name.replace('_', ' ')),
-         setFirstToUpperCase(error_message)
-       );
-     }
-   }
+const getRequestUrl = fGetRequestUrl(_rRequestTypeToUrl, DF_REQUEST_TYPE)
+, checkResponse = (
+  json
+) => {
+  const {
+    error_message,
+    error_name=''
+  } = json || {}
+  if (error_message){
+    throw crErrMsg(
+      setFirstToUpperCase(error_name.replace('_', ' ')),
+      setFirstToUpperCase(error_message)
+    );
+  }
 };
+
+const StackExchangeApi = crProviderApi(
+  getRequestUrl,
+  checkResponse
+);
 
 export default StackExchangeApi

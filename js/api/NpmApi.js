@@ -38,23 +38,20 @@ const _rRequestTypeToUrl = {
     return `${API_URL}/versions/${_crVersionPackage(option.repo)}/last-week`;
   }
 };
-const NpmApi = {
-  getRequestUrl: (0, _apiFn.fGetRequestUrl)(_rRequestTypeToUrl),
-  crKey({
-    repo,
-    requestType,
-    fromDate = ''
-  }) {
-    return `${repo}_${requestType}_${fromDate}`;
-  },
-  checkResponse(json) {
+const getRequestUrl = (0, _apiFn.fGetRequestUrl)(_rRequestTypeToUrl),
+  checkResponse = json => {
     const {
       error
     } = json || {};
     if (error) {
       throw (0, _apiFn.crErrMsg)(REQUEST_PACKAGE, (0, _strFn.setFirstToUpperCase)(error));
     }
-  }
-};
+  },
+  crKey = ({
+    repo,
+    requestType,
+    fromDate = ''
+  }) => `${repo}_${requestType}_${fromDate}`;
+const NpmApi = (0, _apiFn.crProviderApi)(getRequestUrl, checkResponse, crKey);
 var _default = exports.default = NpmApi;
 //# sourceMappingURL=NpmApi.js.map

@@ -5,22 +5,15 @@ exports.default = void 0;
 var _apiFn = require("./apiFn");
 const PROVIDER_URL = "https://crates.io",
   API_URL = `${PROVIDER_URL}/api/v1/crates`,
-  _isArr = Array.isArray;
-const CrateApi = {
-  getRequestUrl(option) {
+  _isArr = Array.isArray,
+  getRequestUrl = option => {
     const {
       repo
     } = option;
     option.sourceLink = `${PROVIDER_URL}/crates/${repo}`;
     return [`${API_URL}/${repo}`, `${API_URL}/${repo}/downloads`];
   },
-  crKey({
-    repo,
-    requestType
-  }) {
-    return `${repo}_${requestType}`;
-  },
-  checkResponse(json, option) {
+  checkResponse = (json, option) => {
     if (option.json1) {
       const {
           meta
@@ -32,7 +25,7 @@ const CrateApi = {
         throw (0, _apiFn.crErrMsg)("Request crate", "Incorrect response");
       }
     }
-  }
-};
+  };
+const CrateApi = (0, _apiFn.crProviderApi)(getRequestUrl, checkResponse);
 var _default = exports.default = CrateApi;
 //# sourceMappingURL=CrateApi.js.map

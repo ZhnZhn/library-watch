@@ -1,4 +1,7 @@
-import { crErrMsg } from './apiFn';
+import {
+  crErrMsg,
+  crProviderApi
+} from './apiFn';
 
 const OS_VERSION_MARKET_SHARE = "os-version-market-share"
 , DESKTOP = "desktop"
@@ -78,29 +81,31 @@ const _crLinks = (option) => {
   };
 };
 
-const StatcounterApi = {
-  getRequestUrl: (option) => {
-    const { csv, link } =_crLinks(option)
-    option.fetchType = 'csv-stream'
-    option.sourceLink = link
-    return csv;
-  },
-
-  crKey: (option) => {
-    const { value, region } = option
-    , { value: vRegion='' } = region || {};
-    return `${vRegion}-${value}`;
-  },
-
-  checkResponse: (json) => {
-    const { data } = json || {}
-    if (!_isArr(data)) {
-      throw crErrMsg(
-        "Response error",
-        "Incorrect response"
-      );
-    }
+const getRequestUrl = (option) => {
+  const { csv, link } =_crLinks(option)
+  option.fetchType = 'csv-stream'
+  option.sourceLink = link
+  return csv;
+}
+, checkResponse = (json) => {
+  const { data } = json || {}
+  if (!_isArr(data)) {
+    throw crErrMsg(
+      "Response error",
+      "Incorrect response"
+    );
   }
+}
+, crKey = (option) => {
+  const { value, region } = option
+  , { value: vRegion='' } = region || {};
+  return `${vRegion}-${value}`;
 };
+
+const StatcounterApi = crProviderApi(
+  getRequestUrl,
+  checkResponse,
+  crKey
+);
 
 export default StatcounterApi

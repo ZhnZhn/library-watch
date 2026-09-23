@@ -5,7 +5,7 @@ import StackExchangeApi from './StackExchangeApi';
 import StatcounterApi from './StatCounterApi';
 
 const RouterApi = {
-  CR: CrateApi,
+  CR : CrateApi,
   GH : GitHubApi,
   NPM : NpmApi,
   SE : StackExchangeApi,

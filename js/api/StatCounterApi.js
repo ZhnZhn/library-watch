@@ -74,8 +74,7 @@ const _crLinks = option => {
     link: `${_urlItem.link}${region.value}`
   };
 };
-const StatcounterApi = {
-  getRequestUrl: option => {
+const getRequestUrl = option => {
     const {
       csv,
       link
@@ -84,7 +83,15 @@ const StatcounterApi = {
     option.sourceLink = link;
     return csv;
   },
-  crKey: option => {
+  checkResponse = json => {
+    const {
+      data
+    } = json || {};
+    if (!_isArr(data)) {
+      throw (0, _apiFn.crErrMsg)("Response error", "Incorrect response");
+    }
+  },
+  crKey = option => {
     const {
         value,
         region
@@ -93,15 +100,7 @@ const StatcounterApi = {
         value: vRegion = ''
       } = region || {};
     return `${vRegion}-${value}`;
-  },
-  checkResponse: json => {
-    const {
-      data
-    } = json || {};
-    if (!_isArr(data)) {
-      throw (0, _apiFn.crErrMsg)("Response error", "Incorrect response");
-    }
-  }
-};
+  };
+const StatcounterApi = (0, _apiFn.crProviderApi)(getRequestUrl, checkResponse, crKey);
 var _default = exports.default = StatcounterApi;
 //# sourceMappingURL=StatcounterApi.js.map

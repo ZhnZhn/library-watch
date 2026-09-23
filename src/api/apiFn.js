@@ -18,3 +18,19 @@ export const crErrMsg = (
   errCaption,
   message
 })
+
+
+const _crKeyDf = ({
+  repo,
+  requestType 
+}) => `${repo}_${requestType}`;
+
+export const crProviderApi = (
+  getRequestUrl,
+  checkResponse,
+  crKey = _crKeyDf
+) => ({
+  getRequestUrl,
+  crKey,
+  checkResponse
+})

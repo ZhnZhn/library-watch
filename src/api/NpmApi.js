@@ -1,7 +1,8 @@
 import { setFirstToUpperCase } from '../utils/strFn';
 import {
   fGetRequestUrl,
-  crErrMsg
+  crErrMsg,
+  crProviderApi
 } from './apiFn';
 
 const API_URL = 'https://api.npmjs.org';
@@ -38,23 +39,26 @@ const _rRequestTypeToUrl = {
     return `${API_URL}/versions/${_crVersionPackage(option.repo)}/last-week`;
   }
 }
-
-const NpmApi = {
-   getRequestUrl: fGetRequestUrl(_rRequestTypeToUrl),
-
-   crKey({repo, requestType, fromDate=''}){
-     return `${repo}_${requestType}_${fromDate}`;
-   },
-
-   checkResponse(json){
-      const { error } = json || {};
-      if (error) {
-        throw crErrMsg(
-          REQUEST_PACKAGE,
-          setFirstToUpperCase(error)
-        );
-      }      
+const getRequestUrl = fGetRequestUrl(_rRequestTypeToUrl)
+, checkResponse = (json) => {
+   const { error } = json || {};
+   if (error) {
+     throw crErrMsg(
+       REQUEST_PACKAGE,
+       setFirstToUpperCase(error)
+     );
    }
-};
+}
+, crKey = ({
+  repo,
+  requestType,
+  fromDate=''
+}) => `${repo}_${requestType}_${fromDate}`;
+
+const NpmApi = crProviderApi(
+  getRequestUrl,
+  checkResponse,
+  crKey
+);
 
 export default NpmApi

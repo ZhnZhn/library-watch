@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.fGetRequestUrl = exports.crErrMsg = void 0;
+exports.fGetRequestUrl = exports.crProviderApi = exports.crErrMsg = void 0;
 var _isTypeFn = require("../utils/isTypeFn");
 const fGetRequestUrl = (hmRoutes, dfRoute) => option => {
   const {
@@ -16,4 +16,14 @@ const crErrMsg = (errCaption, message) => ({
   message
 });
 exports.crErrMsg = crErrMsg;
+const _crKeyDf = ({
+  repo,
+  requestType
+}) => `${repo}_${requestType}`;
+const crProviderApi = (getRequestUrl, checkResponse, crKey = _crKeyDf) => ({
+  getRequestUrl,
+  crKey,
+  checkResponse
+});
+exports.crProviderApi = crProviderApi;
 //# sourceMappingURL=apiFn.js.map
