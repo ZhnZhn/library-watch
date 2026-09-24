@@ -5,7 +5,6 @@ exports.__esModule = true;
 exports.default = void 0;
 var _memoFn = require("../hoc/memoFn");
 var _styleFn = require("../styleFn");
-var _formatStrDate = _interopRequireDefault(require("../../utils/formatStrDate"));
 var _dateFn = require("../../utils/dateFn");
 var _Link = _interopRequireDefault(require("../zhn/Link"));
 var _DivComments = _interopRequireDefault(require("./DivComments"));
@@ -25,7 +24,6 @@ const CommitList = (0, _memoFn.crMemoCompList)((item, index) => {
       date,
       name = ''
     } = committer || {},
-    _dateTime = (0, _formatStrDate.default)(date),
     _dateAgo = (0, _dateFn.crDateAgo)(date);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     className: _styleFn.CL_ROW_ITEM,

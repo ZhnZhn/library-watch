@@ -1,5 +1,3 @@
-import { bindTo } from "../utils/bindTo";
-
 import {
   createStoreWithSelector,
   getStoreApi,

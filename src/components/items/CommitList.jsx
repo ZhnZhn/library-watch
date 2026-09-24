@@ -1,7 +1,6 @@
 import { crMemoCompList } from '../hoc/memoFn';
 import { CL_ROW_ITEM } from '../styleFn';
 
-import formatStrDate from '../../utils/formatStrDate';
 import { crDateAgo } from '../../utils/dateFn';
 
 import Link from '../zhn/Link';
@@ -26,7 +25,6 @@ const CommitList = crMemoCompList((item, index) => {
     date,
     name=''
   } = committer || {}
-  , _dateTime = formatStrDate(date)
   , _dateAgo = crDateAgo(date);
 
   return (

@@ -3,7 +3,6 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.useMsAbout = exports.useMdOption = exports.useDgOption = exports.showInfo = exports.showDialog = exports.showAlert = exports.showAddItem = exports.showAbout = exports.fShowModalDialog = void 0;
-var _bindTo = require("../utils/bindTo");
 var _storeApi = require("./storeApi");
 var _Type = require("../constants/Type");
 var _createDialog = _interopRequireDefault(require("./logic/createDialog"));
@@ -39,10 +38,7 @@ const showDialog = (dialogType, browserType) => {
 };
 exports.showDialog = showDialog;
 const useMdOption = exports.useMdOption = (0, _storeApi.fCrUse)(_compStore, _selectMdOption);
-const _showModalDialog = function (modalDialogType, option) {
-  if (option === void 0) {
-    option = {};
-  }
+const _showModalDialog = (modalDialogType, option = {}) => {
   option.modalDialogType = modalDialogType;
   _set(_crMdOption({
     ...option
