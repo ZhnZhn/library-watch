@@ -14,8 +14,7 @@ module.exports = {
     lib: [
       "react",                                        
       "react-dom/client",                                    
-      "chart.js",                          
-      "papaparse",
+      "chart.js",                                
       "raven-js" 
     ],
     app: {

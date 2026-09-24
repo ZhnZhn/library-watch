@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _papaparse = _interopRequireDefault(require("papaparse"));
+var _csvToJson = _interopRequireDefault(require("../utils/csvToJson"));
 var _isTypeFn = require("../utils/isTypeFn");
 const fetchCsvStream = ({
   uri,
@@ -26,7 +26,7 @@ const fetchCsvStream = ({
   }
 }).then(result => {
   const _str = String.fromCharCode(...result.value);
-  return _papaparse.default.parse(_str, {
+  return (0, _csvToJson.default)(_str, {
     header: true
   });
 }).then(json => {

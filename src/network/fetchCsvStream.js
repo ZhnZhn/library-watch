@@ -1,5 +1,4 @@
-import csv from 'papaparse';
-
+import csvToJson from '../utils/csvToJson';
 import { isFn }  from '../utils/isTypeFn';
 
 const fetchCsvStream = ({
@@ -25,7 +24,7 @@ const fetchCsvStream = ({
     })
     .then(result => {
       const _str = String.fromCharCode(...result.value);
-      return csv.parse(_str, { header: true });
+      return csvToJson(_str, { header: true });
     })
     .then(json => {
       if (isFn(onCheckResponse)) {
