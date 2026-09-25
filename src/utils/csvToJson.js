@@ -1,34 +1,33 @@
-const Papa = {};
-Papa.RECORD_SEP = String.fromCharCode(30);
-Papa.UNIT_SEP = String.fromCharCode(31);
-Papa.BYTE_ORDER_MARK = '\ufeff';
-Papa.BAD_DELIMITERS = ['\r', '\n', '"', Papa.BYTE_ORDER_MARK];
-Papa.DefaultDelimiter = ',';
+const BYTE_ORDER_MARK = '\ufeff'
+, BAD_DELIMITERS = ['\r', '\n', '"', BYTE_ORDER_MARK]
+, DEFAULT_DELIMITER = ','
+, _isBadDelimiter = (
+  delimiter
+) => typeof delimiter !== 'string'
+  || BAD_DELIMITERS.indexOf(delimiter) > -1
 
-function isFunction(fn) {
-  return typeof fn === "function"
-}
+, _isFn = (fn) => typeof fn === "function"
 
-function escapeRegExp(string) {
-	return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
-}
+// $& means the whole matched string
+, _escapeRegExp = (str) => str
+   .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
-function copy(obj) {
+, _copy = (obj) => {
 	if (typeof obj !== 'object' || obj === null)
 		return obj;
 	const cpy = Array.isArray(obj)
 	  ? []
 		: {};
 	for (var key in obj)
-		cpy[key] = copy(obj[key]);
+		cpy[key] = _copy(obj[key]);
 	return cpy;
 }
 
-const _stripBom = (
-  string
-) => string.charCodeAt(0) === 0xfeff
-  ? string.slice(1)
-  : string;
+, _stripBom = (
+  str
+) => str.charCodeAt(0) === 0xfeff
+  ? str.slice(1)
+  : str;
 
 function Parser(config) {
 		// Unpack the config object
@@ -53,8 +52,7 @@ function Parser(config) {
 		}
 
 		// Delimiter must be valid
-		if (typeof delim !== 'string'
-			|| Papa.BAD_DELIMITERS.indexOf(delim) > -1)
+		if (_isBadDelimiter(delim))
 			delim = ',';
 
 		// Comment character must be valid
@@ -62,8 +60,7 @@ function Parser(config) {
 			throw new Error('Comment character same as delimiter');
 		else if (comments === true)
 			comments = '#';
-		else if (typeof comments !== 'string'
-			|| Papa.BAD_DELIMITERS.indexOf(comments) > -1)
+		else if (_isBadDelimiter(comments))
 			comments = false;
 
 		// Newline must be valid: \r, \n, or \r\n
@@ -86,7 +83,7 @@ function Parser(config) {
 				delimLen = delim.length,
 				newlineLen = newline.length,
 				commentsLen = comments.length;
-			var stepIsFunction = isFunction(step);
+			var stepIsFunction = _isFn(step);
 
 			// Establish starting state
 			cursor = 0;
@@ -130,7 +127,7 @@ function Parser(config) {
 
 			var nextDelim = input.indexOf(delim, cursor);
 			var nextNewline = input.indexOf(newline, cursor);
-			var quoteCharRegex = new RegExp(escapeRegExp(escapeChar) + escapeRegExp(quoteChar), 'g');
+			var quoteCharRegex = new RegExp(_escapeRegExp(escapeChar) + _escapeRegExp(quoteChar), 'g');
 			var quoteSearch = input.indexOf(quoteChar, cursor);
 
 			// Parser loop
@@ -365,7 +362,7 @@ function Parser(config) {
 
 					for (let i = 0; i < result.length; i++) {
 						let header = _stripBom(result[i]);
-						if (isFunction(config.transformHeader))
+						if (_isFn(config.transformHeader))
 							header = config.transformHeader(header, i);
 
 						if (!headerCount[header]) {
@@ -459,7 +456,7 @@ function ParserHandle(_config) {
 
 			_delimiterError = false;
 
-			const parserConfig = copy(_config);
+			const parserConfig = _copy(_config);
 			// Tell the parser the header instead of reguessing on each chunk
 			parserConfig.header = needsHeaderRow();
 			if (_config.preview && _config.header)
@@ -484,7 +481,9 @@ function ParserHandle(_config) {
 
 			// If it is streaming via "chunking", the reader will start appending correctly already so no need to substring,
 			// otherwise we can get duplicate content within a row
-			_input = isFunction(_config.chunk) ? "" : _input.substring(_parser.getCharIndex());
+			_input = _isFn(_config.chunk)
+        ? ""
+        : _input.substring(_parser.getCharIndex());
 		};
 
 		this.resume = function()
@@ -507,7 +506,7 @@ function ParserHandle(_config) {
 			_aborted = true;
 			_parser.abort();
 			_results.meta.aborted = true;
-			if (isFunction(_config.complete))
+			if (_isFn(_config.complete))
 				_config.complete(_results);
 			_input = '';
 		};
@@ -521,7 +520,7 @@ function ParserHandle(_config) {
 		{
 			if (_results && _delimiterError)
 			{
-				addError('Delimiter', 'UndetectableDelimiter', 'Unable to auto-detect delimiting character; defaulted to \'' + Papa.DefaultDelimiter + '\'');
+				addError('Delimiter', 'UndetectableDelimiter', 'Unable to auto-detect delimiting character; defaulted to \'' +  DEFAULT_DELIMITER + '\'');
 				_delimiterError = false;
 			}
 
@@ -662,7 +661,7 @@ function ChunkStreamer(config) {
 				const splitChunk = chunk.split(_newline);
 				chunk = [...splitChunk.slice(skipFirstNLines)].join(_newline);
 			}
-			if (this.isFirstChunk && isFunction(this._config.beforeFirstChunk))
+			if (this.isFirstChunk && _isFn(this._config.beforeFirstChunk))
 			{
 				var modifiedChunk = this._config.beforeFirstChunk(chunk);
 				if (modifiedChunk !== undefined)
@@ -694,7 +693,7 @@ function ChunkStreamer(config) {
 
 			var finishedIncludingPreview = this._finished || (this._config.preview && this._rowCount >= this._config.preview);
 
-			if (isFunction(this._config.chunk) && !isFakeChunk)
+			if (_isFn(this._config.chunk) && !isFakeChunk)
 			{
 				this._config.chunk(results, this._handle);
 				if (this._handle.paused() || this._handle.aborted()) {
@@ -711,7 +710,7 @@ function ChunkStreamer(config) {
 				this._completeResults.meta = results.meta;
 			}
 
-			if (!this._completed && finishedIncludingPreview && isFunction(this._config.complete) && (!results || !results.meta.aborted)) {
+			if (!this._completed && finishedIncludingPreview && _isFn(this._config.complete) && (!results || !results.meta.aborted)) {
 				this._config.complete(this._completeResults, this._input);
 				this._completed = true;
 			}
@@ -723,14 +722,14 @@ function ChunkStreamer(config) {
 		};
 
 		this._sendError = function(error) {
-			if (isFunction(this._config.error)) {
+			if (_isFn(this._config.error)) {
 				this._config.error(error);
       }
 		};
 
 		function replaceConfig(config) {
 			// Deep-copy the config so we can edit it
-			const configCopy = copy(config);
+			const configCopy = _copy(config);
 			configCopy.chunkSize = null
 			this._handle = new ParserHandle(configCopy);
 			this._handle.streamer = this;
@@ -766,7 +765,7 @@ const csvToJson = (
 ) => {
 	_config.delimiter = ","
 	_config.dynamicTyping = false
-  _config.transform = false		    
+  _config.transform = false
 	return typeof _input === 'string'
 	  ? (new StringStreamer(_config)).stream(_stripBom(_input))
 		: {};
