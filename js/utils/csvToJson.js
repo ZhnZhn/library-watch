@@ -4,6 +4,8 @@ exports.__esModule = true;
 exports.default = void 0;
 const _isFn = fn => typeof fn === "function",
   _isStr = str => typeof str === "string",
+  _isObj = obj => typeof obj === "object" && obj !== null,
+  _isUndef = value => typeof value === "undefined",
   BYTE_ORDER_MARK = '\ufeff',
   BAD_DELIMITERS = ['\r', '\n', '"', BYTE_ORDER_MARK],
   DEFAULT_DELIMITER = ',',
@@ -13,7 +15,7 @@ const _isFn = fn => typeof fn === "function",
   ,
   _escapeRegExp = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
   _copy = obj => {
-    if (typeof obj !== 'object' || obj === null) return obj;
+    if (!_isObj(obj)) return obj;
     const cpy = Array.isArray(obj) ? [] : {};
     for (var key in obj) cpy[key] = _copy(obj[key]);
     return cpy;
@@ -30,13 +32,13 @@ function Parser(config) {
   var quoteChar;
   var renamedHeaders = null;
   var headerParsed = false;
-  if (config.quoteChar === undefined || config.quoteChar === null) {
+  if (config.quoteChar == null) {
     quoteChar = '"';
   } else {
     quoteChar = config.quoteChar;
   }
   var escapeChar = quoteChar;
-  if (config.escapeChar !== undefined) {
+  if (!_isUndef(config.escapeChar)) {
     escapeChar = config.escapeChar;
   }
 
@@ -257,7 +259,7 @@ function Parser(config) {
      */
     function finish(value) {
       if (ignoreLastRow) return returnable();
-      if (typeof value === 'undefined') value = input.substring(cursor);
+      if (_isUndef(value)) value = input.substring(cursor);
       row.push(value);
       cursor = inputLen; // important in case parsing is paused
       pushRow(row);
@@ -487,7 +489,7 @@ function ParserHandle(_config) {
       code: code,
       message: msg
     };
-    if (row !== undefined) {
+    if (!_isUndef(row)) {
       error.row = row;
     }
     _results.errors.push(error);
@@ -521,7 +523,7 @@ function ChunkStreamer(config) {
     }
     if (this.isFirstChunk && _isFn(this._config.beforeFirstChunk)) {
       var modifiedChunk = this._config.beforeFirstChunk(chunk);
-      if (modifiedChunk !== undefined) chunk = modifiedChunk;
+      if (!_isUndef(modifiedChunk)) chunk = modifiedChunk;
     }
     this.isFirstChunk = false;
     this._halted = false;
@@ -547,8 +549,8 @@ function ChunkStreamer(config) {
         this._halted = true;
         return;
       }
-      results = undefined;
-      this._completeResults = undefined;
+      results = void 0;
+      this._completeResults = void 0;
     }
     if (!this._config.step && !this._config.chunk) {
       this._completeResults.data = this._completeResults.data.concat(results.data);
