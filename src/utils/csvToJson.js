@@ -1,12 +1,13 @@
-const BYTE_ORDER_MARK = '\ufeff'
+const _isFn = (fn) => typeof fn === "function"
+, _isStr = (str) => typeof str === "string"
+
+, BYTE_ORDER_MARK = '\ufeff'
 , BAD_DELIMITERS = ['\r', '\n', '"', BYTE_ORDER_MARK]
 , DEFAULT_DELIMITER = ','
 , _isBadDelimiter = (
   delimiter
-) => typeof delimiter !== 'string'
+) => !_isStr(delimiter)
   || BAD_DELIMITERS.indexOf(delimiter) > -1
-
-, _isFn = (fn) => typeof fn === "function"
 
 // $& means the whole matched string
 , _escapeRegExp = (str) => str
@@ -74,7 +75,7 @@ function Parser(config) {
 		this.parse = function(input, baseIndex, ignoreLastRow)
 		{
 			// For some reason, in Chrome, this speeds things up (!?)
-			if (typeof input !== 'string')
+			if (!_isStr(input))
 				throw new Error('Input must be a string');
 
 			// We don't need to compute some of these every time parse() is called,
@@ -766,7 +767,7 @@ const csvToJson = (
 	_config.delimiter = ","
 	_config.dynamicTyping = false
   _config.transform = false
-	return typeof _input === 'string'
+	return _isStr(_input)
 	  ? (new StringStreamer(_config)).stream(_stripBom(_input))
 		: {};
 }

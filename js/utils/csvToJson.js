@@ -2,11 +2,12 @@
 
 exports.__esModule = true;
 exports.default = void 0;
-const BYTE_ORDER_MARK = '\ufeff',
+const _isFn = fn => typeof fn === "function",
+  _isStr = str => typeof str === "string",
+  BYTE_ORDER_MARK = '\ufeff',
   BAD_DELIMITERS = ['\r', '\n', '"', BYTE_ORDER_MARK],
   DEFAULT_DELIMITER = ',',
-  _isBadDelimiter = delimiter => typeof delimiter !== 'string' || BAD_DELIMITERS.indexOf(delimiter) > -1,
-  _isFn = fn => typeof fn === "function"
+  _isBadDelimiter = delimiter => !_isStr(delimiter) || BAD_DELIMITERS.indexOf(delimiter) > -1
 
   // $& means the whole matched string
   ,
@@ -53,7 +54,7 @@ function Parser(config) {
   var aborted = false;
   this.parse = function (input, baseIndex, ignoreLastRow) {
     // For some reason, in Chrome, this speeds things up (!?)
-    if (typeof input !== 'string') throw new Error('Input must be a string');
+    if (!_isStr(input)) throw new Error('Input must be a string');
 
     // We don't need to compute some of these every time parse() is called,
     // but having them in a more local scope seems to perform better
@@ -596,7 +597,7 @@ const csvToJson = (_input, _config = {}) => {
   _config.delimiter = ",";
   _config.dynamicTyping = false;
   _config.transform = false;
-  return typeof _input === 'string' ? new StringStreamer(_config).stream(_stripBom(_input)) : {};
+  return _isStr(_input) ? new StringStreamer(_config).stream(_stripBom(_input)) : {};
 };
 var _default = exports.default = csvToJson;
 //# sourceMappingURL=csvToJson.js.map
