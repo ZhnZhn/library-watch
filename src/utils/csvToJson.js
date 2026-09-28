@@ -33,29 +33,27 @@ const _isFn = (fn) => typeof fn === "function"
 
 function Parser(config) {
 		// Unpack the config object
-		var delim = config.delimiter;
-		var newline = config.newline;
-		var comments = config.comments;
-		var step = config.step;
-		var preview = config.preview;
-		var fastMode = config.fastMode;
-		var quoteChar;
-		var renamedHeaders = null;
-		var headerParsed = false;
+		//var delim = config.delimiter;
 
-		if (config.quoteChar == null) {
-			quoteChar = '"';
-		} else {
-			quoteChar = config.quoteChar;
-		}
-		var escapeChar = quoteChar;
-		if (!_isUndef(config.escapeChar)) {
-			escapeChar = config.escapeChar;
-		}
+    const delim = _isBadDelimiter(config.delimiter)
+      ? ','
+      : config.delimiter
+    , {
+      preview,
+      fastMode
+    } = config
+		, quoteChar = config.quoteChar == null
+      ? '"'
+      : config.quoteChar
+    , escapeChar = _isUndef(config.escapeChar)
+      ? quoteChar
+      : config.escapeChar;
 
-		// Delimiter must be valid
-		if (_isBadDelimiter(delim))
-			delim = ',';
+    let newline = config.newline
+    , comments = config.comments
+
+		, renamedHeaders = null
+		, headerParsed = false;
 
 		// Comment character must be valid
 		if (comments === delim)
@@ -70,34 +68,35 @@ function Parser(config) {
 			newline = '\n';
 
 		// We're gonna need these at the Parser scope
-		var cursor = 0;
-		var aborted = false;
+		let cursor = 0;
+		let aborted = false;
 
-		this.parse = function(input, baseIndex, ignoreLastRow)
-		{
+		this.parse = function(input, baseIndex, ignoreLastRow) {
 			// For some reason, in Chrome, this speeds things up (!?)
 			if (!_isStr(input))
 				throw new Error('Input must be a string');
 
 			// We don't need to compute some of these every time parse() is called,
 			// but having them in a more local scope seems to perform better
-			var inputLen = input.length,
-				delimLen = delim.length,
-				newlineLen = newline.length,
-				commentsLen = comments.length;
-			var stepIsFunction = _isFn(step);
+			const inputLen = input.length
+      , delimLen = delim.length
+			,	newlineLen = newline.length
+			, commentsLen = comments.length;
 
 			// Establish starting state
 			cursor = 0;
-			var data = [], errors = [], row = [], lastCursor = 0;
 
-			if (!input)
-				return returnable();
+			let data = []
+      , errors = []
+      , row = []
+      , lastCursor = 0;
+
+			if (!input) return returnable();
 
 			if (fastMode || (fastMode !== false && input.indexOf(quoteChar) === -1))
 			{
-				var rows = input.split(newline);
-				for (var i = 0; i < rows.length; i++)
+				const rows = input.split(newline);
+				for (let i = 0; i < rows.length; i++)
 				{
 					row = rows[i];
 					cursor += row.length;
@@ -108,16 +107,7 @@ function Parser(config) {
 						return returnable();
 					if (comments && row.substring(0, commentsLen) === comments)
 						continue;
-					if (stepIsFunction)
-					{
-						data = [];
-						pushRow(row.split(delim));
-						doStep();
-						if (aborted)
-							return returnable();
-					}
-					else
-						pushRow(row.split(delim));
+					pushRow(row.split(delim));
 					if (preview && i >= preview)
 					{
 						data = data.slice(0, preview);
@@ -127,10 +117,10 @@ function Parser(config) {
 				return returnable();
 			}
 
-			var nextDelim = input.indexOf(delim, cursor);
-			var nextNewline = input.indexOf(newline, cursor);
-			var quoteCharRegex = new RegExp(_escapeRegExp(escapeChar) + _escapeRegExp(quoteChar), 'g');
-			var quoteSearch = input.indexOf(quoteChar, cursor);
+			let nextDelim = input.indexOf(delim, cursor)
+			, nextNewline = input.indexOf(newline, cursor)
+			, quoteCharRegex = new RegExp(_escapeRegExp(escapeChar) + _escapeRegExp(quoteChar), 'g')
+			, quoteSearch = input.indexOf(quoteChar, cursor);
 
 			// Parser loop
 			for (;;)
@@ -166,23 +156,23 @@ function Parser(config) {
 						}
 
 						// Closing quote at EOF
-						if (quoteSearch === inputLen - 1)
-						{
-							var value = input.substring(cursor, quoteSearch).replace(quoteCharRegex, quoteChar);
-							return finish(value);
+						if (quoteSearch === inputLen - 1) {
+							//var value = input.substring(cursor, quoteSearch).replace(quoteCharRegex, quoteChar);
+							return finish(input
+                .substring(cursor, quoteSearch)
+                .replace(quoteCharRegex, quoteChar)
+              );
 						}
 
 						// If this quote is escaped, it's part of the data; skip it
 						// If the quote character is the escape character, then check if the next character is the escape character
-						if (quoteChar === escapeChar &&  input[quoteSearch + 1] === escapeChar)
-						{
+						if (quoteChar === escapeChar &&  input[quoteSearch + 1] === escapeChar) {
 							quoteSearch++;
 							continue;
 						}
 
 						// If the quote character is not the escape character, then check if the previous character was the escape character
-						if (quoteChar !== escapeChar && quoteSearch !== 0 && input[quoteSearch - 1] === escapeChar)
-						{
+						if (quoteChar !== escapeChar && quoteSearch !== 0 && input[quoteSearch - 1] === escapeChar) {
 							continue;
 						}
 
@@ -193,18 +183,18 @@ function Parser(config) {
 							nextNewline = input.indexOf(newline, (quoteSearch + 1));
 						}
 						// Check up to nextDelim or nextNewline, whichever is closest
-						var checkUpTo = nextNewline === -1 ? nextDelim : Math.min(nextDelim, nextNewline);
-						var spacesBetweenQuoteAndDelimiter = extraSpaces(checkUpTo);
+						const checkUpTo = nextNewline === -1
+              ? nextDelim
+              : Math.min(nextDelim, nextNewline)
+						, spacesBetweenQuoteAndDelimiter = extraSpaces(checkUpTo);
 
 						// Closing quote followed by delimiter or 'unnecessary spaces + delimiter'
-						if (input.substr(quoteSearch + 1 + spacesBetweenQuoteAndDelimiter, delimLen) === delim)
-						{
+						if (input.substr(quoteSearch + 1 + spacesBetweenQuoteAndDelimiter, delimLen) === delim) {
 							row.push(input.substring(cursor, quoteSearch).replace(quoteCharRegex, quoteChar));
 							cursor = quoteSearch + 1 + spacesBetweenQuoteAndDelimiter + delimLen;
 
 							// If char after following delimiter is not quoteChar, we find next quote char position
-							if (input[quoteSearch + 1 + spacesBetweenQuoteAndDelimiter + delimLen] !== quoteChar)
-							{
+							if (input[quoteSearch + 1 + spacesBetweenQuoteAndDelimiter + delimLen] !== quoteChar) {
 								quoteSearch = input.indexOf(quoteChar, cursor);
 							}
 							nextDelim = input.indexOf(delim, cursor);
@@ -212,7 +202,7 @@ function Parser(config) {
 							break;
 						}
 
-						var spacesBetweenQuoteAndNewLine = extraSpaces(nextNewline);
+						const spacesBetweenQuoteAndNewLine = extraSpaces(nextNewline);
 
 						// Closing quote followed by newline or 'unnecessary spaces + newLine'
 						if (input.substring(quoteSearch + 1 + spacesBetweenQuoteAndNewLine, quoteSearch + 1 + spacesBetweenQuoteAndNewLine + newlineLen) === newline)
@@ -221,13 +211,6 @@ function Parser(config) {
 							saveRow(quoteSearch + 1 + spacesBetweenQuoteAndNewLine + newlineLen);
 							nextDelim = input.indexOf(delim, cursor);	// because we may have skipped the nextDelim in the quoted field
 							quoteSearch = input.indexOf(quoteChar, cursor);	// we search for first quote in next line
-
-							if (stepIsFunction)
-							{
-								doStep();
-								if (aborted)
-									return returnable();
-							}
 
 							if (preview && data.length >= preview)
 								return returnable(true);
@@ -280,13 +263,6 @@ function Parser(config) {
 					row.push(input.substring(cursor, nextNewline));
 					saveRow(nextNewline + newlineLen);
 
-					if (stepIsFunction)
-					{
-						doStep();
-						if (aborted)
-							return returnable();
-					}
-
 					if (preview && data.length >= preview)
 						return returnable(true);
 
@@ -333,8 +309,7 @@ function Parser(config) {
 				row.push(value);
 				cursor = inputLen;	// important in case parsing is paused
 				pushRow(row);
-				if (stepIsFunction)
-					doStep();
+
 				return returnable();
 			}
 
@@ -409,15 +384,7 @@ function Parser(config) {
 						renamedHeaders: renamedHeaders
 					}
 				};
-			}
-
-			/** Executes the user's step function and resets data & errors. */
-			function doStep()
-			{
-				step(returnable());
-				data = [];
-				errors = [];
-			}
+			}			
 		};
 
 		/** Sets the abort flag */
@@ -706,11 +673,11 @@ function ChunkStreamer(config) {
 				this._completeResults = void 0;
 			}
 
-			if (!this._config.step && !this._config.chunk) {
-				this._completeResults.data = this._completeResults.data.concat(results.data);
-				this._completeResults.errors = this._completeResults.errors.concat(results.errors);
-				this._completeResults.meta = results.meta;
-			}
+			//if (!this._config.chunk) {
+			this._completeResults.data = this._completeResults.data.concat(results.data);
+			this._completeResults.errors = this._completeResults.errors.concat(results.errors);
+			this._completeResults.meta = results.meta;
+      //}
 
 			if (!this._completed && finishedIncludingPreview && _isFn(this._config.complete) && (!results || !results.meta.aborted)) {
 				this._config.complete(this._completeResults, this._input);
