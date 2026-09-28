@@ -20,7 +20,7 @@ const _isFn = (fn) => typeof fn === "function"
 	const cpy = Array.isArray(obj)
 	  ? []
 		: {};
-	for (var key in obj)
+	for (const key in obj)
 		cpy[key] = _copy(obj[key]);
 	return cpy;
 }
@@ -33,8 +33,6 @@ const _isFn = (fn) => typeof fn === "function"
 
 function Parser(config) {
 		// Unpack the config object
-		//var delim = config.delimiter;
-
     const delim = _isBadDelimiter(config.delimiter)
       ? ','
       : config.delimiter
@@ -157,7 +155,7 @@ function Parser(config) {
 
 						// Closing quote at EOF
 						if (quoteSearch === inputLen - 1) {
-							//var value = input.substring(cursor, quoteSearch).replace(quoteCharRegex, quoteChar);
+							//const value = input.substring(cursor, quoteSearch).replace(quoteCharRegex, quoteChar);
 							return finish(input
                 .substring(cursor, quoteSearch)
                 .replace(quoteCharRegex, quoteChar)
@@ -286,9 +284,9 @@ function Parser(config) {
              * if Yes, returns the number of spaces
              */
 			function extraSpaces(index) {
-				var spaceLength = 0;
+				let spaceLength = 0;
 				if (index !== -1) {
-					var textBetweenClosingQuoteAndIndex = input.substring(quoteSearch + 1, index);
+					const textBetweenClosingQuoteAndIndex = input.substring(quoteSearch + 1, index);
 					if (textBetweenClosingQuoteAndIndex && textBetweenClosingQuoteAndIndex.trim() === '') {
 						spaceLength = textBetweenClosingQuoteAndIndex.length;
 					}
@@ -384,7 +382,7 @@ function Parser(config) {
 						renamedHeaders: renamedHeaders
 					}
 				};
-			}			
+			}
 		};
 
 		/** Sets the abort flag */
@@ -401,15 +399,15 @@ function Parser(config) {
 }
 
 function ParserHandle(_config) {
-		var self = this;
-		var _rowCounter = 0;	// Number of rows that have been parsed so far
-		var _input;				// The input being parsed
-		var _parser;			// The core parser being used
-		var _paused = false;	// Whether we are paused or not
-		var _aborted = false;	// Whether the parser has aborted or not
-		var _delimiterError;	// Temporary state between delimiter detection and processing results
-		var _fields = [];		// Fields are from the header row of the input, if there is one
-		var _results = {		// The last results returned from the parser
+		const self = this;
+		let _rowCounter = 0;	// Number of rows that have been parsed so far
+		let _input;				// The input being parsed
+		let _parser;			// The core parser being used
+		let _paused = false;	// Whether we are paused or not
+		let _aborted = false;	// Whether the parser has aborted or not
+		let _delimiterError;	// Temporary state between delimiter detection and processing results
+		let _fields = [];		// Fields are from the header row of the input, if there is one
+		let _results = {		// The last results returned from the parser
 			data: [],
 			errors: [],
 			meta: {}
@@ -447,16 +445,10 @@ function ParserHandle(_config) {
 		this.pause = function() {
 			_paused = true;
 			_parser.abort();
-
-			// If it is streaming via "chunking", the reader will start appending correctly already so no need to substring,
-			// otherwise we can get duplicate content within a row
-			_input = _isFn(_config.chunk)
-        ? ""
-        : _input.substring(_parser.getCharIndex());
+      _input = _input.substring(_parser.getCharIndex());
 		};
 
-		this.resume = function()
-		{
+		this.resume = function() {
 			if(self.streamer._halted) {
 				_paused = false;
 				self.streamer.parseChunk(_input, true);
@@ -519,7 +511,7 @@ function ParserHandle(_config) {
 			}
 
 			if (Array.isArray(_results.data[0])) {
-				for (var i = 0; needsHeaderRow() && i < _results.data.length; i++)
+				for (let i = 0; needsHeaderRow() && i < _results.data.length; i++)
 					_results.data[i].forEach(addHeader);
 
 				_results.data.splice(0, 1);
@@ -537,13 +529,13 @@ function ParserHandle(_config) {
 
 			function processRow(rowSource, i)
 			{
-				var row = _config.header ? {} : [];
+				const row = _config.header ? {} : [];
 
-				var j;
+				let j;
 				for (j = 0; j < rowSource.length; j++)
 				{
-					var field = j;
-					var value = rowSource[j];
+					let field = j;
+					let value = rowSource[j];
 
 					if (_config.header)
 						field = j >= _fields.length ? '__parsed_extra' : _fields[j];
@@ -572,7 +564,7 @@ function ParserHandle(_config) {
 				return row;
 			}
 
-			var incrementBy = 1;
+			let incrementBy = 1;
 			if (!_results.data.length || Array.isArray(_results.data[0]))
 			{
 				_results.data = _results.data.map(processRow);
@@ -632,7 +624,7 @@ function ChunkStreamer(config) {
 			}
 			if (this.isFirstChunk && _isFn(this._config.beforeFirstChunk))
 			{
-				var modifiedChunk = this._config.beforeFirstChunk(chunk);
+				const modifiedChunk = this._config.beforeFirstChunk(chunk);
 				if (!_isUndef(modifiedChunk))
 					chunk = modifiedChunk;
 			}
@@ -640,19 +632,21 @@ function ChunkStreamer(config) {
 			this._halted = false;
 
 			// Rejoin the line we likely just split in two by chunking the file
-			var aggregate = this._partialLine + chunk;
+			const aggregate = this._partialLine + chunk;
 			this._partialLine = '';
-			var results = this._handle.parse(aggregate, this._baseIndex, !this._finished);
+			const results = this._handle.parse(
+        aggregate,
+        this._baseIndex,
+        !this._finished
+      );
 
 			if (this._handle.paused() || this._handle.aborted()) {
 				this._halted = true;
 				return;
 			}
 
-			var lastIndex = results.meta.cursor;
-
-			if (!this._finished)
-			{
+			const lastIndex = results.meta.cursor;
+			if (!this._finished) {
 				this._partialLine = aggregate.substring(lastIndex - this._baseIndex);
 				this._baseIndex = lastIndex;
 			}
@@ -660,24 +654,12 @@ function ChunkStreamer(config) {
 			if (results && results.data)
 				this._rowCount += results.data.length;
 
-			var finishedIncludingPreview = this._finished || (this._config.preview && this._rowCount >= this._config.preview);
+			const finishedIncludingPreview = this._finished || (this._config.preview && this._rowCount >= this._config.preview);
 
-			if (_isFn(this._config.chunk) && !isFakeChunk)
-			{
-				this._config.chunk(results, this._handle);
-				if (this._handle.paused() || this._handle.aborted()) {
-					this._halted = true;
-					return;
-				}
-				results = void 0;
-				this._completeResults = void 0;
-			}
-
-			//if (!this._config.chunk) {
 			this._completeResults.data = this._completeResults.data.concat(results.data);
 			this._completeResults.errors = this._completeResults.errors.concat(results.errors);
 			this._completeResults.meta = results.meta;
-      //}
+
 
 			if (!this._completed && finishedIncludingPreview && _isFn(this._config.complete) && (!results || !results.meta.aborted)) {
 				this._config.complete(this._completeResults, this._input);
