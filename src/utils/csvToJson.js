@@ -31,6 +31,22 @@ const _isFn = (fn) => typeof fn === "function"
   ? str.slice(1)
   : str;
 
+const _getCommentsToken = (
+  configComments,
+  delimiter
+) => {
+  const comments = configComments === true
+    ? '#'
+    : _isBadDelimiter(configComments)
+    ? false
+    : configComments;
+
+  if (comments === delimiter) {
+    throw new Error('Comment character same as delimiter')
+  }
+  return comments;
+};
+
 function Parser(config) {
 		// Unpack the config object
     const delim = _isBadDelimiter(config.delimiter)
@@ -45,21 +61,20 @@ function Parser(config) {
       : config.quoteChar
     , escapeChar = _isUndef(config.escapeChar)
       ? quoteChar
-      : config.escapeChar;
+      : config.escapeChar
+
+    , _comments = config.comments
+    , comments = _getCommentsToken(
+      config.comments,
+      delim
+    );
+
 
     let newline = config.newline
-    , comments = config.comments
+
 
 		, renamedHeaders = null
 		, headerParsed = false;
-
-		// Comment character must be valid
-		if (comments === delim)
-			throw new Error('Comment character same as delimiter');
-		else if (comments === true)
-			comments = '#';
-		else if (_isBadDelimiter(comments))
-			comments = false;
 
 		// Newline must be valid: \r, \n, or \r\n
 		if (newline !== '\n' && newline !== '\r' && newline !== '\r\n')
