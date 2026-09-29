@@ -21,7 +21,8 @@ const _isFn = fn => typeof fn === "function",
     return cpy;
   },
   _stripBom = str => str.charCodeAt(0) === 0xfeff ? str.slice(1) : str;
-const _getCommentsToken = (configComments, delimiter) => {
+const _getLength = strOrArr => strOrArr.length,
+  _getCommentsToken = (configComments, delimiter) => {
     const comments = configComments === true ? '#' : _isBadDelimiter(configComments) ? false : configComments;
     if (comments === delimiter) {
       throw new Error('Comment character same as delimiter');
@@ -53,10 +54,10 @@ function Parser(config) {
 
     // We don't need to compute some of these every time parse() is called,
     // but having them in a more local scope seems to perform better
-    const inputLen = input.length,
-      delimLen = delim.length,
-      newlineLen = newline.length,
-      commentsLen = comments.length;
+    const inputLen = _getLength(input),
+      delimLen = _getLength(delim),
+      newlineLen = _getLength(newline),
+      commentsLen = _getLength(comments);
 
     // Establish starting state
     cursor = 0;
@@ -80,9 +81,9 @@ function Parser(config) {
       }
       return returnable();
     }
+    const quoteCharRegex = new RegExp(_escapeRegExp(escapeChar) + _escapeRegExp(quoteChar), 'g');
     let nextDelim = input.indexOf(delim, cursor),
       nextNewline = input.indexOf(newline, cursor),
-      quoteCharRegex = new RegExp(_escapeRegExp(escapeChar) + _escapeRegExp(quoteChar), 'g'),
       quoteSearch = input.indexOf(quoteChar, cursor);
 
     // Parser loop
@@ -106,7 +107,7 @@ function Parser(config) {
                 type: 'Quotes',
                 code: 'MissingQuotes',
                 message: 'Quoted field unterminated',
-                row: data.length,
+                row: _getLength(data),
                 // row has yet to be inserted
                 index: cursor
               });
@@ -172,7 +173,7 @@ function Parser(config) {
             type: 'Quotes',
             code: 'InvalidQuotes',
             message: 'Trailing quote on quoted field is malformed',
-            row: data.length,
+            row: _getLength(data),
             // row has yet to be inserted
             index: cursor
           });
