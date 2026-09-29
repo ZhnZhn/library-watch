@@ -22,12 +22,13 @@ const _isFn = fn => typeof fn === "function",
   },
   _stripBom = str => str.charCodeAt(0) === 0xfeff ? str.slice(1) : str;
 const _getCommentsToken = (configComments, delimiter) => {
-  const comments = configComments === true ? '#' : _isBadDelimiter(configComments) ? false : configComments;
-  if (comments === delimiter) {
-    throw new Error('Comment character same as delimiter');
-  }
-  return comments;
-};
+    const comments = configComments === true ? '#' : _isBadDelimiter(configComments) ? false : configComments;
+    if (comments === delimiter) {
+      throw new Error('Comment character same as delimiter');
+    }
+    return comments;
+  },
+  _getNewlineToken = configNewline => configNewline !== '\n' && configNewline !== '\r' && configNewline !== '\r\n' ? '\n' : configNewline;
 function Parser(config) {
   // Unpack the config object
   const delim = _isBadDelimiter(config.delimiter) ? ',' : config.delimiter,
@@ -38,17 +39,14 @@ function Parser(config) {
     quoteChar = config.quoteChar == null ? '"' : config.quoteChar,
     escapeChar = _isUndef(config.escapeChar) ? quoteChar : config.escapeChar,
     _comments = config.comments,
-    comments = _getCommentsToken(config.comments, delim);
-  let newline = config.newline,
-    renamedHeaders = null,
-    headerParsed = false;
-
-  // Newline must be valid: \r, \n, or \r\n
-  if (newline !== '\n' && newline !== '\r' && newline !== '\r\n') newline = '\n';
-
-  // We're gonna need these at the Parser scope
-  let cursor = 0;
-  let aborted = false;
+    comments = _getCommentsToken(config.comments, delim),
+    newline = _getNewlineToken(config.newline);
+  let renamedHeaders = null,
+    headerParsed = false
+    // We're gonna need these at the Parser scope
+    ,
+    cursor = 0,
+    aborted = false;
   this.parse = function (input, baseIndex, ignoreLastRow) {
     // For some reason, in Chrome, this speeds things up (!?)
     if (!_isStr(input)) throw new Error('Input must be a string');

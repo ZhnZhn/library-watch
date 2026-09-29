@@ -45,7 +45,12 @@ const _getCommentsToken = (
     throw new Error('Comment character same as delimiter')
   }
   return comments;
-};
+}
+, _getNewlineToken = (
+  configNewline
+) => configNewline !== '\n' && configNewline !== '\r' && configNewline !== '\r\n'
+  ? '\n'
+  : configNewline;
 
 function Parser(config) {
 		// Unpack the config object
@@ -67,22 +72,16 @@ function Parser(config) {
     , comments = _getCommentsToken(
       config.comments,
       delim
+    )
+    , newline = _getNewlineToken(
+      config.newline
     );
 
-
-    let newline = config.newline
-
-
-		, renamedHeaders = null
-		, headerParsed = false;
-
-		// Newline must be valid: \r, \n, or \r\n
-		if (newline !== '\n' && newline !== '\r' && newline !== '\r\n')
-			newline = '\n';
-
+		let renamedHeaders = null
+		, headerParsed = false
 		// We're gonna need these at the Parser scope
-		let cursor = 0;
-		let aborted = false;
+		, cursor = 0
+		, aborted = false;
 
 		this.parse = function(input, baseIndex, ignoreLastRow) {
 			// For some reason, in Chrome, this speeds things up (!?)
