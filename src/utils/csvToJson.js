@@ -639,13 +639,7 @@ function ChunkStreamer(config) {
 				this._nextChunk();
 
 			return results;
-		};
-
-		this._sendError = function(error) {
-			if (_isFn(this._config.error)) {
-				this._config.error(error);
-      }
-		};
+		};		
 
 		function replaceConfig(config) {
 			// Deep-copy the config so we can edit it
