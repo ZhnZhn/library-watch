@@ -397,14 +397,12 @@ function ChunkStreamer(config) {
   this._handle = null;
   this._finished = false;
   this._completed = false;
-  this._halted = false;
   this._input = null;
   this._baseIndex = 0;
   this._partialLine = '';
   this._rowCount = 0;
   this._start = 0;
   this._nextChunk = null;
-  this.isFirstChunk = true;
   this._completeResults = {
     data: [],
     errors: [],
@@ -412,20 +410,6 @@ function ChunkStreamer(config) {
   };
   replaceConfig.call(this, config);
   this.parseChunk = function (chunk, isFakeChunk) {
-    // First chunk pre-processing
-    const skipFirstNLines = parseInt(this._config.skipFirstNLines) || 0;
-    if (this.isFirstChunk && skipFirstNLines > 0) {
-      let _newline = this._config.newline;
-      const splitChunk = chunk.split(_newline);
-      chunk = [...splitChunk.slice(skipFirstNLines)].join(_newline);
-    }
-    if (this.isFirstChunk && _isFn(this._config.beforeFirstChunk)) {
-      const modifiedChunk = this._config.beforeFirstChunk(chunk);
-      if (!_isUndef(modifiedChunk)) chunk = modifiedChunk;
-    }
-    this.isFirstChunk = false;
-    this._halted = false;
-
     // Rejoin the line we likely just split in two by chunking the file
     const aggregate = this._partialLine + chunk;
     this._partialLine = '';
