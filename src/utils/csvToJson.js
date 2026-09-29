@@ -58,9 +58,6 @@ function Parser(config) {
     const delim = _isBadDelimiter(config.delimiter)
       ? ','
       : config.delimiter
-    , {
-      preview
-    } = config
 		, quoteChar = config.quoteChar == null
       ? '"'
       : config.quoteChar
@@ -200,9 +197,6 @@ function Parser(config) {
 							nextDelim = input.indexOf(delim, cursor);	// because we may have skipped the nextDelim in the quoted field
 							quoteSearch = input.indexOf(quoteChar, cursor);	// we search for first quote in next line
 
-							if (preview && data.length >= preview)
-								return returnable(true);
-
 							break;
 						}
 
@@ -246,14 +240,9 @@ function Parser(config) {
 				}
 
 				// End of row
-				if (nextNewline !== -1)
-				{
+				if (nextNewline !== -1) {
 					row.push(input.substring(cursor, nextNewline));
 					saveRow(nextNewline + newlineLen);
-
-					if (preview && data.length >= preview)
-						return returnable(true);
-
 					continue;
 				}
 
@@ -416,9 +405,6 @@ function ParserHandle(_config) {
 			const parserConfig = _copy(_config);
 			// Tell the parser the header instead of reguessing on each chunk
 			parserConfig.header = needsHeaderRow();
-			if (_config.preview && _config.header)
-				parserConfig.preview++;	// to compensate for header row
-
 			_input = input;
 			_parser = new Parser(parserConfig);
 			_results = _parser.parse(_input, baseIndex, ignoreLastRow);
@@ -427,6 +413,7 @@ function ParserHandle(_config) {
 			  ? { meta: { paused: true } }
 				: (_results || { meta: { paused: false } });
 		};
+
 
 		this.paused = function() {
 			return _paused;
@@ -644,19 +631,11 @@ function ChunkStreamer(config) {
 			if (results && results.data)
 				this._rowCount += results.data.length;
 
-			const finishedIncludingPreview = this._finished || (this._config.preview && this._rowCount >= this._config.preview);
-
 			this._completeResults.data = this._completeResults.data.concat(results.data);
 			this._completeResults.errors = this._completeResults.errors.concat(results.errors);
 			this._completeResults.meta = results.meta;
 
-
-			if (!this._completed && finishedIncludingPreview && _isFn(this._config.complete) && (!results || !results.meta.aborted)) {
-				this._config.complete(this._completeResults, this._input);
-				this._completed = true;
-			}
-
-			if (!finishedIncludingPreview && (!results || !results.meta.paused))
+			if (!this._finished && (!results || !results.meta.paused))
 				this._nextChunk();
 
 			return results;
