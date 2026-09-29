@@ -34,8 +34,7 @@ function Parser(config) {
   // Unpack the config object
   const delim = _isBadDelimiter(config.delimiter) ? ',' : config.delimiter,
     {
-      preview,
-      fastMode
+      preview
     } = config,
     quoteChar = config.quoteChar == null ? '"' : config.quoteChar,
     escapeChar = _isUndef(config.escapeChar) ? quoteChar : config.escapeChar,
@@ -66,21 +65,6 @@ function Parser(config) {
       row = [],
       lastCursor = 0;
     if (!input) return returnable();
-    if (fastMode || fastMode !== false && input.indexOf(quoteChar) === -1) {
-      const rows = input.split(newline);
-      for (let i = 0; i < rows.length; i++) {
-        row = rows[i];
-        cursor += row.length;
-        if (i !== rows.length - 1) cursor += newline.length;else if (ignoreLastRow) return returnable();
-        if (comments && row.substring(0, commentsLen) === comments) continue;
-        pushRow(row.split(delim));
-        if (preview && i >= preview) {
-          data = data.slice(0, preview);
-          return returnable(true);
-        }
-      }
-      return returnable();
-    }
     const quoteCharRegex = new RegExp(_escapeRegExp(escapeChar) + _escapeRegExp(quoteChar), 'g');
     let nextDelim = input.indexOf(delim, cursor),
       nextNewline = input.indexOf(newline, cursor),
