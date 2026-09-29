@@ -42,8 +42,7 @@ function Parser(config) {
     headerParsed = false
     // We're gonna need these at the Parser scope
     ,
-    cursor = 0,
-    aborted = false;
+    cursor = 0;
   this.parse = function (input, baseIndex, ignoreLastRow) {
     // For some reason, in Chrome, this speeds things up (!?)
     if (!_isStr(input)) throw new Error('Input must be a string');
@@ -282,7 +281,6 @@ function Parser(config) {
         meta: {
           delimiter: delim,
           linebreak: newline,
-          aborted: aborted,
           truncated: !!stopped,
           cursor: lastCursor + (baseIndex || 0),
           renamedHeaders: renamedHeaders
@@ -290,24 +288,12 @@ function Parser(config) {
       };
     }
   };
-
-  /** Sets the abort flag */
-  this.abort = function () {
-    aborted = true;
-  };
-
-  /** Gets the cursor position */
-  this.getCharIndex = function () {
-    return cursor;
-  };
 }
 function ParserHandle(_config) {
   const self = this;
   let _rowCounter = 0; // Number of rows that have been parsed so far
   let _input; // The input being parsed
   let _parser; // The core parser being used
-  let _paused = false; // Whether we are paused or not
-  let _aborted = false; // Whether the parser has aborted or not
   let _delimiterError; // Temporary state between delimiter detection and processing results
   let _fields = []; // Fields are from the header row of the input, if there is one
   let _results = {
@@ -331,43 +317,9 @@ function ParserHandle(_config) {
     _parser = new Parser(parserConfig);
     _results = _parser.parse(_input, baseIndex, ignoreLastRow);
     processResults();
-    return _paused ? {
-      meta: {
-        paused: true
-      }
-    } : _results || {
-      meta: {
-        paused: false
-      }
+    return _results || {
+      meta: {}
     };
-  };
-  this.paused = function () {
-    return _paused;
-  };
-  this.pause = function () {
-    _paused = true;
-    _parser.abort();
-    _input = _input.substring(_parser.getCharIndex());
-  };
-  this.resume = function () {
-    if (self.streamer._halted) {
-      _paused = false;
-      self.streamer.parseChunk(_input, true);
-    } else {
-      // Bugfix: #636 In case the processing hasn't halted yet
-      // wait for it to halt in order to resume
-      setTimeout(self.resume, 3);
-    }
-  };
-  this.aborted = function () {
-    return _aborted;
-  };
-  this.abort = function () {
-    _aborted = true;
-    _parser.abort();
-    _results.meta.aborted = true;
-    if (_isFn(_config.complete)) _config.complete(_results);
-    _input = '';
   };
   function testEmptyLine(s) {
     return _config.skipEmptyLines === 'greedy' ? s.join('').trim() === '' : s.length === 1 && s[0].length === 0;
@@ -478,10 +430,6 @@ function ChunkStreamer(config) {
     const aggregate = this._partialLine + chunk;
     this._partialLine = '';
     const results = this._handle.parse(aggregate, this._baseIndex, !this._finished);
-    if (this._handle.paused() || this._handle.aborted()) {
-      this._halted = true;
-      return;
-    }
     const lastIndex = results.meta.cursor;
     if (!this._finished) {
       this._partialLine = aggregate.substring(lastIndex - this._baseIndex);
@@ -491,7 +439,7 @@ function ChunkStreamer(config) {
     this._completeResults.data = this._completeResults.data.concat(results.data);
     this._completeResults.errors = this._completeResults.errors.concat(results.errors);
     this._completeResults.meta = results.meta;
-    if (!this._finished && (!results || !results.meta.paused)) this._nextChunk();
+    if (!this._finished && !results) this._nextChunk();
     return results;
   };
   function replaceConfig(config) {
