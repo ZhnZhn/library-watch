@@ -374,15 +374,12 @@ function ParserHandle(_config) {
     return _results;
   }
   function addError(type, code, msg, row) {
-    const error = {
-      type: type,
-      code: code,
-      message: msg
-    };
-    if (!_isUndef(row)) {
-      error.row = row;
-    }
-    _results.errors.push(error);
+    _results.errors.push({
+      type,
+      code,
+      msg,
+      row
+    });
   }
 }
 function ChunkStreamer(config = {}) {
@@ -391,7 +388,6 @@ function ChunkStreamer(config = {}) {
   config.transform = false;
   this._finished = false;
   this._completed = false;
-  this._input = null;
   this._baseIndex = 0;
   this._partialLine = '';
   this._rowCount = 0;
@@ -440,6 +436,6 @@ function ChunkStreamer(config = {}) {
     return this._nextChunk();
   };
 }
-const csvToJson = (_input, _config) => _isStr(_input) ? new ChunkStreamer(_config).stream(_stripBom(_input)) : {};
+const csvToJson = (input, config) => _isStr(input) ? new ChunkStreamer(config).stream(_stripBom(input)) : {};
 var _default = exports.default = csvToJson;
 //# sourceMappingURL=csvToJson.js.map
