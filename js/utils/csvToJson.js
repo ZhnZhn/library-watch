@@ -386,7 +386,6 @@ function ParserHandle(_config) {
   }
 }
 function ChunkStreamer(config) {
-  this._handle = null;
   this._finished = false;
   this._completed = false;
   this._input = null;
@@ -400,7 +399,14 @@ function ChunkStreamer(config) {
     errors: [],
     meta: {}
   };
-  replaceConfig.call(this, config);
+
+  // Deep-copy the config so we can edit it
+  const configCopy = _copy(config);
+  configCopy.chunkSize = null;
+  this._handle = new ParserHandle(configCopy);
+  this._handle.streamer = this;
+  this._config = configCopy; // persist the copy to the caller
+
   this.parseChunk = function (chunk, isFakeChunk) {
     // Rejoin the line we likely just split in two by chunking the file
     const aggregate = this._partialLine + chunk;
@@ -418,14 +424,6 @@ function ChunkStreamer(config) {
     if (!this._finished && !results) this._nextChunk();
     return results;
   };
-  function replaceConfig(config) {
-    // Deep-copy the config so we can edit it
-    const configCopy = _copy(config);
-    configCopy.chunkSize = null;
-    this._handle = new ParserHandle(configCopy);
-    this._handle.streamer = this;
-    this._config = configCopy; // persist the copy to the caller
-  }
 }
 function StringStreamer(config) {
   ChunkStreamer.call(this, config);
