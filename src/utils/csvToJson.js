@@ -395,26 +395,13 @@ function ParserHandle(_config) {
 			processResults();
       return (_results || { meta: {} });
 		};
-
-		function testEmptyLine(s) {
-			return _config.skipEmptyLines === 'greedy'
-        ? s.join('').trim() === ''
-        : s.length === 1 && s[0].length === 0;
-		}
-
+		
 		function processResults()
 		{
 			if (_results && _delimiterError)
 			{
 				addError('Delimiter', 'UndetectableDelimiter', 'Unable to auto-detect delimiting character; defaulted to \'' +  DEFAULT_DELIMITER + '\'');
 				_delimiterError = false;
-			}
-
-			if (_config.skipEmptyLines)
-			{
-				_results.data = _results.data.filter(function(d) {
-					return !testEmptyLine(d);
-				});
 			}
 
 			if (needsHeaderRow())
