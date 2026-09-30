@@ -398,14 +398,8 @@ function ChunkStreamer(config = {}) {
     errors: [],
     meta: {}
   };
-
-  // Deep-copy the config so we can edit it
-  const configCopy = _copy(config);
-  configCopy.chunkSize = null;
-  this._handle = new ParserHandle(configCopy);
+  this._handle = new ParserHandle(_copy(config));
   this._handle.streamer = this;
-  this._config = configCopy; // persist the copy to the caller
-
   this.parseChunk = function (chunk) {
     // Rejoin the line we likely just split in two by chunking the file
     const aggregate = this._partialLine + chunk;
