@@ -385,7 +385,10 @@ function ParserHandle(_config) {
     _results.errors.push(error);
   }
 }
-function ChunkStreamer(config) {
+function ChunkStreamer(config = {}) {
+  config.delimiter = ",";
+  config.dynamicTyping = false;
+  config.transform = false;
   this._finished = false;
   this._completed = false;
   this._input = null;
@@ -407,7 +410,7 @@ function ChunkStreamer(config) {
   this._handle.streamer = this;
   this._config = configCopy; // persist the copy to the caller
 
-  this.parseChunk = function (chunk, isFakeChunk) {
+  this.parseChunk = function (chunk) {
     // Rejoin the line we likely just split in two by chunking the file
     const aggregate = this._partialLine + chunk;
     this._partialLine = '';
@@ -424,14 +427,7 @@ function ChunkStreamer(config) {
     if (!this._finished && !results) this._nextChunk();
     return results;
   };
-}
-function StringStreamer(config) {
-  ChunkStreamer.call(this, config);
   let remaining;
-  this.stream = function (s) {
-    remaining = s;
-    return this._nextChunk();
-  };
   this._nextChunk = function () {
     if (this._finished) return;
     const chunk = remaining;
@@ -439,14 +435,11 @@ function StringStreamer(config) {
     this._finished = !remaining;
     return this.parseChunk(chunk);
   };
+  this.stream = function (s) {
+    remaining = s;
+    return this._nextChunk();
+  };
 }
-StringStreamer.prototype = Object.create(StringStreamer.prototype);
-StringStreamer.prototype.constructor = StringStreamer;
-const csvToJson = (_input, _config = {}) => {
-  _config.delimiter = ",";
-  _config.dynamicTyping = false;
-  _config.transform = false;
-  return _isStr(_input) ? new StringStreamer(_config).stream(_stripBom(_input)) : {};
-};
+const csvToJson = (_input, _config) => _isStr(_input) ? new ChunkStreamer(_config).stream(_stripBom(_input)) : {};
 var _default = exports.default = csvToJson;
 //# sourceMappingURL=csvToJson.js.map
