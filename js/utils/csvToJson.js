@@ -35,7 +35,6 @@ function Parser(config) {
   const delim = _isBadDelimiter(config.delimiter) ? ',' : config.delimiter,
     quoteChar = config.quoteChar == null ? '"' : config.quoteChar,
     escapeChar = _isUndef(config.escapeChar) ? quoteChar : config.escapeChar,
-    _comments = config.comments,
     comments = _getCommentsToken(config.comments, delim),
     newline = _getNewlineToken(config.newline);
   let renamedHeaders = null,
@@ -290,7 +289,6 @@ function Parser(config) {
   };
 }
 function ParserHandle(_config) {
-  const self = this;
   let _rowCounter = 0; // Number of rows that have been parsed so far
   let _input; // The input being parsed
   let _parser; // The core parser being used
@@ -382,54 +380,13 @@ function ParserHandle(_config) {
     });
   }
 }
-function ChunkStreamer(config = {}) {
+const factoryParseChunk = (config = {}) => {
   config.delimiter = ",";
   config.dynamicTyping = false;
   config.transform = false;
-  this._finished = false;
-  this._completed = false;
-  this._baseIndex = 0;
-  this._partialLine = '';
-  this._rowCount = 0;
-  this._start = 0;
-  this._nextChunk = null;
-  this._completeResults = {
-    data: [],
-    errors: [],
-    meta: {}
-  };
-  this._handle = new ParserHandle(_copy(config));
-  this._handle.streamer = this;
-  this.parseChunk = function (chunk) {
-    // Rejoin the line we likely just split in two by chunking the file
-    const aggregate = this._partialLine + chunk;
-    this._partialLine = '';
-    const results = this._handle.parse(aggregate, this._baseIndex, !this._finished);
-    const lastIndex = results.meta.cursor;
-    if (!this._finished) {
-      this._partialLine = aggregate.substring(lastIndex - this._baseIndex);
-      this._baseIndex = lastIndex;
-    }
-    if (results && results.data) this._rowCount += results.data.length;
-    this._completeResults.data = this._completeResults.data.concat(results.data);
-    this._completeResults.errors = this._completeResults.errors.concat(results.errors);
-    this._completeResults.meta = results.meta;
-    if (!this._finished && !results) this._nextChunk();
-    return results;
-  };
-  let remaining;
-  this._nextChunk = function () {
-    if (this._finished) return;
-    const chunk = remaining;
-    remaining = '';
-    this._finished = !remaining;
-    return this.parseChunk(chunk);
-  };
-  this.stream = function (s) {
-    remaining = s;
-    return this._nextChunk();
-  };
-}
-const csvToJson = (input, config) => _isStr(input) ? new ChunkStreamer(config).stream(_stripBom(input)) : {};
+  const _handle = new ParserHandle(_copy(config));
+  return chunk => _handle.parse(chunk, 0, false);
+};
+const csvToJson = (input, config) => _isStr(input) ? factoryParseChunk(config)(_stripBom(input)) : {};
 var _default = exports.default = csvToJson;
 //# sourceMappingURL=csvToJson.js.map
