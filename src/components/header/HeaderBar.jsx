@@ -15,9 +15,10 @@ import AppLabel from './AppLabel';
 import LimitRemainingLabel from './LimitRemainingLabel';
 
 import {
+  CL_BT_HOT_KEY,
   HK_LIBRARY,
   HK_WATCH,
-  HK_ABOUT
+  HK_ABOUT  
 } from '../hotkeys/hotkeys';
 
 const TITLE = "Library Watch v0.12.0"
@@ -64,6 +65,7 @@ const HeaderBar = () => (
      />
      <FlatButton
         className={CL_LIBRARY}
+        classHotKey={CL_BT_HOT_KEY}
         caption="Library"
         title="Library Browser"
         hotKey={HK_LIBRARY}
@@ -74,6 +76,7 @@ const HeaderBar = () => (
         caption="Watch"
         title="Watch Browser"
         hotKey={HK_WATCH}
+        classHotKey={CL_BT_HOT_KEY}
         timeout={0}
         onClick={showWatch}
      />

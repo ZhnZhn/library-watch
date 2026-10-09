@@ -19,6 +19,7 @@ const FlatButton = ({
   isArrow,
   timeout=3000,
   className,
+  classHotKey,
   style,
   isPrimary,
   title='',
@@ -62,6 +63,7 @@ const FlatButton = ({
     >
       <BtCaption
         className={CL_BT_FLAT_CAPTION}
+        classHotKey={classHotKey}
         caption={caption}
         hotKey={hotKey}
       >
