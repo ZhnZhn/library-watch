@@ -131,3 +131,17 @@
 .bt-item:focus {
   background: rgba(164, 164, 164, 0.3);
 }
+
+.bt-hot-key {
+  position: relative;
+  display: inline-block;
+}
+.bt-hot-key::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 7px;
+  height: 2px;
+  background-color: currentColor;
+}
