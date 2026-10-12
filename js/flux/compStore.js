@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.useMsAbout = exports.useMdOption = exports.useDgOption = exports.showInfo = exports.showDialog = exports.showAlert = exports.showAddItem = exports.showAbout = exports.fShowModalDialog = void 0;
+exports.useMsAbout = exports.useMdOption = exports.useDgOption = exports.showSettingsDialog = exports.showInfo = exports.showDialog = exports.showAlert = exports.showAddItem = exports.showAbout = exports.fShowModalDialog = void 0;
 var _storeApi = require("./storeApi");
 var _Type = require("../constants/Type");
 var _createDialog = _interopRequireDefault(require("./logic/createDialog"));
@@ -49,4 +49,5 @@ exports.fShowModalDialog = fShowModalDialog;
 const showAddItem = exports.showAddItem = fShowModalDialog(_Type.ModalDialog.ADD_ITEM);
 const showAlert = exports.showAlert = fShowModalDialog(_Type.ModalDialog.ALERT);
 const showInfo = exports.showInfo = fShowModalDialog(_Type.ModalDialog.INFO);
+const showSettingsDialog = exports.showSettingsDialog = fShowModalDialog(_Type.ModalDialog.SETTINGS);
 //# sourceMappingURL=compStore.js.map

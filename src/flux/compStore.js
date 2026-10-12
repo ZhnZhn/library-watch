@@ -71,3 +71,4 @@ export const fShowModalDialog = (
 export const showAddItem = fShowModalDialog(MD.ADD_ITEM)
 export const showAlert = fShowModalDialog(MD.ALERT)
 export const showInfo = fShowModalDialog(MD.INFO)
+export const showSettingsDialog = fShowModalDialog(MD.SETTINGS)

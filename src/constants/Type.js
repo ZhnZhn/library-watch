@@ -2,6 +2,7 @@
 export const ModalDialog = {
   ALERT : 'alert',
   INFO : 'info',
+  SETTINGS: 'settings',
 
   ADD_ITEM : 'addToWatch',
   LOAD_WATCH_ITEM : 'loadWatchItem',

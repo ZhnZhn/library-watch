@@ -5,6 +5,7 @@ exports.ModalDialog = exports.ChartType = exports.BrowserType = void 0;
 const ModalDialog = exports.ModalDialog = {
   ALERT: 'alert',
   INFO: 'info',
+  SETTINGS: 'settings',
   ADD_ITEM: 'addToWatch',
   LOAD_WATCH_ITEM: 'loadWatchItem',
   EDIT_WATCH_GROUP: 'editWatchGroup',
