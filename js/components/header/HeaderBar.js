@@ -7,6 +7,7 @@ var _browserStore = require("../../flux/browserStore");
 var _compStore = require("../../flux/compStore");
 var _Type = require("../../constants/Type");
 var _SvgInfo = _interopRequireDefault(require("../zhn/svg/SvgInfo"));
+var _SvgSettings = _interopRequireDefault(require("../zhn/svg/SvgSettings"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 var _ButtonSave = _interopRequireDefault(require("../zhn-moleculs/ButtonSave"));
 var _LoadingProgress = _interopRequireDefault(require("./LoadingProgress"));
@@ -21,7 +22,7 @@ const TITLE = "Library Watch v0.12.0",
   CL_ABOUT = `${CL_HEADER}__bt-about`,
   CL_APP_LABEL = `${CL_HEADER}__app-label`,
   CL_LIBRARY = `${CL_HEADER}__bt-library`,
-  S_SVG_INFO = {
+  S_SVG_ICON = {
     position: 'relative',
     top: -2,
     verticalAlign: 'middle',
@@ -51,6 +52,7 @@ const HeaderBar = () => /*#__PURE__*/(0, _jsxRuntime.jsxs)("header", {
     caption: TITLE
   }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
     className: CL_LIBRARY,
+    classHotKey: _hotkeys.CL_BT_HOT_KEY,
     caption: "Library",
     title: "Library Browser",
     hotKey: _hotkeys.HK_LIBRARY,
@@ -60,6 +62,7 @@ const HeaderBar = () => /*#__PURE__*/(0, _jsxRuntime.jsxs)("header", {
     caption: "Watch",
     title: "Watch Browser",
     hotKey: _hotkeys.HK_WATCH,
+    classHotKey: _hotkeys.CL_BT_HOT_KEY,
     timeout: 0,
     onClick: _browserStore.showWatch
   }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ButtonSave.default, {
@@ -67,13 +70,21 @@ const HeaderBar = () => /*#__PURE__*/(0, _jsxRuntime.jsxs)("header", {
   }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: S_BTS_RIGHT,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LimitRemainingLabel.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
+      title: "Open settings dialog",
+      hotKey: _hotkeys.HK_SETTINGS,
+      timeout: 0,
+      onClick: _compStore.showSettingsDialog,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgSettings.default, {
+        style: S_SVG_ICON
+      })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
       className: CL_ABOUT,
       title: "About webapp Library Watch",
       hotKey: _hotkeys.HK_ABOUT,
       timeout: 0,
       onClick: _compStore.showAbout,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgInfo.default, {
-        style: S_SVG_INFO
+        style: S_SVG_ICON
       })
     })]
   })]
