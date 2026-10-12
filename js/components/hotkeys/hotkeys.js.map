@@ -1,1 +1,16 @@
-{"version":3,"file":"hotkeys.js","names":["HK_LIBRARY","exports","HK_WATCH","HK_ABOUT"],"sources":["../../../src/components/hotkeys/hotkeys.js"],"sourcesContent":["export const HK_LIBRARY = 'L'\r\nexport const HK_WATCH = 'W'\r\nexport const HK_ABOUT = 'A'\r\n"],"mappings":";;;;AAAO,MAAMA,UAAU,GAAAC,OAAA,CAAAD,UAAA,GAAG,GAAG;AACtB,MAAME,QAAQ,GAAAD,OAAA,CAAAC,QAAA,GAAG,GAAG;AACpB,MAAMC,QAAQ,GAAAF,OAAA,CAAAE,QAAA,GAAG,GAAG","ignoreList":[]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hotkeys/hotkeys.js"
+ ],
+ "file": "../../../src/components/hotkeys/hotkeys.js",
+ "names": [
+  "CL_BT_HOT_KEY",
+  "exports",
+  "HK_LIBRARY",
+  "HK_WATCH",
+  "HK_SETTINGS",
+  "HK_ABOUT"
+ ],
+ "mappings": ";;;;AAAO,MAAMA,aAAa,GAAAC,OAAA,CAAAD,aAAA,GAAG,YAAY;AAElC,MAAME,UAAU,GAAAD,OAAA,CAAAC,UAAA,GAAG,GAAG;AACtB,MAAMC,QAAQ,GAAAF,OAAA,CAAAE,QAAA,GAAG,GAAG;AACpB,MAAMC,WAAW,GAAAH,OAAA,CAAAG,WAAA,GAAG,GAAG;AACvB,MAAMC,QAAQ,GAAAJ,OAAA,CAAAI,QAAA,GAAG,GAAG"
+}
