@@ -46,8 +46,8 @@ const _showModalDialog = (modalDialogType, option = {}) => {
 };
 const fShowModalDialog = (modalDialogType, configOption) => itemOption => _showModalDialog(modalDialogType, configOption || itemOption);
 exports.fShowModalDialog = fShowModalDialog;
-const showAddItem = exports.showAddItem = fShowModalDialog(_Type.ModalDialog.ADD_ITEM);
-const showAlert = exports.showAlert = fShowModalDialog(_Type.ModalDialog.ALERT);
-const showInfo = exports.showInfo = fShowModalDialog(_Type.ModalDialog.INFO);
-const showSettingsDialog = exports.showSettingsDialog = fShowModalDialog(_Type.ModalDialog.SETTINGS);
+const showAddItem = exports.showAddItem = fShowModalDialog(_Type.MD_ADD_ITEM);
+const showAlert = exports.showAlert = fShowModalDialog(_Type.MD_ALERT);
+const showInfo = exports.showInfo = fShowModalDialog(_Type.MD_INFO);
+const showSettingsDialog = exports.showSettingsDialog = fShowModalDialog(_Type.MD_SETTINGS);
 //# sourceMappingURL=compStore.js.map

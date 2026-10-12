@@ -5,7 +5,12 @@ import {
   fCrUse
 } from './storeApi';
 
-import { ModalDialog as MD } from '../constants/Type';
+import {
+  MD_ADD_ITEM,
+  MD_ALERT,
+  MD_INFO,
+  MD_SETTINGS
+} from '../constants/Type';
 import createDialog from './logic/createDialog';
 import { getDataConf } from './dialogFn';
 
@@ -68,7 +73,7 @@ export const fShowModalDialog = (
   configOption || itemOption
 )
 
-export const showAddItem = fShowModalDialog(MD.ADD_ITEM)
-export const showAlert = fShowModalDialog(MD.ALERT)
-export const showInfo = fShowModalDialog(MD.INFO)
-export const showSettingsDialog = fShowModalDialog(MD.SETTINGS)
+export const showAddItem = fShowModalDialog(MD_ADD_ITEM)
+export const showAlert = fShowModalDialog(MD_ALERT)
+export const showInfo = fShowModalDialog(MD_INFO)
+export const showSettingsDialog = fShowModalDialog(MD_SETTINGS)

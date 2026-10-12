@@ -1,5 +1,8 @@
 import {
-  ModalDialog
+  MD_EDIT_WATCH_GROUP,
+  MD_EDIT_WATCH_LIST,
+  MD_LOAD_WATCH_ITEM,
+  MD_LOAD_FILE
 } from '../../constants/Type';
 import {
   fShowModalDialog
@@ -9,11 +12,11 @@ import {
   loadFromJson
 } from '../../flux/watch-list/watchListStore';
 
-export const showDialogEditGroups = fShowModalDialog(ModalDialog.EDIT_WATCH_GROUP)
-export const showDialogEditLists = fShowModalDialog(ModalDialog.EDIT_WATCH_LIST)
-export const showDialogWatchItem = fShowModalDialog(ModalDialog.LOAD_WATCH_ITEM)
+export const showDialogEditGroups = fShowModalDialog(MD_EDIT_WATCH_GROUP)
+export const showDialogEditLists = fShowModalDialog(MD_EDIT_WATCH_LIST)
+export const showDialogWatchItem = fShowModalDialog(MD_LOAD_WATCH_ITEM)
 export const showDialogLoadItemsFromFile = fShowModalDialog(
-  ModalDialog.LOAD_FILE,
+  MD_LOAD_FILE,
   { onLoad: loadFromJson }
 )
 

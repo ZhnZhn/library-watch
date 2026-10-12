@@ -12,13 +12,13 @@ var _LoadItemDialog = _interopRequireDefault(require("../browser-watch/LoadItemD
 var _EditGroupDialog = _interopRequireDefault(require("../browser-watch/EditGroupDialog"));
 var _EditListDialog = _interopRequireDefault(require("../browser-watch/EditListDialog"));
 const RouterModalDialog = {
-  [_Type.ModalDialog.ALERT]: _AlertDialog.default,
-  [_Type.ModalDialog.INFO]: _InfoDialog.default,
-  [_Type.ModalDialog.LOAD_FILE]: _LoadFileDialog.default,
-  [_Type.ModalDialog.ADD_ITEM]: _AddToWatchDialog.default,
-  [_Type.ModalDialog.LOAD_WATCH_ITEM]: _LoadItemDialog.default,
-  [_Type.ModalDialog.EDIT_WATCH_GROUP]: _EditGroupDialog.default,
-  [_Type.ModalDialog.EDIT_WATCH_LIST]: _EditListDialog.default
+  [_Type.MD_ALERT]: _AlertDialog.default,
+  [_Type.MD_INFO]: _InfoDialog.default,
+  [_Type.MD_LOAD_FILE]: _LoadFileDialog.default,
+  [_Type.MD_ADD_ITEM]: _AddToWatchDialog.default,
+  [_Type.MD_LOAD_WATCH_ITEM]: _LoadItemDialog.default,
+  [_Type.MD_EDIT_WATCH_GROUP]: _EditGroupDialog.default,
+  [_Type.MD_EDIT_WATCH_LIST]: _EditListDialog.default
 };
 var _default = exports.default = RouterModalDialog;
 //# sourceMappingURL=RouterModalDialog.js.map

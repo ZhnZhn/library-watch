@@ -1,5 +1,13 @@
 
-import { ModalDialog } from '../../constants/Type';
+import {
+  MD_ALERT,
+  MD_INFO,
+  MD_LOAD_FILE,
+  MD_ADD_ITEM,
+  MD_LOAD_WATCH_ITEM,
+  MD_EDIT_WATCH_GROUP,
+  MD_EDIT_WATCH_LIST
+} from '../../constants/Type';
 
 import AlertDialog from './AlertDialog';
 import InfoDialog from './InfoDialog';
@@ -11,15 +19,15 @@ import EditGroupDialog from '../browser-watch/EditGroupDialog';
 import EditListDialog from '../browser-watch/EditListDialog';
 
 const RouterModalDialog = {
-  [ModalDialog.ALERT] : AlertDialog,
-  [ModalDialog.INFO] : InfoDialog,
+  [MD_ALERT] : AlertDialog,
+  [MD_INFO] : InfoDialog,
 
-  [ModalDialog.LOAD_FILE] : LoadFileDialog,
+  [MD_LOAD_FILE] : LoadFileDialog,
 
-  [ModalDialog.ADD_ITEM] : AddToWatchDialog,
-  [ModalDialog.LOAD_WATCH_ITEM] : LoadItemDialog,
-  [ModalDialog.EDIT_WATCH_GROUP] : EditGroupDialog,
-  [ModalDialog.EDIT_WATCH_LIST] : EditListDialog
+  [MD_ADD_ITEM] : AddToWatchDialog,
+  [MD_LOAD_WATCH_ITEM] : LoadItemDialog,
+  [MD_EDIT_WATCH_GROUP] : EditGroupDialog,
+  [MD_EDIT_WATCH_LIST] : EditListDialog
 };
 
 export default RouterModalDialog
