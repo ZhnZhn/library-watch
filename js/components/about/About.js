@@ -13,6 +13,7 @@ var _Token = _interopRequireDefault(require("./Token"));
 var _LinkToken = _interopRequireDefault(require("./LinkToken"));
 var _IconLogoBar = _interopRequireDefault(require("./IconLogoBar"));
 var _ContainerStyles = require("../styles/ContainerStyles");
+var _styleFn = require("../styleFn");
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_SHOW_POPUP = "show-popup",
   S_BLOCK = {
@@ -53,7 +54,7 @@ const About = () => {
   });
   const [_style, _className] = isShow ? [S_BLOCK, CL_SHOW_POPUP] : [S_NONE];
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    className: _className,
+    className: (0, _styleFn.crCnBgColor)(_className),
     style: {
       ..._ContainerStyles.S_ABOUT,
       ..._style

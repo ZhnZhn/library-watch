@@ -26,13 +26,18 @@ import {
   HK_ABOUT
 } from '../hotkeys/hotkeys';
 
+import {
+  crCnBgColor
+} from '../styleFn';
+
 const TITLE = "Library Watch v0.12.0"
 
-, CL_HEADER = "header"
-, CL_ICON = `${CL_HEADER}__icon-app`
-, CL_ABOUT = `${CL_HEADER}__bt-about`
-, CL_APP_LABEL = `${CL_HEADER}__app-label`
-, CL_LIBRARY = `${CL_HEADER}__bt-library`
+, TOKEN_HEADER = "header"
+, CL_HEADER = crCnBgColor(TOKEN_HEADER)
+, CL_ICON = `${TOKEN_HEADER}__icon-app`
+, CL_ABOUT = `${TOKEN_HEADER}__bt-about`
+, CL_APP_LABEL = `${TOKEN_HEADER}__app-label`
+, CL_LIBRARY = `${TOKEN_HEADER}__bt-library`
 
 , S_SVG_ICON = {
   position: 'relative',

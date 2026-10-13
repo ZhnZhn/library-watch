@@ -2,8 +2,9 @@ import useClickOutside from '../hooks/useClickOutside';
 import { useKeyEscape } from '../hooks/fUseKey';
 import { useFocusPrevElement } from '../hooks/useFocus';
 
-const S_DIV = { backgroundColor: '#4d4d4d' }
-, FN_NOOP = () => {};
+import { crCnBgColor } from '../styleFn';
+
+const FN_NOOP = () => {};
 
 const ModalPane = ({
   isShow,
@@ -22,8 +23,8 @@ const ModalPane = ({
     <div
        {...restProps}
        ref={_ref}
-       className={className}
-       style={{...S_DIV, ...style}}
+       className={crCnBgColor(className)}
+       style={style}
        hidden={!isShow}
        onKeyDown={isShow ? _hKeyEscape : void 0}
     >

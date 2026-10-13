@@ -8,6 +8,7 @@ var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
 var _fUseKey = require("../hooks/fUseKey");
 var _DialogCaption = _interopRequireDefault(require("./DialogCaption"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
+var _styleFn = require("../styleFn");
 var _Dialog = require("./Dialog.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_HIDE_POPUP = {
@@ -22,17 +23,16 @@ const S_HIDE_POPUP = {
     display: 'block',
     zIndex: 10
   };
-const ModalDialog = _ref => {
-  let {
-    isShow,
-    isWithButton = true,
-    timeout = 450,
-    style,
-    caption,
-    commandButtons,
-    onClose,
-    children
-  } = _ref;
+const ModalDialog = ({
+  isShow,
+  isWithButton = true,
+  timeout = 450,
+  style,
+  caption,
+  commandButtons,
+  onClose,
+  children
+}) => {
   const _rerenderComp = (0, _useRerender.default)(),
     _hKeyDown = (0, _fUseKey.useKeyEscape)(onClose),
     _refWasClosing = (0, _uiApi.useRef)(),
@@ -59,7 +59,7 @@ const ModalDialog = _ref => {
     tabIndex: "-1",
     "aria-label": caption,
     "aria-hidden": !isShow,
-    className: _className,
+    className: (0, _styleFn.crCnBgColor)(_className),
     style: {
       ...S_MODAL_DIALOG,
       ...style,

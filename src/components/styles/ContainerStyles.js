@@ -1,5 +1,4 @@
 const S_COMP = {
-  backgroundColor: '#4d4d4d',
   height: 'calc(100vh - 71px)',
   minHeight: 500,
   marginLeft: 10,

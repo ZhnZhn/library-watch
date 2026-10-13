@@ -11,7 +11,6 @@ var _jsxRuntime = require("react/jsx-runtime");
 
 const CL_ROW_CAPTION = (0, _styleFn.crClNotSelected)("zhn-oc"),
   S_ROOT = {
-    backgroundColor: '#4d4d4d',
     lineHeight: 2
   },
   S_SVG = {
@@ -32,20 +31,19 @@ const CL_ROW_CAPTION = (0, _styleFn.crClNotSelected)("zhn-oc"),
   FILL_CLOSE = '#4d4d4d',
   PATH_OPEN = "M 2,14 L 14,14 14,2 2,14",
   PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
-const OpenClose2 = _ref => {
-  let {
-    refItem,
-    isClose = true,
-    style,
-    styleNotSelected,
-    styleCaptionRow,
-    styleCaption,
-    caption,
-    fillOpen = FILL_OPEN,
-    fillClose = FILL_CLOSE,
-    dndHandlers,
-    children
-  } = _ref;
+const OpenClose2 = ({
+  refItem,
+  isClose = true,
+  style,
+  styleNotSelected,
+  styleCaptionRow,
+  styleCaption,
+  caption,
+  fillOpen = FILL_OPEN,
+  fillClose = FILL_CLOSE,
+  dndHandlers,
+  children
+}) => {
   const [isOpen, _hToggle] = (0, _useToggle.default)(!isClose),
     _hKeyDown = (0, _fUseKey.useKeyEnter)(_hToggle),
     [_pathV, _fillV, _styleCollapse, _classShow, _styleNotSelected] = isOpen ? [PATH_OPEN, fillOpen, _styleFn.S_BLOCK, _styleFn.CL_SHOW_POPUP, null] : [PATH_CLOSE, fillClose, _styleFn.S_NONE, null, styleNotSelected];

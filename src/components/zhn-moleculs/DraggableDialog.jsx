@@ -16,6 +16,10 @@ import SvgClose from '../zhn/SvgClose';
 import FlatButton from '../zhn-m/FlatButton';
 
 import {
+  crCnBgColor
+} from '../styleFn';
+
+import {
   CL_SHOW_POPUP,
   S_SHOW,
   S_HIDE,
@@ -26,7 +30,7 @@ import {
   S_BT_ROOT
 } from './Dialog.Style';
 
-const CL_DRAGGABLE_DIALOG = "draggable-dialog"
+const CL_DRAGGABLE_DIALOG = crCnBgColor("draggable-dialog")
 , CL_NOT_SELECTED = crClNotSelected()
 , CL_MENU_MORE = 'popup-menu dialog__menu-more'
 

@@ -12,6 +12,7 @@ import LinkToken from './LinkToken';
 import IconLogoBar from './IconLogoBar';
 
 import { S_ABOUT } from '../styles/ContainerStyles';
+import { crCnBgColor } from '../styleFn';
 
 const CL_SHOW_POPUP = "show-popup"
 , S_BLOCK = { display: 'block' }
@@ -60,7 +61,7 @@ const About = () => {
 
   return (
     <div
-       className={_className}
+       className={crCnBgColor(_className)}
        style={{...S_ABOUT, ..._style}}
        role="presentation"
        onKeyDown={_hKeyDown}

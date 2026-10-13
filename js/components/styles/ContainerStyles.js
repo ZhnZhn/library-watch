@@ -3,7 +3,6 @@
 exports.__esModule = true;
 exports.S_COMP_ITEM_LIST = exports.S_BROWSER = exports.S_ABOUT = void 0;
 const S_COMP = {
-  backgroundColor: '#4d4d4d',
   height: 'calc(100vh - 71px)',
   minHeight: 500,
   marginLeft: 10,

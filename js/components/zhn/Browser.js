@@ -9,7 +9,7 @@ const Browser = props => {
   const [_style, _className] = (0, _styleFn.crShowPopupStyle)(props.isShow);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     role: "presentation",
-    className: _className,
+    className: (0, _styleFn.crCnBgColor)(_className),
     style: {
       ..._ContainerStyles.S_BROWSER,
       ...props.style,

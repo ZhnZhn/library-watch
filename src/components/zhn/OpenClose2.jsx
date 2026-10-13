@@ -12,7 +12,6 @@ import useToggle from '../hooks/useToggle';
 
 const CL_ROW_CAPTION = crClNotSelected("zhn-oc")
 , S_ROOT = {
-  backgroundColor: '#4d4d4d',
   lineHeight: 2
 },
 S_SVG = {

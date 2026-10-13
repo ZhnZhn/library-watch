@@ -15,13 +15,15 @@ var _IconAppLogo = _interopRequireDefault(require("./IconAppLogo"));
 var _AppLabel = _interopRequireDefault(require("./AppLabel"));
 var _LimitRemainingLabel = _interopRequireDefault(require("./LimitRemainingLabel"));
 var _hotkeys = require("../hotkeys/hotkeys");
+var _styleFn = require("../styleFn");
 var _jsxRuntime = require("react/jsx-runtime");
 const TITLE = "Library Watch v0.12.0",
-  CL_HEADER = "header",
-  CL_ICON = `${CL_HEADER}__icon-app`,
-  CL_ABOUT = `${CL_HEADER}__bt-about`,
-  CL_APP_LABEL = `${CL_HEADER}__app-label`,
-  CL_LIBRARY = `${CL_HEADER}__bt-library`,
+  TOKEN_HEADER = "header",
+  CL_HEADER = (0, _styleFn.crCnBgColor)(TOKEN_HEADER),
+  CL_ICON = `${TOKEN_HEADER}__icon-app`,
+  CL_ABOUT = `${TOKEN_HEADER}__bt-about`,
+  CL_APP_LABEL = `${TOKEN_HEADER}__app-label`,
+  CL_LIBRARY = `${TOKEN_HEADER}__bt-library`,
   S_SVG_ICON = {
     position: 'relative',
     top: -2,

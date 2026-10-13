@@ -1,4 +1,7 @@
-import { crShowPopupStyle } from '../styleFn';
+import {
+  crShowPopupStyle,
+  crCnBgColor
+} from '../styleFn';
 import { S_BROWSER } from '../styles/ContainerStyles';
 
 const Browser = (props) => {
@@ -9,7 +12,7 @@ const Browser = (props) => {
   return (
     <div
       role="presentation"
-      className={_className}
+      className={crCnBgColor(_className)}
       style={{...S_BROWSER, ...props.style, ..._style}}
       onKeyDown={props.onKeyDown}
     >

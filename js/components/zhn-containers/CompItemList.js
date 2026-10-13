@@ -53,14 +53,13 @@ const _getWidth = style => parseInt(style.width, 10) || RESIZE_INIT_WIDTH,
       style.width = _toStyleWidth(w);
     }
   };
-const CompItemList = _ref => {
-  let {
-    caption,
-    browserType,
-    chartType,
-    onRemoveAll,
-    onCloseContainer
-  } = _ref;
+const CompItemList = ({
+  caption,
+  browserType,
+  chartType,
+  onRemoveAll,
+  onCloseContainer
+}) => {
   const _refRootElement = (0, _uiApi.useRef)(),
     _refScroll = (0, _uiApi.useRef)(),
     [state, setState] = (0, _uiApi.useState)(() => ({
@@ -120,7 +119,7 @@ const CompItemList = _ref => {
   const [_style, _className] = isShow ? [_styleFn.S_INLINE_BLOCK, _styleFn.CL_SHOW_POPUP] : [_styleFn.S_NONE];
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     ref: _refRootElement,
-    className: _className,
+    className: (0, _styleFn.crCnBgColor)(_className),
     style: {
       ..._ContainerStyles.S_COMP_ITEM_LIST,
       ..._style

@@ -12,6 +12,10 @@ import Caption from './DialogCaption'
 import FlatButton from '../zhn-m/FlatButton'
 
 import {
+  crCnBgColor
+} from '../styleFn';
+
+import {
   CL_SHOW_POPUP,
   CL_HIDE_POPUP,
   S_SHOW,
@@ -76,7 +80,7 @@ const ModalDialog = ({
        tabIndex="-1"
        aria-label={caption}
        aria-hidden={!isShow}
-       className={_className}
+       className={crCnBgColor(_className)}
        style={{
          ...S_MODAL_DIALOG,
          ...style,

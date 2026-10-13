@@ -23,7 +23,8 @@ import {
   S_INLINE_BLOCK,
   S_NONE,
   CL_SHOW_POPUP,
-  CL_MENU_MORE
+  CL_MENU_MORE,
+  crCnBgColor
 } from '../styleFn';
 import {
   S_COMP_ITEM_LIST
@@ -149,7 +150,7 @@ const CompItemList = ({
   return (
     <div
        ref={_refRootElement}
-       className={_className}
+       className={crCnBgColor(_className)}
        style={{...S_COMP_ITEM_LIST, ..._style}}
     >
       <ModalSlider

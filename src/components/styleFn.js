@@ -60,3 +60,5 @@ export const crVisibilityHidden = (
 ) => isVisible
   ? void 0
   : { visibility: 'hidden' }
+
+export const crCnBgColor = (cn) => crCn(cn, "c-bg")

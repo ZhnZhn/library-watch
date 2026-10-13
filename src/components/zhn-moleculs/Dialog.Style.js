@@ -5,7 +5,6 @@ export const S_SHOW = { display: 'block' }
 export const S_HIDE = { display: 'none' }
 
 export const S_DIALOG_DIV = {
-  backgroundColor: '#4d4d4d',
   border: 'solid 2px #1b2836',
   borderRadius: '5px',
   boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px'

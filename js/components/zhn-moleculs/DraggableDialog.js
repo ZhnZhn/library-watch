@@ -15,7 +15,7 @@ var _SvgClose = _interopRequireDefault(require("../zhn/SvgClose"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 var _Dialog = require("./Dialog.Style");
 var _jsxRuntime = require("react/jsx-runtime");
-const CL_DRAGGABLE_DIALOG = "draggable-dialog",
+const CL_DRAGGABLE_DIALOG = (0, _styleFn.crCnBgColor)("draggable-dialog"),
   CL_NOT_SELECTED = (0, _styleFn.crClNotSelected)(),
   CL_MENU_MORE = 'popup-menu dialog__menu-more',
   S_DRAGGABLE_DIALOG = {
@@ -39,17 +39,16 @@ const CL_DRAGGABLE_DIALOG = "draggable-dialog",
     fill: 'inherit'
   },
   FN_NOOP = () => {};
-const DraggableDialog = _ref => {
-  let {
-    refEl,
-    menuModel,
-    isShow,
-    caption,
-    children,
-    commandButtons,
-    onShowChart,
-    onClose = FN_NOOP
-  } = _ref;
+const DraggableDialog = ({
+  refEl,
+  menuModel,
+  isShow,
+  caption,
+  children,
+  commandButtons,
+  onShowChart,
+  onClose = FN_NOOP
+}) => {
   const [_refRootDiv, _refBtMore] = (0, _useDialogFocus.default)(refEl, isShow),
     [_isMore, _toggleMore] = (0, _useToggle.default)(),
     _hKeyDown = (0, _fUseKey.useKeyEscape)(onClose),
