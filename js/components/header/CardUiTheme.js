@@ -13,8 +13,8 @@ const CardUiTheme = props => /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     isShowLabel: true,
     caption: "UI Theme",
     placeholder: `Default: ${_uiTheme.DF_UI_THEME}`,
-    options: _uiTheme.UI_THEME_OPTIONS
-    //onSelect={setUiTheme}
+    options: _uiTheme.UI_THEME_OPTIONS,
+    onSelect: _uiTheme.setUiTheme
   })
 });
 var _default = exports.default = CardUiTheme;

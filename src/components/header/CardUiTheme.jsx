@@ -1,7 +1,7 @@
 import {
   UI_THEME_OPTIONS,
-  DF_UI_THEME
-  //setUiTheme
+  DF_UI_THEME,
+  setUiTheme
 } from '../styles/uiTheme';
 
 import RowInputSelect from '../dialogs/rows/RowInputSelect'
@@ -14,7 +14,7 @@ const CardUiTheme = (props) => (
         caption="UI Theme"
         placeholder={`Default: ${DF_UI_THEME}`}
         options={UI_THEME_OPTIONS}
-        //onSelect={setUiTheme}
+        onSelect={setUiTheme}
       />
     </div>
 );
