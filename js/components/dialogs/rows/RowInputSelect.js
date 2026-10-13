@@ -8,14 +8,14 @@ var _InputSelect = _interopRequireDefault(require("../../zhn-select/InputSelect"
 var _Row = _interopRequireDefault(require("./Row"));
 var _Caption = _interopRequireDefault(require("./Caption"));
 var _jsxRuntime = require("react/jsx-runtime");
-const RowInputSelect = _ref => {
-  let {
-    isShowLabel,
-    caption,
-    placeholder,
-    options,
-    onSelect
-  } = _ref;
+const RowInputSelect = ({
+  isShowLabel,
+  caption,
+  width = "250",
+  placeholder,
+  options,
+  onSelect
+}) => {
   const labelId = (0, _uiApi.useId)();
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Row.default, {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Caption.default, {
@@ -23,7 +23,7 @@ const RowInputSelect = _ref => {
       caption: caption,
       labelId: labelId
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputSelect.default, {
-      width: "250",
+      width: width,
       placeholder: placeholder,
       options: options,
       labelId: labelId,
