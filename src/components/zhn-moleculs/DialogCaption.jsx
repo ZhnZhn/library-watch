@@ -2,6 +2,7 @@ import SvgClose from '../zhn/SvgClose';
 import { CL_NOT_SELECTED } from '../styleFn';
 
 const S_ROOT = {
+  position: 'relative',
   color: 'silver',
   stroke: 'silver',
   backgroundColor: '#232f3b',
