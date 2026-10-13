@@ -27,6 +27,8 @@ exports.crShowPopupStyle = crShowPopupStyle;
 const CL_NOT_SELECTED = exports.CL_NOT_SELECTED = "not-selected";
 const crClNotSelected = className => className ? `${className} ${CL_NOT_SELECTED}` : CL_NOT_SELECTED;
 exports.crClNotSelected = crClNotSelected;
+const crCnBgColor = cn => crCn(cn, "c-bg");
+exports.crCnBgColor = crCnBgColor;
 const CL_BT_ITEM = exports.CL_BT_ITEM = crClNotSelected("bt-item");
 const CL_MENU_MORE = exports.CL_MENU_MORE = "popup-menu charts__menu-more";
 const CL_ROW_ITEM = exports.CL_ROW_ITEM = crClNotSelected("row-item");
@@ -43,6 +45,4 @@ const crVisibilityHidden = isVisible => isVisible ? void 0 : {
   visibility: 'hidden'
 };
 exports.crVisibilityHidden = crVisibilityHidden;
-const crCnBgColor = cn => crCn(cn, "c-bg");
-exports.crCnBgColor = crCnBgColor;
 //# sourceMappingURL=styleFn.js.map

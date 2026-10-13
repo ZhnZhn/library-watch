@@ -38,6 +38,8 @@ export const crClNotSelected = (
  ? `${className} ${CL_NOT_SELECTED}`
  : CL_NOT_SELECTED
 
+export const crCnBgColor = (cn) => crCn(cn, "c-bg")
+
 export const CL_BT_ITEM = crClNotSelected("bt-item")
 export const CL_MENU_MORE = "popup-menu charts__menu-more"
 export const CL_ROW_ITEM = crClNotSelected("row-item")
@@ -60,5 +62,3 @@ export const crVisibilityHidden = (
 ) => isVisible
   ? void 0
   : { visibility: 'hidden' }
-
-export const crCnBgColor = (cn) => crCn(cn, "c-bg")
