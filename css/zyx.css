@@ -2,3 +2,8 @@
    background-color: #4d4d4d;
    background-color: var(--bg-c, #4d4d4d);
  }
+
+.el-bg {
+  background-color: #232f3b;
+  background-color: var(--el-bg, #232f3b);  
+}

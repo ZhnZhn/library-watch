@@ -30,8 +30,9 @@
 
 
 .zhn-bt-circle2 {
-  display: inline-block; 
   background-color: #1b2836;
+  background-color: var(--el-bg, #1b2836);
+  display: inline-block; 
   width: 32px;
   line-height: 2.0;
   vertical-align: middle; 

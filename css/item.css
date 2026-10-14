@@ -1,8 +1,9 @@
 
 .item-caption {
+  background-color: #232f3b;
+  background-color: var(--el-bg, #232f3b);
   position: relative;
   stroke: silver;
-  background-color: #232f3b;
   width: 100%;
   min-height: 38px;
   padding: 2px 42px 0 8px;

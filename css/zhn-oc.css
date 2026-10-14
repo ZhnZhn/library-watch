@@ -1,4 +1,10 @@
 .zhn-oc {
+  color: #1b2836;
+  stroke: #1b2836;
+  fill: #1b2836;
+  color: var(--el-bg, #1b2836);
+  stroke: var(--el-bg, #1b2836);
+  fill: var(--el-bg, #1b2836);
   display: inline-block;
   width: 100%;
   cursor: pointer;
