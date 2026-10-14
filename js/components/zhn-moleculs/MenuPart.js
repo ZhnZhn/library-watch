@@ -11,16 +11,13 @@ var _OpenClose = _interopRequireDefault(require("../zhn/OpenClose2"));
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_NOT_SELECTED = (0, _styleFn.crClNotSelected)(),
   CL_ROW_ITEM = "row__topic",
-  FILL_OPEN = "#1b2836",
-  FILL_CLOSE = "transparent",
   S_CAPTION_ROW = {
     paddingLeft: 6
   };
-const MenuItem = _ref => {
-  let {
-    item,
-    className
-  } = _ref;
+const MenuItem = ({
+  item,
+  className
+}) => {
   const _hKeyDown = (0, _fUseKey.useKeyEnter)(item.onClick);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     role: "menuitem",
@@ -35,27 +32,22 @@ const MenuItem = _ref => {
     })]
   });
 };
-const MenuPart = _ref2 => {
-  let {
-    refFirstItem,
-    rowClass,
-    caption,
-    items,
-    isInitClose
-  } = _ref2;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_OpenClose.default, {
-    refItem: refFirstItem,
-    styleCaptionRow: S_CAPTION_ROW,
-    fillOpen: FILL_OPEN,
-    fillClose: FILL_CLOSE,
-    caption: caption,
-    isClose: isInitClose,
-    children: (0, _uiApi.safeMap)(items, (item, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)(MenuItem, {
-      className: `${rowClass || CL_ROW_ITEM} ${CL_NOT_SELECTED}`,
-      item: item
-    }, item.id || index))
-  });
-};
+const MenuPart = ({
+  refFirstItem,
+  rowClass,
+  caption,
+  items,
+  isInitClose
+}) => /*#__PURE__*/(0, _jsxRuntime.jsx)(_OpenClose.default, {
+  refItem: refFirstItem,
+  isClose: isInitClose,
+  styleCaptionRow: S_CAPTION_ROW,
+  caption: caption,
+  children: (0, _uiApi.safeMap)(items, (item, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)(MenuItem, {
+    className: `${rowClass || CL_ROW_ITEM} ${CL_NOT_SELECTED}`,
+    item: item
+  }, item.id || index))
+});
 
 /*
 MenuPart.propTypes = {

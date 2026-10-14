@@ -5,7 +5,8 @@ import OpenClose2 from '../zhn/OpenClose2';
 import WatchLists from './WatchLists';
 
 const S_GROUP_DIV = { lineHeight: 2 }
-, S_CAPTION_ROW = { paddingLeft: 6 };
+, S_CAPTION_ROW = { paddingLeft: 6 }
+, FILL_OPEN = '#1b2836';
 
 const WatchGroups = ({
   refFirstItem,
@@ -17,6 +18,7 @@ const WatchGroups = ({
     key={caption}
     style={S_GROUP_DIV}
     styleCaptionRow={S_CAPTION_ROW}
+    fillOpen={FILL_OPEN}
     caption={caption}
     dndHandlers={crDnDGroupHandlers(isModeEdit, { caption })}
   >
@@ -24,6 +26,7 @@ const WatchGroups = ({
       isModeEdit={isModeEdit}
       groupCaption={caption}
       lists={lists}
+      color={FILL_OPEN}
     />
   </OpenClose2>
 ));

@@ -27,8 +27,8 @@ const CL_ROW_CAPTION = (0, _styleFn.crClNotSelected)("zhn-oc"),
     fontSize: '16px',
     cursor: 'pointer'
   },
-  FILL_OPEN = 'yellow',
-  FILL_CLOSE = '#4d4d4d',
+  FILL_OPEN = '#1b2836',
+  FILL_CLOSE = 'transparent',
   PATH_OPEN = "M 2,14 L 14,14 14,2 2,14",
   PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 const OpenClose2 = ({

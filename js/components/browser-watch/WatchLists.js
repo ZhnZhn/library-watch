@@ -8,42 +8,40 @@ var _DnDListHandlers = require("./dnd-handlers/DnDListHandlers");
 var _OpenClose = _interopRequireDefault(require("../zhn/OpenClose2"));
 var _WatchItems = _interopRequireDefault(require("./WatchItems"));
 var _jsxRuntime = require("react/jsx-runtime");
-const S_LIST_DIV = {
+const FILL_OPEN = '#80c040',
+  S_LIST_DIV = {
     marginLeft: 8,
-    lineHeight: 2,
-    borderLeft: '1px solid yellow'
+    lineHeight: 2
   },
   S_CAPTION_ROW = {
     paddingLeft: 12
   };
-const WatchLists = _ref => {
-  let {
-    isModeEdit,
+const WatchLists = ({
+  isModeEdit,
+  groupCaption,
+  lists,
+  color
+}) => (0, _uiApi.safeMap)(lists, ({
+  caption,
+  items
+}) => /*#__PURE__*/(0, _jsxRuntime.jsx)(_OpenClose.default, {
+  fillOpen: FILL_OPEN,
+  style: {
+    ...S_LIST_DIV,
+    borderLeft: `2px solid ${color}`
+  },
+  styleCaptionRow: S_CAPTION_ROW,
+  caption: caption,
+  dndHandlers: (0, _DnDListHandlers.crDnDListHandlers)(isModeEdit, {
     groupCaption,
-    lists
-  } = _ref;
-  return (0, _uiApi.safeMap)(lists, _ref2 => {
-    let {
-      caption,
-      items
-    } = _ref2;
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_OpenClose.default, {
-      fillOpen: "#80c040",
-      style: S_LIST_DIV,
-      styleCaptionRow: S_CAPTION_ROW,
-      caption: caption,
-      dndHandlers: (0, _DnDListHandlers.crDnDListHandlers)(isModeEdit, {
-        groupCaption,
-        caption
-      }),
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchItems.default, {
-        isModeEdit: isModeEdit,
-        items: items,
-        groupCaption: groupCaption,
-        listCaption: caption
-      })
-    }, caption);
-  });
-};
+    caption
+  }),
+  children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchItems.default, {
+    isModeEdit: isModeEdit,
+    items: items,
+    groupCaption: groupCaption,
+    listCaption: caption
+  })
+}, caption));
 var _default = exports.default = WatchLists;
 //# sourceMappingURL=WatchLists.js.map

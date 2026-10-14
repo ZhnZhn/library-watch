@@ -7,9 +7,6 @@ import OpenClose2 from "../zhn/OpenClose2";
 
 const CL_NOT_SELECTED = crClNotSelected()
 , CL_ROW_ITEM = "row__topic"
-, FILL_OPEN = "#1b2836"
-, FILL_CLOSE = "transparent"
-
 , S_CAPTION_ROW = { paddingLeft: 6 };
 
 const MenuItem = ({
@@ -44,11 +41,9 @@ const MenuPart = ({
 }) => (
   <OpenClose2
      refItem={refFirstItem}
-     styleCaptionRow={S_CAPTION_ROW}
-     fillOpen={FILL_OPEN}
-     fillClose={FILL_CLOSE}
-     caption={caption}
      isClose={isInitClose}
+     styleCaptionRow={S_CAPTION_ROW}
+     caption={caption}
   >
      {safeMap(items, (item, index) => (
          <MenuItem
