@@ -10,13 +10,8 @@ export const MD_EDIT_WATCH_LIST = 'editWatchList'
 
 export const MD_LOAD_FILE = 'loadFile'
 
+export const BT_LIBRARY = 'LW'
+export const BT_WATCH_LIST = 'WL'
+export const BT_WATCH_LIST_DB = 'WL_DB'
 
-export const BrowserType = {
-  LIBRARY : 'LW',
-  WATCH_LIST : 'WL',
-  WATCH_LIST_DB : 'WL_DB'
-}
-
-export const ChartType = {
-  WATCH_LIST : 'WL_WATCH_LIST'
-}
+export const CHT_WATCH_LIST = 'WL_WATCH_LIST'

@@ -10,17 +10,16 @@ var _WatchBrowser = _interopRequireDefault(require("../browser-watch/WatchBrowse
 var _DialogStack = _interopRequireDefault(require("../zhn-containers/DialogStack"));
 var _jsxRuntime = require("react/jsx-runtime");
 const CL = "hrz-container";
-const BrowserContainer = _ref => {
-  let {
-    useMsBrowser,
-    useMsBrowserDynamic,
-    useWatchList,
-    useDgOption
-  } = _ref;
+const BrowserContainer = ({
+  useMsBrowser,
+  useMsBrowserDynamic,
+  useWatchList,
+  useDgOption
+}) => {
   const [isDoubleWatch, toggleIsDoubleWatch] = (0, _useToggle.default)(false),
     [elBrowsers, setElBrowsers] = (0, _uiApi.useState)([]);
   useMsBrowser(msBrowser => {
-    if (msBrowser && msBrowser.id === _Type.BrowserType.WATCH_LIST_DB) {
+    if (msBrowser && msBrowser.id === _Type.BT_WATCH_LIST_DB) {
       toggleIsDoubleWatch();
     }
   });
@@ -33,7 +32,7 @@ const BrowserContainer = _ref => {
     className: CL,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchBrowser.default, {
       caption: "Watch",
-      browserType: _Type.BrowserType.WATCH_LIST,
+      browserType: _Type.BT_WATCH_LIST,
       useMsBrowser: useMsBrowser,
       useWatchList: useWatchList
     }), isDoubleWatch && /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchBrowser.default, {
@@ -41,7 +40,7 @@ const BrowserContainer = _ref => {
       isEditMode: true,
       isDoubleWatch: true,
       caption: "Watch 2",
-      browserType: _Type.BrowserType.WATCH_LIST,
+      browserType: _Type.BT_WATCH_LIST,
       useMsBrowser: useMsBrowser,
       useWatchList: useWatchList
     }), elBrowsers, /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogStack.default, {

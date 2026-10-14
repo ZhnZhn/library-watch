@@ -2,8 +2,8 @@ import { memoIsShow } from '../hoc/memoFn';
 
 import { loadItem  } from '../../flux/itemStore';
 import {
-  BrowserType,
-  ChartType
+  BT_WATCH_LIST,
+  CHT_WATCH_LIST
 } from '../../constants/Type';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
@@ -26,7 +26,7 @@ const LoadItemDialog = memoIsShow(({
   onClose
 }) => {
   const _hLoad = () => {
-    loadItem(ChartType.WATCH_LIST, BrowserType.WATCH_LIST, data);
+    loadItem(CHT_WATCH_LIST, BT_WATCH_LIST, data);
     onClose();
   }
   , _commandButtons = [

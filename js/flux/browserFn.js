@@ -11,7 +11,7 @@ const setBrowserMenu = (browserType, menu) => {
 exports.setBrowserMenu = setBrowserMenu;
 const getBrowserMenu = browserType => _browserMenu[browserType];
 exports.getBrowserMenu = getBrowserMenu;
-const _isBrowserTypeWatchList = bT => bT === _Type.BrowserType.WATCH_LIST;
+const _isBrowserTypeWatchList = bT => bT === _Type.BT_WATCH_LIST;
 const _fEditItem = (edit, value) => (chartType, browserType) => {
   if (!_isBrowserTypeWatchList(browserType)) {
     edit(chartType, _browserMenu[browserType], value);

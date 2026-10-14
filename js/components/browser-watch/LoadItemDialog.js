@@ -25,14 +25,13 @@ const DIALOG_CAPTION = "Load Watch Item",
   S_BOLD = {
     fontWeight: 'bold'
   };
-const LoadItemDialog = (0, _memoFn.memoIsShow)(_ref => {
-  let {
-    isShow,
-    data,
-    onClose
-  } = _ref;
+const LoadItemDialog = (0, _memoFn.memoIsShow)(({
+  isShow,
+  data,
+  onClose
+}) => {
   const _hLoad = () => {
-      (0, _itemStore.loadItem)(_Type.ChartType.WATCH_LIST, _Type.BrowserType.WATCH_LIST, data);
+      (0, _itemStore.loadItem)(_Type.CHT_WATCH_LIST, _Type.BT_WATCH_LIST, data);
       onClose();
     },
     _commandButtons = [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {

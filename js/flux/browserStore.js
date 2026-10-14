@@ -26,8 +26,8 @@ const _crStore = () => ({
 const useMsBrowser = exports.useMsBrowser = (0, _storeApi.fCrUse)(_browserStore, _selectMsBrowser);
 const showBrowser = id => _set(_crMsBrowser(id));
 exports.showBrowser = showBrowser;
-const showWatch = exports.showWatch = (0, _bindTo.bindTo)(showBrowser, _Type.BrowserType.WATCH_LIST);
-const showDbWatch = exports.showDbWatch = (0, _bindTo.bindTo)(showBrowser, _Type.BrowserType.WATCH_LIST_DB);
+const showWatch = exports.showWatch = (0, _bindTo.bindTo)(showBrowser, _Type.BT_WATCH_LIST);
+const showDbWatch = exports.showDbWatch = (0, _bindTo.bindTo)(showBrowser, _Type.BT_WATCH_LIST_DB);
 const useMsBrowserDynamic = exports.useMsBrowserDynamic = (0, _storeApi.fCrUse)(_browserStore, _selectMsBrowserDynamic);
 const showBrowserDynamic = option => {
   const {

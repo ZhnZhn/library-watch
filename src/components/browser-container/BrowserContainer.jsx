@@ -1,7 +1,10 @@
 import { useState } from '../uiApi';
 import useToggle from '../hooks/useToggle';
 
-import { BrowserType as BT } from '../../constants/Type';
+import {
+  BT_WATCH_LIST,
+  BT_WATCH_LIST_DB 
+} from '../../constants/Type';
 
 import WatchBrowser from '../browser-watch/WatchBrowser';
 import DialogStack from '../zhn-containers/DialogStack';
@@ -24,7 +27,7 @@ const BrowserContainer = ({
   ] = useState([]);
 
   useMsBrowser(msBrowser => {
-    if (msBrowser && msBrowser.id === BT.WATCH_LIST_DB) {
+    if (msBrowser && msBrowser.id === BT_WATCH_LIST_DB) {
       toggleIsDoubleWatch()
     }
   })
@@ -41,7 +44,7 @@ const BrowserContainer = ({
     <div className={CL}>
       <WatchBrowser
          caption="Watch"
-         browserType={BT.WATCH_LIST}
+         browserType={BT_WATCH_LIST}
          useMsBrowser={useMsBrowser}
          useWatchList={useWatchList}
       />
@@ -51,7 +54,7 @@ const BrowserContainer = ({
             isEditMode={true}
             isDoubleWatch={true}
             caption="Watch 2"
-            browserType={BT.WATCH_LIST}
+            browserType={BT_WATCH_LIST}
             useMsBrowser={useMsBrowser}
             useWatchList={useWatchList}
          />

@@ -38,7 +38,7 @@ const TITLE = "Library Watch v0.12.0",
     marginLeft: 'auto'
   },
   BROWSER_CONFIG_LIBRARY = {
-    browserType: _Type.BrowserType.LIBRARY,
+    browserType: _Type.BT_LIBRARY,
     caption: 'Library',
     sourceMenuUrl: './data/github/source-menu.json',
     rowClass: 'menu-item'

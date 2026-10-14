@@ -1,4 +1,4 @@
-import { BrowserType as BT } from '../constants/Type';
+import { BT_WATCH_LIST } from '../constants/Type';
 
 import {
   setIsOpen,
@@ -20,7 +20,7 @@ export const getBrowserMenu = (
 
 const _isBrowserTypeWatchList = (
   bT
-) => bT === BT.WATCH_LIST;
+) => bT === BT_WATCH_LIST;
 const _fEditItem = (edit, value) => (
   chartType,
   browserType

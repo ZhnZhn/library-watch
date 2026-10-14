@@ -7,7 +7,7 @@ import {
   showAbout
 } from '../../flux/compStore';
 
-import { BrowserType as BT } from '../../constants/Type';
+import { BT_LIBRARY } from '../../constants/Type';
 
 import SvgInfo from '../zhn/svg/SvgInfo';
 import SvgSettings from '../zhn/svg/SvgSettings';
@@ -54,7 +54,7 @@ const TITLE = "Library Watch v0.12.0"
 }
 
 , BROWSER_CONFIG_LIBRARY = {
-  browserType: BT.LIBRARY,
+  browserType: BT_LIBRARY,
   caption: 'Library',
   sourceMenuUrl : './data/github/source-menu.json',
   rowClass: 'menu-item'

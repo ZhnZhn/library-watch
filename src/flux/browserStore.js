@@ -8,7 +8,10 @@ import {
   fCrUse
 } from './storeApi';
 
-import { BrowserType as BT } from '../constants/Type';
+import {
+  BT_WATCH_LIST,
+  BT_WATCH_LIST_DB 
+} from '../constants/Type';
 
 import fnFetch from '../network/fnFetch';
 import fnCatch from '../network/fnCatch';
@@ -50,8 +53,8 @@ const _crStore = () => ({
 
 export const useMsBrowser = fCrUse(_browserStore, _selectMsBrowser)
 export const showBrowser = (id) => _set(_crMsBrowser(id))
-export const showWatch = bindTo(showBrowser, BT.WATCH_LIST)
-export const showDbWatch = bindTo(showBrowser, BT.WATCH_LIST_DB)
+export const showWatch = bindTo(showBrowser, BT_WATCH_LIST)
+export const showDbWatch = bindTo(showBrowser, BT_WATCH_LIST_DB)
 
 export const useMsBrowserDynamic = fCrUse(_browserStore, _selectMsBrowserDynamic)
 export const showBrowserDynamic = (option) => {
