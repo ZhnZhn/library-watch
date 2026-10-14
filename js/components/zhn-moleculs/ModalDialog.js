@@ -46,10 +46,10 @@ const ModalDialog = ({
   });
   let _className, _style;
   if ((0, _uiApi.getRefValue)(_refWasClosing)) {
-    _style = _Dialog.S_HIDE;
+    _style = _styleFn.S_NONE;
     (0, _uiApi.setRefValue)(_refWasClosing, false);
   } else {
-    [_className, _style] = isShow ? [_Dialog.CL_SHOW_POPUP, _Dialog.S_SHOW] : [_Dialog.CL_HIDE_POPUP, S_HIDE_POPUP];
+    [_className, _style] = isShow ? [_styleFn.CL_SHOW_POPUP, _styleFn.S_BLOCK] : [_styleFn.CL_HIDE_POPUP, S_HIDE_POPUP];
     if (!isShow) {
       (0, _uiApi.setRefValue)(_refWasClosing, true);
     }

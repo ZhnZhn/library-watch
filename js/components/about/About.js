@@ -15,14 +15,7 @@ var _IconLogoBar = _interopRequireDefault(require("./IconLogoBar"));
 var _ContainerStyles = require("../styles/ContainerStyles");
 var _styleFn = require("../styleFn");
 var _jsxRuntime = require("react/jsx-runtime");
-const CL_SHOW_POPUP = "show-popup",
-  S_BLOCK = {
-    display: 'block'
-  },
-  S_NONE = {
-    display: 'none'
-  },
-  S_SCROLL_DIV = {
+const S_SCROLL_DIV = {
     overflowY: 'auto',
     height: '92%',
     //height: 'calc(100vh - 90px)',
@@ -52,7 +45,7 @@ const About = () => {
       hideAbout();
     }
   });
-  const [_style, _className] = isShow ? [S_BLOCK, CL_SHOW_POPUP] : [S_NONE];
+  const [_style, _className] = isShow ? [_styleFn.S_BLOCK, _styleFn.CL_SHOW_POPUP] : [_styleFn.S_NONE];
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: (0, _styleFn.crCnBgColor)(_className),
     style: {

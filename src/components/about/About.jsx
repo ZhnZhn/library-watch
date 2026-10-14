@@ -12,12 +12,14 @@ import LinkToken from './LinkToken';
 import IconLogoBar from './IconLogoBar';
 
 import { S_ABOUT } from '../styles/ContainerStyles';
-import { crCnBgColor } from '../styleFn';
+import {
+  CL_SHOW_POPUP,
+  S_BLOCK,
+  S_NONE,
+  crCnBgColor
+} from '../styleFn';
 
-const CL_SHOW_POPUP = "show-popup"
-, S_BLOCK = { display: 'block' }
-, S_NONE = { display: 'none' }
-, S_SCROLL_DIV = {
+const S_SCROLL_DIV = {
   overflowY: 'auto',
   height: '92%',
   //height: 'calc(100vh - 90px)',

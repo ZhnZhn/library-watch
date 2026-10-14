@@ -1,8 +1,5 @@
-export const CL_SHOW_POPUP = 'show-popup'
-export const CL_HIDE_POPUP = 'hide-popup'
 
-export const S_SHOW = { display: 'block' }
-export const S_HIDE = { display: 'none' }
+export const CL_HIDE_POPUP = 'hide-popup'
 
 export const S_DIALOG_DIV = {
   border: 'solid 2px #1b2836',

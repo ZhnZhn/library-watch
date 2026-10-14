@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.crVisibilityHidden = exports.crStyle2 = exports.crShowPopupStyle = exports.crCnBgColor = exports.crCn = exports.crClNotSelected = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.CL_SOURCE_LINK = exports.CL_SHOW_POPUP = exports.CL_ROW_ITEM = exports.CL_NOT_SELECTED = exports.CL_MENU_MORE = exports.CL_LINK_WARPPER = exports.CL_LIB_VALUE_TITLE = exports.CL_LIB_VALUE = exports.CL_LIB_TITLE = exports.CL_LIB = exports.CL_ITEM_TITLE = exports.CL_ITEM = exports.CL_FILE_ITEM = exports.CL_BT_ITEM = void 0;
+exports.crVisibilityHidden = exports.crStyle2 = exports.crShowPopupStyle = exports.crCnBgColor = exports.crCn = exports.crClNotSelected = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.CL_SOURCE_LINK = exports.CL_SHOW_POPUP = exports.CL_ROW_ITEM = exports.CL_NOT_SELECTED = exports.CL_MENU_MORE = exports.CL_LINK_WARPPER = exports.CL_LIB_VALUE_TITLE = exports.CL_LIB_VALUE = exports.CL_LIB_TITLE = exports.CL_LIB = exports.CL_ITEM_TITLE = exports.CL_ITEM = exports.CL_HIDE_POPUP = exports.CL_FILE_ITEM = exports.CL_BT_ITEM = void 0;
 const _isArr = Array.isArray;
 const _getCn = arrOrStr => _isArr(arrOrStr) ? arrOrStr[0] ? arrOrStr[1] : '' : arrOrStr || '';
 const crCn = (conf1, conf2) => {
@@ -24,6 +24,7 @@ exports.crStyle2 = crStyle2;
 const CL_SHOW_POPUP = exports.CL_SHOW_POPUP = "show-popup";
 const crShowPopupStyle = isShow => isShow ? [S_BLOCK, CL_SHOW_POPUP] : [S_NONE];
 exports.crShowPopupStyle = crShowPopupStyle;
+const CL_HIDE_POPUP = exports.CL_HIDE_POPUP = "hide-popup";
 const CL_NOT_SELECTED = exports.CL_NOT_SELECTED = "not-selected";
 const crClNotSelected = className => className ? `${className} ${CL_NOT_SELECTED}` : CL_NOT_SELECTED;
 exports.crClNotSelected = crClNotSelected;

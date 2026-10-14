@@ -26,10 +26,14 @@ export const crStyle2 = (
  ? {...style1, ...style2}
  : style1;
 
+
+
 export const CL_SHOW_POPUP = "show-popup"
 export const crShowPopupStyle = isShow => isShow
  ? [S_BLOCK, CL_SHOW_POPUP]
  : [S_NONE]
+
+export const CL_HIDE_POPUP = "hide-popup"
 
 export const CL_NOT_SELECTED = "not-selected";
 export const crClNotSelected = (

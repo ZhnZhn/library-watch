@@ -1,10 +1,5 @@
 import { isFn } from '../../utils/isTypeFn';
 
-import {
-  crCn,
-  crClNotSelected
-} from '../styleFn';
-
 import { useKeyEscape } from '../hooks/fUseKey';
 import useToggle from '../hooks/useToggle';
 import useXYMovable from '../hooks/useXYMovable';
@@ -16,13 +11,15 @@ import SvgClose from '../zhn/SvgClose';
 import FlatButton from '../zhn-m/FlatButton';
 
 import {
+  CL_SHOW_POPUP,
+  S_BLOCK,
+  S_NONE,
+  crCn,
+  crClNotSelected,
   crCnBgColor
 } from '../styleFn';
 
 import {
-  CL_SHOW_POPUP,
-  S_SHOW,
-  S_HIDE,
   S_DIALOG_DIV,
   S_CAPTION_DIV,
   S_SVG_CLOSE,
@@ -81,8 +78,8 @@ const DraggableDialog = ({
       [isShow, CL_SHOW_POPUP]
   )
   , _styleShow = isShow
-      ? S_SHOW
-      : S_HIDE;
+      ? S_BLOCK
+      : S_NONE;
 
   useXYMovable(_refRootDiv)
 

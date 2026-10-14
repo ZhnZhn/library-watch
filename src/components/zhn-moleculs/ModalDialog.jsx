@@ -12,14 +12,14 @@ import Caption from './DialogCaption'
 import FlatButton from '../zhn-m/FlatButton'
 
 import {
+  CL_SHOW_POPUP,
+  CL_HIDE_POPUP,
+  S_BLOCK,
+  S_NONE,
   crCnBgColor
 } from '../styleFn';
 
 import {
-  CL_SHOW_POPUP,
-  CL_HIDE_POPUP,
-  S_SHOW,
-  S_HIDE,
   S_DIALOG_DIV,
   S_COMMAND_DIV
 } from './Dialog.Style';
@@ -62,11 +62,11 @@ const ModalDialog = ({
 
   let _className, _style;
   if (getRefValue(_refWasClosing)){
-    _style = S_HIDE;
+    _style = S_NONE;
     setRefValue(_refWasClosing, false)
   } else {
     [_className, _style] = isShow
-      ? [CL_SHOW_POPUP, S_SHOW]
+      ? [CL_SHOW_POPUP, S_BLOCK]
       : [CL_HIDE_POPUP, S_HIDE_POPUP]
     if (!isShow){
       setRefValue(_refWasClosing, true)
