@@ -28,7 +28,7 @@ const WatchLists = ({
   fillOpen: FILL_OPEN,
   style: {
     ...S_LIST_DIV,
-    borderLeft: `2px solid ${color}`
+    borderLeft: `2px solid var(--el-bg, #1b2836)`
   },
   styleCaptionRow: S_CAPTION_ROW,
   caption: caption,

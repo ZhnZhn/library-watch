@@ -18,17 +18,20 @@ const UI_THEME_OPTIONS = exports.UI_THEME_OPTIONS = [{
 const DF_UI_THEME = exports.DF_UI_THEME = UI_THEME_OPTIONS[0].caption;
 const P_GREY = {
     BG_BODY: '#5f5f5f',
-    BG: '#4d4d4d'
+    BG: '#4d4d4d',
+    EL_BG: '#232f3b'
   },
   WHITE_BG = '#eaeaea',
   P_WHITE = {
     BG_BODY: 'darkgrey',
-    BG: WHITE_BG
+    BG: WHITE_BG,
+    EL_BG: '#720784'
   },
   SAND_BG = '#e8e0cb',
   P_SAND = {
     BG_BODY: 'darkgrey',
-    BG: SAND_BG
+    BG: SAND_BG,
+    EL_BG: '#795548'
   };
 const THEME_CONFIG = {
   [UI_THEME_ID_GREY]: P_GREY,
@@ -40,6 +43,7 @@ const _setCustomPropertiesFrom = P => {
     _setProperty = _style.setProperty.bind(_style);
   _style.backgroundColor = P.BG_BODY;
   _setProperty("--bg-c", P.BG);
+  _setProperty("--el-bg", P.EL_BG);
 };
 const _setUiTheme = themeName => {
   _setCustomPropertiesFrom(THEME_CONFIG[themeName]);

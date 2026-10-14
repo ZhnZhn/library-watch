@@ -1,11 +1,14 @@
 import SvgClose from '../zhn/SvgClose';
-import { CL_NOT_SELECTED } from '../styleFn';
+import {
+  CL_NOT_SELECTED,
+  crCnElBg
+} from '../styleFn';
 
-const S_ROOT = {
+const CL_EL_BG = crCnElBg()
+, S_ROOT = {
   position: 'relative',
   color: 'silver',
   stroke: 'silver',
-  backgroundColor: '#232f3b',
   padding: 5,
   textAlign: 'center',
   fontSize: 18
@@ -20,7 +23,7 @@ const DialogCaption = ({
   caption,
   onClose
 }) => (
-  <div style={S_ROOT}>
+  <div className={CL_EL_BG} style={S_ROOT}>
      <span className={CL_NOT_SELECTED}>
        {caption}
      </span>

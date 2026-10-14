@@ -1,4 +1,6 @@
-export const CL_CAPTION = "gap-right cont-caption"
+import { crCnElBg } from '../styleFn'
+
+export const CL_CAPTION = crCnElBg("gap-right cont-caption")
 
 export const S_CAPTION = {
   padding: '0 8px 0 6px',

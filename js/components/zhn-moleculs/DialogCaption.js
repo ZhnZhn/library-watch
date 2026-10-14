@@ -6,11 +6,11 @@ exports.default = void 0;
 var _SvgClose = _interopRequireDefault(require("../zhn/SvgClose"));
 var _styleFn = require("../styleFn");
 var _jsxRuntime = require("react/jsx-runtime");
-const S_ROOT = {
+const CL_EL_BG = (0, _styleFn.crCnElBg)(),
+  S_ROOT = {
     position: 'relative',
     color: 'silver',
     stroke: 'silver',
-    backgroundColor: '#232f3b',
     padding: 5,
     textAlign: 'center',
     fontSize: 18
@@ -24,6 +24,7 @@ const DialogCaption = ({
   caption,
   onClose
 }) => /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  className: CL_EL_BG,
   style: S_ROOT,
   children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
     className: _styleFn.CL_NOT_SELECTED,

@@ -18,6 +18,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 const CL_DRAGGABLE_DIALOG = (0, _styleFn.crCnBgColor)("draggable-dialog"),
   CL_NOT_SELECTED = (0, _styleFn.crClNotSelected)(),
   CL_MENU_MORE = 'popup-menu dialog__menu-more',
+  CL_EL_BG = (0, _styleFn.crCnElBg)(),
   S_DRAGGABLE_DIALOG = {
     ..._Dialog.S_DIALOG_DIV,
     position: 'absolute',
@@ -68,6 +69,7 @@ const DraggableDialog = ({
     },
     onKeyDown: _hKeyDown,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: CL_EL_BG,
       style: S_CAPTION,
       children: [menuModel && /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider.default, {

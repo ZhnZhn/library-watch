@@ -16,7 +16,8 @@ import {
   S_NONE,
   crCn,
   crClNotSelected,
-  crCnBgColor
+  crCnBgColor,
+  crCnElBg
 } from '../styleFn';
 
 import {
@@ -30,6 +31,7 @@ import {
 const CL_DRAGGABLE_DIALOG = crCnBgColor("draggable-dialog")
 , CL_NOT_SELECTED = crClNotSelected()
 , CL_MENU_MORE = 'popup-menu dialog__menu-more'
+, CL_EL_BG = crCnElBg()
 
 , S_DRAGGABLE_DIALOG = {
   ...S_DIALOG_DIV,
@@ -99,7 +101,7 @@ const DraggableDialog = ({
        onKeyDown={_hKeyDown}
      >
      {/*eslint-enable jsx-a11y/no-noninteractive-element-interactions*/}
-      <div style={S_CAPTION}>
+      <div className={CL_EL_BG} style={S_CAPTION}>
         { menuModel && <>
            <ModalSlider
              isShow={_isMore}

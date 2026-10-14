@@ -43,6 +43,7 @@ export const crClNotSelected = (
  : CL_NOT_SELECTED
 
 export const crCnBgColor = (cn) => crCn(cn, "c-bg")
+export const crCnElBg = (cn) => crCn(cn, "el-bg")
 
 export const CL_BT_ITEM = crClNotSelected("bt-item")
 export const CL_MENU_MORE = "popup-menu charts__menu-more"

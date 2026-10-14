@@ -13,8 +13,7 @@ const S_GROUP_DIV = {
   },
   S_CAPTION_ROW = {
     paddingLeft: 6
-  },
-  FILL_OPEN = '#1b2836';
+  };
 const WatchGroups = ({
   refFirstItem,
   isModeEdit,
@@ -26,7 +25,6 @@ const WatchGroups = ({
   refItem: index === 0 ? refFirstItem : void 0,
   style: S_GROUP_DIV,
   styleCaptionRow: S_CAPTION_ROW,
-  fillOpen: FILL_OPEN,
   caption: caption,
   dndHandlers: (0, _DnDGroupHandlers.crDnDGroupHandlers)(isModeEdit, {
     caption
@@ -34,8 +32,7 @@ const WatchGroups = ({
   children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchLists.default, {
     isModeEdit: isModeEdit,
     groupCaption: caption,
-    lists: lists,
-    color: FILL_OPEN
+    lists: lists
   })
 }, caption));
 var _default = exports.default = WatchGroups;

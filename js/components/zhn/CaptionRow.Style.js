@@ -2,7 +2,8 @@
 
 exports.__esModule = true;
 exports.S_SVG_CLOSE = exports.S_CAPTION = exports.CL_CAPTION = void 0;
-const CL_CAPTION = exports.CL_CAPTION = "gap-right cont-caption";
+var _styleFn = require("../styleFn");
+const CL_CAPTION = exports.CL_CAPTION = (0, _styleFn.crCnElBg)("gap-right cont-caption");
 const S_CAPTION = exports.S_CAPTION = {
   padding: '0 8px 0 6px',
   fontSize: '18px',

@@ -19,7 +19,7 @@ const CL_ROW_CAPTION = (0, _styleFn.crClNotSelected)("zhn-oc"),
     height: 16
   },
   S_CAPTION = {
-    color: '#1b2836',
+    //color: '#1b2836',
     paddingLeft: 4,
     verticalAlign: 'top',
     fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
@@ -39,14 +39,16 @@ const OpenClose2 = ({
   styleCaptionRow,
   styleCaption,
   caption,
-  fillOpen = FILL_OPEN,
-  fillClose = FILL_CLOSE,
+  //fillOpen=FILL_OPEN,
+  fillOpen,
+  fillClose,
+  //fillClose=FILL_CLOSE,
   dndHandlers,
   children
 }) => {
   const [isOpen, _hToggle] = (0, _useToggle.default)(!isClose),
     _hKeyDown = (0, _fUseKey.useKeyEnter)(_hToggle),
-    [_pathV, _fillV, _styleCollapse, _classShow, _styleNotSelected] = isOpen ? [PATH_OPEN, fillOpen, _styleFn.S_BLOCK, _styleFn.CL_SHOW_POPUP, null] : [PATH_CLOSE, fillClose, _styleFn.S_NONE, null, styleNotSelected];
+    [_pathV, _fillV, _styleCollapse, _classShow, _styleNotSelected] = isOpen ? [PATH_OPEN, fillOpen, _styleFn.S_BLOCK, _styleFn.CL_SHOW_POPUP, null] : [PATH_CLOSE, 'transparent', _styleFn.S_NONE, null, styleNotSelected];
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: {
       ...S_ROOT,
