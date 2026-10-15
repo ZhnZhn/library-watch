@@ -1,37 +1,65 @@
-const UI_THEME_ID_GREY = 'GREY'
-, UI_THEME_ID_WHITE = 'WHITE'
-, UI_THEME_ID_SAND = 'SAND';
+const UI_THEME_ID_GREY_DF = 'GREY'
+, UI_THEME_ID_GREY_DC = 'GREY-DC'
+, UI_THEME_ID_GREY_DG = 'GREY-DG'
+, UI_THEME_ID_WHITE_DM = 'WHITE-DM'
+, UI_THEME_ID_WHITE_I = 'WHITE-I'
+, UI_THEME_ID_WHITE_BR = 'WHITE-BR'
+, UI_THEME_ID_SAND_BR = 'SAND-BR'
+, UI_THEME_ID_SAND_DM = 'SAND-DM'
+, UI_THEME_ID_SAND_I = 'SAND-I';
 
 export const UI_THEME_OPTIONS = [
-  {caption: 'Grey', value: UI_THEME_ID_GREY},
-  {caption: 'White', value: UI_THEME_ID_WHITE},
-  {caption: 'Sand', value: UI_THEME_ID_SAND}
+  {caption: 'Grey', value: UI_THEME_ID_GREY_DF},
+  {caption: 'Grey - Darkcyan', value: UI_THEME_ID_GREY_DC},
+  {caption: 'Grey - Darkgoldenrod', value: UI_THEME_ID_GREY_DG},
+  {caption: 'White - Darkmagenta', value: UI_THEME_ID_WHITE_DM},
+  {caption: 'White - Indigo', value: UI_THEME_ID_WHITE_I},
+  {caption: 'White - Brown', value: UI_THEME_ID_WHITE_BR},
+  {caption: 'Sand - Darkmagenta', value: UI_THEME_ID_SAND_DM},
+  {caption: 'Sand - Indigo', value: UI_THEME_ID_SAND_I},
+  {caption: 'Sand - Brown', value: UI_THEME_ID_SAND_BR}
 ]
 
 export const DF_UI_THEME = UI_THEME_OPTIONS[0].caption
 
-const P_GREY = {
+const COLOR_DARKGREY = '#a9a9a9'
+, P_GREY = {
   BG_BODY: '#5f5f5f',
-  BG: '#4d4d4d',
-  EL_BG: '#232f3b'
+  BG: '#4d4d4d'
 }
-, WHITE_BG = '#eaeaea'
 , P_WHITE = {
-  BG_BODY: 'darkgrey',
-  BG: WHITE_BG,  
-  EL_BG: '#720784'
+  BG_BODY: COLOR_DARKGREY,
+  BG: '#eaeaea'
 }
 , SAND_BG = '#e8e0cb'
 , P_SAND = {
-  BG_BODY: 'darkgrey',
-  BG: SAND_BG,
-  EL_BG: '#795548'
-};
+  BG_BODY: COLOR_DARKGREY,
+  BG: '#e8e0cb'
+}
+, _crPalette = (
+  basePalette,
+  elBgColor
+) => ({
+  ...basePalette,
+  EL_BG: elBgColor
+})
+, COLOR_DF = '#232f3b'
+, COLOR_DARKCYAN = '#008b8b'
+, COLOR_DARKGOLDENROD = '#b8860b'
+, COLOR_DARKMAGENTA = '#8b008b'
+, COLOR_INDIGO = '#4b0082'
+, COLOR_BROWN = '#795548';
 
 const THEME_CONFIG = {
-  [UI_THEME_ID_GREY]: P_GREY,
-  [UI_THEME_ID_WHITE]: P_WHITE,
-  [UI_THEME_ID_SAND]: P_SAND
+  [UI_THEME_ID_GREY_DF]: _crPalette(P_GREY, COLOR_DF),
+  [UI_THEME_ID_GREY_DC]: _crPalette(P_GREY, COLOR_DARKCYAN),
+  [UI_THEME_ID_GREY_DG]: _crPalette(P_GREY, COLOR_DARKGOLDENROD),
+  [UI_THEME_ID_WHITE_DM]: _crPalette(P_WHITE, COLOR_DARKMAGENTA),
+  [UI_THEME_ID_WHITE_I]: _crPalette(P_WHITE, COLOR_INDIGO),
+  [UI_THEME_ID_WHITE_BR]: _crPalette(P_WHITE, COLOR_BROWN),
+  [UI_THEME_ID_SAND_DM]: _crPalette(P_SAND, COLOR_DARKMAGENTA),
+  [UI_THEME_ID_SAND_I]: _crPalette(P_SAND, COLOR_INDIGO),
+  [UI_THEME_ID_SAND_BR]: _crPalette(P_SAND, COLOR_BROWN)
 };
 
 const _setCustomPropertiesFrom = (P) => {
