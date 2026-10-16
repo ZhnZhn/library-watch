@@ -12,6 +12,7 @@ var _ModalSlider = _interopRequireDefault(require("../zhn-modal-slider/ModalSlid
 var _SvgMore = _interopRequireDefault(require("../zhn/SvgMore"));
 var _SvgClose = _interopRequireDefault(require("../zhn/SvgClose"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
+var _DialogCaption = _interopRequireDefault(require("./DialogCaption"));
 var _styleFn = require("../styleFn");
 var _Dialog = require("./Dialog.Style");
 var _jsxRuntime = require("react/jsx-runtime");
@@ -27,7 +28,7 @@ const CL_DRAGGABLE_DIALOG = (0, _styleFn.crCnBgColor)("draggable-dialog"),
     zIndex: 10
   },
   S_CAPTION = {
-    ..._Dialog.S_CAPTION_DIV,
+    padding: '5px 35px 5px 16px',
     cursor: 'move'
   },
   S_BT_MORE = {
@@ -68,10 +69,11 @@ const DraggableDialog = ({
       ..._styleShow
     },
     onKeyDown: _hKeyDown,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      className: CL_EL_BG,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCaption.default, {
       style: S_CAPTION,
-      children: [menuModel && /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+      caption: caption,
+      onClose: onClose,
+      children: menuModel && /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalSlider.default, {
           isShow: _isMore,
           className: CL_MENU_MORE,
@@ -83,13 +85,7 @@ const DraggableDialog = ({
           svgStyle: S_BT_MORE_SVG,
           onClick: _toggleMore
         })]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-        className: CL_NOT_SELECTED,
-        children: caption
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose.default, {
-        style: _Dialog.S_SVG_CLOSE,
-        onClose: onClose
-      })]
+      })
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       children: children
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {

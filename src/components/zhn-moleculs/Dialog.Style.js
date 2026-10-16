@@ -6,7 +6,7 @@ export const S_DIALOG_DIV = {
 
 export const S_CAPTION_DIV = {
   position: 'relative',
-  padding: '5px 35px 5px 16px',
+  padding: 5,
   color: '#c0c0c0',
   stroke: '#c0c0c0',
   textAlign: 'center',
@@ -18,8 +18,7 @@ export const S_CAPTION_DIV = {
 export const S_SVG_CLOSE = {
   position: 'absolute',
   top: 4,
-  right: 0,
-  marginRight: 6
+  right: 0
 }
 
 export const S_COMMAND_DIV = {

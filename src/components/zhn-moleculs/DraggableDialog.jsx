@@ -10,6 +10,8 @@ import SvgMore from '../zhn/SvgMore';
 import SvgClose from '../zhn/SvgClose';
 import FlatButton from '../zhn-m/FlatButton';
 
+import Caption from './DialogCaption';
+
 import {
   CL_SHOW_POPUP,
   S_BLOCK,
@@ -22,8 +24,6 @@ import {
 
 import {
   S_DIALOG_DIV,
-  S_CAPTION_DIV,
-  S_SVG_CLOSE,
   S_COMMAND_DIV,
   S_BT_ROOT
 } from './Dialog.Style';
@@ -41,7 +41,7 @@ const CL_DRAGGABLE_DIALOG = crCnBgColor("draggable-dialog")
   zIndex: 10
 }
 , S_CAPTION = {
-  ...S_CAPTION_DIV,
+  padding: '5px 35px 5px 16px',
   cursor: 'move'
 }
 , S_BT_MORE = {
@@ -101,7 +101,11 @@ const DraggableDialog = ({
        onKeyDown={_hKeyDown}
      >
      {/*eslint-enable jsx-a11y/no-noninteractive-element-interactions*/}
-      <div className={CL_EL_BG} style={S_CAPTION}>
+      <Caption
+        style={S_CAPTION}
+        caption={caption}
+        onClose={onClose}
+      >
         { menuModel && <>
            <ModalSlider
              isShow={_isMore}
@@ -117,14 +121,7 @@ const DraggableDialog = ({
            />
          </>
         }
-        <span className={CL_NOT_SELECTED}>
-          {caption}
-        </span>
-        <SvgClose
-           style={S_SVG_CLOSE}
-           onClose={onClose}
-        />
-      </div>
+      </Caption>
       <div>
          {children}
       </div>
