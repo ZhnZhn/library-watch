@@ -43,8 +43,8 @@
     "@babel/preset-react": "^7.29.7",
     "@biomejs/biome": "^2.5.15",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.3",
-    "@rspack/cli": "^2.2.8",
-    "@rspack/core": "^2.2.8",
+    "@rspack/cli": "^2.2.9",
+    "@rspack/core": "^2.2.9",
     "@rspack/dev-server": "^2.2.1",
     "@rspack/plugin-react-refresh": "^2.0.2",
     "@swc/helpers": "^0.5.23",
@@ -58,14 +58,13 @@
     "html-webpack-plugin": "^5.6.8",
     "jest": "^30.5.2",
     "terser-webpack-plugin": "^5.6.1",
-    "webpack": "^5.111.1",
+    "webpack": "^5.112.0",
     "webpack-cli": "^7.2.3"
   },
   "overrides": {
     "glob": "~13.0.6",
     "uuid": "~14.0.0",
-    "js-yaml": "~4.3.0",
-    "brace-expansion": "~5.0.7"
+    "js-yaml": "~4.3.0"
   },
   "jest": {
     "roots": [
