@@ -31,8 +31,8 @@
     "@babel/runtime": "^7.29.10",
     "chart.js": "^4.5.1",
     "raven-js": "^3.27.2",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
