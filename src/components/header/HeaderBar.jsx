@@ -1,3 +1,5 @@
+import { BT_LIBRARY } from '../../constants/Type';
+
 import {
   showBrowserDynamic,
   showWatch
@@ -6,13 +8,17 @@ import {
   showSettingsDialog,
   showAbout
 } from '../../flux/compStore';
+import {
+  saveWatchList
+} from '../../flux/watch-list/watchListStore';
 
-import { BT_LIBRARY } from '../../constants/Type';
+import useWatchEditedColor from '../styles/useWatchEditedColor';
 
+import SvgSave from '../zhn/svg/SvgSave';
 import SvgInfo from '../zhn/svg/SvgInfo';
 import SvgSettings from '../zhn/svg/SvgSettings';
 import FlatButton from '../zhn-m/FlatButton';
-import ButtonSave from '../zhn-moleculs/ButtonSave';
+
 import LoadingProgress from './LoadingProgress';
 import IconAppLogo from './IconAppLogo';
 import AppLabel from './AppLabel';
@@ -30,9 +36,20 @@ import {
   crCnBgColor
 } from '../styleFn';
 
-const TITLE = "Library Watch v0.12.0"
+import {
+  TITLE_APP,
 
-, TOKEN_HEADER = "header"
+  CAPTION_LIBRARY,
+  TITLE_LIBRARY_BROWSER,
+  CAPTION_WATCH,
+  TITLE_WATCH_BROWSER,
+  TITLE_BUTTON_SAVE,
+
+  TITLE_SETTINGS_DIALOG,
+  TITLE_ABOUT
+} from '../../constants/Tokens';
+
+const TOKEN_HEADER = "header"
 , CL_HEADER = crCnBgColor(TOKEN_HEADER)
 , CL_ICON = `${TOKEN_HEADER}__icon-app`
 , CL_ABOUT = `${TOKEN_HEADER}__bt-about`
@@ -40,16 +57,15 @@ const TITLE = "Library Watch v0.12.0"
 , CL_LIBRARY = `${TOKEN_HEADER}__bt-library`
 
 , S_SVG_ICON = {
-  position: 'relative',
-  top: -2,
   verticalAlign: 'middle',
   margin: '0 8px'
 }
 , S_BUTTON_SAVE = {
-  marginTop: 4,
-  marginLeft: 10
+  padding: '0 4px'
 }
 , S_BTS_RIGHT = {
+  position: 'relative',
+  top: -2,
   marginLeft: 'auto'
 }
 
@@ -61,42 +77,51 @@ const TITLE = "Library Watch v0.12.0"
 };
 
 const _hClickLibrary = () => showBrowserDynamic(BROWSER_CONFIG_LIBRARY);
+const _crBtSaveStyle = color => color
+  ? {...S_BUTTON_SAVE, color }
+  : S_BUTTON_SAVE;
 
-const HeaderBar = () => (
+const HeaderBar = () => {
+  const _btSaveColor = useWatchEditedColor();
+  return (
   <header className={CL_HEADER}>
      <LoadingProgress />
      <IconAppLogo
        className={CL_ICON}
-       title={TITLE}
+       title={TITLE_APP}
      />
      <AppLabel
        className={CL_APP_LABEL}
-       caption={TITLE}
+       caption={TITLE_APP}
      />
      <FlatButton
         className={CL_LIBRARY}
         classHotKey={CL_BT_HOT_KEY}
-        caption="Library"
-        title="Library Browser"
+        caption={CAPTION_LIBRARY}
+        title={TITLE_LIBRARY_BROWSER}
         hotKey={HK_LIBRARY}
         timeout={0}
         onClick={_hClickLibrary}
      />
      <FlatButton
-        caption="Watch"
-        title="Watch Browser"
+        caption={CAPTION_WATCH}
+        title={TITLE_WATCH_BROWSER}
         hotKey={HK_WATCH}
         classHotKey={CL_BT_HOT_KEY}
         timeout={0}
         onClick={showWatch}
      />
-     <ButtonSave
-        style={S_BUTTON_SAVE}
-     />
+     <FlatButton
+        style={_crBtSaveStyle(_btSaveColor)}
+        title={TITLE_BUTTON_SAVE}
+        onClick={saveWatchList}
+     >
+       <SvgSave style={S_SVG_ICON} />
+     </FlatButton>
      <div style={S_BTS_RIGHT}>
        <LimitRemainingLabel />
        <FlatButton
-          title="Open settings dialog"
+          title={TITLE_SETTINGS_DIALOG}
           hotKey={HK_SETTINGS}
           timeout={0}
           onClick={showSettingsDialog}
@@ -105,7 +130,7 @@ const HeaderBar = () => (
        </FlatButton>
        <FlatButton
           className={CL_ABOUT}
-          title="About webapp Library Watch"
+          title={TITLE_ABOUT}
           hotKey={HK_ABOUT}
           timeout={0}
           onClick={showAbout}
@@ -115,5 +140,6 @@ const HeaderBar = () => (
      </div>
   </header>
 );
+}
 
 export default HeaderBar
