@@ -1,45 +1,35 @@
+import { TITLE_BUTTON_SAVE } from '../../constants/Tokens'
+import { saveWatchList } from '../../flux/watch-list/watchListStore';
+
 import { useState } from '../uiApi';
 import { crStyle2 } from '../styleFn';
 
-import {
-  getIsWatchEdited,
-  useIsWatchEdited,
-  saveWatchList
-} from '../../flux/watch-list/watchListStore';
+import useWatchEditedColor from '../styles/useWatchEditedColor';
 
 import ButtonCircle from '../zhn/ButtonCircle';
 
 const CAPTION = "S"
-, TITLE = "Save Watch Items to Locale Storage"
-, COLOR_NOT_WATCH_EDITED = 'grey'
-, S_NOT_WATCH_EDITED = {
-   borderColor: COLOR_NOT_WATCH_EDITED,
-   color: COLOR_NOT_WATCH_EDITED
-};
+, _crBtStyle = color => color
+  ? {
+    color,
+    borderColor: color
+  } : void 0;
 
 const ButtonSave = ({
   className,
   style
 }) => {
-  const [
-    isWatchEdited,
-    setIsWatchEdited
-  ] = useState(getIsWatchEdited);
-
-  useIsWatchEdited(isWatchEdited => {
-    setIsWatchEdited(!!isWatchEdited)
-  })
-
-  const _style = crStyle2(
+  const _color = useWatchEditedColor()
+  , _style = crStyle2(
     style,
-    isWatchEdited && S_NOT_WATCH_EDITED
+    _crBtStyle(_color)
   );
 
   return (
     <ButtonCircle
        className={className}
        caption={CAPTION}
-       title={TITLE}
+       title={TITLE_BUTTON_SAVE}
        style={_style}
        onClick={saveWatchList}
     />

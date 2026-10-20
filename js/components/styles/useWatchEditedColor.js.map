@@ -1,0 +1,23 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/styles/useWatchEditedColor.js"
+ ],
+ "file": "../../../src/components/styles/useWatchEditedColor.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "_watchListStore",
+  "WATCH_EDITED_COLOR",
+  "useWatchEditedColor",
+  "isWatchEdited",
+  "setIsWatchEdited",
+  "useState",
+  "getIsWatchEdited",
+  "useIsWatchEdited",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AACA,IAAAC,eAAA,GAAAD,OAAA;AAKA,MAAME,kBAAkB,GAAG,SAAS;AAEpC,MAAMC,mBAAmB,GAAGA,CAAA,KAAM;EAChC,MAAM,CACJC,aAAa,EACbC,gBAAgB,CACjB,GAAG,IAAAC,eAAQ,EAACC,gCAAgB,CAAC;EAE9B,IAAAC,gCAAgB,EAACJ,aAAa,IAAI;IAChCC,gBAAgB,CAAC,CAAC,CAACD,aAAa,CAAC;EACnC,CAAC,CAAC;EACF,OAAOA,aAAa,GAChBF,kBAAkB,GAClB,KAAK,CAAC;AACZ,CAAC;AAAA,IAAAO,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEcR,mBAAmB"
+}
