@@ -8,10 +8,8 @@ var _browserStore = require("../../flux/browserStore");
 var _compStore = require("../../flux/compStore");
 var _watchListStore = require("../../flux/watch-list/watchListStore");
 var _useWatchEditedColor = _interopRequireDefault(require("../styles/useWatchEditedColor"));
-var _SvgSave = _interopRequireDefault(require("../zhn/svg/SvgSave"));
-var _SvgInfo = _interopRequireDefault(require("../zhn/svg/SvgInfo"));
-var _SvgSettings = _interopRequireDefault(require("../zhn/svg/SvgSettings"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
+var _FlatButtons = require("../zhn-m/FlatButtons");
 var _LoadingProgress = _interopRequireDefault(require("./LoadingProgress"));
 var _IconAppLogo = _interopRequireDefault(require("./IconAppLogo"));
 var _AppLabel = _interopRequireDefault(require("./AppLabel"));
@@ -26,10 +24,6 @@ const TOKEN_HEADER = "header",
   CL_ABOUT = `${TOKEN_HEADER}__bt-about`,
   CL_APP_LABEL = `${TOKEN_HEADER}__app-label`,
   CL_LIBRARY = `${TOKEN_HEADER}__bt-library`,
-  S_SVG_ICON = {
-    verticalAlign: 'middle',
-    margin: '0 8px'
-  },
   S_BUTTON_SAVE = {
     padding: '0 4px'
   },
@@ -74,32 +68,23 @@ const HeaderBar = () => {
       classHotKey: _hotkeys.CL_BT_HOT_KEY,
       timeout: 0,
       onClick: _browserStore.showWatch
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButtons.FlatButtonSave, {
       style: _crBtSaveStyle(_btSaveColor),
       title: _Tokens.TITLE_BUTTON_SAVE,
-      onClick: _watchListStore.saveWatchList,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgSave.default, {
-        style: S_SVG_ICON
-      })
+      onClick: _watchListStore.saveWatchList
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       style: S_BTS_RIGHT,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LimitRemainingLabel.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LimitRemainingLabel.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButtons.FlatButtonSettings, {
         title: _Tokens.TITLE_SETTINGS_DIALOG,
         hotKey: _hotkeys.HK_SETTINGS,
         timeout: 0,
-        onClick: _compStore.showSettingsDialog,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgSettings.default, {
-          style: S_SVG_ICON
-        })
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
+        onClick: _compStore.showSettingsDialog
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButtons.FlatButtonInfo, {
         className: CL_ABOUT,
         title: _Tokens.TITLE_ABOUT,
         hotKey: _hotkeys.HK_ABOUT,
         timeout: 0,
-        onClick: _compStore.showAbout,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgInfo.default, {
-          style: S_SVG_ICON
-        })
+        onClick: _compStore.showAbout
       })]
     })]
   });
