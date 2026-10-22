@@ -8,22 +8,6 @@ var _styleFn = require("../styleFn");
 var _Dialog = require("./Dialog.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_EL_BG = (0, _styleFn.crCnElBg)();
-/*
-, S_ROOT = {
-  position: 'relative',
-  color: 'silver',
-  stroke: 'silver',
-  padding: 5,
-  textAlign: 'center',
-  fontSize: 18
-}
-, S_SVG = {
-  position: 'absolute',
-  top: 6,
-  right: 0
-};
-*/
-
 const DialogCaption = ({
   caption,
   style,

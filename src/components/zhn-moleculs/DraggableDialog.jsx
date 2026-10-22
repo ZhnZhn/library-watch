@@ -47,7 +47,7 @@ const CL_DRAGGABLE_DIALOG = crCnBgColor("draggable-dialog")
 , S_BT_MORE = {
   position: 'absolute',
   top: 2,
-  left: 0
+  left: 2
 }
 , S_BT_MORE_SVG = {
   stroke: 'inherit',

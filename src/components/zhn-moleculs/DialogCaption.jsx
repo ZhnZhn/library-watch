@@ -9,22 +9,7 @@ import {
   S_SVG_CLOSE
 } from './Dialog.Style';
 
-const CL_EL_BG = crCnElBg()
-/*
-, S_ROOT = {
-  position: 'relative',
-  color: 'silver',
-  stroke: 'silver',
-  padding: 5,
-  textAlign: 'center',
-  fontSize: 18
-}
-, S_SVG = {
-  position: 'absolute',
-  top: 6,
-  right: 0
-};
-*/
+const CL_EL_BG = crCnElBg();
 
 const DialogCaption = ({
   caption,
