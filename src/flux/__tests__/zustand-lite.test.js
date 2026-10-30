@@ -78,7 +78,7 @@ describe("createStore", () => {
       setState,
       subscribe
     } = fn(() => NaN)
-    , _onSubscribe = jest.fn();
+    , _onSubscribe = rs.fn();
 
     subscribe(_onSubscribe)
     setState(NaN)

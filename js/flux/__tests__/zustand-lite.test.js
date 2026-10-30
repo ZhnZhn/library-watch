@@ -5,10 +5,7 @@ describe("createStore", () => {
   const fn = _zustandLite.createStore;
   test('create a store', () => {
     let params;
-    const store = fn(function () {
-      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
+    const store = fn((...args) => {
       params = args;
       return {
         value: null
@@ -82,7 +79,7 @@ describe("createStore", () => {
         setState,
         subscribe
       } = fn(() => NaN),
-      _onSubscribe = jest.fn();
+      _onSubscribe = rs.fn();
     subscribe(_onSubscribe);
     setState(NaN);
     expect(_onSubscribe).not.toHaveBeenCalled();

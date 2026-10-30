@@ -12,8 +12,8 @@ const mockDateBeforeAll = (y, m, d, hours, minutes, seconds) => {
   beforeAll(() => {
     const _Date = Date;
     //2020-01-01 12:00:01
-    global.Date = jest.fn(() => FIXED_DATE);
-    global.Date.UTC = jest.fn(_Date.UTC);
+    global.Date = rs.fn(() => FIXED_DATE);
+    global.Date.UTC = rs.fn(_Date.UTC);
   });
   it('log mocked date', () => {
     console.log('Mocked Date', new Date().toISOString());

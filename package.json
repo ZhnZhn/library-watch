@@ -17,9 +17,8 @@
     "stats": "npm run stats:json && npm run stats:report",
     "stats:json": "webpack --config webpack.test.js --profile --json > stats.json",
     "stats:report": "webpack-bundle-analyzer stats.json --no-open --mode static",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test": "rstest --config rstest.config.mjs",
+    "test:watch": "rstest --watch --config rstest.config.mjs"
   },
   "author": "Yevhenii Molodyi",
   "license": "MIT",
@@ -47,6 +46,7 @@
     "@rspack/core": "^2.2.9",
     "@rspack/dev-server": "^2.2.2",
     "@rspack/plugin-react-refresh": "^2.0.2",
+    "@rstest/core": "^0.12.5",
     "@swc/helpers": "^0.5.23",
     "babel-jest": "^30.5.2",
     "babel-loader": "^10.1.1",
@@ -56,15 +56,13 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "html-webpack-plugin": "^5.6.8",
-    "jest": "^30.5.2",
     "terser-webpack-plugin": "^5.6.1",
     "webpack": "^5.112.2",
     "webpack-cli": "^7.2.3"
   },
   "overrides": {
     "glob": "~13.0.6",
-    "uuid": "~14.0.0",
-    "js-yaml": "~4.3.0"
+    "uuid": "~14.0.0"
   },
   "jest": {
     "roots": [
