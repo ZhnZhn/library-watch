@@ -1,3 +1,4 @@
+import { crTestFn } from '../../__tests__/setupHelpers.test';
 import { createStore } from '../zustand-lite';
 
 describe("createStore", () => {
@@ -78,7 +79,7 @@ describe("createStore", () => {
       setState,
       subscribe
     } = fn(() => NaN)
-    , _onSubscribe = rs.fn();
+    , _onSubscribe = crTestFn();
 
     subscribe(_onSubscribe)
     setState(NaN)

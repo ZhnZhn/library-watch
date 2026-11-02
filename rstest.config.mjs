@@ -1,12 +1,16 @@
 import { defineConfig } from '@rstest/core';
 
+const _crIncludeDir = (
+ token
+) => `<rootDir>/src/${token}/__tests__/*.test.js`
+, _crInclude = (...tokens) => tokens.map(_crIncludeDir);
+
 export default defineConfig({
-  testEnvironment: 'node',
   globals: true,
 
-  roots: [
-    "<rootDir>/src/components/charts",
-    "<rootDir>/src/flux/",
-    "<rootDir>/src/utils/"
-  ]  
+  include: _crInclude(
+    'components/charts',
+    'flux',
+    'utils'
+  )    
 });
