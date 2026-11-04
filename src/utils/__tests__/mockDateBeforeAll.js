@@ -1,5 +1,4 @@
-import { crTestFn } from '../../__tests__/setupHelpers.test';
-
+import { crTestFn } from '@testHelpers';
 
 describe('mockDateBeforeAll', ()=>{
   test('', () => expect('').toBe(''))

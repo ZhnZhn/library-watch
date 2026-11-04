@@ -1,4 +1,4 @@
-import { crTestFn } from '../../__tests__/setupHelpers.test';
+import { crTestFn } from '@testHelpers';
 import { createStore } from '../zustand-lite';
 
 describe("createStore", () => {

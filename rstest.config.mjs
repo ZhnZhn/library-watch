@@ -12,5 +12,10 @@ export default defineConfig({
     'components/charts',
     'flux',
     'utils'
-  )    
+  ),
+  resolve: {
+    alias: {
+      '@testHelpers': './src/__tests__/setupHelpers.test.js'
+    }
+  }        
 });
