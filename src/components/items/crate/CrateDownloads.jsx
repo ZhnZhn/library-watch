@@ -22,6 +22,11 @@ const S_CAPTION = {
 }
 , S_CHART_WRAPPER = {
   paddingTop: 4
+}
+, S_DESCR = {
+  padding: '6px 0 0 16px',
+  lineHeight: 1.25,
+  fontWeight: 600
 };
 
 const CrateDownloads = ({
@@ -35,6 +40,8 @@ const CrateDownloads = ({
   labels,
   data,
   sourceLink,
+  docLink,
+  descr,
   onMoveToTop,
   onCloseItem
 }) => {
@@ -84,6 +91,16 @@ const CrateDownloads = ({
         >
             {`Crates.io ${packageName}`}
         </Link>
+        <Link
+          className={CL_SOURCE_LINK}
+          style={S_SOURCE_LINK}
+          href={docLink}
+        >
+            Documentation
+        </Link>
+        <p style={S_DESCR}>
+           {descr}
+        </p>
       </ShowHide>
     </div>
   );

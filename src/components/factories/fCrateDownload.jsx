@@ -175,8 +175,10 @@ const fCrateDownload = (
   } = options
   , {
     repo,
-    key
+    key,
+    json1
   } = option
+  , crate = json1?.crate
   , {
     version_downloads,
     meta
@@ -200,7 +202,7 @@ const fCrateDownload = (
     data,
     otherData,
     _dataVersions,
-    _crHmVersions(option.json1)
+    _crHmVersions(json1)
   )
 
   return (<CrateDownloads
@@ -217,6 +219,8 @@ const fCrateDownload = (
     labels={labels}
     data={_dataVersions}
     sourceLink={option.sourceLink}
+    docLink={crate?.documentation}
+    descr={crate?.description}
     onMoveToTop={onMoveToTop}
     onCloseItem={onCloseItem}
   />);
