@@ -13,9 +13,9 @@ import ButtonWatch from './ButtonWatch';
 import Caption from '../ItemCaption';
 import NpmPackageInfo from './NpmPackageInfo';
 
-import {
-  S_ROOT,
-  CHART_OPTIONS_LEGEND_TOP
+import { 
+  CHART_OPTIONS_LEGEND_TOP,
+  Item
 } from '../Item.Style';
 
 const ITEM_DESCRIPTION = "Npm Recent Month Downloads"
@@ -75,7 +75,7 @@ const NpmDownloads = ({
   , _lineChartConfig = chartConfig || fLineConfig({ labels, data });
 
   return (
-    <div style={S_ROOT}>
+    <Item>
       {MenuMoreEl}
       <Caption
          style={S_CAPTION}
@@ -110,7 +110,7 @@ const NpmDownloads = ({
           packageLink={packageLink}
         />
       </ShowHide>
-    </div>
+    </Item>
   );
 };
 

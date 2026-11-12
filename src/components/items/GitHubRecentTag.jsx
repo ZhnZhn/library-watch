@@ -13,12 +13,12 @@ import ShowHide from '../zhn/ShowHide';
 import Caption from './ItemCaption';
 import TagDetail from './TagDetail';
 
-import {
-  S_ROOT,
+import {  
   S_CAPTION_OPEN,
   S_SPAN_VERSION,
   S_BTN_CIRCLE,
-  S_PT_8
+  S_PT_8,
+  Item
 } from './Item.Style';
 
 const ITEM_DESCRIPTION = "GitHub Likely Recent Version Tag";
@@ -81,7 +81,7 @@ const GitHubRecentTag = ({
   }, [json]);
 
   return (
-    <div style={S_ROOT}>
+    <Item>
       <Caption style={S_PT_8} onClose={onCloseItem}>
         <button
            type="button"
@@ -113,7 +113,7 @@ const GitHubRecentTag = ({
       <ShowHide isShow={isShow}>
         <TagDetail json={json} />
       </ShowHide>
-    </div>
+    </Item>
   );
 }
 

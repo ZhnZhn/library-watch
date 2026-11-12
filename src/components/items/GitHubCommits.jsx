@@ -9,10 +9,10 @@ import Caption from './ItemCaption';
 import CommitList from './CommitList';
 
 import {
-  S_ROOT,
   S_CAPTION_OPEN,
   S_BTN_CIRCLE,
-  S_PT_8
+  S_PT_8,
+  Item
 } from './Item.Style';
 
 const ITEM_DESCRIPTION = "GitHub Repository Commits";
@@ -41,7 +41,7 @@ const GitHubCommits = (props) => {
    );
 
   return (
-    <div style={S_ROOT}>
+    <Item>
       <Caption style={S_PT_8} onClose={onCloseItem}>
         <button
            type="button"
@@ -64,7 +64,7 @@ const GitHubCommits = (props) => {
       <ShowHide isShow={isShow}>
         <CommitList items={commits} />
       </ShowHide>
-    </div>
+    </Item>
   );
 };
 

@@ -8,12 +8,12 @@ import ShowHide from '../zhn/ShowHide';
 import Caption from './ItemCaption';
 import IssueList from './IssueList';
 
-import {
-  S_ROOT,
+import {  
   S_CAPTION_OPEN,
   S_BTN_CIRCLE,
   S_PT_8,
-  S_PR_8
+  S_PR_8,
+  Item
 } from './Item.Style';
 
 const ITEM_DESCRIPTION = "GitHub Repository Issues";
@@ -42,7 +42,7 @@ const GitHubIssues = (props) => {
    )
   , _number = issues.length;
   return (
-    <div style={S_ROOT}>
+    <Item>
       <Caption style={S_PT_8} onClose={onCloseItem}>
         <button
            type="button"
@@ -68,7 +68,7 @@ const GitHubIssues = (props) => {
       <ShowHide isShow={isShow}>
         <IssueList items={issues} />
       </ShowHide>
-    </div>
+    </Item>
   );
 }
 

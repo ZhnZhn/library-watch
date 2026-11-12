@@ -3,11 +3,18 @@ import { SourceLink } from '../zhn/Link';
 export const S_COLOR_GREY = {
   color: "grey"
 }
-export const S_ROOT = {
+
+const S_ROOT = {
   position: 'relative',
   lineHeight: 1.5,
   marginBottom: 10
 }
+
+export const Item = (props) => (
+  <div style={S_ROOT}>
+    {props.children}
+  </div>
+)
 
 export const S_BT_MORE = {
   position: 'relative',

@@ -9,9 +9,9 @@ import Caption from '../ItemCaption';
 import ButtonPackage from '../npm/ButtonPackage';
 import ShowHide from '../../zhn/ShowHide';
 
-import {
-  S_ROOT,
+import { 
   CHART_OPTIONS_LEGEND_TOP,
+  Item,
   ItemSourceLink
 } from '../Item.Style';
 
@@ -57,7 +57,7 @@ const CrateDownloads = ({
   });
 
   return (
-    <div style={S_ROOT}>
+    <Item>
       {MenuMoreEl}
       <Caption
         style={S_CAPTION}
@@ -96,7 +96,7 @@ const CrateDownloads = ({
            {descr}
         </p>
       </ShowHide>
-    </div>
+    </Item>
   );
 };
 

@@ -14,11 +14,11 @@ import ShowHide from '../zhn/ShowHide';
 import { SourceLink } from '../zhn/Link';
 import Caption from './ItemCaption';
 
-import {
-  S_ROOT,
+import { 
   S_CAPTION_OPEN,
   S_SPAN_VERSION,
-  S_PT_8
+  S_PT_8,
+  Item
 } from './Item.Style';
 
 const ItemDescription = ({
@@ -115,7 +115,7 @@ const GitHubSearchInfo = ({
   ] = useToggle(true);
 
   return (
-    <div style={S_ROOT}>
+    <Item>
       <Caption style={S_PT_8} onClose={onCloseItem}>
         <button
            type="button"
@@ -140,7 +140,7 @@ const GitHubSearchInfo = ({
           library={library}
         />
       </ShowHide>
-    </div>
+    </Item>
   );
 };
 

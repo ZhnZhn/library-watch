@@ -20,9 +20,9 @@ import TaggedItemList from './TaggedItemList';
 import crModelMore from './crModelMore';
 import sortItemsBy from './sortItemsBy';
 
-import {
-  S_ROOT,
-  S_CAPTION_OPEN
+import {  
+  S_CAPTION_OPEN,
+  Item
 } from '../Item.Style';
 
 const S_BT_MORE = {
@@ -96,7 +96,7 @@ const StackTaggedQuestions = (props) => {
   , _titleForSort = `Sorted By ${titleForSort}`;
 
   return (
-    <div style={S_ROOT}>
+    <Item>
       <ModalSlider
         isShow={_isMenuMore}
         className={CL_MENU_MORE}
@@ -138,7 +138,7 @@ const StackTaggedQuestions = (props) => {
           onRemoveItem={_onRemoveItem}
         />
       </ShowHide>
-    </div>
+    </Item>
   );
 };
 

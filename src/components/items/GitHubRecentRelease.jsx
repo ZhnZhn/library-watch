@@ -9,12 +9,12 @@ import { Link } from '../zhn/Link';
 import Caption from './ItemCaption';
 
 import {
-  S_ROOT,
   S_CAPTION_OPEN,
   S_SPAN_VERSION,
   S_BTN_CIRCLE,
   S_PT_8,
-  S_ML_8
+  S_ML_8,
+  Item
 } from './Item.Style';
 
 const ITEM_DESCRIPTION = "GitHub Repository Recent Release";
@@ -53,7 +53,7 @@ const GitHubRecentRelease = (props) => {
   );
 
   return (
-    <div style={S_ROOT}>
+    <Item>
       <Caption style={S_PT_8} onClose={onCloseItem}>
         <button
            type="button"
@@ -87,7 +87,7 @@ const GitHubRecentRelease = (props) => {
            Link to description of recent release tag
         </SourceLink>
       </ShowHide>
-    </div>
+    </Item>
   );
 };
 
