@@ -13,7 +13,8 @@ import {
   S_BTN_CIRCLE,
   S_PT_8,
   S_PR_8,
-  Item
+  Item,
+  ButtonAddToWatch
 } from './Item.Style';
 
 const ITEM_DESCRIPTION = "GitHub Repository Issues";
@@ -58,10 +59,7 @@ const GitHubIssues = (props) => {
             {_number}
           </span>
         </button>
-        <ButtonCircle
-           caption="W"
-           title="Add to Watch"
-           style={S_BTN_CIRCLE}
+        <ButtonAddToWatch                      
            onClick={_hClickWatch}
         />
       </Caption>

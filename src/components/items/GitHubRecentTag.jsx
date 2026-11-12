@@ -8,7 +8,6 @@ import { CL_BT_ITEM } from '../styleFn';
 import useToggle from '../hooks/useToggle';
 import formatStrDate from '../../utils/formatStrDate';
 
-import ButtonCircle from '../zhn/ButtonCircle';
 import ShowHide from '../zhn/ShowHide';
 import Caption from './ItemCaption';
 import TagDetail from './TagDetail';
@@ -16,9 +15,10 @@ import TagDetail from './TagDetail';
 import {  
   S_CAPTION_OPEN,
   S_SPAN_VERSION,
-  S_BTN_CIRCLE,
   S_PT_8,
-  Item
+  Item,
+  ItemButtonCircle,
+  ButtonAddToWatch
 } from './Item.Style';
 
 const ITEM_DESCRIPTION = "GitHub Likely Recent Version Tag";
@@ -97,16 +97,12 @@ const GitHubRecentTag = ({
             {version}
           </span>
         </button>
-        <ButtonCircle
-           caption="W"
-           title="Add to Watch"
-           style={S_BTN_CIRCLE}
+        <ButtonAddToWatch                                
            onClick={_hClickWatch}
         />
-        <ButtonCircle
+        <ItemButtonCircle
            caption="D"
-           title="Load Tag Details"
-           style={S_BTN_CIRCLE}
+           title="Load Tag Details"           
            onClick={_hClickDetail}
         />
       </Caption>

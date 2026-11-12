@@ -1,3 +1,4 @@
+import ButtonCircle from '../zhn/ButtonCircle';
 import { SourceLink } from '../zhn/Link';
 
 const S_ROOT = {
@@ -34,10 +35,28 @@ export const S_SPAN_VERSION = {
   paddingLeft: 10,
   paddingRight: 10
 }
-export const S_BTN_CIRCLE = {
+
+const S_BTN_CIRCLE = {
   marginTop: -8,
   marginLeft: 10
 }
+
+export const ItemButtonCircle = (props) => (
+  <ButtonCircle 
+     style={S_BTN_CIRCLE}
+     {...props}
+  />
+)
+
+export const ButtonAddToWatch = (props) => (
+  <ItemButtonCircle     
+     caption="W"
+     title="Add to Watch"     
+     style={props.style}
+     onClick={props.onClick}      
+  />
+)
+
 export const S_PT_8 = {
   paddingTop: 8
 }

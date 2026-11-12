@@ -9,18 +9,27 @@ import { fLineConfig } from '../../charts/ChartConfigFactories';
 import ShowHide from '../../zhn/ShowHide';
 import { ChartComponent } from '../../charts/ChartComponent';
 import ButtonPackage from './ButtonPackage';
-import ButtonWatch from './ButtonWatch';
 import Caption from '../ItemCaption';
 import NpmPackageInfo from './NpmPackageInfo';
 
 import { 
   CHART_OPTIONS_LEGEND_TOP,
-  Item
+  Item,
+  ButtonAddToWatch
 } from '../Item.Style';
 
 const ITEM_DESCRIPTION = "Npm Recent Month Downloads"
-, S_CAPTION = { paddingLeft: 4 }
-, S_CHART_WRAPPER = { paddingTop: 4 };
+, S_CAPTION = { 
+  paddingLeft: 4 
+}
+, S_CHART_WRAPPER = { 
+  paddingTop: 4 
+}
+, S_BTN_ADD_TO_WATCH = {
+  position: 'relative',
+  top: -2,
+  marginLeft: 10
+};;
 
 const NpmDownloads = ({
   type,
@@ -90,7 +99,8 @@ const NpmDownloads = ({
            toDate={toDate}
            onClick={toggleIsShow}
         />
-        { isFn(onWatchItem) && <ButtonWatch
+        { isFn(onWatchItem) && <ButtonAddToWatch
+            style={S_BTN_ADD_TO_WATCH}
             onClick={_hClickWatch}
         />}
       </Caption>

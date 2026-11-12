@@ -3,18 +3,17 @@ import { CL_BT_ITEM } from '../styleFn';
 import useToggle from '../hooks/useToggle';
 import useWatchItem from './hooks/useWatchItem';
 
-import ButtonCircle from '../zhn/ButtonCircle';
 import ShowHide from '../zhn/ShowHide';
 import { Link } from '../zhn/Link';
 import Caption from './ItemCaption';
 
 import {
   S_CAPTION_OPEN,
-  S_SPAN_VERSION,
-  S_BTN_CIRCLE,
+  S_SPAN_VERSION, 
   S_PT_8,
   S_ML_8,
-  Item
+  Item,
+  ButtonAddToWatch
 } from './Item.Style';
 
 const ITEM_DESCRIPTION = "GitHub Repository Recent Release";
@@ -72,10 +71,7 @@ const GitHubRecentRelease = (props) => {
              {published_at}
           </span>
         </button>
-        <ButtonCircle
-           caption="W"
-           title="Add to Watch"
-           style={S_BTN_CIRCLE}
+        <ButtonAddToWatch                              
            onClick={_hClickWatch}
         />
       </Caption>
