@@ -2,7 +2,7 @@ import { isFn } from '../../../utils/isTypeFn';
 import { useCallback } from '../../uiApi';
 
 import useToggle from '../../hooks/useToggle';
-import useItemMenuMore from '../useItemMenuMore';
+import { useItemMenuMoreToTop } from '../useItemMenuMore';
 
 import { fLineConfig } from '../../charts/ChartConfigFactories';
 
@@ -60,7 +60,7 @@ const NpmDownloads = ({
   , [
     MenuMoreEl,
     BtMenuMoreEl
-  ] = useItemMenuMore(
+  ] = useItemMenuMoreToTop(
       onMoveToTop,
       toggleIsButtons
   )

@@ -1,7 +1,7 @@
 import { CL_BT_ITEM } from '../styleFn';
 
 import useToggle from '../hooks/useToggle';
-import useItemMenuMore from './useItemMenuMore';
+import { useItemMenuMoreToTop } from './useItemMenuMore';
 
 import { fLineConfigs } from '../charts/ChartConfigFactories'
 
@@ -51,7 +51,7 @@ const StatcounterShare = ({
   , [
     MenuMoreEl,
     BtMenuMoreEl
-  ] = useItemMenuMore(onMoveToTop)
+  ] = useItemMenuMoreToTop(onMoveToTop)
   , [
       _lineChartConfig,
       _height

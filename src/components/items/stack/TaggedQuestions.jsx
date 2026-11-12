@@ -4,17 +4,13 @@ import {
 } from '../../uiApi';
 
 import {
-  CL_NOT_SELECTED,
-  CL_MENU_MORE
+  CL_NOT_SELECTED
 } from '../../styleFn';
 
 import useToggle from '../../hooks/useToggle';
-import useMenuMore from '../../hooks/useMenuMore';
 
 import ShowHide from '../../zhn/ShowHide';
-import SvgMore from '../../zhn/SvgMore';
 import Caption from '../ItemCaption';
-import ModalSlider from '../../zhn-modal-slider/ModalSlider';
 import TaggedItemList from './TaggedItemList';
 
 import crModelMore from './crModelMore';
@@ -81,14 +77,12 @@ const StackTaggedQuestions = (props) => {
     }))
   }, [])
   , [
-      _MODEL_MORE,
-      _isMenuMore,
-      _toggleMenuMore,
-      _showMenuMore
-    ] = useMenuMore(crModelMore, {
-      setSortByProp: _sortItemsByPropName,
-      reverse: _reverseItems
-  })
+      MenuMoreEl,
+      BtMenuMoreEl
+    ] = useItemMenuMore(crModelMore, {
+        setSortByProp: _sortItemsByPropName,
+        reverse: _reverseItems
+      }, S_BT_MORE)
   , _itemsLength = items.length
   , _tokenItemsCount = itemRemoved
       ? `${_itemsLength - itemRemoved}/${_itemsLength}`
@@ -97,17 +91,9 @@ const StackTaggedQuestions = (props) => {
 
   return (
     <Item>
-      <ModalSlider
-        isShow={_isMenuMore}
-        className={CL_MENU_MORE}
-        model={_MODEL_MORE}
-        onClose={_toggleMenuMore}
-      />
+      {MenuMoreEl}      
       <Caption onClose={onCloseItem}>
-        <SvgMore
-          style={S_BT_MORE}
-          onClick={_showMenuMore}
-        />
+        {BtMenuMoreEl}        
         <button
            type="button"
            className={CL_NOT_SELECTED}

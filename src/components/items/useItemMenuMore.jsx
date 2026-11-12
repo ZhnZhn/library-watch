@@ -4,22 +4,22 @@ import useMenuMore from '../hooks/useMenuMore';
 import SvgMore from '../zhn/SvgMore';
 import ModalSlider from '../zhn-modal-slider/ModalSlider';
 
-import crModelMore from './crItemModelMore';
-import { S_BT_MORE } from './Item.Style';
+import crItemModelMore from './crItemModelMore';
 
-const useItemMenuMore = (
-  onMoveToTop,
-  onToggleButtons
+export const useItemMenuMore = (
+  crModelMore,
+  modelOptions,
+  svgMoreStyle
 ) => {
   const [
     _MENU_MODEL,
     isMenuMore,
     toggleIsMenuMore,
     _showMenuMore
-  ] = useMenuMore(crModelMore, {
-    onMoveToTop,
-    onToggleButtons
-  });
+  ] = useMenuMore(
+    crModelMore, 
+    modelOptions       
+  );
   return [
     <ModalSlider
        key="ms"
@@ -30,10 +30,25 @@ const useItemMenuMore = (
     />,
     <SvgMore
       key="sm"
-      style={S_BT_MORE}
+      style={svgMoreStyle}
       onClick={_showMenuMore}
     />
   ];
 };
 
-export default useItemMenuMore
+const S_BT_MORE = {
+  position: 'relative',
+  top: 3,
+  marginRight: 4
+};
+
+export const useItemMenuMoreToTop = (
+  onMoveToTop,
+  onToggleButtons
+) => useItemMenuMore(
+   crItemModelMore
+  , {
+     onMoveToTop,
+     onToggleButtons
+  }, S_BT_MORE
+)

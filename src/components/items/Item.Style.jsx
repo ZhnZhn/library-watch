@@ -13,11 +13,6 @@ export const Item = (props) => (
   </div>
 )
 
-export const S_BT_MORE = {
-  position: 'relative',
-  top: 3,
-  marginRight: 4
-}
 export const S_CAPTION_OPEN = {
   display: 'inline-block',
   color: '#a487d4',
