@@ -67,3 +67,7 @@ export const crVisibilityHidden = (
 ) => isVisible
   ? void 0
   : { visibility: 'hidden' }
+
+export const S_COLOR_GREY = {
+  color: "grey"
+}

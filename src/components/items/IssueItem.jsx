@@ -8,7 +8,8 @@ import {
 import {
   CL_ITEM,
   CL_ITEM_TITLE,
-  CL_LINK_WARPPER
+  CL_LINK_WARPPER,
+  S_COLOR_GREY
 } from '../styleFn';
 
 import useToggle from '../hooks/useToggle';
@@ -22,7 +23,6 @@ import { Link } from '../zhn/Link';
 import DivComments from './DivComments';
 
 import {
-  S_COLOR_GREY,
   S_PR_8,
   S_PB_8
 } from './Item.Style';

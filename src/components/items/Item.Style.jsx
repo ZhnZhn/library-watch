@@ -1,9 +1,5 @@
 import { SourceLink } from '../zhn/Link';
 
-export const S_COLOR_GREY = {
-  color: "grey"
-}
-
 const S_ROOT = {
   position: 'relative',
   lineHeight: 1.5,

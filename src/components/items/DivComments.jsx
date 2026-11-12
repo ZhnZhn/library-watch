@@ -1,5 +1,5 @@
 import { isNumber } from '../../utils/isTypeFn';
-import { S_COLOR_GREY } from './Item.Style';
+import { S_COLOR_GREY } from '../styleFn';
 
 const COMMENT = "Comment";
 const DivComments = ({
