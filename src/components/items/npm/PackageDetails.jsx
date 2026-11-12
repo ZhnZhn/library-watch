@@ -2,14 +2,13 @@ import {
   isNumber,
   isStr
 } from '../../../utils/isTypeFn';
-import { CL_SOURCE_LINK } from '../../styleFn';
 
 import crGitRepositoryHref from './crGitRepositoryHref';
 import crGitRepositoryCaption from './crGitRepositoryCaption';
 
 import checkResponseJson from './checkResponseJson';
 import CellValue from '../CellValue';
-import Link from '../../zhn/Link';
+import { SourceLink } from '../../zhn/Link';
 
 const S_REPO = { padding: '4px 0 0 8px' }
 , S_REPO_LINK = { marginRight: 24 };
@@ -21,19 +20,17 @@ const RowLinks = ({
 ? null
 : (
    <div style={S_REPO}>
-     <Link
-        className={CL_SOURCE_LINK}
+     <SourceLink       
         style={S_REPO_LINK}
         href={repoHref}
      >
       {crGitRepositoryCaption(repoHref)}
-     </Link>
-     <Link
-        className={CL_SOURCE_LINK}
+     </SourceLink>
+     <SourceLink      
         href={hpHref}
      >
       Home Page
-     </Link>
+     </SourceLink>
    </div>
  );
 

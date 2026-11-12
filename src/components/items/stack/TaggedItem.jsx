@@ -3,7 +3,7 @@ import { crClNotSelected } from '../../styleFn';
 
 import useDnDHandlers from './useDnDHandlers';
 
-import Link from '../../zhn/Link';
+import { Link } from '../../zhn/Link';
 import TagList from './TagList';
 import crImgToken from './crImgToken';
 

@@ -1,4 +1,4 @@
-import Link from '../zhn/Link';
+import { Link } from '../zhn/Link';
 import SvgLogo from '../zhn/svg/SvgLogo';
 
 const IconGitHub = ({

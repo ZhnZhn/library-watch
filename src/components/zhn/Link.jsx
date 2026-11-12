@@ -1,6 +1,7 @@
+import { CL_SOURCE_LINK } from '../styleFn';
 import toLink from './toLink';
 
-const Link = (props) => {
+export const Link = (props) => {
   const _href = toLink(props.href);
   return _href ? (
     <a target="_blank"
@@ -13,4 +14,14 @@ const Link = (props) => {
   ) : null;
 };
 
-export default Link
+export const SourceLink = ({
+  children,
+  ...restProps
+}) => (
+  <Link
+    className={CL_SOURCE_LINK}   
+    {...restProps}
+  >
+    {children}
+  </Link>
+)

@@ -8,9 +8,7 @@ import useButtonLoad from './useButtonLoad';
 import loadNpms from './loadNpms';
 import loadBundle from './loadBundle';
 
-import { CL_SOURCE_LINK } from '../../styleFn';
-
-import Link from '../../zhn/Link';
+import { SourceLink } from '../../zhn/Link';
 import LinkImg from '../../zhn/LinkImg';
 import ButtonDownUp from '../../zhn/ButtonDownUp';
 import ShowHide from '../../zhn/ShowHide';
@@ -72,12 +70,11 @@ const NpmPackageInfo = ({
     <>
      <ShowHide isShow={isButtons}>
       <div style={S_ML_16}>
-        <Link
-           className={CL_SOURCE_LINK}
+        <SourceLink          
            href={packageLink}
         >
            NPM Link
-        </Link>
+        </SourceLink>
         <ButtonDownUp
           style={S_BTN_DOWN_UP}
           isUp={isShowNodeIco}

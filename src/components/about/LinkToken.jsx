@@ -1,7 +1,6 @@
-import Link from '../zhn/Link';
+import { SourceLink } from '../zhn/Link';
 
-const CL_SOURCE_LINK = "source-link"
-, S_WRAPPER = {
+const S_WRAPPER = {
    display: 'inline-block',
    padding: '0 8px'
 };
@@ -14,14 +13,13 @@ const LinkToken = ({
   children
 }) => (
   <span style={S_WRAPPER}>
-    <Link
-      className={CL_SOURCE_LINK}
+    <SourceLink     
       style={{ color }}
       href={href}
       title={title}
     >
       {caption || children}
-    </Link>
+    </SourceLink>
   </span>
 );
 

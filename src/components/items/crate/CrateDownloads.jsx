@@ -1,5 +1,3 @@
-import { CL_SOURCE_LINK } from '../../styleFn';
-
 import useToggle from '../../hooks/useToggle';
 import useItemMenuMore from '../useItemMenuMore';
 
@@ -9,7 +7,7 @@ import { ChartComponent} from '../../charts/ChartComponent';
 import Caption from '../ItemCaption';
 import ButtonPackage from '../npm/ButtonPackage';
 import ShowHide from '../../zhn/ShowHide';
-import Link from '../../zhn/Link';
+import { SourceLink } from '../../zhn/Link';
 
 import {
   S_ROOT,
@@ -84,20 +82,18 @@ const CrateDownloads = ({
            data={_lineChartConfig}
            options={options || CHART_OPTIONS_LEGEND_TOP}
         />
-        <Link
-          className={CL_SOURCE_LINK}
+        <SourceLink          
           style={S_SOURCE_LINK}
           href={sourceLink}
         >
             {`Crates.io ${packageName}`}
-        </Link>
-        <Link
-          className={CL_SOURCE_LINK}
+        </SourceLink>
+        <SourceLink         
           style={S_SOURCE_LINK}
           href={docLink}
         >
             Documentation
-        </Link>
+        </SourceLink>
         <p style={S_DESCR}>
            {descr}
         </p>

@@ -3,14 +3,13 @@ import {
   CL_LIB,
   CL_LIB_VALUE,
   CL_LIB_VALUE_TITLE,
-  CL_FILE_ITEM,
-  CL_SOURCE_LINK
+  CL_FILE_ITEM
 } from "../styleFn";
 
 import formatStrDate from "../../utils/formatStrDate";
 
 import OpenClose2 from "../zhn/OpenClose2";
-import Link from "../zhn/Link";
+import { SourceLink } from "../zhn/Link";
 
 const _isArr = Array.isArray;
 
@@ -124,12 +123,11 @@ const TagDetail = ({ json }) => {
       >
         <FileList files={files} />
       </OpenClose2>
-      <Link
-         className={CL_SOURCE_LINK}
+      <SourceLink        
          href={html_url}
       >
          Link to description of commit
-      </Link>
+      </SourceLink>
     </div>
   );
 };

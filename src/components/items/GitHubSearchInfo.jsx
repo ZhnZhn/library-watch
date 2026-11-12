@@ -3,8 +3,7 @@ import {
   CL_LIB,
   CL_LIB_TITLE,
   CL_LIB_VALUE,
-  CL_LIB_VALUE_TITLE,
-  CL_SOURCE_LINK
+  CL_LIB_VALUE_TITLE
 } from '../styleFn';
 
 import useToggle from '../hooks/useToggle'
@@ -12,7 +11,7 @@ import useToggle from '../hooks/useToggle'
 import formatStrDate from '../../utils/formatStrDate';
 
 import ShowHide from '../zhn/ShowHide';
-import Link from '../zhn/Link';
+import { SourceLink } from '../zhn/Link';
 import Caption from './ItemCaption';
 
 import {
@@ -93,12 +92,9 @@ const ItemDescription = ({
             </span>
           </div>
           <div>
-             <Link
-                className={CL_SOURCE_LINK}
-                href={html_url}
-              >
+             <SourceLink href={html_url}>
                 Link to GitHub Repository
-             </Link>
+             </SourceLink>
           </div>
         </div>
   );

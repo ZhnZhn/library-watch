@@ -1,14 +1,11 @@
-import {
-  CL_BT_ITEM,
-  CL_SOURCE_LINK
-} from '../styleFn';
+import { CL_BT_ITEM } from '../styleFn';
 
 import useToggle from '../hooks/useToggle';
 import useWatchItem from './hooks/useWatchItem';
 
 import ButtonCircle from '../zhn/ButtonCircle';
 import ShowHide from '../zhn/ShowHide';
-import Link from '../zhn/Link';
+import { Link } from '../zhn/Link';
 import Caption from './ItemCaption';
 
 import {
@@ -83,13 +80,12 @@ const GitHubRecentRelease = (props) => {
         />
       </Caption>
       <ShowHide isShow={isShow} style={S_PT_8}>
-        <Link
-           className={CL_SOURCE_LINK}
+        <SourceLink           
            style={S_ML_8}
            href={html_url}
         >
            Link to description of recent release tag
-        </Link>
+        </SourceLink>
       </ShowHide>
     </div>
   );

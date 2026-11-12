@@ -1,7 +1,4 @@
-import {
-  CL_BT_ITEM,
-  CL_SOURCE_LINK
-} from '../styleFn';
+import { CL_BT_ITEM } from '../styleFn';
 
 import useToggle from '../hooks/useToggle';
 import useItemMenuMore from './useItemMenuMore';
@@ -9,7 +6,7 @@ import useItemMenuMore from './useItemMenuMore';
 import { fLineConfigs } from '../charts/ChartConfigFactories'
 
 import ShowHide from '../zhn/ShowHide';
-import Link from '../zhn/Link';
+import { SourceLink } from '../zhn/Link';
 import { ChartComponent } from '../charts/ChartComponent';
 import Caption from './ItemCaption';
 
@@ -95,13 +92,12 @@ const StatcounterShare = ({
            data={_lineChartConfig}
            height={_height}
         />
-        <Link
-          className={CL_SOURCE_LINK}
+        <SourceLink          
           style={S_SOURCE_LINK}
           href={sourceLink}
         >
             Statcounter Chart
-        </Link>
+        </SourceLink>
       </ShowHide>
     </div>
   );

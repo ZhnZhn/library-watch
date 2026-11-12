@@ -18,7 +18,7 @@ import {
 } from '../hooks/fUseKey';
 
 import ShowHide from '../zhn/ShowHide';
-import Link from '../zhn/Link';
+import { Link } from '../zhn/Link';
 import DivComments from './DivComments';
 
 import {

@@ -3,7 +3,7 @@ import { CL_ROW_ITEM } from '../styleFn';
 
 import { crDateAgo } from '../../utils/dateFn';
 
-import Link from '../zhn/Link';
+import { Link } from '../zhn/Link';
 import DivComments from './DivComments';
 
 import {

@@ -3,8 +3,7 @@ import crGitRepositoryCaption from './crGitRepositoryCaption';
 
 import checkResponseJson from './checkResponseJson';
 import CellValue from '../CellValue';
-import Link from '../../zhn/Link';
-import { CL_SOURCE_LINK } from '../../styleFn';
+import { SourceLink } from '../../zhn/Link';
 
 const S_ML_8 = { marginLeft: 8 }
 , S_MR_24 = { marginRight: 24 }
@@ -51,19 +50,17 @@ const BundleInfo = ({
        {description}
      </div>
      <div style={S_ML_8}>
-       <Link
-          href={gitHref}
-          className={CL_SOURCE_LINK}
+       <SourceLink
+          href={gitHref}         
           style={S_MR_24}
        >
          {gitCaption}
-       </Link>
-       <Link
-          href={bundleHref}
-          className={CL_SOURCE_LINK}
+       </SourceLink>
+       <SourceLink
+          href={bundleHref}         
         >
           Bundelphobia Link
-        </Link>
+        </SourceLink>
      </div>
     </>
   );
