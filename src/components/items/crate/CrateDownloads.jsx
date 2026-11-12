@@ -5,14 +5,14 @@ import { fLineConfigs } from '../../charts/ChartConfigFactories';
 import { ChartComponent} from '../../charts/ChartComponent';
 
 import Caption from '../ItemCaption';
+
 import ButtonPackage from '../npm/ButtonPackage';
 import ShowHide from '../../zhn/ShowHide';
-import { SourceLink } from '../../zhn/Link';
 
 import {
   S_ROOT,
   CHART_OPTIONS_LEGEND_TOP,
-  S_SOURCE_LINK
+  ItemSourceLink
 } from '../Item.Style';
 
 const S_CAPTION = {
@@ -82,18 +82,16 @@ const CrateDownloads = ({
            data={_lineChartConfig}
            options={options || CHART_OPTIONS_LEGEND_TOP}
         />
-        <SourceLink          
-          style={S_SOURCE_LINK}
+        <ItemSourceLink                   
           href={sourceLink}
         >
             {`Crates.io ${packageName}`}
-        </SourceLink>
-        <SourceLink         
-          style={S_SOURCE_LINK}
+        </ItemSourceLink>
+        <ItemSourceLink                   
           href={docLink}
         >
             Documentation
-        </SourceLink>
+        </ItemSourceLink>
         <p style={S_DESCR}>
            {descr}
         </p>

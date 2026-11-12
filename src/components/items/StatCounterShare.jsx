@@ -6,14 +6,13 @@ import useItemMenuMore from './useItemMenuMore';
 import { fLineConfigs } from '../charts/ChartConfigFactories'
 
 import ShowHide from '../zhn/ShowHide';
-import { SourceLink } from '../zhn/Link';
 import { ChartComponent } from '../charts/ChartComponent';
 import Caption from './ItemCaption';
 
 import {
-  S_ROOT,
   S_CAPTION_OPEN,
-  S_SOURCE_LINK
+  Item,
+  ItemSourceLink
 } from './Item.Style';
 
 const S_BT_CAPTION = {
@@ -59,7 +58,7 @@ const StatcounterShare = ({
   ] = _crChartConfig(labels, data);
 
   return (
-    <div style={S_ROOT}>
+    <Item>
       {MenuMoreEl}
       <Caption
         style={S_CAPTION}
@@ -92,14 +91,13 @@ const StatcounterShare = ({
            data={_lineChartConfig}
            height={_height}
         />
-        <SourceLink          
-          style={S_SOURCE_LINK}
-          href={sourceLink}
+        <ItemSourceLink                    
+           href={sourceLink}
         >
-            Statcounter Chart
-        </SourceLink>
+           Statcounter Chart
+        </ItemSourceLink>
       </ShowHide>
-    </div>
+    </Item>
   );
 };
 
