@@ -1,5 +1,5 @@
 import ArrowCell from './ArrowCell';
-import BtCircle from '../zhn/ButtonCircle2';
+import { ButtonCircle2 } from '../zhn/ButtonCircle';
 
 import {
   CL_SPINNER,
@@ -37,7 +37,7 @@ const crAfterInputEl = (
           />)]
         : isLoadingFailed
             ? [`Loading ${optionNames} Failed`,
-               (<BtCircle
+               (<ButtonCircle2
                    className={CL_SPINNER_FAILED}
                    data-loader="circle-failed"
                    onClick={onLoadOption}

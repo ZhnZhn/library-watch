@@ -6,7 +6,7 @@ import { crStyle2 } from '../styleFn';
 
 import useWatchEditedColor from '../styles/useWatchEditedColor';
 
-import ButtonCircle from '../zhn/ButtonCircle';
+import { ButtonCircle } from '../zhn/ButtonCircle';
 
 const CAPTION = "S"
 , _crBtStyle = color => color

@@ -1,4 +1,4 @@
-import ButtonCircle from '../zhn/ButtonCircle';
+import { ButtonCircle } from '../zhn/ButtonCircle';
 import { SourceLink } from '../zhn/Link';
 
 const S_ROOT = {

@@ -1,4 +1,4 @@
-import ButtonCircle from '../zhn/ButtonCircle';
+import { ButtonCircleCn } from '../zhn/ButtonCircle';
 
 import {
   showDbWatch
@@ -16,26 +16,23 @@ const EditBar = ({
   is
 }) => is ? (
   <div style={S_EDIT_BAR_DIV}>
-     <ButtonCircle
+     <ButtonCircleCn
        caption="GROUP"
        title="Edit Group"
-       className={CL_BT_BAR}
-       isWithoutDefault={true}
+       className={CL_BT_BAR}       
        onClick={showDialogEditGroups}
     />
-    <ButtonCircle
+    <ButtonCircleCn
        caption="LIST"
        title="Edit Group List"
-       className={CL_BT_BAR}
-       isWithoutDefault={true}
+       className={CL_BT_BAR}      
        style={S_BT_EDIT_BAR_LIST}
        onClick={showDialogEditLists}
     />
-    <ButtonCircle
+    <ButtonCircleCn
        caption="DB"
        title="Double Watch Browser"
-       className={CL_BT_BAR}
-       isWithoutDefault={true}
+       className={CL_BT_BAR}      
        style={S_BT_EDIT_BAR_LIST}
        onClick={showDbWatch}
     />

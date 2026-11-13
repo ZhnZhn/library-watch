@@ -1,4 +1,4 @@
-import BtCircle from '../zhn/ButtonCircle2';
+import { ButtonCircle2 } from '../zhn/ButtonCircle';
 import {
   CL_FOOTER,
   CL_NOT_SELECTED,
@@ -27,7 +27,7 @@ const OptionsFooter = ({
       </span>
     </span>
     <span className={CL_FOOTER_BTS}>
-      <BtCircle
+      <ButtonCircle2
          style={S_BT_CIRCLE}
          caption="CL"
          onClick={onClear}

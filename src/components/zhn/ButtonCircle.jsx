@@ -1,23 +1,24 @@
 import { crCn } from '../styleFn';
 
+const _fButtonCircle = (crBtCn) => (props) => (   
+  <button                
+    type="button"
+    className={crBtCn(props.className)}
+    style={props.style}
+    title={props.title}
+    onClick={props.onClick}
+  >
+    <div>{props.caption ?? ''}</div>
+  </button>
+)
+
 const CL_BT_CIRCLE = 'zhn-bt-circle';
+const CL_BT_CIRCLE_2 = 'zhn-bt-circle2';
 
-const ButtonCircle = (props) => {
-  const _className = crCn(
-    [!props.isWithoutDefault, CL_BT_CIRCLE],
-    props.className
-  );
-  return (
-    <button
-       type="button"
-       className={_className}
-       style={props.style}
-       title={props.title}
-       onClick={props.onClick}
-    >
-      <div>{props.caption ?? ""}</div>
-    </button>
-  );
-};
+const _fCrCn = className1 => className2 => crCn(className1, className2);
 
-export default ButtonCircle
+export const ButtonCircle = _fButtonCircle(_fCrCn(CL_BT_CIRCLE))
+export const ButtonCircle2 = _fButtonCircle(_fCrCn(CL_BT_CIRCLE_2))
+export const ButtonCircleCn = _fButtonCircle(className => className)
+
+

@@ -1,5 +1,5 @@
 import { useCallback } from '../uiApi';
-import ButtonCircle2 from './ButtonCircle2';
+import { ButtonCircle2 } from './ButtonCircle';
 
 const CL_MENU_BADGE = "menu__badge"
 , S_OPEN = { color: '#a487d4' };

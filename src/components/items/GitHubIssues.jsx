@@ -3,7 +3,6 @@ import { CL_BT_ITEM } from '../styleFn';
 import useToggle from '../hooks/useToggle';
 import useWatchItem from './hooks/useWatchItem';
 
-import ButtonCircle from '../zhn/ButtonCircle';
 import ShowHide from '../zhn/ShowHide';
 import Caption from './ItemCaption';
 import IssueList from './IssueList';

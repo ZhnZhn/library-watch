@@ -12,7 +12,7 @@ import useRecentFocusedElement from '../hooks/useRecentFocusedElement';
 
 import Browser from '../zhn/Browser';
 import CaptionRow from '../zhn/CaptionRow';
-import ButtonCircle from '../zhn/ButtonCircle';
+import { ButtonCircleCn } from '../zhn/ButtonCircle';
 import ScrollPane from '../zhn/ScrollPane';
 import ButtonSave from '../zhn-moleculs/ButtonSave';
 
@@ -145,30 +145,26 @@ const WatchBrowser = ({
         <ButtonSave
           className={CL_BT_CAPTION}
         />
-        <ButtonCircle
-           isWithoutDefault={true}
+        <ButtonCircleCn          
            className={CL_BT_CAPTION}
            caption={_captionEV}
            title={_titleEV}
            onClick={_toggleEditMode}
         />
-        <ButtonCircle
-          isWithoutDefault={true}
+        <ButtonCircleCn         
           className={CL_BT_CAPTION}
           caption="F"
           title="Show/Hide : Find Item Input"
           onClick={_toggleSearchInput}
         />
         { !isDoubleWatch && <>
-            <ButtonCircle
-               isWithoutDefault={true}
+            <ButtonCircleCn              
                className={CL_BT_CAPTION}
                caption="B"
                title="BackUp Watch Items to JSON File"
                onClick={backupToJson}
              />
-             <ButtonCircle
-                isWithoutDefault={true}
+             <ButtonCircleCn                
                 className={CL_BT_CAPTION}
                 caption="L"
                 title="Load Watch Items from JSON File"
