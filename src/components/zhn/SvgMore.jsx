@@ -1,3 +1,5 @@
+import Svg100 from './svg/Svg100';
+
 const CL_BT_MORE = 'bt-more';
 
 const SvgMore = ({
@@ -13,19 +15,17 @@ const SvgMore = ({
     style={style}
     onClick={onClick}
   >
-    <svg
-      aria-hidden="true"
-      style={svgStyle}
+    <Svg100
+      w="6"
+      height="22"          
       width="6px"
       height="22px"
-      viewBox="0 0 6 22"
-      preserveAspectRatio="none"
-      xmlns="http://www.w3.org/2000/svg"
+      style={svgStyle}            
     >
       <circle cx="3" cy="4" r="2" />
       <circle cx="3" cy="11" r="2" />
       <circle cx="3" cy="18" r="2" />
-    </svg>
+    </Svg100>
   </button>
 );
 
