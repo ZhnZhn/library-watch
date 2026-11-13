@@ -17,7 +17,7 @@ const SvgMore = ({
   >
     <Svg100
       w="6"
-      height="22"          
+      h="22"          
       width="6px"
       height="22px"
       style={svgStyle}            
