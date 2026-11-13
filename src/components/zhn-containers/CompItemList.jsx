@@ -20,11 +20,9 @@ import ScrollPane from '../zhn/ScrollPane';
 import SvgHrzResize from '../zhn-moleculs/SvgHrzResize';
 
 import {
-  S_INLINE_BLOCK,
-  S_NONE,
-  CL_SHOW_POPUP,
   CL_MENU_MORE,
-  crCnBgColor
+  CL_BG_COLOR,
+  crShowStyle
 } from '../styleFn';
 import {
   S_COMP_ITEM_LIST
@@ -143,14 +141,12 @@ const CompItemList = ({
     }
   })
 
-  const [_style, _className] = isShow
-    ? [S_INLINE_BLOCK, CL_SHOW_POPUP]
-    : [S_NONE];
+  const _style = crShowStyle(isShow, true);    
 
   return (
     <div
        ref={_refRootElement}
-       className={crCnBgColor(_className)}
+       className={CL_BG_COLOR}
        style={{...S_COMP_ITEM_LIST, ..._style}}
     >
       <ModalSlider

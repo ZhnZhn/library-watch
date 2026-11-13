@@ -26,12 +26,10 @@ export const crStyle2 = (
  ? {...style1, ...style2}
  : style1;
 
-
-
 export const CL_SHOW_POPUP = "show-popup"
-export const crShowPopupStyle = isShow => isShow
- ? [S_BLOCK, CL_SHOW_POPUP]
- : [S_NONE]
+export const crShowStyle = (isShow, isInlineStyle) => isShow
+ ? isInlineStyle ? S_INLINE_BLOCK : S_BLOCK
+ : S_NONE
 
 export const CL_HIDE_POPUP = "hide-popup"
 
@@ -42,7 +40,8 @@ export const crClNotSelected = (
  ? `${className} ${CL_NOT_SELECTED}`
  : CL_NOT_SELECTED
 
-export const crCnBgColor = (cn) => crCn(cn, "c-bg")
+export const CL_BG_COLOR = "c-bg"
+export const crCnBgColor = (cn) => crCn(cn, CL_BG_COLOR)
 export const crCnElBg = (cn) => crCn(cn, "el-bg")
 
 export const CL_BT_ITEM = crClNotSelected("bt-item")

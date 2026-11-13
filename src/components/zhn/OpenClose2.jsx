@@ -3,7 +3,6 @@ import {
   S_BLOCK,
   S_INLINE_BLOCK,
   S_NONE,
-  CL_SHOW_POPUP,
   crClNotSelected
 } from '../styleFn';
 
@@ -63,7 +62,7 @@ const OpenClose2 = ({
     PATH_OPEN,
     fillOpen,
     S_BLOCK,
-    CL_SHOW_POPUP,
+    void 0,
     null
   ] : [
     PATH_CLOSE,

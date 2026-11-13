@@ -13,10 +13,7 @@ import FlatButton from '../zhn-m/FlatButton';
 import Caption from './DialogCaption';
 
 import {
-  CL_SHOW_POPUP,
-  S_BLOCK,
-  S_NONE,
-  crCn,
+  crShowStyle,
   crClNotSelected,
   crCnBgColor,
   crCnElBg
@@ -74,14 +71,8 @@ const DraggableDialog = ({
     _isMore,
     _toggleMore
   ] = useToggle()
-  , _hKeyDown = useKeyEscape(onClose)
-  , _className = crCn(
-      CL_DRAGGABLE_DIALOG,
-      [isShow, CL_SHOW_POPUP]
-  )
-  , _styleShow = isShow
-      ? S_BLOCK
-      : S_NONE;
+  , _hKeyDown = useKeyEscape(onClose)  
+  , _styleShow = crShowStyle(isShow);      
 
   useXYMovable(_refRootDiv)
 
@@ -93,7 +84,7 @@ const DraggableDialog = ({
        tabIndex="-1"
        aria-label={caption}
        aria-hidden={!isShow}
-       className={_className}
+       className={CL_DRAGGABLE_DIALOG}
        style={{
        ...S_DRAGGABLE_DIALOG,
        ..._styleShow

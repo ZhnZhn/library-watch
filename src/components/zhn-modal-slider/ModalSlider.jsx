@@ -155,7 +155,7 @@ const ModalSlider = ({
         <ShowHide
           className={className}
           style={_showHideStyle}
-          isShow={isShow}
+          isShow={isShow}          
         >
           <div style={_divStyle}>
             <MenuPages

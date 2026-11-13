@@ -13,10 +13,8 @@ import IconLogoBar from './IconLogoBar';
 
 import { S_ABOUT } from '../styles/ContainerStyles';
 import {
-  CL_SHOW_POPUP,
-  S_BLOCK,
-  S_NONE,
-  crCnBgColor
+  CL_BG_COLOR,
+  crShowStyle
 } from '../styleFn';
 
 const S_SCROLL_DIV = {
@@ -54,16 +52,11 @@ const About = () => {
     }
   })
 
-  const [
-    _style,
-    _className
-  ] = isShow
-     ? [S_BLOCK, CL_SHOW_POPUP]
-     : [S_NONE];
+  const _style = crShowStyle(isShow);    
 
   return (
     <div
-       className={crCnBgColor(_className)}
+       className={CL_BG_COLOR}
        style={{...S_ABOUT, ..._style}}
        role="presentation"
        onKeyDown={_hKeyDown}

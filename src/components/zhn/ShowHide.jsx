@@ -1,9 +1,4 @@
-import {
-  crCn,
-  S_BLOCK,
-  S_NONE,
-  CL_SHOW_POPUP
-} from '../styleFn';
+import { crShowStyle } from '../styleFn';
 
 const ShowHide = ({
   refEl,
@@ -12,21 +7,14 @@ const ShowHide = ({
   className,
   onKeyDown,
   children
-}) => {
-  const _className = crCn(
-     className,
-     [isShow, CL_SHOW_POPUP]
-  )
-  , _style = isShow
-     ? S_BLOCK
-     : S_NONE;
-
+}) => {  
+  const _style = crShowStyle(isShow);
   return (
     <div
        ref={refEl}
        role="presentation"
        aria-hidden={isShow}
-       className={_className}
+       className={className}
        style={{...style, ..._style}}
        onKeyDown={onKeyDown}
     >
