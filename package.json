@@ -45,7 +45,7 @@
     "@rspack/cli": "^2.2.9",
     "@rspack/core": "^2.2.9",
     "@rspack/dev-server": "^2.2.2",
-    "@rspack/plugin-react-refresh": "^2.0.2",
+    "@rspack/plugin-react-refresh": "^2.0.3",
     "@rstest/core": "^0.12.6",
     "@swc/helpers": "^0.5.24",
     "babel-loader": "^10.1.1",
