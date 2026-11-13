@@ -1,12 +1,8 @@
-
-const REPLACER_PATTERN = /(.)(?=(\d{3})+$)/g
-, _formatValue = value => value >= 1000
-   ? ('' + value).replace(REPLACER_PATTERN, '$1,')
-   : value;
+import { formatNumber } from '../../utils/formatNumber';
 
 const FormattedInteger = (props) => (
   <span style={props.style}>
-    {_formatValue(props.value ?? 0)}
+    {formatNumber(props.value ?? 0)}
   </span>
 );
 
