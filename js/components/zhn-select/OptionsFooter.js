@@ -10,7 +10,7 @@ const S_BT_CIRCLE = {
   backgroundColor: '#e1e1cb',
   height: '32px',
   lineHeight: 'unset',
-  padding: '5px',
+  padding: '6px',
   stroke: _CL.COLOR_OPTIONS_OPEN
 };
 const OptionsFooter = ({
@@ -20,7 +20,7 @@ const OptionsFooter = ({
   nAll,
   onClear
 }) => /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-  className: `${_CL.CL_FOOTER} ${_CL.CL_NOT_SELECTED}`,
+  className: _CL.CL_FOOTER,
   children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
     className: _CL.CL_FOOTER_INDEX,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {

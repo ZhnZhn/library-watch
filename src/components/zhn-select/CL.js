@@ -13,11 +13,10 @@ export const CL_OPTIONS_DIV = `${CL_OPTIONS}__div`
 export const CL_OPTIONS_ROW = `${CL_ROOT}__row`
 export const CL_OPTIONS_ROW_ACTIVE = `${CL_OPTIONS_ROW}--active`
 
-export const CL_FOOTER = `${CL_ROOT}__footer`
+const CL_FOOTER = `${CL_ROOT}__footer`
 export const CL_FOOTER_INDEX = `${CL_FOOTER}__index`
 export const CL_FOOTER_BTS = `${CL_FOOTER}__bts`
-
-export const CL_NOT_SELECTED = crClNotSelected()
+export const CL_FOOTER_NOT_SELECTED = crClNotSelected(CL_FOOTER)
 
 export const COLOR_OPTIONS_OPEN = "#1b75bb"
 export const COLOR_OPTIONS_CLOSE = "#858585"
