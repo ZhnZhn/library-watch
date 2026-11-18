@@ -18,3 +18,6 @@ export const CL_FOOTER_INDEX = `${CL_FOOTER}__index`
 export const CL_FOOTER_BTS = `${CL_FOOTER}__bts`
 
 export const CL_NOT_SELECTED = crClNotSelected()
+
+export const COLOR_OPTIONS_OPEN = "#1b75bb"
+export const COLOR_OPTIONS_CLOSE = "#858585"

@@ -1,10 +1,9 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
 var _fUseKey = require("../hooks/fUseKey");
-var _BtSvgX = _interopRequireDefault(require("../zhn/BtSvgX"));
+var _BtSvgX = require("../zhn/BtSvgX");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_ITEM_DIV = {
     position: 'relative',
@@ -66,7 +65,7 @@ const WatchItem = ({
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
         style: S_ITEM_SPAN,
         children: repo
-      }), isModeEdit ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_BtSvgX.default, {
+      }), isModeEdit ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_BtSvgX.BtSvgX, {
         ariaLabel: "Remove item",
         style: S_SVG_CLOSE,
         onClose: onClose

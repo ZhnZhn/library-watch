@@ -1,4 +1,4 @@
-import BtSvgX from '../zhn/BtSvgX';
+import { BtSvgX } from '../zhn/BtSvgX';
 import {
   CL_NOT_SELECTED,
   crCnElBg

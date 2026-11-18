@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _CaptionToken = _interopRequireDefault(require("./CaptionToken"));
-var _BtSvgX = _interopRequireDefault(require("./BtSvgX"));
+var _BtSvgX = require("./BtSvgX");
 var _CaptionRow = require("./CaptionRow.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 const CaptionRow = props => /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
@@ -12,7 +12,7 @@ const CaptionRow = props => /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
   style: props.style,
   children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_CaptionToken.default, {
     caption: props.caption
-  }), props.children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_BtSvgX.default, {
+  }), props.children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_BtSvgX.BtSvgX, {
     ariaLabel: "Close",
     style: _CaptionRow.S_SVG_CLOSE,
     onClose: props.onClose

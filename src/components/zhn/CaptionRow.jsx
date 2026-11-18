@@ -1,5 +1,5 @@
 import CaptionToken from './CaptionToken';
-import BtSvgX from './BtSvgX';
+import { BtSvgX } from './BtSvgX';
 
 import {
   CL_CAPTION,

@@ -1,4 +1,4 @@
-import BtSvgX from '../zhn/BtSvgX';
+import { BtSvgX } from '../zhn/BtSvgX';
 
 const CL_ITEM_CAPTION = 'item-caption'
 , CL_BT_CLOSE = `${CL_ITEM_CAPTION}__bt-close`;
@@ -6,7 +6,10 @@ const CL_ITEM_CAPTION = 'item-caption'
 const ItemCaption = (
   props
 ) => (
-  <div className={CL_ITEM_CAPTION} style={props.style}>
+  <div
+    className={CL_ITEM_CAPTION}
+    style={props.style}
+  >
     {props.children}
     <BtSvgX
       ariaLabel="Remove item"

@@ -1,10 +1,14 @@
-import { CL_BT_ARROW } from './CL';
+import {
+  CL_BT_ARROW,
+  COLOR_OPTIONS_OPEN,
+  COLOR_OPTIONS_CLOSE
+} from './CL';
 
 const S_SVG_OPEN = {
-  color: "#1b75bb"
+  color: COLOR_OPTIONS_OPEN
 }
 , S_SVG_CLOSE = {
-  color: "#858585"
+  color: COLOR_OPTIONS_CLOSE
 };
 
 const ArrowCell = ({

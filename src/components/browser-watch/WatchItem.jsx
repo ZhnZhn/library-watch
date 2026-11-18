@@ -1,5 +1,5 @@
 import { useKeyEnter } from '../hooks/fUseKey';
-import BtSvgX from '../zhn/BtSvgX';
+import { BtSvgX } from '../zhn/BtSvgX';
 
 const S_ITEM_DIV = {
   position: 'relative',

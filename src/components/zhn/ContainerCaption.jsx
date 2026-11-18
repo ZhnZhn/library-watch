@@ -2,7 +2,7 @@ import { isFn } from '../../utils/isTypeFn';
 
 import SvgMore from './SvgMore';
 import CaptionToken from './CaptionToken';
-import BtSvgX from './BtSvgX';
+import { BtSvgX } from './BtSvgX';
 
 import {
   CL_CAPTION,
