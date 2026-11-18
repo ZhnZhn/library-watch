@@ -7,7 +7,6 @@ import useDialogFocus from './useDialogFocus';
 
 import ModalSlider from '../zhn-modal-slider/ModalSlider';
 import SvgMore from '../zhn/SvgMore';
-import SvgClose from '../zhn/SvgClose';
 import FlatButton from '../zhn-m/FlatButton';
 
 import Caption from './DialogCaption';
@@ -71,8 +70,8 @@ const DraggableDialog = ({
     _isMore,
     _toggleMore
   ] = useToggle()
-  , _hKeyDown = useKeyEscape(onClose)  
-  , _styleShow = crShowStyle(isShow);      
+  , _hKeyDown = useKeyEscape(onClose)
+  , _styleShow = crShowStyle(isShow);
 
   useXYMovable(_refRootDiv)
 

@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _fUseKey = require("../hooks/fUseKey");
-var _SvgClose = _interopRequireDefault(require("../zhn/SvgClose"));
+var _BtSvgX = _interopRequireDefault(require("../zhn/BtSvgX"));
 var _jsxRuntime = require("react/jsx-runtime");
 const S_ITEM_DIV = {
     position: 'relative',
@@ -29,29 +29,25 @@ const S_ITEM_DIV = {
   S_DATE_SPAN = {
     float: 'right'
   };
-const VersionDateRow = _ref => {
-  let {
-    version,
-    date
-  } = _ref;
-  return version ? /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      children: version
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      style: S_DATE_SPAN,
-      children: (date || '').split(' ')[0]
-    })]
-  }) : null;
-};
-const WatchItem = _ref2 => {
-  let {
-    isModeEdit,
-    item,
-    className,
-    onClick,
-    onClose,
-    dndItemHandlers
-  } = _ref2;
+const VersionDateRow = ({
+  version,
+  date
+}) => version ? /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    children: version
+  }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    style: S_DATE_SPAN,
+    children: (date || '').split(' ')[0]
+  })]
+}) : null;
+const WatchItem = ({
+  isModeEdit,
+  item,
+  className,
+  onClick,
+  onClose,
+  dndItemHandlers
+}) => {
   const {
       repo,
       version,
@@ -70,7 +66,8 @@ const WatchItem = _ref2 => {
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
         style: S_ITEM_SPAN,
         children: repo
-      }), isModeEdit ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose.default, {
+      }), isModeEdit ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_BtSvgX.default, {
+        ariaLabel: "Remove item",
         style: S_SVG_CLOSE,
         onClose: onClose
       }) : null]

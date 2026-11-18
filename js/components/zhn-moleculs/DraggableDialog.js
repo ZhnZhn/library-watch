@@ -10,7 +10,6 @@ var _useXYMovable = _interopRequireDefault(require("../hooks/useXYMovable"));
 var _useDialogFocus = _interopRequireDefault(require("./useDialogFocus"));
 var _ModalSlider = _interopRequireDefault(require("../zhn-modal-slider/ModalSlider"));
 var _SvgMore = _interopRequireDefault(require("../zhn/SvgMore"));
-var _SvgClose = _interopRequireDefault(require("../zhn/SvgClose"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 var _DialogCaption = _interopRequireDefault(require("./DialogCaption"));
 var _styleFn = require("../styleFn");
@@ -54,8 +53,7 @@ const DraggableDialog = ({
   const [_refRootDiv, _refBtMore] = (0, _useDialogFocus.default)(refEl, isShow),
     [_isMore, _toggleMore] = (0, _useToggle.default)(),
     _hKeyDown = (0, _fUseKey.useKeyEscape)(onClose),
-    _className = (0, _styleFn.crCn)(CL_DRAGGABLE_DIALOG, [isShow, _styleFn.CL_SHOW_POPUP]),
-    _styleShow = isShow ? _styleFn.S_BLOCK : _styleFn.S_NONE;
+    _styleShow = (0, _styleFn.crShowStyle)(isShow);
   (0, _useXYMovable.default)(_refRootDiv);
   return /*#__PURE__*/ /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/(0, _jsxRuntime.jsxs)("div", {
     ref: _refRootDiv,
@@ -63,7 +61,7 @@ const DraggableDialog = ({
     tabIndex: "-1",
     "aria-label": caption,
     "aria-hidden": !isShow,
-    className: _className,
+    className: CL_DRAGGABLE_DIALOG,
     style: {
       ...S_DRAGGABLE_DIALOG,
       ..._styleShow

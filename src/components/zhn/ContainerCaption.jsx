@@ -2,7 +2,7 @@ import { isFn } from '../../utils/isTypeFn';
 
 import SvgMore from './SvgMore';
 import CaptionToken from './CaptionToken';
-import SvgClose from './SvgClose';
+import BtSvgX from './BtSvgX';
 
 import {
   CL_CAPTION,
@@ -26,7 +26,8 @@ const ContainerCaption = (props) => {
          caption={props.caption}
        />
       {props.children}
-      <SvgClose
+      <BtSvgX
+         ariaLabel="Close items"
          style={S_SVG_CLOSE}
          onClose={props.onClose}
       />

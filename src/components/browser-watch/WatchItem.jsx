@@ -1,5 +1,5 @@
 import { useKeyEnter } from '../hooks/fUseKey';
-import SvgClose from '../zhn/SvgClose';
+import BtSvgX from '../zhn/BtSvgX';
 
 const S_ITEM_DIV = {
   position: 'relative',
@@ -69,7 +69,8 @@ const WatchItem = ({
            {repo}
          </span>
          {isModeEdit
-            ? <SvgClose
+            ? <BtSvgX
+                 ariaLabel="Remove item"
                  style={S_SVG_CLOSE}
                  onClose={onClose}
                />

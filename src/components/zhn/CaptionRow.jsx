@@ -1,5 +1,5 @@
 import CaptionToken from './CaptionToken';
-import SvgClose from './SvgClose';
+import BtSvgX from './BtSvgX';
 
 import {
   CL_CAPTION,
@@ -15,7 +15,8 @@ const CaptionRow = (props) => (
       caption={props.caption}
     />
     {props.children}
-    <SvgClose
+    <BtSvgX
+      ariaLabel="Close"
       style={S_SVG_CLOSE}
       onClose={props.onClose}
     />

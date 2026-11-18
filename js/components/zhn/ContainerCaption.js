@@ -6,7 +6,7 @@ exports.default = void 0;
 var _isTypeFn = require("../../utils/isTypeFn");
 var _SvgMore = _interopRequireDefault(require("./SvgMore"));
 var _CaptionToken = _interopRequireDefault(require("./CaptionToken"));
-var _SvgClose = _interopRequireDefault(require("./SvgClose"));
+var _BtSvgX = _interopRequireDefault(require("./BtSvgX"));
 var _CaptionRow = require("./CaptionRow.Style");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_CAPTION_TOKEN = {
@@ -23,7 +23,8 @@ const ContainerCaption = props => {
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_CaptionToken.default, {
       style: _isOnMore ? S_CAPTION_TOKEN : void 0,
       caption: props.caption
-    }), props.children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose.default, {
+    }), props.children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_BtSvgX.default, {
+      ariaLabel: "Close items",
       style: _CaptionRow.S_SVG_CLOSE,
       onClose: props.onClose
     })]

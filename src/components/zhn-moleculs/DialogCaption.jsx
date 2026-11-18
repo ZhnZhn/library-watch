@@ -1,4 +1,4 @@
-import SvgClose from '../zhn/SvgClose';
+import BtSvgX from '../zhn/BtSvgX';
 import {
   CL_NOT_SELECTED,
   crCnElBg
@@ -11,20 +11,18 @@ import {
 
 const CL_EL_BG = crCnElBg();
 
-const DialogCaption = ({
-  caption,
-  style,
-  onClose,
-  children
-}) => (
-  <div className={CL_EL_BG} style={{...S_CAPTION_DIV, ...style}}>
-     {children}
+const DialogCaption = (
+ props
+) => (
+  <div className={CL_EL_BG} style={{...S_CAPTION_DIV, ...props.style}}>
+     {props.children}
      <span className={CL_NOT_SELECTED}>
-       {caption}
+       {props.caption}
      </span>
-     <SvgClose
+     <BtSvgX
+        ariaLabel="Close dialog"
         style={S_SVG_CLOSE}
-        onClose={onClose}
+        onClose={props.onClose}
       />
   </div>
 );
