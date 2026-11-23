@@ -3,6 +3,7 @@
 exports.__esModule = true;
 exports.default = void 0;
 var _styleFn = require("../styleFn");
+var _Svg = require("../zhn/svg/Svg");
 var _CL = require("./CL");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_SVG_OPEN = (0, _styleFn.crColorStyle)(_CL.COLOR_OPTIONS_OPEN),
@@ -16,12 +17,8 @@ const ArrowCell = ({
   className: _CL.CL_BT_ARROW,
   tabIndex: "-1",
   onClick: onClick,
-  children: /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "20",
-    height: "20",
-    viewBox: "0 0 20 20",
-    "aria-hidden": "true",
+  children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Svg.Svg, {
+    w: "20",
     focusable: "false",
     style: isShowOption ? S_SVG_OPEN : S_SVG_CLOSE,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {

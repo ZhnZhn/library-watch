@@ -1,4 +1,5 @@
-import { crColorStyle } from '../styleFn'
+import { crColorStyle } from '../styleFn';
+import { Svg } from '../zhn/svg/Svg';
 
 import {
   CL_BT_ARROW,
@@ -20,17 +21,13 @@ const ArrowCell = ({
      tabIndex="-1"
      onClick={onClick}
   >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
-      aria-hidden="true"
+    <Svg
+      w="20"
       focusable="false"
       style={isShowOption ? S_SVG_OPEN : S_SVG_CLOSE}
     >
       <path d="M 3,6 L 10,12.5 M 10,12.5 L 17,6" />
-    </svg>
+    </Svg>
   </button>
 );
 

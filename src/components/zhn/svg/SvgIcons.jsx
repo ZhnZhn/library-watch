@@ -1,4 +1,4 @@
-import Svg100 from './Svg100';
+import { Svg } from './Svg';
 
 const SvgIcon = ({
   color='currentColor',
@@ -6,19 +6,14 @@ const SvgIcon = ({
   children,
   ...restProps
 }) => (
-  <Svg100
-    w={size}
-    width={size}
-    height={size}
+  <Svg
+    w={size}    
     fill="none"
     stroke={color}
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
     {...restProps}
   >
     {children}
-  </Svg100>
+  </Svg>
 );
 
 export const SvgInfo = (props) => (
@@ -33,7 +28,7 @@ export const SvgSave = (
   props
 ) => (
   <SvgIcon
-    {...props}    
+    {...props}
     viewBox="0 0 16 16"
     strokeWidth="1"
   >

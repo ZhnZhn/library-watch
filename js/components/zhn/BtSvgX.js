@@ -1,19 +1,16 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.SvgX = exports.BtSvgX = void 0;
 var _styleFn = require("../styleFn");
-var _Svg = _interopRequireDefault(require("./svg/Svg100"));
+var _Svg = require("./svg/Svg");
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_SVG_CLOSE = "svg-close",
   S_SVG = {
     padding: 2
   };
-const SvgX = () => /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Svg.default, {
+const SvgX = () => /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Svg.Svg100, {
   style: S_SVG,
-  strokeWidth: "2",
-  strokeLinecap: "round",
   children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
     d: "M 0,0 L 12,12"
   }), /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {

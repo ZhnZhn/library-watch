@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _Svg = _interopRequireDefault(require("../zhn/svg/Svg100"));
+var _Svg = require("../zhn/svg/Svg");
 var _useResizeElement = _interopRequireDefault(require("./useResizeElement"));
 var _jsxRuntime = require("react/jsx-runtime");
 //import PropTypes from "prop-types";
@@ -24,15 +24,11 @@ const SvgHrzResize = props => {
       style: S_BT_DIV,
       title: "Resize container horizontal left",
       ...leftBtHandlers,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Svg.default, {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Svg.Svg100, {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
-          d: "M 1,6 L 11,6",
-          strokeWidth: "2",
-          strokeLinecap: "round"
+          d: "M 1,6 L 11,6"
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
           d: "M 6,2 L 1,6 6,10",
-          strokeWidth: "2",
-          strokeLinecap: "round",
           fill: "none"
         })]
       })
@@ -41,31 +37,17 @@ const SvgHrzResize = props => {
       style: S_BT_DIV,
       title: "Resize container horizontal right",
       ...rightBtHandlers,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Svg.default, {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Svg.Svg100, {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
-          d: "M 1,6 L 11,6",
-          strokeWidth: "2",
-          strokeLinecap: "round"
+          d: "M 1,6 L 11,6"
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
           d: "M 6,2 L 11,6 6,10",
-          strokeWidth: "2",
-          strokeLinecap: "round",
           fill: "none"
         })]
       })
     })]
   });
 };
-
-/*
-<svg
-  viewBox="0 0 12 12"
-  width="100%"
-  height="100%"
-  preserveAspectRatio="none"
-  xmlns="http://www.w3.org/2000/svg"
->
-*/
 
 /*
 SvgHrzResize.propTypes = {

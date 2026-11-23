@@ -1,15 +1,11 @@
 import { crCn } from '../styleFn';
-import Svg100 from './svg/Svg100';
+import { Svg100 } from './svg/Svg';
 
 const CL_SVG_CLOSE = "svg-close"
 , S_SVG = { padding: 2 };
 
 export const SvgX = () => (
-  <Svg100
-    style={S_SVG}
-    strokeWidth="2"
-    strokeLinecap="round"
-  >
+  <Svg100 style={S_SVG}>
     <path d="M 0,0 L 12,12" />
     <path d="M 12,0 L 0,12" />
   </Svg100>
