@@ -12,37 +12,38 @@ export const crCn = (conf1, conf2) => {
     : _cl2 || void 0 ;
 };
 
-const _fStyleDisplay = value => ({
-  display: value
-});
-export const S_BLOCK = _fStyleDisplay('block')
-export const S_INLINE_BLOCK = _fStyleDisplay('inline-block')
-export const S_NONE = _fStyleDisplay('none')
+const _fCrCn = cn2 => cn1 => crCn(cn1, cn2);
 
 export const crStyle2 = (
   style1,
   style2
 ) => style2
  ? {...style1, ...style2}
- : style1;
+ : style1
 
-export const CL_SHOW_POPUP = "show-popup"
+const _fCrStyle = propName => value => ({
+  [propName]: value
+});
+export const crColorStyle = _fCrStyle('color')
+
+const _crDisplayStyle = _fCrStyle('display');
+export const S_BLOCK = _crDisplayStyle('block')
+export const S_INLINE_BLOCK = _crDisplayStyle('inline-block')
+export const S_NONE = _crDisplayStyle('none')
+
 export const crShowStyle = (isShow, isInlineStyle) => isShow
  ? isInlineStyle ? S_INLINE_BLOCK : S_BLOCK
  : S_NONE
 
+export const CL_SHOW_POPUP = "show-popup"
 export const CL_HIDE_POPUP = "hide-popup"
 
 export const CL_NOT_SELECTED = "not-selected";
-export const crClNotSelected = (
-  className
-) => className
- ? `${className} ${CL_NOT_SELECTED}`
- : CL_NOT_SELECTED
+export const crClNotSelected = _fCrCn(CL_NOT_SELECTED)
 
 export const CL_BG_COLOR = "c-bg"
-export const crCnBgColor = (cn) => crCn(cn, CL_BG_COLOR)
-export const crCnElBg = (cn) => crCn(cn, "el-bg")
+export const crCnBgColor = _fCrCn(CL_BG_COLOR)
+export const crCnElBg = _fCrCn("el-bg")
 
 export const CL_BT_ITEM = crClNotSelected("bt-item")
 export const CL_MENU_MORE = "popup-menu charts__menu-more"
@@ -67,6 +68,4 @@ export const crVisibilityHidden = (
   ? void 0
   : { visibility: 'hidden' }
 
-export const S_COLOR_GREY = {
-  color: "grey"
-}
+export const S_COLOR_GREY = crColorStyle("grey")

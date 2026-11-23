@@ -2,22 +2,19 @@
 
 exports.__esModule = true;
 exports.default = void 0;
+var _styleFn = require("../styleFn");
 var _CL = require("./CL");
 var _jsxRuntime = require("react/jsx-runtime");
-const S_SVG_OPEN = {
-    color: _CL.COLOR_OPTIONS_OPEN
-  },
-  S_SVG_CLOSE = {
-    color: _CL.COLOR_OPTIONS_CLOSE
-  };
+const S_SVG_OPEN = (0, _styleFn.crColorStyle)(_CL.COLOR_OPTIONS_OPEN),
+  S_SVG_CLOSE = (0, _styleFn.crColorStyle)(_CL.COLOR_OPTIONS_CLOSE);
 const ArrowCell = ({
   isShowOption,
   onClick
 }) => /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
-  className: _CL.CL_BT_ARROW,
-  type: "button",
-  tabIndex: "-1",
   "aria-label": "Toggle suggestions",
+  type: "button",
+  className: _CL.CL_BT_ARROW,
+  tabIndex: "-1",
   onClick: onClick,
   children: /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
     xmlns: "http://www.w3.org/2000/svg",
