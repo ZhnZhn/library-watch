@@ -29,10 +29,6 @@ const TOKEN_USER_SETTINGS = "User Settings",
   },
   S_CARD_BUTTONS = {
     gap: 4
-  },
-  S_INPUT_WIDTH = {
-    width: 315,
-    marginLeft: 8
   };
 const SettingsDialog = (0, _memoFn.memoIsShow)(props => {
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog.default, {

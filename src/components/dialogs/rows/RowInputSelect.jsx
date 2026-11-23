@@ -6,6 +6,7 @@ import Caption from './Caption';
 
 const RowInputSelect = ({
   isShowLabel,
+  captionStyle,
   caption,
   width = "250",
   placeholder,
@@ -16,8 +17,9 @@ const RowInputSelect = ({
   return (
     <Row>
       <Caption
-        is={isShowLabel}
+        is={isShowLabel}        
         caption={caption}
+        style={captionStyle}
         labelId={labelId}
       />
       <InputSelect

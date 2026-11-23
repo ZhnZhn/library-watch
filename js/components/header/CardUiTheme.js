@@ -6,13 +6,18 @@ exports.default = void 0;
 var _uiTheme = require("../styles/uiTheme");
 var _RowInputSelect = _interopRequireDefault(require("../dialogs/rows/RowInputSelect"));
 var _jsxRuntime = require("react/jsx-runtime");
+const S_UI_THEME_CAPTION = {
+    width: '110px'
+  },
+  UI_THEME_PLACEHOLDER = `Default: ${_uiTheme.DF_UI_THEME}`;
 const CardUiTheme = props => /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
   style: props.style,
   children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputSelect.default, {
-    width: "210",
+    width: "220",
     isShowLabel: true,
     caption: "UI Theme",
-    placeholder: `Default: ${_uiTheme.DF_UI_THEME}`,
+    captionStyle: S_UI_THEME_CAPTION,
+    placeholder: UI_THEME_PLACEHOLDER,
     options: _uiTheme.UI_THEME_OPTIONS,
     onSelect: _uiTheme.setUiTheme
   })

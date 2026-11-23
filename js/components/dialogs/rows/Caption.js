@@ -12,17 +12,18 @@ const S_LABEL_SPAN = {
   fontSize: '16px',
   fontWeight: 'bold'
 };
-const Caption = _ref => {
-  let {
-    is = true,
-    caption,
-    labelId
-  } = _ref;
-  return is ? /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-    style: S_LABEL_SPAN,
-    id: labelId,
-    children: caption
-  }) : null;
-};
+const Caption = ({
+  is = true,
+  style,
+  caption,
+  labelId
+}) => is ? /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+  id: labelId,
+  style: {
+    ...S_LABEL_SPAN,
+    ...style
+  },
+  children: caption
+}) : null;
 var _default = exports.default = Caption;
 //# sourceMappingURL=Caption.js.map

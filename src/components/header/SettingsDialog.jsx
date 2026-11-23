@@ -26,10 +26,6 @@ const TOKEN_USER_SETTINGS = "User Settings"
 }
 , S_CARD_BUTTONS = {
   gap: 4
-}
-, S_INPUT_WIDTH = {
-  width: 315,
-  marginLeft: 8
 };
 
 const SettingsDialog = memoIsShow((props) => {

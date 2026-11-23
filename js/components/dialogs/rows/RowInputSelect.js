@@ -10,6 +10,7 @@ var _Caption = _interopRequireDefault(require("./Caption"));
 var _jsxRuntime = require("react/jsx-runtime");
 const RowInputSelect = ({
   isShowLabel,
+  captionStyle,
   caption,
   width = "250",
   placeholder,
@@ -21,6 +22,7 @@ const RowInputSelect = ({
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Caption.default, {
       is: isShowLabel,
       caption: caption,
+      style: captionStyle,
       labelId: labelId
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputSelect.default, {
       width: width,
