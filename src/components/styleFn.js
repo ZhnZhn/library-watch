@@ -25,6 +25,9 @@ const _fCrStyle = propName => value => ({
   [propName]: value
 });
 export const crColorStyle = _fCrStyle('color')
+export const crTransformRotateStyle = (number) => ({
+  transform: `rotate(${number}deg)`
+})
 
 const _crDisplayStyle = _fCrStyle('display');
 export const S_BLOCK = _crDisplayStyle('block')

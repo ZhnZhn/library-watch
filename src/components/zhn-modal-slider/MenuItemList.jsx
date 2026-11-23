@@ -2,6 +2,7 @@ import { isFn, isBool } from '../../utils/isTypeFn'
 import { bindTo } from '../uiApi';
 import { crMenuItemRole } from '../a11yFn';
 
+import { SvgArrowRight } from '../zhn/svg/Svg';
 import InputSwitch from '../zhn/InputSwitch';
 import MenuAriaItem from './MenuAriaItem';
 
@@ -12,15 +13,15 @@ const SUB_MENU = 'sub'
   alignItems: 'baseline',
   fontSize: '16px'
 }
-, S_ITEM = { position: 'relative' }
+, S_ITEM = {
+  position: 'relative'
+}
 , S_NEXT_PAGE = {
-  position: 'absolute',
   display: 'inline-block',
-  top : 0,
-  right: 4,
-  color: 'inherit',
-  padding: '1px 16px 1px 0px',
-  fontWeight: 'bold'
+  position: 'absolute',
+  top: '8px',
+  right: '6px',
+  verticalAlign: 'text-bottom'
 };
 
 const _fClick = ({
@@ -35,9 +36,7 @@ const _fClick = ({
 
 const NextPageArrow = ({ type }) =>
   type === SUB_MENU ? (
-    <span style={S_NEXT_PAGE}>
-      {'>'}
-    </span>
+    <SvgArrowRight style={S_NEXT_PAGE} />
   ) : null;
 
 const MenuItemList = ({

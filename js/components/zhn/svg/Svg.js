@@ -1,7 +1,8 @@
 "use strict";
 
 exports.__esModule = true;
-exports.Svg100 = exports.Svg = void 0;
+exports.SvgArrowRight = exports.SvgArrowLeft = exports.SvgArrowDown = exports.Svg100 = exports.Svg = void 0;
+var _styleFn = require("../../styleFn");
 var _jsxRuntime = require("react/jsx-runtime");
 const SVG_LINECAP_PROPS = {
   strokeWidth: "2",
@@ -39,4 +40,30 @@ const Svg100 = ({
   children: children
 });
 exports.Svg100 = Svg100;
+const SvgArrowDown = props => /*#__PURE__*/(0, _jsxRuntime.jsx)(Svg, {
+  w: "20",
+  focusable: "false",
+  style: props.style,
+  children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+    d: "M 3,6 L 10,12.5 M 10,12.5 L 17,6"
+  })
+});
+exports.SvgArrowDown = SvgArrowDown;
+const S_ARROW = {
+    stroke: 'currentColor',
+    strokeWidth: 2.5
+  },
+  S_ARROW_RIGHT = (0, _styleFn.crTransformRotateStyle)(270),
+  S_ARROW_LEFT = (0, _styleFn.crTransformRotateStyle)(90);
+const _fSvgArrow = arrowStyle => ({
+  style
+}) => /*#__PURE__*/(0, _jsxRuntime.jsx)(SvgArrowDown, {
+  style: {
+    ...S_ARROW,
+    ...arrowStyle,
+    ...style
+  }
+});
+const SvgArrowRight = exports.SvgArrowRight = _fSvgArrow(S_ARROW_RIGHT);
+const SvgArrowLeft = exports.SvgArrowLeft = _fSvgArrow(S_ARROW_LEFT);
 //# sourceMappingURL=Svg.js.map

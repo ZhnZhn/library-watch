@@ -17,13 +17,8 @@ const ArrowCell = ({
   className: _CL.CL_BT_ARROW,
   tabIndex: "-1",
   onClick: onClick,
-  children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Svg.Svg, {
-    w: "20",
-    focusable: "false",
-    style: isShowOption ? S_SVG_OPEN : S_SVG_CLOSE,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
-      d: "M 3,6 L 10,12.5 M 10,12.5 L 17,6"
-    })
+  children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Svg.SvgArrowDown, {
+    style: isShowOption ? S_SVG_OPEN : S_SVG_CLOSE
   })
 });
 var _default = exports.default = ArrowCell;
