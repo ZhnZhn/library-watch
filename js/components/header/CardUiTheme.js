@@ -7,13 +7,13 @@ var _uiTheme = require("../styles/uiTheme");
 var _RowInputSelect = _interopRequireDefault(require("../dialogs/rows/RowInputSelect"));
 var _jsxRuntime = require("react/jsx-runtime");
 const S_UI_THEME_CAPTION = {
-    width: '110px'
+    width: '90px'
   },
   UI_THEME_PLACEHOLDER = `Default: ${_uiTheme.DF_UI_THEME}`;
 const CardUiTheme = props => /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
   style: props.style,
   children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_RowInputSelect.default, {
-    width: "220",
+    width: "240",
     isShowLabel: true,
     caption: "UI Theme",
     captionStyle: S_UI_THEME_CAPTION,

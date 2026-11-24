@@ -7,14 +7,14 @@ import {
 import RowInputSelect from '../dialogs/rows/RowInputSelect'
 
 const S_UI_THEME_CAPTION = {
-  width: '110px'
+  width: '90px'
 }
 , UI_THEME_PLACEHOLDER = `Default: ${DF_UI_THEME}`;
 
 const CardUiTheme = (props) => (
     <div style={props.style}>
       <RowInputSelect
-        width="220"
+        width="240"
         isShowLabel={true}
         caption="UI Theme"
         captionStyle={S_UI_THEME_CAPTION}
