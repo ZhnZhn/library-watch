@@ -27,8 +27,8 @@
     "url": "https://github.com/ZhnZhn/library-watch.git"
   },
   "dependencies": {
-    "@babel/runtime": "^7.29.14",
-    "chart.js": "^4.6.1",
+    "@babel/runtime": "^7.29.15",
+    "chart.js": "^4.6.2",
     "raven-js": "^3.27.2",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
